@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Videre.Extend.Common.Presentation</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Videre.Extend.Common.Presentation</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.0-alpha" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Videre.Cloud.SignalR.Connect.Common</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Videre.Cloud.SignalR.Connect.Common</RootNamespace>
+  </PropertyGroup>
+
+</Project>

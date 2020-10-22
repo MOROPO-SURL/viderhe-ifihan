@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Videre.Support.Extend</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Videre.Support.Extend</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SSCXFToolKit.IoC" Version="0.2.0-alpha" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common\Extend.Common.csproj" />
+  </ItemGroup>
+
+</Project>

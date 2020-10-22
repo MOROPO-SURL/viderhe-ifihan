@@ -1,0 +1,88 @@
+﻿using SmartSolucionesCuba.SAPRESSC.Core.Persistence.Entities;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace SmartSolucionesCuba.Videre.Cloud.Persistence.Entities
+{
+    public class Account : IHabilitableEntity<System.Guid>, IPersistenceSignable
+    {
+        [Key]
+        public System.Guid Id { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public string PrimaryColor { get; set; }
+
+        [Required]
+        public string SecoundaryColor { get; set; }
+
+        public int MaxPlayerCount { get; set; }
+
+        public System.Guid LogoId { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("LogoId")]
+        public SAPRESSC.Middleware.Media.Persistence.Entities.Image Logo { get; set; }
+
+        public System.Guid SplashId { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("SplashId")]
+        public SAPRESSC.Middleware.Media.Persistence.Entities.Image Splash { get; set; }
+
+        public System.Guid? DefaultOverlayId { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("DefaultOverlayId")]
+        public Overlay DefaultOverlay { get; set; }
+
+        public string SerializedOverlayContext { get; set; }
+
+        public System.DateTime CreateAt { get; set; }
+
+        public ICollection<Player> Players { get; set; }
+
+        public ICollection<Screenplay> Screenplays { get; set; }
+
+        public ICollection<Placard> Placards { get; set; }
+
+        public ICollection<AccountModeratorBridge> ModeratorBridges { get; set; }
+
+        public ICollection<AccountImageBridge> ImageBridges { get; set; }
+
+        public ICollection<AccountVideoBridge> VideoBridges { get; set; }
+
+        public ICollection<AccountExtensionBridge> ExtensionBridges { get; set; }
+
+        public ICollection<AccountTemplateExclusionBridge> TemplateExclusionBridges { get; set; }
+
+        public ICollection<AccountTransitionExclusionBridge> TransitionExclusionBridges { get; set; }
+
+        public bool Enabled { get; set; }
+
+        [Required]
+        public string Signature { get; set; }
+
+        public Account()
+        {
+            Id = System.Guid.NewGuid();
+
+            CreateAt = System.DateTime.Now;
+
+            Players = new List<Player>();
+            Screenplays = new List<Screenplay>();
+            Placards = new List<Placard>();
+
+            ModeratorBridges = new List<AccountModeratorBridge>();
+            ImageBridges = new List<AccountImageBridge>();
+            VideoBridges = new List<AccountVideoBridge>();
+            ExtensionBridges = new List<AccountExtensionBridge>();
+            TemplateExclusionBridges = new List<AccountTemplateExclusionBridge>();
+            TransitionExclusionBridges = new List<AccountTransitionExclusionBridge>();
+        }
+
+        public object GetSignableEntityModel()
+        {
+            return new { Id, Name, Enabled, MaxPlayerCount, PrimaryColor, SecoundaryColor };
+        }
+    }
+}

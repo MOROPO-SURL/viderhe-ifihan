@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Videre.Extend.Common.Overlaying</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Videre.Extend.Common.Overlaying</RootNamespace>
+  </PropertyGroup>
+
+</Project>

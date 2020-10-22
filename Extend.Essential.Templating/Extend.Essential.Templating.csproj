@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Videre.Extend.Essential.Templating</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Videre.Extend.Essential.Templating</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="08C0C0E5-C6DD-4E1C-B821-FACF619DD99D.png" />
+    <None Remove="18C0C0E5-C6DD-4E1C-B821-FACF619DD99D.png" />
+    <None Remove="88C0C0E5-C6DD-4E1C-B821-FACF619DD99D.png" />
+    <None Remove="BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0.png" />
+    <None Remove="D6856FBB-194B-40FA-9FF9-A16EA09F446A.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="08C0C0E5-C6DD-4E1C-B821-FACF619DD99D.png" />
+    <EmbeddedResource Include="18C0C0E5-C6DD-4E1C-B821-FACF619DD99D.png" />
+    <EmbeddedResource Include="88C0C0E5-C6DD-4E1C-B821-FACF619DD99D.png" />
+    <EmbeddedResource Include="BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0.png" />
+    <EmbeddedResource Include="D6856FBB-194B-40FA-9FF9-A16EA09F446A.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+  </ItemGroup>
+
+</Project>

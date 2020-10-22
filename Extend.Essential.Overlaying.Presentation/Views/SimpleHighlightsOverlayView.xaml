@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommonoverlayingpresentationviews:BaseOverlayView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:extendcommonoverlayingpresentationviews="clr-namespace:SmartSolucionesCuba.Videre.Extend.Common.Overlaying.Presentation.Views;assembly=SmartSolucionesCuba.Videre.Extend.Common.Overlaying.Presentation"
+    xmlns:extendcommonoverlayingpresentationbehaviors="clr-namespace:SmartSolucionesCuba.Videre.Extend.Common.Overlaying.Presentation.Behaviors;assembly=SmartSolucionesCuba.Videre.Extend.Common.Overlaying.Presentation"
+    xmlns:extendcommonoverlayingpresentationconverters="clr-namespace:SmartSolucionesCuba.Videre.Extend.Common.Overlaying.Presentation.Converters;assembly=SmartSolucionesCuba.Videre.Extend.Common.Overlaying.Presentation"
+    xmlns:sscxftoolkitpresentationtransformbehaviors="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Behaviors;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
+    xmlns:sscxftoolkitpresentationtransformanimations="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
+    mc:Ignorable="d"
+    x:Class="SmartSolucionesCuba.Videre.Extend.Essential.Overlaying.Presentation.Views.SimpleHighlightsOverlayView"
+    TranslationY="100">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <extendcommonoverlayingpresentationconverters:TextToAbsoluteLayoutBoundsConverter x:Key="TextToAbsoluteLayoutBoundsConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Behaviors>
+        <sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior>
+            <sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior.Animation>
+                <sscxftoolkitpresentationtransformanimations:TranslateToAnimation 
+                    Target="{x:Reference View}" 
+                    Delay="5000"
+                    EasingType="CubicOut" 
+                    TranslateY="0" />
+            </sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior.Animation>
+        </sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior>
+    </ContentView.Behaviors>
+    <ContentView.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="15" />
+            </Grid.RowDefinitions>
+            <AbsoluteLayout
+                Grid.Column="1" Grid.Row="1"
+                BackgroundColor="GhostWhite">
+                <Label
+                    AbsoluteLayout.LayoutFlags="None"
+                    AbsoluteLayout.LayoutBounds="{Binding Highlights, Converter={StaticResource TextToAbsoluteLayoutBoundsConverter}}"
+                    Padding="0,10"
+                    Text="{Binding Path=Highlights}"
+                    TextColor="Black"
+                    LineBreakMode="NoWrap">
+                    <Label.Behaviors>
+                        <extendcommonoverlayingpresentationbehaviors:MarqueeLabelBehavior />
+                    </Label.Behaviors>
+                </Label>
+            </AbsoluteLayout>
+            <Label 
+                Grid.Column="0" Grid.Row="1"
+                BackgroundColor="Accent"
+                Padding="12,10"
+                Text="{Binding Path=Header}"
+                TextColor="White"
+                FontAttributes="Bold" />
+        </Grid>
+    </ContentView.Content>
+</extendcommonoverlayingpresentationviews:BaseOverlayView>

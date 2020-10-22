@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Videre.Support.Extend.Templating</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Videre.Support.Extend.Templating</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+    <ProjectReference Include="..\Support.Extend\Support.Extend.csproj" />
+  </ItemGroup>
+
+</Project>

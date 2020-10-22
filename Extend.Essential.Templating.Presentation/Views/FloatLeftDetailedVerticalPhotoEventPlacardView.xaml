@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommonpresentationviews:BasePlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:extendcommonpresentationviews="clr-namespace:SmartSolucionesCuba.Videre.Extend.Common.Presentation.Views;assembly=SmartSolucionesCuba.Videre.Extend.Common.Presentation"
+    mc:Ignorable="d"
+    x:Class="SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Views.FloatLeftDetailedVerticalPhotoEventPlacardView">
+    <ContentView.Content>
+        <Grid 
+            x:Name="Wrapper"
+            BackgroundColor="Transparent">
+            <Grid 
+                x:Name="PlacardLayoutView"
+                BackgroundColor="Black">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition Width="0.8*" />
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid
+                    x:Name="ImagesContainer"
+                    Grid.ColumnSpan="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Grid.Column="1"
+                        Source="{Binding Path=ImageSource}" 
+                        Aspect="{Binding Path=ImageAspect}" />
+                </Grid>
+                <StackLayout
+                    Grid.Column="1"
+                    x:Name="EventDetailsContainer"
+                    BackgroundColor="#E8ededed">
+                    <Grid
+                        Margin="0,40,0,0"
+                        Padding="40,30"
+                        BackgroundColor="IndianRed">
+                        <Label
+                            Text="{Binding Path=Title}"
+                            TextColor="White"
+                            LineBreakMode="TailTruncation"
+                            MaxLines="3"
+                            FontFamily="{StaticResource HelveticaLTStdCompressedFontFamily}"
+                            FontSize="Header" />
+                    </Grid>
+                    <StackLayout
+                    Margin="40,15,40,40">
+                        <StackLayout 
+                            x:Name="EventWhenContainer"
+                            Orientation="Horizontal"
+                            Spacing="10"
+                            Margin="0,10">
+                            <Label
+                                Text="&#xf0f0;"
+                                TextColor="DimGray"
+                                FontFamily="{StaticResource IconFontFamily}"
+                                FontSize="Title" />
+                            <Label
+                                VerticalOptions="Center"
+                                Text="{Binding Path=When}"
+                                TextColor="DimGray"
+                                FontFamily="{StaticResource HelveticaLTStdRegularFontFamily}"
+                                FontSize="Subtitle" />
+                        </StackLayout>
+                        <StackLayout 
+                            x:Name="EventWhereContainer"
+                            Orientation="Horizontal"
+                            Spacing="10"
+                            Margin="0,10">
+                            <Label
+                                Text="&#xf352;"
+                                TextColor="DimGray"
+                                FontFamily="{StaticResource IconFontFamily}"
+                                FontSize="Title" />
+                            <Label
+                                VerticalOptions="Center"
+                                Text="{Binding Path=Where}"
+                                TextColor="DimGray"
+                                FontFamily="{StaticResource HelveticaLTStdRegularFontFamily}"
+                                FontSize="Subtitle" />
+                        </StackLayout>
+                        <Label
+                            x:Name="EventAboutLabel"
+                            Margin="0,10,0,0"
+                            Text="{Binding Path=About}"
+                            TextColor="Black"
+                            LineBreakMode="TailTruncation"
+                            MaxLines="10"
+                            FontFamily="{StaticResource HelveticaLTStdRegularFontFamily}"
+                            FontSize="Medium" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommonpresentationviews:BasePlacardPresentationView>

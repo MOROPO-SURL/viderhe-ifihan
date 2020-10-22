@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Videre.Extend.Essential.Motion</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Videre.Extend.Essential.Motion</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Motion\Extend.Common.Motion.csproj" />
+  </ItemGroup>
+
+</Project>

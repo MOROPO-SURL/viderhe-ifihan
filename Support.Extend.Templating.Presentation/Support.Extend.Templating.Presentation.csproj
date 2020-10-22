@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Videre.Support.Extend.Templating.Presentation</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Videre.Support.Extend.Templating.Presentation</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Presentation\Extend.Common.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
+    <ProjectReference Include="..\Support.Extend.Templating\Support.Extend.Templating.csproj" />
+  </ItemGroup>
+
+</Project>

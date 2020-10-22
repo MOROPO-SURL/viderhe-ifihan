@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Videre.Support.Presentation</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Videre.Support.Presentation</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.0-alpha" />
+    <PackageReference Include="SSCXFToolKit.Presentation" Version="0.4.5-alpha" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
+    <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+    <ProjectReference Include="..\Support.Extend.Templating\Support.Extend.Templating.csproj" />
+  </ItemGroup>
+
+</Project>

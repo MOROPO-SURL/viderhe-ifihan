@@ -1,0 +1,42 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models
+{
+    public class PlayerInputModel : SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Player, string>
+    {
+        [Required, RegularExpression(@"^[0-9A-Z]{7}$")]
+        public string Id { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public System.Guid ScreenplayId { get; set; }
+
+        public string About { get; set; }
+
+        public Persistence.Entities.Player Export()
+        {
+            var entity = new Persistence.Entities.Player();
+
+            Mergue(entity);
+
+            return entity;
+        }
+
+        public void Import(Persistence.Entities.Player entity)
+        {
+            Id = entity.Id;
+            Name = entity.Name;
+            About = entity.About;
+            ScreenplayId = entity.ScreenplayId ?? System.Guid.Empty;
+        }
+
+        public void Mergue(Persistence.Entities.Player entity)
+        {
+            entity.Id = Id;
+            entity.Name = Name;
+            entity.About = About;
+        }
+    }
+}

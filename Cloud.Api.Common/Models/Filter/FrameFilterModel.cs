@@ -1,0 +1,12 @@
+﻿namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models.Filter
+{
+    public class FrameFilterModel : SAPRESSC.Core.Persistence.Models.Filter.IEntityFilterModel<Persistence.Entities.Frame, long>
+    {
+        public System.Guid ScreenplayId { get; set; }
+
+        public System.Linq.Expressions.Expression<System.Func<Persistence.Entities.Frame, bool>> GetSelector()
+        {
+            return entity => entity.ScreenplayId == ScreenplayId;
+        }
+    }
+}

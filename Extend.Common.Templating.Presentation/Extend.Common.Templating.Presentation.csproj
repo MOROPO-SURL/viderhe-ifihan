@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cloud.SignalR.Connect.Common\Cloud.SignalR.Connect.Common.csproj" />
+    <ProjectReference Include="..\Extend.Common.Motion.Presentation\Extend.Common.Motion.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.Common.Presentation\Extend.Common.Presentation.csproj" />
+    <ProjectReference Include="..\Support.Presentation\Support.Presentation.csproj" />
+  </ItemGroup>
+
+</Project>
