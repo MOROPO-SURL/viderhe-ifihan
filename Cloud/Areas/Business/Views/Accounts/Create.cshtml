@@ -1,0 +1,114 @@
+﻿@model SmartSolucionesCuba.Videre.Cloud.Models.View.AccountInputViewModel
+
+@{
+    ViewData["Title"] = "Agregar Cuenta";
+
+    ViewData[BreadcrumbViewModel.BREADCRUMBS_MAP_KEY] = new List<BreadcrumbViewModel>
+    {
+        new BreadcrumbViewModel
+        {
+            Caption = "<span class=\"mdi mdi-cogs\" style=\"margin-right: 4px;\"></span>" + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
+            Url = "/"
+        },
+        new BreadcrumbViewModel
+        {
+            Caption = "Administración de Cuentas",
+            Url = Url.Action("index")
+        },
+        new BreadcrumbViewModel
+        {
+            Caption = ViewData["Title"].ToString()
+        }
+    };
+
+    Layout = "_BackendLayout";
+}
+
+@section styles {
+    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" />
+}
+
+@section scripts {
+    <script type="text/javascript" src="~/lib/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('.colorpicker-element').colorpicker();
+        });
+    </script>
+}
+
+@using (Html.BeginForm("create", "accounts", new { Area = "business" }, FormMethod.Post, true, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <div class="card" style="margin-bottom: 20px;">
+        <div class="card-header"><h4 style="margin-bottom: 0;">@ViewData["Title"]</h4></div>
+
+        <div class="card-body">
+            <div style="margin-bottom: 20px;">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name, null, new { @class = "text-danger" })
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 col-sm-6" style="margin-bottom: 20px;">
+                    <div class="checkbox">
+                        <label>
+                            @Html.EditorFor(model => model.Enabled) Habilitada
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6" style="margin-bottom: 20px;">
+                    @Html.LabelFor(model => model.MaxPlayerCount, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.MaxPlayerCount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaxPlayerCount, null, new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3 col-sm-6" style="margin-bottom: 20px;">
+                    @Html.LabelFor(model => model.PrimaryColor, new { @class = "control-label" })
+                    <div class="input-group colorpicker-element">
+                        @Html.TextBoxFor(model => model.PrimaryColor, new { @class = "form-control", @readonly = "readonly" })
+                        <span class="input-group-append">
+                            <span class="input-group-text colorpicker-input-addon"><i></i></span>
+                        </span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PrimaryColor, null, new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3 col-sm-6" style="margin-bottom: 20px;">
+                    @Html.LabelFor(model => model.SecoundaryColor, new { @class = "control-label" })
+                    <div class="input-group colorpicker-element">
+                        @Html.TextBoxFor(model => model.SecoundaryColor, new { @class = "form-control", @readonly = "readonly" })
+                        <span class="input-group-append">
+                            <span class="input-group-text colorpicker-input-addon"><i></i></span>
+                        </span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.SecoundaryColor, null, new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 col-sm-6" style="margin-bottom: 20px;">
+                    <div>
+                        @Html.LabelFor(model => model.LogoImageFile, new { @class = "control-label h5 mt-2" })
+                    </div>
+                    <hr class="clearfix" />
+                    @Html.EditorFor(model => model.LogoImageFile, new { @class = "form-control" })
+                    <div>@Html.ValidationMessageFor(model => model.LogoImageFile, null, new { @class = "text-danger" })</div>
+                </div>
+                <div class="col-md-9 col-sm-12" style="margin-bottom: 20px;">
+                    <div>
+                        @Html.LabelFor(model => model.SplashImageFile, new { @class = "control-label h5 mt-2" })
+                    </div>
+                    <hr class="clearfix" />
+                    @Html.EditorFor(model => model.SplashImageFile, new { @class = "form-control" })
+                    <div>@Html.ValidationMessageFor(model => model.SplashImageFile, null, new { @class = "text-danger" })</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Crear</button>
+            <a class="btn btn-default" href="@Url.Action("index")">Cancelar</a>
+        </div>
+    </div>
+}

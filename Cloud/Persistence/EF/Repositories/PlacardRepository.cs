@@ -1,0 +1,18 @@
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace SmartSolucionesCuba.Videre.Cloud.Persistence.EF.Repositories
+{
+    public class PlacardRepository : SAPRESSC.Core.Persistence.EF.Repositories.AbstractEntityRepository<Entities.Placard, System.Guid>
+    {
+        public PlacardRepository(DbContext dbContext) : base(dbContext)
+        {
+        }
+
+        protected override System.Linq.IQueryable<Entities.Placard> GetQueryableDbSet()
+        {
+            return base.GetQueryableDbSet()
+                .Include(e => e.Account)
+                .Include(e => e.Template);
+        }
+    }
+}

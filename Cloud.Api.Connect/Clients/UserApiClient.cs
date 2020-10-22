@@ -11,9 +11,9 @@ namespace SmartSolucionesCuba.Videre.Cloud.Api.Connect.Clients
             this.httpClientHelper = httpClientHelper;
         }
 
-        public async System.Threading.Tasks.Task<AuthenticationSuccessModel> AuthenticateAsync(AuthenticationIntentModel modelInput)
+        public async System.Threading.Tasks.Task<AuthenticatedSessionModel> AuthenticateAsync(AuthenticationIntentModel modelInput)
         {
-            return await httpClientHelper.PostAsync<AuthenticationIntentModel, AuthenticationSuccessModel>("security/user/authenticate", modelInput);
+            return await httpClientHelper.PostAsync<AuthenticationIntentModel, AuthenticatedSessionModel>("security/user/authenticate", modelInput);
         }
 
         public async System.Threading.Tasks.Task ChangePasswordAsync(UserPasswordChangeRequestModel model)

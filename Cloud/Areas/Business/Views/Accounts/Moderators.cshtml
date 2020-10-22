@@ -1,0 +1,133 @@
+﻿@model SmartSolucionesCuba.Videre.Cloud.Models.View.AccountModeratorsViewModel
+
+@{
+    ViewData["Title"] = "Modificar Cuenta (Moderadores)";
+
+    ViewData[BreadcrumbViewModel.BREADCRUMBS_MAP_KEY] = new List<BreadcrumbViewModel>
+    {
+        new BreadcrumbViewModel
+        {
+            Caption = "<span class=\"mdi mdi-cogs\" style=\"margin-right: 4px;\"></span>" + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
+            Url = "/"
+        },
+        new BreadcrumbViewModel
+        {
+            Caption = "Administración de Cuentas",
+            Url = Url.Action("index")
+        },
+        new BreadcrumbViewModel
+        {
+            Caption = ViewData["Title"].ToString()
+        }
+    };
+
+    Layout = "_BackendLayout";
+}
+
+<div class="card" style="margin-bottom: 20px;">
+    <div class="card-header">
+        <h4>Modificar Cuenta</h4>
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link" asp-action="edit" asp-route-key="@Model.Account.Id">Datos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Moderadores</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="plugins" asp-route-key="@Model.Account.Id">Complementos</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <div class="card" style="margin-bottom: 20px;">
+            <div class="row no-gutters">
+                <div class="col-auto">
+                    <img height="200" src="@Url.Action("image", "default", new { Area = "media", key = Model.Account.LogoImageId })" />
+                </div>
+                <div class="col">
+                    <div class="card-block p-3">
+                        <h4>Cuenta</h4>
+                        <hr />
+                        <div class="row">
+                            <dl class="col-md-6">
+                                <dt>Nombre</dt>
+                                <dd>@Html.DisplayFor(model => model.Account.Name)</dd>
+                            </dl>
+                            <dl class="col-md-6">
+                                <dt># Max. Reproductores</dt>
+                                <dd>@Html.DisplayFor(model => model.Account.MaxPlayerCount)</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                @*@Html.Partial("_CountriesFilterPartial", Model.Filter)*@
+            </div>
+            <div class="col-sm-8"><a class="btn btn-primary float-right" asp-action="addmoderator" asp-route-key="@Model.Account.Id"><span class="mdi mdi-plus"></span> Agregar</a></div>
+        </div>
+        <table class="table mb-0">
+            <thead>
+                <tr>
+                    <th style="width: 80px; border-top: none; text-align: center;"><span class="mdi mdi-18px mdi-account-box"></span></th>
+                    <th style="border-top: none;">Usuario</th>
+                    <th style="border-top: none;">Nombre</th>
+                    <th style="border-top: none;">Apellidos</th>
+                    <th style="width: 1px; white-space:nowrap; border-top: none;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Moderators.Count == 0)
+                {
+                    <tr>
+                        <td colspan="5" class="text-muted">Sin elementos que mostrar</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var item in Model.Moderators)
+                    {
+                        item.Account = Model.Account;
+
+                        <tr>
+                            <td>
+                                @if (item.ImageId != System.Guid.Empty)
+                                {
+                                    <img class="img-thumbnail" src="@Url.Action("image", "default", new { Area = "media", key = item.ImageId })" />
+                                }
+                                else
+                                {
+                                    <img class="img-thumbnail" src="~/img/default-person-picture.jpg" />
+                                }
+                            </td>
+                            <td style="vertical-align: middle;">@item.UserId</td>
+                            <td style="vertical-align: middle;">@item.Name</td>
+                            <td style="vertical-align: middle;">@item.LastName</td>
+                            <td style="vertical-align: middle;">
+                                <div class="btn-group btn-group">
+                                    <a class="btn btn-light" asp-action="editmoderator" asp-route-key="@Model.Account.Id" asp-route-id="@item.Id">Editar</a>
+                                    <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#delete-@item.Id">Eliminar</a>
+                                </div>
+
+                                @await Html.PartialAsync("_DeleteModeratorPartial", item)
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-light" asp-action="index">Regresar al listado</a>
+    </div>
+</div>
+
+
+
+
+
+
+

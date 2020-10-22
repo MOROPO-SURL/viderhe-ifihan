@@ -13,17 +13,13 @@ namespace SmartSolucionesCuba.Videre.Cloud.Persistence.Entities
 
         public System.Guid AccountId { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("AccountId")]
         public Account Account { get; set; }
 
         public System.Guid? ScreenplayId { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("ScreenplayId")]
         public Screenplay Screenplay { get; set; }
 
         public System.Guid? OverlayId { get; set; }
-
-        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("OverlayId")]
 
         public Overlay Overlay { get; set; }
 

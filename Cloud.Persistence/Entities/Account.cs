@@ -53,10 +53,6 @@ namespace SmartSolucionesCuba.Videre.Cloud.Persistence.Entities
 
         public ICollection<AccountExtensionBridge> ExtensionBridges { get; set; }
 
-        public ICollection<AccountTemplateExclusionBridge> TemplateExclusionBridges { get; set; }
-
-        public ICollection<AccountTransitionExclusionBridge> TransitionExclusionBridges { get; set; }
-
         public bool Enabled { get; set; }
 
         [Required]
@@ -76,8 +72,6 @@ namespace SmartSolucionesCuba.Videre.Cloud.Persistence.Entities
             ImageBridges = new List<AccountImageBridge>();
             VideoBridges = new List<AccountVideoBridge>();
             ExtensionBridges = new List<AccountExtensionBridge>();
-            TemplateExclusionBridges = new List<AccountTemplateExclusionBridge>();
-            TransitionExclusionBridges = new List<AccountTransitionExclusionBridge>();
         }
 
         public object GetSignableEntityModel()

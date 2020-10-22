@@ -1,33 +1,262 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Serilog;
+using SmartSolucionesCuba.SAPRESSC.Core.Persistence.EF.Extensions;
+using SmartSolucionesCuba.SAPRESSC.Core.Persistence.Repositories;
+using SmartSolucionesCuba.SAPRESSC.Core.Web.Security.Extensions;
+using SmartSolucionesCuba.SAPRESSC.Core.Web.SecurityLocal.Extensions;
+using SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Web.Common.Extensions;
+using SmartSolucionesCuba.SAPRESSC.Middleware.Media.Web.Common.Extensions;
+using SmartSolucionesCuba.Videre.Cloud.Options;
+using System.Linq;
 
 namespace SmartSolucionesCuba.Videre.Cloud
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        public void ConfigureServices(IServiceCollection services)
+        private readonly IConfiguration configuration;
+        private readonly IHostingEnvironment env;
+
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
+            #region Ensure Required Assemblies load
+
+            var extensionCustomRuntimeLibraries = Microsoft.Extensions.DependencyModel.DependencyContext.Default.RuntimeLibraries.Where(l => l.Type == "project" && l.Name.Contains(".Videre.Extend.") && !l.Name.Contains(".Videre.Support.Extend") && !l.Name.Contains(".Videre.Extend.Common")).ToArray();
+
+            foreach (var runtimeLibrary in extensionCustomRuntimeLibraries)
+            {
+                System.AppDomain.CurrentDomain.Load(runtimeLibrary.Name);
+            }
+
+            #endregion
+
+            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
+
+            this.configuration = configuration;
+            this.env = env;
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<MediaThumbnailResizeOptions>(configuration.GetSection("MediaThumbnailResize"));
+            services.Configure<MediaPathOptions>(configuration.GetSection("MediaPath"));
+            services.Configure<JwtOptions>(configuration.GetSection("JWT"));
+            services.Configure<FfmpegOptions>(configuration.GetSection("FFmpeg"));
+
+            services.AddDbContext<Persistence.EF.ApplicationDbContext>(options => options.UseMySql(configuration.GetConnectionString("DefaultConnection"), mySqlOptions =>
+            {
+                mySqlOptions.ServerVersion(new System.Version(configuration.GetSection("MySQLSeverVersion").Value), Pomelo.EntityFrameworkCore.MySql.Infrastructure.ServerType.MySql);
+            }));
+
+            services.AddScoped<DbContext, Persistence.EF.ApplicationDbContext>();
+
+            services.PerformCoreWebSecurityServiceRegistration();
+            services.PerformCoreWebSecurityLocalServiceRegistration();
+            services.PerformMiddlewareMediaWebCommonServiceRegistration();
+            services.PerformMiddlewareIdentityWebCommonServiceRegistration();
+
+            services.AddScoped<IEntityRepository<Persistence.Entities.Account, System.Guid>, Persistence.EF.Repositories.AccountRepository>();
+            services.AddScoped<IEntityRepository<Persistence.Entities.Frame, long>, Persistence.EF.Repositories.FrameRepository>();
+            services.AddScoped<IEntityRepository<Persistence.Entities.Placard, System.Guid>, Persistence.EF.Repositories.PlacardRepository>();
+            services.AddScoped<IEntityRepository<Persistence.Entities.Player, string>, Persistence.EF.Repositories.PlayerRepository>();
+            services.AddScoped<IEntityRepository<Persistence.Entities.Screenplay, System.Guid>, Persistence.EF.Repositories.ScreenplayRepository>();
+            services.AddScoped<IEntityRepository<Persistence.Entities.Moderator, System.Guid>, Persistence.EF.Repositories.ModeratorRepository>();
+            services.AddScoped<IEntityRepository<Persistence.Entities.Extension, System.Guid>, Persistence.EF.Repositories.ExtensionRespository>();
+            services.AddScoped<IEntityRepository<Persistence.Entities.Template, System.Guid>, Persistence.EF.Repositories.TemplateRepository>();
+
+            services.AddSingleton<SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade, Managers.ImageFileManager>();
+            services.AddSingleton<SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IThumbnailFileManagerFacade, Managers.ThumbnailFileManager>();
+            services.AddSingleton<SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IVideoFileManagerFacade, Managers.VideoFileManager>();
+
+            services.AddSingleton<SAPRESSC.Core.Persistence.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade, Persistence.EF.Providers.BusinessDbSchemaConfigurationProvider>();
+
+            services.AddSingleton<SAPRESSC.Core.Persistence.EF.Helpers.Facade.IDataInitializationHelper, Helpers.BusinessDataInitializationHelper>();
+
+            services.AddScoped<Microsoft.AspNetCore.Authorization.IAuthorizationHandler, Security.Authorization.Requirement.Handler.AccountModerationRequirementHandler>();
+
+            services.AddAuthentication(config =>
+            {
+                config.DefaultScheme = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme;
+            })
+            .AddCookie(config =>
+            {
+                config.AccessDeniedPath = new PathString("/security/error/forbidden");
+                config.LoginPath = new PathString("/security/account/login");
+            })
+            .AddJwtBearer(config =>
+            {
+                config.RequireHttpsMetadata = false;
+                config.SaveToken = true;
+                config.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                {
+                    ValidIssuer = configuration["JWT:Issuer"],
+                    ValidAudience = configuration["JWT:Issuer"],
+                    ValidateLifetime = false,
+                    RequireExpirationTime = false,
+                    IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(configuration["JWT:Key"])),
+                    ClockSkew = System.TimeSpan.Zero
+                };
+                config.Events = new Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+                        // If the request is for our hub...
+                        var path = context.HttpContext.Request.Path;
+
+                        if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/hubs/dashboard"))
+                        {
+                            // Read the token out of the query string
+                            context.Token = accessToken;
+                        }
+
+                        return System.Threading.Tasks.Task.CompletedTask;
+                    }
+                };
+            });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, policy =>
+                {
+                    policy.AddAuthenticationSchemes(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
+                    policy.RequireClaim(System.Security.Claims.ClaimTypes.NameIdentifier);
+                });
+                options.AddPolicy(Security.Authorization.Policies.ACCOUNT_ASSOCIATED, policy =>
+                {
+                    policy.AddAuthenticationSchemes(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
+                    policy.AddRequirements(new Security.Authorization.Requirement.AccountModerationRequirement());
+                });
+            });
+
+            #region SAPRESSC.Core.Security concreter dependencies configuration
+            services.AddSingleton<SAPRESSC.Core.Web.Security.Licensing.ILicenseValidator, Security.Licensing.WilcardLicenseValidator>();
+
+            services.AddTransient<SAPRESSC.Core.Web.Security.Models.View.IUserProfileViewModel, Models.View.UserProfileViewModel>();
+
+            services.AddSingleton<SAPRESSC.Core.Web.Common.ModelBinding.IConcretModelBindHelper, Helpers.Binding.ConcretModelBindHelper>();
+
+            services.AddScoped<SAPRESSC.Core.Web.Security.Providers.Facade.IIdentityProviderFacade, Managers.IdentityManager>();
+            services.AddScoped<SAPRESSC.Core.Web.Security.Managers.Facade.IUserProfileManagerFacade, Managers.UserProfileManager>();
+            #endregion
+
+            #region Globalization configuration
+            var defaultCulture = new System.Globalization.CultureInfo("es");
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture(defaultCulture);
+                options.SupportedCultures = new[] { defaultCulture };
+                options.SupportedUICultures = new[] { defaultCulture };
+
+                options.RequestCultureProviders = new[] { new SAPRESSC.Core.Web.Common.Localization.UrlRequestCultureProvider() };
+            });
+
+            services.AddSingleton<Helpers.Localization.GlobalViewLocalizationHelper>();
+            #endregion
+
+            services.Configure<Microsoft.AspNetCore.Routing.RouteOptions>(options => options.LowercaseUrls = true);
+
+            services.AddResponseCaching();
+            services.AddMemoryCache();
+            services.AddSession();
+
+            services.AddSignalR();
+
+            services.AddMvc(mvc =>
+                mvc.ModelBinderProviders.Insert(0, new SAPRESSC.Core.Web.Common.ModelBinding.AbstractsModelBinderProvider())
+            )
+            .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+            .AddDataAnnotationsLocalization(options =>
+                options.DataAnnotationLocalizerProvider = (type, factory) =>
+                {
+                    return factory.Create(typeof(SharedResources));
+                }
+            )
+            .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_0);
+
+            services.AddDataProtection()
+                .PersistKeysToFileSystem(new System.IO.DirectoryInfo(System.IO.Path.Combine(env.ContentRootPath, "dpkeys")));
+
+            services.AddSingleton<Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataProvider, Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider>();
+        }
+
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Microsoft.Extensions.Options.IOptions<RequestLocalizationOptions> requestLocalizationOptions, Microsoft.Extensions.Logging.ILoggerFactory loggerFactory, DbContext dbContext, Microsoft.Extensions.Options.IOptions<Options.FfmpegOptions> ffmpegOptions)
+        {
+            FFMediaToolkit.FFmpegLoader.FFmpegPath = System.IO.Path.GetDirectoryName(ffmpegOptions.Value.BinariesPath);
+
+            loggerFactory.AddSerilog(Log.Logger);
+
+            app.UseRequestLocalization(requestLocalizationOptions.Value);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+            }
+            else if (env.IsStaging())
+            {
+                dbContext.Database.Migrate();
+
+                app.PerformDatabaseInitialization();
+
+                if (!(dbContext as Persistence.EF.ApplicationDbContext).Users.Any())
+                {
+                    var defaultUser = new SAPRESSC.Core.Security.Persistence.Entities.User
+                    {
+                        Id = configuration["DefaultUser:Id"],
+                        Password = configuration["DefaultUser:Password"].ToHashedPassword(),
+                        Enabled = true,
+                        HasFullAccess = true,
+                        PasswordChangeRequired = true
+                    };
+
+                    defaultUser.Signature = SAPRESSC.Core.Web.SecurityLocal.Helpers.Integrity.UserIntegrityHelper.GetSignature(defaultUser);
+
+                    (dbContext as Persistence.EF.ApplicationDbContext).Users.Add(defaultUser);
+
+                    (dbContext as Persistence.EF.ApplicationDbContext).SaveChanges("system");
+                }
+            }
+            else
+            {
+                app.UseExceptionHandler("/error");
+
+                app.UseHsts();
             }
 
-            app.Run(async (context) =>
+            app.UseStaticFiles();
+            app.UseAuthentication();
+            app.UseSession();
+
+            app.UseSignalR(endpoints =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                endpoints.MapHub<Hubs.DashboardHub>("/hubs/dashboard");
+                endpoints.MapHub<Hubs.PlayerHub>("/hubs/player");
+            });
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("defaultLocalizedAreaRoutes",
+                    template: "{culture:regex(^[[a-z]]{{2}}(?:-[[A-Z]]{{2}})?$)}/{area:exists}/{controller=start}/{action=index}/{id?}");
+
+                routes.MapRoute(
+                    name: "defaultLocalizedRoutes",
+                    template: "{culture:regex(^[[a-z]]{{2}}(?:-[[A-Z]]{{2}})?$)}/{controller=start}/{action=index}/{id?}");
+
+                routes.MapRoute("defaultAreaRoutes",
+                    template: "{area:exists}/{controller=start}/{action=index}/{id?}");
+
+                routes.MapRoute(
+                    name: "defaultRoutes",
+                    template: "{controller=start}/{action=index}/{id?}");
             });
         }
     }

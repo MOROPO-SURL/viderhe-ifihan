@@ -4,7 +4,7 @@
     {
         public AccountDisplayModel()
         {
-            Plugins = new System.Collections.Generic.List<ExtensionDisplayModel>();
+            Extensions = new System.Collections.Generic.List<ExtensionDisplayModel>();
         }
 
         public System.Guid Id { get; set; }
@@ -23,7 +23,7 @@
 
         public string SerializedOverlayContext { get; set; }
 
-        public System.Collections.Generic.List<ExtensionDisplayModel> Plugins { get; set; }
+        public System.Collections.Generic.List<ExtensionDisplayModel> Extensions { get; set; }
 
         public void Import(Persistence.Entities.Account entity)
         {
