@@ -13,12 +13,10 @@
 
         public System.Guid IdentityId { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("IdentityId")]
         public SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity Identity { get; set; }
 
         public string UserId { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("UserId")]
         public SAPRESSC.Core.Security.Persistence.Entities.User User { get; set; }
     }
 }

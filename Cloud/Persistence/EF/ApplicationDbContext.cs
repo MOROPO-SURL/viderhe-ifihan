@@ -62,6 +62,9 @@ namespace SmartSolucionesCuba.Videre.Cloud.Persistence.EF
         public DbSet<Frame> Frames { get; set; }
         public DbSet<Placard> Placards { get; set; }
         public DbSet<Moderator> Moderators { get; set; }
+        public DbSet<Transition> Transitions { get; set; }
+        public DbSet<Overlay> Overlays { get; set; }
+        public DbSet<Extension> Extensions { get; set; }
         public DbSet<AccountModeratorBridge> AccountModeratorBridges { get; set; }
         public DbSet<AccountImageBridge> AccountImageBridges { get; set; }
         public DbSet<AccountVideoBridge> AccountVideoBridges { get; set; }
