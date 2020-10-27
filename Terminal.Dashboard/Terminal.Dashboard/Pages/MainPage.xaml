@@ -1,15 +1,124 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<sscxftoolkitmvvmpages:BindingContextedContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Models.Page"
+    xmlns:viewmodels="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Models.View"
+    xmlns:managers="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation.Dashboard"
+    xmlns:viewtemplateselectors="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Views.Template.Selector"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.MainPage">
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-</ContentPage>
+    x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages.MainPage"
+    x:TypeArguments="pagemodels:MainPageModel"
+    Title="Inicio">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="SimpleActionDataTemplate">
+                <x:Arguments>
+                    <Type TypeName="viewmodels:ActionViewModel" />
+                </x:Arguments>
+                <Frame
+                    Margin="10" Padding="0"
+                    BackgroundColor="White"
+                    HasShadow="False"
+                    CornerRadius="0"
+                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
+                    HeightRequest="136">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ActionFrame_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <Grid Padding="20">
+                        <StackLayout VerticalOptions="Center">
+                            <Label
+                                Text="{Binding Path=IconGlyph}"
+                                TextColor="Accent"
+                                HorizontalTextAlignment="Center"
+                                FontFamily="{StaticResource IconFontFamily}"
+                                FontSize="48" />
+                            <Label 
+                                Text="{Binding Path=Caption}"
+                                TextColor="Accent"                                        
+                                HorizontalTextAlignment="Center"
+                                FontSize="Medium" />
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+            <DataTemplate x:Key="SessionActionDataTemplate">
+                <x:Arguments>
+                    <Type TypeName="viewmodels:SessionActionViewModel" />
+                </x:Arguments>
+                <Frame
+                    Margin="10" Padding="0"
+                    BackgroundColor="Accent"
+                    HasShadow="False"
+                    CornerRadius="0"
+                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
+                    HeightRequest="136">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ActionFrame_Tapped" />
+                    </Frame.GestureRecognizers>
+                    <Grid Padding="20" ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <ffimageloadingforms:CachedImage
+                            Grid.Column="0"
+                            VerticalOptions="Center"
+                            HeightRequest="96" WidthRequest="96"
+                            Source="{Binding Source={x:Static managers:SessionManager.Instance}, Path=ModeratorPictureImageSource}"
+                            CacheType="Disk"
+                            CacheDuration="8760:00:00">
+                            <ffimageloadingforms:CachedImage.Clip>
+                                <EllipseGeometry RadiusX="48" RadiusY="48" Center="48,48" />
+                            </ffimageloadingforms:CachedImage.Clip>
+                        </ffimageloadingforms:CachedImage>
+                        <StackLayout 
+                            Grid.Column="1" 
+                            VerticalOptions="Center">
+                            <Label
+                                Text="{Binding Source={x:Static managers:SessionManager.Instance}, Path=ModeratorLogin}"
+                                TextColor="White"
+                                FontSize="Medium" />
+                            <Label 
+                                Text="{Binding Source={x:Static managers:SessionManager.Instance}, Path=ModeratorName}" 
+                                TextColor="WhiteSmoke" />
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+            <viewtemplateselectors:ActionDataTemplateSelector x:Key="ActionDataTemplateSelector" SimpleActionDataTemplate="{StaticResource SimpleActionDataTemplate}" SessionActionDataTemplate="{StaticResource SessionActionDataTemplate}" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="272" ChildAbsoluteHorizontalMargin="20" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <!--<ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Salir"
+            Activated="SignOutToolbarItem_Activated"
+            Order="Primary">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource IconFontFamily}" Glyph="&#xf5fd;" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>-->
+    <Grid BackgroundColor="LightGray">
+        <supportpresentationdashboardviews:BackgroundView />
+        <ScrollView Orientation="Vertical">
+            <FlexLayout
+                Margin="10"
+                Wrap="Wrap"
+                AlignItems="Start" AlignContent="Start"
+                BindableLayout.ItemsSource="{Binding Path=Actions}"
+                BindableLayout.ItemTemplateSelector="{StaticResource ActionDataTemplateSelector}">
+            </FlexLayout>
+        </ScrollView>
+        <supportpresentationdashboardviews:BusyView />
+    </Grid>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

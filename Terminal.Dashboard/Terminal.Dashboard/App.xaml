@@ -4,9 +4,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:providers="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers"
+    xmlns:supportpresentationconverters="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Converters;assembly=SmartSolucionesCuba.Videre.Support.Presentation"
     mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.App">
     <Application.Resources>
+        <supportpresentationconverters:ImageViewModelToThumbnailImageSourceConverter x:Key="ImageViewModelToThumbnailImageSourceConverter" CloudServerProvider="{x:Static providers:CloudServerProvider.Instance}" />
+        <supportpresentationconverters:ImageViewModelToImageSourceConverter x:Key="ImageViewModelToImageSourceConverter" CloudServerProvider="{x:Static providers:CloudServerProvider.Instance}" />
+        <supportpresentationconverters:VideoViewModelToThumbnailImageSourceConverter x:Key="VideoViewModelToThumbnailImageSourceConverter" CloudServerProvider="{x:Static providers:CloudServerProvider.Instance}" />
+        <supportpresentationconverters:VideoViewModelToVideoSourceConverter x:Key="VideoViewModelToVideoSourceConverter" CloudServerProvider="{x:Static providers:CloudServerProvider.Instance}" />
+        
+        <OnPlatform x:Key="IconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons" />
+        <OnPlatform x:Key="ToolbarIconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons" />
 
+        <Style x:Key="FormLabel" TargetType="Label">
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
     </Application.Resources>
 </Application>

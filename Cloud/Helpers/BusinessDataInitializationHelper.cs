@@ -35,7 +35,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Helpers
 
             #endregion
 
-            #region Plugin definitios
+            #region Extension definitios
 
             var extensionDbSet = dbContext.Set<Persistence.Entities.Extension>();
 

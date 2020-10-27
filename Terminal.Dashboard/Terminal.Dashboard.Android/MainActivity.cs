@@ -19,7 +19,11 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+
+            Xamarin.Forms.PancakeView.Droid.PancakeViewRenderer.Init();
+
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)

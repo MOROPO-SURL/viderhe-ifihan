@@ -17,7 +17,9 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Droid
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
             
             LoadApplication(new App());

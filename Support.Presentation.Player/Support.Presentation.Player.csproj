@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Videre.Support.Presentation.Player</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Videre.Support.Presentation.Player</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj" />
+    <ProjectReference Include="..\Support.Extend.Motion.Presentation\Support.Extend.Motion.Presentation.csproj" />
+    <ProjectReference Include="..\Support.Extend.Templating.Presentation\Support.Extend.Templating.Presentation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\ScreenplayPlayerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

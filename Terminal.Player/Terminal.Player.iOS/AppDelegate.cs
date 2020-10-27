@@ -19,6 +19,8 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+
             Xamarin.Forms.Forms.Init();
             
             LoadApplication(new App());

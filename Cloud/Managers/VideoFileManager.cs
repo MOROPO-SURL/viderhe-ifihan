@@ -47,6 +47,8 @@ namespace SmartSolucionesCuba.Videre.Cloud.Managers
 
                 targetVideoFileStream.Write(content, 0, content.Length);
 
+                targetVideoFileStream.Flush();
+
                 targetVideoFileStream.Close();
             }
 

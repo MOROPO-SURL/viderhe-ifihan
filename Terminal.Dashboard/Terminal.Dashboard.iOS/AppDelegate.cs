@@ -20,7 +20,11 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Xamarin.Forms.Forms.Init();
-            
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+
+            Xamarin.Forms.PancakeView.iOS.PancakeViewRenderer.Init();
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

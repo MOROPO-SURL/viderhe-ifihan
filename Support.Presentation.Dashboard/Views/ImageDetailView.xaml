@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sscxftoolkitmvvmviews:ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sscxftoolkitmvvmviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Views;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitcresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    mc:Ignorable="d"
+    x:Class="SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views.ImageDetailView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitcresentationconverters:IfNullOrEmptyToStringConverter x:Key="IfNullOrEmptyToStringConverter" StringReplacement="Esta imagen no tiene descripción asociada." />
+            <sscxftoolkitcresentationconverters:FileSizeLongToStringConverter x:Key="FileSizeLongToStringConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid>
+            <StackLayout 
+                VerticalOptions="End" 
+                Padding="8"
+                BackgroundColor="#99000000">
+                <StackLayout
+                    Orientation="Horizontal">
+                    <ContentView
+                        VerticalOptions="Center"
+                        BackgroundColor="White"
+                        Padding="4,2">
+                        <Label 
+                            Text="{Binding Path=Format}" 
+                            TextColor="Black"
+                            FontAttributes="Bold" />
+                    </ContentView>
+                    <Label
+                        VerticalOptions="Center"
+                        Margin="10,0,0,0"
+                        Text="&#xfa23;"
+                        TextColor="White"
+                        FontFamily="{StaticResource IconFontFamily}" />
+                    <Label 
+                        VerticalOptions="Center"
+                        Text="{Binding Path=Resolution}"
+                        TextColor="White"/>
+                    <Label
+                        VerticalOptions="Center"
+                        Margin="10,0,0,0"
+                        Text="&#xf5a1;"
+                        TextColor="White"
+                        FontFamily="{StaticResource IconFontFamily}" />
+                    <Label
+                        VerticalOptions="Center"
+                        Text="{Binding Path=Size, Converter={StaticResource FileSizeLongToStringConverter}}"
+                        TextColor="White" />
+                    <Label
+                        VerticalOptions="Center"
+                        Margin="10,0,0,0"
+                        Text="&#xf0f0;"
+                        TextColor="White"
+                        FontFamily="{StaticResource IconFontFamily}" />
+                    <Label
+                        VerticalOptions="Center" HorizontalOptions="StartAndExpand"
+                        Text="{Binding Path=CreateAt}"
+                        TextColor="White" />
+                </StackLayout>
+                <Label 
+                    Text="Descripción"
+                    TextColor="White"
+                    FontAttributes="Bold" />
+                <Label 
+                    Text="{Binding Path=About, Converter={StaticResource IfNullOrEmptyToStringConverter}}"
+                    TextColor="White" />
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</sscxftoolkitmvvmviews:ContentView>

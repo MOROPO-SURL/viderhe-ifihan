@@ -8,7 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="dpkeys\**" />
+    <Compile Remove="logs\**" />
+    <Content Remove="dpkeys\**" />
+    <Content Remove="logs\**" />
+    <EmbeddedResource Remove="dpkeys\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="dpkeys\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FFMediaToolkit" Version="3.1.0" />
+    <PackageReference Include="MediaToolkit.NetCore" Version="0.2.1-preview" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
@@ -20,13 +32,14 @@
     <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
     <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
-    <PackageReference Include="SkiaSharp" Version="1.68.3" />
+    <PackageReference Include="SkiaSharp" Version="2.80.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Dashboard\Cloud.SignalR.Connect.Dashboard.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Player\Cloud.SignalR.Connect.Player.csproj" />
+    <ProjectReference Include="..\Extend.Essential\Extend.Essential.csproj" />
     <ProjectReference Include="..\Support.Extend.Motion\Support.Extend.Motion.csproj" />
     <ProjectReference Include="..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj" />
     <ProjectReference Include="..\Support.Extend.Templating\Support.Extend.Templating.csproj" />

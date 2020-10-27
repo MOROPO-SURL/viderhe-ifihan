@@ -13,7 +13,94 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Fonts\JuliusSansOne-Regular.ttf" />
+    <None Remove="Resources\icomoon.ttf" />
+    <None Remove="Resources\materialdesignicons-webfont.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Fonts\icomoon.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\JuliusSansOne-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\materialdesignicons-webfont.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MagicGradients" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="3.1.9" />
+    <PackageReference Include="Toasts.Forms.Plugin" Version="3.3.2" />
+    <PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.5" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.41" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Cloud.Api.Connect\Cloud.Api.Connect.csproj" />
+    <ProjectReference Include="..\..\Cloud.SignalR.Connect.Dashboard\Cloud.SignalR.Connect.Dashboard.csproj" />
+    <ProjectReference Include="..\..\Extend.Essential.Templating.Dashboard.Presentation\Extend.Essential.Templating.Dashboard.Presentation.csproj" />
+    <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
+    <ProjectReference Include="..\..\Support.Extend.Motion\Support.Extend.Motion.csproj" />
+    <ProjectReference Include="..\..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj" />
+    <ProjectReference Include="..\..\Support.Extend.Templating.Presentation\Support.Extend.Templating.Presentation.csproj" />
+    <ProjectReference Include="..\..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
+    <ProjectReference Include="..\..\Support.Presentation.Player\Support.Presentation.Player.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Pages\ManageProgrammingPage.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\ManageVideosPage.xaml.cs">
+      <DependentUpon>ManageVideosPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\AccountIdentityConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\AddImagePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\AddVideoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ConfigurePlayerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ConfigureScreenplayPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\EditImagePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\EditVideoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ManageExtensionsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ManageImagesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ManagePlayersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ManageProgrammingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ManageVideosPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\TemplatePickPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\UserAuthenticationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

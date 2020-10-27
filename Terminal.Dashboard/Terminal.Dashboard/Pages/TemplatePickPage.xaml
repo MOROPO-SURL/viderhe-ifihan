@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    mc:Ignorable="d"
+    x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages.TemplatePickPage"
+    Title="Seleccionar Plantilla">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="272" ChildAbsoluteHorizontalMargin="10" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <FlexLayout
+                    Margin="5"
+                    Wrap="Wrap"
+                    AlignItems="Start" AlignContent="Start"
+                    BindableLayout.ItemsSource="{Binding Path=Models}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid 
+                                Margin="5"
+                                BackgroundColor="White"
+                                WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                    <RowDefinition Height="2*" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ffimageloadingforms:CachedImage
+                                    Grid.Row="0"
+                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                    Source="{Binding Path=ThumbnailImageSource}"
+                                    BackgroundColor="Black" />
+                                <Label 
+                                    Grid.Row="1"
+                                    Text="{Binding Path=Name}"
+                                    FontAttributes="Bold"
+                                    Margin="8,0"
+                                    LineBreakMode="TailTruncation" />
+                                <Label 
+                                    Grid.Row="2"
+                                    Text="{Binding Path=About}"
+                                    TextColor="DimGray"
+                                    Margin="8,0"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2" />
+                                <StackLayout                                 
+                                    Grid.Row="3"
+                                    BackgroundColor="LightGray"
+                                    Padding="2">
+                                    <Button 
+                                    Text="Seleccionar" 
+                                    Clicked="TemplateOverviewSelectButton_Clicked" />
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:ContentPage>

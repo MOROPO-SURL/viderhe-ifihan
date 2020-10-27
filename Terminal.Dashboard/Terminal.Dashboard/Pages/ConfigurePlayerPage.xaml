@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages.ConfigurePlayerPage"
+    x:TypeArguments="pagemodels:ConfigurePlayerPageModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="CornerRadius" Value="0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Aplicar"
+            Activated="ApplyToolbarItem_Activated">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Cancelar"
+            Activated="CancelToolbarItem_Activated">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView>
+                <Grid 
+                    Margin="10"
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Column="0" Grid.Row="0">
+                        <StackLayout>
+                            <Label Text="Identificador" Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=Id}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0">
+                        <StackLayout>
+                            <Label Text="Nombre" Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=Name}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1">
+                        <StackLayout>
+                            <Label Text="Guión" Style="{StaticResource FormLabel}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Picker
+                                    x:Name="ScreenplayPicker"
+                                    HorizontalOptions="FillAndExpand"
+                                    ItemsSource="{Binding Path=Screenplays}"
+                                    ItemDisplayBinding="{Binding Path=Title}"
+                                    SelectedIndexChanged="ScreenplayPicker_SelectedIndexChanged" />
+                                <Button 
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    Text="&#xF413;"
+                                    Clicked="SelectedScreenplayClearButton_Clicked" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2">
+                        <StackLayout>
+                            <Label Text="Descripción" Style="{StaticResource FormLabel}" />
+                            <Editor HeightRequest="180" Text="{Binding Path=About}" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

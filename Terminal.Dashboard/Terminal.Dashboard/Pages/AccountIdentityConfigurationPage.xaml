@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation.Dashboard"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Models.Page"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    mc:Ignorable="d"
+    x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages.AccountIdentityConfigurationPage"
+    x:TypeArguments="pagemodels:AccountIdentityConfigurationPageModel"
+    Title="Configuración de Cuenta">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="FormFieldGroupFrame" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="CornerRadius" Value="0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Aplicar"
+            Activated="ApplyToolbarItem_Activated">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Cancelar"
+            Activated="CancelToolbarItem_Activated">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView>
+                <Grid 
+                    Margin="10"
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Frame Grid.ColumnSpan="6" Grid.Row="0" Style="{StaticResource FormFieldGroupFrame}">
+                        <StackLayout>
+                            <Label Text="Nombre" Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=Name}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Style="{StaticResource FormFieldGroupFrame}">
+                        <StackLayout>
+                            <Label Text="Color Primario" Style="{StaticResource FormLabel}" />
+                            <simplecolorpicker:ColorPickerEntry 
+                                EditAlfa="False"
+                                Color="{Binding Path=PrimaryColor}"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="1" Style="{StaticResource FormFieldGroupFrame}">
+                        <StackLayout>
+                            <Label Text="Color Secundario" Style="{StaticResource FormLabel}" />
+                            <simplecolorpicker:ColorPickerEntry 
+                                EditAlfa="False"
+                                Color="{Binding Path=SecoundaryColor}"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Style="{StaticResource FormFieldGroupFrame}"
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"
+                        VerticalOptions="Start">
+                        <Grid VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label 
+                                Grid.Column="0" Grid.Row="0"
+                                Text="Logo" 
+                                Style="{StaticResource FormLabel}" />
+                            <Button
+                                Grid.Column="1" Grid.Row="0"
+                                Text="Seleccionar"
+                                Clicked="PickLogoImageButton_Clicked" />
+                            <ffimageloadingforms:CachedImage 
+                                x:Name="LogolImage"
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                Source="{Binding Path=LogoImageSource}"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Style="{StaticResource FormFieldGroupFrame}"
+                        Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="2"
+                        VerticalOptions="Start">
+                        <Grid VerticalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label 
+                                Grid.Column="0" Grid.Row="0"
+                                Text="Portada" 
+                                Style="{StaticResource FormLabel}" />
+                            <Button
+                                Grid.Column="1" Grid.Row="0"
+                                Text="Seleccionar"
+                                Clicked="PickSplashImageButton_Clicked" />
+                            <ffimageloadingforms:CachedImage 
+                                x:Name="SplashImage"
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                Source="{Binding Path=SplashImageSource}"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

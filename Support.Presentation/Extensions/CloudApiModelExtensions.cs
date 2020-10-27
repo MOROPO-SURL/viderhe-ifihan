@@ -35,7 +35,7 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Extensions
             };
         }
 
-        public static PlacardViewModel ToViewModel(this PlacardDisplayModel target, Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
+        public static PlacardViewModel ToViewModel(this PlacardDisplayModel target)
         {
             var templateDescriptor = Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(target.Template.Id);
 

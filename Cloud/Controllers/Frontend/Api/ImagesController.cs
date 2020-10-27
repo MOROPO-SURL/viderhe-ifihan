@@ -62,7 +62,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend.Api
         }
 
         [HttpPost]
-        public ActionResult Add(Microsoft.AspNetCore.Http.IFormFile file, string about)
+        public ActionResult Add(Microsoft.AspNetCore.Http.IFormFile file, [FromForm] string about)
         {
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 

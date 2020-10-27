@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation.Dashboard"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Converters"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    mc:Ignorable="d"
+    x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages.ManagePlayersPage"
+    x:TypeArguments="pagemodels:ManagePlayersPageModel"
+    Title="Reproductores">
+    <ContentPage.Resources>
+        <Style x:Key="ActionButton" TargetType="Button">
+            <Setter Property="FontFamily" Value="{StaticResource IconFontFamily}" />
+            <Setter Property="FontSize" Value="Subtitle" />
+        </Style>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:IfNullOrEmptyToStringConverter x:Key="StringNullOrEmptyToDefaultConverter" StringReplacement="Descripción no especificada." />
+            <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BooleanToPlayerConnectionStateGlyphIconStringConverter" FalseString="&#xf83a;" TrueString="&#xf503;" />
+            <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BooleanToPlayerAudioEnablingSwichGlyphIconStringConverter" FalseString="&#xf57e;" TrueString="&#xf581;" />
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="20" />
+            <converters:BoolToColorConverter x:Key="BoolToBackgroudColorConverter" TrueColor="White" FalseColor="Black" />
+            <converters:BoolToColorConverter x:Key="BoolToTextColorConverter" TrueColor="Black" FalseColor="WhiteSmoke" />
+            <converters:PlayerAudioLevelKnownToBooleanConverter x:Key="PlayerAudioLevelKnownToBooleanConverter" />
+            <converters:PlayerAudioLevelReachedToBooleanConverter x:Key="MaxPlayerAudioLevelReachedToBooleanConverter" TargetAudioLevel="100" />
+            <converters:PlayerAudioLevelReachedToBooleanConverter x:Key="MinPlayerAudioLevelReachedToBooleanConverter" TargetAudioLevel="10" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Agregar"
+            Activated="AddToolbarItem_Activated">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf415;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <FlexLayout
+                    Margin="5"
+                    Wrap="Wrap"
+                    AlignItems="Start" AlignContent="Start"
+                    BindableLayout.ItemsSource="{Binding Path=Items}">
+                    <BindableLayout.EmptyView>
+                        <Label
+                            IsVisible="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
+                            Margin="20"
+                            Text="Sin elementos que mostrar"
+                            TextColor="Black" />
+                    </BindableLayout.EmptyView>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                Margin="5"
+                                RowSpacing="2"
+                                BackgroundColor="White"
+                                WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <BoxView
+                                    Grid.Column="0" Grid.Row="0"
+                                    HeightRequest="248"
+                                    BackgroundColor="{Binding Path=IsConnected, Converter={StaticResource BoolToBackgroudColorConverter}}" />
+                                <Label
+                                    Grid.Column="0" Grid.Row="0"
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    FontSize="128"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Path=IsConnected, Converter={StaticResource BooleanToPlayerConnectionStateGlyphIconStringConverter}}"
+                                    TextColor="{Binding Path=IsConnected, Converter={StaticResource BoolToTextColorConverter}}" />
+                                <StackLayout Grid.Column="0" Grid.Row="0">
+                                    <StackLayout
+                                        Padding="4"
+                                        Spacing="4"
+                                        Orientation="Horizontal">
+                                        <Grid HorizontalOptions="FillAndExpand" />
+                                        <ImageButton 
+                                            WidthRequest="28"
+                                            Clicked="PlayerOverviewEditButton_Clicked">
+                                            <ImageButton.Source>
+                                                <FontImageSource 
+                                                    Color="{Binding Path=IsConnected, Converter={StaticResource BoolToTextColorConverter}}"
+                                                    FontFamily="{StaticResource IconFontFamily}"
+                                                    Glyph="&#xf90b;" />
+                                            </ImageButton.Source>
+                                        </ImageButton>
+                                        <ImageButton 
+                                            WidthRequest="28"
+                                            Clicked="PlayerOverviewDeleteButton_Clicked">
+                                            <ImageButton.Source>
+                                                <FontImageSource 
+                                                    Color="{Binding Path=IsConnected, Converter={StaticResource BoolToTextColorConverter}}"
+                                                    FontFamily="{StaticResource IconFontFamily}"
+                                                    Glyph="&#xfa79;" />
+                                            </ImageButton.Source>
+                                        </ImageButton>
+                                    </StackLayout>
+                                    <BoxView
+                                        BackgroundColor="Transparent" 
+                                        VerticalOptions="FillAndExpand" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Grid BackgroundColor="Accent">
+                                            <Label
+                                                Margin="4,2"
+                                                HorizontalTextAlignment="Center"
+                                                Text="{Binding Path=Id}"
+                                                TextColor="White" />
+                                        </Grid>
+                                        <Grid HorizontalOptions="FillAndExpand" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <Label
+                                    Grid.Column="0" Grid.Row="1"
+                                    Margin="10,8,10,0"
+                                    Text="{Binding Path=Name}"
+                                    TextColor="Accent" />
+                                <Label
+                                    Grid.Column="0" Grid.Row="2"
+                                    Margin="10,8"
+                                    Text="{Binding Path=About, Converter={StaticResource StringNullOrEmptyToDefaultConverter}}"
+                                    FontSize="Caption"
+                                    LineBreakMode="TailTruncation" />
+                                <StackLayout                                 
+                                    Grid.Column="0" Grid.Row="3"
+                                    BackgroundColor="LightGray"
+                                    Orientation="Horizontal"
+                                    Padding="2" Spacing="0">
+                                    <Label 
+                                        Margin="10,0"
+                                        HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"
+                                        Text="Guión"
+                                        TextColor="DimGray"
+                                        FontAttributes="Bold" />
+                                    <Button 
+                                        IsEnabled="{Binding Path=IsConnected}"
+                                        Text="&#xf708;"
+                                        Style="{StaticResource ActionButton}"
+                                        Clicked="PlayerReloadButton_Clicked" />
+                                    <Button 
+                                        IsEnabled="{Binding Path=IsConnected}"
+                                        Text="&#xf4ab;"
+                                        Style="{StaticResource ActionButton}"
+                                        Clicked="PlayerBackwardButton_Clicked" />
+                                    <Button 
+                                        IsEnabled="{Binding Path=IsConnected}"
+                                        Text="&#xf4ae;"
+                                        Style="{StaticResource ActionButton}"
+                                        Clicked="PlayerPreviousButton_Clicked"/>
+                                    <Button 
+                                        IsEnabled="{Binding Path=IsConnected}"
+                                        Text="&#xf4ad;"
+                                        Style="{StaticResource ActionButton}"
+                                        Clicked="PlayerNextButton_Clicked" />
+                                </StackLayout>
+                                <StackLayout                                 
+                                    Grid.Column="0" Grid.Row="4"
+                                    BackgroundColor="LightGray"
+                                    Orientation="Horizontal"
+                                    Padding="2" Spacing="0">
+                                    <Label 
+                                        Margin="10,0"
+                                        HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"
+                                        Text="Pantalla"
+                                        TextColor="DimGray"
+                                        FontAttributes="Bold" />
+                                    <Button 
+                                        IsEnabled="{Binding Path=AudioLevel, Converter={StaticResource PlayerAudioLevelKnownToBooleanConverter}}"
+                                        Text="{Binding Path=AudioEnabled, Converter={StaticResource BooleanToPlayerAudioEnablingSwichGlyphIconStringConverter}}"
+                                        Style="{StaticResource ActionButton}" />
+                                    <Button 
+                                        IsEnabled="{Binding Path=AudioLevel, Converter={StaticResource MinPlayerAudioLevelReachedToBooleanConverter}}"
+                                        Text="&#xf75d;"
+                                        Style="{StaticResource ActionButton}" />
+                                    <Button 
+                                        IsEnabled="{Binding Path=AudioLevel, Converter={StaticResource MaxPlayerAudioLevelReachedToBooleanConverter}}"
+                                        Text="&#xf75c;"
+                                        Style="{StaticResource ActionButton}" />
+                                    <Button 
+                                        IsEnabled="{Binding Path=IsConnected}"
+                                        Text="&#xf905;"
+                                        Style="{StaticResource ActionButton}" />
+                                </StackLayout>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

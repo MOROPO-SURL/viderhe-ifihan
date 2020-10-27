@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities;
 using SmartSolucionesCuba.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade;
 using SmartSolucionesCuba.Videre.Cloud.Api.Common.Models;
@@ -15,19 +16,21 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend.Api
     [SAPRESSC.Core.Web.Security.Filters.CatchChangeUserPasswordRequiredException]
     public class VideosController : Controller
     {
+        private readonly ILogger<VideosController> logger;
         private readonly IVideoFileManagerFacade videoFileManager;
         private readonly IThumbnailFileManagerFacade thumbnailFileManager;
         private readonly Persistence.EF.ApplicationDbContext dbContext;
-        private readonly Microsoft.Extensions.Options.IOptions<Options.FfmpegOptions> ffmpegOptions;
         private readonly SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Video, System.Guid> videoRepository;
+        private readonly MediaToolkit.Services.IMediaToolkitService mediaToolkitService;
 
-        public VideosController(SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Video, System.Guid> videoRepository, IVideoFileManagerFacade videoFileManager, IThumbnailFileManagerFacade thumbnailFileManager, Persistence.EF.ApplicationDbContext dbContext, Microsoft.Extensions.Options.IOptions<Options.FfmpegOptions> ffmpegOptions)
+        public VideosController(MediaToolkit.Services.IMediaToolkitService mediaToolkitService, SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Video, System.Guid> videoRepository, IVideoFileManagerFacade videoFileManager, IThumbnailFileManagerFacade thumbnailFileManager, Persistence.EF.ApplicationDbContext dbContext, ILogger<VideosController> logger)
         {
+            this.logger = logger;
             this.videoFileManager = videoFileManager;
             this.thumbnailFileManager = thumbnailFileManager;
             this.dbContext = dbContext;
-            this.ffmpegOptions = ffmpegOptions;
             this.videoRepository = videoRepository;
+            this.mediaToolkitService = mediaToolkitService;
         }
 
         [HttpGet]
@@ -63,7 +66,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend.Api
 
         [HttpPut("{videoId}/segment/{segment}")]
         [HttpPut("{videoId}/segment/last")]
-        public IActionResult Push(System.Guid videoId, Microsoft.AspNetCore.Http.IFormFile file, string about, int segment = 0)
+        public async System.Threading.Tasks.Task<IActionResult> PushAsync(System.Guid videoId, Microsoft.AspNetCore.Http.IFormFile file, [FromForm] string about, int segment = 0)
         {
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
@@ -100,49 +103,59 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend.Api
 
                     try
                     {
-                        using (var videoMediaFile = FFMediaToolkit.Decoding.MediaFile.Open(videoFileManager.GetVideoAbsoluteFilePath(video)))
+                        var videoPath = videoFileManager.GetVideoAbsoluteFilePath(video);
+                        var thumbnailPath = thumbnailFileManager.GetThumbnailAbsoluteFilePath(video.Thumbnail);
+
+                        var getMetadataTask = new MediaToolkit.Tasks.FfTaskGetMetadata(videoFileManager.GetVideoAbsoluteFilePath(video));
+
+                        var getMetadataResult = await mediaToolkitService.ExecuteAsync(getMetadataTask);
+
+                        var videoMediaStream = getMetadataResult.Metadata.Streams.First(stream => stream.CodecType == "video");
+                        var auduioMediaStream = getMetadataResult.Metadata.Streams.FirstOrDefault(stream => stream.CodecType == "audio");
+
+                        var videoDuration = System.TimeSpan.FromSeconds(double.Parse(getMetadataResult.Metadata.Format.Duration.Replace(".", ",")));
+
+                        var saveThumbnailTask = new MediaToolkit.Tasks.FfTaskSaveThumbnail(
+                            videoPath,
+                            thumbnailPath,
+                            System.TimeSpan.FromSeconds(10)
+                        );
+
+                        await mediaToolkitService.ExecuteAsync(saveThumbnailTask);
+
+                        try
                         {
-                            var thumbnailFrame = videoMediaFile.Video.ReadFrame(videoMediaFile.Info.Duration / 3);
+                            var thumbnailMediaFileInfo = new System.IO.FileInfo(thumbnailPath);
 
-                            using (var thumbnailSkBitmap = SkiaSharp.SKBitmap.Decode(thumbnailFrame.Data))
+                            video.Thumbnail.Length = thumbnailMediaFileInfo.Length;
+
+                            video.Length = memoryStream.Length;
+                            video.Duration = videoDuration;
+                            video.Format = string.Format("{0} ({1})", videoMediaStream.CodecName, videoMediaStream.CodecLongName);
+                            video.FrameSize = string.Format("{0}x{1}", videoMediaStream.Width, videoMediaStream.Height);
+                            video.Fps = 0;
+                            video.ColorModel = videoMediaStream.PixFmt;
+                            video.AudioFormat = auduioMediaStream?.CodecLongName;
+                            video.AudioChannelOutput = auduioMediaStream?.ChannelLayout;
+
+                            dbContext.Videos.Add(video);
+
+                            var accountVideoBridge = new Persistence.Entities.AccountVideoBridge
                             {
-                                using (var thumbnailSkImage = SkiaSharp.SKImage.FromBitmap(thumbnailSkBitmap))
-                                {
-                                    var thumbnailSkData = thumbnailSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Jpeg, 75);
+                                AccountId = account.Id,
+                                VideoId = videoId
+                            };
 
-                                    thumbnailFileManager.SaveThumbnailFileContent(video.Thumbnail.Id, thumbnailSkData.ToArray(), "image/jpeg");
-                                }
-                            }
+                            dbContext.AccountVideoBridges.Add(accountVideoBridge);
 
-                            try
-                            {
-                                video.Thumbnail.Length = thumbnailFrame.Data.Length;
+                            dbContext.SaveChanges(User.Identity.Name);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            thumbnailFileManager.DeleteThumbnailFile(video.Thumbnail);
 
-                                video.Length = videoMediaFile.Info.FileInfo.Length;
-                                video.Duration = videoMediaFile.Info.Duration;
-                                video.Format = videoMediaFile.Video.Info.CodecName;
-                                video.FrameSize = string.Format("{0}x{1}", videoMediaFile.Video.Info.FrameSize.Width, videoMediaFile.Video.Info.FrameSize.Height);
-                                video.Fps = videoMediaFile.Video.Info.AvgFrameRate;
-
-                                dbContext.Videos.Add(video);
-
-                                var accountVideoBridge = new Persistence.Entities.AccountVideoBridge
-                                {
-                                    AccountId = account.Id,
-                                    VideoId = videoId
-                                };
-
-                                dbContext.AccountVideoBridges.Add(accountVideoBridge);
-
-                                dbContext.SaveChanges(User.Identity.Name);
-                            }
-                            catch (System.Exception ex)
-                            {
-                                thumbnailFileManager.DeleteThumbnailFile(video.Thumbnail);
-
-                                throw ex;
-                            }
-                        }                        
+                            throw ex;
+                        }
                     }
                     catch (System.Exception ex)
                     {

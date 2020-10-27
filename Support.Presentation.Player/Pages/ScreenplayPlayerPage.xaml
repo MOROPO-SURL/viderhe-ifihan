@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    mc:Ignorable="d"
+    x:Class="SmartSolucionesCuba.Videre.Support.Presentation.Player.Pages.ScreenplayPlayerPage">
+    <ContentPage.Content>
+        <Grid>
+            <Image
+                Source="{Binding .}"
+                Aspect="AspectFill" />
+            <Grid x:Name="FramesContainer" />
+            <ContentView x:Name="OverlayContainer" />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:ContentPage>

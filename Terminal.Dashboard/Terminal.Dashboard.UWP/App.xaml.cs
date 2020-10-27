@@ -41,7 +41,15 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
+                FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+
+                //Xamarin.Forms.PancakeView.UWP.PancakeViewRenderer.Init();
+
                 Xamarin.Forms.Forms.Init(e);
+
+                Xamarin.Forms.DependencyService.Register<Plugin.Toasts.UWP.ToastNotification>(); // Register your dependency
+
+                Plugin.Toasts.UWP.ToastNotification.Init();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

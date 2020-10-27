@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
+    mc:Ignorable="d"
+    x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages.ManageExtensionsPage"
+    x:TypeArguments="pagemodels:ManageExtensionsPageModel"
+    Title="Complementos">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:EnumerationToCountConverter x:Key="EnumerationToCountConverter" />
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="20" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <FlexLayout
+                    Margin="5"
+                    Wrap="Wrap"
+                    AlignItems="Start" AlignContent="Start"
+                    BindableLayout.ItemsSource="{Binding Path=Items}">
+                    <BindableLayout.EmptyView>
+                        <Label
+                            IsVisible="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
+                            Margin="20"
+                            Text="Sin elementos que mostrar"
+                            TextColor="Black" />
+                    </BindableLayout.EmptyView>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Margin="5"
+                                BackgroundColor="White"
+                                CornerRadius="0"
+                                HasShadow="False"
+                                WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
+                                HeightRequest="180">
+                                <Grid Padding="15,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.ColumnSpan="3" Grid.Row="0"
+                                        LineBreakMode="TailTruncation"
+                                        Text="{Binding Path=Descriptor.Name}"
+                                        TextColor="Black"
+                                        FontSize="Medium" />
+                                    <Label 
+                                        Grid.ColumnSpan="3" Grid.Row="1"
+                                        LineBreakMode="TailTruncation" MaxLines="2"
+                                        Text="{Binding Path=Descriptor.Description}"
+                                        TextColor="DimGray" />
+                                    <StackLayout
+                                        Grid.Column="0" Grid.Row="2"
+                                        VerticalOptions="Center" HorizontalOptions="Center">
+                                        <Label 
+                                            HorizontalTextAlignment="Center"
+                                            Text="&#xF268;"
+                                            TextColor="Black"
+                                            FontFamily="{StaticResource IconFontFamily}"
+                                            FontSize="Medium" />
+                                        <Label
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Path=TemplateDescriptors, Converter={StaticResource EnumerationToCountConverter}}"
+                                            TextColor="Black"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Grid.Column="1" Grid.Row="2"
+                                        VerticalOptions="Center" HorizontalOptions="Center">
+                                        <Label 
+                                            HorizontalTextAlignment="Center"
+                                            Text="&#xF914;"
+                                            TextColor="Black"
+                                            FontFamily="{StaticResource IconFontFamily}"
+                                            FontSize="Medium" />
+                                        <Label
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Path=TransitionDescriptors, Converter={StaticResource EnumerationToCountConverter}}"
+                                            TextColor="Black"/>
+                                    </StackLayout>
+                                    <StackLayout
+                                        Grid.Column="2" Grid.Row="2"
+                                        VerticalOptions="Center" HorizontalOptions="Center">
+                                        <Label 
+                                            HorizontalTextAlignment="Center"
+                                            Text="&#xFE3A;"
+                                            TextColor="Black"
+                                            FontFamily="{StaticResource IconFontFamily}"
+                                            FontSize="Medium" />
+                                        <Label
+                                            HorizontalTextAlignment="Center"
+                                            Text="{Binding Path=OverlayDescriptors, Converter={StaticResource EnumerationToCountConverter}}"
+                                            TextColor="Black"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

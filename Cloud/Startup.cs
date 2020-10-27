@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using MediaToolkit;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -46,7 +47,7 @@ namespace SmartSolucionesCuba.Videre.Cloud
             services.Configure<MediaThumbnailResizeOptions>(configuration.GetSection("MediaThumbnailResize"));
             services.Configure<MediaPathOptions>(configuration.GetSection("MediaPath"));
             services.Configure<JwtOptions>(configuration.GetSection("JWT"));
-            services.Configure<FfmpegOptions>(configuration.GetSection("FFmpeg"));
+            //services.Configure<FfmpegOptions>(configuration.GetSection("FFmpeg"));
 
             services.AddDbContext<Persistence.EF.ApplicationDbContext>(options => options.UseMySql(configuration.GetConnectionString("DefaultConnection"), mySqlOptions =>
             {
@@ -72,6 +73,8 @@ namespace SmartSolucionesCuba.Videre.Cloud
             services.AddSingleton<SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade, Managers.ImageFileManager>();
             services.AddSingleton<SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IThumbnailFileManagerFacade, Managers.ThumbnailFileManager>();
             services.AddSingleton<SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IVideoFileManagerFacade, Managers.VideoFileManager>();
+
+            services.AddMediaToolkit(configuration["FFmpeg:MainBinaryPath"]);
 
             services.AddSingleton<SAPRESSC.Core.Persistence.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade, Persistence.EF.Providers.BusinessDbSchemaConfigurationProvider>();
 
@@ -188,9 +191,9 @@ namespace SmartSolucionesCuba.Videre.Cloud
             services.AddSingleton<Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataProvider, Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Microsoft.Extensions.Options.IOptions<RequestLocalizationOptions> requestLocalizationOptions, Microsoft.Extensions.Logging.ILoggerFactory loggerFactory, DbContext dbContext, Microsoft.Extensions.Options.IOptions<Options.FfmpegOptions> ffmpegOptions)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Microsoft.Extensions.Options.IOptions<RequestLocalizationOptions> requestLocalizationOptions, Microsoft.Extensions.Logging.ILoggerFactory loggerFactory, DbContext dbContext)
         {
-            FFMediaToolkit.FFmpegLoader.FFmpegPath = System.IO.Path.GetDirectoryName(ffmpegOptions.Value.BinariesPath);
+            //FFMediaToolkit.FFmpegLoader.FFmpegPath = ffmpegOptions.Value.BinariesPath;
 
             loggerFactory.AddSerilog(Log.Logger);
 

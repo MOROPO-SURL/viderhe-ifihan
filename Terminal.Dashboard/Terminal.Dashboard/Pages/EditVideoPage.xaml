@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationviewrendereds="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    mc:Ignorable="d"
+    x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages.EditVideoPage"
+    x:TypeArguments="pagemodels:EditVideoPageModel"
+    Title="Editar Video">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FileSizeLongToStringConverter x:Key="FileSizeLongToStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Aplicar"
+            Activated="ApplyToolbarItem_Activated">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Cancelar"
+            Activated="CancelToolbarItem_Activated">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid Padding="10" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid
+                Grid.Column="0"
+                BackgroundColor="Black">
+                <sscxftoolkitpresentationviewrendereds:VideoPlayerView 
+                    AutoPlay="False"
+                    Source="{Binding Path=Video, Converter={StaticResource VideoViewModelToVideoSourceConverter}}" />
+            </Grid>
+            <StackLayout
+                Grid.Column="1"
+                Spacing="10">
+                <Label 
+                    Text="Formato"
+                    Style="{StaticResource FormLabel}" />
+                <Label Text="{Binding Path=Video.Extension}" />
+                <Label 
+                    Text="Duración"
+                    Style="{StaticResource FormLabel}" />
+                <Label Text="{Binding Path=Video.Duration}" />
+                <Label 
+                    Text="Resolusión"
+                    Style="{StaticResource FormLabel}" />
+                <Label Text="{Binding Path=Video.FrameSize}" />
+                <Label 
+                    Text="Tamaño en Disco"
+                    Style="{StaticResource FormLabel}" />
+                <Label Text="{Binding Path=Video.Size, Converter={StaticResource FileSizeLongToStringConverter}}" />
+                <Label 
+                    Text="Incorporada"
+                    Style="{StaticResource FormLabel}" />
+                <Label Text="{Binding Path=Video.CreateAt}" />
+                <Label 
+                    Text="Descripción"
+                    Style="{StaticResource FormLabel}" />
+                <Editor 
+                    VerticalOptions="FillAndExpand"
+                    Text="{Binding Path=Video.About}" />
+            </StackLayout>
+            <supportpresentationdashboardviews:BusyView Grid.ColumnSpan="2" />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

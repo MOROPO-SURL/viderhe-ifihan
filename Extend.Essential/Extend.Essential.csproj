@@ -8,6 +8,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common\Extend.Common.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Motion\Extend.Essential.Motion.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Overlaying\Extend.Essential.Overlaying.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Templating\Extend.Essential.Templating.csproj" />
   </ItemGroup>
 
 </Project>
