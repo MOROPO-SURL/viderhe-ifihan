@@ -4,19 +4,19 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Player.Pages
 {
     public partial class ScreenplayPlayerPage : XFToolKit.Mvvm.Pages.ContentPage
     {
-        private Providers.Facade.ICloudServerProviderFacade cloudServerProvider;
         private Videre.Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider;
+        private Providers.Facade.ICloudServerProviderFacade cloudServerProvider;
 
         private Videre.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter presenter;
 
         private readonly bool demo;
 
-        public ScreenplayPlayerPage(Models.View.PlacardViewModel[] placards, System.Action presentationCompleteCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction = null, Videre.Extend.Common.Overlaying.Presentation.Views.BaseOverlayView overlay = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
+        public ScreenplayPlayerPage(Models.View.PlacardViewModel[] placards, System.Action presentationCompleteCallbackAction, bool loop, Videre.Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Providers.Facade.ICloudServerProviderFacade cloudServerProvider, System.Action<System.Guid> placardPlayingCallbackAction = null, Videre.Extend.Common.Overlaying.Presentation.Views.BaseOverlayView overlay = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
         {
             InitializeComponent();
 
-            cloudServerProvider = XFToolKit.IoC.TinyIoCContainer.Current.Resolve<Providers.Facade.ICloudServerProviderFacade>();
-            accountInformationProvider = XFToolKit.IoC.TinyIoCContainer.Current.Resolve<Videre.Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
+            this.accountInformationProvider = accountInformationProvider;
+            this.cloudServerProvider = cloudServerProvider;
 
             presenter = new Videre.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards, accountInformationProvider, Extend.Motion.Presentation.Providers.MotionTransitionProvider.Instance, presentationCompleteCallbackAction, loop, placardPlayingCallbackAction, placardViewTransitionCompleteCallbackAction);
 
@@ -70,15 +70,15 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Player.Pages
 
         private BasePlacardPresentationView PlacardViewModelToPresentationView(Models.View.PlacardViewModel model)
         {
-            return Extend.Templating.Presentation.Providers.PlacardPresentationViewProvider.Instance.GetFor(model);
+            return Extend.Templating.Presentation.Providers.PlacardPresentationViewProvider.Instance.GetFor(model, accountInformationProvider, cloudServerProvider);
         }
 
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
 
-            cloudServerProvider = null;
             accountInformationProvider = null;
+            cloudServerProvider = null;
 
             presenter.Dispose();
 

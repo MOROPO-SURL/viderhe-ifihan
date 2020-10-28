@@ -7,11 +7,8 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Pr
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
-        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model)
+        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
         {
-            var cloudServerProvider = XFToolKit.IoC.TinyIoCContainer.Current.Resolve<Support.Presentation.Providers.Facade.ICloudServerProviderFacade>();
-            var accountInformationProvider = XFToolKit.IoC.TinyIoCContainer.Current.Resolve<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
-
             if (model.Template.Id == PictureSecuenceTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PictureSecuencePlacardContextModel>(model.SerializedContext);

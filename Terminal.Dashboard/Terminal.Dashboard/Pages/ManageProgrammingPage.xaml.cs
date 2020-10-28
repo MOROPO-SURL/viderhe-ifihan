@@ -101,7 +101,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetPlacardViewModel }, ScreenplayPresentationCompleteCallback, false);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetPlacardViewModel }, ScreenplayPresentationCompleteCallback, false, Providers.AccountInformationProvider.Instance, Providers.CloudServerProvider.Instance);
 
                             this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
@@ -237,7 +237,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetFrameViewModel.Placard }, ScreenplayPresentationCompleteCallback, false);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetFrameViewModel.Placard }, ScreenplayPresentationCompleteCallback, false, Providers.AccountInformationProvider.Instance, Providers.CloudServerProvider.Instance);
 
                             this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
@@ -311,7 +311,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 
         private void ScreenplayFramesPlayButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(BindingContextPageModel.Frames.Select(m => m.Placard).ToArray(), ScreenplayPresentationCompleteCallback, false);
+            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(BindingContextPageModel.Frames.Select(m => m.Placard).ToArray(), ScreenplayPresentationCompleteCallback, false, Providers.AccountInformationProvider.Instance, Providers.CloudServerProvider.Instance);
 
             this.NavigationPushModalPageAsync(screenplayPlayerPage);
         }

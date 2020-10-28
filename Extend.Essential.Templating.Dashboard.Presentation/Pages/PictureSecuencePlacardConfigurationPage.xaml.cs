@@ -110,7 +110,7 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Prese
                     }
                     else
                     {
-                        notificationPresenter.PresentNotification("Aviso", "Cambios aplicados con éxito.");
+                        notificationPresenter.PresentNotification("Información", "Cambios aplicados con éxito.");
 
                         this.NavigationPopPageAsync();
 

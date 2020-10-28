@@ -6,7 +6,7 @@
 
         public PictureSecuencePlacardConfigurationPageModel()
         {
-            PicturePresentationSecounds = 5;
+            PicturePresentationSecounds = 10;
 
             Images = new System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Models.View.ImageViewModel>();
         }

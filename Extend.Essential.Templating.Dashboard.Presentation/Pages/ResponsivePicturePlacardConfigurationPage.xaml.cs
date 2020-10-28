@@ -111,6 +111,11 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Prese
         private void ImagePickedCallback(Support.Presentation.Models.View.ImageViewModel selection)
         {
             BindingContextPageModel.Image = selection;
+
+            if (string.IsNullOrEmpty(BindingContextPageModel.Label))
+            {
+                BindingContextPageModel.Label = selection.About;
+            }
         }
 
         protected override void DisposeUnmanagementResources()

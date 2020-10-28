@@ -5,17 +5,19 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Presentation.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
-    xmlns:sscxftoolkitpresentationviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Views;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Presentation.Pages.ResponsivePicturePlacardConfigurationPage"
     x:TypeArguments="pagemodels:ResponsivePicturePlacardConfigurationPageModel">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Frame">
-                <Setter Property="BackgroundColor" Value="#FAFAFA" />
+                <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="HasShadow" Value="False" />
+                <Setter Property="CornerRadius" Value="0" />
             </Style>
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
@@ -50,10 +52,11 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
             <ScrollView>
                 <Grid 
-                    Margin="15"
-                    ColumnSpacing="15" RowSpacing="15">
+                    Margin="10"
+                    ColumnSpacing="10" RowSpacing="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition Width="Auto" />
@@ -90,10 +93,12 @@
                                 Grid.Column="1" Grid.Row="0"
                                 Text="Seleccionar"
                                 Clicked="PickImageButton_Clicked" />
-                            <Image 
+                            <ffimageloadingforms:CachedImage 
                                 Grid.ColumnSpan="2" Grid.Row="1"
                                 HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
                                 BackgroundColor="Black"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00"
                                 Source="{Binding Path=Image, Converter={StaticResource ImageViewModelToImageSourceConverter}}" />
                         </Grid>
                     </Frame>
@@ -115,7 +120,7 @@
                     </Frame>
                 </Grid>
             </ScrollView>
-            <sscxftoolkitpresentationviews:BusyView />
+            <supportpresentationdashboardviews:BusyView />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>
