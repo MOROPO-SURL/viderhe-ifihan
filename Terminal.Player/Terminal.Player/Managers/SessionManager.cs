@@ -1,0 +1,46 @@
+﻿namespace SmartSolucionesCuba.Videre.Terminal.Player.Managers
+{
+    public sealed class SessionManager : SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade
+    {
+        private static SessionManager instance;
+
+        public static SessionManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new SessionManager();
+                }
+
+                return instance;
+            }
+        }
+
+        public System.Guid AccountId { get; set; }
+
+        public string AccountName { get; set; }
+
+        public Xamarin.Forms.ImageSource AccountLogoImageSource { get; set; }
+
+        public Xamarin.Forms.ImageSource AccountSplashImageSource { get; set; }
+
+        public Xamarin.Forms.Color AccountPrimaryColor { get; set; }
+
+        public Xamarin.Forms.Color AccountSecoundaryColor { get; set; }
+
+        public SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("http://{0}/api/", ConfigurationManager.Instance.CloudServerHost), null, () => ExtraHeaders);
+
+        public System.Collections.Generic.KeyValuePair<string, string>[] ExtraHeaders
+        {
+            get
+            {
+                return new System.Collections.Generic.KeyValuePair<string, string>[]
+                {
+                    new System.Collections.Generic.KeyValuePair<string, string>(Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.ACCOUNT_ID_HEADER_KEY, AccountId.ToString()),
+                    new System.Collections.Generic.KeyValuePair<string, string>(Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY, ConfigurationManager.Instance.ProtectedPlayerId)
+                };
+            }
+        }
+    }
+}

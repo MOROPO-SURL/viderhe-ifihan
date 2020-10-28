@@ -7,6 +7,59 @@
     mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Videre.Terminal.Player.App">
     <Application.Resources>
+        <OnPlatform x:Key="IconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons" />
+        
+        <Style x:Key="ConfigurationStepSubtitleLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontSize" Value="Medium" />
+        </Style>
 
+        <Style x:Key="ConfigurationStepDataIconLabelStyle" TargetType="Label">
+            <Setter Property="Margin" Value="10,20,10,0" />
+            <Setter Property="TextColor" Value="WhiteSmoke" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="{StaticResource IconFontFamily}" />
+            <Setter Property="FontSize">
+                <Setter.Value>
+                    <OnPlatform>
+                        <On Platform="UWP" Value="Header" />
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ConfigurationStepDataCaptionLabelStyle" TargetType="Label">
+            <Setter Property="Margin" Value="0,20,0,0" />
+            <Setter Property="TextColor" Value="WhiteSmoke" />
+            <Setter Property="FontSize" Value="Title" />
+        </Style>
+
+        <Style x:Key="ConfigurationStepDataValueLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontSize" Value="Title" />
+            <Setter Property="FontAttributes" Value="Bold" />
+        </Style>
+
+        <Style x:Key="ConfigurationStepGraphCloudLabelStyle" TargetType="Label">
+            <Setter Property="Text" Value="&#xF163;" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="{StaticResource IconFontFamily}" />
+            <Setter Property="FontSize" Value="144" />
+        </Style>
+
+        <Style x:Key="ConfigurationStepGraphActionLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="{StaticResource IconFontFamily}" />
+            <Setter Property="FontSize" Value="72" />
+        </Style>
+
+        <Style x:Key="ConfigurationStepGraphPlayerLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontFamily" Value="{StaticResource IconFontFamily}" />
+            <Setter Property="FontSize" Value="120" />
+        </Style>
     </Application.Resources>
 </Application>
