@@ -11,7 +11,8 @@
     xmlns:sscxftoolkitpresentationtransformanimations="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
     mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Videre.Extend.Essential.Overlaying.Presentation.Views.SimpleHighlightsOverlayView"
-    TranslationY="100">
+    TranslationY="100"
+    x:Name="View">
     <ContentView.Resources>
         <ResourceDictionary>
             <extendcommonoverlayingpresentationconverters:TextToAbsoluteLayoutBoundsConverter x:Key="TextToAbsoluteLayoutBoundsConverter" />

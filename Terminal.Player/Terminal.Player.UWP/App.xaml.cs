@@ -11,6 +11,8 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.UWP
     /// </summary>
     sealed partial class App : Application
     {
+        Windows.System.Display.DisplayRequest displayRequest;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -18,7 +20,11 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.UWP
         public App()
         {
             InitializeComponent();
-            
+
+            displayRequest = new Windows.System.Display.DisplayRequest();
+
+            Windows.UI.ViewManagement.ApplicationView.PreferredLaunchWindowingMode = Windows.UI.ViewManagement.ApplicationViewWindowingMode.FullScreen;
+
             Suspending += OnSuspending;
         }
 
@@ -62,6 +68,10 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.UWP
             }
             // Ensure the current window is active
             Window.Current.Activate();
+
+            displayRequest.RequestActive();
+
+            Window.Current.CoreWindow.PointerCursor = null;
         }
 
         /// <summary>
@@ -86,6 +96,12 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.UWP
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+
+            try
+            {
+                displayRequest.RequestRelease();
+            }
+            catch { }
         }
     }
 }

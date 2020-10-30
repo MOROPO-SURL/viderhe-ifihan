@@ -4,9 +4,10 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Vi
 {
     public partial class PictureSecuencePlacardView : BasePlacardPresentationView, Common.Motion.Presentation.Providers.Facade.IMotionTransitionProviderFacade
     {
+        private Models.Context.PictureSecuencePlacardContextModel context;
         private Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider;
-        private Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider;
         private Common.Motion.Presentation.Providers.Facade.IMotionTransitionProviderFacade motionTransitionProvider;
+        private Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider;
 
         private Common.Templating.Presentation.Presenters.ScreenplayPresenter screenplayPresenter;
 
@@ -16,11 +17,33 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Vi
         {
             InitializeComponent();
 
+            this.context = context;
+
             this.cloudServerProvider = cloudServerProvider;
-            this.accountInformationProvider = accountInformationProvider;
             this.motionTransitionProvider = motionTransitionProvider;
+            this.accountInformationProvider = accountInformationProvider;
 
             motionTransitionId = context.PictureTransitionId;
+
+            BindingContext = new Models.View.PictureSecuencePlacardViewModel
+            {
+                RequireUnobstructedPresetation = context.RequireUnobstructedPresetation
+            };
+        }
+
+        public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;
+
+        public override Xamarin.Forms.View PlacardView => FramesContainerWrapper;
+
+        public override void ConfigureLayout(Xamarin.Forms.View view)
+        {
+            Xamarin.Forms.Grid.SetColumn(view, 0);
+            Xamarin.Forms.Grid.SetRow(view, 0);
+        }
+
+        public override void ShowInTransitionCompleteCallback()
+        {
+            base.ShowInTransitionCompleteCallback();
 
             var placards = new System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel>();
 
@@ -49,31 +72,10 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Vi
 
             screenplayPresenter = new Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards.ToArray(), accountInformationProvider, this, EndPresentation, false, null);
 
-            BindingContext = new Models.View.PictureSecuencePlacardViewModel
-            {
-                RequireUnobstructedPresetation = context.RequireUnobstructedPresetation
-            };
-
-        }
-
-        public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;
-
-        public override Xamarin.Forms.View PlacardView => FramesContainer;
-
-        public override void ConfigureLayout(Xamarin.Forms.View view)
-        {
-            Xamarin.Forms.Grid.SetColumn(view, 0);
-            Xamarin.Forms.Grid.SetRow(view, 0);
-        }
-
-        public override void ShowInTransitionCompleteCallback()
-        {
-            base.ShowInTransitionCompleteCallback();
-
             screenplayPresenter.BeginPresentation();
         }
 
-        private Common.Presentation.Views.BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model)
+        private BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model)
         {
             if (model.Template.Id != Descriptors.SimplePictureTemplateDescriptor.ID) throw new System.InvalidOperationException();
 
@@ -102,9 +104,10 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Vi
         {
             base.DisposeUnmanagementResources();
 
+            context = null;
             cloudServerProvider = null;
-            accountInformationProvider = null;
             motionTransitionProvider = null;
+            accountInformationProvider = null;
 
             screenplayPresenter.Dispose();
 

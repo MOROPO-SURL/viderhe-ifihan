@@ -21,8 +21,8 @@
             <Setter Property="FontFamily" Value="{StaticResource IconFontFamily}" />
             <Setter Property="FontSize">
                 <Setter.Value>
-                    <OnPlatform>
-                        <On Platform="UWP" Value="Header" />
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="UWP" Value="64" />
                     </OnPlatform>
                 </Setter.Value>
             </Setter>

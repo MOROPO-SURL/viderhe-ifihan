@@ -24,8 +24,8 @@
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BooleanToPlayerAudioEnablingSwichGlyphIconStringConverter" FalseString="&#xf57e;" TrueString="&#xf581;" />
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
             <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="20" />
-            <converters:BoolToColorConverter x:Key="BoolToBackgroudColorConverter" TrueColor="White" FalseColor="Black" />
-            <converters:BoolToColorConverter x:Key="BoolToTextColorConverter" TrueColor="Black" FalseColor="WhiteSmoke" />
+            <converters:BoolToColorConverter x:Key="BoolToBackgroudColorConverter" TrueColor="#FFDDFAE5" FalseColor="Black" />
+            <converters:BoolToColorConverter x:Key="BoolToTextColorConverter" TrueColor="Black" FalseColor="White" />
             <converters:PlayerAudioLevelKnownToBooleanConverter x:Key="PlayerAudioLevelKnownToBooleanConverter" />
             <converters:PlayerAudioLevelReachedToBooleanConverter x:Key="MaxPlayerAudioLevelReachedToBooleanConverter" TargetAudioLevel="100" />
             <converters:PlayerAudioLevelReachedToBooleanConverter x:Key="MinPlayerAudioLevelReachedToBooleanConverter" TargetAudioLevel="10" />

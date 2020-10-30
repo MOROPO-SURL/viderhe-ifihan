@@ -12,7 +12,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
     {
         private System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel> Placards { get; set; }
 
-        private System.Collections.Generic.Queue<Enumerations.ConfigurationStep> configurationStepQueue;
+        private readonly System.Collections.Generic.Queue<Enumerations.ConfigurationStep> configurationStepQueue;
 
         private Extend.Common.Overlaying.Presentation.Views.BaseOverlayView overlayView;
 

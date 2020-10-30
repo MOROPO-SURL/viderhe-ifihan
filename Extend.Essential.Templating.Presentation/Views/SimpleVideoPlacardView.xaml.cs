@@ -30,5 +30,17 @@
                 EndPresentation();
             }
         }
+
+        protected override void DisposeUnmanagementResources()
+        {
+            base.DisposeUnmanagementResources();
+
+            if (VideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            {
+                VideoPlayerView.StatusUpdated -= VideoPlayer_StatusUpdated;
+
+                VideoPlayerView.Stop();
+            }
+        }
     }
 }

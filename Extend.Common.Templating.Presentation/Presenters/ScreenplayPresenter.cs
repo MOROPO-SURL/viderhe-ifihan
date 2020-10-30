@@ -140,7 +140,7 @@ namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Prese
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
-                if (framesStack.Any())
+                if (framesStack != null && framesStack.Any())
                 {
                     var model = framesStack.Pop();
 

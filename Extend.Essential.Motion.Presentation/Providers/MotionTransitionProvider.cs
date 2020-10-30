@@ -20,7 +20,6 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Motion.Presentation.Provid
             var randomizer = new System.Random();
 
             var randomTransitionIndex = randomizer.Next(0, 8);
-            //var randomTransitionIndex = randomizer.Next(5, 7);
 
             switch (randomTransitionIndex)
             {

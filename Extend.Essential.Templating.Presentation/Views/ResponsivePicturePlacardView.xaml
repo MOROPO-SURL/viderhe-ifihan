@@ -17,6 +17,8 @@
                 <ffimageloadingforms:CachedImage
                     Source="{Binding Path=Source}"
                     Aspect="AspectFill"
+                    CacheType="Disk"
+                    CacheDuration="8760:00:00"
                     FadeAnimationEnabled="False"
                     IsOpaque="False">
                     <ffimageloadingforms:CachedImage.Transformations>
@@ -25,8 +27,10 @@
                 </ffimageloadingforms:CachedImage>
                 <ffimageloadingforms:CachedImage
                     Source="{Binding Path=Source}"
-                    Aspect="AspectFit"                    
-                    FadeAnimationEnabled="False"/>
+                    Aspect="AspectFit"
+                    CacheType="Disk"
+                    CacheDuration="8760:00:00"
+                    FadeAnimationEnabled="False" />
             </Grid>
         </Grid>
     </ContentView.Content>
