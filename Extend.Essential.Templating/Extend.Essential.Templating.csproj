@@ -7,19 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="08C0C0E5-C6DD-4E1C-B821-FACF619DD99D.png" />
-    <None Remove="18C0C0E5-C6DD-4E1C-B821-FACF619DD99D.png" />
-    <None Remove="88C0C0E5-C6DD-4E1C-B821-FACF619DD99D.png" />
-    <None Remove="BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0.png" />
-    <None Remove="D6856FBB-194B-40FA-9FF9-A16EA09F446A.png" />
+    <None Remove="08C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
+    <None Remove="18C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
+    <None Remove="88C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
+    <None Remove="BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0-landscape.png" />
+    <None Remove="FA334577-0D4C-4366-9B68-A23D9D4AE004-landscape.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="08C0C0E5-C6DD-4E1C-B821-FACF619DD99D.png" />
-    <EmbeddedResource Include="18C0C0E5-C6DD-4E1C-B821-FACF619DD99D.png" />
-    <EmbeddedResource Include="88C0C0E5-C6DD-4E1C-B821-FACF619DD99D.png" />
-    <EmbeddedResource Include="BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0.png" />
-    <EmbeddedResource Include="D6856FBB-194B-40FA-9FF9-A16EA09F446A.png" />
+    <EmbeddedResource Include="FA334577-0D4C-4366-9B68-A23D9D4AE004-landscape.png" />
+    <EmbeddedResource Include="08C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
+    <EmbeddedResource Include="18C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
+    <EmbeddedResource Include="88C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
+    <EmbeddedResource Include="BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0-landscape.png" />
   </ItemGroup>
 
   <ItemGroup>

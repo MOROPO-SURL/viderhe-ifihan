@@ -35,7 +35,7 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Extensions
             };
         }
 
-        public static PlacardViewModel ToViewModel(this PlacardDisplayModel target)
+        public static PlacardViewModel ToViewModel(this PlacardDisplayModel target, Videre.Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind playerOrientationSupportKind)
         {
             var templateDescriptor = Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(target.Template.Id);
 
@@ -44,7 +44,7 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Extensions
                 Id = target.Id,
                 Label = target.Label,
                 SerializedContext = target.SerializedContext,
-                Template = templateDescriptor.ToViewModel()
+                Template = templateDescriptor.ToViewModel(playerOrientationSupportKind)
             };
 
             return result;

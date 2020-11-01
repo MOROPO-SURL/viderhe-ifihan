@@ -26,20 +26,15 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
                 return new ResponsivePicturePlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
             }
 
-            if (templateDescriptor is AbstractPhotoEventDescriptor)
-            {
-                return new PhotoEventPlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, templateDescriptor as AbstractPhotoEventDescriptor, completedActionCallback);
-            }
-
             if (templateDescriptor is PictureSecuenceTemplateDescriptor)
             {
                 return new PictureSecuencePlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
             }
 
-            //if (templateDescriptor is InmersivePosterFilmProjectionTemplateDescriptor)
-            //{
-            //    return new InmersivePosterFilmProjectionPlacardConfigurationPage(ResourceProvider.Instance, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            //}
+            if (templateDescriptor is PicturePresentingPictureLandscapeTemplateDescriptor)
+            {
+                return new PicturePresentingPictureLandscapePlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
+            }
 
             return null;
         }
@@ -61,20 +56,15 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
                 return new ResponsivePicturePlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
             }
 
-            if (placardViewModel.Template.Id == FloatLeftDetailedPhotoEventTemplateDescriptor.ID)
-            {
-                return new PhotoEventPlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
             if (placardViewModel.Template.Id == PictureSecuenceTemplateDescriptor.ID)
             {
                 return new PictureSecuencePlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
             }
 
-            //if (placardViewModel.Template.Id == InmersivePosterFilmProjectionTemplateDescriptor.ID)
-            //{
-            //    return new InmersivePosterFilmProjectionPlacardConfigurationPage(placardViewModel, ResourceProvider.Instance, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            //}
+            if (placardViewModel.Template.Id == PicturePresentingPictureLandscapeTemplateDescriptor.ID)
+            {
+                return new PicturePresentingPictureLandscapePlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
+            }
 
             return null;
         }

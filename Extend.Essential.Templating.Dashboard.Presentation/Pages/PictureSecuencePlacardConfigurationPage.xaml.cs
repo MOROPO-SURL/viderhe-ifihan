@@ -104,7 +104,7 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Prese
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    if (task.Exception != null)
+                    if (task.Exception != null || task.IsCanceled)
                     {
                         exceptionHandleHelper.HandleException(task.Exception);
                     }

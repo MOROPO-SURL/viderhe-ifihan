@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MagicGradients" Version="1.1.1" />
     <PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
     <PackageReference Include="SSCXFToolKit.Presentation" Version="0.4.7-alpha" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
@@ -28,6 +29,12 @@
     <ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
     <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
     <ProjectReference Include="..\Support.Extend.Templating\Support.Extend.Templating.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\IdentityBackgroundView.xaml.cs">
+      <DependentUpon>IdentityBackgroundView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
 </Project>

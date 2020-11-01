@@ -20,13 +20,9 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
             }
         }
 
-        public System.Collections.Generic.List<Support.Presentation.Models.View.TemplateViewModel> Models { get; private set; }
-
-        private TemplateViewModelProvider()
+        public Support.Presentation.Models.View.TemplateViewModel[] GetViewModels(Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind playerOrientationSupportKind)
         {
-            Models = new System.Collections.Generic.List<Support.Presentation.Models.View.TemplateViewModel>();
-
-            Models.AddRange(Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptors().Select(d => d.ToViewModel()));
+            return Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptors().Select(d => d.ToViewModel(playerOrientationSupportKind)).ToArray();
         }
     }
 }

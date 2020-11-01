@@ -4,10 +4,10 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Extensions
 {
     public static class TemplateDescriptorExtensions
     {
-        public static Models.View.TemplateViewModel ToViewModel<TTemplateDescriptor>(this TTemplateDescriptor templateDescriptor)
+        public static Models.View.TemplateViewModel ToViewModel<TTemplateDescriptor>(this TTemplateDescriptor templateDescriptor, Videre.Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind playerOrientationSupportKind)
             where TTemplateDescriptor : class, ITemplateDescriptor
         {
-            var resourceId = string.Format("{0}.{1}.png", templateDescriptor.GetType().AssemblyQualifiedName.Split(',')[1].Trim(), templateDescriptor.Id.ToString().ToUpper());
+            var resourceId = string.Format("{0}.{1}{2}.png", templateDescriptor.GetType().AssemblyQualifiedName.Split(',')[1].Trim(), templateDescriptor.Id.ToString().ToUpper(), playerOrientationSupportKind.ToImageResourceNameSufix());
 
             var model = new Models.View.TemplateViewModel
             {

@@ -493,7 +493,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 
                         foreach (var item in task.Result.List)
                         {
-                            BindingContextPageModel.Placards.Add(item.ToViewModel());
+                            BindingContextPageModel.Placards.Add(item.ToViewModel(Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape));
                         }
                     }
 
@@ -527,7 +527,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 {
                     Id = m.Id,
                     Priority = m.Priority,
-                    Placard = m.Placard.ToViewModel(),
+                    Placard = m.Placard.ToViewModel(Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape),
                     CanOrderUp = index++ > 0,
                     CanOrderDown = index != count
                 }).ToArray();

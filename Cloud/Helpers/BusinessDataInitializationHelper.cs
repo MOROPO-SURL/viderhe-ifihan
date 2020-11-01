@@ -74,7 +74,11 @@ namespace SmartSolucionesCuba.Videre.Cloud.Helpers
                 }
                 else
                 {
-                    var divergentExtensionTemplateDescriptors = extension.Templates.Except(spectedExtensionTemplateDescriptors.Select(d => new Persistence.Entities.Template { Id = d.Id, Enabled = true }).ToArray(), Comparison.TemplateEntityCollectionEqualityComparisonHelper.Instance).ToArray();
+                    var spectedExtensionTemplates = spectedExtensionTemplateDescriptors.Select(d => new Persistence.Entities.Template { Id = d.Id, Enabled = true }).ToArray();
+
+                    var divergentExtensionTemplateDescriptors = extension.Templates.Except(spectedExtensionTemplates, Comparison.TemplateEntityCollectionEqualityComparisonHelper.Instance).ToList();
+
+                    divergentExtensionTemplateDescriptors.AddRange(spectedExtensionTemplates.Except(extension.Templates, Comparison.TemplateEntityCollectionEqualityComparisonHelper.Instance));
 
                     var templateDbSet = dbContext.Set<Persistence.Entities.Template>();
 
@@ -94,7 +98,11 @@ namespace SmartSolucionesCuba.Videre.Cloud.Helpers
                         }
                     }
 
-                    var divergentExtensionTransitionDescriptors = extension.Transitions.Except(spectedExtensionTransitionDescriptors.Select(d => new Persistence.Entities.Transition { Id = d.Id, Enabled = true }).ToArray(), Comparison.TransitionEntityCollectionEqualityComparisonHelper.Instance).ToArray();
+                    var spectedExtensionTransitions = spectedExtensionTransitionDescriptors.Select(d => new Persistence.Entities.Transition { Id = d.Id, Enabled = true }).ToArray();
+
+                    var divergentExtensionTransitionDescriptors = extension.Transitions.Except(spectedExtensionTransitions, Comparison.TransitionEntityCollectionEqualityComparisonHelper.Instance).ToList();
+
+                    divergentExtensionTransitionDescriptors.AddRange(spectedExtensionTransitions.Except(extension.Transitions, Comparison.TransitionEntityCollectionEqualityComparisonHelper.Instance));
 
                     var transitionDbSet = dbContext.Set<Persistence.Entities.Transition>();
 
@@ -114,7 +122,11 @@ namespace SmartSolucionesCuba.Videre.Cloud.Helpers
                         }
                     }
 
-                    var divergentExtensionOverlayDescriptors = extension.Overlays.Except(spectedExtensionOverlayDescriptors.Select(d => new Persistence.Entities.Overlay { Id = d.Id, Enabled = true }).ToArray(), Comparison.OverlayEntityCollectionEqualityComparisonHelper.Instance).ToArray();
+                    var spectedExtensionOverlays = spectedExtensionOverlayDescriptors.Select(d => new Persistence.Entities.Overlay { Id = d.Id, Enabled = true }).ToArray();
+
+                    var divergentExtensionOverlayDescriptors = extension.Overlays.Except(spectedExtensionOverlays, Comparison.OverlayEntityCollectionEqualityComparisonHelper.Instance).ToList();
+
+                    divergentExtensionOverlayDescriptors.AddRange(spectedExtensionOverlays.Except(extension.Overlays, Comparison.OverlayEntityCollectionEqualityComparisonHelper.Instance));
 
                     var overlayDbSet = dbContext.Set<Persistence.Entities.Overlay>();
 

@@ -25,7 +25,7 @@
                     Margin="5"
                     Wrap="Wrap"
                     AlignItems="Start" AlignContent="Start"
-                    BindableLayout.ItemsSource="{Binding Path=Models}">
+                    BindableLayout.ItemsSource="{Binding .}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <Grid 

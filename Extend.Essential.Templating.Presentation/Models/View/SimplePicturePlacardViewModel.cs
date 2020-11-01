@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Models.View
 {
-    public class SimplePicturePlacardViewModel : Common.Templating.Presentation.Models.View.AbstractScreenTimedPlacardViewModel, System.IDisposable
+    public class SimplePicturePlacardViewModel : Common.Templating.Presentation.Models.View.AbstractScreenTimedPlacardViewModel
     {
         public SimplePicturePlacardViewModel()
         {

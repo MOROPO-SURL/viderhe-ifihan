@@ -5,17 +5,19 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:extendcommonpresentationviews="clr-namespace:SmartSolucionesCuba.Videre.Extend.Common.Presentation.Views;assembly=SmartSolucionesCuba.Videre.Extend.Common.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Views.SimplePicturePlacardView">
     <ContentView.Content>
-        <Grid
-            x:Name="Wrapper"
-            BackgroundColor="Transparent">
-            <Image
+        <Grid x:Name="Wrapper">
+            <ffimageloadingforms:CachedImage
                 x:Name="DefaultImagen"
                 BackgroundColor="Black"
+                FadeAnimationEnabled="False"
                 Source="{Binding Path=Source}" 
-                Aspect="{Binding Path=Aspect}" />
+                Aspect="{Binding Path=Aspect}"
+                CacheType="Disk"
+                CacheDuration="8760:00:00" />
         </Grid>
     </ContentView.Content>
 </extendcommonpresentationviews:BasePlacardPresentationView>

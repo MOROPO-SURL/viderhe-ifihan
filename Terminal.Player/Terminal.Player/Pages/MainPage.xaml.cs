@@ -282,7 +282,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
             }
             else
             {
-                Placards = task.Result.Select(m => m.ToViewModel()).ToList();
+                Placards = task.Result.Select(m => m.ToViewModel(Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape)).ToList();
 
                 AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
             }

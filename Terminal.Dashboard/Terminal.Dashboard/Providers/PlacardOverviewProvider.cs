@@ -1,16 +1,17 @@
 ﻿using SmartSolucionesCuba.Videre.Extend.Essential.Templating.Descriptors;
 using SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Models.Context;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
 {
     public static class PlacardOverviewProvider
     {
-        public static View GetPlacardOverview(this Support.Presentation.Models.View.PlacardViewModel model, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
+        public static View GetPlacardOverview(this Support.Presentation.Models.View.PlacardViewModel model, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider, Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind playerOrientationSupportKind)
         {
             var descriptor = Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(model.Template.Id);
 
-            var resourceId = string.Format("{0}.{1}.png", descriptor.GetType().AssemblyQualifiedName.Split(',')[1].Trim(), model.Template.Id.ToString().ToUpper());
+            var templateViewModel = TemplateViewModelProvider.Instance.GetViewModels(playerOrientationSupportKind).First(item => item.Id == descriptor.Id);
 
             if (model.Template.Id == PictureSecuenceTemplateDescriptor.ID)
             {
@@ -76,7 +77,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
 
                 var templateIdentityImage = new Image
                 {
-                    Source = ImageSource.FromResource(resourceId, descriptor.GetType().Assembly)
+                    Source = templateViewModel.ThumbnailImageSource
                 };
 
                 Grid.SetColumnSpan(templateIdentityImage, 2);
@@ -103,7 +104,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
                 });
                 overviewContent.Children.Add(new Image
                 {
-                    Source = ImageSource.FromResource(resourceId, descriptor.GetType().Assembly)
+                    Source = templateViewModel.ThumbnailImageSource
                 });
 
                 return new ContentView
@@ -126,7 +127,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
                 });
                 overviewContent.Children.Add(new Image
                 {
-                    Source = ImageSource.FromResource(resourceId, descriptor.GetType().Assembly)
+                    Source = templateViewModel.ThumbnailImageSource
                 });
 
                 return new ContentView
@@ -158,7 +159,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
 
                 var templateThumbnailImageView = new Image
                 {
-                    Source = ImageSource.FromResource(resourceId, descriptor.GetType().Assembly)
+                    Source = templateViewModel.ThumbnailImageSource
                 };
 
                 Grid.SetColumn(templateThumbnailImageView, 1);
@@ -172,20 +173,20 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
                 };
             }
 
-            if (model.Template.Id == FloatLeftDetailedPhotoEventTemplateDescriptor.ID)
+            if (model.Template.Id == PicturePresentingPictureLandscapeTemplateDescriptor.ID)
             {
                 var overviewContent = new Grid();
 
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PhotoEventPlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PicturePresentingPictureLandscapePlacardContextModel>(model.SerializedContext);
 
                 overviewContent.Children.Add(new Image
                 {
-                    Source = ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(cloudServerProvider, context.Image.ThumbnailId)),
-                    Aspect = context.ImageAspect
+                    Source = ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(cloudServerProvider, context.PresentedImage.ThumbnailId)),
+                    Aspect = Aspect.AspectFill
                 });
                 overviewContent.Children.Add(new Image
                 {
-                    Source = ImageSource.FromResource(resourceId, descriptor.GetType().Assembly)
+                    Source = templateViewModel.ThumbnailImageSource
                 });
 
                 return new ContentView
@@ -194,29 +195,6 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
                     Content = overviewContent
                 };
             }
-
-            //if (model.Template.Id == InmersivePosterFilmProjectionTemplateDescriptor.ID)
-            //{
-            //    var overviewContent = new Grid();
-
-            //    var context = Newtonsoft.Json.JsonConvert.DeserializeObject<ProductionProjectionPlacardContextModel>(model.SerializedContext);
-
-            //    overviewContent.Children.Add(new Image
-            //    {
-            //        Source = ImageSource.FromUri(new System.Uri(Terminal.Support.Providers.UrlProvider.GetImageUrl(cloudServerProvider, context.Production.HorizontalPoster?.Id ?? context.Production.VerticalPoster.Id))),
-            //        Aspect = Aspect.AspectFill
-            //    });
-            //    overviewContent.Children.Add(new Image
-            //    {
-            //        Source = ImageSource.FromResource(resourceId, descriptor.GetType().Assembly)
-            //    });
-
-            //    return new ContentView
-            //    {
-            //        BackgroundColor = Color.Black,
-            //        Content = overviewContent
-            //    };
-            //}
 
             throw new System.InvalidOperationException();
         }
