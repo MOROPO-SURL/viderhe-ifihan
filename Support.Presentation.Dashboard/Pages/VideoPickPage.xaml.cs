@@ -5,19 +5,19 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Pages
 {
     public partial class VideoPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.VideoPickPageModel>
     {
-        private Videre.Extend.Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor;
-        private System.Action successfulCompleteCallbackAction;
-        private System.Action<Presentation.Models.View.VideoViewModel, Videre.Extend.Common.Templating.Descriptors.ITemplateDescriptor, System.Action> videoPickedCallbackAction;
+        private System.Action<Presentation.Models.View.VideoViewModel> videoPickedCallbackAction;
         private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
         private Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
 
-        public VideoPickPage(Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Videre.Extend.Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, System.Action successfulCompleteCallbackAction, System.Action<Presentation.Models.View.VideoViewModel, Videre.Extend.Common.Templating.Descriptors.ITemplateDescriptor, System.Action> videoPickedCallbackAction, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider)
+        private Presentation.Models.View.VideoViewModel except;
+
+        public VideoPickPage(Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, System.Action<Presentation.Models.View.VideoViewModel> videoPickedCallbackAction, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Presentation.Models.View.VideoViewModel except = null)
             : base(new Models.Page.VideoPickPageModel { IsBusy = true })
         {
             InitializeComponent();
 
-            this.templateDescriptor = templateDescriptor;
-            this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
+            // TODO Use it!
+            this.except = except;
             this.videoPickedCallbackAction = videoPickedCallbackAction;
             this.httpClientHelperProvider = httpClientHelperProvider;
             this.exceptionHandleHelper = exceptionHandleHelper;
@@ -31,7 +31,7 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Pages
 
             if (IsEnabled) return;
 
-            LoadImages();
+            LoadVideos();
 
             IsEnabled = true;
         }
@@ -40,7 +40,7 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Pages
         {
             var targetImageViewModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Presentation.Models.View.VideoViewModel;
 
-            videoPickedCallbackAction.Invoke(targetImageViewModel, templateDescriptor, OnSuccessfulComplete);
+            videoPickedCallbackAction.Invoke(targetImageViewModel);
         }
 
         private void VideoOverviewDetailButton_Clicked(object sender, System.EventArgs e)
@@ -48,14 +48,7 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Pages
             this.NavigationPushPageAsync(new VideoDetailPage((sender as Xamarin.Forms.BindableObject).BindingContext as Presentation.Models.View.VideoViewModel));
         }
 
-        private void OnSuccessfulComplete()
-        {
-            this.NavigationPopPageAsync();
-
-            successfulCompleteCallbackAction.Invoke();
-        }
-
-        private void LoadImages(int page = 0)
+        private void LoadVideos(int page = 0)
         {
             System.Threading.Tasks.Task.Run(async () =>
             {
@@ -94,10 +87,10 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Pages
         {
             base.DisposeUnmanagementResources();
 
-            templateDescriptor = null;
-            successfulCompleteCallbackAction = null;
+            except = null;
             exceptionHandleHelper = null;
             httpClientHelperProvider = null;
+            videoPickedCallbackAction = null;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
         {
             if (templateDescriptor is SimpleVideoTemplateDescriptor)
             {
-                return new Support.Presentation.Dashboard.Pages.VideoPickPage(exceptionHandleHelper, templateDescriptor, completedActionCallback, (Support.Presentation.Models.View.VideoViewModel model, Extend.Common.Templating.Descriptors.ITemplateDescriptor _templateDescriptor, System.Action completeCallbackAction) =>
+                return new Pages.PrePickVideoPage(exceptionHandleHelper, templateDescriptor, completedActionCallback, (Support.Presentation.Models.View.VideoViewModel model, Extend.Common.Templating.Descriptors.ITemplateDescriptor _templateDescriptor, System.Action completeCallbackAction) =>
                 {
                     Xamarin.Forms.Application.Current.MainPage.NavigationPushPageAsync(new CreateSimpleVideoPlacardPage(model, _templateDescriptor as SimpleVideoTemplateDescriptor, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completeCallbackAction));
                 }, Managers.SessionManager.Instance);
@@ -34,6 +34,11 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
             if (templateDescriptor is PicturePresentingPictureLandscapeTemplateDescriptor)
             {
                 return new PicturePresentingPictureLandscapePlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
+            }
+
+            if (templateDescriptor is PicturePresentingVideoLandscapeTemplateDescriptor)
+            {
+                return new PicturePresentingVideoLandscapePlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
             }
 
             return null;
@@ -64,6 +69,11 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
             if (placardViewModel.Template.Id == PicturePresentingPictureLandscapeTemplateDescriptor.ID)
             {
                 return new PicturePresentingPictureLandscapePlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == PicturePresentingVideoLandscapeTemplateDescriptor.ID)
+            {
+                return new PicturePresentingVideoLandscapePlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
             }
 
             return null;

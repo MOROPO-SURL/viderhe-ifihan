@@ -19,6 +19,7 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Pages
         {
             InitializeComponent();
 
+            // TODO Use it!
             this.except = except;
             this.imagePickedCallbackAction = imagePickedCallbackAction;
             this.httpClientHelperProvider = httpClientHelperProvider;

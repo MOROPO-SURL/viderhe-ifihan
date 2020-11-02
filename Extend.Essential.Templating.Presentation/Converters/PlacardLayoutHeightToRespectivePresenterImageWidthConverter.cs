@@ -12,7 +12,7 @@
 
             if (height < 0) return null;
 
-            var model = PlacardLayout.BindingContext as Models.View.PicturePresentingPictureLandscapePlacardViewModel;
+            var model = PlacardLayout.BindingContext as Models.View.Facade.IPresentedByImagePlacardViewModelFacade;
 
             return PlacardLayout.Height * model.PresenterImageWidth / model.PresenterImageHeigth;
         }

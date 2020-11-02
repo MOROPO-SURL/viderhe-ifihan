@@ -16,7 +16,8 @@
     Title="Gestionar Programación">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:PlacardViewModelToOverviewConverter x:Key="PlacardViewModelToOverviewConverter" />
+            <converters:PlacardViewModelToPlacardThumbnailViewConverter x:Key="PlacardViewModelToPlacardThumbnailViewConverter" />
+            
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:IfNullOrEmptyToStringConverter x:Key="IfNullOrEmptyToStringConverter" StringReplacement="Descripción no especificada" />
             <sscxftoolkitpresentationconverters:NullToBooleanConverter x:Key="NullToBooleanConverter" />
@@ -280,7 +281,7 @@
                                     </Grid.RowDefinitions>
                                     <ContentView 
                                         Grid.Row="0" Grid.ColumnSpan="2"
-                                        Content="{Binding Converter={StaticResource PlacardViewModelToOverviewConverter}}"
+                                        Content="{Binding Converter={StaticResource PlacardViewModelToPlacardThumbnailViewConverter}}"
                                         HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}" />
                                     <StackLayout Grid.Row="1" Grid.Column="0">
                                         <Label

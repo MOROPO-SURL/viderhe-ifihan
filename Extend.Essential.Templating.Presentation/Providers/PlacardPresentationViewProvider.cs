@@ -60,12 +60,29 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Pr
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.PresenterImage.Id)),
+                    PresenterSide = context.PresenterSide,
                     PresenterImageWidth = context.PresenterImage.Width,
                     PresenterImageHeigth = context.PresenterImage.Height,
                     PresentedSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.PresentedImage.Id)),
                     PresentedImageCenteredAtPresentation = context.PresentedImageCenteredAtPresentation,
-                    PresentedImageZoomingEnabled = context.PresentedImageZoomingEnabled,
-                    PresenterSide = context.PresenterSide
+                    PresentedImageZoomingEnabled = context.PresentedImageZoomingEnabled
+                });
+            }
+
+            if (model.Template.Id == PicturePresentingVideoLandscapeTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PicturePresentingVideoLandscapePlacardContextModel>(model.SerializedContext);
+
+                return new PicturePresentingVideoLandscapePlacardView(new Models.View.PicturePresentingVideoLandscapePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.PresenterImage.Id)),
+                    PresenterSide = context.PresenterSide,
+                    PresenterImageWidth = context.PresenterImage.Width,
+                    PresenterImageHeigth = context.PresenterImage.Height,
+                    PresentedSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(cloudServerProvider, context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
+                    PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation
                 });
             }
 

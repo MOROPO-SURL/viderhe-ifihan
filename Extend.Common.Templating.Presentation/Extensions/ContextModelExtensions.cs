@@ -15,5 +15,15 @@
                 About = target.About
             };
         }
+
+        public static Support.Presentation.Models.View.VideoViewModel ToViewModel(this Models.Context.VideoContextModel target)
+        {
+            return new Support.Presentation.Models.View.VideoViewModel
+            {
+                Id = target.Id,
+                ThumbnailId = target.ThumbnailId,
+                Extension = target.Extension
+            };
+        }
     }
 }

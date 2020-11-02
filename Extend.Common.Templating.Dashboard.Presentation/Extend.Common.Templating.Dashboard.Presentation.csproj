@@ -10,4 +10,9 @@
     <PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+    <ProjectReference Include="..\Support.Presentation\Support.Presentation.csproj" />
+  </ItemGroup>
+
 </Project>

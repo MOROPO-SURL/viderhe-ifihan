@@ -12,7 +12,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 
             this.completedCallbackAction = completedCallbackAction;
 
-            BindingContext = Providers.TemplateViewModelProvider.Instance.GetViewModels(Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape);
+            BindingContext = Support.Presentation.Providers.TemplateViewModelProvider.Instance.GetViewModels(Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape);
         }
 
         private void TemplateOverviewSelectButton_Clicked(object sender, System.EventArgs eventArgs)

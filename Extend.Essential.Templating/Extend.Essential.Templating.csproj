@@ -9,12 +9,14 @@
   <ItemGroup>
     <None Remove="08C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
     <None Remove="18C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
+    <None Remove="5172FEC6-78DB-4B26-BB61-14E0EB6C8342-landscape.png" />
     <None Remove="88C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
     <None Remove="BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0-landscape.png" />
     <None Remove="FA334577-0D4C-4366-9B68-A23D9D4AE004-landscape.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="5172FEC6-78DB-4B26-BB61-14E0EB6C8342-landscape.png" />
     <EmbeddedResource Include="FA334577-0D4C-4366-9B68-A23D9D4AE004-landscape.png" />
     <EmbeddedResource Include="08C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
     <EmbeddedResource Include="18C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />

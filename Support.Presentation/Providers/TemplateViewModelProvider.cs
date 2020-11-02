@@ -1,7 +1,7 @@
 ﻿using SmartSolucionesCuba.Videre.Support.Presentation.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
+namespace SmartSolucionesCuba.Videre.Support.Presentation.Providers
 {
     public sealed class TemplateViewModelProvider
     {
@@ -20,9 +20,9 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
             }
         }
 
-        public Support.Presentation.Models.View.TemplateViewModel[] GetViewModels(Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind playerOrientationSupportKind)
+        public Models.View.TemplateViewModel[] GetViewModels(Videre.Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind playerOrientationSupportKind)
         {
-            return Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptors().Select(d => d.ToViewModel(playerOrientationSupportKind)).ToArray();
+            return Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptors().Select(d => d.ToViewModel(playerOrientationSupportKind)).ToArray();
         }
     }
 }

@@ -20,6 +20,21 @@
 
             return result;
         }
+        public static Models.Context.VideoContextModel ToContextModel(this Support.Presentation.Models.View.VideoViewModel target)
+        {
+            var sizes = target.FrameSize.Split('x');
+
+            var result = new Models.Context.VideoContextModel
+            {
+                Id = target.Id,
+                ThumbnailId = target.ThumbnailId,
+                Extension = target.Extension,
+                FrameWidth = int.Parse(sizes[0]),
+                FrameHeight = int.Parse(sizes[1])
+            };
+
+            return result;
+        }
     }
 
 }

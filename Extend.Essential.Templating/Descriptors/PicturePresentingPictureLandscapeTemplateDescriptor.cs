@@ -8,8 +8,8 @@
 
         public Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport => Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape;
 
-        public string Name => "Imagen presentada por Imagen";
+        public string Name => "Imagen horizontal presentada por Imagen vertical";
 
-        public string Description => "Muestra dos imágenes referenciadas desde la plataforma una presentadon a la otra.";
+        public string Description => "Muestra una imagen vertical presentando a otra horizontal, ambas referenciadas desde la plataforma.";
     }
 }
