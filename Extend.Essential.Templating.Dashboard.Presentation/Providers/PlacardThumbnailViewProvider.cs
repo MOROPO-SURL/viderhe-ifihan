@@ -24,14 +24,24 @@
                 return new Views.ResponsivePicturePlacardThumbnailView(model, cloudServerProvider);
             }
 
-            if (model.Template.Id == Descriptors.PicturePresentingPictureLandscapeTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.LandscapePicturePresentingPictureTemplateDescriptor.ID)
             {
-                return new Views.PicturePresentingPictureLandscapePlacardThumbnailView(model, cloudServerProvider);
+                return new Views.LandscapePicturePresentingPicturePlacardThumbnailView(model, cloudServerProvider);
             }
 
-            if (model.Template.Id == Descriptors.PicturePresentingVideoLandscapeTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.LandscapePicturePresentingVideoTemplateDescriptor.ID)
             {
-                return new Views.PicturePresentingVideoLandscapePlacardThumbnailView(model, cloudServerProvider);
+                return new Views.LandscapePicturePresentingVideoPlacardThumbnailView(model, cloudServerProvider);
+            }
+
+            if (model.Template.Id == Descriptors.PortraitPicturePresentingPictureTemplateDescriptor.ID)
+            {
+                return new Views.PortraitPicturePresentingPicturePlacardThumbnailView(model, cloudServerProvider);
+            }
+
+            if (model.Template.Id == Descriptors.PortraitPicturePresentingVideoTemplateDescriptor.ID)
+            {
+                return new Views.PortraitPicturePresentingVideoPlacardThumbnailView(model, cloudServerProvider);
             }
 
             return null;

@@ -111,7 +111,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                     case OPTION_COMMON_EDIT:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var placardEditPage = Providers.TemplateConfigurationPageProvider.GetEditionPageByDescriptor(targetPlacardViewModel, Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade, ReloadPlacards);
+                            var placardEditPage = Providers.PlacardConfigurationPageProvider.GetEditionPageByDescriptor(targetPlacardViewModel, Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade, ReloadPlacards);
 
                             if (placardEditPage != null)
                             {
@@ -493,7 +493,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 
                         foreach (var item in task.Result.List)
                         {
-                            BindingContextPageModel.Placards.Add(item.ToViewModel(Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape));
+                            BindingContextPageModel.Placards.Add(item.ToViewModel());
                         }
                     }
 
@@ -527,7 +527,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 {
                     Id = m.Id,
                     Priority = m.Priority,
-                    Placard = m.Placard.ToViewModel(Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape),
+                    Placard = m.Placard.ToViewModel(),
                     CanOrderUp = index++ > 0,
                     CanOrderDown = index != count
                 }).ToArray();

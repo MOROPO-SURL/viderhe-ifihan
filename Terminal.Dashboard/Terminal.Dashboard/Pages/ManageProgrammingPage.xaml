@@ -5,20 +5,21 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Models.Page"
+    xmlns:supportpresentationviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation.Dashboard"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Converters"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages.ManageProgrammingPage"
     x:TypeArguments="pagemodels:ManageProgrammingPageModel"
     Title="Gestionar Programación">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:PlacardViewModelToPlacardThumbnailViewConverter x:Key="PlacardViewModelToPlacardThumbnailViewConverter" />
-            
-            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <converters:PlacardViewModelToPlacardThumbnailWrapViewConverter x:Key="PlacardViewModelToPlacardThumbnailWrapViewConverter" />
+            <converters:TemplateViewModelToTemplateThumbnailWrapViewConverter x:Key="TemplateViewModelToTemplateThumbnailWrapViewConverter" />
+            <converters:IsAnyPlayerOrientationSupportKindToBooleanConverter x:Key="IsAnyPlayerOrientationSupportKindToBooleanConverter" />
+
             <sscxftoolkitpresentationconverters:IfNullOrEmptyToStringConverter x:Key="IfNullOrEmptyToStringConverter" StringReplacement="Descripción no especificada" />
             <sscxftoolkitpresentationconverters:NullToBooleanConverter x:Key="NullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
@@ -150,7 +151,7 @@
             </StackLayout>
             <Grid                
                 Grid.Column="1" Grid.Row="1"
-                BackgroundColor="#FAFAFA">
+                BackgroundColor="#EAEAEA">
                 <CollectionView                     
                     Margin="0,2"
                     ItemsSource="{Binding Path=Frames}">
@@ -168,24 +169,29 @@
                         <DataTemplate>
                             <ContentView>
                                 <Grid
-                                    Margin="0,2"
+                                    Margin="2,2,0,2"
                                     BackgroundColor="#F5F5F5"
                                     ColumnSpacing="8"
-                                    HeightRequest="80">
+                                    HeightRequest="96">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition />
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <ffimageloadingforms:CachedImage
+                                    <Grid
                                         Grid.Column="0"             
                                         Margin="1,0"
-                                        WidthRequest="142"
-                                        BackgroundColor="Black"
-                                        Source="{Binding Path=Placard.Template.ThumbnailImageSource}"
-                                        DownsampleWidth="142"
-                                        CacheType="Disk"
-                                        CacheDuration="8760:00:00" />
+                                        WidthRequest="96">
+                                        <supportpresentationviews:IdentityBackgroundView />
+                                        <Label
+                                            IsVisible="{Binding Path=Placard.Template.PlayerOrientationSupport, Converter={StaticResource IsAnyPlayerOrientationSupportKindToBooleanConverter}}"
+                                            HorizontalOptions="End" VerticalOptions="Start"
+                                            Margin="3,2"
+                                            Text="&#xf56c;"
+                                            TextColor="White"
+                                            FontFamily="Material Design Icons" />
+                                        <ContentView Content="{Binding Path=Placard.Template, Converter={StaticResource TemplateViewModelToTemplateThumbnailWrapViewConverter}}" />
+                                    </Grid>
                                     <Label
                                         Grid.Column="1"
                                         Text="{Binding Path=Placard.Label}"
@@ -199,7 +205,7 @@
                                         VerticalOptions="Center"
                                         BackgroundColor="Transparent"
                                         BorderWidth="0"
-                                        Padding="0,6" Margin="0,0,8,0"
+                                        Padding="0,6"
                                         Text="&#xF1D9;"
                                         FontFamily="{StaticResource IconFontFamily}"
                                         FontSize="Medium"
@@ -279,10 +285,20 @@
                                         <RowDefinition />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <ContentView 
+                                    <Grid 
                                         Grid.Row="0" Grid.ColumnSpan="2"
-                                        Content="{Binding Converter={StaticResource PlacardViewModelToPlacardThumbnailViewConverter}}"
-                                        HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}" />
+                                        HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width}">
+                                        <supportpresentationviews:IdentityBackgroundView />
+                                        <Label
+                                            IsVisible="{Binding Path=Template.PlayerOrientationSupport, Converter={StaticResource IsAnyPlayerOrientationSupportKindToBooleanConverter}}"
+                                            HorizontalOptions="End" VerticalOptions="Start"
+                                            Margin="6,4"
+                                            Text="&#xf56c;"
+                                            TextColor="White"
+                                            FontFamily="Material Design Icons"
+                                            FontSize="24"/>
+                                        <ContentView Content="{Binding Converter={StaticResource PlacardViewModelToPlacardThumbnailWrapViewConverter}}" />
+                                    </Grid>
                                     <StackLayout Grid.Row="1" Grid.Column="0">
                                         <Label
                                             Margin="8,0"

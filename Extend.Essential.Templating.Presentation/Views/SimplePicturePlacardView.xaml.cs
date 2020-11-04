@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Views
 {
-    public partial class SimplePicturePlacardView : Common.Presentation.Views.BasePlacardPresentationView
+    public partial class SimplePicturePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
         public SimplePicturePlacardView(Models.View.SimplePicturePlacardViewModel model)
         {
@@ -19,11 +19,9 @@
             Xamarin.Forms.Grid.SetRow(view, 0);
         }
 
-        public override void ShowInTransitionCompleteCallback()
+        public override void PerformPlacardStarup()
         {
-            base.ShowInTransitionCompleteCallback();
-
-            if ((BindingContext as Models.View.SimplePicturePlacardViewModel).ScreenPresentationTime <= System.TimeSpan.Zero) return;
+            base.PerformPlacardStarup();
 
             if ((BindingContext as Models.View.SimplePicturePlacardViewModel).ZoomingEnabled)
             {
@@ -36,13 +34,6 @@
 
                 animation.Begin();
             }
-
-            Xamarin.Forms.Device.StartTimer((BindingContext as Models.View.SimplePicturePlacardViewModel).ScreenPresentationTime, () =>
-            {
-                EndPresentation();
-
-                return true;
-            });
         }
 
         protected override void DisposeUnmanagementResources()

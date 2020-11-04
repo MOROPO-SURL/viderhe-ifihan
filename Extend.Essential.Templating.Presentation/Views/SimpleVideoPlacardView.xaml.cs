@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Views
 {
-    public partial class SimpleVideoPlacardView : Common.Presentation.Views.BasePlacardPresentationView
+    public partial class SimpleVideoPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
         public SimpleVideoPlacardView(Models.View.SimpleVideoPlacardViewModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider)
         {

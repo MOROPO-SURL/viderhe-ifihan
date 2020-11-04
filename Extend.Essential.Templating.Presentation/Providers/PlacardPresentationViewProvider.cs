@@ -51,11 +51,11 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Pr
                 }, accountInformationProvider);
             }
 
-            if (model.Template.Id == PicturePresentingPictureLandscapeTemplateDescriptor.ID)
+            if (model.Template.Id == LandscapePicturePresentingPictureTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PicturePresentingPictureLandscapePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePicturePresentingPicturePlacardContextModel>(model.SerializedContext);
 
-                return new PicturePresentingPictureLandscapePlacardView(new Models.View.PicturePresentingPictureLandscapePlacardViewModel
+                return new LandscapePicturePresentingPicturePlacardView(new Models.View.LandscapePicturePresentingPicturePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
@@ -69,14 +69,47 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Pr
                 });
             }
 
-            if (model.Template.Id == PicturePresentingVideoLandscapeTemplateDescriptor.ID)
+            if (model.Template.Id == LandscapePicturePresentingVideoTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PicturePresentingVideoLandscapePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePicturePresentingVideoPlacardContextModel>(model.SerializedContext);
 
-                return new PicturePresentingVideoLandscapePlacardView(new Models.View.PicturePresentingVideoLandscapePlacardViewModel
+                return new LandscapePicturePresentingVideoPlacardView(new Models.View.LandscapePicturePresentingVideoPlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.PresenterImage.Id)),
+                    PresenterSide = context.PresenterSide,
+                    PresenterImageWidth = context.PresenterImage.Width,
+                    PresenterImageHeigth = context.PresenterImage.Height,
+                    PresentedSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(cloudServerProvider, context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
+                    PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation
+                });
+            }
+
+            if (model.Template.Id == PortraitPicturePresentingPictureTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitPicturePresentingPicturePlacardContextModel>(model.SerializedContext);
+
+                return new PortraitPicturePresentingPicturePlacardView(new Models.View.PortraitPicturePresentingPicturePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
+                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.PresenterImage.Id)),
+                    PresenterSide = context.PresenterSide,
+                    PresenterImageWidth = context.PresenterImage.Width,
+                    PresenterImageHeigth = context.PresenterImage.Height,
+                    PresentedSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.PresentedImage.Id)),
+                    PresentedImageCenteredAtPresentation = context.PresentedImageCenteredAtPresentation,
+                    PresentedImageZoomingEnabled = context.PresentedImageZoomingEnabled
+                });
+            }
+
+            if (model.Template.Id == PortraitPicturePresentingVideoTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitPicturePresentingVideoPlacardContextModel>(model.SerializedContext);
+
+                return new PortraitPicturePresentingVideoPlacardView(new Models.View.PortraitPicturePresentingVideoPlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.PresenterImage.Id)),
                     PresenterSide = context.PresenterSide,
                     PresenterImageWidth = context.PresenterImage.Width,

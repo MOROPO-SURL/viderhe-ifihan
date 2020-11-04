@@ -1,4 +1,5 @@
 ﻿using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Views;
+using SmartSolucionesCuba.Videre.Support.Presentation.Extensions;
 
 namespace SmartSolucionesCuba.Videre.Support.Presentation.Player.Pages
 {
@@ -32,6 +33,8 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Player.Pages
         {
             base.OnAppearing();
 
+            Xamarin.Essentials.DeviceDisplay.MainDisplayInfoChanged += DeviceDisplay_MainDisplayInfoChanged;
+
             if (!demo)
             {
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith((System.Threading.Tasks.Task task) =>
@@ -43,6 +46,16 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Player.Pages
             }
 
             presenter.BeginPresentation();
+        }
+
+        private void DeviceDisplay_MainDisplayInfoChanged(object sender, Xamarin.Essentials.DisplayInfoChangedEventArgs e)
+        {
+            if (presenter.CurrentPlacardViewModel == null) return;
+
+            if (!presenter.CurrentPlacardViewModel.Template.PlayerOrientationSupport.SupportedByMainDisplayOrientation())
+            {
+                presenter.RequestPresentNextFrame();
+            }
         }
 
         public void RequestPresentNextFrame()
@@ -76,6 +89,8 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Player.Pages
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
+
+            Xamarin.Essentials.DeviceDisplay.MainDisplayInfoChanged -= DeviceDisplay_MainDisplayInfoChanged;
 
             accountInformationProvider = null;
             cloudServerProvider = null;

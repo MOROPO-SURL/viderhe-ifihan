@@ -12,7 +12,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 
             this.completedCallbackAction = completedCallbackAction;
 
-            BindingContext = Support.Presentation.Providers.TemplateViewModelProvider.Instance.GetViewModels(Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape);
+            BindingContext = Support.Presentation.Providers.TemplateViewModelProvider.Instance.GetViewModels();
         }
 
         private void TemplateOverviewSelectButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -30,7 +30,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 return;
             }
 
-            var createPlacardEntryPointPage = Providers.TemplateConfigurationPageProvider.GetCreationEntryPointPageByDescriptor(descriptor, Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade, DelegationCompleted);
+            var createPlacardEntryPointPage = Providers.PlacardConfigurationPageProvider.GetCreationEntryPointPageByDescriptor(descriptor, Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade, DelegationCompleted);
 
             this.NavigationPushPageAsync(createPlacardEntryPointPage);
         }

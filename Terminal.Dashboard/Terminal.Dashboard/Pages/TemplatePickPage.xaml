@@ -4,15 +4,19 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Converters"
+    xmlns:supportpresentationviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages.TemplatePickPage"
     Title="Seleccionar Plantilla">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <converters:TemplateViewModelToTemplateThumbnailWrapViewConverter x:Key="TemplateViewModelToTemplateThumbnailWrapViewConverter" />
+            <converters:IsAnyPlayerOrientationSupportKindToBooleanConverter x:Key="IsAnyPlayerOrientationSupportKindToBooleanConverter" />
+
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="272" ChildAbsoluteHorizontalMargin="10" />
         </ResourceDictionary>
@@ -35,25 +39,35 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition />
-                                    <RowDefinition Height="2*" />
+                                    <RowDefinition />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <ffimageloadingforms:CachedImage
+                                <Grid
                                     Grid.Row="0"
-                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-                                    Source="{Binding Path=ThumbnailImageSource}"
-                                    BackgroundColor="Black" />
+                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width}">
+                                    <supportpresentationviews:IdentityBackgroundView />
+                                    <Label
+                                        IsVisible="{Binding Path=PlayerOrientationSupport, Converter={StaticResource IsAnyPlayerOrientationSupportKindToBooleanConverter}}"
+                                        HorizontalOptions="End" VerticalOptions="Start"
+                                        Margin="6,4"
+                                        Text="&#xf56c;"
+                                        TextColor="White"
+                                        FontFamily="Material Design Icons"
+                                        FontSize="24"/>
+                                    <ContentView Content="{Binding Converter={StaticResource TemplateViewModelToTemplateThumbnailWrapViewConverter}}" />
+                                </Grid>                                
                                 <Label 
                                     Grid.Row="1"
                                     Text="{Binding Path=Name}"
                                     FontAttributes="Bold"
                                     Margin="8,0"
-                                    LineBreakMode="TailTruncation" />
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2" />
                                 <Label 
                                     Grid.Row="2"
+                                    Margin="8,0"
                                     Text="{Binding Path=About}"
                                     TextColor="DimGray"
-                                    Margin="8,0"
                                     LineBreakMode="TailTruncation"
                                     MaxLines="2" />
                                 <StackLayout                                 

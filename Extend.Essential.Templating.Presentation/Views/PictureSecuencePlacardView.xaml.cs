@@ -2,7 +2,7 @@
 
 namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Views
 {
-    public partial class PictureSecuencePlacardView : BasePlacardPresentationView, Common.Motion.Presentation.Providers.Facade.IMotionTransitionProviderFacade
+    public partial class PictureSecuencePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, Common.Motion.Presentation.Providers.Facade.IMotionTransitionProviderFacade
     {
         private Models.Context.PictureSecuencePlacardContextModel context;
         private Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider;
@@ -41,9 +41,9 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Vi
             Xamarin.Forms.Grid.SetRow(view, 0);
         }
 
-        public override void ShowInTransitionCompleteCallback()
+        public override void PerformPlacardStarup()
         {
-            base.ShowInTransitionCompleteCallback();
+            base.PerformPlacardStarup();
 
             var placards = new System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel>();
 

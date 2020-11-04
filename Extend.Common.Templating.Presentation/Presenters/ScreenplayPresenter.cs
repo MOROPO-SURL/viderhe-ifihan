@@ -1,6 +1,7 @@
 ﻿using SmartSolucionesCuba.Videre.Extend.Common.Motion.Presentation.Providers.Facade;
 using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Providers.Facade;
 using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Views;
+using SmartSolucionesCuba.Videre.Support.Presentation.Extensions;
 using SmartSolucionesCuba.Videre.Support.Presentation.Models.View;
 using System.Linq;
 
@@ -42,6 +43,8 @@ namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Prese
 
             framesStack = new System.Collections.Generic.Stack<PlacardViewModel>(placards.Reverse());
         }
+
+        public PlacardViewModel CurrentPlacardViewModel { get; set; }
 
         public void BeginPresentation()
         {
@@ -124,7 +127,7 @@ namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Prese
                 container.Children.Remove(outgoingFrameView);
             }
 
-            incomingFrameView.ShowInTransitionCompleteCallback();
+            incomingFrameView.OnShowInTransitionComplete();
 
             placardViewTransitionCompleteCallbackAction?.Invoke(incomingFrameView, outgoingFrameView);
 
@@ -138,43 +141,66 @@ namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Prese
 
         private void PresentNextPlacardPresentationView()
         {
+            CurrentPlacardViewModel = null;
+
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
-                if (framesStack != null && framesStack.Any())
+                if (framesStack != null && framesStack.Count > 0)
                 {
                     var model = framesStack.Pop();
 
-                    var incomingFrameView = placardViewModelToPresentationViewFunction.Invoke(model);
-
-                    incomingFrameView.PresentationComplete += PlacardPresentationView_PresentationComplete;
-
-                    outgoingFrameView = container.Children.FirstOrDefault() as BasePlacardPresentationView;
-
-                    var transition = motionTransitionProvider.GetRandom(accountInformationProvider, incomingFrameView, outgoingFrameView, OnMotionTransitionCompletedCallback);
-
-                    transition?.GetReady(accountInformationProvider, container);
-
-                    container.Children.Add(incomingFrameView);
-
-                    if (transition != null)
+                    while (!model.Template.PlayerOrientationSupport.SupportedByMainDisplayOrientation())
                     {
-                        transition.PerformMotion();
+                        model = null;
+
+                        if (framesStack.Count <= 0) break;
+
+                        model = framesStack.Pop();
                     }
-                    else
+
+                    if (model != null)
                     {
-                        if (outgoingFrameView != null)
+                        var incomingFrameView = placardViewModelToPresentationViewFunction.Invoke(model);
+
+                        incomingFrameView.PresentationComplete += PlacardPresentationView_PresentationComplete;
+
+                        outgoingFrameView = container.Children.FirstOrDefault() as BasePlacardPresentationView;
+
+                        var transition = motionTransitionProvider.GetRandom(accountInformationProvider, incomingFrameView, outgoingFrameView, OnMotionTransitionCompletedCallback);
+
+                        transition?.GetReady(accountInformationProvider, container);
+
+                        container.Children.Add(incomingFrameView);
+
+                        CurrentPlacardViewModel = model;
+
+                        if (transition != null)
                         {
-                            container.Children.Remove(outgoingFrameView);
+                            transition.PerformMotion();
+                        }
+                        else
+                        {
+                            if (outgoingFrameView != null)
+                            {
+                                container.Children.Remove(outgoingFrameView);
+                            }
+
+                            incomingFrameView.OnShowInTransitionComplete();
+
+                            placardViewTransitionCompleteCallbackAction?.Invoke(incomingFrameView, outgoingFrameView);
+
+                            if (outgoingFrameView is System.IDisposable)
+                            {
+                                (outgoingFrameView as System.IDisposable).Dispose();
+                            }
+
+                            outgoingFrameView = null;
                         }
 
-                        incomingFrameView.ShowInTransitionCompleteCallback();
+                        placardPlayingCallbackAction?.Invoke(model.Id);
 
-                        placardViewTransitionCompleteCallbackAction?.Invoke(incomingFrameView, outgoingFrameView);
+                        return;
                     }
-
-                    placardPlayingCallbackAction?.Invoke(model.Id);
-
-                    return;
                 }
 
                 if (!loop)

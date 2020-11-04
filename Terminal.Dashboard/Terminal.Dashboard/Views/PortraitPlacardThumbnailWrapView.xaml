@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Converters"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    mc:Ignorable="d"
+    x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.Views.PortraitPlacardThumbnailWrapView"
+    HorizontalOptions="Center"
+    BackgroundColor="Black"
+    WidthRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+    Content="{Binding Converter={StaticResource PlacardViewModelToPlacardThumbnailViewConverter}}">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:PlacardViewModelToPlacardThumbnailViewConverter x:Key="PlacardViewModelToPlacardThumbnailViewConverter" />
+
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+</ContentView>

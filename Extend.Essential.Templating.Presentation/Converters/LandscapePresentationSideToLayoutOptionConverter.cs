@@ -4,9 +4,9 @@
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var landscapePresentationSide = (Enumerations.LandscapePresentationSide)value;
+            var presentationSide = (Enumerations.LandscapePresentationSide)value;
 
-            return landscapePresentationSide == Enumerations.LandscapePresentationSide.Left ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.End;
+            return presentationSide == Enumerations.LandscapePresentationSide.Left ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.End;
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)

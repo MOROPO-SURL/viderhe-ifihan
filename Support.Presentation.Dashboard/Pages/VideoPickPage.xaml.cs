@@ -41,6 +41,8 @@ namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Pages
             var targetImageViewModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Presentation.Models.View.VideoViewModel;
 
             videoPickedCallbackAction.Invoke(targetImageViewModel);
+
+            this.NavigationPopPageAsync();
         }
 
         private void VideoOverviewDetailButton_Clicked(object sender, System.EventArgs e)

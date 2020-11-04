@@ -18,19 +18,40 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Pages\LandscapePicturePresentingPicturePlacardConfigurationPage.xaml.cs">
+      <DependentUpon>LandscapePicturePresentingPicturePlacardConfigurationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\LandscapePicturePresentingVideoPlacardConfigurationPage.xaml.cs">
+      <DependentUpon>LandscapePicturePresentingVideoPlacardConfigurationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LandscapePicturePresentingPicturePlacardThumbnailView.xaml.cs">
+      <DependentUpon>LandscapePicturePresentingPicturePlacardThumbnailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LandscapePicturePresentingVideoPlacardThumbnailView.xaml.cs">
+      <DependentUpon>LandscapePicturePresentingVideoPlacardThumbnailView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Pages\CreateSimpleVideoPlacardPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\EditSimpleVideoPlacardPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PicturePresentingPictureLandscapePlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\LandscapePicturePresentingPicturePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PicturePresentingVideoLandscapePlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\LandscapePicturePresentingVideoPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\PictureSecuencePlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\PortraitPicturePresentingPicturePlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\PortraitPicturePresentingVideoPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\ResponsivePicturePlacardConfigurationPage.xaml">
@@ -39,13 +60,19 @@
     <EmbeddedResource Update="Pages\SimplePicturePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PicturePresentingPictureLandscapePlacardThumbnailView.xaml">
+    <EmbeddedResource Update="Views\LandscapePicturePresentingPicturePlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PicturePresentingVideoLandscapePlacardThumbnailView.xaml">
+    <EmbeddedResource Update="Views\LandscapePicturePresentingVideoPlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\PictureSecuencePlacardThumbnailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PortraitPicturePresentingPicturePlacardThumbnailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PortraitPicturePresentingVideoPlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ResponsivePicturePlacardThumbnailView.xaml">

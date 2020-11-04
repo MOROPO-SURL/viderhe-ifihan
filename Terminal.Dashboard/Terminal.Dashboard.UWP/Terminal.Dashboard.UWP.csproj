@@ -206,6 +206,10 @@
       <Project>{7b10ab64-aec2-4109-bbb6-cbe522c1273c}</Project>
       <Name>Extend.Common.Motion.Presentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Presentation\Extend.Common.Presentation.csproj">
+      <Project>{f6f4f289-0342-4f75-ae1b-7b1b7ef9711d}</Project>
+      <Name>Extend.Common.Presentation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj">
       <Project>{E620A859-7769-472D-981A-B93DBF496926}</Project>
       <Name>Extend.Common.Templating.Presentation</Name>

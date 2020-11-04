@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    mc:Ignorable="d"
+    x:Class="SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Views.PortraitPicturePresentingPicturePlacardView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:PlacardLayoutHeightToRespectivePresenterImageHeightConverter x:Key="PlacardLayoutHeightToRespectivePresenterImageHeightConverter" PlacardLayout="{x:Reference PlacardLayout}" />
+            <converters:PortraitPresentationSideToLayoutOptionConverter x:Key="PortraitPresentationSideToLayoutOptionConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="PlacardLayout">
+                <ffimageloadingforms:CachedImage
+                    x:Name="PresentedImage"
+                    FadeAnimationEnabled="False"
+                    Source="{Binding Path=PresentedSource}" 
+                    Aspect="AspectFill"
+                    CacheType="Disk"
+                    CacheDuration="8760:00:00" />
+                <ffimageloadingforms:CachedImage
+                    x:Name="PresenterImage"
+                    IsVisible="False"
+                    VerticalOptions="{Binding Path=PresenterSide, Converter={StaticResource PortraitPresentationSideToLayoutOptionConverter}}"
+                    HeightRequest="{Binding Source={x:Reference PlacardLayout}, Path=Height, Converter={StaticResource PlacardLayoutHeightToRespectivePresenterImageHeightConverter}}"
+                    FadeAnimationEnabled="False"
+                    Source="{Binding Path=PresenterSource}" 
+                    Aspect="AspectFit"
+                    CacheType="Disk"
+                    CacheDuration="8760:00:00" />
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

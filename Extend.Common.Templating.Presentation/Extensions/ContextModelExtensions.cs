@@ -21,6 +21,7 @@
             return new Support.Presentation.Models.View.VideoViewModel
             {
                 Id = target.Id,
+                FrameSize = string.Format("{0}x{1}", target.FrameWidth, target.FrameHeight),
                 ThumbnailId = target.ThumbnailId,
                 Extension = target.Extension
             };

@@ -8,6 +8,8 @@
 
         public string About { get; set; }
 
+        public Videre.Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport { get; set; }
+
         public Xamarin.Forms.ImageSource ThumbnailImageSource { get; set; }
 
         #region IDisposable Support

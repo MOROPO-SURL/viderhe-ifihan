@@ -44,6 +44,12 @@
     <Compile Update="Pages\ManageVideosPage.xaml.cs">
       <DependentUpon>ManageVideosPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\LandscapeTemplateThumbnailWrapView.xaml.cs">
+      <DependentUpon>LandscapeTemplateThumbnailWrapView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PortraitTemplateThumbnailWrapView.xaml.cs">
+      <DependentUpon>PortraitTemplateThumbnailWrapView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -91,6 +97,18 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\UserAuthenticationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LandscapeTemplateThumbnailWrapView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LandscapePlacardThumbnailWrapView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PortraitTemplateThumbnailWrapView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PortraitPlacardThumbnailWrapView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
