@@ -15,7 +15,7 @@
         </Style>
 
         <Style x:Key="ConfigurationStepDataIconLabelStyle" TargetType="Label">
-            <Setter Property="Margin" Value="10,20,10,0" />
+            <Setter Property="Margin" Value="10,24,10,0" />
             <Setter Property="TextColor" Value="WhiteSmoke" />
             <Setter Property="VerticalTextAlignment" Value="Center" />
             <Setter Property="FontFamily" Value="{StaticResource IconFontFamily}" />

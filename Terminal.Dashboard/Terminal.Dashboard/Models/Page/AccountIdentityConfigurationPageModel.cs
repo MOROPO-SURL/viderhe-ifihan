@@ -7,11 +7,28 @@
         private Xamarin.Forms.ImageSource splashImageSource;
         private Xamarin.Forms.Color primaryColor;
         private Xamarin.Forms.Color secoundaryColor;
+        private Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay;
+        private string serializedOverlayContext;
+
+        public AccountIdentityConfigurationPageModel()
+        {
+            AvailableOverlays = Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptors();
+        }
 
         public string Name { get => name; set => SetProperty(ref name, value); }
+
         public Xamarin.Forms.ImageSource LogoImageSource { get => logoImageSource; set => SetProperty(ref logoImageSource, value); }
+
         public Xamarin.Forms.ImageSource SplashImageSource { get => splashImageSource; set => SetProperty(ref splashImageSource, value); }
+
         public Xamarin.Forms.Color PrimaryColor { get => primaryColor; set => SetProperty(ref primaryColor, value); }
+
         public Xamarin.Forms.Color SecoundaryColor { get => secoundaryColor; set => SetProperty(ref secoundaryColor, value); }
+
+        public Extend.Common.Overlaying.Descriptors.IOverlayDescriptor DefaultOverlay { get => defaultOverlay; set => SetProperty(ref defaultOverlay, value); }
+
+        public string SerializedOverlayContext { get => serializedOverlayContext; set => SetProperty(ref serializedOverlayContext, value); }
+
+        public Extend.Common.Overlaying.Descriptors.IOverlayDescriptor[] AvailableOverlays { get; set; }
     }
 }

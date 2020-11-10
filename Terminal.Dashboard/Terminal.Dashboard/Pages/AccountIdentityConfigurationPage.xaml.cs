@@ -46,10 +46,27 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                         BindingContextPageModel.SecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
                         BindingContextPageModel.LogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.LogoImageId));
                         BindingContextPageModel.SplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.SplashImageId));
+                        BindingContextPageModel.DefaultOverlay = task.Result.DefaultOverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(task.Result.DefaultOverlayId.Value);
+                        BindingContextPageModel.SerializedOverlayContext = task.Result.SerializedOverlayContext;
+
+                        var found = false;
+                        var index = -1;
+
+                        foreach (var item in BindingContextPageModel.AvailableOverlays)
+                        {
+                            if (!found)
+                            {
+                                index++;
+
+                                found = BindingContextPageModel.DefaultOverlay != null && item.Id == BindingContextPageModel.DefaultOverlay.Id;
+                            }
+                        }
+
+                        if (found) OverlayPicker.SelectedIndex = index;
 
                         BindingContextPageModel.IsBusy = false;
 
-                        Managers.SessionManager.Instance.SyncronizeRequiredAccountInformation(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, task.Result.LogoImageId, task.Result.SplashImageId);
+                        Managers.SessionManager.Instance.SyncronizeRequiredAccountInformation(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, task.Result.LogoImageId, task.Result.SplashImageId, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext);
 
                         pageModelHasChanges = false;
                     }
@@ -60,6 +77,16 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
         private void PageModelPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             pageModelHasChanges = true;
+        }
+
+        private void OverlayPicker_SelectedIndexChanged(object target, System.EventArgs eventArgs)
+        {
+            BindingContextPageModel.DefaultOverlay = (target as Xamarin.Forms.Picker).SelectedItem as Extend.Common.Overlaying.Descriptors.IOverlayDescriptor;
+        }
+
+        private void SelectedOverlayClearButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            OverlayPicker.SelectedIndex = -1;
         }
 
         private void ApplyToolbarItem_Activated(object sender, System.EventArgs eventArgs)
@@ -73,7 +100,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 
             BindingContextPageModel.IsBusy = true;
 
-            Managers.SessionManager.Instance.UpdateAccountInformationAsync(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, newLogoFileData, newSplashFileData).ContinueWith(task =>
+            Managers.SessionManager.Instance.UpdateAccountInformationAsync(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, newLogoFileData, newSplashFileData, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {

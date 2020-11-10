@@ -11,7 +11,7 @@
                 concreteExtension = concreteExtension.Substring(1);
             }
 
-            return new System.Uri(string.Format("rtmp://{0}/vod/{1}.{2}", cloudServerProvider.CloudServerHost.Split(':')[0], videoId, concreteExtension));
+            return new System.Uri(string.Format("rtmp://{0}/vod/{1}.{2}", cloudServerProvider.CloudServerHost.Split(':')[0], videoId, concreteExtension.ToLowerInvariant()));
         }
     }
 }

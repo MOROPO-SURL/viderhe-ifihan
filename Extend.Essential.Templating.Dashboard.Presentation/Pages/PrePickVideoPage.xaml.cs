@@ -1,17 +1,17 @@
 ﻿using SmartSolucionesCuba.Videre.Support.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
+namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Presentation.Pages
 {
     public partial class PrePickVideoPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Support.Presentation.Dashboard.Models.Page.VideoPickPageModel>
     {
-        private Extend.Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor;
+        private Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor;
         private System.Action successfulCompleteCallbackAction;
-        private System.Action<Support.Presentation.Models.View.VideoViewModel, Extend.Common.Templating.Descriptors.ITemplateDescriptor, System.Action> videoPickedCallbackAction;
+        private System.Action<Support.Presentation.Models.View.VideoViewModel, Common.Templating.Descriptors.ITemplateDescriptor, System.Action> videoPickedCallbackAction;
         private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
         private Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
 
-        public PrePickVideoPage(Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Extend.Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, System.Action successfulCompleteCallbackAction, System.Action<Support.Presentation.Models.View.VideoViewModel, Extend.Common.Templating.Descriptors.ITemplateDescriptor, System.Action> videoPickedCallbackAction, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider)
+        public PrePickVideoPage(Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, System.Action successfulCompleteCallbackAction, System.Action<Support.Presentation.Models.View.VideoViewModel, Common.Templating.Descriptors.ITemplateDescriptor, System.Action> videoPickedCallbackAction, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider)
             : base(new Support.Presentation.Dashboard.Models.Page.VideoPickPageModel { IsBusy = true })
         {
             InitializeComponent();
@@ -98,6 +98,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
             successfulCompleteCallbackAction = null;
             exceptionHandleHelper = null;
             httpClientHelperProvider = null;
+            videoPickedCallbackAction = null;
         }
     }
 }

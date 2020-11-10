@@ -2,6 +2,8 @@
 {
     public partial class SimpleVideoPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
+        private Common.Motion.Presentation.Transitions.AbstractTransition transition;
+
         public SimpleVideoPlacardView(Models.View.SimpleVideoPlacardViewModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider)
         {
             InitializeComponent();
@@ -29,6 +31,24 @@
 
                 EndPresentation();
             }
+            else if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            {
+                transition?.PerformMotion();
+
+                transition = null;
+            }
+        }
+
+        public override void StartShowInWhenReady(Common.Motion.Presentation.Transitions.AbstractTransition transition)
+        {
+            if (VideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            {
+                base.StartShowInWhenReady(transition);
+
+                return;
+            }
+
+            this.transition = transition;
         }
 
         protected override void DisposeUnmanagementResources()
@@ -41,6 +61,8 @@
 
                 VideoPlayerView.Stop();
             }
+
+            transition = null;
         }
     }
 }

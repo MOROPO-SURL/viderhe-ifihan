@@ -27,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Cloud.Api.Connect\Cloud.Api.Connect.csproj" />
     <ProjectReference Include="..\..\Cloud.SignalR.Connect.Dashboard\Cloud.SignalR.Connect.Dashboard.csproj" />
+    <ProjectReference Include="..\..\Extend.Essential.Overlaying.Dashboard.Presentation\Extend.Essential.Overlaying.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential.Templating.Dashboard.Presentation\Extend.Essential.Templating.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Motion\Support.Extend.Motion.csproj" />
@@ -88,9 +89,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\ManageVideosPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PrePickVideoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\TemplatePickPage.xaml">

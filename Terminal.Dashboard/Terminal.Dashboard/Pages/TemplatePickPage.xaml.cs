@@ -30,7 +30,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 return;
             }
 
-            var createPlacardEntryPointPage = Providers.PlacardConfigurationPageProvider.GetCreationEntryPointPageByDescriptor(descriptor, Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade, DelegationCompleted);
+            var createPlacardEntryPointPage = Providers.PlacardConfigurationPageProvider.Instance.GetCreationEntryPointPageByDescriptor(descriptor, DelegationCompleted);
 
             this.NavigationPushPageAsync(createPlacardEntryPointPage);
         }

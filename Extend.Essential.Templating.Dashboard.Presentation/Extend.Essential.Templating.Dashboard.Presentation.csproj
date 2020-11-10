@@ -24,6 +24,9 @@
     <Compile Update="Pages\LandscapePicturePresentingVideoPlacardConfigurationPage.xaml.cs">
       <DependentUpon>LandscapePicturePresentingVideoPlacardConfigurationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\PrePickVideoPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
     <Compile Update="Views\LandscapePicturePresentingPicturePlacardThumbnailView.xaml.cs">
       <DependentUpon>LandscapePicturePresentingPicturePlacardThumbnailView.xaml</DependentUpon>
     </Compile>

@@ -2,6 +2,11 @@
 {
     public class BaseTemplatedPlacardPresentationView : Common.Presentation.Views.BasePlacardPresentationView
     {
+        public virtual void StartShowInWhenReady(Motion.Presentation.Transitions.AbstractTransition transition)
+        {
+            transition.PerformMotion();
+        }
+
         public sealed override void OnShowInTransitionComplete()
         {
             if ((BindingContext is Models.View.AbstractScreenTimedPlacardViewModel) && (BindingContext as Models.View.AbstractScreenTimedPlacardViewModel).ScreenPresentationTime <= System.TimeSpan.Zero) return;

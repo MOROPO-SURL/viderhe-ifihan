@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="SAPRESSC.Core.Api.Connect" Version="2.1.0-apha" />
     <PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+    <ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
     <ProjectReference Include="..\Support.Presentation\Support.Presentation.csproj" />
   </ItemGroup>
 

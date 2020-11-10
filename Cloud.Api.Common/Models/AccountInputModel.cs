@@ -27,6 +27,10 @@ namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models
 
         public System.Guid SplashImageId { get; set; }
 
+        public System.Guid? DefaultOverlayId { get; set; }
+
+        public string SerializedOverlayContext { get; set; }
+
         public Persistence.Entities.Account Export()
         {
             throw new System.NotImplementedException();
@@ -42,6 +46,8 @@ namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models
             entity.Name = Name;
             entity.PrimaryColor = PrimaryColor;
             entity.SecoundaryColor = SecoundaryColor;
+            entity.DefaultOverlayId = DefaultOverlayId;
+            entity.SerializedOverlayContext = SerializedOverlayContext;
         }
     }
 }

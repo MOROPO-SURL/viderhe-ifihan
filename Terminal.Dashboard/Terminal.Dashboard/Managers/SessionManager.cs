@@ -64,20 +64,22 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers
         public Color AccountSecoundaryColor { get; private set; }
         public ImageSource AccountLogoImageSource { get; private set; }
         public ImageSource AccountSplashImageSource { get; private set; }
-        public System.Guid AccountDefaultOverlayId { get; private set; }
+        public System.Guid? AccountDefaultOverlayId { get; private set; }
         public string AccountSerializedOverlayContext { get; private set; }
         public Cloud.Api.Common.Models.ExtensionDisplayModel[] AccountPlugins { get; private set; }
 
-        public void SyncronizeRequiredAccountInformation(string name, Color primaryColor, Color secoundaryColor, System.Guid logoImageId, System.Guid splashImageId)
+        public void SyncronizeRequiredAccountInformation(string name, Color primaryColor, Color secoundaryColor, System.Guid logoImageId, System.Guid splashImageId, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
         {
             AccountName = name;
             AccountPrimaryColor = primaryColor;
             AccountSecoundaryColor = secoundaryColor;
             AccountLogoImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, logoImageId));
             AccountSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, splashImageId));
+            AccountDefaultOverlayId = defaultOverlay?.Id ?? null;
+            AccountSerializedOverlayContext = serializedOverlayContext;
         }
 
-        public async System.Threading.Tasks.Task UpdateAccountInformationAsync(string name, Color primaryColor, Color secoundaryColor, Plugin.FilePicker.Abstractions.FileData logoFileData, Plugin.FilePicker.Abstractions.FileData splashFileData)
+        public async System.Threading.Tasks.Task UpdateAccountInformationAsync(string name, Color primaryColor, Color secoundaryColor, Plugin.FilePicker.Abstractions.FileData logoFileData, Plugin.FilePicker.Abstractions.FileData splashFileData, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
         {
             var client = new Cloud.Api.Connect.Clients.AccountApiClient(this);
 
@@ -86,7 +88,9 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers
                 Id = AccountId,
                 Name = name,
                 PrimaryColor = primaryColor.ToSolidHex(),
-                SecoundaryColor = secoundaryColor.ToSolidHex()
+                SecoundaryColor = secoundaryColor.ToSolidHex(),
+                DefaultOverlayId = defaultOverlay?.Id ?? null,
+                SerializedOverlayContext = serializedOverlayContext
             };
 
             if (logoFileData != null)
@@ -125,7 +129,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers
 
             var model = await client.GetCurrentAsync();
 
-            SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.SplashImageId);
+            SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.SplashImageId, defaultOverlay, model.SerializedOverlayContext);
         }
 
         public async System.Threading.Tasks.Task SignInAsync(string server, string login, string password)
@@ -158,10 +162,10 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers
 
                 AccountId = model.Id;
 
-                SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.SplashImageId);
+                var overalyDescriptor = model.DefaultOverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(model.DefaultOverlayId.Value);
 
-                AccountDefaultOverlayId = model.DefaultOverlayId;
-                AccountSerializedOverlayContext = model.SerializedOverlayContext;
+                SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.SplashImageId, overalyDescriptor, model.SerializedOverlayContext);
+
                 AccountPlugins = model.Extensions.ToArray();
             }
             catch (System.Exception e)
@@ -186,7 +190,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers
             AccountSecoundaryColor = Color.Default;
             AccountLogoImageSource = null;
             AccountSplashImageSource = null;
-            AccountDefaultOverlayId = System.Guid.Empty;
+            AccountDefaultOverlayId = null;
             AccountSerializedOverlayContext = null;
             AccountPlugins = null;
         }

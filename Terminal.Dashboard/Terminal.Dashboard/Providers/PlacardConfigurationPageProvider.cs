@@ -1,102 +1,62 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Presentation.Pages;
-using SmartSolucionesCuba.Videre.Extend.Essential.Templating.Descriptors;
-using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using System.Linq;
 
 namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
 {
-    public static class PlacardConfigurationPageProvider
+    public sealed class PlacardConfigurationPageProvider
     {
-        public static Xamarin.Forms.Page GetCreationEntryPointPageByDescriptor(Extend.Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, System.Action completedActionCallback)
+        private static PlacardConfigurationPageProvider instance;
+
+        public static PlacardConfigurationPageProvider Instance
         {
-            if (templateDescriptor is SimpleVideoTemplateDescriptor)
+            get
             {
-                return new Pages.PrePickVideoPage(exceptionHandleHelper, templateDescriptor, completedActionCallback, (Support.Presentation.Models.View.VideoViewModel model, Extend.Common.Templating.Descriptors.ITemplateDescriptor _templateDescriptor, System.Action completeCallbackAction) =>
+                if (instance == null)
                 {
-                    Xamarin.Forms.Application.Current.MainPage.NavigationPushPageAsync(new CreateSimpleVideoPlacardPage(model, _templateDescriptor as SimpleVideoTemplateDescriptor, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completeCallbackAction));
-                }, Managers.SessionManager.Instance);
-            }
+                    instance = new PlacardConfigurationPageProvider();
+                }
 
-            if (templateDescriptor is SimplePictureTemplateDescriptor)
-            {
-                return new SimplePicturePlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
+                return instance;
             }
-
-            if (templateDescriptor is ResponsivePictureTemplateDescriptor)
-            {
-                return new ResponsivePicturePlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
-            if (templateDescriptor is PictureSecuenceTemplateDescriptor)
-            {
-                return new PictureSecuencePlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
-            if (templateDescriptor is LandscapePicturePresentingPictureTemplateDescriptor)
-            {
-                return new LandscapePicturePresentingPicturePlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
-            if (templateDescriptor is LandscapePicturePresentingVideoTemplateDescriptor)
-            {
-                return new LandscapePicturePresentingVideoPlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
-            if (templateDescriptor is PortraitPicturePresentingPictureTemplateDescriptor)
-            {
-                return new PortraitPicturePresentingPicturePlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
-            if (templateDescriptor is PortraitPicturePresentingVideoTemplateDescriptor)
-            {
-                return new PortraitPicturePresentingVideoPlacardConfigurationPage(Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
-            return null;
         }
 
-        public static Xamarin.Forms.Page GetEditionPageByDescriptor(Support.Presentation.Models.View.PlacardViewModel placardViewModel, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, System.Action completedActionCallback)
+        private PlacardConfigurationPageProvider()
         {
-            if (placardViewModel.Template.Id == SimplePictureTemplateDescriptor.ID)
+            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
+                .Where(a => !a.FullName.Contains(".Videre.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Videre\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating.Dashboard.Presentation,\\sVersion=")).ToArray();
+
+            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(Extend.Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardConfigurationPageProviderFacade).IsAssignableFrom(t));
+        }
+
+        public Xamarin.Forms.Page GetCreationEntryPointPageByDescriptor(Extend.Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, System.Action completedActionCallback)
+        {
+            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Extend.Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardConfigurationPageProviderFacade>();
+
+            foreach (var provider in providers)
             {
-                return new SimplePicturePlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
+                var result = provider.GetCreationEntryPointPageByDescriptor(templateDescriptor, Presenters.NotificationPresenter.Instance, Managers.SessionManager.Instance, (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade), completedActionCallback);
+
+                if (result == null) continue;
+
+                return result;
             }
 
-            if (placardViewModel.Template.Id == SimpleVideoTemplateDescriptor.ID)
+            throw new System.InvalidOperationException();
+        }
+
+        public Xamarin.Forms.Page GetEditionPageByDescriptor(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action completedActionCallback)
+        {
+            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Extend.Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardConfigurationPageProviderFacade>();
+
+            foreach (var provider in providers)
             {
-                return new EditSimpleVideoPlacardPage(placardViewModel, CloudServerProvider.Instance, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
+                var result = provider.GetEditionPageByDescriptor(placardViewModel, CloudServerProvider.Instance, Presenters.NotificationPresenter.Instance, Managers.SessionManager.Instance, (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade), completedActionCallback);
+
+                if (result == null) continue;
+
+                return result;
             }
 
-            if (placardViewModel.Template.Id == ResponsivePictureTemplateDescriptor.ID)
-            {
-                return new ResponsivePicturePlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
-            if (placardViewModel.Template.Id == PictureSecuenceTemplateDescriptor.ID)
-            {
-                return new PictureSecuencePlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
-            if (placardViewModel.Template.Id == LandscapePicturePresentingPictureTemplateDescriptor.ID)
-            {
-                return new LandscapePicturePresentingPicturePlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
-            if (placardViewModel.Template.Id == LandscapePicturePresentingVideoTemplateDescriptor.ID)
-            {
-                return new LandscapePicturePresentingVideoPlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
-            if (placardViewModel.Template.Id == PortraitPicturePresentingPictureTemplateDescriptor.ID)
-            {
-                return new PortraitPicturePresentingPicturePlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
-            if (placardViewModel.Template.Id == PortraitPicturePresentingVideoTemplateDescriptor.ID)
-            {
-                return new PortraitPicturePresentingVideoPlacardConfigurationPage(placardViewModel, Managers.SessionManager.Instance, exceptionHandleHelper, Presenters.NotificationPresenter.Instance, completedActionCallback);
-            }
-
-            return null;
+            throw new System.InvalidOperationException();
         }
     }
 }

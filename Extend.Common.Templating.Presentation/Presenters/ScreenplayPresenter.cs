@@ -176,7 +176,14 @@ namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Prese
 
                         if (transition != null)
                         {
-                            transition.PerformMotion();
+                            if (incomingFrameView is Views.BaseTemplatedPlacardPresentationView)
+                            {
+                                (incomingFrameView as Views.BaseTemplatedPlacardPresentationView).StartShowInWhenReady(transition);
+                            }
+                            else
+                            {
+                                transition.PerformMotion();
+                            }
                         }
                         else
                         {

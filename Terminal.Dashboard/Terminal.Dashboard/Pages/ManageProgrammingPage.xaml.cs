@@ -111,7 +111,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                     case OPTION_COMMON_EDIT:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var placardEditPage = Providers.PlacardConfigurationPageProvider.GetEditionPageByDescriptor(targetPlacardViewModel, Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade, ReloadPlacards);
+                            var placardEditPage = Providers.PlacardConfigurationPageProvider.Instance.GetEditionPageByDescriptor(targetPlacardViewModel, ReloadPlacards);
 
                             if (placardEditPage != null)
                             {

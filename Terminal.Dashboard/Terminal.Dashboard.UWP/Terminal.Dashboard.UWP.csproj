@@ -206,17 +206,73 @@
       <Project>{7b10ab64-aec2-4109-bbb6-cbe522c1273c}</Project>
       <Name>Extend.Common.Motion.Presentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Motion\Extend.Common.Motion.csproj">
+      <Project>{9b378c2e-1ed2-432b-9a18-b923cefa70c7}</Project>
+      <Name>Extend.Common.Motion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Overlaying.Dashboard.Presentation\Extend.Common.Overlaying.Dashboard.Presentation.csproj">
+      <Project>{0c4a6224-eb36-44ef-9844-6b0bfbcbba17}</Project>
+      <Name>Extend.Common.Overlaying.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj">
+      <Project>{54a31415-5aca-41cf-a9da-2b97e0812ec6}</Project>
+      <Name>Extend.Common.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Overlaying\Extend.Common.Overlaying.csproj">
+      <Project>{a3bb2159-c755-415a-b238-81e5a24fa0aa}</Project>
+      <Name>Extend.Common.Overlaying</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Common.Presentation\Extend.Common.Presentation.csproj">
       <Project>{f6f4f289-0342-4f75-ae1b-7b1b7ef9711d}</Project>
       <Name>Extend.Common.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj">
+      <Project>{05af9b61-f444-429f-9148-461197c175ef}</Project>
+      <Name>Extend.Common.Templating.Dashboard.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj">
       <Project>{E620A859-7769-472D-981A-B93DBF496926}</Project>
       <Name>Extend.Common.Templating.Presentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Templating\Extend.Common.Templating.csproj">
+      <Project>{571b8648-903d-4322-addc-60ddbe97974f}</Project>
+      <Name>Extend.Common.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common\Extend.Common.csproj">
+      <Project>{fa8fcd4c-da74-4102-b767-6a0d0150c673}</Project>
+      <Name>Extend.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Motion.Presentation\Extend.Essential.Motion.Presentation.csproj">
       <Project>{b88a5d61-11d9-4827-875e-7bd9bc5f6720}</Project>
       <Name>Extend.Essential.Motion.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Motion\Extend.Essential.Motion.csproj">
+      <Project>{5e18fba2-62e1-4bae-8917-1e809fc5fcfd}</Project>
+      <Name>Extend.Essential.Motion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Overlaying.Dashboard.Presentation\Extend.Essential.Overlaying.Dashboard.Presentation.csproj">
+      <Project>{c79fac59-2855-438c-b372-23ee0e4ebb7c}</Project>
+      <Name>Extend.Essential.Overlaying.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Overlaying.Presentation\Extend.Essential.Overlaying.Presentation.csproj">
+      <Project>{2ac14cd7-ad15-48f4-afe5-b67da5107bc1}</Project>
+      <Name>Extend.Essential.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Overlaying\Extend.Essential.Overlaying.csproj">
+      <Project>{87c8e862-21a4-4679-9fc0-26a99f7a24ae}</Project>
+      <Name>Extend.Essential.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Templating.Dashboard.Presentation\Extend.Essential.Templating.Dashboard.Presentation.csproj">
+      <Project>{9792e424-4ff0-489f-b1ce-6a1ca6cd47b1}</Project>
+      <Name>Extend.Essential.Templating.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj">
+      <Project>{f52e5e05-b3d9-44f2-bfdc-2c8483f1f770}</Project>
+      <Name>Extend.Essential.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Templating\Extend.Essential.Templating.csproj">
+      <Project>{bb3b9dc7-e652-499a-b609-325a01414109}</Project>
+      <Name>Extend.Essential.Templating</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj">
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>

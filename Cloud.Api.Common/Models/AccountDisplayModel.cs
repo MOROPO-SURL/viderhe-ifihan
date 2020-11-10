@@ -19,7 +19,7 @@
 
         public string SecoundaryColor { get; set; }
 
-        public System.Guid DefaultOverlayId { get; set; }
+        public System.Guid? DefaultOverlayId { get; set; }
 
         public string SerializedOverlayContext { get; set; }
 
@@ -33,7 +33,7 @@
             SplashImageId = entity.SplashId;
             PrimaryColor = entity.PrimaryColor;
             SecoundaryColor = entity.SecoundaryColor;
-            DefaultOverlayId = entity.DefaultOverlayId ?? System.Guid.Empty;
+            DefaultOverlayId = entity.DefaultOverlayId;
             SerializedOverlayContext = entity.SerializedOverlayContext;
         }
     }

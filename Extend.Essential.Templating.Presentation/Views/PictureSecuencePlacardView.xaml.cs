@@ -51,7 +51,8 @@ namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Vi
 
             var targetTemplateViewModel = new Support.Presentation.Models.View.TemplateViewModel
             {
-                Id = targetTemplateDescriptor.Id
+                Id = targetTemplateDescriptor.Id,
+                PlayerOrientationSupport = Common.Templating.Enumerations.PlayerOrientationSupportKind.Any
             };
 
             foreach (var item in context.Images)
