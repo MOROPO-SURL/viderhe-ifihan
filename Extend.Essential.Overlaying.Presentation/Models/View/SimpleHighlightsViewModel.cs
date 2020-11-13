@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Overlaying.Presentation.Models.View
+﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Overlaying.Presentation.Models.View
 {
-    public class HighlightsViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
+    public class SimpleHighlightsViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
     {
         private string header;
         private string highlights;

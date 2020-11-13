@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Overlaying\Extend.Common.Overlaying.csproj" />
+    <ProjectReference Include="..\Extend.Common.Presentation\Extend.Common.Presentation.csproj" />
     <ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
     <ProjectReference Include="..\Support.Presentation\Support.Presentation.csproj" />
   </ItemGroup>

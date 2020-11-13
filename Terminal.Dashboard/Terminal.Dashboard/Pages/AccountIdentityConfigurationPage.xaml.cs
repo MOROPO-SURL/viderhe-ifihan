@@ -27,49 +27,52 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 
             if (!IsEnabled)
             {
-                IsEnabled = true;
-
                 var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiClient(Managers.SessionManager.Instance);
 
                 accountApiClient.GetCurrentAsync().ContinueWith(task =>
                 {
-                    if (task.Exception != null)
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
-                        this.NavigationPopPageAsync();
-
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
-                    }
-                    else
-                    {
-                        BindingContextPageModel.Name = task.Result.Name;
-                        BindingContextPageModel.PrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor);
-                        BindingContextPageModel.SecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
-                        BindingContextPageModel.LogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.LogoImageId));
-                        BindingContextPageModel.SplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.SplashImageId));
-                        BindingContextPageModel.DefaultOverlay = task.Result.DefaultOverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(task.Result.DefaultOverlayId.Value);
-                        BindingContextPageModel.SerializedOverlayContext = task.Result.SerializedOverlayContext;
-
-                        var found = false;
-                        var index = -1;
-
-                        foreach (var item in BindingContextPageModel.AvailableOverlays)
+                        if (task.Exception != null)
                         {
-                            if (!found)
-                            {
-                                index++;
+                            this.NavigationPopPageAsync();
 
-                                found = BindingContextPageModel.DefaultOverlay != null && item.Id == BindingContextPageModel.DefaultOverlay.Id;
-                            }
+                            (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
                         }
+                        else
+                        {
+                            BindingContextPageModel.Name = task.Result.Name;
+                            BindingContextPageModel.PrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor);
+                            BindingContextPageModel.SecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
+                            BindingContextPageModel.LogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.LogoImageId));
+                            BindingContextPageModel.SplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.SplashImageId));
+                            BindingContextPageModel.DefaultOverlay = task.Result.DefaultOverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(task.Result.DefaultOverlayId.Value);
+                            BindingContextPageModel.SerializedOverlayContext = task.Result.SerializedOverlayContext;
 
-                        if (found) OverlayPicker.SelectedIndex = index;
+                            var found = false;
+                            var index = -1;
 
-                        BindingContextPageModel.IsBusy = false;
+                            foreach (var item in BindingContextPageModel.AvailableOverlays)
+                            {
+                                if (!found)
+                                {
+                                    index++;
 
-                        Managers.SessionManager.Instance.SyncronizeRequiredAccountInformation(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, task.Result.LogoImageId, task.Result.SplashImageId, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext);
+                                    found = BindingContextPageModel.DefaultOverlay != null && item.Id == BindingContextPageModel.DefaultOverlay.Id;
+                                }
+                            }
 
-                        pageModelHasChanges = false;
-                    }
+                            if (found) OverlayPicker.SelectedIndex = index;
+
+                            BindingContextPageModel.IsBusy = false;
+
+                            Managers.SessionManager.Instance.SyncronizeRequiredAccountInformation(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, task.Result.LogoImageId, task.Result.SplashImageId, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext);
+
+                            pageModelHasChanges = false;
+
+                            IsEnabled = true;
+                        }
+                    });                    
                 });
             }
         }
@@ -81,12 +84,28 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 
         private void OverlayPicker_SelectedIndexChanged(object target, System.EventArgs eventArgs)
         {
+            if (BindingContextPageModel == null) return;
+
             BindingContextPageModel.DefaultOverlay = (target as Xamarin.Forms.Picker).SelectedItem as Extend.Common.Overlaying.Descriptors.IOverlayDescriptor;
+
+            if (BindingContextPageModel.DefaultOverlay == null)
+            {
+                BindingContextPageModel.SerializedOverlayContext = null;
+            }
+            else if (BindingContextPageModel.DefaultOverlay != null && BindingContextPageModel.SerializedOverlayContext == null)
+            {
+                BindingContextPageModel.SerializedOverlayContext = Providers.OverlayDefaultSerializedContextProvider.Instance.GetOverlayDefaultContextModel(BindingContextPageModel.DefaultOverlay);
+            }            
         }
 
         private void SelectedOverlayClearButton_Clicked(object sender, System.EventArgs eventArgs)
         {
             OverlayPicker.SelectedIndex = -1;
+        }
+
+        private void OverlayConfigureButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(Providers.OverlayConfigurationPageProvider.Instance.GetConfigurationPageByDescriptor(BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext, OverlayConfigurationSuccesfulComplete_Callback));
         }
 
         private void ApplyToolbarItem_Activated(object sender, System.EventArgs eventArgs)
@@ -232,6 +251,11 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                     BindingContextPageModel.SplashImageSource = Xamarin.Forms.ImageSource.FromStream(() => new System.IO.MemoryStream(imageData));
                 }
             });
+        }
+
+        private void OverlayConfigurationSuccesfulComplete_Callback(string serializedContext)
+        {
+            BindingContextPageModel.SerializedOverlayContext = serializedContext;
         }
 
         protected override void DisposeUnmanagementResources()

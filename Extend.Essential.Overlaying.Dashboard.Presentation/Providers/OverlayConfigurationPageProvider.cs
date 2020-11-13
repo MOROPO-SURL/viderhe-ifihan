@@ -2,11 +2,11 @@
 {
     public class OverlayConfigurationPageProvider : Common.Overlaying.Dashboard.Presentation.Providers.Facade.IOverlayConfigurationPageProviderFacade
     {
-        public Xamarin.Forms.Page GetConfigurationPageByDescriptor(Common.Overlaying.Descriptors.IOverlayDescriptor overlayDescriptor, string serializedContext, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, System.Action completedActionCallback)
+        public Xamarin.Forms.Page GetConfigurationPageByDescriptor(Common.Overlaying.Descriptors.IOverlayDescriptor overlayDescriptor, string serializedContext, System.Action<string> successfulCompleteCallbackAction)
         {
             if (overlayDescriptor.Id == Descriptors.SimpleHighlightsOverlayDescriptor.ID)
             {
-                return new Pages.SimpleHighlightsOverlayConfigurationPage();
+                return new Pages.SimpleHighlightsOverlayConfigurationPage(serializedContext, successfulCompleteCallbackAction);
             }
 
             return null;

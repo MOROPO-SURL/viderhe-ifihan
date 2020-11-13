@@ -13,5 +13,9 @@
         Xamarin.Forms.Color PrimaryColor { get; }
 
         Xamarin.Forms.Color SecoundaryColor { get; }
+
+        System.Guid? AccountDefaultOverlayId { get; }
+
+        string AccountSerializedOverlayContext { get; }
     }
 }

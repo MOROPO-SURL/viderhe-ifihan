@@ -41,11 +41,11 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
 
         private void InitializeSteps()
         {
-            if (Placards == null)
-            {
+            //if (Placards == null)
+            //{
                 configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.Starting);
                 configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.PlayerRegistration);
-            }
+            //}
 
             configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.ScreenplayFetch);
         }
@@ -58,9 +58,9 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
-                        overlayView = new Extend.Essential.Overlaying.Presentation.Views.SimpleHighlightsOverlayView(new Extend.Common.Overlaying.Presentation.Models.View.HighlightsViewModel { Header = Providers.AccountInformationProvider.Instance.Name, Highlights = "Fallece el destacado realizador y crítico de cine Enrique Colina || Eliminación de remesas, un golpe de Trump a la familia cubana || Equipo Cuba 1 de ajedrez marcha en cuarta posición del Mundial Universitario Online || En el municipio pinareño de Guane se arrecia la batalla contra la COVID- 19 || Enfrentan atípica cosecha de café en Granma || Aeropuerto de Holguín reiniciará operaciones aéreas el 3 de noviembre" });
+                        overlayView = Providers.AccountInformationProvider.Instance.AccountDefaultOverlayId == null ? null : Providers.OverlayPresentationViewProvider.Instance.GetOverlayPresentationView();
 
-                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(Placards.ToArray(), ScreenplayPresentationCompleteCallback, true, Providers.AccountInformationProvider.Instance, Managers.ConfigurationManager.Instance, PlacardPlayingCallback, overlayView, PlacardViewTransitionCompleteCallback)
+                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(Placards.ToArray(), ScreenplayPresentationCompleteCallback, true, Providers.AccountInformationProvider.Instance, Managers.ConfigurationManager.Instance, PlacardPlayingCallback, overlayView, PlacardViewTransitionComplete_Callback)
                         {
                             BackgroundColor = Managers.SessionManager.Instance.AccountPrimaryColor,
                             BindingContext = Managers.SessionManager.Instance.AccountSplashImageSource
@@ -189,7 +189,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
             Hubs.Client.PlayerHubClient.Instance.NotifyPlayingPlacard(placardId);
         }
 
-        private void PlacardViewTransitionCompleteCallback(Extend.Common.Presentation.Views.BasePlacardPresentationView incomingPlacardView, Extend.Common.Presentation.Views.BasePlacardPresentationView outgingPlacardView)
+        private void PlacardViewTransitionComplete_Callback(Extend.Common.Presentation.Views.BasePlacardPresentationView incomingPlacardView, Extend.Common.Presentation.Views.BasePlacardPresentationView outgingPlacardView)
         {
             var incomingPlacardViewContext = incomingPlacardView.BindingContext as Extend.Common.Templating.Presentation.Models.View.AbstractPlacardViewModel;
 
@@ -197,18 +197,18 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
             {
                 if (incomingPlacardViewContext.RequireUnobstructedPresetation)
                 {
-                    overlayView.ShowOut();
+                    overlayView?.ShowOut();
                 }
             }
             else if (incomingPlacardViewContext.RequireUnobstructedPresetation != outgoingPlacardViewContext.RequireUnobstructedPresetation)
             {
                 if (incomingPlacardViewContext.RequireUnobstructedPresetation)
                 {
-                    overlayView.ShowOut();
+                    overlayView?.ShowOut();
                 }
                 else
                 {
-                    overlayView.ShowIn();
+                    overlayView?.ShowIn();
                 }
             }
         }
@@ -254,6 +254,8 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
                 Managers.SessionManager.Instance.AccountSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.SplashImageId));
                 Managers.SessionManager.Instance.AccountPrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor);
                 Managers.SessionManager.Instance.AccountSecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
+                Managers.SessionManager.Instance.AccountDefaultOverlayId = task.Result.DefaultOverlayId;
+                Managers.SessionManager.Instance.AccountSerializedOverlayContext = task.Result.SerializedOverlayContext;
 
                 if (configurationStepQueue.Count > 1)
                 {

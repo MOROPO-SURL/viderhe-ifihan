@@ -28,5 +28,9 @@
         public Xamarin.Forms.Color PrimaryColor => Managers.SessionManager.Instance.AccountPrimaryColor;
 
         public Xamarin.Forms.Color SecoundaryColor => Managers.SessionManager.Instance.AccountSecoundaryColor;
+
+        public System.Guid? AccountDefaultOverlayId => Managers.SessionManager.Instance.AccountDefaultOverlayId;
+
+        public string AccountSerializedOverlayContext => Managers.SessionManager.Instance.AccountSerializedOverlayContext;
     }
 }

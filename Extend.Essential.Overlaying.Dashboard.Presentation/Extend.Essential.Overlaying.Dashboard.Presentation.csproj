@@ -8,11 +8,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Overlaying.Dashboard.Presentation\Extend.Common.Overlaying.Dashboard.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Overlaying.Presentation\Extend.Essential.Overlaying.Presentation.csproj" />
     <ProjectReference Include="..\Extend.Essential.Overlaying\Extend.Essential.Overlaying.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
   </ItemGroup>
 
   <ItemGroup>

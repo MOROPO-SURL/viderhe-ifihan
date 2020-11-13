@@ -2,7 +2,7 @@
 {
     public partial class SimpleHighlightsOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
-        public SimpleHighlightsOverlayView(Common.Overlaying.Presentation.Models.View.HighlightsViewModel model)
+        public SimpleHighlightsOverlayView(Models.View.SimpleHighlightsViewModel model)
         {
             InitializeComponent();
 

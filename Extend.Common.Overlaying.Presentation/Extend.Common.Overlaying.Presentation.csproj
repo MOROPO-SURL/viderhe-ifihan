@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Overlaying\Extend.Common.Overlaying.csproj" />
+    <ProjectReference Include="..\Extend.Common.Presentation\Extend.Common.Presentation.csproj" />
   </ItemGroup>
 
 </Project>

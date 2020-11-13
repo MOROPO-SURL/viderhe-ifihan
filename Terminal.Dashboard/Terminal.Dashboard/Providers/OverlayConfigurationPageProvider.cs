@@ -27,13 +27,13 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
             XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(Extend.Common.Overlaying.Dashboard.Presentation.Providers.Facade.IOverlayConfigurationPageProviderFacade).IsAssignableFrom(t));
         }
 
-        public Xamarin.Forms.Page GetConfigurationPageByDescriptor(Extend.Common.Overlaying.Descriptors.IOverlayDescriptor overlayDescriptor, string serializedContext, System.Action completedActionCallback)
+        public Xamarin.Forms.Page GetConfigurationPageByDescriptor(Extend.Common.Overlaying.Descriptors.IOverlayDescriptor overlayDescriptor, string serializedContext, System.Action<string> successfulCompleteCallbackAction)
         {
             var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Extend.Common.Overlaying.Dashboard.Presentation.Providers.Facade.IOverlayConfigurationPageProviderFacade>();
 
             foreach (var provider in providers)
             {
-                var result = provider.GetConfigurationPageByDescriptor(overlayDescriptor, serializedContext, Presenters.NotificationPresenter.Instance, Managers.SessionManager.Instance, Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade, completedActionCallback);
+                var result = provider.GetConfigurationPageByDescriptor(overlayDescriptor, serializedContext, successfulCompleteCallbackAction);
 
                 if (result == null) continue;
 

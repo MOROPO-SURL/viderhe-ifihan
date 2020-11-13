@@ -29,6 +29,10 @@
 
         public Xamarin.Forms.Color AccountSecoundaryColor { get; set; }
 
+        public System.Guid? AccountDefaultOverlayId { get; set; }
+
+        public string AccountSerializedOverlayContext { get; set; }
+
         public SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("http://{0}/api/", ConfigurationManager.Instance.CloudServerHost), null, () => ExtraHeaders);
 
         public System.Collections.Generic.KeyValuePair<string, string>[] ExtraHeaders

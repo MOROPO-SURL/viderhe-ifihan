@@ -108,7 +108,8 @@
                                 <Button 
                                     IsEnabled="{Binding Source={x:Reference OverlayPicker}, Path=SelectedItem, Converter={StaticResource NotNullToBooleanConverter}}"
                                     FontFamily="{StaticResource IconFontFamily}"
-                                    Text="&#xf493;" />
+                                    Text="&#xf493;"
+                                    Clicked="OverlayConfigureButton_Clicked" />
                                 <Button 
                                     IsEnabled="{Binding Source={x:Reference OverlayPicker}, Path=SelectedItem, Converter={StaticResource NotNullToBooleanConverter}}"
                                     FontFamily="{StaticResource IconFontFamily}"
