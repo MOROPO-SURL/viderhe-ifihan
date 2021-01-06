@@ -92,7 +92,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 
                     break;
 
-                case Enumerations.ActionKind.ManagePlugins:
+                case Enumerations.ActionKind.ManageExtensions:
                     this.NavigationPushPageAsync(new ManageExtensionsPage());
 
                     break;
@@ -122,27 +122,9 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 },
                 new Models.View.ActionViewModel
                 {
-                    Kind = Enumerations.ActionKind.ManagePlugins,
+                    Kind = Enumerations.ActionKind.ManageExtensions,
                     Caption = "Complementos",
                     IconGlyph = "\uF431"
-                },
-                new Models.View.ActionViewModel
-                {
-                    Kind = Enumerations.ActionKind.ManageUpperviews,
-                    Caption = "Mascaras",
-                    IconGlyph = "\uFE3A"
-                },
-                new Models.View.ActionViewModel
-                {
-                    Kind = Enumerations.ActionKind.ManageTemplates,
-                    Caption = "Plantillas",
-                    IconGlyph = "\uF268"
-                },
-                new Models.View.ActionViewModel
-                {
-                    Kind = Enumerations.ActionKind.ManageTransitions,
-                    Caption = "Transiciones",
-                    IconGlyph = "\uF914"
                 },
                 new Models.View.ActionViewModel
                 {
