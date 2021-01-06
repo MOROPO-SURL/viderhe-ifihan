@@ -8,6 +8,9 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
         private const string SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE = "Completado el Ciclo Actual";
         private const string SCREENPLAY_HANDLING_MODE_IMMEDIATELY = "Inmediatamente";
 
+        private const string PLAYER_HANDLING_SHUTDOWN = "Apagar";
+        private const string PLAYER_HANDLING_RESTART = "Reiniciar";
+
         public ManagePlayersPage() : base(new Models.Page.ManagePlayersPageModel { IsBusy = true })
         {
             InitializeComponent();
@@ -42,6 +45,8 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 
             Hubs.Client.DashboardHubClient.Instance.RequestPlayerPresentNextFrameAsync(model.Id).ContinueWith(hubTask =>
             {
+                System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
                     BindingContextPageModel.IsBusy = false;
@@ -59,11 +64,129 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 
             Hubs.Client.DashboardHubClient.Instance.RequestPlayerPresentPreviousFrameAsync(model.Id).ContinueWith(hubTask =>
             {
+                System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
                     BindingContextPageModel.IsBusy = false;
 
                     Presenters.NotificationPresenter.Instance.PresentNotification("Reproducir Marco Anterior", "Solicitud de reproducción de marco anterior enviada con éxito.");
+                });
+            });
+        }
+
+        private void PlayerAudioEnabledSwitchButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            if (BindingContextPageModel.IsBusy) return;
+
+            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+
+            Hubs.Client.DashboardHubClient.Instance.RequestPlayerSetAudioEnabledAsync(model.Id, !model.AudioEnabled).ContinueWith(hubTask =>
+            {
+                System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    BindingContextPageModel.IsBusy = false;
+                });
+            });
+        }
+
+        private void PlayerAudioVolumeUpButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            if (BindingContextPageModel.IsBusy) return;
+
+            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+
+            Hubs.Client.DashboardHubClient.Instance.RequestPlayerAudioVolumeChangeAsync(model.Id, model.AudioLevel + 10).ContinueWith(hubTask =>
+            {
+                System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    BindingContextPageModel.IsBusy = false;
+                });
+            });
+        }
+
+        private void PlayerAudioVolumeDownButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            if (BindingContextPageModel.IsBusy) return;
+
+            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+
+            Hubs.Client.DashboardHubClient.Instance.RequestPlayerAudioVolumeChangeAsync(model.Id, model.AudioLevel - 10).ContinueWith(hubTask =>
+            {
+                System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    BindingContextPageModel.IsBusy = false;
+                });
+            });
+        }
+
+        private void PlayerTerminateButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            if (BindingContextPageModel.IsBusy) return;
+
+            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+
+            DisplayActionSheet("Apagar Dispositivo", "Cancelar", null, PLAYER_HANDLING_RESTART, PLAYER_HANDLING_SHUTDOWN).ContinueWith(shutdownModelPickDialogTask =>
+            {
+                if (shutdownModelPickDialogTask.Result == PLAYER_HANDLING_RESTART)
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        DisplayAlert("Confirmar", "Está seguro que desea reiniciar este dispositivo?", "Reiniciar", "Cancelar").ContinueWith(confirmationDialogTask =>
+                        {
+                            if (!confirmationDialogTask.Result) return;
+
+                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerTerminateAsync(model.Id, true).ContinueWith(hubTask =>
+                            {
+                                System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+
+                                    Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Dispositivo", "Solicitud de reinicio de dispositivo enviada con éxito.");
+                                });
+                            });
+                        });
+                    });
+
+                    return;
+                }
+
+                if (shutdownModelPickDialogTask.Result == PLAYER_HANDLING_SHUTDOWN)
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        DisplayAlert("Confirmar", "Está seguro que desea apagar este dispositivo?", "Apagar", "Cancelar").ContinueWith(confirmationDialogTask =>
+                        {
+                            if (!confirmationDialogTask.Result) return;
+
+                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerTerminateAsync(model.Id, false).ContinueWith(hubTask =>
+                            {
+                                System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+
+                                    Presenters.NotificationPresenter.Instance.PresentNotification("Apagar Dispositivo", "Solicitud de apagar dispositivo enviada con éxito.");
+                                });
+                            });
+                        });
+                    });
+
+                    return;
+                }
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    BindingContextPageModel.IsBusy = false;
                 });
             });
         }
@@ -80,6 +203,8 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 {
                     Hubs.Client.DashboardHubClient.Instance.RequestPlayerRestarScreenplayAsync(model.Id, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
                     {
+                        System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
                             (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
@@ -95,6 +220,8 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 {
                     Hubs.Client.DashboardHubClient.Instance.RequestPlayerRestarScreenplayAsync(model.Id, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
                     {
+                        System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
                             (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
@@ -125,6 +252,8 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 {
                     Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(model.Id, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
                     {
+                        System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
                             BindingContextPageModel.IsBusy = false;
@@ -140,6 +269,8 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 {
                     Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(model.Id, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
                     {
+                        System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
                             BindingContextPageModel.IsBusy = false;
@@ -155,6 +286,8 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 {
                     Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(model.Id, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
                     {
+                        System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
                             BindingContextPageModel.IsBusy = false;
@@ -170,6 +303,8 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 {
                     Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(model.Id, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
                     {
+                        System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
                             BindingContextPageModel.IsBusy = false;

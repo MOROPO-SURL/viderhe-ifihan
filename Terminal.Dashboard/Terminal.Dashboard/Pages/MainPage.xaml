@@ -23,7 +23,7 @@
                     <Type TypeName="viewmodels:ActionViewModel" />
                 </x:Arguments>
                 <Frame
-                    Margin="10" Padding="0"
+                    Margin="5" Padding="0"
                     BackgroundColor="White"
                     HasShadow="False"
                     CornerRadius="0"
@@ -54,7 +54,7 @@
                     <Type TypeName="viewmodels:SessionActionViewModel" />
                 </x:Arguments>
                 <Frame
-                    Margin="10" Padding="0"
+                    Margin="5" Padding="0"
                     BackgroundColor="Accent"
                     HasShadow="False"
                     CornerRadius="0"
@@ -94,7 +94,7 @@
                 </Frame>
             </DataTemplate>
             <viewtemplateselectors:ActionDataTemplateSelector x:Key="ActionDataTemplateSelector" SimpleActionDataTemplate="{StaticResource SimpleActionDataTemplate}" SessionActionDataTemplate="{StaticResource SessionActionDataTemplate}" />
-            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="272" ChildAbsoluteHorizontalMargin="20" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="272" ChildAbsoluteHorizontalMargin="10" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <!--<ContentPage.ToolbarItems>
@@ -111,7 +111,7 @@
         <supportpresentationdashboardviews:BackgroundView />
         <ScrollView Orientation="Vertical">
             <FlexLayout
-                Margin="10"
+                Margin="5"
                 Wrap="Wrap"
                 AlignItems="Start" AlignContent="Start"
                 BindableLayout.ItemsSource="{Binding Path=Actions}"

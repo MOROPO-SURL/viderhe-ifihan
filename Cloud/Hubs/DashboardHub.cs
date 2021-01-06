@@ -75,6 +75,19 @@ namespace SmartSolucionesCuba.Videre.Cloud.Hubs
             catch { }
         }
 
+        public void PlayerSetAudioEnabled(string playerId, bool enabled)
+        {
+            var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+
+            try
+            {
+                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+
+                playerHubContext.Clients.Client(playerContext.ConnectionId).SetAudioEnabled(enabled);
+            }
+            catch { }
+        }
+
         public void PlayerSetAudioLevel(string playerId, int percent)
         {
             var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);

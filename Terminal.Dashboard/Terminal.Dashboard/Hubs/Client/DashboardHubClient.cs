@@ -71,6 +71,21 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Hubs.Client
             await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerReloadScreenplay), playerId, immediacyMode);
         }
 
+        public async System.Threading.Tasks.Task RequestPlayerSetAudioEnabledAsync(string playerId, bool enabled)
+        {
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerSetAudioEnabled), playerId, enabled);
+        }
+
+        public async System.Threading.Tasks.Task RequestPlayerAudioVolumeChangeAsync(string playerId, int percent)
+        {
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerSetAudioLevel), playerId, percent);
+        }
+
+        public async System.Threading.Tasks.Task RequestPlayerTerminateAsync(string playerId, bool restart)
+        {
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerShutdown), playerId, restart);
+        }
+
         public System.Threading.Tasks.Task PlayerConnected(string playerId)
         {
             try

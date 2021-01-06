@@ -4,12 +4,14 @@
     {
         void SetAudioLevel(int percent);
 
-        int GetAudioLevel();
+        int AudioLevel { get; }
 
         void SetAudioEnabled(bool enabled);
 
-        bool IsAudioEnabled();
+        bool IsAudioEnabled { get; }
 
-        void Shutdown(bool restart);
+        void Close(bool restart);
+
+        System.Threading.Tasks.Task ShutdownAsync(bool restart);
     }
 }

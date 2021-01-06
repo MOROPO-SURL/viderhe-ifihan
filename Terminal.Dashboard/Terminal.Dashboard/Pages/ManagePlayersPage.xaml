@@ -24,8 +24,9 @@
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BooleanToPlayerAudioEnablingSwichGlyphIconStringConverter" FalseString="&#xf57e;" TrueString="&#xf581;" />
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
             <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="20" />
-            <converters:BoolToColorConverter x:Key="BoolToBackgroudColorConverter" TrueColor="#FFDDFAE5" FalseColor="Black" />
-            <converters:BoolToColorConverter x:Key="BoolToTextColorConverter" TrueColor="Black" FalseColor="White" />
+
+            <converters:AllTrueMultiConverter x:Key="AllTrueMultiConverter" />
+            <converters:IsPlayerConnectedToViewConverter x:Key="IsPlayerConnectedToViewConverter" />
             <converters:PlayerAudioLevelKnownToBooleanConverter x:Key="PlayerAudioLevelKnownToBooleanConverter" />
             <converters:PlayerAudioLevelReachedToBooleanConverter x:Key="MaxPlayerAudioLevelReachedToBooleanConverter" TargetAudioLevel="100" />
             <converters:PlayerAudioLevelReachedToBooleanConverter x:Key="MinPlayerAudioLevelReachedToBooleanConverter" TargetAudioLevel="10" />
@@ -79,10 +80,10 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <BoxView
+                                <ContentView
                                     Grid.Column="0" Grid.Row="0"
                                     HeightRequest="248"
-                                    BackgroundColor="{Binding Path=IsConnected, Converter={StaticResource BoolToBackgroudColorConverter}}" />
+                                    Content="{Binding Path=IsConnected, Converter={StaticResource IsPlayerConnectedToViewConverter}}" />
                                 <Label
                                     Grid.Column="0" Grid.Row="0"
                                     FontFamily="{StaticResource IconFontFamily}"
@@ -90,7 +91,7 @@
                                     VerticalTextAlignment="Center"
                                     HorizontalTextAlignment="Center"
                                     Text="{Binding Path=IsConnected, Converter={StaticResource BooleanToPlayerConnectionStateGlyphIconStringConverter}}"
-                                    TextColor="{Binding Path=IsConnected, Converter={StaticResource BoolToTextColorConverter}}" />
+                                    TextColor="White" />
                                 <StackLayout Grid.Column="0" Grid.Row="0">
                                     <StackLayout
                                         Padding="4"
@@ -102,7 +103,7 @@
                                             Clicked="PlayerOverviewEditButton_Clicked">
                                             <ImageButton.Source>
                                                 <FontImageSource 
-                                                    Color="{Binding Path=IsConnected, Converter={StaticResource BoolToTextColorConverter}}"
+                                                    Color="White"
                                                     FontFamily="{StaticResource IconFontFamily}"
                                                     Glyph="&#xf90b;" />
                                             </ImageButton.Source>
@@ -112,7 +113,7 @@
                                             Clicked="PlayerOverviewDeleteButton_Clicked">
                                             <ImageButton.Source>
                                                 <FontImageSource 
-                                                    Color="{Binding Path=IsConnected, Converter={StaticResource BoolToTextColorConverter}}"
+                                                    Color="White"
                                                     FontFamily="{StaticResource IconFontFamily}"
                                                     Glyph="&#xfa79;" />
                                             </ImageButton.Source>
@@ -187,21 +188,39 @@
                                         TextColor="DimGray"
                                         FontAttributes="Bold" />
                                     <Button 
-                                        IsEnabled="{Binding Path=AudioLevel, Converter={StaticResource PlayerAudioLevelKnownToBooleanConverter}}"
+                                        IsEnabled="{Binding Path=IsConnected}"
                                         Text="{Binding Path=AudioEnabled, Converter={StaticResource BooleanToPlayerAudioEnablingSwichGlyphIconStringConverter}}"
-                                        Style="{StaticResource ActionButton}" />
+                                        Style="{StaticResource ActionButton}"
+                                        Clicked="PlayerAudioEnabledSwitchButton_Clicked" />
                                     <Button 
-                                        IsEnabled="{Binding Path=AudioLevel, Converter={StaticResource MinPlayerAudioLevelReachedToBooleanConverter}}"
                                         Text="&#xf75d;"
-                                        Style="{StaticResource ActionButton}" />
+                                        Style="{StaticResource ActionButton}"
+                                        Clicked="PlayerAudioVolumeDownButton_Clicked">
+                                        <Button.IsEnabled>
+                                            <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                                                <Binding Path="IsConnected" />
+                                                <Binding Path="AudioEnabled" />
+                                                <Binding Path="AudioLevel" Converter="{StaticResource MinPlayerAudioLevelReachedToBooleanConverter}" />
+                                            </MultiBinding>
+                                        </Button.IsEnabled>
+                                    </Button>
                                     <Button 
-                                        IsEnabled="{Binding Path=AudioLevel, Converter={StaticResource MaxPlayerAudioLevelReachedToBooleanConverter}}"
                                         Text="&#xf75c;"
-                                        Style="{StaticResource ActionButton}" />
+                                        Style="{StaticResource ActionButton}"
+                                        Clicked="PlayerAudioVolumeUpButton_Clicked">
+                                        <Button.IsEnabled>
+                                            <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                                                <Binding Path="IsConnected" />
+                                                <Binding Path="AudioEnabled" />
+                                                <Binding Path="AudioLevel" Converter="{StaticResource MaxPlayerAudioLevelReachedToBooleanConverter}" />
+                                            </MultiBinding>
+                                        </Button.IsEnabled>
+                                    </Button>
                                     <Button 
                                         IsEnabled="{Binding Path=IsConnected}"
                                         Text="&#xf905;"
-                                        Style="{StaticResource ActionButton}" />
+                                        Style="{StaticResource ActionButton}"
+                                        Clicked="PlayerTerminateButton_Clicked" />
                                 </StackLayout>
                             </Grid>
                         </DataTemplate>

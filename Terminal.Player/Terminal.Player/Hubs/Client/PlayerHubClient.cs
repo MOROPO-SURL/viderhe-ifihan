@@ -44,6 +44,9 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Hubs.Client
             connection.On(nameof(PresentPreviousFrame), PresentPreviousFrame);
             connection.On<ScreenplayHandlingImmediacyMode>(nameof(RestarScreenplay), RestarScreenplay);
             connection.On<ScreenplayHandlingImmediacyMode>(nameof(ReloadScreenplay), ReloadScreenplay);
+            connection.On<bool>(nameof(SetAudioEnabled), SetAudioEnabled);
+            connection.On<int>(nameof(SetAudioLevel), SetAudioLevel);
+            connection.On<bool>(nameof(Shutdown), Shutdown);
 
             connection.Closed += Connection_ClosedAsync;
         }
@@ -67,10 +70,15 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Hubs.Client
                     {
                         var platformControlHelper = Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>();
 
-                        connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Player.Hubs.IPlayerHub.UpdateEnvironmentConfiguration), platformControlHelper.GetAudioLevel(), platformControlHelper.IsAudioEnabled());
+                        UpdateEnvironmentConfiguration(platformControlHelper.AudioLevel, platformControlHelper.IsAudioEnabled);
                     });
                 });
             }
+        }
+
+        public void UpdateEnvironmentConfiguration(int audioLevel, bool isAudioEnabled)
+        {
+            connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Player.Hubs.IPlayerHub.UpdateEnvironmentConfiguration), audioLevel, isAudioEnabled);
         }
 
         public void NotifyPlayingPlacard(System.Guid placardId)
@@ -142,9 +150,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Hubs.Client
 
         public System.Threading.Tasks.Task Shutdown(bool restart)
         {
-            Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Shutdown(restart);
-
-            return System.Threading.Tasks.Task.CompletedTask;
+            return Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().ShutdownAsync(restart);
         }
 
         #region IDisposable Support

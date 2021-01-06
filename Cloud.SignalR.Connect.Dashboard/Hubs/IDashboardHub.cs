@@ -10,6 +10,8 @@
 
         void PlayerReloadScreenplay(string playerId, Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
 
+        void PlayerSetAudioEnabled(string playerId, bool enabled);
+
         void PlayerSetAudioLevel(string playerId, int percent);
 
         void PlayerShutdown(string playerId, bool restart = false);
