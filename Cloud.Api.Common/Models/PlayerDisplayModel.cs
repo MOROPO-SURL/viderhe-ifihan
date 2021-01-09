@@ -17,6 +17,10 @@
 
         public ScreenplayDisplayModel Screenplay { get; set; }
 
+        public System.Guid? OverlayId { get; set; }
+
+        public string SerializedOverlayContext { get; set; }
+
         public bool IsConnected { get; set; }
 
         public int AudioLevel { get; set; }
@@ -28,6 +32,8 @@
             Id = entity.Id;
             Name = entity.Name;
             About = entity.About;
+            OverlayId = entity.OverlayId;
+            SerializedOverlayContext = entity.SerializedOverlayContext;
 
             if (entity.Screenplay == null) return;
 

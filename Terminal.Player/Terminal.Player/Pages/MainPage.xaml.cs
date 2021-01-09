@@ -165,7 +165,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
         {
             (sender as AbstractAnimation).Completed -= CurentStepAnimateOut_Completed;
 
-            System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(1)).ContinueWith((System.Threading.Tasks.Task task) =>
+            System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(1)).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(PresentNextConfigurationStep);
             });
@@ -241,7 +241,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
                     }
                 }
 
-                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith((System.Threading.Tasks.Task delayTask) =>
+                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(delayTask =>
                 {
                     RequestAccountAsync().ContinueWith(OnRequestAccountCallback);
                 });
@@ -277,7 +277,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
         {
             if (task.Exception != null || task.Result == null || task.Result.Count() <= 0)
             {
-                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith((System.Threading.Tasks.Task delayTask) =>
+                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(delayTask =>
                 {
                     RequestScreenplayPlacardsAsync().ContinueWith(OnRequestScreenplayPlacardsCallback);
                 });
