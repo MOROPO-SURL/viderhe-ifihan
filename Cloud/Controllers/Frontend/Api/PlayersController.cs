@@ -33,6 +33,12 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend.Api
 
                 model.Import(player.Account);
 
+                if (player.OverlayId != null)
+                {
+                    model.DefaultOverlayId = player.OverlayId;
+                    model.SerializedOverlayContext = player.SerializedOverlayContext;
+                }
+
                 Response.Headers.Add(Request.Headers.First(header => header.Key == Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY));
 
                 return Ok(model);

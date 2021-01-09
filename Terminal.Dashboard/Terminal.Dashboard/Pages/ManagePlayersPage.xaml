@@ -23,7 +23,7 @@
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BooleanToPlayerConnectionStateGlyphIconStringConverter" FalseString="&#xf83a;" TrueString="&#xf503;" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BooleanToPlayerAudioEnablingSwichGlyphIconStringConverter" FalseString="&#xf57e;" TrueString="&#xf581;" />
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
-            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="20" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="240" ChildAbsoluteHorizontalMargin="10" />
 
             <converters:AllTrueMultiConverter x:Key="AllTrueMultiConverter" />
             <converters:IsPlayerConnectedToViewConverter x:Key="IsPlayerConnectedToViewConverter" />
@@ -82,12 +82,12 @@
                                 </Grid.RowDefinitions>
                                 <ContentView
                                     Grid.Column="0" Grid.Row="0"
-                                    HeightRequest="248"
+                                    HeightRequest="196"
                                     Content="{Binding Path=IsConnected, Converter={StaticResource IsPlayerConnectedToViewConverter}}" />
                                 <Label
                                     Grid.Column="0" Grid.Row="0"
                                     FontFamily="{StaticResource IconFontFamily}"
-                                    FontSize="128"
+                                    FontSize="96"
                                     VerticalTextAlignment="Center"
                                     HorizontalTextAlignment="Center"
                                     Text="{Binding Path=IsConnected, Converter={StaticResource BooleanToPlayerConnectionStateGlyphIconStringConverter}}"

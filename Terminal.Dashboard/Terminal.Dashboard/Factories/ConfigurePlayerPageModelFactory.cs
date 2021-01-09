@@ -12,7 +12,9 @@
                     Id = model.Id,
                     Name = model.Name,
                     Screenplay = model.Screenplay,
-                    About = model.About
+                    About = model.About,
+                    Overlay = model.OverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(model.OverlayId.Value),
+                    SerializedOverlayContext = model.SerializedOverlayContext
                 };
             }
             else

@@ -19,5 +19,9 @@
         public int AudioLevel { get => audioLevel; set => SetProperty(ref audioLevel, value); }
 
         public bool AudioEnabled { get => audioEnabled; set => SetProperty(ref audioEnabled, value); }
+
+        public System.Guid? OverlayId { get; set; }
+
+        public string SerializedOverlayContext { get; set; }
     }
 }

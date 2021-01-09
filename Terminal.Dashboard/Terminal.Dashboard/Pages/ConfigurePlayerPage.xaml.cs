@@ -4,6 +4,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 {
     public partial class ConfigurePlayerPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigurePlayerPageModel>
     {
+        private bool pageModelHasChanges;
         private readonly bool editing;
 
         private System.Action successCallbackAction;
@@ -26,6 +27,8 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 Title = "Agregar Reproductor";
             }
 
+            BindingContextPageModel.PropertyChanged += PageModel_PropertyChanged;
+
             IsEnabled = false;
         }
 
@@ -46,6 +49,8 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
+                        OverlayPicker.SelectedIndex = 0;
+
                         if (task.Exception != null || task.IsCanceled)
                         {
                             (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
@@ -72,9 +77,16 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                             }
 
                             if (found) ScreenplayPicker.SelectedIndex = index;
+
+                            if (BindingContextPageModel.Overlay != null)
+                            {
+                                OverlayPicker.SelectedItem = BindingContextPageModel.Overlay;
+                            }
                         }
 
                         BindingContextPageModel.IsBusy = false;
+
+                        pageModelHasChanges = false;
                     });
                 });
             }
@@ -87,6 +99,11 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
             return true;
         }
 
+        private void PageModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            pageModelHasChanges = true;
+        }
+
         private void ScreenplayPicker_SelectedIndexChanged(object target, System.EventArgs eventArgs)
         {
             BindingContextPageModel.Screenplay = (target as Xamarin.Forms.Picker).SelectedItem as Cloud.Api.Common.Models.ScreenplayDisplayModel;
@@ -97,8 +114,36 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
             ScreenplayPicker.SelectedIndex = -1;
         }
 
+        private void OverlayPicker_SelectedIndexChanged(object target, System.EventArgs eventArgs)
+        {
+            if (BindingContextPageModel == null || BindingContextPageModel.IsBusy) return;
+
+            BindingContextPageModel.Overlay = (target as Xamarin.Forms.Picker).SelectedItem as Extend.Common.Overlaying.Descriptors.IOverlayDescriptor;
+
+            if (BindingContextPageModel.Overlay == null)
+            {
+                BindingContextPageModel.SerializedOverlayContext = null;
+            }
+            else if (BindingContextPageModel.Overlay != null && BindingContextPageModel.SerializedOverlayContext == null)
+            {
+                BindingContextPageModel.SerializedOverlayContext = Providers.OverlayDefaultSerializedContextProvider.Instance.GetOverlayDefaultContextModel(BindingContextPageModel.Overlay);
+            }
+        }
+
+        private void OverlayConfigureButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(Providers.OverlayConfigurationPageProvider.Instance.GetConfigurationPageByDescriptor(BindingContextPageModel.Overlay, BindingContextPageModel.SerializedOverlayContext, OverlayConfigurationSuccesfulComplete_Callback));
+        }
+
         private void ApplyToolbarItem_Activated(object sender, System.EventArgs eventArgs)
         {
+            if (!pageModelHasChanges)
+            {
+                this.NavigationPopPageAsync();
+
+                return;
+            }
+
             BindingContextPageModel.IsBusy = true;
 
             System.Threading.Tasks.Task.Run(async () =>
@@ -110,7 +155,9 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                     Id = BindingContextPageModel.Id,
                     Name = BindingContextPageModel.Name,
                     About = BindingContextPageModel.About,
-                    ScreenplayId = BindingContextPageModel.Screenplay?.Id ?? System.Guid.Empty
+                    ScreenplayId = BindingContextPageModel.Screenplay?.Id ?? System.Guid.Empty,
+                    OverlayId = BindingContextPageModel.Overlay?.Id ?? null,
+                    SerializedOverlayContext = BindingContextPageModel.SerializedOverlayContext
                 };
 
                 if (editing)
@@ -143,6 +190,13 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
 
         private void CancelToolbarItem_Activated(object sender, System.EventArgs eventArgs)
         {
+            if (!pageModelHasChanges)
+            {
+                this.NavigationPopPageAsync();
+
+                return;
+            }
+
             DisplayAlert("Confirmar", "Está seguro que desea regresar sin guardar los cambios?", "Regresar", "Cancelar").ContinueWith(task =>
             {
                 if (!task.Result) return;
@@ -156,9 +210,16 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
             });
         }
 
+        private void OverlayConfigurationSuccesfulComplete_Callback(string serializedContext)
+        {
+            BindingContextPageModel.SerializedOverlayContext = serializedContext;
+        }
+
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
+
+            BindingContextPageModel.PropertyChanged -= PageModel_PropertyChanged;
 
             successCallbackAction?.Invoke();
 

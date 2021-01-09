@@ -405,7 +405,9 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
                                 Screenplay = model.Screenplay,
                                 IsConnected = model.IsConnected,
                                 AudioLevel = model.AudioLevel,
-                                AudioEnabled = model.AudioEnabled
+                                AudioEnabled = model.AudioEnabled,
+                                OverlayId = model.OverlayId,
+                                SerializedOverlayContext = model.SerializedOverlayContext
                             });
                         }
 

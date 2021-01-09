@@ -6,10 +6,15 @@
         private string name;
         private string about;
         private Cloud.Api.Common.Models.ScreenplayDisplayModel screenplay;
+        private Extend.Common.Overlaying.Descriptors.IOverlayDescriptor overlay;
+        private string serializedOverlayContext;
 
         public ConfigurePlayerPageModel()
         {
             Screenplays = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.ScreenplayDisplayModel>();
+            AvailableOverlays = new System.Collections.Generic.List<Extend.Common.Overlaying.Descriptors.IOverlayDescriptor>(Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptors());
+
+            AvailableOverlays.Insert(0, null);
         }
 
         public string Id
@@ -37,6 +42,12 @@
         }
 
         public System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.ScreenplayDisplayModel> Screenplays { get; set; }
+
+        public Extend.Common.Overlaying.Descriptors.IOverlayDescriptor Overlay { get => overlay; set => SetProperty(ref overlay, value); }
+
+        public string SerializedOverlayContext { get => serializedOverlayContext; set => SetProperty(ref serializedOverlayContext, value); }
+
+        public System.Collections.Generic.List<Extend.Common.Overlaying.Descriptors.IOverlayDescriptor> AvailableOverlays { get; set; }
 
         protected override void DisposeUnmanagementResources()
         {

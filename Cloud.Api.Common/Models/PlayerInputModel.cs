@@ -13,6 +13,10 @@ namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models
         [Required]
         public System.Guid ScreenplayId { get; set; }
 
+        public System.Guid? OverlayId { get; set; }
+
+        public string SerializedOverlayContext { get; set; }
+
         public string About { get; set; }
 
         public Persistence.Entities.Player Export()
@@ -30,6 +34,8 @@ namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models
             Name = entity.Name;
             About = entity.About;
             ScreenplayId = entity.ScreenplayId ?? System.Guid.Empty;
+            OverlayId = entity.OverlayId;
+            SerializedOverlayContext = entity.SerializedOverlayContext;
         }
 
         public void Mergue(Persistence.Entities.Player entity)
@@ -37,6 +43,8 @@ namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models
             entity.Id = Id;
             entity.Name = Name;
             entity.About = About;
+            entity.OverlayId = OverlayId;
+            entity.SerializedOverlayContext = SerializedOverlayContext;
         }
     }
 }

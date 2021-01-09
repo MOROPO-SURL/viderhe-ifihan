@@ -6,7 +6,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Models.Page"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Converters"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Videre.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages.ConfigurePlayerPage"
     x:TypeArguments="pagemodels:ConfigurePlayerPageModel">
@@ -17,6 +19,9 @@
                 <Setter Property="HasShadow" Value="False" />
                 <Setter Property="CornerRadius" Value="0" />
             </Style>
+
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <converters:OverlayDescriptorToStringConverter x:Key="OverlayDescriptorToStringConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -63,6 +68,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Frame Grid.Column="0" Grid.Row="0">
                         <StackLayout>
@@ -94,6 +100,24 @@
                         </StackLayout>
                     </Frame>
                     <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2">
+                        <StackLayout>
+                            <Label Text="Caratula" Style="{StaticResource FormLabel}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Picker
+                                    x:Name="OverlayPicker"
+                                    HorizontalOptions="FillAndExpand"
+                                    ItemsSource="{Binding Path=AvailableOverlays}"
+                                    ItemDisplayBinding="{Binding Converter={x:StaticResource OverlayDescriptorToStringConverter}}"
+                                    SelectedIndexChanged="OverlayPicker_SelectedIndexChanged"/>
+                                <Button 
+                                    IsEnabled="{Binding Overlay, Converter={StaticResource NotNullToBooleanConverter}}"
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    Text="&#xf493;"
+                                    Clicked="OverlayConfigureButton_Clicked" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3">
                         <StackLayout>
                             <Label Text="Descripción" Style="{StaticResource FormLabel}" />
                             <Editor HeightRequest="180" Text="{Binding Path=About}" />
