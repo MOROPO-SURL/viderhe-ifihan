@@ -39,6 +39,7 @@
     <ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Dashboard\Cloud.SignalR.Connect.Dashboard.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Player\Cloud.SignalR.Connect.Player.csproj" />
+    <ProjectReference Include="..\Extend.CPCC\Extend.CPCC.csproj" />
     <ProjectReference Include="..\Extend.Essential\Extend.Essential.csproj" />
     <ProjectReference Include="..\Support.Extend.Motion\Support.Extend.Motion.csproj" />
     <ProjectReference Include="..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj" />
