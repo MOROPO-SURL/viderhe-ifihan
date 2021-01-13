@@ -10,7 +10,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Providers
 
             if (libraryFileInfos.Length <= 0) return Enumerable.Empty<System.IO.FileInfo>();
 
-            var extensionDescriptionLibraryFileInfo = libraryFileInfos.First();
+            var extensionDescriptionLibraryFileInfo = libraryFileInfos.First(item => System.Text.RegularExpressions.Regex.IsMatch(item.Name, ".+\\.Videre\\.Extend\\.[a-zA-Z0-9|\\.]+\\.dll"));
 
             var extensionBaseLibraryFilePath = System.IO.Path.GetFileNameWithoutExtension(extensionDescriptionLibraryFileInfo.Name);
 
