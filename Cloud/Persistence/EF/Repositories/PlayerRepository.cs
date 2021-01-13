@@ -13,6 +13,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Persistence.EF.Repositories
             return base.GetQueryableDbSet()
                 .Include(entity => entity.Account).ThenInclude(entity => entity.Logo)
                 .Include(entity => entity.Account).ThenInclude(entity => entity.Splash)
+                .Include(entity => entity.Account).ThenInclude(entity => entity.ExtensionBridges)
                 .Include(entity => entity.Screenplay).ThenInclude(entity => entity.Frames).ThenInclude(entity => entity.Placard).ThenInclude(entity => entity.Template);
         }
 

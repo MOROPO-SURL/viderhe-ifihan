@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SmartSolucionesCuba.SAPRESSC.Core.Persistence.Repositories;
 using SmartSolucionesCuba.Videre.Cloud.Api.Common.Models;
 using System.Linq;
 
@@ -10,11 +11,13 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend.Api
     [Area("business")]
     public class PlayersController : SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementController<Persistence.Entities.Player, string, PlayerInputModel, PlayerDisplayModel>
     {
-        private readonly SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
+        private readonly IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
+        private readonly IEntityRepository<Persistence.Entities.Extension, System.Guid> extensionRepository;
 
-        public PlayersController(SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Player, string> repository, Microsoft.Extensions.Localization.IStringLocalizer<PlayersController> localizer, ILogger<PlayersController> logger) : base(repository, localizer, logger)
+        public PlayersController(IEntityRepository<Persistence.Entities.Extension, System.Guid> extensionRepository, IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, IEntityRepository<Persistence.Entities.Player, string> repository, Microsoft.Extensions.Localization.IStringLocalizer<PlayersController> localizer, ILogger<PlayersController> logger) : base(repository, localizer, logger)
         {
             this.accountRepository = accountRepository;
+            this.extensionRepository = extensionRepository;
         }
 
         [Microsoft.AspNetCore.Authorization.AllowAnonymous]
@@ -32,6 +35,17 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend.Api
                 var model = new AccountDisplayModel();
 
                 model.Import(player.Account);
+
+                foreach (var bridge in player.Account.ExtensionBridges)
+                {
+                    var extension = extensionRepository.Get(bridge.ExtensionId);
+
+                    var extensionDisplayModel = new ExtensionDisplayModel();
+
+                    extensionDisplayModel.Import(extension);
+
+                    model.Extensions.Add(extensionDisplayModel);
+                }
 
                 if (player.OverlayId != null)
                 {
