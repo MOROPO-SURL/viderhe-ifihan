@@ -42,5 +42,25 @@ namespace SmartSolucionesCuba.Videre.Cloud.Providers
 
             return targetLibraryFileInfos;
         }
+
+        internal static System.Collections.Generic.IEnumerable<System.IO.FileInfo> GetRelevantToDashboard(System.IO.DirectoryInfo extensionDirectoryInfo)
+        {
+            var targetLibraryFileInfos = extensionDirectoryInfo.GetFiles("*.dll", System.IO.SearchOption.TopDirectoryOnly);
+
+            if (targetLibraryFileInfos.Length <= 0) return Enumerable.Empty<System.IO.FileInfo>();
+
+            return targetLibraryFileInfos;
+        }
+
+        internal static System.Collections.Generic.IEnumerable<System.IO.FileInfo> GetRelevantToPlayer(System.IO.DirectoryInfo extensionDirectoryInfo)
+        {
+            var targetLibraryFileInfos = extensionDirectoryInfo.GetFiles("*.dll", System.IO.SearchOption.TopDirectoryOnly).ToList();
+
+            if (targetLibraryFileInfos.Count <= 0) return Enumerable.Empty<System.IO.FileInfo>();
+
+            targetLibraryFileInfos.RemoveAll(item => item.Name.Contains("Dashboard"));
+
+            return targetLibraryFileInfos;
+        }
     }
 }

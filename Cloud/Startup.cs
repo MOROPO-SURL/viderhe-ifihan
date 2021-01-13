@@ -39,11 +39,11 @@ namespace SmartSolucionesCuba.Videre.Cloud
 
                 foreach (var extensionDirectoryInfo in extensionDirectoryInfos)
                 {
-                    var targetLibraryFileInfos = Providers.VidereExtensionLibraryFileInfosProvider.GetRelevantToCloud(extensionDirectoryInfo);
+                    var extensionLibraryFileInfos = Providers.VidereExtensionLibraryFileInfosProvider.GetRelevantToCloud(extensionDirectoryInfo);
 
-                    foreach (var libraryFileInfo in targetLibraryFileInfos)
+                    foreach (var extensionLibraryFileInfo in extensionLibraryFileInfos)
                     {
-                        var assembly = System.Reflection.Assembly.LoadFrom(libraryFileInfo.FullName);
+                        var assembly = System.Reflection.Assembly.LoadFrom(extensionLibraryFileInfo.FullName);
 
                         var assemblyName = assembly.GetName();
 
