@@ -7,7 +7,7 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="523963a5-bea6-45e3-9ebc-c823188cb609"
+    Name="SmartSolucionesCuba.Videre.Control"
     Publisher="CN=SMART SOLUCIONES CUBA"
     Version="0.1.0.0" />
 

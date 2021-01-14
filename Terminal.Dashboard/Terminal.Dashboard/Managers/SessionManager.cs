@@ -1,4 +1,5 @@
 ﻿using SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Extensions;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers
@@ -66,7 +67,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers
         public ImageSource AccountSplashImageSource { get; private set; }
         public System.Guid? AccountDefaultOverlayId { get; private set; }
         public string AccountSerializedOverlayContext { get; private set; }
-        public Cloud.Api.Common.Models.ExtensionDisplayModel[] AccountPlugins { get; private set; }
+        public Cloud.Api.Common.Models.ExtensionDisplayModel[] AccountExtensions { get; private set; }
 
         public void SyncronizeRequiredAccountInformation(string name, Color primaryColor, Color secoundaryColor, System.Guid logoImageId, System.Guid splashImageId, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
         {
@@ -166,7 +167,35 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers
 
                 SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.SplashImageId, overalyDescriptor, model.SerializedOverlayContext);
 
-                AccountPlugins = model.Extensions.ToArray();
+                AccountExtensions = model.Extensions.ToArray();
+
+                var dynamicLoadExtensions = AccountExtensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID).ToArray();
+
+                foreach (var accountExtension in dynamicLoadExtensions)
+                {
+                    var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString()));
+
+                    if (!extensionDirectoryInfo.Exists)
+                    {
+                        extensionDirectoryInfo.Create();
+
+                        await DownloadAccountExtensionBundle(accountExtension.Id, extensionDirectoryInfo);
+                    }
+
+                    var extensionLibraryFileInfos = extensionDirectoryInfo.GetFiles();
+
+                    if (extensionLibraryFileInfos.Length <= 0)
+                    {
+                        await DownloadAccountExtensionBundle(accountExtension.Id, extensionDirectoryInfo);
+                    }
+
+                    foreach (var extensionLibraryFileInfo in extensionLibraryFileInfos)
+                    {
+                        var assembly = System.Reflection.Assembly.LoadFrom(extensionLibraryFileInfo.FullName);
+
+                        System.AppDomain.CurrentDomain.Load(assembly.GetName());
+                    }
+                }
             }
             catch (System.Exception e)
             {
@@ -192,7 +221,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers
             AccountSplashImageSource = null;
             AccountDefaultOverlayId = null;
             AccountSerializedOverlayContext = null;
-            AccountPlugins = null;
+            AccountExtensions = null;
         }
 
         public async System.Threading.Tasks.Task ChangePasswordAsync(string oldPassword, string newPassword)
@@ -204,6 +233,27 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers
                 OldPassword = oldPassword,
                 NewPassword = newPassword
             });
+        }
+
+        private async System.Threading.Tasks.Task DownloadAccountExtensionBundle(System.Guid extensionId, System.IO.DirectoryInfo extensionDirectoryInfo)
+        {
+            using (var httpClient = new System.Net.Http.HttpClient { BaseAddress = new System.Uri(string.Format("http://{0}/", Server)) })
+            {
+                var extensionBundleStream = await httpClient.GetStreamAsync(string.Format("extensions/dashboardbundle/{0}", extensionId));
+
+                var extensionBundleZipArchive = new System.IO.Compression.ZipArchive(extensionBundleStream);
+
+                foreach (var zipEntry in extensionBundleZipArchive.Entries)
+                {
+                    using (var extensionLibraryFileStream = System.IO.File.Create(System.IO.Path.Combine(extensionDirectoryInfo.FullName, zipEntry.Name)))
+                    {
+                        using (var unzippedEntryStream = zipEntry.Open())
+                        {
+                            unzippedEntryStream.CopyTo(extensionLibraryFileStream);
+                        }
+                    }
+                }
+            }
         }
     }
 }

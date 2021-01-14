@@ -8,7 +8,7 @@
   IgnorableNamespaces="uap rescap desktop">
 
   <Identity
-    Name="55a635a5-f86f-4114-bb53-e50fc05ae625"
+    Name="SmartSolucionesCuba.Videre.Player"
     Publisher="CN=SMART SOLUCIONES CUBA"
     Version="0.1.0.0" />
 

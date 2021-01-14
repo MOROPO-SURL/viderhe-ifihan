@@ -48,7 +48,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.UWP
 
                 FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
-                Xamarin.Forms.Forms.SetFlags("Brush_Experimental", "Shapes_Experimental");
+                Xamarin.Forms.Forms.SetFlags("Shapes_Experimental");
 
                 Xamarin.Forms.Forms.Init(e);
 
