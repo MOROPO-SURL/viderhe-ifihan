@@ -15,7 +15,7 @@
                 return SAPRESSC.Business.Billboard.CPCC.Web.Api.Client.AdvisesApiClient.Get(new System.Uri(string.Format("{0}://{1}", model.IsSecureServer ? "https" : "http", model.ServerName)));
             }).ContinueWith(task =>
             {
-                if (task.Exception != null || task.IsCanceled)
+                if (task.Exception != null || task.IsCanceled || task.Result == null)
                 {
                     (BindingContext as Models.View.AdvicesMarqueeOverlayViewModel).InLineAdvices = "Dirección del servidor no válida o servicio no disponible ...";
 
