@@ -16,13 +16,13 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend.Api
     {
         private readonly SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager;
         private readonly IEntityRepository<SAPRESSC.Middleware.Media.Persistence.Entities.Image, System.Guid> imageRepository;
-        private readonly IEntityRepository<Extension, System.Guid> pluginRepository;
+        private readonly IEntityRepository<Extension, System.Guid> extensionRepository;
 
-        public AccountController(IEntityRepository<Extension, System.Guid> pluginRepository, IEntityRepository<SAPRESSC.Middleware.Media.Persistence.Entities.Image, System.Guid> imageRepository, SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager, IEntityRepository<Account, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AccountController> localizer, ILogger<AccountController> logger) : base(repository, localizer, logger)
+        public AccountController(IEntityRepository<Extension, System.Guid> extensionRepository, IEntityRepository<SAPRESSC.Middleware.Media.Persistence.Entities.Image, System.Guid> imageRepository, SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager, IEntityRepository<Account, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AccountController> localizer, ILogger<AccountController> logger) : base(repository, localizer, logger)
         {
             this.imageFileManager = imageFileManager;
             this.imageRepository = imageRepository;
-            this.pluginRepository = pluginRepository;
+            this.extensionRepository = extensionRepository;
         }
 
         [HttpGet("[action]")]
@@ -36,7 +36,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend.Api
 
             foreach (var bridge in entity.ExtensionBridges)
             {
-                var extension = pluginRepository.Get(bridge.ExtensionId);
+                var extension = extensionRepository.Get(bridge.ExtensionId);
 
                 var extensionDisplayModel = new ExtensionDisplayModel();
 

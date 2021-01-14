@@ -30,7 +30,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
             {
                 await System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(1));
 
-                return Managers.SessionManager.Instance.AccountPlugins.Select(p => new Models.View.ExtensionViewModel
+                return Managers.SessionManager.Instance.AccountExtensions.Select(p => new Models.View.ExtensionViewModel
                 {
                     Descriptor = Support.Extend.Providers.ExtensionDescriptorProvider.Instance.GetDescriptorById(p.Id),
                     Enabled = p.Enabled,

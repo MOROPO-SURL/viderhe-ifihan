@@ -219,6 +219,10 @@
       <Project>{f52e5e05-b3d9-44f2-bfdc-2c8483f1f770}</Project>
       <Name>Extend.Essential.Templating.Presentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj">
+      <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
+      <Name>Extend.Essential</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.UICCamaguey.Overlaying.Presentation\Extend.UICCamaguey.Overlaying.Presentation.csproj">
       <Project>{bb80d163-471f-4fa0-a0a8-70b3d4fff0a0}</Project>
       <Name>Extend.UICCamaguey.Overlaying.Presentation</Name>

@@ -222,7 +222,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
             return await client.GetAccountAsync();
         }
 
-        private void OnRequestAccountCallback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.AccountDisplayModel> task)
+        private async void OnRequestAccountCallback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.AccountDisplayModel> task)
         {
             if (task.Exception != null)
             {
@@ -241,10 +241,12 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
                     }
                 }
 
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(delayTask =>
                 {
                     RequestAccountAsync().ContinueWith(OnRequestAccountCallback);
                 });
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             }
             else
             {
@@ -256,6 +258,34 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
                 Managers.SessionManager.Instance.AccountSecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
                 Managers.SessionManager.Instance.AccountDefaultOverlayId = task.Result.DefaultOverlayId;
                 Managers.SessionManager.Instance.AccountSerializedOverlayContext = task.Result.SerializedOverlayContext;
+
+                var dynamicLoadExtensions = task.Result.Extensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID).ToArray();
+
+                foreach (var accountExtension in dynamicLoadExtensions)
+                {
+                    var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString()));
+
+                    if (!extensionDirectoryInfo.Exists)
+                    {
+                        extensionDirectoryInfo.Create();
+
+                        await DownloadAccountExtensionBundle(accountExtension.Id, extensionDirectoryInfo);
+                    }
+
+                    var extensionLibraryFileInfos = extensionDirectoryInfo.GetFiles();
+
+                    if (extensionLibraryFileInfos.Length <= 0)
+                    {
+                        await DownloadAccountExtensionBundle(accountExtension.Id, extensionDirectoryInfo);
+                    }
+
+                    foreach (var extensionLibraryFileInfo in extensionLibraryFileInfos)
+                    {
+                        var assembly = System.Reflection.Assembly.LoadFrom(extensionLibraryFileInfo.FullName);
+
+                        System.AppDomain.CurrentDomain.Load(assembly.GetName());
+                    }
+                }
 
                 if (configurationStepQueue.Count > 1)
                 {
@@ -309,6 +339,27 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
             animationsStoryboard.Animations.Add(lastAnimation);
 
             animationsStoryboard.Begin();
+        }
+
+        private async System.Threading.Tasks.Task DownloadAccountExtensionBundle(System.Guid extensionId, System.IO.DirectoryInfo extensionDirectoryInfo)
+        {
+            using (var httpClient = new System.Net.Http.HttpClient { BaseAddress = new System.Uri(string.Format("http://{0}/", Managers.ConfigurationManager.Instance.CloudServerHost)) })
+            {
+                var extensionBundleStream = await httpClient.GetStreamAsync(string.Format("extensions/playerbundle/{0}", extensionId));
+
+                var extensionBundleZipArchive = new System.IO.Compression.ZipArchive(extensionBundleStream);
+
+                foreach (var zipEntry in extensionBundleZipArchive.Entries)
+                {
+                    using (var extensionLibraryFileStream = System.IO.File.Create(System.IO.Path.Combine(extensionDirectoryInfo.FullName, zipEntry.Name)))
+                    {
+                        using (var unzippedEntryStream = zipEntry.Open())
+                        {
+                            unzippedEntryStream.CopyTo(extensionLibraryFileStream);
+                        }
+                    }
+                }
+            }
         }
     }
 }

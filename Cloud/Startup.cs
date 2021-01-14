@@ -27,7 +27,39 @@ namespace SmartSolucionesCuba.Videre.Cloud
         {
             #region Ensure Required Assemblies load
 
-            var extensionCustomRuntimeLibraries = Microsoft.Extensions.DependencyModel.DependencyContext.Default.RuntimeLibraries.Where(l => l.Type == "project" && l.Name.Contains(".Videre.Extend.") && !l.Name.Contains(".Videre.Support.Extend") && !l.Name.Contains(".Videre.Extend.Common")).ToArray();
+            var extensionRootDirectoryPath = configuration["Videre:ExtensionRootDirectoryPath"];
+
+            var extensionRootDirectoryInfo = new System.IO.DirectoryInfo(extensionRootDirectoryPath);
+
+            var extensionCustomRuntimeLibraries = Microsoft.Extensions.DependencyModel.DependencyContext.Default.RuntimeLibraries.Where(l => l.Type == "project" && l.Name.Contains(".Videre.Extend.") && !l.Name.Contains(".Videre.Support.Extend") && !l.Name.Contains(".Videre.Extend.Common")).ToList();
+
+            if (extensionRootDirectoryInfo.Exists)
+            {
+                var extensionDirectoryInfos = extensionRootDirectoryInfo.GetDirectories();
+
+                foreach (var extensionDirectoryInfo in extensionDirectoryInfos)
+                {
+                    var extensionLibraryFileInfos = Providers.VidereExtensionLibraryFileInfosProvider.GetRelevantToCloud(extensionDirectoryInfo);
+
+                    foreach (var extensionLibraryFileInfo in extensionLibraryFileInfos)
+                    {
+                        var assembly = System.Reflection.Assembly.LoadFrom(extensionLibraryFileInfo.FullName);
+
+                        var assemblyName = assembly.GetName();
+
+                        extensionCustomRuntimeLibraries.Add(new Microsoft.Extensions.DependencyModel.RuntimeLibrary(
+                            "project",
+                            assemblyName.Name,
+                            assemblyName.Version.ToString(),
+                            null,
+                            new Microsoft.Extensions.DependencyModel.RuntimeAssetGroup[] { },
+                            new Microsoft.Extensions.DependencyModel.RuntimeAssetGroup[] { },
+                            Enumerable.Empty<Microsoft.Extensions.DependencyModel.ResourceAssembly>(),
+                            Enumerable.Empty<Microsoft.Extensions.DependencyModel.Dependency>(),
+                            false));
+                    }
+                }
+            }
 
             foreach (var runtimeLibrary in extensionCustomRuntimeLibraries)
             {
