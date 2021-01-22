@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Videre.Extend.CPCC</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Videre.Extend.CPCC</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.CPCC</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.CPCC</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

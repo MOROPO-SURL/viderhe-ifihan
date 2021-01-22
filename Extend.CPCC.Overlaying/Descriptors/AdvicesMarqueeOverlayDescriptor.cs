@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.CPCC.Overlaying.Descriptors
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Descriptors
 {
     public class AdvicesMarqueeOverlayDescriptor : Common.Overlaying.Descriptors.IOverlayDescriptor
     {

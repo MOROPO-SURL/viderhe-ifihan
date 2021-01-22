@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.CPCC.Overlaying.Dashboard.Presentation.Factories
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Dashboard.Presentation.Factories
 {
     public static class AdvicesMarqueeOverlayConfigurationPageModelFactory
     {

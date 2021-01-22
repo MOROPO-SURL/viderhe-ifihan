@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.CPCC.Overlaying.Presentation.Models.View
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Models.View
 {
     public class AdvicesMarqueeOverlayViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
     {

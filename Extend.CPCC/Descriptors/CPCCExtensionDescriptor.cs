@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.CPCC.Descriptors
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Descriptors
 {
     public class CPCCExtensionDescriptor : Common.Descriptors.IExtensionDescriptor
     {
@@ -9,6 +9,6 @@
         public string Name => "Cartelera CPCC";
 
         // TODO Define upperviewing description
-        public string Description => "Extensión para la plataforma Videre del Centro Provincial de Cine de Camagüey para ;a promoción de su cartelera cultural.";
+        public string Description => "Extensión para la plataforma Viderhe del Centro Provincial de Cine de Camagüey para ;a promoción de su cartelera cultural.";
     }
 }

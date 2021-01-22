@@ -1,6 +1,6 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Extend.CPCC.Overlaying.Dashboard.Presentation.Pages
+namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Dashboard.Presentation.Pages
 {
     public partial class AdvicesMarqueeOverlayConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AdvicesMarqueeOverlayConfigurationPageModel>
     {

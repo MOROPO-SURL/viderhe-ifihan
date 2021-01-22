@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.CPCC.Overlaying.Presentation.Views
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
 {
     public partial class AdvicesMarqueeOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
