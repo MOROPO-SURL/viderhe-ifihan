@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using SmartSolucionesCuba.Videre.Cloud.SignalR.Connect.Common.Enumerations;
+using SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Common.Enumerations;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Hubs
+namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
     public class DashboardHub : Hub<SignalR.Connect.Dashboard.Clients.IDashboardClient>, SignalR.Connect.Dashboard.Hubs.IDashboardHub

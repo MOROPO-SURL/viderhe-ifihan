@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Descriptors;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Descriptors;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Support.Extend.Providers
+namespace SmartSolucionesCuba.Viderhe.Support.Extend.Providers
 {
     public sealed class ExtensionDescriptorProvider
     {
@@ -23,7 +23,7 @@ namespace SmartSolucionesCuba.Videre.Support.Extend.Providers
         private ExtensionDescriptorProvider()
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => !a.FullName.Contains(".Videre.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Videre\\.Extend\\.[a-zA-Z0-9|\\.]+,\\sVersion=")).ToArray();
+                .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+,\\sVersion=")).ToArray();
 
             XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IExtensionDescriptor).IsAssignableFrom(t));
         }

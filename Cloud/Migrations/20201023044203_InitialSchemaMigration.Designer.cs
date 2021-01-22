@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SmartSolucionesCuba.Videre.Cloud.Persistence.EF;
+using SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Migrations
+namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20201023044203_InitialSchemaMigration")]
@@ -73,7 +73,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_groups");
 
-                    b.ToTable("groups","videre_sapressc_core_securitylocal");
+                    b.ToTable("groups","viderhe_sapressc_core_securitylocal");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Core.Security.Persistence.Entities.GroupRoleBridge", b =>
@@ -90,7 +90,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("RoleId")
                         .HasName("ix_grouprolebridges_roleid");
 
-                    b.ToTable("grouprolebridges","videre_sapressc_core_securitylocal");
+                    b.ToTable("grouprolebridges","viderhe_sapressc_core_securitylocal");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Core.Security.Persistence.Entities.Role", b =>
@@ -113,7 +113,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_roles");
 
-                    b.ToTable("roles","videre_sapressc_core_securitylocal");
+                    b.ToTable("roles","viderhe_sapressc_core_securitylocal");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Core.Security.Persistence.Entities.User", b =>
@@ -151,7 +151,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_users");
 
-                    b.ToTable("users","videre_sapressc_core_securitylocal");
+                    b.ToTable("users","viderhe_sapressc_core_securitylocal");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Core.Security.Persistence.Entities.UserGroupBridge", b =>
@@ -168,7 +168,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("GroupId")
                         .HasName("ix_usergroupbridges_groupid");
 
-                    b.ToTable("usergroupbridges","videre_sapressc_core_securitylocal");
+                    b.ToTable("usergroupbridges","viderhe_sapressc_core_securitylocal");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.EmailContactItem", b =>
@@ -187,7 +187,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_emailcontactitems");
 
-                    b.ToTable("emailcontactitems","videre_sapressc_middleware_identity");
+                    b.ToTable("emailcontactitems","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.Membership", b =>
@@ -207,7 +207,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("PersonId")
                         .HasName("ix_memberships_personid");
 
-                    b.ToTable("memberships","videre_sapressc_middleware_identity");
+                    b.ToTable("memberships","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationEmailContactItemBridge", b =>
@@ -224,7 +224,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_organizationemailcontactitembridges_contactitemid");
 
-                    b.ToTable("organizationemailcontactitembridges","videre_sapressc_middleware_identity");
+                    b.ToTable("organizationemailcontactitembridges","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationIdentity", b =>
@@ -258,7 +258,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("OwnerId")
                         .HasName("ix_organizationidentities_ownerid");
 
-                    b.ToTable("organizationidentities","videre_sapressc_middleware_identity");
+                    b.ToTable("organizationidentities","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationPhoneContactItemBridge", b =>
@@ -275,7 +275,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_organizationphonecontactitembridges_contactitemid");
 
-                    b.ToTable("organizationphonecontactitembridges","videre_sapressc_middleware_identity");
+                    b.ToTable("organizationphonecontactitembridges","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationPostalContactItemBridge", b =>
@@ -292,7 +292,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_organizationpostalcontactitembridges_contactitemid");
 
-                    b.ToTable("organizationpostalcontactitembridges","videre_sapressc_middleware_identity");
+                    b.ToTable("organizationpostalcontactitembridges","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationSocialContactItemBridge", b =>
@@ -309,7 +309,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_organizationsocialcontactitembridges_contactitemid");
 
-                    b.ToTable("organizationsocialcontactitembridges","videre_sapressc_middleware_identity");
+                    b.ToTable("organizationsocialcontactitembridges","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationWebSiteContactItemBridge", b =>
@@ -326,7 +326,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_organizationwebsitecontactitembridges_contactitemid");
 
-                    b.ToTable("organizationwebsitecontactitembridges","videre_sapressc_middleware_identity");
+                    b.ToTable("organizationwebsitecontactitembridges","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonEmailContactItemBridge", b =>
@@ -343,7 +343,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_personemailcontactitembridges_contactitemid");
 
-                    b.ToTable("personemailcontactitembridges","videre_sapressc_middleware_identity");
+                    b.ToTable("personemailcontactitembridges","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", b =>
@@ -383,7 +383,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ImageId")
                         .HasName("ix_personidentities_imageid");
 
-                    b.ToTable("personidentities","videre_sapressc_middleware_identity");
+                    b.ToTable("personidentities","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonPhoneContactItemBridge", b =>
@@ -400,7 +400,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_personphonecontactitembridges_contactitemid");
 
-                    b.ToTable("personphonecontactitembridges","videre_sapressc_middleware_identity");
+                    b.ToTable("personphonecontactitembridges","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonPostalContactItemBridge", b =>
@@ -417,7 +417,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_personpostalcontactitembridges_contactitemid");
 
-                    b.ToTable("personpostalcontactitembridges","videre_sapressc_middleware_identity");
+                    b.ToTable("personpostalcontactitembridges","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonSocialContactItemBridge", b =>
@@ -434,7 +434,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_personsocialcontactitembridges_contactitemid");
 
-                    b.ToTable("personsocialcontactitembridges","videre_sapressc_middleware_identity");
+                    b.ToTable("personsocialcontactitembridges","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonWebSiteContactItemBridge", b =>
@@ -451,7 +451,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_personwebsitecontactitembridges_contactitemid");
 
-                    b.ToTable("personwebsitecontactitembridges","videre_sapressc_middleware_identity");
+                    b.ToTable("personwebsitecontactitembridges","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PhoneContactItem", b =>
@@ -470,7 +470,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_phonecontactitems");
 
-                    b.ToTable("phonecontactitems","videre_sapressc_middleware_identity");
+                    b.ToTable("phonecontactitems","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PostalContactItem", b =>
@@ -498,7 +498,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("RegionId")
                         .HasName("ix_postalcontactitems_regionid");
 
-                    b.ToTable("postalcontactitems","videre_sapressc_middleware_identity");
+                    b.ToTable("postalcontactitems","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.SocialContactItem", b =>
@@ -517,7 +517,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_socialcontactitems");
 
-                    b.ToTable("socialcontactitems","videre_sapressc_middleware_identity");
+                    b.ToTable("socialcontactitems","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.WebSiteContactItem", b =>
@@ -536,7 +536,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_websitecontactitems");
 
-                    b.ToTable("websitecontactitems","videre_sapressc_middleware_identity");
+                    b.ToTable("websitecontactitems","viderhe_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Image", b =>
@@ -574,7 +574,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ThumbnailId")
                         .HasName("ix_images_thumbnailid");
 
-                    b.ToTable("images","videre_sapressc_middleware_media");
+                    b.ToTable("images","viderhe_sapressc_middleware_media");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Thumbnail", b =>
@@ -597,7 +597,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_thumbnails");
 
-                    b.ToTable("thumbnails","videre_sapressc_middleware_media");
+                    b.ToTable("thumbnails","viderhe_sapressc_middleware_media");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Video", b =>
@@ -655,7 +655,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("ThumbnailId")
                         .HasName("ix_videos_thumbnailid");
 
-                    b.ToTable("videos","videre_sapressc_middleware_media");
+                    b.ToTable("videos","viderhe_sapressc_middleware_media");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Region.Persistence.Entities.Country", b =>
@@ -683,7 +683,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                         .IsUnique()
                         .HasName("ix_countries_name");
 
-                    b.ToTable("countries","videre_sapressc_middleware_region");
+                    b.ToTable("countries","viderhe_sapressc_middleware_region");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Region.Persistence.Entities.Locality", b =>
@@ -709,7 +709,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                         .IsUnique()
                         .HasName("ix_localities_name_municipalityid");
 
-                    b.ToTable("localities","videre_sapressc_middleware_region");
+                    b.ToTable("localities","viderhe_sapressc_middleware_region");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Region.Persistence.Entities.Municipality", b =>
@@ -735,7 +735,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                         .IsUnique()
                         .HasName("ix_municipalities_name_stateid");
 
-                    b.ToTable("municipalities","videre_sapressc_middleware_region");
+                    b.ToTable("municipalities","viderhe_sapressc_middleware_region");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Region.Persistence.Entities.Region", b =>
@@ -751,7 +751,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_regions");
 
-                    b.ToTable("regions","videre_sapressc_middleware_region");
+                    b.ToTable("regions","viderhe_sapressc_middleware_region");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Region");
                 });
@@ -775,10 +775,10 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("CountryId")
                         .HasName("ix_states_countryid");
 
-                    b.ToTable("states","videre_sapressc_middleware_region");
+                    b.ToTable("states","viderhe_sapressc_middleware_region");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Account", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Account", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -836,7 +836,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("accounts");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.AccountExtensionBridge", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.AccountExtensionBridge", b =>
                 {
                     b.Property<Guid>("AccountId")
                         .HasColumnName("accountid");
@@ -857,7 +857,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("accountextensionbridges");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.AccountImageBridge", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.AccountImageBridge", b =>
                 {
                     b.Property<Guid>("AccountId")
                         .HasColumnName("accountid");
@@ -874,7 +874,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("accountimagebridges");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.AccountModeratorBridge", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.AccountModeratorBridge", b =>
                 {
                     b.Property<Guid>("AccountId")
                         .HasColumnName("accountid");
@@ -891,7 +891,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("accountmoderatorbridges");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.AccountVideoBridge", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.AccountVideoBridge", b =>
                 {
                     b.Property<Guid>("AccountId")
                         .HasColumnName("accountid");
@@ -908,7 +908,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("accountvideobridges");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Extension", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Extension", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -923,7 +923,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("extensions");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Frame", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Frame", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -950,7 +950,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("frames");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Moderator", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Moderator", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -974,7 +974,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("moderators");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Overlay", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Overlay", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -995,7 +995,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("overlays");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Placard", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Placard", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1033,7 +1033,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("placards");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Player", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Player", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
@@ -1077,7 +1077,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("players");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Screenplay", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Screenplay", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1102,7 +1102,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("screenplays");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Template", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Template", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1123,7 +1123,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.ToTable("templates");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Transition", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Transition", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1154,7 +1154,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("CountryId")
                         .HasName("ix_regions_countryid");
 
-                    b.ToTable("regions","videre_sapressc_middleware_region");
+                    b.ToTable("regions","viderhe_sapressc_middleware_region");
 
                     b.HasDiscriminator().HasValue("CountryRegion");
                 });
@@ -1169,7 +1169,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("LocalityId")
                         .HasName("ix_regions_localityid");
 
-                    b.ToTable("regions","videre_sapressc_middleware_region");
+                    b.ToTable("regions","viderhe_sapressc_middleware_region");
 
                     b.HasDiscriminator().HasValue("LocalityRegion");
                 });
@@ -1184,7 +1184,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("MunicipalityId")
                         .HasName("ix_regions_municipalityid");
 
-                    b.ToTable("regions","videre_sapressc_middleware_region");
+                    b.ToTable("regions","viderhe_sapressc_middleware_region");
 
                     b.HasDiscriminator().HasValue("MunicipalityRegion");
                 });
@@ -1199,7 +1199,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     b.HasIndex("StateId")
                         .HasName("ix_regions_stateid");
 
-                    b.ToTable("regions","videre_sapressc_middleware_region");
+                    b.ToTable("regions","viderhe_sapressc_middleware_region");
 
                     b.HasDiscriminator().HasValue("StateRegion");
                 });
@@ -1472,9 +1472,9 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Account", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Account", b =>
                 {
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Overlay", "DefaultOverlay")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Overlay", "DefaultOverlay")
                         .WithMany()
                         .HasForeignKey("DefaultOverlayId")
                         .HasConstraintName("fk_accounts_overlays_defaultoverlayid");
@@ -1492,24 +1492,24 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.AccountExtensionBridge", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.AccountExtensionBridge", b =>
                 {
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Account", "Account")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Account", "Account")
                         .WithMany("ExtensionBridges")
                         .HasForeignKey("AccountId")
                         .HasConstraintName("fk_accountextensionbridges_accounts_accountid")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Extension", "Extension")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Extension", "Extension")
                         .WithMany()
                         .HasForeignKey("ExtensionId")
                         .HasConstraintName("fk_accountextensionbridges_extensions_extensionid")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.AccountImageBridge", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.AccountImageBridge", b =>
                 {
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Account", "Account")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Account", "Account")
                         .WithMany("ImageBridges")
                         .HasForeignKey("AccountId")
                         .HasConstraintName("fk_accountimagebridges_accounts_accountid")
@@ -1522,24 +1522,24 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.AccountModeratorBridge", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.AccountModeratorBridge", b =>
                 {
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Account", "Account")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Account", "Account")
                         .WithMany("ModeratorBridges")
                         .HasForeignKey("AccountId")
                         .HasConstraintName("fk_accountmoderatorbridges_accounts_accountid")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Moderator", "Moderator")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Moderator", "Moderator")
                         .WithMany()
                         .HasForeignKey("ModeratorId")
                         .HasConstraintName("fk_accountmoderatorbridges_moderators_moderatorid")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.AccountVideoBridge", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.AccountVideoBridge", b =>
                 {
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Account", "Account")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Account", "Account")
                         .WithMany("VideoBridges")
                         .HasForeignKey("AccountId")
                         .HasConstraintName("fk_accountvideobridges_accounts_accountid")
@@ -1552,22 +1552,22 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Frame", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Frame", b =>
                 {
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Placard", "Placard")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Placard", "Placard")
                         .WithMany()
                         .HasForeignKey("PlacardId")
                         .HasConstraintName("fk_frames_placards_placardid")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Screenplay", "Screenplay")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Screenplay", "Screenplay")
                         .WithMany("Frames")
                         .HasForeignKey("ScreenplayId")
                         .HasConstraintName("fk_frames_screenplays_screenplayid")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Moderator", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Moderator", b =>
                 {
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", "Identity")
                         .WithMany()
@@ -1581,68 +1581,68 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                         .HasConstraintName("fk_moderators_users_userid");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Overlay", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Overlay", b =>
                 {
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Extension")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Extension")
                         .WithMany("Overlays")
                         .HasForeignKey("ExtensionId")
                         .HasConstraintName("fk_overlays_extensions_extensionid");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Placard", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Placard", b =>
                 {
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Account", "Account")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Account", "Account")
                         .WithMany("Placards")
                         .HasForeignKey("AccountId")
                         .HasConstraintName("fk_placards_accounts_accountid")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Template", "Template")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Template", "Template")
                         .WithMany()
                         .HasForeignKey("TempateId")
                         .HasConstraintName("fk_placards_templates_tempateid");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Player", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Player", b =>
                 {
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Account", "Account")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Account", "Account")
                         .WithMany("Players")
                         .HasForeignKey("AccountId")
                         .HasConstraintName("fk_players_accounts_accountid")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Overlay", "Overlay")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Overlay", "Overlay")
                         .WithMany()
                         .HasForeignKey("OverlayId")
                         .HasConstraintName("fk_players_overlays_overlayid");
 
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Screenplay", "Screenplay")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Screenplay", "Screenplay")
                         .WithMany()
                         .HasForeignKey("ScreenplayId")
                         .HasConstraintName("fk_players_screenplays_screenplayid")
                         .OnDelete(DeleteBehavior.SetNull);
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Screenplay", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Screenplay", b =>
                 {
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Account", "Account")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Account", "Account")
                         .WithMany("Screenplays")
                         .HasForeignKey("AccountId")
                         .HasConstraintName("fk_screenplays_accounts_accountid")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Template", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Template", b =>
                 {
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Extension")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Extension")
                         .WithMany("Templates")
                         .HasForeignKey("ExtensionId")
                         .HasConstraintName("fk_templates_extensions_extensionid");
                 });
 
-            modelBuilder.Entity("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Transition", b =>
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Transition", b =>
                 {
-                    b.HasOne("SmartSolucionesCuba.Videre.Cloud.Persistence.Entities.Extension")
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Extension")
                         .WithMany("Transitions")
                         .HasForeignKey("ExtensionId")
                         .HasConstraintName("fk_transitions_extensions_extensionid");

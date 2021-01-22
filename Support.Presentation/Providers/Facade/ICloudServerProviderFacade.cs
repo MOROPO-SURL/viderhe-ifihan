@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Support.Presentation.Providers.Facade
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Providers.Facade
 {
     public interface ICloudServerProviderFacade
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Hubs
+namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
 {
     public class PlayerHub : Hub<SignalR.Connect.Player.Clients.IPlayerClient>, SignalR.Connect.Player.Hubs.IPlayerHub
     {

@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Videre.Extend.Common.Overlaying.Dashboard.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Videre.Extend.Common.Overlaying.Dashboard.Presentation</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Dashboard.Presentation</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Dashboard.Presentation</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

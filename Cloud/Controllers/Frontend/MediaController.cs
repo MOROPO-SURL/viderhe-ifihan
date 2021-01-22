@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using SmartSolucionesCuba.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend
+namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
     public class MediaController : SAPRESSC.Core.Web.Common.Controllers.BaseWebController

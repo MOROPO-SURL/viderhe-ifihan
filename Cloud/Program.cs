@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 
-namespace SmartSolucionesCuba.Videre.Cloud
+namespace SmartSolucionesCuba.Viderhe.Cloud
 {
     public class Program
     {

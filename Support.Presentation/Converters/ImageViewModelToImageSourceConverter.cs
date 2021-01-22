@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Support.Presentation.Converters
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Converters
 {
     public class ImageViewModelToImageSourceConverter : Xamarin.Forms.BindableObject, Xamarin.Forms.IValueConverter
     {

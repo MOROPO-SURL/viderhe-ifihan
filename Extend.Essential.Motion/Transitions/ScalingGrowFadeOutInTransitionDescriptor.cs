@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Motion.Transitions
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Transitions
 {
     // TODO Decidir que hacer con esta definición!!
     public class ScalingGrowFadeOutInTransitionDescriptor

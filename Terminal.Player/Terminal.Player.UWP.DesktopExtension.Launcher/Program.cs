@@ -4,7 +4,7 @@
     {
         internal static void Main(string[] args)
         {
-            System.Console.Title = "Videre Player Launcher";
+            System.Console.Title = "Viderhe Player Launcher";
 
             var action = Windows.Storage.ApplicationData.Current.LocalSettings.Values["action"];
 

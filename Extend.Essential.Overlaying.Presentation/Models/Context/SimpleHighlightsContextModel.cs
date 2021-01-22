@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Overlaying.Presentation.Models.Context
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Presentation.Models.Context
 {
     public class SimpleHighlightsContextModel
     {

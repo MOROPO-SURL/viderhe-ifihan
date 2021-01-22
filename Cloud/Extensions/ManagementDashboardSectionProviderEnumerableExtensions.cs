@@ -1,7 +1,7 @@
 ﻿using SmartSolucionesCuba.SAPRESSC.Core.Web.Backend.Models.View;
 using System.Collections.Generic;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Extensions
+namespace SmartSolucionesCuba.Viderhe.Cloud.Extensions
 {
     public static class ManagementDashboardSectionProviderEnumerableExtensions
     {

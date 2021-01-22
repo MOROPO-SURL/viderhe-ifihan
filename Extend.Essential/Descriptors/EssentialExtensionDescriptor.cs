@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Descriptors
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Descriptors
 {
     public class EssentialExtensionDescriptor : Common.Descriptors.IExtensionDescriptor
     {

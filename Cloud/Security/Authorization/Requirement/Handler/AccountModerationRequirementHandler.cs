@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Security.Authorization.Requirement.Handler
+namespace SmartSolucionesCuba.Viderhe.Cloud.Security.Authorization.Requirement.Handler
 {
     public class AccountModerationRequirementHandler : Microsoft.AspNetCore.Authorization.AuthorizationHandler<AccountModerationRequirement>
     {

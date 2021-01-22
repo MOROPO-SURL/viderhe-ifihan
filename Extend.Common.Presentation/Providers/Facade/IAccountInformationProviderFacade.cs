@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Presentation.Providers.Facade
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Providers.Facade
 {
     public interface IAccountInformationProviderFacade
     {

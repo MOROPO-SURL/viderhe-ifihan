@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Player.Enumerations
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Enumerations
 {
     public enum ConfigurationStep
     {

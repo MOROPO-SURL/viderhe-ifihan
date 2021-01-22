@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Overlaying.Dashboard.Presentation.Providers.Facade
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Dashboard.Presentation.Providers.Facade
 {
     public interface IOverlayConfigurationPageProviderFacade
     {

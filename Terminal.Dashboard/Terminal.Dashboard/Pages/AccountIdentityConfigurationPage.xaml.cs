@@ -1,6 +1,6 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
     public partial class AccountIdentityConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AccountIdentityConfigurationPageModel>
     {

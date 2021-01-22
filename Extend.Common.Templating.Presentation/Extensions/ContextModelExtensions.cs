@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Extensions
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions
 {
     public static class ContextModelExtensions
     {

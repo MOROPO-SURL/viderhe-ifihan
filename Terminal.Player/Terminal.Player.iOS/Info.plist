@@ -23,9 +23,9 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>Videre Player</string>
+	<string>Viderhe Player</string>
 	<key>CFBundleIdentifier</key>
-	<string>smartsolucionescuba.videre.terminal.player</string>
+	<string>smartsolucionescuba.viderhe.terminal.player</string>
 	<key>CFBundleVersion</key>
 	<string>0.1.0</string>
 	<key>UILaunchStoryboardName</key>

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Factories
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
 {
     public static class AddImagePageModelFactory
     {

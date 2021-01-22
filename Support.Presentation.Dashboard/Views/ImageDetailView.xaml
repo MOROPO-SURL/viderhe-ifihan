@@ -7,7 +7,7 @@
     xmlns:sscxftoolkitmvvmviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Views;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitcresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views.ImageDetailView">
+    x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views.ImageDetailView">
     <ContentView.Resources>
         <ResourceDictionary>
             <sscxftoolkitcresentationconverters:IfNullOrEmptyToStringConverter x:Key="IfNullOrEmptyToStringConverter" StringReplacement="Esta imagen no tiene descripción asociada." />

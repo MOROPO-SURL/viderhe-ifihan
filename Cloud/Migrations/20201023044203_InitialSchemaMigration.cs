@@ -2,23 +2,23 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Migrations
+namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
 {
     public partial class InitialSchemaMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
-                name: "videre_sapressc_core_securitylocal");
+                name: "viderhe_sapressc_core_securitylocal");
 
             migrationBuilder.EnsureSchema(
-                name: "videre_sapressc_middleware_identity");
+                name: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.EnsureSchema(
-                name: "videre_sapressc_middleware_media");
+                name: "viderhe_sapressc_middleware_media");
 
             migrationBuilder.EnsureSchema(
-                name: "videre_sapressc_middleware_region");
+                name: "viderhe_sapressc_middleware_region");
 
             migrationBuilder.CreateTable(
                 name: "extensions",
@@ -54,7 +54,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "groups",
-                schema: "videre_sapressc_core_securitylocal",
+                schema: "viderhe_sapressc_core_securitylocal",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -68,7 +68,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "roles",
-                schema: "videre_sapressc_core_securitylocal",
+                schema: "viderhe_sapressc_core_securitylocal",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)
@@ -84,7 +84,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "users",
-                schema: "videre_sapressc_core_securitylocal",
+                schema: "viderhe_sapressc_core_securitylocal",
                 columns: table => new
                 {
                     id = table.Column<string>(nullable: false),
@@ -104,7 +104,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "emailcontactitems",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -118,7 +118,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "phonecontactitems",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -132,7 +132,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "socialcontactitems",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -146,7 +146,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "websitecontactitems",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -160,7 +160,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "thumbnails",
-                schema: "videre_sapressc_middleware_media",
+                schema: "viderhe_sapressc_middleware_media",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -175,7 +175,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "countries",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -246,7 +246,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "grouprolebridges",
-                schema: "videre_sapressc_core_securitylocal",
+                schema: "viderhe_sapressc_core_securitylocal",
                 columns: table => new
                 {
                     groupid = table.Column<Guid>(nullable: false),
@@ -258,14 +258,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_grouprolebridges_groups_groupid",
                         column: x => x.groupid,
-                        principalSchema: "videre_sapressc_core_securitylocal",
+                        principalSchema: "viderhe_sapressc_core_securitylocal",
                         principalTable: "groups",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_grouprolebridges_roles_roleid",
                         column: x => x.roleid,
-                        principalSchema: "videre_sapressc_core_securitylocal",
+                        principalSchema: "viderhe_sapressc_core_securitylocal",
                         principalTable: "roles",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -273,7 +273,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "usergroupbridges",
-                schema: "videre_sapressc_core_securitylocal",
+                schema: "viderhe_sapressc_core_securitylocal",
                 columns: table => new
                 {
                     userid = table.Column<string>(nullable: false),
@@ -285,14 +285,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_usergroupbridges_groups_groupid",
                         column: x => x.groupid,
-                        principalSchema: "videre_sapressc_core_securitylocal",
+                        principalSchema: "viderhe_sapressc_core_securitylocal",
                         principalTable: "groups",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_usergroupbridges_users_userid",
                         column: x => x.userid,
-                        principalSchema: "videre_sapressc_core_securitylocal",
+                        principalSchema: "viderhe_sapressc_core_securitylocal",
                         principalTable: "users",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -300,7 +300,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "images",
-                schema: "videre_sapressc_middleware_media",
+                schema: "viderhe_sapressc_middleware_media",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -318,7 +318,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_images_thumbnails_thumbnailid",
                         column: x => x.thumbnailid,
-                        principalSchema: "videre_sapressc_middleware_media",
+                        principalSchema: "viderhe_sapressc_middleware_media",
                         principalTable: "thumbnails",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
@@ -326,7 +326,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "videos",
-                schema: "videre_sapressc_middleware_media",
+                schema: "viderhe_sapressc_middleware_media",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -349,7 +349,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_videos_thumbnails_thumbnailid",
                         column: x => x.thumbnailid,
-                        principalSchema: "videre_sapressc_middleware_media",
+                        principalSchema: "viderhe_sapressc_middleware_media",
                         principalTable: "thumbnails",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
@@ -357,7 +357,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "states",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -370,7 +370,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_states_countries_countryid",
                         column: x => x.countryid,
-                        principalSchema: "videre_sapressc_middleware_region",
+                        principalSchema: "viderhe_sapressc_middleware_region",
                         principalTable: "countries",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -405,14 +405,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_accounts_images_logoid",
                         column: x => x.logoid,
-                        principalSchema: "videre_sapressc_middleware_media",
+                        principalSchema: "viderhe_sapressc_middleware_media",
                         principalTable: "images",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_accounts_images_splashid",
                         column: x => x.splashid,
-                        principalSchema: "videre_sapressc_middleware_media",
+                        principalSchema: "viderhe_sapressc_middleware_media",
                         principalTable: "images",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -420,7 +420,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "organizationidentities",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -436,14 +436,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_organizationidentities_images_imageid",
                         column: x => x.imageid,
-                        principalSchema: "videre_sapressc_middleware_media",
+                        principalSchema: "viderhe_sapressc_middleware_media",
                         principalTable: "images",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "fk_organizationidentities_organizationidentities_ownerid",
                         column: x => x.ownerid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "organizationidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
@@ -451,7 +451,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "personidentities",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -470,7 +470,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_personidentities_images_imageid",
                         column: x => x.imageid,
-                        principalSchema: "videre_sapressc_middleware_media",
+                        principalSchema: "viderhe_sapressc_middleware_media",
                         principalTable: "images",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
@@ -478,7 +478,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "municipalities",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -491,7 +491,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_municipalities_states_stateid",
                         column: x => x.stateid,
-                        principalSchema: "videre_sapressc_middleware_region",
+                        principalSchema: "viderhe_sapressc_middleware_region",
                         principalTable: "states",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -541,7 +541,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_accountimagebridges_images_imageid",
                         column: x => x.imageid,
-                        principalSchema: "videre_sapressc_middleware_media",
+                        principalSchema: "viderhe_sapressc_middleware_media",
                         principalTable: "images",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -566,7 +566,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_accountvideobridges_videos_videoid",
                         column: x => x.videoid,
-                        principalSchema: "videre_sapressc_middleware_media",
+                        principalSchema: "viderhe_sapressc_middleware_media",
                         principalTable: "videos",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -623,7 +623,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "organizationemailcontactitembridges",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     organizationid = table.Column<Guid>(nullable: false),
@@ -635,14 +635,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_organizationemailcontactitembridges_emailcontactitems_contac~",
                         column: x => x.contactitemid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "emailcontactitems",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_organizationemailcontactitembridges_organizationidentities_o~",
                         column: x => x.organizationid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "organizationidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -650,7 +650,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "organizationphonecontactitembridges",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     organizationid = table.Column<Guid>(nullable: false),
@@ -662,14 +662,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_organizationphonecontactitembridges_phonecontactitems_contac~",
                         column: x => x.contactitemid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "phonecontactitems",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_organizationphonecontactitembridges_organizationidentities_o~",
                         column: x => x.organizationid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "organizationidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -677,7 +677,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "organizationsocialcontactitembridges",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     organizationid = table.Column<Guid>(nullable: false),
@@ -689,14 +689,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_organizationsocialcontactitembridges_socialcontactitems_cont~",
                         column: x => x.contactitemid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "socialcontactitems",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_organizationsocialcontactitembridges_organizationidentities_~",
                         column: x => x.organizationid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "organizationidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -704,7 +704,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "organizationwebsitecontactitembridges",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     organizationid = table.Column<Guid>(nullable: false),
@@ -716,14 +716,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_organizationwebsitecontactitembridges_websitecontactitems_co~",
                         column: x => x.contactitemid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "websitecontactitems",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_organizationwebsitecontactitembridges_organizationidentities~",
                         column: x => x.organizationid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "organizationidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -743,14 +743,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_moderators_personidentities_identityid",
                         column: x => x.identityid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "personidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_moderators_users_userid",
                         column: x => x.userid,
-                        principalSchema: "videre_sapressc_core_securitylocal",
+                        principalSchema: "viderhe_sapressc_core_securitylocal",
                         principalTable: "users",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Restrict);
@@ -758,7 +758,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "memberships",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     personid = table.Column<Guid>(nullable: false),
@@ -771,14 +771,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_memberships_organizationidentities_organizationid",
                         column: x => x.organizationid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "organizationidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_memberships_personidentities_personid",
                         column: x => x.personid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "personidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -786,7 +786,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "personemailcontactitembridges",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     personid = table.Column<Guid>(nullable: false),
@@ -798,14 +798,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_personemailcontactitembridges_emailcontactitems_contactitemid",
                         column: x => x.contactitemid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "emailcontactitems",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_personemailcontactitembridges_personidentities_personid",
                         column: x => x.personid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "personidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -813,7 +813,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "personphonecontactitembridges",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     personid = table.Column<Guid>(nullable: false),
@@ -825,14 +825,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_personphonecontactitembridges_phonecontactitems_contactitemid",
                         column: x => x.contactitemid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "phonecontactitems",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_personphonecontactitembridges_personidentities_personid",
                         column: x => x.personid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "personidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -840,7 +840,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "personsocialcontactitembridges",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     personid = table.Column<Guid>(nullable: false),
@@ -852,14 +852,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_personsocialcontactitembridges_socialcontactitems_contactite~",
                         column: x => x.contactitemid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "socialcontactitems",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_personsocialcontactitembridges_personidentities_personid",
                         column: x => x.personid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "personidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -867,7 +867,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "personwebsitecontactitembridges",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     personid = table.Column<Guid>(nullable: false),
@@ -879,14 +879,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_personwebsitecontactitembridges_websitecontactitems_contacti~",
                         column: x => x.contactitemid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "websitecontactitems",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_personwebsitecontactitembridges_personidentities_personid",
                         column: x => x.personid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "personidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -894,7 +894,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "localities",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -907,7 +907,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_localities_municipalities_municipalityid",
                         column: x => x.municipalityid,
-                        principalSchema: "videre_sapressc_middleware_region",
+                        principalSchema: "viderhe_sapressc_middleware_region",
                         principalTable: "municipalities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -1002,7 +1002,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "regions",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -1018,28 +1018,28 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_regions_countries_countryid",
                         column: x => x.countryid,
-                        principalSchema: "videre_sapressc_middleware_region",
+                        principalSchema: "viderhe_sapressc_middleware_region",
                         principalTable: "countries",
                         principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "fk_regions_localities_localityid",
                         column: x => x.localityid,
-                        principalSchema: "videre_sapressc_middleware_region",
+                        principalSchema: "viderhe_sapressc_middleware_region",
                         principalTable: "localities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "fk_regions_municipalities_municipalityid",
                         column: x => x.municipalityid,
-                        principalSchema: "videre_sapressc_middleware_region",
+                        principalSchema: "viderhe_sapressc_middleware_region",
                         principalTable: "municipalities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
                         name: "fk_regions_states_stateid",
                         column: x => x.stateid,
-                        principalSchema: "videre_sapressc_middleware_region",
+                        principalSchema: "viderhe_sapressc_middleware_region",
                         principalTable: "states",
                         principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
@@ -1047,7 +1047,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "postalcontactitems",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     id = table.Column<Guid>(nullable: false),
@@ -1062,7 +1062,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_postalcontactitems_regions_regionid",
                         column: x => x.regionid,
-                        principalSchema: "videre_sapressc_middleware_region",
+                        principalSchema: "viderhe_sapressc_middleware_region",
                         principalTable: "regions",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -1070,7 +1070,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "organizationpostalcontactitembridges",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     organizationid = table.Column<Guid>(nullable: false),
@@ -1082,14 +1082,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_organizationpostalcontactitembridges_postalcontactitems_cont~",
                         column: x => x.contactitemid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "postalcontactitems",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_organizationpostalcontactitembridges_organizationidentities_~",
                         column: x => x.organizationid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "organizationidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -1097,7 +1097,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateTable(
                 name: "personpostalcontactitembridges",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 columns: table => new
                 {
                     personid = table.Column<Guid>(nullable: false),
@@ -1109,14 +1109,14 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
                     table.ForeignKey(
                         name: "fk_personpostalcontactitembridges_postalcontactitems_contactite~",
                         column: x => x.contactitemid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "postalcontactitems",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "fk_personpostalcontactitembridges_personidentities_personid",
                         column: x => x.personid,
-                        principalSchema: "videre_sapressc_middleware_identity",
+                        principalSchema: "viderhe_sapressc_middleware_identity",
                         principalTable: "personidentities",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -1224,185 +1224,185 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "ix_grouprolebridges_roleid",
-                schema: "videre_sapressc_core_securitylocal",
+                schema: "viderhe_sapressc_core_securitylocal",
                 table: "grouprolebridges",
                 column: "roleid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_usergroupbridges_groupid",
-                schema: "videre_sapressc_core_securitylocal",
+                schema: "viderhe_sapressc_core_securitylocal",
                 table: "usergroupbridges",
                 column: "groupid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_memberships_personid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "memberships",
                 column: "personid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_organizationemailcontactitembridges_contactitemid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "organizationemailcontactitembridges",
                 column: "contactitemid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_organizationidentities_imageid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "organizationidentities",
                 column: "imageid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_organizationidentities_ownerid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "organizationidentities",
                 column: "ownerid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_organizationphonecontactitembridges_contactitemid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "organizationphonecontactitembridges",
                 column: "contactitemid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_organizationpostalcontactitembridges_contactitemid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "organizationpostalcontactitembridges",
                 column: "contactitemid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_organizationsocialcontactitembridges_contactitemid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "organizationsocialcontactitembridges",
                 column: "contactitemid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_organizationwebsitecontactitembridges_contactitemid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "organizationwebsitecontactitembridges",
                 column: "contactitemid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_personemailcontactitembridges_contactitemid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "personemailcontactitembridges",
                 column: "contactitemid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_personidentities_imageid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "personidentities",
                 column: "imageid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_personphonecontactitembridges_contactitemid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "personphonecontactitembridges",
                 column: "contactitemid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_personpostalcontactitembridges_contactitemid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "personpostalcontactitembridges",
                 column: "contactitemid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_personsocialcontactitembridges_contactitemid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "personsocialcontactitembridges",
                 column: "contactitemid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_personwebsitecontactitembridges_contactitemid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "personwebsitecontactitembridges",
                 column: "contactitemid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_postalcontactitems_regionid",
-                schema: "videre_sapressc_middleware_identity",
+                schema: "viderhe_sapressc_middleware_identity",
                 table: "postalcontactitems",
                 column: "regionid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_images_thumbnailid",
-                schema: "videre_sapressc_middleware_media",
+                schema: "viderhe_sapressc_middleware_media",
                 table: "images",
                 column: "thumbnailid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_videos_thumbnailid",
-                schema: "videre_sapressc_middleware_media",
+                schema: "viderhe_sapressc_middleware_media",
                 table: "videos",
                 column: "thumbnailid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_countries_isocode",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 table: "countries",
                 column: "isocode",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "ix_countries_name",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 table: "countries",
                 column: "name",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "ix_localities_municipalityid",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 table: "localities",
                 column: "municipalityid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_localities_name_municipalityid",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 table: "localities",
                 columns: new[] { "name", "municipalityid" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "ix_municipalities_stateid",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 table: "municipalities",
                 column: "stateid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_municipalities_name_stateid",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 table: "municipalities",
                 columns: new[] { "name", "stateid" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "ix_regions_countryid",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 table: "regions",
                 column: "countryid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_regions_localityid",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 table: "regions",
                 column: "localityid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_regions_municipalityid",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 table: "regions",
                 column: "municipalityid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_regions_stateid",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 table: "regions",
                 column: "stateid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_states_countryid",
-                schema: "videre_sapressc_middleware_region",
+                schema: "viderhe_sapressc_middleware_region",
                 table: "states",
                 column: "countryid");
         }
@@ -1435,62 +1435,62 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.DropTable(
                 name: "grouprolebridges",
-                schema: "videre_sapressc_core_securitylocal");
+                schema: "viderhe_sapressc_core_securitylocal");
 
             migrationBuilder.DropTable(
                 name: "usergroupbridges",
-                schema: "videre_sapressc_core_securitylocal");
+                schema: "viderhe_sapressc_core_securitylocal");
 
             migrationBuilder.DropTable(
                 name: "memberships",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "organizationemailcontactitembridges",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "organizationphonecontactitembridges",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "organizationpostalcontactitembridges",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "organizationsocialcontactitembridges",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "organizationwebsitecontactitembridges",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "personemailcontactitembridges",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "personphonecontactitembridges",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "personpostalcontactitembridges",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "personsocialcontactitembridges",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "personwebsitecontactitembridges",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "moderators");
 
             migrationBuilder.DropTable(
                 name: "videos",
-                schema: "videre_sapressc_middleware_media");
+                schema: "viderhe_sapressc_middleware_media");
 
             migrationBuilder.DropTable(
                 name: "placards");
@@ -1500,43 +1500,43 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.DropTable(
                 name: "roles",
-                schema: "videre_sapressc_core_securitylocal");
+                schema: "viderhe_sapressc_core_securitylocal");
 
             migrationBuilder.DropTable(
                 name: "groups",
-                schema: "videre_sapressc_core_securitylocal");
+                schema: "viderhe_sapressc_core_securitylocal");
 
             migrationBuilder.DropTable(
                 name: "organizationidentities",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "emailcontactitems",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "phonecontactitems",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "postalcontactitems",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "socialcontactitems",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "websitecontactitems",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "personidentities",
-                schema: "videre_sapressc_middleware_identity");
+                schema: "viderhe_sapressc_middleware_identity");
 
             migrationBuilder.DropTable(
                 name: "users",
-                schema: "videre_sapressc_core_securitylocal");
+                schema: "viderhe_sapressc_core_securitylocal");
 
             migrationBuilder.DropTable(
                 name: "templates");
@@ -1546,37 +1546,37 @@ namespace SmartSolucionesCuba.Videre.Cloud.Migrations
 
             migrationBuilder.DropTable(
                 name: "regions",
-                schema: "videre_sapressc_middleware_region");
+                schema: "viderhe_sapressc_middleware_region");
 
             migrationBuilder.DropTable(
                 name: "overlays");
 
             migrationBuilder.DropTable(
                 name: "images",
-                schema: "videre_sapressc_middleware_media");
+                schema: "viderhe_sapressc_middleware_media");
 
             migrationBuilder.DropTable(
                 name: "localities",
-                schema: "videre_sapressc_middleware_region");
+                schema: "viderhe_sapressc_middleware_region");
 
             migrationBuilder.DropTable(
                 name: "extensions");
 
             migrationBuilder.DropTable(
                 name: "thumbnails",
-                schema: "videre_sapressc_middleware_media");
+                schema: "viderhe_sapressc_middleware_media");
 
             migrationBuilder.DropTable(
                 name: "municipalities",
-                schema: "videre_sapressc_middleware_region");
+                schema: "viderhe_sapressc_middleware_region");
 
             migrationBuilder.DropTable(
                 name: "states",
-                schema: "videre_sapressc_middleware_region");
+                schema: "viderhe_sapressc_middleware_region");
 
             migrationBuilder.DropTable(
                 name: "countries",
-                schema: "videre_sapressc_middleware_region");
+                schema: "viderhe_sapressc_middleware_region");
         }
     }
 }

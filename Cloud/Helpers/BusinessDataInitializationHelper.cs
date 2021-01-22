@@ -3,7 +3,7 @@ using SmartSolucionesCuba.SAPRESSC.Core.Security.Persistence.Entities;
 using SmartSolucionesCuba.SAPRESSC.Core.Web.SecurityLocal.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Helpers
+namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers
 {
     public sealed class BusinessDataInitializationHelper : SAPRESSC.Core.Persistence.EF.Helpers.Facade.IDataInitializationHelper
     {

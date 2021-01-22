@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Videre.Support.Presentation.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Support.Presentation.Providers
+namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Providers
 {
     public sealed class TemplateViewModelProvider
     {

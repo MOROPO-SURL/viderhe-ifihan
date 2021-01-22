@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Views;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
 
-namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Views
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views
 {
     public partial class PictureSecuencePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, Common.Motion.Presentation.Providers.Facade.IMotionTransitionProviderFacade
     {

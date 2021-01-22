@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Persistence.Entities
+namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
 {
     public class Screenplay : SAPRESSC.Core.Persistence.Entities.IEntity<System.Guid>
     {

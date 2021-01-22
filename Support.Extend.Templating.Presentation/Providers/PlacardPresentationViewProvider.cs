@@ -1,8 +1,8 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Views;
-using SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Providers.Facade;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
+using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Providers.Facade;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Support.Extend.Templating.Presentation.Providers
+namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Providers
 {
     public sealed class PlacardPresentationViewProvider
     {
@@ -24,12 +24,12 @@ namespace SmartSolucionesCuba.Videre.Support.Extend.Templating.Presentation.Prov
         private PlacardPresentationViewProvider()
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => !a.FullName.Contains(".Videre.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Videre\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating.Presentation,\\sVersion=")).ToArray();
+                .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating.Presentation,\\sVersion=")).ToArray();
 
             XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IPlacardPresentationViewProviderFacade).IsAssignableFrom(t));
         }
 
-        public BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, Videre.Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
+        public BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, Viderhe.Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
         {
             var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardPresentationViewProviderFacade>();
 

@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Views;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
 
-namespace SmartSolucionesCuba.Videre.Extend.Essential.Motion.Presentation.Providers
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Presentation.Providers
 {
     public class MotionTransitionProvider : Common.Motion.Presentation.Providers.Facade.IMotionTransitionProviderFacade
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers.Facade
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers.Facade
 {
     public interface IApplicationManagerFacade
     {

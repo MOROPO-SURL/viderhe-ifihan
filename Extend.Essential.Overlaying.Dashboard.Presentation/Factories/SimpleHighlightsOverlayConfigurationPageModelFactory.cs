@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Overlaying.Dashboard.Presentation.Factories
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Presentation.Factories
 {
     public static class SimpleHighlightsOverlayConfigurationPageModelFactory
     {

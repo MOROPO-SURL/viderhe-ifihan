@@ -1,8 +1,8 @@
-﻿using SmartSolucionesCuba.Videre.Support.Presentation.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Pages
+namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 {
     public partial class ImagesPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ImagesPickPageModel>
     {

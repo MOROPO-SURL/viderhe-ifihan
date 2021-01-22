@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Videre.Cloud.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Cloud.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Managers
+namespace SmartSolucionesCuba.Viderhe.Cloud.Managers
 {
     public class ImageFileManager : SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade
     {

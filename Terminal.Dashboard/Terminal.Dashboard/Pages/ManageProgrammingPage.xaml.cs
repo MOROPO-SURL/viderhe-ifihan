@@ -1,9 +1,9 @@
-﻿using SmartSolucionesCuba.Videre.Support.Presentation.Extensions;
-using SmartSolucionesCuba.Videre.Support.Presentation.Helpers.Facade;
+﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+using SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers.Facade;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
     public partial class ManageProgrammingPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageProgrammingPageModel>
     {

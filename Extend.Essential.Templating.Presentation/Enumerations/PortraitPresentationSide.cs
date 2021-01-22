@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Enumerations
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Enumerations
 {
     public enum PortraitPresentationSide
     {

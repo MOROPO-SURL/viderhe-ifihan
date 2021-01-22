@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.iOS
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.iOS
 {
     public class Application
     {

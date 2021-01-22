@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Presentation.Views
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views
 {
     public class BasePlacardPresentationView : XFToolKit.Mvvm.Views.ContentView
     {

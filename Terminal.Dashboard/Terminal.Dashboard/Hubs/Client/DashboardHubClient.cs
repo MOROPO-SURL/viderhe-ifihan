@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using SmartSolucionesCuba.Videre.Cloud.SignalR.Connect.Common.Enumerations;
+using SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Common.Enumerations;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Hubs.Client
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
 {
     public class DashboardHubClient : Cloud.SignalR.Connect.Dashboard.Clients.IDashboardClient, System.IDisposable
     {

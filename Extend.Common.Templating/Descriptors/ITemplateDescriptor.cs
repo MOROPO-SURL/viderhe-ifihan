@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Descriptors
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Descriptors
 {
     public interface ITemplateDescriptor
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Player.Helpers.Facade
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Helpers.Facade
 {
     public interface IPlatformControlHelperFacade
     {

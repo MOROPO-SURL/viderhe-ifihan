@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Pages
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 {
     public partial class ImageDetailPage : XFToolKit.Mvvm.Pages.ContentPage
     {

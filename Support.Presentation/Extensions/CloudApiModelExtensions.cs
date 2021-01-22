@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Videre.Cloud.Api.Common.Models;
-using SmartSolucionesCuba.Videre.Support.Presentation.Models.View;
+﻿using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
+using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Videre.Support.Presentation.Extensions
+namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions
 {
     public static class CloudApiModelExtensions
     {

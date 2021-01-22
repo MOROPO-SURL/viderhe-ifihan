@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Helpers.Binding
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers.Binding
 {
     public class ConcretModelBindHelper : SAPRESSC.Core.Web.Common.ModelBinding.IConcretModelBindHelper
     {

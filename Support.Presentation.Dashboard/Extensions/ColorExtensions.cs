@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Extensions
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Extensions
 {
     public static class ColorExtensions
     {

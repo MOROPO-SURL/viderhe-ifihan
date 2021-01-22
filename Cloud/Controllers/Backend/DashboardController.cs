@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SmartSolucionesCuba.SAPRESSC.Core.Web.Security.Filters;
-using SmartSolucionesCuba.Videre.Cloud.Extensions;
+using SmartSolucionesCuba.Viderhe.Cloud.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Backend
+namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 {
     [Microsoft.AspNetCore.Authorization.Authorize]
     [RequiresRoleBasePermission(SAPRESSC.Core.Web.Security.SecurityRoleCodes.ShellManager)]

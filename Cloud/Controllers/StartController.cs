@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Controllers
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers
 {
     public class StartController : Microsoft.AspNetCore.Mvc.Controller
     {

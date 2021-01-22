@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Videre.Extend.Common.Motion</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Videre.Extend.Common.Motion</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Common.Motion</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Common.Motion</RootNamespace>
   </PropertyGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Support.Presentation.Models.View
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View
 {
     public class SessionViewModel
     {

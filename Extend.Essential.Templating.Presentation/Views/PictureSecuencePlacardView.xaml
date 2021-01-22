@@ -4,10 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
     mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Views.PictureSecuencePlacardView">
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views.PictureSecuencePlacardView">
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="FramesContainerWrapper">

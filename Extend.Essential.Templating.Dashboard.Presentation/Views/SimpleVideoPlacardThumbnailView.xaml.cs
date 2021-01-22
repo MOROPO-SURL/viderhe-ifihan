@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Presentation.Views
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views
 {
     public partial class SimpleVideoPlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
     {

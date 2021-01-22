@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Player.Providers
+namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Providers
 {
     public sealed class OverlayPresentationViewProvider
     {
@@ -22,7 +22,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Providers
         private OverlayPresentationViewProvider()
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => !a.FullName.Contains(".Videre.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Videre\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Overlaying.Presentation,\\sVersion=")).ToArray();
+                .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Overlaying.Presentation,\\sVersion=")).ToArray();
 
             XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(Extend.Common.Overlaying.Presentation.Providers.Facade.IOverlayPresentationViewProviderFacade).IsAssignableFrom(t));
         }

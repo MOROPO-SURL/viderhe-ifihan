@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud
 {
     public class SharedResources
     {

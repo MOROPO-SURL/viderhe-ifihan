@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Motion.Presentation.Enumerations;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Motion.Presentation.Enumerations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 
-namespace SmartSolucionesCuba.Videre.Extend.Essential.Motion.Presentation.Transitions
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Presentation.Transitions
 {
     public class FlatSpectrumReverseTrailTransition : Common.Motion.Presentation.Transitions.AbstractTransition
     {

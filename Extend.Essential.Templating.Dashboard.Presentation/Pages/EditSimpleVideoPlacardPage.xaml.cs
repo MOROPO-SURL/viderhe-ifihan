@@ -1,6 +1,6 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Presentation.Pages
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages
 {
     public partial class EditSimpleVideoPlacardPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EditSimpleVideoPlacardPageModel>
     {

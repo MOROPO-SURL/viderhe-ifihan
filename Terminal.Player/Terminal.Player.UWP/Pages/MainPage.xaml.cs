@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Player.UWP.Pages
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Pages
 {
     public sealed partial class MainPage
     {

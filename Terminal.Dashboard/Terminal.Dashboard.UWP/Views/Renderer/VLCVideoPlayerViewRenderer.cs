@@ -1,6 +1,6 @@
-﻿[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView), typeof(SmartSolucionesCuba.Videre.Terminal.Dashboard.UWP.Views.Renderer.VLCVideoPlayerViewRenderer))]
+﻿[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer.VLCVideoPlayerViewRenderer))]
 
-namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.UWP.Views.Renderer
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 {
     public class VLCVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<XFToolKit.Presentation.Views.Rendered.VideoPlayerView, VLC.MediaElement>
     {

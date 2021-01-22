@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Options
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Options
 {
     public class MediaThumbnailResizeOptions
     {

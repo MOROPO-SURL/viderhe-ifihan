@@ -1,6 +1,6 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 
-namespace SmartSolucionesCuba.Videre.Extend.Essential.Motion.Presentation.Transitions
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Presentation.Transitions
 {
     public class ScalingGrowFadeOutInTransition : Common.Motion.Presentation.Transitions.AbstractTransition
     {

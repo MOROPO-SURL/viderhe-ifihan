@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Managers
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Managers
 {
     public class UserProfileManager : SAPRESSC.Core.Web.Security.Managers.Facade.IUserProfileManagerFacade
     {

@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-    <AssemblyName>SmartSolucionesCuba.Videre.Terminal.Player</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Videre.Terminal.Player</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Player</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Player</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

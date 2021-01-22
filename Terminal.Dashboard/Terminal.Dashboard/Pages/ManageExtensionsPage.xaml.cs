@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Pages
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
     public partial class ManageExtensionsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageExtensionsPageModel>
     {

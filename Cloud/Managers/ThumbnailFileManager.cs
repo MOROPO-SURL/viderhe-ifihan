@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Managers
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Managers
 {
     public class ThumbnailFileManager : SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IThumbnailFileManagerFacade
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Overlaying.Presentation.Converters
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Converters
 {
     public class TextToAbsoluteLayoutBoundsConverter : Xamarin.Forms.IValueConverter
     {

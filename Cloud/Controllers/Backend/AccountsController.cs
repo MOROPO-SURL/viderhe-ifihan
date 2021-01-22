@@ -5,11 +5,11 @@ using SmartSolucionesCuba.SAPRESSC.Core.Security.Persistence.Entities;
 using SmartSolucionesCuba.SAPRESSC.Core.Web.Security.Filters;
 using SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities;
 using SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities;
-using SmartSolucionesCuba.Videre.Cloud.Models.View;
-using SmartSolucionesCuba.Videre.Cloud.Persistence.Entities;
+using SmartSolucionesCuba.Viderhe.Cloud.Models.View;
+using SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Backend
+namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 {
     [Microsoft.AspNetCore.Authorization.Authorize]
     [Area("business")]

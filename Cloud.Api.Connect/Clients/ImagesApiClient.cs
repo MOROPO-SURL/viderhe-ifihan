@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Api.Connect.Clients
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
 {
     public class ImagesApiClient
     {

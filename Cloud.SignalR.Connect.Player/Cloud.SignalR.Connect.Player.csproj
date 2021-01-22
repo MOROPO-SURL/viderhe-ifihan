@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Videre.Cloud.SignalR.Connect.Player</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Videre.Cloud.SignalR.Connect.Player</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Player</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Player</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

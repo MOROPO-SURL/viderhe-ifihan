@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Motion.Presentation.Factories
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Presentation.Factories
 {
     public static class RandomMotionTransitionContextModelFactory
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Player.Extensions
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Extensions
 {
     internal static class StringExtensions
     {

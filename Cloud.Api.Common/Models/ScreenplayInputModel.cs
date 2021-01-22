@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 {
     public class ScreenplayInputModel : SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Screenplay, System.Guid>
     {

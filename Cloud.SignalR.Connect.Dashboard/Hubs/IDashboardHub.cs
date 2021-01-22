@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.SignalR.Connect.Dashboard.Hubs
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Dashboard.Hubs
 {
     public interface IDashboardHub
     {
