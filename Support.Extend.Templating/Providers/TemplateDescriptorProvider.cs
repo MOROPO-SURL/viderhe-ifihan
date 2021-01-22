@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Templating.Descriptors;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Descriptors;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Support.Extend.Templating.Providers
+namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Providers
 {
     public sealed class TemplateDescriptorProvider
     {
@@ -23,7 +23,7 @@ namespace SmartSolucionesCuba.Videre.Support.Extend.Templating.Providers
         private TemplateDescriptorProvider()
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => !a.FullName.Contains(".Videre.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Videre\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating,\\sVersion=")).ToArray();
+                .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating,\\sVersion=")).ToArray();
 
             XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(ITemplateDescriptor).IsAssignableFrom(t));
         }

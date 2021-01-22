@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Motion.Presentation.Enumerations
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Presentation.Enumerations
 {
     public enum SweptTransitionInOutKind
     {

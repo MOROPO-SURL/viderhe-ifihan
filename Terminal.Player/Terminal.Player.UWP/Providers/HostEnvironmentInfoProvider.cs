@@ -1,6 +1,6 @@
-﻿[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Videre.Terminal.Player.UWP.Providers.HostEnvironmentInfoProvider))]
+﻿[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Providers.HostEnvironmentInfoProvider))]
 
-namespace SmartSolucionesCuba.Videre.Terminal.Player.UWP.Providers
+namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Providers
 {
     public class HostEnvironmentInfoProvider : Player.Providers.Facade.IHostEnvironmentInfoProviderFacade
     {

@@ -13,10 +13,10 @@ using SmartSolucionesCuba.SAPRESSC.Core.Web.Security.Extensions;
 using SmartSolucionesCuba.SAPRESSC.Core.Web.SecurityLocal.Extensions;
 using SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Web.Common.Extensions;
 using SmartSolucionesCuba.SAPRESSC.Middleware.Media.Web.Common.Extensions;
-using SmartSolucionesCuba.Videre.Cloud.Options;
+using SmartSolucionesCuba.Viderhe.Cloud.Options;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud
+namespace SmartSolucionesCuba.Viderhe.Cloud
 {
     public class Startup
     {
@@ -27,11 +27,11 @@ namespace SmartSolucionesCuba.Videre.Cloud
         {
             #region Ensure Required Assemblies load
 
-            var extensionRootDirectoryPath = configuration["Videre:ExtensionRootDirectoryPath"];
+            var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 
             var extensionRootDirectoryInfo = new System.IO.DirectoryInfo(extensionRootDirectoryPath);
 
-            var extensionCustomRuntimeLibraries = Microsoft.Extensions.DependencyModel.DependencyContext.Default.RuntimeLibraries.Where(l => l.Type == "project" && l.Name.Contains(".Videre.Extend.") && !l.Name.Contains(".Videre.Support.Extend") && !l.Name.Contains(".Videre.Extend.Common")).ToList();
+            var extensionCustomRuntimeLibraries = Microsoft.Extensions.DependencyModel.DependencyContext.Default.RuntimeLibraries.Where(l => l.Type == "project" && l.Name.Contains(".Viderhe.Extend.") && !l.Name.Contains(".Viderhe.Support.Extend") && !l.Name.Contains(".Viderhe.Extend.Common")).ToList();
 
             if (extensionRootDirectoryInfo.Exists)
             {
@@ -39,7 +39,7 @@ namespace SmartSolucionesCuba.Videre.Cloud
 
                 foreach (var extensionDirectoryInfo in extensionDirectoryInfos)
                 {
-                    var extensionLibraryFileInfos = Providers.VidereExtensionLibraryFileInfosProvider.GetRelevantToCloud(extensionDirectoryInfo);
+                    var extensionLibraryFileInfos = Providers.ViderheExtensionLibraryFileInfosProvider.GetRelevantToCloud(extensionDirectoryInfo);
 
                     foreach (var extensionLibraryFileInfo in extensionLibraryFileInfos)
                     {

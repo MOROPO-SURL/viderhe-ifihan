@@ -4,9 +4,9 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Player.Droid
+namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 {
-    [Activity(Label = "Videre Player", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Viderhe Player", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)

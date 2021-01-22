@@ -4,10 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:providers="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers"
-    xmlns:supportpresentationconverters="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Converters;assembly=SmartSolucionesCuba.Videre.Support.Presentation"
+    xmlns:providers="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers"
+    xmlns:supportpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.App">
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.App">
     <Application.Resources>
         <supportpresentationconverters:ImageViewModelToThumbnailImageSourceConverter x:Key="ImageViewModelToThumbnailImageSourceConverter" CloudServerProvider="{x:Static providers:CloudServerProvider.Instance}" />
         <supportpresentationconverters:ImageViewModelToImageSourceConverter x:Key="ImageViewModelToImageSourceConverter" CloudServerProvider="{x:Static providers:CloudServerProvider.Instance}" />

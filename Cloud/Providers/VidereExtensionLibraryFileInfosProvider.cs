@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Providers
+namespace SmartSolucionesCuba.Viderhe.Cloud.Providers
 {
-    internal static class VidereExtensionLibraryFileInfosProvider
+    internal static class ViderheExtensionLibraryFileInfosProvider
     {
         internal static System.Collections.Generic.IEnumerable<System.IO.FileInfo> GetRelevantToCloud(System.IO.DirectoryInfo extensionDirectoryInfo)
         {
@@ -10,7 +10,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Providers
 
             if (libraryFileInfos.Length <= 0) return Enumerable.Empty<System.IO.FileInfo>();
 
-            var extensionDescriptionLibraryFileInfo = libraryFileInfos.First(item => System.Text.RegularExpressions.Regex.IsMatch(item.Name, ".+\\.Videre\\.Extend\\.[a-zA-Z0-9|\\.]+\\.dll"));
+            var extensionDescriptionLibraryFileInfo = libraryFileInfos.First(item => System.Text.RegularExpressions.Regex.IsMatch(item.Name, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.dll"));
 
             var extensionBaseLibraryFilePath = System.IO.Path.GetFileNameWithoutExtension(extensionDescriptionLibraryFileInfo.Name);
 

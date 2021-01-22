@@ -4,12 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Models.Page"
-    xmlns:views="clr-namespace:SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.Page"
+    xmlns:views="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Pages.ImagesPickPage"
+    x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.ImagesPickPage"
     x:TypeArguments="pagemodels:ImagesPickPageModel"
     Title="Seleccionar Imágenes">
     <ContentPage.Resources>

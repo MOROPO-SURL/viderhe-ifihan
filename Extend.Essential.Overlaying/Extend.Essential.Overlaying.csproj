@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Videre.Extend.Essential.Overlaying</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Videre.Extend.Essential.Overlaying</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

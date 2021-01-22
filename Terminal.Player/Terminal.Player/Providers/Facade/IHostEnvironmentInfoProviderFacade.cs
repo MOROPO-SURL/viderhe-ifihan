@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Player.Providers.Facade
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Providers.Facade
 {
     public interface IHostEnvironmentInfoProviderFacade
     {

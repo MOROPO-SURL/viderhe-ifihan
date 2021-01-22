@@ -1,9 +1,9 @@
-﻿using SmartSolucionesCuba.Videre.Support.Presentation.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Player.Pages
+namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer

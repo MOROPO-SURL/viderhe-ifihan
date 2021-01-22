@@ -1,8 +1,8 @@
 ﻿using System;
 
-[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Views.Rendered.UnattendedVideoPlayerView), typeof(SmartSolucionesCuba.Videre.Terminal.Player.UWP.Views.Renderer.RtmpClientVideoPlayerViewRenderer))]
+[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered.UnattendedVideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer.RtmpClientVideoPlayerViewRenderer))]
 
-namespace SmartSolucionesCuba.Videre.Terminal.Player.UWP.Views.Renderer
+namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer
 {
     public class RtmpClientVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<Extend.Common.Templating.Presentation.Views.Rendered.UnattendedVideoPlayerView, Windows.UI.Xaml.Controls.MediaElement>
     {

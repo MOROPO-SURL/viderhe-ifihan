@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SmartSolucionesCuba.Videre.Cloud.Extensions;
+using SmartSolucionesCuba.Viderhe.Cloud.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Components
+namespace SmartSolucionesCuba.Viderhe.Cloud.Components
 {
     public class DashboardSidebarViewComponent : ViewComponent
     {

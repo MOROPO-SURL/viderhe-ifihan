@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Models.Page
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.Page
 {
     public class ImagePickPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {

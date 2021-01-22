@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Enumerations
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Enumerations
 {
     public enum ActionKind
     {

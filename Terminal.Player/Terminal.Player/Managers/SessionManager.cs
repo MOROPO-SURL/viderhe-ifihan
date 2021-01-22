@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Player.Managers
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
 {
     public sealed class SessionManager : SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {

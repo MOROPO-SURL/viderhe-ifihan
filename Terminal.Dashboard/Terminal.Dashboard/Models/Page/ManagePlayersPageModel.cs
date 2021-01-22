@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Models.Page
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
     public class ManagePlayersPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {

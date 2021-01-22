@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Providers.Facade;
-using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Views;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Providers.Facade;
+using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
 
-namespace SmartSolucionesCuba.Videre.Extend.Common.Motion.Presentation.Transitions
+namespace SmartSolucionesCuba.Viderhe.Extend.Common.Motion.Presentation.Transitions
 {
     public abstract class AbstractTransition
     {

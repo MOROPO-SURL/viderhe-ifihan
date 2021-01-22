@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Api.Connect.Clients
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
 {
     public class ScreenplaysApiClient : SAPRESSC.Core.Api.Connect.Clients.AbstractEntityApiManagementClient<Persistence.Entities.Screenplay, System.Guid, Common.Models.ScreenplayInputModel, Common.Models.ScreenplayDisplayModel>
     {

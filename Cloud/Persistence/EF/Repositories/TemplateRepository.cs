@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Persistence.EF.Repositories
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
 {
     public class TemplateRepository : SAPRESSC.Core.Persistence.EF.Repositories.AbstractEntityRepository<Entities.Template, System.Guid>
     {

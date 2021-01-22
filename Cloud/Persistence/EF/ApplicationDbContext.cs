@@ -3,9 +3,9 @@ using SmartSolucionesCuba.SAPRESSC.Core.Security.Persistence.Entities;
 using SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities;
 using SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities;
 using SmartSolucionesCuba.SAPRESSC.Middleware.Region.Persistence.Entities;
-using SmartSolucionesCuba.Videre.Cloud.Persistence.Entities;
+using SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Persistence.EF
+namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF
 {
     public class ApplicationDbContext :
         SAPRESSC.Core.Persistence.EF.Context.AbstractTraceableDbContext,

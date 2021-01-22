@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Player.Models.View
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Models.View
 {
     public class ConfigurationStepViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
     {

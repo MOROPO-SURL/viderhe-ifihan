@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Api.Connect.Clients
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
 {
     public class FramesApiClient : SAPRESSC.Core.Api.Connect.Clients.AbstractEntityApiManagementFilteredClient<Persistence.Entities.Frame, long, Common.Models.FrameInputModel, Common.Models.FrameDisplayModel, Common.Models.Filter.FrameFilterModel>
     {

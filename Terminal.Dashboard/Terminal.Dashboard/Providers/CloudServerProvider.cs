@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
 {
     public sealed class CloudServerProvider : Support.Presentation.Providers.Facade.ICloudServerProviderFacade
     {

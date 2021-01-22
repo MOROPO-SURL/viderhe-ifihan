@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Managers
+namespace SmartSolucionesCuba.Viderhe.Cloud.Managers
 {
     public class VideoFileManager : SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IVideoFileManagerFacade
     {

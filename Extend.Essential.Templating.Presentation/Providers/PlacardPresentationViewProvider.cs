@@ -1,8 +1,8 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Essential.Templating.Descriptors;
-using SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Models.Context;
-using SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Views;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Descriptors;
+using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Models.Context;
+using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views;
 
-namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Providers
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Providers
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {

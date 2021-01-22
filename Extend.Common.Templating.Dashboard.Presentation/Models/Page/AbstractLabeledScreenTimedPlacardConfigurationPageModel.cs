@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Dashboard.Presentation.Models.Page
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Models.Page
 {
     public abstract class AbstractLabeledScreenTimedPlacardConfigurationPageModel : AbstractLabeledPlacardConfigurationPageModel
     {

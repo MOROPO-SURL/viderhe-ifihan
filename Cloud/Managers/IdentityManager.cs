@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Managers
+namespace SmartSolucionesCuba.Viderhe.Cloud.Managers
 {
     public class IdentityManager : SAPRESSC.Core.Web.SecurityLocal.Managers.IdentityManager
     {

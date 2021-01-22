@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Motion.Descriptors
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Motion.Descriptors
 {
     public interface ITransitionDescriptor
     {

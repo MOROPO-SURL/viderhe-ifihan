@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Providers
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
 {
     public class AccountInformationProvider : Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade
     {

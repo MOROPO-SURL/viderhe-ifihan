@@ -1,8 +1,8 @@
 ﻿using SmartSolucionesCuba.SAPRESSC.Core.Web.Common.ComponentModel.DataAnnotations;
-using SmartSolucionesCuba.Videre.Cloud.Extensions;
+using SmartSolucionesCuba.Viderhe.Cloud.Extensions;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Models.View
+namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
 {
     public class ModeratorInputViewModel : SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Moderator, System.Guid>
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Api.Connect.Clients
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
 {
     public class PlayersApiClient : SAPRESSC.Core.Api.Connect.Clients.AbstractEntityApiManagementClient<Persistence.Entities.Player, string, Common.Models.PlayerInputModel, Common.Models.PlayerDisplayModel>
     {

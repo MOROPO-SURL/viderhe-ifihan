@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms.Platform.UWP;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.UWP.Views.Renderer
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 {
     public class RtmpClientVideoPlayerViewRenderer : ViewRenderer<Extend.Common.Templating.Presentation.Views.Rendered.UnattendedVideoPlayerView, Windows.UI.Xaml.Controls.MediaElement>
     {

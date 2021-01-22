@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 {
     public class OverlayDisplayModel : SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Overlay, System.Guid>
     {

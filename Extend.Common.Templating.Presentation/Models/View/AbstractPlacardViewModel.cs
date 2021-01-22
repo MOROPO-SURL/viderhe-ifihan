@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Models.View
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Models.View
 {
     public abstract class AbstractPlacardViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
     {

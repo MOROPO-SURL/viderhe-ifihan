@@ -1,10 +1,10 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Motion.Presentation.Providers.Facade;
-using SmartSolucionesCuba.Videre.Extend.Common.Motion.Presentation.Transitions;
-using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Providers.Facade;
-using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Views;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Motion.Presentation.Providers.Facade;
+using SmartSolucionesCuba.Viderhe.Extend.Common.Motion.Presentation.Transitions;
+using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Providers.Facade;
+using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Support.Extend.Motion.Presentation.Providers
+namespace SmartSolucionesCuba.Viderhe.Support.Extend.Motion.Presentation.Providers
 {
     public class MotionTransitionProvider : IMotionTransitionProviderFacade
     {
@@ -26,7 +26,7 @@ namespace SmartSolucionesCuba.Videre.Support.Extend.Motion.Presentation.Provider
         private MotionTransitionProvider()
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => !a.FullName.Contains(".Videre.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Videre\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Motion.Presentation,\\sVersion=")).ToArray();
+                .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Motion.Presentation,\\sVersion=")).ToArray();
 
             XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IMotionTransitionProviderFacade).IsAssignableFrom(t));
         }

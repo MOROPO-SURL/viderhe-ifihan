@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend
+namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
 {
     [Route("[controller]")]
     public class ExtensionsController : SAPRESSC.Core.Web.Common.Controllers.BaseWebController
@@ -22,7 +22,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend
 
             using (var archive = new System.IO.Compression.ZipArchive(resultMemoryStream, System.IO.Compression.ZipArchiveMode.Create, true))
             {
-                var extensionRootDirectoryPath = configuration["Videre:ExtensionRootDirectoryPath"];
+                var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 
                 var extensionRootDirectoryInfo = new System.IO.DirectoryInfo(extensionRootDirectoryPath);
 
@@ -31,7 +31,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend
                     return NoContent();
                 }
 
-                var extensionLibraryFileInfos = Providers.VidereExtensionLibraryFileInfosProvider.GetRelevantToDashboard(extensionRootDirectoryInfo.GetDirectories().First(d => d.Name == key.ToString()));
+                var extensionLibraryFileInfos = Providers.ViderheExtensionLibraryFileInfosProvider.GetRelevantToDashboard(extensionRootDirectoryInfo.GetDirectories().First(d => d.Name == key.ToString()));
 
                 foreach (var extensionLibraryFileInfo in extensionLibraryFileInfos)
                 {
@@ -62,7 +62,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend
 
             using (var archive = new System.IO.Compression.ZipArchive(resultMemoryStream, System.IO.Compression.ZipArchiveMode.Create, true))
             {
-                var extensionRootDirectoryPath = configuration["Videre:ExtensionRootDirectoryPath"];
+                var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 
                 var extensionRootDirectoryInfo = new System.IO.DirectoryInfo(extensionRootDirectoryPath);
 
@@ -71,7 +71,7 @@ namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend
                     return NoContent();
                 }
 
-                var extensionLibraryFileInfos = Providers.VidereExtensionLibraryFileInfosProvider.GetRelevantToPlayer(extensionRootDirectoryInfo.GetDirectories().First(d => d.Name == key.ToString()));
+                var extensionLibraryFileInfos = Providers.ViderheExtensionLibraryFileInfosProvider.GetRelevantToPlayer(extensionRootDirectoryInfo.GetDirectories().First(d => d.Name == key.ToString()));
 
                 foreach (var extensionLibraryFileInfo in extensionLibraryFileInfos)
                 {

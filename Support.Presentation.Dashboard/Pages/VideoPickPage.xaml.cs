@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Videre.Support.Presentation.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Pages
+namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 {
     public partial class VideoPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.VideoPickPageModel>
     {

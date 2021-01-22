@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views
 {
     public partial class ImageDetailView : XFToolKit.Mvvm.Views.ContentView
     {

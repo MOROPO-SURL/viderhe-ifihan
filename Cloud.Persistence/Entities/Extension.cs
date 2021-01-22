@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Persistence.Entities
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
 {
     public class Extension : SAPRESSC.Core.Persistence.Entities.IHabilitableEntity<System.Guid>
     {

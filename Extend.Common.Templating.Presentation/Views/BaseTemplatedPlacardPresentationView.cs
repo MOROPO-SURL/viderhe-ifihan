@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Views
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views
 {
     public class BaseTemplatedPlacardPresentationView : Common.Presentation.Views.BasePlacardPresentationView
     {

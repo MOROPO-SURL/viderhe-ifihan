@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Presenters
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Presenters
 {
     public class NotificationPresenter : Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade
     {

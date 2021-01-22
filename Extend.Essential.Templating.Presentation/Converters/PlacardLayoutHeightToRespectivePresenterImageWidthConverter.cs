@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Converters
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Converters
 {
     public class PlacardLayoutHeightToRespectivePresenterImageWidthConverter : Xamarin.Forms.IValueConverter
     {

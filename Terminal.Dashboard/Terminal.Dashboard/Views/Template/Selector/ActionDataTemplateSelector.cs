@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Views.Template.Selector
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views.Template.Selector
 {
     public class ActionDataTemplateSelector : Xamarin.Forms.DataTemplateSelector
     {

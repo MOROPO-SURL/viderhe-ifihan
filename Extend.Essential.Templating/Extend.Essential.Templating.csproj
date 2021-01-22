@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Videre.Extend.Essential.Templating</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Videre.Extend.Essential.Templating</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Essential.Templating</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Essential.Templating</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Videre Player")]
+[assembly: AssemblyTitle("Viderhe Player")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SMART SOLUCIONES CUBA")]
-[assembly: AssemblyProduct("SmartSolucionesCuba.Videre.Terminal.Player.UWP")]
+[assembly: AssemblyProduct("SmartSolucionesCuba.Viderhe.Terminal.Player.UWP")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("SSC")]
 [assembly: AssemblyCulture("")]

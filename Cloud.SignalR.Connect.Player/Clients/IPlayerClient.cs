@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.SignalR.Connect.Player.Clients
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Player.Clients
 {
     public interface IPlayerClient
     {

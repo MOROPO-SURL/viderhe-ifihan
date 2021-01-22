@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Models.Context
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Models.Context
 {
     public class PortraitPicturePresentingPicturePlacardContextModel : AbstractPicturePresentingPicturePlacardContextModel
     {

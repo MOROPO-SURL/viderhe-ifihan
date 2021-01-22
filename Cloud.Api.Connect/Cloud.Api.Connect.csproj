@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Videre.Cloud.Api.Connect</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Videre.Cloud.Api.Connect</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Cloud.Api.Connect</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Cloud.Api.Connect</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

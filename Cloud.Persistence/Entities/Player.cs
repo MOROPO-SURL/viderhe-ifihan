@@ -1,7 +1,7 @@
 ﻿using SmartSolucionesCuba.SAPRESSC.Core.Persistence.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Persistence.Entities
+namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
 {
     public class Player : INamedEntity<string>, IPersistenceSignable
     {   

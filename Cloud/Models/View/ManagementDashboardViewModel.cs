@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Models.View
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
 {
     public class ManagementDashboardViewModel
     {

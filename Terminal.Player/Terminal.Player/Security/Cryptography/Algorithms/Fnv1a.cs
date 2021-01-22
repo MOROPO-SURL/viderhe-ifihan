@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Player.Security.Cryptography.Algorithms
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Security.Cryptography.Algorithms
 {
     /// <summary>
     /// FNV-1a Hash functions

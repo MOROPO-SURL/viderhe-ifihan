@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Player.iOS
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.iOS
 {
     public class Application
     {

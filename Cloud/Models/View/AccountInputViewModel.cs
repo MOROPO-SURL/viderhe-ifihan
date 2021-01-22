@@ -1,7 +1,7 @@
 ﻿using SmartSolucionesCuba.SAPRESSC.Core.Web.Common.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Models.View
+namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
 {
     public class AccountInputViewModel : SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Account, System.Guid>
     {

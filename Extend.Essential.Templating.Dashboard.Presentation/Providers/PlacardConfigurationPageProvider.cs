@@ -1,8 +1,8 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Presentation.Pages;
-using SmartSolucionesCuba.Videre.Extend.Essential.Templating.Descriptors;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages;
+using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Descriptors;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Presentation.Providers
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Providers
 {
     public class PlacardConfigurationPageProvider : Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardConfigurationPageProviderFacade
     {

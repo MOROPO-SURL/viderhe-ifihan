@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Models.View
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View
 {
     public class SelectableModelViewModel<TModel> : XFToolKit.Mvvm.Models.BaseBindableModel where TModel : class
     {

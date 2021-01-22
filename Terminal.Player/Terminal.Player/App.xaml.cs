@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Player
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player
 {
     public partial class App : Xamarin.Forms.Application
     {

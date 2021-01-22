@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Videre.Terminal.Player.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Terminal.Player.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Player.Managers
+namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
 {
     public class ConfigurationManager : Support.Presentation.Providers.Facade.ICloudServerProviderFacade
     {
@@ -64,7 +64,7 @@ namespace SmartSolucionesCuba.Videre.Terminal.Player.Managers
         }
 
         // TODO Restore to spected behavior!!
-        //public string CloudServerHost => "cloud.videre.net";
+        //public string CloudServerHost => "cloud.viderhe.net";
         //public string CloudServerHost => "192.168.200.203";
         public string CloudServerHost => "localhost";
     }

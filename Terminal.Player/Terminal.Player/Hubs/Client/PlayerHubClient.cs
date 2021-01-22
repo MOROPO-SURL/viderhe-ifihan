@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using SmartSolucionesCuba.Videre.Cloud.SignalR.Connect.Common.Enumerations;
+using SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Common.Enumerations;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Player.Hubs.Client
+namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
 {
     public class PlayerHubClient : Cloud.SignalR.Connect.Player.Clients.IPlayerClient, System.IDisposable
     {

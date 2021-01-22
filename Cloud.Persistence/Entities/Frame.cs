@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Persistence.Entities
+namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
 {
     public class Frame : SAPRESSC.Core.Persistence.Entities.IEntity<long>
     {
