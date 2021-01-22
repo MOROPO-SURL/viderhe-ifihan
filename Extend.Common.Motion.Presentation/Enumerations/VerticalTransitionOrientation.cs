@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Motion.Presentation.Enumerations
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Motion.Presentation.Enumerations
 {
     public enum VerticalTransitionOrientation
     {

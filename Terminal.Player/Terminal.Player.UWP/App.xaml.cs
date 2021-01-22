@@ -4,7 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Player.UWP
+namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.

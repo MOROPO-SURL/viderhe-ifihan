@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Behaviors
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Behaviors
 {
     public class ViewLayoutCallbackBehavior : Xamarin.Forms.Behavior<Xamarin.Forms.View>
     {

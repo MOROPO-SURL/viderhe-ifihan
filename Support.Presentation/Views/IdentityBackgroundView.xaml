@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
     mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Videre.Support.Presentation.Views.IdentityBackgroundView">
+    x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Views.IdentityBackgroundView">
     <ContentView.Content>
         <mg:GradientView>
             <mg:GradientView.GradientSource>

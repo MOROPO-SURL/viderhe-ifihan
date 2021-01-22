@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Videre.Cloud.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Cloud.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Models.View
+namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
 {
     public class ModeratorDisplayViewModel : SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Moderator, System.Guid>
     {

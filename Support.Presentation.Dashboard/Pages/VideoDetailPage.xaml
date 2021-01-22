@@ -8,7 +8,7 @@
     xmlns:sscxftoolkitcresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitpresentationviewrendereds="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Pages.VideoDetailPage"
+    x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.VideoDetailPage"
     Title="Detalles del Video">
     <ContentPage.Resources>
         <ResourceDictionary>

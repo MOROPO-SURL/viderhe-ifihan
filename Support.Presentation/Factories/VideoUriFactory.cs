@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Support.Presentation.Factories
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Factories
 {
     public static class VideoUriFactory
     {

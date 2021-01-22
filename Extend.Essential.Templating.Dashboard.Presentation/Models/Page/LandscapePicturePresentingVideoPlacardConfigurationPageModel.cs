@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Presentation.Models.Page
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Models.Page
 {
     public class LandscapePicturePresentingVideoPlacardConfigurationPageModel : AbstractPicturePresentingVideoPlacardConfigurationPageModel
     {

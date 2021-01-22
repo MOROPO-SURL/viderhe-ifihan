@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Views;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
 
-namespace SmartSolucionesCuba.Videre.Extend.Essential.Motion.Presentation.Factories
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Presentation.Factories
 {
     public static class RandomMotionTransitionFactory
     {

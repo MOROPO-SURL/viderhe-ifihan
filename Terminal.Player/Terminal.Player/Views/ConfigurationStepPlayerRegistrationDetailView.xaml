@@ -4,10 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:managers="clr-namespace:SmartSolucionesCuba.Videre.Terminal.Player.Managers"
+    xmlns:managers="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Player.Managers"
     xmlns:sscxftoolkitmvvmviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Views;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Videre.Terminal.Player.Views.ConfigurationStepPlayerRegistrationDetailView">
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Player.Views.ConfigurationStepPlayerRegistrationDetailView">
     <ContentView.Content>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -26,7 +26,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Reproductor no asociado con su cuenta. Registre mediante " />
-                        <Span Text="Videre Dashboard" FontSize="{Binding Source={x:RelativeSource AncestorType={x:Type Label}}, Path=FontSize}" FontAttributes="Bold" />
+                        <Span Text="Viderhe Dashboard" FontSize="{Binding Source={x:RelativeSource AncestorType={x:Type Label}}, Path=FontSize}" FontAttributes="Bold" />
                         <Span Text=" un nuevo reproductor con el identificador siguiente:" />
                     </FormattedString>
                 </Label.FormattedText>

@@ -1,6 +1,6 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Dashboard
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
 {
     public partial class App : Xamarin.Forms.Application, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade
     {

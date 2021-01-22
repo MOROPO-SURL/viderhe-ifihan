@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Videre.Extend.Essential</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Videre.Extend.Essential</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Essential</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Essential</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

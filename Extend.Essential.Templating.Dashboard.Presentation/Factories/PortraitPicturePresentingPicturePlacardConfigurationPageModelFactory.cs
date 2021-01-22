@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Presentation.Factories
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Factories
 {
     public static class PortraitPicturePresentingPicturePlacardConfigurationPageModelFactory
     {

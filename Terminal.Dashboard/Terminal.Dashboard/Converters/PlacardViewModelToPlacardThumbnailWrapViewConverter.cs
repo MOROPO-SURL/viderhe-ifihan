@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Converters
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters
 {
     public class PlacardViewModelToPlacardThumbnailWrapViewConverter : Xamarin.Forms.IValueConverter
     {

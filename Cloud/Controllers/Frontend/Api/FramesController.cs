@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SmartSolucionesCuba.SAPRESSC.Core.Persistence.Repositories;
-using SmartSolucionesCuba.Videre.Cloud.Api.Common.Models;
-using SmartSolucionesCuba.Videre.Cloud.Api.Common.Models.Filter;
+using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
+using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models.Filter;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend.Api
+namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
     [Route("api/[area]/[controller]")]

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Helpers.Integrity
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers.Integrity
 {
     public static class AccountIntegrityHelper
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 {
     public class PersonIdentityDisplayModel : SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity, System.Guid>
     {

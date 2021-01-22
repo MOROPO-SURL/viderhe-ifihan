@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Descriptors
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Descriptors
 {
     public class PictureSecuenceTemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
     {

@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Templating.Descriptors;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Descriptors;
 
-namespace SmartSolucionesCuba.Videre.Support.Presentation.Extensions
+namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions
 {
     public static class TemplateDescriptorExtensions
     {

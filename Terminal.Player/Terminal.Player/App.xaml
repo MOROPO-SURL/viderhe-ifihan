@@ -5,7 +5,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Videre.Terminal.Player.App">
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Player.App">
     <Application.Resources>
         <OnPlatform x:Key="IconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons" />
         

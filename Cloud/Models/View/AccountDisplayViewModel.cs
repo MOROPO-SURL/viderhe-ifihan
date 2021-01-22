@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Models.View
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
 {
     public class AccountDisplayViewModel : SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Account, System.Guid>
     {

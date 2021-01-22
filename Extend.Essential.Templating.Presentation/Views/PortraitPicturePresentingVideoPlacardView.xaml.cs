@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Presentation.Views
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views
 {
     public partial class PortraitPicturePresentingVideoPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {

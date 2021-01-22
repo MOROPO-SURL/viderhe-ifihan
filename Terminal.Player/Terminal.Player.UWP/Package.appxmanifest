@@ -15,7 +15,7 @@
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Videre Player</DisplayName>
+    <DisplayName>Viderhe Player</DisplayName>
     <PublisherDisplayName>0f4c15ed-f4b2-4472-8d92-8eedcbe839ec</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -31,12 +31,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="SmartSolucionesCuba.Videre.Terminal.Player.UWP.App">
+      EntryPoint="SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.App">
       <uap:VisualElements
-        DisplayName="Videre Player"
+        DisplayName="Viderhe Player"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Presentador de guiones de señalización digital para dispositivos asociados a cuentas de la plataforma Videre"
+        Description="Presentador de guiones de señalización digital para dispositivos asociados a cuentas de la plataforma Viderhe"
         BackgroundColor="#cf0423">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png">
           <uap:ShowNameOnTiles>

@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Presentation.Pages
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages
 {
     public partial class PortraitPicturePresentingVideoPlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PortraitPicturePresentingVideoPlacardConfigurationPageModel>
     {

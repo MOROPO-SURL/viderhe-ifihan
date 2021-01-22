@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Overlaying.Dashboard.Presentation.Models.Page
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Presentation.Models.Page
 {
     public class SimpleHighlightsOverlayConfigurationPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Motion.Transitions
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Transitions
 {
     public class FlatSpectrumReverseTrailTransitionDescriptor : Common.Motion.Descriptors.ITransitionDescriptor
     {

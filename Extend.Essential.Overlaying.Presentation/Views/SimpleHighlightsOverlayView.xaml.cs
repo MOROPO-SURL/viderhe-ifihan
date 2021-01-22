@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Overlaying.Presentation.Views
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Presentation.Views
 {
     public partial class SimpleHighlightsOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {

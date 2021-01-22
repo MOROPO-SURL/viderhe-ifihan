@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.SignalR.Connect.Common.Enumerations
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Common.Enumerations
 {
     public enum ScreenplayHandlingImmediacyMode
     {

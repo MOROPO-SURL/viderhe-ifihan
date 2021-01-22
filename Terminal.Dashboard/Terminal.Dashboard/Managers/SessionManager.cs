@@ -1,8 +1,8 @@
-﻿using SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Extensions;
 using System.Linq;
 using Xamarin.Forms;
 
-namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Managers
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 {
     public sealed class SessionManager : SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {

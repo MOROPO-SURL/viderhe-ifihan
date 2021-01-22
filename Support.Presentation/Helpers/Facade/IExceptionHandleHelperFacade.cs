@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Support.Presentation.Helpers.Facade
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers.Facade
 {
     public interface IExceptionHandleHelperFacade
     {

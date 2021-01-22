@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Controllers.Frontend.Api
+namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Videre.Cloud.Persistence</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Videre.Cloud.Persistence</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Cloud.Persistence</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Cloud.Persistence</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

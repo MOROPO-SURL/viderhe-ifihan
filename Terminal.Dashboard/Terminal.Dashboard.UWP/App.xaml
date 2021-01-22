@@ -1,5 +1,5 @@
 ﻿<Application
-    x:Class="SmartSolucionesCuba.Videre.Terminal.Dashboard.UWP.App"
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     RequestedTheme="Light">

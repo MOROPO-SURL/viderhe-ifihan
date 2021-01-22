@@ -1,11 +1,11 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Motion.Presentation.Providers.Facade;
-using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Providers.Facade;
-using SmartSolucionesCuba.Videre.Extend.Common.Presentation.Views;
-using SmartSolucionesCuba.Videre.Support.Presentation.Extensions;
-using SmartSolucionesCuba.Videre.Support.Presentation.Models.View;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Motion.Presentation.Providers.Facade;
+using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Providers.Facade;
+using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
+using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Presentation.Presenters
+namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Presenters
 {
     public class ScreenplayPresenter : System.IDisposable
     {

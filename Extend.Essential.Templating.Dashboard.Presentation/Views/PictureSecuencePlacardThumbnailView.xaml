@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xftoolkitmvvmviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Views;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Videre.Extend.Essential.Templating.Dashboard.Presentation.Views.PictureSecuencePlacardThumbnailView">
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views.PictureSecuencePlacardThumbnailView">
     <ContentView.Content>
         <Grid 
             x:Name="Wrapper"

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Motion.Presentation.Models.Context
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Presentation.Models.Context
 {
     public class SimpleCarouselTransitionContextModel
     {

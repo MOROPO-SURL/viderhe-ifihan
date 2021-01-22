@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.Views
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views
 {
     public partial class LandscapePlacardThumbnailWrapView : Xamarin.Forms.ContentView
     {

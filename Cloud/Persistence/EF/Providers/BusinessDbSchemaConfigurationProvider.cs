@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Persistence.EF.Providers
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Providers
 {
     public sealed class BusinessDbSchemaConfigurationProvider : SAPRESSC.Core.Persistence.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade
     {

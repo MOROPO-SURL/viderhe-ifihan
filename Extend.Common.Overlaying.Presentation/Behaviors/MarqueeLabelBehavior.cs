@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Overlaying.Presentation.Behaviors
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Behaviors
 {
     public class MarqueeLabelBehavior : Xamarin.Forms.Behavior<Xamarin.Forms.Label>
     {

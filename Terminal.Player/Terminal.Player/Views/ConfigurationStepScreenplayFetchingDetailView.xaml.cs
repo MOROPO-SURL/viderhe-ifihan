@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Terminal.Player.Views
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Views
 {
 	public partial class ConfigurationStepScreenplayFetchingDetailView : XFToolKit.Mvvm.Views.ContentView
 	{

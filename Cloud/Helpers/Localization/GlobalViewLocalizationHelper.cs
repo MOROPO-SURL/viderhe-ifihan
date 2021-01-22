@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.Extensions.Localization;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Helpers.Localization
+namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers.Localization
 {
     public class GlobalViewLocalizationHelper
     {

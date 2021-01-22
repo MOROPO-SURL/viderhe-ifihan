@@ -6,7 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Videre.Support.Presentation.Dashboard.Views.BusyView"
+    x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views.BusyView"
     IsVisible="{Binding IsBusy}"
     BackgroundColor="#EEFFFFFF">
     <ContentView.Resources>

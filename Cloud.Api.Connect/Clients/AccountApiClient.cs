@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Api.Connect.Clients
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
 {
     public class AccountApiClient : SAPRESSC.Core.Api.Connect.Clients.AbstractEntityApiManagementClient<Persistence.Entities.Account, System.Guid, Common.Models.AccountInputModel, Common.Models.AccountDisplayModel>
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Support.Presentation.Models.View
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View
 {
     public class TemplateViewModel : System.IDisposable
     {
@@ -8,7 +8,7 @@
 
         public string About { get; set; }
 
-        public Videre.Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport { get; set; }
+        public Viderhe.Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport { get; set; }
 
         public Xamarin.Forms.ImageSource ThumbnailImageSource { get; set; }
 

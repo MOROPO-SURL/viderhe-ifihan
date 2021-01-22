@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models
+namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 {
     public class ExtensionDisplayModel : SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Extension, System.Guid>
     {

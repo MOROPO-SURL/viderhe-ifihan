@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Videre.Cloud.Api.Common.Models;
+﻿using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Api.Connect.Clients
+namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
 {
     public class UserApiClient
     {

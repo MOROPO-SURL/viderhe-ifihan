@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models
+namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 {
     public class AccountInputModel : SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Account, System.Guid>
     {

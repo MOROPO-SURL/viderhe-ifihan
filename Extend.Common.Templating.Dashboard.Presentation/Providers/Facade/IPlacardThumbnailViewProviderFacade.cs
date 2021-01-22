@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Common.Templating.Dashboard.Presentation.Providers.Facade
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Providers.Facade
 {
     public interface IPlacardThumbnailViewProviderFacade
     {

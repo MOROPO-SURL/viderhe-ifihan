@@ -1,6 +1,6 @@
-﻿[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Videre.Terminal.Dashboard.UWP.Managers.ApplicationManager))]
+﻿[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Managers.ApplicationManager))]
 
-namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.UWP.Managers
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Managers
 {
     public class ApplicationManager : Dashboard.Managers.Facade.IApplicationManagerFacade
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace SmartSolucionesCuba.Videre.Cloud.Persistence.EF.Repositories
+namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
 {
     public class PlayerRepository : SAPRESSC.Core.Persistence.EF.Repositories.AbstractEntityRepository<Entities.Player, string>
     {

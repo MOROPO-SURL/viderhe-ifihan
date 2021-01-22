@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Videre.Extend.Common.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Videre.Extend.Common.Presentation</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Common.Presentation</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Common.Presentation</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

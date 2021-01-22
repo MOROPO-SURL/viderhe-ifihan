@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Helpers.Comparison
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers.Comparison
 {
     public class TransitionEntityCollectionEqualityComparisonHelper : System.Collections.Generic.IEqualityComparer<Persistence.Entities.Transition>
     {

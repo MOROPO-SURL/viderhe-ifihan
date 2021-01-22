@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.Essential.Motion.Transitions
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Transitions
 {
     public class FlatBoxMatrixSweptTransitionDescriptor : Common.Motion.Descriptors.ITransitionDescriptor
     {

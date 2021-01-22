@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Helpers.Security
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers.Security
 {
     public static class PlayerSecurityHelper
     {

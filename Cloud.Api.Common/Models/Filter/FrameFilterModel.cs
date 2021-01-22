@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Api.Common.Models.Filter
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models.Filter
 {
     public class FrameFilterModel : SAPRESSC.Core.Persistence.Models.Filter.IEntityFilterModel<Persistence.Entities.Frame, long>
     {

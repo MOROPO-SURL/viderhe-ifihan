@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Cloud.Helpers.Comparison
+﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers.Comparison
 {
     public class OverlayEntityCollectionEqualityComparisonHelper : System.Collections.Generic.IEqualityComparer<Persistence.Entities.Overlay>
     {

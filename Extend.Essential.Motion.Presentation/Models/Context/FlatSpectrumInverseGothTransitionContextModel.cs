@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Videre.Extend.Common.Motion.Presentation.Enumerations;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Motion.Presentation.Enumerations;
 
-namespace SmartSolucionesCuba.Videre.Extend.Essential.Motion.Presentation.Models.Context
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Presentation.Models.Context
 {
     public class FlatSpectrumInverseGothTransitionContextModel : BaseFlatSpectrumTransitionContextModel
     {
