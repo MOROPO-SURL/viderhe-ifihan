@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SmartSolucionesCuba.Videre.Extend.UICCamaguey.Overlaying.Presentation.Views
+namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Presentation.Views
 {
     public partial class RSSOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {

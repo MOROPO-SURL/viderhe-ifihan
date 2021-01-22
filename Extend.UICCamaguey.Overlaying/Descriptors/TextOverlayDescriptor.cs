@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.UICCamaguey.Overlaying.Descriptors
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Descriptors
 {
     public class TextOverlayDescriptor : Common.Overlaying.Descriptors.IOverlayDescriptor
     {

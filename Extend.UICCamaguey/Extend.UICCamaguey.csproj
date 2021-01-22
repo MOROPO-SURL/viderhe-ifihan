@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Videre.Extend.UICCamaguey</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Videre.Extend.UICCamaguey</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Factories
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Factories
 {
     public static class RSSOverlayConfigurationPageModelFactory
     {

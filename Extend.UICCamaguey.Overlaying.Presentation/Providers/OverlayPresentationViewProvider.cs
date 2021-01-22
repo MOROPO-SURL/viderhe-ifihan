@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.UICCamaguey.Overlaying.Presentation.Providers
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Presentation.Providers
 {
     public class OverlayPresentationViewProvider : Common.Overlaying.Presentation.Providers.Facade.IOverlayPresentationViewProviderFacade
     {

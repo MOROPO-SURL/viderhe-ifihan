@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.UICCamaguey.Descriptors
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Descriptors
 {
     public class UICCamagueyExtensionDescriptor : Common.Descriptors.IExtensionDescriptor
     {
@@ -9,6 +9,6 @@
         public string Name => "UIC Camagüey";
 
         // TODO Define upperviewing description
-        public string Description => "Extensión para la plataforma Videre con elementos a medida para la Unión de Informáticos de Cuba en Camagüey";
+        public string Description => "Extensión para la plataforma Viderhe con elementos a medida para la Unión de Informáticos de Cuba en Camagüey";
     }
 }

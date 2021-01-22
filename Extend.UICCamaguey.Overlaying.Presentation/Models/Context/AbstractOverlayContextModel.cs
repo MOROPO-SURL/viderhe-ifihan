@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.UICCamaguey.Overlaying.Presentation.Models.Context
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Presentation.Models.Context
 {
     public abstract class AbstractOverlayContextModel
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Models.Page
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Models.Page
 {
     public abstract class AbstractOverlayConfigurationPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {

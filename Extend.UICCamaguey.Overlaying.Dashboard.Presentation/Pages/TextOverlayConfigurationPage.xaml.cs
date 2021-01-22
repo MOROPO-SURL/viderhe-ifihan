@@ -1,6 +1,6 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Videre.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Pages
+namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Pages
 {
     public partial class TextOverlayConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.TextOverlayConfigurationPageModel>
     {

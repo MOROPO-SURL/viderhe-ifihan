@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Videre.Extend.UICCamaguey.Overlaying.Presentation.Views
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Presentation.Views
 {
     public partial class TextOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
