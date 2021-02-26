@@ -14,9 +14,9 @@
 
   <ItemGroup>
     <PackageReference Include="MagicGradients" Version="1.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.3" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
 
@@ -24,8 +24,6 @@
     <ProjectReference Include="..\..\Cloud.Api.Connect\Cloud.Api.Connect.csproj" />
     <ProjectReference Include="..\..\Cloud.SignalR.Connect.Player\Cloud.SignalR.Connect.Player.csproj" />
     <ProjectReference Include="..\..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj" />
-    <ProjectReference Include="..\..\Extend.CPCC.Overlaying.Presentation\Extend.CPCC.Overlaying.Presentation.csproj" />
-    <ProjectReference Include="..\..\Extend.CPCC\Extend.CPCC.csproj" />
     <ProjectReference Include="..\..\Extend.Essential.Overlaying.Presentation\Extend.Essential.Overlaying.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
     <ProjectReference Include="..\..\Support.Presentation.Player\Support.Presentation.Player.csproj" />

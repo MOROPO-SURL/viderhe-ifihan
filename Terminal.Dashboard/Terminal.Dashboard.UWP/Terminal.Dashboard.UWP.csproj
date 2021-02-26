@@ -179,7 +179,7 @@
       <Version>1.2.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
-      <Version>5.0.2</Version>
+      <Version>5.0.3</Version>
     </PackageReference>
     <PackageReference Include="RtmpClient.UWP">
       <Version>1.3.0</Version>
@@ -196,7 +196,7 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.11.982</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Xamarin.Forms.PancakeView">
@@ -246,22 +246,6 @@
     <ProjectReference Include="..\..\Extend.Common\Extend.Common.csproj">
       <Project>{fa8fcd4c-da74-4102-b767-6a0d0150c673}</Project>
       <Name>Extend.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.CPCC.Overlaying.Dashboard.Presentation\Extend.CPCC.Overlaying.Dashboard.Presentation.csproj">
-      <Project>{bf69d603-731d-4314-ab8a-a864204fba09}</Project>
-      <Name>Extend.CPCC.Overlaying.Dashboard.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.CPCC.Overlaying.Presentation\Extend.CPCC.Overlaying.Presentation.csproj">
-      <Project>{c95ee500-f017-43a6-b388-3ca6710483c7}</Project>
-      <Name>Extend.CPCC.Overlaying.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.CPCC.Overlaying\Extend.CPCC.Overlaying.csproj">
-      <Project>{e1784c84-f6d5-46c8-a7a9-5cd2d77cfc76}</Project>
-      <Name>Extend.CPCC.Overlaying</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.CPCC\Extend.CPCC.csproj">
-      <Project>{7309595d-becd-4180-b804-e2f8ff9708ac}</Project>
-      <Name>Extend.CPCC</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Motion.Presentation\Extend.Essential.Motion.Presentation.csproj">
       <Project>{b88a5d61-11d9-4827-875e-7bd9bc5f6720}</Project>

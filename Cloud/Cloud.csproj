@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FFMediaToolkit" Version="3.4.0" />
+    <PackageReference Include="FFMediaToolkit" Version="4.0.1" />
     <PackageReference Include="MediaToolkit.NetCore" Version="0.2.1-preview" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
@@ -39,7 +39,6 @@
     <ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Dashboard\Cloud.SignalR.Connect.Dashboard.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Player\Cloud.SignalR.Connect.Player.csproj" />
-    <ProjectReference Include="..\Extend.CPCC\Extend.CPCC.csproj" />
     <ProjectReference Include="..\Extend.Essential\Extend.Essential.csproj" />
     <ProjectReference Include="..\Support.Extend.Motion\Support.Extend.Motion.csproj" />
     <ProjectReference Include="..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj" />
