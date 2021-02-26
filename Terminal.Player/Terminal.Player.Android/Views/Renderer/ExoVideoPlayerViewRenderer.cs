@@ -10,8 +10,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
 {
     public class ExoVideoPlayerViewRenderer : ViewRenderer<XFToolKit.Presentation.Views.Rendered.VideoPlayerView, PlayerView>, IPlayerEventListener
     {
+        private bool buffered;
+
         public ExoVideoPlayerViewRenderer(Android.Content.Context context) : base(context)
         {
+            buffered = false;
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<XFToolKit.Presentation.Views.Rendered.VideoPlayerView> args)
@@ -22,22 +25,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
             {
                 if (Control == null)
                 {
-                    var trackSelector = new Com.Google.Android.Exoplayer2.Trackselection.DefaultTrackSelector(Context);
-
-                    trackSelector.SetParameters(trackSelector.BuildUponParameters().SetMaxVideoSizeSd());
-
-                    var renderersFactory = new DefaultRenderersFactory(Context);
-
-                    var playerBuilder = new SimpleExoPlayer.Builder(Context, renderersFactory).SetTrackSelector(trackSelector);
-
                     var playerView = new PlayerView(Context)
                     {
-                        Player = playerBuilder.Build(),
+                        Player = ExoPlayerFactory.NewSimpleInstance(Context, new Com.Google.Android.Exoplayer2.Trackselection.DefaultTrackSelector()),
                         ControllerAutoShow = false,
                         UseController = false,
                         ControllerHideOnTouch = false,
-
                     };
+
+                    playerView.Player.RepeatMode = Com.Google.Android.Exoplayer2.Player.RepeatModeOff;
 
                     playerView.Player.AddListener(this);
 
@@ -109,7 +105,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
         {
             var hasSetSource = false;
 
-            var mediaSourceFactory = new Com.Google.Android.Exoplayer2.Source.ProgressiveMediaSource.Factory(new DefaultDataSourceFactory(Context, "Viderhe ExoPlayer"));
+            var mediaSourceFactory = new Com.Google.Android.Exoplayer2.Source.ExtractorMediaSource.Factory(new DefaultDataSourceFactory(Context, "Viderhe ExoPlayer"));
 
             if (Element.Source is XFToolKit.Presentation.Sources.Video.UriVideoSource)
             {
@@ -166,6 +162,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
             Control.Player.PlayWhenReady = Element.AutoPlay;
         }
 
+        #region IPlayerEventListener implementation
+
         public void OnLoadingChanged(bool p0)
         {
             //throw new NotImplementedException();
@@ -187,13 +185,26 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
 
             switch (playbackState)
             {
-                case IPlayer.StateEnded:
+                case Com.Google.Android.Exoplayer2.Player.StateEnded:
+                case Com.Google.Android.Exoplayer2.Player.StateIdle:
                     videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
 
                     break;
 
-                case IPlayer.StateReady:
+                case Com.Google.Android.Exoplayer2.Player.StateReady:
                     videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing;
+
+                    buffered = true;
+
+                    break;
+
+                case Com.Google.Android.Exoplayer2.Player.StateBuffering:
+                    if (buffered)
+                    {
+                        Control.Player.Stop();
+
+                        break;
+                    }
 
                     break;
             }
@@ -240,5 +251,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
         {
             //throw new System.NotImplementedException();
         }
+
+        #endregion
     }
 }

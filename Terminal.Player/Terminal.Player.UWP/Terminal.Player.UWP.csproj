@@ -7,8 +7,8 @@
     <ProjectGuid>{C5849C14-58D6-4F97-A34E-4A8A803BE497}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartSolucionesCuba.Videre.Terminal.Player.UWP</RootNamespace>
-    <AssemblyName>SmartSolucionesCuba.Videre.Terminal.Player.UWP</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Player.UWP</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Player.UWP</AssemblyName>
     <DefaultLanguage>es-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
@@ -94,6 +94,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\PlatfromIntegrationHelper.cs" />
     <Compile Include="Helpers\PlatformControlHelper.cs" />
     <Compile Include="Helpers\TextWidthCalculationHelper.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
@@ -215,6 +216,10 @@
     <ProjectReference Include="..\..\Extend.CPCC.Overlaying.Presentation\Extend.CPCC.Overlaying.Presentation.csproj">
       <Project>{c95ee500-f017-43a6-b388-3ca6710483c7}</Project>
       <Name>Extend.CPCC.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.CPCC\Extend.CPCC.csproj">
+      <Project>{7309595d-becd-4180-b804-e2f8ff9708ac}</Project>
+      <Name>Extend.CPCC</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Motion.Presentation\Extend.Essential.Motion.Presentation.csproj">
       <Project>{b88a5d61-11d9-4827-875e-7bd9bc5f6720}</Project>
