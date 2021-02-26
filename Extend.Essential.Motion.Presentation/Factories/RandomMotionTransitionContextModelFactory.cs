@@ -8,8 +8,7 @@
 
             var motionTypeCount = System.Enum.GetNames(typeof(Enumerations.SweptTransitionItemMotionType)).Length;
             //var motionModeCount = System.Enum.GetNames(typeof(Enumerations.SweptTransitionItemMotionMode)).Length;
-            // TODO Fix execution for excluded orientations!!
-            var orientationCount = 2; //System.Enum.GetNames(typeof(Enumerations.SweptTransitionOrientation)).Length;
+            var orientationCount = System.Enum.GetNames(typeof(Enumerations.SweptTransitionOrientation)).Length;
             var inOutKindCount = System.Enum.GetNames(typeof(Enumerations.SweptTransitionInOutKind)).Length;
 
             return new Models.Context.FlatBoxMatrixSweptTransitionContextModel

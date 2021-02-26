@@ -98,10 +98,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Presentation.Trans
 
                     switch (context.MotionType)
                     {
-                        case Enumerations.SweptTransitionItemMotionType.Fade:
-                            boxView.Opacity = 0;
+                        //case Enumerations.SweptTransitionItemMotionType.Fade:
+                        //    boxView.Opacity = 0;
 
-                            break;
+                        //    break;
 
                         case Enumerations.SweptTransitionItemMotionType.Scale:
                             boxView.Scale = 0;
@@ -223,10 +223,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Presentation.Trans
             {
                 result = new ScaleToAnimation { Target = target, Scale = 1, Duration = duration.TotalMilliseconds.ToString() };
             }
-            else if (context.MotionType == Enumerations.SweptTransitionItemMotionType.Fade)
-            {
-                result = new FadeToAnimation { Target = target, Opacity = 1, Duration = duration.TotalMilliseconds.ToString() };
-            }
+            //else if (context.MotionType == Enumerations.SweptTransitionItemMotionType.Fade)
+            //{
+            //    result = new FadeToAnimation { Target = target, Opacity = 1, Duration = duration.TotalMilliseconds.ToString() };
+            //}
             else
             {
                 var storyboard = new Storyboard
@@ -314,10 +314,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Motion.Presentation.Trans
             {
                 result = new ScaleToAnimation { Target = target, Scale = 0, Duration = duration.TotalMilliseconds.ToString() };
             }
-            else if (context.MotionType == Enumerations.SweptTransitionItemMotionType.Fade)
-            {
-                result = new FadeToAnimation { Target = target, Opacity = 0, Duration = duration.TotalMilliseconds.ToString() };
-            }
+            //else if (context.MotionType == Enumerations.SweptTransitionItemMotionType.Fade)
+            //{
+            //    result = new FadeToAnimation { Target = target, Opacity = 0, Duration = duration.TotalMilliseconds.ToString() };
+            //}
             else
             {
                 var storyboard = new Storyboard

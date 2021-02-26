@@ -3,7 +3,7 @@
     public enum SweptTransitionItemMotionType
     {
         Scale,
-        Fade,
+        //Fade,
         ScaleAndFade
     }
 }
