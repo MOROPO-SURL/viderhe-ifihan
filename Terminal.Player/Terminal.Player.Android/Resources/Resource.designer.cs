@@ -26,6 +26,2516 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::SkiaSharp.Views.Forms.Resource.Animation.abc_fade_in = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_fade_in;
+			global::SkiaSharp.Views.Forms.Resource.Animation.abc_fade_out = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_fade_out;
+			global::SkiaSharp.Views.Forms.Resource.Animation.abc_grow_fade_in_from_bottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
+			global::SkiaSharp.Views.Forms.Resource.Animation.abc_popup_enter = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_popup_enter;
+			global::SkiaSharp.Views.Forms.Resource.Animation.abc_popup_exit = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_popup_exit;
+			global::SkiaSharp.Views.Forms.Resource.Animation.abc_shrink_fade_out_from_bottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
+			global::SkiaSharp.Views.Forms.Resource.Animation.abc_slide_in_bottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_slide_in_bottom;
+			global::SkiaSharp.Views.Forms.Resource.Animation.abc_slide_in_top = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_slide_in_top;
+			global::SkiaSharp.Views.Forms.Resource.Animation.abc_slide_out_bottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_slide_out_bottom;
+			global::SkiaSharp.Views.Forms.Resource.Animation.abc_slide_out_top = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_slide_out_top;
+			global::SkiaSharp.Views.Forms.Resource.Animation.abc_tooltip_enter = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_tooltip_enter;
+			global::SkiaSharp.Views.Forms.Resource.Animation.abc_tooltip_exit = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_tooltip_exit;
+			global::SkiaSharp.Views.Forms.Resource.Animation.design_bottom_sheet_slide_in = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.design_bottom_sheet_slide_in;
+			global::SkiaSharp.Views.Forms.Resource.Animation.design_bottom_sheet_slide_out = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.design_bottom_sheet_slide_out;
+			global::SkiaSharp.Views.Forms.Resource.Animation.design_snackbar_in = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.design_snackbar_in;
+			global::SkiaSharp.Views.Forms.Resource.Animation.design_snackbar_out = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.design_snackbar_out;
+			global::SkiaSharp.Views.Forms.Resource.Animation.EnterFromLeft = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.EnterFromLeft;
+			global::SkiaSharp.Views.Forms.Resource.Animation.EnterFromRight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.EnterFromRight;
+			global::SkiaSharp.Views.Forms.Resource.Animation.ExitToLeft = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.ExitToLeft;
+			global::SkiaSharp.Views.Forms.Resource.Animation.ExitToRight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.ExitToRight;
+			global::SkiaSharp.Views.Forms.Resource.Animator.design_appbar_state_list_animator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animator.design_appbar_state_list_animator;
+			global::SkiaSharp.Views.Forms.Resource.Animator.design_fab_hide_motion_spec = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animator.design_fab_hide_motion_spec;
+			global::SkiaSharp.Views.Forms.Resource.Animator.design_fab_show_motion_spec = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animator.design_fab_show_motion_spec;
+			global::SkiaSharp.Views.Forms.Resource.Animator.mtrl_btn_state_list_anim = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animator.mtrl_btn_state_list_anim;
+			global::SkiaSharp.Views.Forms.Resource.Animator.mtrl_btn_unelevated_state_list_anim = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animator.mtrl_btn_unelevated_state_list_anim;
+			global::SkiaSharp.Views.Forms.Resource.Animator.mtrl_chip_state_list_anim = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animator.mtrl_chip_state_list_anim;
+			global::SkiaSharp.Views.Forms.Resource.Animator.mtrl_fab_hide_motion_spec = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animator.mtrl_fab_hide_motion_spec;
+			global::SkiaSharp.Views.Forms.Resource.Animator.mtrl_fab_show_motion_spec = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animator.mtrl_fab_show_motion_spec;
+			global::SkiaSharp.Views.Forms.Resource.Animator.mtrl_fab_transformation_sheet_collapse_spec = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animator.mtrl_fab_transformation_sheet_collapse_spec;
+			global::SkiaSharp.Views.Forms.Resource.Animator.mtrl_fab_transformation_sheet_expand_spec = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animator.mtrl_fab_transformation_sheet_expand_spec;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionBarDivider = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionBarDivider;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionBarItemBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionBarItemBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionBarPopupTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionBarPopupTheme;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionBarSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionBarSize;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionBarSplitStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionBarSplitStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionBarTabBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionBarTabBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionBarTabStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionBarTabStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionBarTabTextStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionBarTabTextStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionBarTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionBarTheme;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionBarWidgetTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionBarWidgetTheme;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionDropDownStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionDropDownStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionLayout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionMenuTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionMenuTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionMenuTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionMenuTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModeBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModeBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModeCloseButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModeCloseButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModeCloseDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModeCloseDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModeCopyDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModeCopyDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModeCutDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModeCutDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModeFindDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModeFindDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModePasteDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModePasteDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModePopupWindowStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModePopupWindowStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModeSelectAllDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModeSelectAllDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModeShareDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModeShareDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModeSplitBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModeSplitBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModeStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModeStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionModeWebSearchDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionModeWebSearchDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionOverflowButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionOverflowButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionOverflowMenuStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionOverflowMenuStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionProviderClass = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionProviderClass;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.actionViewClass = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.actionViewClass;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.activityChooserViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.activityChooserViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.alertDialogButtonGroupStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.alertDialogCenterButtons = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.alertDialogCenterButtons;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.alertDialogStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.alertDialogStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.alertDialogTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.alertDialogTheme;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.allowStacking = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.allowStacking;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.alpha;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.alphabeticModifiers = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.alphabeticModifiers;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.arrowHeadLength = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.arrowHeadLength;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.arrowShaftLength = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.arrowShaftLength;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.autoCompleteTextViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.autoCompleteTextViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.autoSizeMaxTextSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.autoSizeMaxTextSize;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.autoSizeMinTextSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.autoSizeMinTextSize;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.autoSizePresetSizes = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.autoSizePresetSizes;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.autoSizeStepGranularity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.autoSizeStepGranularity;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.autoSizeTextType = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.autoSizeTextType;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.background;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.backgroundSplit = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.backgroundSplit;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.backgroundStacked = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.backgroundStacked;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.backgroundTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.backgroundTint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.backgroundTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.backgroundTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.barLength = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.barLength;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.behavior_autoHide = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.behavior_autoHide;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.behavior_fitToContents = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.behavior_fitToContents;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.behavior_hideable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.behavior_hideable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.behavior_overlapTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.behavior_overlapTop;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.behavior_peekHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.behavior_peekHeight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.behavior_skipCollapsed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.behavior_skipCollapsed;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.borderlessButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.borderlessButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.borderWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.borderWidth;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.bottomAppBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.bottomAppBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.bottomNavigationStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.bottomNavigationStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.bottomSheetDialogTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.bottomSheetDialogTheme;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.bottomSheetStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.bottomSheetStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.boxBackgroundColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.boxBackgroundColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.boxBackgroundMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.boxBackgroundMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.boxCollapsedPaddingTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.boxCollapsedPaddingTop;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.boxCornerRadiusBottomEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.boxCornerRadiusBottomEnd;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.boxCornerRadiusBottomStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.boxCornerRadiusBottomStart;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.boxCornerRadiusTopEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.boxCornerRadiusTopEnd;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.boxCornerRadiusTopStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.boxCornerRadiusTopStart;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.boxStrokeColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.boxStrokeColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.boxStrokeWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.boxStrokeWidth;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.buttonBarButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buttonBarButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.buttonBarNegativeButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.buttonBarNeutralButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.buttonBarPositiveButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.buttonBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buttonBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.buttonGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buttonGravity;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.buttonIconDimen = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buttonIconDimen;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.buttonPanelSideLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buttonPanelSideLayout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.buttonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buttonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.buttonStyleSmall = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buttonStyleSmall;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.buttonTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buttonTint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.buttonTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buttonTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.cardBackgroundColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.cardBackgroundColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.cardCornerRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.cardCornerRadius;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.cardElevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.cardElevation;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.cardMaxElevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.cardMaxElevation;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.cardPreventCornerOverlap = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.cardPreventCornerOverlap;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.cardUseCompatPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.cardUseCompatPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.cardViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.cardViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.checkboxStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.checkboxStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.checkedChip = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.checkedChip;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.checkedIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.checkedIcon;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.checkedIconEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.checkedIconEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.checkedIconVisible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.checkedIconVisible;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.checkedTextViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.checkedTextViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipBackgroundColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipBackgroundColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipCornerRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipCornerRadius;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipEndPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipEndPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipGroupStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipGroupStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipIcon;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipIconEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipIconEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipIconSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipIconSize;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipIconTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipIconTint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipIconVisible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipIconVisible;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipMinHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipMinHeight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipSpacing = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipSpacing;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipSpacingHorizontal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipSpacingHorizontal;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipSpacingVertical = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipSpacingVertical;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipStandaloneStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipStandaloneStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipStartPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipStartPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipStrokeColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipStrokeColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipStrokeWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipStrokeWidth;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.chipStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.chipStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.closeIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.closeIcon;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.closeIconEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.closeIconEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.closeIconEndPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.closeIconEndPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.closeIconSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.closeIconSize;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.closeIconStartPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.closeIconStartPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.closeIconTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.closeIconTint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.closeIconVisible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.closeIconVisible;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.closeItemLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.closeItemLayout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.collapseContentDescription = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.collapseContentDescription;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.collapsedTitleGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.collapsedTitleGravity;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.collapsedTitleTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.collapsedTitleTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.collapseIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.collapseIcon;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.color;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.colorAccent = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.colorAccent;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.colorBackgroundFloating = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.colorBackgroundFloating;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.colorButtonNormal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.colorButtonNormal;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.colorControlActivated = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.colorControlActivated;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.colorControlHighlight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.colorControlHighlight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.colorControlNormal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.colorControlNormal;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.colorError = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.colorError;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.colorPrimary = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.colorPrimary;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.colorPrimaryDark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.colorPrimaryDark;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.colorSecondary = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.colorSecondary;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.colorSwitchThumbNormal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.colorSwitchThumbNormal;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.commitIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.commitIcon;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentDescription = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentDescription;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentInsetEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentInsetEnd;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentInsetEndWithActions = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentInsetEndWithActions;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentInsetLeft = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentInsetLeft;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentInsetRight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentInsetRight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentInsetStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentInsetStart;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentInsetStartWithNavigation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentInsetStartWithNavigation;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentPaddingBottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentPaddingBottom;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentPaddingLeft = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentPaddingLeft;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentPaddingRight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentPaddingRight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentPaddingTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentPaddingTop;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.contentScrim = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.contentScrim;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.controlBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.controlBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.coordinatorLayoutStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.coordinatorLayoutStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.cornerRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.cornerRadius;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.counterEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.counterEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.counterMaxLength = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.counterMaxLength;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.counterOverflowTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.counterOverflowTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.counterTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.counterTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.customNavigationLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.customNavigationLayout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.defaultQueryHint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.defaultQueryHint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.dialogCornerRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.dialogCornerRadius;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.dialogPreferredPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.dialogPreferredPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.dialogTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.dialogTheme;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.displayOptions = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.displayOptions;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.divider = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.divider;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.dividerHorizontal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.dividerHorizontal;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.dividerPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.dividerPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.dividerVertical = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.dividerVertical;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.drawableSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.drawableSize;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.drawerArrowStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.drawerArrowStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.dropdownListPreferredItemHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.dropDownListViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.dropDownListViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.editTextBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.editTextBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.editTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.editTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.editTextStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.editTextStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.elevation;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.enforceMaterialTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.enforceMaterialTheme;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.enforceTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.enforceTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.errorEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.errorEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.errorTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.errorTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.expandActivityOverflowButtonDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.expanded = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.expanded;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.expandedTitleGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.expandedTitleGravity;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.expandedTitleMargin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.expandedTitleMargin;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.expandedTitleMarginBottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.expandedTitleMarginBottom;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.expandedTitleMarginEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.expandedTitleMarginEnd;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.expandedTitleMarginStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.expandedTitleMarginStart;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.expandedTitleMarginTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.expandedTitleMarginTop;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.expandedTitleTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.expandedTitleTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fabAlignmentMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fabAlignmentMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fabCradleMargin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fabCradleMargin;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fabCradleRoundedCornerRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fabCradleRoundedCornerRadius;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fabCradleVerticalOffset = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fabCradleVerticalOffset;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fabCustomSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fabCustomSize;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fabSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fabSize;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fastScrollEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fastScrollEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fastScrollHorizontalThumbDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fastScrollHorizontalThumbDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fastScrollHorizontalTrackDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fastScrollHorizontalTrackDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fastScrollVerticalThumbDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fastScrollVerticalThumbDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fastScrollVerticalTrackDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fastScrollVerticalTrackDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.firstBaselineToTopHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.firstBaselineToTopHeight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.floatingActionButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.floatingActionButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.font = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.font;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fontFamily = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontFamily;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fontProviderAuthority = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderAuthority;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fontProviderCerts = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderCerts;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fontProviderFetchStrategy = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderFetchStrategy;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fontProviderFetchTimeout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderFetchTimeout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fontProviderPackage = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderPackage;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fontProviderQuery = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderQuery;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fontStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fontVariationSettings = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontVariationSettings;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.fontWeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontWeight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.foregroundInsidePadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.foregroundInsidePadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.gapBetweenBars = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.gapBetweenBars;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.goIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.goIcon;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.headerLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.headerLayout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.height;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.helperText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.helperText;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.helperTextEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.helperTextEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.helperTextTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.helperTextTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.hideMotionSpec = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.hideMotionSpec;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.hideOnContentScroll = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.hideOnContentScroll;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.hideOnScroll = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.hideOnScroll;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.hintAnimationEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.hintAnimationEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.hintEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.hintEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.hintTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.hintTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.homeAsUpIndicator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.homeAsUpIndicator;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.homeLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.homeLayout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.hoveredFocusedTranslationZ = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.hoveredFocusedTranslationZ;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.icon;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.iconEndPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.iconEndPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.iconGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.iconGravity;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.iconifiedByDefault = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.iconifiedByDefault;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.iconPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.iconPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.iconSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.iconSize;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.iconStartPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.iconStartPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.iconTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.iconTint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.iconTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.iconTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.imageButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.imageButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.indeterminateProgressStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.indeterminateProgressStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.initialActivityCount = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.initialActivityCount;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.insetForeground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.insetForeground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.isLightTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.isLightTheme;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.itemBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.itemBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.itemHorizontalPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.itemHorizontalPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.itemHorizontalTranslationEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.itemHorizontalTranslationEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.itemIconPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.itemIconPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.itemIconSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.itemIconSize;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.itemIconTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.itemIconTint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.itemPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.itemPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.itemSpacing = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.itemSpacing;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.itemTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.itemTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.itemTextAppearanceActive = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.itemTextAppearanceActive;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.itemTextAppearanceInactive = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.itemTextAppearanceInactive;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.itemTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.itemTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.keylines = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.keylines;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.labelVisibilityMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.labelVisibilityMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.lastBaselineToBottomHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.lastBaselineToBottomHeight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.layout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.layoutManager = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.layoutManager;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.layout_anchor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.layout_anchor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.layout_anchorGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.layout_anchorGravity;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.layout_behavior = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.layout_behavior;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.layout_collapseMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.layout_collapseMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.layout_collapseParallaxMultiplier = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.layout_collapseParallaxMultiplier;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.layout_dodgeInsetEdges = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.layout_dodgeInsetEdges;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.layout_insetEdge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.layout_insetEdge;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.layout_keyline = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.layout_keyline;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.layout_scrollFlags = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.layout_scrollFlags;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.layout_scrollInterpolator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.layout_scrollInterpolator;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.liftOnScroll = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.liftOnScroll;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.lineHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.lineHeight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.lineSpacing = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.lineSpacing;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.listChoiceBackgroundIndicator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.listDividerAlertDialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.listDividerAlertDialog;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.listItemLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.listItemLayout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.listLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.listLayout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.listMenuViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.listMenuViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.listPopupWindowStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.listPopupWindowStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.listPreferredItemHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.listPreferredItemHeight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.listPreferredItemHeightLarge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.listPreferredItemHeightLarge;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.listPreferredItemHeightSmall = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.listPreferredItemHeightSmall;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.listPreferredItemPaddingLeft = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.listPreferredItemPaddingRight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.listPreferredItemPaddingRight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.logo = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.logo;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.logoDescription = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.logoDescription;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.materialButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.materialButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.materialCardViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.materialCardViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.maxActionInlineWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.maxActionInlineWidth;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.maxButtonHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.maxButtonHeight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.maxImageSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.maxImageSize;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.measureWithLargestChild = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.measureWithLargestChild;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.menu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.menu;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.multiChoiceItemLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.multiChoiceItemLayout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.navigationContentDescription = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.navigationContentDescription;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.navigationIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.navigationIcon;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.navigationMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.navigationMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.navigationViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.navigationViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.numericModifiers = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.numericModifiers;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.overlapAnchor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.overlapAnchor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.paddingBottomNoButtons = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.paddingBottomNoButtons;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.paddingEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.paddingEnd;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.paddingStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.paddingStart;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.paddingTopNoTitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.paddingTopNoTitle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.panelBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.panelBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.panelMenuListTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.panelMenuListTheme;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.panelMenuListWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.panelMenuListWidth;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.passwordToggleContentDescription = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.passwordToggleContentDescription;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.passwordToggleDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.passwordToggleDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.passwordToggleEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.passwordToggleEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.passwordToggleTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.passwordToggleTint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.passwordToggleTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.passwordToggleTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.popupMenuStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.popupMenuStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.popupTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.popupTheme;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.popupWindowStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.popupWindowStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.preserveIconSpacing = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.preserveIconSpacing;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.pressedTranslationZ = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.pressedTranslationZ;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.progressBarPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.progressBarPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.progressBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.progressBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.queryBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.queryBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.queryHint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.queryHint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.radioButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.radioButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.ratingBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.ratingBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.ratingBarStyleIndicator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.ratingBarStyleIndicator;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.ratingBarStyleSmall = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.ratingBarStyleSmall;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.reverseLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.reverseLayout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.rippleColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.rippleColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.scrimAnimationDuration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.scrimAnimationDuration;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.scrimBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.scrimBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.scrimVisibleHeightTrigger = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.scrimVisibleHeightTrigger;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.searchHintIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.searchHintIcon;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.searchIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.searchIcon;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.searchViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.searchViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.seekBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.seekBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.selectableItemBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.selectableItemBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.selectableItemBackgroundBorderless = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.showAsAction = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.showAsAction;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.showDividers = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.showDividers;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.showMotionSpec = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.showMotionSpec;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.showText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.showText;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.showTitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.showTitle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.singleChoiceItemLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.singleChoiceItemLayout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.singleLine = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.singleLine;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.singleSelection = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.singleSelection;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.snackbarButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.snackbarButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.snackbarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.snackbarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.spanCount = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.spanCount;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.spinBars = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.spinBars;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.spinnerDropDownItemStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.spinnerDropDownItemStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.spinnerStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.spinnerStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.splitTrack = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.splitTrack;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.srcCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.srcCompat;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.stackFromEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.stackFromEnd;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.state_above_anchor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.state_above_anchor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.state_collapsed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.state_collapsed;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.state_collapsible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.state_collapsible;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.state_liftable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.state_liftable;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.state_lifted = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.state_lifted;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.statusBarBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.statusBarBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.statusBarScrim = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.statusBarScrim;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.strokeColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.strokeColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.strokeWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.strokeWidth;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.subMenuArrow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.subMenuArrow;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.submitBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.submitBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.subtitleTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.subtitleTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.subtitleTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.subtitleTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.subtitleTextStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.subtitleTextStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.suggestionRowLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.suggestionRowLayout;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.switchMinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.switchMinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.switchPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.switchPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.switchStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.switchStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.switchTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.switchTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabContentStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabContentStart;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabGravity;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabIconTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabIconTint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabIconTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabIconTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabIndicator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabIndicator;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabIndicatorAnimationDuration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabIndicatorAnimationDuration;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabIndicatorColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabIndicatorColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabIndicatorFullWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabIndicatorFullWidth;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabIndicatorGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabIndicatorGravity;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabIndicatorHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabIndicatorHeight;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabInlineLabel = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabInlineLabel;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabMaxWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabMaxWidth;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabMinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabMinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabPaddingBottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabPaddingBottom;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabPaddingEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabPaddingEnd;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabPaddingStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabPaddingStart;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabPaddingTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabPaddingTop;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabRippleColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabRippleColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabSelectedTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabSelectedTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tabUnboundedRipple = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tabUnboundedRipple;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAllCaps = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAllCaps;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceBody1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceBody1;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceBody2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceBody2;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceButton;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceCaption = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceCaption;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceHeadline1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceHeadline1;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceHeadline2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceHeadline2;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceHeadline3 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceHeadline3;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceHeadline4 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceHeadline4;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceHeadline5 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceHeadline5;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceHeadline6 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceHeadline6;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceLargePopupMenu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceListItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceListItem;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceListItemSecondary = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceListItemSecondary;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceListItemSmall = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceListItemSmall;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceOverline = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceOverline;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearancePopupMenuHeader = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearancePopupMenuHeader;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceSearchResultSubtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceSearchResultTitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceSmallPopupMenu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceSubtitle1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceSubtitle1;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textAppearanceSubtitle2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textAppearanceSubtitle2;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textColorAlertDialogListItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textColorAlertDialogListItem;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textColorSearchUrl = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textColorSearchUrl;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textEndPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textEndPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textInputStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textInputStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.textStartPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.textStartPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.theme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.theme;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.thickness = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.thickness;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.thumbTextPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.thumbTextPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.thumbTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.thumbTint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.thumbTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.thumbTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tickMark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tickMark;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tickMarkTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tickMarkTint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tickMarkTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tickMarkTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tintMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.title;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.titleEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.titleEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.titleMargin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.titleMargin;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.titleMarginBottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.titleMarginBottom;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.titleMarginEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.titleMarginEnd;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.titleMargins = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.titleMargins;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.titleMarginStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.titleMarginStart;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.titleMarginTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.titleMarginTop;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.titleTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.titleTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.titleTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.titleTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.titleTextStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.titleTextStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.toolbarId = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.toolbarId;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.toolbarNavigationButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.toolbarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.toolbarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tooltipForegroundColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tooltipForegroundColor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tooltipFrameBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tooltipFrameBackground;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.tooltipText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.tooltipText;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.track = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.track;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.trackTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.trackTint;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.trackTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.trackTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.ttcIndex = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.ttcIndex;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.useCompatPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.useCompatPadding;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.viewInflaterClass = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.viewInflaterClass;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.voiceIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.voiceIcon;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.windowActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.windowActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.windowActionBarOverlay = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.windowActionBarOverlay;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.windowActionModeOverlay = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.windowActionModeOverlay;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.windowFixedHeightMajor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.windowFixedHeightMajor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.windowFixedHeightMinor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.windowFixedHeightMinor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.windowFixedWidthMajor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.windowFixedWidthMajor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.windowFixedWidthMinor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.windowFixedWidthMinor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.windowMinWidthMajor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.windowMinWidthMajor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.windowMinWidthMinor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.windowMinWidthMinor;
+			global::SkiaSharp.Views.Forms.Resource.Attribute.windowNoTitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.windowNoTitle;
+			global::SkiaSharp.Views.Forms.Resource.Boolean.abc_action_bar_embed_tabs = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::SkiaSharp.Views.Forms.Resource.Boolean.abc_allow_stacked_button_bar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Boolean.abc_allow_stacked_button_bar;
+			global::SkiaSharp.Views.Forms.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::SkiaSharp.Views.Forms.Resource.Boolean.mtrl_btn_textappearance_all_caps = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Boolean.mtrl_btn_textappearance_all_caps;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_background_cache_hint_selector_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_background_cache_hint_selector_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_btn_colored_borderless_text_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_btn_colored_borderless_text_material;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_btn_colored_text_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_btn_colored_text_material;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_color_highlight_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_color_highlight_material;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_hint_foreground_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_hint_foreground_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_hint_foreground_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_hint_foreground_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_primary_text_disable_only_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_primary_text_disable_only_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_primary_text_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_primary_text_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_primary_text_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_primary_text_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_search_url_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_search_url_text;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_search_url_text_normal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_search_url_text_normal;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_search_url_text_pressed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_search_url_text_pressed;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_search_url_text_selected = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_search_url_text_selected;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_secondary_text_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_secondary_text_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_secondary_text_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_secondary_text_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_tint_btn_checkable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_tint_btn_checkable;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_tint_default = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_tint_default;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_tint_edittext = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_tint_edittext;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_tint_seek_thumb = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_tint_seek_thumb;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_tint_spinner = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_tint_spinner;
+			global::SkiaSharp.Views.Forms.Resource.Color.abc_tint_switch_track = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.abc_tint_switch_track;
+			global::SkiaSharp.Views.Forms.Resource.Color.accent_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.accent_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.accent_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.accent_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.background_floating_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.background_floating_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.background_floating_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.background_floating_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.background_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.background_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.background_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.background_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.bright_foreground_disabled_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.bright_foreground_disabled_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.bright_foreground_disabled_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.bright_foreground_disabled_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.bright_foreground_inverse_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.bright_foreground_inverse_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.bright_foreground_inverse_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.bright_foreground_inverse_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.bright_foreground_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.bright_foreground_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.bright_foreground_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.bright_foreground_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.browser_actions_bg_grey = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.browser_actions_bg_grey;
+			global::SkiaSharp.Views.Forms.Resource.Color.browser_actions_divider_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.browser_actions_divider_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.browser_actions_text_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.browser_actions_text_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.browser_actions_title_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.browser_actions_title_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.button_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.button_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.button_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.button_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.cardview_dark_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.cardview_dark_background;
+			global::SkiaSharp.Views.Forms.Resource.Color.cardview_light_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.cardview_light_background;
+			global::SkiaSharp.Views.Forms.Resource.Color.cardview_shadow_end_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.cardview_shadow_end_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.cardview_shadow_start_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.cardview_shadow_start_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.design_bottom_navigation_shadow_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.design_bottom_navigation_shadow_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.design_default_color_primary = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.design_default_color_primary;
+			global::SkiaSharp.Views.Forms.Resource.Color.design_default_color_primary_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.design_default_color_primary_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.design_error = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.design_error;
+			global::SkiaSharp.Views.Forms.Resource.Color.design_fab_shadow_end_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.design_fab_shadow_end_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.design_fab_shadow_mid_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.design_fab_shadow_mid_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.design_fab_shadow_start_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.design_fab_shadow_start_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.design_fab_stroke_end_inner_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.design_fab_stroke_end_inner_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.design_fab_stroke_end_outer_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.design_fab_stroke_end_outer_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.design_fab_stroke_top_inner_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.design_fab_stroke_top_inner_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.design_fab_stroke_top_outer_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.design_fab_stroke_top_outer_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.design_snackbar_background_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.design_snackbar_background_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.dim_foreground_disabled_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.dim_foreground_disabled_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.dim_foreground_disabled_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.dim_foreground_disabled_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.dim_foreground_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.dim_foreground_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.dim_foreground_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.dim_foreground_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.error_color_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.error_color_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.error_color_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.error_color_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.foreground_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.foreground_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.foreground_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.foreground_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.highlighted_text_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.highlighted_text_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.highlighted_text_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.highlighted_text_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.material_blue_grey_800 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.material_blue_grey_800;
+			global::SkiaSharp.Views.Forms.Resource.Color.material_blue_grey_900 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.material_blue_grey_900;
+			global::SkiaSharp.Views.Forms.Resource.Color.material_blue_grey_950 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.material_blue_grey_950;
+			global::SkiaSharp.Views.Forms.Resource.Color.material_deep_teal_200 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.material_deep_teal_200;
+			global::SkiaSharp.Views.Forms.Resource.Color.material_deep_teal_500 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.material_deep_teal_500;
+			global::SkiaSharp.Views.Forms.Resource.Color.material_grey_100 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.material_grey_100;
+			global::SkiaSharp.Views.Forms.Resource.Color.material_grey_300 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.material_grey_300;
+			global::SkiaSharp.Views.Forms.Resource.Color.material_grey_50 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.material_grey_50;
+			global::SkiaSharp.Views.Forms.Resource.Color.material_grey_600 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.material_grey_600;
+			global::SkiaSharp.Views.Forms.Resource.Color.material_grey_800 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.material_grey_800;
+			global::SkiaSharp.Views.Forms.Resource.Color.material_grey_850 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.material_grey_850;
+			global::SkiaSharp.Views.Forms.Resource.Color.material_grey_900 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.material_grey_900;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_bottom_nav_colored_item_tint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_bottom_nav_colored_item_tint;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_bottom_nav_item_tint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_bottom_nav_item_tint;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_btn_bg_color_selector = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_btn_bg_color_selector;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_btn_ripple_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_btn_ripple_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_btn_stroke_color_selector = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_btn_stroke_color_selector;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_btn_text_btn_ripple_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_btn_text_btn_ripple_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_btn_text_color_disabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_btn_text_color_disabled;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_btn_text_color_selector = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_btn_text_color_selector;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_btn_transparent_bg_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_btn_transparent_bg_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_chip_background_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_chip_background_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_chip_close_icon_tint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_chip_close_icon_tint;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_chip_ripple_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_chip_ripple_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_chip_text_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_chip_text_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_fab_ripple_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_fab_ripple_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_scrim_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_scrim_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_tabs_colored_ripple_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_tabs_colored_ripple_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_tabs_icon_color_selector = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_tabs_icon_color_selector;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_tabs_icon_color_selector_colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_tabs_icon_color_selector_colored;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_tabs_legacy_text_color_selector = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_tabs_legacy_text_color_selector;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_tabs_ripple_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_tabs_ripple_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_textinput_default_box_stroke_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_textinput_default_box_stroke_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_textinput_disabled_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_textinput_disabled_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_textinput_filled_box_default_background_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_textinput_filled_box_default_background_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_textinput_hovered_box_stroke_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_textinput_hovered_box_stroke_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.mtrl_text_btn_text_color_selector = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.mtrl_text_btn_text_color_selector;
+			global::SkiaSharp.Views.Forms.Resource.Color.notification_action_color_filter = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.notification_action_color_filter;
+			global::SkiaSharp.Views.Forms.Resource.Color.notification_icon_bg_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.notification_icon_bg_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.notification_material_background_media_default_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.notification_material_background_media_default_color;
+			global::SkiaSharp.Views.Forms.Resource.Color.primary_dark_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.primary_dark_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.primary_dark_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.primary_dark_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.primary_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.primary_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.primary_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.primary_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.primary_text_default_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.primary_text_default_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.primary_text_default_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.primary_text_default_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.primary_text_disabled_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.primary_text_disabled_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.primary_text_disabled_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.primary_text_disabled_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.ripple_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.ripple_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.ripple_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.ripple_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.secondary_text_default_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.secondary_text_default_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.secondary_text_default_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.secondary_text_default_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.secondary_text_disabled_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.secondary_text_disabled_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.secondary_text_disabled_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.secondary_text_disabled_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.switch_thumb_disabled_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.switch_thumb_disabled_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.switch_thumb_disabled_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.switch_thumb_disabled_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.switch_thumb_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.switch_thumb_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.switch_thumb_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.switch_thumb_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.switch_thumb_normal_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.switch_thumb_normal_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.switch_thumb_normal_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.switch_thumb_normal_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Color.tooltip_background_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.tooltip_background_dark;
+			global::SkiaSharp.Views.Forms.Resource.Color.tooltip_background_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.tooltip_background_light;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_content_inset_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_content_inset_with_nav = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_content_inset_with_nav;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_default_height_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_default_height_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_default_padding_end_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_default_padding_start_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_elevation_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_elevation_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_stacked_max_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_button_min_height_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_button_min_height_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_button_min_width_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_button_min_width_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_action_button_min_width_overflow_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_alert_dialog_button_bar_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_alert_dialog_button_dimen = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_alert_dialog_button_dimen;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_button_inset_horizontal_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_button_inset_vertical_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_button_inset_vertical_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_button_padding_horizontal_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_button_padding_vertical_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_button_padding_vertical_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_cascading_menus_min_smallest_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_cascading_menus_min_smallest_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_config_prefDialogWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_config_prefDialogWidth;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_control_corner_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_control_corner_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_control_inset_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_control_inset_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_control_padding_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_control_padding_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dialog_corner_radius_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dialog_corner_radius_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dialog_fixed_height_major = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dialog_fixed_height_major;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dialog_fixed_height_minor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dialog_fixed_height_minor;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dialog_fixed_width_major = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dialog_fixed_width_major;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dialog_fixed_width_minor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dialog_fixed_width_minor;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dialog_list_padding_top_no_title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dialog_list_padding_top_no_title;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dialog_min_width_major = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dialog_min_width_major;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dialog_min_width_minor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dialog_min_width_minor;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dialog_padding_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dialog_padding_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dialog_padding_top_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dialog_padding_top_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dialog_title_divider_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dialog_title_divider_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_disabled_alpha_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_disabled_alpha_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dropdownitem_icon_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dropdownitem_text_padding_left = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_dropdownitem_text_padding_right = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_edit_text_inset_bottom_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_edit_text_inset_top_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_floating_window_z = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_floating_window_z;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_list_item_padding_horizontal_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_panel_menu_list_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_panel_menu_list_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_progress_bar_height_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_progress_bar_height_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_search_view_preferred_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_search_view_preferred_height;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_search_view_preferred_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_search_view_preferred_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_seekbar_track_background_height_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_seekbar_track_background_height_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_seekbar_track_progress_height_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_select_dialog_padding_start_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_select_dialog_padding_start_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_switch_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_switch_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_body_1_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_body_1_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_body_2_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_body_2_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_button_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_button_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_caption_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_caption_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_display_1_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_display_1_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_display_2_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_display_2_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_display_3_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_display_3_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_display_4_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_display_4_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_headline_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_headline_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_large_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_large_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_medium_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_medium_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_menu_header_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_menu_header_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_menu_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_menu_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_small_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_small_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_subhead_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_subhead_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_title_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_title_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.abc_text_size_title_material_toolbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.browser_actions_context_menu_max_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.browser_actions_context_menu_max_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.browser_actions_context_menu_min_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.browser_actions_context_menu_min_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.cardview_compat_inset_shadow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.cardview_compat_inset_shadow;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.cardview_default_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.cardview_default_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.cardview_default_radius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.cardview_default_radius;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.compat_button_inset_horizontal_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.compat_button_inset_vertical_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_button_inset_vertical_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.compat_button_padding_horizontal_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.compat_button_padding_vertical_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_button_padding_vertical_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.compat_control_corner_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_control_corner_material;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.compat_notification_large_icon_max_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.compat_notification_large_icon_max_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_appbar_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_appbar_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_navigation_active_item_max_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_navigation_active_item_max_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_navigation_active_item_min_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_navigation_active_item_min_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_navigation_active_text_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_navigation_active_text_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_navigation_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_navigation_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_navigation_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_navigation_height;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_navigation_icon_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_navigation_icon_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_navigation_item_max_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_navigation_item_max_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_navigation_item_min_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_navigation_item_min_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_navigation_margin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_navigation_margin;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_navigation_shadow_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_navigation_shadow_height;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_navigation_text_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_navigation_text_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_sheet_modal_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_bottom_sheet_peek_height_min = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_bottom_sheet_peek_height_min;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_fab_border_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_fab_border_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_fab_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_fab_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_fab_image_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_fab_image_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_fab_size_mini = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_fab_size_mini;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_fab_size_normal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_fab_size_normal;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_fab_translation_z_hovered_focused = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_fab_translation_z_hovered_focused;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_fab_translation_z_pressed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_fab_translation_z_pressed;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_navigation_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_navigation_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_navigation_icon_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_navigation_icon_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_navigation_icon_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_navigation_icon_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_navigation_item_horizontal_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_navigation_item_horizontal_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_navigation_item_icon_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_navigation_item_icon_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_navigation_max_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_navigation_max_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_navigation_padding_bottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_navigation_padding_bottom;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_navigation_separator_vertical_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_navigation_separator_vertical_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_snackbar_action_inline_max_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_snackbar_action_inline_max_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_snackbar_background_corner_radius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_snackbar_background_corner_radius;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_snackbar_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_snackbar_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_snackbar_max_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_snackbar_max_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_snackbar_min_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_snackbar_min_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_snackbar_padding_horizontal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_snackbar_padding_horizontal;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_snackbar_padding_vertical = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_snackbar_padding_vertical;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_snackbar_text_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_snackbar_text_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_tab_max_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_tab_max_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_tab_scrollable_min_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_tab_scrollable_min_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_tab_text_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_tab_text_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_tab_text_size_2line = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_tab_text_size_2line;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.design_textinput_caption_translate_y = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.design_textinput_caption_translate_y;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.disabled_alpha_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.disabled_alpha_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.disabled_alpha_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.disabled_alpha_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.fastscroll_default_thickness = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.fastscroll_default_thickness;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.fastscroll_margin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.fastscroll_margin;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.fastscroll_minimum_range = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.fastscroll_minimum_range;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.highlight_alpha_material_colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.highlight_alpha_material_colored;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.highlight_alpha_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.highlight_alpha_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.highlight_alpha_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.highlight_alpha_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.hint_alpha_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.hint_alpha_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.hint_alpha_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.hint_alpha_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.hint_pressed_alpha_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.hint_pressed_alpha_material_dark;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.hint_pressed_alpha_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.hint_pressed_alpha_material_light;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_bottomappbar_fabOffsetEndMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_bottomappbar_fabOffsetEndMode;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_bottomappbar_fab_cradle_margin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_margin;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_bottomappbar_fab_cradle_rounded_corner_radius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_rounded_corner_radius;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_bottomappbar_fab_cradle_vertical_offset = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_bottomappbar_fab_cradle_vertical_offset;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_bottomappbar_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_bottomappbar_height;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_corner_radius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_corner_radius;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_dialog_btn_min_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_dialog_btn_min_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_disabled_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_disabled_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_disabled_z = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_disabled_z;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_focused_z = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_focused_z;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_hovered_z = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_hovered_z;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_icon_btn_padding_left = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_icon_btn_padding_left;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_icon_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_icon_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_inset = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_inset;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_letter_spacing = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_letter_spacing;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_padding_bottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_padding_bottom;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_padding_left = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_padding_left;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_padding_right = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_padding_right;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_padding_top = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_padding_top;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_pressed_z = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_pressed_z;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_stroke_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_stroke_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_text_btn_icon_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_text_btn_icon_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_text_btn_padding_left = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_text_btn_padding_left;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_text_btn_padding_right = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_text_btn_padding_right;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_text_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_text_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_btn_z = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_btn_z;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_card_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_card_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_card_spacing = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_card_spacing;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_chip_pressed_translation_z = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_chip_pressed_translation_z;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_chip_text_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_chip_text_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_fab_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_fab_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_fab_translation_z_hovered_focused = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_fab_translation_z_hovered_focused;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_fab_translation_z_pressed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_fab_translation_z_pressed;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_navigation_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_navigation_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_navigation_item_horizontal_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_navigation_item_horizontal_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_navigation_item_icon_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_navigation_item_icon_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_snackbar_background_corner_radius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_snackbar_background_corner_radius;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_snackbar_margin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_snackbar_margin;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_textinput_box_corner_radius_medium = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_textinput_box_corner_radius_medium;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_textinput_box_corner_radius_small = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_textinput_box_corner_radius_small;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_textinput_box_label_cutout_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_textinput_box_label_cutout_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_textinput_box_stroke_width_default = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_textinput_box_stroke_width_default;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_textinput_box_stroke_width_focused = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_textinput_box_stroke_width_focused;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_textinput_outline_box_expanded_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_textinput_outline_box_expanded_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.mtrl_toolbar_default_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.mtrl_toolbar_default_height;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_action_icon_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_action_icon_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_action_text_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_action_text_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_big_circle_margin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_big_circle_margin;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_content_margin_start = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_content_margin_start;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_large_icon_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_large_icon_height;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_large_icon_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_large_icon_width;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_main_column_padding_top = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_main_column_padding_top;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_media_narrow_margin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_media_narrow_margin;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_right_icon_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_right_icon_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_right_side_padding_top = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_right_side_padding_top;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_small_icon_background_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_small_icon_background_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_small_icon_size_as_large = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_small_icon_size_as_large;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_subtext_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_subtext_size;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_top_pad = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_top_pad;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.notification_top_pad_large_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_top_pad_large_text;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.tooltip_corner_radius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.tooltip_corner_radius;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.tooltip_horizontal_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.tooltip_horizontal_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.tooltip_margin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.tooltip_margin;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.tooltip_precise_anchor_extra_offset = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.tooltip_precise_anchor_extra_offset;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.tooltip_precise_anchor_threshold = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.tooltip_precise_anchor_threshold;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.tooltip_vertical_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.tooltip_vertical_padding;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.tooltip_y_offset_non_touch = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.tooltip_y_offset_non_touch;
+			global::SkiaSharp.Views.Forms.Resource.Dimension.tooltip_y_offset_touch = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.tooltip_y_offset_touch;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_action_bar_item_background_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_action_bar_item_background_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_btn_borderless_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_btn_borderless_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_btn_check_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_btn_check_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_btn_colored_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_btn_colored_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_btn_default_mtrl_shape = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_btn_radio_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_btn_radio_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_cab_background_internal_bg = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_cab_background_internal_bg;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_cab_background_top_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_cab_background_top_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_control_background_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_control_background_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_dialog_material_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_dialog_material_background;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_edit_text_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_edit_text_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_ab_back_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_ab_back_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_clear_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_clear_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_go_search_api_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_go_search_api_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_menu_overflow_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_menu_overflow_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_search_api_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_search_api_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_star_black_16dp = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_star_black_16dp;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_star_black_36dp = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_star_black_36dp;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_star_black_48dp = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_star_black_48dp;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_star_half_black_16dp = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_star_half_black_16dp;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_star_half_black_36dp = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_star_half_black_36dp;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_star_half_black_48dp = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_star_half_black_48dp;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ic_voice_search_api_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ic_voice_search_api_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_item_background_holo_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_item_background_holo_dark;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_item_background_holo_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_item_background_holo_light;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_list_divider_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_list_divider_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_list_divider_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_list_focused_holo = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_list_focused_holo;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_list_longpressed_holo = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_list_longpressed_holo;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_list_pressed_holo_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_list_pressed_holo_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_list_pressed_holo_light;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_list_selector_disabled_holo_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_list_selector_holo_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_list_selector_holo_dark;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_list_selector_holo_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_list_selector_holo_light;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_popup_background_mtrl_mult = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ratingbar_indicator_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ratingbar_indicator_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ratingbar_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ratingbar_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_ratingbar_small_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_ratingbar_small_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_seekbar_thumb_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_seekbar_thumb_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_seekbar_tick_mark_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_seekbar_tick_mark_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_seekbar_track_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_seekbar_track_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_spinner_textfield_background_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_switch_thumb_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_switch_thumb_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_switch_track_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_tab_indicator_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_tab_indicator_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_textfield_search_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_textfield_search_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_text_cursor_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_text_cursor_material;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_text_select_handle_left_mtrl_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_dark;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_text_select_handle_left_mtrl_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_light;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_text_select_handle_middle_mtrl_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_light;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_text_select_handle_right_mtrl_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_dark;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_text_select_handle_right_mtrl_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_light;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.abc_vector_test = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.abc_vector_test;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.avd_hide_password = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.avd_hide_password;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.avd_show_password = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.avd_show_password;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.design_bottom_navigation_item_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.design_bottom_navigation_item_background;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.design_fab_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.design_fab_background;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.design_ic_visibility = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.design_ic_visibility;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.design_ic_visibility_off = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.design_ic_visibility_off;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.design_password_eye = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.design_password_eye;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.design_snackbar_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.design_snackbar_background;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.ic_mtrl_chip_checked_black = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.ic_mtrl_chip_checked_black;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.ic_mtrl_chip_checked_circle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.ic_mtrl_chip_checked_circle;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.ic_mtrl_chip_close_circle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.ic_mtrl_chip_close_circle;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.mtrl_tabs_default_indicator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.mtrl_tabs_default_indicator;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.navigation_empty_icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.navigation_empty_icon;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.notification_action_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_action_background;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.notification_bg = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_bg;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.notification_bg_low = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_bg_low;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.notification_bg_low_normal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_bg_low_normal;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.notification_bg_low_pressed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_bg_low_pressed;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.notification_bg_normal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_bg_normal;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.notification_bg_normal_pressed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_bg_normal_pressed;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.notification_icon_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_icon_background;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.notification_template_icon_bg = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_template_icon_bg;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.notification_template_icon_low_bg = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_template_icon_low_bg;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.notification_tile_bg = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_tile_bg;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.notify_panel_notification_icon_bg = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.tooltip_frame_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.tooltip_frame_dark;
+			global::SkiaSharp.Views.Forms.Resource.Drawable.tooltip_frame_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.tooltip_frame_light;
+			global::SkiaSharp.Views.Forms.Resource.Id.action0 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action0;
+			global::SkiaSharp.Views.Forms.Resource.Id.actions = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.actions;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_bar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_bar;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_bar_activity_content = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_bar_activity_content;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_bar_container = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_bar_container;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_bar_root = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_bar_root;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_bar_spinner = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_bar_spinner;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_bar_subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_bar_subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_bar_title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_bar_title;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_container = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_container;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_context_bar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_context_bar;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_divider = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_divider;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_image = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_image;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_menu_divider = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_menu_divider;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_menu_presenter = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_menu_presenter;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_mode_bar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_mode_bar;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_mode_bar_stub = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_mode_bar_stub;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_mode_close_button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_mode_close_button;
+			global::SkiaSharp.Views.Forms.Resource.Id.action_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_text;
+			global::SkiaSharp.Views.Forms.Resource.Id.activity_chooser_view_content = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.activity_chooser_view_content;
+			global::SkiaSharp.Views.Forms.Resource.Id.add = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.add;
+			global::SkiaSharp.Views.Forms.Resource.Id.alertTitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.alertTitle;
+			global::SkiaSharp.Views.Forms.Resource.Id.all = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.all;
+			global::SkiaSharp.Views.Forms.Resource.Id.ALT = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.ALT;
+			global::SkiaSharp.Views.Forms.Resource.Id.always = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.always;
+			global::SkiaSharp.Views.Forms.Resource.Id.async = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.async;
+			global::SkiaSharp.Views.Forms.Resource.Id.auto = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.auto;
+			global::SkiaSharp.Views.Forms.Resource.Id.beginning = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.beginning;
+			global::SkiaSharp.Views.Forms.Resource.Id.blocking = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.blocking;
+			global::SkiaSharp.Views.Forms.Resource.Id.bottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.bottom;
+			global::SkiaSharp.Views.Forms.Resource.Id.bottomtab_navarea = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.bottomtab_navarea;
+			global::SkiaSharp.Views.Forms.Resource.Id.bottomtab_tabbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.bottomtab_tabbar;
+			global::SkiaSharp.Views.Forms.Resource.Id.browser_actions_header_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.browser_actions_header_text;
+			global::SkiaSharp.Views.Forms.Resource.Id.browser_actions_menu_items = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.browser_actions_menu_items;
+			global::SkiaSharp.Views.Forms.Resource.Id.browser_actions_menu_item_icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.browser_actions_menu_item_icon;
+			global::SkiaSharp.Views.Forms.Resource.Id.browser_actions_menu_item_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.browser_actions_menu_item_text;
+			global::SkiaSharp.Views.Forms.Resource.Id.browser_actions_menu_view = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.browser_actions_menu_view;
+			global::SkiaSharp.Views.Forms.Resource.Id.buttonPanel = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.buttonPanel;
+			global::SkiaSharp.Views.Forms.Resource.Id.cancel_action = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.cancel_action;
+			global::SkiaSharp.Views.Forms.Resource.Id.center = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.center;
+			global::SkiaSharp.Views.Forms.Resource.Id.center_horizontal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.center_horizontal;
+			global::SkiaSharp.Views.Forms.Resource.Id.center_vertical = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.center_vertical;
+			global::SkiaSharp.Views.Forms.Resource.Id.checkbox = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.checkbox;
+			global::SkiaSharp.Views.Forms.Resource.Id.chronometer = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.chronometer;
+			global::SkiaSharp.Views.Forms.Resource.Id.clip_horizontal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.clip_horizontal;
+			global::SkiaSharp.Views.Forms.Resource.Id.clip_vertical = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.clip_vertical;
+			global::SkiaSharp.Views.Forms.Resource.Id.collapseActionView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.collapseActionView;
+			global::SkiaSharp.Views.Forms.Resource.Id.container = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.container;
+			global::SkiaSharp.Views.Forms.Resource.Id.content = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.content;
+			global::SkiaSharp.Views.Forms.Resource.Id.contentPanel = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.contentPanel;
+			global::SkiaSharp.Views.Forms.Resource.Id.coordinator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.coordinator;
+			global::SkiaSharp.Views.Forms.Resource.Id.CTRL = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.CTRL;
+			global::SkiaSharp.Views.Forms.Resource.Id.custom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.custom;
+			global::SkiaSharp.Views.Forms.Resource.Id.customPanel = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.customPanel;
+			global::SkiaSharp.Views.Forms.Resource.Id.decor_content_parent = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.decor_content_parent;
+			global::SkiaSharp.Views.Forms.Resource.Id.default_activity_button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.default_activity_button;
+			global::SkiaSharp.Views.Forms.Resource.Id.design_bottom_sheet = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.design_bottom_sheet;
+			global::SkiaSharp.Views.Forms.Resource.Id.design_menu_item_action_area = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.design_menu_item_action_area;
+			global::SkiaSharp.Views.Forms.Resource.Id.design_menu_item_action_area_stub = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.design_menu_item_action_area_stub;
+			global::SkiaSharp.Views.Forms.Resource.Id.design_menu_item_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.design_menu_item_text;
+			global::SkiaSharp.Views.Forms.Resource.Id.design_navigation_view = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.design_navigation_view;
+			global::SkiaSharp.Views.Forms.Resource.Id.disableHome = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.disableHome;
+			global::SkiaSharp.Views.Forms.Resource.Id.edit_query = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.edit_query;
+			global::SkiaSharp.Views.Forms.Resource.Id.end = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.end;
+			global::SkiaSharp.Views.Forms.Resource.Id.end_padder = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.end_padder;
+			global::SkiaSharp.Views.Forms.Resource.Id.enterAlways = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.enterAlways;
+			global::SkiaSharp.Views.Forms.Resource.Id.enterAlwaysCollapsed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.enterAlwaysCollapsed;
+			global::SkiaSharp.Views.Forms.Resource.Id.exitUntilCollapsed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exitUntilCollapsed;
+			global::SkiaSharp.Views.Forms.Resource.Id.expanded_menu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.expanded_menu;
+			global::SkiaSharp.Views.Forms.Resource.Id.expand_activities_button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.expand_activities_button;
+			global::SkiaSharp.Views.Forms.Resource.Id.fill = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.fill;
+			global::SkiaSharp.Views.Forms.Resource.Id.filled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.filled;
+			global::SkiaSharp.Views.Forms.Resource.Id.fill_horizontal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.fill_horizontal;
+			global::SkiaSharp.Views.Forms.Resource.Id.fill_vertical = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.fill_vertical;
+			global::SkiaSharp.Views.Forms.Resource.Id.@fixed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.@fixed;
+			global::SkiaSharp.Views.Forms.Resource.Id.flyoutcontent_appbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.flyoutcontent_appbar;
+			global::SkiaSharp.Views.Forms.Resource.Id.forever = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.forever;
+			global::SkiaSharp.Views.Forms.Resource.Id.FUNCTION = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.FUNCTION;
+			global::SkiaSharp.Views.Forms.Resource.Id.ghost_view = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.ghost_view;
+			global::SkiaSharp.Views.Forms.Resource.Id.group_divider = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.group_divider;
+			global::SkiaSharp.Views.Forms.Resource.Id.home = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.home;
+			global::SkiaSharp.Views.Forms.Resource.Id.homeAsUp = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.homeAsUp;
+			global::SkiaSharp.Views.Forms.Resource.Id.icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.icon;
+			global::SkiaSharp.Views.Forms.Resource.Id.icon_group = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.icon_group;
+			global::SkiaSharp.Views.Forms.Resource.Id.ifRoom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.ifRoom;
+			global::SkiaSharp.Views.Forms.Resource.Id.image = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.image;
+			global::SkiaSharp.Views.Forms.Resource.Id.info = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.info;
+			global::SkiaSharp.Views.Forms.Resource.Id.italic = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.italic;
+			global::SkiaSharp.Views.Forms.Resource.Id.item_touch_helper_previous_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.item_touch_helper_previous_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Id.labeled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.labeled;
+			global::SkiaSharp.Views.Forms.Resource.Id.largeLabel = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.largeLabel;
+			global::SkiaSharp.Views.Forms.Resource.Id.left = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.left;
+			global::SkiaSharp.Views.Forms.Resource.Id.line1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.line1;
+			global::SkiaSharp.Views.Forms.Resource.Id.line3 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.line3;
+			global::SkiaSharp.Views.Forms.Resource.Id.listMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.listMode;
+			global::SkiaSharp.Views.Forms.Resource.Id.list_item = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.list_item;
+			global::SkiaSharp.Views.Forms.Resource.Id.main_appbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.main_appbar;
+			global::SkiaSharp.Views.Forms.Resource.Id.main_tablayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.main_tablayout;
+			global::SkiaSharp.Views.Forms.Resource.Id.main_toolbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.main_toolbar;
+			global::SkiaSharp.Views.Forms.Resource.Id.main_viewpager = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.main_viewpager;
+			global::SkiaSharp.Views.Forms.Resource.Id.masked = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.masked;
+			global::SkiaSharp.Views.Forms.Resource.Id.media_actions = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.media_actions;
+			global::SkiaSharp.Views.Forms.Resource.Id.message = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.message;
+			global::SkiaSharp.Views.Forms.Resource.Id.META = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.META;
+			global::SkiaSharp.Views.Forms.Resource.Id.middle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.middle;
+			global::SkiaSharp.Views.Forms.Resource.Id.mini = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.mini;
+			global::SkiaSharp.Views.Forms.Resource.Id.mtrl_child_content_container = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.mtrl_child_content_container;
+			global::SkiaSharp.Views.Forms.Resource.Id.mtrl_internal_children_alpha_tag = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.mtrl_internal_children_alpha_tag;
+			global::SkiaSharp.Views.Forms.Resource.Id.multiply = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.multiply;
+			global::SkiaSharp.Views.Forms.Resource.Id.navigation_header_container = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.navigation_header_container;
+			global::SkiaSharp.Views.Forms.Resource.Id.never = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.never;
+			global::SkiaSharp.Views.Forms.Resource.Id.none = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.none;
+			global::SkiaSharp.Views.Forms.Resource.Id.normal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.normal;
+			global::SkiaSharp.Views.Forms.Resource.Id.notification_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.notification_background;
+			global::SkiaSharp.Views.Forms.Resource.Id.notification_main_column = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.notification_main_column;
+			global::SkiaSharp.Views.Forms.Resource.Id.notification_main_column_container = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.notification_main_column_container;
+			global::SkiaSharp.Views.Forms.Resource.Id.outline = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.outline;
+			global::SkiaSharp.Views.Forms.Resource.Id.parallax = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.parallax;
+			global::SkiaSharp.Views.Forms.Resource.Id.parentPanel = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.parentPanel;
+			global::SkiaSharp.Views.Forms.Resource.Id.parent_matrix = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.parent_matrix;
+			global::SkiaSharp.Views.Forms.Resource.Id.pin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.pin;
+			global::SkiaSharp.Views.Forms.Resource.Id.progress_circular = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.progress_circular;
+			global::SkiaSharp.Views.Forms.Resource.Id.progress_horizontal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.progress_horizontal;
+			global::SkiaSharp.Views.Forms.Resource.Id.radio = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.radio;
+			global::SkiaSharp.Views.Forms.Resource.Id.right = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.right;
+			global::SkiaSharp.Views.Forms.Resource.Id.right_icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.right_icon;
+			global::SkiaSharp.Views.Forms.Resource.Id.right_side = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.right_side;
+			global::SkiaSharp.Views.Forms.Resource.Id.save_non_transition_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.save_non_transition_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Id.screen = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.screen;
+			global::SkiaSharp.Views.Forms.Resource.Id.scroll = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.scroll;
+			global::SkiaSharp.Views.Forms.Resource.Id.scrollable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.scrollable;
+			global::SkiaSharp.Views.Forms.Resource.Id.scrollIndicatorDown = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.scrollIndicatorDown;
+			global::SkiaSharp.Views.Forms.Resource.Id.scrollIndicatorUp = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.scrollIndicatorUp;
+			global::SkiaSharp.Views.Forms.Resource.Id.scrollView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.scrollView;
+			global::SkiaSharp.Views.Forms.Resource.Id.search_badge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.search_badge;
+			global::SkiaSharp.Views.Forms.Resource.Id.search_bar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.search_bar;
+			global::SkiaSharp.Views.Forms.Resource.Id.search_button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.search_button;
+			global::SkiaSharp.Views.Forms.Resource.Id.search_close_btn = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.search_close_btn;
+			global::SkiaSharp.Views.Forms.Resource.Id.search_edit_frame = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.search_edit_frame;
+			global::SkiaSharp.Views.Forms.Resource.Id.search_go_btn = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.search_go_btn;
+			global::SkiaSharp.Views.Forms.Resource.Id.search_mag_icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.search_mag_icon;
+			global::SkiaSharp.Views.Forms.Resource.Id.search_plate = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.search_plate;
+			global::SkiaSharp.Views.Forms.Resource.Id.search_src_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.search_src_text;
+			global::SkiaSharp.Views.Forms.Resource.Id.search_voice_btn = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.search_voice_btn;
+			global::SkiaSharp.Views.Forms.Resource.Id.selected = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.selected;
+			global::SkiaSharp.Views.Forms.Resource.Id.select_dialog_listview = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.select_dialog_listview;
+			global::SkiaSharp.Views.Forms.Resource.Id.shellcontent_appbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.shellcontent_appbar;
+			global::SkiaSharp.Views.Forms.Resource.Id.shellcontent_toolbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.shellcontent_toolbar;
+			global::SkiaSharp.Views.Forms.Resource.Id.SHIFT = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.SHIFT;
+			global::SkiaSharp.Views.Forms.Resource.Id.shortcut = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.shortcut;
+			global::SkiaSharp.Views.Forms.Resource.Id.showCustom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.showCustom;
+			global::SkiaSharp.Views.Forms.Resource.Id.showHome = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.showHome;
+			global::SkiaSharp.Views.Forms.Resource.Id.showTitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.showTitle;
+			global::SkiaSharp.Views.Forms.Resource.Id.smallLabel = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.smallLabel;
+			global::SkiaSharp.Views.Forms.Resource.Id.snackbar_action = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.snackbar_action;
+			global::SkiaSharp.Views.Forms.Resource.Id.snackbar_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.snackbar_text;
+			global::SkiaSharp.Views.Forms.Resource.Id.snap = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.snap;
+			global::SkiaSharp.Views.Forms.Resource.Id.snapMargins = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.snapMargins;
+			global::SkiaSharp.Views.Forms.Resource.Id.spacer = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.spacer;
+			global::SkiaSharp.Views.Forms.Resource.Id.split_action_bar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.split_action_bar;
+			global::SkiaSharp.Views.Forms.Resource.Id.src_atop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.src_atop;
+			global::SkiaSharp.Views.Forms.Resource.Id.src_in = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.src_in;
+			global::SkiaSharp.Views.Forms.Resource.Id.src_over = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.src_over;
+			global::SkiaSharp.Views.Forms.Resource.Id.start = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.start;
+			global::SkiaSharp.Views.Forms.Resource.Id.status_bar_latest_event_content = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.status_bar_latest_event_content;
+			global::SkiaSharp.Views.Forms.Resource.Id.stretch = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.stretch;
+			global::SkiaSharp.Views.Forms.Resource.Id.submenuarrow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.submenuarrow;
+			global::SkiaSharp.Views.Forms.Resource.Id.submit_area = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.submit_area;
+			global::SkiaSharp.Views.Forms.Resource.Id.SYM = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.SYM;
+			global::SkiaSharp.Views.Forms.Resource.Id.tabMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.tabMode;
+			global::SkiaSharp.Views.Forms.Resource.Id.tag_transition_group = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.tag_transition_group;
+			global::SkiaSharp.Views.Forms.Resource.Id.tag_unhandled_key_event_manager = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.tag_unhandled_key_event_manager;
+			global::SkiaSharp.Views.Forms.Resource.Id.tag_unhandled_key_listeners = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.tag_unhandled_key_listeners;
+			global::SkiaSharp.Views.Forms.Resource.Id.text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.text;
+			global::SkiaSharp.Views.Forms.Resource.Id.text2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.text2;
+			global::SkiaSharp.Views.Forms.Resource.Id.textinput_counter = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.textinput_counter;
+			global::SkiaSharp.Views.Forms.Resource.Id.textinput_error = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.textinput_error;
+			global::SkiaSharp.Views.Forms.Resource.Id.textinput_helper_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.textinput_helper_text;
+			global::SkiaSharp.Views.Forms.Resource.Id.textSpacerNoButtons = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.textSpacerNoButtons;
+			global::SkiaSharp.Views.Forms.Resource.Id.textSpacerNoTitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.textSpacerNoTitle;
+			global::SkiaSharp.Views.Forms.Resource.Id.textStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.textStart;
+			global::SkiaSharp.Views.Forms.Resource.Id.time = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.time;
+			global::SkiaSharp.Views.Forms.Resource.Id.title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.title;
+			global::SkiaSharp.Views.Forms.Resource.Id.titleDividerNoCustom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.titleDividerNoCustom;
+			global::SkiaSharp.Views.Forms.Resource.Id.title_template = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.title_template;
+			global::SkiaSharp.Views.Forms.Resource.Id.top = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.top;
+			global::SkiaSharp.Views.Forms.Resource.Id.topPanel = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.topPanel;
+			global::SkiaSharp.Views.Forms.Resource.Id.touch_outside = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.touch_outside;
+			global::SkiaSharp.Views.Forms.Resource.Id.transition_current_scene = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.transition_current_scene;
+			global::SkiaSharp.Views.Forms.Resource.Id.transition_layout_save = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.transition_layout_save;
+			global::SkiaSharp.Views.Forms.Resource.Id.transition_position = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.transition_position;
+			global::SkiaSharp.Views.Forms.Resource.Id.transition_scene_layoutid_cache = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.transition_scene_layoutid_cache;
+			global::SkiaSharp.Views.Forms.Resource.Id.transition_transform = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.transition_transform;
+			global::SkiaSharp.Views.Forms.Resource.Id.uniform = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.uniform;
+			global::SkiaSharp.Views.Forms.Resource.Id.unlabeled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.unlabeled;
+			global::SkiaSharp.Views.Forms.Resource.Id.up = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.up;
+			global::SkiaSharp.Views.Forms.Resource.Id.useLogo = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.useLogo;
+			global::SkiaSharp.Views.Forms.Resource.Id.view_offset_helper = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.view_offset_helper;
+			global::SkiaSharp.Views.Forms.Resource.Id.visible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.visible;
+			global::SkiaSharp.Views.Forms.Resource.Id.withText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.withText;
+			global::SkiaSharp.Views.Forms.Resource.Id.wrap_content = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.wrap_content;
+			global::SkiaSharp.Views.Forms.Resource.Integer.abc_config_activityDefaultDur = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.abc_config_activityDefaultDur;
+			global::SkiaSharp.Views.Forms.Resource.Integer.abc_config_activityShortDur = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.abc_config_activityShortDur;
+			global::SkiaSharp.Views.Forms.Resource.Integer.app_bar_elevation_anim_duration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.app_bar_elevation_anim_duration;
+			global::SkiaSharp.Views.Forms.Resource.Integer.bottom_sheet_slide_duration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.bottom_sheet_slide_duration;
+			global::SkiaSharp.Views.Forms.Resource.Integer.cancel_button_image_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.cancel_button_image_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Integer.config_tooltipAnimTime = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.config_tooltipAnimTime;
+			global::SkiaSharp.Views.Forms.Resource.Integer.design_snackbar_text_max_lines = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.design_snackbar_text_max_lines;
+			global::SkiaSharp.Views.Forms.Resource.Integer.design_tab_indicator_anim_duration_ms = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.design_tab_indicator_anim_duration_ms;
+			global::SkiaSharp.Views.Forms.Resource.Integer.hide_password_duration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.hide_password_duration;
+			global::SkiaSharp.Views.Forms.Resource.Integer.mtrl_btn_anim_delay_ms = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.mtrl_btn_anim_delay_ms;
+			global::SkiaSharp.Views.Forms.Resource.Integer.mtrl_btn_anim_duration_ms = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.mtrl_btn_anim_duration_ms;
+			global::SkiaSharp.Views.Forms.Resource.Integer.mtrl_chip_anim_duration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.mtrl_chip_anim_duration;
+			global::SkiaSharp.Views.Forms.Resource.Integer.mtrl_tab_indicator_anim_duration_ms = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.mtrl_tab_indicator_anim_duration_ms;
+			global::SkiaSharp.Views.Forms.Resource.Integer.show_password_duration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.show_password_duration;
+			global::SkiaSharp.Views.Forms.Resource.Integer.status_bar_notification_info_maxnum = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::SkiaSharp.Views.Forms.Resource.Interpolator.mtrl_fast_out_linear_in = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Interpolator.mtrl_fast_out_linear_in;
+			global::SkiaSharp.Views.Forms.Resource.Interpolator.mtrl_fast_out_slow_in = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Interpolator.mtrl_fast_out_slow_in;
+			global::SkiaSharp.Views.Forms.Resource.Interpolator.mtrl_linear = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Interpolator.mtrl_linear;
+			global::SkiaSharp.Views.Forms.Resource.Interpolator.mtrl_linear_out_slow_in = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Interpolator.mtrl_linear_out_slow_in;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_action_bar_title_item = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_action_bar_title_item;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_action_bar_up_container = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_action_bar_up_container;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_action_menu_item_layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_action_menu_item_layout;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_action_menu_layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_action_menu_layout;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_action_mode_bar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_action_mode_bar;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_action_mode_close_item_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_action_mode_close_item_material;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_activity_chooser_view = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_activity_chooser_view;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_activity_chooser_view_list_item = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_alert_dialog_button_bar_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_alert_dialog_button_bar_material;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_alert_dialog_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_alert_dialog_material;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_alert_dialog_title_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_alert_dialog_title_material;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_cascading_menu_item_layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_cascading_menu_item_layout;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_dialog_title_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_dialog_title_material;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_expanded_menu_layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_expanded_menu_layout;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_list_menu_item_checkbox = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_list_menu_item_checkbox;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_list_menu_item_icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_list_menu_item_icon;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_list_menu_item_layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_list_menu_item_layout;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_list_menu_item_radio = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_list_menu_item_radio;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_popup_menu_header_item_layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_popup_menu_header_item_layout;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_popup_menu_item_layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_popup_menu_item_layout;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_screen_content_include = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_screen_content_include;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_screen_simple = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_screen_simple;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_screen_simple_overlay_action_mode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_screen_toolbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_screen_toolbar;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_search_dropdown_item_icons_2line = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_search_view = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_search_view;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_select_dialog_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_select_dialog_material;
+			global::SkiaSharp.Views.Forms.Resource.Layout.abc_tooltip = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.abc_tooltip;
+			global::SkiaSharp.Views.Forms.Resource.Layout.BottomTabLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.BottomTabLayout;
+			global::SkiaSharp.Views.Forms.Resource.Layout.browser_actions_context_menu_page = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.browser_actions_context_menu_page;
+			global::SkiaSharp.Views.Forms.Resource.Layout.browser_actions_context_menu_row = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.browser_actions_context_menu_row;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_bottom_navigation_item = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_bottom_navigation_item;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_bottom_sheet_dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_bottom_sheet_dialog;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_layout_snackbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_layout_snackbar;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_layout_snackbar_include = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_layout_snackbar_include;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_layout_tab_icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_layout_tab_icon;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_layout_tab_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_layout_tab_text;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_menu_item_action_area = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_menu_item_action_area;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_navigation_item = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_navigation_item;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_navigation_item_header = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_navigation_item_header;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_navigation_item_separator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_navigation_item_separator;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_navigation_item_subheader = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_navigation_item_subheader;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_navigation_menu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_navigation_menu;
+			global::SkiaSharp.Views.Forms.Resource.Layout.design_navigation_menu_item = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.design_navigation_menu_item;
+			global::SkiaSharp.Views.Forms.Resource.Layout.FlyoutContent = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.FlyoutContent;
+			global::SkiaSharp.Views.Forms.Resource.Layout.mtrl_layout_snackbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.mtrl_layout_snackbar;
+			global::SkiaSharp.Views.Forms.Resource.Layout.mtrl_layout_snackbar_include = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.mtrl_layout_snackbar_include;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_action = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_action;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_action_tombstone = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_action_tombstone;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_media_action = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_media_action;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_media_cancel_action = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_media_cancel_action;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_big_media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_big_media;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_big_media_custom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_big_media_custom;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_big_media_narrow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_big_media_narrow;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_big_media_narrow_custom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_big_media_narrow_custom;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_custom_big = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_custom_big;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_icon_group = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_icon_group;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_lines_media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_lines_media;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_media;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_media_custom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_media_custom;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_part_chronometer = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_part_chronometer;
+			global::SkiaSharp.Views.Forms.Resource.Layout.notification_template_part_time = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_part_time;
+			global::SkiaSharp.Views.Forms.Resource.Layout.RootLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.RootLayout;
+			global::SkiaSharp.Views.Forms.Resource.Layout.select_dialog_item_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.select_dialog_item_material;
+			global::SkiaSharp.Views.Forms.Resource.Layout.select_dialog_multichoice_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.select_dialog_multichoice_material;
+			global::SkiaSharp.Views.Forms.Resource.Layout.select_dialog_singlechoice_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.select_dialog_singlechoice_material;
+			global::SkiaSharp.Views.Forms.Resource.Layout.ShellContent = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.ShellContent;
+			global::SkiaSharp.Views.Forms.Resource.Layout.support_simple_spinner_dropdown_item = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_action_bar_home_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_action_bar_home_description;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_action_bar_up_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_action_bar_up_description;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_action_menu_overflow_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_action_menu_overflow_description;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_action_mode_done = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_action_mode_done;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_activitychooserview_choose_application = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_activitychooserview_choose_application;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_activity_chooser_view_see_all = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_activity_chooser_view_see_all;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_capital_off = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_capital_off;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_capital_on = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_capital_on;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_menu_alt_shortcut_label = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_menu_alt_shortcut_label;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_menu_ctrl_shortcut_label = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_menu_ctrl_shortcut_label;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_menu_delete_shortcut_label = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_menu_delete_shortcut_label;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_menu_enter_shortcut_label = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_menu_enter_shortcut_label;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_menu_function_shortcut_label = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_menu_function_shortcut_label;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_menu_meta_shortcut_label = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_menu_meta_shortcut_label;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_menu_shift_shortcut_label = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_menu_shift_shortcut_label;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_menu_space_shortcut_label = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_menu_space_shortcut_label;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_menu_sym_shortcut_label = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_menu_sym_shortcut_label;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_prepend_shortcut_label = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_prepend_shortcut_label;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_searchview_description_clear = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_searchview_description_clear;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_searchview_description_query = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_searchview_description_query;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_searchview_description_search = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_searchview_description_search;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_searchview_description_submit = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_searchview_description_submit;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_searchview_description_voice = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_searchview_description_voice;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_search_hint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_search_hint;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_shareactionprovider_share_with = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_shareactionprovider_share_with;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_shareactionprovider_share_with_application = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_shareactionprovider_share_with_application;
+			global::SkiaSharp.Views.Forms.Resource.String.abc_toolbar_collapse_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.abc_toolbar_collapse_description;
+			global::SkiaSharp.Views.Forms.Resource.String.appbar_scrolling_view_behavior = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.appbar_scrolling_view_behavior;
+			global::SkiaSharp.Views.Forms.Resource.String.bottom_sheet_behavior = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.bottom_sheet_behavior;
+			global::SkiaSharp.Views.Forms.Resource.String.character_counter_content_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.character_counter_content_description;
+			global::SkiaSharp.Views.Forms.Resource.String.character_counter_pattern = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.character_counter_pattern;
+			global::SkiaSharp.Views.Forms.Resource.String.fab_transformation_scrim_behavior = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.fab_transformation_scrim_behavior;
+			global::SkiaSharp.Views.Forms.Resource.String.fab_transformation_sheet_behavior = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.fab_transformation_sheet_behavior;
+			global::SkiaSharp.Views.Forms.Resource.String.hide_bottom_view_on_scroll_behavior = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.hide_bottom_view_on_scroll_behavior;
+			global::SkiaSharp.Views.Forms.Resource.String.mtrl_chip_close_icon_content_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.mtrl_chip_close_icon_content_description;
+			global::SkiaSharp.Views.Forms.Resource.String.password_toggle_content_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.password_toggle_content_description;
+			global::SkiaSharp.Views.Forms.Resource.String.path_password_eye = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.path_password_eye;
+			global::SkiaSharp.Views.Forms.Resource.String.path_password_eye_mask_strike_through = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.path_password_eye_mask_strike_through;
+			global::SkiaSharp.Views.Forms.Resource.String.path_password_eye_mask_visible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.path_password_eye_mask_visible;
+			global::SkiaSharp.Views.Forms.Resource.String.path_password_strike_through = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.path_password_strike_through;
+			global::SkiaSharp.Views.Forms.Resource.String.search_menu_title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.search_menu_title;
+			global::SkiaSharp.Views.Forms.Resource.String.status_bar_notification_info_overflow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.status_bar_notification_info_overflow;
+			global::SkiaSharp.Views.Forms.Resource.Style.AlertDialog_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.AlertDialog_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.AlertDialog_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.AlertDialog_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Animation_AppCompat_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Animation_AppCompat_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Animation_AppCompat_DropDownUp = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::SkiaSharp.Views.Forms.Resource.Style.Animation_AppCompat_Tooltip = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Animation_AppCompat_Tooltip;
+			global::SkiaSharp.Views.Forms.Resource.Style.Animation_Design_BottomSheetDialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_AlertDialog_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_AlertDialog_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_AlertDialog_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Animation_AppCompat_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Animation_AppCompat_Tooltip = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Animation_AppCompat_Tooltip;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_CardView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_CardView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_DialogWindowTitle_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Large = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Small = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Tooltip = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Tooltip;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_ThemeOverlay_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Bridge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Bridge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_CompactMenu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_CompactMenu;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_DialogWhenLarge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_FixedSize;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Dialog_MinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Bridge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_DialogWhenLarge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_FixedSize;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Theme_MaterialComponents_Light_Dialog_MinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V14_ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V14_Theme_MaterialComponents = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V14_Theme_MaterialComponents;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V14_Theme_MaterialComponents_Bridge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Bridge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V14_Theme_MaterialComponents_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Bridge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Bridge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V14_Theme_MaterialComponents_Light_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V21_Theme_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V21_Theme_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V21_Theme_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V22_Theme_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V22_Theme_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V22_Theme_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V23_Theme_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V23_Theme_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V23_Theme_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V26_Theme_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V26_Theme_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V26_Theme_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V26_Theme_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V26_Widget_AppCompat_Toolbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V26_Widget_AppCompat_Toolbar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V28_Theme_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V28_Theme_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V28_Theme_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V28_Theme_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V7_Theme_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V7_Theme_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V7_Theme_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_V7_Widget_AppCompat_Toolbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_V7_Widget_AppCompat_Toolbar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ActionButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ActionMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Button;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Button_Small = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_EditText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ImageButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ListMenuView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ListMenuView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ListView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_RatingBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_SearchView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_SeekBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Spinner = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Toolbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_Design_TabLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_Design_TabLayout;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_MaterialComponents_Chip = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_MaterialComponents_Chip;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_MaterialComponents_TextInputEditText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_MaterialComponents_TextInputEditText;
+			global::SkiaSharp.Views.Forms.Resource.Style.Base_Widget_MaterialComponents_TextInputLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Base_Widget_MaterialComponents_TextInputLayout;
+			global::SkiaSharp.Views.Forms.Resource.Style.CardView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.CardView;
+			global::SkiaSharp.Views.Forms.Resource.Style.CardView_Dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.CardView_Dark;
+			global::SkiaSharp.Views.Forms.Resource.Style.CardView_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.CardView_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_MaterialComponents = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_MaterialComponents;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_MaterialComponents_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_MaterialComponents_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_MaterialComponents_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_MaterialComponents_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_MaterialComponents_Light_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_MaterialComponents_Light_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_ThemeOverlay_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_V21_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_V21_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_V21_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_V21_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_V25_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_V25_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_V25_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_V25_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Platform_Widget_AppCompat_Spinner = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Body1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Body2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Button;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Caption = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Display1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Display2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Display3 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Display4 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Headline = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Large = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Large;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Medium = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Menu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Small = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Small;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Subhead = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Tooltip = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Tooltip;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Compat_Notification = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Compat_Notification_Info = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Compat_Notification_Info_Media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Info_Media;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Compat_Notification_Line2_Media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2_Media;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Compat_Notification_Media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Media;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Compat_Notification_Time = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Compat_Notification_Time_Media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Time_Media;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Compat_Notification_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Compat_Notification_Title_Media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Title_Media;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Design_Counter = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Design_Counter;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Design_Counter_Overflow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Design_Error = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Design_Error;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Design_HelperText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Design_HelperText;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Design_Hint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Design_Hint;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Design_Snackbar_Message = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Design_Tab = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Design_Tab;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Body1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Body1;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Body2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Body2;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Button;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Caption = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Caption;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Chip = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Chip;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Headline1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline1;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Headline2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline2;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Headline3 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline3;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Headline4 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline4;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Headline5 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline5;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Headline6 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Headline6;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Overline = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Overline;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Subtitle1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Subtitle1;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_MaterialComponents_Subtitle2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_MaterialComponents_Subtitle2;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_AppCompat_Dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_MaterialComponents = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_MaterialComponents;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_MaterialComponents_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_MaterialComponents_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_MaterialComponents_Dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dark;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_MaterialComponents_Dark_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dark_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_MaterialComponents_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_MaterialComponents_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_MaterialComponents_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_FilledBox_Dense;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox;
+			global::SkiaSharp.Views.Forms.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ThemeOverlay_MaterialComponents_TextInputEditText_OutlinedBox_Dense;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_CompactMenu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_DayNight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_DayNight;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_Light_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_AppCompat_NoActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_Design = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_Design;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_Design_BottomSheetDialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_Design_BottomSheetDialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_Design_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_Design_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_Design_Light_NoActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_Design_Light_NoActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_Design_NoActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_Design_NoActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_BottomSheetDialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_BottomSheetDialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Bridge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Bridge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_CompactMenu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_CompactMenu;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_DialogWhenLarge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_DialogWhenLarge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Dialog_MinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Light;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Light_BottomSheetDialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Light_Bridge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Light_Bridge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Light_DarkActionBar_Bridge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Light_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Light_DialogWhenLarge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_Alert;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Light_Dialog_MinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Light_NoActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_Light_NoActionBar_Bridge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_NoActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Theme_MaterialComponents_NoActionBar_Bridge;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ActionButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ActionButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ActionMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ActionMode;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ActivityChooserView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Button;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ButtonBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Button_Borderless = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Button_Colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Button_Small = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Button_Small;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_EditText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_EditText;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ImageButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ImageButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_SearchView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ListMenuView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ListMenuView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ListPopupWindow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ListView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ListView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ListView_DropDown = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ListView_Menu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_PopupMenu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_PopupWindow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ProgressBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_RatingBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_RatingBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_RatingBar_Small = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_SearchView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_SearchView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_SeekBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_SeekBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_SeekBar_Discrete = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_SeekBar_Discrete;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Spinner = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Spinner;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Toolbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Toolbar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Compat_NotificationActionContainer = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Compat_NotificationActionText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Compat_NotificationActionText;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Design_AppBarLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Design_AppBarLayout;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Design_BottomNavigationView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Design_BottomNavigationView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Design_BottomSheet_Modal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Design_BottomSheet_Modal;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Design_CollapsingToolbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Design_CollapsingToolbar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Design_FloatingActionButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Design_FloatingActionButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Design_NavigationView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Design_NavigationView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Design_Snackbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Design_Snackbar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Design_TabLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Design_TabLayout;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Design_TextInputLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Design_TextInputLayout;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_BottomAppBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_BottomAppBar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_BottomAppBar_Colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_BottomAppBar_Colored;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_BottomNavigationView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_BottomNavigationView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_BottomNavigationView_Colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_BottomNavigationView_Colored;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_BottomSheet_Modal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_BottomSheet_Modal;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Button;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Button_Icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Button_Icon;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton_Icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Button_OutlinedButton_Icon;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Button_TextButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog_Icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Dialog_Icon;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Button_TextButton_Icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Button_TextButton_Icon;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton_Icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Button_UnelevatedButton_Icon;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_CardView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_CardView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_ChipGroup = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_ChipGroup;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Chip_Action = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Chip_Action;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Chip_Choice = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Chip_Choice;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Chip_Entry = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Chip_Entry;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Chip_Filter = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Chip_Filter;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_FloatingActionButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_FloatingActionButton;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_NavigationView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_NavigationView;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Snackbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Snackbar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Snackbar_FullWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Snackbar_FullWidth;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_TabLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_TabLayout;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_TabLayout_Colored = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_TabLayout_Colored;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox_Dense = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_FilledBox_Dense;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox_Dense = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_TextInputEditText_OutlinedBox_Dense;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox_Dense = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_FilledBox_Dense;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_TextInputLayout_OutlinedBox_Dense;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_MaterialComponents_Toolbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_MaterialComponents_Toolbar;
+			global::SkiaSharp.Views.Forms.Resource.Style.Widget_Support_CoordinatorLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Support_CoordinatorLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBarLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBarLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_background;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_backgroundSplit = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_backgroundSplit;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_backgroundStacked = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_backgroundStacked;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_contentInsetEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_contentInsetEndWithActions = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_contentInsetEndWithActions;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_contentInsetLeft = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_contentInsetRight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_contentInsetRight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_contentInsetStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_contentInsetStart;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_contentInsetStartWithNavigation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_contentInsetStartWithNavigation;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_customNavigationLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_displayOptions = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_displayOptions;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_divider = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_divider;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_height;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_hideOnContentScroll = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_homeAsUpIndicator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_homeLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_homeLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_icon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_itemPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_itemPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_logo = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_logo;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_navigationMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_navigationMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_popupTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_popupTheme;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_progressBarPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_progressBarPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_progressBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_progressBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_subtitleTextStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_title;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionBar_titleTextStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionBar_titleTextStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionMenuItemView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionMenuItemView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionMenuItemView_android_minWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionMenuView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionMenuView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionMode_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionMode_background;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionMode_backgroundSplit = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionMode_backgroundSplit;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionMode_closeItemLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionMode_closeItemLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionMode_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionMode_height;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionMode_subtitleTextStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActionMode_titleTextStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActionMode_titleTextStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActivityChooserView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActivityChooserView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ActivityChooserView_initialActivityCount = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AlertDialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AlertDialog;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AlertDialog_android_layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AlertDialog_android_layout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AlertDialog_buttonIconDimen = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AlertDialog_buttonIconDimen;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AlertDialog_listItemLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AlertDialog_listItemLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AlertDialog_listLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AlertDialog_listLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AlertDialog_showTitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AlertDialog_showTitle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableCompat;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_constantSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_dither;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_enterFadeDuration;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_exitFadeDuration;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_variablePadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableCompat_android_visible;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableItem;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableItem_android_drawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableItem_android_id = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableItem_android_id;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableTransition = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableTransition;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_drawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_fromId;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_reversible;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AnimatedStateListDrawableTransition_android_toId;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayoutStates = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayoutStates;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayoutStates_state_collapsed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayoutStates_state_collapsible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayoutStates_state_liftable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayoutStates_state_liftable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayoutStates_state_lifted = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayoutStates_state_lifted;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayout_android_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayout_android_background;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayout_android_keyboardNavigationCluster;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayout_android_touchscreenBlocksFocus;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayout_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayout_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayout_expanded = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayout_expanded;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayout_Layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayout_Layout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppBarLayout_liftOnScroll = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppBarLayout_liftOnScroll;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatImageView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatImageView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatImageView_android_src = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatImageView_android_src;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatImageView_srcCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatImageView_srcCompat;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatImageView_tint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatImageView_tint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatImageView_tintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatImageView_tintMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatSeekBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatSeekBar;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatSeekBar_android_thumb = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatSeekBar_android_thumb;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatSeekBar_tickMark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatSeekBar_tickMark;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatSeekBar_tickMarkTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextHelper = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextHelper;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextHelper_android_drawableBottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableBottom;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextHelper_android_drawableEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableEnd;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextHelper_android_drawableLeft = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableLeft;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextHelper_android_drawableRight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableRight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextHelper_android_drawableStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableStart;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextHelper_android_drawableTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableTop;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextHelper_android_textAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextHelper_android_textAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextView_android_textAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextView_autoSizeMaxTextSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextView_autoSizeMinTextSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextView_autoSizePresetSizes = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextView_autoSizePresetSizes;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextView_autoSizeStepGranularity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextView_autoSizeTextType = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextView_autoSizeTextType;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextView_firstBaselineToTopHeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextView_fontFamily = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextView_fontFamily;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextView_lastBaselineToBottomHeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextView_lineHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextView_lineHeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTextView_textAllCaps = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionBarDivider = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionBarSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionBarSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionBarTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModeBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModeStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_buttonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_buttonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_checkboxStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_colorAccent = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_colorAccent;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_colorBackgroundFloating = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_colorBackgroundFloating;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_colorControlActivated = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_colorControlNormal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_colorError = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_colorError;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_colorPrimary = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_colorPrimary;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_controlBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_controlBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_dialogCornerRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_dialogCornerRadius;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_dialogTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_dialogTheme;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_dividerVertical = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_dividerVertical;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_editTextBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_editTextBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_editTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_editTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_editTextStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_editTextStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_listMenuViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_listMenuViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_panelBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_panelBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_searchViewStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_seekBarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_spinnerStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_switchStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_switchStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_toolbarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_tooltipForegroundColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_tooltipForegroundColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_tooltipFrameBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_tooltipFrameBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_viewInflaterClass = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_viewInflaterClass;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_windowActionBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_windowActionBar;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.AppCompatTheme_windowNoTitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomAppBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomAppBar;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomAppBar_backgroundTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomAppBar_backgroundTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomAppBar_fabAlignmentMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomAppBar_fabAlignmentMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomAppBar_fabCradleMargin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomAppBar_fabCradleMargin;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomAppBar_fabCradleRoundedCornerRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomAppBar_fabCradleRoundedCornerRadius;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomAppBar_fabCradleVerticalOffset = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomAppBar_fabCradleVerticalOffset;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomAppBar_hideOnScroll = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomAppBar_hideOnScroll;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomNavigationView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomNavigationView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomNavigationView_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomNavigationView_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomNavigationView_itemBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomNavigationView_itemBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomNavigationView_itemHorizontalTranslationEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomNavigationView_itemHorizontalTranslationEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomNavigationView_itemIconSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomNavigationView_itemIconSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomNavigationView_itemIconTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomNavigationView_itemIconTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomNavigationView_itemTextAppearanceActive = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomNavigationView_itemTextAppearanceActive;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomNavigationView_itemTextAppearanceInactive = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomNavigationView_itemTextAppearanceInactive;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomNavigationView_itemTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomNavigationView_itemTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomNavigationView_labelVisibilityMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomNavigationView_labelVisibilityMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomNavigationView_menu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomNavigationView_menu;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomSheetBehavior_Layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomSheetBehavior_Layout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomSheetBehavior_Layout_behavior_fitToContents = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_fitToContents;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ButtonBarLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ButtonBarLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ButtonBarLayout_allowStacking = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ButtonBarLayout_allowStacking;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_android_minHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_android_minHeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_android_minWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_android_minWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_cardBackgroundColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_cardBackgroundColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_cardCornerRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_cardCornerRadius;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_cardElevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_cardElevation;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_cardMaxElevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_cardMaxElevation;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_cardPreventCornerOverlap = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_cardUseCompatPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_cardUseCompatPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_contentPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_contentPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_contentPaddingBottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_contentPaddingBottom;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_contentPaddingLeft = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_contentPaddingLeft;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_contentPaddingRight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_contentPaddingRight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CardView_contentPaddingTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CardView_contentPaddingTop;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ChipGroup = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ChipGroup;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ChipGroup_checkedChip = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ChipGroup_checkedChip;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ChipGroup_chipSpacing = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ChipGroup_chipSpacing;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ChipGroup_chipSpacingHorizontal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ChipGroup_chipSpacingHorizontal;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ChipGroup_chipSpacingVertical = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ChipGroup_chipSpacingVertical;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ChipGroup_singleLine = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ChipGroup_singleLine;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ChipGroup_singleSelection = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ChipGroup_singleSelection;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_android_checkable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_android_checkable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_android_ellipsize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_android_ellipsize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_android_maxWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_android_maxWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_android_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_android_text;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_android_textAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_android_textAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_checkedIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_checkedIcon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_checkedIconEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_checkedIconEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_checkedIconVisible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_checkedIconVisible;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_chipBackgroundColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_chipBackgroundColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_chipCornerRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_chipCornerRadius;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_chipEndPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_chipEndPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_chipIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_chipIcon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_chipIconEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_chipIconEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_chipIconSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_chipIconSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_chipIconTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_chipIconTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_chipIconVisible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_chipIconVisible;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_chipMinHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_chipMinHeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_chipStartPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_chipStartPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_chipStrokeColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_chipStrokeColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_chipStrokeWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_chipStrokeWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_closeIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_closeIcon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_closeIconEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_closeIconEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_closeIconEndPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_closeIconEndPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_closeIconSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_closeIconSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_closeIconStartPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_closeIconStartPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_closeIconTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_closeIconTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_closeIconVisible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_closeIconVisible;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_hideMotionSpec = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_hideMotionSpec;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_iconEndPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_iconEndPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_iconStartPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_iconStartPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_rippleColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_rippleColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_showMotionSpec = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_showMotionSpec;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_textEndPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_textEndPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Chip_textStartPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Chip_textStartPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_Layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ColorStateListItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ColorStateListItem;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ColorStateListItem_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ColorStateListItem_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ColorStateListItem_android_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ColorStateListItem_android_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ColorStateListItem_android_color;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CompoundButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CompoundButton;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CompoundButton_android_button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CompoundButton_android_button;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CompoundButton_buttonTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CompoundButton_buttonTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CompoundButton_buttonTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CoordinatorLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CoordinatorLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CoordinatorLayout_keylines = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CoordinatorLayout_keylines;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CoordinatorLayout_Layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CoordinatorLayout_Layout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.DrawerArrowToggle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DrawerArrowToggle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.DrawerArrowToggle_barLength = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DrawerArrowToggle_barLength;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.DrawerArrowToggle_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DrawerArrowToggle_color;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.DrawerArrowToggle_drawableSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.DrawerArrowToggle_spinBars = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.DrawerArrowToggle_thickness = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_backgroundTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_borderWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_fabCustomSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_fabCustomSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_fabSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_fabSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_hideMotionSpec = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_hideMotionSpec;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_hoveredFocusedTranslationZ = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_hoveredFocusedTranslationZ;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_maxImageSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_maxImageSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_rippleColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_showMotionSpec = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_showMotionSpec;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FloatingActionButton_useCompatPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FlowLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FlowLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FlowLayout_itemSpacing = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FlowLayout_itemSpacing;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FlowLayout_lineSpacing = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FlowLayout_lineSpacing;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamily = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamilyFont = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamilyFont_android_font = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_android_font;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamilyFont_android_fontStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamilyFont_android_fontWeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamilyFont_font = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_font;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamilyFont_fontStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamilyFont_fontWeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamilyFont_ttcIndex = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamily_fontProviderAuthority = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamily_fontProviderCerts = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamily_fontProviderPackage = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.FontFamily_fontProviderQuery = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ForegroundLinearLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ForegroundLinearLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColorItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColorItem;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColorItem_android_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColorItem_android_color;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColorItem_android_offset = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColorItem_android_offset;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor_android_centerColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_centerColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor_android_centerX = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_centerX;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor_android_centerY = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_centerY;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor_android_endColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_endColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor_android_endX = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_endX;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor_android_endY = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_endY;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor_android_gradientRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor_android_startColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_startColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor_android_startX = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_startX;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor_android_startY = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_startY;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor_android_tileMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_tileMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.GradientColor_android_type = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_type;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_android_gravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_android_orientation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_divider = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_divider;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_Layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.LinearLayoutCompat_showDividers = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ListPopupWindow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ListPopupWindow;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_android_insetBottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_android_insetBottom;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_android_insetLeft = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_android_insetLeft;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_android_insetRight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_android_insetRight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_android_insetTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_android_insetTop;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_backgroundTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_backgroundTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_backgroundTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_backgroundTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_cornerRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_cornerRadius;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_icon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_iconGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_iconGravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_iconPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_iconPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_iconSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_iconSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_iconTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_iconTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_iconTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_iconTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_rippleColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_rippleColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_strokeColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_strokeColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialButton_strokeWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialButton_strokeWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialCardView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialCardView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialCardView_strokeColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialCardView_strokeColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MaterialCardView_strokeWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MaterialCardView_strokeWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuGroup = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuGroup;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuGroup_android_checkableBehavior = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuGroup_android_enabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuGroup_android_enabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuGroup_android_id = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuGroup_android_id;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuGroup_android_menuCategory = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuGroup_android_orderInCategory = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuGroup_android_visible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuGroup_android_visible;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_actionLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_actionLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_actionProviderClass = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_actionProviderClass;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_actionViewClass = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_actionViewClass;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_alphabeticModifiers = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_alphabeticModifiers;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_checkable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_checkable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_checked = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_checked;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_enabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_enabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_icon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_id = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_id;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_menuCategory = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_menuCategory;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_numericShortcut = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_onClick = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_onClick;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_orderInCategory = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_title;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_titleCondensed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_android_visible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_android_visible;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_contentDescription = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_contentDescription;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_iconTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_iconTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_iconTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_iconTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_numericModifiers = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_numericModifiers;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_showAsAction = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_showAsAction;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuItem_tooltipText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuItem_tooltipText;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuView_android_headerBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuView_android_headerBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuView_android_horizontalDivider = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuView_android_itemBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuView_android_itemBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuView_android_itemTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuView_android_verticalDivider = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuView_android_verticalDivider;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuView_android_windowAnimationStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuView_preserveIconSpacing = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.MenuView_subMenuArrow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.MenuView_subMenuArrow;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView_android_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView_android_background;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView_android_maxWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView_android_maxWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView_headerLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView_headerLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView_itemBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView_itemBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView_itemHorizontalPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView_itemHorizontalPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView_itemIconPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView_itemIconPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView_itemIconTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView_itemIconTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView_itemTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView_itemTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView_itemTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView_itemTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.NavigationView_menu = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.NavigationView_menu;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.PopupWindow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PopupWindow;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.PopupWindowBackgroundState = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PopupWindowBackgroundState;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.PopupWindow_android_popupBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.PopupWindow_overlapAnchor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecycleListView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecycleListView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecyclerView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecyclerView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecyclerView_android_descendantFocusability = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecyclerView_android_orientation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecyclerView_android_orientation;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecyclerView_fastScrollEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecyclerView_layoutManager = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecyclerView_layoutManager;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecyclerView_reverseLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecyclerView_reverseLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecyclerView_spanCount = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecyclerView_spanCount;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.RecyclerView_stackFromEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ScrimInsetsFrameLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ScrimInsetsFrameLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ScrollingViewBehavior_Layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ScrollingViewBehavior_Layout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ScrollingViewBehavior_Layout_behavior_overlapTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ScrollingViewBehavior_Layout_behavior_overlapTop;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_android_focusable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_android_focusable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_android_imeOptions = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_android_imeOptions;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_android_inputType = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_android_inputType;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_android_maxWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_android_maxWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_closeIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_closeIcon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_commitIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_commitIcon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_defaultQueryHint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_defaultQueryHint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_goIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_goIcon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_iconifiedByDefault = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_layout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_queryBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_queryBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_queryHint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_queryHint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_searchHintIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_searchHintIcon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_searchIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_searchIcon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_submitBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_submitBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_suggestionRowLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SearchView_voiceIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SearchView_voiceIcon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Snackbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Snackbar;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SnackbarLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SnackbarLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SnackbarLayout_android_maxWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SnackbarLayout_elevation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SnackbarLayout_elevation;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Snackbar_snackbarButtonStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Snackbar_snackbarButtonStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Snackbar_snackbarStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Snackbar_snackbarStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Spinner = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Spinner;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Spinner_android_dropDownWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Spinner_android_entries = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Spinner_android_entries;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Spinner_android_popupBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Spinner_android_popupBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Spinner_android_prompt = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Spinner_android_prompt;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Spinner_popupTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Spinner_popupTheme;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.StateListDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.StateListDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.StateListDrawableItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.StateListDrawableItem;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.StateListDrawableItem_android_drawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.StateListDrawableItem_android_drawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.StateListDrawable_android_constantSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.StateListDrawable_android_constantSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.StateListDrawable_android_dither = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.StateListDrawable_android_dither;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.StateListDrawable_android_enterFadeDuration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.StateListDrawable_android_enterFadeDuration;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.StateListDrawable_android_exitFadeDuration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.StateListDrawable_android_exitFadeDuration;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.StateListDrawable_android_variablePadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.StateListDrawable_android_variablePadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.StateListDrawable_android_visible = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.StateListDrawable_android_visible;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_android_textOff = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_android_textOff;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_android_textOn = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_android_textOn;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_android_thumb = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_android_thumb;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_showText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_showText;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_splitTrack = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_splitTrack;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_switchMinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_switchPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_switchPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_switchTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_thumbTextPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_thumbTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_thumbTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_thumbTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_thumbTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_track = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_track;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_trackTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_trackTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.SwitchCompat_trackTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.SwitchCompat_trackTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabItem;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabItem_android_icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabItem_android_icon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabItem_android_layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabItem_android_layout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabItem_android_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabItem_android_text;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabBackground = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabBackground;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabContentStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabContentStart;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabGravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabIconTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabIconTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabIconTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabIconTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabIndicator = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabIndicator;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabIndicatorAnimationDuration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabIndicatorAnimationDuration;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabIndicatorColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabIndicatorColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabIndicatorFullWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabIndicatorFullWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabIndicatorGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabIndicatorGravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabIndicatorHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabInlineLabel = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabInlineLabel;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabMaxWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabMaxWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabMinWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabMinWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabPadding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabPadding;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabPaddingBottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabPaddingBottom;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabPaddingEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabPaddingEnd;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabPaddingStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabPaddingStart;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabPaddingTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabPaddingTop;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabRippleColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabRippleColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabSelectedTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TabLayout_tabUnboundedRipple = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TabLayout_tabUnboundedRipple;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_android_fontFamily = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_android_fontFamily;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_android_shadowColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_android_shadowColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_android_shadowDx = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_android_shadowDx;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_android_shadowDy = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_android_shadowDy;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_android_shadowRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_android_shadowRadius;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_android_textColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_android_textColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_android_textColorHint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_android_textColorHint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_android_textColorLink = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_android_textColorLink;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_android_textSize = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_android_textSize;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_android_textStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_android_textStyle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_android_typeface = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_android_typeface;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_fontFamily = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_fontFamily;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextAppearance_textAllCaps = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextAppearance_textAllCaps;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_android_hint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_android_hint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_android_textColorHint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_boxBackgroundColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_boxBackgroundColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_boxBackgroundMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_boxBackgroundMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_boxCollapsedPaddingTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_boxCollapsedPaddingTop;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomEnd;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusBottomStart;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_boxCornerRadiusTopEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusTopEnd;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_boxCornerRadiusTopStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_boxCornerRadiusTopStart;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_boxStrokeColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_boxStrokeColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_boxStrokeWidth = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_boxStrokeWidth;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_counterEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_counterEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_counterMaxLength = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_counterMaxLength;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_counterTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_errorEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_errorEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_errorTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_helperText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_helperText;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_helperTextEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_helperTextEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_helperTextTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_helperTextTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_hintEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_hintEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_hintTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_passwordToggleContentDescription = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_passwordToggleContentDescription;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_passwordToggleDrawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_passwordToggleDrawable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_passwordToggleEnabled = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_passwordToggleEnabled;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_passwordToggleTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_passwordToggleTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.TextInputLayout_passwordToggleTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.TextInputLayout_passwordToggleTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ThemeEnforcement = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ThemeEnforcement;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ThemeEnforcement_android_textAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ThemeEnforcement_android_textAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ThemeEnforcement_enforceMaterialTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ThemeEnforcement_enforceMaterialTheme;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ThemeEnforcement_enforceTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ThemeEnforcement_enforceTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_android_gravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_android_gravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_android_minHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_android_minHeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_buttonGravity = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_buttonGravity;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_collapseContentDescription = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_collapseIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_collapseIcon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_contentInsetEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_contentInsetEndWithActions = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_contentInsetEndWithActions;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_contentInsetLeft = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_contentInsetRight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_contentInsetRight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_contentInsetStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_contentInsetStart;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_contentInsetStartWithNavigation = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_contentInsetStartWithNavigation;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_logo = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_logo;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_logoDescription = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_logoDescription;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_maxButtonHeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_navigationContentDescription = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_navigationIcon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_navigationIcon;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_popupTheme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_popupTheme;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_subtitle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_subtitle;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_subtitleTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_subtitleTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_subtitleTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_title;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_titleMargin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_titleMargin;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_titleMarginBottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_titleMarginEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_titleMargins = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_titleMargins;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_titleMarginStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_titleMarginStart;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_titleMarginTop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_titleMarginTop;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_titleTextAppearance = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.Toolbar_titleTextColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.Toolbar_titleTextColor;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.View = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.View;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ViewBackgroundHelper = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ViewBackgroundHelper;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ViewBackgroundHelper_android_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ViewStubCompat = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ViewStubCompat;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ViewStubCompat_android_id = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ViewStubCompat_android_id;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ViewStubCompat_android_inflatedId = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.ViewStubCompat_android_layout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.View_android_focusable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.View_android_focusable;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.View_android_theme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.View_android_theme;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.View_paddingEnd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.View_paddingEnd;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.View_paddingStart = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.View_paddingStart;
+			global::SkiaSharp.Views.Forms.Resource.Styleable.View_theme = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.View_theme;
 			global::Xamarin.Essentials.Resource.Attribute.alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.alpha;
 			global::Xamarin.Essentials.Resource.Attribute.font = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.font;
 			global::Xamarin.Essentials.Resource.Attribute.fontProviderAuthority = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderAuthority;
@@ -9128,142 +11638,136 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			public const int tickMarkTintMode = 2130903644;
 			
 			// aapt resource value: 0x7F03025D
-			public const int time_bar_min_update_interval = 2130903645;
+			public const int tint = 2130903645;
 			
 			// aapt resource value: 0x7F03025E
-			public const int tint = 2130903646;
+			public const int tintMode = 2130903646;
 			
 			// aapt resource value: 0x7F03025F
-			public const int tintMode = 2130903647;
+			public const int title = 2130903647;
 			
 			// aapt resource value: 0x7F030260
-			public const int title = 2130903648;
+			public const int titleEnabled = 2130903648;
 			
 			// aapt resource value: 0x7F030261
-			public const int titleEnabled = 2130903649;
+			public const int titleMargin = 2130903649;
 			
 			// aapt resource value: 0x7F030262
-			public const int titleMargin = 2130903650;
+			public const int titleMarginBottom = 2130903650;
 			
 			// aapt resource value: 0x7F030263
-			public const int titleMarginBottom = 2130903651;
-			
-			// aapt resource value: 0x7F030264
-			public const int titleMarginEnd = 2130903652;
-			
-			// aapt resource value: 0x7F030267
-			public const int titleMargins = 2130903655;
-			
-			// aapt resource value: 0x7F030265
-			public const int titleMarginStart = 2130903653;
+			public const int titleMarginEnd = 2130903651;
 			
 			// aapt resource value: 0x7F030266
-			public const int titleMarginTop = 2130903654;
+			public const int titleMargins = 2130903654;
+			
+			// aapt resource value: 0x7F030264
+			public const int titleMarginStart = 2130903652;
+			
+			// aapt resource value: 0x7F030265
+			public const int titleMarginTop = 2130903653;
+			
+			// aapt resource value: 0x7F030267
+			public const int titleTextAppearance = 2130903655;
 			
 			// aapt resource value: 0x7F030268
-			public const int titleTextAppearance = 2130903656;
+			public const int titleTextColor = 2130903656;
 			
 			// aapt resource value: 0x7F030269
-			public const int titleTextColor = 2130903657;
+			public const int titleTextStyle = 2130903657;
 			
 			// aapt resource value: 0x7F03026A
-			public const int titleTextStyle = 2130903658;
+			public const int toolbarId = 2130903658;
 			
 			// aapt resource value: 0x7F03026B
-			public const int toolbarId = 2130903659;
+			public const int toolbarNavigationButtonStyle = 2130903659;
 			
 			// aapt resource value: 0x7F03026C
-			public const int toolbarNavigationButtonStyle = 2130903660;
+			public const int toolbarStyle = 2130903660;
 			
 			// aapt resource value: 0x7F03026D
-			public const int toolbarStyle = 2130903661;
+			public const int tooltipForegroundColor = 2130903661;
 			
 			// aapt resource value: 0x7F03026E
-			public const int tooltipForegroundColor = 2130903662;
+			public const int tooltipFrameBackground = 2130903662;
 			
 			// aapt resource value: 0x7F03026F
-			public const int tooltipFrameBackground = 2130903663;
+			public const int tooltipText = 2130903663;
 			
 			// aapt resource value: 0x7F030270
-			public const int tooltipText = 2130903664;
+			public const int touch_target_height = 2130903664;
 			
 			// aapt resource value: 0x7F030271
-			public const int touch_target_height = 2130903665;
+			public const int track = 2130903665;
 			
 			// aapt resource value: 0x7F030272
-			public const int track = 2130903666;
+			public const int trackTint = 2130903666;
 			
 			// aapt resource value: 0x7F030273
-			public const int trackTint = 2130903667;
+			public const int trackTintMode = 2130903667;
 			
 			// aapt resource value: 0x7F030274
-			public const int trackTintMode = 2130903668;
+			public const int ttcIndex = 2130903668;
 			
 			// aapt resource value: 0x7F030275
-			public const int ttcIndex = 2130903669;
+			public const int unplayed_color = 2130903669;
 			
 			// aapt resource value: 0x7F030276
-			public const int unplayed_color = 2130903670;
+			public const int useCompatPadding = 2130903670;
 			
 			// aapt resource value: 0x7F030277
-			public const int useCompatPadding = 2130903671;
+			public const int useMaterialThemeColors = 2130903671;
 			
 			// aapt resource value: 0x7F030278
-			public const int useMaterialThemeColors = 2130903672;
+			public const int use_artwork = 2130903672;
 			
 			// aapt resource value: 0x7F030279
-			public const int use_artwork = 2130903673;
+			public const int use_controller = 2130903673;
 			
 			// aapt resource value: 0x7F03027A
-			public const int use_controller = 2130903674;
+			public const int viewInflaterClass = 2130903674;
 			
 			// aapt resource value: 0x7F03027B
-			public const int use_sensor_rotation = 2130903675;
+			public const int voiceIcon = 2130903675;
 			
 			// aapt resource value: 0x7F03027C
-			public const int viewInflaterClass = 2130903676;
+			public const int windowActionBar = 2130903676;
 			
 			// aapt resource value: 0x7F03027D
-			public const int voiceIcon = 2130903677;
+			public const int windowActionBarOverlay = 2130903677;
 			
 			// aapt resource value: 0x7F03027E
-			public const int windowActionBar = 2130903678;
+			public const int windowActionModeOverlay = 2130903678;
 			
 			// aapt resource value: 0x7F03027F
-			public const int windowActionBarOverlay = 2130903679;
+			public const int windowFixedHeightMajor = 2130903679;
 			
 			// aapt resource value: 0x7F030280
-			public const int windowActionModeOverlay = 2130903680;
+			public const int windowFixedHeightMinor = 2130903680;
 			
 			// aapt resource value: 0x7F030281
-			public const int windowFixedHeightMajor = 2130903681;
+			public const int windowFixedWidthMajor = 2130903681;
 			
 			// aapt resource value: 0x7F030282
-			public const int windowFixedHeightMinor = 2130903682;
+			public const int windowFixedWidthMinor = 2130903682;
 			
 			// aapt resource value: 0x7F030283
-			public const int windowFixedWidthMajor = 2130903683;
+			public const int windowMinWidthMajor = 2130903683;
 			
 			// aapt resource value: 0x7F030284
-			public const int windowFixedWidthMinor = 2130903684;
+			public const int windowMinWidthMinor = 2130903684;
 			
 			// aapt resource value: 0x7F030285
-			public const int windowMinWidthMajor = 2130903685;
+			public const int windowNoTitle = 2130903685;
 			
 			// aapt resource value: 0x7F030286
-			public const int windowMinWidthMinor = 2130903686;
+			public const int yearSelectedStyle = 2130903686;
 			
 			// aapt resource value: 0x7F030287
-			public const int windowNoTitle = 2130903687;
+			public const int yearStyle = 2130903687;
 			
 			// aapt resource value: 0x7F030288
-			public const int yearSelectedStyle = 2130903688;
-			
-			// aapt resource value: 0x7F030289
-			public const int yearStyle = 2130903689;
-			
-			// aapt resource value: 0x7F03028A
-			public const int yearTodayStyle = 2130903690;
+			public const int yearTodayStyle = 2130903688;
 			
 			static Attribute()
 			{
@@ -11277,196 +13781,163 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			public const int exo_controls_rewind = 2131165302;
 			
 			// aapt resource value: 0x7F070077
-			public const int exo_controls_shuffle_off = 2131165303;
+			public const int exo_controls_shuffle = 2131165303;
 			
 			// aapt resource value: 0x7F070078
-			public const int exo_controls_shuffle_on = 2131165304;
+			public const int exo_edit_mode_logo = 2131165304;
 			
 			// aapt resource value: 0x7F070079
-			public const int exo_controls_vr = 2131165305;
+			public const int exo_icon_fastforward = 2131165305;
 			
 			// aapt resource value: 0x7F07007A
-			public const int exo_edit_mode_logo = 2131165306;
+			public const int exo_icon_next = 2131165306;
 			
 			// aapt resource value: 0x7F07007B
-			public const int exo_icon_circular_play = 2131165307;
+			public const int exo_icon_pause = 2131165307;
 			
 			// aapt resource value: 0x7F07007C
-			public const int exo_icon_fastforward = 2131165308;
+			public const int exo_icon_play = 2131165308;
 			
 			// aapt resource value: 0x7F07007D
-			public const int exo_icon_fullscreen_enter = 2131165309;
+			public const int exo_icon_previous = 2131165309;
 			
 			// aapt resource value: 0x7F07007E
-			public const int exo_icon_fullscreen_exit = 2131165310;
+			public const int exo_icon_rewind = 2131165310;
 			
 			// aapt resource value: 0x7F07007F
-			public const int exo_icon_next = 2131165311;
+			public const int exo_icon_stop = 2131165311;
 			
 			// aapt resource value: 0x7F070080
-			public const int exo_icon_pause = 2131165312;
+			public const int exo_notification_fastforward = 2131165312;
 			
 			// aapt resource value: 0x7F070081
-			public const int exo_icon_play = 2131165313;
+			public const int exo_notification_next = 2131165313;
 			
 			// aapt resource value: 0x7F070082
-			public const int exo_icon_previous = 2131165314;
+			public const int exo_notification_pause = 2131165314;
 			
 			// aapt resource value: 0x7F070083
-			public const int exo_icon_repeat_all = 2131165315;
+			public const int exo_notification_play = 2131165315;
 			
 			// aapt resource value: 0x7F070084
-			public const int exo_icon_repeat_off = 2131165316;
+			public const int exo_notification_previous = 2131165316;
 			
 			// aapt resource value: 0x7F070085
-			public const int exo_icon_repeat_one = 2131165317;
+			public const int exo_notification_rewind = 2131165317;
 			
 			// aapt resource value: 0x7F070086
-			public const int exo_icon_rewind = 2131165318;
+			public const int exo_notification_small_icon = 2131165318;
 			
 			// aapt resource value: 0x7F070087
-			public const int exo_icon_shuffle_off = 2131165319;
+			public const int exo_notification_stop = 2131165319;
 			
 			// aapt resource value: 0x7F070088
-			public const int exo_icon_shuffle_on = 2131165320;
+			public const int ic_calendar_black_24dp = 2131165320;
 			
 			// aapt resource value: 0x7F070089
-			public const int exo_icon_stop = 2131165321;
+			public const int ic_clear_black_24dp = 2131165321;
 			
 			// aapt resource value: 0x7F07008A
-			public const int exo_icon_vr = 2131165322;
+			public const int ic_edit_black_24dp = 2131165322;
 			
 			// aapt resource value: 0x7F07008B
-			public const int exo_notification_fastforward = 2131165323;
+			public const int ic_keyboard_arrow_left_black_24dp = 2131165323;
 			
 			// aapt resource value: 0x7F07008C
-			public const int exo_notification_next = 2131165324;
+			public const int ic_keyboard_arrow_right_black_24dp = 2131165324;
 			
 			// aapt resource value: 0x7F07008D
-			public const int exo_notification_pause = 2131165325;
+			public const int ic_menu_arrow_down_black_24dp = 2131165325;
 			
 			// aapt resource value: 0x7F07008E
-			public const int exo_notification_play = 2131165326;
+			public const int ic_menu_arrow_up_black_24dp = 2131165326;
 			
 			// aapt resource value: 0x7F07008F
-			public const int exo_notification_previous = 2131165327;
+			public const int ic_mtrl_checked_circle = 2131165327;
 			
 			// aapt resource value: 0x7F070090
-			public const int exo_notification_rewind = 2131165328;
+			public const int ic_mtrl_chip_checked_black = 2131165328;
 			
 			// aapt resource value: 0x7F070091
-			public const int exo_notification_small_icon = 2131165329;
+			public const int ic_mtrl_chip_checked_circle = 2131165329;
 			
 			// aapt resource value: 0x7F070092
-			public const int exo_notification_stop = 2131165330;
+			public const int ic_mtrl_chip_close_circle = 2131165330;
 			
 			// aapt resource value: 0x7F070093
-			public const int ic_calendar_black_24dp = 2131165331;
+			public const int mtrl_dialog_background = 2131165331;
 			
 			// aapt resource value: 0x7F070094
-			public const int ic_clear_black_24dp = 2131165332;
+			public const int mtrl_dropdown_arrow = 2131165332;
 			
 			// aapt resource value: 0x7F070095
-			public const int ic_edit_black_24dp = 2131165333;
+			public const int mtrl_ic_arrow_drop_down = 2131165333;
 			
 			// aapt resource value: 0x7F070096
-			public const int ic_keyboard_arrow_left_black_24dp = 2131165334;
+			public const int mtrl_ic_arrow_drop_up = 2131165334;
 			
 			// aapt resource value: 0x7F070097
-			public const int ic_keyboard_arrow_right_black_24dp = 2131165335;
+			public const int mtrl_ic_cancel = 2131165335;
 			
 			// aapt resource value: 0x7F070098
-			public const int ic_menu_arrow_down_black_24dp = 2131165336;
+			public const int mtrl_ic_error = 2131165336;
 			
 			// aapt resource value: 0x7F070099
-			public const int ic_menu_arrow_up_black_24dp = 2131165337;
+			public const int mtrl_popupmenu_background = 2131165337;
 			
 			// aapt resource value: 0x7F07009A
-			public const int ic_mtrl_checked_circle = 2131165338;
+			public const int mtrl_popupmenu_background_dark = 2131165338;
 			
 			// aapt resource value: 0x7F07009B
-			public const int ic_mtrl_chip_checked_black = 2131165339;
+			public const int mtrl_tabs_default_indicator = 2131165339;
 			
 			// aapt resource value: 0x7F07009C
-			public const int ic_mtrl_chip_checked_circle = 2131165340;
+			public const int navigation_empty_icon = 2131165340;
 			
 			// aapt resource value: 0x7F07009D
-			public const int ic_mtrl_chip_close_circle = 2131165341;
+			public const int notification_action_background = 2131165341;
 			
 			// aapt resource value: 0x7F07009E
-			public const int mtrl_dialog_background = 2131165342;
+			public const int notification_bg = 2131165342;
 			
 			// aapt resource value: 0x7F07009F
-			public const int mtrl_dropdown_arrow = 2131165343;
+			public const int notification_bg_low = 2131165343;
 			
 			// aapt resource value: 0x7F0700A0
-			public const int mtrl_ic_arrow_drop_down = 2131165344;
+			public const int notification_bg_low_normal = 2131165344;
 			
 			// aapt resource value: 0x7F0700A1
-			public const int mtrl_ic_arrow_drop_up = 2131165345;
+			public const int notification_bg_low_pressed = 2131165345;
 			
 			// aapt resource value: 0x7F0700A2
-			public const int mtrl_ic_cancel = 2131165346;
+			public const int notification_bg_normal = 2131165346;
 			
 			// aapt resource value: 0x7F0700A3
-			public const int mtrl_ic_error = 2131165347;
+			public const int notification_bg_normal_pressed = 2131165347;
 			
 			// aapt resource value: 0x7F0700A4
-			public const int mtrl_popupmenu_background = 2131165348;
+			public const int notification_icon_background = 2131165348;
 			
 			// aapt resource value: 0x7F0700A5
-			public const int mtrl_popupmenu_background_dark = 2131165349;
+			public const int notification_template_icon_bg = 2131165349;
 			
 			// aapt resource value: 0x7F0700A6
-			public const int mtrl_tabs_default_indicator = 2131165350;
+			public const int notification_template_icon_low_bg = 2131165350;
 			
 			// aapt resource value: 0x7F0700A7
-			public const int navigation_empty_icon = 2131165351;
+			public const int notification_tile_bg = 2131165351;
 			
 			// aapt resource value: 0x7F0700A8
-			public const int notification_action_background = 2131165352;
+			public const int notify_panel_notification_icon_bg = 2131165352;
 			
 			// aapt resource value: 0x7F0700A9
-			public const int notification_bg = 2131165353;
+			public const int test_custom_background = 2131165353;
 			
 			// aapt resource value: 0x7F0700AA
-			public const int notification_bg_low = 2131165354;
+			public const int tooltip_frame_dark = 2131165354;
 			
 			// aapt resource value: 0x7F0700AB
-			public const int notification_bg_low_normal = 2131165355;
-			
-			// aapt resource value: 0x7F0700AC
-			public const int notification_bg_low_pressed = 2131165356;
-			
-			// aapt resource value: 0x7F0700AD
-			public const int notification_bg_normal = 2131165357;
-			
-			// aapt resource value: 0x7F0700AE
-			public const int notification_bg_normal_pressed = 2131165358;
-			
-			// aapt resource value: 0x7F0700AF
-			public const int notification_icon_background = 2131165359;
-			
-			// aapt resource value: 0x7F0700B0
-			public const int notification_template_icon_bg = 2131165360;
-			
-			// aapt resource value: 0x7F0700B1
-			public const int notification_template_icon_low_bg = 2131165361;
-			
-			// aapt resource value: 0x7F0700B2
-			public const int notification_tile_bg = 2131165362;
-			
-			// aapt resource value: 0x7F0700B3
-			public const int notify_panel_notification_icon_bg = 2131165363;
-			
-			// aapt resource value: 0x7F0700B4
-			public const int test_custom_background = 2131165364;
-			
-			// aapt resource value: 0x7F0700B5
-			public const int tooltip_frame_dark = 2131165365;
-			
-			// aapt resource value: 0x7F0700B6
-			public const int tooltip_frame_light = 2131165366;
+			public const int tooltip_frame_light = 2131165355;
 			
 			static Drawable()
 			{
@@ -11869,565 +14340,559 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			public const int exo_progress = 2131230854;
 			
 			// aapt resource value: 0x7F080087
-			public const int exo_progress_placeholder = 2131230855;
+			public const int exo_repeat_toggle = 2131230855;
 			
 			// aapt resource value: 0x7F080088
-			public const int exo_repeat_toggle = 2131230856;
+			public const int exo_rew = 2131230856;
 			
 			// aapt resource value: 0x7F080089
-			public const int exo_rew = 2131230857;
+			public const int exo_shuffle = 2131230857;
 			
 			// aapt resource value: 0x7F08008A
-			public const int exo_shuffle = 2131230858;
+			public const int exo_shutter = 2131230858;
 			
 			// aapt resource value: 0x7F08008B
-			public const int exo_shutter = 2131230859;
+			public const int exo_subtitles = 2131230859;
 			
 			// aapt resource value: 0x7F08008C
-			public const int exo_subtitles = 2131230860;
-			
-			// aapt resource value: 0x7F08008D
-			public const int exo_track_selection_view = 2131230861;
+			public const int exo_track_selection_view = 2131230860;
 			
 			// aapt resource value: 0x7F08008E
-			public const int exo_vr = 2131230862;
+			public const int expanded_menu = 2131230862;
 			
-			// aapt resource value: 0x7F080090
-			public const int expanded_menu = 2131230864;
+			// aapt resource value: 0x7F08008D
+			public const int expand_activities_button = 2131230861;
 			
 			// aapt resource value: 0x7F08008F
-			public const int expand_activities_button = 2131230863;
+			public const int fade = 2131230863;
 			
-			// aapt resource value: 0x7F080091
-			public const int fade = 2131230865;
-			
-			// aapt resource value: 0x7F080092
-			public const int fill = 2131230866;
-			
-			// aapt resource value: 0x7F080095
-			public const int filled = 2131230869;
+			// aapt resource value: 0x7F080090
+			public const int fill = 2131230864;
 			
 			// aapt resource value: 0x7F080093
-			public const int fill_horizontal = 2131230867;
+			public const int filled = 2131230867;
+			
+			// aapt resource value: 0x7F080091
+			public const int fill_horizontal = 2131230865;
+			
+			// aapt resource value: 0x7F080092
+			public const int fill_vertical = 2131230866;
 			
 			// aapt resource value: 0x7F080094
-			public const int fill_vertical = 2131230868;
+			public const int filter_chip = 2131230868;
+			
+			// aapt resource value: 0x7F080095
+			public const int fit = 2131230869;
 			
 			// aapt resource value: 0x7F080096
-			public const int filter_chip = 2131230870;
+			public const int fitToContents = 2131230870;
 			
 			// aapt resource value: 0x7F080097
-			public const int fit = 2131230871;
+			public const int @fixed = 2131230871;
 			
 			// aapt resource value: 0x7F080098
-			public const int fitToContents = 2131230872;
+			public const int fixed_height = 2131230872;
 			
 			// aapt resource value: 0x7F080099
-			public const int @fixed = 2131230873;
+			public const int fixed_width = 2131230873;
 			
 			// aapt resource value: 0x7F08009A
-			public const int fixed_height = 2131230874;
+			public const int flyoutcontent_appbar = 2131230874;
 			
 			// aapt resource value: 0x7F08009B
-			public const int fixed_width = 2131230875;
+			public const int forever = 2131230875;
 			
 			// aapt resource value: 0x7F08009C
-			public const int flyoutcontent_appbar = 2131230876;
-			
-			// aapt resource value: 0x7F08009D
-			public const int forever = 2131230877;
-			
-			// aapt resource value: 0x7F08009E
-			public const int fragment_container_view_tag = 2131230878;
+			public const int fragment_container_view_tag = 2131230876;
 			
 			// aapt resource value: 0x7F080004
 			public const int FUNCTION = 2131230724;
 			
+			// aapt resource value: 0x7F08009D
+			public const int ghost_view = 2131230877;
+			
+			// aapt resource value: 0x7F08009E
+			public const int ghost_view_holder = 2131230878;
+			
 			// aapt resource value: 0x7F08009F
-			public const int ghost_view = 2131230879;
+			public const int group_divider = 2131230879;
 			
 			// aapt resource value: 0x7F0800A0
-			public const int ghost_view_holder = 2131230880;
+			public const int hideable = 2131230880;
 			
 			// aapt resource value: 0x7F0800A1
-			public const int group_divider = 2131230881;
+			public const int home = 2131230881;
 			
 			// aapt resource value: 0x7F0800A2
-			public const int hideable = 2131230882;
+			public const int homeAsUp = 2131230882;
 			
 			// aapt resource value: 0x7F0800A3
-			public const int home = 2131230883;
+			public const int icon = 2131230883;
 			
 			// aapt resource value: 0x7F0800A4
-			public const int homeAsUp = 2131230884;
+			public const int icon_group = 2131230884;
 			
 			// aapt resource value: 0x7F0800A5
-			public const int icon = 2131230885;
+			public const int ifRoom = 2131230885;
 			
 			// aapt resource value: 0x7F0800A6
-			public const int icon_group = 2131230886;
+			public const int image = 2131230886;
 			
 			// aapt resource value: 0x7F0800A7
-			public const int ifRoom = 2131230887;
+			public const int info = 2131230887;
 			
 			// aapt resource value: 0x7F0800A8
-			public const int image = 2131230888;
+			public const int italic = 2131230888;
 			
 			// aapt resource value: 0x7F0800A9
-			public const int info = 2131230889;
+			public const int item_touch_helper_previous_elevation = 2131230889;
 			
 			// aapt resource value: 0x7F0800AA
-			public const int italic = 2131230890;
+			public const int labeled = 2131230890;
 			
 			// aapt resource value: 0x7F0800AB
-			public const int item_touch_helper_previous_elevation = 2131230891;
+			public const int largeLabel = 2131230891;
 			
 			// aapt resource value: 0x7F0800AC
-			public const int labeled = 2131230892;
+			public const int left = 2131230892;
 			
 			// aapt resource value: 0x7F0800AD
-			public const int largeLabel = 2131230893;
+			public const int line1 = 2131230893;
 			
 			// aapt resource value: 0x7F0800AE
-			public const int left = 2131230894;
+			public const int line3 = 2131230894;
 			
 			// aapt resource value: 0x7F0800AF
-			public const int line1 = 2131230895;
+			public const int listMode = 2131230895;
 			
 			// aapt resource value: 0x7F0800B0
-			public const int line3 = 2131230896;
+			public const int list_item = 2131230896;
 			
 			// aapt resource value: 0x7F0800B1
-			public const int listMode = 2131230897;
+			public const int main_appbar = 2131230897;
 			
 			// aapt resource value: 0x7F0800B2
-			public const int list_item = 2131230898;
+			public const int main_tablayout = 2131230898;
 			
 			// aapt resource value: 0x7F0800B3
-			public const int main_appbar = 2131230899;
+			public const int main_toolbar = 2131230899;
 			
 			// aapt resource value: 0x7F0800B4
-			public const int main_tablayout = 2131230900;
+			public const int main_viewpager = 2131230900;
 			
 			// aapt resource value: 0x7F0800B5
-			public const int main_toolbar = 2131230901;
+			public const int masked = 2131230901;
 			
 			// aapt resource value: 0x7F0800B6
-			public const int main_viewpager = 2131230902;
+			public const int media_actions = 2131230902;
 			
 			// aapt resource value: 0x7F0800B7
-			public const int masked = 2131230903;
+			public const int media_controller_compat_view_tag = 2131230903;
 			
 			// aapt resource value: 0x7F0800B8
-			public const int media_actions = 2131230904;
-			
-			// aapt resource value: 0x7F0800B9
-			public const int media_controller_compat_view_tag = 2131230905;
-			
-			// aapt resource value: 0x7F0800BA
-			public const int message = 2131230906;
+			public const int message = 2131230904;
 			
 			// aapt resource value: 0x7F080005
 			public const int META = 2131230725;
 			
+			// aapt resource value: 0x7F0800B9
+			public const int middle = 2131230905;
+			
+			// aapt resource value: 0x7F0800BA
+			public const int mini = 2131230906;
+			
 			// aapt resource value: 0x7F0800BB
-			public const int middle = 2131230907;
+			public const int month_grid = 2131230907;
 			
 			// aapt resource value: 0x7F0800BC
-			public const int mini = 2131230908;
+			public const int month_navigation_bar = 2131230908;
 			
 			// aapt resource value: 0x7F0800BD
-			public const int month_grid = 2131230909;
+			public const int month_navigation_fragment_toggle = 2131230909;
 			
 			// aapt resource value: 0x7F0800BE
-			public const int month_navigation_bar = 2131230910;
+			public const int month_navigation_next = 2131230910;
 			
 			// aapt resource value: 0x7F0800BF
-			public const int month_navigation_fragment_toggle = 2131230911;
+			public const int month_navigation_previous = 2131230911;
 			
 			// aapt resource value: 0x7F0800C0
-			public const int month_navigation_next = 2131230912;
-			
-			// aapt resource value: 0x7F0800C1
-			public const int month_navigation_previous = 2131230913;
+			public const int month_title = 2131230912;
 			
 			// aapt resource value: 0x7F0800C2
-			public const int month_title = 2131230914;
+			public const int mtrl_calendar_days_of_week = 2131230914;
 			
-			// aapt resource value: 0x7F0800C4
-			public const int mtrl_calendar_days_of_week = 2131230916;
+			// aapt resource value: 0x7F0800C1
+			public const int mtrl_calendar_day_selector_frame = 2131230913;
 			
 			// aapt resource value: 0x7F0800C3
-			public const int mtrl_calendar_day_selector_frame = 2131230915;
+			public const int mtrl_calendar_frame = 2131230915;
+			
+			// aapt resource value: 0x7F0800C4
+			public const int mtrl_calendar_main_pane = 2131230916;
 			
 			// aapt resource value: 0x7F0800C5
-			public const int mtrl_calendar_frame = 2131230917;
+			public const int mtrl_calendar_months = 2131230917;
 			
 			// aapt resource value: 0x7F0800C6
-			public const int mtrl_calendar_main_pane = 2131230918;
+			public const int mtrl_calendar_selection_frame = 2131230918;
 			
 			// aapt resource value: 0x7F0800C7
-			public const int mtrl_calendar_months = 2131230919;
+			public const int mtrl_calendar_text_input_frame = 2131230919;
 			
 			// aapt resource value: 0x7F0800C8
-			public const int mtrl_calendar_selection_frame = 2131230920;
+			public const int mtrl_calendar_year_selector_frame = 2131230920;
 			
 			// aapt resource value: 0x7F0800C9
-			public const int mtrl_calendar_text_input_frame = 2131230921;
+			public const int mtrl_card_checked_layer_id = 2131230921;
 			
 			// aapt resource value: 0x7F0800CA
-			public const int mtrl_calendar_year_selector_frame = 2131230922;
+			public const int mtrl_child_content_container = 2131230922;
 			
 			// aapt resource value: 0x7F0800CB
-			public const int mtrl_card_checked_layer_id = 2131230923;
+			public const int mtrl_internal_children_alpha_tag = 2131230923;
 			
 			// aapt resource value: 0x7F0800CC
-			public const int mtrl_child_content_container = 2131230924;
+			public const int mtrl_picker_fullscreen = 2131230924;
 			
 			// aapt resource value: 0x7F0800CD
-			public const int mtrl_internal_children_alpha_tag = 2131230925;
+			public const int mtrl_picker_header = 2131230925;
 			
 			// aapt resource value: 0x7F0800CE
-			public const int mtrl_picker_fullscreen = 2131230926;
+			public const int mtrl_picker_header_selection_text = 2131230926;
 			
 			// aapt resource value: 0x7F0800CF
-			public const int mtrl_picker_header = 2131230927;
+			public const int mtrl_picker_header_title_and_selection = 2131230927;
 			
 			// aapt resource value: 0x7F0800D0
-			public const int mtrl_picker_header_selection_text = 2131230928;
+			public const int mtrl_picker_header_toggle = 2131230928;
 			
 			// aapt resource value: 0x7F0800D1
-			public const int mtrl_picker_header_title_and_selection = 2131230929;
+			public const int mtrl_picker_text_input_date = 2131230929;
 			
 			// aapt resource value: 0x7F0800D2
-			public const int mtrl_picker_header_toggle = 2131230930;
+			public const int mtrl_picker_text_input_range_end = 2131230930;
 			
 			// aapt resource value: 0x7F0800D3
-			public const int mtrl_picker_text_input_date = 2131230931;
+			public const int mtrl_picker_text_input_range_start = 2131230931;
 			
 			// aapt resource value: 0x7F0800D4
-			public const int mtrl_picker_text_input_range_end = 2131230932;
+			public const int mtrl_picker_title_text = 2131230932;
 			
 			// aapt resource value: 0x7F0800D5
-			public const int mtrl_picker_text_input_range_start = 2131230933;
+			public const int multiply = 2131230933;
 			
 			// aapt resource value: 0x7F0800D6
-			public const int mtrl_picker_title_text = 2131230934;
+			public const int navigation_header_container = 2131230934;
 			
 			// aapt resource value: 0x7F0800D7
-			public const int multiply = 2131230935;
-			
-			// aapt resource value: 0x7F0800D8
-			public const int navigation_header_container = 2131230936;
+			public const int never = 2131230935;
 			
 			// aapt resource value: 0x7F0800D9
-			public const int never = 2131230937;
-			
-			// aapt resource value: 0x7F0800DB
-			public const int none = 2131230939;
-			
-			// aapt resource value: 0x7F0800DC
-			public const int normal = 2131230940;
+			public const int none = 2131230937;
 			
 			// aapt resource value: 0x7F0800DA
-			public const int noScroll = 2131230938;
+			public const int normal = 2131230938;
+			
+			// aapt resource value: 0x7F0800D8
+			public const int noScroll = 2131230936;
+			
+			// aapt resource value: 0x7F0800DB
+			public const int notification_background = 2131230939;
+			
+			// aapt resource value: 0x7F0800DC
+			public const int notification_main_column = 2131230940;
 			
 			// aapt resource value: 0x7F0800DD
-			public const int notification_background = 2131230941;
+			public const int notification_main_column_container = 2131230941;
 			
 			// aapt resource value: 0x7F0800DE
-			public const int notification_main_column = 2131230942;
+			public const int off = 2131230942;
 			
 			// aapt resource value: 0x7F0800DF
-			public const int notification_main_column_container = 2131230943;
+			public const int on = 2131230943;
 			
 			// aapt resource value: 0x7F0800E0
-			public const int off = 2131230944;
+			public const int one = 2131230944;
 			
 			// aapt resource value: 0x7F0800E1
-			public const int on = 2131230945;
+			public const int outline = 2131230945;
 			
 			// aapt resource value: 0x7F0800E2
-			public const int one = 2131230946;
+			public const int parallax = 2131230946;
 			
 			// aapt resource value: 0x7F0800E3
-			public const int outline = 2131230947;
+			public const int parentPanel = 2131230947;
 			
 			// aapt resource value: 0x7F0800E4
-			public const int parallax = 2131230948;
+			public const int parent_matrix = 2131230948;
 			
 			// aapt resource value: 0x7F0800E5
-			public const int parentPanel = 2131230949;
+			public const int password_toggle = 2131230949;
 			
 			// aapt resource value: 0x7F0800E6
-			public const int parent_matrix = 2131230950;
+			public const int peekHeight = 2131230950;
 			
 			// aapt resource value: 0x7F0800E7
-			public const int password_toggle = 2131230951;
+			public const int pin = 2131230951;
 			
 			// aapt resource value: 0x7F0800E8
-			public const int peekHeight = 2131230952;
+			public const int progress_circular = 2131230952;
 			
 			// aapt resource value: 0x7F0800E9
-			public const int pin = 2131230953;
+			public const int progress_horizontal = 2131230953;
 			
 			// aapt resource value: 0x7F0800EA
-			public const int progress_circular = 2131230954;
+			public const int radio = 2131230954;
 			
 			// aapt resource value: 0x7F0800EB
-			public const int progress_horizontal = 2131230955;
+			public const int right = 2131230955;
 			
 			// aapt resource value: 0x7F0800EC
-			public const int radio = 2131230956;
+			public const int right_icon = 2131230956;
 			
 			// aapt resource value: 0x7F0800ED
-			public const int right = 2131230957;
+			public const int right_side = 2131230957;
 			
 			// aapt resource value: 0x7F0800EE
-			public const int right_icon = 2131230958;
+			public const int rounded = 2131230958;
 			
 			// aapt resource value: 0x7F0800EF
-			public const int right_side = 2131230959;
+			public const int save_non_transition_alpha = 2131230959;
 			
 			// aapt resource value: 0x7F0800F0
-			public const int rounded = 2131230960;
+			public const int save_overlay_view = 2131230960;
 			
 			// aapt resource value: 0x7F0800F1
-			public const int save_non_transition_alpha = 2131230961;
+			public const int scale = 2131230961;
 			
 			// aapt resource value: 0x7F0800F2
-			public const int save_overlay_view = 2131230962;
+			public const int screen = 2131230962;
 			
 			// aapt resource value: 0x7F0800F3
-			public const int scale = 2131230963;
-			
-			// aapt resource value: 0x7F0800F4
-			public const int screen = 2131230964;
-			
-			// aapt resource value: 0x7F0800F5
-			public const int scroll = 2131230965;
-			
-			// aapt resource value: 0x7F0800F9
-			public const int scrollable = 2131230969;
-			
-			// aapt resource value: 0x7F0800F6
-			public const int scrollIndicatorDown = 2131230966;
+			public const int scroll = 2131230963;
 			
 			// aapt resource value: 0x7F0800F7
-			public const int scrollIndicatorUp = 2131230967;
+			public const int scrollable = 2131230967;
+			
+			// aapt resource value: 0x7F0800F4
+			public const int scrollIndicatorDown = 2131230964;
+			
+			// aapt resource value: 0x7F0800F5
+			public const int scrollIndicatorUp = 2131230965;
+			
+			// aapt resource value: 0x7F0800F6
+			public const int scrollView = 2131230966;
 			
 			// aapt resource value: 0x7F0800F8
-			public const int scrollView = 2131230968;
+			public const int search_badge = 2131230968;
+			
+			// aapt resource value: 0x7F0800F9
+			public const int search_bar = 2131230969;
 			
 			// aapt resource value: 0x7F0800FA
-			public const int search_badge = 2131230970;
+			public const int search_button = 2131230970;
 			
 			// aapt resource value: 0x7F0800FB
-			public const int search_bar = 2131230971;
+			public const int search_close_btn = 2131230971;
 			
 			// aapt resource value: 0x7F0800FC
-			public const int search_button = 2131230972;
+			public const int search_edit_frame = 2131230972;
 			
 			// aapt resource value: 0x7F0800FD
-			public const int search_close_btn = 2131230973;
+			public const int search_go_btn = 2131230973;
 			
 			// aapt resource value: 0x7F0800FE
-			public const int search_edit_frame = 2131230974;
+			public const int search_mag_icon = 2131230974;
 			
 			// aapt resource value: 0x7F0800FF
-			public const int search_go_btn = 2131230975;
+			public const int search_plate = 2131230975;
 			
 			// aapt resource value: 0x7F080100
-			public const int search_mag_icon = 2131230976;
+			public const int search_src_text = 2131230976;
 			
 			// aapt resource value: 0x7F080101
-			public const int search_plate = 2131230977;
-			
-			// aapt resource value: 0x7F080102
-			public const int search_src_text = 2131230978;
+			public const int search_voice_btn = 2131230977;
 			
 			// aapt resource value: 0x7F080103
-			public const int search_voice_btn = 2131230979;
+			public const int selected = 2131230979;
 			
-			// aapt resource value: 0x7F080105
-			public const int selected = 2131230981;
+			// aapt resource value: 0x7F080102
+			public const int select_dialog_listview = 2131230978;
 			
 			// aapt resource value: 0x7F080104
-			public const int select_dialog_listview = 2131230980;
+			public const int shellcontent_appbar = 2131230980;
 			
-			// aapt resource value: 0x7F080106
-			public const int shellcontent_appbar = 2131230982;
-			
-			// aapt resource value: 0x7F080107
-			public const int shellcontent_toolbar = 2131230983;
+			// aapt resource value: 0x7F080105
+			public const int shellcontent_toolbar = 2131230981;
 			
 			// aapt resource value: 0x7F080006
 			public const int SHIFT = 2131230726;
 			
+			// aapt resource value: 0x7F080106
+			public const int shortcut = 2131230982;
+			
+			// aapt resource value: 0x7F080107
+			public const int showCustom = 2131230983;
+			
 			// aapt resource value: 0x7F080108
-			public const int shortcut = 2131230984;
+			public const int showHome = 2131230984;
 			
 			// aapt resource value: 0x7F080109
-			public const int showCustom = 2131230985;
+			public const int showTitle = 2131230985;
 			
 			// aapt resource value: 0x7F08010A
-			public const int showHome = 2131230986;
+			public const int skipCollapsed = 2131230986;
 			
 			// aapt resource value: 0x7F08010B
-			public const int showTitle = 2131230987;
+			public const int slide = 2131230987;
 			
 			// aapt resource value: 0x7F08010C
-			public const int skipCollapsed = 2131230988;
+			public const int sliding_tabs = 2131230988;
 			
 			// aapt resource value: 0x7F08010D
-			public const int slide = 2131230989;
+			public const int smallLabel = 2131230989;
 			
 			// aapt resource value: 0x7F08010E
-			public const int sliding_tabs = 2131230990;
+			public const int snackbar_action = 2131230990;
 			
 			// aapt resource value: 0x7F08010F
-			public const int smallLabel = 2131230991;
+			public const int snackbar_text = 2131230991;
 			
 			// aapt resource value: 0x7F080110
-			public const int snackbar_action = 2131230992;
+			public const int snap = 2131230992;
 			
 			// aapt resource value: 0x7F080111
-			public const int snackbar_text = 2131230993;
+			public const int snapMargins = 2131230993;
 			
 			// aapt resource value: 0x7F080112
-			public const int snap = 2131230994;
+			public const int spacer = 2131230994;
 			
 			// aapt resource value: 0x7F080113
-			public const int snapMargins = 2131230995;
+			public const int spherical_view = 2131230995;
 			
 			// aapt resource value: 0x7F080114
-			public const int spacer = 2131230996;
+			public const int split_action_bar = 2131230996;
 			
 			// aapt resource value: 0x7F080115
-			public const int spherical_gl_surface_view = 2131230997;
+			public const int src_atop = 2131230997;
 			
 			// aapt resource value: 0x7F080116
-			public const int split_action_bar = 2131230998;
+			public const int src_in = 2131230998;
 			
 			// aapt resource value: 0x7F080117
-			public const int src_atop = 2131230999;
+			public const int src_over = 2131230999;
 			
 			// aapt resource value: 0x7F080118
-			public const int src_in = 2131231000;
+			public const int start = 2131231000;
 			
 			// aapt resource value: 0x7F080119
-			public const int src_over = 2131231001;
+			public const int status_bar_latest_event_content = 2131231001;
 			
 			// aapt resource value: 0x7F08011A
-			public const int start = 2131231002;
+			public const int stretch = 2131231002;
 			
 			// aapt resource value: 0x7F08011B
-			public const int status_bar_latest_event_content = 2131231003;
+			public const int submenuarrow = 2131231003;
 			
 			// aapt resource value: 0x7F08011C
-			public const int stretch = 2131231004;
+			public const int submit_area = 2131231004;
 			
 			// aapt resource value: 0x7F08011D
-			public const int submenuarrow = 2131231005;
-			
-			// aapt resource value: 0x7F08011E
-			public const int submit_area = 2131231006;
-			
-			// aapt resource value: 0x7F08011F
-			public const int surface_view = 2131231007;
+			public const int surface_view = 2131231005;
 			
 			// aapt resource value: 0x7F080007
 			public const int SYM = 2131230727;
 			
+			// aapt resource value: 0x7F08011E
+			public const int tabMode = 2131231006;
+			
+			// aapt resource value: 0x7F08011F
+			public const int tag_accessibility_actions = 2131231007;
+			
 			// aapt resource value: 0x7F080120
-			public const int tabMode = 2131231008;
+			public const int tag_accessibility_clickable_spans = 2131231008;
 			
 			// aapt resource value: 0x7F080121
-			public const int tag_accessibility_actions = 2131231009;
+			public const int tag_accessibility_heading = 2131231009;
 			
 			// aapt resource value: 0x7F080122
-			public const int tag_accessibility_clickable_spans = 2131231010;
+			public const int tag_accessibility_pane_title = 2131231010;
 			
 			// aapt resource value: 0x7F080123
-			public const int tag_accessibility_heading = 2131231011;
+			public const int tag_screen_reader_focusable = 2131231011;
 			
 			// aapt resource value: 0x7F080124
-			public const int tag_accessibility_pane_title = 2131231012;
+			public const int tag_transition_group = 2131231012;
 			
 			// aapt resource value: 0x7F080125
-			public const int tag_screen_reader_focusable = 2131231013;
+			public const int tag_unhandled_key_event_manager = 2131231013;
 			
 			// aapt resource value: 0x7F080126
-			public const int tag_transition_group = 2131231014;
+			public const int tag_unhandled_key_listeners = 2131231014;
 			
 			// aapt resource value: 0x7F080127
-			public const int tag_unhandled_key_event_manager = 2131231015;
+			public const int test_checkbox_android_button_tint = 2131231015;
 			
 			// aapt resource value: 0x7F080128
-			public const int tag_unhandled_key_listeners = 2131231016;
+			public const int test_checkbox_app_button_tint = 2131231016;
 			
 			// aapt resource value: 0x7F080129
-			public const int test_checkbox_android_button_tint = 2131231017;
+			public const int text = 2131231017;
 			
 			// aapt resource value: 0x7F08012A
-			public const int test_checkbox_app_button_tint = 2131231018;
+			public const int text2 = 2131231018;
 			
 			// aapt resource value: 0x7F08012B
-			public const int text = 2131231019;
-			
-			// aapt resource value: 0x7F08012C
-			public const int text2 = 2131231020;
-			
-			// aapt resource value: 0x7F08012D
-			public const int textEnd = 2131231021;
-			
-			// aapt resource value: 0x7F080133
-			public const int textinput_counter = 2131231027;
-			
-			// aapt resource value: 0x7F080134
-			public const int textinput_error = 2131231028;
-			
-			// aapt resource value: 0x7F080135
-			public const int textinput_helper_text = 2131231029;
-			
-			// aapt resource value: 0x7F08012E
-			public const int textSpacerNoButtons = 2131231022;
-			
-			// aapt resource value: 0x7F08012F
-			public const int textSpacerNoTitle = 2131231023;
-			
-			// aapt resource value: 0x7F080130
-			public const int textStart = 2131231024;
-			
-			// aapt resource value: 0x7F080136
-			public const int texture_view = 2131231030;
+			public const int textEnd = 2131231019;
 			
 			// aapt resource value: 0x7F080131
-			public const int text_input_end_icon = 2131231025;
+			public const int textinput_counter = 2131231025;
 			
 			// aapt resource value: 0x7F080132
-			public const int text_input_start_icon = 2131231026;
+			public const int textinput_error = 2131231026;
+			
+			// aapt resource value: 0x7F080133
+			public const int textinput_helper_text = 2131231027;
+			
+			// aapt resource value: 0x7F08012C
+			public const int textSpacerNoButtons = 2131231020;
+			
+			// aapt resource value: 0x7F08012D
+			public const int textSpacerNoTitle = 2131231021;
+			
+			// aapt resource value: 0x7F08012E
+			public const int textStart = 2131231022;
+			
+			// aapt resource value: 0x7F080134
+			public const int texture_view = 2131231028;
+			
+			// aapt resource value: 0x7F08012F
+			public const int text_input_end_icon = 2131231023;
+			
+			// aapt resource value: 0x7F080130
+			public const int text_input_start_icon = 2131231024;
+			
+			// aapt resource value: 0x7F080135
+			public const int time = 2131231029;
+			
+			// aapt resource value: 0x7F080136
+			public const int title = 2131231030;
 			
 			// aapt resource value: 0x7F080137
-			public const int time = 2131231031;
+			public const int titleDividerNoCustom = 2131231031;
 			
 			// aapt resource value: 0x7F080138
-			public const int title = 2131231032;
+			public const int title_template = 2131231032;
 			
 			// aapt resource value: 0x7F080139
-			public const int titleDividerNoCustom = 2131231033;
+			public const int toolbar = 2131231033;
 			
 			// aapt resource value: 0x7F08013A
-			public const int title_template = 2131231034;
+			public const int top = 2131231034;
 			
 			// aapt resource value: 0x7F08013B
-			public const int toolbar = 2131231035;
-			
-			// aapt resource value: 0x7F08013C
-			public const int top = 2131231036;
-			
-			// aapt resource value: 0x7F08013D
-			public const int topPanel = 2131231037;
+			public const int topPanel = 2131231035;
 			
 			// aapt resource value: 0x7F080008
 			public const int TOP_END = 2131230728;
@@ -12435,65 +14900,62 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 0x7F080009
 			public const int TOP_START = 2131230729;
 			
+			// aapt resource value: 0x7F08013C
+			public const int touch_outside = 2131231036;
+			
+			// aapt resource value: 0x7F08013D
+			public const int transition_current_scene = 2131231037;
+			
 			// aapt resource value: 0x7F08013E
-			public const int touch_outside = 2131231038;
+			public const int transition_layout_save = 2131231038;
 			
 			// aapt resource value: 0x7F08013F
-			public const int transition_current_scene = 2131231039;
+			public const int transition_position = 2131231039;
 			
 			// aapt resource value: 0x7F080140
-			public const int transition_layout_save = 2131231040;
+			public const int transition_scene_layoutid_cache = 2131231040;
 			
 			// aapt resource value: 0x7F080141
-			public const int transition_position = 2131231041;
+			public const int transition_transform = 2131231041;
 			
 			// aapt resource value: 0x7F080142
-			public const int transition_scene_layoutid_cache = 2131231042;
+			public const int @unchecked = 2131231042;
 			
 			// aapt resource value: 0x7F080143
-			public const int transition_transform = 2131231043;
+			public const int uniform = 2131231043;
 			
 			// aapt resource value: 0x7F080144
-			public const int @unchecked = 2131231044;
+			public const int unlabeled = 2131231044;
 			
 			// aapt resource value: 0x7F080145
-			public const int uniform = 2131231045;
+			public const int up = 2131231045;
 			
 			// aapt resource value: 0x7F080146
-			public const int unlabeled = 2131231046;
+			public const int useLogo = 2131231046;
 			
 			// aapt resource value: 0x7F080147
-			public const int up = 2131231047;
+			public const int view_offset_helper = 2131231047;
 			
 			// aapt resource value: 0x7F080148
-			public const int useLogo = 2131231048;
+			public const int view_tree_saved_state_registry_owner = 2131231048;
 			
 			// aapt resource value: 0x7F080149
-			public const int video_decoder_gl_surface_view = 2131231049;
+			public const int visible = 2131231049;
 			
 			// aapt resource value: 0x7F08014A
-			public const int view_offset_helper = 2131231050;
+			public const int visible_removing_fragment_view_tag = 2131231050;
 			
 			// aapt resource value: 0x7F08014B
-			public const int view_tree_saved_state_registry_owner = 2131231051;
+			public const int when_playing = 2131231051;
 			
 			// aapt resource value: 0x7F08014C
-			public const int visible = 2131231052;
+			public const int withText = 2131231052;
 			
 			// aapt resource value: 0x7F08014D
-			public const int visible_removing_fragment_view_tag = 2131231053;
+			public const int wrap_content = 2131231053;
 			
 			// aapt resource value: 0x7F08014E
-			public const int when_playing = 2131231054;
-			
-			// aapt resource value: 0x7F08014F
-			public const int withText = 2131231055;
-			
-			// aapt resource value: 0x7F080150
-			public const int wrap_content = 2131231056;
-			
-			// aapt resource value: 0x7F080151
-			public const int zoom = 2131231057;
+			public const int zoom = 2131231054;
 			
 			static Id()
 			{
@@ -12533,49 +14995,43 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			public const int design_tab_indicator_anim_duration_ms = 2131296263;
 			
 			// aapt resource value: 0x7F090008
-			public const int exo_media_button_opacity_percentage_disabled = 2131296264;
+			public const int hide_password_duration = 2131296264;
 			
 			// aapt resource value: 0x7F090009
-			public const int exo_media_button_opacity_percentage_enabled = 2131296265;
+			public const int mtrl_badge_max_character_count = 2131296265;
 			
 			// aapt resource value: 0x7F09000A
-			public const int hide_password_duration = 2131296266;
+			public const int mtrl_btn_anim_delay_ms = 2131296266;
 			
 			// aapt resource value: 0x7F09000B
-			public const int mtrl_badge_max_character_count = 2131296267;
+			public const int mtrl_btn_anim_duration_ms = 2131296267;
 			
 			// aapt resource value: 0x7F09000C
-			public const int mtrl_btn_anim_delay_ms = 2131296268;
+			public const int mtrl_calendar_header_orientation = 2131296268;
 			
 			// aapt resource value: 0x7F09000D
-			public const int mtrl_btn_anim_duration_ms = 2131296269;
+			public const int mtrl_calendar_selection_text_lines = 2131296269;
 			
 			// aapt resource value: 0x7F09000E
-			public const int mtrl_calendar_header_orientation = 2131296270;
+			public const int mtrl_calendar_year_selector_span = 2131296270;
 			
 			// aapt resource value: 0x7F09000F
-			public const int mtrl_calendar_selection_text_lines = 2131296271;
+			public const int mtrl_card_anim_delay_ms = 2131296271;
 			
 			// aapt resource value: 0x7F090010
-			public const int mtrl_calendar_year_selector_span = 2131296272;
+			public const int mtrl_card_anim_duration_ms = 2131296272;
 			
 			// aapt resource value: 0x7F090011
-			public const int mtrl_card_anim_delay_ms = 2131296273;
+			public const int mtrl_chip_anim_duration = 2131296273;
 			
 			// aapt resource value: 0x7F090012
-			public const int mtrl_card_anim_duration_ms = 2131296274;
+			public const int mtrl_tab_indicator_anim_duration_ms = 2131296274;
 			
 			// aapt resource value: 0x7F090013
-			public const int mtrl_chip_anim_duration = 2131296275;
+			public const int show_password_duration = 2131296275;
 			
 			// aapt resource value: 0x7F090014
-			public const int mtrl_tab_indicator_anim_duration_ms = 2131296276;
-			
-			// aapt resource value: 0x7F090015
-			public const int show_password_duration = 2131296277;
-			
-			// aapt resource value: 0x7F090016
-			public const int status_bar_notification_info_maxnum = 2131296278;
+			public const int status_bar_notification_info_maxnum = 2131296276;
 			
 			static Integer()
 			{
@@ -13168,268 +15624,244 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			public const int exo_controls_fullscreen_description = 2131623973;
 			
 			// aapt resource value: 0x7F0E0026
-			public const int exo_controls_hide = 2131623974;
+			public const int exo_controls_next_description = 2131623974;
 			
 			// aapt resource value: 0x7F0E0027
-			public const int exo_controls_next_description = 2131623975;
+			public const int exo_controls_pause_description = 2131623975;
 			
 			// aapt resource value: 0x7F0E0028
-			public const int exo_controls_pause_description = 2131623976;
+			public const int exo_controls_play_description = 2131623976;
 			
 			// aapt resource value: 0x7F0E0029
-			public const int exo_controls_play_description = 2131623977;
+			public const int exo_controls_previous_description = 2131623977;
 			
 			// aapt resource value: 0x7F0E002A
-			public const int exo_controls_previous_description = 2131623978;
+			public const int exo_controls_repeat_all_description = 2131623978;
 			
 			// aapt resource value: 0x7F0E002B
-			public const int exo_controls_repeat_all_description = 2131623979;
+			public const int exo_controls_repeat_off_description = 2131623979;
 			
 			// aapt resource value: 0x7F0E002C
-			public const int exo_controls_repeat_off_description = 2131623980;
+			public const int exo_controls_repeat_one_description = 2131623980;
 			
 			// aapt resource value: 0x7F0E002D
-			public const int exo_controls_repeat_one_description = 2131623981;
+			public const int exo_controls_rewind_description = 2131623981;
 			
 			// aapt resource value: 0x7F0E002E
-			public const int exo_controls_rewind_description = 2131623982;
+			public const int exo_controls_shuffle_description = 2131623982;
 			
 			// aapt resource value: 0x7F0E002F
-			public const int exo_controls_show = 2131623983;
+			public const int exo_controls_stop_description = 2131623983;
 			
 			// aapt resource value: 0x7F0E0030
-			public const int exo_controls_shuffle_off_description = 2131623984;
+			public const int exo_download_completed = 2131623984;
 			
 			// aapt resource value: 0x7F0E0031
-			public const int exo_controls_shuffle_on_description = 2131623985;
+			public const int exo_download_description = 2131623985;
 			
 			// aapt resource value: 0x7F0E0032
-			public const int exo_controls_stop_description = 2131623986;
+			public const int exo_download_downloading = 2131623986;
 			
 			// aapt resource value: 0x7F0E0033
-			public const int exo_controls_vr_description = 2131623987;
+			public const int exo_download_failed = 2131623987;
 			
 			// aapt resource value: 0x7F0E0034
-			public const int exo_download_completed = 2131623988;
+			public const int exo_download_notification_channel_name = 2131623988;
 			
 			// aapt resource value: 0x7F0E0035
-			public const int exo_download_description = 2131623989;
+			public const int exo_download_removing = 2131623989;
 			
 			// aapt resource value: 0x7F0E0036
-			public const int exo_download_downloading = 2131623990;
+			public const int exo_item_list = 2131623990;
 			
 			// aapt resource value: 0x7F0E0037
-			public const int exo_download_failed = 2131623991;
+			public const int exo_track_bitrate = 2131623991;
 			
 			// aapt resource value: 0x7F0E0038
-			public const int exo_download_notification_channel_name = 2131623992;
+			public const int exo_track_mono = 2131623992;
 			
 			// aapt resource value: 0x7F0E0039
-			public const int exo_download_removing = 2131623993;
+			public const int exo_track_resolution = 2131623993;
 			
 			// aapt resource value: 0x7F0E003A
-			public const int exo_item_list = 2131623994;
+			public const int exo_track_selection_auto = 2131623994;
 			
 			// aapt resource value: 0x7F0E003B
-			public const int exo_track_bitrate = 2131623995;
+			public const int exo_track_selection_none = 2131623995;
 			
 			// aapt resource value: 0x7F0E003C
-			public const int exo_track_mono = 2131623996;
+			public const int exo_track_selection_title_audio = 2131623996;
 			
 			// aapt resource value: 0x7F0E003D
-			public const int exo_track_resolution = 2131623997;
+			public const int exo_track_selection_title_text = 2131623997;
 			
 			// aapt resource value: 0x7F0E003E
-			public const int exo_track_role_alternate = 2131623998;
+			public const int exo_track_selection_title_video = 2131623998;
 			
 			// aapt resource value: 0x7F0E003F
-			public const int exo_track_role_closed_captions = 2131623999;
+			public const int exo_track_stereo = 2131623999;
 			
 			// aapt resource value: 0x7F0E0040
-			public const int exo_track_role_commentary = 2131624000;
+			public const int exo_track_surround = 2131624000;
 			
 			// aapt resource value: 0x7F0E0041
-			public const int exo_track_role_supplementary = 2131624001;
+			public const int exo_track_surround_5_point_1 = 2131624001;
 			
 			// aapt resource value: 0x7F0E0042
-			public const int exo_track_selection_auto = 2131624002;
+			public const int exo_track_surround_7_point_1 = 2131624002;
 			
 			// aapt resource value: 0x7F0E0043
-			public const int exo_track_selection_none = 2131624003;
+			public const int exo_track_unknown = 2131624003;
 			
 			// aapt resource value: 0x7F0E0044
-			public const int exo_track_selection_title_audio = 2131624004;
+			public const int exposed_dropdown_menu_content_description = 2131624004;
 			
 			// aapt resource value: 0x7F0E0045
-			public const int exo_track_selection_title_text = 2131624005;
+			public const int fab_transformation_scrim_behavior = 2131624005;
 			
 			// aapt resource value: 0x7F0E0046
-			public const int exo_track_selection_title_video = 2131624006;
+			public const int fab_transformation_sheet_behavior = 2131624006;
 			
 			// aapt resource value: 0x7F0E0047
-			public const int exo_track_stereo = 2131624007;
+			public const int fallback_menu_item_copy_link = 2131624007;
 			
 			// aapt resource value: 0x7F0E0048
-			public const int exo_track_surround = 2131624008;
+			public const int fallback_menu_item_open_in_browser = 2131624008;
 			
 			// aapt resource value: 0x7F0E0049
-			public const int exo_track_surround_5_point_1 = 2131624009;
+			public const int fallback_menu_item_share_link = 2131624009;
 			
 			// aapt resource value: 0x7F0E004A
-			public const int exo_track_surround_7_point_1 = 2131624010;
+			public const int hide_bottom_view_on_scroll_behavior = 2131624010;
 			
 			// aapt resource value: 0x7F0E004B
-			public const int exo_track_unknown = 2131624011;
+			public const int icon_content_description = 2131624011;
 			
 			// aapt resource value: 0x7F0E004C
-			public const int exposed_dropdown_menu_content_description = 2131624012;
+			public const int mtrl_badge_numberless_content_description = 2131624012;
 			
 			// aapt resource value: 0x7F0E004D
-			public const int fab_transformation_scrim_behavior = 2131624013;
+			public const int mtrl_chip_close_icon_content_description = 2131624013;
 			
 			// aapt resource value: 0x7F0E004E
-			public const int fab_transformation_sheet_behavior = 2131624014;
+			public const int mtrl_exceed_max_badge_number_suffix = 2131624014;
 			
 			// aapt resource value: 0x7F0E004F
-			public const int fallback_menu_item_copy_link = 2131624015;
+			public const int mtrl_picker_a11y_next_month = 2131624015;
 			
 			// aapt resource value: 0x7F0E0050
-			public const int fallback_menu_item_open_in_browser = 2131624016;
+			public const int mtrl_picker_a11y_prev_month = 2131624016;
 			
 			// aapt resource value: 0x7F0E0051
-			public const int fallback_menu_item_share_link = 2131624017;
+			public const int mtrl_picker_announce_current_selection = 2131624017;
 			
 			// aapt resource value: 0x7F0E0052
-			public const int hide_bottom_view_on_scroll_behavior = 2131624018;
+			public const int mtrl_picker_cancel = 2131624018;
 			
 			// aapt resource value: 0x7F0E0053
-			public const int icon_content_description = 2131624019;
+			public const int mtrl_picker_confirm = 2131624019;
 			
 			// aapt resource value: 0x7F0E0054
-			public const int mtrl_badge_numberless_content_description = 2131624020;
+			public const int mtrl_picker_date_header_selected = 2131624020;
 			
 			// aapt resource value: 0x7F0E0055
-			public const int mtrl_chip_close_icon_content_description = 2131624021;
+			public const int mtrl_picker_date_header_title = 2131624021;
 			
 			// aapt resource value: 0x7F0E0056
-			public const int mtrl_exceed_max_badge_number_suffix = 2131624022;
+			public const int mtrl_picker_date_header_unselected = 2131624022;
 			
 			// aapt resource value: 0x7F0E0057
-			public const int mtrl_picker_a11y_next_month = 2131624023;
+			public const int mtrl_picker_day_of_week_column_header = 2131624023;
 			
 			// aapt resource value: 0x7F0E0058
-			public const int mtrl_picker_a11y_prev_month = 2131624024;
+			public const int mtrl_picker_invalid_format = 2131624024;
 			
 			// aapt resource value: 0x7F0E0059
-			public const int mtrl_picker_announce_current_selection = 2131624025;
+			public const int mtrl_picker_invalid_format_example = 2131624025;
 			
 			// aapt resource value: 0x7F0E005A
-			public const int mtrl_picker_cancel = 2131624026;
+			public const int mtrl_picker_invalid_format_use = 2131624026;
 			
 			// aapt resource value: 0x7F0E005B
-			public const int mtrl_picker_confirm = 2131624027;
+			public const int mtrl_picker_invalid_range = 2131624027;
 			
 			// aapt resource value: 0x7F0E005C
-			public const int mtrl_picker_date_header_selected = 2131624028;
+			public const int mtrl_picker_navigate_to_year_description = 2131624028;
 			
 			// aapt resource value: 0x7F0E005D
-			public const int mtrl_picker_date_header_title = 2131624029;
+			public const int mtrl_picker_out_of_range = 2131624029;
 			
 			// aapt resource value: 0x7F0E005E
-			public const int mtrl_picker_date_header_unselected = 2131624030;
+			public const int mtrl_picker_range_header_only_end_selected = 2131624030;
 			
 			// aapt resource value: 0x7F0E005F
-			public const int mtrl_picker_day_of_week_column_header = 2131624031;
+			public const int mtrl_picker_range_header_only_start_selected = 2131624031;
 			
 			// aapt resource value: 0x7F0E0060
-			public const int mtrl_picker_invalid_format = 2131624032;
+			public const int mtrl_picker_range_header_selected = 2131624032;
 			
 			// aapt resource value: 0x7F0E0061
-			public const int mtrl_picker_invalid_format_example = 2131624033;
+			public const int mtrl_picker_range_header_title = 2131624033;
 			
 			// aapt resource value: 0x7F0E0062
-			public const int mtrl_picker_invalid_format_use = 2131624034;
+			public const int mtrl_picker_range_header_unselected = 2131624034;
 			
 			// aapt resource value: 0x7F0E0063
-			public const int mtrl_picker_invalid_range = 2131624035;
+			public const int mtrl_picker_save = 2131624035;
 			
 			// aapt resource value: 0x7F0E0064
-			public const int mtrl_picker_navigate_to_year_description = 2131624036;
+			public const int mtrl_picker_text_input_date_hint = 2131624036;
 			
 			// aapt resource value: 0x7F0E0065
-			public const int mtrl_picker_out_of_range = 2131624037;
+			public const int mtrl_picker_text_input_date_range_end_hint = 2131624037;
 			
 			// aapt resource value: 0x7F0E0066
-			public const int mtrl_picker_range_header_only_end_selected = 2131624038;
+			public const int mtrl_picker_text_input_date_range_start_hint = 2131624038;
 			
 			// aapt resource value: 0x7F0E0067
-			public const int mtrl_picker_range_header_only_start_selected = 2131624039;
+			public const int mtrl_picker_text_input_day_abbr = 2131624039;
 			
 			// aapt resource value: 0x7F0E0068
-			public const int mtrl_picker_range_header_selected = 2131624040;
+			public const int mtrl_picker_text_input_month_abbr = 2131624040;
 			
 			// aapt resource value: 0x7F0E0069
-			public const int mtrl_picker_range_header_title = 2131624041;
+			public const int mtrl_picker_text_input_year_abbr = 2131624041;
 			
 			// aapt resource value: 0x7F0E006A
-			public const int mtrl_picker_range_header_unselected = 2131624042;
+			public const int mtrl_picker_toggle_to_calendar_input_mode = 2131624042;
 			
 			// aapt resource value: 0x7F0E006B
-			public const int mtrl_picker_save = 2131624043;
+			public const int mtrl_picker_toggle_to_day_selection = 2131624043;
 			
 			// aapt resource value: 0x7F0E006C
-			public const int mtrl_picker_text_input_date_hint = 2131624044;
+			public const int mtrl_picker_toggle_to_text_input_mode = 2131624044;
 			
 			// aapt resource value: 0x7F0E006D
-			public const int mtrl_picker_text_input_date_range_end_hint = 2131624045;
+			public const int mtrl_picker_toggle_to_year_selection = 2131624045;
 			
 			// aapt resource value: 0x7F0E006E
-			public const int mtrl_picker_text_input_date_range_start_hint = 2131624046;
+			public const int overflow_tab_title = 2131624046;
 			
 			// aapt resource value: 0x7F0E006F
-			public const int mtrl_picker_text_input_day_abbr = 2131624047;
+			public const int password_toggle_content_description = 2131624047;
 			
 			// aapt resource value: 0x7F0E0070
-			public const int mtrl_picker_text_input_month_abbr = 2131624048;
+			public const int path_password_eye = 2131624048;
 			
 			// aapt resource value: 0x7F0E0071
-			public const int mtrl_picker_text_input_year_abbr = 2131624049;
+			public const int path_password_eye_mask_strike_through = 2131624049;
 			
 			// aapt resource value: 0x7F0E0072
-			public const int mtrl_picker_toggle_to_calendar_input_mode = 2131624050;
+			public const int path_password_eye_mask_visible = 2131624050;
 			
 			// aapt resource value: 0x7F0E0073
-			public const int mtrl_picker_toggle_to_day_selection = 2131624051;
+			public const int path_password_strike_through = 2131624051;
 			
 			// aapt resource value: 0x7F0E0074
-			public const int mtrl_picker_toggle_to_text_input_mode = 2131624052;
+			public const int search_menu_title = 2131624052;
 			
 			// aapt resource value: 0x7F0E0075
-			public const int mtrl_picker_toggle_to_year_selection = 2131624053;
-			
-			// aapt resource value: 0x7F0E0076
-			public const int overflow_tab_title = 2131624054;
-			
-			// aapt resource value: 0x7F0E0077
-			public const int password_toggle_content_description = 2131624055;
-			
-			// aapt resource value: 0x7F0E0078
-			public const int path_password_eye = 2131624056;
-			
-			// aapt resource value: 0x7F0E0079
-			public const int path_password_eye_mask_strike_through = 2131624057;
-			
-			// aapt resource value: 0x7F0E007A
-			public const int path_password_eye_mask_visible = 2131624058;
-			
-			// aapt resource value: 0x7F0E007B
-			public const int path_password_strike_through = 2131624059;
-			
-			// aapt resource value: 0x7F0E007C
-			public const int search_menu_title = 2131624060;
-			
-			// aapt resource value: 0x7F0E007D
-			public const int status_bar_notification_info_overflow = 2131624061;
+			public const int status_bar_notification_info_overflow = 2131624053;
 			
 			static String()
 			{
@@ -14144,7 +16576,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			public const int ExoMediaButton_Rewind = 2131689703;
 			
 			// aapt resource value: 0x7F0F00E8
-			public const int ExoMediaButton_VR = 2131689704;
+			public const int ExoMediaButton_Shuffle = 2131689704;
 			
 			// aapt resource value: 0x7F0F00E9
 			public const int MainTheme = 2131689705;
@@ -15539,7 +17971,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 		public partial class Styleable
 		{
 			
-			// aapt resource value: { 0x7F030037,0x7F03003E,0x7F03003F,0x7F0300B8,0x7F0300B9,0x7F0300BA,0x7F0300BB,0x7F0300BC,0x7F0300BD,0x7F0300D8,0x7F0300E2,0x7F0300E3,0x7F0300F7,0x7F030132,0x7F030138,0x7F030140,0x7F030141,0x7F030143,0x7F03014D,0x7F03015A,0x7F03018D,0x7F0301AD,0x7F0301C3,0x7F0301C7,0x7F0301C8,0x7F030212,0x7F030215,0x7F030260,0x7F03026A }
+			// aapt resource value: { 0x7F030037,0x7F03003E,0x7F03003F,0x7F0300B8,0x7F0300B9,0x7F0300BA,0x7F0300BB,0x7F0300BC,0x7F0300BD,0x7F0300D8,0x7F0300E2,0x7F0300E3,0x7F0300F7,0x7F030132,0x7F030138,0x7F030140,0x7F030141,0x7F030143,0x7F03014D,0x7F03015A,0x7F03018D,0x7F0301AD,0x7F0301C3,0x7F0301C7,0x7F0301C8,0x7F030212,0x7F030215,0x7F03025F,0x7F030269 }
 			public static int[] ActionBar = new int[] {
 					2130903095,
 					2130903102,
@@ -15568,8 +18000,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903496,
 					2130903570,
 					2130903573,
-					2130903648,
-					2130903658};
+					2130903647,
+					2130903657};
 			
 			// aapt resource value: { 0x10100B3 }
 			public static int[] ActionBarLayout = new int[] {
@@ -15676,14 +18108,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			public static int[] ActionMenuView = new int[] {
 					-1};
 			
-			// aapt resource value: { 0x7F030037,0x7F03003E,0x7F03009A,0x7F030132,0x7F030215,0x7F03026A }
+			// aapt resource value: { 0x7F030037,0x7F03003E,0x7F03009A,0x7F030132,0x7F030215,0x7F030269 }
 			public static int[] ActionMode = new int[] {
 					2130903095,
 					2130903102,
 					2130903194,
 					2130903346,
 					2130903573,
-					2130903658};
+					2130903657};
 			
 			// aapt resource value: 0
 			public const int ActionMode_background = 0;
@@ -15871,12 +18303,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 7
 			public const int AppBarLayout_statusBarForeground = 7;
 			
-			// aapt resource value: { 0x1010119,0x7F0301FE,0x7F03025E,0x7F03025F }
+			// aapt resource value: { 0x1010119,0x7F0301FE,0x7F03025D,0x7F03025E }
 			public static int[] AppCompatImageView = new int[] {
 					16843033,
 					2130903550,
-					2130903646,
-					2130903647};
+					2130903645,
+					2130903646};
 			
 			// aapt resource value: 0
 			public const int AppCompatImageView_android_src = 0;
@@ -16027,7 +18459,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 20
 			public const int AppCompatTextView_textLocale = 20;
 			
-			// aapt resource value: { 0x1010057,0x10100AE,0x7F030000,0x7F030001,0x7F030002,0x7F030003,0x7F030004,0x7F030005,0x7F030006,0x7F030007,0x7F030008,0x7F030009,0x7F03000A,0x7F03000B,0x7F03000C,0x7F03000E,0x7F03000F,0x7F030010,0x7F030011,0x7F030012,0x7F030013,0x7F030014,0x7F030015,0x7F030016,0x7F030017,0x7F030018,0x7F030019,0x7F03001A,0x7F03001B,0x7F03001C,0x7F03001D,0x7F03001E,0x7F030022,0x7F030025,0x7F030026,0x7F030027,0x7F030028,0x7F030030,0x7F030052,0x7F030062,0x7F030063,0x7F030064,0x7F030065,0x7F030066,0x7F03006B,0x7F03006C,0x7F030077,0x7F03007E,0x7F0300A1,0x7F0300A2,0x7F0300A3,0x7F0300A4,0x7F0300A5,0x7F0300A6,0x7F0300A7,0x7F0300AE,0x7F0300AF,0x7F0300B5,0x7F0300C4,0x7F0300DF,0x7F0300E0,0x7F0300E1,0x7F0300E4,0x7F0300E6,0x7F0300F2,0x7F0300F3,0x7F0300F4,0x7F0300F5,0x7F0300F6,0x7F030140,0x7F03014C,0x7F03017E,0x7F03017F,0x7F030180,0x7F030181,0x7F030184,0x7F030185,0x7F030186,0x7F030187,0x7F030188,0x7F030189,0x7F03018A,0x7F03018B,0x7F03018C,0x7F0301B6,0x7F0301B7,0x7F0301B8,0x7F0301C2,0x7F0301C4,0x7F0301CB,0x7F0301CD,0x7F0301CE,0x7F0301CF,0x7F0301E1,0x7F0301E2,0x7F0301E3,0x7F0301E4,0x7F0301FB,0x7F0301FC,0x7F03021B,0x7F030242,0x7F030244,0x7F030245,0x7F030246,0x7F030248,0x7F030249,0x7F03024A,0x7F03024B,0x7F03024E,0x7F03024F,0x7F03026C,0x7F03026D,0x7F03026E,0x7F03026F,0x7F03027C,0x7F03027E,0x7F03027F,0x7F030280,0x7F030281,0x7F030282,0x7F030283,0x7F030284,0x7F030285,0x7F030286,0x7F030287 }
+			// aapt resource value: { 0x1010057,0x10100AE,0x7F030000,0x7F030001,0x7F030002,0x7F030003,0x7F030004,0x7F030005,0x7F030006,0x7F030007,0x7F030008,0x7F030009,0x7F03000A,0x7F03000B,0x7F03000C,0x7F03000E,0x7F03000F,0x7F030010,0x7F030011,0x7F030012,0x7F030013,0x7F030014,0x7F030015,0x7F030016,0x7F030017,0x7F030018,0x7F030019,0x7F03001A,0x7F03001B,0x7F03001C,0x7F03001D,0x7F03001E,0x7F030022,0x7F030025,0x7F030026,0x7F030027,0x7F030028,0x7F030030,0x7F030052,0x7F030062,0x7F030063,0x7F030064,0x7F030065,0x7F030066,0x7F03006B,0x7F03006C,0x7F030077,0x7F03007E,0x7F0300A1,0x7F0300A2,0x7F0300A3,0x7F0300A4,0x7F0300A5,0x7F0300A6,0x7F0300A7,0x7F0300AE,0x7F0300AF,0x7F0300B5,0x7F0300C4,0x7F0300DF,0x7F0300E0,0x7F0300E1,0x7F0300E4,0x7F0300E6,0x7F0300F2,0x7F0300F3,0x7F0300F4,0x7F0300F5,0x7F0300F6,0x7F030140,0x7F03014C,0x7F03017E,0x7F03017F,0x7F030180,0x7F030181,0x7F030184,0x7F030185,0x7F030186,0x7F030187,0x7F030188,0x7F030189,0x7F03018A,0x7F03018B,0x7F03018C,0x7F0301B6,0x7F0301B7,0x7F0301B8,0x7F0301C2,0x7F0301C4,0x7F0301CB,0x7F0301CD,0x7F0301CE,0x7F0301CF,0x7F0301E1,0x7F0301E2,0x7F0301E3,0x7F0301E4,0x7F0301FB,0x7F0301FC,0x7F03021B,0x7F030242,0x7F030244,0x7F030245,0x7F030246,0x7F030248,0x7F030249,0x7F03024A,0x7F03024B,0x7F03024E,0x7F03024F,0x7F03026B,0x7F03026C,0x7F03026D,0x7F03026E,0x7F03027A,0x7F03027C,0x7F03027D,0x7F03027E,0x7F03027F,0x7F030280,0x7F030281,0x7F030282,0x7F030283,0x7F030284,0x7F030285 }
 			public static int[] AppCompatTheme = new int[] {
 					16842839,
 					16842926,
@@ -16139,11 +18571,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903627,
 					2130903630,
 					2130903631,
+					2130903659,
 					2130903660,
 					2130903661,
 					2130903662,
-					2130903663,
+					2130903674,
 					2130903676,
+					2130903677,
 					2130903678,
 					2130903679,
 					2130903680,
@@ -16151,9 +18585,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903682,
 					2130903683,
 					2130903684,
-					2130903685,
-					2130903686,
-					2130903687};
+					2130903685};
 			
 			// aapt resource value: 2
 			public const int AppCompatTheme_actionBarDivider = 2;
@@ -16945,7 +19377,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 39
 			public const int Chip_textStartPadding = 39;
 			
-			// aapt resource value: { 0x7F03009D,0x7F03009E,0x7F0300C3,0x7F03010B,0x7F03010C,0x7F03010D,0x7F03010E,0x7F03010F,0x7F030110,0x7F030111,0x7F0301D6,0x7F0301D8,0x7F03020D,0x7F030260,0x7F030261,0x7F03026B }
+			// aapt resource value: { 0x7F03009D,0x7F03009E,0x7F0300C3,0x7F03010B,0x7F03010C,0x7F03010D,0x7F03010E,0x7F03010F,0x7F030110,0x7F030111,0x7F0301D6,0x7F0301D8,0x7F03020D,0x7F03025F,0x7F030260,0x7F03026A }
 			public static int[] CollapsingToolbarLayout = new int[] {
 					2130903197,
 					2130903198,
@@ -16960,9 +19392,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903510,
 					2130903512,
 					2130903565,
+					2130903647,
 					2130903648,
-					2130903649,
-					2130903659};
+					2130903658};
 			
 			// aapt resource value: 0
 			public const int CollapsingToolbarLayout_collapsedTitleGravity = 0;
@@ -17099,7 +19531,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 1
 			public const int CoordinatorLayout_statusBarBackground = 1;
 			
-			// aapt resource value: { 0x7F030023,0x7F030024,0x7F030046,0x7F030061,0x7F0301BE,0x7F0301BF,0x7F0301DA,0x7F0301DB,0x7F0301DC,0x7F0301DD,0x7F0301DE,0x7F030271,0x7F030276 }
+			// aapt resource value: { 0x7F030023,0x7F030024,0x7F030046,0x7F030061,0x7F0301BE,0x7F0301BF,0x7F0301DA,0x7F0301DB,0x7F0301DC,0x7F0301DD,0x7F0301DE,0x7F030270,0x7F030275 }
 			public static int[] DefaultTimeBar = new int[] {
 					2130903075,
 					2130903076,
@@ -17112,8 +19544,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903516,
 					2130903517,
 					2130903518,
-					2130903665,
-					2130903670};
+					2130903664,
+					2130903669};
 			
 			// aapt resource value: 0
 			public const int DefaultTimeBar_ad_marker_color = 0;
@@ -17230,7 +19662,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 4
 			public const int ExtendedFloatingActionButton_shrinkMotionSpec = 4;
 			
-			// aapt resource value: { 0x7F030040,0x7F030041,0x7F030051,0x7F0300F7,0x7F030102,0x7F030119,0x7F03011A,0x7F030137,0x7F030142,0x7F0301A6,0x7F0301C6,0x7F0301D5,0x7F0301E5,0x7F0301E8,0x7F0301EC,0x7F030277 }
+			// aapt resource value: { 0x7F030040,0x7F030041,0x7F030051,0x7F0300F7,0x7F030102,0x7F030119,0x7F03011A,0x7F030137,0x7F030142,0x7F0301A6,0x7F0301C6,0x7F0301D5,0x7F0301E5,0x7F0301E8,0x7F0301EC,0x7F030276 }
 			public static int[] FloatingActionButton = new int[] {
 					2130903104,
 					2130903105,
@@ -17247,7 +19679,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903525,
 					2130903528,
 					2130903532,
-					2130903671};
+					2130903670};
 			
 			// aapt resource value: 0
 			public const int FloatingActionButton_backgroundTint = 0;
@@ -17324,7 +19756,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903337,
 					2130903338};
 			
-			// aapt resource value: { 0x1010532,0x1010533,0x101053F,0x101056F,0x1010570,0x7F030123,0x7F03012B,0x7F03012C,0x7F03012D,0x7F030275 }
+			// aapt resource value: { 0x1010532,0x1010533,0x101053F,0x101056F,0x1010570,0x7F030123,0x7F03012B,0x7F03012C,0x7F03012D,0x7F030274 }
 			public static int[] FontFamilyFont = new int[] {
 					16844082,
 					16844083,
@@ -17335,7 +19767,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903339,
 					2130903340,
 					2130903341,
-					2130903669};
+					2130903668};
 			
 			// aapt resource value: 0
 			public const int FontFamilyFont_android_font = 0;
@@ -17700,7 +20132,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 19
 			public const int MaterialButton_strokeWidth = 19;
 			
-			// aapt resource value: { 0x101020D,0x7F0300D9,0x7F0300DA,0x7F0300DB,0x7F0300DC,0x7F0301CC,0x7F030288,0x7F030289,0x7F03028A }
+			// aapt resource value: { 0x101020D,0x7F0300D9,0x7F0300DA,0x7F0300DB,0x7F0300DC,0x7F0301CC,0x7F030286,0x7F030287,0x7F030288 }
 			public static int[] MaterialCalendar = new int[] {
 					16843277,
 					2130903257,
@@ -17708,9 +20140,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903259,
 					2130903260,
 					2130903500,
-					2130903688,
-					2130903689,
-					2130903690};
+					2130903686,
+					2130903687,
+					2130903688};
 			
 			// aapt resource value: { 0x10101B7,0x10101B8,0x10101B9,0x10101BA,0x7F030153,0x7F03015C,0x7F03015D,0x7F030164,0x7F030165,0x7F030169 }
 			public static int[] MaterialCalendarItem = new int[] {
@@ -17825,10 +20257,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 9
 			public const int MaterialCardView_strokeWidth = 9;
 			
-			// aapt resource value: { 0x7F03006D,0x7F030278 }
+			// aapt resource value: { 0x7F03006D,0x7F030277 }
 			public static int[] MaterialCheckBox = new int[] {
 					2130903149,
-					2130903672};
+					2130903671};
 			
 			// aapt resource value: 0
 			public const int MaterialCheckBox_buttonTint = 0;
@@ -17836,9 +20268,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 1
 			public const int MaterialCheckBox_useMaterialThemeColors = 1;
 			
-			// aapt resource value: { 0x7F030278 }
+			// aapt resource value: { 0x7F030277 }
 			public static int[] MaterialRadioButton = new int[] {
-					2130903672};
+					2130903671};
 			
 			// aapt resource value: 0
 			public const int MaterialRadioButton_useMaterialThemeColors = 0;
@@ -17907,7 +20339,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 2
 			public const int MenuGroup_android_visible = 2;
 			
-			// aapt resource value: { 0x1010002,0x101000E,0x10100D0,0x1010106,0x1010194,0x10101DE,0x10101DF,0x10101E1,0x10101E2,0x10101E3,0x10101E4,0x10101E5,0x101026F,0x7F03000D,0x7F03001F,0x7F030021,0x7F03002B,0x7F0300B7,0x7F030149,0x7F03014A,0x7F0301B0,0x7F0301EA,0x7F030270 }
+			// aapt resource value: { 0x1010002,0x101000E,0x10100D0,0x1010106,0x1010194,0x10101DE,0x10101DF,0x10101E1,0x10101E2,0x10101E3,0x10101E4,0x10101E5,0x101026F,0x7F03000D,0x7F03001F,0x7F030021,0x7F03002B,0x7F0300B7,0x7F030149,0x7F03014A,0x7F0301B0,0x7F0301EA,0x7F03026F }
 			public static int[] MenuItem = new int[] {
 					16842754,
 					16842766,
@@ -17931,7 +20363,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903370,
 					2130903472,
 					2130903530,
-					2130903664};
+					2130903663};
 			
 			// aapt resource value: 13
 			public const int MenuItem_actionLayout = 13;
@@ -18128,223 +20560,107 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 20
 			public const int NavigationView_menu = 20;
 			
-			// aapt resource value: { 0x7F030023,0x7F030024,0x7F030046,0x7F030061,0x7F0300C5,0x7F030120,0x7F0301BE,0x7F0301BF,0x7F0301D1,0x7F0301D4,0x7F0301DA,0x7F0301DB,0x7F0301DC,0x7F0301DD,0x7F0301DE,0x7F0301F0,0x7F0301F1,0x7F03025D,0x7F030271,0x7F030276 }
+			// aapt resource value: { 0x7F0300C5,0x7F030120,0x7F0301D1,0x7F0301D4,0x7F0301F0,0x7F0301F1 }
 			public static int[] PlayerControlView = new int[] {
-					2130903075,
-					2130903076,
-					2130903110,
-					2130903137,
 					2130903237,
 					2130903328,
-					2130903486,
-					2130903487,
 					2130903505,
 					2130903508,
-					2130903514,
-					2130903515,
-					2130903516,
-					2130903517,
-					2130903518,
 					2130903536,
-					2130903537,
-					2130903645,
-					2130903665,
-					2130903670};
+					2130903537};
 			
 			// aapt resource value: 0
-			public const int PlayerControlView_ad_marker_color = 0;
+			public const int PlayerControlView_controller_layout_id = 0;
 			
 			// aapt resource value: 1
-			public const int PlayerControlView_ad_marker_width = 1;
+			public const int PlayerControlView_fastforward_increment = 1;
 			
 			// aapt resource value: 2
-			public const int PlayerControlView_bar_height = 2;
+			public const int PlayerControlView_repeat_toggle_modes = 2;
 			
 			// aapt resource value: 3
-			public const int PlayerControlView_buffered_color = 3;
+			public const int PlayerControlView_rewind_increment = 3;
 			
 			// aapt resource value: 4
-			public const int PlayerControlView_controller_layout_id = 4;
+			public const int PlayerControlView_show_shuffle_button = 4;
 			
 			// aapt resource value: 5
-			public const int PlayerControlView_fastforward_increment = 5;
+			public const int PlayerControlView_show_timeout = 5;
 			
-			// aapt resource value: 6
-			public const int PlayerControlView_played_ad_marker_color = 6;
-			
-			// aapt resource value: 7
-			public const int PlayerControlView_played_color = 7;
-			
-			// aapt resource value: 8
-			public const int PlayerControlView_repeat_toggle_modes = 8;
-			
-			// aapt resource value: 9
-			public const int PlayerControlView_rewind_increment = 9;
-			
-			// aapt resource value: 10
-			public const int PlayerControlView_scrubber_color = 10;
-			
-			// aapt resource value: 11
-			public const int PlayerControlView_scrubber_disabled_size = 11;
-			
-			// aapt resource value: 12
-			public const int PlayerControlView_scrubber_dragged_size = 12;
-			
-			// aapt resource value: 13
-			public const int PlayerControlView_scrubber_drawable = 13;
-			
-			// aapt resource value: 14
-			public const int PlayerControlView_scrubber_enabled_size = 14;
-			
-			// aapt resource value: 15
-			public const int PlayerControlView_show_shuffle_button = 15;
-			
-			// aapt resource value: 16
-			public const int PlayerControlView_show_timeout = 16;
-			
-			// aapt resource value: 17
-			public const int PlayerControlView_time_bar_min_update_interval = 17;
-			
-			// aapt resource value: 18
-			public const int PlayerControlView_touch_target_height = 18;
-			
-			// aapt resource value: 19
-			public const int PlayerControlView_unplayed_color = 19;
-			
-			// aapt resource value: { 0x7F030023,0x7F030024,0x7F030036,0x7F030046,0x7F030061,0x7F0300C5,0x7F0300DE,0x7F030120,0x7F03013A,0x7F03013B,0x7F03016A,0x7F0301BE,0x7F0301BF,0x7F0301C0,0x7F0301D1,0x7F0301D2,0x7F0301D4,0x7F0301DA,0x7F0301DB,0x7F0301DC,0x7F0301DD,0x7F0301DE,0x7F0301EF,0x7F0301F0,0x7F0301F1,0x7F0301F3,0x7F030217,0x7F03025D,0x7F030271,0x7F030276,0x7F030279,0x7F03027A,0x7F03027B }
+			// aapt resource value: { 0x7F030036,0x7F0300C5,0x7F0300DE,0x7F030120,0x7F03013A,0x7F03013B,0x7F03016A,0x7F0301C0,0x7F0301D1,0x7F0301D2,0x7F0301D4,0x7F0301EF,0x7F0301F0,0x7F0301F1,0x7F0301F3,0x7F030217,0x7F030278,0x7F030279 }
 			public static int[] PlayerView = new int[] {
-					2130903075,
-					2130903076,
 					2130903094,
-					2130903110,
-					2130903137,
 					2130903237,
 					2130903262,
 					2130903328,
 					2130903354,
 					2130903355,
 					2130903402,
-					2130903486,
-					2130903487,
 					2130903488,
 					2130903505,
 					2130903506,
 					2130903508,
-					2130903514,
-					2130903515,
-					2130903516,
-					2130903517,
-					2130903518,
 					2130903535,
 					2130903536,
 					2130903537,
 					2130903539,
 					2130903575,
-					2130903645,
-					2130903665,
-					2130903670,
-					2130903673,
-					2130903674,
-					2130903675};
+					2130903672,
+					2130903673};
 			
 			// aapt resource value: 0
-			public const int PlayerView_ad_marker_color = 0;
+			public const int PlayerView_auto_show = 0;
 			
 			// aapt resource value: 1
-			public const int PlayerView_ad_marker_width = 1;
+			public const int PlayerView_controller_layout_id = 1;
 			
 			// aapt resource value: 2
-			public const int PlayerView_auto_show = 2;
+			public const int PlayerView_default_artwork = 2;
 			
 			// aapt resource value: 3
-			public const int PlayerView_bar_height = 3;
+			public const int PlayerView_fastforward_increment = 3;
 			
 			// aapt resource value: 4
-			public const int PlayerView_buffered_color = 4;
+			public const int PlayerView_hide_during_ads = 4;
 			
 			// aapt resource value: 5
-			public const int PlayerView_controller_layout_id = 5;
+			public const int PlayerView_hide_on_touch = 5;
 			
 			// aapt resource value: 6
-			public const int PlayerView_default_artwork = 6;
+			public const int PlayerView_keep_content_on_player_reset = 6;
 			
 			// aapt resource value: 7
-			public const int PlayerView_fastforward_increment = 7;
+			public const int PlayerView_player_layout_id = 7;
 			
 			// aapt resource value: 8
-			public const int PlayerView_hide_during_ads = 8;
+			public const int PlayerView_repeat_toggle_modes = 8;
 			
 			// aapt resource value: 9
-			public const int PlayerView_hide_on_touch = 9;
+			public const int PlayerView_resize_mode = 9;
 			
 			// aapt resource value: 10
-			public const int PlayerView_keep_content_on_player_reset = 10;
+			public const int PlayerView_rewind_increment = 10;
 			
 			// aapt resource value: 11
-			public const int PlayerView_played_ad_marker_color = 11;
+			public const int PlayerView_show_buffering = 11;
 			
 			// aapt resource value: 12
-			public const int PlayerView_played_color = 12;
+			public const int PlayerView_show_shuffle_button = 12;
 			
 			// aapt resource value: 13
-			public const int PlayerView_player_layout_id = 13;
+			public const int PlayerView_show_timeout = 13;
 			
 			// aapt resource value: 14
-			public const int PlayerView_repeat_toggle_modes = 14;
+			public const int PlayerView_shutter_background_color = 14;
 			
 			// aapt resource value: 15
-			public const int PlayerView_resize_mode = 15;
+			public const int PlayerView_surface_type = 15;
 			
 			// aapt resource value: 16
-			public const int PlayerView_rewind_increment = 16;
+			public const int PlayerView_use_artwork = 16;
 			
 			// aapt resource value: 17
-			public const int PlayerView_scrubber_color = 17;
-			
-			// aapt resource value: 18
-			public const int PlayerView_scrubber_disabled_size = 18;
-			
-			// aapt resource value: 19
-			public const int PlayerView_scrubber_dragged_size = 19;
-			
-			// aapt resource value: 20
-			public const int PlayerView_scrubber_drawable = 20;
-			
-			// aapt resource value: 21
-			public const int PlayerView_scrubber_enabled_size = 21;
-			
-			// aapt resource value: 22
-			public const int PlayerView_show_buffering = 22;
-			
-			// aapt resource value: 23
-			public const int PlayerView_show_shuffle_button = 23;
-			
-			// aapt resource value: 24
-			public const int PlayerView_show_timeout = 24;
-			
-			// aapt resource value: 25
-			public const int PlayerView_shutter_background_color = 25;
-			
-			// aapt resource value: 26
-			public const int PlayerView_surface_type = 26;
-			
-			// aapt resource value: 27
-			public const int PlayerView_time_bar_min_update_interval = 27;
-			
-			// aapt resource value: 28
-			public const int PlayerView_touch_target_height = 28;
-			
-			// aapt resource value: 29
-			public const int PlayerView_unplayed_color = 29;
-			
-			// aapt resource value: 30
-			public const int PlayerView_use_artwork = 30;
-			
-			// aapt resource value: 31
-			public const int PlayerView_use_controller = 31;
-			
-			// aapt resource value: 32
-			public const int PlayerView_use_sensor_rotation = 32;
+			public const int PlayerView_use_controller = 17;
 			
 			// aapt resource value: { 0x1010176,0x10102C9,0x7F0301B1 }
 			public static int[] PopupWindow = new int[] {
@@ -18451,7 +20767,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 0
 			public const int ScrollViewRendererTheme_scrollViewStyle = 0;
 			
-			// aapt resource value: { 0x10100DA,0x101011F,0x1010220,0x1010264,0x7F030093,0x7F0300B6,0x7F0300DD,0x7F030130,0x7F03014B,0x7F03016E,0x7F0301C9,0x7F0301CA,0x7F0301DF,0x7F0301E0,0x7F030211,0x7F030216,0x7F03027D }
+			// aapt resource value: { 0x10100DA,0x101011F,0x1010220,0x1010264,0x7F030093,0x7F0300B6,0x7F0300DD,0x7F030130,0x7F03014B,0x7F03016E,0x7F0301C9,0x7F0301CA,0x7F0301DF,0x7F0301E0,0x7F030211,0x7F030216,0x7F03027B }
 			public static int[] SearchView = new int[] {
 					16842970,
 					16843039,
@@ -18469,7 +20785,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903520,
 					2130903569,
 					2130903574,
-					2130903677};
+					2130903675};
 			
 			// aapt resource value: 0
 			public const int SearchView_android_focusable = 0;
@@ -18667,7 +20983,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 0
 			public const int SwipeRefreshLayout_swipeRefreshLayoutProgressSpinnerBackgroundColor = 0;
 			
-			// aapt resource value: { 0x1010124,0x1010125,0x1010142,0x7F0301ED,0x7F0301FD,0x7F030219,0x7F03021A,0x7F03021C,0x7F030257,0x7F030258,0x7F030259,0x7F030272,0x7F030273,0x7F030274 }
+			// aapt resource value: { 0x1010124,0x1010125,0x1010142,0x7F0301ED,0x7F0301FD,0x7F030219,0x7F03021A,0x7F03021C,0x7F030257,0x7F030258,0x7F030259,0x7F030271,0x7F030272,0x7F030273 }
 			public static int[] SwitchCompat = new int[] {
 					16843044,
 					16843045,
@@ -18680,9 +20996,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903639,
 					2130903640,
 					2130903641,
+					2130903665,
 					2130903666,
-					2130903667,
-					2130903668};
+					2130903667};
 			
 			// aapt resource value: 1
 			public const int SwitchCompat_android_textOff = 1;
@@ -18726,9 +21042,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 13
 			public const int SwitchCompat_trackTintMode = 13;
 			
-			// aapt resource value: { 0x7F030278 }
+			// aapt resource value: { 0x7F030277 }
 			public static int[] SwitchMaterial = new int[] {
-					2130903672};
+					2130903671};
 			
 			// aapt resource value: 0
 			public const int SwitchMaterial_useMaterialThemeColors = 0;
@@ -19136,7 +21452,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 2
 			public const int ThemeEnforcement_enforceTextAppearance = 2;
 			
-			// aapt resource value: { 0x10100AF,0x1010140,0x7F030068,0x7F03009B,0x7F03009C,0x7F0300B8,0x7F0300B9,0x7F0300BA,0x7F0300BB,0x7F0300BC,0x7F0300BD,0x7F03018D,0x7F03018E,0x7F0301A4,0x7F0301A8,0x7F0301AB,0x7F0301AC,0x7F0301C3,0x7F030212,0x7F030213,0x7F030214,0x7F030260,0x7F030262,0x7F030263,0x7F030264,0x7F030265,0x7F030266,0x7F030267,0x7F030268,0x7F030269 }
+			// aapt resource value: { 0x10100AF,0x1010140,0x7F030068,0x7F03009B,0x7F03009C,0x7F0300B8,0x7F0300B9,0x7F0300BA,0x7F0300BB,0x7F0300BC,0x7F0300BD,0x7F03018D,0x7F03018E,0x7F0301A4,0x7F0301A8,0x7F0301AB,0x7F0301AC,0x7F0301C3,0x7F030212,0x7F030213,0x7F030214,0x7F03025F,0x7F030261,0x7F030262,0x7F030263,0x7F030264,0x7F030265,0x7F030266,0x7F030267,0x7F030268 }
 			public static int[] Toolbar = new int[] {
 					16842927,
 					16843072,
@@ -19159,15 +21475,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 					2130903570,
 					2130903571,
 					2130903572,
-					2130903648,
+					2130903647,
+					2130903649,
 					2130903650,
 					2130903651,
 					2130903652,
 					2130903653,
 					2130903654,
 					2130903655,
-					2130903656,
-					2130903657};
+					2130903656};
 			
 			// aapt resource value: 0
 			public const int Toolbar_android_gravity = 0;

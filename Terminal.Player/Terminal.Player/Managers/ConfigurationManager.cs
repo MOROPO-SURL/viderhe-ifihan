@@ -65,7 +65,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
 
         // TODO Restore to spected behavior!!
         //public string CloudServerHost => "cloud.viderhe.net";
-        //public string CloudServerHost => "192.168.200.203";
-        public string CloudServerHost => "localhost";
+        public string CloudServerHost => "192.168.200.200";
+        //public string CloudServerHost => "192.168.200.201";
+        //public string CloudServerHost => "localhost";
     }
 }

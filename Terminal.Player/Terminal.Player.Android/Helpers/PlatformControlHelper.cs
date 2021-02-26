@@ -4,7 +4,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Helpers
 {
     public class PlatformControlHelper : Player.Helpers.Facade.IPlatformControlHelperFacade
     {
-        public int AudioLevel => throw new System.NotImplementedException();
+        public int AudioLevel
+        {
+            get
+            {
+                var audioManager = (Android.Media.AudioManager)Android.App.Application.Context.GetSystemService(Android.Content.Context.AudioService);
+
+                return audioManager.GetStreamVolume(Android.Media.Stream.Music);
+            }
+        }
 
         public bool IsAudioEnabled
         {
@@ -14,13 +22,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Helpers
 
                 return audioManager.IsStreamMute(Android.Media.Stream.Music);
             }
-        }
-
-        public int GetAudioLevel()
-        {
-            var audioManager = (Android.Media.AudioManager)Android.App.Application.Context.GetSystemService(Android.Content.Context.AudioService);
-
-            return audioManager.GetStreamVolume(Android.Media.Stream.Music);
         }
 
         public void SetAudioEnabled(bool enabled)

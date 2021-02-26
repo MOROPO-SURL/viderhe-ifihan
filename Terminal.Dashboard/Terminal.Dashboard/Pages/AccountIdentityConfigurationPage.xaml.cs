@@ -105,7 +105,17 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void OverlayConfigureButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(Providers.OverlayConfigurationPageProvider.Instance.GetConfigurationPageByDescriptor(BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext, OverlayConfigurationSuccesfulComplete_Callback));
+            // TODO Stash this change for acomplish at main branch!!
+            var page = Providers.OverlayConfigurationPageProvider.Instance.GetConfigurationPageByDescriptor(BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext, OverlayConfigurationSuccesfulComplete_Callback);
+            
+            if (page != null)
+            {
+                this.NavigationPushPageAsync(page);
+            }
+            else
+            {
+                Presenters.NotificationPresenter.Instance.PresentNotification("Aviso", "La Caratula seleccionada no require configuración.");
+            }
         }
 
         private void ApplyToolbarItem_Activated(object sender, System.EventArgs eventArgs)
