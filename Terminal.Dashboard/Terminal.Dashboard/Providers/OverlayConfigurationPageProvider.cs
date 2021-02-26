@@ -40,7 +40,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
                 return result;
             }
 
-            throw new System.InvalidOperationException();
+            // TODO Stash this change for acomplish at main branch!!
+            return null;
         }
     }
 }
