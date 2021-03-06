@@ -28,5 +28,7 @@
         public int Timeout { get; set; }
 
         public Models.OWM.CityModel[] Cities { get; set; }
+
+        public System.Collections.Generic.Dictionary<string, string> Defaults { get; set; }
     }
 }

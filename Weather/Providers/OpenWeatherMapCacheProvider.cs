@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
+using SmartSolucionesCuba.Viderhe.Weather.Extensions;
 using System.Linq;
 using System.Net;
 
@@ -66,11 +67,22 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Providers
             }
         }
 
-        public System.Threading.Tasks.Task<Models.WeatherReportCacheModel> GetWeatherAsync(int cityId)
+        public async System.Threading.Tasks.Task<Models.WeatherReportCacheModel> GetWeatherAsync(int cityId)
         {
-            var city = openWeatherMapOptions.Value.Cities.First(item => item.Id == cityId);
+            try
+            {
+                var city = openWeatherMapOptions.Value.Cities.First(item => item.Id == cityId);
 
-            return GetWeatherAsync(new Api.Common.Models.LocationModel(city.Coord.Lat, city.Coord.Lon));
+                return await GetWeatherAsync(new Api.Common.Models.LocationModel(city.Coord.Lat, city.Coord.Lon));
+            }
+            catch
+            {
+                var defaultSerialization = openWeatherMapOptions.Value.Defaults[cityId.ToString()];
+
+                var @default = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.OWM.ApiWeatherResultModel>(defaultSerialization);
+
+                return @default.ToReportCacheModel();
+            }
         }
 
         public async System.Threading.Tasks.Task<Models.WeatherReportCacheModel> GetWeatherAsync(Api.Common.Models.LocationModel location)
@@ -101,32 +113,7 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Providers
 
                 var weatherCurrentCondition = apiWeatherResult.Current.WeatherConditions[0];
                 
-                var newModel = new Models.WeatherReportCacheModel
-                {
-                    PorvisionService = Enumerations.PorvisionService.OpenWeatherMap,
-                    FetchedAt = System.DateTime.Now,
-                    Report = new Api.Common.Models.WeatherReportModel
-                    {
-                        Overview = new Api.Common.Models.WeatherOverviewModel
-                        {
-                            MeasuredAt = System.DateTimeOffset.FromUnixTimeSeconds(apiWeatherResult.Current.MeasuredAt).UtcDateTime.ToLocalTime(),
-                            ConditionId = weatherCurrentCondition.Id,
-                            ConditionDetail = weatherCurrentCondition.Detail,
-                            Temperature = apiWeatherResult.Current.Temperature,
-                            TemperatureFeelLike = apiWeatherResult.Current.TemperatureFeelLike,
-                            SunRiseAt = System.DateTimeOffset.FromUnixTimeSeconds(apiWeatherResult.Current.SunRiseAt).UtcDateTime.ToLocalTime(),
-                            SunSetAt = System.DateTimeOffset.FromUnixTimeSeconds(apiWeatherResult.Current.SunSetAt).UtcDateTime.ToLocalTime(),
-                            CloudDensity = apiWeatherResult.Current.CloudDensity,
-                            Humidity = apiWeatherResult.Current.Humidity,
-                            Pressure = apiWeatherResult.Current.Pressure,
-                            Visibility = apiWeatherResult.Current.Visibility,
-                            UltravioletIndex = apiWeatherResult.Current.UltravioletIndex,
-                            DewPoint = apiWeatherResult.Current.DewPoint,
-                            WindSpeed = apiWeatherResult.Current.WindSpeed,
-                            WindDegrees = apiWeatherResult.Current.WindDegrees
-                        }
-                    }
-                };
+                var newModel = apiWeatherResult.ToReportCacheModel();
 
                 if (!found || openWeatherMapOptions.Value.FetchMode == Enumerations.FetchMode.AlwaysUseLastFetchedValue || (newModel.Report.Overview.MeasuredAt >= cachedModel.Report.Overview.MeasuredAt))
                 {
