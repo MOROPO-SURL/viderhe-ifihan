@@ -31,38 +31,47 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             Managers.SessionManager.Instance.SignInAsync(BindingContextPageModel.TargetCloudHostName, BindingContextPageModel.UserName, BindingContextPageModel.Password).ContinueWith(task =>
             {
-                if (task.Exception != null)
+                if (task.IsCanceled || task.Exception != null)
                 {
-                    System.Exception targetException = task.Exception;
-
-                    while (targetException is System.AggregateException)
-                    {
-                        targetException = targetException.InnerException;
-                    }
-
                     var message = "Problemas no esperados en el sistema.";
 
-                    if (targetException is System.Net.Http.HttpRequestException)
+                    if (task.Exception == null)
                     {
-                        message = "No se puede acceder al servidor. Revise su conexión de red y/o la disponibilidad del servicio.";
-                    }
-                    else if (targetException is SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException)
-                    {
-                        var unspectedHttpStatus = (targetException as SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException).HttpStatusCode;
+                        DisplayAlert("Aviso", "El sistema ha tardado demasiado tiempo en responder.", "Aceptar");
 
-                        if (unspectedHttpStatus == System.Net.HttpStatusCode.BadRequest)
-                        {
-                            message = "Datos incorrectos.";
-                        }
-                        else if (unspectedHttpStatus == System.Net.HttpStatusCode.Forbidden)
-                        {
-                            message = "Usuario no autorizado.";
-                        }
-                        else if (unspectedHttpStatus == System.Net.HttpStatusCode.Unauthorized)
-                        {
-                            message = "Usuario y/o contraseña incorrectos.";
-                        }
+                        return;
                     }
+                    else
+                    {
+                        System.Exception targetException = task.Exception;
+
+                        while (targetException is System.AggregateException)
+                        {
+                            targetException = targetException.InnerException;
+                        }
+
+                        if (targetException is System.Net.Http.HttpRequestException)
+                        {
+                            message = "No se puede acceder al servidor. Revise su conexión de red y/o la disponibilidad del servicio.";
+                        }
+                        else if (targetException is SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException)
+                        {
+                            var unspectedHttpStatus = (targetException as SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException).HttpStatusCode;
+
+                            if (unspectedHttpStatus == System.Net.HttpStatusCode.BadRequest)
+                            {
+                                message = "Datos incorrectos.";
+                            }
+                            else if (unspectedHttpStatus == System.Net.HttpStatusCode.Forbidden)
+                            {
+                                message = "Usuario no autorizado.";
+                            }
+                            else if (unspectedHttpStatus == System.Net.HttpStatusCode.Unauthorized)
+                            {
+                                message = "Usuario y/o contraseña incorrectos.";
+                            }
+                        }
+                    }                    
 
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
