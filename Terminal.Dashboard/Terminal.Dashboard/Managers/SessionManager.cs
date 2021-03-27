@@ -153,6 +153,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
             AuthorizationToken = result.Token;
             ModeratorLogin = login;
             ModeratorName = result.Identity.LastName == null ? result.Identity.Name : string.Format("{0} {1}", result.Identity.Name, result.Identity.LastName);
+            // TODO Handle no result.Identity.Image null !!
             ModeratorPictureImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, result.Identity.Image.Id));
 
             try
