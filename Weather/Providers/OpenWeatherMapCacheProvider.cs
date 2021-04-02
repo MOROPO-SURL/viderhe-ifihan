@@ -91,7 +91,7 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Providers
 
             var dateTime = System.DateTime.Now;
 
-            var found = memoryCache.TryGetValue(location, out Models.WeatherReportCacheModel cachedModel);
+            var found = memoryCache.TryGetValue(location, out Models.OWM.ApiWeatherResultModel cachedModel);
 
             if (found)
             {
@@ -101,7 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Providers
                 {
                     lockObj.Dispose();
 
-                    return cachedModel;
+                    return cachedModel.ToReportCacheModel();
                 }
             }
 
@@ -109,13 +109,11 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Providers
             {
                 var apiUri = new System.Uri(string.Format("https://api.openweathermap.org/data/2.5/onecall?lat={0}&lon={1}&units=metric&lang=es&appid={2}&cache={3}", location.Latitude, location.Longitude, openWeatherMapOptions.Value.ApiKey, System.Guid.NewGuid()));
 
-                var apiWeatherResult = await GetApiWeatherResultFromUri(apiUri);
+                var newModel = await GetApiWeatherResultFromUri(apiUri);
 
-                var weatherCurrentCondition = apiWeatherResult.Current.WeatherConditions[0];
-                
-                var newModel = apiWeatherResult.ToReportCacheModel();
+                newModel.FetchedAt = System.DateTime.Now;
 
-                if (!found || openWeatherMapOptions.Value.FetchMode == Enumerations.FetchMode.AlwaysUseLastFetchedValue || (newModel.Report.Overview.MeasuredAt >= cachedModel.Report.Overview.MeasuredAt))
+                if (!found || openWeatherMapOptions.Value.FetchMode == Enumerations.FetchMode.AlwaysUseLastFetchedValue || (newModel.Current.MeasuredAt >= cachedModel.Current.MeasuredAt))
                 {
                     memoryCache.Set(location, newModel, new MemoryCacheEntryOptions
                     {
@@ -124,7 +122,7 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Providers
 
                     lockObj.Dispose();
 
-                    return newModel;
+                    return newModel.ToReportCacheModel();
                 }
                 else
                 {
@@ -140,7 +138,7 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Providers
 
                     lockObj.Dispose();
 
-                    return cachedModel;
+                    return cachedModel.ToReportCacheModel();
                 }
             }
             catch (System.Exception exception)
@@ -149,7 +147,7 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Providers
 
                 if (found && dateTime.Subtract(cachedModel.FetchedAt).TotalMilliseconds <= openWeatherMapOptions.Value.ResiliencyPeriod)
                 {
-                    return cachedModel;
+                    return cachedModel.ToReportCacheModel();
                 }
 
                 throw exception;

@@ -21,7 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Controllers
             {
                 Id = item.Id.ToString(),
                 Name = item.Name,
-                Region = new System.Globalization.RegionInfo(item.Country),
+                ISOCountryCode = item.Country,
                 Location = new Api.Common.Models.LocationModel(item.Coord.Lat, item.Coord.Lon)
             }).ToArray();
         }
@@ -32,8 +32,6 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Controllers
             try
             {
                 var cached = await provider.GetWeatherAsync(new Api.Common.Models.LocationModel(latitude, longitude));
-
-                // TODO Ensure for current day data supply!
 
                 return cached.Report.Overview;
             }
@@ -50,8 +48,6 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Controllers
             {
                 var cached = await provider.GetWeatherAsync(key);
 
-                // TODO Ensure for current day data supply!
-
                 return cached.Report.Overview;
             }
             catch
@@ -67,8 +63,6 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Controllers
             {
                 var cached = await provider.GetWeatherAsync(new Api.Common.Models.LocationModel(latitude, longitude));
 
-                // TODO Ensure for current day data supply!
-
                 return cached.Report;
             }
             catch
@@ -83,8 +77,6 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Controllers
             try
             {
                 var cached = await provider.GetWeatherAsync(key);
-
-                // TODO Ensure for current day data supply!
 
                 return cached.Report;
             }

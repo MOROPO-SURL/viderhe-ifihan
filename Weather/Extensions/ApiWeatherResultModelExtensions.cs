@@ -4,34 +4,71 @@
     {
         internal static Models.WeatherReportCacheModel ToReportCacheModel(this Models.OWM.ApiWeatherResultModel target)
         {
-            var weatherCurrentCondition = target.Current.WeatherConditions[0];
-
             var result = new Models.WeatherReportCacheModel
             {
                 PorvisionService = Enumerations.PorvisionService.OpenWeatherMap,
-                FetchedAt = System.DateTime.Now,
-                Report = new Api.Common.Models.WeatherReportModel
-                {
-                    Overview = new Api.Common.Models.WeatherOverviewModel
-                    {
-                        MeasuredAt = System.DateTimeOffset.FromUnixTimeSeconds(target.Current.MeasuredAt).UtcDateTime.ToLocalTime(),
-                        ConditionId = weatherCurrentCondition.Id,
-                        ConditionDetail = weatherCurrentCondition.Detail,
-                        Temperature = target.Current.Temperature,
-                        TemperatureFeelLike = target.Current.TemperatureFeelLike,
-                        SunRiseAt = System.DateTimeOffset.FromUnixTimeSeconds(target.Current.SunRiseAt).UtcDateTime.ToLocalTime(),
-                        SunSetAt = System.DateTimeOffset.FromUnixTimeSeconds(target.Current.SunSetAt).UtcDateTime.ToLocalTime(),
-                        CloudDensity = target.Current.CloudDensity,
-                        Humidity = target.Current.Humidity,
-                        Pressure = target.Current.Pressure,
-                        Visibility = target.Current.Visibility,
-                        UltravioletIndex = target.Current.UltravioletIndex,
-                        DewPoint = target.Current.DewPoint,
-                        WindSpeed = target.Current.WindSpeed,
-                        WindDegrees = target.Current.WindDegrees
-                    }
-                }
+                Report = new Api.Common.Models.WeatherReportModel()
             };
+
+            Models.OWM.DailyWeatherModel closerDailyWeather = null;
+
+            foreach (var item in target.Dailys)
+            {
+                closerDailyWeather = item;
+
+                var dailyMeasuredAt = System.DateTimeOffset.FromUnixTimeSeconds(closerDailyWeather.MeasuredAt).UtcDateTime.ToLocalTime();
+
+                if (target.FetchedAt.Date == dailyMeasuredAt.Date) break;
+            }
+
+            var dailyWeatherCurrentCondition = closerDailyWeather.WeatherConditions[0];
+
+            var nowTime = System.DateTime.Now.TimeOfDay;
+
+            result.Report.Overview = new Api.Common.Models.WeatherOverviewModel
+            {
+                MeasuredAt = System.DateTimeOffset.FromUnixTimeSeconds(closerDailyWeather.MeasuredAt).UtcDateTime.ToLocalTime(),
+                SunRiseAt = System.DateTimeOffset.FromUnixTimeSeconds(closerDailyWeather.SunRiseAt).UtcDateTime.ToLocalTime(),
+                SunSetAt = System.DateTimeOffset.FromUnixTimeSeconds(closerDailyWeather.SunSetAt).UtcDateTime.ToLocalTime(),
+                ConditionId = dailyWeatherCurrentCondition.Id,
+                ConditionDetail = dailyWeatherCurrentCondition.Detail,
+                CloudDensity = closerDailyWeather.CloudDensity,
+                DewPoint = closerDailyWeather.DewPoint,
+                Humidity = closerDailyWeather.Humidity,
+                Pressure = closerDailyWeather.Pressure,
+                UltravioletIndex = closerDailyWeather.UltravioletIndex,
+                WindDegrees = closerDailyWeather.WindDegrees,
+                WindSpeed = closerDailyWeather.WindSpeed,
+                Visibility = target.Current.Visibility,
+                MinTemperature = closerDailyWeather.TemperatureSummary.Min,
+                MaxTemperature = closerDailyWeather.TemperatureSummary.Max
+            };
+
+            if (nowTime.Hours < 11)
+            {
+                result.Report.Overview.Temperature = closerDailyWeather.TemperatureSummary.Morning;
+                result.Report.Overview.TemperatureFeelLike = closerDailyWeather.TemperatureFeelLike.Morning;
+            }
+            else if (nowTime.Hours < 17)
+            {
+                result.Report.Overview.Temperature = closerDailyWeather.TemperatureSummary.Day;
+                result.Report.Overview.TemperatureFeelLike = closerDailyWeather.TemperatureFeelLike.Day;
+            }
+            else if (nowTime.Hours < 21)
+            {
+                result.Report.Overview.Temperature = closerDailyWeather.TemperatureSummary.Evening;
+                result.Report.Overview.TemperatureFeelLike = closerDailyWeather.TemperatureFeelLike.Evening;
+            }
+            else
+            {
+                result.Report.Overview.Temperature = closerDailyWeather.TemperatureSummary.Night;
+                result.Report.Overview.TemperatureFeelLike = closerDailyWeather.TemperatureFeelLike.Night;
+            }
+
+            if (target.FetchedAt.Date == result.Report.Overview.MeasuredAt.Date)
+            {
+                result.Report.Overview.Temperature = target.Current.Temperature;
+            }
 
             return result;
         }

@@ -16,6 +16,10 @@
 
         public float TemperatureFeelLike { get; set; }
 
+        public float MinTemperature { get; set; }
+
+        public float MaxTemperature { get; set; }
+
         public int Pressure { get; set; }
 
         public int Humidity { get; set; }

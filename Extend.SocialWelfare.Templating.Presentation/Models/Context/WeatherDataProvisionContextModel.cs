@@ -2,7 +2,11 @@
 {
     public class WeatherDataProvisionContextModel : Common.Templating.Presentation.Models.Context.AbstractScreenTimedPlacardContextModel
     {
-        public System.Uri WeatherCacheMicroServerUri { get; set; }
+        public string WeatherCacheMicroServerHost { get; set; }
+
+        public bool IsWeatherCacheMicroServerRequireSecureConnection { get; set; }
+
+        public bool IsWeatherCacheMicroServerSecureConnectionStrict { get; set; }
 
         public Enumerations.WeatherDataProvisionService Service { get; set; }
 

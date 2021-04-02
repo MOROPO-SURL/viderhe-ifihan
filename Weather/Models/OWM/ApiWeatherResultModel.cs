@@ -2,6 +2,13 @@
 {
     public class ApiWeatherResultModel
     {
+        public ApiWeatherResultModel()
+        {
+            FetchedAt = System.DateTime.MinValue;
+        }
+
+        public System.DateTime FetchedAt { get; set; }
+
         [Newtonsoft.Json.JsonProperty("lat")]
         public double Latitude { get; set; }
 
