@@ -11,15 +11,6 @@
     x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Presentation.Pages.SimpleHighlightsOverlayConfigurationPage"
     x:TypeArguments="pagemodels:SimpleHighlightsOverlayConfigurationPageModel"
     Title="Configurar Mascara (Cinta Informativa Simple)">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Frame">
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="HasShadow" Value="False" />
-                <Setter Property="CornerRadius" Value="0" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem 
             Text="Aplicar"
@@ -63,13 +54,17 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Frame Grid.Column="0" Grid.Row="0">
+                    <Frame 
+                        Grid.Column="0" Grid.Row="0"
+                        Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Cabecera" Style="{StaticResource FormLabel}" />
                             <Entry Text="{Binding Path=Header}" />
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.ColumnSpan="2" Grid.Row="1">
+                    <Frame 
+                        Grid.ColumnSpan="2" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Información" Style="{StaticResource FormLabel}" />
                             <Editor HeightRequest="180" Text="{Binding Path=Highlights}" />

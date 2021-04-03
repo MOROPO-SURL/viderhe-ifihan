@@ -284,6 +284,24 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                         var assembly = System.Reflection.Assembly.LoadFrom(extensionLibraryFileInfo.FullName);
 
                         System.AppDomain.CurrentDomain.Load(assembly.GetName());
+
+                        var attributes = assembly.GetCustomAttributesSafe(typeof(Xamarin.Forms.ExportFontAttribute));
+
+                        if (attributes == null || attributes.Length == 0) continue;
+
+                        var length = attributes.Length;
+
+                        for (var i = 0; i < length; i++)
+                        {
+                            var a = attributes[i];
+
+                            var attribute = a as Xamarin.Forms.HandlerAttribute;
+                            
+                            if (attribute == null && (a is Xamarin.Forms.ExportFontAttribute fa))
+                            {
+                                Xamarin.Forms.Internals.FontRegistrar.Register(fa, assembly);
+                            }
+                        }
                     }
                 }
 

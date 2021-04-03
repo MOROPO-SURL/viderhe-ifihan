@@ -19,9 +19,6 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Image 
-                Grid.ColumnSpan="2" Grid.RowSpan="2"
-                Source="{Binding Path=Template.ThumbnailImageSource}" />
         </Grid>
     </ContentView.Content>
 </xftoolkitmvvmviews:ContentView>

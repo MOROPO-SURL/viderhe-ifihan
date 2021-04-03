@@ -10,8 +10,7 @@
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views.PortraitPlacardThumbnailWrapView"
     HorizontalOptions="Center"
     BackgroundColor="Black"
-    WidthRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-    Content="{Binding Converter={StaticResource PlacardViewModelToPlacardThumbnailViewConverter}}">
+    WidthRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}">
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:PlacardViewModelToPlacardThumbnailViewConverter x:Key="PlacardViewModelToPlacardThumbnailViewConverter" />
@@ -19,4 +18,12 @@
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
+    <ContentView.Content>
+        <Grid>
+            <ContentView Content="{Binding Converter={StaticResource PlacardViewModelToPlacardThumbnailViewConverter}}" />
+            <Image 
+                BackgroundColor="#99000000"
+                Source="{Binding Path=Template.ThumbnailImageSource}" />
+        </Grid>
+    </ContentView.Content>
 </ContentView>

@@ -14,7 +14,6 @@
                 x:Name="Image"
                 CacheType="Disk"
                 CacheDuration="8760:00:00" />
-            <Image Source="{Binding Path=Template.ThumbnailImageSource}" />
         </Grid>
     </ContentView.Content>
 </xftoolkitmvvmviews:ContentView>

@@ -14,11 +14,6 @@
     x:TypeArguments="pagemodels:CreateSimpleVideoPlacardPageModel">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style TargetType="Frame">
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="HasShadow" Value="False" />
-                <Setter Property="CornerRadius" Value="0" />
-            </Style>
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -65,7 +60,9 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Frame Grid.ColumnSpan="2" Grid.Row="0">
+                    <Frame 
+                        Grid.ColumnSpan="2" Grid.Row="0"
+                        Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Etiqueta" Style="{StaticResource FormLabel}" />
                             <Entry Text="{Binding Path=Label}" />
@@ -73,6 +70,7 @@
                     </Frame>
                     <Frame 
                         Grid.Column="0" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}"
                         VerticalOptions="Start">
                         <StackLayout>
                             <Label Text="Video" Style="{StaticResource FormLabel}" />
@@ -85,6 +83,7 @@
                     </Frame>
                     <Frame 
                         Grid.Column="1" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}"
                         VerticalOptions="Start">
                         <StackLayout>
                             <Label Text="A Pantalla Completa" Style="{StaticResource FormLabel}" />
