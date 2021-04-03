@@ -2,17 +2,20 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:renderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Player.Views.Rendered"
     xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     xmlns:supportpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
-    mc:Ignorable="d"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Player.Pages.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
             <supportpresentationviews:IdentityBackgroundView />
-            <Grid Margin="45">
+            <Grid Margin="{Binding Source={x:RelativeSource AncestorType={x:Type ContentPage}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=20}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
