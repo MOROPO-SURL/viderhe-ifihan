@@ -1,4 +1,5 @@
 ﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Extensions;
+using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
 using System.Linq;
 using Xamarin.Forms;
 
@@ -195,6 +196,24 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                         var assembly = System.Reflection.Assembly.LoadFrom(extensionLibraryFileInfo.FullName);
 
                         System.AppDomain.CurrentDomain.Load(assembly.GetName());
+
+                        var attributes = assembly.GetCustomAttributesSafe(typeof(ExportFontAttribute));
+
+                        if (attributes == null || attributes.Length == 0) continue;
+
+                        var length = attributes.Length;
+
+                        for (var i = 0; i < length; i++)
+                        {
+                            var a = attributes[i];
+
+                            var attribute = a as HandlerAttribute;
+
+                            if (attribute == null && (a is ExportFontAttribute fa))
+                            {
+                                Xamarin.Forms.Internals.FontRegistrar.Register(fa, assembly);
+                            }
+                        }
                     }
                 }
             }
