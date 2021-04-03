@@ -32,8 +32,7 @@
 
         private void OverlayViewTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
         {
-            // TODO Present Tour Menu PopUp !!
-            Xamarin.Forms.Application.Current.MainPage.DisplayAlert("Información", "Has tocado la pantalla!!", "Aceptar");
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Pages.PopUp.NMTourPopUpPage());
         }
 
         public override void ShowIn()

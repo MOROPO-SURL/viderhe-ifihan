@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages.PopUp.NMTourPopUpPage">
+    <ContentPage.Content>
+        <StackLayout 
+            VerticalOptions="Center" HorizontalOptions="Center" 
+            Margin="20">
+            <Frame Padding="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Row="1"
+                        Text="Complejo Audiovisual"
+                        HorizontalTextAlignment="Center" />
+                    <Label
+                        Grid.Row="1"
+                        Text="Nuevo Mundo"
+                        HorizontalOptions="Center" />
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</popup:PopupPage>
