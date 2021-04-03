@@ -2,16 +2,14 @@
 <Application 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
+    xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Player.App">
     <Application.Resources>
         <OnPlatform x:Key="IconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons" />
         
         <Style x:Key="ConfigurationStepSubtitleLabelStyle" TargetType="Label">
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="FontSize" Value="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalHeaderTextFontSize}" />
         </Style>
 
         <Style x:Key="ConfigurationStepDataIconLabelStyle" TargetType="Label">
@@ -22,7 +20,7 @@
             <Setter Property="FontSize">
                 <Setter.Value>
                     <OnPlatform x:TypeArguments="x:Double">
-                        <On Platform="UWP" Value="64" />
+                        <On Platform="UWP" Value="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalHeroTextFontSize}" />
                     </OnPlatform>
                 </Setter.Value>
             </Setter>
@@ -31,12 +29,12 @@
         <Style x:Key="ConfigurationStepDataCaptionLabelStyle" TargetType="Label">
             <Setter Property="Margin" Value="0,20,0,0" />
             <Setter Property="TextColor" Value="WhiteSmoke" />
-            <Setter Property="FontSize" Value="Title" />
+            <Setter Property="FontSize" Value="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.MiddleHeaderTextFontSize}" />
         </Style>
 
         <Style x:Key="ConfigurationStepDataValueLabelStyle" TargetType="Label">
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="FontSize" Value="Title" />
+            <Setter Property="FontSize" Value="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.MiddleHeaderTextFontSize}" />
             <Setter Property="FontAttributes" Value="Bold" />
         </Style>
 
@@ -52,7 +50,7 @@
             <Setter Property="TextColor" Value="White" />
             <Setter Property="VerticalTextAlignment" Value="Center" />
             <Setter Property="FontFamily" Value="{StaticResource IconFontFamily}" />
-            <Setter Property="FontSize" Value="72" />
+            <Setter Property="FontSize" Value="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.MiddleHeroTextFontSize}" />
         </Style>
 
         <Style x:Key="ConfigurationStepGraphPlayerLabelStyle" TargetType="Label">

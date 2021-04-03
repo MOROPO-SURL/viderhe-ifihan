@@ -10,15 +10,6 @@
     mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ConfigureScreenplayPage"
     x:TypeArguments="pagemodels:ConfigureScreenplayPageModel">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Frame">
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="HasShadow" Value="False" />
-                <Setter Property="CornerRadius" Value="0" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem 
             Text="Aplicar"
@@ -52,13 +43,17 @@
             <supportpresentationdashboardviews:BackgroundView />
             <ScrollView>
                 <StackLayout Padding="10" Spacing="10">
-                    <Frame Grid.Column="0" Grid.Row="0">
+                    <Frame 
+                        Grid.Column="0" Grid.Row="0"
+                        Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Nombre" Style="{StaticResource FormLabel}" />
                             <Entry Text="{Binding Path=Title}" />
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2">
+                    <Frame 
+                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2"
+                        Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Descripción" Style="{StaticResource FormLabel}" />
                             <Editor HeightRequest="180" Text="{Binding Path=About}" />

@@ -102,6 +102,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\HostEnvironmentInfoProvider.cs" />
+    <Compile Include="Providers\StaticResourceProvider.cs" />
     <Compile Include="Views\Renderer\FontOverflowLabelRenderer.cs" />
     <Compile Include="Views\Renderer\IndeterminableProgressBarViewRenderer.cs" />
     <Compile Include="Views\Renderer\RingActivityIndicatorRenderer.cs" />
@@ -236,6 +237,10 @@
     <ProjectReference Include="..\..\Extend.SocialWelfare\Extend.SocialWelfare.csproj">
       <Project>{1d32ffd3-3663-4ba4-926a-3b08087f1baa}</Project>
       <Name>Extend.SocialWelfare</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj">
+      <Project>{44A1EA24-59C5-4E9D-AF01-C65297998114}</Project>
+      <Name>Support.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\Terminal.Player\Terminal.Player.csproj">
       <Project>{7A9D6479-B48F-4003-86AB-291C95D9AC63}</Project>
