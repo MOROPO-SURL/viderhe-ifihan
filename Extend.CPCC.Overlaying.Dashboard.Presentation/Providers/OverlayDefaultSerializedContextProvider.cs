@@ -11,7 +11,20 @@
                     ServerName = "sgc.elcallejon.net",
                     IsSecureServer = false,
                     Tail = accountInformationProvider.Name,
-                    AdviseSeparator = "|"
+                    Separator = "|"
+                };
+
+                return Newtonsoft.Json.JsonConvert.SerializeObject(model);
+            }
+
+            if (descriptor.Id == Descriptors.NMTourOverlayDescriptor.ID)
+            {
+                var model = new Overlaying.Presentation.Models.Context.NMTourOverlayContextModel
+                {
+                    ServerName = "sgc.elcallejon.net",
+                    IsSecureServer = false,
+                    Tail = accountInformationProvider.Name,
+                    Separator = "|"
                 };
 
                 return Newtonsoft.Json.JsonConvert.SerializeObject(model);

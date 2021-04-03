@@ -4,45 +4,29 @@
     {
         internal static readonly double MOTION_TRANSLATION = 80;
 
+        private readonly Models.Context.AdvicesMarqueeOverlayContextModel model;
+
         public AdvicesMarqueeOverlayView(Models.Context.AdvicesMarqueeOverlayContextModel model)
         {
+            this.model = model;
+
             InitializeComponent();
 
             BindingContext = new Models.View.AdvicesMarqueeOverlayViewModel();
+
+            UpdateInLineAdvises(model.FailbackMessage);
 
             System.Threading.Tasks.Task.Run(() =>
             {
                 return SAPRESSC.Business.Billboard.CPCC.Web.Api.Client.AdvisesApiClient.Get(new System.Uri(string.Format("{0}://{1}", model.IsSecureServer ? "https" : "http", model.ServerName)));
             }).ContinueWith(task =>
             {
-                if (task.Exception != null || task.IsCanceled || task.Result == null)
+                if (task.Exception != null || task.IsCanceled || task.Result == null) return;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => 
                 {
-                    (BindingContext as Models.View.AdvicesMarqueeOverlayViewModel).InLineAdvices = "Dirección del servidor no válida o servicio no disponible ...";
-
-                    return;
-                }
-
-                var formattedSeparator = string.Format(" {0} ", model.AdviseSeparator);
-
-                var textBuilder = new System.Text.StringBuilder();
-
-                if (!string.IsNullOrEmpty(model.Head) && !string.IsNullOrWhiteSpace(model.Head))
-                {
-                    textBuilder.Append(model.Head);
-
-                    textBuilder.Append(formattedSeparator);
-                }
-
-                textBuilder.Append(string.Join(model.AdviseSeparator, task.Result));
-
-                if (!string.IsNullOrEmpty(model.Tail) && !string.IsNullOrWhiteSpace(model.Tail))
-                {
-                    textBuilder.Append(formattedSeparator);
-
-                    textBuilder.Append(model.Tail);
-                }
-
-                (BindingContext as Models.View.AdvicesMarqueeOverlayViewModel).InLineAdvices = textBuilder.ToString();
+                    UpdateInLineAdvises(string.Join(string.Format(" {0} ", model.Separator), task.Result));
+                });
             });
         }
 
@@ -68,6 +52,31 @@
             };
 
             animation.Begin();
+        }
+
+        private void UpdateInLineAdvises(string body)
+        {
+            var formattedSeparator = string.Format(" {0} ", model.Separator);
+
+            var textBuilder = new System.Text.StringBuilder();
+
+            if (!string.IsNullOrEmpty(model.Head) && !string.IsNullOrWhiteSpace(model.Head))
+            {
+                textBuilder.Append(model.Head);
+
+                textBuilder.Append(formattedSeparator);
+            }
+
+            textBuilder.Append(body);
+
+            if (!string.IsNullOrEmpty(model.Tail) && !string.IsNullOrWhiteSpace(model.Tail))
+            {
+                textBuilder.Append(formattedSeparator);
+
+                textBuilder.Append(model.Tail);
+            }
+
+            (BindingContext as Models.View.AdvicesMarqueeOverlayViewModel).InLineAdvices = textBuilder.ToString();
         }
     }
 }

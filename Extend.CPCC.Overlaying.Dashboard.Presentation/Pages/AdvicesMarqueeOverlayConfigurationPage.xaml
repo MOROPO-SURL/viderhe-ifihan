@@ -2,23 +2,11 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Dashboard.Presentation.Models.Page"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
-    mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Dashboard.Presentation.Pages.AdvicesMarqueeOverlayConfigurationPage"
     x:TypeArguments="pagemodels:AdvicesMarqueeOverlayConfigurationPageModel">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style TargetType="Frame">
-                <Setter Property="BackgroundColor" Value="White" />
-                <Setter Property="HasShadow" Value="False" />
-                <Setter Property="CornerRadius" Value="0" />
-            </Style>
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem 
             Text="Aplicar"
@@ -58,6 +46,7 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -65,34 +54,63 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Frame Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0">
+                    <Frame 
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"
+                        Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Nombre del Servidor" Style="{StaticResource FormLabel}" />
                             <Entry Text="{Binding Path=ServerName}" />
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Column="2" Grid.Row="0">
+                    <Frame 
+                        Grid.Column="2" Grid.Row="0"
+                        Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Servidor Seguro?" Style="{StaticResource FormLabel}" />
-                            <Switch IsToggled="{Binding Path=AdviseSeparator}" />
+                            <Label Text="Servidor Seguro" Style="{StaticResource FormLabel}" />
+                            <Switch IsToggled="{Binding Path=IsSecureServer}" />
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1">
+                    <Frame 
+                        Grid.Column="3" Grid.Row="0"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Servidor con Seguridad Estricta" Style="{StaticResource FormLabel}" />
+                            <Switch 
+                                IsEnabled="{Binding Path=IsSecureServer}"
+                                IsToggled="{Binding Path=IsRequiredSecurityStrict}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Cabeza de Avisos" Style="{StaticResource FormLabel}" />
                             <Entry Text="{Binding Path=Head}" />
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2">
+                    <Frame 
+                        Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2"
+                        Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Cola de Avisos" Style="{StaticResource FormLabel}" />
                             <Entry Text="{Binding Path=Tail}" />
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Column="0" Grid.Row="3">
+                    <Frame 
+                        Grid.Column="0" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
                         <StackLayout>
                             <Label Text="Separador de Avisos" Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=AdviseSeparator}" />
+                            <Entry Text="{Binding Path=Separator}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Mensaje de Respaldo" Style="{StaticResource FormLabel}" />
+                            <Editor HeightRequest="180" Text="{Binding Path=FailbackMessage}" />
                         </StackLayout>
                     </Frame>
                 </Grid>

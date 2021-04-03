@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommonoverlayingpresentationviews:BaseOverlayView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:extendcommonoverlayingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation"
+    xmlns:extendcommonoverlayingpresentationbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation"
+    xmlns:extendcommonoverlayingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation"
+    xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
+    xmlns:sscxftoolkitpresentationtransformbehaviors="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Behaviors;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
+    xmlns:sscxftoolkitpresentationtransformanimations="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ns="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views"
+    mc:Ignorable="d"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views.NMTourOverlayView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <extendcommonoverlayingpresentationconverters:TextToAbsoluteLayoutBoundsConverter x:Key="TextToAbsoluteLayoutBoundsConverter" />
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Behaviors>
+        <sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior>
+            <sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior.Animation>
+                <sscxftoolkitpresentationtransformanimations:TranslateToAnimation 
+                    Target="{x:Reference InLineAdvicesLayout}" 
+                    Delay="5000"
+                    EasingType="CubicOut" 
+                    TranslateY="0" />
+            </sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior.Animation>
+        </sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior>
+    </ContentView.Behaviors>
+    <ContentView.GestureRecognizers>
+        <TapGestureRecognizer Tapped="OverlayViewTapGestureRecognizer_Tapped" />
+    </ContentView.GestureRecognizers>
+    <ContentView.Content>
+        <StackLayout Spacing="0">
+            <StackLayout
+                HorizontalOptions="End" VerticalOptions="StartAndExpand"
+                Margin="{Binding Source={x:RelativeSource AncestorType={x:Type ContentView}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=20}"
+                BackgroundColor="#99000000"
+                Padding="8"
+                Orientation="Horizontal">
+                <Label
+                    Text="&#xf740;"
+                    TextColor="White"
+                    FontFamily="{StaticResource IconFontFamily}"
+                    FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.LargeHeaderTextFontSize}"/>
+                <Label
+                    VerticalOptions="Center"
+                    Margin="0,0,4,0"
+                    Text="toca la pantalla para interactuar"
+                    TextColor="White"
+                    FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.SmallHeaderTextFontSize}"/>
+            </StackLayout>
+            <Grid 
+                x:Name="InLineAdvicesLayout"
+                TranslationY="{x:Static ns:NMTourOverlayView.INLINEADVICES_LAYOUT_MOTION_TRANSLATION}"
+                ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid
+                    Grid.Column="1" Grid.ColumnSpan="2"                
+                    BackgroundColor="#FFA0A0A0">
+                    <AbsoluteLayout VerticalOptions="Center">
+                        <Label
+                            AbsoluteLayout.LayoutFlags="None"
+                            AbsoluteLayout.LayoutBounds="{Binding Path=InLineAdvices, Converter={StaticResource TextToAbsoluteLayoutBoundsConverter}}"
+                            Padding="0,10"
+                            Text="{Binding Path=InLineAdvices}"
+                            TextColor="Black"
+                            LineBreakMode="NoWrap">
+                            <Label.Behaviors>
+                                <extendcommonoverlayingpresentationbehaviors:MarqueeLabelBehavior />
+                            </Label.Behaviors>
+                        </Label>
+                    </AbsoluteLayout>
+                </Grid>
+                <Polygon
+                    Grid.Column="1"
+                    Fill="Black"
+                    Points="0 0, 15 0, 0 40"/>
+                <Polygon
+                    Grid.Column="1"
+                    Fill="#A0A0A0"
+                    Points="15 0, 25 0, 15 40, 0 40"/>
+                <Polygon
+                    Grid.Column="1"
+                    Fill="#2A2A2A"
+                    Points="25 0, 60 0, 45 40, 10 40"/>
+                <Label 
+                    Grid.Column="0"
+                    BackgroundColor="Black"
+                    Padding="12,10"
+                    Text="Avisos en Cartelera"
+                    TextColor="White"
+                    FontAttributes="Bold" />
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</extendcommonoverlayingpresentationviews:BaseOverlayView>

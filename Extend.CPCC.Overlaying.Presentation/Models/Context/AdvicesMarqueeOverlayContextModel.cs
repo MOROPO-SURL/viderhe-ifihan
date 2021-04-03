@@ -6,10 +6,14 @@
 
         public bool IsSecureServer { get; set; }
 
+        public bool IsRequiredSecurityStrict { get; set; }
+
         public string Head { get; set; }
 
         public string Tail { get; set; }
 
-        public string AdviseSeparator { get; set; }
+        public string Separator { get; set; }
+
+        public string FailbackMessage { get; set; }
     }
 }

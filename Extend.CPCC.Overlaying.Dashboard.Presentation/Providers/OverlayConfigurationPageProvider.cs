@@ -9,6 +9,11 @@
                 return new Pages.AdvicesMarqueeOverlayConfigurationPage(serializedContext, successfulCompleteCallbackAction);
             }
 
+            if (overlayDescriptor.Id == Descriptors.NMTourOverlayDescriptor.ID)
+            {
+                return new Pages.NMTourOverlayConfigurationPage(serializedContext, successfulCompleteCallbackAction);
+            }
+
             return null;
         }
     }

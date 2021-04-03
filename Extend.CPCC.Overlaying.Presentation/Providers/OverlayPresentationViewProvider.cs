@@ -9,9 +9,9 @@
                 return new Views.AdvicesMarqueeOverlayView(Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.AdvicesMarqueeOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext));
             }
 
-            if (accountInformationProvider.AccountDefaultOverlayId.Value == Descriptors.TourOverlayDescriptor.ID)
+            if (accountInformationProvider.AccountDefaultOverlayId.Value == Descriptors.NMTourOverlayDescriptor.ID)
             {
-                return new Views.TourOverlayView(accountInformationProvider);
+                return new Views.NMTourOverlayView(Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.NMTourOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext));
             }
 
             return null;

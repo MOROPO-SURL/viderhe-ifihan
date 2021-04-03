@@ -10,9 +10,11 @@
             {
                 ServerName = context.ServerName,
                 IsSecureServer = context.IsSecureServer,
+                IsRequiredSecurityStrict = context.IsRequiredSecurityStrict,
                 Head = context.Head,
                 Tail = context.Tail,
-                AdviseSeparator = context.AdviseSeparator
+                Separator = context.Separator,
+                FailbackMessage = context.FailbackMessage
             };
         }
     }

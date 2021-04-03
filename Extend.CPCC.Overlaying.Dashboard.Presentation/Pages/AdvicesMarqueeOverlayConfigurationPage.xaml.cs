@@ -24,9 +24,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Dashboard.Presentat
             {
                 ServerName = BindingContextPageModel.ServerName?.Trim(),
                 IsSecureServer = BindingContextPageModel.IsSecureServer,
+                IsRequiredSecurityStrict = BindingContextPageModel.IsRequiredSecurityStrict,
                 Head = BindingContextPageModel.Head?.Trim(),
                 Tail = BindingContextPageModel.Tail?.Trim(),
-                AdviseSeparator = BindingContextPageModel.AdviseSeparator?.Trim()
+                Separator = BindingContextPageModel.Separator?.Trim(),
+                FailbackMessage = BindingContextPageModel.FailbackMessage
             }));
         }
 

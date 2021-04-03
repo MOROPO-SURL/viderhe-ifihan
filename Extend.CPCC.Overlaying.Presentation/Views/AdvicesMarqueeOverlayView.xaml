@@ -9,11 +9,11 @@
     xmlns:extendcommonoverlayingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation"
     xmlns:sscxftoolkitpresentationtransformbehaviors="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Behaviors;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
     xmlns:sscxftoolkitpresentationtransformanimations="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
-    xmlns:local="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views"
+    xmlns:ns="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views"
     mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views.AdvicesMarqueeOverlayView"
     x:Name="View"
-    TranslationY="{x:Static local:AdvicesMarqueeOverlayView.MOTION_TRANSLATION}">
+    TranslationY="{x:Static ns:AdvicesMarqueeOverlayView.MOTION_TRANSLATION}">
     <ContentView.Resources>
         <ResourceDictionary>
             <extendcommonoverlayingpresentationconverters:TextToAbsoluteLayoutBoundsConverter x:Key="TextToAbsoluteLayoutBoundsConverter" />
