@@ -1,0 +1,17 @@
+﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages
+{
+    public partial class ProjectWebPortalPage : XFToolKit.Mvvm.Pages.ContentPage
+    {
+        public ProjectWebPortalPage()
+        {
+            InitializeComponent();
+        }
+
+        private void CloseButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPopModalPageAsync();
+        }
+    }
+}

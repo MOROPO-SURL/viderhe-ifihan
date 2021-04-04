@@ -32,7 +32,28 @@
 
         private void OverlayViewTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
         {
-            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Pages.PopUp.NMTourPopUpPage());
+            var animation = new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            {
+                Target = InterationIndicationLayout,
+                Opacity = 0,
+                Duration = "100"
+            };
+
+            animation.Begin();
+
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Pages.PopUp.NMTourPopUpPage(InteractivePresentationComplete_Callback));
+        }
+
+        private void InteractivePresentationComplete_Callback()
+        {
+            var animation = new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            {
+                Target = InterationIndicationLayout,
+                Opacity = 1,
+                Duration = "180"
+            };
+
+            animation.Begin();
         }
 
         public override void ShowIn()

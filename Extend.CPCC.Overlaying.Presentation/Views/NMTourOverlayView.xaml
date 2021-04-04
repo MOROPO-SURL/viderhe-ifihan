@@ -30,6 +30,15 @@
                     TranslateY="0" />
             </sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior.Animation>
         </sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior>
+        <sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior>
+            <sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior.Animation>
+                <sscxftoolkitpresentationtransformanimations:FadeToAnimation 
+                    Target="{x:Reference InterationIndicationLayout}" 
+                    Delay="5300"
+                    Duration="180"
+                    Opacity="1" />
+            </sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior.Animation>
+        </sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior>
     </ContentView.Behaviors>
     <ContentView.GestureRecognizers>
         <TapGestureRecognizer Tapped="OverlayViewTapGestureRecognizer_Tapped" />
@@ -37,10 +46,12 @@
     <ContentView.Content>
         <StackLayout Spacing="0">
             <StackLayout
+                x:Name="InterationIndicationLayout"
                 HorizontalOptions="End" VerticalOptions="StartAndExpand"
                 Margin="{Binding Source={x:RelativeSource AncestorType={x:Type ContentView}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=20}"
                 BackgroundColor="#99000000"
                 Padding="8"
+                Opacity="0"
                 Orientation="Horizontal">
                 <Label
                     Text="&#xf740;"
@@ -50,9 +61,9 @@
                 <Label
                     VerticalOptions="Center"
                     Margin="0,0,4,0"
-                    Text="toca la pantalla para interactuar"
+                    Text="toca la pantalla para comenzar"
                     TextColor="White"
-                    FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.SmallHeaderTextFontSize}"/>
+                    FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.TinyHeaderTextFontSize}" />
             </StackLayout>
             <Grid 
                 x:Name="InLineAdvicesLayout"
