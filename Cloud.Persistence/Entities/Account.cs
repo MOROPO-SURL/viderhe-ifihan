@@ -25,10 +25,15 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey("LogoId")]
         public SAPRESSC.Middleware.Media.Persistence.Entities.Image Logo { get; set; }
 
-        public System.Guid SplashId { get; set; }
+        public System.Guid HorizontalSplashId { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("SplashId")]
-        public SAPRESSC.Middleware.Media.Persistence.Entities.Image Splash { get; set; }
+        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("HorizontalSplashId")]
+        public SAPRESSC.Middleware.Media.Persistence.Entities.Image HorizontalSplash { get; set; }
+
+        public System.Guid VerticalSplashId { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("VerticalSplashId")]
+        public SAPRESSC.Middleware.Media.Persistence.Entities.Image VerticalSplash { get; set; }
 
         public System.Guid? DefaultOverlayId { get; set; }
 

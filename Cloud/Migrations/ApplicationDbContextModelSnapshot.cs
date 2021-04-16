@@ -791,6 +791,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.Property<bool>("Enabled")
                         .HasColumnName("enabled");
 
+                    b.Property<Guid>("HorizontalSplashId")
+                        .HasColumnName("horizontalsplashid");
+
                     b.Property<Guid>("LogoId")
                         .HasColumnName("logoid");
 
@@ -816,8 +819,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .IsRequired()
                         .HasColumnName("signature");
 
-                    b.Property<Guid>("SplashId")
-                        .HasColumnName("splashid");
+                    b.Property<Guid>("VerticalSplashId")
+                        .HasColumnName("verticalsplashid");
 
                     b.HasKey("Id")
                         .HasName("pk_accounts");
@@ -825,11 +828,14 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("DefaultOverlayId")
                         .HasName("ix_accounts_defaultoverlayid");
 
+                    b.HasIndex("HorizontalSplashId")
+                        .HasName("ix_accounts_horizontalsplashid");
+
                     b.HasIndex("LogoId")
                         .HasName("ix_accounts_logoid");
 
-                    b.HasIndex("SplashId")
-                        .HasName("ix_accounts_splashid");
+                    b.HasIndex("VerticalSplashId")
+                        .HasName("ix_accounts_verticalsplashid");
 
                     b.ToTable("accounts");
                 });
@@ -1477,16 +1483,22 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .HasForeignKey("DefaultOverlayId")
                         .HasConstraintName("fk_accounts_overlays_defaultoverlayid");
 
+                    b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Image", "HorizontalSplash")
+                        .WithMany()
+                        .HasForeignKey("HorizontalSplashId")
+                        .HasConstraintName("fk_accounts_images_horizontalsplashid")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Image", "Logo")
                         .WithMany()
                         .HasForeignKey("LogoId")
                         .HasConstraintName("fk_accounts_images_logoid")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Image", "Splash")
+                    b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Image", "VerticalSplash")
                         .WithMany()
-                        .HasForeignKey("SplashId")
-                        .HasConstraintName("fk_accounts_images_splashid")
+                        .HasForeignKey("VerticalSplashId")
+                        .HasConstraintName("fk_accounts_images_verticalsplashid")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

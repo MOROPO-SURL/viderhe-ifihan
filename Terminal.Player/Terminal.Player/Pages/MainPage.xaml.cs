@@ -63,7 +63,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                         var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(Placards.ToArray(), ScreenplayPresentationCompleteCallback, true, Providers.AccountInformationProvider.Instance, Managers.ConfigurationManager.Instance, PlacardPlayingCallback, overlayView, PlacardViewTransitionComplete_Callback)
                         {
                             BackgroundColor = Managers.SessionManager.Instance.AccountPrimaryColor,
-                            BindingContext = Managers.SessionManager.Instance.AccountSplashImageSource
+                            BindingContext = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Managers.SessionManager.Instance.AccountVerticalSplashImageSource : Managers.SessionManager.Instance.AccountHorizontalSplashImageSource
                         };
 
                         this.NavigationPushModalPageAsync(screenplayPlayerPage);
@@ -253,7 +253,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                 Managers.SessionManager.Instance.AccountId = task.Result.Id;
                 Managers.SessionManager.Instance.AccountName = task.Result.Name;
                 Managers.SessionManager.Instance.AccountLogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.LogoImageId));
-                Managers.SessionManager.Instance.AccountSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.SplashImageId));
+                Managers.SessionManager.Instance.AccountHorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.HorizontalSplashImageId));
+                Managers.SessionManager.Instance.AccountVerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.VerticalSplashImageId));
                 Managers.SessionManager.Instance.AccountPrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor);
                 Managers.SessionManager.Instance.AccountSecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
                 Managers.SessionManager.Instance.AccountDefaultOverlayId = task.Result.DefaultOverlayId;

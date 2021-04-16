@@ -21,11 +21,17 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public System.Guid LogoImageId { get; set; }
 
-        public byte[] SplashImageData { get; set; }
+        public byte[] HorizontalSplashImageData { get; set; }
 
-        public string SplashImageContentType { get; set; }
+        public string HorizontalSplashImageContentType { get; set; }
 
-        public System.Guid SplashImageId { get; set; }
+        public System.Guid HorizontalSplashImageId { get; set; }
+
+        public byte[] VerticalSplashImageData { get; set; }
+
+        public string VerticalSplashImageContentType { get; set; }
+
+        public System.Guid VerticalSplashImageId { get; set; }
 
         public System.Guid? DefaultOverlayId { get; set; }
 

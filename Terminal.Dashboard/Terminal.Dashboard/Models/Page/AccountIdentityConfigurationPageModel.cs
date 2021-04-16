@@ -4,7 +4,8 @@
     {
         private string name;
         private Xamarin.Forms.ImageSource logoImageSource;
-        private Xamarin.Forms.ImageSource splashImageSource;
+        private Xamarin.Forms.ImageSource horizontalSplashImageSource;
+        private Xamarin.Forms.ImageSource verticalSplashImageSource;
         private Xamarin.Forms.Color primaryColor;
         private Xamarin.Forms.Color secoundaryColor;
         private Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay;
@@ -19,7 +20,9 @@
 
         public Xamarin.Forms.ImageSource LogoImageSource { get => logoImageSource; set => SetProperty(ref logoImageSource, value); }
 
-        public Xamarin.Forms.ImageSource SplashImageSource { get => splashImageSource; set => SetProperty(ref splashImageSource, value); }
+        public Xamarin.Forms.ImageSource HorizontalSplashImageSource { get => horizontalSplashImageSource; set => SetProperty(ref horizontalSplashImageSource, value); }
+
+        public Xamarin.Forms.ImageSource VerticalSplashImageSource { get => verticalSplashImageSource; set => SetProperty(ref verticalSplashImageSource, value); }
 
         public Xamarin.Forms.Color PrimaryColor { get => primaryColor; set => SetProperty(ref primaryColor, value); }
 

@@ -37,11 +37,17 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
         [Display(Name = "Logo")]
         public Microsoft.AspNetCore.Http.IFormFile LogoImageFile { get; set; }
 
-        public System.Guid SplashImageId { get; set; }
+        public System.Guid HorizontalSplashImageId { get; set; }
 
         [Required(ErrorMessage = "RequiredValidationErrorMessage"), FormFileContentTypes(ContentTypes = new string[] { "image/png", "image/jpeg" }, ErrorMessage = "PNG_JPEG_FileAllowedOnlyMessage.")]
-        [Display(Name = "Splash")]
-        public Microsoft.AspNetCore.Http.IFormFile SplashImageFile { get; set; }
+        [Display(Name = "Splash Horizontal")]
+        public Microsoft.AspNetCore.Http.IFormFile HorizontalSplashImageFile { get; set; }
+
+        public System.Guid VerticalSplashImageId { get; set; }
+
+        [Required(ErrorMessage = "RequiredValidationErrorMessage"), FormFileContentTypes(ContentTypes = new string[] { "image/png", "image/jpeg" }, ErrorMessage = "PNG_JPEG_FileAllowedOnlyMessage.")]
+        [Display(Name = "Splash Vertical")]
+        public Microsoft.AspNetCore.Http.IFormFile VerticalSplashImageFile { get; set; }
 
         public Persistence.Entities.Account Export()
         {
@@ -61,7 +67,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
             PrimaryColor = entity.PrimaryColor;
             SecoundaryColor = entity.SecoundaryColor;
             LogoImageId = entity.Logo != null ? entity.Logo.Id : System.Guid.Empty;
-            SplashImageId = entity.Splash != null ? entity.Splash.Id : System.Guid.Empty;
+            HorizontalSplashImageId = entity.HorizontalSplashId;
+            VerticalSplashImageId = entity.VerticalSplashId;
         }
 
         public void Mergue(Persistence.Entities.Account entity)

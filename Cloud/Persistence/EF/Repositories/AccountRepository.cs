@@ -12,7 +12,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
         {
             return base.GetQueryableDbSet()
                 .Include(entity => entity.Logo)
-                .Include(entity => entity.Splash)
+                .Include(entity => entity.HorizontalSplash)
                 .Include(entity => entity.Screenplays)
                 .Include(entity => entity.DefaultOverlay)
                 .Include(entity => entity.ExtensionBridges)
