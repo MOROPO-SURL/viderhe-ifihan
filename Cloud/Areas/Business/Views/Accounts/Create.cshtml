@@ -46,19 +46,28 @@
         <div class="card-header"><h4 style="margin-bottom: 0;">@ViewData["Title"]</h4></div>
 
         <div class="card-body">
-            <div style="margin-bottom: 20px;">
-                @Html.LabelFor(model => model.Name, new { @class = "control-label" })
-                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Name, null, new { @class = "text-danger" })
-            </div>
-
             <div class="row">
-                <div class="col-md-3 col-sm-6" style="margin-bottom: 20px;">
+                <div class="col-md-9" style="margin-bottom: 20px;">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Name, null, new { @class = "text-danger" })
+                </div>
+                <div class="col-md-3" style="margin-bottom: 20px;">
                     <div class="checkbox">
                         <label>
                             @Html.EditorFor(model => model.Enabled) Habilitada
                         </label>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6" style="margin-bottom: 20px;">
+                    <div>
+                        @Html.LabelFor(model => model.LogoImageFile, new { @class = "control-label h5 mt-2" })
+                    </div>
+                    <hr class="clearfix" />
+                    @Html.EditorFor(model => model.LogoImageFile, new { @class = "form-control" })
+                    <div>@Html.ValidationMessageFor(model => model.LogoImageFile, null, new { @class = "text-danger" })</div>
                 </div>
                 <div class="col-md-3 col-sm-6" style="margin-bottom: 20px;">
                     @Html.LabelFor(model => model.MaxPlayerCount, new { @class = "control-label" })
@@ -86,23 +95,22 @@
                     @Html.ValidationMessageFor(model => model.SecoundaryColor, null, new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-md-3 col-sm-6" style="margin-bottom: 20px;">
+                <div class="col-md-4 col-sm-4" style="margin-bottom: 20px;">
                     <div>
-                        @Html.LabelFor(model => model.LogoImageFile, new { @class = "control-label h5 mt-2" })
+                        @Html.LabelFor(model => model.VerticalSplashImageFile, new { @class = "control-label h5 mt-2" })
                     </div>
                     <hr class="clearfix" />
-                    @Html.EditorFor(model => model.LogoImageFile, new { @class = "form-control" })
-                    <div>@Html.ValidationMessageFor(model => model.LogoImageFile, null, new { @class = "text-danger" })</div>
+                    @Html.EditorFor(model => model.VerticalSplashImageFile, new { @class = "form-control" })
+                    <div>@Html.ValidationMessageFor(model => model.VerticalSplashImageFile, null, new { @class = "text-danger" })</div>
                 </div>
-                <div class="col-md-9 col-sm-12" style="margin-bottom: 20px;">
+                <div class="col-md-8 col-sm-8" style="margin-bottom: 20px;">
                     <div>
-                        @Html.LabelFor(model => model.SplashImageFile, new { @class = "control-label h5 mt-2" })
+                        @Html.LabelFor(model => model.HorizontalSplashImageFile, new { @class = "control-label h5 mt-2" })
                     </div>
                     <hr class="clearfix" />
-                    @Html.EditorFor(model => model.SplashImageFile, new { @class = "form-control" })
-                    <div>@Html.ValidationMessageFor(model => model.SplashImageFile, null, new { @class = "text-danger" })</div>
+                    @Html.EditorFor(model => model.HorizontalSplashImageFile, new { @class = "form-control" })
+                    <div>@Html.ValidationMessageFor(model => model.HorizontalSplashImageFile, null, new { @class = "text-danger" })</div>
                 </div>
             </div>
         </div>

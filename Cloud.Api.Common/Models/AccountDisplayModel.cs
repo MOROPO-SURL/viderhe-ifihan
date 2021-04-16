@@ -13,7 +13,9 @@
 
         public System.Guid LogoImageId { get; set; }
 
-        public System.Guid SplashImageId { get; set; }
+        public System.Guid HorizontalSplashImageId { get; set; }
+
+        public System.Guid VerticalSplashImageId { get; set; }
 
         public string PrimaryColor { get; set; }
 
@@ -30,7 +32,8 @@
             Id = entity.Id;
             Name = entity.Name;
             LogoImageId = entity.LogoId;
-            SplashImageId = entity.SplashId;
+            HorizontalSplashImageId = entity.HorizontalSplashId;
+            VerticalSplashImageId = entity.VerticalSplashId;
             PrimaryColor = entity.PrimaryColor;
             SecoundaryColor = entity.SecoundaryColor;
             DefaultOverlayId = entity.DefaultOverlayId;

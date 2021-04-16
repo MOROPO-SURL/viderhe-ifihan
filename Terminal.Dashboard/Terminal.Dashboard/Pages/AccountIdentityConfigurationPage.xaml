@@ -5,6 +5,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
@@ -114,61 +115,123 @@
                     </Frame>
                     <Frame 
                         Style="{StaticResource FormFieldFrame}"
-                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"
+                        Grid.Column="0" Grid.Row="2"
+                        Padding="0"
                         VerticalOptions="Start">
-                        <Grid VerticalOptions="FillAndExpand">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
+                        <StackLayout 
+                            VerticalOptions="FillAndExpand"
+                            Spacing="0">
                             <Label 
-                                Grid.Column="0" Grid.Row="0"
-                                Text="Logo" 
+                                Margin="10,10,10,6"
+                                Text="Portada Vertical" 
                                 Style="{StaticResource FormLabel}" />
-                            <Button
-                                Grid.Column="1" Grid.Row="0"
-                                Text="Seleccionar"
-                                Clicked="PickLogoImageButton_Clicked" />
-                            <ffimageloadingforms:CachedImage 
-                                x:Name="LogolImage"
-                                Grid.ColumnSpan="2" Grid.Row="1"
-                                Source="{Binding Path=LogoImageSource}"
-                                CacheType="Disk"
-                                CacheDuration="8760:00:00" />
-                        </Grid>
+                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <Grid>
+                                <ffimageloadingforms:CachedImage 
+                                    Source="{Binding Path=LogoImageSource}"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00" />
+                                <StackLayout 
+                                    HorizontalOptions="Center" VerticalOptions="End"
+                                    Padding="4"
+                                    BackgroundColor="#99000000"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Text="&#xf740;"
+                                        TextColor="White"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="Medium" />
+                                    <Label
+                                        VerticalOptions="Center"
+                                        Margin="0,0,4,0"
+                                        Text="para modificar"
+                                        TextColor="White"
+                                        LineBreakMode="TailTruncation" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
                     </Frame>
                     <Frame 
                         Style="{StaticResource FormFieldFrame}"
-                        Grid.Column="2" Grid.ColumnSpan="4" Grid.Row="2"
+                        Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2"
+                        Padding="0"
                         VerticalOptions="Start">
-                        <Grid VerticalOptions="FillAndExpand">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
+                        <StackLayout 
+                            VerticalOptions="FillAndExpand"
+                            Spacing="0">
                             <Label 
-                                Grid.Column="0" Grid.Row="0"
-                                Text="Portada" 
+                                Margin="10,10,10,6"
+                                Text="Portada Vertical" 
                                 Style="{StaticResource FormLabel}" />
-                            <Button
-                                Grid.Column="1" Grid.Row="0"
-                                Text="Seleccionar"
-                                Clicked="PickSplashImageButton_Clicked" />
-                            <ffimageloadingforms:CachedImage 
-                                x:Name="SplashImage"
-                                Grid.ColumnSpan="2" Grid.Row="1"
-                                Source="{Binding Path=SplashImageSource}"
-                                CacheType="Disk"
-                                CacheDuration="8760:00:00" />
-                        </Grid>
+                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PickVerticalSplashImageButton_Clicked" />
+                                </Grid.GestureRecognizers>
+                                <ffimageloadingforms:CachedImage 
+                                    Source="{Binding Path=VerticalSplashImageSource}"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00" />
+                                <StackLayout 
+                                    HorizontalOptions="Center" VerticalOptions="End"
+                                    Padding="4"
+                                    BackgroundColor="#99000000"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Text="&#xf740;"
+                                        TextColor="White"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="Medium" />
+                                    <Label
+                                        VerticalOptions="Center"
+                                        Margin="0,0,4,0"
+                                        Text="para modificar"
+                                        TextColor="White"
+                                        LineBreakMode="TailTruncation" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Style="{StaticResource FormFieldFrame}"
+                        Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2"
+                        Padding="0"
+                        VerticalOptions="Start">
+                        <StackLayout 
+                            VerticalOptions="FillAndExpand"
+                            Spacing="0">
+                            <Label 
+                                Margin="10,10,10,6"
+                                Text="Portada Horizontal" 
+                                Style="{StaticResource FormLabel}" />
+                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PickHorizontalSplashImageButton_Clicked" />
+                                </Grid.GestureRecognizers>
+                                <ffimageloadingforms:CachedImage 
+                                    Source="{Binding Path=HorizontalSplashImageSource}"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00" />
+                                <StackLayout 
+                                    HorizontalOptions="Center" VerticalOptions="End"
+                                    Padding="4"
+                                    BackgroundColor="#99000000"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Text="&#xf740;"
+                                        TextColor="White"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="Medium" />
+                                    <Label
+                                        VerticalOptions="Center"
+                                        Margin="0,0,4,0"
+                                        Text="para modificar"
+                                        TextColor="White"
+                                        LineBreakMode="TailTruncation" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
                     </Frame>
                 </Grid>
             </ScrollView>
