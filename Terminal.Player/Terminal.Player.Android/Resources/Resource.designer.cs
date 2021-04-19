@@ -16199,6 +16199,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			// aapt resource value: 0x7F0C0005
 			public const int launcher_foreground = 2131492869;
 			
+			// aapt resource value: 0x7F0C0006
+			public const int powerby_signature = 2131492870;
+			
 			static Mipmap()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
