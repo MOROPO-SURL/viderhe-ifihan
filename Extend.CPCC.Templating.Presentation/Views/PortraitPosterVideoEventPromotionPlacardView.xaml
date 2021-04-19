@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Presentation.Views.PortraitPosterVideoEventPromotionPlacardView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid 
+                x:Name="PlacardLayout"
+                RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <ffimageloadingforms:CachedImage
+                    Grid.Row="0"
+                    Source="{Binding Path=PosterSource}"
+                    Aspect="AspectFill"
+                    CacheType="Disk"
+                    CacheDuration="8760:00:00"
+                    FadeAnimationEnabled="False"
+                    IsOpaque="False">
+                    <ffimageloadingforms:CachedImage.Transformations>
+                        <fftransformations:BlurredTransformation />
+                    </ffimageloadingforms:CachedImage.Transformations>
+                </ffimageloadingforms:CachedImage>
+                <ffimageloadingforms:CachedImage
+                    Grid.Row="0"
+                    Source="{Binding Path=PosterSource}"
+                    Aspect="AspectFit"
+                    CacheType="Disk"
+                    CacheDuration="8760:00:00"
+                    FadeAnimationEnabled="False" />
+                <extendcommontemplatingpresentationrenderedviews:UnattendedVideoPlayerView
+                    x:Name="EventVideo"
+                    Grid.Row="1"
+                    BackgroundColor="Black"
+                    HeightRequest="{Binding Source={x:Reference Wrapper}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                    Source="{Binding Path=VideoSource}"
+                    ShowControls="False"
+                    AutoPlay="False"
+                    StatusUpdated="VideoPlayer_StatusUpdated" />
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

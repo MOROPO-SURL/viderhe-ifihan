@@ -6,6 +6,8 @@
 
         private readonly Models.Context.NMTourOverlayContextModel model;
 
+        private XFToolKit.Presentation.Transform.Animations.HeartAnimation screenInteractionSuggestLabelAnimation;
+
         public NMTourOverlayView(Models.Context.NMTourOverlayContextModel model)
         {
             this.model = model;
@@ -30,8 +32,25 @@
             });
         }
 
+        private void ScreenInteractionSuggestLabelAnimation_Completed(object sender, System.EventArgs eventArgs)
+        {
+            System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(3)).ContinueWith(_ =>
+            {
+                screenInteractionSuggestLabelAnimation?.Begin();
+            });
+        }
+
+        private void ShowInAnimation_Completed(object sender, System.EventArgs e)
+        {
+            (sender as XFToolKit.Presentation.Transform.Animations.AbstractAnimation).Completed -= ShowInAnimation_Completed;
+
+            EnableInteractionEmplasisAnimation();
+        }
+
         private void OverlayViewTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
         {
+            DisableInteractionEmplasisAnimation();
+
             var animation = new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
             {
                 Target = InterationIndicationLayout,
@@ -53,6 +72,8 @@
                 Duration = "180"
             };
 
+            animation.Completed += ShowInAnimation_Completed;
+
             animation.Begin();
         }
 
@@ -64,6 +85,8 @@
                 EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 TranslateY = 0
             };
+
+            animation.Completed += ShowInAnimation_Completed;
 
             animation.Begin();
         }
@@ -103,6 +126,24 @@
             }
 
             (BindingContext as Models.View.AdvicesMarqueeOverlayViewModel).InLineAdvices = textBuilder.ToString();
+        }
+
+        private void EnableInteractionEmplasisAnimation()
+        {
+            screenInteractionSuggestLabelAnimation = new XFToolKit.Presentation.Transform.Animations.HeartAnimation
+            {
+                Target = InterationIndicationLayout
+            };
+
+            screenInteractionSuggestLabelAnimation.Completed += ScreenInteractionSuggestLabelAnimation_Completed;
+
+            screenInteractionSuggestLabelAnimation.Begin();
+        }
+
+        private void DisableInteractionEmplasisAnimation()
+        {
+            screenInteractionSuggestLabelAnimation.Completed -= ScreenInteractionSuggestLabelAnimation_Completed;
+            screenInteractionSuggestLabelAnimation = null;
         }
     }
 }

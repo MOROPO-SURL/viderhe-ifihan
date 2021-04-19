@@ -221,6 +221,10 @@
       <Project>{c95ee500-f017-43a6-b388-3ca6710483c7}</Project>
       <Name>Extend.CPCC.Overlaying.Presentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.CPCC.Templating.Presentation\Extend.CPCC.Templating.Presentation.csproj">
+      <Project>{c0ecab89-1bc2-4be5-97c6-6b43a870c8a2}</Project>
+      <Name>Extend.CPCC.Templating.Presentation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.CPCC\Extend.CPCC.csproj">
       <Project>{7309595d-becd-4180-b804-e2f8ff9708ac}</Project>
       <Name>Extend.CPCC</Name>

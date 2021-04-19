@@ -38,7 +38,7 @@
                 HeightRequest="1" />
             <WebView 
                 Grid.ColumnSpan="2" Grid.Row="2"
-                Source="http://cloud.viderhe.net" />
+                Source="http://www.elcallejon.net/" />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:ContentPage>

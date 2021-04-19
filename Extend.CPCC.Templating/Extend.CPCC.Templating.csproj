@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="3AE98930-ABD4-459D-8EAE-AD5CB28CC480-portrait.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="3AE98930-ABD4-459D-8EAE-AD5CB28CC480-portrait.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+  </ItemGroup>
+
+</Project>

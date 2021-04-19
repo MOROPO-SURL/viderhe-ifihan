@@ -27,7 +27,8 @@
                     Target="{x:Reference InLineAdvicesLayout}" 
                     Delay="5000"
                     EasingType="CubicOut" 
-                    TranslateY="0" />
+                    TranslateY="0"
+                    Completed="ShowInAnimation_Completed" />
             </sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior.Animation>
         </sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior>
         <sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior>

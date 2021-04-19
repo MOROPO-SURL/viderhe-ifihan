@@ -9,6 +9,6 @@
         public string Name => "Cartelera CPCC";
 
         // TODO Define upperviewing description
-        public string Description => "Extensión para la plataforma Viderhe del Centro Provincial de Cine de Camagüey para ;a promoción de su cartelera cultural.";
+        public string Description => "Extensión para la plataforma Viderhe del Centro Provincial de Cine de Camagüey para la promoción de su cartelera cultural.";
     }
 }

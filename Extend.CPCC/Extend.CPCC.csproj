@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common\Extend.Common.csproj" />
     <ProjectReference Include="..\Extend.CPCC.Overlaying\Extend.CPCC.Overlaying.csproj" />
+    <ProjectReference Include="..\Extend.CPCC.Templating\Extend.CPCC.Templating.csproj" />
   </ItemGroup>
 
 </Project>
