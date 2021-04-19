@@ -38,7 +38,7 @@
     <AndroidSupportedAbis />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>false</DebugSymbols>
     <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
@@ -50,6 +50,7 @@
     <AndroidDexTool>d8</AndroidDexTool>
     <AndroidLinkTool>r8</AndroidLinkTool>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -90,6 +91,7 @@
     <Compile Include="Helpers\TextWidthCalculationHelper.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Providers\HostEnvironmentInfoProvider.cs" />
+    <Compile Include="Providers\StaticResourceProvider.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Renderer\ExoVideoPlayerViewRenderer.cs" />
@@ -154,6 +156,10 @@
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj">
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj">
+      <Project>{44A1EA24-59C5-4E9D-AF01-C65297998114}</Project>
+      <Name>Support.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Terminal.Common.Android.RtmpClient\Terminal.Common.Android.RtmpClient.csproj">
       <Project>{075f5bd6-d1e1-40a4-baeb-6d7e908f3405}</Project>
@@ -223,6 +229,21 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\powerby_signature.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-mdpi\powerby_signature.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xhdpi\powerby_signature.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxhdpi\powerby_signature.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\powerby_signature.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

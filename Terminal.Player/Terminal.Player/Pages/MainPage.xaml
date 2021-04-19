@@ -68,7 +68,7 @@
                         VerticalOptions="End">
                         <Image.Source>
                             <OnPlatform x:TypeArguments="ImageSource">
-                                <On Platform="Android" Value="powerby_signature" />
+                                <On Platform="Android" Value="powerby_signature.png" />
                                 <On Platform="UWP" Value="Assets/PowerbySignature.png" />
                             </OnPlatform>
                         </Image.Source>
