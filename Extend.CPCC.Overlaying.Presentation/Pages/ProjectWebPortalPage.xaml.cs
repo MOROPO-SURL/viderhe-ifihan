@@ -13,5 +13,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages
         {
             this.NavigationPopModalPageAsync();
         }
+
+        private void WebView_Navigating(object sender, Xamarin.Forms.WebNavigatingEventArgs eventArgs)
+        {
+            (sender as Xamarin.Forms.WebView).Source = eventArgs.Url;
+        }
     }
 }
