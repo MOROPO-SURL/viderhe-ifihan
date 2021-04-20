@@ -16,6 +16,7 @@
                 <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="Padding" Value="20" />
                 <Setter Property="ContentLayout" Value="Top,20" />
+                <Setter Property="TextColor" Value="Black" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>

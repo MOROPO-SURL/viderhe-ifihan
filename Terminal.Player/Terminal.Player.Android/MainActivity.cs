@@ -43,8 +43,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
             
             LoadApplication(new App());
-
-            var a = new Views.Renderer.ExoVideoPlayerViewRenderer(this);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
