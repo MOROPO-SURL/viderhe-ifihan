@@ -42,15 +42,20 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
 
                 SetAreTransportControlsEnabled();
 
-                SetSource();
-
                 SetAutoPlay();
 
+                if (Element.AutoPlay)
+                {
+                    SetSource();
+                }
+
+                args.NewElement.PlayRequested += OnPlayRequested;
                 args.NewElement.StopRequested += OnStopRequested;
             }
 
             if (args.OldElement != null)
             {
+                args.NewElement.PlayRequested += OnPlayRequested;
                 args.OldElement.StopRequested -= OnStopRequested;
             }
         }
@@ -152,9 +157,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
             }
         }
 
+        private void OnPlayRequested(object sender, System.EventArgs args)
+        {
+            Control.Player.PlayWhenReady = true;
+
+            SetSource();
+        }
+
         private void OnStopRequested(object sender, System.EventArgs args)
         {
-            Control.Player.Stop();
+            try { Control.Player.Stop(); } catch { }
         }
 
         private void SetAutoPlay()
@@ -186,7 +198,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
             switch (playbackState)
             {
                 case Com.Google.Android.Exoplayer2.Player.StateEnded:
+                    videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+
+                    break;
                 case Com.Google.Android.Exoplayer2.Player.StateIdle:
+                    if (!Element.AutoPlay) break;
+
                     videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
 
                     break;
