@@ -43,8 +43,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
         {
             //if (Placards == null)
             //{
-                configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.Starting);
-                configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.PlayerRegistration);
+            configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.Starting);
+            configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.PlayerRegistration);
             //}
 
             configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.ScreenplayFetch);
@@ -224,20 +224,23 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
         private async void OnRequestAccountCallback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.AccountDisplayModel> task)
         {
-            if (task.Exception != null)
+            if (task.IsCanceled || task.Exception != null)
             {
-                System.Exception targetException = task.Exception;
-
-                while (targetException is System.AggregateException)
+                if (task.Exception != null)
                 {
-                    targetException = targetException.InnerException;
-                }
+                    System.Exception targetException = task.Exception;
 
-                if (targetException is SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException && (targetException as SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException).HttpStatusCode == System.Net.HttpStatusCode.Forbidden)
-                {
-                    if (!((BindingContext as Models.View.ConfigurationStepViewModel).DetailContentView is Views.ConfigurationStepPlayerRegistrationDetailView))
+                    while (targetException is System.AggregateException)
                     {
-                        AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
+                        targetException = targetException.InnerException;
+                    }
+
+                    if (targetException is SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException && (targetException as SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException).HttpStatusCode == System.Net.HttpStatusCode.Forbidden)
+                    {
+                        if (!((BindingContext as Models.View.ConfigurationStepViewModel).DetailContentView is Views.ConfigurationStepPlayerRegistrationDetailView))
+                        {
+                            AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
+                        }
                     }
                 }
 
@@ -297,7 +300,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                             var a = attributes[i];
 
                             var attribute = a as Xamarin.Forms.HandlerAttribute;
-                            
+
                             if (attribute == null && (a is Xamarin.Forms.ExportFontAttribute fa))
                             {
                                 Xamarin.Forms.Internals.FontRegistrar.Register(fa, assembly);
@@ -324,7 +327,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
         private void OnRequestScreenplayPlacardsCallback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlacardDisplayModel[]> task)
         {
-            if (task.Exception != null || task.Result == null || task.Result.Count() <= 0)
+            if (task.IsCanceled || task.Exception != null || task.Result == null || task.Result.Count() <= 0)
             {
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(delayTask =>
                 {

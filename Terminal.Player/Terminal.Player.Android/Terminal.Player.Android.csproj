@@ -243,19 +243,19 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-hdpi\powerby_signature.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\powerby_signature.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-mdpi\powerby_signature.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\powerby_signature.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xhdpi\powerby_signature.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\powerby_signature.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xxhdpi\powerby_signature.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\powerby_signature.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\powerby_signature.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\powerby_signature.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
