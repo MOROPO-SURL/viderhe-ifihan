@@ -14605,13 +14605,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			public const int notify_panel_notification_icon_bg = 2131165352;
 			
 			// aapt resource value: 0x7F0700A9
-			public const int test_custom_background = 2131165353;
+			public const int powerby_signature = 2131165353;
 			
 			// aapt resource value: 0x7F0700AA
-			public const int tooltip_frame_dark = 2131165354;
+			public const int test_custom_background = 2131165354;
 			
 			// aapt resource value: 0x7F0700AB
-			public const int tooltip_frame_light = 2131165355;
+			public const int tooltip_frame_dark = 2131165355;
+			
+			// aapt resource value: 0x7F0700AC
+			public const int tooltip_frame_light = 2131165356;
 			
 			static Drawable()
 			{
@@ -16189,9 +16192,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			
 			// aapt resource value: 0x7F0C0005
 			public const int launcher_foreground = 2131492869;
-			
-			// aapt resource value: 0x7F0C0006
-			public const int powerby_signature = 2131492870;
 			
 			static Mipmap()
 			{
