@@ -6,13 +6,15 @@
 
         private readonly Models.Context.NMTourOverlayContextModel model;
 
-        private XFToolKit.Presentation.Transform.Animations.HeartAnimation screenInteractionSuggestLabelAnimation;
+        //private XFToolKit.Presentation.Transform.Animations.HeartAnimation screenInteractionSuggestLabelAnimation;
 
         public NMTourOverlayView(Models.Context.NMTourOverlayContextModel model)
         {
             this.model = model;
 
             InitializeComponent();
+
+            IsEnabled = false;
 
             BindingContext = new Models.View.NMTourOverlayViewModel();
 
@@ -32,24 +34,33 @@
             });
         }
 
-        private void ScreenInteractionSuggestLabelAnimation_Completed(object sender, System.EventArgs eventArgs)
-        {
-            System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(3)).ContinueWith(_ =>
-            {
-                screenInteractionSuggestLabelAnimation?.Begin();
-            });
-        }
+        //private void ScreenInteractionSuggestLabelAnimation_Completed(object sender, System.EventArgs eventArgs)
+        //{
+        //    if (!IsEnabled) return;
+
+        //    System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(_ =>
+        //    {
+        //        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+        //        {
+        //            InterationIndicationLayout.Scale = 1;
+
+        //            screenInteractionSuggestLabelAnimation?.Begin();
+        //        });
+        //    });
+        //}
 
         private void ShowInAnimation_Completed(object sender, System.EventArgs e)
         {
             (sender as XFToolKit.Presentation.Transform.Animations.AbstractAnimation).Completed -= ShowInAnimation_Completed;
 
-            EnableInteractionEmplasisAnimation();
+            //Xamarin.Forms.Device.BeginInvokeOnMainThread(EnableInteractionEmplasisAnimation);
+
+            IsEnabled = true;
         }
 
         private void OverlayViewTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
         {
-            DisableInteractionEmplasisAnimation();
+            //DisableInteractionEmplasisAnimation();
 
             var animation = new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
             {
@@ -128,22 +139,30 @@
             (BindingContext as Models.View.AdvicesMarqueeOverlayViewModel).InLineAdvices = textBuilder.ToString();
         }
 
-        private void EnableInteractionEmplasisAnimation()
-        {
-            screenInteractionSuggestLabelAnimation = new XFToolKit.Presentation.Transform.Animations.HeartAnimation
-            {
-                Target = InterationIndicationLayout
-            };
+        //private void EnableInteractionEmplasisAnimation()
+        //{
+        //    IsEnabled = true;
 
-            screenInteractionSuggestLabelAnimation.Completed += ScreenInteractionSuggestLabelAnimation_Completed;
+        //    InterationIndicationLayout.Scale = 1;
 
-            screenInteractionSuggestLabelAnimation.Begin();
-        }
+        //    screenInteractionSuggestLabelAnimation = new XFToolKit.Presentation.Transform.Animations.HeartAnimation
+        //    {
+        //        Target = InterationIndicationLayout
+        //    };
 
-        private void DisableInteractionEmplasisAnimation()
-        {
-            screenInteractionSuggestLabelAnimation.Completed -= ScreenInteractionSuggestLabelAnimation_Completed;
-            screenInteractionSuggestLabelAnimation = null;
-        }
+        //    screenInteractionSuggestLabelAnimation.Completed += ScreenInteractionSuggestLabelAnimation_Completed;
+
+        //    screenInteractionSuggestLabelAnimation.Begin();
+        //}
+
+        //private void DisableInteractionEmplasisAnimation()
+        //{
+        //    IsEnabled = false;
+
+        //    if (screenInteractionSuggestLabelAnimation == null) return;
+
+        //    screenInteractionSuggestLabelAnimation.Completed -= ScreenInteractionSuggestLabelAnimation_Completed;
+        //    screenInteractionSuggestLabelAnimation = null;
+        //}
     }
 }
