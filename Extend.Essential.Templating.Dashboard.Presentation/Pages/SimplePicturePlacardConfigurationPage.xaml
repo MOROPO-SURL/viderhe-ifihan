@@ -62,6 +62,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Frame 
                         Grid.ColumnSpan="2" Grid.Row="0"
@@ -72,35 +73,48 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.Row="1" Grid.RowSpan="4"
                         Style="{StaticResource FormFieldFrame}"
+                        Grid.Column="0" Grid.Row="1" Grid.RowSpan="5"
+                        Padding="0"
                         VerticalOptions="Start">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
+                        <StackLayout 
+                            VerticalOptions="FillAndExpand"
+                            Spacing="0">
                             <Label 
-                                Grid.Column="0" Grid.Row="0"
+                                Margin="10,10,10,6"
                                 Text="Imagen" 
                                 Style="{StaticResource FormLabel}" />
-                            <Button
-                                Grid.Column="1" Grid.Row="0"
-                                Text="Seleccionar"
-                                Clicked="PickImageButton_Clicked" />
-                            <ffimageloadingforms:CachedImage 
-                                Grid.ColumnSpan="2" Grid.Row="1"
-                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-                                BackgroundColor="Black"
-                                CacheType="Disk"
-                                CacheDuration="8760:00:00"
-                                Source="{Binding Path=Image, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
-                                Aspect="{Binding Path=Aspect}" />
-                        </Grid>
+                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PickImageButton_Clicked" />
+                                </Grid.GestureRecognizers>
+                                <ffimageloadingforms:CachedImage 
+                                    BackgroundColor="Black"
+                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00"
+                                    Source="{Binding Path=Image, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
+                                    Aspect="{Binding Path=Aspect}" />
+                                <StackLayout 
+                                    HorizontalOptions="Center" VerticalOptions="End"
+                                    Padding="4"
+                                    BackgroundColor="#99000000"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Text="&#xf740;"
+                                        TextColor="White"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="Medium" />
+                                    <Label
+                                        VerticalOptions="Center"
+                                        Margin="0,0,4,0"
+                                        Text="para modificar"
+                                        TextColor="White"
+                                        LineBreakMode="TailTruncation" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
                     </Frame>
                     <Frame 
                         Grid.Column="1" Grid.Row="1"
@@ -128,6 +142,14 @@
                         <StackLayout>
                             <Label Text="A Pantalla Completa" Style="{StaticResource FormLabel}" />
                             <Switch IsToggled="{Binding Path=RequireUnobstructedPresetation}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="4"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Orientación de Pantalla" Style="{StaticResource FormLabel}" />
+                            <Picker ItemsSource="{Binding Path=AvailableConfigurationPlayerOrientationSupportKinds}" SelectedItem="{Binding Path=PlayerOrientationSupportKind}" />
                         </StackLayout>
                     </Frame>
                 </Grid>

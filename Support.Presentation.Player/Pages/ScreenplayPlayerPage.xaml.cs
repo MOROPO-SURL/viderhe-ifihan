@@ -52,7 +52,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
         {
             if (presenter.CurrentPlacardViewModel == null) return;
 
-            if (!presenter.CurrentPlacardViewModel.Template.PlayerOrientationSupport.SupportedByMainDisplayOrientation())
+            if (!presenter.CurrentPlacardViewModel.SupportedByMainDisplayOrientation())
             {
                 presenter.RequestPresentNextFrame();
             }

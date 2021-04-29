@@ -1015,12 +1015,12 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .IsRequired()
                         .HasColumnName("label");
 
+                    b.Property<int?>("PlayerOrientationSupportKind")
+                        .HasColumnName("playerorientationsupportkind");
+
                     b.Property<string>("SerializedContext")
                         .IsRequired()
                         .HasColumnName("serializedcontext");
-
-                    b.Property<Guid?>("TempateId")
-                        .HasColumnName("tempateid");
 
                     b.Property<Guid>("TemplateId")
                         .HasColumnName("templateid");
@@ -1031,8 +1031,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("AccountId")
                         .HasName("ix_placards_accountid");
 
-                    b.HasIndex("TempateId")
-                        .HasName("ix_placards_tempateid");
+                    b.HasIndex("TemplateId")
+                        .HasName("ix_placards_templateid");
 
                     b.ToTable("placards");
                 });
@@ -1609,8 +1609,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
 
                     b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Template", "Template")
                         .WithMany()
-                        .HasForeignKey("TempateId")
-                        .HasConstraintName("fk_placards_templates_tempateid");
+                        .HasForeignKey("TemplateId")
+                        .HasConstraintName("fk_placards_templates_templateid")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Player", b =>

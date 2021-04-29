@@ -5,9 +5,6 @@ using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [System.ComponentModel.DesignTimeVisible(false)]
     public partial class MainPage : Xamarin.Forms.ContentPage
     {
         private System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel> Placards { get; set; }

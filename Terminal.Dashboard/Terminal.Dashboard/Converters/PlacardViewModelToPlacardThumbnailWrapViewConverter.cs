@@ -8,7 +8,18 @@
 
             var model = value as Support.Presentation.Models.View.PlacardViewModel;
 
-            if (model.Template.PlayerOrientationSupport != Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait)
+            if (model.PlayerOrientationSupportKind != null)
+            {
+                if (model.PlayerOrientationSupportKind != Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait)
+                {
+                    return new Views.LandscapePlacardThumbnailWrapView(model);
+                }
+                else
+                {
+                    return new Views.PortraitPlacardThumbnailWrapView(model);
+                }
+            }
+            else if (model.Template.PlayerOrientationSupport != Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait)
             {
                 return new Views.LandscapePlacardThumbnailWrapView(model);
             }

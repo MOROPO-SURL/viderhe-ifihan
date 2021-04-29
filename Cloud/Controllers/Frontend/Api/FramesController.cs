@@ -115,7 +115,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         {
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            return e => e.Screenplay.Account.Id == accountId;
+            return entity => entity.Screenplay.Account.Id == accountId && entity.Placard.Template.Enabled;
         }
 
         protected override void PreCreate(Persistence.Entities.Frame entity, FrameInputModel inputModel)

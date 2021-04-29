@@ -149,7 +149,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                 {
                     var model = framesStack.Pop();
 
-                    while (!model.Template.PlayerOrientationSupport.SupportedByMainDisplayOrientation())
+                    while (!model.SupportedByMainDisplayOrientation())
                     {
                         model = null;
 
