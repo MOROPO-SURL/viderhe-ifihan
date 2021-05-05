@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SmartSolucionesCuba.SAPRESSC.Core.Persistence.Repositories;
 using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
 using System.Linq;
 
@@ -12,11 +13,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
     [SAPRESSC.Core.Web.Security.Filters.CatchChangeUserPasswordRequiredException]
     public class ScreenplaysController : SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementController<Persistence.Entities.Screenplay, System.Guid, ScreenplayInputModel, ScreenplayDisplayModel>
     {
-        private readonly SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
+        private readonly IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
+        private readonly IEntityRepository<Persistence.Entities.Player, string> playerRepository;
 
-        public ScreenplaysController(SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Screenplay, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<ScreenplaysController> localizer, ILogger<ScreenplaysController> logger) : base(repository, localizer, logger)
+        public ScreenplaysController(IEntityRepository<Persistence.Entities.Player, string> playerRepository, IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, IEntityRepository<Persistence.Entities.Screenplay, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<ScreenplaysController> localizer, ILogger<ScreenplaysController> logger) : base(repository, localizer, logger)
         {
             this.accountRepository = accountRepository;
+            this.playerRepository = playerRepository;
         }
 
         protected override System.Linq.Expressions.Expression<System.Func<Persistence.Entities.Screenplay, bool>> GetGlobalSelector()
@@ -49,6 +52,34 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
             if (entity.Account.Id != accountId) throw new System.InvalidOperationException();
+        }
+
+        protected override void PostDelete(Persistence.Entities.Screenplay entity)
+        {
+            base.PostDelete(entity);
+
+            var relatedPlayers = playerRepository.FindBy(item => item.ScreenplayId == entity.Id).ToArray();
+
+            if (relatedPlayers.Length <= 0) return;
+
+            var relatedPlayerQueue = new System.Collections.Generic.Queue<Persistence.Entities.Player>(relatedPlayers);
+
+            while (relatedPlayerQueue.Count > 1)
+            {
+                var player = relatedPlayerQueue.Dequeue();
+
+                player.Screenplay = null;
+                player.ScreenplayId = null;
+
+                playerRepository.Update(player, User.Identity.Name, false);
+            }
+
+            var lastPlayer = relatedPlayerQueue.Dequeue();
+
+            lastPlayer.Screenplay = null;
+            lastPlayer.ScreenplayId = null;
+
+            playerRepository.Update(lastPlayer, User.Identity.Name, true);
         }
     }
 }

@@ -123,7 +123,7 @@
                             Spacing="0">
                             <Label 
                                 Margin="10,10,10,6"
-                                Text="Portada Vertical" 
+                                Text="Logotipo" 
                                 Style="{StaticResource FormLabel}" />
                             <BoxView BackgroundColor="#666666" HeightRequest="1" />
                             <Grid>

@@ -92,29 +92,32 @@
                 </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Grid Padding="8,12,0,12" WidthRequest="120">
+                        <Grid 
+                            Padding="12,8,0,8">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
-                            <StackLayout 
-                                Grid.Column="0"
-                                VerticalOptions="Center">
-                                <Label 
-                                    Text="{Binding Path=Title}"
-                                    LineBreakMode="TailTruncation"
-                                    MaxLines="2" />
-                                <Label 
-                                    Text="{Binding Path=About, Converter={StaticResource IfNullOrEmptyToStringConverter}}"
-                                    TextColor="DimGray"
-                                    FontSize="Caption"
-                                    LineBreakMode="TailTruncation"
-                                    MaxLines="2" />
-                            </StackLayout>                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.Column="0" Grid.Row="0"
+                                Text="{Binding Path=Title}"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="2" />
+                            <Label 
+                                Grid.Column="0" Grid.Row="1"
+                                Text="{Binding Path=About, Converter={StaticResource IfNullOrEmptyToStringConverter}}"
+                                TextColor="DimGray"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="2"
+                                FontSize="Caption" />
                             <Button 
-                                Grid.Column="1"
+                                Grid.Column="1" Grid.RowSpan="2"
                                 VerticalOptions="Center"
-                                BackgroundColor="Transparent"
+                                WidthRequest="24" HeightRequest="36"
                                 BorderWidth="0"
                                 Padding="0,6"
                                 Text="&#xF1D9;"
