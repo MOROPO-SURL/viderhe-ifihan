@@ -5,7 +5,9 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Models.Page"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Converters"
     xmlns:presentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation"
+    xmlns:commonconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
@@ -15,6 +17,8 @@
     x:TypeArguments="pagemodels:SimplePicturePlacardConfigurationPageModel">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <converters:StringToLocalizeStringConverter x:Key="LocalStringToLocalizeStringConverter" />
+            <commonconverters:StringToLocalizeStringConverter x:Key="CommonStringToLocalizeStringConverter" />
             <presentationconverters:PictureLayoutModeToXamarinFormAspectConverter x:Key="PictureLayoutModeToXamarinFormAspectConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
@@ -123,7 +127,10 @@
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Presentación" Style="{StaticResource FormLabel}" />
-                            <Picker ItemsSource="{Binding Path=AvailableLayoutModes}" SelectedItem="{Binding Path=LayoutMode}" />
+                            <Picker 
+                                ItemsSource="{Binding Path=AvailableLayoutModes}" 
+                                SelectedItem="{Binding Path=LayoutMode}"
+                                ItemDisplayBinding="{Binding Converter={StaticResource LocalStringToLocalizeStringConverter}}"/>
                         </StackLayout>
                     </Frame>
                     <Frame 
@@ -151,7 +158,10 @@
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Orientación de Pantalla" Style="{StaticResource FormLabel}" />
-                            <Picker ItemsSource="{Binding Path=AvailableConfigurationPlayerOrientationSupportKinds}" SelectedItem="{Binding Path=PlayerOrientationSupportKind}" />
+                            <Picker 
+                                ItemsSource="{Binding Path=AvailableConfigurationPlayerOrientationSupportKinds}" 
+                                SelectedItem="{Binding Path=PlayerOrientationSupportKind}"
+                                ItemDisplayBinding="{Binding Converter={StaticResource CommonStringToLocalizeStringConverter}}"/>
                         </StackLayout>
                     </Frame>
                 </Grid>
