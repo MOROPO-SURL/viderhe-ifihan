@@ -5,6 +5,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Models.Page"
+    xmlns:presentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
@@ -14,6 +15,7 @@
     x:TypeArguments="pagemodels:SimplePicturePlacardConfigurationPageModel">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <presentationconverters:PictureLayoutModeToXamarinFormAspectConverter x:Key="PictureLayoutModeToXamarinFormAspectConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -95,7 +97,7 @@
                                     CacheType="Disk"
                                     CacheDuration="8760:00:00"
                                     Source="{Binding Path=Image, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
-                                    Aspect="{Binding Path=Aspect}" />
+                                    Aspect="{Binding Path=LayoutMode, Converter={StaticResource PictureLayoutModeToXamarinFormAspectConverter}}" />
                                 <StackLayout 
                                     HorizontalOptions="Center" VerticalOptions="End"
                                     Padding="4"
@@ -120,8 +122,8 @@
                         Grid.Column="1" Grid.Row="1"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Relación de Aspecto" Style="{StaticResource FormLabel}" />
-                            <Picker ItemsSource="{Binding Path=Aspects}" SelectedItem="{Binding Path=Aspect}" />
+                            <Label Text="Presentación" Style="{StaticResource FormLabel}" />
+                            <Picker ItemsSource="{Binding Path=AvailableLayoutModes}" SelectedItem="{Binding Path=LayoutMode}" />
                         </StackLayout>
                     </Frame>
                     <Frame 

@@ -1,4 +1,5 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Descriptors;
+using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Models.Context;
 using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views;
 
@@ -30,25 +31,22 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<SimplePicturePlacardContextModel>(model.SerializedContext);
 
-                return new SimplePicturePlacardView(new Models.View.SimplePicturePlacardViewModel
+                var viewModel = new Models.View.SimplePicturePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.Image.Id)),
-                    Aspect = context.Aspect
-                });
-            }
+                    Aspect = context.LayoutMode.ToXamarinFormsAspect()
+                };
 
-            if (model.Template.Id == ResponsivePictureTemplateDescriptor.ID)
-            {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<ResponsivePicturePlacardContextModel>(model.SerializedContext);
-
-                return new ResponsivePicturePlacardView(new Models.View.ResponsivePicturePlacardViewModel
+                if (context.LayoutMode == Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf)
                 {
-                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    ScreenPresentationTime = context.ScreenPresentationTime,
-                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.Image.Id))
-                }, accountInformationProvider);
+                    return new SelfOpaqueFillSimplePicturePlacardView(viewModel, accountInformationProvider);
+                }
+                else
+                {
+                    return new SimplePicturePlacardView(viewModel);
+                }
             }
 
             if (model.Template.Id == LandscapePicturePresentingPictureTemplateDescriptor.ID)

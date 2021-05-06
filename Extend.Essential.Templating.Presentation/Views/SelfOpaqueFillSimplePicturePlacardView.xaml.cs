@@ -1,8 +1,8 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views
 {
-    public partial class ResponsivePicturePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
+    public partial class SelfOpaqueFillSimplePicturePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public ResponsivePicturePlacardView(Models.View.ResponsivePicturePlacardViewModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider)
+        public SelfOpaqueFillSimplePicturePlacardView(Models.View.SimplePicturePlacardViewModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider)
         {
             InitializeComponent();
 

@@ -25,6 +25,9 @@
     <Compile Update="Views\LandscapePicturePresentingVideoPlacardView.xaml.cs">
       <DependentUpon>LandscapePicturePresentingVideoPlacardView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\SelfOpaqueFillSimplePicturePlacardView.xaml.cs">
+      <DependentUpon>SelfOpaqueFillSimplePicturePlacardView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -43,7 +46,7 @@
     <EmbeddedResource Update="Views\PortraitPicturePresentingVideoPlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ResponsivePicturePlacardView.xaml">
+    <EmbeddedResource Update="Views\SelfOpaqueFillSimplePicturePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SimplePicturePlacardView.xaml">

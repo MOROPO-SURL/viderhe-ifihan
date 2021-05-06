@@ -1,4 +1,5 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
+using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views
 {
@@ -64,9 +65,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
                     SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Models.Context.SimplePicturePlacardContextModel
                     {
                         Image = item,
-                        Aspect = Xamarin.Forms.Aspect.AspectFill,
+                        LayoutMode = Enumerations.PictureLayoutMode.AspectFill,
                         ScreenPresentationTime = System.TimeSpan.FromSeconds(context.PicturePresentationSecounds),
-                        ZoomingEnabled = true
+                        IsZoomingEnabled = true
                     })
                 });
             }
@@ -85,9 +86,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
             return new SimplePicturePlacardView(new Models.View.SimplePicturePlacardViewModel
             {
                 Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.Image.Id)),
-                Aspect = context.Aspect,
+                Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                 ScreenPresentationTime = context.ScreenPresentationTime,
-                ZoomingEnabled = context.ZoomingEnabled
+                ZoomingEnabled = context.IsZoomingEnabled
             });
         }
 

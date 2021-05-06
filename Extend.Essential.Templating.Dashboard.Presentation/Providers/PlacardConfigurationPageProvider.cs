@@ -21,11 +21,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                 return new SimplePicturePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
             }
 
-            if (templateDescriptor is ResponsivePictureTemplateDescriptor)
-            {
-                return new ResponsivePicturePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
-            }
-
             if (templateDescriptor is PictureSecuenceTemplateDescriptor)
             {
                 return new PictureSecuencePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
@@ -64,11 +59,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             if (placardViewModel.Template.Id == SimpleVideoTemplateDescriptor.ID)
             {
                 return new EditSimpleVideoPlacardPage(placardViewModel, cloudServerProvider, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
-            }
-
-            if (placardViewModel.Template.Id == ResponsivePictureTemplateDescriptor.ID)
-            {
-                return new ResponsivePicturePlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
             }
 
             if (placardViewModel.Template.Id == PictureSecuenceTemplateDescriptor.ID)

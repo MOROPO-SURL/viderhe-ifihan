@@ -17,7 +17,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                 PlayerOrientationSupportKind = placardViewModel.PlayerOrientationSupportKind == null ? Common.Templating.Dashboard.Presentation.Enumerations.ConfigurationPlayerOrientationSupportKind.Inherited : placardViewModel.PlayerOrientationSupportKind.Value.ToConfiguration(),
                 Label = placardViewModel.Label,
                 ScreenPresentationTimeSecounds = System.Convert.ToInt32(context.ScreenPresentationTime.TotalSeconds),
-                Aspect = context.Aspect,
+                LayoutMode = context.LayoutMode,
+                IsZoomingEnabled = context.IsZoomingEnabled,
                 Image = context.Image.ToViewModel()
             };
         }

@@ -64,7 +64,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            Aspect = BindingContextPageModel.Aspect,
+                            LayoutMode = BindingContextPageModel.LayoutMode,
+                            IsZoomingEnabled = BindingContextPageModel.IsZoomingEnabled,
                             Image = BindingContextPageModel.Image.ToContextModel()
                         })
                     });
@@ -81,7 +82,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            Aspect = BindingContextPageModel.Aspect,
+                            LayoutMode = BindingContextPageModel.LayoutMode,
+                            IsZoomingEnabled = BindingContextPageModel.IsZoomingEnabled,
                             Image = BindingContextPageModel.Image.ToContextModel()
                         })
                     });

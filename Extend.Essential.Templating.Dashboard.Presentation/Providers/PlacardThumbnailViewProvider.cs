@@ -19,11 +19,6 @@
                 return new Views.SimplePicturePlacardThumbnailView(model, cloudServerProvider);
             }
 
-            if (model.Template.Id == Descriptors.ResponsivePictureTemplateDescriptor.ID)
-            {
-                return new Views.ResponsivePicturePlacardThumbnailView(model, cloudServerProvider);
-            }
-
             if (model.Template.Id == Descriptors.LandscapePicturePresentingPictureTemplateDescriptor.ID)
             {
                 return new Views.LandscapePicturePresentingPicturePlacardThumbnailView(model, cloudServerProvider);
