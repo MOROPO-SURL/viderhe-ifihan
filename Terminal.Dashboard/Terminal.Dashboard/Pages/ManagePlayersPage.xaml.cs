@@ -30,11 +30,18 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             }
         }
 
-        private void AddToolbarItem_Activated(object sender, System.EventArgs e)
+        private void AddToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
             if (BindingContextPageModel.IsBusy) return;
 
             this.NavigationPushPageAsync(new ConfigurePlayerPage(ReloadPlayer));
+        }
+
+        private void ReloadToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            if (BindingContextPageModel.IsBusy) return;
+
+            ReloadPlayer();
         }
 
         private void PlayerNextButton_Clicked(object sender, System.EventArgs eventArgs)

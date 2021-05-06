@@ -121,6 +121,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             });
         }
 
+        private void ReloadToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            if (BindingContextPageModel.IsBusy) return;
+
+            OnRequiredReloadAction();
+        }
+
         private void OnRequiredReloadAction()
         {
             LoadVideos();
