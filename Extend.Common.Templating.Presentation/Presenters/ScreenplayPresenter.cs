@@ -68,7 +68,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             PresentNextPlacardPresentationView();
         }
 
-        public void RequestRestar(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
+        public void RequestRestart(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
         {
             switch (immediacyMode)
             {
@@ -89,6 +89,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         public void RequestReload(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
         {
+            if (placards.Length <= 0)
+            {
+                immediacyMode = Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately;
+            }
+
             switch (immediacyMode)
             {
                 case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately:
@@ -96,6 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                     loop = false;
 
                     presentationCompleteCallbackAction?.Invoke();
+                    presentationCompleteCallbackAction = null;
 
                     break;
 
@@ -213,6 +219,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                 if (!loop)
                 {
                     presentationCompleteCallbackAction?.Invoke();
+                    presentationCompleteCallbackAction = null;
                 }
                 else
                 {

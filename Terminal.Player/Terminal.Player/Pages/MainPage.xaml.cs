@@ -7,7 +7,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 {
     public partial class MainPage : Xamarin.Forms.ContentPage
     {
-        private System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel> Placards { get; set; }
+        private Support.Presentation.Models.View.PlacardViewModel[] placards;
 
         private readonly System.Collections.Generic.Queue<Enumerations.ConfigurationStep> configurationStepQueue;
 
@@ -38,12 +38,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
         private void InitializeSteps()
         {
-            //if (Placards == null)
-            //{
             configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.Starting);
             configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.PlayerRegistration);
-            //}
-
             configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.ScreenplayFetch);
         }
 
@@ -57,7 +53,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                     {
                         overlayView = Providers.AccountInformationProvider.Instance.AccountDefaultOverlayId == null ? null : Providers.OverlayPresentationViewProvider.Instance.GetOverlayPresentationView();
 
-                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(Placards.ToArray(), ScreenplayPresentationCompleteCallback, true, Providers.AccountInformationProvider.Instance, Managers.ConfigurationManager.Instance, PlacardPlayingCallback, overlayView, PlacardViewTransitionComplete_Callback)
+                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(placards, ScreenplayPresentationComplete_Callback, true, Providers.AccountInformationProvider.Instance, Managers.ConfigurationManager.Instance, PlacardPlayingCallback, overlayView, PlacardViewTransitionComplete_Callback)
                         {
                             BackgroundColor = Managers.SessionManager.Instance.AccountPrimaryColor,
                             BindingContext = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Managers.SessionManager.Instance.AccountVerticalSplashImageSource : Managers.SessionManager.Instance.AccountHorizontalSplashImageSource
@@ -168,7 +164,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             });
         }
 
-        private void ScreenplayPresentationCompleteCallback()
+        private void ScreenplayPresentationComplete_Callback()
         {
             this.NavigationPopModalPageAsync().ContinueWith(task =>
             {
@@ -324,7 +320,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
         private void OnRequestScreenplayPlacardsCallback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlacardDisplayModel[]> task)
         {
-            if (task.IsCanceled || task.Exception != null || task.Result == null || task.Result.Count() <= 0)
+            if (task.IsCanceled || task.Exception != null || task.Result == null)
             {
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(delayTask =>
                 {
@@ -333,7 +329,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             }
             else
             {
-                Placards = task.Result.Select(m => m.ToViewModel()).ToList();
+                placards = task.Result.Select(m => m.ToViewModel()).ToArray();
 
                 AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
             }

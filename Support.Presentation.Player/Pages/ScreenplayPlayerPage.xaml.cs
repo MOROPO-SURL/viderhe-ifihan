@@ -11,6 +11,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
         private Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter presenter;
 
         private readonly bool demo;
+        private readonly bool empty;
 
         public ScreenplayPlayerPage(Models.View.PlacardViewModel[] placards, System.Action presentationCompleteCallbackAction, bool loop, Viderhe.Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Providers.Facade.ICloudServerProviderFacade cloudServerProvider, System.Action<System.Guid> placardPlayingCallbackAction = null, Viderhe.Extend.Common.Overlaying.Presentation.Views.BaseOverlayView overlay = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
         {
@@ -27,6 +28,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             }
 
             demo = !loop;
+            empty = placards.Length > 0;
         }
 
         protected override void OnAppearing()
@@ -35,9 +37,9 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 
             Xamarin.Essentials.DeviceDisplay.MainDisplayInfoChanged += DeviceDisplay_MainDisplayInfoChanged;
 
-            if (!demo)
+            if (!demo && !empty)
             {
-                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith((System.Threading.Tasks.Task task) =>
+                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(task =>
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(presenter.BeginPresentation);
                 });
@@ -70,7 +72,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 
         public void RequestRestar(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
         {
-            presenter.RequestRestar(immediacyMode);
+            presenter.RequestRestart(immediacyMode);
         }
 
         public void RequestReload(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
