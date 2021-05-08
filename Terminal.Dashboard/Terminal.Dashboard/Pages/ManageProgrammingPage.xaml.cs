@@ -71,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var client = new Cloud.Api.Connect.Clients.PlacardsApiClient(Managers.SessionManager.Instance);
+                                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Managers.SessionManager.Instance);
 
                                 try
                                 {
@@ -134,7 +134,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var client = new Cloud.Api.Connect.Clients.FramesApiClient(Managers.SessionManager.Instance);
+                                var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
                                 try
                                 {
@@ -207,7 +207,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var client = new Cloud.Api.Connect.Clients.FramesApiClient(Managers.SessionManager.Instance);
+                                var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
                                 try
                                 {
@@ -249,7 +249,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         System.Threading.Tasks.Task.Run(async () =>
                         {
-                            var client = new Cloud.Api.Connect.Clients.FramesApiClient(Managers.SessionManager.Instance);
+                            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
                             await client.OrderUpAsync(targetFrameViewModel.Id);
                         }).ContinueWith(task =>
@@ -278,7 +278,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         System.Threading.Tasks.Task.Run(async () =>
                         {
-                            var client = new Cloud.Api.Connect.Clients.FramesApiClient(Managers.SessionManager.Instance);
+                            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
                             await client.OrderDownAsync(targetFrameViewModel.Id);
                         }).ContinueWith(task =>
@@ -338,7 +338,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiClient(Managers.SessionManager.Instance);
+                                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
 
                                 try
                                 {
@@ -428,7 +428,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
 
                 return await client.GetAsync();
             }).ContinueWith(task =>
@@ -473,7 +473,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Managers.SessionManager.Instance);
 
                 return await client.GetPaginateAsync(limit: 200);
             }).ContinueWith(task =>
@@ -516,7 +516,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.FramesApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
                 var result = await client.FilterAsync(new Cloud.Api.Common.Models.Filter.FrameFilterModel { ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id });
 

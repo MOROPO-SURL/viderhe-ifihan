@@ -343,7 +343,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 BindingContextPageModel.IsBusy = true;
 
-                var client = new Cloud.Api.Connect.Clients.PlayersApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
                 var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.PlayerViewModel;
 
@@ -389,7 +389,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlayersApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
                 return await client.GetPaginateAsync();
             }).ContinueWith(task =>

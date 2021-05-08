@@ -85,7 +85,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
         public async System.Threading.Tasks.Task UpdateAccountInformationAsync(string name, Color primaryColor, Color secoundaryColor, Plugin.FilePicker.Abstractions.FileData logoFileData, Plugin.FilePicker.Abstractions.FileData horizontalSplashFileData, Plugin.FilePicker.Abstractions.FileData verticalSplashFileData, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
         {
-            var client = new Cloud.Api.Connect.Clients.AccountApiClient(this);
+            var client = new Cloud.Api.Connect.Clients.AccountApiConnectClient(this);
 
             var input = new Cloud.Api.Common.Models.AccountInputModel
             {
@@ -156,7 +156,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
         {
             Server = server;
 
-            var userApiClient = new Cloud.Api.Connect.Clients.UserApiClient(HttpClientHelper);
+            var userApiClient = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 
             var result = await userApiClient.AuthenticateAsync(new Cloud.Api.Common.Models.AuthenticationIntentModel
             {
@@ -177,7 +177,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
             try
             {
-                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiClient(this);
+                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiConnectClient(this);
 
                 var model = await accountApiClient.GetCurrentAsync();
 
@@ -193,7 +193,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
                 foreach (var accountExtension in dynamicLoadExtensions)
                 {
-                    var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString()));
+                    var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString(), accountExtension.Version));
 
                     if (!extensionDirectoryInfo.Exists)
                     {
@@ -265,7 +265,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
         public async System.Threading.Tasks.Task ChangePasswordAsync(string oldPassword, string newPassword)
         {
-            var client = new Cloud.Api.Connect.Clients.UserApiClient(HttpClientHelper);
+            var client = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 
             await client.ChangePasswordAsync(new Cloud.Api.Common.Models.UserPasswordChangeRequestModel
             {

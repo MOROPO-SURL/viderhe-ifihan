@@ -210,7 +210,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
         private async System.Threading.Tasks.Task<Cloud.Api.Common.Models.AccountDisplayModel> RequestAccountAsync()
         {
-            var client = new Cloud.Api.Connect.Clients.PlayersApiClient(Managers.SessionManager.Instance);
+            var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
             return await client.GetAccountAsync();
         }
@@ -260,7 +260,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
                 foreach (var accountExtension in dynamicLoadExtensions)
                 {
-                    var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString()));
+                    var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString(), accountExtension.Version));
+
+                    // TODO Clear obsolete extension folder!!
 
                     if (!extensionDirectoryInfo.Exists)
                     {
@@ -313,7 +315,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
         private async System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlacardDisplayModel[]> RequestScreenplayPlacardsAsync()
         {
-            var client = new Cloud.Api.Connect.Clients.PlayersApiClient(Managers.SessionManager.Instance);
+            var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
             return await client.GetScreenplayPlacardsAsync();
         }

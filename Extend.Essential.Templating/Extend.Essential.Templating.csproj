@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Essential.Templating</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Essential.Templating</RootNamespace>
+    <Version>0.1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -48,7 +48,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     contentType = "image/jpeg";
                 }
 
-                var client = new Cloud.Api.Connect.Clients.ImagesApiClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
 
                 using (var imageFileStream = targetFileData.GetStream())
                 {

@@ -28,7 +28,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (!IsEnabled)
             {
-                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiClient(Managers.SessionManager.Instance);
+                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiConnectClient(Managers.SessionManager.Instance);
 
                 accountApiClient.GetCurrentAsync().ContinueWith(task =>
                 {

@@ -921,6 +921,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.Property<bool>("Enabled")
                         .HasColumnName("enabled");
 
+                    b.Property<string>("Version")
+                        .IsRequired()
+                        .HasColumnName("version");
+
                     b.HasKey("Id")
                         .HasName("pk_extensions");
 

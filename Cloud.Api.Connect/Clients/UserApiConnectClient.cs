@@ -2,11 +2,11 @@
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
 {
-    public class UserApiClient
+    public class UserApiConnectClient
     {
         private readonly SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper;
 
-        public UserApiClient(SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper)
+        public UserApiConnectClient(SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper)
         {
             this.httpClientHelper = httpClientHelper;
         }

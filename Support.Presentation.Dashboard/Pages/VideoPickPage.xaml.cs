@@ -54,7 +54,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
         {
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.VideosApiClient(httpClientHelperProvider.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.VideosApiConnectClient(httpClientHelperProvider.HttpClientHelper);
 
                 return await client.GetPageAsync(page);
             }).ContinueWith((System.Threading.Tasks.Task<SAPRESSC.Core.Common.Models.PaginationModel<Cloud.Api.Common.Models.VideoDisplayModel>> task) =>
