@@ -77,7 +77,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             PicturePresentationSecounds = BindingContextPageModel.PicturePresentationSecounds,
-                            PictureTransitionId = Motion.Transitions.ScalingGrowFadeOutInTransitionDescriptor.ID,
+                            PictureTransitionId = Transitioning.Transitions.ScalingGrowFadeOutInTransitionDescriptor.ID,
                             Images = BindingContextPageModel.Images.Select(m => new Common.Templating.Presentation.Models.Context.ImageContextModel { Id = m.Id, ThumbnailId = m.ThumbnailId }).ToArray()
                         })
                     });
@@ -93,7 +93,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             PicturePresentationSecounds = BindingContextPageModel.PicturePresentationSecounds,
-                            PictureTransitionId = Motion.Transitions.ScalingGrowFadeOutInTransitionDescriptor.ID,
+                            PictureTransitionId = Transitioning.Transitions.ScalingGrowFadeOutInTransitionDescriptor.ID,
                             Images = BindingContextPageModel.Images.Select(m => new Common.Templating.Presentation.Models.Context.ImageContextModel { Id = m.Id, ThumbnailId = m.ThumbnailId }).ToArray()
                         })
                     });

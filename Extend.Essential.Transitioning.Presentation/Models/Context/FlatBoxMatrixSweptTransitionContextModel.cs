@@ -1,0 +1,15 @@
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentation.Models.Context
+{
+    public class FlatBoxMatrixSweptTransitionContextModel
+    {
+        public Xamarin.Forms.Color Color { get; set; }
+
+        public Enumerations.SweptTransitionOrientation Orientation { get; set; }
+
+        public Enumerations.SweptTransitionInOutKind InOutKind { get; set; }
+
+        public Enumerations.SweptTransitionItemMotionType MotionType { get; set; }
+
+        public Enumerations.SweptTransitionItemMotionMode MotionMode { get; set; }
+    }
+}

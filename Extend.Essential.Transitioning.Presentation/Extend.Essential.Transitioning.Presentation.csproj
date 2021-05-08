@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentation</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentation</RootNamespace>
+    <Version>0.1.0.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj" />
+  </ItemGroup>
+
+</Project>

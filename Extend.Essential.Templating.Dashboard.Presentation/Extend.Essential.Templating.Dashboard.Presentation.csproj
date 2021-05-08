@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj" />
-    <ProjectReference Include="..\Extend.Essential.Motion\Extend.Essential.Motion.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj" />
     <ProjectReference Include="..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj" />
     <ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
   </ItemGroup>
