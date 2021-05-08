@@ -13,7 +13,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PictureSecuencePlacardContextModel>(model.SerializedContext);
 
-                return new PictureSecuencePlacardView(context, cloudServerProvider, accountInformationProvider, XFToolKit.IoC.TinyIoCContainer.Current.Resolve<Common.Motion.Presentation.Providers.Facade.IMotionTransitionProviderFacade>());
+                return new PictureSecuencePlacardView(context, cloudServerProvider, accountInformationProvider, XFToolKit.IoC.TinyIoCContainer.Current.Resolve<Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade>());
             }
 
             if (model.Template.Id == SimpleVideoTemplateDescriptor.ID)

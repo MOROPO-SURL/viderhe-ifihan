@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cloud.Persistence", "Cloud.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Common", "Extend.Common\Extend.Common.csproj", "{FA8FCD4C-DA74-4102-B767-6A0D0150C673}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Common.Motion", "Extend.Common.Motion\Extend.Common.Motion.csproj", "{9B378C2E-1ED2-432B-9A18-B923CEFA70C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Common.Transitioning", "Extend.Common.Transitioning\Extend.Common.Transitioning.csproj", "{9B378C2E-1ED2-432B-9A18-B923CEFA70C7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Common.Presentation", "Extend.Common.Presentation\Extend.Common.Presentation.csproj", "{F6F4F289-0342-4F75-AE1B-7B1B7EF9711D}"
 EndProject
@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Common.Overlaying", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Common.Overlaying.Presentation", "Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj", "{54A31415-5ACA-41CF-A9DA-2B97E0812EC6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Common.Motion.Presentation", "Extend.Common.Motion.Presentation\Extend.Common.Motion.Presentation.csproj", "{7B10AB64-AEC2-4109-BBB6-CBE522C1273C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Common.Transitioning.Presentation", "Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj", "{7B10AB64-AEC2-4109-BBB6-CBE522C1273C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extend", "Extend", "{AEB12E82-2010-47D8-945C-9DDA2422DA33}"
 EndProject
@@ -63,9 +63,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cloud.SignalR.Connect.Commo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Common.Templating.Dashboard.Presentation", "Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj", "{05AF9B61-F444-429F-9148-461197C175EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support.Extend.Motion", "Support.Extend.Motion\Support.Extend.Motion.csproj", "{B2638380-165D-4142-8714-38BA6DEB6DC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support.Extend.Transitioning", "Support.Extend.Transitioning\Support.Extend.Transitioning.csproj", "{B2638380-165D-4142-8714-38BA6DEB6DC4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support.Extend.Motion.Presentation", "Support.Extend.Motion.Presentation\Support.Extend.Motion.Presentation.csproj", "{D30821D6-84CA-4A80-9C96-1D2DD24BC02B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support.Extend.Transitioning.Presentation", "Support.Extend.Transitioning.Presentation\Support.Extend.Transitioning.Presentation.csproj", "{D30821D6-84CA-4A80-9C96-1D2DD24BC02B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support.Extend.Overlaying", "Support.Extend.Overlaying\Support.Extend.Overlaying.csproj", "{C6EC5E2A-CF68-4A31-B53D-0BF9EC767FA4}"
 EndProject
@@ -73,9 +73,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Essential", "Essential", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Essential", "Extend.Essential\Extend.Essential.csproj", "{1887C021-DBEC-42F7-8563-0E56598B6F9A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Essential.Motion", "Extend.Essential.Motion\Extend.Essential.Motion.csproj", "{5E18FBA2-62E1-4BAE-8917-1E809FC5FCFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Essential.Transitioning", "Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj", "{5E18FBA2-62E1-4BAE-8917-1E809FC5FCFD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Essential.Motion.Presentation", "Extend.Essential.Motion.Presentation\Extend.Essential.Motion.Presentation.csproj", "{B88A5D61-11D9-4827-875E-7BD9BC5F6720}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Essential.Transitioning.Presentation", "Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj", "{B88A5D61-11D9-4827-875E-7BD9BC5F6720}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Essential.Overlaying", "Extend.Essential.Overlaying\Extend.Essential.Overlaying.csproj", "{87C8E862-21A4-4679-9FC0-26A99F7A24AE}"
 EndProject

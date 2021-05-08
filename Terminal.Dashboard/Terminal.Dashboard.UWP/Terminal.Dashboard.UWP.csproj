@@ -207,13 +207,13 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Extend.Common.Motion.Presentation\Extend.Common.Motion.Presentation.csproj">
+    <ProjectReference Include="..\..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj">
       <Project>{7b10ab64-aec2-4109-bbb6-cbe522c1273c}</Project>
-      <Name>Extend.Common.Motion.Presentation</Name>
+      <Name>Extend.Common.Transitioning.Presentation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Extend.Common.Motion\Extend.Common.Motion.csproj">
+    <ProjectReference Include="..\..\Extend.Common.Transitioning\Extend.Common.Transitioning.csproj">
       <Project>{9b378c2e-1ed2-432b-9a18-b923cefa70c7}</Project>
-      <Name>Extend.Common.Motion</Name>
+      <Name>Extend.Common.Transitioning</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Common.Overlaying.Dashboard.Presentation\Extend.Common.Overlaying.Dashboard.Presentation.csproj">
       <Project>{0c4a6224-eb36-44ef-9844-6b0bfbcbba17}</Project>
@@ -247,11 +247,11 @@
       <Project>{fa8fcd4c-da74-4102-b767-6a0d0150c673}</Project>
       <Name>Extend.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Extend.Essential.Motion.Presentation\Extend.Essential.Motion.Presentation.csproj">
+    <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj">
       <Project>{b88a5d61-11d9-4827-875e-7bd9bc5f6720}</Project>
       <Name>Extend.Essential.Motion.Presentation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Extend.Essential.Motion\Extend.Essential.Motion.csproj">
+    <ProjectReference Include="..\..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj">
       <Project>{5e18fba2-62e1-4bae-8917-1e809fc5fcfd}</Project>
       <Name>Extend.Essential.Motion</Name>
     </ProjectReference>

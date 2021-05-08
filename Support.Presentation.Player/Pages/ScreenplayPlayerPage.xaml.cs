@@ -20,7 +20,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             this.accountInformationProvider = accountInformationProvider;
             this.cloudServerProvider = cloudServerProvider;
 
-            presenter = new Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards, accountInformationProvider, Extend.Motion.Presentation.Providers.MotionTransitionProvider.Instance, presentationCompleteCallbackAction, loop, placardPlayingCallbackAction, placardViewTransitionCompleteCallbackAction);
+            presenter = new Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards, accountInformationProvider, Extend.Transitioning.Presentation.Providers.TransitionProvider.Instance, presentationCompleteCallbackAction, loop, placardPlayingCallbackAction, placardViewTransitionCompleteCallbackAction);
 
             if (overlay != null)
             {
