@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common\Extend.Common.csproj" />
+    <ProjectReference Include="..\Extend.SpringMotion.Transitioning\Extend.SpringMotion.Transitioning.csproj" />
   </ItemGroup>
 
 </Project>
