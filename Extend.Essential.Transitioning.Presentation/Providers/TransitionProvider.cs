@@ -19,29 +19,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
         {
             var randomizer = new System.Random();
 
-            var randomTransitionIndex = randomizer.Next(0, 8);
+            var randomTransitionIndex = randomizer.Next(0, 2);
 
             switch (randomTransitionIndex)
             {
-                case 0:
-                    return Factories.RandomMotionTransitionFactory.CreateFlatSpectrumHandFanTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
-                case 1:
-                case 2:
-                    var colors = new Xamarin.Forms.Color[]
-                    {
-                        Xamarin.Forms.Color.Accent,
-                        Xamarin.Forms.Color.Black,
-                        Xamarin.Forms.Color.White,
-                        accountInformationProvider.PrimaryColor,
-                        accountInformationProvider.SecoundaryColor
-                    };
-
-                    return Factories.RandomMotionTransitionFactory.CreateFlatBoxMatrixSweptTransition(colors[randomizer.Next(0, colors.Length)], incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
-                case 4:
-                case 5:
-                    return Factories.RandomMotionTransitionFactory.CreateSimpleCarouselTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
                 default:
-                    return Factories.RandomMotionTransitionFactory.CreateFlatSpectrumInverseGothTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+                    return Factories.RandomTransitionFactory.CreateSimpleCarouselTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
             }
 
             throw new System.InvalidOperationException();
