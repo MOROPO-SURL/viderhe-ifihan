@@ -19,12 +19,21 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
         {
             var randomizer = new System.Random();
 
-            var randomTransitionIndex = randomizer.Next(0, 2);
+            var randomTransitionIndex = randomizer.Next(0, 5);
 
             switch (randomTransitionIndex)
             {
+                case 0:
+                    return Factories.RandomTransitionFactory.CreateFadeInTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+
+                case 1:
+                case 2:
+                    return Factories.RandomTransitionFactory.CreateArriveTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+
+                case 3:
+                case 4:
                 default:
-                    return Factories.RandomTransitionFactory.CreateSimpleCarouselTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+                    return Factories.RandomTransitionFactory.CreateCarouselTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
             }
 
             throw new System.InvalidOperationException();

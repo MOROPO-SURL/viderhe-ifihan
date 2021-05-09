@@ -2,13 +2,13 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentation.Transitions
 {
-    public class SimpleCarouselTransition : Common.Transitioning.Presentation.Transitions.AbstractTransition
+    public class CarouselTransition : Common.Transitioning.Presentation.Transitions.AbstractTransition
     {
-        private Models.Context.SimpleCarouselTransitionContextModel context;
+        private Models.Context.CarouselTransitionContextModel context;
 
         private AbstractAnimation factShowInAnimation;
 
-        public SimpleCarouselTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.SimpleCarouselTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
+        public CarouselTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.CarouselTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
         {
             this.context = context;
         }

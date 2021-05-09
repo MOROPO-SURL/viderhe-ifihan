@@ -42,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers
             var extensionDescriptors = Support.Extend.Providers.ExtensionDescriptorProvider.Instance.GetDescriptors();
 
             var templateDescriptors = Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptors();
-            var transitionDescriptors = Support.Extend.Motion.Providers.TransitionDescriptorProvider.Instance.GetDescriptors();
+            var transitionDescriptors = Support.Extend.Transitioning.Providers.TransitionDescriptorProvider.Instance.GetDescriptors();
             var overlayDescriptors = Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptors();
 
             foreach (var extensionDescriptor in extensionDescriptors)

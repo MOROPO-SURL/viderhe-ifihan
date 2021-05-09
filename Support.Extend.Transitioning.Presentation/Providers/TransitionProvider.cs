@@ -26,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning.Presentation.
         private TransitionProvider()
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Motion.Presentation,\\sVersion=")).ToArray();
+                .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Transitioning.Presentation,\\sVersion=")).ToArray();
 
             XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(ITransitionProviderFacade).IsAssignableFrom(t));
         }
