@@ -19,7 +19,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
         {
             var randomizer = new System.Random();
 
-            var randomTransitionIndex = randomizer.Next(0, 5);
+            var randomTransitionIndex = randomizer.Next(0, 6);
 
             switch (randomTransitionIndex)
             {
@@ -32,8 +32,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
 
                 case 3:
                 case 4:
-                default:
                     return Factories.RandomTransitionFactory.CreateCarouselTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+
+                case 5:
+                default:
+                    return Factories.RandomTransitionFactory.CreateZoomInTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
             }
 
             throw new System.InvalidOperationException();

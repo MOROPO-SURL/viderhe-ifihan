@@ -18,5 +18,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
         {
             return new Transitions.FadeInTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateFadeInTransitionContextModel(), motionCompletedActionCallback);
         }
+
+        public static Transitions.ZoomInTransition CreateZoomInTransition(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
+        {
+            return new Transitions.ZoomInTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateZoomInTransitionContextModel(), motionCompletedActionCallback);
+        }
     }
 }
