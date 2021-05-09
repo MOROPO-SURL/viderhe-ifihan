@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Models.Context
 {
-    public class FlatBoxMatrixSweptTransitionContextModel
+    public class FlatBoxMatrixSweptCurtainTransitionContextModel
     {
         public Xamarin.Forms.Color Color { get; set; }
 

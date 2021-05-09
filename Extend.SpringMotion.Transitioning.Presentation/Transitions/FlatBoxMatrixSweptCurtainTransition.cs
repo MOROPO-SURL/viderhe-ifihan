@@ -2,7 +2,7 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Transitions
 {
-    public class FlatBoxMatrixSweptTransition : Common.Transitioning.Presentation.Transitions.AbstractTransition
+    public class FlatBoxMatrixSweptCurtainTransition : Common.Transitioning.Presentation.Transitions.AbstractTransition
     {
         private const int BOX_VIEW_MATRIX_ITEMS_COUNT = 6;
         private const int BOX_VIEW_QUICK_SHOW_ANIMATE_DURATION_MILLISECOUNDS = 240;
@@ -12,12 +12,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
         private Xamarin.Forms.Grid boxViewsGrid;
 
-        private Models.Context.FlatBoxMatrixSweptTransitionContextModel context;
+        private Models.Context.FlatBoxMatrixSweptCurtainTransitionContextModel context;
 
         private AbstractAnimation squaresShowInAnimation;
         private AbstractAnimation factShowInAnimation;
 
-        public FlatBoxMatrixSweptTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.FlatBoxMatrixSweptTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
+        public FlatBoxMatrixSweptCurtainTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.FlatBoxMatrixSweptCurtainTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
         {
             this.context = context;
         }

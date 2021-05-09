@@ -4,9 +4,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 {
     public static class RandomTransitionFactory
     {
-        public static Transitions.FlatBoxMatrixSweptTransition CreateFlatBoxMatrixSweptTransition(Xamarin.Forms.Color color, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
+        public static Transitions.FlatBoxMatrixSweptCurtainTransition CreateFlatBoxMatrixSweptCurtainTransition(Xamarin.Forms.Color color, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
-            return new Transitions.FlatBoxMatrixSweptTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateFlatBoxMatrixSweptTransitionContextModel(color), motionCompletedActionCallback);
+            return new Transitions.FlatBoxMatrixSweptCurtainTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateFlatBoxMatrixSweptCurtainTransitionContextModel(color), motionCompletedActionCallback);
         }
 
         public static Transitions.FlatSpectrumHandFanTransition CreateFlatSpectrumHandFanTransition(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
@@ -17,6 +17,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
         public static Transitions.FlatSpectrumReverseTrailTransition CreateFlatSpectrumInverseGothTransition(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
             return new Transitions.FlatSpectrumReverseTrailTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateFlatSpectrumInverseGothTransitionContextModel(), motionCompletedActionCallback);
+        }
+
+        public static Transitions.FlatDualSoectrumHandFanCurtainTransition CreateFlatDualSoectrumHandFanCurtainTransition(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
+        {
+            return new Transitions.FlatDualSoectrumHandFanCurtainTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateBaseFlatSpectrumTransitionContextModel(), motionCompletedActionCallback);
         }
     }
 }

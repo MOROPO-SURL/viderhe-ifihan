@@ -114,9 +114,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 incomingPlacardPresentationView.WrapLayout.Children.Add(flatSpectrumHandFanNeutralBoxView);
             }
 
-            incomingPlacardPresentationView.WrapLayout.Children.Add(flatSpectrumHandFanSecoundaryBoxView);
-            incomingPlacardPresentationView.WrapLayout.Children.Add(flatSpectrumHandFanPrimaryBoxView);
-
             if (context.UseOpaqueFlatSpectrumItems)
             {
                 if (context.UseNeutralFlatSpectrumItems)
@@ -125,8 +122,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 }
 
                 incomingPlacardPresentationView.WrapLayout.Children.Add(flatSpectrumHandFanSecoundaryOpaqueBoxView);
-                incomingPlacardPresentationView.WrapLayout.Children.Add(flatSpectrumHandFanPrimaryBoxView);
+                incomingPlacardPresentationView.WrapLayout.Children.Add(flatSpectrumHandFanPrimaryOpaqueBoxView);
             }
+
+            incomingPlacardPresentationView.WrapLayout.Children.Add(flatSpectrumHandFanSecoundaryBoxView);
+            incomingPlacardPresentationView.WrapLayout.Children.Add(flatSpectrumHandFanPrimaryBoxView);
 
             incomingPlacardPresentationView.WrapLayout.RaiseChild(incomingPlacardPresentationView.PlacardView);
         }

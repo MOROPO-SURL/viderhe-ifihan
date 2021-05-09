@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Transitions
 {
-    public class FlatBoxMatrixSweptTransitionDescriptor : Common.Transitioning.Descriptors.ITransitionDescriptor
+    public class FlatBoxMatrixSweptCurtainTransitionDescriptor : Common.Transitioning.Descriptors.ITransitionDescriptor
     {
         public static System.Guid ID = System.Guid.Parse("FEC5E572-CE72-46F2-BD39-0FCBFFC7A6C0");
 

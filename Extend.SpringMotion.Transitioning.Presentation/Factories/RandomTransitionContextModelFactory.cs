@@ -2,7 +2,7 @@
 {
     public static class RandomTransitionContextModelFactory
     {
-        public static Models.Context.FlatBoxMatrixSweptTransitionContextModel CreateFlatBoxMatrixSweptTransitionContextModel(Xamarin.Forms.Color color)
+        public static Models.Context.FlatBoxMatrixSweptCurtainTransitionContextModel CreateFlatBoxMatrixSweptCurtainTransitionContextModel(Xamarin.Forms.Color color)
         {
             var randomizer = new System.Random();
 
@@ -11,7 +11,7 @@
             var orientationCount = System.Enum.GetNames(typeof(Enumerations.SweptTransitionOrientation)).Length;
             var inOutKindCount = System.Enum.GetNames(typeof(Enumerations.SweptTransitionInOutKind)).Length;
 
-            return new Models.Context.FlatBoxMatrixSweptTransitionContextModel
+            return new Models.Context.FlatBoxMatrixSweptCurtainTransitionContextModel
             {
                 Color = color,
                 MotionType = (Enumerations.SweptTransitionItemMotionType)randomizer.Next(0, motionTypeCount),

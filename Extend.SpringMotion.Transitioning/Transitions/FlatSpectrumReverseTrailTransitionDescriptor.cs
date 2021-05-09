@@ -6,7 +6,7 @@
 
         public System.Guid Id => ID;
 
-        public string Name => "Estela en Reversa con Escala de Colores Planos";
+        public string Name => "Estela en Reversa con Colores Planos";
 
         public string Description => "No definido por el momento.";
     }
