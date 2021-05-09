@@ -15,6 +15,7 @@
                 MotionEasingType = (XFToolKit.Presentation.Transform.Enumerations.EasingType)randomizer.Next(0, easingTypeCount)
             };
         }
+
         public static Models.Context.ArriveTransitionContextModel CreateArriveTransitionContextModel()
         {
             var randomizer = new System.Random();
@@ -25,6 +26,18 @@
             return new Models.Context.ArriveTransitionContextModel
             {
                 Direction = (Common.Transitioning.Presentation.Enumerations.StandardTransitionDirection)randomizer.Next(0, standardTransitionDirectionCount),
+                MotionEasingType = (XFToolKit.Presentation.Transform.Enumerations.EasingType)randomizer.Next(0, easingTypeCount)
+            };
+        }
+
+        public static Models.Context.ZoomInTransitionContextModel CreateZoomInTransitionContextModel()
+        {
+            var randomizer = new System.Random();
+
+            var easingTypeCount = System.Enum.GetNames(typeof(XFToolKit.Presentation.Transform.Enumerations.EasingType)).Length;
+
+            return new Models.Context.ZoomInTransitionContextModel
+            {
                 MotionEasingType = (XFToolKit.Presentation.Transform.Enumerations.EasingType)randomizer.Next(0, easingTypeCount)
             };
         }
