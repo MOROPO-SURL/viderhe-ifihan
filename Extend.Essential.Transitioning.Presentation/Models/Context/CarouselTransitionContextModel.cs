@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentation.Models.Context
 {
-    public class SimpleCarouselTransitionContextModel
+    public class CarouselTransitionContextModel
     {
         public Common.Transitioning.Presentation.Enumerations.StandardTransitionDirection Direction { get; set; }
 

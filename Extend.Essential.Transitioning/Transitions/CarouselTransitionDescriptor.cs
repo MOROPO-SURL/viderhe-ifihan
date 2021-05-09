@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Transitions
 {
-    public class SimpleCarouselTransitionDescriptor : Common.Transitioning.Descriptors.ITransitionDescriptor
+    public class CarouselTransitionDescriptor : Common.Transitioning.Descriptors.ITransitionDescriptor
     {
         public static System.Guid ID = System.Guid.Parse("BACDD974-5D4A-4881-8E2B-C2C8F82B0552");
 
