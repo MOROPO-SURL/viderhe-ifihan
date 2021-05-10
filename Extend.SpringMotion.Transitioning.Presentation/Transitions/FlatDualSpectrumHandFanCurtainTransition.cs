@@ -1,8 +1,9 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Transitions
 {
-    public class FlatDualSoectrumHandFanCurtainTransition : Common.Transitioning.Presentation.Transitions.AbstractTransition
+    public class FlatDualSpectrumHandFanCurtainTransition : Common.Transitioning.Presentation.Transitions.AbstractTransition
     {
         private Xamarin.Forms.BoxView startFlatSpectrumHandFanPrimaryBoxView;
         private Xamarin.Forms.BoxView startFlatSpectrumHandFanSecoundaryBoxView;
@@ -22,7 +23,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
         private AbstractAnimation factShowInAnimation;
 
-        public FlatDualSoectrumHandFanCurtainTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.BaseFlatSpectrumTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
+        public FlatDualSpectrumHandFanCurtainTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.BaseFlatSpectrumTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
         {
             this.context = context;
         }
@@ -33,9 +34,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
         {
             var flatSpectrumHandFanBoxViewRequiredWidth = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? wrapper.Width : wrapper.Width / 2;
             var flatSpectrumHandFanBoxViewRequiredHeight = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? wrapper.Height / 2 : wrapper.Height;
+            var startFlatSpectrumHandFanBoxViewHorizontalLayoutOption = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Xamarin.Forms.LayoutOptions.Fill : Xamarin.Forms.LayoutOptions.Start;
+            var startFlatSpectrumHandFanBoxViewVerticalLayoutOtion = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.Fill;
+            var endFlatSpectrumHandFanBoxViewHorizontalLayoutOption = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Xamarin.Forms.LayoutOptions.Fill : Xamarin.Forms.LayoutOptions.End;
+            var endFlatSpectrumHandFanBoxViewVerticalLayoutOtion = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Xamarin.Forms.LayoutOptions.End : Xamarin.Forms.LayoutOptions.Fill;
 
             startFlatSpectrumHandFanPrimaryBoxView = new Xamarin.Forms.BoxView
             {
+                HorizontalOptions = startFlatSpectrumHandFanBoxViewHorizontalLayoutOption,
+                VerticalOptions = startFlatSpectrumHandFanBoxViewVerticalLayoutOtion,
                 Color = accountInformationProvider.PrimaryColor,
                 WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                 HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
@@ -48,6 +55,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
             endFlatSpectrumHandFanPrimaryBoxView = new Xamarin.Forms.BoxView
             {
+                HorizontalOptions = endFlatSpectrumHandFanBoxViewHorizontalLayoutOption,
+                VerticalOptions = endFlatSpectrumHandFanBoxViewVerticalLayoutOtion,
                 Color = accountInformationProvider.PrimaryColor,
                 WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                 HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
@@ -60,6 +69,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
             startFlatSpectrumHandFanSecoundaryBoxView = new Xamarin.Forms.BoxView
             {
+                HorizontalOptions = startFlatSpectrumHandFanBoxViewHorizontalLayoutOption,
+                VerticalOptions = startFlatSpectrumHandFanBoxViewVerticalLayoutOtion,
                 Color = accountInformationProvider.SecoundaryColor,
                 WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                 HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
@@ -72,6 +83,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
             endFlatSpectrumHandFanSecoundaryBoxView = new Xamarin.Forms.BoxView
             {
+                HorizontalOptions = endFlatSpectrumHandFanBoxViewHorizontalLayoutOption,
+                VerticalOptions = endFlatSpectrumHandFanBoxViewVerticalLayoutOtion,
                 Color = accountInformationProvider.SecoundaryColor,
                 WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                 HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
@@ -86,6 +99,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
             {
                 startFlatSpectrumHandFanPrimaryOpaqueBoxView = new Xamarin.Forms.BoxView
                 {
+                    HorizontalOptions = startFlatSpectrumHandFanBoxViewHorizontalLayoutOption,
+                    VerticalOptions = startFlatSpectrumHandFanBoxViewVerticalLayoutOtion,
                     Color = accountInformationProvider.PrimaryColor.MultiplyAlpha(0.5),
                     WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                     HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
@@ -98,6 +113,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
                 endFlatSpectrumHandFanPrimaryOpaqueBoxView = new Xamarin.Forms.BoxView
                 {
+                    HorizontalOptions = endFlatSpectrumHandFanBoxViewHorizontalLayoutOption,
+                    VerticalOptions = endFlatSpectrumHandFanBoxViewVerticalLayoutOtion,
                     Color = accountInformationProvider.PrimaryColor.MultiplyAlpha(0.5),
                     WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                     HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
@@ -110,6 +127,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
                 startFlatSpectrumHandFanSecoundaryOpaqueBoxView = new Xamarin.Forms.BoxView
                 {
+                    HorizontalOptions = startFlatSpectrumHandFanBoxViewHorizontalLayoutOption,
+                    VerticalOptions = startFlatSpectrumHandFanBoxViewVerticalLayoutOtion,
                     Color = accountInformationProvider.SecoundaryColor.MultiplyAlpha(0.5),
                     WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                     HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
@@ -122,6 +141,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
                 endFlatSpectrumHandFanSecoundaryOpaqueBoxView = new Xamarin.Forms.BoxView
                 {
+                    HorizontalOptions = endFlatSpectrumHandFanBoxViewHorizontalLayoutOption,
+                    VerticalOptions = endFlatSpectrumHandFanBoxViewVerticalLayoutOtion,
                     Color = accountInformationProvider.SecoundaryColor.MultiplyAlpha(0.5),
                     WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                     HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
@@ -137,6 +158,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
             {
                 startFlatSpectrumHandFanNeutralBoxView = new Xamarin.Forms.BoxView
                 {
+                    HorizontalOptions = startFlatSpectrumHandFanBoxViewHorizontalLayoutOption,
+                    VerticalOptions = startFlatSpectrumHandFanBoxViewVerticalLayoutOtion,
                     Color = Xamarin.Forms.Color.White,
                     WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                     HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
@@ -149,6 +172,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
                 endFlatSpectrumHandFanNeutralBoxView = new Xamarin.Forms.BoxView
                 {
+                    HorizontalOptions = endFlatSpectrumHandFanBoxViewHorizontalLayoutOption,
+                    VerticalOptions = endFlatSpectrumHandFanBoxViewVerticalLayoutOtion,
                     Color = Xamarin.Forms.Color.White,
                     WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                     HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
@@ -163,6 +188,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 {
                     startFlatSpectrumHandFanNeutralOpaqueBoxView = new Xamarin.Forms.BoxView
                     {
+                        HorizontalOptions = startFlatSpectrumHandFanBoxViewHorizontalLayoutOption,
+                        VerticalOptions = startFlatSpectrumHandFanBoxViewVerticalLayoutOtion,
                         Color = Xamarin.Forms.Color.White.MultiplyAlpha(0.5),
                         WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                         HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
@@ -178,6 +205,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 {
                     endFlatSpectrumHandFanNeutralOpaqueBoxView = new Xamarin.Forms.BoxView
                     {
+                        HorizontalOptions = endFlatSpectrumHandFanBoxViewHorizontalLayoutOption,
+                        VerticalOptions = endFlatSpectrumHandFanBoxViewVerticalLayoutOtion,
                         Color = Xamarin.Forms.Color.White.MultiplyAlpha(0.5),
                         WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                         HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
@@ -266,43 +295,70 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
         protected override Storyboard CreateShowInMotionStoryboard()
         {
-            var storyboard = new Storyboard();
+            var storyboard = new Storyboard
+            {
+                IsParallel = true
+            };
 
-            int flatSpectrumItemCount = 0;
+            var duration = 250;
 
-            if (startFlatSpectrumHandFanNeutralOpaqueBoxView != null) storyboard.Animations.Add(CreateAnimationItemStoryboard(startFlatSpectrumHandFanNeutralOpaqueBoxView, 110 * flatSpectrumItemCount++));
-            if (endFlatSpectrumHandFanNeutralOpaqueBoxView != null) storyboard.Animations.Add(CreateAnimationItemStoryboard(endFlatSpectrumHandFanNeutralOpaqueBoxView, 110 * flatSpectrumItemCount++));
+            var inFlatSpectrumItemCount = 0;
 
-            if (startFlatSpectrumHandFanSecoundaryOpaqueBoxView != null) storyboard.Animations.Add(CreateAnimationItemStoryboard(startFlatSpectrumHandFanSecoundaryOpaqueBoxView, 110 * flatSpectrumItemCount++));
-            if (endFlatSpectrumHandFanSecoundaryOpaqueBoxView != null) storyboard.Animations.Add(CreateAnimationItemStoryboard(endFlatSpectrumHandFanSecoundaryOpaqueBoxView, 110 * flatSpectrumItemCount++));
+            if (startFlatSpectrumHandFanNeutralOpaqueBoxView != null) storyboard.Animations.Add(CreateInItemAnimationStoryboard(startFlatSpectrumHandFanNeutralOpaqueBoxView, duration, 110 * inFlatSpectrumItemCount));
+            if (endFlatSpectrumHandFanNeutralOpaqueBoxView != null) storyboard.Animations.Add(CreateInItemAnimationStoryboard(endFlatSpectrumHandFanNeutralOpaqueBoxView, duration, 110 * inFlatSpectrumItemCount++));
 
-            if (startFlatSpectrumHandFanPrimaryOpaqueBoxView != null) storyboard.Animations.Add(CreateAnimationItemStoryboard(startFlatSpectrumHandFanPrimaryOpaqueBoxView, 110 * flatSpectrumItemCount++));
-            if (endFlatSpectrumHandFanPrimaryOpaqueBoxView != null) storyboard.Animations.Add(CreateAnimationItemStoryboard(startFlatSpectrumHandFanPrimaryOpaqueBoxView, 110 * flatSpectrumItemCount++));
+            if (startFlatSpectrumHandFanSecoundaryOpaqueBoxView != null) storyboard.Animations.Add(CreateInItemAnimationStoryboard(startFlatSpectrumHandFanSecoundaryOpaqueBoxView, duration, 110 * inFlatSpectrumItemCount));
+            if (endFlatSpectrumHandFanSecoundaryOpaqueBoxView != null) storyboard.Animations.Add(CreateInItemAnimationStoryboard(endFlatSpectrumHandFanSecoundaryOpaqueBoxView, duration, 110 * inFlatSpectrumItemCount++));
 
-            if (startFlatSpectrumHandFanNeutralBoxView != null) storyboard.Animations.Add(CreateAnimationItemStoryboard(startFlatSpectrumHandFanNeutralBoxView, 110 * flatSpectrumItemCount++));
-            if (endFlatSpectrumHandFanNeutralBoxView != null) storyboard.Animations.Add(CreateAnimationItemStoryboard(endFlatSpectrumHandFanNeutralBoxView, 110 * flatSpectrumItemCount++));
+            if (startFlatSpectrumHandFanPrimaryOpaqueBoxView != null) storyboard.Animations.Add(CreateInItemAnimationStoryboard(startFlatSpectrumHandFanPrimaryOpaqueBoxView, duration, 110 * inFlatSpectrumItemCount));
+            if (endFlatSpectrumHandFanPrimaryOpaqueBoxView != null) storyboard.Animations.Add(CreateInItemAnimationStoryboard(startFlatSpectrumHandFanPrimaryOpaqueBoxView, duration, 110 * inFlatSpectrumItemCount++));
 
-            storyboard.Animations.Add(CreateAnimationItemStoryboard(startFlatSpectrumHandFanSecoundaryBoxView, 110 * flatSpectrumItemCount++));
-            storyboard.Animations.Add(CreateAnimationItemStoryboard(endFlatSpectrumHandFanSecoundaryBoxView, 110 * flatSpectrumItemCount++));
+            if (startFlatSpectrumHandFanNeutralBoxView != null) storyboard.Animations.Add(CreateInItemAnimationStoryboard(startFlatSpectrumHandFanNeutralBoxView, duration, 110 * inFlatSpectrumItemCount));
+            if (endFlatSpectrumHandFanNeutralBoxView != null) storyboard.Animations.Add(CreateInItemAnimationStoryboard(endFlatSpectrumHandFanNeutralBoxView, duration, 110 * inFlatSpectrumItemCount++));
 
-            var startFlatSpectrumHandFanPrimaryBoxViewShowInAnimation = CreateAnimationItemStoryboard(startFlatSpectrumHandFanPrimaryBoxView, 110 * flatSpectrumItemCount);
+            storyboard.Animations.Add(CreateInItemAnimationStoryboard(startFlatSpectrumHandFanSecoundaryBoxView, duration, 110 * inFlatSpectrumItemCount));
+            storyboard.Animations.Add(CreateInItemAnimationStoryboard(endFlatSpectrumHandFanSecoundaryBoxView, duration, 110 * inFlatSpectrumItemCount++));
+
+            var startFlatSpectrumHandFanPrimaryBoxViewShowInAnimation = CreateInItemAnimationStoryboard(startFlatSpectrumHandFanPrimaryBoxView, duration, 110 * inFlatSpectrumItemCount);
 
             var curtainDownStepAnimation = (startFlatSpectrumHandFanPrimaryBoxViewShowInAnimation as Storyboard).Animations[1];
 
             curtainDownStepAnimation.Completed += CurtainDownStepAnimation_Completed;
 
-            factShowInAnimation = (startFlatSpectrumHandFanPrimaryBoxViewShowInAnimation as Storyboard).Animations[3];
-
             storyboard.Animations.Add(startFlatSpectrumHandFanPrimaryBoxViewShowInAnimation);
-            storyboard.Animations.Add(CreateAnimationItemStoryboard(endFlatSpectrumHandFanPrimaryBoxView, 110 * flatSpectrumItemCount++));
+            storyboard.Animations.Add(CreateInItemAnimationStoryboard(endFlatSpectrumHandFanPrimaryBoxView, duration, 110 * inFlatSpectrumItemCount));
+
+            var curtainDownStepDuration = int.Parse(startFlatSpectrumHandFanPrimaryBoxViewShowInAnimation.Delay) + duration;
+
+            var outFlatSpectrumItemCount = 0;
+
+            storyboard.Animations.Add(CreateOutItemAnimationStoryboard(startFlatSpectrumHandFanPrimaryBoxView, duration, 110 * outFlatSpectrumItemCount + curtainDownStepDuration));
+            storyboard.Animations.Add(CreateOutItemAnimationStoryboard(endFlatSpectrumHandFanPrimaryBoxView, duration, 110 * outFlatSpectrumItemCount++ + curtainDownStepDuration));
+
+            var lastFlatSpectrumHandFanBoxViewShowInAnimation = CreateOutItemAnimationStoryboard(startFlatSpectrumHandFanSecoundaryBoxView, duration, 110 * outFlatSpectrumItemCount + curtainDownStepDuration);
+
+            storyboard.Animations.Add(lastFlatSpectrumHandFanBoxViewShowInAnimation);
+            storyboard.Animations.Add(CreateOutItemAnimationStoryboard(endFlatSpectrumHandFanSecoundaryBoxView, duration, 110 * outFlatSpectrumItemCount++ + curtainDownStepDuration));
+
+            if (startFlatSpectrumHandFanNeutralBoxView != null) storyboard.Animations.Add(CreateOutItemAnimationStoryboard(startFlatSpectrumHandFanNeutralBoxView, duration, 110 * outFlatSpectrumItemCount + curtainDownStepDuration));
+            if (endFlatSpectrumHandFanNeutralBoxView != null) storyboard.Animations.Add(CreateOutItemAnimationStoryboard(endFlatSpectrumHandFanNeutralBoxView, duration, 110 * outFlatSpectrumItemCount++ + curtainDownStepDuration));
+
+            if (startFlatSpectrumHandFanPrimaryOpaqueBoxView != null) storyboard.Animations.Add(CreateOutItemAnimationStoryboard(startFlatSpectrumHandFanPrimaryOpaqueBoxView, duration, 110 * outFlatSpectrumItemCount + curtainDownStepDuration));
+            if (endFlatSpectrumHandFanPrimaryOpaqueBoxView != null) storyboard.Animations.Add(CreateOutItemAnimationStoryboard(startFlatSpectrumHandFanPrimaryOpaqueBoxView, duration, 110 * outFlatSpectrumItemCount++ + curtainDownStepDuration));
+
+            if (startFlatSpectrumHandFanSecoundaryOpaqueBoxView != null) storyboard.Animations.Add(CreateOutItemAnimationStoryboard(startFlatSpectrumHandFanSecoundaryOpaqueBoxView, duration, 110 * outFlatSpectrumItemCount + curtainDownStepDuration));
+            if (endFlatSpectrumHandFanSecoundaryOpaqueBoxView != null) storyboard.Animations.Add(CreateOutItemAnimationStoryboard(endFlatSpectrumHandFanSecoundaryOpaqueBoxView, duration, 110 * outFlatSpectrumItemCount++ + curtainDownStepDuration));
+
+            if (startFlatSpectrumHandFanNeutralOpaqueBoxView != null) storyboard.Animations.Add(CreateOutItemAnimationStoryboard(startFlatSpectrumHandFanNeutralOpaqueBoxView, duration, 110 * outFlatSpectrumItemCount + curtainDownStepDuration));
+            if (endFlatSpectrumHandFanNeutralOpaqueBoxView != null) storyboard.Animations.Add(CreateOutItemAnimationStoryboard(endFlatSpectrumHandFanNeutralOpaqueBoxView, duration, 110 * outFlatSpectrumItemCount + curtainDownStepDuration));
+
+            factShowInAnimation = (storyboard.Animations.Last() as Storyboard).Animations[1];
 
             return storyboard;
         }
 
-        private Storyboard CreateAnimationItemStoryboard(Xamarin.Forms.VisualElement target, int delayMilisecounds = 0)
+        private Storyboard CreateInItemAnimationStoryboard(Xamarin.Forms.VisualElement target, int duration, int delayMilisecounds = 0)
         {
-            var duration = "250";
-
             var storyboard = new Storyboard
             {
                 IsParallel = true,
@@ -310,10 +366,26 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 Delay = delayMilisecounds.ToString()
             };
 
-            storyboard.Animations.Add(new TranslateToAnimation { TranslateX = 0, TranslateY = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration });
-            storyboard.Animations.Add(new RotateToAnimation { Rotation = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration });
-            storyboard.Animations.Add(new TranslateToAnimation { TranslateX = target.TranslationX * -1, TranslateY = target.TranslationY * -1, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn, Duration = duration, Delay = duration });
-            storyboard.Animations.Add(new RotateToAnimation { Rotation = target.Rotation * -1, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration, Delay = duration });
+            storyboard.Animations.Add(new TranslateToAnimation { TranslateX = 0, TranslateY = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+            storyboard.Animations.Add(new RotateToAnimation { Rotation = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+
+            return storyboard;
+        }
+
+        private Storyboard CreateOutItemAnimationStoryboard(Xamarin.Forms.VisualElement target, int duration, int delayMilisecounds = 0)
+        {
+            var storyboard = new Storyboard
+            {
+                IsParallel = true,
+                Target = target,
+                Delay = delayMilisecounds.ToString()
+            };
+
+            var translateX = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? target.TranslationX * -1 : target.TranslationX;
+            var translateY = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? target.TranslationY : target.TranslationY * -1;
+
+            storyboard.Animations.Add(new TranslateToAnimation { TranslateX = translateX, TranslateY = translateY, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn, Duration = duration.ToString() });
+            storyboard.Animations.Add(new RotateToAnimation { Rotation = target.Rotation * -1, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn, Duration = duration.ToString() });
 
             return storyboard;
         }

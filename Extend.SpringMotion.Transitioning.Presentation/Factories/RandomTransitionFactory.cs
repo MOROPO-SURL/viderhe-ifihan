@@ -19,9 +19,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
             return new Transitions.FlatSpectrumReverseTrailTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateFlatSpectrumInverseGothTransitionContextModel(), motionCompletedActionCallback);
         }
 
-        public static Transitions.FlatDualSoectrumHandFanCurtainTransition CreateFlatDualSoectrumHandFanCurtainTransition(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
+        public static Transitions.FlatDualSpectrumHandFanCurtainTransition CreateFlatDualSpectrumHandFanCurtainTransition(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
-            return new Transitions.FlatDualSoectrumHandFanCurtainTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateBaseFlatSpectrumTransitionContextModel(), motionCompletedActionCallback);
+            return new Transitions.FlatDualSpectrumHandFanCurtainTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateBaseFlatSpectrumTransitionContextModel(), motionCompletedActionCallback);
         }
     }
 }

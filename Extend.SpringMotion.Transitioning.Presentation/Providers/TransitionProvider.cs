@@ -41,7 +41,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 case 5:
                 case 6:
                 default:
-                    return Factories.RandomTransitionFactory.CreateFlatDualSoectrumHandFanCurtainTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+                    return Factories.RandomTransitionFactory.CreateFlatDualSpectrumHandFanCurtainTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
             }
         }
     }
