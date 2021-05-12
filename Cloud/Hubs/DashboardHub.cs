@@ -57,7 +57,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
             {
                 var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).RestarScreenplay(immediancyMode);
+                playerHubContext.Clients.Client(playerContext.ConnectionId).RestartScreenplay(immediancyMode);
             }
             catch { }
         }

@@ -70,7 +70,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             presenter.RequestPresentPreviousFrame();
         }
 
-        public void RequestRestar(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
+        public void RequestRestart(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
         {
             presenter.RequestRestart(immediacyMode);
         }
