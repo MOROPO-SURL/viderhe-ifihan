@@ -28,7 +28,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             }
 
             demo = !loop;
-            empty = placards.Length > 0;
+            empty = placards.Length <= 0;
         }
 
         protected override void OnAppearing()
@@ -37,8 +37,10 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 
             Xamarin.Essentials.DeviceDisplay.MainDisplayInfoChanged += DeviceDisplay_MainDisplayInfoChanged;
 
-            if (!demo && !empty)
+            if (!demo)
             {
+                if (empty) return;
+
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(task =>
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(presenter.BeginPresentation);
