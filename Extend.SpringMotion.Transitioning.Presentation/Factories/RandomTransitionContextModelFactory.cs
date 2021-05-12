@@ -32,6 +32,20 @@
             };
         }
 
+        public static Models.Context.FlatDualSpectrumHandFanCurtainTransitionContextModel CreateFlatDualSpectrumHandFanCurtainTransitionContextModel()
+        {
+            var randomizer = new System.Random();
+
+            var modeCount = System.Enum.GetNames(typeof(Enumerations.DualSpectrumHandFanCurtainMode)).Length;
+
+            return new Models.Context.FlatDualSpectrumHandFanCurtainTransitionContextModel
+            {
+                UseNeutralFlatSpectrumItems = randomizer.Next(0, 2) == 1,
+                UseOpaqueFlatSpectrumItems = randomizer.Next(0, 2) == 1,
+                Mode = (Enumerations.DualSpectrumHandFanCurtainMode)randomizer.Next(0, modeCount)
+            };
+        }
+
         public static Models.Context.FlatSpectrumInverseGothTransitionContextModel CreateFlatSpectrumInverseGothTransitionContextModel()
         {
             var randomizer = new System.Random();

@@ -19,11 +19,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
         private Xamarin.Forms.BoxView endFlatSpectrumHandFanSecoundaryOpaqueBoxView;
         private Xamarin.Forms.BoxView endFlatSpectrumHandFanNeutralOpaqueBoxView;
 
-        private Models.Context.BaseFlatSpectrumTransitionContextModel context;
+        private Models.Context.FlatDualSpectrumHandFanCurtainTransitionContextModel context;
 
         private AbstractAnimation factShowInAnimation;
 
-        public FlatDualSpectrumHandFanCurtainTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.BaseFlatSpectrumTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
+        public FlatDualSpectrumHandFanCurtainTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.FlatDualSpectrumHandFanCurtainTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
         {
             this.context = context;
         }
@@ -38,6 +38,35 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
             var startFlatSpectrumHandFanBoxViewVerticalLayoutOtion = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.Fill;
             var endFlatSpectrumHandFanBoxViewHorizontalLayoutOption = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Xamarin.Forms.LayoutOptions.Fill : Xamarin.Forms.LayoutOptions.End;
             var endFlatSpectrumHandFanBoxViewVerticalLayoutOtion = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Xamarin.Forms.LayoutOptions.End : Xamarin.Forms.LayoutOptions.Fill;
+            var startFlatSpectrumHandFanBoxViewVerticalTranslationY = flatSpectrumHandFanBoxViewRequiredHeight * -1;
+            var startFlatSpectrumHandFanBoxViewVerticalTranslationX = flatSpectrumHandFanBoxViewRequiredWidth * -1;
+            var endFlatSpectrumHandFanBoxViewVerticalTranslationY = flatSpectrumHandFanBoxViewRequiredHeight;
+            var endFlatSpectrumHandFanBoxViewVerticalTranslationX = flatSpectrumHandFanBoxViewRequiredWidth;
+            var startFlatSpectrumHandFanBoxViewVerticalRotation = 45 * -1;
+            var endFlatSpectrumHandFanBoxViewVerticalRotation = 45;
+
+            if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+            {
+                if (context.Mode == Enumerations.DualSpectrumHandFanCurtainMode.OutRotation)
+                {
+                    startFlatSpectrumHandFanBoxViewVerticalTranslationY = 0;
+                    endFlatSpectrumHandFanBoxViewVerticalTranslationY = 0;
+                }
+            }
+            else
+            {
+                if (context.Mode == Enumerations.DualSpectrumHandFanCurtainMode.OutRotation)
+                {
+                    startFlatSpectrumHandFanBoxViewVerticalTranslationX = 0;
+                    endFlatSpectrumHandFanBoxViewVerticalTranslationX = 0;
+                }
+            }
+
+            if (context.Mode == Enumerations.DualSpectrumHandFanCurtainMode.OutRotation)
+            {
+                startFlatSpectrumHandFanBoxViewVerticalRotation = 0;
+                endFlatSpectrumHandFanBoxViewVerticalRotation = 0;
+            }
 
             startFlatSpectrumHandFanPrimaryBoxView = new Xamarin.Forms.BoxView
             {
@@ -46,9 +75,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 Color = accountInformationProvider.PrimaryColor,
                 WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                 HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
-                TranslationX = flatSpectrumHandFanBoxViewRequiredWidth * -1,
-                TranslationY = flatSpectrumHandFanBoxViewRequiredHeight * -1,
-                Rotation = 45 * -1
+                TranslationX = startFlatSpectrumHandFanBoxViewVerticalTranslationX,
+                TranslationY = startFlatSpectrumHandFanBoxViewVerticalTranslationY,
+                Rotation = startFlatSpectrumHandFanBoxViewVerticalRotation
             };
 
             incomingPlacardPresentationView.ConfigureLayout(startFlatSpectrumHandFanPrimaryBoxView);
@@ -60,9 +89,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 Color = accountInformationProvider.PrimaryColor,
                 WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                 HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
-                TranslationX = flatSpectrumHandFanBoxViewRequiredWidth,
-                TranslationY = flatSpectrumHandFanBoxViewRequiredHeight,
-                Rotation = 45
+                TranslationX = endFlatSpectrumHandFanBoxViewVerticalTranslationX,
+                TranslationY = endFlatSpectrumHandFanBoxViewVerticalTranslationY,
+                Rotation = endFlatSpectrumHandFanBoxViewVerticalRotation
             };
 
             incomingPlacardPresentationView.ConfigureLayout(endFlatSpectrumHandFanPrimaryBoxView);
@@ -74,9 +103,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 Color = accountInformationProvider.SecoundaryColor,
                 WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                 HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
-                TranslationX = flatSpectrumHandFanBoxViewRequiredWidth * -1,
-                TranslationY = flatSpectrumHandFanBoxViewRequiredHeight * -1,
-                Rotation = 45 * -1
+                TranslationX = startFlatSpectrumHandFanBoxViewVerticalTranslationX,
+                TranslationY = startFlatSpectrumHandFanBoxViewVerticalTranslationY,
+                Rotation = startFlatSpectrumHandFanBoxViewVerticalRotation
             };
 
             incomingPlacardPresentationView.ConfigureLayout(startFlatSpectrumHandFanSecoundaryBoxView);
@@ -88,9 +117,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 Color = accountInformationProvider.SecoundaryColor,
                 WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                 HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
-                TranslationX = flatSpectrumHandFanBoxViewRequiredWidth,
-                TranslationY = flatSpectrumHandFanBoxViewRequiredHeight,
-                Rotation = 45
+                TranslationX = endFlatSpectrumHandFanBoxViewVerticalTranslationX,
+                TranslationY = endFlatSpectrumHandFanBoxViewVerticalTranslationY,
+                Rotation = endFlatSpectrumHandFanBoxViewVerticalRotation
             };
 
             incomingPlacardPresentationView.ConfigureLayout(endFlatSpectrumHandFanSecoundaryBoxView);
@@ -104,9 +133,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                     Color = accountInformationProvider.PrimaryColor.MultiplyAlpha(0.5),
                     WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                     HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
-                    TranslationX = flatSpectrumHandFanBoxViewRequiredWidth * -1,
-                    TranslationY = flatSpectrumHandFanBoxViewRequiredHeight * -1,
-                    Rotation = 45 * -1
+                    TranslationX = startFlatSpectrumHandFanBoxViewVerticalTranslationX,
+                    TranslationY = startFlatSpectrumHandFanBoxViewVerticalTranslationY,
+                    Rotation = startFlatSpectrumHandFanBoxViewVerticalRotation
                 };
 
                 incomingPlacardPresentationView.ConfigureLayout(startFlatSpectrumHandFanPrimaryOpaqueBoxView);
@@ -118,9 +147,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                     Color = accountInformationProvider.PrimaryColor.MultiplyAlpha(0.5),
                     WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                     HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
-                    TranslationX = flatSpectrumHandFanBoxViewRequiredWidth,
-                    TranslationY = flatSpectrumHandFanBoxViewRequiredHeight,
-                    Rotation = 45
+                    TranslationX = endFlatSpectrumHandFanBoxViewVerticalTranslationX,
+                    TranslationY = endFlatSpectrumHandFanBoxViewVerticalTranslationY,
+                    Rotation = endFlatSpectrumHandFanBoxViewVerticalRotation
                 };
 
                 incomingPlacardPresentationView.ConfigureLayout(endFlatSpectrumHandFanPrimaryOpaqueBoxView);
@@ -132,9 +161,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                     Color = accountInformationProvider.SecoundaryColor.MultiplyAlpha(0.5),
                     WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                     HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
-                    TranslationX = flatSpectrumHandFanBoxViewRequiredWidth * -1,
-                    TranslationY = flatSpectrumHandFanBoxViewRequiredHeight * -1,
-                    Rotation = 45 * -1
+                    TranslationX = startFlatSpectrumHandFanBoxViewVerticalTranslationX,
+                    TranslationY = startFlatSpectrumHandFanBoxViewVerticalTranslationY,
+                    Rotation = startFlatSpectrumHandFanBoxViewVerticalRotation
                 };
 
                 incomingPlacardPresentationView.ConfigureLayout(startFlatSpectrumHandFanSecoundaryOpaqueBoxView);
@@ -146,9 +175,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                     Color = accountInformationProvider.SecoundaryColor.MultiplyAlpha(0.5),
                     WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                     HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
-                    TranslationX = flatSpectrumHandFanBoxViewRequiredWidth,
-                    TranslationY = flatSpectrumHandFanBoxViewRequiredHeight,
-                    Rotation = 45
+                    TranslationX = endFlatSpectrumHandFanBoxViewVerticalTranslationX,
+                    TranslationY = endFlatSpectrumHandFanBoxViewVerticalTranslationY,
+                    Rotation = endFlatSpectrumHandFanBoxViewVerticalRotation
                 };
 
                 incomingPlacardPresentationView.ConfigureLayout(endFlatSpectrumHandFanSecoundaryOpaqueBoxView);
@@ -163,9 +192,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                     Color = Xamarin.Forms.Color.White,
                     WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                     HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
-                    TranslationX = flatSpectrumHandFanBoxViewRequiredWidth * -1,
-                    TranslationY = flatSpectrumHandFanBoxViewRequiredHeight * -1,
-                    Rotation = 45 * -1
+                    TranslationX = startFlatSpectrumHandFanBoxViewVerticalTranslationX,
+                    TranslationY = startFlatSpectrumHandFanBoxViewVerticalTranslationY,
+                    Rotation = startFlatSpectrumHandFanBoxViewVerticalRotation
                 };
 
                 incomingPlacardPresentationView.ConfigureLayout(startFlatSpectrumHandFanNeutralBoxView);
@@ -177,9 +206,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                     Color = Xamarin.Forms.Color.White,
                     WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                     HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
-                    TranslationX = flatSpectrumHandFanBoxViewRequiredWidth,
-                    TranslationY = flatSpectrumHandFanBoxViewRequiredHeight,
-                    Rotation = 45
+                    TranslationX = endFlatSpectrumHandFanBoxViewVerticalTranslationX,
+                    TranslationY = endFlatSpectrumHandFanBoxViewVerticalTranslationY,
+                    Rotation = endFlatSpectrumHandFanBoxViewVerticalRotation
                 };
 
                 incomingPlacardPresentationView.ConfigureLayout(endFlatSpectrumHandFanNeutralBoxView);
@@ -193,9 +222,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                         Color = Xamarin.Forms.Color.White.MultiplyAlpha(0.5),
                         WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                         HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
-                        TranslationX = flatSpectrumHandFanBoxViewRequiredWidth * -1,
-                        TranslationY = flatSpectrumHandFanBoxViewRequiredHeight * -1,
-                        Rotation = 45 * -1
+                        TranslationX = startFlatSpectrumHandFanBoxViewVerticalTranslationX,
+                        TranslationY = startFlatSpectrumHandFanBoxViewVerticalTranslationY,
+                        Rotation = startFlatSpectrumHandFanBoxViewVerticalRotation
                     };
 
                     incomingPlacardPresentationView.ConfigureLayout(startFlatSpectrumHandFanNeutralOpaqueBoxView);
@@ -210,9 +239,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                         Color = Xamarin.Forms.Color.White.MultiplyAlpha(0.5),
                         WidthRequest = flatSpectrumHandFanBoxViewRequiredWidth,
                         HeightRequest = flatSpectrumHandFanBoxViewRequiredHeight,
-                        TranslationX = flatSpectrumHandFanBoxViewRequiredWidth,
-                        TranslationY = flatSpectrumHandFanBoxViewRequiredHeight,
-                        Rotation = 45 * -1
+                        TranslationX = endFlatSpectrumHandFanBoxViewVerticalTranslationX,
+                        TranslationY = endFlatSpectrumHandFanBoxViewVerticalTranslationY,
+                        Rotation = endFlatSpectrumHandFanBoxViewVerticalRotation
                     };
 
                     incomingPlacardPresentationView.ConfigureLayout(endFlatSpectrumHandFanNeutralOpaqueBoxView);
@@ -300,7 +329,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 IsParallel = true
             };
 
-            var duration = 250;
+            var duration = 500;
 
             var inFlatSpectrumItemCount = 0;
 
@@ -321,7 +350,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
             var startFlatSpectrumHandFanPrimaryBoxViewShowInAnimation = CreateInItemAnimationStoryboard(startFlatSpectrumHandFanPrimaryBoxView, duration, 110 * inFlatSpectrumItemCount);
 
-            var curtainDownStepAnimation = (startFlatSpectrumHandFanPrimaryBoxViewShowInAnimation as Storyboard).Animations[1];
+            var curtainDownStepAnimation = (startFlatSpectrumHandFanPrimaryBoxViewShowInAnimation as Storyboard).Animations[0];
 
             curtainDownStepAnimation.Completed += CurtainDownStepAnimation_Completed;
 
@@ -352,7 +381,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
             if (startFlatSpectrumHandFanNeutralOpaqueBoxView != null) storyboard.Animations.Add(CreateOutItemAnimationStoryboard(startFlatSpectrumHandFanNeutralOpaqueBoxView, duration, 110 * outFlatSpectrumItemCount + curtainDownStepDuration));
             if (endFlatSpectrumHandFanNeutralOpaqueBoxView != null) storyboard.Animations.Add(CreateOutItemAnimationStoryboard(endFlatSpectrumHandFanNeutralOpaqueBoxView, duration, 110 * outFlatSpectrumItemCount + curtainDownStepDuration));
 
-            factShowInAnimation = (storyboard.Animations.Last() as Storyboard).Animations[1];
+            factShowInAnimation = (storyboard.Animations.Last() as Storyboard).Animations[0];
 
             return storyboard;
         }
@@ -366,13 +395,27 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 Delay = delayMilisecounds.ToString()
             };
 
-            storyboard.Animations.Add(new TranslateToAnimation { TranslateX = 0, TranslateY = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
-            storyboard.Animations.Add(new RotateToAnimation { Rotation = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+            if (context.Mode != Enumerations.DualSpectrumHandFanCurtainMode.OutRotation)
+            {
+                storyboard.Animations.Add(new TranslateToAnimation { TranslateX = 0, TranslateY = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                storyboard.Animations.Add(new RotateToAnimation { Rotation = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+            }
+            else
+            {
+                if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                {
+                    storyboard.Animations.Add(new TranslateToXAnimation { TranslateX = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                }
+                else
+                {
+                    storyboard.Animations.Add(new TranslateToYAnimation { TranslateY = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                }
+            }
 
             return storyboard;
         }
 
-        private Storyboard CreateOutItemAnimationStoryboard(Xamarin.Forms.VisualElement target, int duration, int delayMilisecounds = 0)
+        private Storyboard CreateOutItemAnimationStoryboard(Xamarin.Forms.View target, int duration, int delayMilisecounds = 0)
         {
             var storyboard = new Storyboard
             {
@@ -381,11 +424,39 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 Delay = delayMilisecounds.ToString()
             };
 
-            var translateX = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? target.TranslationX * -1 : target.TranslationX;
-            var translateY = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? target.TranslationY : target.TranslationY * -1;
+            double rotation;
+            double translateX;
+            double translateY;
 
-            storyboard.Animations.Add(new TranslateToAnimation { TranslateX = translateX, TranslateY = translateY, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn, Duration = duration.ToString() });
-            storyboard.Animations.Add(new RotateToAnimation { Rotation = target.Rotation * -1, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn, Duration = duration.ToString() });
+            if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+            {
+                rotation = target.VerticalOptions.Alignment == Xamarin.Forms.LayoutOptions.Start.Alignment ? 45 : 45 * -1;
+                translateX = target.VerticalOptions.Alignment == Xamarin.Forms.LayoutOptions.Start.Alignment ? target.WidthRequest * -1 : target.WidthRequest;
+                translateY = target.VerticalOptions.Alignment == Xamarin.Forms.LayoutOptions.Start.Alignment ? target.HeightRequest * -1 : target.HeightRequest;
+            }
+            else
+            {
+                rotation = target.HorizontalOptions.Alignment == Xamarin.Forms.LayoutOptions.Start.Alignment ? 45 : 45 * -1;
+                translateX = target.HorizontalOptions.Alignment == Xamarin.Forms.LayoutOptions.Start.Alignment ? target.WidthRequest * -1 : target.WidthRequest;
+                translateY = target.HorizontalOptions.Alignment == Xamarin.Forms.LayoutOptions.Start.Alignment ? target.HeightRequest * -1 : target.HeightRequest;
+            }
+
+            if (context.Mode != Enumerations.DualSpectrumHandFanCurtainMode.InRotation)
+            {
+                storyboard.Animations.Add(new TranslateToAnimation { TranslateX = translateX, TranslateY = translateY, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                storyboard.Animations.Add(new RotateToAnimation { Rotation = rotation, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+            }
+            else
+            {
+                if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                {
+                    storyboard.Animations.Add(new TranslateToXAnimation { TranslateX = translateX, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                }
+                else
+                {
+                    storyboard.Animations.Add(new TranslateToYAnimation { TranslateY = translateY, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                }
+            }
 
             return storyboard;
         }
