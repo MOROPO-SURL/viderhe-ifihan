@@ -9,11 +9,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
     {
         public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
         {
-            if (model.Template.Id == PictureSecuenceTemplateDescriptor.ID)
+            if (model.Template.Id == PictureSlideSecuenceTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PictureSecuencePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PictureSlideSecuencePlacardContextModel>(model.SerializedContext);
 
-                return new PictureSecuencePlacardView(context, cloudServerProvider, accountInformationProvider, XFToolKit.IoC.TinyIoCContainer.Current.Resolve<Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade>());
+                return new PictureSlideSecuencePlacardView(context, cloudServerProvider, accountInformationProvider, new PictureSlideSecuenceTransitionProvider());
             }
 
             if (model.Template.Id == SimpleVideoTemplateDescriptor.ID)

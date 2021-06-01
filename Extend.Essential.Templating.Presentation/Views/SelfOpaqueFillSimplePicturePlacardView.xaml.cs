@@ -20,5 +20,22 @@
             Xamarin.Forms.Grid.SetColumn(view, 0);
             Xamarin.Forms.Grid.SetRow(view, 0);
         }
+
+        public override void PerformPlacardStarup()
+        {
+            base.PerformPlacardStarup();
+
+            if ((BindingContext as Models.View.SimplePicturePlacardViewModel).ZoomingEnabled)
+            {
+                var animation = new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                {
+                    Target = this,
+                    Scale = Scale == 0 ? 1.2 : 1,
+                    Duration = (BindingContext as Models.View.SimplePicturePlacardViewModel).ScreenPresentationTime.TotalMilliseconds.ToString()
+                };
+
+                animation.Begin();
+            }
+        }
     }
 }

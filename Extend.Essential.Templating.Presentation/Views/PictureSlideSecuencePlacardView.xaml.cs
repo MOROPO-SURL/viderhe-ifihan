@@ -3,9 +3,9 @@ using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Exten
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views
 {
-    public partial class PictureSecuencePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade
+    public partial class PictureSlideSecuencePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade
     {
-        private Models.Context.PictureSecuencePlacardContextModel context;
+        private Models.Context.PictureSlideSecuencePlacardContextModel context;
         private Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider;
         private Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade motionTransitionProvider;
         private Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider;
@@ -14,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
 
         private System.Guid motionTransitionId;
 
-        public PictureSecuencePlacardView(Models.Context.PictureSecuencePlacardContextModel context, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade motionTransitionProvider)
+        public PictureSlideSecuencePlacardView(Models.Context.PictureSlideSecuencePlacardContextModel context, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade motionTransitionProvider)
         {
             InitializeComponent();
 
@@ -26,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
 
             motionTransitionId = context.PictureTransitionId;
 
-            BindingContext = new Models.View.PictureSecuencePlacardViewModel
+            BindingContext = new Models.View.PictureSlideSecuencePlacardViewModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation
             };
@@ -56,7 +56,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
                 PlayerOrientationSupport = Common.Templating.Enumerations.PlayerOrientationSupportKind.Any
             };
 
-            foreach (var item in context.Images)
+            foreach (var item in context.Slides)
             {
                 placards.Add(new Support.Presentation.Models.View.PlacardViewModel
                 {
@@ -64,8 +64,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
                     Template = targetTemplateViewModel,
                     SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Models.Context.SimplePicturePlacardContextModel
                     {
-                        Image = item,
-                        LayoutMode = Enumerations.PictureLayoutMode.AspectFill,
+                        Image = item.Image,
+                        LayoutMode = item.LayoutMode,
                         ScreenPresentationTime = System.TimeSpan.FromSeconds(context.PicturePresentationSecounds),
                         IsZoomingEnabled = true
                     })
@@ -83,13 +83,23 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.SimplePicturePlacardContextModel>(model.SerializedContext);
 
-            return new SimplePicturePlacardView(new Models.View.SimplePicturePlacardViewModel
+            var viewModel = new Models.View.SimplePicturePlacardViewModel
             {
+                RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                ScreenPresentationTime = context.ScreenPresentationTime,
                 Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.Image.Id)),
                 Aspect = context.LayoutMode.ToXamarinFormsAspect(),
-                ScreenPresentationTime = context.ScreenPresentationTime,
                 ZoomingEnabled = context.IsZoomingEnabled
-            });
+            };
+
+            if (context.LayoutMode == Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf)
+            {
+                return new SelfOpaqueFillSimplePicturePlacardView(viewModel, accountInformationProvider);
+            }
+            else
+            {
+                return new SimplePicturePlacardView(viewModel);
+            }
         }
 
         public Common.Transitioning.Presentation.Transitions.AbstractTransition GetFor(System.Guid transitionDescriptorId, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)

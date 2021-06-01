@@ -1,8 +1,8 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Models.Context
 {
-    public class PictureSecuencePlacardContextModel : Common.Templating.Presentation.Models.Context.AbstractPlacardContextModel
+    public class PictureSlideSecuencePlacardContextModel : Common.Templating.Presentation.Models.Context.AbstractPlacardContextModel
     {
-        public Common.Templating.Presentation.Models.Context.ImageContextModel[] Images { get; set; }
+        public PictureSlideContextModel[] Slides { get; set; }
 
         public int PicturePresentationSecounds { get; set; }
 

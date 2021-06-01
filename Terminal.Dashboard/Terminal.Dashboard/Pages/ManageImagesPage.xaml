@@ -82,7 +82,7 @@
                                         Grid.Row="0" Grid.Column="0"
                                         BackgroundColor="Black"
                                         HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-                                        Source="{Binding Converter={StaticResource ImageViewModelToImageSourceConverter}}"
+                                        Source="{Binding Converter={StaticResource ImageViewModelToThumbnailImageSourceConverter}}"
                                         CacheType="Disk"
                                         CacheDuration="8760:00:00" />
                                     <StackLayout 

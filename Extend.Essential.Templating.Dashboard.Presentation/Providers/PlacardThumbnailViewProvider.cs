@@ -4,7 +4,7 @@
     {
         public Xamarin.Forms.ContentView GetPlacardThumnailView(Support.Presentation.Models.View.PlacardViewModel model, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
         {
-            if (model.Template.Id == Descriptors.PictureSecuenceTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.PictureSlideSecuenceTemplateDescriptor.ID)
             {
                 return new Views.PictureSecuencePlacardThumbnailView(model, cloudServerProvider);
             }

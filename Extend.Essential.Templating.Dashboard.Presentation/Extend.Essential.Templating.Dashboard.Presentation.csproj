@@ -30,6 +30,9 @@
     <Compile Update="Pages\LandscapePicturePresentingVideoPlacardConfigurationPage.xaml.cs">
       <DependentUpon>LandscapePicturePresentingVideoPlacardConfigurationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\PictureSlideSecuencePlacardConfigurationPage.xaml.cs">
+      <DependentUpon>PictureSlideSecuencePlacardConfigurationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Pages\PrePickVideoPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
@@ -58,7 +61,7 @@
     <EmbeddedResource Update="Pages\LandscapePicturePresentingVideoPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PictureSecuencePlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\PictureSlideSecuencePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\PortraitPicturePresentingPicturePlacardConfigurationPage.xaml">

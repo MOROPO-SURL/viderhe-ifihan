@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
     <ProjectReference Include="..\Extend.Essential.Templating\Extend.Essential.Templating.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +26,9 @@
     </Compile>
     <Compile Update="Views\LandscapePicturePresentingVideoPlacardView.xaml.cs">
       <DependentUpon>LandscapePicturePresentingVideoPlacardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PictureSlideSecuencePlacardView.xaml.cs">
+      <DependentUpon>PictureSlideSecuencePlacardView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\SelfOpaqueFillSimplePicturePlacardView.xaml.cs">
       <DependentUpon>SelfOpaqueFillSimplePicturePlacardView.xaml</DependentUpon>
@@ -38,7 +42,7 @@
     <EmbeddedResource Update="Views\LandscapePicturePresentingVideoPlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PictureSecuencePlacardView.xaml">
+    <EmbeddedResource Update="Views\PictureSlideSecuencePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\PortraitPicturePresentingPicturePlacardView.xaml">
