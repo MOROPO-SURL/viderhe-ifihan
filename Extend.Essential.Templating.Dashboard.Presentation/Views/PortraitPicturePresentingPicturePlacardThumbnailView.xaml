@@ -2,11 +2,8 @@
 <xftoolkitmvvmviews:ContentView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xftoolkitmvvmviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Views;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views.PortraitPicturePresentingPicturePlacardThumbnailView">
     <ContentView.Content>
         <Grid>

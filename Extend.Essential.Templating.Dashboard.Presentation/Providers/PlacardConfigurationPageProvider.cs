@@ -46,6 +46,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                 return new PortraitPicturePresentingVideoPlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
             }
 
+            if (templateDescriptor is LandscapePicturePresentingPictureSlideSecuenceTemplateDescriptor)
+            {
+                return new LandscapePicturePresentingPictureSlideSecuencePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+            }
+
+            if (templateDescriptor is PortraitPicturePresentingPictureSlideSecuenceTemplateDescriptor)
+            {
+                return new PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+            }
+
             return null;
         }
 
@@ -84,6 +94,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             if (placardViewModel.Template.Id == PortraitPicturePresentingVideoTemplateDescriptor.ID)
             {
                 return new PortraitPicturePresentingVideoPlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == LandscapePicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
+            {
+                return new LandscapePicturePresentingPictureSlideSecuencePlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == PortraitPicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
+            {
+                return new PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
             }
 
             return null;

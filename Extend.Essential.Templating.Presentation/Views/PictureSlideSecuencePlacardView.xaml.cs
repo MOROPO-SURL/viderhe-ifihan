@@ -3,28 +3,22 @@ using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Exten
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views
 {
-    public partial class PictureSlideSecuencePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade
+    public partial class PictureSlideSecuencePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
         private Models.Context.PictureSlideSecuencePlacardContextModel context;
         private Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider;
-        private Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade motionTransitionProvider;
         private Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider;
 
         private Common.Templating.Presentation.Presenters.ScreenplayPresenter screenplayPresenter;
 
-        private System.Guid motionTransitionId;
-
-        public PictureSlideSecuencePlacardView(Models.Context.PictureSlideSecuencePlacardContextModel context, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade motionTransitionProvider)
+        public PictureSlideSecuencePlacardView(Models.Context.PictureSlideSecuencePlacardContextModel context, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider)
         {
             InitializeComponent();
 
             this.context = context;
 
             this.cloudServerProvider = cloudServerProvider;
-            this.motionTransitionProvider = motionTransitionProvider;
             this.accountInformationProvider = accountInformationProvider;
-
-            motionTransitionId = context.PictureTransitionId;
 
             BindingContext = new Models.View.PictureSlideSecuencePlacardViewModel
             {
@@ -72,7 +66,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
                 });
             }
 
-            screenplayPresenter = new Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards.ToArray(), accountInformationProvider, this, EndPresentation, false, null);
+            screenplayPresenter = new Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards.ToArray(), accountInformationProvider, new Providers.PictureSlideSecuenceTransitionProvider(), EndPresentation, false, null);
 
             screenplayPresenter.BeginPresentation();
         }
@@ -102,23 +96,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
             }
         }
 
-        public Common.Transitioning.Presentation.Transitions.AbstractTransition GetFor(System.Guid transitionDescriptorId, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
-        {
-            return motionTransitionProvider.GetFor(motionTransitionId, accountInformationProvider, incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
-        }
-
-        public Common.Transitioning.Presentation.Transitions.AbstractTransition GetRandom(Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
-        {
-            return motionTransitionProvider.GetFor(motionTransitionId, accountInformationProvider, incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
-        }
-
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
 
             context = null;
             cloudServerProvider = null;
-            motionTransitionProvider = null;
             accountInformationProvider = null;
 
             screenplayPresenter.Dispose();

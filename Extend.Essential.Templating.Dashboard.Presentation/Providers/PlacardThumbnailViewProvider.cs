@@ -39,6 +39,16 @@
                 return new Views.PortraitPicturePresentingVideoPlacardThumbnailView(model, cloudServerProvider);
             }
 
+            if (model.Template.Id == Descriptors.LandscapePicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
+            {
+                return new Views.LandscapePicturePresentingPictureSlideSecuencePlacardThumbnailView(model, cloudServerProvider);
+            }
+
+            if (model.Template.Id == Descriptors.PortraitPicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
+            {
+                return new Views.PortraitPicturePresentingPictureSlideSecuencePlacardThumbnailView(model, cloudServerProvider);
+            }
+
             return null;
         }
     }

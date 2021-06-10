@@ -2,7 +2,7 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Factories
 {
-    public static class PictureSecuencePlacardConfigurationPageModelFactory
+    public static class PictureSlideSecuencePlacardConfigurationPageModelFactory
     {
         public static Models.Page.PictureSlideSecuencePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {

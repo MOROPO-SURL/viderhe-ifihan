@@ -18,7 +18,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         }
 
         public PictureSlideSecuencePlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
-            : base(Factories.PictureSecuencePlacardConfigurationPageModelFactory.Build(placardViewModel))
+            : base(Factories.PictureSlideSecuencePlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
             InitializeComponent();
 
@@ -42,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
         private void IncludeImagesButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagesPickPage(BindingContextPageModel.Slides.Select(item => item.Image).ToArray(), exceptionHandleHelper, httpClientHelperProvider, ImagesSelectedCallback));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagesPickPage(BindingContextPageModel.Slides.Select(item => item.Image).ToArray(), exceptionHandleHelper, httpClientHelperProvider, ImagesSelected_Callback));
         }
 
         private void ImageDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -136,7 +136,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             this.NavigationPopPageAsync();
         }
 
-        private void ImagesSelectedCallback(Support.Presentation.Models.View.ImageViewModel[] selection)
+        private void ImagesSelected_Callback(Support.Presentation.Models.View.ImageViewModel[] selection)
         {
             foreach (var item in selection)
             {

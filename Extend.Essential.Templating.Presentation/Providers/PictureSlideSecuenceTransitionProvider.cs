@@ -15,7 +15,7 @@
 
         public Common.Transitioning.Presentation.Transitions.AbstractTransition GetRandom(Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback)
         {
-            throw new System.NotImplementedException();
+            return new Transitioning.Presentation.Transitions.ScalingGrowFadeOutInTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
         }
     }
 }
