@@ -103,11 +103,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                     {
                         using (var thumbnailSkImage = SkiaSharp.SKImage.FromBitmap(thumbnailSkBitmap))
                         {
-                            var thumbnailSkData = thumbnailSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Jpeg, 75);
+                            var thumbnailSkData = thumbnailSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Png, 75);
 
                             image.Thumbnail = new SAPRESSC.Middleware.Media.Persistence.Entities.Thumbnail
                             {
-                                ContentType = "image/jpeg",
+                                ContentType = "image/png",
                                 Length = thumbnailSkData.Size,
                                 About = string.Format(string.Format("Thumbnail: {0}", about))
                             };
