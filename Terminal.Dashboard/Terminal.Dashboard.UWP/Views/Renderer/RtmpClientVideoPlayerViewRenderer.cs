@@ -79,17 +79,17 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 
         private void MediaElement_PartialMediaFailureDetected(Windows.UI.Xaml.Controls.MediaElement sender, Windows.UI.Xaml.Media.PartialMediaFailureDetectedEventArgs args)
         {
-            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
         }
 
         private void MediaElement_MediaFailed(object sender, Windows.UI.Xaml.ExceptionRoutedEventArgs e)
         {
-            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
         }
 
         private void MediaElement_MediaEnded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
         }
 
         private void RtmpVideoClient_Started(object sender, Mntone.Rtmp.Client.SimpleVideoClientStartedEventArgs e)
@@ -135,7 +135,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 
             if (!hasSetSource)
             {
-                (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+                (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
             }
         }
     }

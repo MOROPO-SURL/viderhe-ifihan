@@ -19,34 +19,49 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer
                     rtmpVideoClient = new Mntone.Rtmp.Client.SimpleVideoClient();
 
                     rtmpVideoClient.Started += RtmpVideoClient_Started;
+                    rtmpVideoClient.Stopped += RtmpVideoClient_Stopped;
 
-                    var mediaElement = new Windows.UI.Xaml.Controls.MediaElement();
+                    SetNativeControl(new Windows.UI.Xaml.Controls.MediaElement());
 
-                    SetNativeControl(mediaElement);
+                    Control.MediaEnded += MediaElement_MediaEnded;
+                    Control.MediaFailed += MediaElement_MediaFailed;
+                    Control.PartialMediaFailureDetected += MediaElement_PartialMediaFailureDetected;
+                    Control.CurrentStateChanged += MediaElement_CurrentStateChanged;
 
-                    mediaElement.MediaEnded += MediaElement_MediaEnded; ;
-                    mediaElement.MediaFailed += MediaElement_MediaFailed; ;
-                    mediaElement.PartialMediaFailureDetected += MediaElement_PartialMediaFailureDetected; ;
-                    mediaElement.CurrentStateChanged += MediaElement_CurrentStateChanged; ;
+                    Element.PlayRequested += Play_Requested;
+                    Element.StopRequested += Stop_Requested;
                 }
+
+                //SetRepeat();
 
                 SetAreTransportControlsEnabled();
 
-                SetSourceAsync();
+                if (Element.AutoPlay)
+                {
+                    SetSourceAsync();
+                }
             }
         }
 
-        protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        private void RtmpVideoClient_Stopped(object sender, Mntone.Rtmp.Client.SimpleVideoClientStoppedEventArgs eventArgs)
         {
-            base.OnElementPropertyChanged(sender, e);
+            if ((Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status != XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady) return;
 
-            if (e.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.ShowControlsProperty.PropertyName)
+            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
+
+            if (Element.Repeat)
+            {
+                Play_Requested(sender, EventArgs.Empty);
+            }
+        }
+
+        protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs eventArgs)
+        {
+            base.OnElementPropertyChanged(sender, eventArgs);
+
+            if (eventArgs.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.ShowControlsProperty.PropertyName)
             {
                 SetAreTransportControlsEnabled();
-            }
-            else if (e.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.SourceProperty.PropertyName)
-            {
-                SetSourceAsync();
             }
         }
 
@@ -60,8 +75,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer
                 Control.CurrentStateChanged -= MediaElement_CurrentStateChanged;
 
                 rtmpVideoClient.Started -= RtmpVideoClient_Started;
+                rtmpVideoClient.Stopped -= RtmpVideoClient_Stopped;
 
                 rtmpVideoClient = null;
+
+                Element.PlayRequested -= Play_Requested;
+                Element.StopRequested -= Stop_Requested;
             }
 
             base.Dispose(disposing);
@@ -80,31 +99,54 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer
 
         private void MediaElement_PartialMediaFailureDetected(Windows.UI.Xaml.Controls.MediaElement sender, Windows.UI.Xaml.Media.PartialMediaFailureDetectedEventArgs args)
         {
-            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
+
+            if (Element.Repeat)
+            {
+                Play_Requested(sender, EventArgs.Empty);
+            }
         }
 
         private void MediaElement_MediaFailed(object sender, Windows.UI.Xaml.ExceptionRoutedEventArgs e)
         {
-            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
+
+            if (Element.Repeat)
+            {
+                Play_Requested(sender, EventArgs.Empty);
+            }
         }
 
         private void MediaElement_MediaEnded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
+
+            if (Element.Repeat)
+            {
+                Play_Requested(sender, EventArgs.Empty);
+            }
         }
 
-        private void RtmpVideoClient_Started(object sender, Mntone.Rtmp.Client.SimpleVideoClientStartedEventArgs e)
+        private void RtmpVideoClient_Started(object sender, Mntone.Rtmp.Client.SimpleVideoClientStartedEventArgs eventArgs)
         {
             Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, new Windows.UI.Core.DispatchedHandler(() =>
             {
-                Control.SetMediaStreamSource(e.MediaStreamSource);
+                Control.SetMediaStreamSource(eventArgs.MediaStreamSource);
+
                 Control.Play();
             })).AsTask();
         }
 
-        private void OnStopRequested(object sender, EventArgs eventArgs)
+        private void Stop_Requested(object sender, EventArgs eventArgs)
         {
             Control.Stop();
+        }
+
+        private void Play_Requested(object sender, EventArgs eventArgs)
+        {
+            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady;
+
+            SetSourceAsync();
         }
 
         private void SetAreTransportControlsEnabled()
@@ -136,7 +178,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer
 
             if (!hasSetSource)
             {
-                (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+                (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
             }
         }
     }

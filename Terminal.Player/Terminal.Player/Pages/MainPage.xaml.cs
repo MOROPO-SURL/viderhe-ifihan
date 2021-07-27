@@ -255,8 +255,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                 Managers.SessionManager.Instance.AccountSecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
                 Managers.SessionManager.Instance.AccountDefaultOverlayId = task.Result.DefaultOverlayId;
                 Managers.SessionManager.Instance.AccountSerializedOverlayContext = task.Result.SerializedOverlayContext;
-
-                var dynamicLoadExtensions = task.Result.Extensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID).ToArray();
+                
+                var dynamicLoadExtensions = task.Result.Extensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID && item.Id != Extend.OHCC.RailwayMuseum.Descriptors.RailwayMuseumOHCCExtensionDescriptor.ID).ToArray();
 
                 foreach (var accountExtension in dynamicLoadExtensions)
                 {

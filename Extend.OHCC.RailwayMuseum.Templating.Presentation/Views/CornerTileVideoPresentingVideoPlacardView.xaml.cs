@@ -23,7 +23,7 @@
 
         private void PresentedVideoPlayerView_StatusUpdated(object sender, System.EventArgs eventArgs)
         {
-            if (PresentedVideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused)
+            if (PresentedVideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
             {
                 if (PresenterTileVideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
                 {
@@ -46,7 +46,7 @@
 
         private void PresenterTileVideoPlayerView_StatusUpdated(object sender, System.EventArgs eventArgs)
         {
-            if (PresenterTileVideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused)
+            if (PresenterTileVideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
             {
                 PresenterTileVideoPlayerView.StatusUpdated -= PresenterTileVideoPlayerView_StatusUpdated;
 

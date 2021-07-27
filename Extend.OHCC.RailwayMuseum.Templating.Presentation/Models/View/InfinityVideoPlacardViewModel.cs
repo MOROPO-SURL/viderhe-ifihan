@@ -3,5 +3,7 @@
     public class InfinityVideoPlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel
     {
         public XFToolKit.Presentation.Sources.Video.VideoSource VideoSource { get; set; }
+
+        public Xamarin.Forms.ImageSource VideoThumbnailImageSource { get; set; } 
     }
 }

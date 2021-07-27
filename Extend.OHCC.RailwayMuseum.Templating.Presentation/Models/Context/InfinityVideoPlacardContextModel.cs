@@ -5,5 +5,9 @@
         public System.Guid VideoId { get; set; }
 
         public string VideoExtension { get; set; }
+
+        public System.Guid ThumbnailId { get; set; }
+
+        public string ThumbnailContentType { get; set; }
     }
 }

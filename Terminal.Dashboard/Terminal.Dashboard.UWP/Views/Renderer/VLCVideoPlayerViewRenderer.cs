@@ -39,7 +39,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (Control == null || disposed || Element == null || (Element.AutoPlay && (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused)) return;
+            if (Control == null || disposed || Element == null || (Element.AutoPlay && (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)) return;
 
             if (e.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.ShowControlsProperty.PropertyName)
             {
@@ -69,7 +69,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 
         private void OnMediaElementCurrentStateChanged(object sender, Windows.UI.Xaml.RoutedEventArgs eventArgs)
         {
-            if (Control == null || disposed || Element == null || (Element.AutoPlay && (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused)) return;
+            if (Control == null || disposed || Element == null || (Element.AutoPlay && (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)) return;
 
             var videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady;
 
@@ -85,7 +85,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
                 case Windows.UI.Xaml.Media.MediaElementState.Closed:
                 case Windows.UI.Xaml.Media.MediaElementState.Paused:
                 case Windows.UI.Xaml.Media.MediaElementState.Stopped:
-                    videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+                    videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
 
                     if (Element.AutoPlay)
                     {
@@ -157,7 +157,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 
             if (!hasSetSource)
             {
-                (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+                (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
             }
         }
 

@@ -13,7 +13,7 @@
 
         public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;
 
-        public override Xamarin.Forms.View PlacardView => VideoPlayerView;
+        public override Xamarin.Forms.View PlacardView => PlacardLayout;
 
         public override void ConfigureLayout(Xamarin.Forms.View view)
         {
@@ -27,9 +27,20 @@
 
             if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
-                transition?.PerformMotion();
+                if (transition != null)
+                {
+                    transition?.PerformMotion();
 
-                transition = null;
+                    transition = null;
+                }
+                else if (!videoPlayer.IsVisible)
+                {
+                    VideoPlayerView.IsVisible = true;
+                }
+            }
+            else if (transition == null && videoPlayer.Status != XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            {
+                VideoPlayerView.IsVisible = false;
             }
         }
 
