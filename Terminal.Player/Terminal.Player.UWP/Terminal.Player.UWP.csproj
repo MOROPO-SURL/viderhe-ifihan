@@ -187,9 +187,6 @@
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
       <Version>5.0.3</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
-      <Version>2.0.1</Version>
-    </PackageReference>
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>2.0.0.11</Version>
     </PackageReference>
