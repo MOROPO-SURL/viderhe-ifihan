@@ -80,8 +80,10 @@
                     </Frame>
                     <Frame 
                         Grid.Column="0" Grid.Row="2"
-                        Style="{StaticResource FormFieldFrame}">
-                        <Grid>
+                        Style="{StaticResource FormFieldFrame}"
+                        Padding="0"
+                        VerticalOptions="Start">
+                        <Grid RowSpacing="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto" />
@@ -92,19 +94,22 @@
                             </Grid.RowDefinitions>
                             <Label 
                                 Grid.Column="0" Grid.Row="0"
-                                Text="Imagen Presentadora" 
-                                Style="{StaticResource FormLabel}" />
+                                Style="{StaticResource FormLabel}"
+                                Margin="10,10,10,6"
+                                Text="Video del Mosaico Presentador" />
                             <Button
                                 Grid.Column="1" Grid.Row="0"
+                                VerticalOptions="Start"
                                 Text="Seleccionar"
-                                Clicked="PickPresenterTileVideoButton_Clicked" />
-                            <Grid Grid.ColumnSpan="2" Grid.Row="1">
-                                <ffimageloadingforms:CachedImage 
-                                    BackgroundColor="Black"
-                                    Source="{Binding Path=PresenterImage, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
-                                    CacheType="Disk"
-                                    CacheDuration="8760:00:00" />
-                            </Grid>
+                                Clicked="PickPresenterTileVideoButton_Clicked"  />
+                            <sscxftoolkitpresentationviewrendereds:VideoPlayerView                                
+                                Margin="0"
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width}"
+                                IsEnabled="{Binding Path=PresenterTileVideo, Converter={StaticResource NotNullToBooleanConverter}}"
+                                BackgroundColor="Black"
+                                Source="{Binding Path=PresenterTileVideo, Converter={StaticResource VideoViewModelToVideoSourceConverter}}" 
+                                AutoPlay="False" />
                         </Grid>
                     </Frame>
                     <Frame 
@@ -119,8 +124,8 @@
                     <Frame 
                         Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2"
                         Style="{StaticResource FormFieldFrame}"
-                        HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}">
-                        <Grid>
+                        Padding="0">
+                        <Grid RowSpacing="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto" />
@@ -131,14 +136,18 @@
                             </Grid.RowDefinitions>
                             <Label 
                                 Grid.Column="0" Grid.Row="0"
-                                Text="Video Presentado" 
-                                Style="{StaticResource FormLabel}" />
+                                Style="{StaticResource FormLabel}"
+                                Margin="10,10,10,6"
+                                Text="Video Presentado" />
                             <Button
                                 Grid.Column="1" Grid.Row="0"
+                                VerticalOptions="Start"
                                 Text="Seleccionar"
-                                Clicked="PickPresentedVideoButton_Clicked" />
-                            <sscxftoolkitpresentationviewrendereds:VideoPlayerView
+                                Clicked="PickPresentedVideoButton_Clicked"  />
+                            <sscxftoolkitpresentationviewrendereds:VideoPlayerView                                
+                                Margin="0"
                                 Grid.ColumnSpan="2" Grid.Row="1"
+                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
                                 IsEnabled="{Binding Path=PresentedVideo, Converter={StaticResource NotNullToBooleanConverter}}"
                                 BackgroundColor="Black"
                                 Source="{Binding Path=PresentedVideo, Converter={StaticResource VideoViewModelToVideoSourceConverter}}" 
