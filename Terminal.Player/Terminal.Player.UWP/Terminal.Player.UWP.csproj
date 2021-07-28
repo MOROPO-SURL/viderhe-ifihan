@@ -106,7 +106,7 @@
     <Compile Include="Views\Renderer\FontOverflowLabelRenderer.cs" />
     <Compile Include="Views\Renderer\IndeterminableProgressBarViewRenderer.cs" />
     <Compile Include="Views\Renderer\RingActivityIndicatorRenderer.cs" />
-    <Compile Include="Views\Renderer\RtmpClientVideoPlayerViewRenderer.cs" />
+    <Compile Include="Views\Renderer\UnattendedVideoPlayerViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

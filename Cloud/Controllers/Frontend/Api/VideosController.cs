@@ -135,8 +135,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                             video.FrameSize = string.Format("{0}x{1}", videoMediaStream.Width, videoMediaStream.Height);
                             video.Fps = 0;
                             video.ColorModel = videoMediaStream.PixFmt;
-                            video.AudioFormat = auduioMediaStream?.CodecLongName;
-                            video.AudioChannelOutput = auduioMediaStream?.ChannelLayout;
+                            video.AudioFormat = auduioMediaStream?.CodecLongName ?? "Unknown";
+                            video.AudioChannelOutput = auduioMediaStream?.ChannelLayout ?? "Unknown";
 
                             dbContext.Videos.Add(video);
 
