@@ -25,6 +25,7 @@
                     AutoPlay="True"
                     StatusUpdated="PresentedVideoPlayerView_StatusUpdated" />
                 <Grid
+                    x:Name="PresenterTileVideoPlayerViewWrapper"
                     Margin="30"
                     HorizontalOptions="{Binding Path=PresenterTileVideoScreenCorner, Converter={StaticResource ScreenCornerToHorizontalLayoutOptionConverter}}}"
                     VerticalOptions="{Binding Path=PresenterTileVideoScreenCorner, Converter={StaticResource ScreenCornerToVerticalLayoutOptionConverter}}">

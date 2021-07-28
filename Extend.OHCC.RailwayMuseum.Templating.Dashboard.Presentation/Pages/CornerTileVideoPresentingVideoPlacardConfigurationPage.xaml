@@ -111,17 +111,30 @@
                                 HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width}"
                                 CacheType="Disk"
                                 CacheDuration="8760:00:00" />
-                            <StackLayout 
+                            <Grid 
                                 Grid.ColumnSpan="2" Grid.Row="1"
-                                IsVisible="{Binding Path=PresenterTileVideo.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
-                                VerticalOptions="End" 
-                                Padding="8"
+                                IsVisible="{Binding Path=PresenterTileVideo, Converter={StaticResource NotNullToBooleanConverter}}"
                                 BackgroundColor="#99000000">
                                 <Label 
+                                    IsVisible="{Binding Path=PresenterTileVideo.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                    VerticalOptions="End" 
+                                    Padding="8"
+                                    BackgroundColor="#99000000"
                                     Text="{Binding Path=PresenterTileVideo.About}"
                                     TextColor="White"
                                     LineBreakMode="TailTruncation" />
-                            </StackLayout>
+                                <ImageButton 
+                                    HorizontalOptions="Center" VerticalOptions="Center"
+                                    WidthRequest="120"
+                                    Clicked="PresenterTileVideoPlayButton_Clicked">
+                                    <ImageButton.Source>
+                                        <FontImageSource 
+                                            Color="White"
+                                            FontFamily="{StaticResource IconFontFamily}"
+                                            Glyph="&#xf40c;" />
+                                    </ImageButton.Source>
+                                </ImageButton>
+                            </Grid>
                         </Grid>
                     </Frame>
                     <Frame 
@@ -129,8 +142,8 @@
                         Style="{StaticResource FormFieldFrame}"
                         VerticalOptions="Start">
                         <StackLayout>
-                            <Label Text="Posición de Imagen Presentadora" Style="{StaticResource FormLabel}" />
-                            <Picker ItemsSource="{Binding Path=LandscapePresentationSides}" SelectedItem="{Binding Path=PresenterSide}" />
+                            <Label Text="Posición del Mosaico Presentador" Style="{StaticResource FormLabel}" />
+                            <Picker ItemsSource="{Binding Path=AvailablePresenterTileVideoScreenCorners}" SelectedItem="{Binding Path=PresenterTileVideoScreenCorner}" />
                         </StackLayout>
                     </Frame>
                     <Frame 
@@ -172,9 +185,21 @@
                                     IsVisible="{Binding Path=PresentedVideo.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
                                     VerticalOptions="End" 
                                     Padding="8"
+                                    BackgroundColor="#99000000"
                                     Text="{Binding Path=PresentedVideo.About}"
                                     TextColor="White"
                                     LineBreakMode="TailTruncation" />
+                                <ImageButton 
+                                    HorizontalOptions="Center" VerticalOptions="Center"
+                                    WidthRequest="120"
+                                    Clicked="PresentedVideoPlayButton_Clicked">
+                                    <ImageButton.Source>
+                                        <FontImageSource 
+                                            Color="White"
+                                            FontFamily="{StaticResource IconFontFamily}"
+                                            Glyph="&#xf40c;" />
+                                    </ImageButton.Source>
+                                </ImageButton>
                             </Grid>
                         </Grid>
                     </Frame>

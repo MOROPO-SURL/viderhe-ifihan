@@ -109,20 +109,30 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
 
         private void PickPresenterTileVideoButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoPickPage(exceptionHandleHelper, PresenterTileVideoPickedCallback, httpClientHelperProvider, BindingContextPageModel.PresenterTileVideo));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoPickPage(exceptionHandleHelper, PresenterTileVideoPicked_Callback, httpClientHelperProvider, BindingContextPageModel.PresenterTileVideo));
         }
 
         private void PickPresentedVideoButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoPickPage(exceptionHandleHelper, PresentedVideoPickedCallback, httpClientHelperProvider, BindingContextPageModel.PresentedVideo));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoPickPage(exceptionHandleHelper, PresentedVideoPicked_Callback, httpClientHelperProvider, BindingContextPageModel.PresentedVideo));
         }
 
-        private void PresentedVideoPickedCallback(Support.Presentation.Models.View.VideoViewModel selection)
+        private void PresentedVideoPlayButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoDetailPage(BindingContextPageModel.PresentedVideo));
+        }
+
+        private void PresenterTileVideoPlayButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoDetailPage(BindingContextPageModel.PresenterTileVideo));
+        }        
+
+        private void PresentedVideoPicked_Callback(Support.Presentation.Models.View.VideoViewModel selection)
         {
             BindingContextPageModel.PresentedVideo = selection;
         }
 
-        private void PresenterTileVideoPickedCallback(Support.Presentation.Models.View.VideoViewModel selection)
+        private void PresenterTileVideoPicked_Callback(Support.Presentation.Models.View.VideoViewModel selection)
         {
             BindingContextPageModel.PresenterTileVideo = selection;
         }

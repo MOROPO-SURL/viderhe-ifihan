@@ -50,9 +50,7 @@
             {
                 PresenterTileVideoPlayerView.StatusUpdated -= PresenterTileVideoPlayerView_StatusUpdated;
 
-                PlacardLayout.Children.Remove(PresenterTileVideoPlayerView);
-
-                PresenterTileVideoPlayerView.IsVisible = false;
+                PlacardLayout.Children.Remove(PresenterTileVideoPlayerViewWrapper);
 
                 PresenterTileVideoPlayerView.Dispose();
             }
