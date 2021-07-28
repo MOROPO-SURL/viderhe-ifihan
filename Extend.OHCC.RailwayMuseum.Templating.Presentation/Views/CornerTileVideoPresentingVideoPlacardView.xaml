@@ -9,7 +9,7 @@
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views.CornerTileVideoPresentingVideoPlacardView">
     <ContentView.Resources>
         <ResourceDictionary>
-            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:FactorConverter x:Key="FactorConverter" />
             <converters:ScreenCornerToHorizontalLayoutOptionConverter x:Key="ScreenCornerToHorizontalLayoutOptionConverter" />
             <converters:ScreenCornerToVerticalLayoutOptionConverter x:Key="ScreenCornerToVerticalLayoutOptionConverter" />
         </ResourceDictionary>
@@ -24,18 +24,23 @@
                     ShowControls="False"
                     AutoPlay="True"
                     StatusUpdated="PresentedVideoPlayerView_StatusUpdated" />
-                <extendcommontemplatingpresentationrenderedviews:UnattendedVideoPlayerView
-                    x:Name="PresenterTileVideoPlayerView"
-                    BackgroundColor="Black"
-                    Margin="20"
+                <Grid
+                    Margin="30"
                     HorizontalOptions="{Binding Path=PresenterTileVideoScreenCorner, Converter={StaticResource ScreenCornerToHorizontalLayoutOptionConverter}}}"
-                    VerticalOptions="{Binding Path=PresenterTileVideoScreenCorner, Converter={StaticResource ScreenCornerToVerticalLayoutOptionConverter}}"
-                    WidthRequest="{Binding Source={RelativeSource AncestorType={Type Grid}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=10}"
-                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
-                    Source="{Binding Path=PresenterTileVideoSource}"
-                    ShowControls="False"
-                    AutoPlay="False"
-                    StatusUpdated="PresenterTileVideoPlayerView_StatusUpdated" />
+                    VerticalOptions="{Binding Path=PresenterTileVideoScreenCorner, Converter={StaticResource ScreenCornerToVerticalLayoutOptionConverter}}">
+                    <BoxView Color="White" Opacity="0.2" />
+                    <extendcommontemplatingpresentationrenderedviews:UnattendedVideoPlayerView
+                        x:Name="PresenterTileVideoPlayerView"
+                        BackgroundColor="Black"
+                        Margin="6"
+                        WidthRequest="{Binding Source={Reference PlacardLayout}, Path=Width, Converter={StaticResource FactorConverter}, ConverterParameter=0.15}"
+                        HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
+                        Source="{Binding Path=PresenterTileVideoSource}"
+                        ShowControls="False"
+                        AutoPlay="False"
+                        StrechAspect="AspectFill"
+                        StatusUpdated="PresenterTileVideoPlayerView_StatusUpdated" />
+                </Grid>
             </Grid>
         </Grid>
     </ContentView.Content>

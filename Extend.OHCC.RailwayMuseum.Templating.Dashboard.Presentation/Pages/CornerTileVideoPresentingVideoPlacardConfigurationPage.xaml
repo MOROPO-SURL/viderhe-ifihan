@@ -3,15 +3,16 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page"
-    xmlns:commonrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Pages.CornerTileVideoPresentingVideoPlacardConfigurationPage"
     x:TypeArguments="pagemodels:CornerTileVideoPresentingVideoPlacardConfigurationPageModel">
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -101,14 +102,26 @@
                                 VerticalOptions="Start"
                                 Text="Seleccionar"
                                 Clicked="PickPresenterTileVideoButton_Clicked"  />
-                            <commonrenderedviews:InteracticeStreamVideoPlayerView
+                            <ffimageloadingforms:CachedImage
                                 Margin="0"
                                 Grid.ColumnSpan="2" Grid.Row="1"
-                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width}"
-                                IsEnabled="{Binding Path=PresenterTileVideo, Converter={StaticResource NotNullToBooleanConverter}}"
                                 BackgroundColor="Black"
-                                Source="{Binding Path=PresenterTileVideo, Converter={StaticResource VideoViewModelToVideoSourceConverter}}" 
-                                AutoPlay="False" />
+                                Source="{Binding Path=PresenterTileVideo, Converter={StaticResource VideoViewModelToThumbnailImageSourceConverter}}"
+                                Aspect="AspectFill"
+                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width}"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
+                            <StackLayout 
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                IsVisible="{Binding Path=PresenterTileVideo.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                VerticalOptions="End" 
+                                Padding="8"
+                                BackgroundColor="#99000000">
+                                <Label 
+                                    Text="{Binding Path=PresenterTileVideo.About}"
+                                    TextColor="White"
+                                    LineBreakMode="TailTruncation" />
+                            </StackLayout>
                         </Grid>
                     </Frame>
                     <Frame 
@@ -143,14 +156,26 @@
                                 VerticalOptions="Start"
                                 Text="Seleccionar"
                                 Clicked="PickPresentedVideoButton_Clicked"  />
-                            <commonrenderedviews:InteracticeStreamVideoPlayerView
+                            <ffimageloadingforms:CachedImage
                                 Margin="0"
                                 Grid.ColumnSpan="2" Grid.Row="1"
-                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-                                IsEnabled="{Binding Path=PresentedVideo, Converter={StaticResource NotNullToBooleanConverter}}"
                                 BackgroundColor="Black"
-                                Source="{Binding Path=PresentedVideo, Converter={StaticResource VideoViewModelToVideoSourceConverter}}" 
-                                AutoPlay="False" />
+                                Source="{Binding Path=PresentedVideo, Converter={StaticResource VideoViewModelToThumbnailImageSourceConverter}}"
+                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
+                            <Grid 
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                IsVisible="{Binding Path=PresentedVideo, Converter={StaticResource NotNullToBooleanConverter}}"
+                                BackgroundColor="#99000000">
+                                <Label 
+                                    IsVisible="{Binding Path=PresentedVideo.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                    VerticalOptions="End" 
+                                    Padding="8"
+                                    Text="{Binding Path=PresentedVideo.About}"
+                                    TextColor="White"
+                                    LineBreakMode="TailTruncation" />
+                            </Grid>
                         </Grid>
                     </Frame>
                     <Frame 
