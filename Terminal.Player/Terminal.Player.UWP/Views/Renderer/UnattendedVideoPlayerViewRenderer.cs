@@ -1,10 +1,10 @@
 ﻿using System;
 
-[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered.UnattendedVideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer.RtmpClientVideoPlayerViewRenderer))]
+[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered.UnattendedVideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer.UnattendedVideoPlayerViewRenderer))]
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer
 {
-    public class RtmpClientVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<Extend.Common.Templating.Presentation.Views.Rendered.UnattendedVideoPlayerView, Windows.UI.Xaml.Controls.MediaElement>
+    public class UnattendedVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<Extend.Common.Templating.Presentation.Views.Rendered.UnattendedVideoPlayerView, Windows.UI.Xaml.Controls.MediaElement>
     {
         Mntone.Rtmp.Client.SimpleVideoClient rtmpVideoClient;
 

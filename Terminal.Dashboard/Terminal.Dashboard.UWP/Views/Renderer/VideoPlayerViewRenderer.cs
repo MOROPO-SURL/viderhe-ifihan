@@ -1,12 +1,12 @@
-﻿[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer.VLCVideoPlayerViewRenderer))]
+﻿[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer.VideoPlayerViewRenderer))]
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 {
-    public class VLCVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<XFToolKit.Presentation.Views.Rendered.VideoPlayerView, VLC.MediaElement>
+    public class VideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<XFToolKit.Presentation.Views.Rendered.VideoPlayerView, VLC.MediaElement>
     {
         private bool disposed;
 
-        public VLCVideoPlayerViewRenderer()
+        public VideoPlayerViewRenderer()
         {
             disposed = false;
         }
