@@ -21,9 +21,14 @@
             return new Support.Presentation.Models.View.VideoViewModel
             {
                 Id = target.Id,
+                CreateAt = target.CreateAt,
                 FrameSize = string.Format("{0}x{1}", target.FrameWidth, target.FrameHeight),
                 ThumbnailId = target.ThumbnailId,
-                Extension = target.Extension
+                Extension = target.Extension,
+                Size = target.Length,
+                Duration = target.Duration.ToString(),
+                Fps = target.Fps,
+                About = target.About
             };
         }
     }
