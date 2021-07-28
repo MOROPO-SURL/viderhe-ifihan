@@ -94,6 +94,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\XamarinFormsAspectExtensions.cs" />
     <Compile Include="Helpers\PlatfromIntegrationHelper.cs" />
     <Compile Include="Helpers\PlatformControlHelper.cs" />
     <Compile Include="Helpers\TextWidthCalculationHelper.cs" />

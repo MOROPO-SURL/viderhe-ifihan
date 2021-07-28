@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Extensions;
+using System;
 
 [assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered.UnattendedVideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer.UnattendedVideoPlayerViewRenderer))]
 
@@ -30,28 +31,18 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer
 
                     Element.PlayRequested += Play_Requested;
                     Element.StopRequested += Stop_Requested;
+
+                    SetAreTransportControlsEnabled();
+
+                    SetAspectStrech();
+
+                    SetIsMuted();
+
+                    if (Element.AutoPlay)
+                    {
+                        SetSourceAsync();
+                    }
                 }
-
-                //SetRepeat();
-
-                SetAreTransportControlsEnabled();
-
-                if (Element.AutoPlay)
-                {
-                    SetSourceAsync();
-                }
-            }
-        }
-
-        private void RtmpVideoClient_Stopped(object sender, Mntone.Rtmp.Client.SimpleVideoClientStoppedEventArgs eventArgs)
-        {
-            if ((Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status != XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady) return;
-
-            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
-
-            if (Element.Repeat)
-            {
-                Play_Requested(sender, EventArgs.Empty);
             }
         }
 
@@ -62,6 +53,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer
             if (eventArgs.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.ShowControlsProperty.PropertyName)
             {
                 SetAreTransportControlsEnabled();
+            }
+            else if (eventArgs.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.StrechAspectProperty.PropertyName)
+            {
+                SetAspectStrech();
+            }
+            else if (eventArgs.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.IsMutedProperty.PropertyName)
+            {
+                SetIsMuted();
             }
         }
 
@@ -137,6 +136,18 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer
             })).AsTask();
         }
 
+        private void RtmpVideoClient_Stopped(object sender, Mntone.Rtmp.Client.SimpleVideoClientStoppedEventArgs eventArgs)
+        {
+            if ((Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status != XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady) return;
+
+            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
+
+            if (Element.Repeat)
+            {
+                Play_Requested(sender, EventArgs.Empty);
+            }
+        }
+
         private void Stop_Requested(object sender, EventArgs eventArgs)
         {
             Control.Stop();
@@ -147,6 +158,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer
             (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady;
 
             SetSourceAsync();
+        }
+
+        private void SetAspectStrech()
+        {
+            Control.Stretch = Element.StrechAspect.ToUWP();
+        }
+
+        private void SetIsMuted()
+        {
+            Control.IsMuted = Element.IsMuted;
         }
 
         private void SetAreTransportControlsEnabled()
