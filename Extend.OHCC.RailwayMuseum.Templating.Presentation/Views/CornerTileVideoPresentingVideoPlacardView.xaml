@@ -32,7 +32,7 @@
                     VerticalOptions="{Binding Path=PresenterTileVideoScreenCorner, Converter={StaticResource ScreenCornerToVerticalLayoutOptionConverter}}"
                     WidthRequest="{Binding Source={RelativeSource AncestorType={Type Grid}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=10}"
                     HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
-                    Source="{Binding Path=PresentedVideoSource}"
+                    Source="{Binding Path=PresenterTileVideoSource}"
                     ShowControls="False"
                     AutoPlay="False"
                     StatusUpdated="PresenterTileVideoPlayerView_StatusUpdated" />

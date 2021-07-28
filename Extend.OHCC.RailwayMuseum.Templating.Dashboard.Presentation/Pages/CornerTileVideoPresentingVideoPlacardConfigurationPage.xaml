@@ -3,11 +3,10 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page"
+    xmlns:commonrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
-    xmlns:sscxftoolkitpresentationviewrendereds="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Pages.CornerTileVideoPresentingVideoPlacardConfigurationPage"
     x:TypeArguments="pagemodels:CornerTileVideoPresentingVideoPlacardConfigurationPageModel">
     <ContentPage.Resources>
@@ -102,7 +101,7 @@
                                 VerticalOptions="Start"
                                 Text="Seleccionar"
                                 Clicked="PickPresenterTileVideoButton_Clicked"  />
-                            <sscxftoolkitpresentationviewrendereds:VideoPlayerView                                
+                            <commonrenderedviews:InteracticeStreamVideoPlayerView
                                 Margin="0"
                                 Grid.ColumnSpan="2" Grid.Row="1"
                                 HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width}"
@@ -144,7 +143,7 @@
                                 VerticalOptions="Start"
                                 Text="Seleccionar"
                                 Clicked="PickPresentedVideoButton_Clicked"  />
-                            <sscxftoolkitpresentationviewrendereds:VideoPlayerView                                
+                            <commonrenderedviews:InteracticeStreamVideoPlayerView
                                 Margin="0"
                                 Grid.ColumnSpan="2" Grid.Row="1"
                                 HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"

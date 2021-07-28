@@ -1,5 +1,7 @@
 ﻿using System;
 
+[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Views.Rendered.InteracticeStreamVideoPlayerView), typeof(SmartSolucionesCuba.Videre.Terminal.Dashboard.UWP.Views.Renderer.InteractiveStreamVideoPlayerViewRenderer))]
+
 namespace SmartSolucionesCuba.Videre.Terminal.Dashboard.UWP.Views.Renderer
 {
     public class InteractiveStreamVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<Viderhe.Extend.Common.Templating.Dashboard.Presentation.Views.Rendered.InteracticeStreamVideoPlayerView, Windows.UI.Xaml.Controls.MediaElement>
