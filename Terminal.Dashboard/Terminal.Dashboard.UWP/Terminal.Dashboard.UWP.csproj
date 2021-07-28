@@ -100,7 +100,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Renderer\RingActivityIndicatorRenderer.cs" />
-    <Compile Include="Views\Renderer\InteractiveStreamVideoPlayerViewRenderer.cs" />
     <Compile Include="Views\Renderer\UnattendedStreamVideoPlayerViewRenderer.cs" />
     <Compile Include="Views\Renderer\VideoPlayerViewRenderer.cs" />
   </ItemGroup>
