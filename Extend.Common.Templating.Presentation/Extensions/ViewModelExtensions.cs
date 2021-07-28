@@ -27,10 +27,15 @@
             var result = new Models.Context.VideoContextModel
             {
                 Id = target.Id,
+                CreateAt = target.CreateAt,
                 ThumbnailId = target.ThumbnailId,
                 Extension = target.Extension,
                 FrameWidth = int.Parse(sizes[0]),
-                FrameHeight = int.Parse(sizes[1])
+                FrameHeight = int.Parse(sizes[1]),
+                Length = target.Size,
+                Duration = System.TimeSpan.Parse(target.Duration),
+                Fps = target.Fps,
+                About = target.About
             };
 
             return result;
