@@ -1,4 +1,5 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages
 {
@@ -37,6 +38,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                 await client.EditAsync(new Cloud.Api.Common.Models.PlacardInputModel
                 {
                     Id = placardViewModel.Id,
+                    PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
                     Label = BindingContextPageModel.Label,
                     TemplateId = placardViewModel.Template.Id,
                     SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.SimpleVideoPlacardContextModel

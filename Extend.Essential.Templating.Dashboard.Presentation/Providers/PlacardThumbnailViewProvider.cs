@@ -4,7 +4,7 @@
     {
         public Xamarin.Forms.ContentView GetPlacardThumnailView(Support.Presentation.Models.View.PlacardViewModel model, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
         {
-            if (model.Template.Id == Descriptors.PictureSecuenceTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.PictureSlideSecuenceTemplateDescriptor.ID)
             {
                 return new Views.PictureSecuencePlacardThumbnailView(model, cloudServerProvider);
             }
@@ -37,6 +37,16 @@
             if (model.Template.Id == Descriptors.PortraitPicturePresentingVideoTemplateDescriptor.ID)
             {
                 return new Views.PortraitPicturePresentingVideoPlacardThumbnailView(model, cloudServerProvider);
+            }
+
+            if (model.Template.Id == Descriptors.LandscapePicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
+            {
+                return new Views.LandscapePicturePresentingPictureSlideSecuencePlacardThumbnailView(model, cloudServerProvider);
+            }
+
+            if (model.Template.Id == Descriptors.PortraitPicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
+            {
+                return new Views.PortraitPicturePresentingPictureSlideSecuencePlacardThumbnailView(model, cloudServerProvider);
             }
 
             return null;

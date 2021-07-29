@@ -25,7 +25,7 @@
         {
             var videoPlayer = sender as XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
 
-            if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused)
+            if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
             {
                 videoPlayer.StatusUpdated -= VideoPlayer_StatusUpdated;
 

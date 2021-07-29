@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views
+﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views
 {
     public partial class PictureSecuencePlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
     {
@@ -6,9 +8,9 @@
         {
             InitializeComponent();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.PictureSecuencePlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.PictureSlideSecuencePlacardContextModel>(model.SerializedContext);
 
-            var iterationCount = context.Images.Length;
+            var iterationCount = context.Slides.Length;
 
             if (iterationCount > 4)
             {
@@ -17,10 +19,12 @@
 
             for (int i = 0; i < iterationCount; i++)
             {
+                var slide = context.Slides[i];
+
                 var iterationImage = new FFImageLoading.Forms.CachedImage
                 {
-                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(cloudServerProvider, context.Images[i].ThumbnailId)),
-                    Aspect = Xamarin.Forms.Aspect.AspectFill,
+                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(cloudServerProvider, slide.Image.ThumbnailId)),
+                    Aspect = slide.LayoutMode.ToXamarinFormsAspect(),
                     CacheType = FFImageLoading.Cache.CacheType.Disk,
                     CacheDuration = System.TimeSpan.MaxValue
                 };

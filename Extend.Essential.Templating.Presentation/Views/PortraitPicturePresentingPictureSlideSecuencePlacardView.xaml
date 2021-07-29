@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views.PortraitPicturePresentingPictureSlideSecuencePlacardView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:PlacardLayoutHeightToRespectivePresenterImageHeightConverter x:Key="PlacardLayoutHeightToRespectivePresenterImageHeightConverter" PlacardLayout="{x:Reference FramesContainerWrapper}" />
+            <converters:PortraitPresentationSideToLayoutOptionConverter x:Key="PortraitPresentationSideToLayoutOptionConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="FramesContainerWrapper">
+                <BoxView Color="Black" />
+                <Grid x:Name="FramesContainer" />
+                <ffimageloadingforms:CachedImage
+                    x:Name="PresenterImage"
+                    IsVisible="False"
+                    VerticalOptions="{Binding Path=PresenterSide, Converter={StaticResource PortraitPresentationSideToLayoutOptionConverter}}"
+                    HeightRequest="{Binding Source={x:Reference FramesContainerWrapper}, Path=Height, Converter={StaticResource PlacardLayoutHeightToRespectivePresenterImageHeightConverter}}"
+                    FadeAnimationEnabled="False"
+                    Source="{Binding Path=PresenterSource}" 
+                    Aspect="AspectFit"
+                    CacheType="Disk"
+                    CacheDuration="8760:00:00" />
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

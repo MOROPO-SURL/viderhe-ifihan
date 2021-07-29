@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Descriptors
 {
-    public class PictureSecuenceTemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
+    public class PictureSlideSecuenceTemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
     {
         public static System.Guid ID = System.Guid.Parse("88C0C0E5-C6DD-4E1C-B821-FACF619DD99D");
 

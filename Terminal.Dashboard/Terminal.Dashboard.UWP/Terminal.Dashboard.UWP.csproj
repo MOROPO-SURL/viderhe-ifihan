@@ -94,14 +94,15 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\XamarinFormsAspectExtensions.cs" />
     <Compile Include="Managers\ApplicationManager.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Renderer\RingActivityIndicatorRenderer.cs" />
-    <Compile Include="Views\Renderer\RtmpClientVideoPlayerViewRenderer.cs" />
-    <Compile Include="Views\Renderer\VLCVideoPlayerViewRenderer.cs" />
+    <Compile Include="Views\Renderer\UnattendedStreamVideoPlayerViewRenderer.cs" />
+    <Compile Include="Views\Renderer\VideoPlayerViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -176,7 +177,7 @@
       <Version>1.0.0</Version>
     </PackageReference>
     <PackageReference Include="MagicGradients">
-      <Version>1.2.0</Version>
+      <Version>1.3.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
       <Version>5.0.3</Version>
@@ -196,12 +197,9 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.11.982</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1260" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-    <PackageReference Include="Xamarin.Forms.PancakeView">
-      <Version>2.3.0.759</Version>
-    </PackageReference>
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="Xamarin.Plugin.FilePicker">
       <Version>2.1.41</Version>
     </PackageReference>

@@ -13,15 +13,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MagicGradients" Version="1.2.0" />
+    <PackageReference Include="MagicGradients" Version="1.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.3" />
     <PackageReference Include="Toasts.Forms.Plugin" Version="3.3.2" />
     <PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.5" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.41" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1260" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +28,7 @@
     <ProjectReference Include="..\..\Cloud.SignalR.Connect.Dashboard\Cloud.SignalR.Connect.Dashboard.csproj" />
     <ProjectReference Include="..\..\Extend.Essential.Overlaying.Dashboard.Presentation\Extend.Essential.Overlaying.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential.Templating.Dashboard.Presentation\Extend.Essential.Templating.Dashboard.Presentation.csproj" />
+    <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
     <ProjectReference Include="..\..\Extend.SpringMotion\Extend.SpringMotion.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Transitioning\Support.Extend.Transitioning.csproj" />

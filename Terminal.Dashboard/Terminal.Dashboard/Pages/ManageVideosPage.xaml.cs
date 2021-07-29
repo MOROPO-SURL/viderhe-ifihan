@@ -95,13 +95,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 break;
 
                             case Xamarin.Forms.Device.UWP:
-                                fileSelector = new string[] { ".mp4", ".mkv", ".avi", ".mpg" };
+                                fileSelector = new string[] { ".mp4", ".mkv", ".avi", ".mpg", ".flv" };
 
                                 break;
 
                             case Xamarin.Forms.Device.WPF:
                             default:
-                                fileSelector = new string[] { "Videos Soportados|*.mp4;*.mkv;*.avi;*.mpg" };
+                                fileSelector = new string[] { "Videos Soportados|*.mp4;*.mkv;*.avi;*.mpg", "*.flv" };
 
                                 break;
                         }

@@ -6,11 +6,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
     {
         public Common.Transitioning.Presentation.Transitions.AbstractTransition GetFor(System.Guid transitionDescriptorId, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
-            if (transitionDescriptorId == Transitioning.Transitions.ScalingGrowFadeOutInTransitionDescriptor.ID)
-            {
-                return new Transitions.ScalingGrowFadeOutInTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
-            }
-
             // TODO Complete method implementation!!
             return null;
         }

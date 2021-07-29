@@ -2,18 +2,22 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Models.Page"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Converters"
+    xmlns:presentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation"
+    xmlns:commonconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages.PictureSecuencePlacardConfigurationPage"
-    x:TypeArguments="pagemodels:PictureSecuencePlacardConfigurationPageModel">
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages.PictureSlideSecuencePlacardConfigurationPage"
+    x:TypeArguments="pagemodels:PictureSlideSecuencePlacardConfigurationPageModel">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <converters:StringToLocalizeStringConverter x:Key="LocalStringToLocalizeStringConverter" />
+            <converters:IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter x:Key="IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter" />
+            <commonconverters:StringToLocalizeStringConverter x:Key="CommonStringToLocalizeStringConverter" />
+            <presentationconverters:PictureLayoutModeToXamarinFormAspectConverter x:Key="PictureLayoutModeToXamarinFormAspectConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="20" />
         </ResourceDictionary>
@@ -59,6 +63,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
                 <Frame
@@ -70,7 +75,7 @@
                     </StackLayout>
                 </Frame>
                 <Frame
-                    Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"
+                    Grid.Column="0" Grid.Row="1" Grid.RowSpan="4"
                     Style="{StaticResource FormFieldFrame}"
                     Padding="0">
                     <Grid RowSpacing="0">
@@ -85,24 +90,24 @@
                         <Label 
                             Grid.Column="0" Grid.Row="0"
                             Style="{StaticResource FormLabel}"
-                            Margin="20,20,20,0"
+                            Margin="12,12,12,0"
                             Text="Imágenes" />
                         <Button
                             Grid.Column="1" Grid.Row="0"
-                            Margin="20,20,20,0"
+                            VerticalOptions="Start"
                             Text="Agregar"
                             Clicked="IncludeImagesButton_Clicked" />
                         <ScrollView
                             Margin="0,10,0,0"
                             Grid.ColumnSpan="2" Grid.Row="1"
-                            BackgroundColor="#FAFAFA"
+                            BackgroundColor="DimGray"
                             Orientation="Vertical">
                             <ContentView Margin="0,10,0,20">
                                 <FlexLayout
                                     Margin="10,0,10,0"
                                     Wrap="Wrap"
                                     AlignItems="Start" AlignContent="Start"
-                                    BindableLayout.ItemsSource="{Binding Path=Images}">
+                                    BindableLayout.ItemsSource="{Binding Path=Slides}">
                                     <BindableLayout.EmptyView>
                                         <Label
                                             Margin="10"
@@ -111,42 +116,65 @@
                                     </BindableLayout.EmptyView>
                                     <BindableLayout.ItemTemplate>
                                         <DataTemplate>
-                                            <Frame
-                                                Margin="10" Padding="0"
+                                            <Grid
+                                                Margin="10"
                                                 BackgroundColor="Black"
-                                                HasShadow="False"
-                                                CornerRadius="0"
-                                                WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}">
-                                                <Grid>
-                                                    <ffimageloadingforms:CachedImage 
-                                                        Aspect="AspectFill"
-                                                        CacheType="Disk"
-                                                        CacheDuration="8760:00:00"
-                                                        Source="{Binding Converter={StaticResource ImageViewModelToThumbnailImageSourceConverter}}"
-                                                        HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}" />
-                                                    <ImageButton
-                                                        VerticalOptions="Start" HorizontalOptions="End"
-                                                        Margin="4"
-                                                        WidthRequest="24"
-                                                        HeightRequest="24"
-                                                        BackgroundColor="#99000000"
-                                                        BorderWidth="0"
-                                                        CornerRadius="12"
-                                                        Clicked="ImageDeleteButton_Clicked">
-                                                        <ImageButton.Padding>
-                                                            <OnPlatform x:TypeArguments="Thickness">
-                                                                <On Platform="UWP" Value="1,0,0,0" />
-                                                            </OnPlatform>
-                                                        </ImageButton.Padding>
-                                                        <ImageButton.Source>
-                                                            <FontImageSource 
-                                                                Color="White"
-                                                                FontFamily="{StaticResource IconFontFamily}"
-                                                                Glyph="&#xF156;" />
-                                                        </ImageButton.Source>
-                                                    </ImageButton>
-                                                </Grid>
-                                            </Frame>
+                                                WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
+                                                RowSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition />
+                                                </Grid.RowDefinitions>
+                                                <BoxView
+                                                    Grid.Row="0"
+                                                    Color="SlateGray"
+                                                    IsVisible="{Binding Path=LayoutMode, Converter={StaticResource IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter}}" />
+                                                <ffimageloadingforms:CachedImage 
+                                                    Grid.Row="0"
+                                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                                    Source="{Binding Path=Image, Converter={StaticResource ImageViewModelToThumbnailImageSourceConverter}}"
+                                                    Aspect="{Binding Path=LayoutMode, Converter={StaticResource PictureLayoutModeToXamarinFormAspectConverter}}"
+                                                    CacheType="Disk"
+                                                    CacheDuration="8760:00:00" />
+                                                <ImageButton
+                                                    Grid.Row="0"
+                                                    VerticalOptions="Start" HorizontalOptions="End"
+                                                    Margin="4"
+                                                    WidthRequest="24"
+                                                    HeightRequest="24"
+                                                    BackgroundColor="#99000000"
+                                                    BorderWidth="0"
+                                                    CornerRadius="12"
+                                                    Clicked="ImageDeleteButton_Clicked">
+                                                    <ImageButton.Padding>
+                                                        <OnPlatform x:TypeArguments="Thickness">
+                                                            <On Platform="UWP" Value="1,0,0,0" />
+                                                        </OnPlatform>
+                                                    </ImageButton.Padding>
+                                                    <ImageButton.Source>
+                                                        <FontImageSource 
+                                                            Color="White"
+                                                            FontFamily="{StaticResource IconFontFamily}"
+                                                            Glyph="&#xF156;" />
+                                                    </ImageButton.Source>
+                                                </ImageButton>
+                                                <StackLayout
+                                                    Grid.Row="1"
+                                                    Padding="8"
+                                                    BackgroundColor="White"
+                                                    Orientation="Vertical">
+                                                    <Label
+                                                        VerticalOptions="Center"
+                                                        Text="Presentación"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Caption" />
+                                                    <Picker
+                                                        HorizontalOptions="FillAndExpand"
+                                                        ItemsSource="{Binding Path=AvailableLayoutModes}"
+                                                        SelectedItem="{Binding Path=LayoutMode}"
+                                                        ItemDisplayBinding="{Binding Converter={StaticResource LocalStringToLocalizeStringConverter}}" />
+                                                </StackLayout>
+                                            </Grid>
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </FlexLayout>
@@ -175,11 +203,22 @@
                 </Frame>
                 <Frame 
                     Grid.Column="1" Grid.Row="2"
-                    Style="{StaticResource FormFieldFrame}"
-                    VerticalOptions="Start">
+                    Style="{StaticResource FormFieldFrame}">
                     <StackLayout>
                         <Label Text="A Pantalla Completa" Style="{StaticResource FormLabel}" />
                         <Switch IsToggled="{Binding Path=RequireUnobstructedPresetation}" />
+                    </StackLayout>
+                </Frame>
+                <Frame 
+                    Grid.Column="1" Grid.Row="3"
+                    Style="{StaticResource FormFieldFrame}"
+                    VerticalOptions="Start">
+                    <StackLayout>
+                        <Label Text="Orientación de Pantalla" Style="{StaticResource FormLabel}" />
+                        <Picker 
+                            ItemsSource="{Binding Path=AvailableConfigurationPlayerOrientationSupportKinds}" 
+                            SelectedItem="{Binding Path=PlayerOrientationSupportKind}"
+                            ItemDisplayBinding="{Binding Converter={StaticResource CommonStringToLocalizeStringConverter}}"/>
                     </StackLayout>
                 </Frame>
             </Grid>

@@ -1,9 +1,10 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages
 {
-    public partial class PictureSecuencePlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PictureSecuencePlacardConfigurationPageModel>
+    public partial class PictureSlideSecuencePlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PictureSlideSecuencePlacardConfigurationPageModel>
     {
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
         private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
@@ -11,13 +12,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         private Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter;
         private System.Action successfulCompleteCallbackAction;
 
-        public PictureSecuencePlacardConfigurationPage(SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
+        public PictureSlideSecuencePlacardConfigurationPage(SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
             : this(null, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, successfulCompleteCallbackAction)
         {
         }
 
-        public PictureSecuencePlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
-            : base(Factories.PictureSecuencePlacardConfigurationPageModelFactory.Build(placardViewModel))
+        public PictureSlideSecuencePlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
+            : base(Factories.PictureSlideSecuencePlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
             InitializeComponent();
 
@@ -29,7 +30,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
             if (placardViewModel == null)
             {
-                var templateDescriptor = new Descriptors.PictureSecuenceTemplateDescriptor();
+                var templateDescriptor = new Descriptors.PictureSlideSecuenceTemplateDescriptor();
 
                 Title = string.Format("Nuevo Marco ({0})", templateDescriptor.Name);
 
@@ -41,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
         private void IncludeImagesButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagesPickPage(BindingContextPageModel.Images.ToArray(), exceptionHandleHelper, httpClientHelperProvider, ImagesSelectedCallback));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagesPickPage(BindingContextPageModel.Slides.Select(item => item.Image).ToArray(), exceptionHandleHelper, httpClientHelperProvider, ImagesSelected_Callback));
         }
 
         private void ImageDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -52,9 +53,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    var image = (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Models.View.ImageViewModel;
+                    var slide = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.PictureSlideViewModel;
 
-                    (BindingContext as Models.Page.PictureSecuencePlacardConfigurationPageModel).Images.Remove(image);
+                    BindingContextPageModel.Slides.Remove(slide);
                 });
             });
         }
@@ -72,13 +73,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                     await client.CreateAsync(new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Label = BindingContextPageModel.Label,
-                        TemplateId = Descriptors.PictureSecuenceTemplateDescriptor.ID,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.PictureSecuencePlacardContextModel
+                        TemplateId = Descriptors.PictureSlideSecuenceTemplateDescriptor.ID,
+                        PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.PictureSlideSecuencePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             PicturePresentationSecounds = BindingContextPageModel.PicturePresentationSecounds,
                             PictureTransitionId = Transitioning.Transitions.ScalingGrowFadeOutInTransitionDescriptor.ID,
-                            Images = BindingContextPageModel.Images.Select(m => new Common.Templating.Presentation.Models.Context.ImageContextModel { Id = m.Id, ThumbnailId = m.ThumbnailId }).ToArray()
+                            Slides = BindingContextPageModel.Slides.Select(item => new Templating.Presentation.Models.Context.PictureSlideContextModel
+                            {
+                                Image = new Common.Templating.Presentation.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
+                                LayoutMode = item.LayoutMode
+                            }).ToArray()
                         })
                     });
                 }
@@ -89,12 +95,17 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
                         TemplateId = placardViewModel.Template.Id,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.PictureSecuencePlacardContextModel
+                        PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.PictureSlideSecuencePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             PicturePresentationSecounds = BindingContextPageModel.PicturePresentationSecounds,
                             PictureTransitionId = Transitioning.Transitions.ScalingGrowFadeOutInTransitionDescriptor.ID,
-                            Images = BindingContextPageModel.Images.Select(m => new Common.Templating.Presentation.Models.Context.ImageContextModel { Id = m.Id, ThumbnailId = m.ThumbnailId }).ToArray()
+                            Slides = BindingContextPageModel.Slides.Select(item => new Templating.Presentation.Models.Context.PictureSlideContextModel
+                            {
+                                Image = new Common.Templating.Presentation.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
+                                LayoutMode = item.LayoutMode
+                            }).ToArray()
                         })
                     });
                 }
@@ -125,11 +136,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             this.NavigationPopPageAsync();
         }
 
-        private void ImagesSelectedCallback(Support.Presentation.Models.View.ImageViewModel[] selection)
+        private void ImagesSelected_Callback(Support.Presentation.Models.View.ImageViewModel[] selection)
         {
             foreach (var item in selection)
             {
-                BindingContextPageModel.Images.Add(item);
+                BindingContextPageModel.Slides.Add(new Models.View.PictureSlideViewModel { Image = item });
             }
         }
 
