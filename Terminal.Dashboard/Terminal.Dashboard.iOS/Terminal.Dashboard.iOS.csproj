@@ -9,7 +9,7 @@
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SmartSolucionesCuba.Videre.Terminal.Dashboard.iOS</RootNamespace>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Dashboard.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>SmartSolucionesCuba.Videre.Terminal.Dashboard.iOS</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
@@ -26,6 +26,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+<CodesignKey>iPhone Developer</CodesignKey>
+<AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Dashboard.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -35,6 +37,7 @@
     <WarningLevel>4</WarningLevel>
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
+<AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Dashboard.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,6 +73,8 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Managers\ApplicationManager.cs" />
+    <Compile Include="Views\Renderer\VideoPlayerViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -148,12 +153,99 @@
     <PackageReference Include="Xamarin.Plugin.FilePicker">
       <Version>2.1.41</Version>
     </PackageReference>
+    <PackageReference Include="LibVLCSharp">
+      <Version>3.5.1</Version>
+    </PackageReference>
+    <PackageReference Include="VideoLAN.LibVLC.iOS">
+      <Version>3.3.10</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Terminal.Dashboard\Terminal.Dashboard.csproj">
-      <Project>{A509FE0D-F850-4E5B-9936-116E4378C85F}</Project>
+      <Project>{CBA05853-1C8C-4704-811A-1C1C679B7B55}</Project>
       <Name>Terminal.Dashboard</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj">
+      <Project>{1887C021-DBEC-42F7-8563-0E56598B6F9A}</Project>
+      <Name>Extend.Essential</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Overlaying\Extend.Essential.Overlaying.csproj">
+      <Project>{87C8E862-21A4-4679-9FC0-26A99F7A24AE}</Project>
+      <Name>Extend.Essential.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Overlaying.Presentation\Extend.Essential.Overlaying.Presentation.csproj">
+      <Project>{2AC14CD7-AD15-48F4-AFE5-B67DA5107BC1}</Project>
+      <Name>Extend.Essential.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Templating\Extend.Essential.Templating.csproj">
+      <Project>{BB3B9DC7-E652-499A-B609-325A01414109}</Project>
+      <Name>Extend.Essential.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj">
+      <Project>{F52E5E05-B3D9-44F2-BFDC-2C8483F1F770}</Project>
+      <Name>Extend.Essential.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj">
+      <Project>{5E18FBA2-62E1-4BAE-8917-1E809FC5FCFD}</Project>
+      <Name>Extend.Essential.Transitioning</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj">
+      <Project>{B88A5D61-11D9-4827-875E-7BD9BC5F6720}</Project>
+      <Name>Extend.Essential.Transitioning.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common\Extend.Common.csproj">
+      <Project>{FA8FCD4C-DA74-4102-B767-6A0D0150C673}</Project>
+      <Name>Extend.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Overlaying\Extend.Common.Overlaying.csproj">
+      <Project>{A3BB2159-C755-415A-B238-81E5A24FA0AA}</Project>
+      <Name>Extend.Common.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj">
+      <Project>{54A31415-5ACA-41CF-A9DA-2B97E0812EC6}</Project>
+      <Name>Extend.Common.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Presentation\Extend.Common.Presentation.csproj">
+      <Project>{F6F4F289-0342-4F75-AE1B-7B1B7EF9711D}</Project>
+      <Name>Extend.Common.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Templating\Extend.Common.Templating.csproj">
+      <Project>{571B8648-903D-4322-ADDC-60DDBE97974F}</Project>
+      <Name>Extend.Common.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj">
+      <Project>{E620A859-7769-472D-981A-B93DBF496926}</Project>
+      <Name>Extend.Common.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Transitioning\Extend.Common.Transitioning.csproj">
+      <Project>{9B378C2E-1ED2-432B-9A18-B923CEFA70C7}</Project>
+      <Name>Extend.Common.Transitioning</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj">
+      <Project>{7B10AB64-AEC2-4109-BBB6-CBE522C1273C}</Project>
+      <Name>Extend.Common.Transitioning.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Overlaying.Dashboard.Presentation\Extend.Common.Overlaying.Dashboard.Presentation.csproj">
+      <Project>{0C4A6224-EB36-44EF-9844-6B0BFBCBBA17}</Project>
+      <Name>Extend.Common.Overlaying.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj">
+      <Project>{05AF9B61-F444-429F-9148-461197C175EF}</Project>
+      <Name>Extend.Common.Templating.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Overlaying.Dashboard.Presentation\Extend.Essential.Overlaying.Dashboard.Presentation.csproj">
+      <Project>{C79FAC59-2855-438C-B372-23EE0E4EBB7C}</Project>
+      <Name>Extend.Essential.Overlaying.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Templating.Dashboard.Presentation\Extend.Essential.Templating.Dashboard.Presentation.csproj">
+      <Project>{9792E424-4FF0-489F-B1CE-6A1CA6CD47B1}</Project>
+      <Name>Extend.Essential.Templating.Dashboard.Presentation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Managers\" />
+    <Folder Include="Views\" />
+    <Folder Include="Views\Renderer\" />
   </ItemGroup>
 </Project>

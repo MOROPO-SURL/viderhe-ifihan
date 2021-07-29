@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -116,7 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Terminal.Dashboard\Terminal.Dashboard.csproj">
-      <Project>{A509FE0D-F850-4E5B-9936-116E4378C85F}</Project>
+      <Project>{CBA05853-1C8C-4704-811A-1C1C679B7B55}</Project>
       <Name>Terminal.Dashboard</Name>
     </ProjectReference>
   </ItemGroup>
