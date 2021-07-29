@@ -4,11 +4,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Essential</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Essential</RootNamespace>
+    <Version>0.1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common\Extend.Common.csproj" />
-    <ProjectReference Include="..\Extend.Essential.Motion\Extend.Essential.Motion.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj" />
     <ProjectReference Include="..\Extend.Essential.Overlaying\Extend.Essential.Overlaying.csproj" />
     <ProjectReference Include="..\Extend.Essential.Templating\Extend.Essential.Templating.csproj" />
   </ItemGroup>

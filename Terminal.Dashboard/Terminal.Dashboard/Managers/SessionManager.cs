@@ -65,25 +65,27 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
         public Color AccountPrimaryColor { get; private set; }
         public Color AccountSecoundaryColor { get; private set; }
         public ImageSource AccountLogoImageSource { get; private set; }
-        public ImageSource AccountSplashImageSource { get; private set; }
+        public ImageSource AccountHorizontalSplashImageSource { get; private set; }
+        public ImageSource AccountVerticalSplashImageSource { get; private set; }
         public System.Guid? AccountDefaultOverlayId { get; private set; }
         public string AccountSerializedOverlayContext { get; private set; }
         public Cloud.Api.Common.Models.ExtensionDisplayModel[] AccountExtensions { get; private set; }
 
-        public void SyncronizeRequiredAccountInformation(string name, Color primaryColor, Color secoundaryColor, System.Guid logoImageId, System.Guid splashImageId, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
+        public void SyncronizeRequiredAccountInformation(string name, Color primaryColor, Color secoundaryColor, System.Guid logoImageId, System.Guid horizontalSplashImageId, System.Guid verticalSplashImageId, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
         {
             AccountName = name;
             AccountPrimaryColor = primaryColor;
             AccountSecoundaryColor = secoundaryColor;
             AccountLogoImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, logoImageId));
-            AccountSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, splashImageId));
+            AccountHorizontalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, horizontalSplashImageId));
+            AccountVerticalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, verticalSplashImageId));
             AccountDefaultOverlayId = defaultOverlay?.Id ?? null;
             AccountSerializedOverlayContext = serializedOverlayContext;
         }
 
-        public async System.Threading.Tasks.Task UpdateAccountInformationAsync(string name, Color primaryColor, Color secoundaryColor, Plugin.FilePicker.Abstractions.FileData logoFileData, Plugin.FilePicker.Abstractions.FileData splashFileData, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
+        public async System.Threading.Tasks.Task UpdateAccountInformationAsync(string name, Color primaryColor, Color secoundaryColor, Plugin.FilePicker.Abstractions.FileData logoFileData, Plugin.FilePicker.Abstractions.FileData horizontalSplashFileData, Plugin.FilePicker.Abstractions.FileData verticalSplashFileData, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
         {
-            var client = new Cloud.Api.Connect.Clients.AccountApiClient(this);
+            var client = new Cloud.Api.Connect.Clients.AccountApiConnectClient(this);
 
             var input = new Cloud.Api.Common.Models.AccountInputModel
             {
@@ -111,19 +113,35 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                 }
             }
 
-            if (splashFileData != null)
+            if (horizontalSplashFileData != null)
             {
-                var imageFormat = System.IO.Path.GetExtension(splashFileData.FilePath).Substring(1);
+                var imageFormat = System.IO.Path.GetExtension(horizontalSplashFileData.FilePath).Substring(1);
 
-                input.SplashImageContentType = string.Format("images/{0}", imageFormat == "jpg" ? "jpeg" : imageFormat);
+                input.HorizontalSplashImageContentType = string.Format("images/{0}", imageFormat == "jpg" ? "jpeg" : imageFormat);
 
-                using (var imageFileStream = splashFileData.GetStream())
+                using (var imageFileStream = horizontalSplashFileData.GetStream())
                 {
                     imageFileStream.Position = 0;
 
-                    input.SplashImageData = new byte[imageFileStream.Length];
+                    input.HorizontalSplashImageData = new byte[imageFileStream.Length];
 
-                    imageFileStream.Read(input.SplashImageData, 0, input.SplashImageData.Length);
+                    imageFileStream.Read(input.HorizontalSplashImageData, 0, input.HorizontalSplashImageData.Length);
+                }
+            }
+
+            if (verticalSplashFileData != null)
+            {
+                var imageFormat = System.IO.Path.GetExtension(verticalSplashFileData.FilePath).Substring(1);
+
+                input.VerticalSplashImageContentType = string.Format("images/{0}", imageFormat == "jpg" ? "jpeg" : imageFormat);
+
+                using (var imageFileStream = verticalSplashFileData.GetStream())
+                {
+                    imageFileStream.Position = 0;
+
+                    input.VerticalSplashImageData = new byte[imageFileStream.Length];
+
+                    imageFileStream.Read(input.VerticalSplashImageData, 0, input.VerticalSplashImageData.Length);
                 }
             }
 
@@ -131,14 +149,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
             var model = await client.GetCurrentAsync();
 
-            SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.SplashImageId, defaultOverlay, model.SerializedOverlayContext);
+            SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.HorizontalSplashImageId, model.VerticalSplashImageId, defaultOverlay, model.SerializedOverlayContext);
         }
 
         public async System.Threading.Tasks.Task SignInAsync(string server, string login, string password)
         {
             Server = server;
 
-            var userApiClient = new Cloud.Api.Connect.Clients.UserApiClient(HttpClientHelper);
+            var userApiClient = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 
             var result = await userApiClient.AuthenticateAsync(new Cloud.Api.Common.Models.AuthenticationIntentModel
             {
@@ -159,7 +177,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
             try
             {
-                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiClient(this);
+                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiConnectClient(this);
 
                 var model = await accountApiClient.GetCurrentAsync();
 
@@ -167,7 +185,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
                 var overalyDescriptor = model.DefaultOverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(model.DefaultOverlayId.Value);
 
-                SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.SplashImageId, overalyDescriptor, model.SerializedOverlayContext);
+                SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.HorizontalSplashImageId, model.VerticalSplashImageId, overalyDescriptor, model.SerializedOverlayContext);
 
                 AccountExtensions = model.Extensions.ToArray();
 
@@ -175,7 +193,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
                 foreach (var accountExtension in dynamicLoadExtensions)
                 {
-                    var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString()));
+                    var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString(), accountExtension.Version));
 
                     if (!extensionDirectoryInfo.Exists)
                     {
@@ -238,7 +256,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
             AccountPrimaryColor = Color.Default;
             AccountSecoundaryColor = Color.Default;
             AccountLogoImageSource = null;
-            AccountSplashImageSource = null;
+            AccountHorizontalSplashImageSource = null;
+            AccountVerticalSplashImageSource = null;
             AccountDefaultOverlayId = null;
             AccountSerializedOverlayContext = null;
             AccountExtensions = null;
@@ -246,7 +265,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
         public async System.Threading.Tasks.Task ChangePasswordAsync(string oldPassword, string newPassword)
         {
-            var client = new Cloud.Api.Connect.Clients.UserApiClient(HttpClientHelper);
+            var client = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 
             await client.ChangePasswordAsync(new Cloud.Api.Common.Models.UserPasswordChangeRequestModel
             {

@@ -20,6 +20,7 @@
             <Setter Property="FontSize">
                 <Setter.Value>
                     <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android" Value="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalHeroTextFontSize}" />
                         <On Platform="UWP" Value="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalHeroTextFontSize}" />
                     </OnPlatform>
                 </Setter.Value>

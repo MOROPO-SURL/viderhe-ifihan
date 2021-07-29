@@ -111,26 +111,50 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 }
             }
 
-            if (inputModel.SplashImageData != null)
+            if (inputModel.HorizontalSplashImageData != null)
             {
-                using (var imageSkData = SkiaSharp.SKData.CreateCopy(inputModel.SplashImageData))
+                using (var imageSkData = SkiaSharp.SKData.CreateCopy(inputModel.HorizontalSplashImageData))
                 {
                     using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
                     {
                         var image = new SAPRESSC.Middleware.Media.Persistence.Entities.Image
                         {
-                            ContentType = inputModel.SplashImageContentType,
-                            Length = inputModel.SplashImageData.Length,
+                            ContentType = inputModel.HorizontalSplashImageContentType,
+                            Length = inputModel.HorizontalSplashImageData.Length,
                             Width = imageSkBitmap.Width,
                             Height = imageSkBitmap.Height,
-                            About = "Account Splash " + entity.Id
+                            About = "Account Horizontal Splash " + entity.Id
                         };
 
                         imageFileManager.SaveImageFileContent(image.Id, imageSkData.ToArray(), image.ContentType);
 
-                        inputModel.SplashImageId = entity.Splash.Id;
+                        inputModel.HorizontalSplashImageId = entity.HorizontalSplash.Id;
 
-                        entity.Splash = image;
+                        entity.HorizontalSplash = image;
+                    }
+                }
+            }
+
+            if (inputModel.VerticalSplashImageData != null)
+            {
+                using (var imageSkData = SkiaSharp.SKData.CreateCopy(inputModel.VerticalSplashImageData))
+                {
+                    using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                    {
+                        var image = new SAPRESSC.Middleware.Media.Persistence.Entities.Image
+                        {
+                            ContentType = inputModel.VerticalSplashImageContentType,
+                            Length = inputModel.VerticalSplashImageData.Length,
+                            Width = imageSkBitmap.Width,
+                            Height = imageSkBitmap.Height,
+                            About = "Account Vertical Splash " + entity.Id
+                        };
+
+                        imageFileManager.SaveImageFileContent(image.Id, imageSkData.ToArray(), image.ContentType);
+
+                        inputModel.VerticalSplashImageId = entity.VerticalSplash.Id;
+
+                        entity.HorizontalSplash = image;
                     }
                 }
             }
@@ -151,9 +175,18 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 imageFileManager.DeleteImageFile(oldLogoImage);
             }
 
-            if (inputModel.SplashImageData != null)
+            if (inputModel.HorizontalSplashImageData != null)
             {
-                var oldSplashImage = imageRepository.Get(inputModel.SplashImageId);
+                var oldSplashImage = imageRepository.Get(inputModel.HorizontalSplashImageId);
+
+                imageRepository.Delete(oldSplashImage, User.Identity.Name);
+
+                imageFileManager.DeleteImageFile(oldSplashImage);
+            }
+
+            if (inputModel.VerticalSplashImageData != null)
+            {
+                var oldSplashImage = imageRepository.Get(inputModel.VerticalSplashImageId);
 
                 imageRepository.Delete(oldSplashImage, User.Identity.Name);
 

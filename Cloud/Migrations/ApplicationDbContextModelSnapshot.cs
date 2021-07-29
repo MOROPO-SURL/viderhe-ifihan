@@ -791,6 +791,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.Property<bool>("Enabled")
                         .HasColumnName("enabled");
 
+                    b.Property<Guid>("HorizontalSplashId")
+                        .HasColumnName("horizontalsplashid");
+
                     b.Property<Guid>("LogoId")
                         .HasColumnName("logoid");
 
@@ -816,8 +819,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .IsRequired()
                         .HasColumnName("signature");
 
-                    b.Property<Guid>("SplashId")
-                        .HasColumnName("splashid");
+                    b.Property<Guid>("VerticalSplashId")
+                        .HasColumnName("verticalsplashid");
 
                     b.HasKey("Id")
                         .HasName("pk_accounts");
@@ -825,11 +828,14 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("DefaultOverlayId")
                         .HasName("ix_accounts_defaultoverlayid");
 
+                    b.HasIndex("HorizontalSplashId")
+                        .HasName("ix_accounts_horizontalsplashid");
+
                     b.HasIndex("LogoId")
                         .HasName("ix_accounts_logoid");
 
-                    b.HasIndex("SplashId")
-                        .HasName("ix_accounts_splashid");
+                    b.HasIndex("VerticalSplashId")
+                        .HasName("ix_accounts_verticalsplashid");
 
                     b.ToTable("accounts");
                 });
@@ -914,6 +920,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
 
                     b.Property<bool>("Enabled")
                         .HasColumnName("enabled");
+
+                    b.Property<string>("Version")
+                        .IsRequired()
+                        .HasColumnName("version");
 
                     b.HasKey("Id")
                         .HasName("pk_extensions");
@@ -1009,12 +1019,12 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .IsRequired()
                         .HasColumnName("label");
 
+                    b.Property<int?>("PlayerOrientationSupportKind")
+                        .HasColumnName("playerorientationsupportkind");
+
                     b.Property<string>("SerializedContext")
                         .IsRequired()
                         .HasColumnName("serializedcontext");
-
-                    b.Property<Guid?>("TempateId")
-                        .HasColumnName("tempateid");
 
                     b.Property<Guid>("TemplateId")
                         .HasColumnName("templateid");
@@ -1025,8 +1035,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("AccountId")
                         .HasName("ix_placards_accountid");
 
-                    b.HasIndex("TempateId")
-                        .HasName("ix_placards_tempateid");
+                    b.HasIndex("TemplateId")
+                        .HasName("ix_placards_templateid");
 
                     b.ToTable("placards");
                 });
@@ -1477,16 +1487,22 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .HasForeignKey("DefaultOverlayId")
                         .HasConstraintName("fk_accounts_overlays_defaultoverlayid");
 
+                    b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Image", "HorizontalSplash")
+                        .WithMany()
+                        .HasForeignKey("HorizontalSplashId")
+                        .HasConstraintName("fk_accounts_images_horizontalsplashid")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Image", "Logo")
                         .WithMany()
                         .HasForeignKey("LogoId")
                         .HasConstraintName("fk_accounts_images_logoid")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Image", "Splash")
+                    b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Image", "VerticalSplash")
                         .WithMany()
-                        .HasForeignKey("SplashId")
-                        .HasConstraintName("fk_accounts_images_splashid")
+                        .HasForeignKey("VerticalSplashId")
+                        .HasConstraintName("fk_accounts_images_verticalsplashid")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1597,8 +1613,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
 
                     b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Template", "Template")
                         .WithMany()
-                        .HasForeignKey("TempateId")
-                        .HasConstraintName("fk_placards_templates_tempateid");
+                        .HasForeignKey("TemplateId")
+                        .HasConstraintName("fk_placards_templates_templateid")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Player", b =>

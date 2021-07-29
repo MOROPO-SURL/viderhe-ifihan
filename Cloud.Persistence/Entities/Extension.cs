@@ -13,6 +13,9 @@
         [System.ComponentModel.DataAnnotations.Key]
         public System.Guid Id { get; set; }
 
+        [System.ComponentModel.DataAnnotations.Required]
+        public string Version { get; set; }
+
         public bool Enabled { get; set; }
 
         public System.Collections.Generic.List<Template> Templates { get; set; }

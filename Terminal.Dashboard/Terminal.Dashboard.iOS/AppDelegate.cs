@@ -23,9 +23,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.iOS
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
-            Xamarin.Forms.PancakeView.iOS.PancakeViewRenderer.Init();
+            Xamarin.Forms.DependencyService.Register<Plugin.Toasts.ToastNotification>();
+
+            Plugin.Toasts.ToastNotification.Init();
 
             LoadApplication(new App());
+
+            _ = System.Reflection.Assembly.GetAssembly(typeof(Extend.Essential.Templating.Dashboard.Presentation.Converters.IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter));
 
             return base.FinishedLaunching(app, options);
         }

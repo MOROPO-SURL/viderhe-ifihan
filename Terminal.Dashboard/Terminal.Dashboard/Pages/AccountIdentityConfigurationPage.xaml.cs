@@ -7,7 +7,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private bool pageModelHasChanges;
 
         private Plugin.FilePicker.Abstractions.FileData newLogoFileData;
-        private Plugin.FilePicker.Abstractions.FileData newSplashFileData;
+        private Plugin.FilePicker.Abstractions.FileData newHorizontalSplashFileData;
+        private Plugin.FilePicker.Abstractions.FileData newVerticalSplashFileData;
 
         public AccountIdentityConfigurationPage() : base(new Models.Page.AccountIdentityConfigurationPageModel
         {
@@ -27,7 +28,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (!IsEnabled)
             {
-                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiClient(Managers.SessionManager.Instance);
+                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiConnectClient(Managers.SessionManager.Instance);
 
                 accountApiClient.GetCurrentAsync().ContinueWith(task =>
                 {
@@ -45,7 +46,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             BindingContextPageModel.PrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor);
                             BindingContextPageModel.SecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
                             BindingContextPageModel.LogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.LogoImageId));
-                            BindingContextPageModel.SplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.SplashImageId));
+                            BindingContextPageModel.HorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.HorizontalSplashImageId));
+                            BindingContextPageModel.VerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.VerticalSplashImageId));
                             BindingContextPageModel.DefaultOverlay = task.Result.DefaultOverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(task.Result.DefaultOverlayId.Value);
                             BindingContextPageModel.SerializedOverlayContext = task.Result.SerializedOverlayContext;
 
@@ -66,7 +68,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                             BindingContextPageModel.IsBusy = false;
 
-                            Managers.SessionManager.Instance.SyncronizeRequiredAccountInformation(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, task.Result.LogoImageId, task.Result.SplashImageId, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext);
+                            Managers.SessionManager.Instance.SyncronizeRequiredAccountInformation(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, task.Result.LogoImageId, task.Result.HorizontalSplashImageId, task.Result.VerticalSplashImageId, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext);
 
                             pageModelHasChanges = false;
 
@@ -105,7 +107,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void OverlayConfigureButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            // TODO Stash this change for acomplish at main branch!!
             var page = Providers.OverlayConfigurationPageProvider.Instance.GetConfigurationPageByDescriptor(BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext, OverlayConfigurationSuccesfulComplete_Callback);
             
             if (page != null)
@@ -129,7 +130,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             BindingContextPageModel.IsBusy = true;
 
-            Managers.SessionManager.Instance.UpdateAccountInformationAsync(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, newLogoFileData, newSplashFileData, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext).ContinueWith(task =>
+            Managers.SessionManager.Instance.UpdateAccountInformationAsync(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, newLogoFileData, newHorizontalSplashFileData, newVerticalSplashFileData, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -216,7 +217,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             });
         }
 
-        private void PickSplashImageButton_Clicked(object sender, System.EventArgs eventArgs)
+        private void PickHorizontalSplashImageButton_Clicked(object sender, System.EventArgs eventArgs)
         {
             string[] fileSelector = null;
 
@@ -243,7 +244,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 if (task.Result == null) return;
 
-                newSplashFileData = task.Result;
+                newHorizontalSplashFileData = task.Result;
 
                 var imageFormat = System.IO.Path.GetExtension(task.Result.FilePath).Substring(1).ToUpper();
 
@@ -258,7 +259,54 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     imageFileStream.Read(imageData, 0, imageData.Length);
 
-                    BindingContextPageModel.SplashImageSource = Xamarin.Forms.ImageSource.FromStream(() => new System.IO.MemoryStream(imageData));
+                    BindingContextPageModel.HorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromStream(() => new System.IO.MemoryStream(imageData));
+                }
+            });
+        }
+
+        private void PickVerticalSplashImageButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            string[] fileSelector = null;
+
+            switch (Xamarin.Forms.Device.RuntimePlatform)
+            {
+                case Xamarin.Forms.Device.Android:
+                    fileSelector = new string[] { "image/*" };
+
+                    break;
+
+                case Xamarin.Forms.Device.UWP:
+                    fileSelector = new string[] { ".jpg", ".jpeg", ".png", ".bmp" };
+
+                    break;
+
+                case Xamarin.Forms.Device.WPF:
+                default:
+                    fileSelector = new string[] { "Imágenes Soportadas|*.jpg;*.jpeg;*.png;*.bmp" };
+
+                    break;
+            }
+
+            Plugin.FilePicker.CrossFilePicker.Current.PickFile(fileSelector).ContinueWith(task =>
+            {
+                if (task.Result == null) return;
+
+                newVerticalSplashFileData = task.Result;
+
+                var imageFormat = System.IO.Path.GetExtension(task.Result.FilePath).Substring(1).ToUpper();
+
+                if (imageFormat.Equals("jpg", System.StringComparison.CurrentCultureIgnoreCase))
+                {
+                    imageFormat = "JPEG";
+                }
+
+                using (var imageFileStream = task.Result.GetStream())
+                {
+                    var imageData = new byte[imageFileStream.Length];
+
+                    imageFileStream.Read(imageData, 0, imageData.Length);
+
+                    BindingContextPageModel.VerticalSplashImageSource = Xamarin.Forms.ImageSource.FromStream(() => new System.IO.MemoryStream(imageData));
                 }
             });
         }

@@ -11,12 +11,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
         Icon = "@mipmap/ic_launcher", 
         RoundIcon = "@mipmap/ic_launcher_round",
         Theme = "@style/AppTheme.NoActionBar", 
-        MainLauncher = true, 
-        Immersive = true, 
+        MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     [IntentFilter(
         actions: new string[] { "android.intent.action.MAIN" },
-        Categories = new string[] { "android.intent.category.LEANBACK_LAUNCHER" })]
+        Categories = new string[] 
+        {
+            "android.intent.category.HOME",
+            "android.intent.category.DEFAULT",
+            "android.intent.category.LEANBACK_LAUNCHER"
+        })]
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -34,6 +38,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
 
+            Rg.Plugins.Popup.Popup.Init(this);
+
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
             
             LoadApplication(new App());
@@ -48,20 +54,25 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        //public override void OnWindowFocusChanged(bool hasFocus)
-        //{
-        //    base.OnWindowFocusChanged(hasFocus);
+        public override void OnBackPressed()
+        {
+            Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed);
+        }
 
-        //    var uiOptions = (int)Window.DecorView.SystemUiVisibility;
+        public override void OnWindowFocusChanged(bool hasFocus)
+        {
+            base.OnWindowFocusChanged(hasFocus);
 
-        //    uiOptions |= (int)Android.Views.SystemUiFlags.ImmersiveSticky;
-        //    uiOptions |= (int)Android.Views.SystemUiFlags.LayoutStable;
-        //    uiOptions |= (int)Android.Views.SystemUiFlags.LayoutHideNavigation;
-        //    uiOptions |= (int)Android.Views.SystemUiFlags.LayoutFullscreen;
-        //    uiOptions |= (int)Android.Views.SystemUiFlags.Fullscreen;
-        //    uiOptions |= (int)Android.Views.SystemUiFlags.HideNavigation;
+            var uiOptions = (int)Window.DecorView.SystemUiVisibility;
 
-        //    Window.DecorView.SystemUiVisibility = (Android.Views.StatusBarVisibility)uiOptions;
-        //}
+            uiOptions |= (int)Android.Views.SystemUiFlags.ImmersiveSticky;
+            uiOptions |= (int)Android.Views.SystemUiFlags.LayoutStable;
+            uiOptions |= (int)Android.Views.SystemUiFlags.LayoutHideNavigation;
+            uiOptions |= (int)Android.Views.SystemUiFlags.LayoutFullscreen;
+            uiOptions |= (int)Android.Views.SystemUiFlags.Fullscreen;
+            uiOptions |= (int)Android.Views.SystemUiFlags.HideNavigation;
+
+            Window.DecorView.SystemUiVisibility = (Android.Views.StatusBarVisibility)uiOptions;
+        }
     }
 }

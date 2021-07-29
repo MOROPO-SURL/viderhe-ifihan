@@ -26,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         {
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            return e => e.Account.Id == accountId;
+            return e => e.Account.Id == accountId && e.Template.Enabled;
         }
 
         protected override void PreCreate(Persistence.Entities.Placard entity, PlacardInputModel inputModel)

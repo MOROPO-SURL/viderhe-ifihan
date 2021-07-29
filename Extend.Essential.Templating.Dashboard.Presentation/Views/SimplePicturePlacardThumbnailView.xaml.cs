@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views
+﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views
 {
     public partial class SimplePicturePlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
     {
@@ -9,7 +11,7 @@
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.SimplePicturePlacardContextModel>(model.SerializedContext);
 
             Image.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(cloudServerProvider, context.Image.ThumbnailId));
-            Image.Aspect = context.Aspect;
+            Image.Aspect = context.LayoutMode.ToXamarinFormsAspect();
 
             BindingContext = model;
         }

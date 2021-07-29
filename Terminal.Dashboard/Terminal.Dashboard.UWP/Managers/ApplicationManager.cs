@@ -8,5 +8,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Managers
         {
             Windows.UI.Xaml.Application.Current.Exit();
         }
+
+        public void RequestRequiredPermissions()
+        {
+        }
     }
 }

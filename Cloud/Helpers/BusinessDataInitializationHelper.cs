@@ -42,11 +42,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers
             var extensionDescriptors = Support.Extend.Providers.ExtensionDescriptorProvider.Instance.GetDescriptors();
 
             var templateDescriptors = Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptors();
-            var transitionDescriptors = Support.Extend.Motion.Providers.TransitionDescriptorProvider.Instance.GetDescriptors();
+            var transitionDescriptors = Support.Extend.Transitioning.Providers.TransitionDescriptorProvider.Instance.GetDescriptors();
             var overlayDescriptors = Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptors();
 
             foreach (var extensionDescriptor in extensionDescriptors)
             {
+                var extensionVersion = extensionDescriptor.GetType().Assembly.GetName().Version.ToString();
+
                 var extensionNamespace = extensionDescriptor.GetType().Assembly.FullName.Split(",")[0];
 
                 var spectedExtensionTemplateDescriptors = templateDescriptors.Where(d => d.GetType().Assembly.FullName.StartsWith(extensionNamespace)).ToArray();
@@ -65,6 +67,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers
                     {
                         Id = extensionDescriptor.Id,
                         Enabled = true,
+                        Version = extensionVersion,
                         Templates = spectedExtensionTemplateDescriptors.Select(d => new Persistence.Entities.Template { Id = d.Id, Enabled = true }).ToList(),
                         Transitions = spectedExtensionTransitionDescriptors.Select(d => new Persistence.Entities.Transition { Id = d.Id, Enabled = true }).ToList(),
                         Overlays = spectedExtensionOverlayDescriptors.Select(d => new Persistence.Entities.Overlay { Id = d.Id, Enabled = true }).ToList()
@@ -148,7 +151,16 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers
 
                     if (divergentExtensionTemplateDescriptors.Count() > 0 || divergentExtensionTransitionDescriptors.Count() > 0 || divergentExtensionOverlayDescriptors.Count() > 0)
                     {
+                        if (extension.Version != extensionVersion)
+                        {
+                            extension.Version = extensionVersion;
+                        }
+
                         extensionDbSet.Update(extension);
+                    }
+                    else if (extension.Version != extensionVersion)
+                    {
+                        extension.Version = extensionVersion;
                     }
                 }
             }

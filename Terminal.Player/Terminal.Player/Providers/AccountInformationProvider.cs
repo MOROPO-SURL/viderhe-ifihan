@@ -23,7 +23,9 @@
 
         public Xamarin.Forms.ImageSource LogoImageSource => Managers.SessionManager.Instance.AccountLogoImageSource;
 
-        public Xamarin.Forms.ImageSource SplashImageSource => Managers.SessionManager.Instance.AccountSplashImageSource;
+        public Xamarin.Forms.ImageSource HorizontalSplashImageSource => Managers.SessionManager.Instance.AccountHorizontalSplashImageSource;
+
+        public Xamarin.Forms.ImageSource VerticalSplashImageSource => Managers.SessionManager.Instance.AccountVerticalSplashImageSource;
 
         public Xamarin.Forms.Color PrimaryColor => Managers.SessionManager.Instance.AccountPrimaryColor;
 

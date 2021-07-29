@@ -11,6 +11,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
         private Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter presenter;
 
         private readonly bool demo;
+        private readonly bool empty;
 
         public ScreenplayPlayerPage(Models.View.PlacardViewModel[] placards, System.Action presentationCompleteCallbackAction, bool loop, Viderhe.Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Providers.Facade.ICloudServerProviderFacade cloudServerProvider, System.Action<System.Guid> placardPlayingCallbackAction = null, Viderhe.Extend.Common.Overlaying.Presentation.Views.BaseOverlayView overlay = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
         {
@@ -19,7 +20,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             this.accountInformationProvider = accountInformationProvider;
             this.cloudServerProvider = cloudServerProvider;
 
-            presenter = new Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards, accountInformationProvider, Extend.Motion.Presentation.Providers.MotionTransitionProvider.Instance, presentationCompleteCallbackAction, loop, placardPlayingCallbackAction, placardViewTransitionCompleteCallbackAction);
+            presenter = new Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards, accountInformationProvider, Extend.Transitioning.Presentation.Providers.TransitionProvider.Instance, presentationCompleteCallbackAction, loop, placardPlayingCallbackAction, placardViewTransitionCompleteCallbackAction);
 
             if (overlay != null)
             {
@@ -27,6 +28,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             }
 
             demo = !loop;
+            empty = placards.Length <= 0;
         }
 
         protected override void OnAppearing()
@@ -37,7 +39,9 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 
             if (!demo)
             {
-                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith((System.Threading.Tasks.Task task) =>
+                if (empty) return;
+
+                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(task =>
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(presenter.BeginPresentation);
                 });
@@ -52,7 +56,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
         {
             if (presenter.CurrentPlacardViewModel == null) return;
 
-            if (!presenter.CurrentPlacardViewModel.Template.PlayerOrientationSupport.SupportedByMainDisplayOrientation())
+            if (!presenter.CurrentPlacardViewModel.SupportedByMainDisplayOrientation())
             {
                 presenter.RequestPresentNextFrame();
             }
@@ -68,9 +72,9 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             presenter.RequestPresentPreviousFrame();
         }
 
-        public void RequestRestar(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
+        public void RequestRestart(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
         {
-            presenter.RequestRestar(immediacyMode);
+            presenter.RequestRestart(immediacyMode);
         }
 
         public void RequestReload(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)

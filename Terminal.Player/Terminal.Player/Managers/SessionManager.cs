@@ -18,19 +18,13 @@
         }
 
         public System.Guid AccountId { get; set; }
-
         public string AccountName { get; set; }
-
         public Xamarin.Forms.ImageSource AccountLogoImageSource { get; set; }
-
-        public Xamarin.Forms.ImageSource AccountSplashImageSource { get; set; }
-
+        public Xamarin.Forms.ImageSource AccountHorizontalSplashImageSource { get; set; }
+        public Xamarin.Forms.ImageSource AccountVerticalSplashImageSource { get; set; }
         public Xamarin.Forms.Color AccountPrimaryColor { get; set; }
-
         public Xamarin.Forms.Color AccountSecoundaryColor { get; set; }
-
         public System.Guid? AccountDefaultOverlayId { get; set; }
-
         public string AccountSerializedOverlayContext { get; set; }
 
         public SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("http://{0}/api/", ConfigurationManager.Instance.CloudServerHost), null, () => ExtraHeaders);

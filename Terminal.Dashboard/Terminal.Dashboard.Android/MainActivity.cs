@@ -22,8 +22,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
 
-            Xamarin.Forms.PancakeView.Droid.PancakeViewRenderer.Init();
-
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)

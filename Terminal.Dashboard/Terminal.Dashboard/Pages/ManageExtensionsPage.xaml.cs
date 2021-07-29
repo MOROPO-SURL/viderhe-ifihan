@@ -30,13 +30,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 await System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(1));
 
-                return Managers.SessionManager.Instance.AccountExtensions.Select(p => new Models.View.ExtensionViewModel
+                return Managers.SessionManager.Instance.AccountExtensions.Select(item => new Models.View.ExtensionViewModel
                 {
-                    Descriptor = Support.Extend.Providers.ExtensionDescriptorProvider.Instance.GetDescriptorById(p.Id),
-                    Enabled = p.Enabled,
-                    TemplateDescriptors = p.Templates.Select(t => Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray(),
-                    TransitionDescriptors = p.Transitions.Select(t => Support.Extend.Motion.Providers.TransitionDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray(),
-                    OverlayDescriptors = p.Overlays.Select(t => Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray()
+                    Descriptor = Support.Extend.Providers.ExtensionDescriptorProvider.Instance.GetDescriptorById(item.Id),
+                    Enabled = item.Enabled,
+                    TemplateDescriptors = item.Templates.Select(t => Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray(),
+                    TransitionDescriptors = item.Transitions.Select(t => Support.Extend.Transitioning.Providers.TransitionDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray(),
+                    OverlayDescriptors = item.Overlays.Select(t => Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray()
                 }).ToArray();
             }).ContinueWith(task =>
             {

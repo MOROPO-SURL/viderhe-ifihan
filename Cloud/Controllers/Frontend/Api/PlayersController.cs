@@ -84,7 +84,12 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
                 Response.Headers.Add(Request.Headers.First(header => header.Key == Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY));
 
-                return Ok(player.Screenplay.Frames.OrderBy(e => e.Priority).Select((Persistence.Entities.Frame entity) =>
+                if (player.Screenplay == null)
+                {
+                    return Ok(new Persistence.Entities.Placard[0]);
+                }
+
+                return Ok(player.Screenplay.Frames.OrderBy(e => e.Priority).Where(e => e.Placard.Template.Enabled).Select((Persistence.Entities.Frame entity) =>
                 {
                     var model = new PlacardDisplayModel();
 

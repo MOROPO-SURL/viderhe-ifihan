@@ -12,6 +12,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
         [Required]
         public System.Guid TemplateId { get; set; }
 
+        public Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind? PlayerOrientationSupportKind { get; set; }
+
         [Required]
         public string SerializedContext { get; set; }
 
@@ -29,12 +31,14 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
             Id = entity.Id;
             Label = entity.Label;
             TemplateId = entity.TemplateId;
+            PlayerOrientationSupportKind = entity.PlayerOrientationSupportKind;
             SerializedContext = entity.SerializedContext;
         }
 
         public void Mergue(Persistence.Entities.Placard entity)
         {
             entity.Label = Label;
+            entity.PlayerOrientationSupportKind = PlayerOrientationSupportKind;
             entity.SerializedContext = SerializedContext;
         }
     }
