@@ -4,7 +4,6 @@
 <dict>
 	<key>UIDeviceFamily</key>
 	<array>
-		<integer>1</integer>
 		<integer>2</integer>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
@@ -21,18 +20,20 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>10.3</string>
 	<key>CFBundleDisplayName</key>
-	<string>Terminal.Dashboard</string>
+	<string>Viderhe Control</string>
 	<key>CFBundleIdentifier</key>
-	<string>smartsolucionescuba.viderhe.terminal.dashboard</string>
+	<string>smartsolucionescuba.viderhe-terminal-dashboard</string>
 	<key>CFBundleVersion</key>
 	<string>0.1.0</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>CFBundleName</key>
-	<string>Terminal.Dashboard</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleName</key>
+	<string>Viderhe Control</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1</string>
 </dict>
 </plist>

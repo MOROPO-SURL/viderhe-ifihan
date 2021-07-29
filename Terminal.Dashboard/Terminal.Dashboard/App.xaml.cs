@@ -11,6 +11,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
             InitializeComponent();
 
             MainPage = new Xamarin.Forms.NavigationPage(new Pages.MainPage());
+
+            Xamarin.Forms.DependencyService.Get<Managers.Facade.IApplicationManagerFacade>().RequestRequiredPermissions();
         }
 
         protected override void OnStart()
