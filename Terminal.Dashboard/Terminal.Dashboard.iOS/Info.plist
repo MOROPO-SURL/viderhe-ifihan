@@ -24,7 +24,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Viderhe Control</string>
 	<key>CFBundleIdentifier</key>
-	<string>smartsolucionescuba.viderhe.terminal.dashboard</string>
+	<string>smartsolucionescuba.viderhe-terminal-dashboard</string>
 	<key>CFBundleVersion</key>
 	<string>0.1.0</string>
 	<key>UILaunchStoryboardName</key>
@@ -33,5 +33,7 @@
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleName</key>
 	<string>Viderhe Control</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1</string>
 </dict>
 </plist>
