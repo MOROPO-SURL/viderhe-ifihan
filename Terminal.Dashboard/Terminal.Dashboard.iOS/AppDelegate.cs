@@ -29,7 +29,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.iOS
 
             LoadApplication(new App());
 
-            _ = System.Reflection.Assembly.GetAssembly(typeof(Extend.Essential.Templating.Dashboard.Presentation.Converters.IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter));
+            _ = System.Reflection.Assembly.GetAssembly(typeof(Extend.Essential.Templating.Dashboard.Presentation.Providers.PlacardConfigurationPageProvider));
+            _ = System.Reflection.Assembly.GetAssembly(typeof(Extend.Essential.Overlaying.Dashboard.Presentation.Providers.OverlayConfigurationPageProvider));
+            _ = System.Reflection.Assembly.GetAssembly(typeof(Extend.Essential.Transitioning.Presentation.Providers.TransitionProvider));
 
             return base.FinishedLaunching(app, options);
         }
