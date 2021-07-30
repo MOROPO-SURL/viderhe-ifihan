@@ -17,6 +17,12 @@
         <OnPlatform x:Key="IconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons" />
         <OnPlatform x:Key="ToolbarIconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons" />
 
+        <Style x:Key="FormFieldFrame" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="White" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="Padding" Value="12" />
+        </Style>
         <Style x:Key="FormLabel" TargetType="Label">
             <Setter Property="TextColor" Value="Black" />
             <Setter Property="FontAttributes" Value="Bold" />

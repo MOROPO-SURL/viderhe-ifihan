@@ -42,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     BindingContextPageModel.IsBusy = true;
                 });
 
-                var client = new Cloud.Api.Connect.Clients.VideosApiClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
 
                 System.Exception failException = null;
 
@@ -95,13 +95,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 break;
 
                             case Xamarin.Forms.Device.UWP:
-                                fileSelector = new string[] { ".mp4", ".mkv", ".avi", ".mpg" };
+                                fileSelector = new string[] { ".mp4", ".mkv", ".avi", ".mpg", ".flv" };
 
                                 break;
 
                             case Xamarin.Forms.Device.WPF:
                             default:
-                                fileSelector = new string[] { "Videos Soportados|*.mp4;*.mkv;*.avi;*.mpg" };
+                                fileSelector = new string[] { "Videos Soportados|*.mp4;*.mkv;*.avi;*.mpg", "*.flv" };
 
                                 break;
                         }
@@ -121,6 +121,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             });
         }
 
+        private void ReloadToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            if (BindingContextPageModel.IsBusy) return;
+
+            OnRequiredReloadAction();
+        }
+
         private void OnRequiredReloadAction()
         {
             LoadVideos();
@@ -132,7 +139,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.VideosApiClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
 
                 return await client.GetPageAsync(page);
             }).ContinueWith(task =>

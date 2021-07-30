@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cloud.SignalR.Connect.Common\Cloud.SignalR.Connect.Common.csproj" />
-    <ProjectReference Include="..\Extend.Common.Motion.Presentation\Extend.Common.Motion.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj" />
     <ProjectReference Include="..\Extend.Common.Presentation\Extend.Common.Presentation.csproj" />
     <ProjectReference Include="..\Support.Presentation\Support.Presentation.csproj" />
   </ItemGroup>

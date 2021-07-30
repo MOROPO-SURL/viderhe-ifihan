@@ -105,7 +105,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
             {
                 var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
 
-                return new FileContentResult(imageFileManager.GetImageFileContent(account.Splash), account.Splash.ContentType);
+                return new FileContentResult(imageFileManager.GetImageFileContent(account.HorizontalSplash), account.HorizontalSplash.ContentType);
             }
             catch (System.IO.IOException e)
             {

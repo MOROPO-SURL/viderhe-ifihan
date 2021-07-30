@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Presentation\Extend.Common.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.Common.Transitioning\Extend.Common.Transitioning.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SSCXFToolKit.Presentation.Transform" Version="0.2.0-alpha" />
+  </ItemGroup>
+
+</Project>

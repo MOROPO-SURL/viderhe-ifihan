@@ -35,6 +35,19 @@
                 </FontImageSource>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
+        <ToolbarItem
+            Text="Actualizar"
+            Clicked="ReloadToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource IconFontFamily}" Glyph="&#xf6ea;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>
@@ -69,7 +82,7 @@
                                         Grid.Row="0" Grid.Column="0"
                                         BackgroundColor="Black"
                                         HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-                                        Source="{Binding Converter={StaticResource ImageViewModelToImageSourceConverter}}"
+                                        Source="{Binding Converter={StaticResource ImageViewModelToThumbnailImageSourceConverter}}"
                                         CacheType="Disk"
                                         CacheDuration="8760:00:00" />
                                     <StackLayout 

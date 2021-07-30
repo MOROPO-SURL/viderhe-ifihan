@@ -8,6 +8,8 @@
 
         public TemplateViewModel Template { get; set; }
 
+        public Viderhe.Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind? PlayerOrientationSupportKind { get; set; }
+
         public string SerializedContext { get; set; }
 
         #region IDisposable Support

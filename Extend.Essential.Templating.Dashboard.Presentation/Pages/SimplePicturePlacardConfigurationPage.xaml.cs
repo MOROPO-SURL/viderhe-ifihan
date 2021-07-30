@@ -1,4 +1,5 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages
@@ -50,7 +51,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiClient(httpClientHelperProvider);
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(httpClientHelperProvider);
 
                 if (placardViewModel == null)
                 {
@@ -58,11 +59,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                     {
                         Label = BindingContextPageModel.Label,
                         TemplateId = Descriptors.SimplePictureTemplateDescriptor.ID,
+                        PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.SimplePicturePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            Aspect = BindingContextPageModel.Aspect,
+                            LayoutMode = BindingContextPageModel.LayoutMode,
+                            IsZoomingEnabled = BindingContextPageModel.IsZoomingEnabled,
                             Image = BindingContextPageModel.Image.ToContextModel()
                         })
                     });
@@ -73,12 +76,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                     {
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
+                        PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
                         TemplateId = placardViewModel.Template.Id,
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.SimplePicturePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            Aspect = BindingContextPageModel.Aspect,
+                            LayoutMode = BindingContextPageModel.LayoutMode,
+                            IsZoomingEnabled = BindingContextPageModel.IsZoomingEnabled,
                             Image = BindingContextPageModel.Image.ToContextModel()
                         })
                     });

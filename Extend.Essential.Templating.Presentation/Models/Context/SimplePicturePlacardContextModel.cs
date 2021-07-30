@@ -4,13 +4,13 @@
     {
         public SimplePicturePlacardContextModel()
         {
-            ZoomingEnabled = false;
+            IsZoomingEnabled = false;
         }
 
         public Common.Templating.Presentation.Models.Context.ImageContextModel Image { get; set; }
 
-        public Xamarin.Forms.Aspect Aspect { get; set; }
+        public Enumerations.PictureLayoutMode LayoutMode { get; set; }
 
-        public bool ZoomingEnabled { get; set; }
+        public bool IsZoomingEnabled { get; set; }
     }
 }

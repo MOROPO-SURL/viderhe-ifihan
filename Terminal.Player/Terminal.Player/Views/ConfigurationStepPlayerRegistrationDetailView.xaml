@@ -26,7 +26,7 @@
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Reproductor no asociado con su cuenta. Registre mediante " />
-                        <Span Text="Viderhe Dashboard" FontSize="{Binding Source={x:RelativeSource AncestorType={x:Type Label}}, Path=FontSize}" FontAttributes="Bold" />
+                        <Span Text="Viderhe Control" FontAttributes="Bold" />
                         <Span Text=" un nuevo reproductor con el identificador siguiente:" />
                     </FormattedString>
                 </Label.FormattedText>

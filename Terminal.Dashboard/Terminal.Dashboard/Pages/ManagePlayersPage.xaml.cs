@@ -30,11 +30,18 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             }
         }
 
-        private void AddToolbarItem_Activated(object sender, System.EventArgs e)
+        private void AddToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
             if (BindingContextPageModel.IsBusy) return;
 
             this.NavigationPushPageAsync(new ConfigurePlayerPage(ReloadPlayer));
+        }
+
+        private void ReloadToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            if (BindingContextPageModel.IsBusy) return;
+
+            ReloadPlayer();
         }
 
         private void PlayerNextButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -336,7 +343,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 BindingContextPageModel.IsBusy = true;
 
-                var client = new Cloud.Api.Connect.Clients.PlayersApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
                 var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.PlayerViewModel;
 
@@ -382,7 +389,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlayersApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
                 return await client.GetPaginateAsync();
             }).ContinueWith(task =>

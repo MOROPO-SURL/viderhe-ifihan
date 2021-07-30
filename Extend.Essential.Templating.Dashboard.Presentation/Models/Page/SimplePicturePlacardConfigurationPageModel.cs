@@ -3,24 +3,23 @@
     public class SimplePicturePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
         private Support.Presentation.Models.View.ImageViewModel image;
-        private Xamarin.Forms.Aspect aspect;
+        private Templating.Presentation.Enumerations.PictureLayoutMode layoutMode;
+        private bool isZoomingEnabled;
 
         public SimplePicturePlacardConfigurationPageModel()
         {
             ScreenPresentationTimeSecounds = 15;
 
-            Aspects = new Xamarin.Forms.Aspect[] { Xamarin.Forms.Aspect.AspectFill, Xamarin.Forms.Aspect.AspectFit, Xamarin.Forms.Aspect.Fill };
+            AvailableLayoutModes = new Templating.Presentation.Enumerations.PictureLayoutMode[] { Templating.Presentation.Enumerations.PictureLayoutMode.AspectFit, Templating.Presentation.Enumerations.PictureLayoutMode.AspectFill, Templating.Presentation.Enumerations.PictureLayoutMode.Fill, Templating.Presentation.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf };
         }
 
-        public Xamarin.Forms.Aspect Aspect
-        {
-            get => aspect;
-            set => SetProperty(ref aspect, value);
-        }
+        public Templating.Presentation.Enumerations.PictureLayoutMode LayoutMode { get => layoutMode; set => SetProperty(ref layoutMode, value); }
 
         public Support.Presentation.Models.View.ImageViewModel Image { get => image; set => SetProperty(ref image, value); }
 
-        public Xamarin.Forms.Aspect[] Aspects { get; private set; }
+        public bool IsZoomingEnabled { get => isZoomingEnabled; set => SetProperty(ref isZoomingEnabled, value); }
+
+        public Templating.Presentation.Enumerations.PictureLayoutMode[] AvailableLayoutModes { get; private set; }
 
         protected override void DisposeUnmanagementResources()
         {
@@ -28,7 +27,7 @@
 
             Image = null;
 
-            Aspects = null;
+            AvailableLayoutModes = null;
         }
     }
 }

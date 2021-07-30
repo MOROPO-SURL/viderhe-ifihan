@@ -11,4 +11,8 @@
     <PackageReference Include="SAPRESSC.Middleware.Identity.Persistence" Version="2.3.4-alpha" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -8,7 +8,9 @@
 
         Xamarin.Forms.ImageSource LogoImageSource { get; }
 
-        Xamarin.Forms.ImageSource SplashImageSource { get; }
+        Xamarin.Forms.ImageSource HorizontalSplashImageSource { get; }
+
+        Xamarin.Forms.ImageSource VerticalSplashImageSource { get; }
 
         Xamarin.Forms.Color PrimaryColor { get; }
 

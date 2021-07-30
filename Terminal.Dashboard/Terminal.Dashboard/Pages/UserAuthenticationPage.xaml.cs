@@ -31,51 +31,55 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             Managers.SessionManager.Instance.SignInAsync(BindingContextPageModel.TargetCloudHostName, BindingContextPageModel.UserName, BindingContextPageModel.Password).ContinueWith(task =>
             {
-                if (task.Exception != null)
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    System.Exception targetException = task.Exception;
-
-                    while (targetException is System.AggregateException)
+                    if (task.IsCanceled || task.Exception != null)
                     {
-                        targetException = targetException.InnerException;
-                    }
+                        var message = "Problemas no esperados en el sistema.";
 
-                    var message = "Problemas no esperados en el sistema.";
-
-                    if (targetException is System.Net.Http.HttpRequestException)
-                    {
-                        message = "No se puede acceder al servidor. Revise su conexión de red y/o la disponibilidad del servicio.";
-                    }
-                    else if (targetException is SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException)
-                    {
-                        var unspectedHttpStatus = (targetException as SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException).HttpStatusCode;
-
-                        if (unspectedHttpStatus == System.Net.HttpStatusCode.BadRequest)
+                        if (task.Exception == null)
                         {
-                            message = "Datos incorrectos.";
+                            message = "El sistema ha tardado demasiado tiempo en responder.";
                         }
-                        else if (unspectedHttpStatus == System.Net.HttpStatusCode.Forbidden)
+                        else
                         {
-                            message = "Usuario no autorizado.";
-                        }
-                        else if (unspectedHttpStatus == System.Net.HttpStatusCode.Unauthorized)
-                        {
-                            message = "Usuario y/o contraseña incorrectos.";
-                        }
-                    }
+                            System.Exception targetException = task.Exception;
 
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                    {
+                            while (targetException is System.AggregateException)
+                            {
+                                targetException = targetException.InnerException;
+                            }
+
+                            if (targetException is System.Net.Http.HttpRequestException)
+                            {
+                                message = "No se puede acceder al servidor. Revise su conexión de red y/o la disponibilidad del servicio.";
+                            }
+                            else if (targetException is SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException)
+                            {
+                                var unspectedHttpStatus = (targetException as SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException).HttpStatusCode;
+
+                                if (unspectedHttpStatus == System.Net.HttpStatusCode.BadRequest)
+                                {
+                                    message = "Datos incorrectos.";
+                                }
+                                else if (unspectedHttpStatus == System.Net.HttpStatusCode.Forbidden)
+                                {
+                                    message = "Usuario no autorizado.";
+                                }
+                                else if (unspectedHttpStatus == System.Net.HttpStatusCode.Unauthorized)
+                                {
+                                    message = "Usuario y/o contraseña incorrectos.";
+                                }
+                            }
+                        }
+
                         BindingContextPageModel.IsBusy = false;
 
                         DisplayAlert("Error", message, "Aceptar");
-                    });
 
-                    return;
-                }
+                        return;
+                    }
 
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                {
                     BindingContextPageModel.IsBusy = false;
 
                     this.NavigationPopModalPageAsync();

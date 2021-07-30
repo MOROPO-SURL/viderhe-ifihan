@@ -43,6 +43,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions
             {
                 Id = target.Id,
                 Label = target.Label,
+                PlayerOrientationSupportKind = target.PlayerOrientationSupportKind,
                 SerializedContext = target.SerializedContext,
                 Template = templateDescriptor.ToViewModel()
             };

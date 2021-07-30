@@ -8,12 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1260" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj" />
-    <ProjectReference Include="..\Support.Extend.Motion.Presentation\Support.Extend.Motion.Presentation.csproj" />
+    <ProjectReference Include="..\Support.Extend.Transitioning.Presentation\Support.Extend.Transitioning.Presentation.csproj" />
     <ProjectReference Include="..\Support.Extend.Templating.Presentation\Support.Extend.Templating.Presentation.csproj" />
   </ItemGroup>
 

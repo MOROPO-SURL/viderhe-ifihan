@@ -18,7 +18,9 @@
 
         public System.Guid LogoImageId { get; set; }
 
-        public System.Guid SplashImageId { get; set; }
+        public System.Guid HorizontalSplashImageId { get; set; }
+
+        public System.Guid VerticalSplashImageId { get; set; }
 
         public bool ValidSignature { get; set; }
 
@@ -32,7 +34,8 @@
             PrimaryColor = entity.PrimaryColor;
             SecoundaryColor = entity.SecoundaryColor;
             LogoImageId = entity.LogoId;
-            SplashImageId = entity.Splash.Id;
+            HorizontalSplashImageId = entity.HorizontalSplashId;
+            VerticalSplashImageId = entity.VerticalSplashId;
             ValidSignature = Helpers.Integrity.AccountIntegrityHelper.IsCorrectlySigned(entity);
         }
     }

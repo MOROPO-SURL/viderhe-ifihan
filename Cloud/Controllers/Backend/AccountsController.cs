@@ -16,16 +16,17 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
     public class AccountsController : SAPRESSC.Core.Web.Backend.Controllers.AbstractHabilitableEntityManagementController<Account, System.Guid, AccountInputViewModel, AccountDisplayViewModel>
     {
         private const string LOGO_IMAGE_FILE_FIELD_NAME = "LogoImageFile";
-        private const string SPLASH_IMAGE_FILE_FIELD_NAME = "SplashImageFile";
+        private const string HORIZONTAL_SPLASH_IMAGE_FILE_FIELD_NAME = "HorizontalSplashImageFile";
+        private const string VERTICAL_SPLASH_IMAGE_FILE_FIELD_NAME = "VerticalSplashImageFile";
 
         private readonly SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManagerFacade;
         private readonly IEntityRepository<User, string> userRepository;
-        private readonly IEntityRepository<Persistence.Entities.Extension, System.Guid> extensionRepository;
+        private readonly IEntityRepository<Extension, System.Guid> extensionRepository;
         private readonly IEntityRepository<Image, System.Guid> imageRepository;
         private readonly IEntityRepository<PersonIdentity, System.Guid> identityRepository;
         private readonly IEntityRepository<Moderator, System.Guid> moderatorRepository;
 
-        public AccountsController(IEntityRepository<Moderator, System.Guid> moderatorRepository, IEntityRepository<PersonIdentity, System.Guid> identityRepository, SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManagerFacade, IEntityRepository<User, string> userRepository, IEntityRepository<Persistence.Entities.Extension, System.Guid> extensionRepository, IEntityRepository<Image, System.Guid> imageRepository, IEntityRepository<Account, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AccountsController> localizer, ILogger<AccountsController> logger) : base(repository, localizer, logger)
+        public AccountsController(IEntityRepository<Moderator, System.Guid> moderatorRepository, IEntityRepository<PersonIdentity, System.Guid> identityRepository, SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManagerFacade, IEntityRepository<User, string> userRepository, IEntityRepository<Extension, System.Guid> extensionRepository, IEntityRepository<Image, System.Guid> imageRepository, IEntityRepository<Account, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AccountsController> localizer, ILogger<AccountsController> logger) : base(repository, localizer, logger)
         {
             this.imageFileManagerFacade = imageFileManagerFacade;
             this.userRepository = userRepository;
@@ -65,13 +66,24 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                     validationRequired = true;
                 }
 
-                var formSplashImageFile = Request.Form.Files.First(f => f.Name == SPLASH_IMAGE_FILE_FIELD_NAME);
+                var formHorizontalSplashImageFile = Request.Form.Files.First(f => f.Name == HORIZONTAL_SPLASH_IMAGE_FILE_FIELD_NAME);
 
-                if (formSplashImageFile.Length > 0)
+                if (formHorizontalSplashImageFile.Length > 0)
                 {
-                    ModelState.ClearValidationState(SPLASH_IMAGE_FILE_FIELD_NAME);
+                    ModelState.ClearValidationState(HORIZONTAL_SPLASH_IMAGE_FILE_FIELD_NAME);
 
-                    modelInput.SplashImageFile = formSplashImageFile;
+                    modelInput.HorizontalSplashImageFile = formHorizontalSplashImageFile;
+
+                    validationRequired = true;
+                }
+
+                var formVerticalSplashImageFile = Request.Form.Files.First(f => f.Name == VERTICAL_SPLASH_IMAGE_FILE_FIELD_NAME);
+
+                if (formVerticalSplashImageFile.Length > 0)
+                {
+                    ModelState.ClearValidationState(VERTICAL_SPLASH_IMAGE_FILE_FIELD_NAME);
+
+                    modelInput.VerticalSplashImageFile = formVerticalSplashImageFile;
 
                     validationRequired = true;
                 }
@@ -99,13 +111,24 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 
             using (var memoryStream = new System.IO.MemoryStream())
             {
-                modelInput.SplashImageFile.CopyTo(memoryStream);
+                modelInput.HorizontalSplashImageFile.CopyTo(memoryStream);
 
-                var splashImage = new Image { ContentType = modelInput.SplashImageFile.ContentType, Length = modelInput.SplashImageFile.Length, About = "Account Splash " + entity.Id };
+                var splashImage = new Image { ContentType = modelInput.HorizontalSplashImageFile.ContentType, Length = modelInput.HorizontalSplashImageFile.Length, About = "Account Horizontal Splash " + entity.Id };
 
-                imageFileManagerFacade.SaveImageFileContent(splashImage.Id, memoryStream.ToArray(), modelInput.SplashImageFile.ContentType);
+                imageFileManagerFacade.SaveImageFileContent(splashImage.Id, memoryStream.ToArray(), modelInput.HorizontalSplashImageFile.ContentType);
 
-                entity.Splash = splashImage;
+                entity.HorizontalSplash = splashImage;
+            }
+
+            using (var memoryStream = new System.IO.MemoryStream())
+            {
+                modelInput.VerticalSplashImageFile.CopyTo(memoryStream);
+
+                var splashImage = new Image { ContentType = modelInput.VerticalSplashImageFile.ContentType, Length = modelInput.VerticalSplashImageFile.Length, About = "Account Vertical Splash " + entity.Id };
+
+                imageFileManagerFacade.SaveImageFileContent(splashImage.Id, memoryStream.ToArray(), modelInput.VerticalSplashImageFile.ContentType);
+
+                entity.VerticalSplash = splashImage;
             }
         }
 
@@ -121,8 +144,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
             ModelState.ClearValidationState(LOGO_IMAGE_FILE_FIELD_NAME);
             ModelState.MarkFieldValid(LOGO_IMAGE_FILE_FIELD_NAME);
 
-            ModelState.ClearValidationState(SPLASH_IMAGE_FILE_FIELD_NAME);
-            ModelState.MarkFieldValid(SPLASH_IMAGE_FILE_FIELD_NAME);
+            ModelState.ClearValidationState(HORIZONTAL_SPLASH_IMAGE_FILE_FIELD_NAME);
+            ModelState.MarkFieldValid(HORIZONTAL_SPLASH_IMAGE_FILE_FIELD_NAME);
+
+            ModelState.ClearValidationState(VERTICAL_SPLASH_IMAGE_FILE_FIELD_NAME);
+            ModelState.MarkFieldValid(VERTICAL_SPLASH_IMAGE_FILE_FIELD_NAME);
 
             if (Request.Form.Files.Count > 0)
             {
@@ -139,13 +165,24 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                     validationRequired = true;
                 }
 
-                var formSplashImageFile = Request.Form.Files.FirstOrDefault(f => f.Name == SPLASH_IMAGE_FILE_FIELD_NAME);
+                var formHorizontalSplashImageFile = Request.Form.Files.FirstOrDefault(f => f.Name == HORIZONTAL_SPLASH_IMAGE_FILE_FIELD_NAME);
 
-                if (formSplashImageFile != null && formSplashImageFile.Length > 0)
+                if (formHorizontalSplashImageFile != null && formHorizontalSplashImageFile.Length > 0)
                 {
-                    ModelState.ClearValidationState(SPLASH_IMAGE_FILE_FIELD_NAME);
+                    ModelState.ClearValidationState(HORIZONTAL_SPLASH_IMAGE_FILE_FIELD_NAME);
 
-                    modelInput.SplashImageFile = formSplashImageFile;
+                    modelInput.HorizontalSplashImageFile = formHorizontalSplashImageFile;
+
+                    validationRequired = true;
+                }
+
+                var formVerticalSplashImageFile = Request.Form.Files.FirstOrDefault(f => f.Name == VERTICAL_SPLASH_IMAGE_FILE_FIELD_NAME);
+
+                if (formVerticalSplashImageFile != null && formVerticalSplashImageFile.Length > 0)
+                {
+                    ModelState.ClearValidationState(VERTICAL_SPLASH_IMAGE_FILE_FIELD_NAME);
+
+                    modelInput.VerticalSplashImageFile = formVerticalSplashImageFile;
 
                     validationRequired = true;
                 }
@@ -160,10 +197,16 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                         ModelState.MarkFieldValid(LOGO_IMAGE_FILE_FIELD_NAME);
                     }
 
-                    if (modelInput.SplashImageFile == null)
+                    if (modelInput.HorizontalSplashImageFile == null)
                     {
-                        ModelState.ClearValidationState(SPLASH_IMAGE_FILE_FIELD_NAME);
-                        ModelState.MarkFieldValid(SPLASH_IMAGE_FILE_FIELD_NAME);
+                        ModelState.ClearValidationState(HORIZONTAL_SPLASH_IMAGE_FILE_FIELD_NAME);
+                        ModelState.MarkFieldValid(HORIZONTAL_SPLASH_IMAGE_FILE_FIELD_NAME);
+                    }
+
+                    if (modelInput.VerticalSplashImageFile == null)
+                    {
+                        ModelState.ClearValidationState(VERTICAL_SPLASH_IMAGE_FILE_FIELD_NAME);
+                        ModelState.MarkFieldValid(VERTICAL_SPLASH_IMAGE_FILE_FIELD_NAME);
                     }
                 }
             }
@@ -189,17 +232,31 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                 }
             }
 
-            if (modelInput.SplashImageFile != null)
+            if (modelInput.HorizontalSplashImageFile != null)
             {
                 using (var memoryStream = new System.IO.MemoryStream())
                 {
-                    modelInput.SplashImageFile.CopyTo(memoryStream);
+                    modelInput.HorizontalSplashImageFile.CopyTo(memoryStream);
 
-                    var splashImage = new Image { ContentType = modelInput.SplashImageFile.ContentType, Length = modelInput.SplashImageFile.Length, About = "Account Splash " + entity.Id };
+                    var splashImage = new Image { ContentType = modelInput.HorizontalSplashImageFile.ContentType, Length = modelInput.HorizontalSplashImageFile.Length, About = "Account Horizontal Splash " + entity.Id };
 
-                    imageFileManagerFacade.SaveImageFileContent(splashImage.Id, memoryStream.ToArray(), modelInput.SplashImageFile.ContentType);
+                    imageFileManagerFacade.SaveImageFileContent(splashImage.Id, memoryStream.ToArray(), modelInput.HorizontalSplashImageFile.ContentType);
 
-                    entity.Splash = splashImage;
+                    entity.HorizontalSplash = splashImage;
+                }
+            }
+
+            if (modelInput.VerticalSplashImageFile != null)
+            {
+                using (var memoryStream = new System.IO.MemoryStream())
+                {
+                    modelInput.VerticalSplashImageFile.CopyTo(memoryStream);
+
+                    var splashImage = new Image { ContentType = modelInput.VerticalSplashImageFile.ContentType, Length = modelInput.VerticalSplashImageFile.Length, About = "Account Vertical Splash " + entity.Id };
+
+                    imageFileManagerFacade.SaveImageFileContent(splashImage.Id, memoryStream.ToArray(), modelInput.VerticalSplashImageFile.ContentType);
+
+                    entity.VerticalSplash = splashImage;
                 }
             }
         }
@@ -217,9 +274,18 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                 imageFileManagerFacade.DeleteImageFile(oldLogoImage);
             }
 
-            if (modelInput.SplashImageFile != null)
+            if (modelInput.HorizontalSplashImageFile != null)
             {
-                var oldSplashImage = imageRepository.Get(modelInput.SplashImageId);
+                var oldSplashImage = imageRepository.Get(modelInput.HorizontalSplashImageId);
+
+                imageRepository.Delete(oldSplashImage, User.Identity.Name);
+
+                imageFileManagerFacade.DeleteImageFile(oldSplashImage);
+            }
+
+            if (modelInput.VerticalSplashImageFile != null)
+            {
+                var oldSplashImage = imageRepository.Get(modelInput.VerticalSplashImageId);
 
                 imageRepository.Delete(oldSplashImage, User.Identity.Name);
 
@@ -259,9 +325,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 
             imageFileManagerFacade.DeleteImageFile(entity.Logo);
 
-            imageRepository.Delete(entity.Splash, User.Identity.Name);
+            imageRepository.Delete(entity.HorizontalSplash, User.Identity.Name);
 
-            imageFileManagerFacade.DeleteImageFile(entity.Splash);
+            imageFileManagerFacade.DeleteImageFile(entity.HorizontalSplash);
+
+            imageRepository.Delete(entity.VerticalSplash, User.Identity.Name);
+
+            imageFileManagerFacade.DeleteImageFile(entity.VerticalSplash);
         }
 
         #region Account Moderators Management

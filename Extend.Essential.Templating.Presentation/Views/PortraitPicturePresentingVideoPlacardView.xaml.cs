@@ -2,7 +2,7 @@
 {
     public partial class PortraitPicturePresentingVideoPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        private Common.Motion.Presentation.Transitions.AbstractTransition transition;
+        private Common.Transitioning.Presentation.Transitions.AbstractTransition transition;
 
         public PortraitPicturePresentingVideoPlacardView(Models.View.PortraitPicturePresentingVideoPlacardViewModel model)
         {
@@ -25,7 +25,7 @@
         {
             var videoPlayer = sender as XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
 
-            if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused)
+            if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
             {
                 videoPlayer.StatusUpdated -= VideoPlayer_StatusUpdated;
 
@@ -39,7 +39,7 @@
             }
         }
 
-        public override void StartShowInWhenReady(Common.Motion.Presentation.Transitions.AbstractTransition transition)
+        public override void StartShowInWhenReady(Common.Transitioning.Presentation.Transitions.AbstractTransition transition)
         {
             if (PresentedVideo.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {

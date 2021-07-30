@@ -24,7 +24,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             IsEnabled = false;
 
-            BindingContext = new Models.Page.ManageProgrammingPageModel(ScreenplaySelectionCallback);
+            BindingContext = new Models.Page.ManageProgrammingPageModel(ScreenplaySelection_Callback);
         }
 
         protected override void OnAppearing()
@@ -71,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var client = new Cloud.Api.Connect.Clients.PlacardsApiClient(Managers.SessionManager.Instance);
+                                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Managers.SessionManager.Instance);
 
                                 try
                                 {
@@ -101,7 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetPlacardViewModel }, ScreenplayPresentationCompleteCallback, false, Providers.AccountInformationProvider.Instance, Providers.CloudServerProvider.Instance);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetPlacardViewModel }, ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Providers.CloudServerProvider.Instance);
 
                             this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
@@ -134,7 +134,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var client = new Cloud.Api.Connect.Clients.FramesApiClient(Managers.SessionManager.Instance);
+                                var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
                                 try
                                 {
@@ -207,7 +207,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var client = new Cloud.Api.Connect.Clients.FramesApiClient(Managers.SessionManager.Instance);
+                                var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
                                 try
                                 {
@@ -237,7 +237,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetFrameViewModel.Placard }, ScreenplayPresentationCompleteCallback, false, Providers.AccountInformationProvider.Instance, Providers.CloudServerProvider.Instance);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetFrameViewModel.Placard }, ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Providers.CloudServerProvider.Instance);
 
                             this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
@@ -249,7 +249,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         System.Threading.Tasks.Task.Run(async () =>
                         {
-                            var client = new Cloud.Api.Connect.Clients.FramesApiClient(Managers.SessionManager.Instance);
+                            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
                             await client.OrderUpAsync(targetFrameViewModel.Id);
                         }).ContinueWith(task =>
@@ -278,7 +278,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         System.Threading.Tasks.Task.Run(async () =>
                         {
-                            var client = new Cloud.Api.Connect.Clients.FramesApiClient(Managers.SessionManager.Instance);
+                            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
                             await client.OrderDownAsync(targetFrameViewModel.Id);
                         }).ContinueWith(task =>
@@ -311,7 +311,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ScreenplayFramesPlayButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(BindingContextPageModel.Frames.Select(m => m.Placard).ToArray(), ScreenplayPresentationCompleteCallback, false, Providers.AccountInformationProvider.Instance, Providers.CloudServerProvider.Instance);
+            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(BindingContextPageModel.Frames.Select(m => m.Placard).ToArray(), ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Providers.CloudServerProvider.Instance);
 
             this.NavigationPushModalPageAsync(screenplayPlayerPage);
         }
@@ -338,7 +338,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiClient(Managers.SessionManager.Instance);
+                                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
 
                                 try
                                 {
@@ -398,12 +398,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             BindingContextPageModel.SelectedScreenplay = selecction != null ? selecction as Models.View.ScreenplayViewModel : null;
         }
 
-        private void ScreenplaySelectionCallback(Models.View.ScreenplayViewModel target)
+        private void ScreenplaySelection_Callback(Models.View.ScreenplayViewModel target)
         {
             LoadCurrentScreenplayFrames();
         }
 
-        private void ScreenplayPresentationCompleteCallback()
+        private void ScreenplayPresentationComplete_Callback()
         {
             this.NavigationPopModalPageAsync();
         }
@@ -428,7 +428,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
 
                 return await client.GetAsync();
             }).ContinueWith(task =>
@@ -473,7 +473,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Managers.SessionManager.Instance);
 
                 return await client.GetPaginateAsync(limit: 200);
             }).ContinueWith(task =>
@@ -516,7 +516,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.FramesApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
                 var result = await client.FilterAsync(new Cloud.Api.Common.Models.Filter.FrameFilterModel { ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id });
 

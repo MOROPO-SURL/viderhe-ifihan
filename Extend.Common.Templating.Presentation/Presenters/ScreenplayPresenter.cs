@@ -1,4 +1,4 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Motion.Presentation.Providers.Facade;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.Providers.Facade;
 using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Providers.Facade;
 using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
 using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
@@ -21,7 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         private IAccountInformationProviderFacade accountInformationProvider;
 
-        private IMotionTransitionProviderFacade motionTransitionProvider;
+        private ITransitionProviderFacade transitionProvider;
 
         private BasePlacardPresentationView outgoingFrameView;
 
@@ -29,13 +29,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         private bool loop;
 
-        public ScreenplayPresenter(Xamarin.Forms.Layout<Xamarin.Forms.View> container, System.Func<PlacardViewModel, BasePlacardPresentationView> placardViewModelToPresentationViewFunction, PlacardViewModel[] placards, IAccountInformationProviderFacade accountInformationProvider, IMotionTransitionProviderFacade motionTransitionProvider, System.Action presentationCompleteCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
+        public ScreenplayPresenter(Xamarin.Forms.Layout<Xamarin.Forms.View> container, System.Func<PlacardViewModel, BasePlacardPresentationView> placardViewModelToPresentationViewFunction, PlacardViewModel[] placards, IAccountInformationProviderFacade accountInformationProvider, ITransitionProviderFacade transitionProvider, System.Action presentationCompleteCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
         {
             this.container = container;
             this.placardViewModelToPresentationViewFunction = placardViewModelToPresentationViewFunction;
             this.placards = placards;
             this.accountInformationProvider = accountInformationProvider;
-            this.motionTransitionProvider = motionTransitionProvider;
+            this.transitionProvider = transitionProvider;
             this.presentationCompleteCallbackAction = presentationCompleteCallbackAction;
             this.placardPlayingCallbackAction = placardPlayingCallbackAction;
             this.placardViewTransitionCompleteCallbackAction = placardViewTransitionCompleteCallbackAction;
@@ -68,7 +68,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             PresentNextPlacardPresentationView();
         }
 
-        public void RequestRestar(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
+        public void RequestRestart(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
         {
             switch (immediacyMode)
             {
@@ -89,6 +89,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         public void RequestReload(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
         {
+            if (placards.Length <= 0)
+            {
+                immediacyMode = Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately;
+            }
+
             switch (immediacyMode)
             {
                 case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately:
@@ -96,6 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                     loop = false;
 
                     presentationCompleteCallbackAction?.Invoke();
+                    presentationCompleteCallbackAction = null;
 
                     break;
 
@@ -149,7 +155,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                 {
                     var model = framesStack.Pop();
 
-                    while (!model.Template.PlayerOrientationSupport.SupportedByMainDisplayOrientation())
+                    while (!model.SupportedByMainDisplayOrientation())
                     {
                         model = null;
 
@@ -166,7 +172,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
                         outgoingFrameView = container.Children.FirstOrDefault() as BasePlacardPresentationView;
 
-                        var transition = motionTransitionProvider.GetRandom(accountInformationProvider, incomingFrameView, outgoingFrameView, OnMotionTransitionCompletedCallback);
+                        var transition = transitionProvider.GetRandom(accountInformationProvider, incomingFrameView, outgoingFrameView, OnMotionTransitionCompletedCallback);
 
                         transition?.GetReady(accountInformationProvider, container);
 
@@ -213,6 +219,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                 if (!loop)
                 {
                     presentationCompleteCallbackAction?.Invoke();
+                    presentationCompleteCallbackAction = null;
                 }
                 else
                 {
@@ -247,7 +254,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                 placardViewTransitionCompleteCallbackAction = null;
                 placardViewModelToPresentationViewFunction = null;
                 accountInformationProvider = null;
-                motionTransitionProvider = null;
+                transitionProvider = null;
 
                 disposedValue = true;
             }

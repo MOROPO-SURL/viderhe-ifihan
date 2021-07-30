@@ -42,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     BindingContextPageModel.IsBusy = true;
                 });
 
-                var client = new Cloud.Api.Connect.Clients.ImagesApiClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
 
                 System.Exception failException = null;
 
@@ -121,6 +121,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             });
         }
 
+        private void ReloadToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            if (BindingContextPageModel.IsBusy) return;
+
+            OnRequiredReloadAction();
+        }
+
         private void OnRequiredReloadAction()
         {
             LoadImages();
@@ -132,7 +139,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.ImagesApiClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
 
                 return await client.GetPageAsync(page);
             }).ContinueWith(task =>

@@ -5,12 +5,9 @@ using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [System.ComponentModel.DesignTimeVisible(false)]
     public partial class MainPage : Xamarin.Forms.ContentPage
     {
-        private System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel> Placards { get; set; }
+        private Support.Presentation.Models.View.PlacardViewModel[] placards;
 
         private readonly System.Collections.Generic.Queue<Enumerations.ConfigurationStep> configurationStepQueue;
 
@@ -41,12 +38,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
         private void InitializeSteps()
         {
-            //if (Placards == null)
-            //{
-                configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.Starting);
-                configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.PlayerRegistration);
-            //}
-
+            configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.Starting);
+            configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.PlayerRegistration);
             configurationStepQueue.Enqueue(Enumerations.ConfigurationStep.ScreenplayFetch);
         }
 
@@ -60,10 +53,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                     {
                         overlayView = Providers.AccountInformationProvider.Instance.AccountDefaultOverlayId == null ? null : Providers.OverlayPresentationViewProvider.Instance.GetOverlayPresentationView();
 
-                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(Placards.ToArray(), ScreenplayPresentationCompleteCallback, true, Providers.AccountInformationProvider.Instance, Managers.ConfigurationManager.Instance, PlacardPlayingCallback, overlayView, PlacardViewTransitionComplete_Callback)
+                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(placards, ScreenplayPresentationComplete_Callback, true, Providers.AccountInformationProvider.Instance, Managers.ConfigurationManager.Instance, PlacardPlayingCallback, overlayView, PlacardViewTransitionComplete_Callback)
                         {
                             BackgroundColor = Managers.SessionManager.Instance.AccountPrimaryColor,
-                            BindingContext = Managers.SessionManager.Instance.AccountSplashImageSource
+                            BindingContext = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Managers.SessionManager.Instance.AccountVerticalSplashImageSource : Managers.SessionManager.Instance.AccountHorizontalSplashImageSource
                         };
 
                         this.NavigationPushModalPageAsync(screenplayPlayerPage);
@@ -171,7 +164,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             });
         }
 
-        private void ScreenplayPresentationCompleteCallback()
+        private void ScreenplayPresentationComplete_Callback()
         {
             this.NavigationPopModalPageAsync().ContinueWith(task =>
             {
@@ -217,27 +210,30 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
         private async System.Threading.Tasks.Task<Cloud.Api.Common.Models.AccountDisplayModel> RequestAccountAsync()
         {
-            var client = new Cloud.Api.Connect.Clients.PlayersApiClient(Managers.SessionManager.Instance);
+            var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
             return await client.GetAccountAsync();
         }
 
         private async void OnRequestAccountCallback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.AccountDisplayModel> task)
         {
-            if (task.Exception != null)
+            if (task.IsCanceled || task.Exception != null)
             {
-                System.Exception targetException = task.Exception;
-
-                while (targetException is System.AggregateException)
+                if (task.Exception != null)
                 {
-                    targetException = targetException.InnerException;
-                }
+                    System.Exception targetException = task.Exception;
 
-                if (targetException is SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException && (targetException as SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException).HttpStatusCode == System.Net.HttpStatusCode.Forbidden)
-                {
-                    if (!((BindingContext as Models.View.ConfigurationStepViewModel).DetailContentView is Views.ConfigurationStepPlayerRegistrationDetailView))
+                    while (targetException is System.AggregateException)
                     {
-                        AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
+                        targetException = targetException.InnerException;
+                    }
+
+                    if (targetException is SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException && (targetException as SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException).HttpStatusCode == System.Net.HttpStatusCode.Forbidden)
+                    {
+                        if (!((BindingContext as Models.View.ConfigurationStepViewModel).DetailContentView is Views.ConfigurationStepPlayerRegistrationDetailView))
+                        {
+                            AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
+                        }
                     }
                 }
 
@@ -253,7 +249,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                 Managers.SessionManager.Instance.AccountId = task.Result.Id;
                 Managers.SessionManager.Instance.AccountName = task.Result.Name;
                 Managers.SessionManager.Instance.AccountLogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.LogoImageId));
-                Managers.SessionManager.Instance.AccountSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.SplashImageId));
+                Managers.SessionManager.Instance.AccountHorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.HorizontalSplashImageId));
+                Managers.SessionManager.Instance.AccountVerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.VerticalSplashImageId));
                 Managers.SessionManager.Instance.AccountPrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor);
                 Managers.SessionManager.Instance.AccountSecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
                 Managers.SessionManager.Instance.AccountDefaultOverlayId = task.Result.DefaultOverlayId;
@@ -263,7 +260,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
                 foreach (var accountExtension in dynamicLoadExtensions)
                 {
-                    var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString()));
+                    var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString(), accountExtension.Version));
+
+                    // TODO Clear obsolete extension folder!!
 
                     if (!extensionDirectoryInfo.Exists)
                     {
@@ -284,6 +283,24 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                         var assembly = System.Reflection.Assembly.LoadFrom(extensionLibraryFileInfo.FullName);
 
                         System.AppDomain.CurrentDomain.Load(assembly.GetName());
+
+                        var attributes = assembly.GetCustomAttributesSafe(typeof(Xamarin.Forms.ExportFontAttribute));
+
+                        if (attributes == null || attributes.Length == 0) continue;
+
+                        var length = attributes.Length;
+
+                        for (var i = 0; i < length; i++)
+                        {
+                            var a = attributes[i];
+
+                            var attribute = a as Xamarin.Forms.HandlerAttribute;
+
+                            if (attribute == null && (a is Xamarin.Forms.ExportFontAttribute fa))
+                            {
+                                Xamarin.Forms.Internals.FontRegistrar.Register(fa, assembly);
+                            }
+                        }
                     }
                 }
 
@@ -298,14 +315,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
         private async System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlacardDisplayModel[]> RequestScreenplayPlacardsAsync()
         {
-            var client = new Cloud.Api.Connect.Clients.PlayersApiClient(Managers.SessionManager.Instance);
+            var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
             return await client.GetScreenplayPlacardsAsync();
         }
 
         private void OnRequestScreenplayPlacardsCallback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlacardDisplayModel[]> task)
         {
-            if (task.Exception != null || task.Result == null || task.Result.Count() <= 0)
+            if (task.IsCanceled || task.Exception != null || task.Result == null)
             {
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(delayTask =>
                 {
@@ -314,7 +331,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             }
             else
             {
-                Placards = task.Result.Select(m => m.ToViewModel()).ToList();
+                placards = task.Result.Select(m => m.ToViewModel()).ToArray();
 
                 AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
             }
