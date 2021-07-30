@@ -187,11 +187,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
                 SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.HorizontalSplashImageId, model.VerticalSplashImageId, overalyDescriptor, model.SerializedOverlayContext);
 
+                AccountExtensions = model.Extensions.ToArray();
+
                 // MotoTouch does not support dynamic assembly loading
                 if (Device.RuntimePlatform != Device.iOS)
                 {
-                    AccountExtensions = model.Extensions.ToArray();
-
                     var dynamicLoadExtensions = AccountExtensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID).ToArray();
 
                     foreach (var accountExtension in dynamicLoadExtensions)
