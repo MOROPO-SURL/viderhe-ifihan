@@ -2,14 +2,11 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageImagesPage"    
     x:TypeArguments="pagemodels:ManageImagesPageModel"
     Title="Imágenes">
@@ -71,9 +68,9 @@
                                 Margin="5" Padding="0"
                                 BackgroundColor="White"
                                 CornerRadius="0"
+                                HasShadow="False"
                                 WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}">
-                                <Grid
-                                    RowSpacing="0">
+                                <Grid RowSpacing="0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
                                         <RowDefinition Height="Auto" />

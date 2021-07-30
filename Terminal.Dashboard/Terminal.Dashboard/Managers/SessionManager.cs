@@ -199,14 +199,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                     {
                         extensionDirectoryInfo.Create();
 
-                        await DownloadAccountExtensionBundle(accountExtension.Id, extensionDirectoryInfo);
+                        await DownloadAccountExtensionBundleAsync(accountExtension.Id, extensionDirectoryInfo);
                     }
 
                     var extensionLibraryFileInfos = extensionDirectoryInfo.GetFiles();
 
                     if (extensionLibraryFileInfos.Length <= 0)
                     {
-                        await DownloadAccountExtensionBundle(accountExtension.Id, extensionDirectoryInfo);
+                        await DownloadAccountExtensionBundleAsync(accountExtension.Id, extensionDirectoryInfo);
                     }
 
                     foreach (var extensionLibraryFileInfo in extensionLibraryFileInfos)
@@ -274,23 +274,17 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
             });
         }
 
-        private async System.Threading.Tasks.Task DownloadAccountExtensionBundle(System.Guid extensionId, System.IO.DirectoryInfo extensionDirectoryInfo)
+        private async System.Threading.Tasks.Task DownloadAccountExtensionBundleAsync(System.Guid extensionId, System.IO.DirectoryInfo extensionDirectoryInfo)
         {
-            using (var httpClient = new System.Net.Http.HttpClient { BaseAddress = new System.Uri(string.Format("http://{0}/", Server)) })
+            var extensionsApiConnectClient = new Cloud.Api.Connect.Clients.ExtensionsApiConnectClient(HttpClientHelper);
+
+            var extensionBundleModules = await extensionsApiConnectClient.GetDashboardBundleModulesAsync(extensionId);
+
+            foreach (var extensionBundleModule in extensionBundleModules)
             {
-                var extensionBundleStream = await httpClient.GetStreamAsync(string.Format("extensions/dashboardbundle/{0}", extensionId));
-
-                var extensionBundleZipArchive = new System.IO.Compression.ZipArchive(extensionBundleStream);
-
-                foreach (var zipEntry in extensionBundleZipArchive.Entries)
+                using (var extensionLibraryFileStream = System.IO.File.Create(System.IO.Path.Combine(extensionDirectoryInfo.FullName, extensionBundleModule.FileName)))
                 {
-                    using (var extensionLibraryFileStream = System.IO.File.Create(System.IO.Path.Combine(extensionDirectoryInfo.FullName, zipEntry.Name)))
-                    {
-                        using (var unzippedEntryStream = zipEntry.Open())
-                        {
-                            unzippedEntryStream.CopyTo(extensionLibraryFileStream);
-                        }
-                    }
+                    extensionLibraryFileStream.Write(extensionBundleModule.FileContent, 0, extensionBundleModule.FileContent.Length);
                 }
             }
         }

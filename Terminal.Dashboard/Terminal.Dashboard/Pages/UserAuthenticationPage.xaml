@@ -18,41 +18,45 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <StackLayout
+            <Grid
                 WidthRequest="240"
                 HorizontalOptions="Center" VerticalOptions="Center">
-                <Label 
-                    HorizontalOptions="Center"
-                    Text="&#xe9ff;"
-                    TextColor="Black"
-                    FontFamily="Viderhe Identity Icons"
-                    FontSize="160" />
-                <Label 
-                    Margin="0,0,0,20"
-                    Text="Viderhe"
-                    TextColor="Black"
-                    HorizontalOptions="Center"
-                    FontFamily="Julius Sans One Regular"
-                    FontSize="38" />
-                <Entry
-                    Text="{Binding Path=TargetCloudHostName}"
-                    Placeholder="servidor cloud" />
-                <Entry
-                    Text="{Binding Path=UserName}"
-                    Placeholder="usuario" />
-                <Entry
-                    Text="{Binding Path=Password}"
-                    Placeholder="contraseña"
-                    IsPassword="true" />
-                <Button
-                    IsEnabled="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
-                    HorizontalOptions="FillAndExpand"
-                    Margin="24"
-                    BackgroundColor="Accent"
-                    Text="Iniciar"
-                    TextColor="White"
-                    Clicked="SignButton_Clicked" />
-            </StackLayout>
+                <ScrollView Orientation="Vertical">
+                    <StackLayout>
+                        <Label 
+                            HorizontalOptions="Center"
+                            Text="&#xe9ff;"
+                            TextColor="Black"
+                            FontFamily="Viderhe Identity Icons"
+                            FontSize="160" />
+                        <Label 
+                            Margin="0,0,0,20"
+                            Text="Viderhe"
+                            TextColor="Black"
+                            HorizontalOptions="Center"
+                            FontFamily="Julius Sans One Regular"
+                            FontSize="38" />
+                        <Entry
+                            Text="{Binding Path=TargetCloudHostName}"
+                            Placeholder="servidor cloud" />
+                        <Entry
+                            Text="{Binding Path=UserName}"
+                            Placeholder="usuario" />
+                        <Entry
+                            Text="{Binding Path=Password}"
+                            Placeholder="contraseña"
+                            IsPassword="true" />
+                        <Button
+                            IsEnabled="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
+                            HorizontalOptions="FillAndExpand"
+                            Margin="24"
+                            BackgroundColor="Accent"
+                            Text="Iniciar"
+                            TextColor="White"
+                            Clicked="SignButton_Clicked" />
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
             <supportpresentationdashboardviews:BusyView />
         </Grid>
     </ContentPage.Content>
