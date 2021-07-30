@@ -2,14 +2,10 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
-    mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageExtensionsPage"
     x:TypeArguments="pagemodels:ManageExtensionsPageModel"
     Title="Complementos">
@@ -17,7 +13,7 @@
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:EnumerationToCountConverter x:Key="EnumerationToCountConverter" />
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
-            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="20" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="10" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -39,13 +35,13 @@
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <Frame
-                                Margin="5"
+                                Margin="5" Padding="0"
                                 BackgroundColor="White"
                                 CornerRadius="0"
                                 HasShadow="False"
                                 WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
-                                HeightRequest="180">
-                                <Grid Padding="15,10">
+                                HeightRequest="200">
+                                <Grid Margin="20,15">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition />
                                         <ColumnDefinition />
@@ -64,7 +60,7 @@
                                         FontSize="Medium" />
                                     <Label 
                                         Grid.ColumnSpan="3" Grid.Row="1"
-                                        LineBreakMode="TailTruncation" MaxLines="2"
+                                        LineBreakMode="TailTruncation" MaxLines="3"
                                         Text="{Binding Path=Descriptor.Description}"
                                         TextColor="DimGray" />
                                     <StackLayout
