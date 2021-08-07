@@ -52,7 +52,7 @@
   <PropertyGroup>
     <ProjectGuid>64105b22-cdd2-402c-a880-ebe89e7c09d9</ProjectGuid>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <EntryPointProjectUniqueName>..\Terminal.Player.UWP\Terminal.Player.UWP.csproj</EntryPointProjectUniqueName>
