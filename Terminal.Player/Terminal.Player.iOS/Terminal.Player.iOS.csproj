@@ -250,6 +250,10 @@
       <Project>{E620A859-7769-472D-981A-B93DBF496926}</Project>
       <Name>Extend.Common.Templating.Presentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Support.Presentation.Player\Support.Presentation.Player.csproj">
+      <Project>{83BE5D7F-2FB7-40C5-A1EF-1B6EBDD8FED6}</Project>
+      <Name>Support.Presentation.Player</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Providers\" />
