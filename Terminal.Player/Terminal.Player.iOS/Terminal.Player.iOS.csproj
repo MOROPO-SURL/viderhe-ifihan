@@ -185,7 +185,7 @@
       <Version>2.4.11.982</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>4.7.0.1260</Version>
+      <Version>5.0.0.2083</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -256,10 +256,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Providers\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Views\" />
-    <Folder Include="Views\Renderer\" />
     <Folder Include="Assets.xcassets\PowerbySignature.imageset\" />
   </ItemGroup>
 </Project>
