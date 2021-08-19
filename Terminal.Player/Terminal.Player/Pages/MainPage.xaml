@@ -17,7 +17,16 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <supportpresentationviews:IdentityBackgroundView />
+            <Grid.Background>
+                <LinearGradientBrush>
+                    <GradientStop 
+                        Color="#4314c6"
+                        Offset="0.1" />
+                    <GradientStop 
+                        Color="#1b7be8"
+                        Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid Margin="{Binding Source={x:RelativeSource AncestorType={x:Type ContentPage}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=20}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />

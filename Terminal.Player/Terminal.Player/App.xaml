@@ -5,8 +5,10 @@
     xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Player.App">
     <Application.Resources>
-        <OnPlatform x:Key="IconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons" />
-        
+        <OnPlatform x:Key="IconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons">
+            <On Platform="Tizen" Value="MaterialDesignIcons" />
+        </OnPlatform>
+
         <Style x:Key="ConfigurationStepSubtitleLabelStyle" TargetType="Label">
             <Setter Property="TextColor" Value="White" />
             <Setter Property="FontSize" Value="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalHeaderTextFontSize}" />
@@ -22,6 +24,7 @@
                     <OnPlatform x:TypeArguments="x:Double">
                         <On Platform="Android" Value="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalHeroTextFontSize}" />
                         <On Platform="UWP" Value="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalHeroTextFontSize}" />
+                        <On Platform="Tizen" Value="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalHeroTextFontSize}" />
                     </OnPlatform>
                 </Setter.Value>
             </Setter>
