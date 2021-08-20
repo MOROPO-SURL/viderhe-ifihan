@@ -2,11 +2,14 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:renderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Player.Views.Rendered"
     xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     xmlns:supportpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Player.Pages.MainPage">
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Player.Pages.MainPage"
+    ios:Page.PrefersStatusBarHidden="True">
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
@@ -14,7 +17,16 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <supportpresentationviews:IdentityBackgroundView />
+            <Grid.Background>
+                <LinearGradientBrush>
+                    <GradientStop 
+                        Color="#4314c6"
+                        Offset="0.1" />
+                    <GradientStop 
+                        Color="#1b7be8"
+                        Offset="1.0" />
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid Margin="{Binding Source={x:RelativeSource AncestorType={x:Type ContentPage}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=20}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -46,26 +58,36 @@
                     Grid.ColumnSpan="2" Grid.Row="2" />
                 <StackLayout 
                     x:Name="ProductIdentityContainer"
+                    Grid.Column="1" Grid.RowSpan="4"
+                    HorizontalOptions="End" VerticalOptions="End"
+                    Opacity="0"
+                    Spacing="0">
+                    <ffimageloadingsvg:SvgCachedImage
+                        WidthRequest="320" HeightRequest="320"
+                        Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Player.Assets.Images.viderhe-identity-high-contrast-light.svg"
+                        Aspect="AspectFill" />
+                    <Image HorizontalOptions="Center">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="ImageSource">
+                                <On Platform="Android" Value="powerby_signature.png" />
+                                <On Platform="UWP" Value="Assets/PowerbySignature.png" />
+                                <On Platform="iOS" Value="PowerbySignature" />
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+                </StackLayout>
+                <!--<StackLayout 
+                    x:Name="ProductIdentityContainer"
                     Grid.ColumnSpan="2" Grid.Row="3"
                     Orientation="Horizontal"
                     Spacing="0"
                     Opacity="0">
-                    <Label 
-                        VerticalOptions="Center"
-                        Margin="0,0,16,0"
-                        Text="&#xe9ff;"
-                        TextColor="White"
-                        FontFamily="Viderhe Identity Icons"
-                        FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalHeroTextFontSize}" />
-                    <Label 
-                        Margin="0,6,0,0"
-                        Text="Viderhe"
-                        TextColor="White"
-                        HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"
-                        FontFamily="Julius Sans One Regular"
-                        FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalTitleTextFontSize}" />
-                    <Image 
-                        VerticalOptions="End">
+                    <ffimageloadingsvg:SvgCachedImage
+                        HorizontalOptions="Start" VerticalOptions="End"
+                        WidthRequest="320" HeightRequest="120"
+                        Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Player.Assets.Images.viderhe-identity-high-contrast-light.svg"
+                        Aspect="AspectFill" />
+                    <Image HorizontalOptions="End" VerticalOptions="End">
                         <Image.Source>
                             <OnPlatform x:TypeArguments="ImageSource">
                                 <On Platform="Android" Value="powerby_signature.png" />
@@ -73,7 +95,7 @@
                             </OnPlatform>
                         </Image.Source>
                     </Image>
-                </StackLayout>
+                </StackLayout>-->
             </Grid>
         </Grid>
     </ContentPage.Content>

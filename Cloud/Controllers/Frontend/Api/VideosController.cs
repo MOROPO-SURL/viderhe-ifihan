@@ -39,28 +39,38 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         {
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            var limit = 50;
+            var limit = 15;
 
             var account = dbContext.Accounts.Include(e => e.VideoBridges).ThenInclude(b => b.Video).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
 
             var maxCount = account.VideoBridges.Count;
 
-            var offset = (page - 1) * limit;
+            var rest = maxCount % limit;
+
+            var maxPageCount = maxCount / limit;
+
+            if (rest > 0) maxPageCount += 1;
+
+            if (page < 0 || page > maxPageCount)
+            {
+                page = 1;
+            }
 
             return Ok(new SAPRESSC.Core.Common.Models.PaginationModel<VideoDisplayModel>
             {
-                List = account.VideoBridges.Skip(offset).Take(limit).OrderByDescending(b => b.Video.CreateAt).Select((Persistence.Entities.AccountVideoBridge bridge) =>
+                List = account.VideoBridges.Select(bridge => bridge.Video).OrderByDescending(b => b.CreateAt).Skip((page - 1) * limit).Take(limit).Select(entity =>
                 {
                     var model = new VideoDisplayModel();
 
-                    model.Import(bridge.Video);
+                    model.Import(entity);
 
                     return model;
                 }).ToList(),
                 Limit = limit,
                 Page = page,
-                HasNext = offset + 1 >= maxCount,
-                HasPrevious = page > 1
+                HasPrevious = page > 1,
+                HasNext = page < maxPageCount,
+                MaxPageCount = maxPageCount
             });
         }
 

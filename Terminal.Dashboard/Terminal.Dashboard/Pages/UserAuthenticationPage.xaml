@@ -2,13 +2,11 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    mc:Ignorable="d"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.UserAuthenticationPage"
     x:TypeArguments="pagemodels:UserAuthenticationPageModel">
     <ContentPage.Resources>
@@ -18,24 +16,18 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <Grid
-                WidthRequest="240"
-                HorizontalOptions="Center" VerticalOptions="Center">
-                <ScrollView Orientation="Vertical">
-                    <StackLayout>
-                        <Label 
+            <ScrollView
+                HorizontalOptions="Center"
+                Orientation="Vertical">
+                <Grid
+                    WidthRequest="240">
+                    <StackLayout
+                        VerticalOptions="Center">
+                        <ffimageloadingsvg:SvgCachedImage
                             HorizontalOptions="Center"
-                            Text="&#xe9ff;"
-                            TextColor="Black"
-                            FontFamily="Viderhe Identity Icons"
-                            FontSize="160" />
-                        <Label 
-                            Margin="0,0,0,20"
-                            Text="Viderhe"
-                            TextColor="Black"
-                            HorizontalOptions="Center"
-                            FontFamily="Julius Sans One Regular"
-                            FontSize="38" />
+                            WidthRequest="320" HeightRequest="320"
+                            Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Assets.Images.viderhe-identity-main.svg"
+                            Aspect="AspectFill" />
                         <Entry
                             Text="{Binding Path=TargetCloudHostName}"
                             Placeholder="servidor cloud" />
@@ -55,8 +47,8 @@
                             TextColor="White"
                             Clicked="SignButton_Clicked" />
                     </StackLayout>
-                </ScrollView>
-            </Grid>
+                </Grid>
+            </ScrollView>
             <supportpresentationdashboardviews:BusyView />
         </Grid>
     </ContentPage.Content>
