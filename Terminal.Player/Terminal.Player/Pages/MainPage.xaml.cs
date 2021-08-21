@@ -149,14 +149,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
                     await System.Threading.Tasks.Task.Delay(3000);
 
-                    await RequestScreenplayPlacardsAsync().ContinueWith(OnRequestScreenplayPlacardsCallback);
+                    await RequestScreenplayPlacardsAsync().ContinueWith(RequestScreenplayPlacards_Callback);
                 });
             }
         }
 
-        private void CurentStepAnimateOut_Completed(object sender, System.EventArgs eventArgs)
+        private void CurrentStepAnimateOut_Completed(object sender, System.EventArgs eventArgs)
         {
-            (sender as AbstractAnimation).Completed -= CurentStepAnimateOut_Completed;
+            (sender as AbstractAnimation).Completed -= CurrentStepAnimateOut_Completed;
 
             System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(1)).ContinueWith(task =>
             {
@@ -232,7 +232,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                     {
                         if (!((BindingContext as Models.View.ConfigurationStepViewModel).DetailContentView is Views.ConfigurationStepPlayerRegistrationDetailView))
                         {
-                            AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
+                            AnimateOutCurrentStep(CurrentStepAnimateOut_Completed);
                         }
                     }
                 }
@@ -313,7 +313,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                     configurationStepQueue.Dequeue();
                 }
 
-                AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
+                AnimateOutCurrentStep(CurrentStepAnimateOut_Completed);
             }
         }
 
@@ -324,20 +324,20 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             return await client.GetScreenplayPlacardsAsync();
         }
 
-        private void OnRequestScreenplayPlacardsCallback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlacardDisplayModel[]> task)
+        private void RequestScreenplayPlacards_Callback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlacardDisplayModel[]> task)
         {
             if (task.IsCanceled || task.Exception != null || task.Result == null)
             {
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(delayTask =>
                 {
-                    RequestScreenplayPlacardsAsync().ContinueWith(OnRequestScreenplayPlacardsCallback);
+                    RequestScreenplayPlacardsAsync().ContinueWith(RequestScreenplayPlacards_Callback);
                 });
             }
             else
             {
                 placards = task.Result.Select(m => m.ToViewModel()).ToArray();
 
-                AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
+                AnimateOutCurrentStep(CurrentStepAnimateOut_Completed);
             }
         }
 
