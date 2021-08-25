@@ -2,32 +2,27 @@
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [System.ComponentModel.DesignTimeVisible(false)]
     public partial class MainPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.MainPageModel>
     {
         public MainPage() : base(new Models.Page.MainPageModel { IsBusy = true })
         {
             InitializeComponent();
+
+            IsEnabled = false;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (!Managers.SessionManager.Instance.HasAuthenticatedIdentity)
-            {
-                this.NavigationPushModalPageAsync(new UserAuthenticationPage());
-            }
-            else
-            {
-                ReloadActions();
+            if (IsEnabled) return;
 
-                BindingContextPageModel.IsBusy = false;
+            ReloadActions();
 
-                IsEnabled = true;
-            }
+            BindingContextPageModel.IsBusy = false;
+
+            IsEnabled = true;
         }
 
         protected override bool OnBackButtonPressed()

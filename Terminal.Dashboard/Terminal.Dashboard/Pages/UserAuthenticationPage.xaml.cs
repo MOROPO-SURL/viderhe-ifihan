@@ -50,7 +50,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 targetException = targetException.InnerException;
                             }
 
-                            if (targetException is System.Net.Http.HttpRequestException)
+                            if (targetException is System.Net.Http.HttpRequestException || targetException is System.Net.WebException)
                             {
                                 message = "No se puede acceder al servidor. Revise su conexión de red y/o la disponibilidad del servicio.";
                             }
@@ -80,9 +80,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         return;
                     }
 
-                    BindingContextPageModel.IsBusy = false;
-
-                    this.NavigationPopModalPageAsync();
+                    Xamarin.Forms.Application.Current.MainPage = new Xamarin.Forms.NavigationPage(new MainPage());
                 });
             });
         }

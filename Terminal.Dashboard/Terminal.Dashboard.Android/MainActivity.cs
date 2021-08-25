@@ -6,7 +6,7 @@ using Android.OS;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid
 {
-    [Activity(Label = "Viderhe Dashboard", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Viderhe Control", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ScreenOrientation = ScreenOrientation.Landscape | ScreenOrientation.ReverseLandscape, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -16,11 +16,17 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid
 
             base.OnCreate(savedInstanceState);
 
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
+
+            ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();
+
+            Xamarin.Forms.DependencyService.Register<Plugin.Toasts.ToastNotification>();
+
+            Plugin.Toasts.ToastNotification.Init(this);
 
             LoadApplication(new App());
         }

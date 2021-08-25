@@ -1,6 +1,4 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
-
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
 {
     public partial class App : Xamarin.Forms.Application, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade
     {
@@ -10,9 +8,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
         {
             InitializeComponent();
 
-            MainPage = new Xamarin.Forms.NavigationPage(new Pages.MainPage());
+            PresentForUserAuthentication();
 
             Xamarin.Forms.DependencyService.Get<Managers.Facade.IApplicationManagerFacade>().RequestRequiredPermissions();
+        }
+
+        public void PresentForUserAuthentication()
+        {
+            MainPage = new Pages.UserAuthenticationPage();
         }
 
         protected override void OnStart()
@@ -67,7 +70,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
                         {
                             Managers.SessionManager.Instance.SignOut();
 
-                            MainPage.NavigationPushModalPageAsync(new Pages.UserAuthenticationPage());
+                            PresentForUserAuthentication();
                         });
                     };
                 }
@@ -77,10 +80,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
 
                     continuationCallback = () =>
                     {
-                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                        {
-                            MainPage.NavigationPushModalPageAsync(new Pages.UserAuthenticationPage());
-                        });
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(PresentForUserAuthentication);
                     };
                 }
                 else if (unspectedHttpStatus == System.Net.HttpStatusCode.Forbidden)
@@ -95,7 +95,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
 
                             (MainPage as Xamarin.Forms.NavigationPage).CurrentPage.IsEnabled = false;
 
-                            MainPage.NavigationPushModalPageAsync(new Pages.UserAuthenticationPage());
+                            PresentForUserAuthentication();
                         });
                     };
                 }

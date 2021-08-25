@@ -19,6 +19,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private const string OPTION_PLACARD_SEQUENCE = "Agregar a Secuencia";
 
         private int currentPlacardsPageNumber;
+        private int currentPlacardCollectionViewCellColumnCount = 3;
+        private int placardPageLimit = 15;
 
         public ManageProgrammingPage() : base(null)
         {
@@ -490,8 +492,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void LoadNextPlacardsPage(bool restart = false, bool reloadCurrentScreenplayFrames = false)
         {
+            BindingContextPageModel.IsBusy = true;
+
             if (restart)
             {
+                CalculatePlacardPresentationMetrics();
+
                 currentPlacardsPageNumber = 0;
 
                 foreach (var item in BindingContextPageModel.PlacardOverviews)
@@ -504,11 +510,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 BindingContextPageModel.PlacardOverviews = null;
             }
 
-            BindingContextPageModel.IsBusy = true;
-
             var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Managers.SessionManager.Instance);
 
-            placardsApiConnectClient.GetPaginateAsync(++currentPlacardsPageNumber, 15).ContinueWith(task =>
+            placardsApiConnectClient.GetPaginateAsync(++currentPlacardsPageNumber, placardPageLimit).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -530,10 +534,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             }
                         }
 
-                        if (currentPlacardsPageNumber > 1)
-                        {
-                            PlacardOverviewCollectionView.ScrollTo((currentPlacardsPageNumber - 1) * task.Result.Limit - 1);
-                        }
+                        //if (currentPlacardsPageNumber > 1)
+                        //{
+                        //    PlacardOverviewCollectionView.ScrollTo((currentPlacardsPageNumber - 1) * task.Result.Limit - 1);
+                        //}
 
                         BindingContextPageModel.HasMorePlacards = task.Result.HasNext && task.Result.List.Count > 0;
                     }
@@ -549,6 +553,40 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 });
             });
 
+        }
+
+        private void CalculatePlacardPresentationMetrics()
+        {
+            var collumnReazon = PlacardOverviewCollectionView.Width / (200 + 10);
+
+            int currentPlacardCollectionViewCellClumnCount = System.Convert.ToInt32(System.Math.Round(collumnReazon, System.MidpointRounding.ToEven));
+
+            if (currentPlacardCollectionViewCellClumnCount > collumnReazon)
+            {
+                currentPlacardCollectionViewCellClumnCount--;
+            }
+
+            if (currentPlacardCollectionViewCellClumnCount <= 0)
+            {
+                currentPlacardCollectionViewCellClumnCount = 1;
+            }
+
+            var collectionViewCellWidth = (PlacardOverviewCollectionView.Width - ((currentPlacardCollectionViewCellClumnCount - 1) * 10)) / currentPlacardCollectionViewCellClumnCount;
+
+            var collectionViewCellHeight = collectionViewCellWidth + (collectionViewCellWidth * 0.20);
+
+            var availableVerticalHeight = PlacardOverviewCollectionView.Height;
+
+            var rowCount = 0;
+
+            while (availableVerticalHeight > 0)
+            {
+                rowCount++;
+
+                availableVerticalHeight -= collectionViewCellHeight + 10;
+            }
+
+            placardPageLimit = currentPlacardCollectionViewCellClumnCount * rowCount;
         }
 
         private void LoadCurrentScreenplayFrames()
@@ -590,24 +628,42 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void UpdatePlacardOverviewLoadByScrollContext(Xamarin.Forms.ItemsViewScrolledEventArgs scrollEventArgs)
         {
+            if (scrollEventArgs.FirstVisibleItemIndex < 0 || scrollEventArgs.LastVisibleItemIndex < 0) return;
+
+            System.Diagnostics.Debug.WriteLine(string.Format(">>>>>>>> (First: {0}, Last:{1}, Offset:{2}, Delta:{3})", scrollEventArgs.FirstVisibleItemIndex, scrollEventArgs.LastVisibleItemIndex, scrollEventArgs.VerticalOffset, scrollEventArgs.VerticalDelta));
+
             if (scrollEventArgs.FirstVisibleItemIndex > 0)
             {
                 for (int index = 0; index < scrollEventArgs.FirstVisibleItemIndex; index++)
                 {
-                    BindingContextPageModel.PlacardOverviews.ElementAt(index).ReleasePlacardModel();
+                    if (BindingContextPageModel.PlacardOverviews == null || BindingContextPageModel.PlacardOverviews.Count <= index) return;
+
+                    BindingContextPageModel.PlacardOverviews.ElementAtOrDefault(index)?.ReleasePlacardModel();
                 }
             }
 
-            for (int index = scrollEventArgs.FirstVisibleItemIndex; index <= scrollEventArgs.LastVisibleItemIndex; index++)
+            if (BindingContextPageModel.PlacardOverviews == null) return;
+
+            var loadToEnd = BindingContextPageModel.PlacardOverviews.Count - scrollEventArgs.LastVisibleItemIndex - 1 <= currentPlacardCollectionViewCellColumnCount * 2;
+
+            var effectiveLastVisibleItemIndex = loadToEnd ? BindingContextPageModel.PlacardOverviews.Count - 1 : scrollEventArgs.LastVisibleItemIndex + (currentPlacardCollectionViewCellColumnCount * 2);
+
+            for (int index = scrollEventArgs.FirstVisibleItemIndex; index <= effectiveLastVisibleItemIndex; index++)
             {
+                if (BindingContextPageModel.PlacardOverviews == null || BindingContextPageModel.PlacardOverviews.Count <= index) return;
+
                 BindingContextPageModel.PlacardOverviews.ElementAt(index).LoadPlacardModel();
             }
 
-            if (scrollEventArgs.LastVisibleItemIndex < BindingContextPageModel.PlacardOverviews.Count - 1)
+            if (BindingContextPageModel.PlacardOverviews == null || loadToEnd) return;
+
+            if (effectiveLastVisibleItemIndex < BindingContextPageModel.PlacardOverviews.Count - 1)
             {
-                for (int index = scrollEventArgs.LastVisibleItemIndex + 1; index < BindingContextPageModel.PlacardOverviews.Count; index++)
+                for (int index = effectiveLastVisibleItemIndex + 1; index < BindingContextPageModel.PlacardOverviews.Count; index++)
                 {
-                    BindingContextPageModel.PlacardOverviews.ElementAt(index).ReleasePlacardModel();
+                    if (BindingContextPageModel.PlacardOverviews == null || BindingContextPageModel.PlacardOverviews.Count <= index) break;
+
+                    BindingContextPageModel.PlacardOverviews.ElementAtOrDefault(index)?.ReleasePlacardModel();
                 }
             }
         }

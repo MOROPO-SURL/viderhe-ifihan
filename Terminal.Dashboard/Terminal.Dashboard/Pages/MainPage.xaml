@@ -34,13 +34,13 @@
                         <StackLayout VerticalOptions="Center">
                             <Label
                                 Text="{Binding Path=IconGlyph}"
-                                TextColor="Accent"
+                                TextColor="{StaticResource PrimaryColor}"
                                 HorizontalTextAlignment="Center"
                                 FontFamily="{StaticResource IconFontFamily}"
                                 FontSize="48" />
                             <Label 
                                 Text="{Binding Path=Caption}"
-                                TextColor="Accent"                                        
+                                TextColor="{StaticResource PrimaryColor}"                                        
                                 HorizontalTextAlignment="Center"
                                 FontSize="Medium" />
                         </StackLayout>
@@ -53,7 +53,7 @@
                 </x:Arguments>
                 <Frame
                     Margin="5" Padding="0"
-                    BackgroundColor="Accent"
+                    BackgroundColor="{StaticResource PrimaryColor}"
                     HasShadow="False"
                     CornerRadius="0"
                     WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
