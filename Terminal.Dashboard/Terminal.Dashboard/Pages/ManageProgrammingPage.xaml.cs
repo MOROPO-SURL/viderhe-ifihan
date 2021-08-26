@@ -512,46 +512,41 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Managers.SessionManager.Instance);
 
-            placardsApiConnectClient.GetPaginateAsync(++currentPlacardsPageNumber, placardPageLimit).ContinueWith(task =>
-            {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                {
-                    if (task.Exception != null)
-                    {
-                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
-                    }
-                    else
-                    {
-                        if (currentPlacardsPageNumber == 1)
-                        {
-                            BindingContextPageModel.PlacardOverviews = new System.Collections.ObjectModel.ObservableCollection<Models.View.PlacardOverviewViewModel>(task.Result.List.Select(item => new Models.View.PlacardOverviewViewModel(item.ToViewModel())));
-                        }
-                        else
-                        {
-                            foreach (var item in task.Result.List)
-                            {
-                                BindingContextPageModel.PlacardOverviews.Add(new Models.View.PlacardOverviewViewModel(item.ToViewModel(), false));
-                            }
-                        }
+            _ = placardsApiConnectClient.GetPaginateAsync(++currentPlacardsPageNumber, placardPageLimit).ContinueWith(task =>
+              {
+                  Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                  {
+                      if (task.Exception != null)
+                      {
+                          (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
+                      }
+                      else
+                      {
+                          if (currentPlacardsPageNumber == 1)
+                          {
+                              BindingContextPageModel.PlacardOverviews = new System.Collections.ObjectModel.ObservableCollection<Models.View.PlacardOverviewViewModel>(task.Result.List.Select(item => new Models.View.PlacardOverviewViewModel(item.ToViewModel())));
+                          }
+                          else
+                          {
+                              foreach (var item in task.Result.List)
+                              {
+                                  BindingContextPageModel.PlacardOverviews.Add(new Models.View.PlacardOverviewViewModel(item.ToViewModel(), true));
+                              }
+                          }
 
-                        //if (currentPlacardsPageNumber > 1)
-                        //{
-                        //    PlacardOverviewCollectionView.ScrollTo((currentPlacardsPageNumber - 1) * task.Result.Limit - 1);
-                        //}
+                          BindingContextPageModel.HasMorePlacards = task.Result.HasNext && task.Result.List.Count > 0;
+                      }
 
-                        BindingContextPageModel.HasMorePlacards = task.Result.HasNext && task.Result.List.Count > 0;
-                    }
-
-                    if (reloadCurrentScreenplayFrames)
-                    {
-                        LoadCurrentScreenplayFrames();
-                    }
-                    else
-                    {
-                        BindingContextPageModel.IsBusy = false;
-                    }
-                });
-            });
+                      if (reloadCurrentScreenplayFrames)
+                      {
+                          LoadCurrentScreenplayFrames();
+                      }
+                      else
+                      {
+                          BindingContextPageModel.IsBusy = false;
+                      }
+                  });
+              });
 
         }
 
@@ -559,19 +554,19 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             var collumnReazon = PlacardOverviewCollectionView.Width / (200 + 10);
 
-            int currentPlacardCollectionViewCellClumnCount = System.Convert.ToInt32(System.Math.Round(collumnReazon, System.MidpointRounding.ToEven));
+            currentPlacardCollectionViewCellColumnCount = System.Convert.ToInt32(System.Math.Round(collumnReazon, System.MidpointRounding.ToEven));
 
-            if (currentPlacardCollectionViewCellClumnCount > collumnReazon)
+            if (currentPlacardCollectionViewCellColumnCount > collumnReazon)
             {
-                currentPlacardCollectionViewCellClumnCount--;
+                currentPlacardCollectionViewCellColumnCount--;
             }
 
-            if (currentPlacardCollectionViewCellClumnCount <= 0)
+            if (currentPlacardCollectionViewCellColumnCount <= 0)
             {
-                currentPlacardCollectionViewCellClumnCount = 1;
+                currentPlacardCollectionViewCellColumnCount = 1;
             }
 
-            var collectionViewCellWidth = (PlacardOverviewCollectionView.Width - ((currentPlacardCollectionViewCellClumnCount - 1) * 10)) / currentPlacardCollectionViewCellClumnCount;
+            var collectionViewCellWidth = (PlacardOverviewCollectionView.Width - ((currentPlacardCollectionViewCellColumnCount - 1) * 10)) / currentPlacardCollectionViewCellColumnCount;
 
             var collectionViewCellHeight = collectionViewCellWidth + (collectionViewCellWidth * 0.20);
 
@@ -586,7 +581,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 availableVerticalHeight -= collectionViewCellHeight + 10;
             }
 
-            placardPageLimit = currentPlacardCollectionViewCellClumnCount * rowCount;
+            placardPageLimit = currentPlacardCollectionViewCellColumnCount * rowCount;
         }
 
         private void LoadCurrentScreenplayFrames()
@@ -630,8 +625,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (scrollEventArgs.FirstVisibleItemIndex < 0 || scrollEventArgs.LastVisibleItemIndex < 0) return;
 
-            System.Diagnostics.Debug.WriteLine(string.Format(">>>>>>>> (First: {0}, Last:{1}, Offset:{2}, Delta:{3})", scrollEventArgs.FirstVisibleItemIndex, scrollEventArgs.LastVisibleItemIndex, scrollEventArgs.VerticalOffset, scrollEventArgs.VerticalDelta));
-
             if (scrollEventArgs.FirstVisibleItemIndex > 0)
             {
                 for (int index = 0; index < scrollEventArgs.FirstVisibleItemIndex; index++)
@@ -655,7 +648,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 BindingContextPageModel.PlacardOverviews.ElementAt(index).LoadPlacardModel();
             }
 
-            if (BindingContextPageModel.PlacardOverviews == null || loadToEnd) return;
+            // TODO Find a better way to handle scrollEventArgs values for UWP
+            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.UWP) return;
+
+            if (loadToEnd) return;
+
+            if (BindingContextPageModel.PlacardOverviews == null) return;
 
             if (effectiveLastVisibleItemIndex < BindingContextPageModel.PlacardOverviews.Count - 1)
             {
