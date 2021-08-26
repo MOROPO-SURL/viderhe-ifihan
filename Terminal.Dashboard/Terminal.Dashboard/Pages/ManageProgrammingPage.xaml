@@ -343,6 +343,7 @@
                     <Button
                         HorizontalOptions="Center"
                         Margin="8"
+                        HeightRequest="40"
                         IsEnabled="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
                         Text="Mostrar más"
                         Clicked="LoadNextPlacardsPageButtton_Clicked" />
