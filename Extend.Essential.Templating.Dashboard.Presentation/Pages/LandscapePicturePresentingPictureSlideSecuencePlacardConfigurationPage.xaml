@@ -132,7 +132,10 @@
                         VerticalOptions="Start">
                         <StackLayout>
                             <Label Text="Posición de Imagen Presentadora" Style="{StaticResource FormLabel}" />
-                            <Picker ItemsSource="{Binding Path=LandscapePresentationSides}" SelectedItem="{Binding Path=PresenterSide}" />
+                            <Picker 
+                                ItemsSource="{Binding Path=LandscapePresentationSides}" 
+                                SelectedItem="{Binding Path=PresenterSide}"
+                                ItemDisplayBinding="{Binding Converter={StaticResource CommonStringToLocalizeStringConverter}}" />
                         </StackLayout>
                     </Frame>
                     <Frame 

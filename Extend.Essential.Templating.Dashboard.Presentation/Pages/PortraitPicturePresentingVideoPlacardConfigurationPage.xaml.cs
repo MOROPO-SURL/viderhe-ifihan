@@ -122,6 +122,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             BindingContextPageModel.PresentedVideo = selection;
         }
 
+        private void PresentedVideoPlayButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoDetailPage(BindingContextPageModel.PresentedVideo));
+        }
+
         private void PresenterImagePickedCallback(Support.Presentation.Models.View.ImageViewModel selection)
         {
             BindingContextPageModel.PresenterImage = selection;

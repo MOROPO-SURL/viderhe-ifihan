@@ -44,9 +44,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                     SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.SimpleVideoPlacardContextModel
                     {
                         RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
-                        VideoId = contextModel.VideoId,
-                        VideoExtension = contextModel.VideoExtension,
-                        ThumbnailId = contextModel.ThumbnailId
+                        Video = contextModel.Video
                     })
                 });
             }).ContinueWith((System.Threading.Tasks.Task task) =>
@@ -74,6 +72,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         private void CancelToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
             this.NavigationPopPageAsync();
+        }
+
+        private void VideoPlayButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoDetailPage(BindingContextPageModel.Video));
         }
 
         protected override void DisposeUnmanagementResources()

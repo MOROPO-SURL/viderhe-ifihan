@@ -2,15 +2,12 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Models.Page"
     xmlns:commonconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    xmlns:sscxftoolkitpresentationviewrendereds="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    mc:Ignorable="d"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages.EditSimpleVideoPlacardPage"
     x:TypeArguments="pagemodels:EditSimpleVideoPlacardPageModel"
     Title="Modificando Marco (Video Simple)">
@@ -18,6 +15,7 @@
         <ResourceDictionary>
             <commonconverters:StringToLocalizeStringConverter x:Key="CommonStringToLocalizeStringConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -74,16 +72,51 @@
                     </Frame>
                     <Frame 
                         Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"
+                        VerticalOptions="Start"
                         Style="{StaticResource FormFieldFrame}"
-                        VerticalOptions="Start">
-                        <StackLayout>
-                            <Label Text="Video" Style="{StaticResource FormLabel}" />
-                            <sscxftoolkitpresentationviewrendereds:VideoPlayerView
+                        Padding="0">
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Label 
+                                Grid.Row="0"
+                                Style="{StaticResource FormLabel}"
+                                Margin="10,10,10,6"
+                                Text="Video" />
+                            <ffimageloadingforms:CachedImage
+                                Margin="0"
+                                Grid.Row="1"
                                 BackgroundColor="Black"
+                                Source="{Binding Path=Video, Converter={StaticResource VideoViewModelToThumbnailImageSourceConverter}}"
                                 HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-                                Source="{Binding Path=VideoSource}" 
-                                AutoPlay="False" />
-                        </StackLayout>
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
+                            <Grid 
+                                Grid.Row="1"
+                                BackgroundColor="#99000000">
+                                <Label 
+                                    IsVisible="{Binding Path=Video.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                    VerticalOptions="End" 
+                                    Padding="8"
+                                    BackgroundColor="#99000000"
+                                    Text="{Binding Path=Video.About}"
+                                    TextColor="White"
+                                    LineBreakMode="TailTruncation" />
+                                <ImageButton 
+                                    HorizontalOptions="Center" VerticalOptions="Center"
+                                    WidthRequest="120"
+                                    Clicked="VideoPlayButton_Clicked">
+                                    <ImageButton.Source>
+                                        <FontImageSource 
+                                            Color="White"
+                                            FontFamily="{StaticResource IconFontFamily}"
+                                            Glyph="&#xf40c;" />
+                                    </ImageButton.Source>
+                                </ImageButton>
+                            </Grid>
+                        </Grid>
                     </Frame>
                     <Frame 
                         Grid.Column="1" Grid.Row="1"

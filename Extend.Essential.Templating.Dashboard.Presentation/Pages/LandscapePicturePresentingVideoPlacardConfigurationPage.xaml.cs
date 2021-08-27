@@ -109,20 +109,25 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
         private void PickPresenterImageButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(exceptionHandleHelper, httpClientHelperProvider, PresenterImagePickedCallback, BindingContextPageModel.PresenterImage));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(exceptionHandleHelper, httpClientHelperProvider, PresenterImagePicked_Callback, BindingContextPageModel.PresenterImage));
         }
 
         private void PickPresentedVideoButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoPickPage(exceptionHandleHelper, PresentedVideoPickedCallback, httpClientHelperProvider, BindingContextPageModel.PresentedVideo));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoPickPage(exceptionHandleHelper, PresentedVideoPicked_Callback, httpClientHelperProvider, BindingContextPageModel.PresentedVideo));
         }
 
-        private void PresentedVideoPickedCallback(Support.Presentation.Models.View.VideoViewModel selection)
+        private void PresentedVideoPlayButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoDetailPage(BindingContextPageModel.PresentedVideo));
+        }
+
+        private void PresentedVideoPicked_Callback(Support.Presentation.Models.View.VideoViewModel selection)
         {
             BindingContextPageModel.PresentedVideo = selection;
         }
 
-        private void PresenterImagePickedCallback(Support.Presentation.Models.View.ImageViewModel selection)
+        private void PresenterImagePicked_Callback(Support.Presentation.Models.View.ImageViewModel selection)
         {
             BindingContextPageModel.PresenterImage = selection;
         }

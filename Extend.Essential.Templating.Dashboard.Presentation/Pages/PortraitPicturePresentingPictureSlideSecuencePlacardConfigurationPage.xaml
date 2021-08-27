@@ -68,7 +68,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Frame 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -133,7 +132,10 @@
                         VerticalOptions="Start">
                         <StackLayout>
                             <Label Text="Posición de Imagen Presentadora" Style="{StaticResource FormLabel}" />
-                            <Picker ItemsSource="{Binding Path=PortraitPresentationSides}" SelectedItem="{Binding Path=PresenterSide}" />
+                            <Picker 
+                                ItemsSource="{Binding Path=PortraitPresentationSides}" 
+                                SelectedItem="{Binding Path=PresenterSide}"
+                                ItemDisplayBinding="{Binding Converter={StaticResource CommonStringToLocalizeStringConverter}}" />
                         </StackLayout>
                     </Frame>
                     <Frame 

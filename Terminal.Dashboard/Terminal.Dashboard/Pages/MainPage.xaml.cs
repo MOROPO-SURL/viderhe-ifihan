@@ -51,9 +51,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     Managers.SessionManager.Instance.SignOut();
 
-                    IsEnabled = false;
-
-                    this.NavigationPushModalPageAsync(new UserAuthenticationPage());
+                    (Xamarin.Forms.Application.Current as App).PresentForUserAuthentication();
                 });
             });
         }

@@ -5,8 +5,8 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Models.Page"
+    xmlns:commonconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
-    xmlns:sscxftoolkitpresentationviewrendereds="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
@@ -15,7 +15,10 @@
     x:TypeArguments="pagemodels:PortraitPicturePresentingVideoPlacardConfigurationPageModel">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <commonconverters:StringToLocalizeStringConverter x:Key="CommonStringToLocalizeStringConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:FactorConverter x:Key="FactorConverter" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -81,11 +84,76 @@
                             <Switch IsToggled="{Binding Path=RequireUnobstructedPresetation}" />
                         </StackLayout>
                     </Frame>
+                    <Grid
+                        Grid.ColumnSpan="2" Grid.Row="2"
+                        VerticalOptions="Start"
+                        RowSpacing="10" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Frame 
+                            Grid.ColumnSpan="2" Grid.Row="0"
+                            Style="{StaticResource FormFieldFrame}"
+                            Padding="0">
+                            <StackLayout 
+                                VerticalOptions="FillAndExpand"
+                                Spacing="0">
+                                <Label 
+                                    Margin="10,10,10,6"
+                                    Text="Imagen Presentadora" 
+                                    Style="{StaticResource FormLabel}" />
+                                <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                                <Grid HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PickPresenterImageButton_Clicked" />
+                                    </Grid.GestureRecognizers>
+                                    <ffimageloadingforms:CachedImage 
+                                        BackgroundColor="Black"
+                                        Source="{Binding Path=PresenterImage, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
+                                        CacheType="Disk"
+                                        CacheDuration="8760:00:00" />
+                                    <StackLayout 
+                                        HorizontalOptions="Center" VerticalOptions="End"
+                                        Padding="4"
+                                        BackgroundColor="#99000000"
+                                        Orientation="Horizontal">
+                                        <Label
+                                            Text="&#xf740;"
+                                            TextColor="White"
+                                            FontFamily="{StaticResource IconFontFamily}"
+                                            FontSize="Medium" />
+                                        <Label
+                                            VerticalOptions="Center"
+                                            Margin="0,0,4,0"
+                                            Text="para modificar"
+                                            TextColor="White"
+                                            LineBreakMode="TailTruncation" />
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                        <Frame 
+                            Grid.Column="0" Grid.Row="1"
+                            Style="{StaticResource FormFieldFrame}">
+                            <StackLayout>
+                                <Label Text="Posición de Imagen Presentadora" Style="{StaticResource FormLabel}" />
+                                <Picker 
+                                    ItemsSource="{Binding Path=PortraitPresentationSides}" 
+                                    SelectedItem="{Binding Path=PresenterSide}"
+                                    ItemDisplayBinding="{Binding Converter={StaticResource CommonStringToLocalizeStringConverter}}" />
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
                     <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"
+                        Grid.Column="2" Grid.Row="2"
                         Style="{StaticResource FormFieldFrame}"
-                        HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}">
-                        <Grid>
+                        Padding="0">
+                        <Grid RowSpacing="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto" />
@@ -96,60 +164,50 @@
                             </Grid.RowDefinitions>
                             <Label 
                                 Grid.Column="0" Grid.Row="0"
-                                Text="Imagen Presentadora" 
-                                Style="{StaticResource FormLabel}" />
+                                Style="{StaticResource FormLabel}"
+                                Margin="10,10,10,6"
+                                Text="Video Presentado" />
                             <Button
                                 Grid.Column="1" Grid.Row="0"
+                                VerticalOptions="Start"
                                 Text="Seleccionar"
-                                Clicked="PickPresenterImageButton_Clicked" />
-                            <Grid Grid.ColumnSpan="2" Grid.Row="1">
-                                <ffimageloadingforms:CachedImage 
-                                    BackgroundColor="Black"
-                                    Source="{Binding Path=PresenterImage, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
-                                    CacheType="Disk"
-                                    CacheDuration="8760:00:00" />
+                                Clicked="PickPresentedVideoButton_Clicked"  />
+                            <ffimageloadingforms:CachedImage
+                                Margin="0"
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                BackgroundColor="Black"
+                                Source="{Binding Path=PresentedVideo, Converter={StaticResource VideoViewModelToThumbnailImageSourceConverter}}"
+                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FactorConverter}, ConverterParameter=1.777777777777778}"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
+                            <Grid 
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                IsVisible="{Binding Path=PresentedVideo, Converter={StaticResource NotNullToBooleanConverter}}"
+                                BackgroundColor="#99000000">
+                                <Label 
+                                    IsVisible="{Binding Path=PresentedVideo.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                    VerticalOptions="End" 
+                                    Padding="8"
+                                    BackgroundColor="#99000000"
+                                    Text="{Binding Path=PresentedVideo.About}"
+                                    TextColor="White"
+                                    LineBreakMode="TailTruncation" />
+                                <ImageButton 
+                                    HorizontalOptions="Center" VerticalOptions="Center"
+                                    WidthRequest="120"
+                                    Clicked="PresentedVideoPlayButton_Clicked">
+                                    <ImageButton.Source>
+                                        <FontImageSource 
+                                            Color="White"
+                                            FontFamily="{StaticResource IconFontFamily}"
+                                            Glyph="&#xf40c;" />
+                                    </ImageButton.Source>
+                                </ImageButton>
                             </Grid>
                         </Grid>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.Row="3"
-                        Style="{StaticResource FormFieldFrame}"
-                        VerticalOptions="Start">
-                        <StackLayout>
-                            <Label Text="Posición de Imagen Presentadora" Style="{StaticResource FormLabel}" />
-                            <Picker ItemsSource="{Binding Path=PortraitPresentationSides}" SelectedItem="{Binding Path=PresenterSide}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="2" Grid.Row="2"
-                        Style="{StaticResource FormFieldFrame}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Label 
-                                Grid.Column="0" Grid.Row="0"
-                                Text="Video Presentado" 
-                                Style="{StaticResource FormLabel}" />
-                            <Button
-                                Grid.Column="1" Grid.Row="0"
-                                Text="Seleccionar"
-                                Clicked="PickPresentedVideoButton_Clicked" />
-                            <sscxftoolkitpresentationviewrendereds:VideoPlayerView
-                                Grid.ColumnSpan="2" Grid.Row="1"
-                                IsEnabled="{Binding Path=PresentedVideo, Converter={StaticResource NotNullToBooleanConverter}}"
-                                BackgroundColor="Black"
-                                Source="{Binding Path=PresentedVideo, Converter={StaticResource VideoViewModelToVideoSourceConverter}}" 
-                                AutoPlay="False" />
-                        </Grid>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="1" Grid.Row="3"
+                        Grid.Column="2" Grid.Row="3"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Matener centrado Video Presentado?" Style="{StaticResource FormLabel}" />
