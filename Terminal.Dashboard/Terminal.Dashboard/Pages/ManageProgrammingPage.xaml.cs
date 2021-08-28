@@ -37,6 +37,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (!IsEnabled)
             {
+                IsEnabled = true;
+
                 ReloadScreenplays();
             }
         }
@@ -412,16 +414,18 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             BindingContextPageModel.SelectedScreenplay = selecction != null ? selecction as Models.View.ScreenplayViewModel : null;
         }
 
-        private void PlacardCollectionView_Scrolled(object sender, Xamarin.Forms.ItemsViewScrolledEventArgs eventArgs)
+        private void PlacardOverviewCollectionView_Scrolled(object sender, Xamarin.Forms.ItemsViewScrolledEventArgs eventArgs)
         {
             UpdatePlacardOverviewLoadByScrollContext(eventArgs);
         }
 
-        private void PlacardOverviewCollectionViewSizeReferenceView_SizeChanged(object sender, System.EventArgs eventArgs)
+        private void PlacardOverviewCollectionWrapperView_SizeChanged(object sender, System.EventArgs eventArgs)
         {
-            if (!IsEnabled) return;
+            if (PlacardOverviewCollectionView.Width < 0 || PlacardOverviewCollectionView.Height < 0) return;
 
             if (BindingContextPageModel.IsBusy) return;
+
+            if (!IsEnabled) return;
 
             RequireReloadPlacards_Callback();
         }
@@ -473,7 +477,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             IsEnabled = true;
 
-                            RequireReloadPlacards_Callback();
+                            if (PlacardOverviewCollectionView.Width > 0)
+                            {
+                                RequireReloadPlacards_Callback();
+                            }
                         }
                         else
                         {
@@ -502,7 +509,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 foreach (var item in BindingContextPageModel.PlacardOverviews)
                 {
-                    item.Dispose();
+                    item?.Dispose();
                 }
 
                 BindingContextPageModel.PlacardOverviews.Clear();

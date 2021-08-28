@@ -18,6 +18,9 @@
         <OnPlatform x:Key="ButtonHeigthRequest" x:TypeArguments="x:Double" Default="-1">
             <On Platform="Android" Value="40" />
         </OnPlatform>
+        <OnPlatform x:Key="OptionsTextIconButtonHeigthRequest" x:TypeArguments="x:Double" Default="-1">
+            <On Platform="Android" Value="30" />
+        </OnPlatform>
 
         <OnPlatform x:Key="IconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons" />
         <OnPlatform x:Key="ToolbarIconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons" />
@@ -87,6 +90,20 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="OptionsTextIconButton" TargetType="Button" BasedOn="{StaticResource TextIconButton}">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="WidthRequest" Value="{StaticResource OptionsTextIconButtonHeigthRequest}" />
+            <Setter Property="Padding">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0" />
+                        <On Platform="UWP" Value="8" />
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
         <Style x:Key="FormFieldFrame" TargetType="Frame">
             <Setter Property="BackgroundColor" Value="White" />
             <Setter Property="HasShadow" Value="False" />

@@ -28,10 +28,12 @@
                 columnCount = 1;
             }
 
+            var spacing = Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android ? ChildAbsoluteHorizontalMargin : ChildAbsoluteHorizontalMargin / 2;
+
             return new Xamarin.Forms.GridItemsLayout(columnCount, Xamarin.Forms.ItemsLayoutOrientation.Vertical)
             {
-                HorizontalItemSpacing = ChildAbsoluteHorizontalMargin / 2,
-                VerticalItemSpacing = ChildAbsoluteHorizontalMargin / 2
+                HorizontalItemSpacing = spacing,
+                VerticalItemSpacing = spacing
             };
         }
 
