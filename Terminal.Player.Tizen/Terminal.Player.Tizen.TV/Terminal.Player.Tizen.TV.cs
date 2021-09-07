@@ -27,8 +27,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Tizen.TV
         {
             var app = new Program();
 
-            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(app);
-
             var option = new Xamarin.Forms.InitializationOptions(app) 
             { 
                 UseSkiaSharp = true,
@@ -36,6 +34,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Tizen.TV
             };
 
             Xamarin.Forms.Forms.Init(option);
+
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(app);
 
             app.Run(args);
         }

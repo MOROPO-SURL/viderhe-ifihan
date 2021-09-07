@@ -28,6 +28,10 @@
       <PackageReference Include="MagicGradients" Version="1.3.0" />
       <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="5.0.3" />
       <PackageReference Include="SAPRESSC.Core.Api.Connect" Version="2.1.0-apha" />
+      <PackageReference Include="SSCXFToolKit.IoC" Version="0.2.0-alpha" />
+      <PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
+      <PackageReference Include="SSCXFToolKit.Presentation" Version="0.6.1-alpha" />
+      <PackageReference Include="SSCXFToolKit.Presentation.Transform" Version="0.2.0-alpha" />
       <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
       <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
       <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />

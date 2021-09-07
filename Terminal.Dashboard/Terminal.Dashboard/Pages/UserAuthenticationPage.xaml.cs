@@ -1,6 +1,4 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
-
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
     public partial class UserAuthenticationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.UserAuthenticationPageModel>
     {

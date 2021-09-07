@@ -78,6 +78,30 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="WhiteTextColorButton" TargetType="Button">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Focused">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="DimGray" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
         <Style x:Key="TextIconButton" TargetType="Button">
             <Setter Property="WidthRequest" Value="{StaticResource ButtonHeigthRequest}" />
             <Setter Property="FontFamily" Value="{StaticResource IconFontFamily}" />

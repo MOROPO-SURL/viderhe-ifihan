@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
+﻿using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
 {
     public partial class App : Xamarin.Forms.Application, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade
     {
@@ -7,6 +9,8 @@
         public App()
         {
             InitializeComponent();
+
+            On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
 
             PresentForUserAuthentication();
 

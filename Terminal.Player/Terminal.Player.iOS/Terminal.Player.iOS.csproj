@@ -177,6 +177,18 @@
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>2.0.0.11</Version>
     </PackageReference>
+    <PackageReference Include="SSCXFToolKit.IoC">
+      <Version>0.2.0-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Mvvm">
+      <Version>0.4.10-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Presentation">
+      <Version>0.6.1-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Presentation.Transform">
+      <Version>0.2.0-alpha</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.11.982</Version>
     </PackageReference>

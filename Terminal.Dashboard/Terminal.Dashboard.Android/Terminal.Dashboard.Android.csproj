@@ -69,6 +69,21 @@
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
       <Version>5.0.3</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Parsers">
+      <Version>6.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.IoC">
+      <Version>0.2.0-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Mvvm">
+      <Version>0.4.10-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Presentation">
+      <Version>0.6.1-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Presentation.Transform">
+      <Version>0.2.0-alpha</Version>
+    </PackageReference>
     <PackageReference Include="Toasts.Forms.Plugin">
       <Version>3.3.2</Version>
     </PackageReference>
