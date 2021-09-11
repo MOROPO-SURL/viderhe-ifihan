@@ -25,10 +25,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.6" />
-    <PackageReference Include="SAPRESSC.Core.Web.Api" Version="2.1.4-alpha" />
-    <PackageReference Include="SAPRESSC.Core.Web.SecurityLocal" Version="2.4.14-alpha" />
-    <PackageReference Include="SAPRESSC.Middleware.Identity.Web.Common" Version="2.1.9-alpha" />
-    <PackageReference Include="SAPRESSC.Middleware.Media.Web.Frontend" Version="2.0.8-alpha" />
+    <PackageReference Include="SAPRESSC.Core.Web.Api" Version="2.8.0" />
+    <PackageReference Include="SAPRESSC.Core.Web.SecurityLocal" Version="2.8.0" />
+    <PackageReference Include="SAPRESSC.Middleware.Identity.Web.Common" Version="2.8.0" />
+    <PackageReference Include="SAPRESSC.Middleware.Media.Web.Frontend" Version="2.8.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
     <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />

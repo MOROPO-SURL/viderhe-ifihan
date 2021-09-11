@@ -29,7 +29,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             return e => e.Account.Id == accountId;
         }
 
-        public override IActionResult Get()
+        public override ActionResult<ScreenplayDisplayModel[]> Get()
         {
             return Ok(Repository.GetAll().Where(GetGlobalSelector()).Select(entity => EntityToDisplayModel(entity)).ToArray());
         }

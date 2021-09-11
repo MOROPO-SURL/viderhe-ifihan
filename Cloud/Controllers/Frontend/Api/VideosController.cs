@@ -35,7 +35,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         [HttpGet]
         [HttpGet("page/{page}")]
-        public IActionResult GetPage(int page = 1)
+        public ActionResult<SAPRESSC.Core.Common.Models.PaginationModel<VideoDisplayModel>> GetPage(int page = 1)
         {
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
@@ -76,7 +76,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         [HttpPut("{videoId}/segment/{segment}")]
         [HttpPut("{videoId}/segment/last")]
-        public async System.Threading.Tasks.Task<IActionResult> PushAsync(System.Guid videoId, Microsoft.AspNetCore.Http.IFormFile file, [FromForm] string about, int segment = 0)
+        public async System.Threading.Tasks.Task<ActionResult> PushAsync(System.Guid videoId, Microsoft.AspNetCore.Http.IFormFile file, [FromForm] string about, int segment = 0)
         {
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
@@ -180,7 +180,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpPut]
-        public IActionResult Edit([FromBody] VideoInputModel inputModel)
+        public ActionResult Edit([FromBody] VideoInputModel inputModel)
         {
             if (ModelState.IsValid)
             {

@@ -20,7 +20,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpPost("[action]")]
-        public ActionResult Authenticate([FromBody]Cloud.Api.Common.Models.AuthenticationIntentModel inputModel)
+        public ActionResult<Cloud.Api.Common.Models.AuthenticatedSessionModel> Authenticate([FromBody]Cloud.Api.Common.Models.AuthenticationIntentModel inputModel)
         {
             if (ModelState.IsValid)
             {

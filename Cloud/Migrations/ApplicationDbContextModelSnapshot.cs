@@ -160,6 +160,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.Property<Guid>("GroupId")
                         .HasColumnName("groupid");
 
+                    b.Property<string>("Signature")
+                        .IsRequired()
+                        .HasColumnName("signature");
+
                     b.HasKey("UserId", "GroupId")
                         .HasName("pk_usergroupbridges");
 

@@ -16,7 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpGet("{key}/dashboard/bundle/modules")]
-        public ActionResult DashboardBundleModules(System.Guid key)
+        public ActionResult<Cloud.Api.Common.Models.ExtensionBundleModuleModel[]> DashboardBundleModules(System.Guid key)
         {
             var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 
@@ -33,7 +33,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpGet("{key}/player/bundle/modules")]
-        public ActionResult PlayerBundleModules(System.Guid key)
+        public ActionResult<Cloud.Api.Common.Models.ExtensionBundleModuleModel[]> PlayerBundleModules(System.Guid key)
         {
             var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 
