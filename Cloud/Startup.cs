@@ -246,44 +246,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
                 {
                     var defaultUserId = configuration["DefaultUser:Id"];
 
-                    var vendoEnanitosVerdes = System.Guid.NewGuid();
-
                     var k3y = new System.Guid(0x6abae711, 0xcd91, 0x47e7, 0xad, 0x8a, 0xae, 0x88, 0xe4, 0x50, 0x25, 0x4d);
 
-                    var k3y1V = new byte[16];
+                    var protectedPassword = (dbContext as Persistence.EF.ApplicationDbContext).CreateSecureUser(k3y, defaultUserId, "system");
 
-                    using (var a3s = System.Security.Cryptography.Aes.Create())
-                    {
-                        a3s.Key = k3y.ToByteArray();
-                        a3s.IV = k3y1V;
-
-                        var encr3ypt0r = a3s.CreateEncryptor(a3s.Key, a3s.IV);
-
-                        using (var bufferStream = new System.IO.MemoryStream())
-                        {
-                            using (var crypt0Stream = new System.Security.Cryptography.CryptoStream(bufferStream, encr3ypt0r, System.Security.Cryptography.CryptoStreamMode.Write))
-                            {
-                                using (var streamWriter = new System.IO.StreamWriter(crypt0Stream)) streamWriter.Write(vendoEnanitosVerdes.ToString().ToLower());
-                            }
-
-                            Log.Logger.Information(string.Format(">>>>>> Protected password for user \"{0}\" = \"{1}\"", defaultUserId, System.Convert.ToBase64String(bufferStream.ToArray())));
-                        }
-                    }
-
-                    var defaultUser = new SAPRESSC.Core.Security.Persistence.Entities.User
-                    {
-                        Id = defaultUserId,
-                        Password = vendoEnanitosVerdes.ToString().ToLower().ToHashedPassword(),
-                        Enabled = true,
-                        HasFullAccess = true,
-                        PasswordChangeRequired = true
-                    };
-
-                    defaultUser.Signature = SAPRESSC.Core.Web.SecurityLocal.Helpers.Integrity.UserIntegrityHelper.GetSignature(defaultUser);
-
-                    (dbContext as Persistence.EF.ApplicationDbContext).Users.Add(defaultUser);
-
-                    (dbContext as Persistence.EF.ApplicationDbContext).SaveChanges("system");
+                    Log.Logger.Information(string.Format(">>>>>> Protected Password : \"{0}\" => \"{1}\"", defaultUserId, protectedPassword));
                 }
             }
             else
