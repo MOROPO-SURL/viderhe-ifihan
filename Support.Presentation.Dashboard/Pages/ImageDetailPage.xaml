@@ -11,7 +11,7 @@
     Title="Detalles de la Imagen">
     <ContentPage.ToolbarItems>
         <ToolbarItem 
-            Text="Editar"
+            Text="Modificar"
             Activated="EditToolbarItem_Activated">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf90b;">

@@ -2,7 +2,7 @@
 {
     public partial class UserAuthenticationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.UserAuthenticationPageModel>
     {
-        public UserAuthenticationPage() : base(new Models.Page.UserAuthenticationPageModel { TargetCloudHostName = Managers.SessionManager.Instance.Server })
+        public UserAuthenticationPage() : base(new Models.Page.UserAuthenticationPageModel { TargetCloudHostName = Support.Presentation.Managers.SessionMemoryManager.Instance.Server })
         {
             InitializeComponent();
         }

@@ -6,7 +6,7 @@
         {
         }
 
-        protected override string TargetController => "business/account";
+        protected override string TargetController => "account";
 
         public async System.Threading.Tasks.Task<Common.Models.AccountDisplayModel> GetCurrentAsync()
         {

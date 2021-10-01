@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:icplugin="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageModeratorsPage"
+    x:TypeArguments="pagemodels:ManageModeratorsPageModel"
+    Title="Control de Acceso">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:CollectionViewWidthToSelfVerticalGridItemsLayoutConverter x:Key="CollectionViewWidthToSelfVerticalGridItemsLayoutConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="10" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Agregar"
+            Clicked="AddToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf415;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem
+            Text="Actualizar"
+            Clicked="ReloadToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf6ea;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <CollectionView
+                x:Name="ModeratorCollectionView"
+                ItemsLayout="{Binding Source={Reference ModeratorCollectionView}, Path=Width, Converter={StaticResource CollectionViewWidthToSelfVerticalGridItemsLayoutConverter}}"
+                ItemsSource="{Binding Path=Items}"
+                SelectionMode="None">
+                <CollectionView.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" Default="5,5,5,0">
+                        <On Platform="Android" Value="10,10,10,0" />
+                    </OnPlatform>
+                </CollectionView.Margin>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Padding="0"
+                            BackgroundColor="White"
+                            HasShadow="False"
+                            CornerRadius="0"
+                            HeightRequest="136">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ActionFrame_Tapped" />
+                            </Frame.GestureRecognizers>
+                            <Grid Padding="20" ColumnSpacing="12">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <icplugin:CircleImage
+                                    Grid.Column="0"
+                                    VerticalOptions="Center"
+                                    HeightRequest="96" WidthRequest="96"
+                                    Source="{Binding Path=ImageSource}"
+                                    BorderThickness="0" />
+                                <StackLayout 
+                                    Grid.Column="1" 
+                                    VerticalOptions="Center">
+                                    <Label
+                                        Text="{Binding Path=Model.User.Id}"
+                                        TextColor="Black"
+                                        FontSize="Medium" />
+                                    <Label 
+                                        Text="{Binding Path=FullName}" 
+                                        TextColor="Black" />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

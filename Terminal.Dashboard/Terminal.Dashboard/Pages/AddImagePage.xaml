@@ -40,33 +40,49 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid Padding="10" ColumnSpacing="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid
-                Grid.Column="0"
-                BackgroundColor="Black">
-                <Image
-                    Source="{Binding Path=ImageSource}"
-                    Aspect="AspectFit" />
-            </Grid>
-            <StackLayout
-                Grid.Column="1"
-                Spacing="10">
-                <Label 
-                    Text="Formato"
-                    Style="{StaticResource FormLabel}" />
-                <Label Text="{Binding Path=Format}" />
-                <Label 
-                    Text="Descripción"
-                    Style="{StaticResource FormLabel}" />
-                <Editor 
-                    VerticalOptions="FillAndExpand"
-                    Text="{Binding Path=About}" />
-            </StackLayout>
-            <supportpresentationdashboardviews:BusyView Grid.ColumnSpan="2" />
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <Grid 
+                    Margin="10"
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Image
+                        Grid.Column="0" Grid.RowSpan="2"
+                        BackgroundColor="Black"
+                        VerticalOptions="Start"
+                        Source="{Binding Path=ImageSource}" />
+                    <Frame 
+                        Grid.Column="1" Grid.Row="0"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                Text="Formato"
+                                Style="{StaticResource FormLabel}" />
+                            <Label Text="{Binding Path=Format}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Descripción" Style="{StaticResource FormLabel}" />
+                            <Editor 
+                                HeightRequest="180" 
+                                Text="{Binding Path=About}" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>

@@ -84,7 +84,7 @@
                         Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Guión" Style="{StaticResource FormLabel}" />
+                            <Label Text="Guion" Style="{StaticResource FormLabel}" />
                             <StackLayout Orientation="Horizontal">
                                 <Picker
                                     x:Name="ScreenplayPicker"
@@ -103,7 +103,7 @@
                         Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Caratula" Style="{StaticResource FormLabel}" />
+                            <Label Text="Carátula" Style="{StaticResource FormLabel}" />
                             <StackLayout Orientation="Horizontal">
                                 <Picker
                                     x:Name="OverlayPicker"

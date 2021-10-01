@@ -24,7 +24,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem 
             Text="Aplicar"
-            Activated="ApplyToolbarItem_Activated">
+            Clicked="ApplyToolbarItem_Activated">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
                     <FontImageSource.Color>
@@ -37,7 +37,7 @@
         </ToolbarItem>
         <ToolbarItem 
             Text="Cancelar"
-            Activated="CancelToolbarItem_Activated">
+            Clicked="CancelToolbarItem_Activated">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
                     <FontImageSource.Color>
@@ -93,7 +93,7 @@
                     </Frame>
                     <Frame Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Caratula" Style="{StaticResource FormLabel}" />
+                            <Label Text="Carátula" Style="{StaticResource FormLabel}" />
                             <StackLayout Orientation="Horizontal">
                                 <Picker
                                     x:Name="OverlayPicker"

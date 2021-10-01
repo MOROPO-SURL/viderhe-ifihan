@@ -47,6 +47,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP
 
                 ImageCircle.Forms.Plugin.UWP.ImageCircleRenderer.Init();
 
+                Rg.Plugins.Popup.Popup.Init();
+
                 Xamarin.Forms.DependencyService.Register<Plugin.Toasts.UWP.ToastNotification>(); // Register your dependency
 
                 Plugin.Toasts.UWP.ToastNotification.Init();

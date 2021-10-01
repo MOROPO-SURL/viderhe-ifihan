@@ -5,9 +5,18 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
     [System.ComponentModel.DesignTimeVisible(false)]
     public partial class MainPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.MainPageModel>
     {
+        private Models.View.SessionActionViewModel sessionAction;
+
         public MainPage() : base(new Models.Page.MainPageModel { IsBusy = true })
         {
+            sessionAction = new Models.View.SessionActionViewModel
+            {
+                Kind = Enumerations.ActionKind.SessionDetail
+            };
+
             InitializeComponent();
+
+            ConfigureSession();
 
             IsEnabled = false;
         }
@@ -90,11 +99,41 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     break;
 
+                case Enumerations.ActionKind.ManageModerators:
+                    this.NavigationPushPageAsync(new ManageModeratorsPage());
+
+                    break;
+
+                case Enumerations.ActionKind.DashboardHelp:
+                    this.NavigationPushPageAsync(new HelpPage());
+
+                    break;
+
+                case Enumerations.ActionKind.SessionDetail:
+                    Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.ModeratorDetailPopupPage(sessionAction.Moderator, UserSessionEditRequired_Callback));
+
+                    break;
+
+                case Enumerations.ActionKind.DashboardSettings:
+                    this.NavigationPushModalPageAsync(new SettingsPage());
+
+                    break;
+
                 default:
                     DisplayAlert("Aviso", "Sección no disponible para esta versión", "Aceptar");
 
                     break;
             }
+        }
+
+        private void UserSessionEditRequired_Callback(Models.View.ModeratorViewModel target)
+        {
+            this.NavigationPushPageAsync(new EditUserProfilePage(ConfigureSession));
+        }
+
+        public void ConfigureSession()
+        {
+            sessionAction.Moderator = new Models.View.ModeratorViewModel { Model = Managers.SessionManager.Instance.Moderator };
         }
 
         private void ReloadActions()
@@ -103,10 +142,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var actions = new Models.View.ActionViewModel[]
             {
-                new Models.View.SessionActionViewModel
-                {
-                    Kind = Enumerations.ActionKind.SessionDetail
-                },
+                sessionAction,
                 new Models.View.ActionViewModel
                 {
                     Kind = Enumerations.ActionKind.ConfigAccount,
@@ -115,8 +151,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 },
                 new Models.View.ActionViewModel
                 {
+                    Kind = Enumerations.ActionKind.ManageModerators,
+                    Caption = "Control de Acceso",
+                    IconGlyph = "\uf848"
+                },
+                new Models.View.ActionViewModel
+                {
                     Kind = Enumerations.ActionKind.ManageExtensions,
-                    Caption = "Complementos",
+                    Caption = "Extensiones",
                     IconGlyph = "\uF431"
                 },
                 new Models.View.ActionViewModel
@@ -148,6 +190,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     Kind = Enumerations.ActionKind.DashboardSettings,
                     Caption = "Ajustes",
                     IconGlyph = "\uf66a"
+                },
+                new Models.View.ActionViewModel
+                {
+                    Kind = Enumerations.ActionKind.DashboardHelp,
+                    Caption = "Ayuda",
+                    IconGlyph = "\uf87d"
                 }
             };
 

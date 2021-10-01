@@ -45,5 +45,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Tizen.TV.Helpers
             // TODO Implement expected behavior!!
             throw new System.NotImplementedException();
         }
+
+        public void OpenSystemSettings()
+        {
+            global::Tizen.Applications.AppControl.SendLaunchRequest(new global::Tizen.Applications.AppControl
+            {
+                ApplicationId = "org.tizen.setting"
+            });
+        }
     }
 }

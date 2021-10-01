@@ -8,10 +8,16 @@
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationviewrendereds="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.AddVideoPage"
     x:TypeArguments="pagemodels:AddVideoPageModel"
     Title="Agregar Video">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem 
             Text="Agregar"
@@ -41,31 +47,51 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid Padding="10" ColumnSpacing="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid
-                Grid.Column="0"
-                BackgroundColor="Black">
-                <sscxftoolkitpresentationviewrendereds:VideoPlayerView AutoPlay="False" Source="{Binding Path=VideoSource}" />
-            </Grid>
-            <StackLayout
-                Grid.Column="1"
-                Spacing="10">
-                <Label 
-                    Text="Formato"
-                    Style="{StaticResource FormLabel}" />
-                <Label Text="{Binding Path=Format}" />
-                <Label 
-                    Text="Descripción"
-                    Style="{StaticResource FormLabel}" />
-                <Editor 
-                    VerticalOptions="FillAndExpand"
-                    Text="{Binding Path=About}" />
-            </StackLayout>
-            <supportpresentationdashboardviews:BusyView Grid.ColumnSpan="2" />
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <Grid 
+                    Margin="10" 
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <sscxftoolkitpresentationviewrendereds:VideoPlayerView
+                        Grid.Column="0" Grid.RowSpan="2"
+                        VerticalOptions="Start"
+                        BackgroundColor="Black"
+                        HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                        AutoPlay="False"
+                        Source="{Binding Path=VideoSource}" />
+                    <Frame 
+                        Grid.Column="1" Grid.Row="0"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                Text="Formato"
+                                Style="{StaticResource FormLabel}" />
+                            <Label Text="{Binding Path=Format}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Descripción" Style="{StaticResource FormLabel}" />
+                            <Editor 
+                                HeightRequest="180" 
+                                Text="{Binding Path=About}" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>

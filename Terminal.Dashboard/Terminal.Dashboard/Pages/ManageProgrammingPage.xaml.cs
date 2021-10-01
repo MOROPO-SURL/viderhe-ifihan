@@ -9,11 +9,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
     {
         private const string OPTION_COMMON_PREVIEW = "Pre-Visualizar";
         private const string OPTION_COMMON_CANCEL = "Cancelar";
-        private const string OPTION_COMMON_EDIT = "Editar";
+        private const string OPTION_COMMON_EDIT = "Modificar";
         private const string OPTION_COMMON_DELETE = "Eliminar";
 
-        private const string OPTION_FRAME_ORDERTO_BEFORE = "Prioridad (mostrar antes)";
-        private const string OPTION_FRAME_ORDERTO_AFTER = "Prioridad (mostrar después)";
+        private const string OPTION_FRAME_ORDERTO_BEFORE = "Aumentar Prioridad";
+        private const string OPTION_FRAME_ORDERTO_AFTER = "Disminuir Prioridad";
         private const string OPTION_FRAME_DELETE = "Quitar";
 
         private const string OPTION_PLACARD_SEQUENCE = "Agregar a Secuencia";
@@ -107,7 +107,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { target.Placard }, ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Providers.CloudServerProvider.Instance);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { target.Placard }, ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance);
 
                             this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
@@ -134,7 +134,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_PLACARD_SEQUENCE:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            DisplayAlert("Confirmar", "Esta seguro que desea agregar este marco a la secuencia del guión seleccionado?", "Agregar", OPTION_COMMON_CANCEL).ContinueWith(async task =>
+                            DisplayAlert("Confirmar", "Esta seguro que desea agregar este marco a la secuencia del Guion seleccionado?", "Agregar", OPTION_COMMON_CANCEL).ContinueWith(async task =>
                             {
                                 if (!task.Result) return;
 
@@ -243,7 +243,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetFrameViewModel.Placard }, ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Providers.CloudServerProvider.Instance);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetFrameViewModel.Placard }, ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance);
 
                             this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
@@ -317,7 +317,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ScreenplayFramesPlayButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(BindingContextPageModel.Frames.Select(m => m.Placard).ToArray(), ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Providers.CloudServerProvider.Instance);
+            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(BindingContextPageModel.Frames.Select(m => m.Placard).ToArray(), ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance);
 
             this.NavigationPushModalPageAsync(screenplayPlayerPage);
         }
@@ -331,14 +331,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             var targetScreenplayViewModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ScreenplayViewModel;
 
-            DisplayActionSheet("Opciones de Guión", OPTION_COMMON_CANCEL, null, OPTION_COMMON_EDIT, OPTION_COMMON_DELETE).ContinueWith(task =>
+            DisplayActionSheet("Opciones de Guion", OPTION_COMMON_CANCEL, null, OPTION_COMMON_EDIT, OPTION_COMMON_DELETE).ContinueWith(task =>
             {
                 switch (task.Result)
                 {
                     case OPTION_COMMON_DELETE:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            DisplayAlert("Confirmar", "Esta seguro que desea eliminar el guión seleccionado?", OPTION_COMMON_DELETE, OPTION_COMMON_CANCEL).ContinueWith(async dialogTask =>
+                            DisplayAlert("Confirmar", "Esta seguro que desea eliminar el Guion seleccionado?", OPTION_COMMON_DELETE, OPTION_COMMON_CANCEL).ContinueWith(async dialogTask =>
                             {
                                 if (!dialogTask.Result) return;
 
@@ -352,7 +352,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Guión eliminado con exito.");
+                                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Guion eliminado con exito.");
 
                                         LoadScreenplays();
                                     });

@@ -8,7 +8,7 @@
         }
 
         public System.Collections.ObjectModel.ObservableCollection<View.ActionViewModel> Actions { get; set; }
-
+        
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();

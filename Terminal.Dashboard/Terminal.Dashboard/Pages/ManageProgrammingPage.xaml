@@ -9,7 +9,7 @@
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageProgrammingPage"
     x:TypeArguments="pagemodels:ManageProgrammingPageModel"
-    Title="Gestionar Programación">
+    Title="Programación">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:PlacardViewModelToPlacardThumbnailWrapViewConverter x:Key="PlacardViewModelToPlacardThumbnailWrapViewConverter" />
@@ -127,7 +127,8 @@
                                 Grid.Column="1" Grid.RowSpan="2"
                                 VerticalOptions="Center"
                                 Style="{StaticResource OptionsTextIconButton}"
-                                Padding="0,6"
+                                Padding="0"
+                                WidthRequest="24" HeightRequest="30"
                                 Text="&#xF1D9;"
                                 FontSize="Medium"
                                 Clicked="ScreenplayOptionsButton_Clicked" />
@@ -233,7 +234,7 @@
                     HorizontalTextAlignment="Center"
                     Margin="20"
                     TextColor="DimGray"
-                    Text="Seleccione el guión a gestionar secuencia de marcos" />
+                    Text="Seleccione el guion a gestionar secuencia de marcos" />
             </StackLayout>
             <StackLayout
                 Grid.Column="2" Grid.Row="0"

@@ -24,6 +24,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid
 
             ImageCircle.Forms.Plugin.Droid.ImageCircleRenderer.Init();
 
+            Rg.Plugins.Popup.Popup.Init(this);
+
             Xamarin.Forms.DependencyService.Register<Plugin.Toasts.ToastNotification>();
 
             Plugin.Toasts.ToastNotification.Init(this);

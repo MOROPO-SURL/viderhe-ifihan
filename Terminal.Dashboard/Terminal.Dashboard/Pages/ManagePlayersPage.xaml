@@ -167,7 +167,7 @@
                                     <Label 
                                         Margin="10,0"
                                         HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"
-                                        Text="Guión"
+                                        Text="Guion"
                                         TextColor="DimGray"
                                         FontAttributes="Bold" />
                                     <Button 

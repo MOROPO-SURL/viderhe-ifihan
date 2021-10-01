@@ -53,7 +53,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                     {
                         overlayView = Providers.AccountInformationProvider.Instance.AccountDefaultOverlayId == null ? null : Providers.OverlayPresentationViewProvider.Instance.GetOverlayPresentationView();
 
-                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(placards, ScreenplayPresentationComplete_Callback, true, Providers.AccountInformationProvider.Instance, Managers.ConfigurationManager.Instance, PlacardPlayingCallback, overlayView, PlacardViewTransitionComplete_Callback)
+                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(placards, ScreenplayPresentationComplete_Callback, true, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance, PlacardPlayingCallback, overlayView, PlacardViewTransitionComplete_Callback)
                         {
                             BackgroundColor = Managers.SessionManager.Instance.AccountPrimaryColor,
                             BindingContext = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Managers.SessionManager.Instance.AccountVerticalSplashImageSource : Managers.SessionManager.Instance.AccountHorizontalSplashImageSource
@@ -237,6 +237,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                     }
                 }
 
+                if ((BindingContext as Models.View.ConfigurationStepViewModel).DetailContentView is Views.ConfigurationStepStartingDetailView)
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(((BindingContext as Models.View.ConfigurationStepViewModel).DetailContentView as Views.ConfigurationStepStartingDetailView).PresentFallbackOptions);
+                }
+
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(delayTask =>
                 {
@@ -246,11 +251,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             }
             else
             {
+                Support.Presentation.Managers.SessionMemoryManager.Instance.Persist();
+
                 Managers.SessionManager.Instance.AccountId = task.Result.Id;
                 Managers.SessionManager.Instance.AccountName = task.Result.Name;
-                Managers.SessionManager.Instance.AccountLogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.LogoImageId));
-                Managers.SessionManager.Instance.AccountHorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.HorizontalSplashImageId));
-                Managers.SessionManager.Instance.AccountVerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.VerticalSplashImageId));
+                Managers.SessionManager.Instance.AccountLogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, task.Result.LogoImageId));
+                Managers.SessionManager.Instance.AccountHorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, task.Result.HorizontalSplashImageId));
+                Managers.SessionManager.Instance.AccountVerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, task.Result.VerticalSplashImageId));
                 Managers.SessionManager.Instance.AccountPrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor);
                 Managers.SessionManager.Instance.AccountSecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
                 Managers.SessionManager.Instance.AccountDefaultOverlayId = task.Result.DefaultOverlayId;
