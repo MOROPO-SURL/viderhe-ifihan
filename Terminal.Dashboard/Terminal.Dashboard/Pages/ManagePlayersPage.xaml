@@ -135,7 +135,7 @@
                                         </ImageButton>
                                     </StackLayout>
                                     <BoxView
-                                        BackgroundColor="Transparent" 
+                                        Color="Transparent" 
                                         VerticalOptions="FillAndExpand" />
                                     <StackLayout Orientation="Horizontal">
                                         <Grid BackgroundColor="{StaticResource PrimaryColor}">

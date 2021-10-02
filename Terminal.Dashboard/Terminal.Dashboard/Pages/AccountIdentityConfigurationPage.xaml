@@ -126,7 +126,7 @@
                                 Margin="10,10,10,6"
                                 Text="Logotipo" 
                                 Style="{StaticResource FormLabel}" />
-                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <BoxView Color="#666666" HeightRequest="1" />
                             <Grid>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PickLogoImageButton_Clicked" />
@@ -170,7 +170,7 @@
                                 Margin="10,10,10,6"
                                 Text="Portada Vertical" 
                                 Style="{StaticResource FormLabel}" />
-                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <BoxView Color="#666666" HeightRequest="1" />
                             <Grid>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PickVerticalSplashImageButton_Clicked" />
@@ -214,7 +214,7 @@
                                 Margin="10,10,10,6"
                                 Text="Portada Horizontal" 
                                 Style="{StaticResource FormLabel}" />
-                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <BoxView Color="#666666" HeightRequest="1" />
                             <Grid>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PickHorizontalSplashImageButton_Clicked" />

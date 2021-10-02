@@ -14,7 +14,7 @@
             {
                 return new Xamarin.Forms.BoxView
                 {
-                    BackgroundColor = Xamarin.Forms.Color.Black
+                    Color = Xamarin.Forms.Color.Black
                 };
             }
         }

@@ -79,7 +79,7 @@
                                 Margin="10,10,10,6"
                                 Text="Imagen"
                                 Style="{StaticResource FormLabel}" />
-                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <BoxView Color="#666666" HeightRequest="1" />
                             <Grid>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PickImageActionableView_Clicked" />

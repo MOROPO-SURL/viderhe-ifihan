@@ -141,7 +141,7 @@
                 </ListView.ItemTemplate>
                 <ListView.Footer>
                     <StackLayout Spacing="5" Margin="10,60,10,10">
-                        <BoxView BackgroundColor="Black" HeightRequest="1" />
+                        <BoxView Color="Black" HeightRequest="1" />
                         <Label 
                             FontSize="15"
                             HorizontalTextAlignment="Center"

@@ -102,7 +102,7 @@
                                 Margin="10,10,10,6"
                                 Text="Imagen Presentadora" 
                                 Style="{StaticResource FormLabel}" />
-                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <BoxView Color="#666666" HeightRequest="1" />
                             <Grid HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FactorConverter}, ConverterParameter=1.777777777777778}">
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PickPresenterImageButton_Clicked" />
