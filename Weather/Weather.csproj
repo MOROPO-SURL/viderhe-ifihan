@@ -5,6 +5,7 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Weather</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Weather</RootNamespace>
+    <Version>0.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
