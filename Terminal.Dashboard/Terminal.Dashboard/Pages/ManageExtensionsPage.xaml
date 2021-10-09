@@ -8,7 +8,7 @@
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageExtensionsPage"
     x:TypeArguments="pagemodels:ManageExtensionsPageModel"
-    Title="Complementos">
+    Title="Extensiones">
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:EnumerationToCountConverter x:Key="EnumerationToCountConverter" />

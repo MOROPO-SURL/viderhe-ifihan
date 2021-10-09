@@ -20,7 +20,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (editing)
             {
-                Title = "Editar Reproductor";
+                Title = "Modificar Reproductor";
             }
             else
             {

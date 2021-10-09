@@ -19,11 +19,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (editionMode)
             {
-                Title = "Editar Guión";
+                Title = "Modificar Guion";
             }
             else
             {
-                Title = "Agregar Guión";
+                Title = "Agregar Guion";
             }
         }
 

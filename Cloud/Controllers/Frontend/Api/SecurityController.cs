@@ -20,7 +20,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpPost("[action]")]
-        public ActionResult Authenticate([FromBody]Cloud.Api.Common.Models.AuthenticationIntentModel inputModel)
+        public ActionResult<Cloud.Api.Common.Models.AuthenticatedSessionModel> Authenticate([FromBody]Cloud.Api.Common.Models.AuthenticationIntentModel inputModel)
         {
             if (ModelState.IsValid)
             {
@@ -39,7 +39,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
                     var moderator = account.ModeratorBridges.First(b => b.Moderator.UserId == userIdentity.Name).Moderator;
 
-                    return GenerateToken(userIdentity, moderator.Identity);
+                    return GenerateToken(userIdentity, moderator);
                 }
 
                 return Unauthorized();
@@ -67,20 +67,20 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         #region Token Utility Methods
 
-        private ActionResult GenerateToken(System.Security.Claims.ClaimsIdentity userClaims, SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity personIdentity)
+        private ActionResult GenerateToken(System.Security.Claims.ClaimsIdentity userClaims, Persistence.Entities.Moderator moderator)
         {
             var token = GenerateJwtToken(userClaims);
 
-            var identityModel = new Cloud.Api.Common.Models.PersonIdentityDisplayModel();
+            var model = new Cloud.Api.Common.Models.ModeratorDisplayModel();
 
-            identityModel.Import(personIdentity);
+            model.Import(moderator);
 
             return Json(new Cloud.Api.Common.Models.AuthenticatedSessionModel
             {
                 Token = token,
                 Type = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme,
                 ExpiresInSecond = jwtOptions.Value.ExpiresInSecond,
-                Identity = identityModel
+                Moderator = model
             });
         }
 

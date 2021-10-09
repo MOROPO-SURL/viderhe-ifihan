@@ -41,11 +41,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
+                Xamarin.Forms.Forms.Init(e);
+
                 FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
-                //Xamarin.Forms.PancakeView.UWP.PancakeViewRenderer.Init();
+                ImageCircle.Forms.Plugin.UWP.ImageCircleRenderer.Init();
 
-                Xamarin.Forms.Forms.Init(e);
+                Rg.Plugins.Popup.Popup.Init();
 
                 Xamarin.Forms.DependencyService.Register<Plugin.Toasts.UWP.ToastNotification>(); // Register your dependency
 

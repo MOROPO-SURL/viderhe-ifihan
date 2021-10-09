@@ -6,11 +6,11 @@
         {
         }
 
-        protected override string TargetController => "business/players";
+        protected override string TargetController => "account/players";
 
         public async System.Threading.Tasks.Task<Common.Models.AccountDisplayModel> GetAccountAsync()
         {
-            return await httpClientHelperProvider.HttpClientHelper.GetAsync<Common.Models.AccountDisplayModel>(string.Format("{0}/account", TargetController));
+            return await httpClientHelperProvider.HttpClientHelper.GetAsync<Common.Models.AccountDisplayModel>(string.Format("{0}/owner", TargetController));
         }
 
         public async System.Threading.Tasks.Task<Common.Models.PlacardDisplayModel[]> GetScreenplayPlacardsAsync()

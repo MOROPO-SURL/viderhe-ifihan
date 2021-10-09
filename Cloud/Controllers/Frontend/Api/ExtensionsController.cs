@@ -4,7 +4,9 @@ using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 {
-    [Route("api/[controller]")]
+    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
+    [Route("api/[area]/[controller]")]
+    [Area("account")]
     [ApiController]
     public class ExtensionsController : SAPRESSC.Core.Web.Common.Controllers.BaseWebController
     {
@@ -16,7 +18,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpGet("{key}/dashboard/bundle/modules")]
-        public ActionResult DashboardBundleModules(System.Guid key)
+        public ActionResult<Cloud.Api.Common.Models.ExtensionBundleModuleModel[]> DashboardBundleModules(System.Guid key)
         {
             var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 
@@ -33,7 +35,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpGet("{key}/player/bundle/modules")]
-        public ActionResult PlayerBundleModules(System.Guid key)
+        public ActionResult<Cloud.Api.Common.Models.ExtensionBundleModuleModel[]> PlayerBundleModules(System.Guid key)
         {
             var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 

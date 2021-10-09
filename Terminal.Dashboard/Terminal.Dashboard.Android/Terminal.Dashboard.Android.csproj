@@ -31,9 +31,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <DebugSymbols>false</DebugSymbols>
     <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
@@ -41,6 +43,16 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
+    <BundleAssemblies>true</BundleAssemblies>
+    <AndroidLinkTool>r8</AndroidLinkTool>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AotAssemblies>true</AotAssemblies>
+    <EnableLLVM>true</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <AndroidSupportedAbis>
+    </AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -53,10 +65,31 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MagicGradients">
-      <Version>1.3.0</Version>
+      <Version>1.3.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
       <Version>5.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Parsers">
+      <Version>6.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.0.0.11</Version>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp.Views.Forms">
+      <Version>2.80.3</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.IoC">
+      <Version>0.2.0-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Mvvm">
+      <Version>0.4.10-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Presentation">
+      <Version>0.6.1-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Presentation.Transform">
+      <Version>0.2.0-alpha</Version>
     </PackageReference>
     <PackageReference Include="Toasts.Forms.Plugin">
       <Version>3.3.2</Version>
@@ -87,13 +120,16 @@
       <Version>2.1.41</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>5.0.0.2083</Version>
+      <Version>5.0.0.2125</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Effects\NativeTouchEffect.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Managers\ApplicationManager.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Renderer\IconImageCellRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -122,10 +158,49 @@
     <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Extend.Essential.Overlaying.Dashboard.Presentation\Extend.Essential.Overlaying.Dashboard.Presentation.csproj">
+      <Project>{c79fac59-2855-438c-b372-23ee0e4ebb7c}</Project>
+      <Name>Extend.Essential.Overlaying.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Overlaying.Presentation\Extend.Essential.Overlaying.Presentation.csproj">
+      <Project>{2ac14cd7-ad15-48f4-afe5-b67da5107bc1}</Project>
+      <Name>Extend.Essential.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Overlaying\Extend.Essential.Overlaying.csproj">
+      <Project>{87c8e862-21a4-4679-9fc0-26a99f7a24ae}</Project>
+      <Name>Extend.Essential.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Templating.Dashboard.Presentation\Extend.Essential.Templating.Dashboard.Presentation.csproj">
+      <Project>{9792e424-4ff0-489f-b1ce-6a1ca6cd47b1}</Project>
+      <Name>Extend.Essential.Templating.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj">
+      <Project>{f52e5e05-b3d9-44f2-bfdc-2c8483f1f770}</Project>
+      <Name>Extend.Essential.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Templating\Extend.Essential.Templating.csproj">
+      <Project>{bb3b9dc7-e652-499a-b609-325a01414109}</Project>
+      <Name>Extend.Essential.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj">
+      <Project>{b88a5d61-11d9-4827-875e-7bd9bc5f6720}</Project>
+      <Name>Extend.Essential.Transitioning.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj">
+      <Project>{5e18fba2-62e1-4bae-8917-1e809fc5fcfd}</Project>
+      <Name>Extend.Essential.Transitioning</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj">
+      <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
+      <Name>Extend.Essential</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Terminal.Dashboard\Terminal.Dashboard.csproj">
       <Project>{CBA05853-1C8C-4704-811A-1C1C679B7B55}</Project>
       <Name>Terminal.Dashboard</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\xml\network_security_config.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -6,6 +6,6 @@
         {
         }
 
-        protected override string TargetController => "business/placards";
+        protected override string TargetController => "account/placards";
     }
 }

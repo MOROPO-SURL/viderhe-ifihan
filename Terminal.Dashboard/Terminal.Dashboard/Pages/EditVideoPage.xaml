@@ -12,9 +12,10 @@
     mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.EditVideoPage"
     x:TypeArguments="pagemodels:EditVideoPageModel"
-    Title="Editar Video">
+    Title="Modificar Video">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:FileSizeLongToStringConverter x:Key="FileSizeLongToStringConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -47,49 +48,67 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid Padding="10" ColumnSpacing="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid
-                Grid.Column="0"
-                BackgroundColor="Black">
-                <sscxftoolkitpresentationviewrendereds:VideoPlayerView 
-                    AutoPlay="False"
-                    Source="{Binding Path=Video, Converter={StaticResource VideoViewModelToVideoSourceConverter}}" />
-            </Grid>
-            <StackLayout
-                Grid.Column="1"
-                Spacing="10">
-                <Label 
-                    Text="Formato"
-                    Style="{StaticResource FormLabel}" />
-                <Label Text="{Binding Path=Video.Extension}" />
-                <Label 
-                    Text="Duración"
-                    Style="{StaticResource FormLabel}" />
-                <Label Text="{Binding Path=Video.Duration}" />
-                <Label 
-                    Text="Resolusión"
-                    Style="{StaticResource FormLabel}" />
-                <Label Text="{Binding Path=Video.FrameSize}" />
-                <Label 
-                    Text="Tamaño en Disco"
-                    Style="{StaticResource FormLabel}" />
-                <Label Text="{Binding Path=Video.Size, Converter={StaticResource FileSizeLongToStringConverter}}" />
-                <Label 
-                    Text="Incorporada"
-                    Style="{StaticResource FormLabel}" />
-                <Label Text="{Binding Path=Video.CreateAt}" />
-                <Label 
-                    Text="Descripción"
-                    Style="{StaticResource FormLabel}" />
-                <Editor 
-                    VerticalOptions="FillAndExpand"
-                    Text="{Binding Path=Video.About}" />
-            </StackLayout>
-            <supportpresentationdashboardviews:BusyView Grid.ColumnSpan="2" />
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <Grid 
+                    Margin="10" 
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <sscxftoolkitpresentationviewrendereds:VideoPlayerView
+                        Grid.Column="0" Grid.RowSpan="2"
+                        VerticalOptions="Start"
+                        BackgroundColor="Black"
+                        HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                        AutoPlay="False"
+                        Source="{Binding Path=Video, Converter={StaticResource VideoViewModelToVideoSourceConverter}}" />
+                    <Frame 
+                        Grid.Column="1" Grid.Row="0"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                Text="Formato"
+                                Style="{StaticResource FormLabel}" />
+                            <Label Text="{Binding Path=Video.Extension}" />
+                            <Label 
+                                Text="Duración"
+                                Style="{StaticResource FormLabel}" />
+                            <Label Text="{Binding Path=Video.Duration}" />
+                            <Label 
+                                Text="Resolución"
+                                Style="{StaticResource FormLabel}" />
+                            <Label Text="{Binding Path=Video.FrameSize}" />
+                            <Label 
+                                Text="Tamaño en Disco"
+                                Style="{StaticResource FormLabel}" />
+                            <Label Text="{Binding Path=Video.Size, Converter={StaticResource FileSizeLongToStringConverter}}" />
+                            <Label 
+                                Text="Incorporada"
+                                Style="{StaticResource FormLabel}" />
+                            <Label Text="{Binding Path=Video.CreateAt}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Descripción" Style="{StaticResource FormLabel}" />
+                            <Editor 
+                                HeightRequest="180" 
+                                Text="{Binding Path=Video.About}" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>
