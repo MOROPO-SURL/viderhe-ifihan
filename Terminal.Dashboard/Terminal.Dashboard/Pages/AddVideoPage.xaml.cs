@@ -80,7 +80,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 bytesRemaining -= bytesReaded;
                             }
 
-                            var client = new Cloud.Api.Connect.Clients.VideosApiClient(Managers.SessionManager.Instance.HttpClientHelper);
+                            var client = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
 
                             if (currentSegment > 1)
                             {

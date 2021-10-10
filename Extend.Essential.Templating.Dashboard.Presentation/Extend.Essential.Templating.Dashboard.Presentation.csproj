@@ -4,25 +4,30 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation</RootNamespace>
+    <Version>0.1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj" />
-    <ProjectReference Include="..\Extend.Essential.Motion\Extend.Essential.Motion.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj" />
     <ProjectReference Include="..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj" />
     <ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="LocalizedResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LocalizedResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Pages\LandscapePicturePresentingPicturePlacardConfigurationPage.xaml.cs">
       <DependentUpon>LandscapePicturePresentingPicturePlacardConfigurationPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Pages\LandscapePicturePresentingVideoPlacardConfigurationPage.xaml.cs">
       <DependentUpon>LandscapePicturePresentingVideoPlacardConfigurationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\PictureSlideSecuencePlacardConfigurationPage.xaml.cs">
+      <DependentUpon>PictureSlideSecuencePlacardConfigurationPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Pages\PrePickVideoPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
@@ -36,6 +41,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="LocalizedResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\CreateSimpleVideoPlacardPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -45,25 +54,31 @@
     <EmbeddedResource Update="Pages\LandscapePicturePresentingPicturePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\LandscapePicturePresentingPictureSlideSecuencePlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\LandscapePicturePresentingVideoPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PictureSecuencePlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\PictureSlideSecuencePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\PortraitPicturePresentingPicturePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PortraitPicturePresentingVideoPlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\ResponsivePicturePlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\PortraitPicturePresentingVideoPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\SimplePicturePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LandscapePicturePresentingPicturePlacardThumbnailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LandscapePicturePresentingPictureSlideSecuencePlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LandscapePicturePresentingVideoPlacardThumbnailView.xaml">
@@ -75,10 +90,10 @@
     <EmbeddedResource Update="Views\PortraitPicturePresentingPicturePlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PortraitPicturePresentingVideoPlacardThumbnailView.xaml">
+    <EmbeddedResource Update="Views\PortraitPicturePresentingPictureSlideSecuencePlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ResponsivePicturePlacardThumbnailView.xaml">
+    <EmbeddedResource Update="Views\PortraitPicturePresentingVideoPlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SimplePicturePlacardThumbnailView.xaml">
@@ -89,4 +104,7 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
+  </ItemGroup>
 </Project>

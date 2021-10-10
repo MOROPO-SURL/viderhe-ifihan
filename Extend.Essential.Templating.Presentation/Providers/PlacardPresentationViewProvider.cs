@@ -1,4 +1,5 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Descriptors;
+using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Models.Context;
 using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views;
 
@@ -8,11 +9,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
     {
         public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
         {
-            if (model.Template.Id == PictureSecuenceTemplateDescriptor.ID)
+            if (model.Template.Id == PictureSlideSecuenceTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PictureSecuencePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PictureSlideSecuencePlacardContextModel>(model.SerializedContext);
 
-                return new PictureSecuencePlacardView(context, cloudServerProvider, accountInformationProvider, XFToolKit.IoC.TinyIoCContainer.Current.Resolve<Common.Motion.Presentation.Providers.Facade.IMotionTransitionProviderFacade>());
+                return new PictureSlideSecuencePlacardView(context, cloudServerProvider, accountInformationProvider);
             }
 
             if (model.Template.Id == SimpleVideoTemplateDescriptor.ID)
@@ -22,7 +23,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                 return new SimpleVideoPlacardView(new Models.View.SimpleVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = false,
-                    VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(cloudServerProvider, context.VideoId, context.VideoExtension).AbsoluteUri)
+                    VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(cloudServerProvider, context.Video.Id, context.Video.Extension).AbsoluteUri)
                 }, accountInformationProvider);
             }
 
@@ -30,25 +31,22 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<SimplePicturePlacardContextModel>(model.SerializedContext);
 
-                return new SimplePicturePlacardView(new Models.View.SimplePicturePlacardViewModel
+                var viewModel = new Models.View.SimplePicturePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.Image.Id)),
-                    Aspect = context.Aspect
-                });
-            }
+                    Aspect = context.LayoutMode.ToXamarinFormsAspect()
+                };
 
-            if (model.Template.Id == ResponsivePictureTemplateDescriptor.ID)
-            {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<ResponsivePicturePlacardContextModel>(model.SerializedContext);
-
-                return new ResponsivePicturePlacardView(new Models.View.ResponsivePicturePlacardViewModel
+                if (context.LayoutMode == Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf)
                 {
-                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    ScreenPresentationTime = context.ScreenPresentationTime,
-                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.Image.Id))
-                }, accountInformationProvider);
+                    return new SelfOpaqueFillSimplePicturePlacardView(viewModel, accountInformationProvider);
+                }
+                else
+                {
+                    return new SimplePicturePlacardView(viewModel);
+                }
             }
 
             if (model.Template.Id == LandscapePicturePresentingPictureTemplateDescriptor.ID)
@@ -117,6 +115,38 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                     PresentedSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(cloudServerProvider, context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
                     PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation
                 });
+            }
+
+            if (model.Template.Id == LandscapePicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePicturePresentingPictureSlideSecuencePlacardContextModel>(model.SerializedContext);
+
+                return new LandscapePicturePresentingPictureSlideSecuencePlacardView(new Models.View.LandscapePicturePresentingPictureSlideSecuencePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.PresenterImage.Id)),
+                    PresenterSide = context.PresenterSide,
+                    PresenterImageWidth = context.PresenterImage.Width,
+                    PresenterImageHeigth = context.PresenterImage.Height,
+                    PresentedPictureSlideSecuence = context.PresentedPictureSlideSecuence,
+                    PresentedPictureSlideSecuenceCenteredAtPresentation = context.PresentedPictureSlideSecuenceCenteredAtPresentation
+                }, cloudServerProvider, accountInformationProvider);
+            }
+
+            if (model.Template.Id == PortraitPicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitPicturePresentingPictureSlideSecuencePlacardContextModel>(model.SerializedContext);
+
+                return new PortraitPicturePresentingPictureSlideSecuencePlacardView(new Models.View.PortraitPicturePresentingPictureSlideSecuencePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.PresenterImage.Id)),
+                    PresenterSide = context.PresenterSide,
+                    PresenterImageWidth = context.PresenterImage.Width,
+                    PresenterImageHeigth = context.PresenterImage.Height,
+                    PresentedPictureSlideSecuence = context.PresentedPictureSlideSecuence,
+                    PresentedPictureSlideSecuenceCenteredAtPresentation = context.PresentedPictureSlideSecuenceCenteredAtPresentation
+                }, cloudServerProvider, accountInformationProvider);
             }
 
             return null;

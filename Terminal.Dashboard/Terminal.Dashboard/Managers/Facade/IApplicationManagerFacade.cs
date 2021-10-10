@@ -3,5 +3,6 @@
     public interface IApplicationManagerFacade
     {
         void Quit();
+        void RequestRequiredPermissions();
     }
 }

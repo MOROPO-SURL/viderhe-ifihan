@@ -20,7 +20,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (editing)
             {
-                Title = "Editar Reproductor";
+                Title = "Modificar Reproductor";
             }
             else
             {
@@ -42,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 System.Threading.Tasks.Task.Run(async () =>
                 {
-                    var client = new Cloud.Api.Connect.Clients.ScreenplaysApiClient(Managers.SessionManager.Instance);
+                    var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
 
                     return await client.GetPaginateAsync();
                 }).ContinueWith(task =>
@@ -148,7 +148,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlayersApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
                 var model = new Cloud.Api.Common.Models.PlayerInputModel
                 {

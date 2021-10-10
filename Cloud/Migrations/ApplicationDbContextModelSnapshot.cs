@@ -160,6 +160,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.Property<Guid>("GroupId")
                         .HasColumnName("groupid");
 
+                    b.Property<string>("Signature")
+                        .IsRequired()
+                        .HasColumnName("signature");
+
                     b.HasKey("UserId", "GroupId")
                         .HasName("pk_usergroupbridges");
 
@@ -921,6 +925,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.Property<bool>("Enabled")
                         .HasColumnName("enabled");
 
+                    b.Property<string>("Version")
+                        .IsRequired()
+                        .HasColumnName("version");
+
                     b.HasKey("Id")
                         .HasName("pk_extensions");
 
@@ -962,6 +970,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
 
                     b.Property<Guid>("IdentityId")
                         .HasColumnName("identityid");
+
+                    b.Property<bool>("Privileged")
+                        .HasColumnName("privileged");
 
                     b.Property<string>("UserId")
                         .HasColumnName("userid");
@@ -1015,12 +1026,12 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .IsRequired()
                         .HasColumnName("label");
 
+                    b.Property<int?>("PlayerOrientationSupportKind")
+                        .HasColumnName("playerorientationsupportkind");
+
                     b.Property<string>("SerializedContext")
                         .IsRequired()
                         .HasColumnName("serializedcontext");
-
-                    b.Property<Guid?>("TempateId")
-                        .HasColumnName("tempateid");
 
                     b.Property<Guid>("TemplateId")
                         .HasColumnName("templateid");
@@ -1031,8 +1042,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("AccountId")
                         .HasName("ix_placards_accountid");
 
-                    b.HasIndex("TempateId")
-                        .HasName("ix_placards_tempateid");
+                    b.HasIndex("TemplateId")
+                        .HasName("ix_placards_templateid");
 
                     b.ToTable("placards");
                 });
@@ -1541,7 +1552,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Moderator", "Moderator")
-                        .WithMany()
+                        .WithMany("AccountBridges")
                         .HasForeignKey("ModeratorId")
                         .HasConstraintName("fk_accountmoderatorbridges_moderators_moderatorid")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -1609,8 +1620,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
 
                     b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Template", "Template")
                         .WithMany()
-                        .HasForeignKey("TempateId")
-                        .HasConstraintName("fk_placards_templates_tempateid");
+                        .HasForeignKey("TemplateId")
+                        .HasConstraintName("fk_placards_templates_templateid")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Player", b =>

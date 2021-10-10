@@ -198,13 +198,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
             switch (playbackState)
             {
                 case Com.Google.Android.Exoplayer2.Player.StateEnded:
-                    videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+                    videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
 
                     break;
                 case Com.Google.Android.Exoplayer2.Player.StateIdle:
                     if (!Element.AutoPlay) break;
 
-                    videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Paused;
+                    videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
 
                     break;
 

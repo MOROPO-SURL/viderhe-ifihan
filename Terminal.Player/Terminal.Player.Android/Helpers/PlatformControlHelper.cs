@@ -53,5 +53,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Helpers
         {
             throw new System.NotImplementedException();
         }
+
+        public void OpenSystemSettings()
+        {
+             Android.App.Application.Context.StartActivity(new Android.Content.Intent(Android.Provider.Settings.ActionSettings));
+        }
     }
 }

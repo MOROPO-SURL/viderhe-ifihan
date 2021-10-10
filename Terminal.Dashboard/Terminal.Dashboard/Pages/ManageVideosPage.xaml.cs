@@ -5,6 +5,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
     public partial class ManageVideosPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageVideosPageModel>
     {
+        private int currentItemsPageNumber;
+
         public ManageVideosPage() : base(new Models.Page.ManageVideosPageModel { IsBusy = true })
         {
             InitializeComponent();
@@ -18,7 +20,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (IsEnabled) return;
 
-            OnRequiredReloadAction();
+            RequiredReload_Callback();
 
             IsEnabled = true;
         }
@@ -42,7 +44,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     BindingContextPageModel.IsBusy = true;
                 });
 
-                var client = new Cloud.Api.Connect.Clients.VideosApiClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
 
                 System.Exception failException = null;
 
@@ -63,7 +65,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Video eliminado con éxito.");
 
-                        OnRequiredReloadAction();
+                        RequiredReload_Callback();
                     }
                     else
                     {
@@ -95,13 +97,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 break;
 
                             case Xamarin.Forms.Device.UWP:
-                                fileSelector = new string[] { ".mp4", ".mkv", ".avi", ".mpg" };
+                                fileSelector = new string[] { ".mp4", ".mkv", ".avi", ".mpg", ".flv" };
 
                                 break;
 
                             case Xamarin.Forms.Device.WPF:
                             default:
-                                fileSelector = new string[] { "Videos Soportados|*.mp4;*.mkv;*.avi;*.mpg" };
+                                fileSelector = new string[] { "Videos Soportados|*.mp4;*.mkv;*.avi;*.mpg", "*.flv" };
 
                                 break;
                         }
@@ -110,7 +112,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         if (targetFileData != null)
                         {
-                            await this.NavigationPushPageAsync(new AddVideoPage(targetFileData, OnRequiredReloadAction));
+                            await this.NavigationPushPageAsync(new AddVideoPage(targetFileData, RequiredReload_Callback));
                         }
                     }
                     finally
@@ -121,21 +123,32 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             });
         }
 
-        private void OnRequiredReloadAction()
+        private void ReloadToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
-            LoadVideos();
+            if (BindingContextPageModel.IsBusy) return;
+
+            RequiredReload_Callback();
         }
 
-        private void LoadVideos(int page = 0)
+        private void LoadNextPageButtton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            LoadNextItemsPage();
+        }
+
+        private void RequiredReload_Callback()
+        {
+            LoadNextItemsPage(true);
+        }
+
+        private void LoadNextItemsPage(bool restart = false)
         {
             BindingContextPageModel.IsBusy = true;
 
-            System.Threading.Tasks.Task.Run(async () =>
-            {
-                var client = new Cloud.Api.Connect.Clients.VideosApiClient(Managers.SessionManager.Instance.HttpClientHelper);
+            if (restart) currentItemsPageNumber = 0;
 
-                return await client.GetPageAsync(page);
-            }).ContinueWith(task =>
+            var videosApiConnectClient = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+
+            videosApiConnectClient.GetPageAsync(++currentItemsPageNumber).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -147,7 +160,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     }
                     else
                     {
-                        if (page == 0)
+                        if (currentItemsPageNumber == 1)
                         {
                             BindingContextPageModel.Items.Clear();
                         }
@@ -156,6 +169,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.Items.Add(item.ToViewModel());
                         }
+
+                        BindingContextPageModel.HasMoreItems = task.Result.HasNext && task.Result.List.Count > 0;
                     }
                 });
             });

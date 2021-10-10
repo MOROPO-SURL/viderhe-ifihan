@@ -4,6 +4,10 @@
     {
         public System.Guid Id { get; set; }
 
+        public byte[] ContentData { get; set; }
+
+        public string ContentType { get; set; }
+
         public string About { get; set; }
 
         public SAPRESSC.Middleware.Media.Persistence.Entities.Image Export()

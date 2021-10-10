@@ -23,9 +23,19 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.iOS
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
-            Xamarin.Forms.PancakeView.iOS.PancakeViewRenderer.Init();
+            ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init();
+
+            Rg.Plugins.Popup.Popup.Init();
+
+            Xamarin.Forms.DependencyService.Register<Plugin.Toasts.ToastNotification>();
+
+            Plugin.Toasts.ToastNotification.Init();
 
             LoadApplication(new App());
+
+            _ = System.Reflection.Assembly.GetAssembly(typeof(Extend.Essential.Templating.Dashboard.Presentation.Providers.PlacardConfigurationPageProvider));
+            _ = System.Reflection.Assembly.GetAssembly(typeof(Extend.Essential.Overlaying.Dashboard.Presentation.Providers.OverlayConfigurationPageProvider));
+            _ = System.Reflection.Assembly.GetAssembly(typeof(Extend.Essential.Transitioning.Presentation.Providers.TransitionProvider));
 
             return base.FinishedLaunching(app, options);
         }

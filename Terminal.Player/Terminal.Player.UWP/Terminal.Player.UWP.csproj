@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Player.UWP</RootNamespace>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Player.UWP</AssemblyName>
-    <DefaultLanguage>es-US</DefaultLanguage>
+    <DefaultLanguage>es</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
@@ -18,7 +18,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <PackageCertificateThumbprint>4BE9C1E16BB4139C372F61C10F90562307FEA5D4</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>A0991B70F6E70694BA0F8CAC95AA3C9FDAC8499D</PackageCertificateThumbprint>
     <PackageCertificateKeyFile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
@@ -94,6 +94,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\XamarinFormsAspectExtensions.cs" />
     <Compile Include="Helpers\PlatfromIntegrationHelper.cs" />
     <Compile Include="Helpers\PlatformControlHelper.cs" />
     <Compile Include="Helpers\TextWidthCalculationHelper.cs" />
@@ -106,7 +107,7 @@
     <Compile Include="Views\Renderer\FontOverflowLabelRenderer.cs" />
     <Compile Include="Views\Renderer\IndeterminableProgressBarViewRenderer.cs" />
     <Compile Include="Views\Renderer\RingActivityIndicatorRenderer.cs" />
-    <Compile Include="Views\Renderer\RtmpClientVideoPlayerViewRenderer.cs" />
+    <Compile Include="Views\Renderer\UnattendedVideoPlayerViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -182,7 +183,7 @@
       <Version>1.0.0</Version>
     </PackageReference>
     <PackageReference Include="MagicGradients">
-      <Version>1.2.0</Version>
+      <Version>1.3.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
       <Version>5.0.3</Version>
@@ -193,17 +194,32 @@
     <PackageReference Include="RtmpClient.UWP">
       <Version>1.3.0</Version>
     </PackageReference>
+    <PackageReference Include="SSCXFToolKit.IoC">
+      <Version>0.2.0-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Mvvm">
+      <Version>0.4.10-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Presentation">
+      <Version>0.6.1-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Presentation.Transform">
+      <Version>0.2.0-alpha</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.11.982</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Extend.Common.Motion.Presentation\Extend.Common.Motion.Presentation.csproj">
+    <ProjectReference Include="..\..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj">
       <Project>{7b10ab64-aec2-4109-bbb6-cbe522c1273c}</Project>
-      <Name>Extend.Common.Motion.Presentation</Name>
+      <Name>Extend.Common.Transitioning.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj">
       <Project>{54a31415-5aca-41cf-a9da-2b97e0812ec6}</Project>
@@ -217,21 +233,9 @@
       <Project>{E620A859-7769-472D-981A-B93DBF496926}</Project>
       <Name>Extend.Common.Templating.Presentation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Extend.CPCC.Overlaying.Presentation\Extend.CPCC.Overlaying.Presentation.csproj">
-      <Project>{c95ee500-f017-43a6-b388-3ca6710483c7}</Project>
-      <Name>Extend.CPCC.Overlaying.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.CPCC.Templating.Presentation\Extend.CPCC.Templating.Presentation.csproj">
-      <Project>{c0ecab89-1bc2-4be5-97c6-6b43a870c8a2}</Project>
-      <Name>Extend.CPCC.Templating.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.CPCC\Extend.CPCC.csproj">
-      <Project>{7309595d-becd-4180-b804-e2f8ff9708ac}</Project>
-      <Name>Extend.CPCC</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.Essential.Motion.Presentation\Extend.Essential.Motion.Presentation.csproj">
+    <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj">
       <Project>{b88a5d61-11d9-4827-875e-7bd9bc5f6720}</Project>
-      <Name>Extend.Essential.Motion.Presentation</Name>
+      <Name>Extend.Essential.Transitioning.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Overlaying.Presentation\Extend.Essential.Overlaying.Presentation.csproj">
       <Project>{2ac14cd7-ad15-48f4-afe5-b67da5107bc1}</Project>

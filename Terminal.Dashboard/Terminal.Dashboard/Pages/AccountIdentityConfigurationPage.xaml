@@ -2,28 +2,29 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
-    xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.AccountIdentityConfigurationPage"
     x:TypeArguments="pagemodels:AccountIdentityConfigurationPageModel"
     Title="Configuración de Cuenta">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+
+            <Style TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem 
             Text="Aplicar"
-            Activated="ApplyToolbarItem_Activated">
+            Clicked="ApplyToolbarItem_Activated">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
                     <FontImageSource.Color>
@@ -36,7 +37,7 @@
         </ToolbarItem>
         <ToolbarItem 
             Text="Cancelar"
-            Activated="CancelToolbarItem_Activated">
+            Clicked="CancelToolbarItem_Activated">
             <ToolbarItem.IconImageSource>
                 <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
                     <FontImageSource.Color>
@@ -92,7 +93,7 @@
                     </Frame>
                     <Frame Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Caratula" Style="{StaticResource FormLabel}" />
+                            <Label Text="Carátula" Style="{StaticResource FormLabel}" />
                             <StackLayout Orientation="Horizontal">
                                 <Picker
                                     x:Name="OverlayPicker"
@@ -102,12 +103,12 @@
                                     SelectedIndexChanged="OverlayPicker_SelectedIndexChanged"/>
                                 <Button 
                                     IsEnabled="{Binding Source={x:Reference OverlayPicker}, Path=SelectedItem, Converter={StaticResource NotNullToBooleanConverter}}"
-                                    FontFamily="{StaticResource IconFontFamily}"
+                                    Style="{StaticResource TextIconButton}"
                                     Text="&#xf493;"
                                     Clicked="OverlayConfigureButton_Clicked" />
                                 <Button 
                                     IsEnabled="{Binding Source={x:Reference OverlayPicker}, Path=SelectedItem, Converter={StaticResource NotNullToBooleanConverter}}"
-                                    FontFamily="{StaticResource IconFontFamily}"
+                                    Style="{StaticResource TextIconButton}"
                                     Text="&#xF413;"
                                     Clicked="SelectedOverlayClearButton_Clicked" />
                             </StackLayout>
@@ -123,12 +124,18 @@
                             Spacing="0">
                             <Label 
                                 Margin="10,10,10,6"
-                                Text="Portada Vertical" 
+                                Text="Logotipo" 
                                 Style="{StaticResource FormLabel}" />
-                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <BoxView Color="#666666" HeightRequest="1" />
                             <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PickLogoImageButton_Clicked" />
+                                </Grid.GestureRecognizers>
                                 <ffimageloadingforms:CachedImage 
+                                    BackgroundColor="White"
+                                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
                                     Source="{Binding Path=LogoImageSource}"
+                                    Aspect="AspectFill"
                                     CacheType="Disk"
                                     CacheDuration="8760:00:00" />
                                 <StackLayout 
@@ -163,13 +170,16 @@
                                 Margin="10,10,10,6"
                                 Text="Portada Vertical" 
                                 Style="{StaticResource FormLabel}" />
-                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <BoxView Color="#666666" HeightRequest="1" />
                             <Grid>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PickVerticalSplashImageButton_Clicked" />
                                 </Grid.GestureRecognizers>
                                 <ffimageloadingforms:CachedImage 
+                                    BackgroundColor="White"
+                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=0.5625}"
                                     Source="{Binding Path=VerticalSplashImageSource}"
+                                    Aspect="AspectFill"
                                     CacheType="Disk"
                                     CacheDuration="8760:00:00" />
                                 <StackLayout 
@@ -204,13 +214,16 @@
                                 Margin="10,10,10,6"
                                 Text="Portada Horizontal" 
                                 Style="{StaticResource FormLabel}" />
-                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <BoxView Color="#666666" HeightRequest="1" />
                             <Grid>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PickHorizontalSplashImageButton_Clicked" />
                                 </Grid.GestureRecognizers>
                                 <ffimageloadingforms:CachedImage 
+                                    BackgroundColor="White"
+                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
                                     Source="{Binding Path=HorizontalSplashImageSource}"
+                                    Aspect="AspectFill"
                                     CacheType="Disk"
                                     CacheDuration="8760:00:00" />
                                 <StackLayout 

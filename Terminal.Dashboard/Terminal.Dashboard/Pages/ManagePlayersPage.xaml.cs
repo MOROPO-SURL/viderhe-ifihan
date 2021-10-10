@@ -30,11 +30,18 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             }
         }
 
-        private void AddToolbarItem_Activated(object sender, System.EventArgs e)
+        private void AddToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
             if (BindingContextPageModel.IsBusy) return;
 
             this.NavigationPushPageAsync(new ConfigurePlayerPage(ReloadPlayer));
+        }
+
+        private void ReloadToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            if (BindingContextPageModel.IsBusy) return;
+
+            ReloadPlayer();
         }
 
         private void PlayerNextButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -197,7 +204,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
 
-            DisplayActionSheet("Reiniciar Guión", "Cancelar", null, SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_IMMEDIATELY).ContinueWith(task =>
+            DisplayActionSheet("Reiniciar Guion", "Cancelar", null, SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_IMMEDIATELY).ContinueWith(task =>
             {
                 if (task.Result == SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE)
                 {
@@ -209,7 +216,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Guión", "Solicitud de reinicio de guión cuando termine el marco actual enviada con éxito.");
+                            Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion cuando termine el marco actual enviada con éxito.");
                         });
                     });
 
@@ -226,7 +233,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Guión", "Solicitud de reinicio de guión inmediatamente enviada con éxito.");
+                            Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion inmediatamente enviada con éxito.");
                         });
                     });
 
@@ -246,7 +253,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
 
-            DisplayActionSheet("Recargar Guión", "Cancelar", null, SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_IMMEDIATELY).ContinueWith(task =>
+            DisplayActionSheet("Recargar Guion", "Cancelar", null, SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_IMMEDIATELY).ContinueWith(task =>
             {
                 if (task.Result == SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE)
                 {
@@ -258,7 +265,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guión", "Solicitud de recarga de guión cuando termine el ciclo actual enviada con éxito.");
+                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
                         });
                     });
 
@@ -275,7 +282,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guión", "Solicitud de recarga de guión cuando termine el marco actual enviada con éxito.");
+                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el marco actual enviada con éxito.");
                         });
                     });
 
@@ -292,7 +299,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guión", "Solicitud de recarga de guión cuando termine el ciclo actual enviada con éxito.");
+                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
                         });
                     });
 
@@ -309,7 +316,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guión", "Solicitud de recarga de guión inmediatamente enviada con éxito.");
+                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guion", "Solicitud de recarga de Guion inmediatamente enviada con éxito.");
                         });
                     });
 
@@ -336,7 +343,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 BindingContextPageModel.IsBusy = true;
 
-                var client = new Cloud.Api.Connect.Clients.PlayersApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
                 var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.PlayerViewModel;
 
@@ -382,7 +389,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlayersApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
                 return await client.GetPaginateAsync();
             }).ContinueWith(task =>

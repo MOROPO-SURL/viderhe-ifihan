@@ -5,6 +5,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
     public partial class ManageImagesPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageImagesPageModel>
     {
+        private int currentItemsPageNumber;
+
         public ManageImagesPage() : base(new Models.Page.ManageImagesPageModel { IsBusy = true })
         {
             InitializeComponent();
@@ -18,7 +20,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (IsEnabled) return;
 
-            LoadImages();
+            RequiredReload_Callback();
 
             IsEnabled = true;
         }
@@ -42,7 +44,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     BindingContextPageModel.IsBusy = true;
                 });
 
-                var client = new Cloud.Api.Connect.Clients.ImagesApiClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
 
                 System.Exception failException = null;
 
@@ -63,7 +65,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Imagen eliminada con éxito.");
 
-                        LoadImages();
+                        RequiredReload_Callback();
                     }
                     else
                     {
@@ -110,7 +112,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         if (targetFileData != null)
                         {
-                            await this.NavigationPushPageAsync(new AddImagePage(targetFileData, OnRequiredReloadAction));
+                            await this.NavigationPushPageAsync(new AddImagePage(targetFileData, RequiredReload_Callback));
                         }
                     }
                     finally
@@ -121,42 +123,54 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             });
         }
 
-        private void OnRequiredReloadAction()
+        private void ReloadToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
-            LoadImages();
+            if (BindingContextPageModel.IsBusy) return;
+
+            RequiredReload_Callback();
         }
 
-        private void LoadImages(int page = 0)
+        private void LoadNextPageButtton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            LoadNextItemsPage();
+        }
+
+        private void RequiredReload_Callback()
+        {
+            LoadNextItemsPage(true);
+        }
+
+        private void LoadNextItemsPage(bool restart = false)
         {
             BindingContextPageModel.IsBusy = true;
 
-            System.Threading.Tasks.Task.Run(async () =>
-            {
-                var client = new Cloud.Api.Connect.Clients.ImagesApiClient(Managers.SessionManager.Instance.HttpClientHelper);
+            if (restart) currentItemsPageNumber = 0;
 
-                return await client.GetPageAsync(page);
-            }).ContinueWith(task =>
+            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+
+            imagesApiConnectClient.GetPageAsync(++currentItemsPageNumber).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    if (task.Exception != null)
+                    if (task.Exception != null || task.IsCanceled)
                     {
                         (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {
-                        if (page == 0)
+                        if (currentItemsPageNumber == 1)
                         {
-                            BindingContextPageModel.Items.Clear();
+                            BindingContextPageModel.Items.Clear();  
                         }
-
 
                         foreach (var item in task.Result.List)
                         {
                             BindingContextPageModel.Items.Add(item.ToViewModel());
                         }
+
+                        BindingContextPageModel.HasMoreItems = task.Result.HasNext && task.Result.List.Count > 0;
                     }
                 });
             });

@@ -4,7 +4,9 @@
     {
         SessionDetail,
         DashboardSettings,
+        DashboardHelp,
         ConfigAccount,
+        ManageModerators,
         ManageExtensions,
         ManageImages,
         ManageVideos,

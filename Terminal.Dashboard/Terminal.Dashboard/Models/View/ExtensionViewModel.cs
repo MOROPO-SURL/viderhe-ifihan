@@ -8,7 +8,7 @@
 
         public Extend.Common.Templating.Descriptors.ITemplateDescriptor[] TemplateDescriptors { get; set; }
 
-        public Extend.Common.Motion.Descriptors.ITransitionDescriptor[] TransitionDescriptors { get; set; }
+        public Extend.Common.Transitioning.Descriptors.ITransitionDescriptor[] TransitionDescriptors { get; set; }
 
         public Extend.Common.Overlaying.Descriptors.IOverlayDescriptor[] OverlayDescriptors { get; set; }
     }

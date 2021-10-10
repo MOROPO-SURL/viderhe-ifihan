@@ -8,7 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
     [Route("api/[area]/[controller]")]
-    [Area("business")]
+    [Area("account")]
     [SAPRESSC.Core.Web.Security.Filters.ChangeUserPasswordRequiredAction]
     [SAPRESSC.Core.Web.Security.Filters.CatchChangeUserPasswordRequiredException]
     public class PlacardsController : SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementController<Persistence.Entities.Placard, System.Guid, PlacardInputModel, PlacardDisplayModel>
@@ -26,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         {
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            return e => e.Account.Id == accountId;
+            return e => e.Account.Id == accountId && e.Template.Enabled;
         }
 
         protected override void PreCreate(Persistence.Entities.Placard entity, PlacardInputModel inputModel)

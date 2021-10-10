@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters"
+    xmlns:helpers="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Helpers"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.EditUserProfilePage"
+    x:TypeArguments="pagemodels:EditUserProfilePageModel"
+    Title="Modificar Perfil de Usuario">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Aplicar"
+            Clicked="ApplyToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Cancelar"
+            Clicked="CancelToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <Grid 
+                    Margin="10"
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Frame 
+                        Grid.Column="0" Grid.Row="0" Grid.RowSpan="4"
+                        Padding="0"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout 
+                            VerticalOptions="FillAndExpand"
+                            Spacing="0">
+                            <Label 
+                                Margin="10,10,10,6"
+                                Text="Imagen"
+                                Style="{StaticResource FormLabel}" />
+                            <BoxView Color="#666666" HeightRequest="1" />
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PickImageActionableView_Clicked" />
+                                </Grid.GestureRecognizers>
+                                <ffimageloadingforms:CachedImage 
+                                    BackgroundColor="Black"
+                                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
+                                    Source="{Binding Path=TargetIdentityImageSource}"
+                                    Aspect="AspectFill"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00" />
+                                <StackLayout 
+                                    HorizontalOptions="Center" VerticalOptions="End"
+                                    Padding="4"
+                                    BackgroundColor="#99000000"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Text="&#xf740;"
+                                        TextColor="White"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="Medium" />
+                                    <Label
+                                        VerticalOptions="Center"
+                                        Margin="0,0,4,0"
+                                        Text="para modificar"
+                                        TextColor="White"
+                                        LineBreakMode="TailTruncation" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Grid.Row="0" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Login" Style="{StaticResource FormLabel}" />
+                            <Entry 
+                                Text="{Binding Path=TargetUserId}"
+                                IsEnabled="False" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Grid.Row="1" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Establecer Contraseña" Style="{StaticResource FormLabel}" />
+                            <Switch 
+                                x:Name="SetPasswordSwitch"
+                                IsToggled="False" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Nueva Contraseña" Style="{StaticResource FormLabel}" />
+                            <Entry 
+                                IsEnabled="{Binding Source={Reference SetPasswordSwitch}, Path=IsToggled}"
+                                IsPassword="True"
+                                Text="{Binding Path=TargetUserNewPassword}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="4" Grid.Row="1" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Confirmar Contraseña" Style="{StaticResource FormLabel}" />
+                            <Entry 
+                                IsEnabled="{Binding Source={Reference SetPasswordSwitch}, Path=IsToggled}"
+                                IsPassword="True"
+                                Text="{Binding Path=TargetUserNewPasswordConfirmation}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Nombre(s)" Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=TargetIdentityName}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="2" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Apellidos" Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=TargetIdentityLastName}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="3" 
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Sexo" Style="{StaticResource FormLabel}" />
+                            <Picker 
+                                ItemsSource="{Binding Source={x:Static helpers:ConstantProvisioningHelper.Instance}, Path=Sex_All}"
+                                ItemDisplayBinding="{Binding Converter={StaticResource StringToLocalizeStringConverter}}"
+                                SelectedItem="{Binding TargetIdentitySex}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.ColumnSpan="5" Grid.Row="4"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Descripción" Style="{StaticResource FormLabel}" />
+                            <Editor HeightRequest="180" Text="{Binding Path=TargetIdentityAbout}" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

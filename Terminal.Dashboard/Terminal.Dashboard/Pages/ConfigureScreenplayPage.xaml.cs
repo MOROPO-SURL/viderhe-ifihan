@@ -19,11 +19,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (editionMode)
             {
-                Title = "Editar Guión";
+                Title = "Modificar Guion";
             }
             else
             {
-                Title = "Agregar Guión";
+                Title = "Agregar Guion";
             }
         }
 
@@ -53,7 +53,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
 
                 if (editionMode)
                 {

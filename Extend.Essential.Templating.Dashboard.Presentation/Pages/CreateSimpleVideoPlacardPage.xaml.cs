@@ -1,4 +1,6 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages
 {
@@ -34,18 +36,17 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiClient(httpClientHelperProvider);
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(httpClientHelperProvider);
 
                 await client.CreateAsync(new Cloud.Api.Common.Models.PlacardInputModel
                 {
                     Label = BindingContextPageModel.Label,
                     TemplateId = templateDescriptor.Id,
+                    PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
                     SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.SimpleVideoPlacardContextModel
                     {
                         RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
-                        VideoId = BindingContextPageModel.Video.Id,
-                        VideoExtension = BindingContextPageModel.Video.Extension,
-                        ThumbnailId = BindingContextPageModel.Video.ThumbnailId
+                        Video = BindingContextPageModel.Video.ToContextModel()
                     })
                 });
             }).ContinueWith((System.Threading.Tasks.Task task) =>
@@ -73,6 +74,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         private void CancelToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
             this.NavigationPopPageAsync();
+        }
+
+        private void VideoPlayButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoDetailPage(BindingContextPageModel.Video));
         }
 
         protected override void DisposeUnmanagementResources()

@@ -26,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
         public PlayerHubClient()
         {
             connection = new HubConnectionBuilder()
-                .WithUrl(string.Format("http://{0}/hubs/player", Managers.ConfigurationManager.Instance.CloudServerHost), options =>
+                .WithUrl(string.Format("http://{0}/hubs/player", Support.Presentation.Managers.SessionMemoryManager.Instance.CloudServerHost), options =>
                 {
                     options.Headers = new System.Collections.Generic.Dictionary<string, string>();
 
@@ -42,13 +42,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
 
             connection.On(nameof(PresentNextFrame), PresentNextFrame);
             connection.On(nameof(PresentPreviousFrame), PresentPreviousFrame);
-            connection.On<ScreenplayHandlingImmediacyMode>(nameof(RestarScreenplay), RestarScreenplay);
+            connection.On<ScreenplayHandlingImmediacyMode>(nameof(RestartScreenplay), RestartScreenplay);
             connection.On<ScreenplayHandlingImmediacyMode>(nameof(ReloadScreenplay), ReloadScreenplay);
             connection.On<bool>(nameof(SetAudioEnabled), SetAudioEnabled);
             connection.On<int>(nameof(SetAudioLevel), SetAudioLevel);
             connection.On<bool>(nameof(Shutdown), Shutdown);
-
-            connection.Closed += Connection_ClosedAsync;
         }
 
         private async System.Threading.Tasks.Task Connection_ClosedAsync(System.Exception arg)
@@ -64,6 +62,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
         {
             if (connection.State == HubConnectionState.Disconnected)
             {
+                connection.Closed += Connection_ClosedAsync;
+
                 connection.StartAsync().ContinueWith(task =>
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
@@ -74,6 +74,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
                     });
                 });
             }
+        }
+
+        public void MakeReleased()
+        {
+            connection.Closed -= Connection_ClosedAsync;
+
+            connection.StopAsync();
         }
 
         public void UpdateEnvironmentConfiguration(int audioLevel, bool isAudioEnabled)
@@ -110,13 +117,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
-        public System.Threading.Tasks.Task RestarScreenplay(ScreenplayHandlingImmediacyMode immediacyMode)
+        public System.Threading.Tasks.Task RestartScreenplay(ScreenplayHandlingImmediacyMode immediacyMode)
         {
             if (Xamarin.Forms.Application.Current.MainPage.Navigation.ModalStack.Count > 0)
             {
                 var screenplayPlayerPage = Xamarin.Forms.Application.Current.MainPage.Navigation.ModalStack.First() as Support.Presentation.Player.Pages.ScreenplayPlayerPage;
 
-                screenplayPlayerPage.RequestRestar(immediacyMode);
+                screenplayPlayerPage.RequestRestart(immediacyMode);
             }
 
             return System.Threading.Tasks.Task.CompletedTask;
@@ -129,6 +136,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
                 var screenplayPlayerPage = Xamarin.Forms.Application.Current.MainPage.Navigation.ModalStack.First() as Support.Presentation.Player.Pages.ScreenplayPlayerPage;
 
                 screenplayPlayerPage.RequestReload(immediacyMode);
+
+                MakeReleased();
             }
 
             return System.Threading.Tasks.Task.CompletedTask;
@@ -172,7 +181,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
 
                 connection.Remove(nameof(PresentNextFrame));
                 connection.Remove(nameof(PresentPreviousFrame));
-                connection.Remove(nameof(RestarScreenplay));
+                connection.Remove(nameof(RestartScreenplay));
                 connection.Remove(nameof(ReloadScreenplay));
 
                 connection.StopAsync().ContinueWith(task =>

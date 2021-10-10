@@ -9,7 +9,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
     [Route("api/[area]/[controller]")]
-    [Area("business")]
+    [Area("account")]
     [ApiController]
     [SAPRESSC.Core.Web.Security.Filters.ChangeUserPasswordRequiredAction]
     [SAPRESSC.Core.Web.Security.Filters.CatchChangeUserPasswordRequiredException]
@@ -32,32 +32,42 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         [HttpGet]
         [HttpGet("page/{page}")]
-        public ActionResult GetPage(int page = 1)
+        public ActionResult<SAPRESSC.Core.Common.Models.PaginationModel<ImageDisplayModel>> GetPage(int page = 1)
         {
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            var limit = 50;
+            var limit = 15;
 
             var account = dbContext.Accounts.Include(e => e.ImageBridges).ThenInclude(b => b.Image).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
 
             var maxCount = account.ImageBridges.Count;
 
-            var offset = (page - 1) * limit;
+            var rest = maxCount % limit;
+
+            var maxPageCount = maxCount / limit;
+
+            if (rest > 0) maxPageCount += 1;
+
+            if (page < 0 || page > maxPageCount)
+            {
+                page = 1;
+            }
 
             return Ok(new SAPRESSC.Core.Common.Models.PaginationModel<ImageDisplayModel>
             {
-                List = account.ImageBridges.Skip(offset).Take(limit).OrderByDescending(b => b.Image.CreateAt).Select((Persistence.Entities.AccountImageBridge bridge) =>
+                List = account.ImageBridges.Select(bridge => bridge.Image).OrderByDescending(e => e.CreateAt).Skip((page - 1) * limit).Take(limit).Select(entity =>
                 {
                     var model = new ImageDisplayModel();
 
-                    model.Import(bridge.Image);
+                    model.Import(entity);
 
                     return model;
                 }).ToList(),
                 Limit = limit,
                 Page = page,
-                HasNext = offset + 1 >= maxCount,
-                HasPrevious = page > 1
+                HasPrevious = page > 1,
+                HasNext = page < maxPageCount,
+                MaxPageCount = maxPageCount
             });
         }
 
@@ -103,11 +113,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                     {
                         using (var thumbnailSkImage = SkiaSharp.SKImage.FromBitmap(thumbnailSkBitmap))
                         {
-                            var thumbnailSkData = thumbnailSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Jpeg, 75);
+                            var thumbnailSkData = thumbnailSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Png, 75);
 
                             image.Thumbnail = new SAPRESSC.Middleware.Media.Persistence.Entities.Thumbnail
                             {
-                                ContentType = "image/jpeg",
+                                ContentType = "image/png",
                                 Length = thumbnailSkData.Size,
                                 About = string.Format(string.Format("Thumbnail: {0}", about))
                             };
@@ -132,7 +142,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpPut]
-        public IActionResult Edit([FromBody] ImageInputModel inputModel)
+        public ActionResult Edit([FromBody] ImageInputModel inputModel)
         {
             if (ModelState.IsValid)
             {

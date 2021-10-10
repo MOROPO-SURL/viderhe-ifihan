@@ -10,7 +10,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
     [Route("api/[area]/[controller]")]
-    [Area("business")]
+    [Area("account")]
     [ApiController]
     [SAPRESSC.Core.Web.Security.Filters.ChangeUserPasswordRequiredAction]
     [SAPRESSC.Core.Web.Security.Filters.CatchChangeUserPasswordRequiredException]
@@ -35,38 +35,48 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         [HttpGet]
         [HttpGet("page/{page}")]
-        public IActionResult GetPage(int page = 1)
+        public ActionResult<SAPRESSC.Core.Common.Models.PaginationModel<VideoDisplayModel>> GetPage(int page = 1)
         {
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            var limit = 50;
+            var limit = 16;
 
             var account = dbContext.Accounts.Include(e => e.VideoBridges).ThenInclude(b => b.Video).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
 
             var maxCount = account.VideoBridges.Count;
 
-            var offset = (page - 1) * limit;
+            var rest = maxCount % limit;
+
+            var maxPageCount = maxCount / limit;
+
+            if (rest > 0) maxPageCount += 1;
+
+            if (page < 0 || page > maxPageCount)
+            {
+                page = 1;
+            }
 
             return Ok(new SAPRESSC.Core.Common.Models.PaginationModel<VideoDisplayModel>
             {
-                List = account.VideoBridges.Skip(offset).Take(limit).OrderByDescending(b => b.Video.CreateAt).Select((Persistence.Entities.AccountVideoBridge bridge) =>
+                List = account.VideoBridges.Select(bridge => bridge.Video).OrderByDescending(b => b.CreateAt).Skip((page - 1) * limit).Take(limit).Select(entity =>
                 {
                     var model = new VideoDisplayModel();
 
-                    model.Import(bridge.Video);
+                    model.Import(entity);
 
                     return model;
                 }).ToList(),
                 Limit = limit,
                 Page = page,
-                HasNext = offset + 1 >= maxCount,
-                HasPrevious = page > 1
+                HasPrevious = page > 1,
+                HasNext = page < maxPageCount,
+                MaxPageCount = maxPageCount
             });
         }
 
         [HttpPut("{videoId}/segment/{segment}")]
         [HttpPut("{videoId}/segment/last")]
-        public async System.Threading.Tasks.Task<IActionResult> PushAsync(System.Guid videoId, Microsoft.AspNetCore.Http.IFormFile file, [FromForm] string about, int segment = 0)
+        public async System.Threading.Tasks.Task<ActionResult> PushAsync(System.Guid videoId, Microsoft.AspNetCore.Http.IFormFile file, [FromForm] string about, int segment = 0)
         {
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
@@ -135,8 +145,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                             video.FrameSize = string.Format("{0}x{1}", videoMediaStream.Width, videoMediaStream.Height);
                             video.Fps = 0;
                             video.ColorModel = videoMediaStream.PixFmt;
-                            video.AudioFormat = auduioMediaStream?.CodecLongName;
-                            video.AudioChannelOutput = auduioMediaStream?.ChannelLayout;
+                            video.AudioFormat = auduioMediaStream?.CodecLongName ?? "Unknown";
+                            video.AudioChannelOutput = auduioMediaStream?.ChannelLayout ?? "Unknown";
 
                             dbContext.Videos.Add(video);
 
@@ -170,7 +180,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpPut]
-        public IActionResult Edit([FromBody] VideoInputModel inputModel)
+        public ActionResult Edit([FromBody] VideoInputModel inputModel)
         {
             if (ModelState.IsValid)
             {

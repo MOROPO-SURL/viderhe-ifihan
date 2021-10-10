@@ -28,7 +28,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (!IsEnabled)
             {
-                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiClient(Managers.SessionManager.Instance);
+                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiConnectClient(Managers.SessionManager.Instance);
 
                 accountApiClient.GetCurrentAsync().ContinueWith(task =>
                 {
@@ -45,9 +45,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             BindingContextPageModel.Name = task.Result.Name;
                             BindingContextPageModel.PrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor);
                             BindingContextPageModel.SecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
-                            BindingContextPageModel.LogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.LogoImageId));
-                            BindingContextPageModel.HorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.HorizontalSplashImageId));
-                            BindingContextPageModel.VerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, task.Result.VerticalSplashImageId));
+                            BindingContextPageModel.LogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, task.Result.LogoImageId));
+                            BindingContextPageModel.HorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, task.Result.HorizontalSplashImageId));
+                            BindingContextPageModel.VerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, task.Result.VerticalSplashImageId));
                             BindingContextPageModel.DefaultOverlay = task.Result.DefaultOverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(task.Result.DefaultOverlayId.Value);
                             BindingContextPageModel.SerializedOverlayContext = task.Result.SerializedOverlayContext;
 

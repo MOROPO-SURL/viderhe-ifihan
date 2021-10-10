@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
+    xmlns:renderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views.Rendered"
+    xmlns:supportpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:icplugin="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Master.SettingsMasterPage"
+    x:TypeArguments="pagemodels:SettingsMasterPageModel"
+    x:Name="Page"
+    Title="Ajustes">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="Fraction" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.IconImageSource>
+        <FontImageSource
+            Glyph="&#xf35c;"
+            FontFamily="{StaticResource IconFontFamily}">
+            <FontImageSource.Color>
+                <OnPlatform x:TypeArguments="Color">
+                    <On Platform="UWP" Value="Black" />
+                </OnPlatform>
+            </FontImageSource.Color>
+        </FontImageSource>
+    </ContentPage.IconImageSource>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Inicio"
+            Clicked="GoHomeToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf2de;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid
+            RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <ListView
+                x:Name="SectionListView"
+                Grid.RowSpan="2"
+                BackgroundColor="GhostWhite"
+                Header="{Binding .}"
+                IsGroupingEnabled="True"
+                GroupDisplayBinding="{Binding Title}"
+                ItemsSource="{Binding Sections}"
+                ItemSelected="SectionListView_ItemSelected">
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell ios:Cell.DefaultBackgroundColor="GhostWhite">
+                            <Label
+                                Margin="10"
+                                Text="{Binding Path=Title}"
+                                TextColor="DimGray" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid
+                            Grid.Row="0"
+                            HeightRequest="{Binding Source={x:Reference Page}, Path=Width, Converter={StaticResource Fraction}, ConverterParameter=1.5, Mode=OneWay}">
+                            <supportpresentationviews:IdentityBackgroundView />
+                            <Grid Margin="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="0" VerticalOptions="Center">
+                                    <icplugin:CircleImage
+                                        HorizontalOptions="Center"
+                                        BorderThickness="2"
+                                        BorderColor="WhiteSmoke"
+                                        HeightRequest="96" WidthRequest="96"
+                                        Source="{Binding Path=Moderator.ImageSource}" />
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label
+                                        Text="{Binding Path=Moderator.Model.User.Id}"
+                                        TextColor="White"
+                                        FontSize="Medium" />
+                                    <Label 
+                                        Text="{Binding Path=Moderator.FullName}" 
+                                        TextColor="WhiteSmoke" />
+                                </StackLayout>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <OnPlatform x:TypeArguments="DataTemplate">
+                        <On Platform="UWP">
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Margin="10">
+                                        <Label 
+                                            Text="{Binding Path=Glyph}" 
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand"
+                                            FontSize="Medium"
+                                            FontFamily="{Binding Path=FontFamily}"
+                                            Margin="0,0,4,0" />
+                                        <Label 
+                                            Text="{Binding Path=Title}" 
+                                            TextColor="Black"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </On>
+                        <On Platform="Android,iOS">
+                            <DataTemplate>
+                                <renderedviews:IconImageCell
+                                    Text="{Binding Title}"
+                                    TextColor="Black">
+                                    <ImageCell.ImageSource>
+                                        <FontImageSource 
+                                            Glyph="{Binding Glyph}"
+                                            FontFamily="{Binding FontFamily}"
+                                            Color="Black" />
+                                    </ImageCell.ImageSource>
+                                </renderedviews:IconImageCell>
+                            </DataTemplate>
+                        </On>
+                    </OnPlatform>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <StackLayout Spacing="5" Margin="10,60,10,10">
+                        <BoxView Color="Black" HeightRequest="1" />
+                        <Label 
+                            FontSize="15"
+                            HorizontalTextAlignment="Center"
+                            Text="Viderhe Control"
+                            TextColor="Black" />
+                        <Label 
+                            FontSize="11" 
+                            HorizontalTextAlignment="Center"
+                            Text="© 2020-2021 SMART SOLUCIONES CUBA"
+                            TextColor="DimGray" />
+                        <Label 
+                            FontSize="11" 
+                            HorizontalTextAlignment="Center"
+                            Text="Todos los derechos reservados"
+                            TextColor="Gray" />
+                    </StackLayout>
+                </ListView.Footer>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

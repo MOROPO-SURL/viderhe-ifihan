@@ -1,27 +1,32 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
     public class ManageProgrammingPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {
-        private readonly System.Action<View.ScreenplayViewModel> selectedScreenplayCallbackAction;
+        private readonly System.Action<ScreenplayViewModel> selectedScreenplayCallbackAction;
 
-        public ManageProgrammingPageModel(System.Action<View.ScreenplayViewModel> selectedScreenplayCallbackAction)
+        private ScreenplayViewModel[] screenplays;
+        private Support.Presentation.Models.View.FrameViewModel[] frames;
+        private bool hasMorePlacards;
+        private ScreenplayViewModel selectedScreenPlay;
+        private bool useExpandedLayout;
+        private System.Collections.ObjectModel.ObservableCollection<PlacardOverviewViewModel> placardOverviews;
+
+        public ManageProgrammingPageModel(System.Action<ScreenplayViewModel> selectedScreenplayCallbackAction)
         {
             this.selectedScreenplayCallbackAction = selectedScreenplayCallbackAction;
 
-            Screenplays = new View.ScreenplayViewModel[] { };
+            Screenplays = new ScreenplayViewModel[] { };
             Frames = new Support.Presentation.Models.View.FrameViewModel[] { };
-            Placards = new System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Models.View.PlacardViewModel>();
+            PlacardOverviews = new System.Collections.ObjectModel.ObservableCollection<PlacardOverviewViewModel>();
         }
 
-        private View.ScreenplayViewModel[] screenplays;
-
-        public View.ScreenplayViewModel[] Screenplays
+        public ScreenplayViewModel[] Screenplays
         {
             get => screenplays;
             set => SetProperty(ref screenplays, value);
         }
-
-        private Support.Presentation.Models.View.FrameViewModel[] frames;
 
         public Support.Presentation.Models.View.FrameViewModel[] Frames
         {
@@ -29,9 +34,9 @@
             set => SetProperty(ref frames, value);
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Models.View.PlacardViewModel> Placards { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<PlacardOverviewViewModel> PlacardOverviews { get => placardOverviews; set => SetProperty(ref placardOverviews, value); }
 
-        private View.ScreenplayViewModel selectedScreenPlay;
+        public bool HasMorePlacards { get => hasMorePlacards; set => SetProperty(ref hasMorePlacards, value); }
 
         public View.ScreenplayViewModel SelectedScreenplay
         {
@@ -41,6 +46,8 @@
                 selectedScreenplayCallbackAction?.Invoke(value);
             });
         }
+
+        public bool UseExpandedLayout { get => useExpandedLayout; set => SetProperty(ref useExpandedLayout, value); }
 
         protected override void DisposeUnmanagementResources()
         {
@@ -52,14 +59,14 @@
 
             Frames = null;
 
-            foreach (var item in Placards)
+            foreach (var item in PlacardOverviews)
             {
                 item.Dispose();
             }
 
-            Placards.Clear();
+            PlacardOverviews.Clear();
 
-            Placards = null;
+            PlacardOverviews = null;
         }
     }
 }

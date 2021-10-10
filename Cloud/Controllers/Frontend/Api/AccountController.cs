@@ -8,8 +8,7 @@ using System.Linq;
 namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
-    [Route("api/[area]/[controller]")]
-    [Area("business")]
+    [Route("api/[controller]")]
     [SAPRESSC.Core.Web.Security.Filters.ChangeUserPasswordRequiredAction]
     [SAPRESSC.Core.Web.Security.Filters.CatchChangeUserPasswordRequiredException]
     public class AccountController : SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementController<Account, System.Guid, AccountInputModel, AccountDisplayModel>
@@ -48,27 +47,27 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             return Ok(model);
         }
 
-        public override IActionResult Get()
+        public override ActionResult<AccountDisplayModel[]> Get()
         {
             return NotFound();
         }
 
-        public override IActionResult Get(System.Guid key)
+        public override ActionResult<AccountDisplayModel> Get(System.Guid key)
         {
             return NotFound();
         }
 
-        public override IActionResult GetPaginate(int sheet = 1, int limit = 25)
+        public override ActionResult<SAPRESSC.Core.Common.Models.PaginationModel<AccountDisplayModel>> GetPaginate(int sheet = 1, int limit = 25)
         {
             return NotFound();
         }
 
-        public override IActionResult Create([FromBody] AccountInputModel inputModel)
+        public override ActionResult Create([FromBody] AccountInputModel inputModel)
         {
             return NotFound();
         }
 
-        public override IActionResult Edit([FromBody] AccountInputModel inputModel)
+        public override ActionResult Edit([FromBody] AccountInputModel inputModel)
         {
             if (inputModel.Id != System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value))
             {
@@ -78,7 +77,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             return base.Edit(inputModel);
         }
 
-        public override IActionResult Delete(System.Guid key)
+        public override ActionResult Delete(System.Guid key)
         {
             return NotFound();
         }

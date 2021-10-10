@@ -7,8 +7,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 {
     public sealed class SessionManager : SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
-        private const string LAST_CLOUD_SERVER_KEY = "last-cloud-server";
-
         private static SessionManager instance;
 
         public static SessionManager Instance
@@ -21,14 +19,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                 }
 
                 return instance;
-            }
-        }
-
-        private SessionManager()
-        {
-            if (Application.Current.Properties.ContainsKey(LAST_CLOUD_SERVER_KEY))
-            {
-                Server = Application.Current.Properties[LAST_CLOUD_SERVER_KEY] as string;
             }
         }
 
@@ -50,16 +40,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
             }
         }
 
-        public bool HasAuthenticatedIdentity => ModeratorLogin != null;
+        public bool HasAuthenticatedIdentity => Moderator != null;
 
-        public SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("http://{0}/api/", Server), () => AuthorizeHeader, null);
+        public SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("http://{0}/api/", Support.Presentation.Managers.SessionMemoryManager.Instance.Server), () => AuthorizeHeader, null);
 
-        public string Server { get; private set; }
         public string AuthenticationType { get; private set; }
         public string AuthorizationToken { get; private set; }
-        public string ModeratorLogin { get; private set; }
-        public string ModeratorName { get; private set; }
-        public ImageSource ModeratorPictureImageSource { get; private set; }
+        public Cloud.Api.Common.Models.ModeratorDisplayModel Moderator { get; private set; }
         public System.Guid AccountId { get; private set; }
         public string AccountName { get; private set; }
         public Color AccountPrimaryColor { get; private set; }
@@ -76,16 +63,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
             AccountName = name;
             AccountPrimaryColor = primaryColor;
             AccountSecoundaryColor = secoundaryColor;
-            AccountLogoImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, logoImageId));
-            AccountHorizontalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, horizontalSplashImageId));
-            AccountVerticalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, verticalSplashImageId));
+            AccountLogoImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, logoImageId));
+            AccountHorizontalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, horizontalSplashImageId));
+            AccountVerticalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, verticalSplashImageId));
             AccountDefaultOverlayId = defaultOverlay?.Id ?? null;
             AccountSerializedOverlayContext = serializedOverlayContext;
         }
 
         public async System.Threading.Tasks.Task UpdateAccountInformationAsync(string name, Color primaryColor, Color secoundaryColor, Plugin.FilePicker.Abstractions.FileData logoFileData, Plugin.FilePicker.Abstractions.FileData horizontalSplashFileData, Plugin.FilePicker.Abstractions.FileData verticalSplashFileData, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
         {
-            var client = new Cloud.Api.Connect.Clients.AccountApiClient(this);
+            var client = new Cloud.Api.Connect.Clients.AccountApiConnectClient(this);
 
             var input = new Cloud.Api.Common.Models.AccountInputModel
             {
@@ -154,9 +141,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
         public async System.Threading.Tasks.Task SignInAsync(string server, string login, string password)
         {
-            Server = server;
-
-            var userApiClient = new Cloud.Api.Connect.Clients.UserApiClient(HttpClientHelper);
+            var userApiClient = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 
             var result = await userApiClient.AuthenticateAsync(new Cloud.Api.Common.Models.AuthenticationIntentModel
             {
@@ -164,20 +149,17 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                 Password = password
             });
 
-            Application.Current.Properties[LAST_CLOUD_SERVER_KEY] = server;
+            Support.Presentation.Managers.SessionMemoryManager.Instance.Server = server;
 
-            await Application.Current.SavePropertiesAsync();
+            Support.Presentation.Managers.SessionMemoryManager.Instance.Persist();
 
             AuthenticationType = result.Type;
             AuthorizationToken = result.Token;
-            ModeratorLogin = login;
-            ModeratorName = result.Identity.LastName == null ? result.Identity.Name : string.Format("{0} {1}", result.Identity.Name, result.Identity.LastName);
-            // TODO Handle no result.Identity.Image null !!
-            ModeratorPictureImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, result.Identity.Image.Id));
+            Moderator = result.Moderator;
 
             try
             {
-                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiClient(this);
+                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiConnectClient(this);
 
                 var model = await accountApiClient.GetCurrentAsync();
 
@@ -189,47 +171,51 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
                 AccountExtensions = model.Extensions.ToArray();
 
-                var dynamicLoadExtensions = AccountExtensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID && item.Id != Extend.CPCC.Descriptors.CPCCExtensionDescriptor.ID).ToArray();
-
-                foreach (var accountExtension in dynamicLoadExtensions)
+                // MotoTouch does not support dynamic assembly loading
+                if (Device.RuntimePlatform != Device.iOS)
                 {
-                    var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString()));
+                    var dynamicLoadExtensions = AccountExtensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID).ToArray();
 
-                    if (!extensionDirectoryInfo.Exists)
+                    foreach (var accountExtension in dynamicLoadExtensions)
                     {
-                        extensionDirectoryInfo.Create();
+                        var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString(), accountExtension.Version));
 
-                        await DownloadAccountExtensionBundle(accountExtension.Id, extensionDirectoryInfo);
-                    }
-
-                    var extensionLibraryFileInfos = extensionDirectoryInfo.GetFiles();
-
-                    if (extensionLibraryFileInfos.Length <= 0)
-                    {
-                        await DownloadAccountExtensionBundle(accountExtension.Id, extensionDirectoryInfo);
-                    }
-
-                    foreach (var extensionLibraryFileInfo in extensionLibraryFileInfos)
-                    {
-                        var assembly = System.Reflection.Assembly.LoadFrom(extensionLibraryFileInfo.FullName);
-
-                        System.AppDomain.CurrentDomain.Load(assembly.GetName());
-
-                        var attributes = assembly.GetCustomAttributesSafe(typeof(ExportFontAttribute));
-
-                        if (attributes == null || attributes.Length == 0) continue;
-
-                        var length = attributes.Length;
-
-                        for (var i = 0; i < length; i++)
+                        if (!extensionDirectoryInfo.Exists)
                         {
-                            var a = attributes[i];
+                            extensionDirectoryInfo.Create();
 
-                            var attribute = a as HandlerAttribute;
+                            await DownloadAccountExtensionBundleAsync(accountExtension.Id, extensionDirectoryInfo);
+                        }
 
-                            if (attribute == null && (a is ExportFontAttribute fa))
+                        var extensionLibraryFileInfos = extensionDirectoryInfo.GetFiles();
+
+                        if (extensionLibraryFileInfos.Length <= 0)
+                        {
+                            await DownloadAccountExtensionBundleAsync(accountExtension.Id, extensionDirectoryInfo);
+                        }
+
+                        foreach (var extensionLibraryFileInfo in extensionLibraryFileInfos)
+                        {
+                            var assembly = System.Reflection.Assembly.LoadFrom(extensionLibraryFileInfo.FullName);
+
+                            System.AppDomain.CurrentDomain.Load(assembly.GetName());
+
+                            var attributes = assembly.GetCustomAttributesSafe(typeof(ExportFontAttribute));
+
+                            if (attributes == null || attributes.Length == 0) continue;
+
+                            var length = attributes.Length;
+
+                            for (var i = 0; i < length; i++)
                             {
-                                Xamarin.Forms.Internals.FontRegistrar.Register(fa, assembly);
+                                var a = attributes[i];
+
+                                var attribute = a as HandlerAttribute;
+
+                                if (attribute == null && (a is ExportFontAttribute fa))
+                                {
+                                    Xamarin.Forms.Internals.FontRegistrar.Register(fa, assembly);
+                                }
                             }
                         }
                     }
@@ -247,9 +233,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
         {
             AuthenticationType = null;
             AuthorizationToken = null;
-            ModeratorLogin = null;
-            ModeratorName = null;
-            ModeratorPictureImageSource = null;
+            Moderator = null;
 
             AccountId = System.Guid.Empty;
             AccountName = null;
@@ -265,7 +249,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
         public async System.Threading.Tasks.Task ChangePasswordAsync(string oldPassword, string newPassword)
         {
-            var client = new Cloud.Api.Connect.Clients.UserApiClient(HttpClientHelper);
+            var client = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 
             await client.ChangePasswordAsync(new Cloud.Api.Common.Models.UserPasswordChangeRequestModel
             {
@@ -274,23 +258,17 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
             });
         }
 
-        private async System.Threading.Tasks.Task DownloadAccountExtensionBundle(System.Guid extensionId, System.IO.DirectoryInfo extensionDirectoryInfo)
+        private async System.Threading.Tasks.Task DownloadAccountExtensionBundleAsync(System.Guid extensionId, System.IO.DirectoryInfo extensionDirectoryInfo)
         {
-            using (var httpClient = new System.Net.Http.HttpClient { BaseAddress = new System.Uri(string.Format("http://{0}/", Server)) })
+            var extensionsApiConnectClient = new Cloud.Api.Connect.Clients.ExtensionsApiConnectClient(HttpClientHelper);
+
+            var extensionBundleModules = await extensionsApiConnectClient.GetDashboardBundleModulesAsync(extensionId);
+
+            foreach (var extensionBundleModule in extensionBundleModules)
             {
-                var extensionBundleStream = await httpClient.GetStreamAsync(string.Format("extensions/dashboardbundle/{0}", extensionId));
-
-                var extensionBundleZipArchive = new System.IO.Compression.ZipArchive(extensionBundleStream);
-
-                foreach (var zipEntry in extensionBundleZipArchive.Entries)
+                using (var extensionLibraryFileStream = System.IO.File.Create(System.IO.Path.Combine(extensionDirectoryInfo.FullName, extensionBundleModule.FileName)))
                 {
-                    using (var extensionLibraryFileStream = System.IO.File.Create(System.IO.Path.Combine(extensionDirectoryInfo.FullName, zipEntry.Name)))
-                    {
-                        using (var unzippedEntryStream = zipEntry.Open())
-                        {
-                            unzippedEntryStream.CopyTo(extensionLibraryFileStream);
-                        }
-                    }
+                    extensionLibraryFileStream.Write(extensionBundleModule.FileContent, 0, extensionBundleModule.FileContent.Length);
                 }
             }
         }

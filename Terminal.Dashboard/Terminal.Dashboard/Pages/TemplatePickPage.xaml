@@ -34,50 +34,57 @@
                         <DataTemplate>
                             <Grid 
                                 Margin="5"
-                                BackgroundColor="White"
-                                WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}">
+                                WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
+                                RowSpacing="0">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid
                                     Grid.Row="0"
                                     HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width}">
-                                    <supportpresentationviews:IdentityBackgroundView />
+                                    <BoxView Color="White" Opacity="0.2" />
                                     <Label
                                         IsVisible="{Binding Path=PlayerOrientationSupport, Converter={StaticResource IsAnyPlayerOrientationSupportKindToBooleanConverter}}"
                                         HorizontalOptions="End" VerticalOptions="Start"
-                                        Margin="6,4"
-                                        Text="&#xf56c;"
-                                        TextColor="White"
+                                        Margin="8"
+                                        Text="&#xf884;"
+                                        TextColor="Black"
                                         FontFamily="Material Design Icons"
-                                        FontSize="24"/>
+                                        FontSize="28" />
                                     <ContentView Content="{Binding Converter={StaticResource TemplateViewModelToTemplateThumbnailWrapViewConverter}}" />
-                                </Grid>                                
-                                <Label 
+                                </Grid>
+                                <Grid
                                     Grid.Row="1"
-                                    Text="{Binding Path=Name}"
-                                    FontAttributes="Bold"
-                                    Margin="8,0"
-                                    LineBreakMode="TailTruncation"
-                                    MaxLines="2" />
-                                <Label 
-                                    Grid.Row="2"
-                                    Margin="8,0"
-                                    Text="{Binding Path=About}"
-                                    TextColor="DimGray"
-                                    LineBreakMode="TailTruncation"
-                                    MaxLines="2" />
-                                <StackLayout                                 
-                                    Grid.Row="3"
-                                    BackgroundColor="LightGray"
-                                    Padding="2">
+                                    BackgroundColor="White"
+                                    HeightRequest="148"
+                                    RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.Row="0"
+                                        Text="{Binding Path=Name}"
+                                        FontAttributes="Bold"
+                                        Padding="8,8,8,4"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="2" />
+                                    <Label 
+                                        Grid.Row="1"
+                                        Padding="8,0,8,8"
+                                        Text="{Binding Path=About}"
+                                        TextColor="DimGray"
+                                        LineBreakMode="TailTruncation"
+                                        MaxLines="4" />
                                     <Button 
-                                    Text="Seleccionar" 
-                                    Clicked="TemplateOverviewSelectButton_Clicked" />
-                                </StackLayout>
+                                        Grid.Row="2"
+                                        Style="{StaticResource WhiteTextColorButton}"
+                                        BackgroundColor="{StaticResource AccentColor}"
+                                        Text="Seleccionar"
+                                        Clicked="TemplateOverviewSelectButton_Clicked" />
+                                </Grid>
                             </Grid>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
