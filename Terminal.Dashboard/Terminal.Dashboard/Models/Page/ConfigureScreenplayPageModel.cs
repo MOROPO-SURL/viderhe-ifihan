@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class ConfigureScreenplayPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ConfigureScreenplayPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
         private string title;
         private string about;
