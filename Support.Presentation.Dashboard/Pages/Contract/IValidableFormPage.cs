@@ -5,9 +5,7 @@
         void AddValidationBehavior(Behaviors.Contract.IFormFieldValidationBehavior validationBehavior);
 
         void RemoveValidationBehavior(Behaviors.Contract.IFormFieldValidationBehavior validationBehavior);
-
-        void PresentAsNotValid(Xamarin.Forms.View view, Xamarin.Forms.Label label, string message);
-
-        void PresentAsValid(Xamarin.Forms.View view, Xamarin.Forms.Label label);
+        
+        void AddValidationMessage(string label, string message);
     }
 }

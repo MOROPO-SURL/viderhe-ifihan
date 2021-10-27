@@ -15,6 +15,8 @@
 
         public Pages.Contract.IValidableFormPage ValidableFormPage { get; set; }
 
+        public Presenters.Contract.IFormFieldValidationPresenter FormFieldValidationPresenter { get; set; }
+
         public System.Collections.ObjectModel.ObservableCollection<Validators.Contract.IFormFieldValidator> Validators { get; private set; }
 
         public bool Evaluate()
@@ -25,13 +27,15 @@
                 
                 if (result != null)
                 {
-                    ValidableFormPage?.PresentAsNotValid(target, Label, result);
+                    FormFieldValidationPresenter?.PresentFormFieldAsNotValid(target, Label, result);
+
+                    ValidableFormPage.AddValidationMessage(Label.Text, result);
 
                     return false;
                 }
             }
 
-            ValidableFormPage?.PresentAsValid(target, Label);
+            FormFieldValidationPresenter?.PresentFormFieldAsValid(target, Label);
 
             return true;
         }

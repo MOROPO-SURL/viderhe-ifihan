@@ -5,6 +5,7 @@
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Presentation.Models.Page"
     xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardpresenters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Presenters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
@@ -109,6 +110,7 @@
                                 <Entry.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
                                         TargetProperty="{Static Entry.TextProperty}"
                                         Label="{Reference HeaderLabel}">
                                         <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
@@ -131,6 +133,7 @@
                                 <Editor.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEditorValidationPresenter.Instance}"
                                         TargetProperty="{Static Editor.TextProperty}"
                                         Label="{Reference HighlightsLabel}">
                                         <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>

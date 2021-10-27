@@ -8,6 +8,7 @@
     xmlns:validators="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Validators"
     xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardpresenters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Presenters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
@@ -166,6 +167,7 @@
                                 <Entry.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
                                         TargetProperty="{Static Entry.TextProperty}"
                                         Label="{Reference TargetUserIdLabel}">
                                         <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
@@ -211,6 +213,7 @@
                                 <Entry.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
                                         TargetProperty="{Static Entry.TextProperty}"
                                         Label="{Reference NewPasswordLabel}">
                                         <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
@@ -234,6 +237,7 @@
                                 <Entry.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
                                         TargetProperty="{Static Entry.TextProperty}"
                                         Label="{Reference PasswordConfirmationLabel}">
                                         <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
@@ -260,6 +264,7 @@
                                 <Entry.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
                                         TargetProperty="{Static Entry.TextProperty}"
                                         Label="{Reference FirstNameLabel}">
                                         <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
@@ -280,6 +285,7 @@
                                 <Entry.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
                                         TargetProperty="{Static Entry.TextProperty}"
                                         Label="{Reference LastNameLabel}">
                                         <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>

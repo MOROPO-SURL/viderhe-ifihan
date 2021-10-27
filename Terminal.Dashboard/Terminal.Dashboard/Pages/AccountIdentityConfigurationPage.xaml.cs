@@ -355,40 +355,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             validationBehaviors.Remove(validationBehavior);
         }
 
-        public void PresentAsNotValid(Xamarin.Forms.View view, Xamarin.Forms.Label label, string message)
+        public void AddValidationMessage(string label, string message)
         {
-            view.BackgroundColor = Xamarin.Forms.Color.Tomato;
-
-            if (view is Xamarin.Forms.Entry)
-            {                
-                (view as Xamarin.Forms.Entry).TextColor = Xamarin.Forms.Color.White;
-            }
-
-            if (view is Xamarin.Forms.Picker)
-            {
-                (view as Xamarin.Forms.Picker).TextColor = Xamarin.Forms.Color.White;
-            }
-
             BindingContextPageModel.ValidationMessages.Add(new Support.Presentation.Dashboard.Models.View.ValidationMessageViewModel
             {
-                Caption = label.Text,
+                Caption = label,
                 Message = message
             });
-        }
-
-        public void PresentAsValid(Xamarin.Forms.View view, Xamarin.Forms.Label label)
-        {
-            view.BackgroundColor = Xamarin.Forms.Color.White;
-
-            if (view is Xamarin.Forms.Entry)
-            {                
-                (view as Xamarin.Forms.Entry).TextColor = Xamarin.Forms.Color.Black;
-            }
-
-            if (view is Xamarin.Forms.Picker)
-            {
-                (view as Xamarin.Forms.Picker).TextColor = Xamarin.Forms.Color.Black;
-            }
         }
 
         #endregion
