@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters"
+    xmlns:validators="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Validators"
     xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
@@ -164,14 +165,28 @@
                         Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Carátula" Style="{StaticResource FormLabel}" />
+                            <Label 
+                                x:Name="OverlayLabel"
+                                Text="Carátula" 
+                                Style="{StaticResource FormLabel}" />
                             <StackLayout Orientation="Horizontal">
                                 <Picker
                                     x:Name="OverlayPicker"
                                     HorizontalOptions="FillAndExpand"
                                     ItemsSource="{Binding Path=AvailableOverlays}"
                                     ItemDisplayBinding="{Binding Converter={x:StaticResource OverlayDescriptorToStringConverter}}"
-                                    SelectedIndexChanged="OverlayPicker_SelectedIndexChanged"/>
+                                    SelectedIndexChanged="OverlayPicker_SelectedIndexChanged">
+                                    <Picker.Behaviors>
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                            ValidableFormPage="{Reference FormPage}"
+                                            TargetProperty="{Static Picker.SelectedItemProperty}"
+                                            Label="{Reference OverlayLabel}">
+                                            <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                <validators:OverlayFormFieldValidator ConfigurationPage="{Reference FormPage}" />
+                                            </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                    </Picker.Behaviors>
+                                </Picker>
                                 <Button 
                                     IsEnabled="{Binding Overlay, Converter={StaticResource NotNullToBooleanConverter}}"
                                     FontFamily="{StaticResource IconFontFamily}"

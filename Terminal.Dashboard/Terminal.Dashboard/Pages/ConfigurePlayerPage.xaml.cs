@@ -1,9 +1,11 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
-using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
-    public partial class ConfigurePlayerPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigurePlayerPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class ConfigurePlayerPage : 
+        XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigurePlayerPageModel>, 
+        Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage,
+        Contract.IOverlayContextConfigurationPage
     {
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
@@ -45,12 +47,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 IsEnabled = true;
 
-                System.Threading.Tasks.Task.Run(async () =>
-                {
-                    var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
 
-                    return await client.GetPaginateAsync();
-                }).ContinueWith(task =>
+                client.GetPaginateAsync().ContinueWith(task =>
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
@@ -278,6 +277,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 //Support.Presentation.Dashboard.Helpers.BorderEffectPresentationHelper.SetHasBorderEffect(view, false);
             }
+        }
+
+        #endregion
+
+        #region IOverlayContextConfigurationPage implementation
+
+        public string GetCurrentSerializedOverlayContext()
+        {
+            return BindingContextPageModel.SerializedOverlayContext;
         }
 
         #endregion

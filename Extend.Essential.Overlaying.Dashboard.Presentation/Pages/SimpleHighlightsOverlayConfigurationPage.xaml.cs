@@ -2,13 +2,17 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Presentation.Pages
 {
-    public partial class SimpleHighlightsOverlayConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.SimpleHighlightsOverlayConfigurationPageModel>
+    public partial class SimpleHighlightsOverlayConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.SimpleHighlightsOverlayConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
+        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+
         private System.Action<string> successfulCompleteCallbackAction;
 
         public SimpleHighlightsOverlayConfigurationPage(string serializedContext, System.Action<string> successfulCompleteCallbackAction)
             : base(Factories.SimpleHighlightsOverlayConfigurationPageModelFactory.Build(serializedContext))
         {
+            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+
             InitializeComponent();
 
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
@@ -16,6 +20,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Pres
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
+            BindingContextPageModel.ResetValidationState();
+
+            foreach (var validationBehavior in validationBehaviors)
+            {
+                var result = validationBehavior.Evaluate();
+
+                if (!BindingContextPageModel.IsValid) continue;
+
+                if (!result) BindingContextPageModel.IsValid = false;
+            }
+
+            if (!BindingContextPageModel.IsValid) return;
+
             this.NavigationPopPageAsync();
 
             successfulCompleteCallbackAction.Invoke(Newtonsoft.Json.JsonConvert.SerializeObject(new Overlaying.Presentation.Models.Context.SimpleHighlightsContextModel
@@ -36,5 +53,55 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Pres
 
             successfulCompleteCallbackAction = null;
         }
+
+        #region IValidableFormPage implementation
+
+        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Add(validationBehavior);
+        }
+
+        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Remove(validationBehavior);
+        }
+
+        public void PresentAsNotValid(Xamarin.Forms.View view, Xamarin.Forms.Label label, string message)
+        {
+            view.BackgroundColor = Xamarin.Forms.Color.Tomato;
+
+            if (view is Xamarin.Forms.Entry)
+            {
+                (view as Xamarin.Forms.Entry).TextColor = Xamarin.Forms.Color.White;
+            }
+
+            if (view is Xamarin.Forms.Editor)
+            {
+                (view as Xamarin.Forms.Editor).TextColor = Xamarin.Forms.Color.White;
+            }
+
+            BindingContextPageModel.ValidationMessages.Add(new Support.Presentation.Dashboard.Models.View.ValidationMessageViewModel
+            {
+                Caption = label.Text,
+                Message = message
+            });
+        }
+
+        public void PresentAsValid(Xamarin.Forms.View view, Xamarin.Forms.Label label)
+        {
+            view.BackgroundColor = Xamarin.Forms.Color.White;
+
+            if (view is Xamarin.Forms.Entry)
+            {
+                (view as Xamarin.Forms.Entry).TextColor = Xamarin.Forms.Color.Black;
+            }
+
+            if (view is Xamarin.Forms.Editor)
+            {
+                (view as Xamarin.Forms.Editor).TextColor = Xamarin.Forms.Color.Black;
+            }
+        }
+
+        #endregion
     }
 }

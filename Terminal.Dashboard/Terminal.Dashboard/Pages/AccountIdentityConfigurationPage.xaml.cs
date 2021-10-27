@@ -2,8 +2,13 @@
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
-    public partial class AccountIdentityConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AccountIdentityConfigurationPageModel>
+    public partial class AccountIdentityConfigurationPage : 
+        XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AccountIdentityConfigurationPageModel>, 
+        Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage,
+        Contract.IOverlayContextConfigurationPage
     {
+        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+
         private bool pageModelHasChanges;
 
         private Plugin.FilePicker.Abstractions.FileData newLogoFileData;
@@ -15,6 +20,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             IsBusy = true
         })
         {
+            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+
             InitializeComponent();
 
             BindingContextPageModel.PropertyChanged += PageModelPropertyChanged;
@@ -97,7 +104,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             else if (BindingContextPageModel.DefaultOverlay != null && BindingContextPageModel.SerializedOverlayContext == null)
             {
                 BindingContextPageModel.SerializedOverlayContext = Providers.OverlayDefaultSerializedContextProvider.Instance.GetOverlayDefaultContextModel(BindingContextPageModel.DefaultOverlay);
-            }            
+            }
         }
 
         private void SelectedOverlayClearButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -127,6 +134,19 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 return;
             }
+
+            BindingContextPageModel.ResetValidationState();
+
+            foreach (var validationBehavior in validationBehaviors)
+            {
+                var result = validationBehavior.Evaluate();
+
+                if (!BindingContextPageModel.IsValid) continue;
+
+                if (!result) BindingContextPageModel.IsValid = false;
+            }
+
+            if (!BindingContextPageModel.IsValid) return;
 
             BindingContextPageModel.IsBusy = true;
 
@@ -322,5 +342,64 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             BindingContextPageModel.PropertyChanged -= PageModelPropertyChanged;
         }
+
+        #region IValidableFormPage implementation
+
+        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Add(validationBehavior);
+        }
+
+        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Remove(validationBehavior);
+        }
+
+        public void PresentAsNotValid(Xamarin.Forms.View view, Xamarin.Forms.Label label, string message)
+        {
+            view.BackgroundColor = Xamarin.Forms.Color.Tomato;
+
+            if (view is Xamarin.Forms.Entry)
+            {                
+                (view as Xamarin.Forms.Entry).TextColor = Xamarin.Forms.Color.White;
+            }
+
+            if (view is Xamarin.Forms.Picker)
+            {
+                (view as Xamarin.Forms.Picker).TextColor = Xamarin.Forms.Color.White;
+            }
+
+            BindingContextPageModel.ValidationMessages.Add(new Support.Presentation.Dashboard.Models.View.ValidationMessageViewModel
+            {
+                Caption = label.Text,
+                Message = message
+            });
+        }
+
+        public void PresentAsValid(Xamarin.Forms.View view, Xamarin.Forms.Label label)
+        {
+            view.BackgroundColor = Xamarin.Forms.Color.White;
+
+            if (view is Xamarin.Forms.Entry)
+            {                
+                (view as Xamarin.Forms.Entry).TextColor = Xamarin.Forms.Color.Black;
+            }
+
+            if (view is Xamarin.Forms.Picker)
+            {
+                (view as Xamarin.Forms.Picker).TextColor = Xamarin.Forms.Color.Black;
+            }
+        }
+
+        #endregion
+
+        #region IOverlayContextConfigurationPage implementation
+
+        public string GetCurrentSerializedOverlayContext()
+        {
+            return BindingContextPageModel.SerializedOverlayContext;
+        }
+
+        #endregion
     }
 }
