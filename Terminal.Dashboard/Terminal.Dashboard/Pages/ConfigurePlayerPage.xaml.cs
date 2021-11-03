@@ -11,6 +11,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private bool pageModelHasChanges;
         private readonly bool editing;
+        private Extend.Common.Overlaying.Descriptors.IOverlayDescriptor recoverableOverlay;
+        private string recoverableSerializedOverlayContext;
 
         private System.Action successCallbackAction;
 
@@ -37,6 +39,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             BindingContextPageModel.PropertyChanged += PageModel_PropertyChanged;
 
             IsEnabled = false;
+
+            recoverableOverlay = BindingContextPageModel.Overlay;
+            recoverableSerializedOverlayContext = BindingContextPageModel.SerializedOverlayContext;
         }
 
         protected override void OnAppearing()
@@ -123,12 +128,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             if (BindingContextPageModel == null || BindingContextPageModel.IsBusy) return;
 
             BindingContextPageModel.Overlay = (target as Xamarin.Forms.Picker).SelectedItem as Extend.Common.Overlaying.Descriptors.IOverlayDescriptor;
+            BindingContextPageModel.SerializedOverlayContext = null;
 
-            if (BindingContextPageModel.Overlay == null)
+            if (recoverableOverlay != null && BindingContextPageModel.Overlay.Id == recoverableOverlay.Id)
             {
-                BindingContextPageModel.SerializedOverlayContext = null;
+                BindingContextPageModel.SerializedOverlayContext = recoverableSerializedOverlayContext;
             }
-            else if (BindingContextPageModel.Overlay != null && BindingContextPageModel.SerializedOverlayContext == null)
+
+            if (BindingContextPageModel.SerializedOverlayContext == null)
             {
                 BindingContextPageModel.SerializedOverlayContext = Providers.OverlayDefaultSerializedContextProvider.Instance.GetOverlayDefaultContextModel(BindingContextPageModel.Overlay);
             }

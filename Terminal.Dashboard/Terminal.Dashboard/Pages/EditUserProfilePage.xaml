@@ -182,6 +182,7 @@
                                 <Entry.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
                                         TargetProperty="{Static Entry.TextProperty}"
                                         Label="{Reference NewPasswordLabel}">
                                         <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>

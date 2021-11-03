@@ -10,6 +10,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
         private bool pageModelHasChanges;
+        private Extend.Common.Overlaying.Descriptors.IOverlayDescriptor recoverableOverlay;
+        private string recoverableSerializedOverlayContext;
 
         private Plugin.FilePicker.Abstractions.FileData newLogoFileData;
         private Plugin.FilePicker.Abstractions.FileData newHorizontalSplashFileData;
@@ -27,6 +29,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             BindingContextPageModel.PropertyChanged += PageModelPropertyChanged;
 
             IsEnabled = false;
+
+            recoverableOverlay = BindingContextPageModel.DefaultOverlay;
+            recoverableSerializedOverlayContext = BindingContextPageModel.SerializedOverlayContext;
         }
 
         protected override void OnAppearing()
@@ -96,12 +101,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             if (BindingContextPageModel == null) return;
 
             BindingContextPageModel.DefaultOverlay = (target as Xamarin.Forms.Picker).SelectedItem as Extend.Common.Overlaying.Descriptors.IOverlayDescriptor;
+            BindingContextPageModel.SerializedOverlayContext = null;
 
-            if (BindingContextPageModel.DefaultOverlay == null)
+            if (recoverableOverlay != null && BindingContextPageModel.DefaultOverlay.Id == recoverableOverlay.Id)
             {
-                BindingContextPageModel.SerializedOverlayContext = null;
+                BindingContextPageModel.SerializedOverlayContext = recoverableSerializedOverlayContext;
             }
-            else if (BindingContextPageModel.DefaultOverlay != null && BindingContextPageModel.SerializedOverlayContext == null)
+
+            if (BindingContextPageModel.SerializedOverlayContext == null)
             {
                 BindingContextPageModel.SerializedOverlayContext = Providers.OverlayDefaultSerializedContextProvider.Instance.GetOverlayDefaultContextModel(BindingContextPageModel.DefaultOverlay);
             }
