@@ -8,6 +8,11 @@
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views.LandscapeVerticalStripeContextualizingImagePlacardView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="PlacardLayout">
@@ -25,19 +30,28 @@
                     Aspect="AspectFill"
                     CacheType="Disk"
                     CacheDuration="8760:00:00" />
-                <Grid BackgroundColor="{Binding Path=StripeBackgroundColor}">
-                    <Image
-                        x:Name="LogoImage"
-                        HorizontalOptions="Center"
-                        Source="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Assets.Images.OHCC-MF-Logo-White.png;assembly=SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum"/>
-                    <StackLayout VerticalOptions="Center">
+                <Grid 
+                    Grid.Column="1"
+                    BackgroundColor="{Binding Path=StripeBackgroundColor}"
+                    Padding="30">
+                    <StackLayout 
+                        VerticalOptions="Center"
+                        Spacing="40">
+                        <Image 
+                            x:Name="LogoImage" 
+                            HorizontalOptions="Center"
+                            WidthRequest="{Binding Source={RelativeSource AncestorType={Type StackLayout}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=2}" />
                         <Label 
                             Text="{Binding Path=Header}"
                             TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            FontFamily="Montserrat ExtraBold"
                             FontSize="{Binding Path=HeaderFontSize}" />
                         <Label
                             Text="{Binding Path=Content}"
                             TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            FontFamily="Montserrat SemiBold"
                             FontSize="{Binding Path=ContentFontSize}" />
                     </StackLayout>
                 </Grid>

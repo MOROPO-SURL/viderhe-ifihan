@@ -253,6 +253,10 @@
       <Project>{a7926688-af72-41df-85eb-141f2ec72e6a}</Project>
       <Name>Extend.OHCC.RailwayMuseum.Templating.Presentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Templating\Extend.OHCC.RailwayMuseum.Templating.csproj">
+      <Project>{72397bc7-c36f-4dfe-bc31-ceebba04aa64}</Project>
+      <Name>Extend.OHCC.RailwayMuseum.Templating</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum\Extend.OHCC.RailwayMuseum.csproj">
       <Project>{5d4a0c15-33f9-46cc-8d4b-d4ec9bdbb488}</Project>
       <Name>Extend.OHCC.RailwayMuseum</Name>

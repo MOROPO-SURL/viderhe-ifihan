@@ -53,7 +53,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
 
                 if (context.IsStripeBackgroundTranslucent)
                 {
-                    viewModel.StripeBackgroundColor = viewModel.StripeBackgroundColor.MultiplyAlpha(0.5);
+                    viewModel.StripeBackgroundColor = viewModel.StripeBackgroundColor.MultiplyAlpha(0.75);
                 }
 
                 return new LandscapeVerticalStripeContextualizingImagePlacardView(viewModel);
