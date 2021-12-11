@@ -80,9 +80,9 @@
                                         MaxLines="4" />
                                     <Button 
                                         Grid.Row="2"
-                                        BackgroundColor="Accent"
+                                        Style="{StaticResource WhiteTextColorButton}"
+                                        BackgroundColor="{StaticResource AccentColor}"
                                         Text="Seleccionar"
-                                        TextColor="White"
                                         Clicked="TemplateOverviewSelectButton_Clicked" />
                                 </Grid>
                             </Grid>

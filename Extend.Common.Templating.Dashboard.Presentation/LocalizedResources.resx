@@ -117,13 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Bottom" xml:space="preserve">
+    <value>Abajo</value>
+  </data>
   <data name="Inherited" xml:space="preserve">
-    <value>Según la plantilla</value>
+    <value>Según la Plantilla</value>
   </data>
   <data name="Landscape" xml:space="preserve">
     <value>Horizontal</value>
   </data>
+  <data name="Left" xml:space="preserve">
+    <value>Izquierda</value>
+  </data>
   <data name="Portrait" xml:space="preserve">
     <value>Vertical</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Derecha</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>Arriba</value>
   </data>
 </root>

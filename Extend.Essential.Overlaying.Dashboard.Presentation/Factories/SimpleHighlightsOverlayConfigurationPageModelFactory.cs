@@ -4,13 +4,20 @@
     {
         public static Models.Page.SimpleHighlightsOverlayConfigurationPageModel Build(string serializedContext)
         {
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Overlaying.Presentation.Models.Context.SimpleHighlightsContextModel>(serializedContext);
-
-            return new Models.Page.SimpleHighlightsOverlayConfigurationPageModel
+            try
             {
-                Header = context.Header,
-                Highlights = context.Highlights
-            };
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Overlaying.Presentation.Models.Context.SimpleHighlightsContextModel>(serializedContext);
+
+                return new Models.Page.SimpleHighlightsOverlayConfigurationPageModel
+                {
+                    Header = context.Header,
+                    Highlights = context.Highlights
+                };
+            }
+            catch
+            {
+                return new Models.Page.SimpleHighlightsOverlayConfigurationPageModel();
+            }
         }
     }
 }

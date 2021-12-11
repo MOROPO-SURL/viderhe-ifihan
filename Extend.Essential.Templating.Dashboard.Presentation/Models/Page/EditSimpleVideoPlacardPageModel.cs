@@ -2,13 +2,13 @@
 {
     public class EditSimpleVideoPlacardPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledPlacardConfigurationPageModel
     {
-        public XFToolKit.Presentation.Sources.Video.VideoSource VideoSource { get; set; }
+        public Support.Presentation.Models.View.VideoViewModel Video { get; set; }
 
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
 
-            VideoSource = null;
+            Video = null;
         }
     }
 }

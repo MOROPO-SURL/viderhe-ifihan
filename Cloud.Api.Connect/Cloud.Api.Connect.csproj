@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SAPRESSC.Core.Api.Connect" Version="2.1.0-apha" />
+    <PackageReference Include="SAPRESSC.Core.Api.Connect" Version="2.8.0" />
   </ItemGroup>
 
   <ItemGroup>

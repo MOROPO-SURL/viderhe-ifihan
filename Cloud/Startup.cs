@@ -244,20 +244,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
 
                 if (!(dbContext as Persistence.EF.ApplicationDbContext).Users.Any())
                 {
-                    var defaultUser = new SAPRESSC.Core.Security.Persistence.Entities.User
-                    {
-                        Id = configuration["DefaultUser:Id"],
-                        Password = configuration["DefaultUser:Password"].ToHashedPassword(),
-                        Enabled = true,
-                        HasFullAccess = true,
-                        PasswordChangeRequired = true
-                    };
+                    var defaultUserId = configuration["DefaultUser:Id"];
 
-                    defaultUser.Signature = SAPRESSC.Core.Web.SecurityLocal.Helpers.Integrity.UserIntegrityHelper.GetSignature(defaultUser);
+                    var k3y = new System.Guid(0x6abae711, 0xcd91, 0x47e7, 0xad, 0x8a, 0xae, 0x88, 0xe4, 0x50, 0x25, 0x4d);
 
-                    (dbContext as Persistence.EF.ApplicationDbContext).Users.Add(defaultUser);
+                    var protectedPassword = (dbContext as Persistence.EF.ApplicationDbContext).CreateSecureUser(k3y, defaultUserId, "system");
 
-                    (dbContext as Persistence.EF.ApplicationDbContext).SaveChanges("system");
+                    Log.Logger.Information(string.Format(">>>>>> Protected Password : \"{0}\" => \"{1}\"", defaultUserId, protectedPassword));
                 }
             }
             else

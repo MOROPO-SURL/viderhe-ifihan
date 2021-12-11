@@ -8,6 +8,6 @@
 
         public int ExpiresInSecond { get; set; }
 
-        public PersonIdentityDisplayModel Identity { get; set; }
+        public ModeratorDisplayModel Moderator { get; set; }
     }
 }

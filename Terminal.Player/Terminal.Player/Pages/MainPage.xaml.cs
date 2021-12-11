@@ -53,7 +53,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                     {
                         overlayView = Providers.AccountInformationProvider.Instance.AccountDefaultOverlayId == null ? null : Providers.OverlayPresentationViewProvider.Instance.GetOverlayPresentationView();
 
-                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(placards, ScreenplayPresentationComplete_Callback, true, Providers.AccountInformationProvider.Instance, Managers.ConfigurationManager.Instance, PlacardPlayingCallback, overlayView, PlacardViewTransitionComplete_Callback)
+                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(placards, ScreenplayPresentationComplete_Callback, true, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance, PlacardPlayingCallback, overlayView, PlacardViewTransitionComplete_Callback)
                         {
                             BackgroundColor = Managers.SessionManager.Instance.AccountPrimaryColor,
                             BindingContext = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Managers.SessionManager.Instance.AccountVerticalSplashImageSource : Managers.SessionManager.Instance.AccountHorizontalSplashImageSource
@@ -149,14 +149,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
                     await System.Threading.Tasks.Task.Delay(3000);
 
-                    await RequestScreenplayPlacardsAsync().ContinueWith(OnRequestScreenplayPlacardsCallback);
+                    await RequestScreenplayPlacardsAsync().ContinueWith(RequestScreenplayPlacards_Callback);
                 });
             }
         }
 
-        private void CurentStepAnimateOut_Completed(object sender, System.EventArgs eventArgs)
+        private void CurrentStepAnimateOut_Completed(object sender, System.EventArgs eventArgs)
         {
-            (sender as AbstractAnimation).Completed -= CurentStepAnimateOut_Completed;
+            (sender as AbstractAnimation).Completed -= CurrentStepAnimateOut_Completed;
 
             System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(1)).ContinueWith(task =>
             {
@@ -232,9 +232,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                     {
                         if (!((BindingContext as Models.View.ConfigurationStepViewModel).DetailContentView is Views.ConfigurationStepPlayerRegistrationDetailView))
                         {
-                            AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
+                            AnimateOutCurrentStep(CurrentStepAnimateOut_Completed);
                         }
                     }
+                }
+
+                if ((BindingContext as Models.View.ConfigurationStepViewModel).DetailContentView is Views.ConfigurationStepStartingDetailView)
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(((BindingContext as Models.View.ConfigurationStepViewModel).DetailContentView as Views.ConfigurationStepStartingDetailView).PresentFallbackOptions);
                 }
 
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
@@ -246,11 +251,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             }
             else
             {
+                Support.Presentation.Managers.SessionMemoryManager.Instance.Persist();
+
                 Managers.SessionManager.Instance.AccountId = task.Result.Id;
                 Managers.SessionManager.Instance.AccountName = task.Result.Name;
-                Managers.SessionManager.Instance.AccountLogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.LogoImageId));
-                Managers.SessionManager.Instance.AccountHorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.HorizontalSplashImageId));
-                Managers.SessionManager.Instance.AccountVerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.ConfigurationManager.Instance, task.Result.VerticalSplashImageId));
+                Managers.SessionManager.Instance.AccountLogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, task.Result.LogoImageId));
+                Managers.SessionManager.Instance.AccountHorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, task.Result.HorizontalSplashImageId));
+                Managers.SessionManager.Instance.AccountVerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, task.Result.VerticalSplashImageId));
                 Managers.SessionManager.Instance.AccountPrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor);
                 Managers.SessionManager.Instance.AccountSecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
                 Managers.SessionManager.Instance.AccountDefaultOverlayId = task.Result.DefaultOverlayId;
@@ -313,7 +320,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                     configurationStepQueue.Dequeue();
                 }
 
-                AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
+                AnimateOutCurrentStep(CurrentStepAnimateOut_Completed);
             }
         }
 
@@ -324,20 +331,20 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             return await client.GetScreenplayPlacardsAsync();
         }
 
-        private void OnRequestScreenplayPlacardsCallback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlacardDisplayModel[]> task)
+        private void RequestScreenplayPlacards_Callback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlacardDisplayModel[]> task)
         {
             if (task.IsCanceled || task.Exception != null || task.Result == null)
             {
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(delayTask =>
                 {
-                    RequestScreenplayPlacardsAsync().ContinueWith(OnRequestScreenplayPlacardsCallback);
+                    RequestScreenplayPlacardsAsync().ContinueWith(RequestScreenplayPlacards_Callback);
                 });
             }
             else
             {
                 placards = task.Result.Select(m => m.ToViewModel()).ToArray();
 
-                AnimateOutCurrentStep(CurentStepAnimateOut_Completed);
+                AnimateOutCurrentStep(CurrentStepAnimateOut_Completed);
             }
         }
 

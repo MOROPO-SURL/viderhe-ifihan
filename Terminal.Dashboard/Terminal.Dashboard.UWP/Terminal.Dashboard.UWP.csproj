@@ -7,12 +7,12 @@
     <ProjectGuid>{B4F5780B-587F-4D10-BC05-A372D0CBBD8F}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartSolucionesCuba.Videre.Terminal.Dashboard.UWP</RootNamespace>
-    <AssemblyName>SmartSolucionesCuba.Videre.Terminal.Dashboard.UWP</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP</RootNamespace>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP</AssemblyName>
     <DefaultLanguage>es</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
@@ -105,6 +105,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Effects\NativeTouchEffect.cs" />
     <Compile Include="Extensions\XamarinFormsAspectExtensions.cs" />
     <Compile Include="Managers\ApplicationManager.cs" />
     <Compile Include="Pages\MainPage.xaml.cs">
@@ -188,13 +189,31 @@
       <Version>1.0.0</Version>
     </PackageReference>
     <PackageReference Include="MagicGradients">
-      <Version>1.3.0</Version>
+      <Version>1.3.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
       <Version>5.0.3</Version>
     </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.0.0.11</Version>
+    </PackageReference>
     <PackageReference Include="RtmpClient.UWP">
       <Version>1.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp.Views.Forms">
+      <Version>2.80.3</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.IoC">
+      <Version>0.2.0-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Mvvm">
+      <Version>0.4.10-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Presentation">
+      <Version>0.6.1-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="SSCXFToolKit.Presentation.Transform">
+      <Version>0.2.0-alpha</Version>
     </PackageReference>
     <PackageReference Include="Toasts.Forms.Plugin">
       <Version>3.3.2</Version>
@@ -214,7 +233,7 @@
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms">
       <Version>2.4.11.982</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2125" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
     <PackageReference Include="Xamarin.Plugin.FilePicker">
@@ -264,11 +283,11 @@
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj">
       <Project>{b88a5d61-11d9-4827-875e-7bd9bc5f6720}</Project>
-      <Name>Extend.Essential.Transitioning.Presentation</Name>
+      <Name>Extend.Essential.Motion.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj">
       <Project>{5e18fba2-62e1-4bae-8917-1e809fc5fcfd}</Project>
-      <Name>Extend.Essential.Transitioning</Name>
+      <Name>Extend.Essential.Motion</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Overlaying.Dashboard.Presentation\Extend.Essential.Overlaying.Dashboard.Presentation.csproj">
       <Project>{c79fac59-2855-438c-b372-23ee0e4ebb7c}</Project>
@@ -298,21 +317,9 @@
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation\Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.csproj">
-      <Project>{b4a9b021-0e5c-487d-8c45-2275ec9ef10e}</Project>
-      <Name>Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Templating.Presentation\Extend.OHCC.RailwayMuseum.Templating.Presentation.csproj">
-      <Project>{a7926688-af72-41df-85eb-141f2ec72e6a}</Project>
-      <Name>Extend.OHCC.RailwayMuseum.Templating.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Templating\Extend.OHCC.RailwayMuseum.Templating.csproj">
-      <Project>{72397bc7-c36f-4dfe-bc31-ceebba04aa64}</Project>
-      <Name>Extend.OHCC.RailwayMuseum.Templating</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum\Extend.OHCC.RailwayMuseum.csproj">
-      <Project>{5d4a0c15-33f9-46cc-8d4b-d4ec9bdbb488}</Project>
-      <Name>Extend.OHCC.RailwayMuseum</Name>
+    <ProjectReference Include="..\..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj">
+      <Project>{f36158f5-5a62-40f5-8f5e-ce85d8277f20}</Project>
+      <Name>Support.Presentation.Dashboard</Name>
     </ProjectReference>
     <ProjectReference Include="..\Terminal.Dashboard\Terminal.Dashboard.csproj">
       <Project>{A509FE0D-F850-4E5B-9936-116E4378C85F}</Project>
@@ -320,7 +327,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Terminal.Dashboard.UWP_TemporaryKey.pfx" />
+    <None Include="SSCSelfSignedDeveloperCertificate.pfx" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

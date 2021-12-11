@@ -54,5 +54,7 @@
     <Capability Name="privateNetworkClientServer"/>
     <uap:Capability Name="videosLibrary"/>
     <uap:Capability Name="removableStorage"/>
+    <DeviceCapability Name="webcam"/>
+    <DeviceCapability Name="microphone"/>
   </Capabilities>
 </Package>

@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class ConfigurePlayerPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ConfigurePlayerPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
         private string id;
         private string name;

@@ -62,7 +62,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rellenar manteniendo proporción.
+        ///   Looks up a localized string similar to Rellenar Manteniendo Proporción.
         /// </summary>
         internal static string AspectFill {
             get {
@@ -71,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ajustar manteniendo proporción.
+        ///   Looks up a localized string similar to Ajustar Manteniendo Proporción.
         /// </summary>
         internal static string AspectFit {
             get {
@@ -80,7 +80,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ajustar rellenando con réplica opaca.
+        ///   Looks up a localized string similar to Ajustar Rellenando con Réplica Opaca.
         /// </summary>
         internal static string AspectFitWithOpaqueAspectFilledBySelf {
             get {
@@ -89,7 +89,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rellenar sin mantener proporción.
+        ///   Looks up a localized string similar to Rellenar sin Mantener Proporción.
         /// </summary>
         internal static string Fill {
             get {

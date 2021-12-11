@@ -23,6 +23,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.iOS
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
+            ImageCircle.Forms.Plugin.iOS.ImageCircleRenderer.Init();
+
+            Rg.Plugins.Popup.Popup.Init();
+
             Xamarin.Forms.DependencyService.Register<Plugin.Toasts.ToastNotification>();
 
             Plugin.Toasts.ToastNotification.Init();
