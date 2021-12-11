@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Converters"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Pages.LandscapeVerticalStripeContextualizingImagePlacardConfigurationPage"
+    x:TypeArguments="pagemodels:LandscapeVerticalStripeContextualizingImagePlacardConfigurationPageModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Aplicar"
+            Clicked="ApplyToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Cancelar"
+            Clicked="CancelToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView>
+                <Grid 
+                    Margin="10"
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Frame 
+                        Grid.ColumnSpan="4" Grid.Row="0"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Etiqueta" Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=Label}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Tiempo en Pantalla" Style="{StaticResource FormLabel}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Path=ScreenPresentationTimeSecounds}" VerticalTextAlignment="Center" />
+                                <Label Text="Segundos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                <Stepper Value="{Binding Path=ScreenPresentationTimeSecounds}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="A Pantalla Completa" Style="{StaticResource FormLabel}" />
+                            <Switch IsToggled="{Binding Path=RequireUnobstructedPresetation}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Style="{StaticResource FormFieldFrame}"
+                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="10"
+                        Padding="0"
+                        VerticalOptions="Start">
+                        <StackLayout 
+                            VerticalOptions="FillAndExpand"
+                            Spacing="0">
+                            <Label 
+                                Margin="10,10,10,6"
+                                Text="Imagen" 
+                                Style="{StaticResource FormLabel}" />
+                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PickContextedImageButton_Clicked" />
+                                </Grid.GestureRecognizers>
+                                <ffimageloadingforms:CachedImage 
+                                    BackgroundColor="Black"
+                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00"
+                                    Source="{Binding Path=ContextedImage, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
+                                    Aspect="AspectFill" />
+                                <StackLayout 
+                                    HorizontalOptions="Center" VerticalOptions="End"
+                                    Padding="4"
+                                    BackgroundColor="#99000000"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Text="&#xf740;"
+                                        TextColor="White"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="Medium" />
+                                    <Label
+                                        VerticalOptions="Center"
+                                        Margin="0,0,4,0"
+                                        Text="para modificar"
+                                        TextColor="White"
+                                        LineBreakMode="TailTruncation" />
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="3" Grid.Row="2"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Usar ecfecto Zooming en Imagen?" Style="{StaticResource FormLabel}" />
+                            <Switch IsToggled="{Binding Path=IsContextedImageZoomingEnabled}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="3" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Color de Fondo" Style="{StaticResource FormLabel}" />
+                            <Picker 
+                                ItemsSource="{Binding Path=AvailableStripeColorBackgroundModes}" 
+                                SelectedItem="{Binding Path=StripeColorBackgroundMode}"
+                                ItemDisplayBinding="{Binding Converter={StaticResource StringToLocalizeStringConverter}}"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="3" Grid.Row="4"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Color de Fondo Traslúcido?" Style="{StaticResource FormLabel}" />
+                            <Switch IsToggled="{Binding Path=IsStripeBackgroundTranslucent}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="3" Grid.Row="5"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Título" Style="{StaticResource FormLabel}" />
+                            <Editor HeightRequest="50" Text="{Binding Path=Header}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="3" Grid.Row="6"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Tamaño del Texto Título" Style="{StaticResource FormLabel}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label 
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding Path=HeaderFontSize}" 
+                                    VerticalTextAlignment="Center" />
+                                <Stepper Value="{Binding Path=HeaderFontSize}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="3" Grid.Row="7"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Descripción" Style="{StaticResource FormLabel}" />
+                            <Editor HeightRequest="200" Text="{Binding Path=Content}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="3" Grid.Row="8"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Tamaño del Texto Descripción" Style="{StaticResource FormLabel}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label 
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding Path=ContentFontSize}" 
+                                    VerticalTextAlignment="Center" />
+                                <Stepper Value="{Binding Path=ContentFontSize}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

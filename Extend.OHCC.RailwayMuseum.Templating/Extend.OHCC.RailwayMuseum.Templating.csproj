@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="BE7FDBAB-4535-4349-92AF-DE7E40219E03-landscape.png" />
     <None Remove="CD1BAC6A-5C97-4BE6-B146-B7393D39FD01-landscape.png" />
     <None Remove="CD1BAC6A-5C97-4BE6-B146-B7393D39FD01-portrait.png" />
     <None Remove="D49EAB3A-F407-4E0E-835B-F15BFD917269-landscape.png" />
@@ -15,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="BE7FDBAB-4535-4349-92AF-DE7E40219E03-landscape.png" />
     <EmbeddedResource Include="CD1BAC6A-5C97-4BE6-B146-B7393D39FD01-landscape.png" />
     <EmbeddedResource Include="CD1BAC6A-5C97-4BE6-B146-B7393D39FD01-portrait.png" />
     <EmbeddedResource Include="D49EAB3A-F407-4E0E-835B-F15BFD917269-landscape.png" />

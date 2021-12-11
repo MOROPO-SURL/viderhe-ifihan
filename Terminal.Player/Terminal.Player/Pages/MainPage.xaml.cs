@@ -259,7 +259,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                 // MotoTouch does not support dynamic assembly loading
                 if (Xamarin.Forms.Device.RuntimePlatform != Xamarin.Forms.Device.iOS)
                 {
-                    var dynamicLoadExtensions = task.Result.Extensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID).ToArray();
+                    var dynamicLoadExtensions = task.Result.Extensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID && item.Id != Extend.OHCC.RailwayMuseum.Descriptors.RailwayMuseumOHCCExtensionDescriptor.ID).ToArray();
 
                     foreach (var accountExtension in dynamicLoadExtensions)
                     {

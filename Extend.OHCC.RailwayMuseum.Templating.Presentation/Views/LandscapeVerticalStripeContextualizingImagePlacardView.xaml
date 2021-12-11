@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views.LandscapeVerticalStripeContextualizingImagePlacardView">
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="PlacardLayout">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <ffimageloadingforms:CachedImage
+                    x:Name="ContextedImagen"
+                    Grid.ColumnSpan="3"
+                    BackgroundColor="Black"
+                    FadeAnimationEnabled="False"
+                    Source="{Binding Path=ContextedImageSource}" 
+                    Aspect="AspectFill"
+                    CacheType="Disk"
+                    CacheDuration="8760:00:00" />
+                <Grid BackgroundColor="{Binding Path=StripeBackgroundColor}">
+                    <Image
+                        x:Name="LogoImage"
+                        HorizontalOptions="Center"
+                        Source="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Assets.Images.OHCC-MF-Logo-White.png;assembly=SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum"/>
+                    <StackLayout VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Path=Header}"
+                            TextColor="White"
+                            FontSize="{Binding Path=HeaderFontSize}" />
+                        <Label
+                            Text="{Binding Path=Content}"
+                            TextColor="White"
+                            FontSize="{Binding Path=ContentFontSize}" />
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

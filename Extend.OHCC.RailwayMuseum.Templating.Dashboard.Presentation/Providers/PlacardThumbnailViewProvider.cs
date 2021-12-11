@@ -14,6 +14,11 @@
                 return new Views.InfinityVideoPlacardThumbnailView(model, cloudServerProvider);
             }
 
+            if (model.Template.Id == Descriptors.LandscapeVerticalStripeContextualizingImageTemplateDescriptor.ID)
+            {
+                return new Views.LandscapeVerticalStripeContextualizingImagePlacardThumbnailView(model, cloudServerProvider);
+            }
+
             return null;
         }
     }

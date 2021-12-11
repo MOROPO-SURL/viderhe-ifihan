@@ -34,6 +34,31 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                 });
             }
 
+            if (model.Template.Id == LandscapeVerticalStripeContextualizingImageTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeVerticalStripeContextualizingImagePlacardContextModel>(model.SerializedContext);
+
+                var viewModel = new Models.View.LandscapeVerticalStripeContextualizingImagePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.ContextedImage.Id)),
+                    ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
+                    StripeBackgroundColor = context.StripeColorBackgroundMode == Enumerations.ColorBackgroundMode.Primary ? accountInformationProvider.PrimaryColor : accountInformationProvider.SecoundaryColor,
+                    Header = context.Header,
+                    HeaderFontSize = context.HeaderFontSize,
+                    Content = context.Content,
+                    ContentFontSize = context.ContentFontSize
+                };
+
+                if (context.IsStripeBackgroundTranslucent)
+                {
+                    viewModel.StripeBackgroundColor = viewModel.StripeBackgroundColor.MultiplyAlpha(0.5);
+                }
+
+                return new LandscapeVerticalStripeContextualizingImagePlacardView(viewModel);
+            }
+
             return null;
         }
     }

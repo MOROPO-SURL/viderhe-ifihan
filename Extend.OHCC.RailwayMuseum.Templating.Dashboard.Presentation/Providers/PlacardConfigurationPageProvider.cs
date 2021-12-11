@@ -20,6 +20,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                 return new Pages.CornerTileVideoPresentingVideoPlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
             }
 
+            if (templateDescriptor is LandscapeVerticalStripeContextualizingImageTemplateDescriptor)
+            {
+                return new Pages.LandscapeVerticalStripeContextualizingImagePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+            }
+
             return null;
         }
 
@@ -33,6 +38,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
             if (placardViewModel.Template.Id == CornerTileVideoPresentingVideoTemplateDescriptor.ID)
             {
                 return new Pages.CornerTileVideoPresentingVideoPlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == LandscapeVerticalStripeContextualizingImageTemplateDescriptor.ID)
+            {
+                return new Pages.LandscapeVerticalStripeContextualizingImagePlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
             }
 
             return null;

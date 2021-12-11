@@ -19,6 +19,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="LocalizedResources.Designer.cs">
+      <DependentUpon>LocalizedResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="LocalizedResources.resx">
+      <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\LandscapeVerticalStripeContextualizingImagePlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\CornerTileVideoPresentingVideoPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -32,6 +47,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\InfinityVideoPlacardThumbnailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LandscapeVerticalStripeContextualizingImagePlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
