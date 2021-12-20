@@ -8,7 +8,7 @@
 
         public bool IsStripeBackgroundTranslucent { get; set; }
 
-        public Enumerations.ColorBackgroundMode StripeColorBackgroundMode { get; set; }
+        public Enumerations.BackgroundColorMode StripeColorBackgroundMode { get; set; }
 
         public string Header { get; set; }
 

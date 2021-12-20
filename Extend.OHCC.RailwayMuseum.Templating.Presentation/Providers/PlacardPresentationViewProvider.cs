@@ -44,7 +44,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.ContextedImage.Id)),
                     ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
-                    StripeBackgroundColor = context.StripeColorBackgroundMode == Enumerations.ColorBackgroundMode.Primary ? accountInformationProvider.PrimaryColor : accountInformationProvider.SecoundaryColor,
+                    StripeBackgroundColor = context.StripeColorBackgroundMode == Enumerations.BackgroundColorMode.Primary ? accountInformationProvider.PrimaryColor : accountInformationProvider.SecoundaryColor,
                     Header = context.Header,
                     HeaderFontSize = context.HeaderFontSize,
                     Content = context.Content,

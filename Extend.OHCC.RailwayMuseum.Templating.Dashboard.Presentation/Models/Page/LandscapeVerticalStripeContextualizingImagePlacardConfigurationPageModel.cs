@@ -4,7 +4,7 @@
     {
         private Support.Presentation.Models.View.ImageViewModel contextedImage;
         private bool isContextedImageZoomingEnabled;
-        private Templating.Presentation.Enumerations.ColorBackgroundMode stripeColorBackgroundMode;
+        private Templating.Presentation.Enumerations.BackgroundColorMode stripeColorBackgroundMode;
         private bool isStripeBackgroundTranslucent;
         private string header;
         private int headerFontSize;
@@ -13,12 +13,12 @@
 
         public LandscapeVerticalStripeContextualizingImagePlacardConfigurationPageModel()
         {
-            StripeColorBackgroundMode = Templating.Presentation.Enumerations.ColorBackgroundMode.Primary;
+            StripeColorBackgroundMode = Templating.Presentation.Enumerations.BackgroundColorMode.Primary;
 
-            AvailableStripeColorBackgroundModes = new Templating.Presentation.Enumerations.ColorBackgroundMode[]
+            AvailableStripeColorBackgroundModes = new Templating.Presentation.Enumerations.BackgroundColorMode[]
             {
-                Templating.Presentation.Enumerations.ColorBackgroundMode.Primary,
-                Templating.Presentation.Enumerations.ColorBackgroundMode.Secoundary
+                Templating.Presentation.Enumerations.BackgroundColorMode.Primary,
+                Templating.Presentation.Enumerations.BackgroundColorMode.Secoundary
             };
 
             HeaderFontSize = 48;
@@ -29,9 +29,9 @@
 
         public bool IsContextedImageZoomingEnabled { get => isContextedImageZoomingEnabled; set => SetProperty(ref isContextedImageZoomingEnabled, value); }
 
-        public Templating.Presentation.Enumerations.ColorBackgroundMode StripeColorBackgroundMode { get => stripeColorBackgroundMode; set => SetProperty(ref stripeColorBackgroundMode, value); }
+        public Templating.Presentation.Enumerations.BackgroundColorMode StripeColorBackgroundMode { get => stripeColorBackgroundMode; set => SetProperty(ref stripeColorBackgroundMode, value); }
 
-        public Templating.Presentation.Enumerations.ColorBackgroundMode[] AvailableStripeColorBackgroundModes { get; private set; }
+        public Templating.Presentation.Enumerations.BackgroundColorMode[] AvailableStripeColorBackgroundModes { get; private set; }
 
         public bool IsStripeBackgroundTranslucent { get => isStripeBackgroundTranslucent; set => SetProperty(ref isStripeBackgroundTranslucent, value); }
 
