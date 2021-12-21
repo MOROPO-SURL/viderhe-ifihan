@@ -61,6 +61,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Helpers
                 await Windows.ApplicationModel.FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync();
             }
         }
+
+        public async void OpenSystemSettings()
+        {
+            await Windows.System.Launcher.LaunchUriAsync(new Uri("ms-settings:"));
+        }
     }
 
     #region Volumen Control Utilities

@@ -204,7 +204,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
 
-            DisplayActionSheet("Reiniciar Guión", "Cancelar", null, SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_IMMEDIATELY).ContinueWith(task =>
+            DisplayActionSheet("Reiniciar Guion", "Cancelar", null, SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_IMMEDIATELY).ContinueWith(task =>
             {
                 if (task.Result == SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE)
                 {
@@ -216,7 +216,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Guión", "Solicitud de reinicio de guión cuando termine el marco actual enviada con éxito.");
+                            Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion cuando termine el marco actual enviada con éxito.");
                         });
                     });
 
@@ -233,7 +233,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Guión", "Solicitud de reinicio de guión inmediatamente enviada con éxito.");
+                            Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion inmediatamente enviada con éxito.");
                         });
                     });
 
@@ -253,7 +253,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
 
-            DisplayActionSheet("Recargar Guión", "Cancelar", null, SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_IMMEDIATELY).ContinueWith(task =>
+            DisplayActionSheet("Recargar Guion", "Cancelar", null, SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_IMMEDIATELY).ContinueWith(task =>
             {
                 if (task.Result == SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE)
                 {
@@ -265,7 +265,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guión", "Solicitud de recarga de guión cuando termine el ciclo actual enviada con éxito.");
+                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
                         });
                     });
 
@@ -282,7 +282,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guión", "Solicitud de recarga de guión cuando termine el marco actual enviada con éxito.");
+                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el marco actual enviada con éxito.");
                         });
                     });
 
@@ -299,7 +299,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guión", "Solicitud de recarga de guión cuando termine el ciclo actual enviada con éxito.");
+                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
                         });
                     });
 
@@ -316,7 +316,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guión", "Solicitud de recarga de guión inmediatamente enviada con éxito.");
+                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guion", "Solicitud de recarga de Guion inmediatamente enviada con éxito.");
                         });
                     });
 

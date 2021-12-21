@@ -1,10 +1,8 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
-
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
     public partial class UserAuthenticationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.UserAuthenticationPageModel>
     {
-        public UserAuthenticationPage() : base(new Models.Page.UserAuthenticationPageModel { TargetCloudHostName = Managers.SessionManager.Instance.Server })
+        public UserAuthenticationPage() : base(new Models.Page.UserAuthenticationPageModel { TargetCloudHostName = Support.Presentation.Managers.SessionMemoryManager.Instance.Server })
         {
             InitializeComponent();
         }
@@ -50,7 +48,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 targetException = targetException.InnerException;
                             }
 
-                            if (targetException is System.Net.Http.HttpRequestException)
+                            if (targetException is System.Net.Http.HttpRequestException || targetException is System.Net.WebException)
                             {
                                 message = "No se puede acceder al servidor. Revise su conexión de red y/o la disponibilidad del servicio.";
                             }
@@ -80,9 +78,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         return;
                     }
 
-                    BindingContextPageModel.IsBusy = false;
-
-                    this.NavigationPopModalPageAsync();
+                    Xamarin.Forms.Application.Current.MainPage = new Xamarin.Forms.NavigationPage(new MainPage());
                 });
             });
         }

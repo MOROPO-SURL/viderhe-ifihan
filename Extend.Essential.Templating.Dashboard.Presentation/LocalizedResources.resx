@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AspectFill" xml:space="preserve">
-    <value>Rellenar manteniendo proporción</value>
+    <value>Rellenar Manteniendo Proporción</value>
   </data>
   <data name="AspectFit" xml:space="preserve">
-    <value>Ajustar manteniendo proporción</value>
+    <value>Ajustar Manteniendo Proporción</value>
   </data>
   <data name="AspectFitWithOpaqueAspectFilledBySelf" xml:space="preserve">
-    <value>Ajustar rellenando con réplica opaca</value>
+    <value>Ajustar Rellenando con Réplica Opaca</value>
   </data>
   <data name="Fill" xml:space="preserve">
-    <value>Rellenar sin mantener proporción</value>
+    <value>Rellenar sin Mantener Proporción</value>
   </data>
 </root>

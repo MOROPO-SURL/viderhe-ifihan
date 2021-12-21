@@ -19,10 +19,10 @@
             <ScrollView
                 HorizontalOptions="Center"
                 Orientation="Vertical">
-                <Grid
-                    WidthRequest="240">
-                    <StackLayout
-                        VerticalOptions="Center">
+                <Grid>
+                    <StackLayout 
+                        HorizontalOptions="Center" VerticalOptions="Center"
+                        WidthRequest="240">
                         <ffimageloadingsvg:SvgCachedImage
                             HorizontalOptions="Center"
                             WidthRequest="320" HeightRequest="320"
@@ -50,6 +50,6 @@
                 </Grid>
             </ScrollView>
             <supportpresentationdashboardviews:BusyView />
-        </Grid>
+        </Grid>       
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>

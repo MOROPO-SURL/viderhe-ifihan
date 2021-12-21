@@ -2,21 +2,132 @@
 <Application 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:providers="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers"
+    xmlns:supportpresentationmanagers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Managers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     xmlns:supportpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
-    mc:Ignorable="d"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.App">
     <Application.Resources>
-        <supportpresentationconverters:ImageViewModelToThumbnailImageSourceConverter x:Key="ImageViewModelToThumbnailImageSourceConverter" CloudServerProvider="{x:Static providers:CloudServerProvider.Instance}" />
-        <supportpresentationconverters:ImageViewModelToImageSourceConverter x:Key="ImageViewModelToImageSourceConverter" CloudServerProvider="{x:Static providers:CloudServerProvider.Instance}" />
-        <supportpresentationconverters:VideoViewModelToThumbnailImageSourceConverter x:Key="VideoViewModelToThumbnailImageSourceConverter" CloudServerProvider="{x:Static providers:CloudServerProvider.Instance}" />
-        <supportpresentationconverters:VideoViewModelToVideoSourceConverter x:Key="VideoViewModelToVideoSourceConverter" CloudServerProvider="{x:Static providers:CloudServerProvider.Instance}" />
+        <supportpresentationconverters:ImageViewModelToThumbnailImageSourceConverter x:Key="ImageViewModelToThumbnailImageSourceConverter" CloudServerProvider="{x:Static supportpresentationmanagers:SessionMemoryManager.Instance}" />
+        <supportpresentationconverters:ImageViewModelToImageSourceConverter x:Key="ImageViewModelToImageSourceConverter" CloudServerProvider="{x:Static supportpresentationmanagers:SessionMemoryManager.Instance}" />
+        <supportpresentationconverters:VideoViewModelToThumbnailImageSourceConverter x:Key="VideoViewModelToThumbnailImageSourceConverter" CloudServerProvider="{x:Static supportpresentationmanagers:SessionMemoryManager.Instance}" />
+        <supportpresentationconverters:VideoViewModelToVideoSourceConverter x:Key="VideoViewModelToVideoSourceConverter" CloudServerProvider="{x:Static supportpresentationmanagers:SessionMemoryManager.Instance}" />
+
+        <Color x:Key="PrimaryColor">#024890</Color>
+        <Color x:Key="SecoundaryColor">#00ffff</Color>
+        <Color x:Key="AccentColor">#4314c6</Color>
         
+        <OnPlatform x:Key="ButtonHeigthRequest" x:TypeArguments="x:Double" Default="-1">
+            <On Platform="Android" Value="40" />
+        </OnPlatform>
+        <OnPlatform x:Key="OptionsTextIconButtonHeigthRequest" x:TypeArguments="x:Double" Default="-1">
+            <On Platform="Android" Value="30" />
+        </OnPlatform>
+
         <OnPlatform x:Key="IconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons" />
         <OnPlatform x:Key="ToolbarIconFontFamily" x:TypeArguments="x:String" Default="Material Design Icons" />
 
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black" />
+        </Style>        
+        <Style TargetType="Button">
+            <Setter Property="MinimumWidthRequest" Value="0" />
+            <Setter Property="MinimumHeightRequest" Value="0" />
+            <Setter Property="HeightRequest" Value="{StaticResource ButtonHeigthRequest}" />
+            <Setter Property="TextColor">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="Color" Default="Accent">
+                        <On Platform="UWP" Value="Black" />
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BackgroundColor">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="Color" Default="Default">
+                        <On Platform="Android" Value="#33000000" />
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor">
+                                    <Setter.Value>
+                                        <OnPlatform x:TypeArguments="Color" Default="Accent">
+                                            <On Platform="UWP" Value="Black" />
+                                        </OnPlatform>
+                                    </Setter.Value>
+                                </Setter>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="DimGray" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <Style TargetType="ImageButton">
+            <Setter Property="BackgroundColor">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="Color">
+                        <On Platform="Android" Value="transparent" />
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="WhiteTextColorButton" TargetType="Button">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Focused">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="White" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Disabled">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="DimGray" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <Style x:Key="TextIconButton" TargetType="Button">
+            <Setter Property="WidthRequest" Value="{StaticResource ButtonHeigthRequest}" />
+            <Setter Property="FontFamily" Value="{StaticResource IconFontFamily}" />
+            <Setter Property="Padding">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0" />
+                        <On Platform="UWP" Value="8" />
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="OptionsTextIconButton" TargetType="Button" BasedOn="{StaticResource TextIconButton}">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="BorderWidth" Value="0" />
+            <Setter Property="WidthRequest" Value="{StaticResource OptionsTextIconButtonHeigthRequest}" />
+            <Setter Property="Padding">
+                <Setter.Value>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="0" />
+                        <On Platform="UWP" Value="8" />
+                    </OnPlatform>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
         <Style x:Key="FormFieldFrame" TargetType="Frame">
             <Setter Property="BackgroundColor" Value="White" />
             <Setter Property="HasShadow" Value="False" />

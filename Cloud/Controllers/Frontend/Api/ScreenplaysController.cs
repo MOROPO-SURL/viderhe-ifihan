@@ -8,7 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
     [Route("api/[area]/[controller]")]
-    [Area("business")]
+    [Area("account")]
     [SAPRESSC.Core.Web.Security.Filters.ChangeUserPasswordRequiredAction]
     [SAPRESSC.Core.Web.Security.Filters.CatchChangeUserPasswordRequiredException]
     public class ScreenplaysController : SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementController<Persistence.Entities.Screenplay, System.Guid, ScreenplayInputModel, ScreenplayDisplayModel>
@@ -29,7 +29,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             return e => e.Account.Id == accountId;
         }
 
-        public override IActionResult Get()
+        public override ActionResult<ScreenplayDisplayModel[]> Get()
         {
             return Ok(Repository.GetAll().Where(GetGlobalSelector()).Select(entity => EntityToDisplayModel(entity)).ToArray());
         }

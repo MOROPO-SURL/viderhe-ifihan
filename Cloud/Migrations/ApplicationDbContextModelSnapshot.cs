@@ -160,6 +160,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.Property<Guid>("GroupId")
                         .HasColumnName("groupid");
 
+                    b.Property<string>("Signature")
+                        .IsRequired()
+                        .HasColumnName("signature");
+
                     b.HasKey("UserId", "GroupId")
                         .HasName("pk_usergroupbridges");
 
@@ -967,6 +971,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.Property<Guid>("IdentityId")
                         .HasColumnName("identityid");
 
+                    b.Property<bool>("Privileged")
+                        .HasColumnName("privileged");
+
                     b.Property<string>("UserId")
                         .HasColumnName("userid");
 
@@ -1545,7 +1552,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Moderator", "Moderator")
-                        .WithMany()
+                        .WithMany("AccountBridges")
                         .HasForeignKey("ModeratorId")
                         .HasConstraintName("fk_accountmoderatorbridges_moderators_moderatorid")
                         .OnDelete(DeleteBehavior.Cascade);

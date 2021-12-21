@@ -9,7 +9,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
     [Route("api/[area]/[controller]")]
-    [Area("business")]
+    [Area("account")]
     [SAPRESSC.Core.Web.Security.Filters.ChangeUserPasswordRequiredAction]
     [SAPRESSC.Core.Web.Security.Filters.CatchChangeUserPasswordRequiredException]
     public class FramesController : SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementFilteredController<Persistence.Entities.Frame, long, FrameInputModel, FrameDisplayModel, FrameFilterModel>
@@ -23,28 +23,28 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             this.placardRepository = placardRepository;
         }
 
-        public override IActionResult Get()
+        public override ActionResult<FrameDisplayModel[]> Get()
         {
             return NotFound();
         }
 
-        public override IActionResult Get(long key)
+        public override ActionResult<FrameDisplayModel> Get(long key)
         {
             return NotFound();
         }
 
-        public override IActionResult GetPaginate(int sheet = 1, int limit = 25)
+        public override ActionResult<SAPRESSC.Core.Common.Models.PaginationModel<FrameDisplayModel>> GetPaginate(int sheet = 1, int limit = 25)
         {
             return NotFound();
         }
 
-        public override IActionResult Edit([FromBody] FrameInputModel inputModel)
+        public override ActionResult Edit([FromBody] FrameInputModel inputModel)
         {
             return NotFound();
         }
 
         [HttpPut("orderup/{key}")]
-        public IActionResult OrderUp(long key)
+        public ActionResult OrderUp(long key)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpPut("orderdown/{key}")]
-        public IActionResult OrderDown(long key)
+        public ActionResult OrderDown(long key)
         {
             try
             {

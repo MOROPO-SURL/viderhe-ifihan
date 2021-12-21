@@ -62,7 +62,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Present
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Según la plantilla.
+        ///   Looks up a localized string similar to Abajo.
+        /// </summary>
+        internal static string Bottom {
+            get {
+                return ResourceManager.GetString("Bottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Según la Plantilla.
         /// </summary>
         internal static string Inherited {
             get {
@@ -80,11 +89,38 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Present
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Izquierda.
+        /// </summary>
+        internal static string Left {
+            get {
+                return ResourceManager.GetString("Left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vertical.
         /// </summary>
         internal static string Portrait {
             get {
                 return ResourceManager.GetString("Portrait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Derecha.
+        /// </summary>
+        internal static string Right {
+            get {
+                return ResourceManager.GetString("Right", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arriba.
+        /// </summary>
+        internal static string Top {
+            get {
+                return ResourceManager.GetString("Top", resourceCulture);
             }
         }
     }
