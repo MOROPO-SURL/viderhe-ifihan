@@ -249,6 +249,18 @@
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.OccasionSlides.Templating.Presentation\Extend.OccasionSlides.Templating.Presentation.csproj">
+      <Project>{87dea43c-11be-429e-acb1-88810b7301a1}</Project>
+      <Name>Extend.OccasionSlides.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.OccasionSlides.Templating\Extend.OccasionSlides.Templating.csproj">
+      <Project>{45b6296d-38eb-4705-944d-13f99b077340}</Project>
+      <Name>Extend.OccasionSlides.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.OccasionSlides\Extend.OccasionSlides.csproj">
+      <Project>{bf1ac9a4-23a4-4bb0-9aae-b4bee6014bcd}</Project>
+      <Name>Extend.OccasionSlides</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj">
       <Project>{44A1EA24-59C5-4E9D-AF01-C65297998114}</Project>
       <Name>Support.Presentation</Name>

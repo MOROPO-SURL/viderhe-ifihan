@@ -283,11 +283,11 @@
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj">
       <Project>{b88a5d61-11d9-4827-875e-7bd9bc5f6720}</Project>
-      <Name>Extend.Essential.Motion.Presentation</Name>
+      <Name>Extend.Essential.Transitioning.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj">
       <Project>{5e18fba2-62e1-4bae-8917-1e809fc5fcfd}</Project>
-      <Name>Extend.Essential.Motion</Name>
+      <Name>Extend.Essential.Transitioning</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Overlaying.Dashboard.Presentation\Extend.Essential.Overlaying.Dashboard.Presentation.csproj">
       <Project>{c79fac59-2855-438c-b372-23ee0e4ebb7c}</Project>
@@ -316,6 +316,22 @@
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj">
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.OccasionSlides.Templating.Dashboard.Presentation\Extend.OccasionSlides.Templating.Dashboard.Presentation.csproj">
+      <Project>{d2829edd-e4ac-451f-a0ff-f17293182e9b}</Project>
+      <Name>Extend.OccasionSlides.Templating.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.OccasionSlides.Templating.Presentation\Extend.OccasionSlides.Templating.Presentation.csproj">
+      <Project>{87dea43c-11be-429e-acb1-88810b7301a1}</Project>
+      <Name>Extend.OccasionSlides.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.OccasionSlides.Templating\Extend.OccasionSlides.Templating.csproj">
+      <Project>{45b6296d-38eb-4705-944d-13f99b077340}</Project>
+      <Name>Extend.OccasionSlides.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.OccasionSlides\Extend.OccasionSlides.csproj">
+      <Project>{bf1ac9a4-23a4-4bb0-9aae-b4bee6014bcd}</Project>
+      <Name>Extend.OccasionSlides</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj">
       <Project>{f36158f5-5a62-40f5-8f5e-ce85d8277f20}</Project>
