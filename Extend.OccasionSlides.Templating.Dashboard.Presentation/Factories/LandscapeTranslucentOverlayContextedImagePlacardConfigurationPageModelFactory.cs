@@ -20,13 +20,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 OverlaySize = context.OverlaySize,
                 OverlayShapeKind = context.OverlayShapeKind,
                 OverlayBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlayBackgroundColor),
+                TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
                 OverlayHorizontalAlignment = context.OverlayHorizontalAlignment,
                 Title = context.Title,
-                TitleTextColor = Xamarin.Forms.Color.FromHex(context.TitleTextColor),
                 TitleFontSize = context.TitleFontSize
             };
 
-            context.InfoItems.ForEach(item => result.InfoItems.Add(item));
+            if (context.InfoBlocks != null)
+            {
+                foreach (var item in context.InfoBlocks)
+                {
+                    result.InfoBlocks.Add(item);
+                }
+            }
 
             return result;
         }

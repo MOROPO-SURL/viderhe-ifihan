@@ -63,10 +63,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             OverlayShapeKind = BindingContextPageModel.OverlayShapeKind,
                             OverlayHorizontalAlignment = BindingContextPageModel.OverlayHorizontalAlignment,
                             OverlayBackgroundColor = BindingContextPageModel.OverlayBackgroundColor.ToHex(),
+                            TextColor = BindingContextPageModel.TextColor.ToHex(),
                             Title = BindingContextPageModel.Title,
-                            TitleTextColor = BindingContextPageModel.TitleTextColor.ToHex(),
                             TitleFontSize = BindingContextPageModel.TitleFontSize,
-                            InfoItems = BindingContextPageModel.InfoItems.ToList()
+                            InfoBlocks = BindingContextPageModel.InfoBlocks.ToArray()
                         })
                     });
                 }
@@ -86,10 +86,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             OverlayShapeKind = BindingContextPageModel.OverlayShapeKind,
                             OverlayHorizontalAlignment = BindingContextPageModel.OverlayHorizontalAlignment,
                             OverlayBackgroundColor = BindingContextPageModel.OverlayBackgroundColor.ToHex(),
+                            TextColor = BindingContextPageModel.TextColor.ToHex(),
                             Title = BindingContextPageModel.Title,
-                            TitleTextColor = BindingContextPageModel.TitleTextColor.ToHex(),
                             TitleFontSize = BindingContextPageModel.TitleFontSize,
-                            InfoItems = BindingContextPageModel.InfoItems.ToList()
+                            InfoBlocks = BindingContextPageModel.InfoBlocks.ToArray()
                         })
                     });
                 }
@@ -125,9 +125,38 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(exceptionHandleHelper, httpClientHelperProvider, ContextedImagePicked_Callback, BindingContextPageModel.ContextedImage));
         }
 
+        private void AddInfoBlockButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.InfoBlockConfigurationPopupPage(InfoBlockCreation_Callback));
+        }
+
+        private void EditInfoBlockButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.InfoBlockConfigurationPopupPage(InfoBlockEdition_Callback, ((sender as Xamarin.Forms.BindableObject).BindingContext as System.ICloneable).Clone() as Templating.Presentation.Models.ContextedMediaInfoBlockModel));
+        }
+
         private void ContextedImagePicked_Callback(Support.Presentation.Models.View.ImageViewModel selection)
         {
             BindingContextPageModel.ContextedImage = selection;
+        }
+
+        private void InfoBlockCreation_Callback(Templating.Presentation.Models.ContextedMediaInfoBlockModel model)
+        {
+            model.Priority = BindingContextPageModel.InfoBlocks.Count;
+
+            BindingContextPageModel.InfoBlocks.Add(model);
+        }
+
+        private void InfoBlockEdition_Callback(Templating.Presentation.Models.ContextedMediaInfoBlockModel model)
+        {
+            var target = BindingContextPageModel.InfoBlocks.First(item => item.Id == model.Id);
+
+            target.Header = model.Header;
+            target.HeaderFontSize = model.HeaderFontSize;
+            target.IsHeaderVisible = model.IsHeaderVisible;
+            target.Content = model.Content;
+            target.ContentFontSize = model.ContentFontSize;
+            target.ContentMaxLine = model.ContentMaxLine;
         }
 
         protected override void DisposeUnmanagementResources()

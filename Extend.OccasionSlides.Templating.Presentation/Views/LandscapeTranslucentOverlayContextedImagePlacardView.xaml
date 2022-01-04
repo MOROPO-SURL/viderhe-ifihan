@@ -2,6 +2,7 @@
 <extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:skiaformviews="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
@@ -9,47 +10,46 @@
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.LandscapeTranslucentOverlayContextedImagePlacardView">
     <ContentView.Resources>
         <ResourceDictionary>
+            <converters:ContextOverlayWrapWithToFlyoutContentPaddingConverter x:Key="ContextOverlayWrapWithToFlyoutContentPaddingConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid x:Name="Wrapper">
-            <Grid x:Name="PlacardLayout">
+            <Grid 
+                x:Name="PlacardLayout"
+                ColumnSpacing="0">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <ffimageloadingforms:CachedImage
                     x:Name="ContextedImagen"
-                    Grid.ColumnSpan="3"
+                    Grid.ColumnSpan="6"
                     BackgroundColor="Black"
                     FadeAnimationEnabled="False"
-                    Source="{Binding Path=ContextedImageSource}" 
+                    Source="{Binding Path=ContextedImageSource, Mode=OneTime}" 
                     Aspect="AspectFill"
                     CacheType="Disk"
                     CacheDuration="8760:00:00" />
                 <Grid
-                    Grid.Column="0" Grid.ColumnSpan="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid
-                        x:Name="DrawlerContentWrapLayout"
-                        Grid.Column="0"                        
-                        Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=20}">
-                        <StackLayout>
-                            <Label
-                                Text="{Binding Path=Title}"
-                                TextColor="{Binding Path=TitleTextColor}"
-                                FontSize="{Binding Path=TitleFontSize}" />
-                        </StackLayout>
-                    </Grid>
-                    <skiaformviews:SKCanvasView
-                        Grid.Column="1"
-                        PaintSurface="DrawlerEdgeSKCanvasView_PaintSurface" />
+                    x:Name="FlyoutContentWrapLayout"
+                    Grid.Column="0" Grid.ColumnSpan="2"
+                    Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutContentPaddingConverter}}">
+                    <StackLayout>
+                        <Label
+                            Text="{Binding Path=Title, Mode=OneTime}"
+                            TextColor="{Binding Path=TextColor, Mode=OneTime}"
+                            FontSize="{Binding Path=TitleFontSize, Mode=OneTime}" />
+                    </StackLayout>
                 </Grid>
+                <skiaformviews:SKCanvasView
+                    Grid.Column="2"
+                    PaintSurface="FlyoutContentWrapLayout_PaintSurface" />
             </Grid>
         </Grid>
     </ContentView.Content>

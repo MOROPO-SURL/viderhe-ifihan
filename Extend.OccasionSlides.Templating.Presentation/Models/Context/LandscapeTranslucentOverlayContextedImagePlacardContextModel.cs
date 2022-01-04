@@ -4,6 +4,8 @@
     {
         public string OverlayBackgroundColor { get; set; }
 
+        public string TextColor { get; set; }
+
         public Common.Templating.Presentation.Models.Context.ImageContextModel ContextedImage { get; set; }
     }
 }

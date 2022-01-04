@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Popup.InfoBlockConfigurationPopupPage">
+    <ContentPage.Content>
+        <Frame
+            HorizontalOptions="Center" VerticalOptions="Center"
+            Padding="10" Margin="20"
+            BackgroundColor="White"
+            WidthRequest="360">
+            
+        </Frame>
+    </ContentPage.Content>
+</popup:PopupPage>

@@ -5,12 +5,13 @@
         private Templating.Presentation.Enumerations.MediaContextOverlayShapeKind overlayShapeKind;
         private Templating.Presentation.Enumerations.MediaContextOverlaySize overlaySize;
         private string title;
-        private Xamarin.Forms.Color titleTextColor;
         private int titleFontSize;
 
         public AbstractContextedMediaPlacardConfigurationPageModel()
         {
-            InfoItems = new System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.ContextedMediaInfoItemModel>();
+            TitleFontSize = 48;
+            
+            InfoBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.ContextedMediaInfoBlockModel>();
 
             AvailableOverlayShapeKinds = new Templating.Presentation.Enumerations.MediaContextOverlayShapeKind[]
             {
@@ -36,10 +37,8 @@
 
         public string Title { get => title; set => SetProperty(ref title, value); }
 
-        public Xamarin.Forms.Color TitleTextColor { get => titleTextColor; set => SetProperty(ref titleTextColor, value); }
-
         public int TitleFontSize { get => titleFontSize; set => SetProperty(ref titleFontSize, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.ContextedMediaInfoItemModel> InfoItems { get; private set; }
+        public System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.ContextedMediaInfoBlockModel> InfoBlocks { get; private set; }
     }
 }

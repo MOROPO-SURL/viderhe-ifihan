@@ -16,11 +16,11 @@
                     OverlaySize = context.OverlaySize,
                     OverlayShapeKind = context.OverlayShapeKind,
                     OverlayBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlayBackgroundColor),
+                    TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
                     OverlayHorizontalAlignment = context.OverlayHorizontalAlignment,
-                    Title = context.Title,
-                    TitleTextColor = Xamarin.Forms.Color.FromHex(context.TitleTextColor),
+                    Title = context.Title,                    
                     TitleFontSize = context.TitleFontSize,
-                    InfoItems = context.InfoItems
+                    InfoBlocks = context.InfoBlocks
                 });
             }
 
