@@ -18,20 +18,9 @@
     </ContentView.Resources>
     <ContentView.Content>
         <Grid x:Name="Wrapper">
-            <Grid 
-                x:Name="PlacardLayout"
-                ColumnSpacing="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+            <Grid x:Name="PlacardLayout">
                 <ffimageloadingforms:CachedImage
                     x:Name="ContextedImagen"
-                    Grid.ColumnSpan="6"
                     BackgroundColor="Black"
                     FadeAnimationEnabled="False"
                     Source="{Binding Path=ContextedImageSource, Mode=OneTime}" 
@@ -39,44 +28,55 @@
                     CacheType="Disk"
                     CacheDuration="8760:00:00" />
                 <Grid
-                    x:Name="FlyoutContentWrapLayout"
-                    Grid.Column="0" Grid.ColumnSpan="2"
-                    Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutContentPaddingConverter}}">
-                    <StackLayout 
-                        VerticalOptions="Center"
-                        Spacing="0">
-                        <Label
-                            Text="{Binding Path=Title, Mode=OneTime}"
-                            TextColor="{Binding Path=TextColor, Mode=OneTime}"
-                            FontSize="{Binding Path=TitleFontSize, Mode=OneTime}" />
-                        <StackLayout
-                            Spacing="0"
-                            BindableLayout.ItemsSource="{Binding Path=InfoBlocks}">
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout
-                                        Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutInfoBlockPaddingConverter}}"
-                                        Spacing="0">
-                                        <Label
-                                            IsVisible="{Binding Path=IsHeaderVisible}"
-                                            Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutInfoBlockLabelPaddingConverter}}"
-                                            Text="{Binding Path=Header, Mode=OneTime}"
-                                            TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
-                                            FontAttributes="Italic,Bold"
-                                            FontSize="{Binding Path=HeaderFontSize, Mode=OneTime}"/>
-                                        <Label
-                                            Text="{Binding Path=Content, Mode=OneTime}"
-                                            TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
-                                            FontSize="{Binding Path=ContentFontSize, Mode=OneTime}" />
-                                    </StackLayout>
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
+                    x:Name="FlyoutLayout"
+                    ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <skiaformviews:SKCanvasView
+                        Grid.ColumnSpan="3"
+                        PaintSurface="FlyoutContentWrapLayout_PaintSurface" />
+                    <Grid
+                        Grid.Column="0" Grid.ColumnSpan="2"
+                        Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutContentPaddingConverter}}">
+                        <StackLayout 
+                            VerticalOptions="Center"
+                            Spacing="0">
+                            <Label
+                                Text="{Binding Path=Title, Mode=OneTime}"
+                                TextColor="{Binding Path=TextColor, Mode=OneTime}"
+                                FontSize="{Binding Path=TitleFontSize, Mode=OneTime}" />
+                            <StackLayout
+                                Spacing="0"
+                                BindableLayout.ItemsSource="{Binding Path=InfoBlocks}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout
+                                            Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutInfoBlockPaddingConverter}}"
+                                            Spacing="0">
+                                            <Label
+                                                IsVisible="{Binding Path=IsHeaderVisible}"
+                                                Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutInfoBlockLabelPaddingConverter}}"
+                                                Text="{Binding Path=Header, Mode=OneTime}"
+                                                TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
+                                                FontAttributes="Italic,Bold"
+                                                FontSize="{Binding Path=HeaderFontSize, Mode=OneTime}"/>
+                                            <Label
+                                                Text="{Binding Path=Content, Mode=OneTime}"
+                                                TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
+                                                FontSize="{Binding Path=ContentFontSize, Mode=OneTime}" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
                         </StackLayout>
-                    </StackLayout>
+                    </Grid>
                 </Grid>
-                <skiaformviews:SKCanvasView
-                    Grid.Column="2"
-                    PaintSurface="FlyoutContentWrapLayout_PaintSurface" />
             </Grid>
         </Grid>
     </ContentView.Content>
