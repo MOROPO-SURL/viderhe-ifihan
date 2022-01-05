@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters
 {
-    public class ContextOverlayWrapWithToFlyoutContentPaddingConverter : Xamarin.Forms.IValueConverter
+    public class ContextOverlayWrapWithToLeftFlyoutContentPaddingConverter : Xamarin.Forms.IValueConverter
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

@@ -13,6 +13,9 @@
         public ContextedMediaInfoBlockModel()
         {
             Id = System.Guid.NewGuid();
+
+            contentFontSize = 14;
+            headerFontSize = 12;
         }
 
         public System.Guid Id { get; set; }

@@ -7,10 +7,12 @@
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:skiaformviews="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.LandscapeTranslucentOverlayContextedImagePlacardView">
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.LeftLandscapeTranslucentOverlayContextedImagePlacardView">
     <ContentView.Resources>
         <ResourceDictionary>
-            <converters:ContextOverlayWrapWithToFlyoutContentPaddingConverter x:Key="ContextOverlayWrapWithToFlyoutContentPaddingConverter" />
+            <converters:ContextOverlayWrapWithToLeftFlyoutContentPaddingConverter x:Key="ContextOverlayWrapWithToFlyoutContentPaddingConverter" />
+            <converters:ContextOverlayWrapWithToFlyoutInfoBlockPaddingConverter x:Key="ContextOverlayWrapWithToFlyoutInfoBlockPaddingConverter" />
+            <converters:ContextOverlayWrapWithToFlyoutInfoBlockLabelPaddingConverter x:Key="ContextOverlayWrapWithToFlyoutInfoBlockLabelPaddingConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
@@ -40,11 +42,36 @@
                     x:Name="FlyoutContentWrapLayout"
                     Grid.Column="0" Grid.ColumnSpan="2"
                     Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutContentPaddingConverter}}">
-                    <StackLayout>
+                    <StackLayout 
+                        VerticalOptions="Center"
+                        Spacing="0">
                         <Label
                             Text="{Binding Path=Title, Mode=OneTime}"
                             TextColor="{Binding Path=TextColor, Mode=OneTime}"
                             FontSize="{Binding Path=TitleFontSize, Mode=OneTime}" />
+                        <StackLayout
+                            Spacing="0"
+                            BindableLayout.ItemsSource="{Binding Path=InfoBlocks}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout
+                                        Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutInfoBlockPaddingConverter}}"
+                                        Spacing="0">
+                                        <Label
+                                            IsVisible="{Binding Path=IsHeaderVisible}"
+                                            Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutInfoBlockLabelPaddingConverter}}"
+                                            Text="{Binding Path=Header, Mode=OneTime}"
+                                            TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
+                                            FontAttributes="Italic,Bold"
+                                            FontSize="{Binding Path=HeaderFontSize, Mode=OneTime}"/>
+                                        <Label
+                                            Text="{Binding Path=Content, Mode=OneTime}"
+                                            TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
+                                            FontSize="{Binding Path=ContentFontSize, Mode=OneTime}" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
                     </StackLayout>
                 </Grid>
                 <skiaformviews:SKCanvasView

@@ -6,6 +6,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 {
     public partial class LandscapeTranslucentOverlayContextedImagePlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.LandscapeTranslucentOverlayContextedImagePlacardConfigurationPageModel>
     {
+        private const string OPTION_COMMON_CANCEL = "Cancelar";
+        private const string OPTION_COMMON_EDIT = "Modificar";
+        private const string OPTION_COMMON_DELETE = "Eliminar";
+
+        private const string OPTION_FRAME_ORDERTO_BEFORE = "Aumentar Prioridad";
+        private const string OPTION_FRAME_ORDERTO_AFTER = "Disminuir Prioridad";
+
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
         private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
         private Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
@@ -133,6 +140,129 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         private void EditInfoBlockButton_Clicked(object sender, System.EventArgs eventArgs)
         {
             Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.InfoBlockConfigurationPopupPage(InfoBlockEdition_Callback, ((sender as Xamarin.Forms.BindableObject).BindingContext as System.ICloneable).Clone() as Templating.Presentation.Models.ContextedMediaInfoBlockModel));
+        }
+
+        private void InfoBlockOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Templating.Presentation.Models.ContextedMediaInfoBlockModel;
+
+            var extraOptions = new System.Collections.Generic.List<string>
+            {
+                OPTION_COMMON_EDIT
+            };
+
+            //if (targetFrameViewModel.CanOrderUp)
+            //{
+            //    extraOptions.Add(OPTION_FRAME_ORDERTO_BEFORE);
+            //}
+
+            //if (targetFrameViewModel.CanOrderDown)
+            //{
+            //    extraOptions.Add(OPTION_FRAME_ORDERTO_AFTER);
+            //}
+
+            extraOptions.Add(OPTION_COMMON_DELETE);
+
+            DisplayActionSheet("Opciones de Bloque Informativo", OPTION_COMMON_CANCEL, null, extraOptions.ToArray()).ContinueWith(actionSheetTask =>
+            {
+                switch (actionSheetTask.Result)
+                {
+                    case OPTION_COMMON_EDIT:
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                        {
+                            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.InfoBlockConfigurationPopupPage(InfoBlockEdition_Callback, target));
+                        });
+
+                        break;
+
+                    case OPTION_COMMON_DELETE:
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                        {
+                            DisplayAlert("Confirmar", "Esta seguro que desea eliminar el bloque informativo seleccionado?", OPTION_COMMON_DELETE, OPTION_COMMON_CANCEL).ContinueWith(dialogTask =>
+                            {
+                                if (!dialogTask.Result) return;
+
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    var targetIndex = BindingContextPageModel.InfoBlocks.IndexOf(target);
+
+                                    BindingContextPageModel.InfoBlocks.RemoveAt(targetIndex);
+
+                                    for (var index = targetIndex; index < BindingContextPageModel.InfoBlocks.Count; index++)
+                                    {
+                                        var item = BindingContextPageModel.InfoBlocks.ElementAt(index);
+
+                                        item.Priority = index;
+                                    }
+                                });
+                            });
+                        });
+
+                        break;
+
+                    case OPTION_FRAME_ORDERTO_BEFORE:
+                        //BindingContextPageModel.IsBusy = true;
+
+                        //System.Threading.Tasks.Task.Run(async () =>
+                        //{
+                        //    var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
+
+                        //    await client.OrderUpAsync(target.Id);
+                        //}).ContinueWith(task =>
+                        //{
+                        //    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                        //    {
+                        //        if (task.Exception != null && !task.IsCanceled)
+                        //        {
+                        //            BindingContextPageModel.IsBusy = false;
+
+                        //            (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        //        }
+                        //        else
+                        //        {
+                        //            Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Prioridad del marco aumentada con exito.");
+
+                        //            LoadCurrentScreenplayFrames();
+                        //        }
+                        //    });
+                        //});
+
+                        break;
+
+                    case OPTION_FRAME_ORDERTO_AFTER:
+                        //BindingContextPageModel.IsBusy = true;
+
+                        //System.Threading.Tasks.Task.Run(async () =>
+                        //{
+                        //    var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
+
+                        //    await client.OrderDownAsync(target.Id);
+                        //}).ContinueWith(task =>
+                        //{
+                        //    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                        //    {
+                        //        if (task.Exception != null && !task.IsCanceled)
+                        //        {
+                        //            BindingContextPageModel.IsBusy = false;
+
+                        //            (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        //        }
+                        //        else
+                        //        {
+                        //            Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Prioridad del marco disminuida con exito.");
+
+                        //            LoadCurrentScreenplayFrames();
+                        //        }
+                        //    });
+                        //});
+
+                        break;
+
+                    case OPTION_COMMON_CANCEL:
+                    default:
+                        break;
+                }
+            });
         }
 
         private void ContextedImagePicked_Callback(Support.Presentation.Models.View.ImageViewModel selection)

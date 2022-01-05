@@ -8,7 +8,7 @@
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeTranslucentOverlayContextedImagePlacardContextModel>(model.SerializedContext);
 
-                return new Views.LandscapeTranslucentOverlayContextedImagePlacardView(new Models.View.LandscapeTranslucentOverlayContextedImagePlacardViewModel
+                var targetPlacardViewModel = new Models.View.LandscapeTranslucentOverlayContextedImagePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
@@ -18,10 +18,17 @@
                     OverlayBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlayBackgroundColor),
                     TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
                     OverlayHorizontalAlignment = context.OverlayHorizontalAlignment,
-                    Title = context.Title,                    
+                    Title = context.Title,
                     TitleFontSize = context.TitleFontSize,
                     InfoBlocks = context.InfoBlocks
-                });
+                };
+
+                if (context.OverlayHorizontalAlignment == Enumerations.MediaContextOverlayHorizontalAlignment.Left)
+                {
+                    return new Views.LeftLandscapeTranslucentOverlayContextedImagePlacardView(targetPlacardViewModel);
+                }
+
+                return new Views.RightLandscapeTranslucentOverlayContextedImagePlacardView(targetPlacardViewModel);
             }
 
             return null;

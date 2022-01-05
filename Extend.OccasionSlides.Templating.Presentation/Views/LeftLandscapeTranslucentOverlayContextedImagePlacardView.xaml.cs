@@ -2,17 +2,15 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views
 {
-    public partial class LandscapeTranslucentOverlayContextedImagePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
+    public partial class LeftLandscapeTranslucentOverlayContextedImagePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        private const int TRANSLUCED_OPACITY_LEVEL = 217;
-
-        public LandscapeTranslucentOverlayContextedImagePlacardView(Models.View.LandscapeTranslucentOverlayContextedImagePlacardViewModel model)
+        public LeftLandscapeTranslucentOverlayContextedImagePlacardView(Models.View.LandscapeTranslucentOverlayContextedImagePlacardViewModel model)
         {
             InitializeComponent();
 
             BindingContext = model;
 
-            FlyoutContentWrapLayout.BackgroundColor = (BindingContext as Models.View.LandscapeTranslucentOverlayContextedImagePlacardViewModel).OverlayBackgroundColor.MultiplyAlpha(TRANSLUCED_OPACITY_LEVEL / 255d);
+            FlyoutContentWrapLayout.BackgroundColor = (BindingContext as Models.View.LandscapeTranslucentOverlayContextedImagePlacardViewModel).OverlayBackgroundColor.MultiplyAlpha(Providers.ConstantProvider.TRANSLUCED_OPACITY_LEVEL / 255d);
         }
 
         public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;
@@ -62,7 +60,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
             var overlay = new SkiaSharp.SKPaint()
             {
                 Style = SkiaSharp.SKPaintStyle.Fill,
-                Color = (BindingContext as Models.View.LandscapeTranslucentOverlayContextedImagePlacardViewModel).OverlayBackgroundColor.ToSKColor().WithAlpha(TRANSLUCED_OPACITY_LEVEL)
+                Color = (BindingContext as Models.View.LandscapeTranslucentOverlayContextedImagePlacardViewModel).OverlayBackgroundColor.ToSKColor().WithAlpha(Providers.ConstantProvider.TRANSLUCED_OPACITY_LEVEL)
             };
             
             eventArgs.Surface.Canvas.ClipPath(path);
