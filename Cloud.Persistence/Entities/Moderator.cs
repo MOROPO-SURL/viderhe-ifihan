@@ -6,6 +6,7 @@
         {
             Id = System.Guid.NewGuid();
             Identity = new SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity();
+            AccountBridges = new System.Collections.Generic.List<AccountModeratorBridge>();
         }
 
         [System.ComponentModel.DataAnnotations.Key]
@@ -18,5 +19,9 @@
         public string UserId { get; set; }
 
         public SAPRESSC.Core.Security.Persistence.Entities.User User { get; set; }
+
+        public bool Privileged { get; set; }
+
+        public System.Collections.Generic.List<AccountModeratorBridge> AccountBridges { get; set; }
     }
 }

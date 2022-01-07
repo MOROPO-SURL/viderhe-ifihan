@@ -8,7 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
     [Route("api/[area]/[controller]")]
-    [Area("business")]
+    [Area("account")]
     public class PlayersController : SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementController<Persistence.Entities.Player, string, PlayerInputModel, PlayerDisplayModel>
     {
         private readonly IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
@@ -22,7 +22,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         [Microsoft.AspNetCore.Authorization.AllowAnonymous]
         [HttpGet("[action]")]
-        public IActionResult Account()
+        public ActionResult<AccountDisplayModel> Owner()
         {
             var protectedPlayerId = Request.Headers[Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY];
 
@@ -65,7 +65,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         [Microsoft.AspNetCore.Authorization.AllowAnonymous]
         [HttpGet("[action]")]
-        public IActionResult ScreenplayPlacards()
+        public ActionResult<PlacardDisplayModel[]> ScreenplayPlacards()
         {
             try
             {
@@ -104,7 +104,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             }
         }
 
-        public override IActionResult Create([FromBody] PlayerInputModel inputModel)
+        public override ActionResult Create([FromBody] PlayerInputModel inputModel)
         {
             var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
 

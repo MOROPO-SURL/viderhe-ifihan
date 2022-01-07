@@ -11,12 +11,12 @@
 
         public async System.Threading.Tasks.Task<Common.Models.ExtensionBundleModuleModel[]> GetDashboardBundleModulesAsync(System.Guid id)
         {
-            return await httpClientHelper.GetAsync<Common.Models.ExtensionBundleModuleModel[]>(string.Format("extensions/{0}/dashboard/bundle/modules", id));
+            return await httpClientHelper.GetAsync<Common.Models.ExtensionBundleModuleModel[]>(string.Format("account/extensions/{0}/dashboard/bundle/modules", id));
         }
 
         public async System.Threading.Tasks.Task<Common.Models.ExtensionBundleModuleModel[]> GetPlayerBundleModulesAsync(System.Guid id)
         {
-            return await httpClientHelper.GetAsync<Common.Models.ExtensionBundleModuleModel[]>(string.Format("extensions/{0}/player/bundle/modules", id));
+            return await httpClientHelper.GetAsync<Common.Models.ExtensionBundleModuleModel[]>(string.Format("account/extensions/{0}/player/bundle/modules", id));
         }
     }
 }

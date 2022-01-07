@@ -2,14 +2,18 @@
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
-    public partial class EditVideoPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EditVideoPageModel>
+    public partial class EditVideoPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EditVideoPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
+        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+
         public EditVideoPage(Support.Presentation.Models.View.VideoViewModel videoViewModel)
             : base(new Models.Page.EditVideoPageModel
             {
                 Video = videoViewModel
             })
         {
+            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+
             InitializeComponent();
         }
 
@@ -20,6 +24,19 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ApplyToolbarItem_Activated(object sender, System.EventArgs eventArgs)
         {
+            BindingContextPageModel.ResetValidationState();
+
+            foreach (var validationBehavior in validationBehaviors)
+            {
+                var result = validationBehavior.Evaluate();
+
+                if (!BindingContextPageModel.IsValid) continue;
+
+                if (!result) BindingContextPageModel.IsValid = false;
+            }
+
+            if (!BindingContextPageModel.IsValid) return;
+
             BindingContextPageModel.IsBusy = true;
 
             System.Threading.Tasks.Task.Run(async () =>
@@ -50,5 +67,28 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 });
             });
         }
+
+        #region IValidableFormPage implementation
+
+        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Add(validationBehavior);
+        }
+
+        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Remove(validationBehavior);
+        }
+
+        public void AddValidationMessage(string label, string message)
+        {
+            BindingContextPageModel.ValidationMessages.Add(new Support.Presentation.Dashboard.Models.View.ValidationMessageViewModel
+            {
+                Caption = label,
+                Message = message
+            });
+        }
+
+        #endregion
     }
 }

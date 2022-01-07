@@ -23,22 +23,22 @@
 
             fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(contentType);
 
-            await httpClientHelper.PostFormAsync("business/images", new System.Net.Http.MultipartFormDataContent { formContent, fileContent });
+            await httpClientHelper.PostFormAsync("account/images", new System.Net.Http.MultipartFormDataContent { formContent, fileContent });
         }
 
         public async System.Threading.Tasks.Task<SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.ImageDisplayModel>> GetPageAsync(int page = 1)
         {
-            return await httpClientHelper.GetAsync<SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.ImageDisplayModel>>(string.Format("business/images/page/{0}", page));
+            return await httpClientHelper.GetAsync<SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.ImageDisplayModel>>(string.Format("account/images/page/{0}", page));
         }
 
         public virtual async System.Threading.Tasks.Task EditAsync(Common.Models.ImageInputModel inputModel)
         {
-            await httpClientHelper.PutAsync("business/images", inputModel);
+            await httpClientHelper.PutAsync("account/images", inputModel);
         }
 
         public async System.Threading.Tasks.Task DeleteAsync(System.Guid imageId)
         {
-            await httpClientHelper.DeleteAsync(string.Format("business/images/{0}", imageId));
+            await httpClientHelper.DeleteAsync(string.Format("account/images/{0}", imageId));
         }
     }
 }

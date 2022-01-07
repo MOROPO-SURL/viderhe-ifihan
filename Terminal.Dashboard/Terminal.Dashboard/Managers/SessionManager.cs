@@ -7,8 +7,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 {
     public sealed class SessionManager : SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
-        private const string LAST_CLOUD_SERVER_KEY = "last-cloud-server";
-
         private static SessionManager instance;
 
         public static SessionManager Instance
@@ -21,14 +19,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                 }
 
                 return instance;
-            }
-        }
-
-        private SessionManager()
-        {
-            if (Application.Current.Properties.ContainsKey(LAST_CLOUD_SERVER_KEY))
-            {
-                Server = Application.Current.Properties[LAST_CLOUD_SERVER_KEY] as string;
             }
         }
 
@@ -50,16 +40,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
             }
         }
 
-        public bool HasAuthenticatedIdentity => ModeratorLogin != null;
+        public bool HasAuthenticatedIdentity => Moderator != null;
 
-        public SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("http://{0}/api/", Server), () => AuthorizeHeader, null);
+        public SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("http://{0}/api/", Support.Presentation.Managers.SessionMemoryManager.Instance.Server), () => AuthorizeHeader, null);
 
-        public string Server { get; private set; }
         public string AuthenticationType { get; private set; }
         public string AuthorizationToken { get; private set; }
-        public string ModeratorLogin { get; private set; }
-        public string ModeratorName { get; private set; }
-        public ImageSource ModeratorPictureImageSource { get; private set; }
+        public Cloud.Api.Common.Models.ModeratorDisplayModel Moderator { get; private set; }
         public System.Guid AccountId { get; private set; }
         public string AccountName { get; private set; }
         public Color AccountPrimaryColor { get; private set; }
@@ -76,9 +63,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
             AccountName = name;
             AccountPrimaryColor = primaryColor;
             AccountSecoundaryColor = secoundaryColor;
-            AccountLogoImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, logoImageId));
-            AccountHorizontalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, horizontalSplashImageId));
-            AccountVerticalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, verticalSplashImageId));
+            AccountLogoImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, logoImageId));
+            AccountHorizontalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, horizontalSplashImageId));
+            AccountVerticalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, verticalSplashImageId));
             AccountDefaultOverlayId = defaultOverlay?.Id ?? null;
             AccountSerializedOverlayContext = serializedOverlayContext;
         }
@@ -154,7 +141,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
         public async System.Threading.Tasks.Task SignInAsync(string server, string login, string password)
         {
-            Server = server;
+            Support.Presentation.Managers.SessionMemoryManager.Instance.Server = server;
 
             var userApiClient = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 
@@ -164,16 +151,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                 Password = password
             });
 
-            Application.Current.Properties[LAST_CLOUD_SERVER_KEY] = server;
-
-            await Application.Current.SavePropertiesAsync();
+            Support.Presentation.Managers.SessionMemoryManager.Instance.Persist();
 
             AuthenticationType = result.Type;
             AuthorizationToken = result.Token;
-            ModeratorLogin = login;
-            ModeratorName = result.Identity.LastName == null ? result.Identity.Name : string.Format("{0} {1}", result.Identity.Name, result.Identity.LastName);
-            // TODO Handle no result.Identity.Image null !!
-            ModeratorPictureImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Providers.CloudServerProvider.Instance, result.Identity.Image.Id));
+            Moderator = result.Moderator;
 
             try
             {
@@ -251,9 +233,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
         {
             AuthenticationType = null;
             AuthorizationToken = null;
-            ModeratorLogin = null;
-            ModeratorName = null;
-            ModeratorPictureImageSource = null;
+            Moderator = null;
 
             AccountId = System.Guid.Empty;
             AccountName = null;

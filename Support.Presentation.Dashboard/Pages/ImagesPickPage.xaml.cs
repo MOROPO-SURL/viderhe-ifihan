@@ -9,11 +9,11 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
         private Presentation.Models.View.ImageViewModel[] exclusionImages;
         private System.Action<Presentation.Models.View.ImageViewModel[]> imagesSelectedCallbackAction;
         private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
-        private Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
+        private Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
 
         private int currentImagesPageNumber;
 
-        public ImagesPickPage(Presentation.Models.View.ImageViewModel[] exclusionImages, Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, System.Action<Presentation.Models.View.ImageViewModel[]> imagesSelectedCallbackAction)
+        public ImagesPickPage(Presentation.Models.View.ImageViewModel[] exclusionImages, Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, System.Action<Presentation.Models.View.ImageViewModel[]> imagesSelectedCallbackAction)
             : base(new Models.Page.ImagesPickPageModel { IsBusy = true })
         {
             InitializeComponent();

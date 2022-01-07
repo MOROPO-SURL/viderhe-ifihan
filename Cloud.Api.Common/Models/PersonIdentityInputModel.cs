@@ -17,9 +17,7 @@
 
         public string Alias { get; set; }
 
-        public System.Guid ImageId { get; set; }
-
-        public string ImageContentType { get; set; }
+        public ImageInputModel Image { get; set; }
 
         public string About { get; set; }
 
@@ -34,16 +32,7 @@
 
         public void Import(SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity entity)
         {
-            Id = entity.Id;
-            Name = entity.Name;
-            LastName = entity.LastName;
-            BornDate = entity.BornDate;
-            CivilStatus = entity.CivilStatus;
-            Sex = entity.Sex;
-            Alias = entity.Alias;
-            ImageId = entity.Image?.Id ?? System.Guid.Empty;
-            ImageContentType = entity.Image?.ContentType ?? string.Empty;
-            About = entity.About;
+            throw new System.InvalidOperationException();
         }
 
         public void Mergue(SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity entity)

@@ -13,5 +13,7 @@
         void Close(bool restart);
 
         System.Threading.Tasks.Task ShutdownAsync(bool restart);
+
+        void OpenSystemSettings();
     }
 }

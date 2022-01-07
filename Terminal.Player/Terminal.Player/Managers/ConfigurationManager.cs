@@ -2,7 +2,7 @@
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
 {
-    public class ConfigurationManager : Support.Presentation.Providers.Facade.ICloudServerProviderFacade
+    public class ConfigurationManager
     {
         private static ConfigurationManager instance;
 
@@ -66,12 +66,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
             // TODO Implement spected behavior!!
             return data;
         }
-
-        // TODO Restore to spected behavior!!
-        //public string CloudServerHost => "cloud.viderhe.net";
-        //public string CloudServerHost => "192.168.200.200";
-        public string CloudServerHost => "192.168.200.201";
-        //public string CloudServerHost => "localhost";
     }
 }
 

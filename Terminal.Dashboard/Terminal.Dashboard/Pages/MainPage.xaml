@@ -34,13 +34,13 @@
                         <StackLayout VerticalOptions="Center">
                             <Label
                                 Text="{Binding Path=IconGlyph}"
-                                TextColor="Accent"
+                                TextColor="{StaticResource PrimaryColor}"
                                 HorizontalTextAlignment="Center"
                                 FontFamily="{StaticResource IconFontFamily}"
                                 FontSize="48" />
                             <Label 
                                 Text="{Binding Path=Caption}"
-                                TextColor="Accent"                                        
+                                TextColor="{StaticResource PrimaryColor}"                                        
                                 HorizontalTextAlignment="Center"
                                 FontSize="Medium" />
                         </StackLayout>
@@ -53,7 +53,7 @@
                 </x:Arguments>
                 <Frame
                     Margin="5" Padding="0"
-                    BackgroundColor="Accent"
+                    BackgroundColor="{StaticResource PrimaryColor}"
                     HasShadow="False"
                     CornerRadius="0"
                     WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
@@ -81,17 +81,18 @@
                             Grid.Column="0"
                             VerticalOptions="Center"
                             HeightRequest="96" WidthRequest="96"
-                            Source="{Binding Source={x:Static managers:SessionManager.Instance}, Path=ModeratorPictureImageSource}"
-                            BorderThickness="0" />
+                            Source="{Binding Path=Moderator.ImageSource}"
+                            BorderThickness="2"
+                            BorderColor="White" />
                         <StackLayout 
                             Grid.Column="1" 
                             VerticalOptions="Center">
                             <Label
-                                Text="{Binding Source={x:Static managers:SessionManager.Instance}, Path=ModeratorLogin}"
+                                Text="{Binding Path=Moderator.Model.User.Id}"
                                 TextColor="White"
                                 FontSize="Medium" />
                             <Label 
-                                Text="{Binding Source={x:Static managers:SessionManager.Instance}, Path=ModeratorName}" 
+                                Text="{Binding Path=Moderator.FullName}" 
                                 TextColor="WhiteSmoke" />
                         </StackLayout>
                     </Grid>
@@ -101,16 +102,22 @@
             <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="272" ChildAbsoluteHorizontalMargin="10" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    <!--<ContentPage.ToolbarItems>
+    <ContentPage.ToolbarItems>
         <ToolbarItem 
             Text="Salir"
             Activated="SignOutToolbarItem_Activated"
             Order="Primary">
             <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="{StaticResource IconFontFamily}" Glyph="&#xf5fd;" />
+                <FontImageSource FontFamily="{StaticResource IconFontFamily}" Glyph="&#xf5fd;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
             </ToolbarItem.IconImageSource>
         </ToolbarItem>
-    </ContentPage.ToolbarItems>-->
+    </ContentPage.ToolbarItems>
     <Grid BackgroundColor="LightGray">
         <supportpresentationdashboardviews:BackgroundView />
         <ScrollView Orientation="Vertical">

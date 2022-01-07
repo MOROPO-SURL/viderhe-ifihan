@@ -45,5 +45,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.iOS.Helpers
             // TODO Implement expected behavior!!
             throw new System.NotImplementedException();
         }
+
+        public void OpenSystemSettings()
+        {
+            UIKit.UIApplication.SharedApplication.OpenUrl(new Foundation.NSUrl("App-Prefs:root=General"));
+        }
     }
 }
