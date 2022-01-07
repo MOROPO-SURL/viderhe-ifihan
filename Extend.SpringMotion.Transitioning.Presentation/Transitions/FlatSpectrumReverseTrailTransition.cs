@@ -1,9 +1,10 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.Enumerations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Transitions
 {
-    public class FlatSpectrumReverseTrailTransition : Common.Transitioning.Presentation.Transitions.AbstractTransition
+    public class FlatSpectrumReverseTrailTransition : Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition
     {
         private Xamarin.Forms.BoxView flatSpectrumHandFanPrimaryBoxView;
         private Xamarin.Forms.BoxView flatSpectrumHandFanSecoundaryBoxView;

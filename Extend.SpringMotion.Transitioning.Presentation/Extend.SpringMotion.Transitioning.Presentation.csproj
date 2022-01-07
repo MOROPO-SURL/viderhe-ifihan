@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation</RootNamespace>
-    <Version>0.1.2.0</Version>
+    <Version>0.1.3.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

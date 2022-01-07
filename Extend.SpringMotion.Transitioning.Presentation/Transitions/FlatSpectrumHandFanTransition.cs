@@ -1,8 +1,9 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Transitions
 {
-    public class FlatSpectrumHandFanTransition : Common.Transitioning.Presentation.Transitions.AbstractTransition
+    public class FlatSpectrumHandFanTransition : Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition
     {
         private Xamarin.Forms.BoxView flatSpectrumHandFanPrimaryBoxView;
         private Xamarin.Forms.BoxView flatSpectrumHandFanSecoundaryBoxView;

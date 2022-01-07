@@ -1,8 +1,9 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Transitions
 {
-    public class FlatBoxMatrixSweptCurtainTransition : Common.Transitioning.Presentation.Transitions.AbstractTransition
+    public class FlatBoxMatrixSweptCurtainTransition : Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition
     {
         private const int BOX_VIEW_MATRIX_ITEMS_COUNT = 6;
         private const int BOX_VIEW_QUICK_SHOW_ANIMATE_DURATION_MILLISECOUNDS = 240;
