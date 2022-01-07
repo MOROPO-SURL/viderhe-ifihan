@@ -2,7 +2,7 @@
 {
     public partial class InfinityVideoPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        private Common.Transitioning.Presentation.Transitions.AbstractTransition transition;
+        private Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition;
 
         public InfinityVideoPlacardView(Models.View.InfinityVideoPlacardViewModel model)
         {
@@ -44,7 +44,7 @@
             }
         }
 
-        public override void StartShowInWhenReady(Common.Transitioning.Presentation.Transitions.AbstractTransition transition)
+        public override void StartShowInWhenReady(Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition)
         {
             if (VideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
