@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class ConfigureModeratorPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ConfigureModeratorPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
         private bool targetPrivileged;
         private string targetUserId;

@@ -35,6 +35,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpGet("{key}/player/bundle/modules")]
+        [Microsoft.AspNetCore.Authorization.AllowAnonymous]
         public ActionResult<Cloud.Api.Common.Models.ExtensionBundleModuleModel[]> PlayerBundleModules(System.Guid key)
         {
             var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];

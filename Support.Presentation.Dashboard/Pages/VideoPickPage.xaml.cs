@@ -7,13 +7,13 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
     {
         private System.Action<Presentation.Models.View.VideoViewModel> videoPickedCallbackAction;
         private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
-        private Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
+        private Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
 
         private Presentation.Models.View.VideoViewModel except;
 
         private int currentVideosPageNumber;
 
-        public VideoPickPage(Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, System.Action<Presentation.Models.View.VideoViewModel> videoPickedCallbackAction, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Presentation.Models.View.VideoViewModel except = null)
+        public VideoPickPage(Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, System.Action<Presentation.Models.View.VideoViewModel> videoPickedCallbackAction, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Presentation.Models.View.VideoViewModel except = null)
             : base(new Models.Page.VideoPickPageModel { IsBusy = true })
         {
             InitializeComponent();

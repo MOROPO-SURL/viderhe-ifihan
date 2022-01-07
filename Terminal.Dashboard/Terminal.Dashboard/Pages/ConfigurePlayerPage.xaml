@@ -2,20 +2,23 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters"
+    xmlns:validators="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Validators"
+    xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardpresenters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Presenters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ConfigurePlayerPage"
-    x:TypeArguments="pagemodels:ConfigurePlayerPageModel">
+    x:TypeArguments="pagemodels:ConfigurePlayerPageModel"
+    x:Name="FormPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
-            <converters:OverlayDescriptorToStringConverter x:Key="OverlayDescriptorToStringConverter" />
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <converters:OverlayDescriptorToStringConverter x:Key="OverlayDescriptorToStringConverter" />            
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -51,7 +54,7 @@
             <supportpresentationdashboardviews:BackgroundView />
             <ScrollView>
                 <Grid 
-                    Margin="10"
+                    Margin="10,0,10,10"
                     ColumnSpacing="10" RowSpacing="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -63,25 +66,87 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+                    <StackLayout 
+                        Grid.ColumnSpan="3" Grid.Row="0"
+                        Padding="0,10,0,0"
+                        IsVisible="{Binding Path=IsValid, Converter={StaticResource BoolToBoolNegationConverter}}"
+                        BindableLayout.ItemsSource="{Binding Path=ValidationMessages}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid 
+                                    BackgroundColor="Tomato"
+                                    RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <BoxView 
+                                        Grid.Column="0" Grid.RowSpan="2"
+                                        Color="Red" />
+                                    <Label
+                                        Grid.Column="1" Grid.Row="0"
+                                        Padding="5,5,5,2"
+                                        Text="{Binding Path=Caption}"
+                                        TextColor="White"
+                                        FontAttributes="Bold" />
+                                    <Label 
+                                        Grid.Column="1" Grid.Row="1"
+                                        Padding="5,0,5,5"
+                                        Text="{Binding Path=Message}"
+                                        TextColor="White" />
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
                     <Frame 
-                        Grid.Column="0" Grid.Row="0"
+                        Grid.Column="0" Grid.Row="1"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Identificador" Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=Id}" />
+                            <Label x:Name="IdLabel" Text="Identificador" Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=Id}">
+                                <Entry.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
+                                        TargetProperty="{Static Entry.TextProperty}"
+                                        Label="{Reference IdLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                            <supportpresentationdashboardvalidators:FormatFormFieldValidator Format="^[0-9A-Z]{7}$" />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Entry.Behaviors>
+                            </Entry>
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"
+                        Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Nombre" Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=Name}" />
+                            <Label x:Name="NameLabel" Text="Nombre" Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=Name}">
+                                <Entry.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
+                                        TargetProperty="{Static Entry.TextProperty}"
+                                        Label="{Reference NameLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Entry.Behaviors>
+                            </Entry>
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1"
+                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Guion" Style="{StaticResource FormLabel}" />
@@ -100,17 +165,32 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2"
+                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Carátula" Style="{StaticResource FormLabel}" />
+                            <Label 
+                                x:Name="OverlayLabel"
+                                Text="Carátula" 
+                                Style="{StaticResource FormLabel}" />
                             <StackLayout Orientation="Horizontal">
                                 <Picker
                                     x:Name="OverlayPicker"
                                     HorizontalOptions="FillAndExpand"
                                     ItemsSource="{Binding Path=AvailableOverlays}"
                                     ItemDisplayBinding="{Binding Converter={x:StaticResource OverlayDescriptorToStringConverter}}"
-                                    SelectedIndexChanged="OverlayPicker_SelectedIndexChanged"/>
+                                    SelectedIndexChanged="OverlayPicker_SelectedIndexChanged">
+                                    <Picker.Behaviors>
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                            ValidableFormPage="{Reference FormPage}"
+                                            FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultPickerValidationPresenter.Instance}"
+                                            TargetProperty="{Static Picker.SelectedItemProperty}"
+                                            Label="{Reference OverlayLabel}">
+                                            <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                <validators:OverlayFormFieldValidator ConfigurationPage="{Reference FormPage}" />
+                                            </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                    </Picker.Behaviors>
+                                </Picker>
                                 <Button 
                                     IsEnabled="{Binding Overlay, Converter={StaticResource NotNullToBooleanConverter}}"
                                     FontFamily="{StaticResource IconFontFamily}"
@@ -120,7 +200,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3"
+                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Descripción" Style="{StaticResource FormLabel}" />

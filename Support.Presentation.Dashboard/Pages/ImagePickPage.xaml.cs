@@ -7,13 +7,13 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
     {
         private System.Action<Presentation.Models.View.ImageViewModel> imagePickedCallbackAction;
         private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
-        private Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
+        private Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
 
         private Presentation.Models.View.ImageViewModel except;
 
         private int currentImagesPageNumber;
 
-        public ImagePickPage(Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, System.Action<Presentation.Models.View.ImageViewModel> imagePickedCallbackAction, Presentation.Models.View.ImageViewModel except = null)
+        public ImagePickPage(Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, System.Action<Presentation.Models.View.ImageViewModel> imagePickedCallbackAction, Presentation.Models.View.ImageViewModel except = null)
             : base(new Models.Page.ImagePickPageModel
             {
                 IsBusy = true

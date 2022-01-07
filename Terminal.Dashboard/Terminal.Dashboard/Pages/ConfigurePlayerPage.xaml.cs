@@ -2,16 +2,25 @@
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
-    public partial class ConfigurePlayerPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigurePlayerPageModel>
+    public partial class ConfigurePlayerPage : 
+        XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigurePlayerPageModel>, 
+        Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage,
+        Contract.IOverlayContextConfigurationPage
     {
+        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+
         private bool pageModelHasChanges;
         private readonly bool editing;
+        private Extend.Common.Overlaying.Descriptors.IOverlayDescriptor recoverableOverlay;
+        private string recoverableSerializedOverlayContext;
 
         private System.Action successCallbackAction;
 
         public ConfigurePlayerPage(System.Action successCallbackAction, Models.View.PlayerViewModel model = null)
             : base(Factories.ConfigurePlayerPageModelFactory.Build(model))
         {
+            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+
             InitializeComponent();
 
             this.successCallbackAction = successCallbackAction;
@@ -30,6 +39,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             BindingContextPageModel.PropertyChanged += PageModel_PropertyChanged;
 
             IsEnabled = false;
+
+            recoverableOverlay = BindingContextPageModel.Overlay;
+            recoverableSerializedOverlayContext = BindingContextPageModel.SerializedOverlayContext;
         }
 
         protected override void OnAppearing()
@@ -40,12 +52,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 IsEnabled = true;
 
-                System.Threading.Tasks.Task.Run(async () =>
-                {
-                    var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
 
-                    return await client.GetPaginateAsync();
-                }).ContinueWith(task =>
+                client.GetPaginateAsync().ContinueWith(task =>
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
@@ -119,12 +128,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             if (BindingContextPageModel == null || BindingContextPageModel.IsBusy) return;
 
             BindingContextPageModel.Overlay = (target as Xamarin.Forms.Picker).SelectedItem as Extend.Common.Overlaying.Descriptors.IOverlayDescriptor;
+            BindingContextPageModel.SerializedOverlayContext = null;
 
-            if (BindingContextPageModel.Overlay == null)
+            if (recoverableOverlay != null && BindingContextPageModel.Overlay.Id == recoverableOverlay.Id)
             {
-                BindingContextPageModel.SerializedOverlayContext = null;
+                BindingContextPageModel.SerializedOverlayContext = recoverableSerializedOverlayContext;
             }
-            else if (BindingContextPageModel.Overlay != null && BindingContextPageModel.SerializedOverlayContext == null)
+
+            if (BindingContextPageModel.SerializedOverlayContext == null)
             {
                 BindingContextPageModel.SerializedOverlayContext = Providers.OverlayDefaultSerializedContextProvider.Instance.GetOverlayDefaultContextModel(BindingContextPageModel.Overlay);
             }
@@ -137,12 +148,18 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ApplyToolbarItem_Activated(object sender, System.EventArgs eventArgs)
         {
-            if (!pageModelHasChanges)
-            {
-                this.NavigationPopPageAsync();
+            BindingContextPageModel.ResetValidationState();
 
-                return;
+            foreach (var validationBehavior in validationBehaviors)
+            {
+                var result = validationBehavior.Evaluate();
+
+                if (!BindingContextPageModel.IsValid) continue;
+
+                if (!result) BindingContextPageModel.IsValid = false;
             }
+
+            if (!BindingContextPageModel.IsValid) return;
 
             BindingContextPageModel.IsBusy = true;
 
@@ -225,5 +242,37 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             successCallbackAction = null;
         }
+
+        #region IValidableFormPage implementation
+
+        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Add(validationBehavior);
+        }
+
+        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Remove(validationBehavior);
+        }
+
+        public void AddValidationMessage(string label, string message)
+        {
+            BindingContextPageModel.ValidationMessages.Add(new Support.Presentation.Dashboard.Models.View.ValidationMessageViewModel
+            {
+                Caption = label,
+                Message = message
+            });
+        }
+
+        #endregion
+
+        #region IOverlayContextConfigurationPage implementation
+
+        public string GetCurrentSerializedOverlayContext()
+        {
+            return BindingContextPageModel.SerializedOverlayContext;
+        }
+
+        #endregion
     }
 }
