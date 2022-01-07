@@ -1,6 +1,7 @@
 ﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
