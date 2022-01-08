@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters
 {
-    class ContextOverlayWrapWithToFlyoutInfoBlockLabelPaddingConverter : Xamarin.Forms.IValueConverter
+    class FlyoutWidthToInfoBlockLabelPaddingConverter : Xamarin.Forms.IValueConverter
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

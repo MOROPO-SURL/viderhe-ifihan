@@ -1,9 +1,8 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Enumerations
 {
-    public enum MediaContextOverlaySize
+    public enum FlyoutHorizontalAlignment
     {
-        Short,
-        Medium,
-        Large
+        Left,
+        Right
     }
 }

@@ -99,17 +99,17 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             switch (concreteBindingContext.OverlayShapeKind)
             {
-                case Enumerations.MediaContextOverlayShapeKind.TriangleFullTop:
+                case Enumerations.FlyoutShapeKind.TriangleFullTop:
                     path = SkiaSharp.SKPath.ParseSvgPathData(string.Format("M 0 0 H {0} L {1} {2} H 0 z", contentBoxWidth + (columnWidth / 2), contentBoxWidth, eventArgs.Info.Height));
 
                     break;
 
-                case Enumerations.MediaContextOverlayShapeKind.TriangleFullBottom:
+                case Enumerations.FlyoutShapeKind.TriangleFullBottom:
                     path = SkiaSharp.SKPath.ParseSvgPathData(string.Format("M 0 0 H {0} L {1} {2} H 0 z", contentBoxWidth, contentBoxWidth + (columnWidth / 2), eventArgs.Info.Height));
 
                     break;
 
-                case Enumerations.MediaContextOverlayShapeKind.Rectangle:
+                case Enumerations.FlyoutShapeKind.Rectangle:
                 default:
                     path = SkiaSharp.SKPath.ParseSvgPathData(string.Format("M 0 0 H {0} V {1} H 0 z", contentBoxWidth + Wrapper.Width / Providers.ConstantProvider.CONTEXT_OVERLAY_FLYOUT_PADDING_BY_WRAPPER_WIDTH_RAZON, eventArgs.Info.Height));
 

@@ -1,9 +1,9 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Enumerations
 {
-    public enum MediaContextOverlayShapeKind
+    public enum FlyoutSize
     {
-        Rectangle,
-        TriangleFullTop,
-        TriangleFullBottom
+        Short,
+        Medium,
+        Large
     }
 }

@@ -2,17 +2,17 @@
 {
     public static class MediaContextOverlaySizeExtensions
     {
-        public static int ToColumnCount(this Enumerations.MediaContextOverlaySize target)
+        public static int ToColumnCount(this Enumerations.FlyoutSize target)
         { 
             switch (target)
             {
-                case Enumerations.MediaContextOverlaySize.Short:
+                case Enumerations.FlyoutSize.Short:
                     return 3;
 
-                case Enumerations.MediaContextOverlaySize.Medium:
+                case Enumerations.FlyoutSize.Medium:
                     return 4;
 
-                case Enumerations.MediaContextOverlaySize.Large:
+                case Enumerations.FlyoutSize.Large:
                 default:
                     return 5;
             };

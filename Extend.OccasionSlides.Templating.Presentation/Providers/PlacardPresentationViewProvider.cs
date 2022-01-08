@@ -23,7 +23,7 @@
                     InfoBlocks = context.InfoBlocks
                 };
 
-                if (context.OverlayHorizontalAlignment == Enumerations.MediaContextOverlayHorizontalAlignment.Left)
+                if (context.OverlayHorizontalAlignment == Enumerations.FlyoutHorizontalAlignment.Left)
                 {
                     return new Views.LeftLandscapeTranslucentOverlayContextedImagePlacardView(targetPlacardViewModel);
                 }

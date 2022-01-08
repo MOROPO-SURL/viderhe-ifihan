@@ -10,9 +10,9 @@
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.LeftLandscapeTranslucentOverlayContextedImagePlacardView">
     <ContentView.Resources>
         <ResourceDictionary>
-            <converters:ContextOverlayWrapWithToLeftFlyoutContentPaddingConverter x:Key="ContextOverlayWrapWithToFlyoutContentPaddingConverter" />
-            <converters:ContextOverlayWrapWithToFlyoutInfoBlockPaddingConverter x:Key="ContextOverlayWrapWithToFlyoutInfoBlockPaddingConverter" />
-            <converters:ContextOverlayWrapWithToFlyoutInfoBlockLabelPaddingConverter x:Key="ContextOverlayWrapWithToFlyoutInfoBlockLabelPaddingConverter" />
+            <converters:FlyoutWidthToLeftContentPaddingConverter x:Key="FlyoutWidthToLeftContentPaddingConverter" />
+            <converters:FlyoutWidthToInfoBlockPaddingConverter x:Key="FlyoutWidthToInfoBlockPaddingConverter" />
+            <converters:FlyoutWidthToInfoBlockLabelPaddingConverter x:Key="FlyoutWidthToInfoBlockLabelPaddingConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
@@ -43,7 +43,7 @@
                         PaintSurface="FlyoutContentWrapLayout_PaintSurface" />
                     <Grid
                         Grid.Column="0" Grid.ColumnSpan="2"
-                        Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutContentPaddingConverter}}">
+                        Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource FlyoutWidthToLeftContentPaddingConverter}}">
                         <StackLayout 
                             VerticalOptions="Center"
                             Spacing="0">
@@ -61,11 +61,11 @@
                                     <DataTemplate>
                                         <StackLayout
                                             Opacity="0"
-                                            Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutInfoBlockPaddingConverter}}"
+                                            Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource FlyoutWidthToInfoBlockPaddingConverter}}"
                                             Spacing="0">
                                             <Label
                                                 IsVisible="{Binding Path=IsHeaderVisible}"
-                                                Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutInfoBlockLabelPaddingConverter}}"
+                                                Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource FlyoutWidthToInfoBlockLabelPaddingConverter}}"
                                                 Text="{Binding Path=Header, Mode=OneTime}"
                                                 TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
                                                 FontAttributes="Italic,Bold"

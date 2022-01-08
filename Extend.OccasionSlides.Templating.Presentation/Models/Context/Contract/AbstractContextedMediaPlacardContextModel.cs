@@ -2,9 +2,9 @@
 {
     public abstract class AbstractContextedMediaPlacardContextModel : Common.Templating.Presentation.Models.Context.AbstractScreenTimedPlacardContextModel
     {
-        public Enumerations.MediaContextOverlayShapeKind OverlayShapeKind { get; set; }
+        public Enumerations.FlyoutShapeKind OverlayShapeKind { get; set; }
 
-        public Enumerations.MediaContextOverlaySize OverlaySize { get; set; }
+        public Enumerations.FlyoutSize OverlaySize { get; set; }
 
         public string Title { get; set; }
 
