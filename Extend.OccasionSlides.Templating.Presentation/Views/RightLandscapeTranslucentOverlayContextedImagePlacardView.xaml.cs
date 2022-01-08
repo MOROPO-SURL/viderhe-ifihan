@@ -34,9 +34,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             FlyoutLayout.IsVisible = true;
 
+            int flyoutShowInAnimationDuration = 650;
+            int infoBlockShoInAnimationDuration = 600;
+
             var internalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
             {
-                Delay = "2000"
+                Delay = "2000",
+                IsParallel = true
             };
 
             internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
@@ -44,8 +48,32 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 Target = FlyoutLayout,
                 TranslateX = 0,
                 EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
-                Duration = "650"
+                Duration = flyoutShowInAnimationDuration.ToString()
             });
+            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+            {
+                Target = TitleLabel,
+                Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Left,
+                RelativeOffset = 100d,
+                Delay = flyoutShowInAnimationDuration.ToString(),
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                Duration = infoBlockShoInAnimationDuration.ToString()
+            });
+
+            var index = 1;
+
+            foreach (var infoBlockLayout in InfoBlocksLayout.Children)
+            {
+                internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                {
+                    Target = infoBlockLayout,
+                    Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Left,
+                    RelativeOffset = 100d,
+                    Delay = (flyoutShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * index++).ToString(),
+                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                    Duration = infoBlockShoInAnimationDuration.ToString()
+                });
+            }
 
             internalShowInStoryboard.Begin();
         }

@@ -48,15 +48,19 @@
                             VerticalOptions="Center"
                             Spacing="0">
                             <Label
+                                x:Name="TitleLabel"
+                                Opacity="0"
                                 Text="{Binding Path=Title, Mode=OneTime}"
                                 TextColor="{Binding Path=TextColor, Mode=OneTime}"
                                 FontSize="{Binding Path=TitleFontSize, Mode=OneTime}" />
                             <StackLayout
+                                x:Name="InfoBlocksLayout"
                                 Spacing="0"
                                 BindableLayout.ItemsSource="{Binding Path=InfoBlocks}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout
+                                            Opacity="0"
                                             Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource ContextOverlayWrapWithToFlyoutInfoBlockPaddingConverter}}"
                                             Spacing="0">
                                             <Label
