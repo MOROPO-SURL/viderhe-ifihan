@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Extensions
 {
-    public static class MediaContextOverlaySizeExtensions
+    public static class FlyoutSizeExtensions
     {
         public static int ToColumnCount(this Enumerations.FlyoutSize target)
         { 

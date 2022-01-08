@@ -10,6 +10,10 @@
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.RightLandscapeTranslucentOverlayContextedImagePlacardView">
     <ContentView.Resources>
         <ResourceDictionary>
+            <converters:FlyoutSizeToRightColumnIndexConverter x:Key="FlyoutSizeToRightColumnIndexConverter" />
+            <converters:FlyoutSizeToRightColumnIndexConverter x:Key="FlyoutSizeToRightContentColumnIndexConverter" IsForContent="True" />
+            <converters:FlyoutSizeToColumnSpanConverter x:Key="FlyoutSizeToColumnSpanConverter" />
+            <converters:FlyoutSizeToColumnSpanConverter x:Key="FlyoutSizeToContentColumnSpanConverter" IsForContent="True" />
             <converters:FlyoutWidthToRightContentPaddingConverter x:Key="FlyoutWidthToRightContentPaddingConverter" />
             <converters:FlyoutWidthToInfoBlockPaddingConverter x:Key="FlyoutWidthToInfoBlockPaddingConverter" />
             <converters:FlyoutWidthToInfoBlockLabelPaddingConverter x:Key="FlyoutWidthToInfoBlockLabelPaddingConverter" />
@@ -39,10 +43,12 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <skiaformviews:SKCanvasView
-                        Grid.Column="3" Grid.ColumnSpan="3"
+                        Grid.Column="{Binding Path=OverlaySize, Converter={StaticResource FlyoutSizeToRightColumnIndexConverter}, Mode=OneTime}" 
+                        Grid.ColumnSpan="{Binding Path=OverlaySize, Converter={StaticResource FlyoutSizeToColumnSpanConverter}, Mode=OneTime}"
                         PaintSurface="FlyoutContentWrapLayout_PaintSurface" />
                     <Grid
-                        Grid.Column="4" Grid.ColumnSpan="2"
+                        Grid.Column="{Binding Path=OverlaySize, Converter={StaticResource FlyoutSizeToRightContentColumnIndexConverter}, Mode=OneTime}" 
+                        Grid.ColumnSpan="{Binding Path=OverlaySize, Converter={StaticResource FlyoutSizeToContentColumnSpanConverter}, Mode=OneTime}"
                         Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource FlyoutWidthToRightContentPaddingConverter}}">
                         <StackLayout 
                             VerticalOptions="Center"

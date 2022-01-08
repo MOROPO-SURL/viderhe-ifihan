@@ -10,6 +10,8 @@
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.LeftLandscapeTranslucentOverlayContextedImagePlacardView">
     <ContentView.Resources>
         <ResourceDictionary>
+            <converters:FlyoutSizeToColumnSpanConverter x:Key="FlyoutSizeToColumnSpanConverter" />
+            <converters:FlyoutSizeToColumnSpanConverter x:Key="FlyoutSizeToContentColumnSpanConverter" IsForContent="True" />
             <converters:FlyoutWidthToLeftContentPaddingConverter x:Key="FlyoutWidthToLeftContentPaddingConverter" />
             <converters:FlyoutWidthToInfoBlockPaddingConverter x:Key="FlyoutWidthToInfoBlockPaddingConverter" />
             <converters:FlyoutWidthToInfoBlockLabelPaddingConverter x:Key="FlyoutWidthToInfoBlockLabelPaddingConverter" />
@@ -39,10 +41,11 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <skiaformviews:SKCanvasView
-                        Grid.ColumnSpan="3"
+                        Grid.ColumnSpan="{Binding Path=OverlaySize, Converter={StaticResource FlyoutSizeToColumnSpanConverter}, Mode=OneTime}"
                         PaintSurface="FlyoutContentWrapLayout_PaintSurface" />
                     <Grid
-                        Grid.Column="0" Grid.ColumnSpan="2"
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="{Binding Path=OverlaySize, Converter={StaticResource FlyoutSizeToContentColumnSpanConverter}, Mode=OneTime}"
                         Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource FlyoutWidthToLeftContentPaddingConverter}}">
                         <StackLayout 
                             VerticalOptions="Center"
