@@ -25,8 +25,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>LocalizedResources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Models\Page\Popup\InfoBlockConfigurationPopupPage.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
+    <Compile Update="Pages\Popup\TextContentBlockConfigurationPopupPage.xaml.cs">
+      <DependentUpon>TextContentBlockConfigurationPopupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml.cs">
+      <DependentUpon>LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LandscapeContextualTranslucentOverlapForImagePlacardThumbnailView.xaml.cs">
+      <DependentUpon>LandscapeContextualTranslucentOverlapForImagePlacardThumbnailView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -35,10 +41,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\LandscapeTranslucentOverlayContextedImagePlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\LandscapeContextualFlatOverlapForImagePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapeTranslucentOverlayContextedImagePlacardThumbnailView.xaml">
+    <EmbeddedResource Update="Pages\LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LandscapeContextualFlatOverlapForImagePlacardThumbnailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LandscapeContextualTranslucentOverlapForImagePlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

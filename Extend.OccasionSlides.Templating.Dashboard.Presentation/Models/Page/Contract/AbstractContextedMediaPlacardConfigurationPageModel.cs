@@ -2,8 +2,8 @@
 {
     public abstract class AbstractContextedMediaPlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
-        private Templating.Presentation.Enumerations.MediaContextOverlayShapeKind overlayShapeKind;
-        private Templating.Presentation.Enumerations.MediaContextOverlaySize overlaySize;
+        private Templating.Presentation.Enumerations.OverlapShapeKind overlapShapeKind;
+        private Templating.Presentation.Enumerations.OverlapSize overlapSize;
         private string title;
         private int titleFontSize;
 
@@ -11,34 +11,34 @@
         {
             TitleFontSize = 48;
             
-            InfoBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.ContextedMediaInfoBlockModel>();
+            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.TextContentBlockModel>();
 
-            AvailableOverlayShapeKinds = new Templating.Presentation.Enumerations.MediaContextOverlayShapeKind[]
+            AvailableOverlapShapeKinds = new Templating.Presentation.Enumerations.OverlapShapeKind[]
             {
-                Templating.Presentation.Enumerations.MediaContextOverlayShapeKind.Rectangle,
-                Templating.Presentation.Enumerations.MediaContextOverlayShapeKind.TriangleFullTop,
-                Templating.Presentation.Enumerations.MediaContextOverlayShapeKind.TriangleFullBottom
+                Templating.Presentation.Enumerations.OverlapShapeKind.Rectangle,
+                Templating.Presentation.Enumerations.OverlapShapeKind.TriangleFullTop,
+                Templating.Presentation.Enumerations.OverlapShapeKind.TriangleFullBottom
             };
-            AvailableOverlaySizes = new Templating.Presentation.Enumerations.MediaContextOverlaySize[]
+            AvailableOverlapSizes = new Templating.Presentation.Enumerations.OverlapSize[]
             {
-                Templating.Presentation.Enumerations.MediaContextOverlaySize.Short,
-                Templating.Presentation.Enumerations.MediaContextOverlaySize.Medium,
-                Templating.Presentation.Enumerations.MediaContextOverlaySize.Large
+                Templating.Presentation.Enumerations.OverlapSize.Short,
+                Templating.Presentation.Enumerations.OverlapSize.Medium,
+                Templating.Presentation.Enumerations.OverlapSize.Large
             };
         }
 
-        public Templating.Presentation.Enumerations.MediaContextOverlayShapeKind OverlayShapeKind { get => overlayShapeKind; set => SetProperty(ref overlayShapeKind, value); }
+        public Templating.Presentation.Enumerations.OverlapShapeKind OverlapShapeKind { get => overlapShapeKind; set => SetProperty(ref overlapShapeKind, value); }
 
-        public Templating.Presentation.Enumerations.MediaContextOverlayShapeKind[] AvailableOverlayShapeKinds { get; private set; }
+        public Templating.Presentation.Enumerations.OverlapShapeKind[] AvailableOverlapShapeKinds { get; private set; }
 
-        public Templating.Presentation.Enumerations.MediaContextOverlaySize OverlaySize { get => overlaySize; set => SetProperty(ref overlaySize, value); }
+        public Templating.Presentation.Enumerations.OverlapSize OverlapSize { get => overlapSize; set => SetProperty(ref overlapSize, value); }
 
-        public Templating.Presentation.Enumerations.MediaContextOverlaySize[] AvailableOverlaySizes { get; private set; }
+        public Templating.Presentation.Enumerations.OverlapSize[] AvailableOverlapSizes { get; private set; }
 
         public string Title { get => title; set => SetProperty(ref title, value); }
 
         public int TitleFontSize { get => titleFontSize; set => SetProperty(ref titleFontSize, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.ContextedMediaInfoBlockModel> InfoBlocks { get; private set; }
+        public System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.TextContentBlockModel> ContentBlocks { get; private set; }
     }
 }

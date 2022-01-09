@@ -19,16 +19,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\LeftLandscapeTranslucentOverlayContextedImagePlacardView.xaml.cs">
-      <DependentUpon>LeftLandscapeTranslucentOverlayContextedImagePlacardView.xaml</DependentUpon>
+    <Compile Update="Views\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
+      <DependentUpon>LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
+      <DependentUpon>RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\LeftLandscapeTranslucentOverlayContextedImagePlacardView.xaml">
+    <EmbeddedResource Update="Views\LeftLandscapeContextualFlatOverlapForImagePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\RightLandscapeTranslucentOverlayContextedImagePlacardView.xaml">
+    <EmbeddedResource Update="Views\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RightLandscapeContextualFlatOverlapForImagePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

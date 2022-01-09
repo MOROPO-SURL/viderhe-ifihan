@@ -4,31 +4,62 @@
     {
         public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
         {
-            if (model.Template.Id == Descriptors.LandscapeTranslucentOverlayContextedImageTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeTranslucentOverlayContextedImagePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeContextualTranslucentOverlapForImagePlacardContextModel>(model.SerializedContext);
 
-                var targetPlacardViewModel = new Models.View.LandscapeTranslucentOverlayContextedImagePlacardViewModel
+                var targetPlacardViewModel = new Models.View.LandscapeContextualTranslucentOverlapForImagePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.ContextedImage.Id)),
-                    OverlaySize = context.OverlaySize,
-                    OverlayShapeKind = context.OverlayShapeKind,
-                    OverlayBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlayBackgroundColor),
+                    ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
+                    OverlapSize = context.OverlapSize,
+                    OverlapShapeKind = context.OverlapShapeKind,
+                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
                     TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
-                    OverlayHorizontalAlignment = context.OverlayHorizontalAlignment,
+                    OverlapHorizontalAlignment = context.OverlapHorizontalAlignment,
                     Title = context.Title,
                     TitleFontSize = context.TitleFontSize,
-                    InfoBlocks = context.InfoBlocks
+                    ContentBlocks = context.ContentBlocks
                 };
 
-                if (context.OverlayHorizontalAlignment == Enumerations.FlyoutHorizontalAlignment.Left)
+                if (context.OverlapHorizontalAlignment == Enumerations.OverlapHorizontalAlignment.Left)
                 {
-                    return new Views.LeftLandscapeTranslucentOverlayContextedImagePlacardView(targetPlacardViewModel);
+                    return new Views.LeftLandscapeContextualTranslucentOverlapForImagePlacardView(targetPlacardViewModel);
                 }
 
-                return new Views.RightLandscapeTranslucentOverlayContextedImagePlacardView(targetPlacardViewModel);
+                return new Views.RightLandscapeContextualTranslucentOverlapForImagePlacardView(targetPlacardViewModel);
+            }
+
+            if (model.Template.Id == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeContextualFlatOverlapForImagePlacardContextModel>(model.SerializedContext);
+
+                var targetPlacardViewModel = new Models.View.LandscapeContextualFlatOverlapForImagePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.ContextedImage.Id)),
+                    ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
+                    ContextedImageCenteredAtPresentation = context.ContextedImageCenteredAtPresentation,
+                    UseOverlapShadown = context.UseOverlapShadown,
+                    OverlapSize = context.OverlapSize,
+                    OverlapShapeKind = context.OverlapShapeKind,
+                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
+                    TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
+                    OverlapHorizontalAlignment = context.OverlapHorizontalAlignment,
+                    Title = context.Title,
+                    TitleFontSize = context.TitleFontSize,
+                    ContentBlocks = context.ContentBlocks
+                };
+
+                if (context.OverlapHorizontalAlignment == Enumerations.OverlapHorizontalAlignment.Left)
+                {
+                    return new Views.LeftLandscapeContextualFlatOverlapForImagePlacardView(targetPlacardViewModel);
+                }
+
+                return new Views.RightLandscapeContextualFlatOverlapForImagePlacardView(targetPlacardViewModel);
             }
 
             return null;

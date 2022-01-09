@@ -8,10 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="5A2F1E9B-EC2C-46A4-92EC-2975EC6DFEEE-landscape.png" />
     <None Remove="BFB19355-B4DF-4FAC-BAAF-9951943818BE-landscape.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="5A2F1E9B-EC2C-46A4-92EC-2975EC6DFEEE-landscape.png" />
     <EmbeddedResource Include="BFB19355-B4DF-4FAC-BAAF-9951943818BE-landscape.png" />
   </ItemGroup>
 

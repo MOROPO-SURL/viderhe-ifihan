@@ -2,19 +2,19 @@
 {
     public abstract class AbstractLandscapeContextedMediaPlacardConfigurationPageModel : AbstractContextedMediaPlacardConfigurationPageModel
     {
-        private Templating.Presentation.Enumerations.MediaContextOverlayHorizontalAlignment overlayHorizontalAlignment;
+        private Templating.Presentation.Enumerations.OverlapHorizontalAlignment pverlapHorizontalAlignment;
 
         public AbstractLandscapeContextedMediaPlacardConfigurationPageModel()
         {
-            AvailableOverlayHorizontalAlignments = new Templating.Presentation.Enumerations.MediaContextOverlayHorizontalAlignment[]
+            AvailableOverlapHorizontalAlignments = new Templating.Presentation.Enumerations.OverlapHorizontalAlignment[]
             {
-                Templating.Presentation.Enumerations.MediaContextOverlayHorizontalAlignment.Left,
-                Templating.Presentation.Enumerations.MediaContextOverlayHorizontalAlignment.Right
+                Templating.Presentation.Enumerations.OverlapHorizontalAlignment.Left,
+                Templating.Presentation.Enumerations.OverlapHorizontalAlignment.Right
             };
         }
 
-        public Templating.Presentation.Enumerations.MediaContextOverlayHorizontalAlignment OverlayHorizontalAlignment { get => overlayHorizontalAlignment; set => SetProperty(ref overlayHorizontalAlignment, value); }
+        public Templating.Presentation.Enumerations.OverlapHorizontalAlignment OverlapHorizontalAlignment { get => pverlapHorizontalAlignment; set => SetProperty(ref pverlapHorizontalAlignment, value); }
 
-        public Templating.Presentation.Enumerations.MediaContextOverlayHorizontalAlignment[] AvailableOverlayHorizontalAlignments { get; private set; }
+        public Templating.Presentation.Enumerations.OverlapHorizontalAlignment[] AvailableOverlapHorizontalAlignments { get; private set; }
     }
 }

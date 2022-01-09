@@ -2,6 +2,6 @@
 {
     public abstract class AbstractLandscapeContextedMediaPlacardContextModel : AbstractContextedMediaPlacardContextModel
     {
-        public Enumerations.FlyoutHorizontalAlignment OverlayHorizontalAlignment { get; set; }
+        public Enumerations.OverlapHorizontalAlignment OverlapHorizontalAlignment { get; set; }
     }
 }
