@@ -62,6 +62,36 @@
                 return new Views.RightLandscapeContextualFlatOverlapForImagePlacardView(targetPlacardViewModel);
             }
 
+            if (model.Template.Id == Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeContextualTrailOverlapForImagePlacardContextModel>(model.SerializedContext);
+
+                var targetPlacardViewModel = new Models.View.LandscapeContextualTrailOverlapForImagePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.ContextedImage.Id)),
+                    ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
+                    ContextedImageCenteredAtPresentation = context.ContextedImageCenteredAtPresentation,
+                    OverlapTrailMode = context.OverlapTrailMode,
+                    OverlapSize = context.OverlapSize,
+                    OverlapShapeKind = context.OverlapShapeKind,
+                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
+                    TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
+                    OverlapHorizontalAlignment = context.OverlapHorizontalAlignment,
+                    Title = context.Title,
+                    TitleFontSize = context.TitleFontSize,
+                    ContentBlocks = context.ContentBlocks
+                };
+
+                if (context.OverlapHorizontalAlignment == Enumerations.OverlapHorizontalAlignment.Left)
+                {
+                    return new Views.LeftLandscapeContextualTrailOverlapForImagePlacardView(targetPlacardViewModel);
+                }
+
+                return new Views.RightLandscapeContextualTrailOverlapForImagePlacardView(targetPlacardViewModel);
+            }
+
             return null;
         }
     }

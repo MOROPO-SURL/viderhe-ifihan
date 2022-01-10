@@ -62,6 +62,24 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dual.
+        /// </summary>
+        internal static string Dual {
+            get {
+                return ResourceManager.GetString("Dual", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cuádruple.
+        /// </summary>
+        internal static string Fourfold {
+            get {
+                return ResourceManager.GetString("Fourfold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Largo.
         /// </summary>
         internal static string Large {
@@ -116,6 +134,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Único.
+        /// </summary>
+        internal static string Single {
+            get {
+                return ResourceManager.GetString("Single", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Triángulo Completo Abajo.
         /// </summary>
         internal static string TriangleFullBottom {
@@ -130,6 +157,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         internal static string TriangleFullTop {
             get {
                 return ResourceManager.GetString("TriangleFullTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triple.
+        /// </summary>
+        internal static string Triplex {
+            get {
+                return ResourceManager.GetString("Triplex", resourceCulture);
             }
         }
     }

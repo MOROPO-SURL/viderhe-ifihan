@@ -4,6 +4,8 @@
     {
         public Xamarin.Forms.Color OverlapBackgroundColor { get; set; }
 
+        public Enumerations.OverlapTrailMode OverlapTrailMode { get; set; }
+
         public Xamarin.Forms.Color TextColor { get; set; }
     }
 }

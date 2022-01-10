@@ -4,14 +4,11 @@
     {
         public Xamarin.Forms.ContentView GetPlacardThumnailView(Support.Presentation.Models.View.PlacardViewModel model, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
         {
-            if (model.Template.Id == Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor.ID ||
+                model.Template.Id == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID ||
+                model.Template.Id == Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor.ID)
             {
-                return new Views.LandscapeContextualTranslucentOverlapForImagePlacardThumbnailView(model, cloudServerProvider);
-            }
-
-            if (model.Template.Id == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID)
-            {
-                return new Views.LandscapeContextualFlatOverlapForImagePlacardThumbnailView(model, cloudServerProvider);
+                return new Views.LandscapeContextualCommonOverlapForImagePlacardThumbnailView(model, cloudServerProvider);
             }
 
             return null;

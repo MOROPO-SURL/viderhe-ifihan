@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:skiaformviews="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.LeftLandscapeContextualTrailOverlapForImagePlacardView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:OverlapSizeToColumnSpanConverter x:Key="OverlapSizeToColumnSpanConverter" />
+            <converters:OverlapSizeToColumnSpanConverter x:Key="OverlapSizeToContentColumnSpanConverter" IsForContent="True" />
+            <converters:OverlapWidthToLeftContentPaddingConverter x:Key="OverlapWidthToLeftContentPaddingConverter" />
+            <converters:OverlapWidthToInfoBlockPaddingConverter x:Key="OverlapWidthToInfoBlockPaddingConverter" />
+            <converters:OverlapWidthToInfoBlockLabelPaddingConverter x:Key="OverlapWidthToInfoBlockLabelPaddingConverter" />
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="PlacardLayout">
+                <ffimageloadingforms:CachedImage
+                    x:Name="ContextedImagen"
+                    BackgroundColor="Black"
+                    FadeAnimationEnabled="False"
+                    Source="{Binding Path=ContextedImageSource, Mode=OneTime}" 
+                    Aspect="AspectFill"
+                    CacheType="Disk"
+                    CacheDuration="8760:00:00" />
+                <Grid
+                    x:Name="OverlapLayout"
+                    ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <skiaformviews:SKCanvasView
+                        Grid.ColumnSpan="{Binding Path=OverlapSize, Converter={StaticResource OverlapSizeToColumnSpanConverter}, Mode=OneTime}"
+                        PaintSurface="OverlapContentWrapLayout_PaintSurface" />
+                    <Grid
+                        Grid.ColumnSpan="{Binding Path=OverlapSize, Converter={StaticResource OverlapSizeToContentColumnSpanConverter}, Mode=OneTime}"
+                        Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource OverlapWidthToLeftContentPaddingConverter}}">
+                        <StackLayout 
+                            VerticalOptions="Center"
+                            Spacing="0">
+                            <Label
+                                x:Name="TitleLabel"
+                                Opacity="0"
+                                Text="{Binding Path=Title, Mode=OneTime}"
+                                TextColor="{Binding Path=TextColor, Mode=OneTime}"
+                                FontSize="{Binding Path=TitleFontSize, Mode=OneTime}" />
+                            <StackLayout
+                                x:Name="InfoBlocksLayout"
+                                Spacing="0"
+                                BindableLayout.ItemsSource="{Binding Path=ContentBlocks}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout
+                                            Opacity="0"
+                                            Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource OverlapWidthToInfoBlockPaddingConverter}}"
+                                            Spacing="0">
+                                            <Label
+                                                IsVisible="{Binding Path=IsHeaderVisible}"
+                                                Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource OverlapWidthToInfoBlockLabelPaddingConverter}}"
+                                                Text="{Binding Path=Header, Mode=OneTime}"
+                                                TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
+                                                FontAttributes="Italic,Bold"
+                                                FontSize="{Binding Path=HeaderFontSize, Mode=OneTime}"/>
+                                            <Label
+                                                Text="{Binding Path=Content, Mode=OneTime}"
+                                                TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
+                                                FontSize="{Binding Path=ContentFontSize, Mode=OneTime}" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

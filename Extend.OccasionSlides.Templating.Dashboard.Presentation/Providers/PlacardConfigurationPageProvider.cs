@@ -14,6 +14,11 @@
                 return new Pages.LandscapeContextualFlatOverlapForImagePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
             }
 
+            if (templateDescriptor is Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor)
+            {
+                return new Pages.LandscapeContextualTrailOverlapForImagePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+            }
+
             return null;
         }
 
@@ -27,6 +32,11 @@
             if (placardViewModel.Template.Id == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID)
             {
                 return new Pages.LandscapeContextualFlatOverlapForImagePlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor.ID)
+            {
+                return new Pages.LandscapeContextualTrailOverlapForImagePlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
             }
 
             return null;

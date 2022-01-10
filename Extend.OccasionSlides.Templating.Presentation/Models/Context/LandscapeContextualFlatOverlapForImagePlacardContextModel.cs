@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.Context
 {
-    public class LandscapeContextualFlatOverlapForImagePlacardContextModel : Contract.AbstractLandscapeContextualOperlapForImagePlacardContextModel
+    public class LandscapeContextualFlatOverlapForImagePlacardContextModel : Contract.BaseLandscapeContextualOperlapForImagePlacardContextModel
     {
         public string OverlapBackgroundColor { get; set; }
 
