@@ -6,7 +6,7 @@
 
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var concreteValue = (double)value;
+            var concreteValue = System.Convert.ToDouble(value);
 
             if (concreteValue == -1) return concreteValue;
 
@@ -14,7 +14,7 @@
 
             if (applicationPageWidth == RELATIVE_REFERENCE_SIZE) return concreteValue;
 
-            return concreteValue * Xamarin.Forms.Application.Current.MainPage.Width / 1920;
+            return concreteValue * Xamarin.Forms.Application.Current.MainPage.Width / RELATIVE_REFERENCE_SIZE;
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
