@@ -16,7 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             OverlapLayout.IsVisible = false;
 
-            var singleTrailConvasView = new SKCanvasView { IsVisible = true, BindingContext = Enumerations.OverlapTrailMode.Single };
+            var singleTrailConvasView = new SKCanvasView { BindingContext = Enumerations.OverlapTrailMode.Single };
 
             Xamarin.Forms.Grid.SetColumn(singleTrailConvasView, (int)overlapSizeToRightColumnIndexConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
             Xamarin.Forms.Grid.SetColumnSpan(singleTrailConvasView, (int)overlapSizeToColumnSpanConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
@@ -27,7 +27,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             if (model.OverlapTrailMode == Enumerations.OverlapTrailMode.Single) return;
 
-            var dualTrailConvasView = new SKCanvasView { IsVisible = true, BindingContext = Enumerations.OverlapTrailMode.Dual };
+            var dualTrailConvasView = new SKCanvasView { BindingContext = Enumerations.OverlapTrailMode.Dual };
 
             Xamarin.Forms.Grid.SetColumn(dualTrailConvasView, (int)overlapSizeToRightColumnIndexConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
             Xamarin.Forms.Grid.SetColumnSpan(dualTrailConvasView, (int)overlapSizeToColumnSpanConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
@@ -38,7 +38,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             if (model.OverlapTrailMode == Enumerations.OverlapTrailMode.Dual) return;
 
-            var triplexTrailConvasView = new SKCanvasView { IsVisible = true, BindingContext = Enumerations.OverlapTrailMode.Triplex };
+            var triplexTrailConvasView = new SKCanvasView { BindingContext = Enumerations.OverlapTrailMode.Triplex };
 
             Xamarin.Forms.Grid.SetColumn(triplexTrailConvasView, (int)overlapSizeToRightColumnIndexConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
             Xamarin.Forms.Grid.SetColumnSpan(triplexTrailConvasView, (int)overlapSizeToColumnSpanConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
@@ -49,7 +49,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             if (model.OverlapTrailMode == Enumerations.OverlapTrailMode.Triplex) return;
 
-            var fourfoldTrailConvasView = new SKCanvasView { IsVisible = true, BindingContext = Enumerations.OverlapTrailMode.Fourfold };
+            var fourfoldTrailConvasView = new SKCanvasView { BindingContext = Enumerations.OverlapTrailMode.Fourfold };
 
             Xamarin.Forms.Grid.SetColumn(fourfoldTrailConvasView, (int)overlapSizeToRightColumnIndexConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
             Xamarin.Forms.Grid.SetColumnSpan(fourfoldTrailConvasView, (int)overlapSizeToColumnSpanConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));

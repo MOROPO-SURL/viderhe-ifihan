@@ -96,46 +96,80 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Style="{StaticResource FormFieldFrame}"
                         Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"
-                        Padding="0"
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">
-                        <StackLayout 
-                            VerticalOptions="FillAndExpand"
-                            Spacing="0">
-                            <Label 
-                                Margin="10,10,10,6"
-                                Text="Imagen" 
-                                Style="{StaticResource FormLabel}" />
-                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
-                            <Grid>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="PickContextedImageButton_Clicked" />
-                                </Grid.GestureRecognizers>
-                                <ffimageloadingforms:CachedImage 
-                                    BackgroundColor="Black"
-                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-                                    CacheType="Disk"
-                                    CacheDuration="8760:00:00"
-                                    Source="{Binding Path=ContextedImage, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
-                                    Aspect="AspectFill" />
-                                <StackLayout 
-                                    HorizontalOptions="Center" VerticalOptions="End"
-                                    Padding="4"
-                                    BackgroundColor="#99000000"
-                                    Orientation="Horizontal">
-                                    <Label
-                                        Text="&#xf740;"
-                                        TextColor="White"
-                                        FontFamily="{StaticResource IconFontFamily}"
-                                        FontSize="Medium" />
-                                    <Label
-                                        VerticalOptions="Center"
-                                        Margin="0,0,4,0"
-                                        Text="para modificar"
-                                        TextColor="White"
-                                        LineBreakMode="TailTruncation" />
-                                </StackLayout>
+                        <StackLayout>
+                            <Label Text="Fondo" Style="{StaticResource FormLabel}" />
+                            <Grid ColumnSpacing="10" RowSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Frame 
+                                    Style="{StaticResource FormFieldFrame}"
+                                    Grid.ColumnSpan="2" Grid.Row="0"
+                                    Padding="0">
+                                    <StackLayout 
+                                        VerticalOptions="FillAndExpand"
+                                        Spacing="0">
+                                        <Label 
+                                            Margin="10,10,10,6"
+                                            Text="Imagen" 
+                                            Style="{StaticResource FormLabel}" />
+                                        <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                                        <Grid>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="PickContextedImageButton_Clicked" />
+                                            </Grid.GestureRecognizers>
+                                            <ffimageloadingforms:CachedImage 
+                                                BackgroundColor="Black"
+                                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                                CacheType="Disk"
+                                                CacheDuration="8760:00:00"
+                                                Source="{Binding Path=ContextedImage, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
+                                                Aspect="AspectFill" />
+                                            <StackLayout 
+                                                HorizontalOptions="Center" VerticalOptions="End"
+                                                Padding="4"
+                                                BackgroundColor="#99000000"
+                                                Orientation="Horizontal">
+                                                <Label
+                                                    Text="&#xf740;"
+                                                    TextColor="White"
+                                                    FontFamily="{StaticResource IconFontFamily}"
+                                                    FontSize="Medium" />
+                                                <Label
+                                                    VerticalOptions="Center"
+                                                    Margin="0,0,4,0"
+                                                    Text="para modificar"
+                                                    TextColor="White"
+                                                    LineBreakMode="TailTruncation" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="0" Grid.Row="1"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Matener centrada?" Style="{StaticResource FormLabel}" />
+                                        <Switch IsToggled="{Binding Path=ContextedImageCenteredAtPresentation}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="1" Grid.Row="1"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Usar ecfecto Zooming?" Style="{StaticResource FormLabel}" />
+                                        <Switch IsToggled="{Binding Path=ContextedImageZoomingEnabled}" />
+                                    </StackLayout>
+                                </Frame>
                             </Grid>
                         </StackLayout>
                     </Frame>
