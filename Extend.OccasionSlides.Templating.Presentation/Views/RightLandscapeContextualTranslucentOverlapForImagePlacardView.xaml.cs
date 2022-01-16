@@ -76,6 +76,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
             }
 
             internalShowInStoryboard.Begin();
+
+            if (concreteBindingContext.ContextedImageZoomingEnabled && concreteBindingContext.ScreenPresentationTime > System.TimeSpan.Zero)
+            {
+                var presentedImageZoominAnimation = new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                {
+                    Target = ContextedImagen,
+                    Scale = 1.2,
+                    Duration = concreteBindingContext.ScreenPresentationTime.TotalMilliseconds.ToString()
+                };
+
+                presentedImageZoominAnimation.Begin();
+            }
         }
 
         protected override void DisposeUnmanagementResources()

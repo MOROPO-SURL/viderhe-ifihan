@@ -70,6 +70,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             var concreteBindingContext = BindingContext as Models.View.LandscapeContextualTrailOverlapForImagePlacardViewModel;
 
+            var contentBoxWidth = Width * ((concreteBindingContext.OverlapSize.ToColumnCount() - 1) / 6d);
+
             OverlapLayout.TranslationX = Width * (concreteBindingContext.OverlapSize.ToColumnCount() / 6d) * -1;
 
             OverlapLayout.IsVisible = true;
@@ -90,6 +92,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 Duration = overlapShowInAnimationDuration.ToString()
             });
+
+            if (concreteBindingContext.ContextedImageCenteredAtPresentation)
+            {
+                internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                {
+                    Target = ContextedImagen,
+                    TranslateX = concreteBindingContext.OverlapHorizontalAlignment == Enumerations.OverlapHorizontalAlignment.Left ? contentBoxWidth / 2 : contentBoxWidth / 2 * -1,
+                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
+                    Delay = "100"
+                });
+            }
+
             internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
             {
                 Target = TitleLabel,
@@ -116,6 +130,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
             }
 
             internalShowInStoryboard.Begin();
+
+            if (concreteBindingContext.ContextedImageZoomingEnabled && concreteBindingContext.ScreenPresentationTime > System.TimeSpan.Zero)
+            {
+                var presentedImageZoominAnimation = new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                {
+                    Target = ContextedImagen,
+                    Scale = 1.2,
+                    Duration = concreteBindingContext.ScreenPresentationTime.TotalMilliseconds.ToString()
+                };
+
+                presentedImageZoominAnimation.Begin();
+            }
         }
 
         protected override void DisposeUnmanagementResources()
