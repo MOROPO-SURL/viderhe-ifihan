@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:skiaformviews="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
@@ -15,6 +16,7 @@
             <converters:OverlapWidthToLeftContentPaddingConverter x:Key="OverlapWidthToLeftContentPaddingConverter" />
             <converters:OverlapWidthToInfoBlockPaddingConverter x:Key="OverlapWidthToInfoBlockPaddingConverter" />
             <converters:OverlapWidthToInfoBlockLabelPaddingConverter x:Key="OverlapWidthToInfoBlockLabelPaddingConverter" />
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
@@ -54,7 +56,7 @@
                                 Opacity="0"
                                 Text="{Binding Path=Title, Mode=OneTime}"
                                 TextColor="{Binding Path=TextColor, Mode=OneTime}"
-                                FontSize="{Binding Path=TitleFontSize, Mode=OneTime}" />
+                                FontSize="{Binding Path=TitleFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <StackLayout
                                 x:Name="InfoBlocksLayout"
                                 Spacing="0"
@@ -71,11 +73,11 @@
                                                 Text="{Binding Path=Header, Mode=OneTime}"
                                                 TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
                                                 FontAttributes="Italic,Bold"
-                                                FontSize="{Binding Path=HeaderFontSize, Mode=OneTime}"/>
+                                                FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"/>
                                             <Label
                                                 Text="{Binding Path=Content, Mode=OneTime}"
                                                 TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
-                                                FontSize="{Binding Path=ContentFontSize, Mode=OneTime}" />
+                                                FontSize="{Binding Path=ContentFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                                         </StackLayout>
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
