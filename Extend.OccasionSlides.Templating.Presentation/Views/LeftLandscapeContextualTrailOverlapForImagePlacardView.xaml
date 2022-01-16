@@ -41,10 +41,10 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>                    
                     <skiaformviews:SKCanvasView
                         Grid.ColumnSpan="{Binding Path=OverlapSize, Converter={StaticResource OverlapSizeToColumnSpanConverter}, Mode=OneTime}"
-                        PaintSurface="OverlapContentWrapLayout_PaintSurface" />
+                        PaintSurface="OverlapContentWrapLayoutCanvasView_PaintSurface" />
                     <Grid
                         Grid.ColumnSpan="{Binding Path=OverlapSize, Converter={StaticResource OverlapSizeToContentColumnSpanConverter}, Mode=OneTime}"
                         Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource OverlapWidthToLeftContentPaddingConverter}}">

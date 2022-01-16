@@ -91,51 +91,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             eventArgs.Surface.Canvas.Clear();
 
-            var columnWidth = eventArgs.Info.Width / System.Convert.ToDouble(concreteBindingContext.OverlapSize.ToColumnCount());
-
-            var contentBoxWidth = columnWidth * (concreteBindingContext.OverlapSize.ToColumnCount() - 1);
-
-            SkiaSharp.SKPath path;
-
-            switch (concreteBindingContext.OverlapShapeKind)
-            {
-                case Enumerations.OverlapShapeKind.TriangleFullTop:
-                    var topOverlapVintageExtraWith = columnWidth / 2;
-
-                    var bottomOvarlapVintageWidth = contentBoxWidth + topOverlapVintageExtraWith;
-
-                    path = SkiaSharp.SKPath.ParseSvgPathData(string.Format("M {3} 0 h -{0} l {1} {2} H {3} z", bottomOvarlapVintageWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), topOverlapVintageExtraWith.ToString(System.Globalization.CultureInfo.InvariantCulture), eventArgs.Info.Height, eventArgs.Info.Width));
-
-                    break;
-
-                case Enumerations.OverlapShapeKind.TriangleFullBottom:
-                    var bottomOverlapVintageExtraWdith = columnWidth / 2;
-
-                    path = SkiaSharp.SKPath.ParseSvgPathData(string.Format(
-                        "M {3} 0 h -{0} l -{1} {2} H {3} z", 
-                        contentBoxWidth.ToString(System.Globalization.CultureInfo.InvariantCulture),
-                        bottomOverlapVintageExtraWdith.ToString(System.Globalization.CultureInfo.InvariantCulture), 
-                        eventArgs.Info.Height,
-                        eventArgs.Info.Width));
-
-                    break;
-
-                case Enumerations.OverlapShapeKind.Rectangle:
-                default:
-                    var paddingSimulationWidth = contentBoxWidth + Wrapper.Width / Providers.ConstantProvider.CONTEXTUAL_OVERLAP_PADDING_BY_WRAPPER_WIDTH_RAZON;
-
-                    path = SkiaSharp.SKPath.ParseSvgPathData(string.Format("M {2} 0 h -{0} V {1} H {2} z", paddingSimulationWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), eventArgs.Info.Height, eventArgs.Info.Width));
-
-                    break;
-            }
-
             var paint = new SkiaSharp.SKPaint()
             {
                 Style = SkiaSharp.SKPaintStyle.Fill,
                 Color = (BindingContext as Models.View.LandscapeContextualTranslucentOverlapForImagePlacardViewModel).OverlapBackgroundColor.ToSKColor().WithAlpha(Providers.ConstantProvider.TRANSLUCED_OPACITY_LEVEL)
             };
 
-            eventArgs.Surface.Canvas.DrawPath(path, paint);
+            eventArgs.Surface.Canvas.DrawPath(concreteBindingContext.ToHorizontalSKPath(eventArgs.Info.Width, eventArgs.Info.Height, Wrapper.Width), paint);
         }
     }
 }

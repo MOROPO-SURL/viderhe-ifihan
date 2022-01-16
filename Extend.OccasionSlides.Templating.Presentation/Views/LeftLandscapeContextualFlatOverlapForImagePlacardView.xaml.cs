@@ -91,37 +91,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             eventArgs.Surface.Canvas.Clear();
 
-            var columnWidth = eventArgs.Info.Width / System.Convert.ToDouble(concreteBindingContext.OverlapSize.ToColumnCount());
-
-            var contentBoxWidth = columnWidth * (concreteBindingContext.OverlapSize.ToColumnCount() - 1);
-
-            SkiaSharp.SKPath path;
-
-            switch (concreteBindingContext.OverlapShapeKind)
-            {
-                case Enumerations.OverlapShapeKind.TriangleFullTop:
-                    var bottomOvarlapVintageWidth = contentBoxWidth + (columnWidth / 2);
-
-                    path = SkiaSharp.SKPath.ParseSvgPathData(string.Format("M 0 0 H {0} L {1} {2} H 0 z", bottomOvarlapVintageWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), contentBoxWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), eventArgs.Info.Height));
-
-                    break;
-
-                case Enumerations.OverlapShapeKind.TriangleFullBottom:
-                    var topOvarlapVintageWidth = contentBoxWidth + (columnWidth / 2);
-
-                    path = SkiaSharp.SKPath.ParseSvgPathData(string.Format("M 0 0 H {0} L {1} {2} H 0 z", contentBoxWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), topOvarlapVintageWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), eventArgs.Info.Height));
-
-                    break;
-
-                case Enumerations.OverlapShapeKind.Rectangle:
-                default:
-                    var paddingSimulationWidth = contentBoxWidth + Wrapper.Width / Providers.ConstantProvider.CONTEXTUAL_OVERLAP_PADDING_BY_WRAPPER_WIDTH_RAZON;
-
-                    path = SkiaSharp.SKPath.ParseSvgPathData(string.Format("M 0 0 H {0} V {1} H 0 z", paddingSimulationWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), eventArgs.Info.Height));
-
-                    break;
-            }
-
             var paint = new SkiaSharp.SKPaint()
             {
                 Style = SkiaSharp.SKPaintStyle.Fill,
@@ -137,7 +106,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 paint.ImageFilter = SkiaSharp.SKImageFilter.CreateDropShadow(7f, 0f, 8f, 8f, SkiaSharp.SKColor.Parse(shadowRawColors[index]));
             }
 
-            eventArgs.Surface.Canvas.DrawPath(path, paint);
+            eventArgs.Surface.Canvas.DrawPath(concreteBindingContext.ToHorizontalSKPath(eventArgs.Info.Width, eventArgs.Info.Height, Wrapper.Width), paint);
         }
     }
 }
