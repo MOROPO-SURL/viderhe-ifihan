@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation</RootNamespace>
+    <Version>0.0.5.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.OHCC.RailwayMuseum.Overlaying\Extend.OHCC.RailwayMuseum.Overlaying.csproj" />
+    <ProjectReference Include="..\Extend.OHCC.RailwayMuseum.SignalR.Connect\Extend.OHCC.RailwayMuseum.SignalR.Connect.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Providers\" />
+    <Folder Include="Views\" />
+  </ItemGroup>
+
+</Project>

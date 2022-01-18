@@ -14,6 +14,7 @@ using SmartSolucionesCuba.SAPRESSC.Core.Web.SecurityLocal.Extensions;
 using SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Web.Common.Extensions;
 using SmartSolucionesCuba.SAPRESSC.Middleware.Media.Web.Common.Extensions;
 using SmartSolucionesCuba.Viderhe.Cloud.Options;
+using SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.SignalR.Extensions;
 using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud
@@ -268,6 +269,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
             {
                 endpoints.MapHub<Hubs.DashboardHub>("/hubs/dashboard");
                 endpoints.MapHub<Hubs.PlayerHub>("/hubs/player");
+
+                endpoints.PerformHubsRegistration();
             });
 
             app.UseMvc(routes =>

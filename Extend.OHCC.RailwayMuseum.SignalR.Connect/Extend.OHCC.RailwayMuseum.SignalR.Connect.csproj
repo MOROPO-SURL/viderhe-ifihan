@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.SignalR.Connect</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.SignalR.Connect</RootNamespace>
+  </PropertyGroup>
+
+</Project>
