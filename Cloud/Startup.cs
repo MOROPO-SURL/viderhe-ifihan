@@ -101,6 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
             services.AddScoped<IEntityRepository<Persistence.Entities.Moderator, System.Guid>, Persistence.EF.Repositories.ModeratorRepository>();
             services.AddScoped<IEntityRepository<Persistence.Entities.Extension, System.Guid>, Persistence.EF.Repositories.ExtensionRespository>();
             services.AddScoped<IEntityRepository<Persistence.Entities.Template, System.Guid>, Persistence.EF.Repositories.TemplateRepository>();
+            services.AddScoped<IEntityRepository<Persistence.Entities.ScheduledRelaunch, System.Guid>, Persistence.EF.Repositories.ScheduledRelaunchRepository>();
 
             services.AddSingleton<SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade, Managers.ImageFileManager>();
             services.AddSingleton<SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IThumbnailFileManagerFacade, Managers.ThumbnailFileManager>();

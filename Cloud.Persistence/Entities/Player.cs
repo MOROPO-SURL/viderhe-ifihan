@@ -4,7 +4,12 @@ using System.ComponentModel.DataAnnotations;
 namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
 {
     public class Player : INamedEntity<string>, IPersistenceSignable
-    {   
+    {
+        public Player()
+        {
+            ScheduledRelaunches = new System.Collections.Generic.List<ScheduledRelaunch>();
+        }
+
         [Key, RegularExpression(@"^[0-9A-Z]{7}$")]
         public string Id { get; set; }
 
@@ -29,6 +34,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
 
         [Required]
         public string Signature { get; set; }
+
+        public System.Collections.Generic.List<ScheduledRelaunch> ScheduledRelaunches { get; set; }
 
         public object GetSignableEntityModel()
         {

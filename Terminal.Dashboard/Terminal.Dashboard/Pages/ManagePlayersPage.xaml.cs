@@ -8,6 +8,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private const string SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE = "Completado el Ciclo Actual";
         private const string SCREENPLAY_HANDLING_MODE_IMMEDIATELY = "Inmediatamente";
 
+        private const string PLAYER_EDIT_DEFAULT = "Información y Configuración";
+        private const string PLAYER_EDIT_SCHEDULED_RELAUNCH = "Relanzamientos Programados";
+
         private const string PLAYER_HANDLING_RELAUNCH = "Reiniciar Aplicación";
         private const string PLAYER_HANDLING_CLOSE = "Cerrar Aplicación";
         private const string PLAYER_HANDLING_SHUTDOWN = "Apagar Equipo";
@@ -384,7 +387,24 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void PlayerOverviewEditButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new ConfigurePlayerPage(ReloadPlayer, (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.PlayerViewModel));
+            if (BindingContextPageModel.IsBusy) return;
+
+            var model = (sender as Xamarin.Forms.ImageButton).BindingContext as Models.View.PlayerViewModel;
+
+            DisplayActionSheet("Opciones de Edición", "Cancelar", null, PLAYER_EDIT_DEFAULT, PLAYER_EDIT_SCHEDULED_RELAUNCH).ContinueWith(task =>
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    if (task.Result == PLAYER_EDIT_SCHEDULED_RELAUNCH)
+                    {
+                        this.NavigationPushPageAsync(new ManagePlayerScheduledRelaunchsPage(model));
+                    }
+                    else if (task.Result == PLAYER_EDIT_DEFAULT)
+                    {
+                        this.NavigationPushPageAsync(new ConfigurePlayerPage(ReloadPlayer, model));
+                    }
+                });                
+            });            
         }
 
         private void PlayerOverviewDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
