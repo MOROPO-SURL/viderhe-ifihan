@@ -40,7 +40,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public void Mergue(Persistence.Entities.Player entity)
         {
-            entity.Id = Id;
+            //entity.Id = Id;
             entity.Name = Name;
             entity.About = About;
             entity.OverlayId = OverlayId;

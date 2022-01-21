@@ -51,7 +51,20 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Helpers
 
         public void Close(bool restart)
         {
-            throw new System.NotImplementedException();
+            if (restart)
+            {
+                var launchIntent = Android.App.Application.Context.PackageManager.GetLaunchIntentForPackage(Android.App.Application.Context.PackageName);
+
+                var relaunchIntent = Android.Content.Intent.MakeRestartActivityTask(launchIntent.Component);
+
+                Android.App.Application.Context.StartActivity(relaunchIntent);
+
+                Java.Lang.Runtime.GetRuntime().Exit(0);
+            }
+            else
+            {
+                Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+            }
         }
 
         public void OpenSystemSettings()

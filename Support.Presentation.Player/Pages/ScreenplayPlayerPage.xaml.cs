@@ -1,5 +1,6 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
 using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 {
@@ -13,14 +14,14 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
         private readonly bool demo;
         private readonly bool empty;
 
-        public ScreenplayPlayerPage(Models.View.PlacardViewModel[] placards, System.Action presentationCompleteCallbackAction, bool loop, Viderhe.Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Providers.Facade.ICloudServerProviderFacade cloudServerProvider, System.Action<System.Guid> placardPlayingCallbackAction = null, Viderhe.Extend.Common.Overlaying.Presentation.Views.BaseOverlayView overlay = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
+        public ScreenplayPlayerPage(Models.View.PlacardViewModel[] placards, System.Action presentationEndedCallbackAction, bool loop, Viderhe.Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Providers.Facade.ICloudServerProviderFacade cloudServerProvider, System.Action<System.Guid> placardPlayingCallbackAction = null, System.Action screenplayPresentIterationCompleteCallbackAction = null, Viderhe.Extend.Common.Overlaying.Presentation.Views.BaseOverlayView overlay = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
         {
             InitializeComponent();
 
             this.accountInformationProvider = accountInformationProvider;
             this.cloudServerProvider = cloudServerProvider;
 
-            presenter = new Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards, accountInformationProvider, Extend.Transitioning.Presentation.Providers.TransitionProvider.Instance, presentationCompleteCallbackAction, loop, placardPlayingCallbackAction, placardViewTransitionCompleteCallbackAction);
+            presenter = new Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards, accountInformationProvider, Extend.Transitioning.Presentation.Providers.TransitionProvider.Instance, presentationEndedCallbackAction, loop, placardPlayingCallbackAction, screenplayPresentIterationCompleteCallbackAction, placardViewTransitionCompleteCallbackAction);
 
             if (overlay != null)
             {
