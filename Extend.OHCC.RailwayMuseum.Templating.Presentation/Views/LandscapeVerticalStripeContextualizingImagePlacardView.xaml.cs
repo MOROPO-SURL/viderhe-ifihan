@@ -8,7 +8,7 @@
 
             BindingContext = model;
 
-            LogoImage.Source = Xamarin.Forms.ImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.OHCC-MF-Logo-White.png", GetType().Assembly);
+            LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
         }
 
         public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;

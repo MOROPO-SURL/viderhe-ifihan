@@ -10,17 +10,40 @@
   <ItemGroup>
     <None Remove="Assets\Fonts\Montserrat-ExtraBold.otf" />
     <None Remove="Assets\Fonts\Montserrat-SemiBold.otf" />
-    <None Remove="Assets\Images\OHCC-MF-Logo-White.png" />
+    <None Remove="Assets\Images\MF-Identity-Landscape-Color-Primary.svg" />
+    <None Remove="Assets\Images\MF-Identity-Landscape-Color-Secoundary.svg" />
+    <None Remove="Assets\Images\MF-Identity-Landscape-Color-White.svg" />
+    <None Remove="Assets\Images\MF-Identity-Landscape.svg" />
+    <None Remove="Assets\Images\MF-Identity-Portrait.svg" />
+    <None Remove="Assets\Images\MF-Identity-Portriat-Color-Primary.svg" />
+    <None Remove="Assets\Images\MF-Identity-Portriat-Color-Secoundary.svg" />
+    <None Remove="Assets\Images\MF-Identity-Portriat-Color-White.svg" />
+    <None Remove="Assets\Images\Placard-Frame-Landscape-Bullet-Secoundary.svg" />
+    <None Remove="Assets\Images\Placard-Frame-Landscape-Bullet-White.svg" />
+    <None Remove="Assets\Images\Placard-Frame-Landscape-Outline-Secoundary.svg" />
+    <None Remove="Assets\Images\Placard-Frame-Landscape-Outline-White.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\Fonts\Montserrat-ExtraBold.otf" />
     <EmbeddedResource Include="Assets\Fonts\Montserrat-SemiBold.otf" />
-    <EmbeddedResource Include="Assets\Images\OHCC-MF-Logo-White.png" />
+    <EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Outline-White.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Outline-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Bullet-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Bullet-White.svg" />
+    <EmbeddedResource Include="Assets\Images\MF-Identity-Landscape-Color-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\MF-Identity-Landscape-Color-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\MF-Identity-Landscape-Color-White.svg" />
+    <EmbeddedResource Include="Assets\Images\MF-Identity-Landscape.svg" />
+    <EmbeddedResource Include="Assets\Images\MF-Identity-Portrait.svg" />
+    <EmbeddedResource Include="Assets\Images\MF-Identity-Portriat-Color-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\MF-Identity-Portriat-Color-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\MF-Identity-Portriat-Color-White.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
   </ItemGroup>
 

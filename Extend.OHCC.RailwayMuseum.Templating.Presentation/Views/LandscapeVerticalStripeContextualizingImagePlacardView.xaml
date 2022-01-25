@@ -3,13 +3,16 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views.LandscapeVerticalStripeContextualizingImagePlacardView">
     <ContentView.Resources>
         <ResourceDictionary>
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
@@ -37,8 +40,9 @@
                     <StackLayout 
                         VerticalOptions="Center"
                         Spacing="40">
-                        <Image 
-                            x:Name="LogoImage" 
+                        <ffimageloadingsvg:SvgCachedImage 
+                            x:Name="LogoImage"
+                            Margin="0,0,0,60"
                             HorizontalOptions="Center"
                             WidthRequest="{Binding Source={RelativeSource AncestorType={Type StackLayout}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=2}" />
                         <Label 
@@ -46,13 +50,13 @@
                             TextColor="White"
                             HorizontalTextAlignment="Center"
                             FontFamily="Montserrat ExtraBold"
-                            FontSize="{Binding Path=HeaderFontSize}" />
+                            FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}}" />
                         <Label
                             Text="{Binding Path=Content}"
                             TextColor="White"
                             HorizontalTextAlignment="Center"
                             FontFamily="Montserrat SemiBold"
-                            FontSize="{Binding Path=ContentFontSize}" />
+                            FontSize="{Binding Path=ContentFontSize, Converter={StaticResource SizeToRelativeValueConverter}}" />
                     </StackLayout>
                 </Grid>
             </Grid>
