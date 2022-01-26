@@ -34,11 +34,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                 });
             }
 
-            if (model.Template.Id == LandscapeVerticalStripeContextualizingImageTemplateDescriptor.ID)
+            if (model.Template.Id == LandscapeCrossStripeTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeVerticalStripeContextualizingImagePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeCrossStripePlacardContextModel>(model.SerializedContext);
 
-                var viewModel = new Models.View.LandscapeVerticalStripeContextualizingImagePlacardViewModel
+                var viewModel = new Models.View.LandscapeCrossStripePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
@@ -56,7 +56,44 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     viewModel.StripeBackgroundColor = viewModel.StripeBackgroundColor.MultiplyAlpha(0.85);
                 }
 
-                return new LandscapeVerticalStripeContextualizingImagePlacardView(viewModel);
+                return new LandscapeCrossStripePlacardView(viewModel);
+            }
+
+            if (model.Template.Id == LandscapeFramedTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeFramedPlacardContextModel>(model.SerializedContext);
+
+                return new LandscapeFramedPlacardView(new Models.View.LandscapeFramedPlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    Header = context.Header,
+                    HeaderFontSize = context.HeaderFontSize,
+                    Content = context.Content,
+                    ContentFontSize = context.ContentFontSize,
+                    FrameStyle = context.FrameStyle,
+                    BackgroundMode = context.BackgroundMode
+                });
+            }
+
+            if (model.Template.Id == LandscapePennantTrainTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePennantTrainPlacardContextModel>(model.SerializedContext);
+
+                return new LandscapePennantTrainPlacardView(new Models.View.LandscapePennantTrainPlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    Header = context.Header,
+                    HeaderFontSize = context.HeaderFontSize,
+                    Content = context.Content,
+                    ContentFontSize = context.ContentFontSize,
+                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.ContextedImage.Id)),
+                    ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
+                    FlyoutShapeKind = context.FlyoutShapeKind,
+                    FlyoutBackgroundColorMode = context.FlyoutBackgroundColorMode,
+                    PennantVerticalOrientation = context.PennantVerticalOrientation
+                });
             }
 
             return null;

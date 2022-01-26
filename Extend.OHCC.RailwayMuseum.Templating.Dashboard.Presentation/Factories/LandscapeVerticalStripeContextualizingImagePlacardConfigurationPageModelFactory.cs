@@ -4,13 +4,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
 {
     public static class LandscapeVerticalStripeContextualizingImagePlacardConfigurationPageModelFactory
     {
-        public static Models.Page.LandscapeVerticalStripeContextualizingImagePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static Models.Page.LandscapeCrossStripePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.LandscapeVerticalStripeContextualizingImagePlacardConfigurationPageModel();
+            if (placardViewModel == null) return new Models.Page.LandscapeCrossStripePlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.LandscapeVerticalStripeContextualizingImagePlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.LandscapeCrossStripePlacardContextModel>(placardViewModel.SerializedContext);
 
-            return new Models.Page.LandscapeVerticalStripeContextualizingImagePlacardConfigurationPageModel
+            return new Models.Page.LandscapeCrossStripePlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 Label = placardViewModel.Label,

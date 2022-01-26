@@ -14,9 +14,19 @@
                 return new Views.InfinityVideoPlacardThumbnailView(model, cloudServerProvider);
             }
 
-            if (model.Template.Id == Descriptors.LandscapeVerticalStripeContextualizingImageTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.LandscapeCrossStripeTemplateDescriptor.ID)
             {
-                return new Views.LandscapeVerticalStripeContextualizingImagePlacardThumbnailView(model, cloudServerProvider);
+                return new Views.LandscapeCrossStripePlacardThumbnailView(model, cloudServerProvider);
+            }
+
+            if (model.Template.Id == Descriptors.LandscapeFramedTemplateDescriptor.ID)
+            {
+                return new Views.LandscapeFramedPlacardThumbnailView();
+            }
+
+            if (model.Template.Id == Descriptors.LandscapePennantTrainTemplateDescriptor.ID)
+            {
+                return new Views.LandscapePennantTrainPlacardThumbnailView(model, cloudServerProvider);
             }
 
             return null;

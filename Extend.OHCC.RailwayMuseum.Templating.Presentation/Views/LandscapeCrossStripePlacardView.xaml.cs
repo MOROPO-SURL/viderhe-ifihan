@@ -1,8 +1,8 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
 {
-    public partial class LandscapeVerticalStripeContextualizingImagePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
+    public partial class LandscapeCrossStripePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapeVerticalStripeContextualizingImagePlacardView(Models.View.LandscapeVerticalStripeContextualizingImagePlacardViewModel model)
+        public LandscapeCrossStripePlacardView(Models.View.LandscapeCrossStripePlacardViewModel model)
         {
             InitializeComponent();
 

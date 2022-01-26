@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View.Contract
 {
     public abstract class AbstractCornerTileVideoPresentingPlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel
     {
