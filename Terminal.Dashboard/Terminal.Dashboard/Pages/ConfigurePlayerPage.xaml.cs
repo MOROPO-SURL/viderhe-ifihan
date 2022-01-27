@@ -30,6 +30,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             if (editing)
             {
                 Title = "Modificar Reproductor";
+
+                IdEntry.IsReadOnly = true;
             }
             else
             {

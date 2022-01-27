@@ -70,11 +70,11 @@
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
       <Version>5.0.3</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Parsers">
+      <Version>6.1.1</Version>
+    </PackageReference>
     <PackageReference Include="name.atsushieno.proguard.facebook">
       <Version>5.3.2.2</Version>
-    </PackageReference>
-    <PackageReference Include="Rg.Plugins.Popup">
-      <Version>2.0.0.11</Version>
     </PackageReference>
     <PackageReference Include="SSCXFToolKit.IoC">
       <Version>0.2.0-alpha</Version>

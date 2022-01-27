@@ -13,9 +13,9 @@
             return await httpClientHelperProvider.HttpClientHelper.GetAsync<Common.Models.AccountDisplayModel>(string.Format("{0}/owner", TargetController));
         }
 
-        public async System.Threading.Tasks.Task<Common.Models.PlacardDisplayModel[]> GetScreenplayPlacardsAsync()
+        public async System.Threading.Tasks.Task<Common.Models.PlayerPlaybackConfigurationModel> GetPlaybackConfigurationAsync()
         {
-            return await httpClientHelperProvider.HttpClientHelper.GetAsync<Common.Models.PlacardDisplayModel[]>(string.Format("{0}/screenplayplacards", TargetController));
+            return await httpClientHelperProvider.HttpClientHelper.GetAsync<Common.Models.PlayerPlaybackConfigurationModel>(string.Format("{0}/playbackconfiguration", TargetController));
         }
     }
 }
