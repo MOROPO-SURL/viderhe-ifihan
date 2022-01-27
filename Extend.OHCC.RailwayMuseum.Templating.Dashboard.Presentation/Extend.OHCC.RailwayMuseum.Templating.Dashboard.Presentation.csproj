@@ -24,6 +24,9 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Update="Pages\LandscapeCrossStripePlacardConfigurationPage.xaml.cs">
+      <DependentUpon>LandscapeCrossStripePlacardConfigurationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\LandscapeCrossStripePlacardThumbnailView.xaml.cs">
       <DependentUpon>LandscapeCrossStripePlacardThumbnailView.xaml</DependentUpon>
     </Compile>
@@ -34,7 +37,7 @@
       <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\LandscapeVerticalStripeContextualizingImagePlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\LandscapeCrossStripePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\CornerTileVideoPresentingVideoPlacardConfigurationPage.xaml">
@@ -44,6 +47,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\InfinityVideoPlacardEditPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\LandscapeFramedPlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\LandscapePennantTrainPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CornerTileVideoPresentingVideoPlacardThumbnailView.xaml">

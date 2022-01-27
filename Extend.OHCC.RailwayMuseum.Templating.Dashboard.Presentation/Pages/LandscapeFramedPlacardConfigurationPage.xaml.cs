@@ -1,9 +1,8 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Pages
 {
-    public partial class LandscapeVerticalStripeContextualizingImagePlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.LandscapeCrossStripePlacardConfigurationPageModel>
+    public partial class LandscapeFramedPlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.LandscapeFramedPlacardConfigurationPageModel>
     {
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
         private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
@@ -11,13 +10,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         private Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter;
         private System.Action successfulCompleteCallbackAction;
 
-        public LandscapeVerticalStripeContextualizingImagePlacardConfigurationPage(SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
-            : this (null, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, successfulCompleteCallbackAction)
+
+
+        public LandscapeFramedPlacardConfigurationPage(SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
+            : this(null, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, successfulCompleteCallbackAction)
         {
         }
 
-        public LandscapeVerticalStripeContextualizingImagePlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
-            : base(Factories.LandscapeVerticalStripeContextualizingImagePlacardConfigurationPageModelFactory.Build(placardViewModel))
+        public LandscapeFramedPlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
+            : base(Factories.LandscapeFramedPlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
             InitializeComponent();
 
@@ -29,7 +30,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
 
             if (placardViewModel == null)
             {
-                var templateDescriptor = new Descriptors.CornerTileVideoPresentingVideoTemplateDescriptor();
+                var templateDescriptor = new Descriptors.LandscapeFramedTemplateDescriptor();
 
                 Title = string.Format("Nuevo Marco ({0})", templateDescriptor.Name);
 
@@ -52,15 +53,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                     await client.CreateAsync(new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Label = BindingContextPageModel.Label,
-                        TemplateId = Descriptors.LandscapeCrossStripeTemplateDescriptor.ID,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.LandscapeCrossStripePlacardContextModel
+                        TemplateId = Descriptors.LandscapeFramedTemplateDescriptor.ID,
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.LandscapeFramedPlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            ContextedImage = BindingContextPageModel.ContextedImage.ToContextModel(),
-                            ContextedImageZoomingEnabled = BindingContextPageModel.IsContextedImageZoomingEnabled,
-                            StripeColorBackgroundMode = BindingContextPageModel.StripeColorBackgroundMode,
-                            IsStripeBackgroundTranslucent = BindingContextPageModel.IsStripeBackgroundTranslucent,
+                            FrameStyle = BindingContextPageModel.FrameStyle,
+                            BackgroundMode = BindingContextPageModel.BackgroundMode,
                             Header = BindingContextPageModel.Header,
                             HeaderFontSize = BindingContextPageModel.HeaderFontSize,
                             Content = BindingContextPageModel.Content,
@@ -75,14 +74,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
                         TemplateId = placardViewModel.Template.Id,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.LandscapeCrossStripePlacardContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.LandscapeFramedPlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            ContextedImage = BindingContextPageModel.ContextedImage.ToContextModel(),
-                            ContextedImageZoomingEnabled = BindingContextPageModel.IsContextedImageZoomingEnabled,
-                            StripeColorBackgroundMode = BindingContextPageModel.StripeColorBackgroundMode,
-                            IsStripeBackgroundTranslucent = BindingContextPageModel.IsStripeBackgroundTranslucent,
+                            FrameStyle = BindingContextPageModel.FrameStyle,
+                            BackgroundMode = BindingContextPageModel.BackgroundMode,
                             Header = BindingContextPageModel.Header,
                             HeaderFontSize = BindingContextPageModel.HeaderFontSize,
                             Content = BindingContextPageModel.Content,
@@ -115,16 +112,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         private void CancelToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
             this.NavigationPopPageAsync();
-        }
-
-        private void PickContextedImageButton_Clicked(object sender, System.EventArgs eventArgs)
-        {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(exceptionHandleHelper, httpClientHelperProvider, ContextedImagePicked_Callback, BindingContextPageModel.ContextedImage));
-        }
-
-        private void ContextedImagePicked_Callback(Support.Presentation.Models.View.ImageViewModel selection)
-        {
-            BindingContextPageModel.ContextedImage = selection;
         }
 
         protected override void DisposeUnmanagementResources()

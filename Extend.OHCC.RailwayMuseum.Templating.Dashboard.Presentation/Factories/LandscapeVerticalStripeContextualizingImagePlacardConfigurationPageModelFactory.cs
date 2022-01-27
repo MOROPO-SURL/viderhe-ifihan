@@ -2,7 +2,7 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Factories
 {
-    public static class LandscapeVerticalStripeContextualizingImagePlacardConfigurationPageModelFactory
+    public static class LandscapeCrossStripePlacardConfigurationPageModelFactory
     {
         public static Models.Page.LandscapeCrossStripePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {

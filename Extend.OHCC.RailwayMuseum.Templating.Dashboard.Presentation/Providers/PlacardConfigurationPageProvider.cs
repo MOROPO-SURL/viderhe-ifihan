@@ -22,7 +22,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
 
             if (templateDescriptor is LandscapeCrossStripeTemplateDescriptor)
             {
-                return new Pages.LandscapeVerticalStripeContextualizingImagePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+                return new Pages.LandscapeCrossStripePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
             }
 
             return null;
@@ -42,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
 
             if (placardViewModel.Template.Id == LandscapeCrossStripeTemplateDescriptor.ID)
             {
-                return new Pages.LandscapeVerticalStripeContextualizingImagePlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+                return new Pages.LandscapeCrossStripePlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
             }
 
             return null;
