@@ -2,7 +2,7 @@
 {
     public enum FrameStyle
     {
-        Bullet,
-        Outline
+        Fancy,
+        Tally
     }
 }

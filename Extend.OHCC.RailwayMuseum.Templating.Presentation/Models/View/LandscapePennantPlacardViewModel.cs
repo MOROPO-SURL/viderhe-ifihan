@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.Context
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View
 {
-    public class LandscapePennantTrainPlacardContextModel : Contract.AbstractImagedMuseographyPlacardContextModel
+    public class LandscapePennantPlacardViewModel : Contract.AbstractImageMuseographyPlacardViewModel
     {
         public Enumerations.FlyoutShapeKind FlyoutShapeKind { get; set; }
 

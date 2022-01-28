@@ -9,8 +9,8 @@
         {
             AvailableFrameStyles = new Templating.Presentation.Enumerations.FrameStyle[]
             {
-                Templating.Presentation.Enumerations.FrameStyle.Bullet,
-                Templating.Presentation.Enumerations.FrameStyle.Outline
+                Templating.Presentation.Enumerations.FrameStyle.Fancy,
+                Templating.Presentation.Enumerations.FrameStyle.Tally
             };
 
             AvailableBackgroundModes = new Templating.Presentation.Enumerations.BackgroundMode[]

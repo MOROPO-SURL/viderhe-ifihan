@@ -1,8 +1,8 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
 {
-    public partial class LandscapePennantTrainPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
+    public partial class LandscapePennantPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapePennantTrainPlacardView(Models.View.LandscapePennantTrainPlacardViewModel model)
+        public LandscapePennantPlacardView(Models.View.LandscapePennantPlacardViewModel model)
         {
             InitializeComponent();
 

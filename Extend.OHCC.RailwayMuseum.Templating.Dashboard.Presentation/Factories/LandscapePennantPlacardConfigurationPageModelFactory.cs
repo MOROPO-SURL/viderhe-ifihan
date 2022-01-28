@@ -2,15 +2,15 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Factories
 {
-    public static class LandscapePennantTrainPlacardConfigurationPageModelFactory
+    public static class LandscapePennantPlacardConfigurationPageModelFactory
     {
-        public static Models.Page.LandscapePennantTrainPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static Models.Page.LandscapePennantPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.LandscapePennantTrainPlacardConfigurationPageModel();
+            if (placardViewModel == null) return new Models.Page.LandscapePennantPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.LandscapePennantTrainPlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.LandscapePennantPlacardContextModel>(placardViewModel.SerializedContext);
 
-            return new Models.Page.LandscapePennantTrainPlacardConfigurationPageModel
+            return new Models.Page.LandscapePennantPlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 Label = placardViewModel.Label,

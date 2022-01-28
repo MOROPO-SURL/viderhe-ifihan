@@ -76,11 +76,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                 });
             }
 
-            if (model.Template.Id == LandscapePennantTrainTemplateDescriptor.ID)
+            if (model.Template.Id == LandscapePennantTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePennantTrainPlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePennantPlacardContextModel>(model.SerializedContext);
 
-                return new LandscapePennantTrainPlacardView(new Models.View.LandscapePennantTrainPlacardViewModel
+                return new LandscapePennantPlacardView(new Models.View.LandscapePennantPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,

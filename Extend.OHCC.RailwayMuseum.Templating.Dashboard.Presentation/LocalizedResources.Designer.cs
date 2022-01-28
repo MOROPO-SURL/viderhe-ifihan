@@ -62,6 +62,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Abajo.
+        /// </summary>
+        internal static string Bottom {
+            get {
+                return ResourceManager.GetString("Bottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Abajo a la Izquierda.
         /// </summary>
         internal static string BottomLeft {
@@ -76,6 +85,33 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         internal static string BottonRight {
             get {
                 return ResourceManager.GetString("BottonRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Negro.
+        /// </summary>
+        internal static string Dark {
+            get {
+                return ResourceManager.GetString("Dark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adornos.
+        /// </summary>
+        internal static string Fancy {
+            get {
+                return ResourceManager.GetString("Fancy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blanco.
+        /// </summary>
+        internal static string Light {
+            get {
+                return ResourceManager.GetString("Light", resourceCulture);
             }
         }
         
@@ -98,6 +134,42 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Solido Color Primario.
+        /// </summary>
+        internal static string SolidPrimary {
+            get {
+                return ResourceManager.GetString("SolidPrimary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Solido Color Secundario.
+        /// </summary>
+        internal static string SolidSecoundary {
+            get {
+                return ResourceManager.GetString("SolidSecoundary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tarja.
+        /// </summary>
+        internal static string Tally {
+            get {
+                return ResourceManager.GetString("Tally", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arriba.
+        /// </summary>
+        internal static string Top {
+            get {
+                return ResourceManager.GetString("Top", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Arriba a la Izquierda.
         /// </summary>
         internal static string TopLeft {
@@ -112,6 +184,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         internal static string TopRight {
             get {
                 return ResourceManager.GetString("TopRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tren.
+        /// </summary>
+        internal static string Train {
+            get {
+                return ResourceManager.GetString("Train", resourceCulture);
             }
         }
     }

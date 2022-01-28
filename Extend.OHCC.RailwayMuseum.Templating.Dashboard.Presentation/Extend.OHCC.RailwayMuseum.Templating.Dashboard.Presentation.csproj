@@ -27,6 +27,9 @@
     <Compile Update="Pages\LandscapeCrossStripePlacardConfigurationPage.xaml.cs">
       <DependentUpon>LandscapeCrossStripePlacardConfigurationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\LandscapePennantPlacardConfigurationPage.xaml.cs">
+      <DependentUpon>LandscapePennantPlacardConfigurationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\LandscapeCrossStripePlacardThumbnailView.xaml.cs">
       <DependentUpon>LandscapeCrossStripePlacardThumbnailView.xaml</DependentUpon>
     </Compile>
@@ -52,7 +55,7 @@
     <EmbeddedResource Update="Pages\LandscapeFramedPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\LandscapePennantTrainPlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\LandscapePennantPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CornerTileVideoPresentingVideoPlacardThumbnailView.xaml">

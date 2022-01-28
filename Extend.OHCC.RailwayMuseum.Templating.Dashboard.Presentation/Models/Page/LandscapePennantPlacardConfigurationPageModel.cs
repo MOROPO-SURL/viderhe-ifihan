@@ -1,12 +1,12 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page
 {
-    public class LandscapePennantTrainPlacardConfigurationPageModel : Contract.AbstractImagedMuseographyPlacardConfigurationPageModel
+    public class LandscapePennantPlacardConfigurationPageModel : Contract.AbstractImagedMuseographyPlacardConfigurationPageModel
     {
         private Templating.Presentation.Enumerations.FlyoutShapeKind flyoutShapeKind;
         private Templating.Presentation.Enumerations.FlyoutBackgroundColorMode flyoutBackgroundColorMode;
         private Templating.Presentation.Enumerations.PennantVerticalOrientation pennantVerticalOrientation;
 
-        public LandscapePennantTrainPlacardConfigurationPageModel()
+        public LandscapePennantPlacardConfigurationPageModel()
         {
             AvailableFlyoutShapeKinds = new Templating.Presentation.Enumerations.FlyoutShapeKind[]
             {

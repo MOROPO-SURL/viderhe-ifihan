@@ -9,6 +9,8 @@
 
         public AbstractMuseographyPlacardConfigurationPageModel()
         {
+            ScreenPresentationTimeSecounds = 15;
+
             HeaderFontSize = 48;
             ContentFontSize = 32;
         }

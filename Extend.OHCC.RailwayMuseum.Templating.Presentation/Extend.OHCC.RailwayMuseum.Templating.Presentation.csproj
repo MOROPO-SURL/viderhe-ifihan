@@ -56,6 +56,9 @@
     <Compile Update="Views\LandscapeCrossStripePlacardView.xaml.cs">
       <DependentUpon>LandscapeCrossStripePlacardView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\LandscapePennantPlacardView.xaml.cs">
+      <DependentUpon>LandscapePennantPlacardView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -71,7 +74,7 @@
     <EmbeddedResource Update="Views\LandscapeFramedPlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapePennantTrainPlacardView.xaml">
+    <EmbeddedResource Update="Views\LandscapePennantPlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

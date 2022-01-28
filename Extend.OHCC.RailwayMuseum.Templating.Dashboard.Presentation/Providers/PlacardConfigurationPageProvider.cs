@@ -25,6 +25,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                 return new Pages.LandscapeCrossStripePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
             }
 
+            if (templateDescriptor is LandscapeFramedTemplateDescriptor)
+            {
+                return new Pages.LandscapeFramedPlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+            }
+
+            if (templateDescriptor is LandscapePennantTemplateDescriptor)
+            {
+                return new Pages.LandscapePennantPlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+            }
+
             return null;
         }
 
@@ -43,6 +53,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
             if (placardViewModel.Template.Id == LandscapeCrossStripeTemplateDescriptor.ID)
             {
                 return new Pages.LandscapeCrossStripePlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == LandscapeFramedTemplateDescriptor.ID)
+            {
+                return new Pages.LandscapeFramedPlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == LandscapePennantTemplateDescriptor.ID)
+            {
+                return new Pages.LandscapePennantPlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
             }
 
             return null;

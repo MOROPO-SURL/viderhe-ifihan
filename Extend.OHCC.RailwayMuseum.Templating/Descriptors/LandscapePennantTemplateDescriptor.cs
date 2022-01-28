@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Descriptors
 {
-    public class LandscapePennantTrainTemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
+    public class LandscapePennantTemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
     {
         public static System.Guid ID = new System.Guid("57ABCEFA-538C-496D-8DA0-9051AB05331D");
 

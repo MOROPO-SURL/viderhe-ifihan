@@ -4,16 +4,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Converters"
+    xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardpresenters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Presenters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Pages.LandscapeCrossStripePlacardConfigurationPage"
-    x:TypeArguments="pagemodels:LandscapeCrossStripePlacardConfigurationPageModel">
+    x:TypeArguments="pagemodels:LandscapeCrossStripePlacardConfigurationPageModel"
+    x:Name="FormPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -49,10 +54,9 @@
             <supportpresentationdashboardviews:BackgroundView />
             <ScrollView>
                 <Grid 
-                    Margin="10"
+                    Margin="10,0,10,10"
                     ColumnSpacing="10" RowSpacing="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
@@ -64,21 +68,68 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
+                    <StackLayout 
+                        Grid.ColumnSpan="3" Grid.Row="0"
+                        Padding="0,10,0,0"
+                        IsVisible="{Binding Path=IsValid, Converter={StaticResource BoolToBoolNegationConverter}}"
+                        BindableLayout.ItemsSource="{Binding Path=ValidationMessages}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid 
+                                    BackgroundColor="Tomato"
+                                    RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <BoxView 
+                                        Grid.Column="0" Grid.RowSpan="2"
+                                        Color="Red" />
+                                    <Label
+                                        Grid.Column="1" Grid.Row="0"
+                                        Padding="5,5,5,2"
+                                        Text="{Binding Path=Caption}"
+                                        TextColor="White"
+                                        FontAttributes="Bold" />
+                                    <Label 
+                                        Grid.Column="1" Grid.Row="1"
+                                        Padding="5,0,5,5"
+                                        Text="{Binding Path=Message}"
+                                        TextColor="White" />
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
                     <Frame 
-                        Grid.ColumnSpan="4" Grid.Row="0"
+                        Grid.ColumnSpan="3" Grid.Row="1"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Etiqueta" Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=Label}" />
+                            <Label 
+                                x:Name="LabelLabel"
+                                Text="Etiqueta" 
+                                Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=Label}">
+                                <Entry.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
+                                        TargetProperty="{Static Entry.TextProperty}"
+                                        Label="{Reference LabelLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Entry.Behaviors>
+                            </Entry>
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.Row="1"
+                        Grid.Column="0" Grid.Row="2"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Tiempo en Pantalla" Style="{StaticResource FormLabel}" />
@@ -90,7 +141,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="1" Grid.Row="1"
+                        Grid.Column="1" Grid.Row="2"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="A Pantalla Completa" Style="{StaticResource FormLabel}" />
@@ -98,89 +149,146 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3"
                         Style="{StaticResource FormFieldFrame}"
-                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="10"
-                        Padding="0"
+                        BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">
-                        <StackLayout 
-                            VerticalOptions="FillAndExpand"
-                            Spacing="0">
-                            <Label 
-                                Margin="10,10,10,6"
-                                Text="Imagen" 
-                                Style="{StaticResource FormLabel}" />
-                            <BoxView BackgroundColor="#666666" HeightRequest="1" />
-                            <Grid>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="PickContextedImageButton_Clicked" />
-                                </Grid.GestureRecognizers>
-                                <ffimageloadingforms:CachedImage 
-                                    BackgroundColor="Black"
-                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-                                    CacheType="Disk"
-                                    CacheDuration="8760:00:00"
-                                    Source="{Binding Path=ContextedImage, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
-                                    Aspect="AspectFill" />
-                                <StackLayout 
-                                    HorizontalOptions="Center" VerticalOptions="End"
-                                    Padding="4"
-                                    BackgroundColor="#99000000"
-                                    Orientation="Horizontal">
-                                    <Label
-                                        Text="&#xf740;"
-                                        TextColor="White"
-                                        FontFamily="{StaticResource IconFontFamily}"
-                                        FontSize="Medium" />
-                                    <Label
-                                        VerticalOptions="Center"
-                                        Margin="0,0,4,0"
-                                        Text="para modificar"
-                                        TextColor="White"
-                                        LineBreakMode="TailTruncation" />
-                                </StackLayout>
+                        <StackLayout>
+                            <Label Text="Fondo" Style="{StaticResource FormLabel}" />
+                            <Grid ColumnSpacing="10" RowSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Frame 
+                                    Style="{StaticResource FormFieldFrame}"
+                                    Grid.ColumnSpan="2" Grid.Row="0"
+                                    Padding="0">
+                                    <StackLayout 
+                                        VerticalOptions="FillAndExpand"
+                                        Spacing="0">
+                                        <Label 
+                                            x:Name="ImageLabel"
+                                            Margin="10,10,10,6"
+                                            Text="Imagen" 
+                                            Style="{StaticResource FormLabel}" />
+                                        <BoxView BackgroundColor="#666666" HeightRequest="1" />
+                                        <Grid>
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="PickContextedImageButton_Clicked" />
+                                            </Grid.GestureRecognizers>
+                                            <ffimageloadingforms:CachedImage 
+                                                BackgroundColor="Black"
+                                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                                CacheType="Disk"
+                                                CacheDuration="8760:00:00"
+                                                Source="{Binding Path=ContextedImage, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
+                                                Aspect="AspectFill">
+                                                <ffimageloadingforms:CachedImage.Behaviors>
+                                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                                        ValidableFormPage="{Reference FormPage}"
+                                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultCachedImageValidationPresenter.Instance}"
+                                                        TargetProperty="{Static ffimageloadingforms:CachedImage.SourceProperty}"
+                                                        Label="{Reference ImageLabel}">
+                                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                            <supportpresentationdashboardvalidators:NotNullFormFieldValidator />
+                                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                                </ffimageloadingforms:CachedImage.Behaviors>
+                                            </ffimageloadingforms:CachedImage>
+                                            <StackLayout 
+                                                HorizontalOptions="Center" VerticalOptions="End"
+                                                Padding="4"
+                                                BackgroundColor="#99000000"
+                                                Orientation="Horizontal">
+                                                <Label
+                                                    Text="&#xf740;"
+                                                    TextColor="White"
+                                                    FontFamily="{StaticResource IconFontFamily}"
+                                                    FontSize="Medium" />
+                                                <Label
+                                                    VerticalOptions="Center"
+                                                    Margin="0,0,4,0"
+                                                    Text="para modificar"
+                                                    TextColor="White"
+                                                    LineBreakMode="TailTruncation" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="0" Grid.Row="1"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Usar ecfecto Zooming?" Style="{StaticResource FormLabel}" />
+                                        <Switch IsToggled="{Binding Path=ContextedImageZoomingEnabled}" />
+                                    </StackLayout>
+                                </Frame>
                             </Grid>
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="3" Grid.Row="2"
-                        Style="{StaticResource FormFieldFrame}">
+                        Grid.Column="2" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF"
+                        VerticalOptions="Start">
                         <StackLayout>
-                            <Label Text="Usar ecfecto Zooming en Imagen?" Style="{StaticResource FormLabel}" />
-                            <Switch IsToggled="{Binding Path=IsContextedImageZoomingEnabled}" />
+                            <Label Text="Cinta Transversal" Style="{StaticResource FormLabel}" />
+                            <Frame 
+                                Style="{StaticResource FormFieldFrame}"
+                                Margin="0,0,0,6">
+                                <StackLayout>
+                                    <Label Text="Color de Fondo" Style="{StaticResource FormLabel}" />
+                                    <Picker 
+                                        ItemsSource="{Binding Path=AvailableStripeColorBackgroundModes}" 
+                                        SelectedItem="{Binding Path=StripeColorBackgroundMode}"
+                                        ItemDisplayBinding="{Binding Converter={StaticResource StringToLocalizeStringConverter}}"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame Style="{StaticResource FormFieldFrame}">
+                                <StackLayout>
+                                    <Label Text="Color de Fondo Traslúcido?" Style="{StaticResource FormLabel}" />
+                                    <Switch IsToggled="{Binding Path=IsStripeBackgroundTranslucent}" />
+                                </StackLayout>
+                            </Frame>
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="3" Grid.Row="3"
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Color de Fondo" Style="{StaticResource FormLabel}" />
-                            <Picker 
-                                ItemsSource="{Binding Path=AvailableStripeColorBackgroundModes}" 
-                                SelectedItem="{Binding Path=StripeColorBackgroundMode}"
-                                ItemDisplayBinding="{Binding Converter={StaticResource StringToLocalizeStringConverter}}"/>
+                            <Label 
+                                x:Name="TitleLabel"
+                                Text="Título" 
+                                Style="{StaticResource FormLabel}" />
+                            <Editor HeightRequest="50" Text="{Binding Path=Header}">
+                                <Editor.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEditorValidationPresenter.Instance}"
+                                        TargetProperty="{Static Editor.TextProperty}"
+                                        Label="{Reference TitleLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Editor.Behaviors>
+                            </Editor>
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="3" Grid.Row="4"
-                        Style="{StaticResource FormFieldFrame}">
+                        Grid.Column="2" Grid.Row="4"
+                        Style="{StaticResource FormFieldFrame}"
+                        HorizontalOptions="Start" VerticalOptions="Start">
                         <StackLayout>
-                            <Label Text="Color de Fondo Traslúcido?" Style="{StaticResource FormLabel}" />
-                            <Switch IsToggled="{Binding Path=IsStripeBackgroundTranslucent}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="3" Grid.Row="5"
-                        Style="{StaticResource FormFieldFrame}">
-                        <StackLayout>
-                            <Label Text="Título" Style="{StaticResource FormLabel}" />
-                            <Editor HeightRequest="50" Text="{Binding Path=Header}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="3" Grid.Row="6"
-                        Style="{StaticResource FormFieldFrame}">
-                        <StackLayout>
-                            <Label Text="Tamaño del Texto Título" Style="{StaticResource FormLabel}" />
+                            <Label 
+                                WidthRequest="{Binding Source={Reference DescriptionFontSizeLabel}, Path=Width}"
+                                Text="Tamaño del Texto Título" 
+                                Style="{StaticResource FormLabel}" />
                             <StackLayout Orientation="Horizontal">
                                 <Label 
                                     HorizontalOptions="StartAndExpand"
@@ -191,18 +299,37 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="3" Grid.Row="7"
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Descripción" Style="{StaticResource FormLabel}" />
-                            <Editor HeightRequest="200" Text="{Binding Path=Content}" />
+                            <Label 
+                                x:Name="DescriptionLabel"
+                                Text="Descripción" 
+                                Style="{StaticResource FormLabel}" />
+                            <Editor HeightRequest="200" Text="{Binding Path=Content}">
+                                <Editor.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEditorValidationPresenter.Instance}"
+                                        TargetProperty="{Static Editor.TextProperty}"
+                                        Label="{Reference DescriptionLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Editor.Behaviors>
+                            </Editor>
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="3" Grid.Row="8"
-                        Style="{StaticResource FormFieldFrame}">
+                        Grid.Column="2" Grid.Row="5"
+                        Style="{StaticResource FormFieldFrame}"
+                        HorizontalOptions="Start" VerticalOptions="Start">
                         <StackLayout>
-                            <Label Text="Tamaño del Texto Descripción" Style="{StaticResource FormLabel}" />
+                            <Label 
+                                x:Name="DescriptionFontSizeLabel"
+                                Text="Tamaño del Texto Descripción" 
+                                Style="{StaticResource FormLabel}" />
                             <StackLayout Orientation="Horizontal">
                                 <Label 
                                     HorizontalOptions="StartAndExpand"

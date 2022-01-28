@@ -24,7 +24,7 @@
                 return new Views.LandscapeFramedPlacardThumbnailView();
             }
 
-            if (model.Template.Id == Descriptors.LandscapePennantTrainTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.LandscapePennantTemplateDescriptor.ID)
             {
                 return new Views.LandscapePennantTrainPlacardThumbnailView(model, cloudServerProvider);
             }
