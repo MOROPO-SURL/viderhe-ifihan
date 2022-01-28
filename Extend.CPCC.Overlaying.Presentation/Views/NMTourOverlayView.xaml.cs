@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
+﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
 {
     public partial class NMTourOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
@@ -51,7 +53,7 @@
 
         private void ShowInAnimation_Completed(object sender, System.EventArgs e)
         {
-            (sender as XFToolKit.Presentation.Transform.Animations.AbstractAnimation).Completed -= ShowInAnimation_Completed;
+            (sender as XFToolKit.Presentation.Transform.Animations.Contract.AbstractAnimation).Completed -= ShowInAnimation_Completed;
 
             //Xamarin.Forms.Device.BeginInvokeOnMainThread(EnableInteractionEmplasisAnimation);
 
@@ -71,7 +73,7 @@
 
             animation.Begin();
 
-            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Pages.PopUp.NMTourPopUpPage(InteractivePresentationComplete_Callback));
+            Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Xamarin.Forms.NavigationPage(new Pages.NMTourPage(InteractivePresentationComplete_Callback)));
         }
 
         private void InteractivePresentationComplete_Callback()

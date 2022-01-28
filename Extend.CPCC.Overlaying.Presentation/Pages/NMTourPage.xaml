@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages.NMTourPage"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Double x:Key="SectionLaunchButtonFontImageSourceSize">72</x:Double>
+            
+            <Style x:Key="SectionLaunchButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#99FFFFFF" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Padding" Value="20" />
+                <Setter Property="ContentLayout" Value="Top,20" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <mg:GradientView>
+                <mg:GradientView.GradientSource>
+                    <mg:CssGradientSource>
+                        <x:String>
+                            <![CDATA[
+                                    linear-gradient(145deg, rgba(22, 22, 22, 0.02) 0%, rgba(22, 22, 22, 0.02) 58%, rgba(249, 249, 249, 0.02) 58%, rgba(249, 249, 249, 0.02) 90%, rgba(197, 197, 197, 0.02) 90%, rgba(197, 197, 197, 0.02) 93%, rgba(243, 243, 243, 0.02) 93%, rgba(243, 243, 243, 0.02) 99%, rgba(107, 107, 107, 0.02) 99%, rgba(107, 107, 107, 0.02) 100%), linear-gradient(311deg, rgba(157, 157, 157, 0.02) 0%, rgba(157, 157, 157, 0.02) 2%, rgba(234, 234, 234, 0.02) 2%, rgba(234, 234, 234, 0.02) 47%, rgba(57, 57, 57, 0.02) 47%, rgba(57, 57, 57, 0.02) 84%, rgba(181, 181, 181, 0.02) 84%, rgba(181, 181, 181, 0.02) 98%, rgba(128, 128, 128, 0.02) 98%, rgba(128, 128, 128, 0.02) 100%), linear-gradient(97deg, rgba(231, 231, 231, 0.02) 0%, rgba(231, 231, 231, 0.02) 35%, rgba(53, 53, 53, 0.02) 35%, rgba(53, 53, 53, 0.02) 46%, rgba(114, 114, 114, 0.02) 46%, rgba(114, 114, 114, 0.02) 71%, rgba(55, 55, 55, 0.02) 71%, rgba(55, 55, 55, 0.02) 99%, rgba(202, 202, 202, 0.02) 99%, rgba(202, 202, 202, 0.02) 100%), linear-gradient(90deg, rgb(250, 250, 250), rgb(243, 243, 243))
+                                ]]>
+                        </x:String>
+                    </mg:CssGradientSource>
+                </mg:GradientView.GradientSource>
+            </mg:GradientView>            
+            <Frame
+                VerticalOptions="Center" HorizontalOptions="Center"            
+                Margin="20"  Padding="0"
+                WidthRequest="600"
+                BackgroundColor="LightGray"
+                CornerRadius="4">
+                <Grid 
+                    ColumnSpacing="0" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>                              
+                    <Image 
+                        x:Name="MainImage"
+                        Grid.Row="0" />
+                    <StackLayout
+                        Grid.Row="0"
+                        Padding="8,6"
+                        BackgroundColor="#99000000"
+                        VerticalOptions="End"
+                        Spacing="0">
+                        <Label
+                            Text="Complejo Audiovisual"
+                            TextColor="White"
+                            FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.LargeBodyTextFontSize}" />
+                        <Label
+                            Text="Nuevo Mundo"
+                            TextColor="White"
+                            FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.LargeHeaderTextFontSize}" />
+                    </StackLayout>                
+                    <Grid 
+                        Grid.Row="1"
+                        Padding="8"
+                        ColumnSpacing="8" RowSpacing="10"
+                        HeightRequest="400">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Button
+                            Grid.Column="0" Grid.Row="0"
+                            Style="{StaticResource SectionLaunchButtonStyle}"
+                            Text="Colectivo">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    Color="Black"
+                                    Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
+                                    Glyph="&#xf848;"/>
+                            </Button.ImageSource>
+                        </Button>
+                        <Button
+                            Grid.Column="1" Grid.Row="0"
+                            Style="{StaticResource SectionLaunchButtonStyle}"
+                            Text="Cartelera de Cine">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    Color="Black"
+                                    Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
+                                    Glyph="&#xf381;"/>
+                            </Button.ImageSource>
+                        </Button>
+                        <Button
+                            Grid.Column="2" Grid.Row="0"
+                            Style="{StaticResource SectionLaunchButtonStyle}"
+                            Text="Próximos Eventos">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    Color="Black"
+                                    Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
+                                    Glyph="&#xFA31;"/>
+                            </Button.ImageSource>
+                        </Button>
+                        <Button
+                            Grid.Column="0" Grid.Row="1"
+                            Style="{StaticResource SectionLaunchButtonStyle}"
+                            Text="Mediateca Digital">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    Color="Black"
+                                    Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
+                                    Glyph="&#xf448;"/>
+                            </Button.ImageSource>
+                        </Button>
+                        <Button
+                            Grid.Column="1" Grid.Row="1"
+                            Style="{StaticResource SectionLaunchButtonStyle}"
+                            Text="Café Nuevo Mundo">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    Color="Black"
+                                    Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
+                                    Glyph="&#xf176;"/>
+                            </Button.ImageSource>
+                        </Button>
+                        <Button
+                            Grid.Column="2" Grid.Row="1"
+                            Style="{StaticResource SectionLaunchButtonStyle}"
+                            Text="Portal El Callejón"
+                            Clicked="ProjectWebPortalPresentButton_Clicked">
+                            <Button.ImageSource>
+                                <FontImageSource
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    Color="Black"
+                                    Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
+                                    Glyph="&#xf5b4;"/>
+                            </Button.ImageSource>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Frame>
+            <ImageButton
+                Grid.Row="0"
+                VerticalOptions="Start" HorizontalOptions="End"
+                Margin="20"
+                WidthRequest="48" HeightRequest="48"
+                BackgroundColor="#99000000"
+                BorderWidth="0"
+                CornerRadius="10"                
+                Clicked="CloseButton_Clicked">
+                <ImageButton.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="UWP" Value="1,0,0,0" />
+                    </OnPlatform>
+                </ImageButton.Padding>
+                <ImageButton.Source>
+                    <FontImageSource 
+                        Color="White"
+                        FontFamily="{StaticResource IconFontFamily}"
+                        Size="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalHeaderTextFontSize}"
+                        Glyph="&#xF156;" />
+                </ImageButton.Source>
+            </ImageButton>
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:ContentPage>
