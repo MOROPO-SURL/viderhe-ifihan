@@ -42,7 +42,7 @@
                 Color="Gray" />
             <WebView 
                 Grid.ColumnSpan="2" Grid.Row="2"
-                Source="http://www.cubadebate.cu/"
+                Source="http://www.elcallejon.net/"
                 Navigating="WebView_Navigating"
                 Navigated="WebView_Navigated" />
             <ContentView
