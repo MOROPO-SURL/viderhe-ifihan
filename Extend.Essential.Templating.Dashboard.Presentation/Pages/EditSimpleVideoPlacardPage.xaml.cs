@@ -3,9 +3,10 @@ using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages
 {
-    public partial class EditSimpleVideoPlacardPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EditSimpleVideoPlacardPageModel>
+    public partial class EditSimpleVideoPlacardPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EditSimpleVideoPlacardPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private Templating.Presentation.Models.Context.SimpleVideoPlacardContextModel contextModel;
+        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
         private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
@@ -16,6 +17,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         public EditSimpleVideoPlacardPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
             : base(Factories.EditSimpleVideoPlacardPageModelFactory.Build(placardViewModel, cloudServerProvider))
         {
+            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+
             InitializeComponent();
 
             this.placardViewModel = placardViewModel;
@@ -29,6 +32,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
+            BindingContextPageModel.ResetValidationState();
+
+            foreach (var validationBehavior in validationBehaviors)
+            {
+                var result = validationBehavior.Evaluate();
+
+                if (!BindingContextPageModel.IsValid) continue;
+
+                if (!result) BindingContextPageModel.IsValid = false;
+            }
+
+            if (!BindingContextPageModel.IsValid) return;
+
             BindingContextPageModel.IsBusy = true;
 
             System.Threading.Tasks.Task.Run(async () =>
@@ -90,5 +106,28 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             notificationPresenter = null;
             successfulCompleteCallbackAction = null;
         }
+
+        #region IValidableFormPage implementation
+
+        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Add(validationBehavior);
+        }
+
+        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Remove(validationBehavior);
+        }
+
+        public void AddValidationMessage(string label, string message)
+        {
+            BindingContextPageModel.ValidationMessages.Add(new Support.Presentation.Dashboard.Models.View.ValidationMessageViewModel
+            {
+                Caption = label,
+                Message = message
+            });
+        }
+
+        #endregion
     }
 }

@@ -2,8 +2,10 @@
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
-    public partial class ConfigureModeratorPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigureModeratorPageModel>
+    public partial class ConfigureModeratorPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigureModeratorPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
+        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+
         private System.Action successCallbackAction;
 
         private bool hasChangesFlag;
@@ -12,6 +14,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         public ConfigureModeratorPage(System.Action successCallbackAction, Models.View.ModeratorViewModel target = null)
             : base(Factories.ConfigureModeratorPageModelFactory.Build(target))
         {
+            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+
             this.successCallbackAction = successCallbackAction;
 
             InitializeComponent();
@@ -50,12 +54,25 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
-            if (!hasChangesFlag)
+            if (!hasChangesFlag && !SetPasswordSwitch.IsToggled)
             {
                 this.NavigationPopPageAsync();
 
                 return;
             }
+
+            BindingContextPageModel.ResetValidationState();
+
+            foreach (var validationBehavior in validationBehaviors)
+            {
+                var result = validationBehavior.Evaluate();
+
+                if (!BindingContextPageModel.IsValid) continue;
+
+                if (!result) BindingContextPageModel.IsValid = false;
+            }
+
+            if (!BindingContextPageModel.IsValid) return;
 
             BindingContextPageModel.IsBusy = true;
 
@@ -175,8 +192,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 });
             });
         }
-
-
 
         private async void PickImageActionableView_Clicked(object sender, System.EventArgs eventArgs)
         {
@@ -348,5 +363,28 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 this.NavigationPushModalPageAsync(new Xamarin.Forms.NavigationPage(new UserProfileImageCroppingPage(croppingImageTarget, PickedImageCroppingComplete_Callback)));
             });
         }
+
+        #region IValidableFormPage implementation
+
+        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Add(validationBehavior);
+        }
+
+        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Remove(validationBehavior);
+        }
+
+        public void AddValidationMessage(string label, string message)
+        {
+            BindingContextPageModel.ValidationMessages.Add(new Support.Presentation.Dashboard.Models.View.ValidationMessageViewModel
+            {
+                Caption = label,
+                Message = message
+            });
+        }
+
+        #endregion
     }
 }

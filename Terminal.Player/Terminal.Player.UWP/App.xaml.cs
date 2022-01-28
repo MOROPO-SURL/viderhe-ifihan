@@ -48,8 +48,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP
 
                 FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
-                Rg.Plugins.Popup.Popup.Init();
-
                 Xamarin.Forms.Forms.SetFlags("Shapes_Experimental");
 
                 Xamarin.Forms.Forms.Init(e);

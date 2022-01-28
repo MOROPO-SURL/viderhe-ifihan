@@ -22,7 +22,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
 
                 return new SimpleVideoPlacardView(new Models.View.SimpleVideoPlacardViewModel
                 {
-                    RequireUnobstructedPresetation = false,
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(cloudServerProvider, context.Video.Id, context.Video.Extension).AbsoluteUri)
                 }, accountInformationProvider);
             }
@@ -31,21 +31,26 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<SimplePicturePlacardContextModel>(model.SerializedContext);
 
-                var viewModel = new Models.View.SimplePicturePlacardViewModel
-                {
-                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    ScreenPresentationTime = context.ScreenPresentationTime,
-                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.Image.Id)),
-                    Aspect = context.LayoutMode.ToXamarinFormsAspect()
-                };
-
                 if (context.LayoutMode == Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf)
                 {
-                    return new SelfOpaqueFillSimplePicturePlacardView(viewModel, accountInformationProvider);
+                    return new SelfOpaqueFillSimplePicturePlacardView(new Models.View.SelfOpaqueFillSimplePicturePlacardViewModel
+                    {
+                        RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                        ScreenPresentationTime = context.ScreenPresentationTime,
+                        Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.Image.Id)),
+                        ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(cloudServerProvider, context.Image.ThumbnailId)),
+                        Aspect = context.LayoutMode.ToXamarinFormsAspect()
+                    }, accountInformationProvider);
                 }
                 else
                 {
-                    return new SimplePicturePlacardView(viewModel);
+                    return new SimplePicturePlacardView(new Models.View.SimplePicturePlacardViewModel
+                    {
+                        RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                        ScreenPresentationTime = context.ScreenPresentationTime,
+                        Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.Image.Id)),
+                        Aspect = context.LayoutMode.ToXamarinFormsAspect()
+                    });
                 }
             }
 

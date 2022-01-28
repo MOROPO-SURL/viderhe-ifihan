@@ -21,7 +21,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public Persistence.Entities.Player Export()
         {
-            var entity = new Persistence.Entities.Player();
+            var entity = new Persistence.Entities.Player
+            {
+                Id = Id
+            };
 
             Mergue(entity);
 
@@ -40,7 +43,6 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public void Mergue(Persistence.Entities.Player entity)
         {
-            entity.Id = Id;
             entity.Name = Name;
             entity.About = About;
             entity.OverlayId = OverlayId;

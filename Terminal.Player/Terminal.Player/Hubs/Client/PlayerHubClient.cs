@@ -46,6 +46,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
             connection.On<ScreenplayHandlingImmediacyMode>(nameof(ReloadScreenplay), ReloadScreenplay);
             connection.On<bool>(nameof(SetAudioEnabled), SetAudioEnabled);
             connection.On<int>(nameof(SetAudioLevel), SetAudioLevel);
+            connection.On<bool>(nameof(Close), Close);
             connection.On<bool>(nameof(Shutdown), Shutdown);
         }
 
@@ -153,6 +154,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
         public System.Threading.Tasks.Task SetAudioEnabled(bool enabled)
         {
             Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().SetAudioEnabled(enabled);
+
+            return System.Threading.Tasks.Task.CompletedTask;
+        }
+
+        public System.Threading.Tasks.Task Close(bool restart)
+        {
+            Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(restart);
 
             return System.Threading.Tasks.Task.CompletedTask;
         }

@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class AccountIdentityConfigurationPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class AccountIdentityConfigurationPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
         private string name;
         private Xamarin.Forms.ImageSource logoImageSource;

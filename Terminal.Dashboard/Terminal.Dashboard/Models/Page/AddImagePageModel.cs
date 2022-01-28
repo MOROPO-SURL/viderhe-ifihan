@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class AddImagePageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class AddImagePageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
         private string about;
 

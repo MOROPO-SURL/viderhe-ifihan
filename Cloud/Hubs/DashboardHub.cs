@@ -101,6 +101,19 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
             catch { }
         }
 
+        public void PlayerClose(string playerId, bool restart = false)
+        {
+            var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+
+            try
+            {
+                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+
+                playerHubContext.Clients.Client(playerContext.ConnectionId).Close(restart);
+            }
+            catch { }
+        }
+
         public void PlayerShutdown(string playerId, bool restart = false)
         {
             var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);

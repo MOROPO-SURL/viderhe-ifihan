@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class EditUserProfilePageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class EditUserProfilePageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
         private string targetUserNewPassword;
         private string targetUserNewPasswordConfirmation;

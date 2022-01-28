@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Models.Page
 {
-    public abstract class AbstractPlacardConfigurationPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public abstract class AbstractPlacardConfigurationPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
         private bool requireUnobstructedPresetation;
         private Enumerations.ConfigurationPlayerOrientationSupportKind playerOrientationSupportKind;
