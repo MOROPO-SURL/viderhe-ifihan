@@ -76,7 +76,7 @@
         {
             base.DisposeUnmanagementResources();
 
-            //ContextedImagen.Source = null;
+            FrameImage.Source = null;
         }
     }
 }

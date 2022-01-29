@@ -8,7 +8,20 @@
 
             BindingContext = model;
 
-            //LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
+            PennantImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource(string.Format("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Pennant-{0}-{1}-{2}.svg", model.FlyoutShapeKind, model.PennantVerticalOrientation, model.FlyoutBackgroundColorMode), GetType().Assembly);
+
+            switch (model.PennantVerticalOrientation)
+            {
+                case Enumerations.PennantVerticalOrientation.Top:
+                    Xamarin.Forms.Grid.SetRow(DataLayoutWrapGrid, 0);
+
+                    break;
+                case Enumerations.PennantVerticalOrientation.Bottom:
+                default:
+                    Xamarin.Forms.Grid.SetRow(DataLayoutWrapGrid, 1);
+
+                    break;
+            }
         }
 
         public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;
@@ -25,7 +38,8 @@
         {
             base.DisposeUnmanagementResources();
 
-            //ContextedImagen.Source = null;
+            ContextedImagen.Source = null;
+            PennantImage.Source = null;
         }
     }
 }

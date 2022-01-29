@@ -22,6 +22,22 @@
     <None Remove="Assets\Images\Placard-Frame-Landscape-Bullet-White.svg" />
     <None Remove="Assets\Images\Placard-Frame-Landscape-Outline-Secoundary.svg" />
     <None Remove="Assets\Images\Placard-Frame-Landscape-Outline-White.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Dark.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Light.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Primary.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Secoundary.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Tally-Top-Dark.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Tally-Top-Light.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Tally-Top-Primary.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Tally-Top-Secoundary.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Train-Bottom-Dark.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Train-Bottom-Light.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Train-Bottom-Primary.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Train-Bottom-Secoundary.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Train-Top-Dark.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Train-Top-Light.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Train-Top-Primary.svg" />
+    <None Remove="Assets\Images\Placard-Pennant-Train-Top-Secoundary.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +55,22 @@
     <EmbeddedResource Include="Assets\Images\MF-Identity-Portriat-Color-Primary.svg" />
     <EmbeddedResource Include="Assets\Images\MF-Identity-Portriat-Color-Secoundary.svg" />
     <EmbeddedResource Include="Assets\Images\MF-Identity-Portriat-Color-White.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Bottom-Dark.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Bottom-Light.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Bottom-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Bottom-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Top-Light.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Top-Dark.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Top-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Top-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Bottom-Dark.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Bottom-Light.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Bottom-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Bottom-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Top-Dark.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Top-Light.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Top-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Top-Secoundary.svg" />
   </ItemGroup>
 
   <ItemGroup>

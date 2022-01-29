@@ -13,6 +13,35 @@
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="PlacardLayout">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <ffimageloadingforms:CachedImage
+                    x:Name="ContextedImagen"
+                    Grid.ColumnSpan="3" Grid.RowSpan="3"
+                    BackgroundColor="Black"
+                    FadeAnimationEnabled="False"
+                    Source="{Binding Path=ContextedImageSource}" 
+                    Aspect="AspectFill"
+                    CacheType="Disk"
+                    CacheDuration="8760:00:00" />
+                <ffimageloadingsvg:SvgCachedImage
+                    x:Name="PennantImage"
+                    Grid.ColumnSpan="3" Grid.RowSpan="3"
+                    Aspect="Fill" />
+                <Grid
+                    x:Name="DataLayoutWrapGrid"
+                    Grid.Column="1" Grid.RowSpan="2"
+                    BackgroundColor="Silver">
+                    
+                </Grid>
             </Grid>
         </Grid>
     </ContentView.Content>
