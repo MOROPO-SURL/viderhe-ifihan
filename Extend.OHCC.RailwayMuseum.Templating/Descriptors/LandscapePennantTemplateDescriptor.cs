@@ -8,8 +8,8 @@
 
         public Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport => Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape;
 
-        public string Name => "Galladerte Estilo Tren con Imagen de Fondo";
+        public string Name => "Galladerte con Imagen de Fondo";
 
-        public string Description => "Muestra el logotipo de identidad, un título y una descripción en un gallardete vertical con silueta de tren y en el fondo una imagen.";
+        public string Description => "Muestra el logotipo de identidad, un título y una descripción en un gallardete vertical con un estilo especificado y en el fondo una imagen.";
     }
 }

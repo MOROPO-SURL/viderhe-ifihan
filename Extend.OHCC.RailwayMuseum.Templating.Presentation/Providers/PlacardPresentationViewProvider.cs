@@ -73,7 +73,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     ContentFontSize = context.ContentFontSize,
                     FrameStyle = context.FrameStyle,
                     BackgroundMode = context.BackgroundMode
-                });
+                }, accountInformationProvider);
             }
 
             if (model.Template.Id == LandscapePennantTemplateDescriptor.ID)
