@@ -3,8 +3,10 @@ using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentation.Pages
 {
-    public partial class PortraitPosterVideoEventPromotionEventPlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PortraitPosterVideoEventPromotionEventPlacardConfigurationPageModel>
+    public partial class PortraitPosterVideoEventPromotionEventPlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PortraitPosterVideoEventPromotionEventPlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
+        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
         private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
         private Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
@@ -19,6 +21,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
         public PortraitPosterVideoEventPromotionEventPlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
             : base(Factories.PortraitPosterVideoEventPromotionEventPlacardConfigurationPageFactory.Build(placardViewModel))
         {
+            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+
             InitializeComponent();
 
             this.placardViewModel = placardViewModel;
@@ -41,6 +45,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
+            BindingContextPageModel.ResetValidationState();
+
+            foreach (var validationBehavior in validationBehaviors)
+            {
+                var result = validationBehavior.Evaluate();
+
+                if (!BindingContextPageModel.IsValid) continue;
+
+                if (!result) BindingContextPageModel.IsValid = false;
+            }
+
+            if (!BindingContextPageModel.IsValid) return;
+
             BindingContextPageModel.IsBusy = true;
 
             System.Threading.Tasks.Task.Run(async () =>
@@ -105,20 +122,25 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
 
         private void PickEventPosterButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(exceptionHandleHelper, httpClientHelperProvider, EventPosterPickedCallback, BindingContextPageModel.EventPoster));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(exceptionHandleHelper, httpClientHelperProvider, EventPosterPicked_Callback, BindingContextPageModel.EventPoster));
         }
 
-        private void PickEventVideoButton_Clicked(object sender, System.EventArgs eventArgs)
+        private void PickVideoButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoPickPage(exceptionHandleHelper, EventVideoPickedCallback, httpClientHelperProvider, BindingContextPageModel.EventVideo));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoPickPage(exceptionHandleHelper, VideoPicked_Callback, httpClientHelperProvider, BindingContextPageModel.EventVideo));
         }
 
-        private void EventVideoPickedCallback(Support.Presentation.Models.View.VideoViewModel selection)
+        private void VideoPlayButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoDetailPage(BindingContextPageModel.EventVideo));
+        }
+
+        private void VideoPicked_Callback(Support.Presentation.Models.View.VideoViewModel selection)
         {
             BindingContextPageModel.EventVideo = selection;
         }
 
-        private void EventPosterPickedCallback(Support.Presentation.Models.View.ImageViewModel selection)
+        private void EventPosterPicked_Callback(Support.Presentation.Models.View.ImageViewModel selection)
         {
             BindingContextPageModel.EventPoster = selection;
         }
@@ -133,5 +155,28 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
             notificationPresenter = null;
             successfulCompleteCallbackAction = null;
         }
+
+        #region IValidableFormPage implementation
+
+        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Add(validationBehavior);
+        }
+
+        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Remove(validationBehavior);
+        }
+
+        public void AddValidationMessage(string label, string message)
+        {
+            BindingContextPageModel.ValidationMessages.Add(new Support.Presentation.Dashboard.Models.View.ValidationMessageViewModel
+            {
+                Caption = label,
+                Message = message
+            });
+        }
+
+        #endregion
     }
 }
