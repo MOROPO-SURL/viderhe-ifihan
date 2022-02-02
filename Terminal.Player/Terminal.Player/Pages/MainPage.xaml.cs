@@ -351,7 +351,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             {
                 placards = task.Result.Placards.Select(m => m.ToViewModel()).ToArray();
                 
-                if (task.Result.ScheduledRelaunches.Length > 1)
+                if (task.Result.ScheduledRelaunches.Length > 0)
                 {
                     var timeOfDay = System.DateTime.Now.TimeOfDay;
 
@@ -377,23 +377,29 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
             var now = System.DateTime.Now;
 
-            if (now - startUpAt < Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME) return;
-
             // Same day
             if (now.TimeOfDay >= startUpAt.TimeOfDay)
             {
-                if (scheduledRelaunche.Time >= startUpAt.TimeOfDay && scheduledRelaunche.Time <= now.TimeOfDay)
-                {
-                    Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(true);
-                }
+                var runTimeSpan = now - startUpAt;
+
+                if (runTimeSpan < Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME) return;
+
+                if (now.TimeOfDay <= scheduledRelaunche.Time) return;
+
+                Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(true);
             }
             // Other day
-            else
+            else if (now.DayOfYear > startUpAt.DayOfYear)
             {
-                if (scheduledRelaunche.Time <= startUpAt.TimeOfDay && scheduledRelaunche.Time <= now.TimeOfDay)
-                {
-                    Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(true);
-                }
+                var yesterdayElapsedTime = System.TimeSpan.FromHours(24) - startUpAt.TimeOfDay;
+
+                var runTimeSpan = now.TimeOfDay + yesterdayElapsedTime;
+
+                if (runTimeSpan < Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME) return;
+
+                if (now.TimeOfDay <= scheduledRelaunche.Time) return;
+
+                Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(true);
             }
         }
 
