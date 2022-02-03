@@ -1092,6 +1092,28 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.ToTable("players");
                 });
 
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.ScheduledRelaunch", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id");
+
+                    b.Property<string>("PlayerId")
+                        .IsRequired()
+                        .HasColumnName("playerid");
+
+                    b.Property<TimeSpan>("Time")
+                        .HasColumnName("time");
+
+                    b.HasKey("Id")
+                        .HasName("pk_scheduledrelaunches");
+
+                    b.HasIndex("PlayerId")
+                        .HasName("ix_scheduledrelaunches_playerid");
+
+                    b.ToTable("scheduledrelaunches");
+                });
+
             modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Screenplay", b =>
                 {
                     b.Property<Guid>("Id")
@@ -1643,6 +1665,15 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .HasForeignKey("ScreenplayId")
                         .HasConstraintName("fk_players_screenplays_screenplayid")
                         .OnDelete(DeleteBehavior.SetNull);
+                });
+
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.ScheduledRelaunch", b =>
+                {
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Player", "Player")
+                        .WithMany("ScheduledRelaunches")
+                        .HasForeignKey("PlayerId")
+                        .HasConstraintName("fk_scheduledrelaunches_players_playerid")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Screenplay", b =>

@@ -8,11 +8,11 @@
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Player.UWP</RootNamespace>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Player.UWP</AssemblyName>
+    <AssemblyName>Viderhe.Player.UWP</AssemblyName>
     <DefaultLanguage>es</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
@@ -65,7 +65,10 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
-    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+    <!-- <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain> -->
+    <!-- For Crash on 1909 LWC -->
+    <UseAppLocalCoreFramework>true</UseAppLocalCoreFramework>
+    <UseDotNetNativeToolchain>false</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -188,11 +191,11 @@
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client">
       <Version>5.0.3</Version>
     </PackageReference>
-    <PackageReference Include="Rg.Plugins.Popup">
-      <Version>2.0.0.11</Version>
-    </PackageReference>
     <PackageReference Include="RtmpClient.UWP">
       <Version>1.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="SkiaSharp.Views.Forms">
+      <Version>2.80.3</Version>
     </PackageReference>
     <PackageReference Include="SSCXFToolKit.IoC">
       <Version>0.2.0-alpha</Version>

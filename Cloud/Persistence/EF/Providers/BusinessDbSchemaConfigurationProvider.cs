@@ -12,7 +12,8 @@
             new Configurators.AccountVideoBridgeEntityTypeConfigurator(),
             new Configurators.FrameEntityTypeConfigurator(),
             new Configurators.PlayerEntityTypeConfigurator(),
-            new Configurators.ModeratorEntityTypeConfigurator()
+            new Configurators.ModeratorEntityTypeConfigurator(),
+            new Configurators.ScheduledRelaunchEntityTypeConfigurator()
         };
     }
 }

@@ -65,7 +65,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         [Microsoft.AspNetCore.Authorization.AllowAnonymous]
         [HttpGet("[action]")]
-        public ActionResult<PlacardDisplayModel[]> ScreenplayPlacards()
+        public ActionResult<PlayerPlaybackConfigurationModel> PlaybackConfiguration()
         {
             try
             {
@@ -89,14 +89,22 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                     return Ok(new Persistence.Entities.Placard[0]);
                 }
 
-                return Ok(player.Screenplay.Frames.OrderBy(e => e.Priority).Where(e => e.Placard.Template.Enabled).Select((Persistence.Entities.Frame entity) =>
+                return Ok(new PlayerPlaybackConfigurationModel
                 {
-                    var model = new PlacardDisplayModel();
+                    Placards = player.Screenplay.Frames.OrderBy(e => e.Priority).Where(e => e.Placard.Template.Enabled).Select((Persistence.Entities.Frame entity) =>
+                    {
+                        var model = new PlacardDisplayModel();
 
-                    model.Import(entity.Placard);
+                        model.Import(entity.Placard);
 
-                    return model;
-                }).ToArray());
+                        return model;
+                    }).ToArray(),
+                    ScheduledRelaunches = player.ScheduledRelaunches.OrderBy(entity => entity.Time).Select(entity => new ScheduledRelaunchDisplayModel
+                    {
+                        Id = entity.Id,
+                        Time = entity.Time
+                    }).ToArray()
+                });
             }
             catch
             {

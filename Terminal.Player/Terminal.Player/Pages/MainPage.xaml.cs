@@ -10,12 +10,18 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
     {
         private Support.Presentation.Models.View.PlacardViewModel[] placards;
 
+        private Cloud.Api.Common.Models.ScheduledRelaunchDisplayModel scheduledRelaunche;
+
         private readonly System.Collections.Generic.Queue<Enumerations.ConfigurationStep> configurationStepQueue;
 
         private Extend.Common.Overlaying.Presentation.Views.BaseOverlayView overlayView;
 
+        private readonly System.DateTime startUpAt;
+
         public MainPage()
         {
+            startUpAt = System.DateTime.Now;
+
             InitializeComponent();
 
             configurationStepQueue = new System.Collections.Generic.Queue<Enumerations.ConfigurationStep>();
@@ -54,7 +60,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                     {
                         overlayView = Providers.AccountInformationProvider.Instance.AccountDefaultOverlayId == null ? null : Providers.OverlayPresentationViewProvider.Instance.GetOverlayPresentationView();
 
-                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(placards, ScreenplayPresentationComplete_Callback, true, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance, PlacardPlayingCallback, overlayView, PlacardViewTransitionComplete_Callback)
+                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(placards, ScreenplayPresentationEnded_Callback, true, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance, PlacardPlaying_Callback, ScreenplayPresentIterationComplete_Callback, overlayView, PlacardViewTransitionComplete_Callback)
                         {
                             BackgroundColor = Managers.SessionManager.Instance.AccountPrimaryColor,
                             BindingContext = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Managers.SessionManager.Instance.AccountVerticalSplashImageSource : Managers.SessionManager.Instance.AccountHorizontalSplashImageSource
@@ -135,7 +141,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
                     await System.Threading.Tasks.Task.Delay(3000);
 
-                    await RequestAccountAsync().ContinueWith(OnRequestAccountCallback);
+                    await RequestAccountAsync().ContinueWith(RequestAccount_Callback);
                 });
             }
             else if (configurationStep == Enumerations.ConfigurationStep.PlayerRegistration)
@@ -150,7 +156,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
                     await System.Threading.Tasks.Task.Delay(3000);
 
-                    await RequestScreenplayPlacardsAsync().ContinueWith(RequestScreenplayPlacards_Callback);
+                    await RequestPlaybackConfigurationAsyncAsync().ContinueWith(RequestPlaybackConfiguration_Callback);
                 });
             }
         }
@@ -165,7 +171,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             });
         }
 
-        private void ScreenplayPresentationComplete_Callback()
+        private void ScreenplayPresentationEnded_Callback()
         {
             this.NavigationPopModalPageAsync().ContinueWith(task =>
             {
@@ -178,7 +184,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             });
         }
 
-        private void PlacardPlayingCallback(System.Guid placardId)
+        private void PlacardPlaying_Callback(System.Guid placardId)
         {
             Hubs.Client.PlayerHubClient.Instance.NotifyPlayingPlacard(placardId);
         }
@@ -216,7 +222,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             return await client.GetAccountAsync();
         }
 
-        private async void OnRequestAccountCallback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.AccountDisplayModel> task)
+        private async void RequestAccount_Callback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.AccountDisplayModel> task)
         {
             if (task.IsCanceled || task.Exception != null)
             {
@@ -246,7 +252,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(delayTask =>
                 {
-                    RequestAccountAsync().ContinueWith(OnRequestAccountCallback);
+                    RequestAccountAsync().ContinueWith(RequestAccount_Callback);
                 });
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             }
@@ -325,27 +331,75 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             }
         }
 
-        private async System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlacardDisplayModel[]> RequestScreenplayPlacardsAsync()
+        private async System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlayerPlaybackConfigurationModel> RequestPlaybackConfigurationAsyncAsync()
         {
             var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
-            return await client.GetScreenplayPlacardsAsync();
+            return await client.GetPlaybackConfigurationAsync();
         }
 
-        private void RequestScreenplayPlacards_Callback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlacardDisplayModel[]> task)
+        private void RequestPlaybackConfiguration_Callback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlayerPlaybackConfigurationModel> task)
         {
             if (task.IsCanceled || task.Exception != null || task.Result == null)
             {
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(delayTask =>
                 {
-                    RequestScreenplayPlacardsAsync().ContinueWith(RequestScreenplayPlacards_Callback);
+                    RequestPlaybackConfigurationAsyncAsync().ContinueWith(RequestPlaybackConfiguration_Callback);
                 });
             }
             else
             {
-                placards = task.Result.Select(m => m.ToViewModel()).ToArray();
+                placards = task.Result.Placards.Select(m => m.ToViewModel()).ToArray();
+                
+                if (task.Result.ScheduledRelaunches.Length > 0)
+                {
+                    var timeOfDay = System.DateTime.Now.TimeOfDay;
+
+                    foreach (var item in task.Result.ScheduledRelaunches)
+                    {
+                        if (timeOfDay + Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME < item.Time) continue;
+
+                        scheduledRelaunche = item;
+
+                        break;
+                    }
+
+                    if (scheduledRelaunche == null) scheduledRelaunche = task.Result.ScheduledRelaunches[0];
+                }
 
                 AnimateOutCurrentStep(CurrentStepAnimateOut_Completed);
+            }
+        }
+
+        private void ScreenplayPresentIterationComplete_Callback()
+        {
+            if (scheduledRelaunche == null) return;
+
+            var now = System.DateTime.Now;
+
+            // Same day
+            if (now.TimeOfDay >= startUpAt.TimeOfDay)
+            {
+                var runTimeSpan = now - startUpAt;
+
+                if (runTimeSpan < Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME) return;
+
+                if (now.TimeOfDay <= scheduledRelaunche.Time) return;
+
+                Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(true);
+            }
+            // Other day
+            else if (now.DayOfYear > startUpAt.DayOfYear)
+            {
+                var yesterdayElapsedTime = System.TimeSpan.FromHours(24) - startUpAt.TimeOfDay;
+
+                var runTimeSpan = now.TimeOfDay + yesterdayElapsedTime;
+
+                if (runTimeSpan < Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME) return;
+
+                if (now.TimeOfDay <= scheduledRelaunche.Time) return;
+
+                Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(true);
             }
         }
 
@@ -360,11 +414,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                 IsParallel = true
             };
 
-            var lastAnimation = new FadeOutAnimation { Target = model.DetailContentView, Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up };
+            var lastAnimation = new FadeOutAnimation { Target = model.DetailContentView, Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down };
 
             lastAnimation.Completed += completeEventHandler;
 
-            animationsStoryboard.Animations.Add(new FadeOutAnimation { Target = StepTitleLabel, Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down });
+            animationsStoryboard.Animations.Add(new FadeOutAnimation { Target = StepTitleLabel, Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up });
             animationsStoryboard.Animations.Add(lastAnimation);
 
             animationsStoryboard.Begin();

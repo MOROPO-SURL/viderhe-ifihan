@@ -8,8 +8,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private const string SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE = "Completado el Ciclo Actual";
         private const string SCREENPLAY_HANDLING_MODE_IMMEDIATELY = "Inmediatamente";
 
-        private const string PLAYER_HANDLING_SHUTDOWN = "Apagar";
-        private const string PLAYER_HANDLING_RESTART = "Reiniciar";
+        private const string PLAYER_EDIT_DEFAULT = "Información y Configuración";
+        private const string PLAYER_EDIT_SCHEDULED_RELAUNCH = "Relanzamientos Programados";
+
+        private const string PLAYER_HANDLING_RELAUNCH = "Reiniciar Aplicación";
+        private const string PLAYER_HANDLING_CLOSE = "Cerrar Aplicación";
+        private const string PLAYER_HANDLING_SHUTDOWN = "Apagar Equipo";
+        private const string PLAYER_HANDLING_RESTART = "Reiniciar Equipo";
 
         public ManagePlayersPage() : base(new Models.Page.ManagePlayersPageModel { IsBusy = true })
         {
@@ -139,8 +144,58 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
 
-            DisplayActionSheet("Apagar Dispositivo", "Cancelar", null, PLAYER_HANDLING_RESTART, PLAYER_HANDLING_SHUTDOWN).ContinueWith(shutdownModelPickDialogTask =>
+            DisplayActionSheet("Encendido", "Cancelar", null, PLAYER_HANDLING_RELAUNCH, PLAYER_HANDLING_CLOSE, PLAYER_HANDLING_RESTART, PLAYER_HANDLING_SHUTDOWN).ContinueWith(shutdownModelPickDialogTask =>
             {
+                if (shutdownModelPickDialogTask.Result == PLAYER_HANDLING_RELAUNCH)
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        DisplayAlert("Confirmar", "Está seguro que desea reiniciar la aplicación?", "Reiniciar", "Cancelar").ContinueWith(confirmationDialogTask =>
+                        {
+                            if (!confirmationDialogTask.Result) return;
+
+                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerCloseAsync(model.Id, true).ContinueWith(hubTask =>
+                            {
+                                System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+
+                                    Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Aplicación", "Solicitud de reinicio de aplicación enviada con éxito.");
+                                });
+                            });
+                        });
+                    });
+
+                    return;
+                }
+
+                if (shutdownModelPickDialogTask.Result == PLAYER_HANDLING_CLOSE)
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        DisplayAlert("Confirmar", "Está seguro que desea cerrar aplicación?", "Apagar", "Cancelar").ContinueWith(confirmationDialogTask =>
+                        {
+                            if (!confirmationDialogTask.Result) return;
+
+                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerCloseAsync(model.Id, false).ContinueWith(hubTask =>
+                            {
+                                System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
+
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+
+                                    Presenters.NotificationPresenter.Instance.PresentNotification("Cerrar Aplicación", "Solicitud de cerrar aplicación enviada con éxito.");
+                                });
+                            });
+                        });
+                    });
+
+                    return;
+                }
+
                 if (shutdownModelPickDialogTask.Result == PLAYER_HANDLING_RESTART)
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
@@ -332,7 +387,24 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void PlayerOverviewEditButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new ConfigurePlayerPage(ReloadPlayer, (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.PlayerViewModel));
+            if (BindingContextPageModel.IsBusy) return;
+
+            var model = (sender as Xamarin.Forms.ImageButton).BindingContext as Models.View.PlayerViewModel;
+
+            DisplayActionSheet("Opciones de Edición", "Cancelar", null, PLAYER_EDIT_DEFAULT, PLAYER_EDIT_SCHEDULED_RELAUNCH).ContinueWith(task =>
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    if (task.Result == PLAYER_EDIT_SCHEDULED_RELAUNCH)
+                    {
+                        this.NavigationPushPageAsync(new ManagePlayerScheduledRelaunchsPage(model));
+                    }
+                    else if (task.Result == PLAYER_EDIT_DEFAULT)
+                    {
+                        this.NavigationPushPageAsync(new ConfigurePlayerPage(ReloadPlayer, model));
+                    }
+                });                
+            });            
         }
 
         private void PlayerOverviewDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
