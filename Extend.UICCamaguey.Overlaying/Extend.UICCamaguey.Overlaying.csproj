@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying</RootNamespace>
-    <Version>0.2.2.0</Version>
+    <Version>0.2.3.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

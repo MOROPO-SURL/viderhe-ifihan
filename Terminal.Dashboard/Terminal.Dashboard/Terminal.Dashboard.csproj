@@ -46,6 +46,7 @@
     <ProjectReference Include="..\..\Extend.Essential.Templating.Dashboard.Presentation\Extend.Essential.Templating.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
+    <ProjectReference Include="..\..\Extend.UICCamaguey.Templating.Dashboard.Presentation\Extend.UICCamaguey.Templating.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Transitioning\Support.Extend.Transitioning.csproj" />
     <ProjectReference Include="..\..\Extend.UICCamaguey.Overlaying.Dashboard.Presentation\Extend.UICCamaguey.Overlaying.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.UICCamaguey\Extend.UICCamaguey.csproj" />

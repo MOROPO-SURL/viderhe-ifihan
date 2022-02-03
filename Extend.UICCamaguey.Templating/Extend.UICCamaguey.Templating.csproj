@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating</AssemblyName>
+    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating</RootNamespace>
+    <Version>0.2.3.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="A9419619-2399-4F4B-83A7-4E7CC7C48546-landscape.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="A9419619-2399-4F4B-83A7-4E7CC7C48546-landscape.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+  </ItemGroup>
+
+</Project>

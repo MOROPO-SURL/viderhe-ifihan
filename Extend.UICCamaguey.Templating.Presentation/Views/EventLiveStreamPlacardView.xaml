@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Views.EventLiveStreamPlacardView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid 
+            x:Name="Wrapper"
+            BackgroundColor="Transparent">
+            <Grid x:Name="PlacardLayout">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="3" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <mg:GradientView Grid.ColumnSpan="3" Grid.RowSpan="4">
+                    <mg:GradientView.GradientSource>
+                        <mg:CssGradientSource>
+                            <x:String>
+                                <![CDATA[
+                                    linear-gradient(74deg, rgba(246, 246, 246, 0.03) 0%, rgba(246, 246, 246, 0.03) 4%, rgba(152, 152, 152, 0.03) 4%, rgba(152, 152, 152, 0.03) 32%, rgba(123, 123, 123, 0.03) 32%, rgba(123, 123, 123, 0.03) 41%, rgba(189, 189, 189, 0.03) 41%, rgba(189, 189, 189, 0.03) 45%, rgba(151, 151, 151, 0.03) 45%, rgba(151, 151, 151, 0.03) 47%, rgba(61, 61, 61, 0.03) 47%, rgba(61, 61, 61, 0.03) 77%, rgba(34, 34, 34, 0.03) 77%, rgba(34, 34, 34, 0.03) 100%), linear-gradient(117deg, rgba(222, 222, 222, 0.03) 0%, rgba(222, 222, 222, 0.03) 7%, rgba(67, 67, 67, 0.03) 7%, rgba(67, 67, 67, 0.03) 18%, rgba(61, 61, 61, 0.03) 18%, rgba(61, 61, 61, 0.03) 26%, rgba(32, 32, 32, 0.03) 26%, rgba(32, 32, 32, 0.03) 52%, rgba(119, 119, 119, 0.03) 52%, rgba(119, 119, 119, 0.03) 60%, rgba(252, 252, 252, 0.03) 60%, rgba(252, 252, 252, 0.03) 68%, rgba(9, 9, 9, 0.03) 68%, rgba(9, 9, 9, 0.03) 100%), linear-gradient(313deg, rgba(193, 193, 193, 0.03) 0%, rgba(193, 193, 193, 0.03) 12%, rgba(184, 184, 184, 0.03) 12%, rgba(184, 184, 184, 0.03) 24%, rgba(194, 194, 194, 0.03) 24%, rgba(194, 194, 194, 0.03) 43%, rgba(128, 128, 128, 0.03) 43%, rgba(128, 128, 128, 0.03) 54%, rgba(87, 87, 87, 0.03) 54%, rgba(87, 87, 87, 0.03) 71%, rgba(169, 169, 169, 0.03) 71%, rgba(169, 169, 169, 0.03) 93%, rgba(83, 83, 83, 0.03) 93%, rgba(83, 83, 83, 0.03) 100%), linear-gradient(19deg, rgba(186, 186, 186, 0.03) 0%, rgba(186, 186, 186, 0.03) 9%, rgba(77, 77, 77, 0.03) 9%, rgba(77, 77, 77, 0.03) 19%, rgba(38, 38, 38, 0.03) 19%, rgba(38, 38, 38, 0.03) 27%, rgba(203, 203, 203, 0.03) 27%, rgba(203, 203, 203, 0.03) 39%, rgba(130, 130, 130, 0.03) 39%, rgba(130, 130, 130, 0.03) 43%, rgba(184, 184, 184, 0.03) 43%, rgba(184, 184, 184, 0.03) 81%, rgba(108, 108, 108, 0.03) 81%, rgba(108, 108, 108, 0.03) 100%), linear-gradient(90deg, rgb(107, 4, 15), rgb(240, 4, 35))
+                                ]]>
+                            </x:String>
+                        </mg:CssGradientSource>
+                    </mg:GradientView.GradientSource>
+                </mg:GradientView>
+                <StackLayout
+                    Grid.Column="1" Grid.Row="1"
+                    BackgroundColor="WhiteSmoke"
+                    Padding="12"
+                    Spacing="8">
+                    <Label Text="{Binding Path=EventTitle}" FontSize="Medium" FontAttributes="Bold" />
+                    <Label Text="{Binding Path=EventPlace}" FontAttributes="Italic" />
+                </StackLayout>
+                <extendcommontemplatingpresentationrenderedviews:UnattendedVideoPlayerView
+                    x:Name="VideoPlayerView"
+                    Grid.Column="1" Grid.Row="2"
+                    BackgroundColor="Black"
+                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                    Source="{Binding Path=VideoSource}"
+                    ShowControls="False"
+                    AutoPlay="True"
+                    StatusUpdated="VideoPlayer_StatusUpdated" />
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

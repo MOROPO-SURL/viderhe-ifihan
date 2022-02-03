@@ -317,6 +317,22 @@
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.UICCamaguey.Overlaying.Presentation\Extend.UICCamaguey.Overlaying.Presentation.csproj">
+      <Project>{bb80d163-471f-4fa0-a0a8-70b3d4fff0a0}</Project>
+      <Name>Extend.UICCamaguey.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.UICCamaguey.Templating.Dashboard.Presentation\Extend.UICCamaguey.Templating.Dashboard.Presentation.csproj">
+      <Project>{33b4c571-75a0-4f9b-b9c1-c4bee868d01c}</Project>
+      <Name>Extend.UICCamaguey.Templating.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.UICCamaguey.Templating.Presentation\Extend.UICCamaguey.Templating.Presentation.csproj">
+      <Project>{4d022272-02ff-4b2c-9bcd-906325bde2a9}</Project>
+      <Name>Extend.UICCamaguey.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.UICCamaguey.Templating\Extend.UICCamaguey.Templating.csproj">
+      <Project>{14a2565f-1960-44ca-aadb-7ae133745ee2}</Project>
+      <Name>Extend.UICCamaguey.Templating</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj">
       <Project>{f36158f5-5a62-40f5-8f5e-ce85d8277f20}</Project>
       <Name>Support.Presentation.Dashboard</Name>

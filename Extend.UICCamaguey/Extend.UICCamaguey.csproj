@@ -4,12 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey</RootNamespace>
-    <Version>0.2.2.0</Version>
+    <Version>0.2.3.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common\Extend.Common.csproj" />
     <ProjectReference Include="..\Extend.UICCamaguey.Overlaying\Extend.UICCamaguey.Overlaying.csproj" />
+    <ProjectReference Include="..\Extend.UICCamaguey.Templating\Extend.UICCamaguey.Templating.csproj" />
   </ItemGroup>
 
 </Project>
