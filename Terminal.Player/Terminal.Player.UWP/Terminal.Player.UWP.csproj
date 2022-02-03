@@ -110,7 +110,8 @@
     <Compile Include="Views\Renderer\FontOverflowLabelRenderer.cs" />
     <Compile Include="Views\Renderer\IndeterminableProgressBarViewRenderer.cs" />
     <Compile Include="Views\Renderer\RingActivityIndicatorRenderer.cs" />
-    <Compile Include="Views\Renderer\UnattendedVideoPlayerViewRenderer.cs" />
+    <Compile Include="Views\Renderer\RTMPVideoPlayerViewRenderer.cs" />
+    <Compile Include="Views\Renderer\VLCVideoPlayerViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -208,6 +209,9 @@
     </PackageReference>
     <PackageReference Include="SSCXFToolKit.Presentation.Transform">
       <Version>0.3.0-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="VLC.MediaElement">
+      <Version>3.1.0.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.11.982</Version>

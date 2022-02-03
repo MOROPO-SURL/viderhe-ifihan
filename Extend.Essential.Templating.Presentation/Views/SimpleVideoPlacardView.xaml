@@ -12,7 +12,7 @@
         <Grid 
             x:Name="Wrapper"
             BackgroundColor="Transparent">
-            <extendcommontemplatingpresentationrenderedviews:UnattendedVideoPlayerView
+            <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
                 x:Name="VideoPlayerView"
                 BackgroundColor="Black"
                 Source="{Binding Path=VideoSource}"
