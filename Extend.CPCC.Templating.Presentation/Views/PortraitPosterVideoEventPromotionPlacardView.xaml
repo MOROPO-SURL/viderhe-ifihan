@@ -41,7 +41,7 @@
                     CacheType="Disk"
                     CacheDuration="8760:00:00"
                     FadeAnimationEnabled="False" />
-                <extendcommontemplatingpresentationrenderedviews:UnattendedVideoPlayerView
+                <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
                     x:Name="EventVideo"
                     Grid.Row="1"
                     BackgroundColor="Black"
