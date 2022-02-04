@@ -256,6 +256,22 @@
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.UICCamaguey.Overlaying\Extend.UICCamaguey.Overlaying.csproj">
+      <Project>{eb85ea36-54b4-4233-8404-6888ce891fa1}</Project>
+      <Name>Extend.UICCamaguey.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.UICCamaguey.Templating.Presentation\Extend.UICCamaguey.Templating.Presentation.csproj">
+      <Project>{4d022272-02ff-4b2c-9bcd-906325bde2a9}</Project>
+      <Name>Extend.UICCamaguey.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.UICCamaguey.Templating\Extend.UICCamaguey.Templating.csproj">
+      <Project>{14a2565f-1960-44ca-aadb-7ae133745ee2}</Project>
+      <Name>Extend.UICCamaguey.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.UICCamaguey\Extend.UICCamaguey.csproj">
+      <Project>{e23a8dd5-dbfd-4b1b-ab98-7205bedad4be}</Project>
+      <Name>Extend.UICCamaguey</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj">
       <Project>{44A1EA24-59C5-4E9D-AF01-C65297998114}</Project>
       <Name>Support.Presentation</Name>

@@ -1,11 +1,11 @@
 ﻿using SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Extensions;
 using System;
 
-[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered.CloudVideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer.RTMPVideoPlayerViewRenderer))]
+[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered.CloudVideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer.UnattendedStreamVideoPlayerViewRenderer))]
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 {
-    public class RTMPVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<Extend.Common.Templating.Presentation.Views.Rendered.CloudVideoPlayerView, Windows.UI.Xaml.Controls.MediaElement>
+    public class UnattendedStreamVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<Extend.Common.Templating.Presentation.Views.Rendered.CloudVideoPlayerView, Windows.UI.Xaml.Controls.MediaElement>
     {
         Mntone.Rtmp.Client.SimpleVideoClient rtmpVideoClient;
 

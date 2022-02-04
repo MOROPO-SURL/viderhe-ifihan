@@ -5,6 +5,7 @@
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:sscxftoolkitpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Views.EventLiveStreamPlacardView">
     <ContentView.Resources>
@@ -16,10 +17,12 @@
         <Grid 
             x:Name="Wrapper"
             BackgroundColor="Transparent">
-            <Grid x:Name="PlacardLayout">
+            <Grid 
+                x:Name="PlacardLayout"
+                ColumnSpacing="0" RowSpacing="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
-                    <ColumnDefinition Width="3" />
+                    <ColumnDefinition Width="3*" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -47,7 +50,7 @@
                     <Label Text="{Binding Path=EventTitle}" FontSize="Medium" FontAttributes="Bold" />
                     <Label Text="{Binding Path=EventPlace}" FontAttributes="Italic" />
                 </StackLayout>
-                <extendcommontemplatingpresentationrenderedviews:UnattendedVideoPlayerView
+                <sscxftoolkitpresentationrenderedviews:VideoPlayerView
                     x:Name="VideoPlayerView"
                     Grid.Column="1" Grid.Row="2"
                     BackgroundColor="Black"

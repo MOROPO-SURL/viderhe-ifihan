@@ -39,8 +39,17 @@
     <ProjectReference Include="..\..\Cloud.SignalR.Connect.Player\Cloud.SignalR.Connect.Player.csproj" />
     <ProjectReference Include="..\..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential.Overlaying.Presentation\Extend.Essential.Overlaying.Presentation.csproj" />
+    <ProjectReference Include="..\..\Extend.Essential.Overlaying\Extend.Essential.Overlaying.csproj" />
+    <ProjectReference Include="..\..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj" />
+    <ProjectReference Include="..\..\Extend.Essential.Templating\Extend.Essential.Templating.csproj" />
+    <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj" />
+    <ProjectReference Include="..\..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj" />
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
     <ProjectReference Include="..\..\Extend.UICCamaguey.Overlaying.Presentation\Extend.UICCamaguey.Overlaying.Presentation.csproj" />
+    <ProjectReference Include="..\..\Extend.UICCamaguey.Overlaying\Extend.UICCamaguey.Overlaying.csproj" />
+    <ProjectReference Include="..\..\Extend.UICCamaguey.Templating.Presentation\Extend.UICCamaguey.Templating.Presentation.csproj" />
+    <ProjectReference Include="..\..\Extend.UICCamaguey.Templating\Extend.UICCamaguey.Templating.csproj" />
+    <ProjectReference Include="..\..\Extend.UICCamaguey\Extend.UICCamaguey.csproj" />
     <ProjectReference Include="..\..\Support.Presentation.Player\Support.Presentation.Player.csproj" />
     <ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj" />
   </ItemGroup>

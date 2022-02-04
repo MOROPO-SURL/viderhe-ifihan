@@ -2,8 +2,6 @@
 {
     public partial class EventLiveStreamPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        //private Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition;
-
         public EventLiveStreamPlacardView(Models.View.EventLiveStreamPlacardViewModel model)
         {
             InitializeComponent();
@@ -31,38 +29,13 @@
 
                 EndPresentation();
             }
-            //else if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
-            //{
-            //    transition?.PerformMotion();
-
-            //    transition = null;
-            //}
         }
 
-        //public override void StartShowInWhenReady(Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition)
-        //{
-        //    if (VideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
-        //    {
-        //        base.StartShowInWhenReady(transition);
-
-        //        return;
-        //    }
-
-        //    this.transition = transition;
-        //}
-
-        protected override void DisposeUnmanagementResources()
+        protected override void EndPresentation()
         {
-            base.DisposeUnmanagementResources();
+            base.EndPresentation();
 
-            if (VideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
-            {
-                VideoPlayerView.StatusUpdated -= VideoPlayer_StatusUpdated;
-
-                VideoPlayerView.Stop();
-            }
-
-            //transition = null;
+            VideoPlayerView.Dispose();
         }
     }
 }
