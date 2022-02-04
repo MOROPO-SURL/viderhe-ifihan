@@ -21,6 +21,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP
             InitializeComponent();
 
             Suspending += OnSuspending;
+            UnhandledException += App_UnhandledException;
+        }
+
+        private void App_UnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
+        {
+            Window.Current.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, new Windows.UI.Core.DispatchedHandler(async () =>
+            {
+                var result = await Windows.ApplicationModel.Core.CoreApplication.RequestRestartAsync(string.Empty);
+            })).AsTask();
         }
 
         /// <summary>

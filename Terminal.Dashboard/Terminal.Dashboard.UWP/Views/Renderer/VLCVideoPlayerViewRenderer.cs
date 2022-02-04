@@ -19,12 +19,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
             {
                 if (Control == null)
                 {
-                    var mediaElement = new VLC.MediaElement();
+                    SetNativeControl(new VLC.MediaElement());
 
-                    SetNativeControl(mediaElement);
-
-                    mediaElement.MediaFailed += OnMediaElementSourceFailed;
-                    mediaElement.CurrentStateChanged += OnMediaElementCurrentStateChanged;
+                    Control.MediaFailed += OnMediaElementSourceFailed;
+                    Control.CurrentStateChanged += OnMediaElementCurrentStateChanged;
 
                     SetAreTransportControlsEnabled();
 
@@ -74,6 +72,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
             Control.Stop();
 
             Control.Source = null;
+            Control.MediaSource = null;
+
+            SetNativeControl(null);
 
             base.Dispose(disposing);
 

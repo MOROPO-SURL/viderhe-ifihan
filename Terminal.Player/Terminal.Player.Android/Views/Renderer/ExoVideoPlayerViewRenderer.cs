@@ -112,13 +112,19 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
 
             var mediaSourceFactory = new Com.Google.Android.Exoplayer2.Source.ExtractorMediaSource.Factory(new DefaultDataSourceFactory(Context, "Viderhe ExoPlayer"));
 
+            var userAgent = Com.Google.Android.Exoplayer2.Util.Util.GetUserAgent(Context, "Viderhe");
+            var defaultHttpDataSourceFactory = new DefaultHttpDataSourceFactory(userAgent);
+            var defaultDataSourceFactory = new DefaultDataSourceFactory(Context, null, defaultHttpDataSourceFactory);            
+
             if (Element.Source is XFToolKit.Presentation.Sources.Video.UriVideoSource)
             {
                 var uri = (Element.Source as XFToolKit.Presentation.Sources.Video.UriVideoSource).Uri;
 
+                var extractorMediaSource = new Com.Google.Android.Exoplayer2.Source.ExtractorMediaSource(Android.Net.Uri.Parse(uri), defaultDataSourceFactory, new Com.Google.Android.Exoplayer2.Extractor.DefaultExtractorsFactory(), null, null);
+
                 if (!string.IsNullOrWhiteSpace(uri))
                 {
-                    (Control.Player as SimpleExoPlayer).Prepare(mediaSourceFactory.CreateMediaSource(Android.Net.Uri.Parse(uri)));
+                    (Control.Player as SimpleExoPlayer).Prepare(extractorMediaSource);
 
                     hasSetSource = true;
                 }
