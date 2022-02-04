@@ -15,7 +15,7 @@
                     Aspect="AspectFit"
                     CacheType="Disk"
                     CacheDuration="8760:00:00" />
-                <extendcommontemplatingpresentationrenderedviews:UnattendedVideoPlayerView
+                <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
                     x:Name="VideoPlayerView"
                     BackgroundColor="Black"
                     Source="{Binding Path=VideoSource}"

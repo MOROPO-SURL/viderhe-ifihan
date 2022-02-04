@@ -17,7 +17,7 @@
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="PlacardLayout">
-                <extendcommontemplatingpresentationrenderedviews:UnattendedVideoPlayerView
+                <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
                     x:Name="PresentedVideoPlayerView"
                     BackgroundColor="Black"
                     Source="{Binding Path=PresentedVideoSource}"
@@ -30,7 +30,7 @@
                     HorizontalOptions="{Binding Path=PresenterTileVideoScreenCorner, Converter={StaticResource ScreenCornerToHorizontalLayoutOptionConverter}}}"
                     VerticalOptions="{Binding Path=PresenterTileVideoScreenCorner, Converter={StaticResource ScreenCornerToVerticalLayoutOptionConverter}}">
                     <BoxView Color="White" Opacity="0.2" />
-                    <extendcommontemplatingpresentationrenderedviews:UnattendedVideoPlayerView
+                    <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
                         x:Name="PresenterTileVideoPlayerView"
                         BackgroundColor="Black"
                         Margin="6"
