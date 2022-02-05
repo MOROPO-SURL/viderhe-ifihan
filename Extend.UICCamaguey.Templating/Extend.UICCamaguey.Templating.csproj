@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -9,10 +9,12 @@
 
   <ItemGroup>
     <None Remove="A9419619-2399-4F4B-83A7-4E7CC7C48546-landscape.png" />
+    <None Remove="C32C4B89-56D2-4D0D-91B5-E8D1984AA339-landscape.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="A9419619-2399-4F4B-83A7-4E7CC7C48546-landscape.png" />
+    <EmbeddedResource Include="C32C4B89-56D2-4D0D-91B5-E8D1984AA339-landscape.png" />
   </ItemGroup>
 
   <ItemGroup>
