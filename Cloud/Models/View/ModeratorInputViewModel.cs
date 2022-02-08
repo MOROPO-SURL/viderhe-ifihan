@@ -62,7 +62,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
         {
             var entity = new Persistence.Entities.Moderator
             {
-                UserId = UserId
+                UserId = UserId,
+                ModerationKind = Persistence.Enumerations.ModerationKind.Privileged
             };
 
             Mergue(entity);

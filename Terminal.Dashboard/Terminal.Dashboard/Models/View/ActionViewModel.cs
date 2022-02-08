@@ -7,5 +7,7 @@
         public string Caption { get; set; }
 
         public Enumerations.ActionKind Kind { get; set; }
+
+        public bool Enabled { get; set; }
     }
 }

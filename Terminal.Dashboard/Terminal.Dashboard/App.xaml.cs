@@ -45,6 +45,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
                 return;
             }
 
+            var title = "Aviso";
+
             System.Exception targetException = exception;
 
             while (targetException is System.AggregateException)
@@ -91,23 +93,25 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
                 }
                 else if (unspectedHttpStatus == System.Net.HttpStatusCode.Forbidden)
                 {
-                    message = "No autorizado.";
+                    title = "No Autorizado";
+                    message = "Usted no cuenta con los permisos necesarios para realizar esta operación.";
 
-                    continuationCallback = () =>
-                    {
-                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                        {
-                            Managers.SessionManager.Instance.SignOut();
+                    // TODO Remove if no required!!
+                    //continuationCallback = () =>
+                    //{
+                    //    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    //    {
+                    //        Managers.SessionManager.Instance.SignOut();
 
-                            (MainPage as Xamarin.Forms.NavigationPage).CurrentPage.IsEnabled = false;
+                    //        (MainPage as Xamarin.Forms.NavigationPage).CurrentPage.IsEnabled = false;
 
-                            PresentForUserAuthentication();
-                        });
-                    };
+                    //        PresentForUserAuthentication();
+                    //    });
+                    //};
                 }
             }
 
-            MainPage.DisplayAlert("Error", message, "Aceptar").ContinueWith(task => { continuationCallback?.Invoke(); });
+            MainPage.DisplayAlert(title, message, "Aceptar").ContinueWith(task => { continuationCallback?.Invoke(); });
         }
     }
 }

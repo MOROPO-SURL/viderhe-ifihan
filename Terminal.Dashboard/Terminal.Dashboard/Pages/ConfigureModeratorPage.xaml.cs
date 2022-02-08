@@ -85,7 +85,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     var model = new Cloud.Api.Common.Models.ModeratorInputModel
                     {
                         Id = BindingContextPageModel.TargetId,
-                        Privileged = BindingContextPageModel.TargetPrivileged,
+                        IsPrivileged = BindingContextPageModel.TargetPrivileged,
                         User = new Cloud.Api.Common.Models.UserInputModel
                         {
                             Id = BindingContextPageModel.TargetUserId,
@@ -120,7 +120,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     var model = new Cloud.Api.Common.Models.ModeratorInputModel
                     {
-                        Privileged = BindingContextPageModel.TargetPrivileged,
+                        IsPrivileged = BindingContextPageModel.TargetPrivileged,
                         User = new Cloud.Api.Common.Models.UserInputModel
                         {
                             Id = BindingContextPageModel.TargetUserId,

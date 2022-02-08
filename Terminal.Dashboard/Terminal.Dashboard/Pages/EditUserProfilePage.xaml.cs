@@ -81,7 +81,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             var model = new Cloud.Api.Common.Models.ModeratorInputModel
             {
                 Id = Managers.SessionManager.Instance.Moderator.Id,
-                Privileged = Managers.SessionManager.Instance.Moderator.Privileged,
+                IsPrivileged = Managers.SessionManager.Instance.Moderator.IsPrivileged,
                 User = new Cloud.Api.Common.Models.UserInputModel
                 {
                     Id = Managers.SessionManager.Instance.Moderator.User.Id,
