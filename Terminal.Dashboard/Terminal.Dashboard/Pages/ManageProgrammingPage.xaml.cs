@@ -540,16 +540,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 var result = await client.FilterAsync(new Cloud.Api.Common.Models.Filter.FrameFilterModel { ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id });
 
-                var index = 0;
-                var count = result.Count();
-
                 BindingContextPageModel.Frames = result.OrderBy(e => e.Priority).Select(m => new Support.Presentation.Models.View.FrameViewModel
                 {
                     Id = m.Id,
                     Priority = m.Priority,
-                    Placard = m.Placard.ToViewModel(),
-                    CanOrderUp = index++ > 0,
-                    CanOrderDown = index != count
+                    Placard = m.Placard.ToViewModel()
                 }).ToArray();
             }).ContinueWith(task =>
             {
