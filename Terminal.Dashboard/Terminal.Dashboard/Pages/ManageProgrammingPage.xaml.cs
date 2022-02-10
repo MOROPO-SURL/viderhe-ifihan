@@ -12,8 +12,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private const string OPTION_COMMON_EDIT = "Modificar";
         private const string OPTION_COMMON_DELETE = "Eliminar";
 
-        private const string OPTION_FRAME_ORDERTO_BEFORE = "Aumentar Prioridad";
-        private const string OPTION_FRAME_ORDERTO_AFTER = "Disminuir Prioridad";
+        private const string OPTION_FRAME_ORDER = "Cambiar Prioridad";
         private const string OPTION_FRAME_DELETE = "Quitar";
 
         private const string OPTION_PLACARD_SEQUENCE = "Agregar a Secuencia";
@@ -183,14 +182,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 OPTION_COMMON_PREVIEW
             };
 
-            if (targetFrameViewModel.CanOrderUp)
+            if (BindingContextPageModel.Frames.Length > 1)
             {
-                extraOptions.Add(OPTION_FRAME_ORDERTO_BEFORE);
-            }
-
-            if (targetFrameViewModel.CanOrderDown)
-            {
-                extraOptions.Add(OPTION_FRAME_ORDERTO_AFTER);
+                extraOptions.Add(OPTION_FRAME_ORDER);
             }
 
             extraOptions.Add(OPTION_FRAME_DELETE);
@@ -245,61 +239,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         break;
 
-                    case OPTION_FRAME_ORDERTO_BEFORE:
-                        BindingContextPageModel.IsBusy = true;
-
-                        System.Threading.Tasks.Task.Run(async () =>
+                    case OPTION_FRAME_ORDER:
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
-
-                            await client.OrderUpAsync(targetFrameViewModel.Id);
-                        }).ContinueWith(task =>
-                        {
-                            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                            {
-                                if (task.Exception != null && !task.IsCanceled)
-                                {
-                                    BindingContextPageModel.IsBusy = false;
-
-                                    (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
-                                }
-                                else
-                                {
-                                    Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Prioridad del marco aumentada con exito.");
-
-                                    LoadCurrentScreenplayFrames();
-                                }
-                            });
-                        });
-
-                        break;
-
-                    case OPTION_FRAME_ORDERTO_AFTER:
-                        BindingContextPageModel.IsBusy = true;
-
-                        System.Threading.Tasks.Task.Run(async () =>
-                        {
-                            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
-
-                            await client.OrderDownAsync(targetFrameViewModel.Id);
-                        }).ContinueWith(task =>
-                        {
-                            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                            {
-                                if (task.Exception != null && !task.IsCanceled)
-                                {
-                                    BindingContextPageModel.IsBusy = false;
-
-                                    (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
-                                }
-                                else
-                                {
-                                    Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Prioridad del marco disminuida con exito.");
-
-                                    LoadCurrentScreenplayFrames();
-                                }
-                            });
-                        });
+                            this.NavigationPushModalPageAsync(new FramePriorityChangePage(BindingContextPageModel.Frames, targetFrameViewModel, LoadCurrentScreenplayFrames));
+                        });                        
 
                         break;
 
