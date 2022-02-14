@@ -971,8 +971,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.Property<Guid>("IdentityId")
                         .HasColumnName("identityid");
 
-                    b.Property<bool>("Privileged")
-                        .HasColumnName("privileged");
+                    b.Property<int>("ModerationKind")
+                        .HasColumnName("moderationkind");
 
                     b.Property<string>("UserId")
                         .HasColumnName("userid");

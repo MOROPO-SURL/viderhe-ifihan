@@ -13,9 +13,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Security.Authorization.Requirement.H
 
         protected override System.Threading.Tasks.Task HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext context, AccountModerationRequirement requirement)
         {
-            var isModerator = dbContext.Accounts.Any(e => e.Enabled && Helpers.Integrity.AccountIntegrityHelper.IsCorrectlySigned(e) && e.ModeratorBridges.Any(n => n.Moderator.UserId == context.User.Identity.Name));
+            var challange = dbContext.Accounts.Any(e => e.Enabled && Helpers.Integrity.AccountIntegrityHelper.IsCorrectlySigned(e) && e.ModeratorBridges.Any(n => n.Moderator.UserId == context.User.Identity.Name));
 
-            if (isModerator)
+            if (challange)
             {
                 context.Succeed(requirement);
             }

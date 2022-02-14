@@ -11,6 +11,7 @@
             result.TargetId = target.Model.Id;
             result.TargetUserId = target.Model.User.Id;
             result.TargetUserEnabled = target.Model.User.Enabled;
+            result.TargetPrivileged = target.Model.IsPrivileged;
             result.TargetUserPasswordChangeRequired = target.Model.User.PasswordChangeRequired;
             result.TargetIdentityName = target.Model.Identity.Name;
             result.TargetIdentityLastName = target.Model.Identity.LastName;
