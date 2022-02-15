@@ -19,7 +19,7 @@
             //result.TargetIdentityAlias = target.Model.Identity.Alias;
             //result.TargetIdentityCivilStatus = target.Model.Identity.CivilStatus;
             result.TargetIdentitySex = target.Model.Identity.Sex;
-            result.TargetIdentityImageSource = target.Model.Identity.Image != null ? Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, target.Model.Identity.Image.Id)) : null;
+            result.TargetIdentityImageSource = target.Model.Identity.Image != null ? Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(target.Model.Identity.Image.Id)) : null;
 
             return result;
         }

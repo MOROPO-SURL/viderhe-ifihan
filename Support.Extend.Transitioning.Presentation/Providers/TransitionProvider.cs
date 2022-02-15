@@ -1,6 +1,5 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.Providers.Facade;
 using SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.Transitions.Contract;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Providers.Facade;
 using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
 using System.Linq;
 
@@ -31,13 +30,13 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning.Presentation.
             XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(ITransitionProviderFacade).IsAssignableFrom(t));
         }
 
-        public AbstractTransition GetFor(System.Guid transitionDescriptorId, IAccountInformationProviderFacade accountInformationProvider, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
+        public AbstractTransition GetFor(System.Guid transitionDescriptorId, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
             var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<ITransitionProviderFacade>();
 
             foreach (var provider in providers)
             {
-                var result = provider.GetFor(transitionDescriptorId, accountInformationProvider, incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+                var result = provider.GetFor(transitionDescriptorId, incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
 
                 if (result == null) continue;
 
@@ -47,7 +46,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning.Presentation.
             throw new System.InvalidOperationException();
         }
 
-        public AbstractTransition GetRandom(IAccountInformationProviderFacade accountInformationProvider, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
+        public AbstractTransition GetRandom(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
             var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<ITransitionProviderFacade>();
 
@@ -57,7 +56,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning.Presentation.
 
             var provider = providers.ElementAt(randomProviderIndex);
 
-            return provider.GetRandom(accountInformationProvider, incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+            return provider.GetRandom(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
         }
     }
 }
