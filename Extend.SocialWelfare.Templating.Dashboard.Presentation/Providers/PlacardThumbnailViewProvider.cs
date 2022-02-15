@@ -2,11 +2,11 @@
 {
     public class PlacardThumbnailViewProvider : Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardThumbnailViewProviderFacade
     {
-        public Xamarin.Forms.ContentView GetPlacardThumnailView(Support.Presentation.Models.View.PlacardViewModel model, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
+        public Xamarin.Forms.ContentView GetPlacardThumnailView(Support.Presentation.Models.View.PlacardViewModel model)
         {
             if (model.Template.Id == Descriptors.InmersiveCityWeatherOverviewTemplateDescriptor.ID)
             {
-                return new Views.InmersiveCityWeatherOverviewPlacardThumnailView(model, cloudServerProvider);
+                return new Views.InmersiveCityWeatherOverviewPlacardThumnailView(model);
             }
 
             return null;

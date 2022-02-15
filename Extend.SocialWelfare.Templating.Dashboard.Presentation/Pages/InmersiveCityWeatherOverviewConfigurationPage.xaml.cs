@@ -6,25 +6,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
     public partial class InmersiveCityWeatherOverviewConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.InmersiveCityWeatherOverviewConfigurationPageModel>
     {
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
-        private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
-        private Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
-        private Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter;
         private System.Action successfulCompleteCallbackAction;
 
-        public InmersiveCityWeatherOverviewConfigurationPage(SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
-            : this(null, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, successfulCompleteCallbackAction)
+        public InmersiveCityWeatherOverviewConfigurationPage(System.Action successfulCompleteCallbackAction)
+            : this(null, successfulCompleteCallbackAction)
         {
         }
 
-        public InmersiveCityWeatherOverviewConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
+        public InmersiveCityWeatherOverviewConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
             : base(Factories.InmersiveCityWeatherOverviewConfigurationPageModelFactory.Build(placardViewModel))
         {
             InitializeComponent();
 
             this.placardViewModel = placardViewModel;
-            this.httpClientHelperProvider = httpClientHelperProvider;
-            this.exceptionHandleHelper = exceptionHandleHelper;
-            this.notificationPresenter = notificationPresenter;
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
 
             if (placardViewModel == null)
@@ -66,9 +60,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
             BindingContextPageModel.PropertyChanged -= BindingContextPageModel_PropertyChanged;
 
             placardViewModel = null;
-            exceptionHandleHelper = null;
-            httpClientHelperProvider = null;
-            notificationPresenter = null;
             successfulCompleteCallbackAction = null;
         }
 
@@ -89,7 +80,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
         {
             IsEnabled = false;
 
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(exceptionHandleHelper, httpClientHelperProvider, BackgroundImagePicked_Callback, BindingContextPageModel.BackgroundCityImage));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(BackgroundImagePicked_Callback, BindingContextPageModel.BackgroundCityImage));
         }
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
@@ -100,7 +91,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(httpClientHelperProvider);
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 if (placardViewModel == null)
                 {
@@ -149,11 +140,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        exceptionHandleHelper.HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
-                        notificationPresenter.PresentNotification("Aviso", "Cambios aplicados con éxito.");
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Aviso", "Cambios aplicados con éxito.");
 
                         this.NavigationPopPageAsync();
 
@@ -213,7 +204,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                 {
                     if (task.IsCanceled || task.Exception != null)
                     {
-                        exceptionHandleHelper.HandleException(task.Exception);                        
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);                        
                     }
                     else
                     {
