@@ -57,12 +57,14 @@
                             HorizontalOptions="Center"
                             WidthRequest="{Binding Source={RelativeSource AncestorType={Type StackLayout}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=2}" />
                         <Label 
+                            x:Name="HeaderLabel"
                             Text="{Binding Path=Header}"
                             TextColor="White"
                             HorizontalTextAlignment="Center"
                             FontFamily="Montserrat ExtraBold"
                             FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}}" />
                         <Label
+                            x:Name="ContentLabel"
                             Text="{Binding Path=Content}"
                             TextColor="White"
                             HorizontalTextAlignment="Center"

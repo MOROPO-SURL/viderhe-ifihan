@@ -6,7 +6,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
-        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
+        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model)
         {
             if (model.Template.Id == InfinityVideoTemplateDescriptor.ID)
             {
@@ -15,8 +15,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                 return new InfinityVideoPlacardView(new Models.View.InfinityVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = false,
-                    VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(cloudServerProvider, context.VideoId, context.VideoExtension).AbsoluteUri),
-                    VideoThumbnailImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(cloudServerProvider, context.ThumbnailId))
+                    VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.VideoId, context.VideoExtension).AbsoluteUri),
+                    VideoThumbnailImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.ThumbnailId))
                 });
             }
 
@@ -27,10 +27,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                 return new CornerTileVideoPresentingVideoPlacardView(new Models.View.CornerTileVideoPresentingVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    PresenterTileVideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(cloudServerProvider, context.PresenterTileVideo.Id, context.PresenterTileVideo.Extension).AbsoluteUri),
+                    PresenterTileVideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.PresenterTileVideo.Id, context.PresenterTileVideo.Extension).AbsoluteUri),
                     PresenterTileVideoPlayDelay = context.PresenterTileVideoPlayDelay,
                     PresenterTileVideoScreenCorner = context.PresenterTileVideoScreenCorner,
-                    PresentedVideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(cloudServerProvider, context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri)
+                    PresentedVideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri)
                 });
             }
 
@@ -38,11 +38,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeCrossStripePlacardContextModel>(model.SerializedContext);
 
+                var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
+
                 var viewModel = new Models.View.LandscapeCrossStripePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
-                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.ContextedImage.Id)),
+                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.ContextedImage.Id)),
                     ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
                     StripeBackgroundColor = context.StripeColorBackgroundMode == Enumerations.BackgroundColorMode.Primary ? accountInformationProvider.PrimaryColor : accountInformationProvider.SecoundaryColor,
                     Header = context.Header,
@@ -73,7 +75,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     ContentFontSize = context.ContentFontSize,
                     FrameStyle = context.FrameStyle,
                     BackgroundMode = context.BackgroundMode
-                }, accountInformationProvider);
+                });
             }
 
             if (model.Template.Id == LandscapePennantTemplateDescriptor.ID)
@@ -88,7 +90,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     HeaderFontSize = context.HeaderFontSize,
                     Content = context.Content,
                     ContentFontSize = context.ContentFontSize,
-                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.ContextedImage.Id)),
+                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.ContextedImage.Id)),
                     ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
                     FlyoutShapeKind = context.FlyoutShapeKind,
                     FlyoutBackgroundColorMode = context.FlyoutBackgroundColorMode,

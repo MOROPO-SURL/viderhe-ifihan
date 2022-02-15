@@ -2,11 +2,13 @@
 {
     public partial class LandscapeFramedPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapeFramedPlacardView(Models.View.LandscapeFramedPlacardViewModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider)
+        public LandscapeFramedPlacardView(Models.View.LandscapeFramedPlacardViewModel model)
         {
             InitializeComponent();
 
             BindingContext = model;
+
+            var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
             var useLightFrame = false;
 

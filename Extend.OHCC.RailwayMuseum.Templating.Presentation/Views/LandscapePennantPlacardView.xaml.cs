@@ -13,6 +13,15 @@
                 FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly) :
                 FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
 
+            if (model.FlyoutBackgroundColorMode == Enumerations.FlyoutBackgroundColorMode.Light)
+            {
+                var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
+
+                HeaderLabel.TextColor = accountInformationProvider.PrimaryColor;
+
+                ContentLabel.TextColor = accountInformationProvider.SecoundaryColor;
+            }
+
             switch (model.PennantVerticalOrientation)
             {
                 case Enumerations.PennantVerticalOrientation.Top:
