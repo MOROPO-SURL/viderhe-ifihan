@@ -11,6 +11,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
             InitializeComponent();
 
             Xamarin.Forms.DependencyService.Register<Support.Presentation.Helpers.Facade.IImageUriFactoryHelper, Helpers.ImageUriFactoryHelper>();
+            Xamarin.Forms.DependencyService.Register<Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade, Providers.AccountInformationProvider>();
+            Xamarin.Forms.DependencyService.Register<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade, Presenters.NotificationPresenter>();
+            Xamarin.Forms.DependencyService.RegisterSingleton<Support.Presentation.Providers.Facade.ICloudServerProviderFacade>(Support.Presentation.Managers.SessionMemoryManager.Instance);
+            Xamarin.Forms.DependencyService.RegisterSingleton<SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>(Managers.SessionManager.Instance);
+            Xamarin.Forms.DependencyService.RegisterSingleton<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>(this);
 
             On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
 

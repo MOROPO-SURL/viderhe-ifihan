@@ -9,12 +9,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
         private Descriptors.SimpleVideoTemplateDescriptor templateDescriptor;
-        private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
-        private Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
-        private Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter;
         private System.Action successfulCompleteCallbackAction;
 
-        public CreateSimpleVideoPlacardPage(Support.Presentation.Models.View.VideoViewModel videoViewModel, Descriptors.SimpleVideoTemplateDescriptor templateDescriptor, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
+        public CreateSimpleVideoPlacardPage(Support.Presentation.Models.View.VideoViewModel videoViewModel, Descriptors.SimpleVideoTemplateDescriptor templateDescriptor, System.Action successfulCompleteCallbackAction)
             : base(new Models.Page.CreateSimpleVideoPlacardPageModel
             {
                 Video = videoViewModel,
@@ -26,9 +23,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             InitializeComponent();
 
             this.templateDescriptor = templateDescriptor;
-            this.httpClientHelperProvider = httpClientHelperProvider;
-            this.exceptionHandleHelper = exceptionHandleHelper;
-            this.notificationPresenter = notificationPresenter;
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
 
             Title = string.Format("Nuevo Marco ({0})", templateDescriptor.Name);
@@ -53,7 +47,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(httpClientHelperProvider);
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 await client.CreateAsync(new Cloud.Api.Common.Models.PlacardInputModel
                 {
@@ -74,11 +68,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        exceptionHandleHelper.HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
-                        notificationPresenter.PresentNotification("Información", "Cambios aplicados con éxito.");
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
 
                         this.NavigationPopPageAsync();
 
@@ -103,9 +97,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             base.DisposeUnmanagementResources();
 
             templateDescriptor = null;
-            httpClientHelperProvider = null;
-            exceptionHandleHelper = null;
-            notificationPresenter = null;
             successfulCompleteCallbackAction = null;
         }
 

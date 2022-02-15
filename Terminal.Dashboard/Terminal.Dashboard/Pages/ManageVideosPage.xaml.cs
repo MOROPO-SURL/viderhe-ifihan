@@ -63,7 +63,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (failException == null)
                     {
-                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Video eliminado con éxito.");
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Video eliminado con éxito.");
 
                         RequiredReload_Callback();
                     }

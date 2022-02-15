@@ -79,7 +79,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Marco eliminado con exito.");
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Marco eliminado con exito.");
 
                                         LoadNextPlacardsPage(true, BindingContextPageModel.SelectedScreenplay != null);
                                     });
@@ -101,7 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { target.Placard }, ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { target.Placard }, ScreenplayPresentationComplete_Callback, false);
 
                             this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
@@ -119,7 +119,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             }
                             else
                             {
-                                Presenters.NotificationPresenter.Instance.PresentNotification("Aviso", "Plantilla no compatible con la versión actual del sistema.");
+                                Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Aviso", "Plantilla no compatible con la versión actual del sistema.");
                             }
                         });
 
@@ -147,7 +147,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Marco agregado a la secuencia con exito.");
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Marco agregado a la secuencia con exito.");
 
                                         LoadCurrentScreenplayFrames();
                                     });
@@ -210,7 +210,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Marco eliminado de la secuencia con exito.");
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Marco eliminado de la secuencia con exito.");
 
                                         LoadCurrentScreenplayFrames();
                                     });
@@ -232,7 +232,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetFrameViewModel.Placard }, ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetFrameViewModel.Placard }, ScreenplayPresentationComplete_Callback, false);
 
                             this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
@@ -256,7 +256,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ScreenplayFramesPlayButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(BindingContextPageModel.Frames.Select(m => m.Placard).ToArray(), ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance);
+            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(BindingContextPageModel.Frames.Select(m => m.Placard).ToArray(), ScreenplayPresentationComplete_Callback, false);
 
             this.NavigationPushModalPageAsync(screenplayPlayerPage);
         }
@@ -291,7 +291,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Guion eliminado con exito.");
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Guion eliminado con exito.");
 
                                         LoadScreenplays();
                                     });
