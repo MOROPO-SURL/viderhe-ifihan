@@ -14,6 +14,8 @@
 
         void PlayerSetAudioLevel(string playerId, int percent);
 
+        void PlayerClose(string playerId, bool restart = false);
+
         void PlayerShutdown(string playerId, bool restart = false);
     }
 }

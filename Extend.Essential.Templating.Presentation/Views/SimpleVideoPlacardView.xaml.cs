@@ -4,7 +4,7 @@
     {
         private Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition;
 
-        public SimpleVideoPlacardView(Models.View.SimpleVideoPlacardViewModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider)
+        public SimpleVideoPlacardView(Models.View.SimpleVideoPlacardViewModel model)
         {
             InitializeComponent();
 

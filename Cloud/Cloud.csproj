@@ -1,10 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Cloud</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Cloud</RootNamespace>
+    <Version>0.8.0</Version>
+    <Authors>SmartSolucionesCuba.Viderhe.Cloud</Authors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -37,6 +39,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
+    <ProjectReference Include="..\Cloud.Persistence.EF\Cloud.Persistence.EF.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Dashboard\Cloud.SignalR.Connect.Dashboard.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Player\Cloud.SignalR.Connect.Player.csproj" />
     <ProjectReference Include="..\Extend.Essential\Extend.Essential.csproj" />

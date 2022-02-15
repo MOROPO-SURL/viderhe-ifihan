@@ -8,12 +8,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         private Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor;
         private System.Action successfulCompleteCallbackAction;
         private System.Action<Support.Presentation.Models.View.VideoViewModel, Common.Templating.Descriptors.ITemplateDescriptor, System.Action> videoPickedCallbackAction;
-        private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
-        private Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
 
         private int currentVideosPageNumber;
 
-        public PrePickVideoPage(Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, System.Action successfulCompleteCallbackAction, System.Action<Support.Presentation.Models.View.VideoViewModel, Common.Templating.Descriptors.ITemplateDescriptor, System.Action> videoPickedCallbackAction, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider)
+        public PrePickVideoPage(Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, System.Action successfulCompleteCallbackAction, System.Action<Support.Presentation.Models.View.VideoViewModel, Common.Templating.Descriptors.ITemplateDescriptor, System.Action> videoPickedCallbackAction)
             : base(new Support.Presentation.Dashboard.Models.Page.VideoPickPageModel { IsBusy = true })
         {
             InitializeComponent();
@@ -21,8 +19,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             this.templateDescriptor = templateDescriptor;
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
             this.videoPickedCallbackAction = videoPickedCallbackAction;
-            this.httpClientHelperProvider = httpClientHelperProvider;
-            this.exceptionHandleHelper = exceptionHandleHelper;
 
             IsEnabled = false;
         }
@@ -68,7 +64,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
             if (restart) currentVideosPageNumber = 0;
 
-            var videosApiConnectClient = new Cloud.Api.Connect.Clients.VideosApiConnectClient(httpClientHelperProvider.HttpClientHelper);
+            var videosApiConnectClient = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Xamarin.Forms.DependencyService.Get<SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
 
             videosApiConnectClient.GetPageAsync(++currentVideosPageNumber).ContinueWith(task =>
             {
@@ -78,7 +74,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
                     if (task.Exception != null)
                     {
-                        exceptionHandleHelper.HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
@@ -104,8 +100,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
             templateDescriptor = null;
             successfulCompleteCallbackAction = null;
-            exceptionHandleHelper = null;
-            httpClientHelperProvider = null;
             videoPickedCallbackAction = null;
         }
     }

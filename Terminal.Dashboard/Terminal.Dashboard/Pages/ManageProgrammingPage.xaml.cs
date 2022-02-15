@@ -12,8 +12,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private const string OPTION_COMMON_EDIT = "Modificar";
         private const string OPTION_COMMON_DELETE = "Eliminar";
 
-        private const string OPTION_FRAME_ORDERTO_BEFORE = "Aumentar Prioridad";
-        private const string OPTION_FRAME_ORDERTO_AFTER = "Disminuir Prioridad";
+        private const string OPTION_FRAME_ORDER = "Cambiar Prioridad";
         private const string OPTION_FRAME_DELETE = "Quitar";
 
         private const string OPTION_PLACARD_SEQUENCE = "Agregar a Secuencia";
@@ -80,7 +79,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Marco eliminado con exito.");
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Marco eliminado con exito.");
 
                                         LoadNextPlacardsPage(true, BindingContextPageModel.SelectedScreenplay != null);
                                     });
@@ -102,7 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { target.Placard }, ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { target.Placard }, ScreenplayPresentationComplete_Callback, false);
 
                             this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
@@ -120,7 +119,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             }
                             else
                             {
-                                Presenters.NotificationPresenter.Instance.PresentNotification("Aviso", "Plantilla no compatible con la versión actual del sistema.");
+                                Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Aviso", "Plantilla no compatible con la versión actual del sistema.");
                             }
                         });
 
@@ -148,7 +147,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Marco agregado a la secuencia con exito.");
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Marco agregado a la secuencia con exito.");
 
                                         LoadCurrentScreenplayFrames();
                                     });
@@ -183,14 +182,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 OPTION_COMMON_PREVIEW
             };
 
-            if (targetFrameViewModel.CanOrderUp)
+            if (BindingContextPageModel.Frames.Length > 1)
             {
-                extraOptions.Add(OPTION_FRAME_ORDERTO_BEFORE);
-            }
-
-            if (targetFrameViewModel.CanOrderDown)
-            {
-                extraOptions.Add(OPTION_FRAME_ORDERTO_AFTER);
+                extraOptions.Add(OPTION_FRAME_ORDER);
             }
 
             extraOptions.Add(OPTION_FRAME_DELETE);
@@ -216,7 +210,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Marco eliminado de la secuencia con exito.");
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Marco eliminado de la secuencia con exito.");
 
                                         LoadCurrentScreenplayFrames();
                                     });
@@ -238,68 +232,18 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetFrameViewModel.Placard }, ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetFrameViewModel.Placard }, ScreenplayPresentationComplete_Callback, false);
 
                             this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
 
                         break;
 
-                    case OPTION_FRAME_ORDERTO_BEFORE:
-                        BindingContextPageModel.IsBusy = true;
-
-                        System.Threading.Tasks.Task.Run(async () =>
+                    case OPTION_FRAME_ORDER:
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
-
-                            await client.OrderUpAsync(targetFrameViewModel.Id);
-                        }).ContinueWith(task =>
-                        {
-                            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                            {
-                                if (task.Exception != null && !task.IsCanceled)
-                                {
-                                    BindingContextPageModel.IsBusy = false;
-
-                                    (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
-                                }
-                                else
-                                {
-                                    Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Prioridad del marco aumentada con exito.");
-
-                                    LoadCurrentScreenplayFrames();
-                                }
-                            });
-                        });
-
-                        break;
-
-                    case OPTION_FRAME_ORDERTO_AFTER:
-                        BindingContextPageModel.IsBusy = true;
-
-                        System.Threading.Tasks.Task.Run(async () =>
-                        {
-                            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
-
-                            await client.OrderDownAsync(targetFrameViewModel.Id);
-                        }).ContinueWith(task =>
-                        {
-                            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                            {
-                                if (task.Exception != null && !task.IsCanceled)
-                                {
-                                    BindingContextPageModel.IsBusy = false;
-
-                                    (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
-                                }
-                                else
-                                {
-                                    Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Prioridad del marco disminuida con exito.");
-
-                                    LoadCurrentScreenplayFrames();
-                                }
-                            });
-                        });
+                            this.NavigationPushModalPageAsync(new FramePriorityChangePage(BindingContextPageModel.Frames, targetFrameViewModel, LoadCurrentScreenplayFrames));
+                        });                        
 
                         break;
 
@@ -312,7 +256,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ScreenplayFramesPlayButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(BindingContextPageModel.Frames.Select(m => m.Placard).ToArray(), ScreenplayPresentationComplete_Callback, false, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance);
+            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(BindingContextPageModel.Frames.Select(m => m.Placard).ToArray(), ScreenplayPresentationComplete_Callback, false);
 
             this.NavigationPushModalPageAsync(screenplayPlayerPage);
         }
@@ -347,7 +291,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Guion eliminado con exito.");
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Guion eliminado con exito.");
 
                                         LoadScreenplays();
                                     });
@@ -596,16 +540,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 var result = await client.FilterAsync(new Cloud.Api.Common.Models.Filter.FrameFilterModel { ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id });
 
-                var index = 0;
-                var count = result.Count();
-
                 BindingContextPageModel.Frames = result.OrderBy(e => e.Priority).Select(m => new Support.Presentation.Models.View.FrameViewModel
                 {
                     Id = m.Id,
                     Priority = m.Priority,
-                    Placard = m.Placard.ToViewModel(),
-                    CanOrderUp = index++ > 0,
-                    CanOrderDown = index != count
+                    Placard = m.Placard.ToViewModel()
                 }).ToArray();
             }).ContinueWith(task =>
             {

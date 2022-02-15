@@ -85,7 +85,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         if (apiConnectTask.Exception != null || !apiConnectTask.IsCanceled)
                         {
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Usuario eliminado con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Usuario eliminado con éxito.");
 
                             AvailableModeratorsChange_Callback();
                         }

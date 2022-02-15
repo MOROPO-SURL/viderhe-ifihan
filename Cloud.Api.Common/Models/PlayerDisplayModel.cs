@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using System.Linq;
+
+namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 {
     public class PlayerDisplayModel : SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Player, string>
     {

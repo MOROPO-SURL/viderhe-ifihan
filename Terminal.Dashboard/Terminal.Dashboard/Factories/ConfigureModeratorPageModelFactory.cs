@@ -11,6 +11,7 @@
             result.TargetId = target.Model.Id;
             result.TargetUserId = target.Model.User.Id;
             result.TargetUserEnabled = target.Model.User.Enabled;
+            result.TargetPrivileged = target.Model.IsPrivileged;
             result.TargetUserPasswordChangeRequired = target.Model.User.PasswordChangeRequired;
             result.TargetIdentityName = target.Model.Identity.Name;
             result.TargetIdentityLastName = target.Model.Identity.LastName;
@@ -18,7 +19,7 @@
             //result.TargetIdentityAlias = target.Model.Identity.Alias;
             //result.TargetIdentityCivilStatus = target.Model.Identity.CivilStatus;
             result.TargetIdentitySex = target.Model.Identity.Sex;
-            result.TargetIdentityImageSource = target.Model.Identity.Image != null ? Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, target.Model.Identity.Image.Id)) : null;
+            result.TargetIdentityImageSource = target.Model.Identity.Image != null ? Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(target.Model.Identity.Image.Id)) : null;
 
             return result;
         }

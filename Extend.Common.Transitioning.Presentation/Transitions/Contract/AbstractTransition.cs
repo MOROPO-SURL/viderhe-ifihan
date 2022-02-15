@@ -17,7 +17,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.T
             this.motionCompletedActionCallback = motionCompletedActionCallback;
         }
 
-        public abstract void GetReady(IAccountInformationProviderFacade accountInformationProvider, Xamarin.Forms.Layout<Xamarin.Forms.View> wrapper);
+        public abstract void GetReady(Xamarin.Forms.Layout<Xamarin.Forms.View> wrapper);
 
         protected abstract void GarbageCollect();
 

@@ -109,7 +109,7 @@
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label x:Name="IdLabel" Text="Identificador" Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=Id}">
+                            <Entry x:Name="IdEntry" Text="{Binding Path=Id}">
                                 <Entry.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"

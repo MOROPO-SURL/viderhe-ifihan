@@ -27,13 +27,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
             XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(Extend.Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardThumbnailViewProviderFacade).IsAssignableFrom(t));
         }
 
-        public Xamarin.Forms.ContentView GetPlacardThumnailView(Support.Presentation.Models.View.PlacardViewModel model, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
+        public Xamarin.Forms.ContentView GetPlacardThumnailView(Support.Presentation.Models.View.PlacardViewModel model)
         {
             var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Extend.Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardThumbnailViewProviderFacade>();
 
             foreach (var provider in providers)
             {
-                var result = provider.GetPlacardThumnailView(model, cloudServerProvider);
+                var result = provider.GetPlacardThumnailView(model);
 
                 if (result == null) continue;
 
