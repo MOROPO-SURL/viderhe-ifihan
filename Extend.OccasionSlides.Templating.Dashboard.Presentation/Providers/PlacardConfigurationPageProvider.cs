@@ -2,41 +2,41 @@
 {
     public class PlacardConfigurationPageProvider : Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardConfigurationPageProviderFacade
     {
-        public Xamarin.Forms.Page GetCreationEntryPointPageByDescriptor(Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, System.Action completedActionCallback)
+        public Xamarin.Forms.Page GetCreationEntryPointPageByDescriptor(Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, System.Action completedActionCallback)
         {
             if (templateDescriptor is Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor)
             {
-                return new Pages.LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+                return new Pages.LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage(completedActionCallback);
             }
 
             if (templateDescriptor is Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor)
             {
-                return new Pages.LandscapeContextualFlatOverlapForImagePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+                return new Pages.LandscapeContextualFlatOverlapForImagePlacardConfigurationPage(completedActionCallback);
             }
 
             if (templateDescriptor is Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor)
             {
-                return new Pages.LandscapeContextualTrailOverlapForImagePlacardConfigurationPage(httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+                return new Pages.LandscapeContextualTrailOverlapForImagePlacardConfigurationPage(completedActionCallback);
             }
 
             return null;
         }
 
-        public Xamarin.Forms.Page GetEditionPageByDescriptor(Support.Presentation.Models.View.PlacardViewModel placardViewModel, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, System.Action completedActionCallback)
+        public Xamarin.Forms.Page GetEditionPageByDescriptor(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action completedActionCallback)
         {
             if (placardViewModel.Template.Id == Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor.ID)
             {
-                return new Pages.LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+                return new Pages.LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             if (placardViewModel.Template.Id == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID)
             {
-                return new Pages.LandscapeContextualFlatOverlapForImagePlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+                return new Pages.LandscapeContextualFlatOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             if (placardViewModel.Template.Id == Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor.ID)
             {
-                return new Pages.LandscapeContextualTrailOverlapForImagePlacardConfigurationPage(placardViewModel, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, completedActionCallback);
+                return new Pages.LandscapeContextualTrailOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;

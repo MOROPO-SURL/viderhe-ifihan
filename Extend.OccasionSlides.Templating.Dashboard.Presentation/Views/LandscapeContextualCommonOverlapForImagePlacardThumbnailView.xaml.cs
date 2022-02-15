@@ -2,13 +2,13 @@
 {
     public partial class LandscapeContextualCommonOverlapForImagePlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
     {
-        public LandscapeContextualCommonOverlapForImagePlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
+        public LandscapeContextualCommonOverlapForImagePlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model)
         {
             InitializeComponent();
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.Contract.BaseLandscapeContextualOperlapForImagePlacardContextModel>(model.SerializedContext);
 
-            ContextedImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(cloudServerProvider, context.ContextedImage.ThumbnailId));
+            ContextedImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.ContextedImage.ThumbnailId));
 
             BindingContext = model;
         }

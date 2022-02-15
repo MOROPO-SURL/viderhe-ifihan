@@ -14,25 +14,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         private const string OPTION_FRAME_ORDERTO_AFTER = "Disminuir Prioridad";
 
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
-        private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
-        private Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
-        private Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter;
         private System.Action successfulCompleteCallbackAction;
 
-        public LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage(SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
-            : this(null, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, successfulCompleteCallbackAction)
+        public LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage(System.Action successfulCompleteCallbackAction)
+            : this(null, successfulCompleteCallbackAction)
         {
         }
 
-        public LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
+        public LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
             : base(Factories.LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
             InitializeComponent();
 
             this.placardViewModel = placardViewModel;
-            this.httpClientHelperProvider = httpClientHelperProvider;
-            this.exceptionHandleHelper = exceptionHandleHelper;
-            this.notificationPresenter = notificationPresenter;
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
 
             if (placardViewModel == null)
@@ -53,7 +47,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(httpClientHelperProvider);
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 if (placardViewModel == null)
                 {
@@ -110,11 +104,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        exceptionHandleHelper.HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
-                        notificationPresenter.PresentNotification("Información", "Cambios aplicados con éxito.");
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
 
                         this.NavigationPopPageAsync();
 
@@ -131,7 +125,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void PickContextedImageButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(exceptionHandleHelper, httpClientHelperProvider, ContextedImagePicked_Callback, BindingContextPageModel.ContextedImage));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(ContextedImagePicked_Callback, BindingContextPageModel.ContextedImage));
         }
 
         private void AddContentBlockButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -291,9 +285,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             base.DisposeUnmanagementResources();
 
             placardViewModel = null;
-            httpClientHelperProvider = null;
-            exceptionHandleHelper = null;
-            notificationPresenter = null;
             successfulCompleteCallbackAction = null;
         }
     }
