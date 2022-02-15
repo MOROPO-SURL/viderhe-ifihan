@@ -5,6 +5,7 @@
         public Moderator()
         {
             Id = System.Guid.NewGuid();
+            ModerationKind = Enumerations.ModerationKind.Standard;
             Identity = new SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity();
             AccountBridges = new System.Collections.Generic.List<AccountModeratorBridge>();
         }
@@ -20,7 +21,7 @@
 
         public SAPRESSC.Core.Security.Persistence.Entities.User User { get; set; }
 
-        public bool Privileged { get; set; }
+        public Enumerations.ModerationKind ModerationKind { get; set; }
 
         public System.Collections.Generic.List<AccountModeratorBridge> AccountBridges { get; set; }
     }

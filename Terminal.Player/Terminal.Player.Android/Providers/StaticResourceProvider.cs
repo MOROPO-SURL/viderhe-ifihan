@@ -4,44 +4,44 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Providers
 {
     public sealed class StaticResourceProvider : Support.Presentation.Providers.Facade.IStaticResourceProviderFacade
     {
-        public double TinyBodyTextFontSize => 10;
+        public double TinyBodyTextFontSize => 6;
 
-        public double SmallBodyTextFontSize => 12;
+        public double SmallBodyTextFontSize => 8;
 
-        public double NormalBodyTextFontSize => 14;
+        public double NormalBodyTextFontSize => 10;
 
-        public double MiddleBodyTextFontSize => 16;
+        public double MiddleBodyTextFontSize => 12;
 
-        public double LargeBodyTextFontSize => 18;
+        public double LargeBodyTextFontSize => 14;
 
-        public double TinyHeaderTextFontSize => 19;
+        public double TinyHeaderTextFontSize => 15;
 
-        public double SmallHeaderTextFontSize => 21;
+        public double SmallHeaderTextFontSize => 17;
 
-        public double NormalHeaderTextFontSize => 23;
+        public double NormalHeaderTextFontSize => 19;
 
-        public double MiddleHeaderTextFontSize => 25;
+        public double MiddleHeaderTextFontSize => 21;
 
-        public double LargeHeaderTextFontSize => 27;
+        public double LargeHeaderTextFontSize => 23;
 
-        public double TinyTitleTextFontSize => 28;
+        public double TinyTitleTextFontSize => 24;
 
-        public double SmallTitleTextFontSize => 30;
+        public double SmallTitleTextFontSize => 26;
 
-        public double NormalTitleTextFontSize => 36;
+        public double NormalTitleTextFontSize => 32;
 
-        public double MiddleTitleTextFontSize => 40;
+        public double MiddleTitleTextFontSize => 36;
 
-        public double LargeTitleTextFontSize => 48;
+        public double LargeTitleTextFontSize => 44;
 
-        public double TinyHeroTextFontSize => 50;
+        public double TinyHeroTextFontSize => 46;
 
-        public double SmallHeroTextFontSize => 56;
+        public double SmallHeroTextFontSize => 52;
 
-        public double NormalHeroTextFontSize => 64;
+        public double NormalHeroTextFontSize => 60;
 
-        public double MiddleHeroTextFontSize => 74;
+        public double MiddleHeroTextFontSize => 70;
 
-        public double LargeHeroTextFontSize => 96;
+        public double LargeHeroTextFontSize => 92;
     }
 }

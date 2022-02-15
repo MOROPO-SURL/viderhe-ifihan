@@ -6,19 +6,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
     public partial class PictureSlideSecuencePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
         private Models.Context.PictureSlideSecuencePlacardContextModel context;
-        private Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider;
-        private Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider;
 
         private Common.Templating.Presentation.Presenters.ScreenplayPresenter screenplayPresenter;
 
-        public PictureSlideSecuencePlacardView(Models.Context.PictureSlideSecuencePlacardContextModel context, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider)
+        public PictureSlideSecuencePlacardView(Models.Context.PictureSlideSecuencePlacardContextModel context)
         {
             InitializeComponent();
 
             this.context = context;
-
-            this.cloudServerProvider = cloudServerProvider;
-            this.accountInformationProvider = accountInformationProvider;
 
             BindingContext = new Models.View.PictureSlideSecuencePlacardViewModel
             {
@@ -66,7 +61,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
                 });
             }
 
-            screenplayPresenter = new Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards.ToArray(), accountInformationProvider, new Providers.PictureSlideSecuenceTransitionProvider(), EndPresentation, false, null);
+            screenplayPresenter = new Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards.ToArray(), new Providers.PictureSlideSecuenceTransitionProvider(), EndPresentation, false, null);
 
             screenplayPresenter.BeginPresentation();
         }
@@ -83,10 +78,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
-                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.Image.Id)),
-                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(cloudServerProvider, context.Image.ThumbnailId)),
+                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
+                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Image.ThumbnailId)),
                     Aspect = context.LayoutMode.ToXamarinFormsAspect()
-                }, accountInformationProvider);
+                });
             }
             else
             {
@@ -94,7 +89,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
-                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(cloudServerProvider, context.Image.Id)),
+                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
                     Aspect = context.LayoutMode.ToXamarinFormsAspect()
                 });
             }
@@ -105,8 +100,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
             base.DisposeUnmanagementResources();
 
             context = null;
-            cloudServerProvider = null;
-            accountInformationProvider = null;
 
             screenplayPresenter.Dispose();
 

@@ -2,7 +2,7 @@
 {
     public static class VideoUriFactory
     {
-        public static System.Uri BuildVideoUri(Providers.Facade.ICloudServerProviderFacade cloudServerProvider, System.Guid videoId, string videoExtension)
+        public static System.Uri BuildVideoUri(System.Guid videoId, string videoExtension)
         {
             var concreteExtension = videoExtension;
 
@@ -11,7 +11,7 @@
                 concreteExtension = concreteExtension.Substring(1);
             }
 
-            return new System.Uri(string.Format("rtmp://{0}/vod/{1}.{2}", cloudServerProvider.CloudServerHost.Split(':')[0], videoId, concreteExtension.ToLowerInvariant()));
+            return new System.Uri(string.Format("rtmp://{0}/vod/{1}.{2}", Xamarin.Forms.DependencyService.Get<Providers.Facade.ICloudServerProviderFacade>().CloudServerHost.Split(':')[0], videoId, concreteExtension.ToLowerInvariant()));
         }
     }
 }
