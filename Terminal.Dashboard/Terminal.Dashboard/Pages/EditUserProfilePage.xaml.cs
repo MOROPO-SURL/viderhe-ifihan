@@ -17,7 +17,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             TargetIdentityName = Managers.SessionManager.Instance.Moderator.Identity.Name,
             TargetIdentityLastName = Managers.SessionManager.Instance.Moderator.Identity.LastName,
             TargetIdentityImageSource = Managers.SessionManager.Instance.Moderator.Identity.Image != null ?
-                Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, Managers.SessionManager.Instance.Moderator.Identity.Image.Id)) :
+                Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.SessionManager.Instance.Moderator.Identity.Image.Id)) :
                 Xamarin.Forms.ImageSource.FromUri(new System.Uri(Helpers.ConstantProvisioningHelper.Instance.FallbackUserProfileImageUrl)),
             TargetIdentitySex = Managers.SessionManager.Instance.Moderator.Identity.Sex,
             TargetIdentityAbout = Managers.SessionManager.Instance.Moderator.Identity.About
@@ -81,7 +81,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             var model = new Cloud.Api.Common.Models.ModeratorInputModel
             {
                 Id = Managers.SessionManager.Instance.Moderator.Id,
-                Privileged = Managers.SessionManager.Instance.Moderator.Privileged,
+                IsPrivileged = Managers.SessionManager.Instance.Moderator.IsPrivileged,
                 User = new Cloud.Api.Common.Models.UserInputModel
                 {
                     Id = Managers.SessionManager.Instance.Moderator.User.Id,
@@ -117,7 +117,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         Managers.SessionManager.Instance.Moderator.Identity.LastName = BindingContextPageModel.TargetIdentityLastName;
                         Managers.SessionManager.Instance.Moderator.Identity.Sex = BindingContextPageModel.TargetIdentitySex;
 
-                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", string.Format("Cambios aplicados con éxito.{0}{0}Algunos cambios se mostrarán en le próximo inicio de sesión.", System.Environment.NewLine));
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", string.Format("Cambios aplicados con éxito.{0}{0}Algunos cambios se mostrarán en le próximo inicio de sesión.", System.Environment.NewLine));
 
                         this.NavigationPopPageAsync();
 

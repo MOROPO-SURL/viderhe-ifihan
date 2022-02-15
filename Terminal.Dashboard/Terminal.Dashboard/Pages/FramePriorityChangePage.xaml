@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters"
+    xmlns:viewtemplateselectors="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views.Template.Selector"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.FramePriorityChangePage"
+    x:TypeArguments="pagemodels:FramePriorityChangePageModel"
+    BackgroundColor="#AA000000">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="PositionReferenceFrameDataTemplate">
+                <Grid Padding="0,2">
+                    <Grid
+                        BackgroundColor="White"
+                        ColumnSpacing="0"
+                        HeightRequest="108">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid
+                            Grid.Column="0"             
+                            Margin="1,0"
+                            WidthRequest="108">
+                            <BoxView Color="LightGray" />
+                            <ContentView Content="{Binding Path=Placard.Template, Converter={StaticResource TemplateViewModelToTemplateThumbnailWrapViewConverter}}" />
+                        </Grid>
+                        <Label
+                            Grid.Column="1"
+                            Padding="8"
+                            Text="{Binding Path=Placard.Label}"
+                            TextColor="Black"
+                            FontSize="Caption"
+                            VerticalTextAlignment="Center"
+                            LineBreakMode="TailTruncation"
+                            MaxLines="4" />
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+            <DataTemplate x:Key="PositionPickFrameDataTemplate">
+                <Grid 
+                    Padding="0,2"
+                    BackgroundColor="Transparent"
+                    HeightRequest="108">
+                    <Label
+                        BackgroundColor="#33000000"
+                        Text="{Binding Path=Priority, StringFormat='{0}º'}"
+                        FontSize="Large"
+                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                </Grid>
+            </DataTemplate>
+            <viewtemplateselectors:FrameOrderingDataTemplateSelector x:Key="FrameOrderingDataTemplateSelector" PositionPickFrameDataTemplate="{StaticResource PositionPickFrameDataTemplate}" PositionReferenceFrameDataTemplate="{StaticResource PositionReferenceFrameDataTemplate}" />
+            <converters:TemplateViewModelToTemplateThumbnailWrapViewConverter x:Key="TemplateViewModelToTemplateThumbnailWrapViewConverter" />
+            <converters:AllTrueMultiConverter x:Key="AllTrueMultiConverter" />
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:NullToBooleanConverter x:Key="NullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Frame
+            HorizontalOptions="Center"
+            Padding="0" Margin="20"
+            BackgroundColor="White"
+            WidthRequest="360">
+            <Grid ColumnSpacing="0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <supportpresentationdashboardviews:BackgroundView Grid.ColumnSpan="2" Grid.Row="1" />
+                <StackLayout
+                    Grid.ColumnSpan="2" Grid.Row="0"
+                    Padding="8"
+                    BackgroundColor="{StaticResource PrimaryColor}"
+                    Spacing="3">
+                    <Label               
+                        HorizontalTextAlignment="Center"
+                        Text="Cambiar Prioridad"
+                        TextColor="White"
+                        FontSize="Medium" />
+                    <Label               
+                        HorizontalTextAlignment="Center"
+                        Text="Seleccione la posición en la secuencia a la que quiere mover el marco"
+                        TextColor="White" />
+                </StackLayout>
+                <CollectionView
+                    x:Name="OrderingFrameCollectionView"
+                    Grid.ColumnSpan="2" Grid.Row="1"
+                    SelectionMode="Single"
+                    SelectionChanged="OrderingFrameCollectionView_SelectionChanged"
+                    ItemsSource="{Binding Path=Frames}"
+                    ItemTemplate="{StaticResource FrameOrderingDataTemplateSelector}">
+                </CollectionView>
+                <Button
+                    Grid.Column="0" Grid.Row="2"
+                    Margin="8,8,4,8"
+                    Text="Aplicar"
+                    Clicked="ApplyButton_Clicked">
+                    <Button.IsEnabled>
+                        <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                            <Binding Path="IsBusy" Converter="{StaticResource BoolToBoolNegationConverter}" />
+                            <Binding Source="{Reference OrderingFrameCollectionView}" Path="SelectedItem" Converter="{StaticResource NotNullToBooleanConverter}" />
+                            <Binding Source="{Reference OrderingFrameCollectionView}" Path="SelectedItem.Placard" Converter="{StaticResource NullToBooleanConverter}" />
+                        </MultiBinding>
+                    </Button.IsEnabled>
+                </Button>
+                <Button
+                    Grid.Column="1" Grid.Row="2"
+                    IsEnabled="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
+                    Margin="4,8,8,8"
+                    Text="Cancelar"
+                    Clicked="CancelButton_Clicked" />
+                <supportpresentationdashboardviews:BusyView Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="2" />
+            </Grid>
+        </Frame>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

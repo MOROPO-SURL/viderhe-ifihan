@@ -63,7 +63,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    Presenters.NotificationPresenter.Instance.PresentNotification("Reproducir Siguiente Marco", "Solicitud de reproducción de siguiente marco enviada con éxito.");
+                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Siguiente Marco", "Solicitud de reproducción de siguiente marco enviada con éxito.");
                 });
             });
         }
@@ -82,7 +82,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    Presenters.NotificationPresenter.Instance.PresentNotification("Reproducir Marco Anterior", "Solicitud de reproducción de marco anterior enviada con éxito.");
+                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Marco Anterior", "Solicitud de reproducción de marco anterior enviada con éxito.");
                 });
             });
         }
@@ -162,7 +162,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 {
                                     (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
 
-                                    Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Aplicación", "Solicitud de reinicio de aplicación enviada con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Aplicación", "Solicitud de reinicio de aplicación enviada con éxito.");
                                 });
                             });
                         });
@@ -187,7 +187,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 {
                                     (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
 
-                                    Presenters.NotificationPresenter.Instance.PresentNotification("Cerrar Aplicación", "Solicitud de cerrar aplicación enviada con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Cerrar Aplicación", "Solicitud de cerrar aplicación enviada con éxito.");
                                 });
                             });
                         });
@@ -212,7 +212,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 {
                                     (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
 
-                                    Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Dispositivo", "Solicitud de reinicio de dispositivo enviada con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Dispositivo", "Solicitud de reinicio de dispositivo enviada con éxito.");
                                 });
                             });
                         });
@@ -237,7 +237,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 {
                                     (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
 
-                                    Presenters.NotificationPresenter.Instance.PresentNotification("Apagar Dispositivo", "Solicitud de apagar dispositivo enviada con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Apagar Dispositivo", "Solicitud de apagar dispositivo enviada con éxito.");
                                 });
                             });
                         });
@@ -271,7 +271,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion cuando termine el marco actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion cuando termine el marco actual enviada con éxito.");
                         });
                     });
 
@@ -288,7 +288,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion inmediatamente enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion inmediatamente enviada con éxito.");
                         });
                     });
 
@@ -320,7 +320,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
                         });
                     });
 
@@ -337,7 +337,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el marco actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el marco actual enviada con éxito.");
                         });
                     });
 
@@ -354,7 +354,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
                         });
                     });
 
@@ -371,7 +371,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Presenters.NotificationPresenter.Instance.PresentNotification("Recargar Guion", "Solicitud de recarga de Guion inmediatamente enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion inmediatamente enviada con éxito.");
                         });
                     });
 
@@ -436,7 +436,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         BindingContextPageModel.Items.Remove(target);
 
-                        Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Reproductor eliminado con éxito.");
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Reproductor eliminado con éxito.");
                     }
                     else
                     {

@@ -43,57 +43,43 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             return NotFound();
         }
 
-        [HttpPut("orderup/{key}")]
-        public ActionResult OrderUp(long key)
+        [HttpPut("{key}/order/{priority}")]
+        public ActionResult Order(long key, int priority)
         {
             try
             {
-                var targetEntity = Repository.Get(key);
+                var target = Repository.Get(key);
 
-                var upEntity = targetEntity.Screenplay.Frames.Where(e => e.Priority < targetEntity.Priority).OrderByDescending(e => e.Priority).First();
+                System.Collections.Generic.Queue<Persistence.Entities.Frame> implicates;
 
-                var targetPriority = upEntity.Priority;
+                if (priority < target.Priority)
+                {
+                    implicates = new System.Collections.Generic.Queue<Persistence.Entities.Frame>(target.Screenplay.Frames.OrderByDescending(e => e.Priority).Where(e => e.Priority >= priority && e.Priority < target.Priority));                    
+                }
+                else
+                {
+                    implicates = new System.Collections.Generic.Queue<Persistence.Entities.Frame>(target.Screenplay.Frames.OrderByDescending(e => e.Priority).Where(e => e.Priority <= priority && e.Priority > target.Priority));
+                }
 
-                upEntity.Priority = targetEntity.Priority;
+                while (implicates.Count > 0)
+                {
+                    var current = implicates.Dequeue();
 
-                targetEntity.Priority = targetPriority;
+                    if (priority < target.Priority)
+                    {
+                        current.Priority++;                        
+                    }
+                    else
+                    {
+                        current.Priority--;
+                    }
 
-                Repository.Update(upEntity, User.Identity.Name, false);
-                Repository.Update(targetEntity, User.Identity.Name);
-            }
-            catch (System.InvalidOperationException e)
-            {
-                logger.LogError(e.InnerException, e.Message);
+                    Repository.Update(current, User.Identity.Name, false);
+                }
 
-                return NoContent();
-            }
-            catch (System.Exception e)
-            {
-                logger.LogError(e.InnerException, e.Message);
-
-                return Conflict();
-            }
-
-            return Ok();
-        }
-
-        [HttpPut("orderdown/{key}")]
-        public ActionResult OrderDown(long key)
-        {
-            try
-            {
-                var targetEntity = Repository.Get(key);
-
-                var downEntity = targetEntity.Screenplay.Frames.Where(e => e.Priority > targetEntity.Priority).OrderByDescending(e => e.Priority).Last();
-
-                var targetPriority = downEntity.Priority;
-
-                downEntity.Priority = targetEntity.Priority;
-
-                targetEntity.Priority = targetPriority;
-
-                Repository.Update(downEntity, User.Identity.Name, false);
-                Repository.Update(targetEntity, User.Identity.Name);
+                target.Priority = priority;
+                
+                Repository.Update(target, User.Identity.Name);
             }
             catch (System.InvalidOperationException e)
             {

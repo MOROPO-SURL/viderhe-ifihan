@@ -18,7 +18,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
 
         protected override AbstractAnimation FactShowInAnimation => factShowInAnimation;
 
-        public override void GetReady(Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Xamarin.Forms.Layout<Xamarin.Forms.View> wrapper)
+        public override void GetReady(Xamarin.Forms.Layout<Xamarin.Forms.View> wrapper)
         {
             incomingPlacardPresentationView.Opacity = 0;
 

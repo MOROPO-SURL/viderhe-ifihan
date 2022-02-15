@@ -33,7 +33,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
 
             foreach (var provider in providers)
             {
-                var result = provider.GetCreationEntryPointPageByDescriptor(templateDescriptor, Presenters.NotificationPresenter.Instance, Managers.SessionManager.Instance, (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade), completedActionCallback);
+                var result = provider.GetCreationEntryPointPageByDescriptor(templateDescriptor, completedActionCallback);
 
                 if (result == null) continue;
 
@@ -49,7 +49,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
 
             foreach (var provider in providers)
             {
-                var result = provider.GetEditionPageByDescriptor(placardViewModel, Support.Presentation.Managers.SessionMemoryManager.Instance, Presenters.NotificationPresenter.Instance, Managers.SessionManager.Instance, (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade), completedActionCallback);
+                var result = provider.GetEditionPageByDescriptor(placardViewModel, completedActionCallback);
 
                 if (result == null) continue;
 
