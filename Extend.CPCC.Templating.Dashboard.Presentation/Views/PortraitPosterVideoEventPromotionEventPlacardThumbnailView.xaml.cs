@@ -2,15 +2,15 @@
 {
     public partial class PortraitPosterVideoEventPromotionEventPlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
     {
-        public PortraitPosterVideoEventPromotionEventPlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
+        public PortraitPosterVideoEventPromotionEventPlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model)
         {
             InitializeComponent();
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.PortraitPosterVideoEventPromotionPlacardContextModel>(model.SerializedContext);
 
-            EventVideoThumnailImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(cloudServerProvider, context.Video.ThumbnailId));
+            EventVideoThumnailImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Video.ThumbnailId));
 
-            EventPosterImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(cloudServerProvider, context.Poster.ThumbnailId));
+            EventPosterImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Poster.ThumbnailId));
 
             BindingContext = model;
         }

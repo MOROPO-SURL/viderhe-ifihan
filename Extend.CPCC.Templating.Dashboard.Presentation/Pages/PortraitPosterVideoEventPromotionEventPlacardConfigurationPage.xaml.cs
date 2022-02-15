@@ -8,17 +8,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
-        private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
-        private Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
-        private Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter;
         private System.Action successfulCompleteCallbackAction;
 
-        public PortraitPosterVideoEventPromotionEventPlacardConfigurationPage(SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
-            : this(null, httpClientHelperProvider, exceptionHandleHelper, notificationPresenter, successfulCompleteCallbackAction)
+        public PortraitPosterVideoEventPromotionEventPlacardConfigurationPage(System.Action successfulCompleteCallbackAction)
+            : this(null, successfulCompleteCallbackAction)
         {
         }
 
-        public PortraitPosterVideoEventPromotionEventPlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade notificationPresenter, System.Action successfulCompleteCallbackAction)
+        public PortraitPosterVideoEventPromotionEventPlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
             : base(Factories.PortraitPosterVideoEventPromotionEventPlacardConfigurationPageFactory.Build(placardViewModel))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
@@ -26,9 +23,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
             InitializeComponent();
 
             this.placardViewModel = placardViewModel;
-            this.httpClientHelperProvider = httpClientHelperProvider;
-            this.exceptionHandleHelper = exceptionHandleHelper;
-            this.notificationPresenter = notificationPresenter;
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
 
             if (placardViewModel == null)
@@ -62,7 +56,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(httpClientHelperProvider);
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 if (placardViewModel == null)
                 {
@@ -101,11 +95,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        exceptionHandleHelper.HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
-                        notificationPresenter.PresentNotification("Información", "Cambios aplicados con éxito.");
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
 
                         this.NavigationPopPageAsync();
 
@@ -122,12 +116,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
 
         private void PickEventPosterButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(exceptionHandleHelper, httpClientHelperProvider, EventPosterPicked_Callback, BindingContextPageModel.EventPoster));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(EventPosterPicked_Callback, BindingContextPageModel.EventPoster));
         }
 
         private void PickVideoButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoPickPage(exceptionHandleHelper, VideoPicked_Callback, httpClientHelperProvider, BindingContextPageModel.EventVideo));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoPickPage(VideoPicked_Callback, BindingContextPageModel.EventVideo));
         }
 
         private void VideoPlayButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -150,9 +144,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
             base.DisposeUnmanagementResources();
 
             placardViewModel = null;
-            httpClientHelperProvider = null;
-            exceptionHandleHelper = null;
-            notificationPresenter = null;
             successfulCompleteCallbackAction = null;
         }
 
