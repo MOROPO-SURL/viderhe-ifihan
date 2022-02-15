@@ -59,8 +59,7 @@
                     MaxLines="1"
                     Text="{Binding Path=TeamName, StringFormat='Equipo: {0}'}"
                     HorizontalTextAlignment="Center" />
-                <StackLayout>
-                    <
+                <StackLayout>                    
                 </StackLayout>
             </Grid>
         </Grid>
