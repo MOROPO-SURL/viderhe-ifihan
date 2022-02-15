@@ -4,12 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating</RootNamespace>
-    <Version>0.1.0.0</Version>
+    <Version>0.1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="57ABCEFA-538C-496D-8DA0-9051AB05331D-landscape.png" />
     <None Remove="825472FB-DBA0-4F81-BFC5-E5D3997B79B9-landscape.png" />
+    <None Remove="B78BFD08-143F-40BA-AC5D-9AC825019581-landscape.png" />
     <None Remove="BE7FDBAB-4535-4349-92AF-DE7E40219E03-landscape.png" />
     <None Remove="CD1BAC6A-5C97-4BE6-B146-B7393D39FD01-landscape.png" />
     <None Remove="CD1BAC6A-5C97-4BE6-B146-B7393D39FD01-portrait.png" />
@@ -20,6 +21,7 @@
   <ItemGroup>
     <EmbeddedResource Include="825472FB-DBA0-4F81-BFC5-E5D3997B79B9-landscape.png" />
     <EmbeddedResource Include="57ABCEFA-538C-496D-8DA0-9051AB05331D-landscape.png" />
+    <EmbeddedResource Include="B78BFD08-143F-40BA-AC5D-9AC825019581-landscape.png" />
     <EmbeddedResource Include="BE7FDBAB-4535-4349-92AF-DE7E40219E03-landscape.png" />
     <EmbeddedResource Include="CD1BAC6A-5C97-4BE6-B146-B7393D39FD01-landscape.png" />
     <EmbeddedResource Include="CD1BAC6A-5C97-4BE6-B146-B7393D39FD01-portrait.png" />

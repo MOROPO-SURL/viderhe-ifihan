@@ -34,6 +34,7 @@
                 <Grid 
                     Grid.Column="1"
                     BackgroundColor="{Binding Path=StripeBackgroundColor}"
+                    IsClippedToBounds="True"
                     Padding="30">
                     <StackLayout 
                         VerticalOptions="Center"

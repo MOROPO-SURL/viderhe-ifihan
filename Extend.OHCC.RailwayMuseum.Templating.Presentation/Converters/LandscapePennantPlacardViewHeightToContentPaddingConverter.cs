@@ -13,11 +13,11 @@
             switch ((PlacardView.BindingContext as Models.View.LandscapePennantPlacardViewModel).PennantVerticalOrientation)
             {
                 case Enumerations.PennantVerticalOrientation.Top:
-                    return new Xamarin.Forms.Thickness(0, height / 20, 0, 0);
+                    return new Xamarin.Forms.Thickness(0, height / 20d, 0, 0);
 
                 case Enumerations.PennantVerticalOrientation.Bottom:
                 default:
-                    return new Xamarin.Forms.Thickness(0, 0, 0, height / 20);
+                    return new Xamarin.Forms.Thickness(0, 0, 0, height / 20d);
             }
         }
 

@@ -30,7 +30,9 @@
                     x:Name="FrameImage"
                     Grid.ColumnSpan="3" Grid.RowSpan="3"
                     Aspect="Fill" />
-                <Grid Grid.Column="1" Grid.Row="1">
+                <Grid 
+                    Grid.Column="1" Grid.Row="1"
+                    IsClippedToBounds="True">
                     <StackLayout 
                         VerticalOptions="Center"
                         Spacing="{Binding Source={x:Reference Wrapper}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=20}" >

@@ -107,6 +107,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Izquierda.
+        /// </summary>
+        internal static string Left {
+            get {
+                return ResourceManager.GetString("Left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Blanco.
         /// </summary>
         internal static string Light {
@@ -121,6 +130,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         internal static string Primary {
             get {
                 return ResourceManager.GetString("Primary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Derecha.
+        /// </summary>
+        internal static string Right {
+            get {
+                return ResourceManager.GetString("Right", resourceCulture);
             }
         }
         

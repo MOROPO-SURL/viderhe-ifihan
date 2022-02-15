@@ -98,6 +98,26 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                 });
             }
 
+            if (model.Template.Id == LandscapeFloatingFlyoutTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeFloatingFlyoutPlacardContextModel>(model.SerializedContext);
+
+                return new LandscapeFloatingFlyoutPlacardView(new Models.View.LandscapeFloatingFlyoutPlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    Header = context.Header,
+                    HeaderFontSize = context.HeaderFontSize,
+                    Content = context.Content,
+                    ContentFontSize = context.ContentFontSize,
+                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.ContextedImage.Id)),
+                    ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
+                    FlyoutShapeKind = context.FlyoutShapeKind,
+                    FlyoutBackgroundColorMode = context.FlyoutBackgroundColorMode,
+                    FlyoutHorizontalOrientation = context.FlyoutHorizontalOrientation
+                });
+            }
+
             return null;
         }
     }

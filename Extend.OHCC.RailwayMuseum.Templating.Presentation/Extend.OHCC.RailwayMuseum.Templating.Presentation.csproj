@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation</RootNamespace>
-    <Version>0.1.0.0</Version>
+    <Version>0.1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +18,22 @@
     <None Remove="Assets\Images\MF-Identity-Portriat-Color-Primary.svg" />
     <None Remove="Assets\Images\MF-Identity-Portriat-Color-Secoundary.svg" />
     <None Remove="Assets\Images\MF-Identity-Portriat-Color-White.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Dark.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Light.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Primary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Secoundary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Right-Dark.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Right-Light.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Right-Primary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Right-Secoundary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Left-Dark.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Left-Light.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Left-Primary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Left-Secoundary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Right-Dark.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Right-Light.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Right-Primary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Right-Secoundary.svg" />
     <None Remove="Assets\Images\Placard-Frame-Landscape-Bullet-Secoundary.svg" />
     <None Remove="Assets\Images\Placard-Frame-Landscape-Bullet-White.svg" />
     <None Remove="Assets\Images\Placard-Frame-Landscape-Outline-Secoundary.svg" />
@@ -43,6 +59,22 @@
   <ItemGroup>
     <EmbeddedResource Include="Assets\Fonts\Montserrat-ExtraBold.otf" />
     <EmbeddedResource Include="Assets\Fonts\Montserrat-SemiBold.otf" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Dark.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Light.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Right-Dark.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Right-Light.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Right-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Right-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Left-Dark.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Right-Light.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Left-Light.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Left-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Left-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Right-Dark.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Right-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Right-Secoundary.svg" />
     <EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Outline-White.svg" />
     <EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Outline-Secoundary.svg" />
     <EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Bullet-Secoundary.svg" />
@@ -101,6 +133,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LandscapeCrossStripePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LandscapeFloatingFlyoutPlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LandscapeFramedPlacardView.xaml">

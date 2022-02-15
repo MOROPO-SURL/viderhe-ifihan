@@ -132,11 +132,17 @@
   <data name="Fancy" xml:space="preserve">
     <value>Adornos</value>
   </data>
+  <data name="Left" xml:space="preserve">
+    <value>Izquierda</value>
+  </data>
   <data name="Light" xml:space="preserve">
     <value>Blanco</value>
   </data>
   <data name="Primary" xml:space="preserve">
     <value>Color Primario</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Derecha</value>
   </data>
   <data name="Secoundary" xml:space="preserve">
     <value>Color Secundario</value>

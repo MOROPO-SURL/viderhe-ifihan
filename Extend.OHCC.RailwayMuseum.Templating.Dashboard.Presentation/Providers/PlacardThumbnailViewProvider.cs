@@ -29,6 +29,11 @@
                 return new Views.LandscapePennantTrainPlacardThumbnailView(model);
             }
 
+            if (model.Template.Id == Descriptors.LandscapeFloatingFlyoutTemplateDescriptor.ID)
+            {
+                return new Views.LandscapeFloatingFlyoutPlacardThumbnailView(model);
+            }
+
             return null;
         }
     }
