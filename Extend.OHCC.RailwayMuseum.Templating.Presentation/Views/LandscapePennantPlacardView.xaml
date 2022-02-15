@@ -9,7 +9,15 @@
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views.LandscapePennantPlacardView">
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views.LandscapePennantPlacardView"
+    x:Name="Self">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:LandscapePennantPlacardViewHeightToContentPaddingConverter x:Key="LandscapePennantPlacardViewHeightToContentPaddingConverter" PlacardView="{Reference Self}" />
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="PlacardLayout">
@@ -38,9 +46,29 @@
                     Aspect="Fill" />
                 <Grid
                     x:Name="DataLayoutWrapGrid"
-                    Grid.Column="1" Grid.RowSpan="2"
-                    BackgroundColor="Silver">
-                    
+                    Grid.Column="1" Grid.RowSpan="2">
+                    <StackLayout 
+                        VerticalOptions="Center"
+                        Margin="{Binding Source={x:Reference PlacardLayout}, Path=Height, Converter={StaticResource LandscapePennantPlacardViewHeightToContentPaddingConverter}}"
+                        IsClippedToBounds="True"
+                        Spacing="{Binding Source={x:Reference PlacardLayout}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=20}">
+                        <ffimageloadingsvg:SvgCachedImage 
+                            x:Name="LogoImage"
+                            HorizontalOptions="Center"
+                            WidthRequest="{Binding Source={RelativeSource AncestorType={Type StackLayout}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=2}" />
+                        <Label 
+                            Text="{Binding Path=Header}"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            FontFamily="Montserrat ExtraBold"
+                            FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                        <Label
+                            Text="{Binding Path=Content}"
+                            TextColor="White"
+                            HorizontalTextAlignment="Center"
+                            FontFamily="Montserrat SemiBold"
+                            FontSize="{Binding Path=ContentFontSize, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                    </StackLayout>
                 </Grid>
             </Grid>
         </Grid>

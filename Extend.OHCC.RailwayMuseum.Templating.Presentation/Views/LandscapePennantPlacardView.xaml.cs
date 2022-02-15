@@ -9,6 +9,9 @@
             BindingContext = model;
 
             PennantImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource(string.Format("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Pennant-{0}-{1}-{2}.svg", model.FlyoutShapeKind, model.PennantVerticalOrientation, model.FlyoutBackgroundColorMode), GetType().Assembly);
+            LogoImage.Source = model.FlyoutBackgroundColorMode == Enumerations.FlyoutBackgroundColorMode.Light ?
+                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly) :
+                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
 
             switch (model.PennantVerticalOrientation)
             {
@@ -40,6 +43,7 @@
 
             ContextedImagen.Source = null;
             PennantImage.Source = null;
+            LogoImage.Source = null;
         }
     }
 }
