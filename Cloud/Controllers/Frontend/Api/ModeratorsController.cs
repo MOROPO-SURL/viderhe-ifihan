@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 {
+    // TODO Firbid requiest for unprivileged moderators!!
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
     [Route("api/[area]/[controller]")]
     [Area("account")]
@@ -30,6 +31,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         public override ActionResult<ModeratorDisplayModel[]> Get()
         {
             return Ok(Repository.FindBy(GetGlobalSelector()).Select(entity => EntityToDisplayModel(entity)).ToArray());
+        }
+
+        protected override ModeratorDisplayModel EntityToDisplayModel(Persistence.Entities.Moderator entity)
+        {
+            return base.EntityToDisplayModel(entity);
         }
 
         protected override void PreCreate(Persistence.Entities.Moderator entity, ModeratorInputModel inputModel)

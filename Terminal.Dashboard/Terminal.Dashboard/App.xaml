@@ -2,14 +2,13 @@
 <Application 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:supportpresentationmanagers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Managers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     xmlns:supportpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.App">
     <Application.Resources>
-        <supportpresentationconverters:ImageViewModelToThumbnailImageSourceConverter x:Key="ImageViewModelToThumbnailImageSourceConverter" CloudServerProvider="{x:Static supportpresentationmanagers:SessionMemoryManager.Instance}" />
-        <supportpresentationconverters:ImageViewModelToImageSourceConverter x:Key="ImageViewModelToImageSourceConverter" CloudServerProvider="{x:Static supportpresentationmanagers:SessionMemoryManager.Instance}" />
-        <supportpresentationconverters:VideoViewModelToThumbnailImageSourceConverter x:Key="VideoViewModelToThumbnailImageSourceConverter" CloudServerProvider="{x:Static supportpresentationmanagers:SessionMemoryManager.Instance}" />
-        <supportpresentationconverters:VideoViewModelToVideoSourceConverter x:Key="VideoViewModelToVideoSourceConverter" CloudServerProvider="{x:Static supportpresentationmanagers:SessionMemoryManager.Instance}" />
+        <supportpresentationconverters:ImageViewModelToThumbnailImageSourceConverter x:Key="ImageViewModelToThumbnailImageSourceConverter" />
+        <supportpresentationconverters:ImageViewModelToImageSourceConverter x:Key="ImageViewModelToImageSourceConverter" />
+        <supportpresentationconverters:VideoViewModelToThumbnailImageSourceConverter x:Key="VideoViewModelToThumbnailImageSourceConverter" />
+        <supportpresentationconverters:VideoViewModelToVideoSourceConverter x:Key="VideoViewModelToVideoSourceConverter" />
 
         <Color x:Key="PrimaryColor">#024890</Color>
         <Color x:Key="SecoundaryColor">#00ffff</Color>

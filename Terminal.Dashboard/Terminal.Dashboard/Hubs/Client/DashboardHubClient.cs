@@ -81,6 +81,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
             await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerSetAudioLevel), playerId, percent);
         }
 
+        public async System.Threading.Tasks.Task RequestPlayerCloseAsync(string playerId, bool restart)
+        {
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerClose), playerId, restart);
+        }
+
         public async System.Threading.Tasks.Task RequestPlayerTerminateAsync(string playerId, bool restart)
         {
             await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerShutdown), playerId, restart);

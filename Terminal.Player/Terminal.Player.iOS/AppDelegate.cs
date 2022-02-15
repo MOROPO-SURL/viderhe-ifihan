@@ -21,8 +21,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.iOS
         {
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
-            Rg.Plugins.Popup.Popup.Init();
-
             Xamarin.Forms.Forms.Init();
             
             LoadApplication(new App());

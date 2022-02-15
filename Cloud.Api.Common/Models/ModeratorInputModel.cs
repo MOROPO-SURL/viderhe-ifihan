@@ -8,7 +8,7 @@
 
         public PersonIdentityInputModel Identity { get; set; }
 
-        public bool Privileged { get; set; }
+        public bool IsPrivileged { get; set; }
 
         public Persistence.Entities.Moderator Export()
         {
@@ -38,7 +38,7 @@
 
         public void Mergue(Persistence.Entities.Moderator entity)
         {
-            entity.Privileged = Privileged;
+            entity.ModerationKind = IsPrivileged ? Persistence.Enumerations.ModerationKind.Privileged : Persistence.Enumerations.ModerationKind.Standard;
             entity.User.Enabled = User.Enabled;
             entity.User.PasswordChangeRequired = User.PasswordChangeRequired;
             entity.Identity.Name = Identity.Name;

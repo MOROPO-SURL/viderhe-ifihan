@@ -33,7 +33,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Providers
 
             foreach (var provider in providers)
             {
-                var result = provider.GetFor(AccountInformationProvider.Instance);
+                var result = provider.Get();
 
                 if (result == null) continue;
 

@@ -5,7 +5,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 {
     public static class EditSimpleVideoPlacardPageModelFactory
     {
-        public static Models.Page.EditSimpleVideoPlacardPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
+        public static Models.Page.EditSimpleVideoPlacardPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
             var contextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.SimpleVideoPlacardContextModel>(placardViewModel.SerializedContext);
 

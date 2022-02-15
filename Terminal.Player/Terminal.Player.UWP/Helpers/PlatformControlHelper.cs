@@ -44,6 +44,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Helpers
                 Windows.UI.Xaml.Window.Current.Dispatcher.RunAsync(CoreDispatcherPriority.High, new DispatchedHandler(async () =>
                 {
                     var result = await Windows.ApplicationModel.Core.CoreApplication.RequestRestartAsync(string.Empty);
+
+                    Debug.WriteLine(result.ToString());
                 })).AsTask();
             }
             else

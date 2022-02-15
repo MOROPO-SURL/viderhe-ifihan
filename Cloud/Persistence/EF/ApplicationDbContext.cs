@@ -69,5 +69,6 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF
         public DbSet<AccountImageBridge> AccountImageBridges { get; set; }
         public DbSet<AccountVideoBridge> AccountVideoBridges { get; set; }
         public DbSet<AccountExtensionBridge> AccountExtensionBridges { get; set; }
+        public DbSet<ScheduledRelaunch> ScheduledRelaunches { get; set; }
     }
 }

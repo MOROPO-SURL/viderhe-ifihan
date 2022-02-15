@@ -8,19 +8,15 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
     {
         private Presentation.Models.View.ImageViewModel[] exclusionImages;
         private System.Action<Presentation.Models.View.ImageViewModel[]> imagesSelectedCallbackAction;
-        private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
-        private Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
 
         private int currentImagesPageNumber;
 
-        public ImagesPickPage(Presentation.Models.View.ImageViewModel[] exclusionImages, Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, System.Action<Presentation.Models.View.ImageViewModel[]> imagesSelectedCallbackAction)
+        public ImagesPickPage(Presentation.Models.View.ImageViewModel[] exclusionImages, System.Action<Presentation.Models.View.ImageViewModel[]> imagesSelectedCallbackAction)
             : base(new Models.Page.ImagesPickPageModel { IsBusy = true })
         {
             InitializeComponent();
 
             this.exclusionImages = exclusionImages;
-            this.httpClientHelperProvider = httpClientHelperProvider;
-            this.exceptionHandleHelper = exceptionHandleHelper;
             this.imagesSelectedCallbackAction = imagesSelectedCallbackAction;
 
             IsEnabled = false;
@@ -70,7 +66,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
             if (restart) currentImagesPageNumber = 0;
 
-            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(httpClientHelperProvider.HttpClientHelper);
+            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(Xamarin.Forms.DependencyService.Get<SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
 
             imagesApiConnectClient.GetPageAsync(++currentImagesPageNumber).ContinueWith(task =>
             {
@@ -80,7 +76,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
                     if (task.Exception != null)
                     {
-                        exceptionHandleHelper.HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
@@ -110,8 +106,6 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
             base.DisposeUnmanagementResources();
 
             exclusionImages = null;
-            httpClientHelperProvider = null;
-            exceptionHandleHelper = null;
             imagesSelectedCallbackAction = null;
         }
     }
