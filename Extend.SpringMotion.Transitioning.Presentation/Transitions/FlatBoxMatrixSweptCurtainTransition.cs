@@ -25,7 +25,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
         protected override AbstractAnimation FactShowInAnimation => factShowInAnimation;
 
-        public override void GetReady(Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Xamarin.Forms.Layout<Xamarin.Forms.View> wrapper)
+        public override void GetReady(Xamarin.Forms.Layout<Xamarin.Forms.View> wrapper)
         {
             var aspectRation = wrapper.Width / wrapper.Height;
 

@@ -31,7 +31,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
         protected override AbstractAnimation FactShowInAnimation => factShowInAnimation;
 
-        public override void GetReady(Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Xamarin.Forms.Layout<Xamarin.Forms.View> wrapper)
+        public override void GetReady(Xamarin.Forms.Layout<Xamarin.Forms.View> wrapper)
         {
             var flatSpectrumHandFanBoxViewRequiredWidth = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? wrapper.Width : wrapper.Width / 2;
             var flatSpectrumHandFanBoxViewRequiredHeight = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? wrapper.Height / 2 : wrapper.Height;
@@ -68,6 +68,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 startFlatSpectrumHandFanBoxViewVerticalRotation = 0;
                 endFlatSpectrumHandFanBoxViewVerticalRotation = 0;
             }
+
+            var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
             startFlatSpectrumHandFanPrimaryBoxView = new Xamarin.Forms.BoxView
             {

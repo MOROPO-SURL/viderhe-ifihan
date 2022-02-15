@@ -23,8 +23,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
         protected override AbstractAnimation FactShowInAnimation => factShowInAnimation;
 
-        public override void GetReady(Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Xamarin.Forms.Layout<Xamarin.Forms.View> wrapper)
+        public override void GetReady(Xamarin.Forms.Layout<Xamarin.Forms.View> wrapper)
         {
+            var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
+
             flatSpectrumHandFanPrimaryBoxView = new Xamarin.Forms.BoxView
             {
                 Color = accountInformationProvider.PrimaryColor,
