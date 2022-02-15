@@ -63,18 +63,9 @@
                     Opacity="0"
                     Spacing="0">
                     <ffimageloadingsvg:SvgCachedImage
-                        WidthRequest="320" HeightRequest="320"
+                        WidthRequest="180"
                         Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Player.Assets.Images.viderhe-identity-high-contrast-light.svg"
                         Aspect="AspectFill" />
-                    <Image HorizontalOptions="Center">
-                        <Image.Source>
-                            <OnPlatform x:TypeArguments="ImageSource">
-                                <On Platform="Android" Value="powerby_signature.png" />
-                                <On Platform="UWP" Value="Assets/PowerbySignature.png" />
-                                <On Platform="iOS" Value="PowerbySignature" />
-                            </OnPlatform>
-                        </Image.Source>
-                    </Image>
                 </StackLayout>
                 <!--<StackLayout 
                     x:Name="ProductIdentityContainer"

@@ -8,10 +8,6 @@
 
         public PlacardViewModel Placard { get; set; }
 
-        public bool CanOrderDown { get; set; }
-
-        public bool CanOrderUp { get; set; }
-
         #region IDisposable Support
         private bool disposedValue = false; // Para detectar llamadas redundantes
 

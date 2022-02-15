@@ -2,6 +2,6 @@
 {
     public interface IOverlayPresentationViewProviderFacade
     {
-        Views.BaseOverlayView GetFor(Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider);
+        Views.BaseOverlayView Get();
     }
 }

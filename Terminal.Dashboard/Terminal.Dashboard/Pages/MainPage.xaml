@@ -23,6 +23,7 @@
                 <Frame
                     Margin="5" Padding="0"
                     BackgroundColor="White"
+                    IsEnabled="{Binding Path=Enabled}"
                     HasShadow="False"
                     CornerRadius="0"
                     WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
@@ -34,13 +35,13 @@
                         <StackLayout VerticalOptions="Center">
                             <Label
                                 Text="{Binding Path=IconGlyph}"
-                                TextColor="{StaticResource PrimaryColor}"
+                                TextColor="{Binding Path=Enabled, Converter={StaticResource ActionEnabledToColorStringConverter}, Mode=OneTime}"
                                 HorizontalTextAlignment="Center"
                                 FontFamily="{StaticResource IconFontFamily}"
                                 FontSize="48" />
                             <Label 
                                 Text="{Binding Path=Caption}"
-                                TextColor="{StaticResource PrimaryColor}"                                        
+                                TextColor="{Binding Path=Enabled, Converter={StaticResource ActionEnabledToColorStringConverter}, Mode=OneTime}"                                        
                                 HorizontalTextAlignment="Center"
                                 FontSize="Medium" />
                         </StackLayout>
@@ -100,6 +101,7 @@
             </DataTemplate>
             <viewtemplateselectors:ActionDataTemplateSelector x:Key="ActionDataTemplateSelector" SimpleActionDataTemplate="{StaticResource SimpleActionDataTemplate}" SessionActionDataTemplate="{StaticResource SessionActionDataTemplate}" />
             <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="272" ChildAbsoluteHorizontalMargin="10" />
+            <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="ActionEnabledToColorStringConverter" TrueString="{StaticResource PrimaryColor}" FalseString="DimGray" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>

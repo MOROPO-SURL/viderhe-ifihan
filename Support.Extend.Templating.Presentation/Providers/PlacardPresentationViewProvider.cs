@@ -28,13 +28,13 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Pro
             XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IPlacardPresentationViewProviderFacade).IsAssignableFrom(t));
         }
 
-        public BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, Viderhe.Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider)
+        public BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model)
         {
             var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardPresentationViewProviderFacade>();
 
             foreach (var provider in providers)
             {
-                var result = provider.GetFor(model, accountInformationProvider, cloudServerProvider);
+                var result = provider.GetFor(model);
 
                 if (result == null) continue;
 

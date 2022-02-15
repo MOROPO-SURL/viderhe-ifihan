@@ -6,22 +6,16 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 {
     public partial class ScreenplayPlayerPage : XFToolKit.Mvvm.Pages.ContentPage
     {
-        private Viderhe.Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider;
-        private Providers.Facade.ICloudServerProviderFacade cloudServerProvider;
-
         private Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter presenter;
 
         private readonly bool demo;
         private readonly bool empty;
 
-        public ScreenplayPlayerPage(Models.View.PlacardViewModel[] placards, System.Action presentationEndedCallbackAction, bool loop, Viderhe.Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider, Providers.Facade.ICloudServerProviderFacade cloudServerProvider, System.Action<System.Guid> placardPlayingCallbackAction = null, System.Action screenplayPresentIterationCompleteCallbackAction = null, Viderhe.Extend.Common.Overlaying.Presentation.Views.BaseOverlayView overlay = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
+        public ScreenplayPlayerPage(Models.View.PlacardViewModel[] placards, System.Action presentationEndedCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction = null, System.Action screenplayPresentIterationCompleteCallbackAction = null, Viderhe.Extend.Common.Overlaying.Presentation.Views.BaseOverlayView overlay = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
         {
             InitializeComponent();
 
-            this.accountInformationProvider = accountInformationProvider;
-            this.cloudServerProvider = cloudServerProvider;
-
-            presenter = new Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards, accountInformationProvider, Extend.Transitioning.Presentation.Providers.TransitionProvider.Instance, presentationEndedCallbackAction, loop, placardPlayingCallbackAction, screenplayPresentIterationCompleteCallbackAction, placardViewTransitionCompleteCallbackAction);
+            presenter = new Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards, Extend.Transitioning.Presentation.Providers.TransitionProvider.Instance, presentationEndedCallbackAction, loop, placardPlayingCallbackAction, screenplayPresentIterationCompleteCallbackAction, placardViewTransitionCompleteCallbackAction);
 
             if (overlay != null)
             {
@@ -88,7 +82,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 
         private BasePlacardPresentationView PlacardViewModelToPresentationView(Models.View.PlacardViewModel model)
         {
-            return Extend.Templating.Presentation.Providers.PlacardPresentationViewProvider.Instance.GetFor(model, accountInformationProvider, cloudServerProvider);
+            return Extend.Templating.Presentation.Providers.PlacardPresentationViewProvider.Instance.GetFor(model);
         }
 
         protected override void DisposeUnmanagementResources()
@@ -96,9 +90,6 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             base.DisposeUnmanagementResources();
 
             Xamarin.Essentials.DeviceDisplay.MainDisplayInfoChanged -= DeviceDisplay_MainDisplayInfoChanged;
-
-            accountInformationProvider = null;
-            cloudServerProvider = null;
 
             presenter.Dispose();
 

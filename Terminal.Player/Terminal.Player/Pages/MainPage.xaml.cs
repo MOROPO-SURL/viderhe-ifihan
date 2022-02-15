@@ -58,9 +58,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
-                        overlayView = Providers.AccountInformationProvider.Instance.AccountDefaultOverlayId == null ? null : Providers.OverlayPresentationViewProvider.Instance.GetOverlayPresentationView();
+                        var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
-                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(placards, ScreenplayPresentationEnded_Callback, true, Providers.AccountInformationProvider.Instance, Support.Presentation.Managers.SessionMemoryManager.Instance, PlacardPlaying_Callback, ScreenplayPresentIterationComplete_Callback, overlayView, PlacardViewTransitionComplete_Callback)
+                        overlayView = accountInformationProvider.AccountDefaultOverlayId == null ? null : Providers.OverlayPresentationViewProvider.Instance.GetOverlayPresentationView();
+
+                        var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(placards, ScreenplayPresentationEnded_Callback, true, PlacardPlaying_Callback, ScreenplayPresentIterationComplete_Callback, overlayView, PlacardViewTransitionComplete_Callback)
                         {
                             BackgroundColor = Managers.SessionManager.Instance.AccountPrimaryColor,
                             BindingContext = Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait ? Managers.SessionManager.Instance.AccountVerticalSplashImageSource : Managers.SessionManager.Instance.AccountHorizontalSplashImageSource
@@ -262,9 +264,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
                 Managers.SessionManager.Instance.AccountId = task.Result.Id;
                 Managers.SessionManager.Instance.AccountName = task.Result.Name;
-                Managers.SessionManager.Instance.AccountLogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, task.Result.LogoImageId));
-                Managers.SessionManager.Instance.AccountHorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, task.Result.HorizontalSplashImageId));
-                Managers.SessionManager.Instance.AccountVerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Support.Presentation.Managers.SessionMemoryManager.Instance, task.Result.VerticalSplashImageId));
+                Managers.SessionManager.Instance.AccountLogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(task.Result.LogoImageId));
+                Managers.SessionManager.Instance.AccountHorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(task.Result.HorizontalSplashImageId));
+                Managers.SessionManager.Instance.AccountVerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(task.Result.VerticalSplashImageId));
                 Managers.SessionManager.Instance.AccountPrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor);
                 Managers.SessionManager.Instance.AccountSecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
                 Managers.SessionManager.Instance.AccountDefaultOverlayId = task.Result.DefaultOverlayId;
@@ -351,7 +353,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             {
                 placards = task.Result.Placards.Select(m => m.ToViewModel()).ToArray();
                 
-                if (task.Result.ScheduledRelaunches.Length > 1)
+                if (task.Result.ScheduledRelaunches.Length > 0)
                 {
                     var timeOfDay = System.DateTime.Now.TimeOfDay;
 
@@ -377,23 +379,29 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
             var now = System.DateTime.Now;
 
-            if (now - startUpAt < Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME) return;
-
             // Same day
             if (now.TimeOfDay >= startUpAt.TimeOfDay)
             {
-                if (scheduledRelaunche.Time >= startUpAt.TimeOfDay && scheduledRelaunche.Time <= now.TimeOfDay)
-                {
-                    Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(true);
-                }
+                var runTimeSpan = now - startUpAt;
+
+                if (runTimeSpan < Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME) return;
+
+                if (now.TimeOfDay <= scheduledRelaunche.Time) return;
+
+                Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(true);
             }
             // Other day
-            else
+            else if (now.DayOfYear > startUpAt.DayOfYear)
             {
-                if (scheduledRelaunche.Time <= startUpAt.TimeOfDay && scheduledRelaunche.Time <= now.TimeOfDay)
-                {
-                    Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(true);
-                }
+                var yesterdayElapsedTime = System.TimeSpan.FromHours(24) - startUpAt.TimeOfDay;
+
+                var runTimeSpan = now.TimeOfDay + yesterdayElapsedTime;
+
+                if (runTimeSpan < Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME) return;
+
+                if (now.TimeOfDay <= scheduledRelaunche.Time) return;
+
+                Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(true);
             }
         }
 

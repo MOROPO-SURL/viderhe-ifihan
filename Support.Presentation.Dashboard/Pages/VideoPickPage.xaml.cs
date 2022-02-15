@@ -6,22 +6,18 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
     public partial class VideoPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.VideoPickPageModel>
     {
         private System.Action<Presentation.Models.View.VideoViewModel> videoPickedCallbackAction;
-        private SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider;
-        private Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper;
 
         private Presentation.Models.View.VideoViewModel except;
 
         private int currentVideosPageNumber;
 
-        public VideoPickPage(Presentation.Helpers.Facade.IExceptionHandleHelperFacade exceptionHandleHelper, System.Action<Presentation.Models.View.VideoViewModel> videoPickedCallbackAction, SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider, Presentation.Models.View.VideoViewModel except = null)
+        public VideoPickPage(System.Action<Presentation.Models.View.VideoViewModel> videoPickedCallbackAction, Presentation.Models.View.VideoViewModel except = null)
             : base(new Models.Page.VideoPickPageModel { IsBusy = true })
         {
             InitializeComponent();
 
             this.except = except;
             this.videoPickedCallbackAction = videoPickedCallbackAction;
-            this.httpClientHelperProvider = httpClientHelperProvider;
-            this.exceptionHandleHelper = exceptionHandleHelper;
 
             IsEnabled = false;
         }
@@ -62,7 +58,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
             if (restart) currentVideosPageNumber = 0;
 
-            var videosApiConnectClient = new Cloud.Api.Connect.Clients.VideosApiConnectClient(httpClientHelperProvider.HttpClientHelper);
+            var videosApiConnectClient = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Xamarin.Forms.DependencyService.Get<SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
 
             videosApiConnectClient.GetPageAsync(++currentVideosPageNumber).ContinueWith(task =>
             {
@@ -72,7 +68,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
                     if (task.Exception != null)
                     {
-                        exceptionHandleHelper.HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
@@ -99,8 +95,6 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
             base.DisposeUnmanagementResources();
 
             except = null;
-            exceptionHandleHelper = null;
-            httpClientHelperProvider = null;
             videoPickedCallbackAction = null;
         }
     }

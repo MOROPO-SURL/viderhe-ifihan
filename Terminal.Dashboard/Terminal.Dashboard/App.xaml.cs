@@ -11,6 +11,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
             InitializeComponent();
 
             Xamarin.Forms.DependencyService.Register<Support.Presentation.Helpers.Facade.IImageUriFactoryHelper, Helpers.ImageUriFactoryHelper>();
+            Xamarin.Forms.DependencyService.Register<Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade, Providers.AccountInformationProvider>();
+            Xamarin.Forms.DependencyService.Register<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade, Presenters.NotificationPresenter>();
+            Xamarin.Forms.DependencyService.RegisterSingleton<Support.Presentation.Providers.Facade.ICloudServerProviderFacade>(Support.Presentation.Managers.SessionMemoryManager.Instance);
+            Xamarin.Forms.DependencyService.RegisterSingleton<SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>(Managers.SessionManager.Instance);
+            Xamarin.Forms.DependencyService.RegisterSingleton<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>(this);
 
             On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
 
@@ -44,6 +49,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
 
                 return;
             }
+
+            var title = "Aviso";
 
             System.Exception targetException = exception;
 
@@ -91,23 +98,25 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
                 }
                 else if (unspectedHttpStatus == System.Net.HttpStatusCode.Forbidden)
                 {
-                    message = "No autorizado.";
+                    title = "No Autorizado";
+                    message = "Usted no cuenta con los permisos necesarios para realizar esta operación.";
 
-                    continuationCallback = () =>
-                    {
-                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                        {
-                            Managers.SessionManager.Instance.SignOut();
+                    // TODO Remove if no required!!
+                    //continuationCallback = () =>
+                    //{
+                    //    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    //    {
+                    //        Managers.SessionManager.Instance.SignOut();
 
-                            (MainPage as Xamarin.Forms.NavigationPage).CurrentPage.IsEnabled = false;
+                    //        (MainPage as Xamarin.Forms.NavigationPage).CurrentPage.IsEnabled = false;
 
-                            PresentForUserAuthentication();
-                        });
-                    };
+                    //        PresentForUserAuthentication();
+                    //    });
+                    //};
                 }
             }
 
-            MainPage.DisplayAlert("Error", message, "Aceptar").ContinueWith(task => { continuationCallback?.Invoke(); });
+            MainPage.DisplayAlert(title, message, "Aceptar").ContinueWith(task => { continuationCallback?.Invoke(); });
         }
     }
 }

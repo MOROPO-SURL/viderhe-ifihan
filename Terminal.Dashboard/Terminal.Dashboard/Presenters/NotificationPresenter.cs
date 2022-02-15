@@ -2,21 +2,6 @@
 {
     public class NotificationPresenter : Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade
     {
-        private static NotificationPresenter instance;
-
-        public static NotificationPresenter Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new NotificationPresenter();
-                }
-
-                return instance;
-            }
-        }
-
         public void PresentNotification(string title, string message, bool unnattended = true)
         {
             if (unnattended)

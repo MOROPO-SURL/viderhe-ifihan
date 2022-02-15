@@ -5,13 +5,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
     [System.ComponentModel.DesignTimeVisible(false)]
     public partial class MainPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.MainPageModel>
     {
-        private Models.View.SessionActionViewModel sessionAction;
+        private readonly Models.View.SessionActionViewModel sessionAction;
 
         public MainPage() : base(new Models.Page.MainPageModel { IsBusy = true })
         {
             sessionAction = new Models.View.SessionActionViewModel
             {
-                Kind = Enumerations.ActionKind.SessionDetail
+                Kind = Enumerations.ActionKind.SessionDetail,
+                Enabled = true
             };
 
             InitializeComponent();
@@ -67,7 +68,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ActionFrame_Tapped(object sender, System.EventArgs eventArgs)
         {
-            switch (((sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ActionViewModel).Kind)
+            var action = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ActionViewModel;
+
+            if (!action.Enabled) return;
+
+            switch (action.Kind)
             {
                 case Enumerations.ActionKind.ManageImages:
                     this.NavigationPushPageAsync(new ManageImagesPage());
@@ -147,55 +152,64 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     Kind = Enumerations.ActionKind.ConfigAccount,
                     Caption = "Cuenta",
-                    IconGlyph = "\uf0d6"
+                    IconGlyph = "\uf0d6",
+                    Enabled = Managers.SessionManager.Instance.Moderator.IsPrivileged
                 },
                 new Models.View.ActionViewModel
                 {
                     Kind = Enumerations.ActionKind.ManageModerators,
                     Caption = "Control de Acceso",
-                    IconGlyph = "\uf848"
+                    IconGlyph = "\uf848",
+                    Enabled = Managers.SessionManager.Instance.Moderator.IsPrivileged
                 },
                 new Models.View.ActionViewModel
                 {
                     Kind = Enumerations.ActionKind.ManageExtensions,
                     Caption = "Extensiones",
-                    IconGlyph = "\uF431"
+                    IconGlyph = "\uF431",
+                    Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
                     Kind = Enumerations.ActionKind.ManageImages,
                     Caption = "Imágenes",
-                    IconGlyph = "\uFC69"
+                    IconGlyph = "\uFC69",
+                    Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
                     Kind = Enumerations.ActionKind.ManageVideos,
                     Caption = "Videos",
-                    IconGlyph = "\uF567"
+                    IconGlyph = "\uF567",
+                    Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
                     Kind = Enumerations.ActionKind.ManageScreenplays,
                     Caption = "Programación",
-                    IconGlyph = "\uf939"
+                    IconGlyph = "\uf939",
+                    Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
                     Kind = Enumerations.ActionKind.ManagePlayers,
                     Caption = "Reproductores",
-                    IconGlyph = "\uf448"
+                    IconGlyph = "\uf448",
+                    Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
                     Kind = Enumerations.ActionKind.DashboardSettings,
                     Caption = "Ajustes",
-                    IconGlyph = "\uf66a"
+                    IconGlyph = "\uf66a",
+                    Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
                     Kind = Enumerations.ActionKind.DashboardHelp,
                     Caption = "Ayuda",
-                    IconGlyph = "\uf87d"
+                    IconGlyph = "\uf87d",
+                    Enabled = true
                 }
             };
 

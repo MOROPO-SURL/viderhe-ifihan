@@ -6,14 +6,9 @@
         {
         }
 
-        public async System.Threading.Tasks.Task OrderUpAsync(long id)
+        public async System.Threading.Tasks.Task OrderAsync(long id, int priority)
         {
-            await httpClientHelperProvider.HttpClientHelper.PutAsync(string.Format("{0}/orderup/{1}", TargetController, id));
-        }
-
-        public async System.Threading.Tasks.Task OrderDownAsync(long id)
-        {
-            await httpClientHelperProvider.HttpClientHelper.PutAsync(string.Format("{0}/orderdown/{1}", TargetController, id));
+            await httpClientHelperProvider.HttpClientHelper.PutAsync(string.Format("{0}/{1}/order/{2}", TargetController, id, priority));
         }
 
         protected override string TargetController => "account/frames";

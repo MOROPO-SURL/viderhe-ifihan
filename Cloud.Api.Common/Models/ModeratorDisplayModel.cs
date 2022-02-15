@@ -8,14 +8,14 @@
 
         public PersonIdentityDisplayModel Identity { get; set; }
 
-        public bool Privileged { get; set; }
+        public bool IsPrivileged { get; set; }
 
         public void Import(Persistence.Entities.Moderator entity)
         {
             Id = entity.Id;
             User = new UserDisplayModel();
             Identity = new PersonIdentityDisplayModel();
-            Privileged = entity.Privileged;
+            IsPrivileged = entity.ModerationKind == Persistence.Enumerations.ModerationKind.Privileged;
 
             User.Import(entity.User);
 

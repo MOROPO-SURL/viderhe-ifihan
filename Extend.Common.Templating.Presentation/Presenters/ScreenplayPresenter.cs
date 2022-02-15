@@ -20,8 +20,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         private PlacardViewModel[] placards;
 
-        private IAccountInformationProviderFacade accountInformationProvider;
-
         private ITransitionProviderFacade transitionProvider;
 
         private BasePlacardPresentationView outgoingFrameView;
@@ -30,12 +28,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         private bool loop;
 
-        public ScreenplayPresenter(Xamarin.Forms.Layout<Xamarin.Forms.View> container, System.Func<PlacardViewModel, BasePlacardPresentationView> placardViewModelToPresentationViewFunction, PlacardViewModel[] placards, IAccountInformationProviderFacade accountInformationProvider, ITransitionProviderFacade transitionProvider, System.Action presentationEndedCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction, System.Action screenplayPresentIterationCompleteCallbackAction = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
+        public ScreenplayPresenter(Xamarin.Forms.Layout<Xamarin.Forms.View> container, System.Func<PlacardViewModel, BasePlacardPresentationView> placardViewModelToPresentationViewFunction, PlacardViewModel[] placards, ITransitionProviderFacade transitionProvider, System.Action presentationEndedCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction, System.Action screenplayPresentIterationCompleteCallbackAction = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
         {
             this.container = container;
             this.placardViewModelToPresentationViewFunction = placardViewModelToPresentationViewFunction;
             this.placards = placards;
-            this.accountInformationProvider = accountInformationProvider;
             this.transitionProvider = transitionProvider;
             this.presentationEndedCallbackAction = presentationEndedCallbackAction;
             this.placardPlayingCallbackAction = placardPlayingCallbackAction;
@@ -174,9 +171,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
                         outgoingFrameView = container.Children.FirstOrDefault() as BasePlacardPresentationView;
 
-                        var transition = transitionProvider.GetRandom(accountInformationProvider, incomingFrameView, outgoingFrameView, OnMotionTransitionCompletedCallback);
+                        var transition = transitionProvider.GetRandom(incomingFrameView, outgoingFrameView, OnMotionTransitionCompletedCallback);
 
-                        transition?.GetReady(accountInformationProvider, container);
+                        transition?.GetReady(container);
 
                         container.Children.Add(incomingFrameView);
 
@@ -257,7 +254,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                 placardPlayingCallbackAction = null;
                 placardViewTransitionCompleteCallbackAction = null;
                 placardViewModelToPresentationViewFunction = null;
-                accountInformationProvider = null;
                 transitionProvider = null;
 
                 disposedValue = true;
