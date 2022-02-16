@@ -18,6 +18,22 @@
     <None Remove="Assets\Images\MF-Identity-Portriat-Color-Primary.svg" />
     <None Remove="Assets\Images\MF-Identity-Portriat-Color-Secoundary.svg" />
     <None Remove="Assets\Images\MF-Identity-Portriat-Color-White.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Left-Dark.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Left-Light.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Left-Primary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Left-Secoundary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Right-Dark.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Right-Light.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Right-Primary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Right-Secoundary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Left-Dark.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Left-Light.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Left-Primary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Left-Secoundary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Right-Dark.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Right-Light.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Right-Primary.svg" />
+    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Right-Secoundary.svg" />
     <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Dark.svg" />
     <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Light.svg" />
     <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Primary.svg" />
@@ -62,6 +78,22 @@
   <ItemGroup>
     <EmbeddedResource Include="Assets\Fonts\Montserrat-ExtraBold.otf" />
     <EmbeddedResource Include="Assets\Fonts\Montserrat-SemiBold.otf" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Left-Dark.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Left-Light.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Left-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Left-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Right-Dark.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Right-Light.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Right-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Right-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Left-Dark.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Left-Light.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Left-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Left-Secoundary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Right-Dark.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Right-Light.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Right-Primary.svg" />
+    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Right-Secoundary.svg" />
     <EmbeddedResource Include="Assets\Images\Placard-Hero-GrayGranite.png" />
     <EmbeddedResource Include="Assets\Images\Placard-Hero-OrangeGranite.png" />
     <EmbeddedResource Include="Assets\Images\Placard-Hero-OldPaper.png" />
@@ -142,6 +174,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LandscapeCrossStripePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LandscapeFillFlyoutPlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LandscapeFloatingFlyoutPlacardView.xaml">

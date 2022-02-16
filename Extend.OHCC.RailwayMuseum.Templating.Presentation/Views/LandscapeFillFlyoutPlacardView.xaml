@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views.LandscapeFillFlyoutPlacardView"
+    x:Name="Self">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:FlyoutHorizontalOrientationToXFHorizontalOrientationConverter x:Key="FlyoutHorizontalOrientationToXFHorizontalOrientationConverter" />
+            <converters:LandscapeFillFlyoutPlacardViewWidthToContentPaddingConverter x:Key="LandscapeFillFlyoutPlacardViewWidthToContentPaddingConverter" PlacardView="{Reference Self}" />
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="PlacardLayout">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ffimageloadingforms:CachedImage
+                    x:Name="ContextedImagen"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="Black"
+                    FadeAnimationEnabled="False"
+                    Source="{Binding Path=ContextedImageSource}" 
+                    Aspect="AspectFill"
+                    CacheType="Disk"
+                    CacheDuration="8760:00:00" />
+                <ffimageloadingsvg:SvgCachedImage
+                    x:Name="FillFlyoutImage"
+                    Grid.ColumnSpan="2"
+                    Aspect="Fill" />
+                <Grid x:Name="DataLayoutWrapGrid">
+                    <StackLayout 
+                        VerticalOptions="Center"
+                        Margin="{Binding Source={Reference PlacardLayout}, Path=Width, Converter={StaticResource LandscapeFillFlyoutPlacardViewWidthToContentPaddingConverter}}"
+                        IsClippedToBounds="True"
+                        Spacing="{Binding Source={Reference PlacardLayout}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=20}">
+                        <ffimageloadingsvg:SvgCachedImage 
+                            x:Name="LogoImage"
+                            HorizontalOptions="{Binding Path=FlyoutHorizontalOrientation, Converter={StaticResource FlyoutHorizontalOrientationToXFHorizontalOrientationConverter}, Mode=OneTime}"
+                            HeightRequest="{Binding Source={Reference PlacardLayout}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=5}" />
+                        <Label 
+                            x:Name="HeaderLabel"
+                            Text="{Binding Path=Header}"
+                            TextColor="White"
+                            FontFamily="Montserrat ExtraBold"
+                            FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        <Label
+                            x:Name="ContentLabel"
+                            Text="{Binding Path=Content}"
+                            TextColor="White"
+                            FontFamily="Montserrat SemiBold"
+                            FontSize="{Binding Path=ContentFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

@@ -10,6 +10,6 @@
 
         public string Name => "Panel Flotado con Imagen de Fondo";
 
-        public string Description => "Muestra el logotipo de identidad, un título y una descripción en un panel horizontal con un estilo especificado y en el fondo una imagen.";
+        public string Description => "Muestra el logotipo de identidad, un título y una descripción en un panel horizontal y traslucido flotando con un estilo especificado y en el fondo una imagen.";
     }
 }

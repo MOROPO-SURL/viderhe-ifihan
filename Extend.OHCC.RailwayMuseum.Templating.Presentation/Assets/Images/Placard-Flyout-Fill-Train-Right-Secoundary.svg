@@ -1,0 +1,13 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
+  <defs>
+    <style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-4{fill:#633;}.cls-5{clip-path:url(#clip-path-2);}</style>
+    <clipPath id="clip-path">
+      <rect class="cls-1" y="-0.5" width="1920" height="1081.5" transform="translate(1920 1080.5) rotate(180)"/>
+    </clipPath>
+  </defs>
+  <title>drawler3</title>
+  <g class="cls-2">
+    <polygon class="cls-4" points="672.65 539.75 961.44 -0.71 2394 0.29 2394 1082.23 964.45 1081.23 672.65 539.75"/>
+    <polygon class="cls-4" points="929.73 -0.87 635.45 539.91 932.5 1080.34 894.06 1080.32 527 539.91 891.27 -0.87 929.73 -0.87"/>
+  </g>
+</svg>

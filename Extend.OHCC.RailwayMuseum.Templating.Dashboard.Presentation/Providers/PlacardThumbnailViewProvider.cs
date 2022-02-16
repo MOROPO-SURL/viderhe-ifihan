@@ -39,6 +39,11 @@
                 return new Views.LandscapeAnonimusHeroPlacardThumbnailView(model);
             }
 
+            if (model.Template.Id == Descriptors.LandscapeFillFlyoutTemplateDescriptor.ID)
+            {
+                return new Views.LandscapeFillFlyoutPlacardThumbnailView(model);
+            }
+
             return null;
         }
     }
