@@ -107,6 +107,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Granito Gris.
+        /// </summary>
+        internal static string GrayGranite {
+            get {
+                return ResourceManager.GetString("GrayGranite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Izquierda.
         /// </summary>
         internal static string Left {
@@ -121,6 +130,24 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         internal static string Light {
             get {
                 return ResourceManager.GetString("Light", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Papel Antiguo.
+        /// </summary>
+        internal static string OldPaper {
+            get {
+                return ResourceManager.GetString("OldPaper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Granito Naranja.
+        /// </summary>
+        internal static string OrangeGranite {
+            get {
+                return ResourceManager.GetString("OrangeGranite", resourceCulture);
             }
         }
         

@@ -40,6 +40,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                 return new Pages.LandscapeFloatingFlyoutPlacardConfigurationPage(completedActionCallback);
             }
 
+            if (templateDescriptor is LandscapeAnonimusHeroTemplateDescriptor)
+            {
+                return new Pages.LandscapeAnonimusHeroPlacardConfigurationPage(completedActionCallback);
+            }
+
             return null;
         }
 
@@ -73,6 +78,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
             if (placardViewModel.Template.Id == LandscapeFloatingFlyoutTemplateDescriptor.ID)
             {
                 return new Pages.LandscapeFloatingFlyoutPlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == LandscapeAnonimusHeroTemplateDescriptor.ID)
+            {
+                return new Pages.LandscapeAnonimusHeroPlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;

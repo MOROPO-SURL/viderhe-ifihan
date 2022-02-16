@@ -38,6 +38,9 @@
     <None Remove="Assets\Images\Placard-Frame-Landscape-Bullet-White.svg" />
     <None Remove="Assets\Images\Placard-Frame-Landscape-Outline-Secoundary.svg" />
     <None Remove="Assets\Images\Placard-Frame-Landscape-Outline-White.svg" />
+    <None Remove="Assets\Images\Placard-Hero-GrayGranite.png" />
+    <None Remove="Assets\Images\Placard-Hero-OldPaper.png" />
+    <None Remove="Assets\Images\Placard-Hero-OrangeGranite.png" />
     <None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Dark.svg" />
     <None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Light.svg" />
     <None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Primary.svg" />
@@ -59,6 +62,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Assets\Fonts\Montserrat-ExtraBold.otf" />
     <EmbeddedResource Include="Assets\Fonts\Montserrat-SemiBold.otf" />
+    <EmbeddedResource Include="Assets\Images\Placard-Hero-GrayGranite.png" />
+    <EmbeddedResource Include="Assets\Images\Placard-Hero-OrangeGranite.png" />
+    <EmbeddedResource Include="Assets\Images\Placard-Hero-OldPaper.png" />
     <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Dark.svg" />
     <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Light.svg" />
     <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Primary.svg" />
@@ -130,6 +136,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\InfinityVideoPlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LandscapeAnonimusHeroPlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LandscapeCrossStripePlacardView.xaml">

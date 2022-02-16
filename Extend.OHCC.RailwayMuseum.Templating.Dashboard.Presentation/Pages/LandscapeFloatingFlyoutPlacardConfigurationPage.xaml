@@ -237,7 +237,7 @@
                         BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">
                         <StackLayout>
-                            <Label Text="Galladerte" Style="{StaticResource FormLabel}" />
+                            <Label Text="Panel Informativo" Style="{StaticResource FormLabel}" />
                             <Frame 
                                 Style="{StaticResource FormFieldFrame}"
                                 Margin="0,0,0,6">

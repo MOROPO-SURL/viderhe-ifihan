@@ -132,11 +132,20 @@
   <data name="Fancy" xml:space="preserve">
     <value>Adornos</value>
   </data>
+  <data name="GrayGranite" xml:space="preserve">
+    <value>Granito Gris</value>
+  </data>
   <data name="Left" xml:space="preserve">
     <value>Izquierda</value>
   </data>
   <data name="Light" xml:space="preserve">
     <value>Blanco</value>
+  </data>
+  <data name="OldPaper" xml:space="preserve">
+    <value>Papel Antiguo</value>
+  </data>
+  <data name="OrangeGranite" xml:space="preserve">
+    <value>Granito Naranja</value>
   </data>
   <data name="Primary" xml:space="preserve">
     <value>Color Primario</value>

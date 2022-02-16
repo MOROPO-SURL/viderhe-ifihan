@@ -18,7 +18,6 @@
                 var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
                 HeaderLabel.TextColor = accountInformationProvider.PrimaryColor;
-
                 ContentLabel.TextColor = accountInformationProvider.SecoundaryColor;
             }
 
