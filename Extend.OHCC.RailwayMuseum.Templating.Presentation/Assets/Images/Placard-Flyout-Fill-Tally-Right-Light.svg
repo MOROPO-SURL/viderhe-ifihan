@@ -1,18 +1,96 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080">
-  <defs>
-    <style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{clip-path:url(#clip-path-2);}.cls-4{fill:#fffdfd;}.cls-5{fill:#fffdfd;}</style>
-    <clipPath id="clip-path">
-      <rect class="cls-1" y="-0.5" width="1920" height="1081.5"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 1920 1080"
+   version="1.1"
+   sodipodi:docname="Placard-Flyout-Fill-Tally-Right-Light.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <sodipodi:namedview
+     id="namedview23"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.96296296"
+     inkscape:cx="1436.1923"
+     inkscape:cy="973.5577"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="760"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_1" />
+  <defs
+     id="defs10">
+    <style
+       id="style2">.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{clip-path:url(#clip-path-2);}.cls-4{fill:#fffdfd;}.cls-5{fill:#fffdfd;}</style>
+    <clipPath
+       id="clip-path">
+      <rect
+         class="cls-1"
+         y="-0.5"
+         width="1920"
+         height="1081.5"
+         transform="translate(1920 1080.5) rotate(180)"
+         id="rect4" />
     </clipPath>
-    <clipPath id="clip-path-2">
-      <rect class="cls-1" x="837.54" y="-1.98" width="1726.95" height="1085.62" transform="translate(3402.03 1081.65) rotate(180)"/>
+    <clipPath
+       id="clip-path-2">
+      <rect
+         class="cls-1"
+         x="-644.49"
+         y="-3.14"
+         width="1726.95"
+         height="1085.62"
+         id="rect7" />
     </clipPath>
   </defs>
-  <title>drawler3</title>
-  <g class="cls-2">
-    <g class="cls-3">
-      <path class="cls-4" d="M2718.21,127.24A119.41,119.41,0,0,1,2633.63,92a119.39,119.39,0,0,1-35.15-84.61V-1.55L967.09-2.09V6.85a119.47,119.47,0,0,1-35.24,84.58,119.45,119.45,0,0,1-84.6,35.15h-9l-.43,827.48h9a120.15,120.15,0,0,1,119.71,119.83v9l1631.39.53v-9a120.17,120.17,0,0,1,119.85-119.71h8.94l.43-827.48Zm-9.38,809.87a138.16,138.16,0,0,0-128.49,128.37L984.13,1065a138.12,138.12,0,0,0-128.36-128.5l.41-792.29a137.31,137.31,0,0,0,88.32-40.1,137.27,137.27,0,0,0,40.17-88.26l1596.22.52A137.3,137.3,0,0,0,2621,104.64a137.34,137.34,0,0,0,88.27,40.19Z"/>
-      <path class="cls-5" d="M2687.75,158.33l-.4,765.25a133.44,133.44,0,0,0-124.11,124l-1562-.5A133.42,133.42,0,0,0,877.27,923l.39-765.25A132.63,132.63,0,0,0,963,119a132.65,132.65,0,0,0,38.8-85.25l1562,.51a132.62,132.62,0,0,0,38.73,85.29A132.59,132.59,0,0,0,2687.75,158.33Z"/>
+  <title
+     id="title12">drawler3</title>
+  <g
+     class="cls-2"
+     clip-path="url(#clip-path)"
+     id="g20"
+     style="fill:#ffffff"
+     transform="matrix(-1.0650333,0,0,1.0650333,1926.1901,-34.993212)"
+     inkscape:export-filename="C:\Users\Miguel\Desktop\Placard-Flyout-Edged-Tally-Left-Light.png"
+     inkscape:export-xdpi="96"
+     inkscape:export-ydpi="96">
+    <g
+       class="cls-3"
+       clip-path="url(#clip-path-2)"
+       id="g18"
+       style="fill:#ffffff">
+      <path
+         class="cls-4"
+         d="m -798.21,953.26 a 119.41,119.41 0 0 1 84.58,35.24 119.39,119.39 0 0 1 35.15,84.61 v 8.94 l 1631.4,0.54 v -8.94 a 120.17,120.17 0 0 1 119.84,-119.73 h 9 l 0.43,-827.48 h -9 A 119.37,119.37 0 0 1 988.63,91.21 119.38,119.38 0 0 1 953.48,6.61 v -9 l -1631.4,-0.49 v 9 a 119.35,119.35 0 0 1 -35.24,84.56 119.39,119.39 0 0 1 -84.61,35.15 h -8.94 l -0.43,827.48 z m 9.38,-809.87 a 137.39,137.39 0 0 0 88.3,-40.1 A 137.36,137.36 0 0 0 -660.34,15 L 935.87,15.52 A 137.37,137.37 0 0 0 976,103.85 137.48,137.48 0 0 0 1064.23,144 l -0.41,792.29 a 138.12,138.12 0 0 0 -128.49,128.36 l -1596.22,-0.52 A 137.3,137.3 0 0 0 -701,975.86 137.34,137.34 0 0 0 -789.27,935.67 Z"
+         id="path14"
+         style="fill:#ffffff" />
+      <path
+         class="cls-5"
+         d="m -767.75,922.17 0.4,-765.25 a 132.77,132.77 0 0 0 85.29,-38.73 132.65,132.65 0 0 0 38.82,-85.26 l 1562,0.5 a 132.72,132.72 0 0 0 38.72,85.3 132.77,132.77 0 0 0 85.26,38.82 l -0.39,765.25 a 133.4,133.4 0 0 0 -124.11,124 l -1562,-0.51 A 132.62,132.62 0 0 0 -682.5,961 132.59,132.59 0 0 0 -767.75,922.17 Z"
+         id="path16"
+         style="fill:#ffffff" />
     </g>
   </g>
+  <metadata
+     id="metadata28">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>drawler3</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
 </svg>

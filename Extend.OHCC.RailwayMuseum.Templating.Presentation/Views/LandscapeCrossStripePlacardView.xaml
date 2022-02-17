@@ -35,13 +35,13 @@
                     Grid.Column="1"
                     BackgroundColor="{Binding Path=StripeBackgroundColor}"
                     IsClippedToBounds="True"
-                    Padding="30">
+                    Padding="{Binding Source={RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=10}">
                     <StackLayout 
                         VerticalOptions="Center"
-                        Spacing="40">
+                        Spacing="{Binding Source={Reference PlacardLayout}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=25}">
                         <ffimageloadingsvg:SvgCachedImage 
                             x:Name="LogoImage"
-                            Margin="0,0,0,60"
+                            Margin="0,0,0,20"
                             HorizontalOptions="Center"
                             WidthRequest="{Binding Source={RelativeSource AncestorType={Type StackLayout}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=2}" />
                         <Label 
