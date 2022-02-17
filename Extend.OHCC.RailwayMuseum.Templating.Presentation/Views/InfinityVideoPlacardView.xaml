@@ -12,7 +12,7 @@
                 <ffimageloadingforms:CachedImage
                     FadeAnimationEnabled="False"
                     Source="{Binding Path=VideoThumbnailImageSource}" 
-                    Aspect="AspectFit"
+                    Aspect="AspectFill"
                     CacheType="Disk"
                     CacheDuration="8760:00:00" />
                 <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
@@ -20,6 +20,7 @@
                     BackgroundColor="Black"
                     Source="{Binding Path=VideoSource}"
                     ShowControls="False"
+                    StrechAspect="AspectFill"
                     AutoPlay="True"
                     Repeat="True"
                     StatusUpdated="VideoPlayer_StatusUpdated" />
