@@ -7,13 +7,13 @@
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    xmlns:sscxftoolkitpresentationviewrendereds="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Pages.InfinityVideoPlacardCreatePage"
     x:TypeArguments="pagemodels:InfinityVideoPlacardCreatePageModel">
     <ContentPage.Resources>
         <ResourceDictionary>
             <commonconverters:StringToLocalizeStringConverter x:Key="CommonStringToLocalizeStringConverter" />
-            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -52,16 +52,19 @@
                     Margin="10"
                     ColumnSpacing="10" RowSpacing="10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Frame 
-                        Grid.ColumnSpan="2" Grid.Row="0"
+                        Grid.ColumnSpan="3" Grid.Row="0"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Etiqueta" Style="{StaticResource FormLabel}" />
@@ -69,20 +72,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"
-                        Style="{StaticResource FormFieldFrame}"
-                        VerticalOptions="Start">
-                        <StackLayout>
-                            <Label Text="Video" Style="{StaticResource FormLabel}" />
-                            <sscxftoolkitpresentationviewrendereds:VideoPlayerView
-                                BackgroundColor="Black"
-                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-                                Source="{Binding Path=Video, Converter={StaticResource VideoViewModelToVideoSourceConverter}}" 
-                                AutoPlay="False" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="1" Grid.Row="1"
+                        Grid.Column="0" Grid.Row="1"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="A Pantalla Completa" Style="{StaticResource FormLabel}" />
@@ -90,8 +80,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="1" Grid.Row="2"
-                        VerticalOptions="Start"
+                        Grid.Column="1" Grid.Row="1"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Orientación de Pantalla" Style="{StaticResource FormLabel}" />
@@ -99,6 +88,87 @@
                                 ItemsSource="{Binding Path=AvailableConfigurationPlayerOrientationSupportKinds}" 
                                 SelectedItem="{Binding Path=PlayerOrientationSupportKind}"
                                 ItemDisplayBinding="{Binding Converter={StaticResource CommonStringToLocalizeStringConverter}}"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="3"                        
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start"
+                        Padding="0">
+                        <Grid RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Label 
+                                Grid.Row="0"
+                                Style="{StaticResource FormLabel}"
+                                Margin="10,10,10,6"
+                                Text="Video" />
+                            <ffimageloadingforms:CachedImage
+                                Margin="0"
+                                Grid.Row="1"
+                                BackgroundColor="Black"
+                                Source="{Binding Path=Video, Converter={StaticResource VideoViewModelToThumbnailImageSourceConverter}}"
+                                HeightRequest="{Binding Source={RelativeSource AncestorType={Type Grid}}, Path=Width}"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
+                            <Grid 
+                                Grid.Row="1"
+                                BackgroundColor="#99000000">
+                                <Label 
+                                    IsVisible="{Binding Path=Video.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                    VerticalOptions="End" 
+                                    Padding="8"
+                                    BackgroundColor="#99000000"
+                                    Text="{Binding Path=Video.About}"
+                                    TextColor="White"
+                                    LineBreakMode="TailTruncation" />
+                                <ImageButton 
+                                    HorizontalOptions="Center" VerticalOptions="Center"
+                                    WidthRequest="120"
+                                    Clicked="VideoPlayButton_Clicked">
+                                    <ImageButton.Source>
+                                        <FontImageSource 
+                                            Color="White"
+                                            FontFamily="{StaticResource IconFontFamily}"
+                                            Glyph="&#xf40c;" />
+                                    </ImageButton.Source>
+                                </ImageButton>
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="2" Grid.Row="2"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Espaciado al Inicio (%)" Style="{StaticResource FormLabel}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Path=StartMargin}" VerticalTextAlignment="Center" />
+                                <Label Text="Segundos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                <Stepper 
+                                    Value="{Binding Path=StartMargin}"
+                                    Minimum="0"
+                                    Maximum="100"
+                                    Increment="5" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="2" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Espaciado el Final (%)" Style="{StaticResource FormLabel}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Path=EndMargin}" VerticalTextAlignment="Center" />
+                                <Label Text="Segundos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                <Stepper 
+                                    Value="{Binding Path=EndMargin}"
+                                    Minimum="0"
+                                    Maximum="100"
+                                    Increment="5" />
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                 </Grid>

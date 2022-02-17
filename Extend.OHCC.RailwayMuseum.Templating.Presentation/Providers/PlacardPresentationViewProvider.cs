@@ -15,8 +15,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                 return new InfinityVideoPlacardView(new Models.View.InfinityVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = false,
-                    VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.VideoId, context.VideoExtension).AbsoluteUri),
-                    VideoThumbnailImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.ThumbnailId))
+                    VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri),
+                    VideoThumbnailImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Video.ThumbnailId)),
+                    StartMargin = context.StartMargin,
+                    EndMargin = context.EndMargin
                 });
             }
 

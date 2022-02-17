@@ -4,6 +4,10 @@
     {
         public XFToolKit.Presentation.Sources.Video.VideoSource VideoSource { get; set; }
 
-        public Xamarin.Forms.ImageSource VideoThumbnailImageSource { get; set; } 
+        public Xamarin.Forms.ImageSource VideoThumbnailImageSource { get; set; }
+
+        public int StartMargin { get; set; }
+
+        public int EndMargin { get; set; }
     }
 }

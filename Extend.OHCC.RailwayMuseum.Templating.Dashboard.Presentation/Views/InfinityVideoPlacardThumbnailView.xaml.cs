@@ -8,7 +8,7 @@
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.InfinityVideoPlacardContextModel>(model.SerializedContext);
 
-            Image.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.ThumbnailId));
+            Image.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Video.ThumbnailId));
 
             BindingContext = model;
         }

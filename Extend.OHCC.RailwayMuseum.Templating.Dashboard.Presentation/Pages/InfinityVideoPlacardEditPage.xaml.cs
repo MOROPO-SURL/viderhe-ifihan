@@ -38,9 +38,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                     SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.InfinityVideoPlacardContextModel
                     {
                         RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
-                        VideoId = contextModel.VideoId,
-                        VideoExtension = contextModel.VideoExtension,
-                        ThumbnailId = contextModel.ThumbnailId
+                        Video = contextModel.Video,
+                        StartMargin = BindingContextPageModel.StartMargin,
+                        EndMargin = BindingContextPageModel.EndMargin
                     })
                 });
             }).ContinueWith((System.Threading.Tasks.Task task) =>
@@ -68,6 +68,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         private void CancelToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
             this.NavigationPopPageAsync();
+        }
+
+        private void VideoPlayButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoDetailPage(BindingContextPageModel.Video));
         }
 
         protected override void DisposeUnmanagementResources()

@@ -2,12 +2,10 @@
 {
     public class InfinityVideoPlacardContextModel : Common.Templating.Presentation.Models.Context.AbstractPlacardContextModel
     {
-        public System.Guid VideoId { get; set; }
+        public Common.Templating.Presentation.Models.Context.VideoContextModel Video { get; set; }
 
-        public string VideoExtension { get; set; }
+        public int StartMargin { get; set; }
 
-        public System.Guid ThumbnailId { get; set; }
-
-        public string ThumbnailContentType { get; set; }
+        public int EndMargin { get; set; }
     }
 }
