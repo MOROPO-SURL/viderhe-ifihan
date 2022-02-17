@@ -49,7 +49,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
             {
                 SetAreTransportControlsEnabled();
             }
-            else if (eventArgs.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.StrechAspectProperty.PropertyName)
+            else if (e.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.StrechAspectProperty.PropertyName)
             {
                 SetAspectStrech();
             }
