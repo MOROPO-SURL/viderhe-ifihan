@@ -42,6 +42,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
 
                 SetAreTransportControlsEnabled();
 
+                SetAspectStrech();
+
                 SetAutoPlay();
 
                 if (Element.AutoPlay)
@@ -84,6 +86,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
             {
                 SetAreTransportControlsEnabled();
             }
+            else if (args.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.StrechAspectProperty.PropertyName)
+            {
+                SetAspectStrech();
+            }
             else if (args.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.SourceProperty.PropertyName)
             {
                 SetSource();
@@ -104,6 +110,31 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
             {
                 Control.HideController();
             }
+        }
+
+        private void SetAspectStrech()
+        {
+            switch (Element.StrechAspect)
+            {
+                case Xamarin.Forms.Aspect.AspectFit:
+                    Control.ResizeMode = AspectRatioFrameLayout.ResizeModeFit;
+
+                    break;
+                case Xamarin.Forms.Aspect.AspectFill:
+                    Control.ResizeMode = AspectRatioFrameLayout.ResizeModeZoom;
+
+                    break;
+                case Xamarin.Forms.Aspect.Fill:
+                default:
+                    Control.ResizeMode = AspectRatioFrameLayout.ResizeModeFill;
+
+                    break;
+            }
+        }
+
+        private void SetAutoPlay()
+        {
+            Control.Player.PlayWhenReady = Element.AutoPlay;
         }
 
         private void SetSource()
@@ -167,11 +198,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
         private void OnStopRequested(object sender, System.EventArgs args)
         {
             try { Control.Player.Stop(); } catch { }
-        }
-
-        private void SetAutoPlay()
-        {
-            Control.Player.PlayWhenReady = Element.AutoPlay;
         }
 
         #region IPlayerEventListener implementation
