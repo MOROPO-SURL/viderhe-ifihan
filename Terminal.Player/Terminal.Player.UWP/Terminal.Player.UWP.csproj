@@ -256,6 +256,14 @@
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Overlaying.Presentation\Extend.OHCC.RailwayMuseum.Overlaying.Presentation.csproj">
+      <Project>{ad535505-b118-4748-9ed6-6d9188f2f3a8}</Project>
+      <Name>Extend.OHCC.RailwayMuseum.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Overlaying\Extend.OHCC.RailwayMuseum.Overlaying.csproj">
+      <Project>{985a0c68-4092-4fcd-b956-eb4780ee5850}</Project>
+      <Name>Extend.OHCC.RailwayMuseum.Overlaying</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Templating.Presentation\Extend.OHCC.RailwayMuseum.Templating.Presentation.csproj">
       <Project>{a7926688-af72-41df-85eb-141f2ec72e6a}</Project>
       <Name>Extend.OHCC.RailwayMuseum.Templating.Presentation</Name>

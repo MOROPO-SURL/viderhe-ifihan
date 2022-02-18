@@ -111,7 +111,7 @@ Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "Terminal.Player.UWP.Package
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Terminal.Player.Tizen.TV", "Terminal.Player\Terminal.Player.Tizen\Terminal.Player.Tizen.TV\Terminal.Player.Tizen.TV.csproj", "{A638237E-E3F9-4DEE-A2BF-7F972D51449B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloud.Persistence.EF", "Cloud.Persistence.EF\Cloud.Persistence.EF.csproj", "{35495147-E7A8-4F85-917F-76A4B33E112F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cloud.Persistence.EF", "Cloud.Persistence.EF\Cloud.Persistence.EF.csproj", "{35495147-E7A8-4F85-917F-76A4B33E112F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OHCC", "OHCC", "{14A4DE28-1C6E-4A75-9D93-055536127BA7}"
 EndProject
@@ -129,9 +129,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.OHCC.RailwayMuseum.O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.OHCC.RailwayMuseum.SignalR", "Extend.OHCC.RailwayMuseum.SignalR\Extend.OHCC.RailwayMuseum.SignalR.csproj", "{BEA3791B-23AA-428A-8816-301A29E72300}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extend.OHCC.RailwayMuseum.SignalR.Connect", "Extend.OHCC.RailwayMuseum.SignalR.Connect\Extend.OHCC.RailwayMuseum.SignalR.Connect.csproj", "{9EA54AE0-C245-48D9-ADFF-19F3A8D0BAEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.OHCC.RailwayMuseum.SignalR.Connect", "Extend.OHCC.RailwayMuseum.SignalR.Connect\Extend.OHCC.RailwayMuseum.SignalR.Connect.csproj", "{9EA54AE0-C245-48D9-ADFF-19F3A8D0BAEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extend.OHCC.RailwayMuseum.Overlaying.Presentation", "Extend.OHCC.RailwayMuseum.Overlaying.Presentation\Extend.OHCC.RailwayMuseum.Overlaying.Presentation.csproj", "{AD535505-B118-4748-9ED6-6D9188F2F3A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.OHCC.RailwayMuseum.Overlaying.Presentation", "Extend.OHCC.RailwayMuseum.Overlaying.Presentation\Extend.OHCC.RailwayMuseum.Overlaying.Presentation.csproj", "{AD535505-B118-4748-9ED6-6D9188F2F3A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extend.OHCC.RailwayMuseum.Overlaying.Dashboard.Presentation", "Extend.OHCC.RailwayMuseum.Overlaying.Dashboard.Presentation\Extend.OHCC.RailwayMuseum.Overlaying.Dashboard.Presentation.csproj", "{1C591171-A41B-4071-929C-6E975DDFF6D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1780,6 +1782,34 @@ Global
 		{AD535505-B118-4748-9ED6-6D9188F2F3A8}.Release|x64.Build.0 = Release|Any CPU
 		{AD535505-B118-4748-9ED6-6D9188F2F3A8}.Release|x86.ActiveCfg = Release|Any CPU
 		{AD535505-B118-4748-9ED6-6D9188F2F3A8}.Release|x86.Build.0 = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|ARM.Build.0 = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|x64.Build.0 = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Debug|x86.Build.0 = Debug|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|ARM.Build.0 = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|ARM64.Build.0 = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|iPhone.Build.0 = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|x64.ActiveCfg = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|x64.Build.0 = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|x86.ActiveCfg = Release|Any CPU
+		{1C591171-A41B-4071-929C-6E975DDFF6D0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1839,6 +1869,7 @@ Global
 		{BEA3791B-23AA-428A-8816-301A29E72300} = {E0B2914B-0162-498E-A505-12681252E051}
 		{9EA54AE0-C245-48D9-ADFF-19F3A8D0BAEC} = {E0B2914B-0162-498E-A505-12681252E051}
 		{AD535505-B118-4748-9ED6-6D9188F2F3A8} = {E0B2914B-0162-498E-A505-12681252E051}
+		{1C591171-A41B-4071-929C-6E975DDFF6D0} = {E0B2914B-0162-498E-A505-12681252E051}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3F235201-8823-4E89-9BA7-111B50D99078}

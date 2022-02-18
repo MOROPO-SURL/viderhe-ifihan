@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.Context
 {
-    public class JiribilllaContextModel
+    public class TriviaContextModel
     {
         public PlayerModel[] Gets { get; set; }
 

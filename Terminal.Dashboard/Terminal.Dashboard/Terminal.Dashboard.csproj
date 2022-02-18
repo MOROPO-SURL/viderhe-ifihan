@@ -46,7 +46,12 @@
     <ProjectReference Include="..\..\Extend.Essential.Templating.Dashboard.Presentation\Extend.Essential.Templating.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
+    <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Overlaying.Dashboard.Presentation\Extend.OHCC.RailwayMuseum.Overlaying.Dashboard.Presentation.csproj" />
+    <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Overlaying.Presentation\Extend.OHCC.RailwayMuseum.Overlaying.Presentation.csproj" />
+    <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Overlaying\Extend.OHCC.RailwayMuseum.Overlaying.csproj" />
     <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation\Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.csproj" />
+    <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Templating.Presentation\Extend.OHCC.RailwayMuseum.Templating.Presentation.csproj" />
+    <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum.Templating\Extend.OHCC.RailwayMuseum.Templating.csproj" />
     <ProjectReference Include="..\..\Extend.OHCC.RailwayMuseum\Extend.OHCC.RailwayMuseum.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Transitioning\Support.Extend.Transitioning.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj" />
