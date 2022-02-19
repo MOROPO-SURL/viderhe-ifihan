@@ -39,6 +39,7 @@
 
         private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
+            Xamarin.Forms.DependencyService.Get<Common.Overlaying.Presentation.Helpers.Facade.IPlatformIntegrationHelperFacade>()?.LaunchApplication((BindingContext as Models.View.WindowsAppLauncherOverlayViewModel).LocalPath);
         }
 
         private void CallToActionAnimation_Completed(object sender, System.EventArgs eventArgs)
