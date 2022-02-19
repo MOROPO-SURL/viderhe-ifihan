@@ -2,15 +2,11 @@
 {
     public class LandscapeAnonimusHeroPlacardConfigurationPageModel : Contract.AbstractMuseographyPlacardConfigurationPageModel
     {
-        private string caption;
-        private int captionFontSize;
         private Support.Presentation.Models.View.ImageViewModel heroImage;
         private Templating.Presentation.Enumerations.AnonimusHeroBackgroundMode backgroundMode;
 
         public LandscapeAnonimusHeroPlacardConfigurationPageModel()
         {
-            CaptionFontSize = 24;
-
             AvailableAnonimusHeroBackgroundModes = new Templating.Presentation.Enumerations.AnonimusHeroBackgroundMode[]
             {
                 Templating.Presentation.Enumerations.AnonimusHeroBackgroundMode.OldPaper,
@@ -18,10 +14,6 @@
                 Templating.Presentation.Enumerations.AnonimusHeroBackgroundMode.OrangeGranite
             };
         }
-
-        public string Caption { get => caption; set => SetProperty(ref caption, value); }
-
-        public int CaptionFontSize { get => captionFontSize; set => SetProperty(ref captionFontSize, value); }
 
         public Support.Presentation.Models.View.ImageViewModel HeroImage { get => heroImage; set => SetProperty(ref heroImage, value); }
 

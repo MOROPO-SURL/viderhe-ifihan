@@ -18,8 +18,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                 HeroImage = context.HeroImage.ToViewModel(),
                 Header = context.Header,
                 HeaderFontSize = context.HeaderFontSize,
-                Caption = context.Caption,
-                CaptionFontSize = context.CaptionFontSize,
                 Content = context.Content,
                 ContentFontSize = context.ContentFontSize,
                 BackgroundMode = context.BackgroundMode

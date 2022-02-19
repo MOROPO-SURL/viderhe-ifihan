@@ -74,8 +74,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                             BackgroundMode = BindingContextPageModel.BackgroundMode,
                             Header = BindingContextPageModel.Header,
                             HeaderFontSize = BindingContextPageModel.HeaderFontSize,
-                            Caption = BindingContextPageModel.Caption,
-                            CaptionFontSize = BindingContextPageModel.CaptionFontSize,
                             Content = BindingContextPageModel.Content,
                             ContentFontSize = BindingContextPageModel.ContentFontSize
                         })
@@ -96,8 +94,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                             BackgroundMode = BindingContextPageModel.BackgroundMode,
                             Header = BindingContextPageModel.Header,
                             HeaderFontSize = BindingContextPageModel.HeaderFontSize,
-                            Caption = BindingContextPageModel.Caption,
-                            CaptionFontSize = BindingContextPageModel.CaptionFontSize,
                             Content = BindingContextPageModel.Content,
                             ContentFontSize = BindingContextPageModel.ContentFontSize
                         })

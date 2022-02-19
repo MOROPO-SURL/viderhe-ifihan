@@ -130,8 +130,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     Header = context.Header,
                     HeaderFontSize = context.HeaderFontSize,
-                    Caption = context.Caption,
-                    CaptionFontSize = context.CaptionFontSize,
                     Content = context.Content,
                     ContentFontSize = context.ContentFontSize,
                     HeroImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.HeroImage.Id)),

@@ -71,8 +71,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <StackLayout 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -261,50 +259,9 @@
                                 <Stepper Value="{Binding Path=HeaderFontSize}" />
                             </StackLayout>
                         </StackLayout>
-                    </Frame>
+                    </Frame>                    
                     <Frame 
                         Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="6"
-                        Style="{StaticResource FormFieldFrame}">
-                        <StackLayout>
-                            <Label 
-                                x:Name="CaptionLabel"
-                                Text="Fechas" 
-                                Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=Caption}">
-                                <Entry.Behaviors>
-                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
-                                        ValidableFormPage="{Reference FormPage}"
-                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
-                                        TargetProperty="{Static Entry.TextProperty}"
-                                        Label="{Reference CaptionLabel}">
-                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
-                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
-                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
-                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
-                                </Entry.Behaviors>
-                            </Entry>
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7"
-                        Style="{StaticResource FormFieldFrame}"
-                        HorizontalOptions="Start" VerticalOptions="Start">
-                        <StackLayout>
-                            <Label 
-                                WidthRequest="{Binding Source={Reference HeaderFontSizeLabel}, Path=Width}"
-                                Text="Tamaño del Texto Fechas" 
-                                Style="{StaticResource FormLabel}" />
-                            <StackLayout Orientation="Horizontal">
-                                <Label 
-                                    HorizontalOptions="StartAndExpand"
-                                    Text="{Binding Path=CaptionFontSize}" 
-                                    VerticalTextAlignment="Center" />
-                                <Stepper Value="{Binding Path=CaptionFontSize}" />
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="8"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label 
@@ -327,7 +284,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="9"
+                        Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7"
                         Style="{StaticResource FormFieldFrame}"
                         HorizontalOptions="Start" VerticalOptions="Start">
                         <StackLayout>

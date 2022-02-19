@@ -18,7 +18,6 @@
                     LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly);
 
                     HeaderLabel.TextColor = accountInformationProvider.PrimaryColor;
-                    CaptionLabel.TextColor = accountInformationProvider.PrimaryColor;
                     ContentLabel.TextColor = accountInformationProvider.SecoundaryColor;
 
                     break;
@@ -27,7 +26,6 @@
                     LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-Secoundary.svg", GetType().Assembly);
 
                     HeaderLabel.TextColor = accountInformationProvider.SecoundaryColor;
-                    CaptionLabel.TextColor = accountInformationProvider.SecoundaryColor;
                     ContentLabel.TextColor = accountInformationProvider.SecoundaryColor;
 
                     break;
@@ -37,7 +35,6 @@
                     LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
 
                     HeaderLabel.TextColor = Xamarin.Forms.Color.White;
-                    CaptionLabel.TextColor = Xamarin.Forms.Color.White;
                     ContentLabel.TextColor = Xamarin.Forms.Color.White;
 
                     break;
@@ -60,7 +57,7 @@
 
             MaskBackgroundImagen.Source = null;
             HeroImage.Source = null;
-            //LogoImage.Source = null;
+            LogoImage.Source = null;
         }
     }
 }

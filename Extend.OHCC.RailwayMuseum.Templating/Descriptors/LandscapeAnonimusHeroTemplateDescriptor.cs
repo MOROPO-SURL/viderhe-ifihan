@@ -8,8 +8,8 @@
 
         public Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport => Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape;
 
-        public string Name => "Héroes Anónimos";
+        public string Name => "Historia de Vida";
 
-        public string Description => "Muestra el logotipo de identidad y un perfil de una persona de interés museológico (nombre completo, fechas, reseña e imagen).";
+        public string Description => "Muestra el logotipo de identidad y un perfil de una persona de interés museológico (nombre completo, reseña e imagen).";
     }
 }
