@@ -32,6 +32,19 @@
 
                     break;
 
+                case "start-proccess":
+                    var discriminator = Windows.Storage.ApplicationData.Current.LocalSettings.Values["discriminator"] as string;
+
+                    var launchaAppProcessStartInfo = new System.Diagnostics.ProcessStartInfo(discriminator)
+                    {
+                        CreateNoWindow = true,
+                        UseShellExecute = false
+                    };
+
+                    System.Diagnostics.Process.Start(launchaAppProcessStartInfo);
+
+                    break;
+
                 default:
                     break;
             }
