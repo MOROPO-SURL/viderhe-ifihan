@@ -112,7 +112,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
                     ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Image.ThumbnailId)),
-                    Aspect = context.LayoutMode.ToXamarinFormsAspect()
+                    Aspect = context.LayoutMode.ToXamarinFormsAspect(),
+                    ZoomingEnabled = context.IsZoomingEnabled
                 });
             }
             else
@@ -122,7 +123,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
-                    Aspect = context.LayoutMode.ToXamarinFormsAspect()
+                    Aspect = context.LayoutMode.ToXamarinFormsAspect(),
+                    ZoomingEnabled = context.IsZoomingEnabled
                 });
             }
         }
