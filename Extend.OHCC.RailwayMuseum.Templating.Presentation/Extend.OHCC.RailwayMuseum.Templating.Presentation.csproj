@@ -151,6 +151,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Templating\Extend.Essential.Templating.csproj" />
     <ProjectReference Include="..\Extend.OHCC.RailwayMuseum.Templating\Extend.OHCC.RailwayMuseum.Templating.csproj" />
   </ItemGroup>
 
@@ -160,6 +162,9 @@
     </Compile>
     <Compile Update="Views\LandscapePennantPlacardView.xaml.cs">
       <DependentUpon>LandscapePennantPlacardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\StrechAspectFillVideoPlacardView.xaml.cs">
+      <DependentUpon>StrechAspectFillVideoPlacardView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -186,6 +191,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LandscapePennantPlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\StrechAspectFillVideoPlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

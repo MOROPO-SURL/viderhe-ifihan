@@ -4,8 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Converters"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
-    xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
-    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views.InfinityVideoPlacardView"
     x:Name="Self">
     <ContentView.Resources>
@@ -19,21 +17,9 @@
                 x:Name="PlacardLayout"
                 BackgroundColor="Black"
                 Padding="{Binding Source={Reference PlacardLayout}, Path=Height, Converter={StaticResource InfinityVideoPlacardViewHeightToPaddingConverter}}">
-                <ffimageloadingforms:CachedImage
-                    FadeAnimationEnabled="False"
-                    Source="{Binding Path=VideoThumbnailImageSource}" 
-                    Aspect="AspectFill"
-                    CacheType="Disk"
-                    CacheDuration="8760:00:00" />
-                <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
-                    x:Name="VideoPlayerView"
-                    BackgroundColor="Black"
-                    Source="{Binding Path=VideoSource}"
-                    ShowControls="False"
-                    StrechAspect="AspectFill"
-                    AutoPlay="True"
-                    Repeat="True"
-                    StatusUpdated="VideoPlayer_StatusUpdated" />
+                <Grid 
+                    x:Name="FramesContainer"
+                    IsClippedToBounds="True" />
             </Grid>
         </Grid>
     </ContentView.Content>

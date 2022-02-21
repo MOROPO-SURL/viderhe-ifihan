@@ -2,7 +2,7 @@
 {
     public partial class InfinityVideoPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        private Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition;
+        private Common.Templating.Presentation.Presenters.ScreenplayPresenter screenplayPresenter;
 
         public InfinityVideoPlacardView(Models.View.InfinityVideoPlacardViewModel model)
         {
@@ -21,53 +21,57 @@
             Xamarin.Forms.Grid.SetRow(view, 0);
         }
 
-        private void VideoPlayer_StatusUpdated(object sender, System.EventArgs eventArgs)
+        public override void PerformPlacardStarup()
         {
-            var videoPlayer = sender as XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
+            base.PerformPlacardStarup();
 
-            if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            var targetTemplateDescriptor = new Essential.Templating.Descriptors.SimpleVideoTemplateDescriptor();
+
+            var targetTemplateViewModel = new Support.Presentation.Models.View.TemplateViewModel
             {
-                if (transition != null)
-                {
-                    transition?.PerformMotion();
+                Id = targetTemplateDescriptor.Id,
+                PlayerOrientationSupport = Common.Templating.Enumerations.PlayerOrientationSupportKind.Any
+            };
 
-                    transition = null;
-                }
-                else if (!videoPlayer.IsVisible)
-                {
-                    VideoPlayerView.IsVisible = true;
-                }
-            }
-            else if (transition == null && videoPlayer.Status != XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            var placards = new System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel>
             {
-                VideoPlayerView.IsVisible = false;
-            }
-        }
+                new Support.Presentation.Models.View.PlacardViewModel
+                {
+                    Id = System.Guid.NewGuid(),
+                    Template = targetTemplateViewModel,
+                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Essential.Templating.Presentation.Models.Context.SimpleVideoPlacardContextModel
+                    {
+                        RequireUnobstructedPresetation = false,
+                        Video = (BindingContext as Models.View.InfinityVideoPlacardViewModel).Video
+                    })
+                }
+            };
 
-        public override void StartShowInWhenReady(Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition)
+            screenplayPresenter = new Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards.ToArray(), new Providers.InfinityVideoTransitionProvider(), EndPresentation, true, null);
+
+            screenplayPresenter.BeginPresentation();
+        } 
+
+        private Common.Presentation.Views.BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model)
         {
-            if (VideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            if (model.Template.Id != Essential.Templating.Descriptors.SimpleVideoTemplateDescriptor.ID) throw new System.InvalidOperationException();
+
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Essential.Templating.Presentation.Models.Context.SimpleVideoPlacardContextModel>(model.SerializedContext);
+
+            return new StrechAspectFillVideoPlacardView(new Essential.Templating.Presentation.Models.View.SimpleVideoPlacardViewModel
             {
-                base.StartShowInWhenReady(transition);
-
-                return;
-            }
-
-            this.transition = transition;
+                RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri)
+            });
         }
 
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
 
-            if (VideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
-            {
-                VideoPlayerView.StatusUpdated -= VideoPlayer_StatusUpdated;
+            screenplayPresenter.Dispose();
 
-                VideoPlayerView.Stop();
-            }
-
-            transition = null;
+            screenplayPresenter = null;
         }
     }
 }

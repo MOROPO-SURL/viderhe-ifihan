@@ -2,12 +2,17 @@
 {
     public class InfinityVideoPlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel
     {
-        public XFToolKit.Presentation.Sources.Video.VideoSource VideoSource { get; set; }
-
-        public Xamarin.Forms.ImageSource VideoThumbnailImageSource { get; set; }
+        public Common.Templating.Presentation.Models.Context.VideoContextModel Video { get; set; }
 
         public int StartMargin { get; set; }
 
         public int EndMargin { get; set; }
+
+        protected override void DisposeUnmanagementResources()
+        {
+            base.DisposeUnmanagementResources();
+
+            Video = null;
+        }
     }
 }
