@@ -39,16 +39,19 @@
                             Spacing="{Binding Source={Reference PlacardLayout}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=20}">
                             <ffimageloadingsvg:SvgCachedImage 
                                 x:Name="LogoImage"
+                                Opacity="0"
                                 HorizontalOptions="{Binding Path=FlyoutHorizontalOrientation, Converter={StaticResource FlyoutHorizontalOrientationToXFHorizontalOrientationConverter}, Mode=OneTime}"
                                 HeightRequest="{Binding Source={Reference PlacardLayout}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=5}" />
                             <Label 
                                 x:Name="HeaderLabel"
+                                Opacity="0"
                                 Text="{Binding Path=Header}"
                                 TextColor="White"
                                 FontFamily="Montserrat ExtraBold"
                                 FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <Label
                                 x:Name="ContentLabel"
+                                Opacity="0"
                                 Text="{Binding Path=Content}"
                                 TextColor="White"
                                 FontFamily="Montserrat SemiBold"

@@ -51,6 +51,50 @@
             Xamarin.Forms.Grid.SetRow(view, 0);
         }
 
+        public override void PerformPlacardStarup()
+        {
+            base.PerformPlacardStarup();
+
+            var internalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            {
+                IsParallel = true
+            };
+
+            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+            {
+                Target = MaskBackgroundImagen,
+                Scale = 1,
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.Linear,
+                Duration="500"
+            });
+            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+            {
+                Target = LogoImage,
+                Scale = 1,
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                Delay = "1500",
+                Duration = "500"
+            });
+            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+            {
+                Target = HeaderLabel,
+                Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down,
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                Delay = "2000",
+                Duration = "500"
+            });
+            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+            {
+                Target = ContentLabel,
+                Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down,
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                Delay = "2250",
+                Duration = "500"
+            });
+
+            internalShowInStoryboard.Begin();
+        }
+
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();

@@ -102,6 +102,30 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                 TranslateX = 0,
                 EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut
             });
+            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+            {
+                Target = LogoImage,
+                Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                Delay = "500",
+                Duration = "800"
+            });
+            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            {
+                Target = HeaderLabel,
+                Opacity=1,
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                Delay = "1300",
+                Duration = "500"
+            });
+            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            {
+                Target = ContentLabel,
+                Opacity=1,
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                Delay = "1550",
+                Duration = "500"
+            });
 
             if (model.ContextedImageCenteredAtPresentation)
             {

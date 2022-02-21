@@ -27,37 +27,52 @@
                     Grid.Column="2"
                     BackgroundColor="Black"
                     FadeAnimationEnabled="False"
-                    Source="{Binding Path=HeroImageSource}" 
+                    Source="{Binding Path=HeroImageSource, Mode=OneTime}" 
                     Aspect="AspectFill"
                     CacheType="Disk"
                     CacheDuration="8760:00:00" />
                 <ffimageloadingforms:CachedImage
                     x:Name="MaskBackgroundImagen"
                     Grid.ColumnSpan="3"
+                    Scale="15"
                     FadeAnimationEnabled="False" 
                     Aspect="Fill" />
-                <StackLayout 
+                <Grid
                     Grid.Column="0"
                     Margin="{Binding Source={Reference PlacardLayout}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=10}"
-                    IsClippedToBounds="True"
-                    Spacing="{Binding Source={Reference PlacardLayout}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=25}">
+                    RowSpacing="{Binding Source={Reference PlacardLayout}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=25}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
                     <ffimageloadingsvg:SvgCachedImage 
                         x:Name="LogoImage"
                         HorizontalOptions="Start"
+                        Grid.Row="0"
+                        Scale="0"
                         Margin="0,0,0,10"
                         HeightRequest="{Binding Source={Reference PlacardLayout}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=5}" />
                     <Label 
                         x:Name="HeaderLabel"
-                        Text="{Binding Path=Header}"
+                        Grid.Row="1"
+                        Opacity="0"
+                        Text="{Binding Path=Header, Mode=OneTime}"
                         FontFamily="Montserrat ExtraBold"
-                        FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}}" />
-                    <Label
-                        x:Name="ContentLabel"
-                        VerticalOptions="Fill"
-                        Text="{Binding Path=Content}"
-                        FontFamily="Montserrat SemiBold"
-                        FontSize="{Binding Path=ContentFontSize, Converter={StaticResource SizeToRelativeValueConverter}}" />
-                </StackLayout>
+                        FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    <StackLayout
+                        Grid.Row="2"
+                        VerticalOptions="FillAndExpand"
+                        IsClippedToBounds="True">
+                        <Label
+                            x:Name="ContentLabel"
+                            Opacity="0"
+                            VerticalOptions="Fill"
+                            Text="{Binding Path=Content, Mode=OneTime}"
+                            FontFamily="Montserrat SemiBold"
+                            FontSize="{Binding Path=ContentFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    </StackLayout>
+                </Grid>
             </Grid>
         </Grid>
     </ContentView.Content>
