@@ -2,6 +2,13 @@
 {
     public class LandscapeFillFlyoutPlacardContextModel : Contract.AbstractImagedMuseographyPlacardContextModel
     {
+        public LandscapeFillFlyoutPlacardContextModel()
+        {
+            ContextedImageLayoutMode = Essential.Templating.Presentation.Enumerations.PictureLayoutMode.AspectFill;
+        }
+
+        public Essential.Templating.Presentation.Enumerations.PictureLayoutMode ContextedImageLayoutMode { get; set; }
+
         public Enumerations.FlyoutShapeKind FlyoutShapeKind { get; set; }
 
         public Enumerations.FlyoutBackgroundColorMode FlyoutBackgroundColorMode { get; set; }

@@ -16,6 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                 Label = placardViewModel.Label,
                 ScreenPresentationTimeSecounds = System.Convert.ToInt32(context.ScreenPresentationTime.TotalSeconds),
                 ContextedImage = context.ContextedImage.ToViewModel(),
+                ContextedImageLayoutMode = context.ContextedImageLayoutMode,
                 IsContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
                 ContextedImageCenteredAtPresentation = context.ContextedImageCenteredAtPresentation,
                 FlyoutShapeKind = context.FlyoutShapeKind,

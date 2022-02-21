@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Converters"
+    xmlns:essentialpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation"
+    xmlns:essentialpresentationdashboardconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation"
     xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardpresenters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Presenters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
@@ -16,7 +18,10 @@
     x:Name="FormPage">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />
+            <converters:StringToLocalizeStringConverter x:Key="LocalStringToLocalizeStringConverter" />
+            <essentialpresentationconverters:PictureLayoutModeToXamarinFormAspectConverter x:Key="PictureLayoutModeToXamarinFormAspectConverter" />
+            <essentialpresentationdashboardconverters:StringToLocalizeStringConverter x:Key="EssentialStringToLocalizeStringConverter" />
+            <essentialpresentationdashboardconverters:IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter x:Key="IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
         </ResourceDictionary>
@@ -163,6 +168,7 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Frame 
                                     Style="{StaticResource FormFieldFrame}"
@@ -177,17 +183,20 @@
                                             Text="Imagen" 
                                             Style="{StaticResource FormLabel}" />
                                         <BoxView BackgroundColor="#666666" HeightRequest="1" />
-                                        <Grid>
+                                        <Grid BackgroundColor="Black">
                                             <Grid.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="PickContextedImageButton_Clicked" />
                                             </Grid.GestureRecognizers>
+                                            <BoxView
+                                                Grid.Row="0"
+                                                Color="SlateGray"
+                                                IsVisible="{Binding Path=ContextedImageLayoutMode, Converter={StaticResource IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter}}" />
                                             <ffimageloadingforms:CachedImage 
-                                                BackgroundColor="Black"
                                                 HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
                                                 CacheType="Disk"
                                                 CacheDuration="8760:00:00"
                                                 Source="{Binding Path=ContextedImage, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
-                                                Aspect="AspectFill">
+                                                Aspect="{Binding Path=ContextedImageLayoutMode, Converter={StaticResource PictureLayoutModeToXamarinFormAspectConverter}}">
                                                 <ffimageloadingforms:CachedImage.Behaviors>
                                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                                         ValidableFormPage="{Reference FormPage}"
@@ -224,16 +233,27 @@
                                     Grid.Column="0" Grid.Row="1"
                                     Style="{StaticResource FormFieldFrame}">
                                     <StackLayout>
-                                        <Label Text="Matener centrada Imagen Presentada?" Style="{StaticResource FormLabel}" />
-                                        <Switch IsToggled="{Binding Path=PresentedImageCenteredAtPresentation}" />
+                                        <Label Text="Presentación" Style="{StaticResource FormLabel}" />
+                                        <Picker 
+                                            ItemsSource="{Binding Path=AvailableLayoutModes}" 
+                                            SelectedItem="{Binding Path=ContextedImageLayoutMode}"
+                                            ItemDisplayBinding="{Binding Converter={StaticResource EssentialStringToLocalizeStringConverter}}"/>
                                     </StackLayout>
                                 </Frame>
                                 <Frame 
                                     Grid.Column="1" Grid.Row="1"
                                     Style="{StaticResource FormFieldFrame}">
                                     <StackLayout>
+                                        <Label Text="Matener centrada Imagen Presentada?" Style="{StaticResource FormLabel}" />
+                                        <Switch IsToggled="{Binding Path=ContextedImageCenteredAtPresentation}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="0" Grid.Row="2"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
                                         <Label Text="Usar ecfecto Zooming?" Style="{StaticResource FormLabel}" />
-                                        <Switch IsToggled="{Binding Path=ContextedImageZoomingEnabled}" />
+                                        <Switch IsToggled="{Binding Path=IsContextedImageZoomingEnabled}" />
                                     </StackLayout>
                                 </Frame>
                             </Grid>
@@ -254,7 +274,7 @@
                                     <Picker 
                                         ItemsSource="{Binding Path=AvailableFlyoutHorizontalOrientations}" 
                                         SelectedItem="{Binding Path=FlyoutHorizontalOrientation}"
-                                        ItemDisplayBinding="{Binding Converter={StaticResource StringToLocalizeStringConverter}}"/>
+                                        ItemDisplayBinding="{Binding Converter={StaticResource LocalStringToLocalizeStringConverter}}"/>
                                 </StackLayout>
                             </Frame>
                             <Frame 
@@ -265,7 +285,7 @@
                                     <Picker 
                                         ItemsSource="{Binding Path=AvailableFlyoutShapeKinds}" 
                                         SelectedItem="{Binding Path=FlyoutShapeKind}"
-                                        ItemDisplayBinding="{Binding Converter={StaticResource StringToLocalizeStringConverter}}" />
+                                        ItemDisplayBinding="{Binding Converter={StaticResource LocalStringToLocalizeStringConverter}}" />
                                 </StackLayout>
                             </Frame>
                             <Frame Style="{StaticResource FormFieldFrame}">
@@ -274,7 +294,7 @@
                                     <Picker 
                                         ItemsSource="{Binding Path=AvailableFlyoutBackgroundColorModes}" 
                                         SelectedItem="{Binding Path=FlyoutBackgroundColorMode}"
-                                        ItemDisplayBinding="{Binding Converter={StaticResource StringToLocalizeStringConverter}}"/>
+                                        ItemDisplayBinding="{Binding Converter={StaticResource LocalStringToLocalizeStringConverter}}"/>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>
