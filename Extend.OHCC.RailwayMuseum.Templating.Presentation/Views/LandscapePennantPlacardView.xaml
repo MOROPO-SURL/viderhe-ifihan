@@ -15,6 +15,7 @@
             <converters:LandscapePennantPlacardViewHeightToContentPaddingConverter x:Key="LandscapePennantPlacardViewHeightToContentPaddingConverter" PlacardView="{Reference Self}" />
             <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -57,18 +58,19 @@
                             WidthRequest="{Binding Source={RelativeSource AncestorType={Type StackLayout}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=2}" />
                         <Label 
                             x:Name="HeaderLabel"
-                            Text="{Binding Path=Header}"
+                            Text="{Binding Path=Header, Mode=OneTime}"
                             TextColor="White"
                             HorizontalTextAlignment="Center"
                             FontFamily="Montserrat ExtraBold"
-                            FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                            FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         <Label
+                            IsVisible="{Binding Path=Content, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}, Mode=OneTime}"
                             x:Name="ContentLabel"
-                            Text="{Binding Path=Content}"
+                            Text="{Binding Path=Content, Mode=OneTime}"
                             TextColor="White"
                             HorizontalTextAlignment="Center"
                             FontFamily="Montserrat SemiBold"
-                            FontSize="{Binding Path=ContentFontSize, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                            FontSize="{Binding Path=ContentFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     </StackLayout>
                 </Grid>
             </Grid>

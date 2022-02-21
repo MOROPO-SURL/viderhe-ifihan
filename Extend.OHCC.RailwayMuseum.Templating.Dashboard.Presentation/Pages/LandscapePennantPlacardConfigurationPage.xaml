@@ -317,22 +317,9 @@
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label 
-                                x:Name="DescriptionLabel"
                                 Text="Descripción" 
                                 Style="{StaticResource FormLabel}" />
-                            <Editor HeightRequest="200" Text="{Binding Path=Content}">
-                                <Editor.Behaviors>
-                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
-                                        ValidableFormPage="{Reference FormPage}"
-                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEditorValidationPresenter.Instance}"
-                                        TargetProperty="{Static Editor.TextProperty}"
-                                        Label="{Reference DescriptionLabel}">
-                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
-                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
-                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
-                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
-                                </Editor.Behaviors>
-                            </Editor>
+                            <Editor HeightRequest="200" Text="{Binding Path=Content}" />
                         </StackLayout>
                     </Frame>
                     <Frame 

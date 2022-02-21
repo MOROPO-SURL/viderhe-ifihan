@@ -12,6 +12,7 @@
         <ResourceDictionary>
             <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -27,13 +28,13 @@
                     Grid.ColumnSpan="3"
                     BackgroundColor="Black"
                     FadeAnimationEnabled="False"
-                    Source="{Binding Path=ContextedImageSource}" 
+                    Source="{Binding Path=ContextedImageSource, Mode=OneTime}" 
                     Aspect="AspectFill"
                     CacheType="Disk"
                     CacheDuration="8760:00:00" />
                 <Grid 
                     Grid.Column="1"
-                    BackgroundColor="{Binding Path=StripeBackgroundColor}"
+                    BackgroundColor="{Binding Path=StripeBackgroundColor, Mode=OneTime}"
                     IsClippedToBounds="True"
                     Padding="{Binding Source={RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=10}">
                     <StackLayout 
@@ -49,13 +50,14 @@
                             TextColor="White"
                             HorizontalTextAlignment="Center"
                             FontFamily="Montserrat ExtraBold"
-                            FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                            FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         <Label
-                            Text="{Binding Path=Content}"
+                            IsVisible="{Binding Path=Content, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}, Mode=OneTime}"
+                            Text="{Binding Path=Content, Mode=OneTime}"
                             TextColor="White"
                             HorizontalTextAlignment="Center"
                             FontFamily="Montserrat SemiBold"
-                            FontSize="{Binding Path=ContentFontSize, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                            FontSize="{Binding Path=ContentFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     </StackLayout>
                 </Grid>
             </Grid>
