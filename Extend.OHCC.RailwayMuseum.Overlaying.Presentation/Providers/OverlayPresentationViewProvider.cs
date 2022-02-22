@@ -18,6 +18,42 @@
                 });
             }
 
+            if (accountInformationProvider.AccountDefaultOverlayId.Value == Descriptors.WindowsAppsLauncherOverlayDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.WindowsAppsLauncherOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
+
+                return new Views.WindowsAppsLauncherOverlayView(new Models.View.WindowsAppsLauncherOverlayViewModel
+                {
+                    Title = context.Title,
+                    CallToActionMessage = context.CallToActionMessage,
+                    CallToActionMessageFontSize = context.CallToActionMessageFontSize,
+                    Launchs = new Models.View.WindowsAppLaunchViewModel[]
+                    {
+                        new Models.View.WindowsAppLaunchViewModel
+                        {
+                            Index = 0,
+                            Title = "<Nombre del Tour 1>",
+                            LocalPath = context.FirstLocalPath,
+                            ThumbnailImageSource = Xamarin.Forms.ImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.FirstVirtualTourAppLaunchTumbnail.jpg", GetType().Assembly)
+                        },
+                        new Models.View.WindowsAppLaunchViewModel
+                        {
+                            Index = 1,
+                            Title = "<Nombre del Tour 2>",
+                            LocalPath = context.SecoundLocalPath,
+                            ThumbnailImageSource = Xamarin.Forms.ImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.SecoundVirtualTourAppLaunchTumbnail.jpg", GetType().Assembly)
+                        },
+                        new Models.View.WindowsAppLaunchViewModel
+                        {
+                            Index = 2,
+                            Title = "<Nombre del Tour 3>",
+                            LocalPath = context.ThirthLocalPath,
+                            ThumbnailImageSource = Xamarin.Forms.ImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.ThirthVirtualTourAppLaunchTumbnail.jpg", GetType().Assembly)
+                        }
+                    }
+                });
+            }
+
             return null;
         }
     }

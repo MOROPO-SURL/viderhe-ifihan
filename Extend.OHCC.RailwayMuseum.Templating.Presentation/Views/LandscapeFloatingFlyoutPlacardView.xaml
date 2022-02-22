@@ -55,7 +55,7 @@
                         <ffimageloadingsvg:SvgCachedImage 
                             x:Name="LogoImage"
                             HorizontalOptions="{Binding Path=FlyoutHorizontalOrientation, Converter={StaticResource FlyoutHorizontalOrientationToXFHorizontalOrientationConverter}, Mode=OneTime}"
-                            HeightRequest="{Binding Source={RelativeSource AncestorType={Type StackLayout}}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=3}" />
+                            HeightRequest="{Binding Source={Reference PlacardLayout}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=5}" />
                         <Label 
                             x:Name="HeaderLabel"
                             Text="{Binding Path=Header}"

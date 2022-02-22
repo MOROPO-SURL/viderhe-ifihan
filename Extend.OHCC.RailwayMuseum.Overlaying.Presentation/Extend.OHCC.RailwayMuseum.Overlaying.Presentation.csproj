@@ -8,18 +8,47 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Fonts\Montserrat-ExtraBold.otf" />
+    <None Remove="Assets\Fonts\Montserrat-SemiBold.otf" />
+    <None Remove="Assets\Images\AppsLauncherPageBackground.jpg" />
+    <None Remove="Assets\Images\FirstVirtualTourAppLaunchTumbnail.jpg" />
+    <None Remove="Assets\Images\MF-Identity-Landscape.svg" />
+    <None Remove="Assets\Images\SecoundVirtualTourAppLaunchTumbnail.jpg" />
+    <None Remove="Assets\Images\ThirthVirtualTourAppLaunchTumbnail.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Fonts\Montserrat-ExtraBold.otf" />
+    <EmbeddedResource Include="Assets\Fonts\Montserrat-SemiBold.otf" />
+    <EmbeddedResource Include="Assets\Images\AppsLauncherPageBackground.jpg" />
+    <EmbeddedResource Include="Assets\Images\MF-Identity-Landscape.svg" />
+    <EmbeddedResource Include="Assets\Images\ThirthVirtualTourAppLaunchTumbnail.jpg" />
+    <EmbeddedResource Include="Assets\Images\SecoundVirtualTourAppLaunchTumbnail.jpg" />
+    <EmbeddedResource Include="Assets\Images\FirstVirtualTourAppLaunchTumbnail.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="SSCXFToolKit.Presentation" Version="0.6.1-alpha" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj" />
     <ProjectReference Include="..\Extend.OHCC.RailwayMuseum.Overlaying\Extend.OHCC.RailwayMuseum.Overlaying.csproj" />
+    <ProjectReference Include="..\Support.Presentation\Support.Presentation.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Pages\WindowsAppsLauncherPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\WindowsAppLauncherOverlayView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\WindowsAppsLauncherOverlayView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

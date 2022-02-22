@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Pages.WindowsAppsLauncherPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="8*" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="6*" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <StackLayout
+                Grid.Column="1" Grid.Row="1"
+                Spacing="{Binding Source={RelativeSource AncestorType={Type Grid}}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=20}">
+                <ffimageloadingsvg:SvgCachedImage 
+                    x:Name="LogoImage"
+                    HorizontalOptions="Center"
+                    HeightRequest="{Binding Source={RelativeSource AncestorType={Type Grid}}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=6}" />
+                <Label 
+                    x:Name="TitleLabel"
+                    HorizontalTextAlignment="Center"
+                    FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalTitleTextFontSize}"
+                    FontFamily="Montserrat ExtraBold" />
+                <Grid 
+                    VerticalOptions="FillAndExpand"
+                    ColumnSpacing="{Binding Source={RelativeSource AncestorType={Type Grid}}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=20}"
+                    BindableLayout.ItemsSource="{Binding Path=Launchs}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Grid.Column="{Binding Path=Index, Mode=OneTime}">
+                                <Image 
+                                    Source="{Binding Path=ThumbnailImageSource}"
+                                    Aspect="AspectFill" />
+                                <Label 
+                                    BackgroundColor="#99000000"
+                                    Padding="30"
+                                    Text="{Binding Path=Title}"
+                                    TextColor="White"
+                                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                                    FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.SmallHeaderTextFontSize}"
+                                    FontFamily="Montserrat SemiBold">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="LaunchLabelTapGestureRecognizer_Tapped" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </Grid>
+            </StackLayout>
+            <ImageButton
+                Grid.Column="2" Grid.Row="0"
+                VerticalOptions="Start" HorizontalOptions="End"
+                Margin="30"
+                WidthRequest="60" HeightRequest="60"
+                BackgroundColor="#99000000"
+                BorderWidth="0"
+                CornerRadius="10"                
+                Clicked="CloseButton_Clicked">
+                <ImageButton.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="UWP" Value="1,0,0,0" />
+                    </OnPlatform>
+                </ImageButton.Padding>
+                <ImageButton.Source>
+                    <FontImageSource 
+                        Color="White"
+                        FontFamily="{StaticResource IconFontFamily}"
+                        Size="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalTitleTextFontSize}"
+                        Glyph="&#xF156;" />
+                </ImageButton.Source>
+            </ImageButton>
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:ContentPage>

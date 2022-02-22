@@ -9,6 +9,11 @@
                 return new Pages.WindowsAppLauncherOverlayConfigurationPage(serializedContext, successfulCompleteCallbackAction);
             }
 
+            if (overlayDescriptor.Id == Descriptors.WindowsAppsLauncherOverlayDescriptor.ID)
+            {
+                return new Pages.WindowsAppsLauncherOverlayConfigurationPage(serializedContext, successfulCompleteCallbackAction);
+            }
+
             return null;
         }
     }

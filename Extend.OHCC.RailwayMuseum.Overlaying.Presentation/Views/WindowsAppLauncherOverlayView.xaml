@@ -3,11 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:extendcommonoverlayingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation"
-    xmlns:extendcommonoverlayingpresentationbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation"
-    xmlns:extendcommonoverlayingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    xmlns:sscxftoolkitpresentationtransformbehaviors="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Behaviors;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
-    xmlns:sscxftoolkitpresentationtransformanimations="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Views.WindowsAppLauncherOverlayView">
     <ContentView.Resources>
         <ResourceDictionary>
