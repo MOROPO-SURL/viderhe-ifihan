@@ -36,7 +36,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             {
                 if (empty) return;
 
-                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(task =>
+                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(5)).ContinueWith(task =>
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(presenter.BeginPresentation);
                 });
