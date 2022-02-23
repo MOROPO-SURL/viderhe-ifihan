@@ -18,7 +18,9 @@
         {
             Xamarin.Forms.Application.Current.MainPage.DisplayPromptAsync("Nombre del Servidor", "Especifique la dirección de red del servidor Viderhe Cloud:", "Aceptar", "Cancelar", "Ej. cloud.viderhe.net o 192.168.0.2").ContinueWith(task =>
             {
-                Support.Presentation.Managers.SessionMemoryManager.Instance.Server = task.Result;
+                if (string.IsNullOrEmpty(task.Result) || string.IsNullOrWhiteSpace(task.Result)) return;
+
+                Support.Presentation.Managers.SessionMemoryManager.Instance.Server = task.Result.Trim();
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(PresentServerAddress);
             });

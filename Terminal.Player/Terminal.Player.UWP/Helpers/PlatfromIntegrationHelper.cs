@@ -34,6 +34,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Helpers
                 {
                     applicationView.ExitFullScreenMode();
 
+                    Windows.UI.ViewManagement.ApplicationView.PreferredLaunchWindowingMode = Windows.UI.ViewManagement.ApplicationViewWindowingMode.Maximized;
+
                     app.IsRequestFullScreenModeRequired = true;
                 }
 
