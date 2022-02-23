@@ -32,21 +32,21 @@
                         new Models.View.WindowsAppLaunchViewModel
                         {
                             Index = 0,
-                            Title = "<Nombre del Tour 1>",
+                            Title = "Oficinas generales de los ferrocarriles",
                             LocalPath = context.FirstLocalPath,
                             ThumbnailImageSource = Xamarin.Forms.ImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.FirstVirtualTourAppLaunchTumbnail.jpg", GetType().Assembly)
                         },
                         new Models.View.WindowsAppLaunchViewModel
                         {
                             Index = 1,
-                            Title = "<Nombre del Tour 2>",
+                            Title = "Antiguo Hotel Camagüey: Arquitectura del patrimonio ferroviario",
                             LocalPath = context.SecoundLocalPath,
                             ThumbnailImageSource = Xamarin.Forms.ImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.SecoundVirtualTourAppLaunchTumbnail.jpg", GetType().Assembly)
                         },
                         new Models.View.WindowsAppLaunchViewModel
                         {
                             Index = 2,
-                            Title = "<Nombre del Tour 3>",
+                            Title = "Los grandes talleres ferroviarios de Garrido",
                             LocalPath = context.ThirthLocalPath,
                             ThumbnailImageSource = Xamarin.Forms.ImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.ThirthVirtualTourAppLaunchTumbnail.jpg", GetType().Assembly)
                         }
