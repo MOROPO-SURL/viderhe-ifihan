@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Providers
+﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Providers
 {
     public class OverlayPresentationViewProvider : Common.Overlaying.Presentation.Providers.Facade.IOverlayPresentationViewProviderFacade
     {
@@ -54,7 +56,30 @@
                 });
             }
 
+            if (accountInformationProvider.AccountDefaultOverlayId.Value == Descriptors.InformationMenuOverlayDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.InformationMenuOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
+
+                return new Views.DefaultCallToActionOverlayView((object param) => 
+                {
+                    Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Xamarin.Forms.NavigationPage(new Pages.InformationMenuPage(param as Models.View.InformationMenuOverlayViewModel)));
+                }, new Models.View.InformationMenuOverlayViewModel
+                {
+                    RailwayMuseumAboutUri = context.RailwayMuseumAboutUri,
+                    RailwayMuseumOfferUri = context.RailwayMuseumOfferUri,
+                    RailwayMuseumBillboardUri = context.RailwayMuseumBillboardUri,
+                    OHCCAboutUri = context.OHCCAboutUri,
+                    OHCCOfferUri = context.OHCCOfferUri,
+                    OHCCBillboardUri = context.OHCCBillboardUri,
+                    CallToActionMessage = context.CallToActionMessage,
+                    CallToActionMessageFontSize = context.CallToActionMessageFontSize
+                });
+            }
+
+
             return null;
         }
+
+        private void Callback(object param) { }
     }
 }

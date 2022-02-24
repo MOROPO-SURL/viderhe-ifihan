@@ -14,6 +14,11 @@
                 return new Pages.WindowsAppsLauncherOverlayConfigurationPage(serializedContext, successfulCompleteCallbackAction);
             }
 
+            if (overlayDescriptor.Id == Descriptors.InformationMenuOverlayDescriptor.ID)
+            {
+                return new Pages.InformationMenuOverlayConfigurationPage(serializedContext, successfulCompleteCallbackAction);
+            }
+
             return null;
         }
     }

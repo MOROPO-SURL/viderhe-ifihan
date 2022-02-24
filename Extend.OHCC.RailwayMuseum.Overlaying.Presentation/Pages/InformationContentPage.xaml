@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Pages.InformationContentPage"
+    BackgroundColor="#cccccc"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label
+                x:Name="InformationTitleLabel"
+                Grid.ColumnSpan="2" Grid.Row="0"
+                TextColor="Black"
+                FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalHeaderTextFontSize}"
+                HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <Button
+                Grid.Column="0" Grid.Row="0"
+                VerticalOptions="Start"
+                WidthRequest="60" HeightRequest="60"
+                BackgroundColor="Transparent"
+                BorderWidth="0"
+                Text="&#xf06d;"
+                TextColor="#21272C"
+                FontFamily="{StaticResource IconFontFamily}"
+                FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.LargeHeaderTextFontSize}"
+                Clicked="CloseButton_Clicked"/>
+            <BoxView
+                Grid.ColumnSpan="2" Grid.Row="1"
+                Color="Gray" />
+            <WebView 
+                x:Name="InformationContentWebView"
+                Grid.ColumnSpan="2" Grid.Row="2"
+                Source="http://www.elcallejon.net/"
+                Navigating="WebView_Navigating"
+                Navigated="WebView_Navigated" />
+            <ContentView
+                x:Name="BusyView"
+                Grid.ColumnSpan="2" Grid.Row="2"
+                BackgroundColor="#EEFFFFFF">
+                <StackLayout VerticalOptions="Center">
+                    <ActivityIndicator IsRunning="True" />
+                </StackLayout>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:ContentPage>

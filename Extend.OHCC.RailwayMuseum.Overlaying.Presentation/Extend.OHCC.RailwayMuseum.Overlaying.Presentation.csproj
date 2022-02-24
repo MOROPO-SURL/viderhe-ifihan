@@ -8,20 +8,46 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Fonts\Louda-RegularSC.otf" />
     <None Remove="Assets\Fonts\Montserrat-ExtraBold.otf" />
     <None Remove="Assets\Fonts\Montserrat-SemiBold.otf" />
     <None Remove="Assets\Images\AppsLauncherPageBackground.jpg" />
     <None Remove="Assets\Images\FirstVirtualTourAppLaunchTumbnail.jpg" />
-    <None Remove="Assets\Images\MF-Identity-Landscape.svg" />
+    <None Remove="Assets\Images\Information-Menu-Section-Item-Indicator-Left.svg" />
+    <None Remove="Assets\Images\Information-Menu-Section-Item-Indicator-Right.svg" />
+    <None Remove="Assets\Images\Information-Menu-Section-Vintage-Active.svg" />
+    <None Remove="Assets\Images\Information-Menu-Section-Vintage-Inactive.svg" />
+    <None Remove="Assets\Images\MF-Logo.svg" />
+    <None Remove="Assets\Images\OHCC-Background.jpg" />
+    <None Remove="Assets\Images\OHCC-Section-Item-1.jpg" />
+    <None Remove="Assets\Images\OHCC-Section-Item-2.jpg" />
+    <None Remove="Assets\Images\OHCC-Section-Item-3.jpg" />
+    <None Remove="Assets\Images\RailwayMuseum-Background.jpg" />
+    <None Remove="Assets\Images\RailwayMuseum-Section-Item-1.jpg" />
+    <None Remove="Assets\Images\RailwayMuseum-Section-Item-2.jpg" />
+    <None Remove="Assets\Images\RailwayMuseum-Section-Item-3.jpg" />
     <None Remove="Assets\Images\SecoundVirtualTourAppLaunchTumbnail.jpg" />
     <None Remove="Assets\Images\ThirthVirtualTourAppLaunchTumbnail.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\Fonts\Louda-RegularSC.otf" />
     <EmbeddedResource Include="Assets\Fonts\Montserrat-ExtraBold.otf" />
     <EmbeddedResource Include="Assets\Fonts\Montserrat-SemiBold.otf" />
     <EmbeddedResource Include="Assets\Images\AppsLauncherPageBackground.jpg" />
-    <EmbeddedResource Include="Assets\Images\MF-Identity-Landscape.svg" />
+    <EmbeddedResource Include="Assets\Images\Information-Menu-Section-Item-Indicator-Left.svg" />
+    <EmbeddedResource Include="Assets\Images\Information-Menu-Section-Item-Indicator-Right.svg" />
+    <EmbeddedResource Include="Assets\Images\Information-Menu-Section-Vintage-Active.svg" />
+    <EmbeddedResource Include="Assets\Images\Information-Menu-Section-Vintage-Inactive.svg" />
+    <EmbeddedResource Include="Assets\Images\MF-Logo.svg" />
+    <EmbeddedResource Include="Assets\Images\OHCC-Section-Item-1.jpg" />
+    <EmbeddedResource Include="Assets\Images\OHCC-Section-Item-2.jpg" />
+    <EmbeddedResource Include="Assets\Images\OHCC-Section-Item-3.jpg" />
+    <EmbeddedResource Include="Assets\Images\RailwayMuseum-Background.jpg" />
+    <EmbeddedResource Include="Assets\Images\OHCC-Background.jpg" />
+    <EmbeddedResource Include="Assets\Images\RailwayMuseum-Section-Item-1.jpg" />
+    <EmbeddedResource Include="Assets\Images\RailwayMuseum-Section-Item-2.jpg" />
+    <EmbeddedResource Include="Assets\Images\RailwayMuseum-Section-Item-3.jpg" />
     <EmbeddedResource Include="Assets\Images\ThirthVirtualTourAppLaunchTumbnail.jpg" />
     <EmbeddedResource Include="Assets\Images\SecoundVirtualTourAppLaunchTumbnail.jpg" />
     <EmbeddedResource Include="Assets\Images\FirstVirtualTourAppLaunchTumbnail.jpg" />
@@ -42,7 +68,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\DefaultCallToActionOverlayView.xaml.cs">
+      <DependentUpon>DefaultCallToActionOverlayView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\InformationContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\InformationMenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\WindowsAppsLauncherPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DefaultCallToActionOverlayView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\WindowsAppLauncherOverlayView.xaml">

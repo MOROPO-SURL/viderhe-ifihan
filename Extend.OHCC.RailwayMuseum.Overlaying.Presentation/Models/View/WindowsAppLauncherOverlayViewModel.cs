@@ -1,11 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.View
 {
-    public class WindowsAppLauncherOverlayViewModel
+    public class WindowsAppLauncherOverlayViewModel : Context.WindowsAppLauncherOverlayContextModel
     {
-        public string LocalPath { get; set; }
-
-        public string CallToActionMessage { get; set; }
-
-        public int CallToActionMessageFontSize { get; set; }
     }
 }
