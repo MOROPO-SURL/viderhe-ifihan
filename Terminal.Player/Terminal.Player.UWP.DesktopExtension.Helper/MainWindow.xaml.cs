@@ -9,7 +9,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.DesktopExtension.Helpe
     public partial class MainWindow : System.Windows.Window
     {
         [System.Runtime.InteropServices.DllImport("User32.dll", SetLastError = true)]
-        static extern void SwitchToThisWindow(IntPtr hWnd, bool fAltTab);
+        private static extern void SwitchToThisWindow(IntPtr hWnd, bool fAltTab);
+
+        [System.Runtime.InteropServices.DllImport("User32.dll")]
+        private static extern bool SetWindowPos(System.IntPtr Wnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+
+        private static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
+        private const UInt32 SWP_NOSIZE = 0x0001;
+        private const UInt32 SWP_NOMOVE = 0x0002;
+        private const UInt32 SWP_SHOWWINDOW = 0x0040;
 
         private AppServiceConnection appServiceConnection;
         private System.Diagnostics.Process launchProcess;
@@ -69,6 +77,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.DesktopExtension.Helpe
                         launchProcess.WaitForInputIdle();
 
                         SwitchToThisWindow(launchProcess.MainWindowHandle, true);
+                        //SetWindowPos(launchProcess.MainWindowHandle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
 
                         appServiceConnection = new AppServiceConnection
                         {
