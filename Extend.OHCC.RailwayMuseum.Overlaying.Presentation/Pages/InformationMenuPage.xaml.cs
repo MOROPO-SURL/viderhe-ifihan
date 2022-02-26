@@ -4,11 +4,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
 {
     public partial class InformationMenuPage : XFToolKit.Mvvm.Pages.ContentPage
     {
+        private static System.TimeSpan INDLE_CHECK_TIME = System.TimeSpan.FromSeconds(30);
+        private static System.TimeSpan INDLE_LIMIT_TIME = System.TimeSpan.FromMinutes(2);
+
         private Models.View.InformationMenuOverlayViewModel model;
 
         private Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider;
 
         private Enumerations.InformationMenuSection activeSection;
+
+        private System.Diagnostics.Stopwatch indleStopwatch;
 
         public InformationMenuPage(Models.View.InformationMenuOverlayViewModel model)
         {
@@ -35,6 +40,24 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
             PresentActiveSection();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (indleStopwatch != null)
+            {
+                indleStopwatch.Restart();
+
+                return;
+            }
+
+            indleStopwatch = new System.Diagnostics.Stopwatch();
+
+            indleStopwatch.Start();
+
+            Xamarin.Forms.Device.StartTimer(INDLE_CHECK_TIME, CheckFornIndleStatus);
+        }
+
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
@@ -48,6 +71,84 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
             FirstSectionIndicatorImage.Source = null;
             SecoundSectionIndicatorImage.Source = null;
             ThirthSectionIndicatorImage.Source = null;
+        }
+
+        private void OHCCSectionTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        {
+            ResetIndleElapsedTime();
+
+            if (activeSection == Enumerations.InformationMenuSection.OHCC) return;
+
+            activeSection = Enumerations.InformationMenuSection.OHCC;
+
+            PresentActiveSection();
+        }
+
+        private void RailwayMuseumSectionTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        {
+            ResetIndleElapsedTime();
+
+            if (activeSection == Enumerations.InformationMenuSection.RailwayMuseum) return;
+
+            activeSection = Enumerations.InformationMenuSection.RailwayMuseum;
+
+            PresentActiveSection();
+        }
+
+        private void SectionItem1TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        {
+            ResetIndleElapsedTime();
+
+            var title = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? "Museo Ferroviario" : "Oficnia del Historiador";
+
+            var url = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? model.RailwayMuseumAboutUri : model.OHCCAboutUri;
+
+            this.NavigationPushPageAsync(new InformationContentPage(title, url, ResetIndleElapsedTime));
+        }
+
+        private void SectionItem2TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        {
+            ResetIndleElapsedTime();
+
+            var title = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? "Museo Ferroviario" : "Oficnia del Historiador";
+
+            var url = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? model.RailwayMuseumOfferUri : model.OHCCOfferUri;
+
+            this.NavigationPushPageAsync(new InformationContentPage(title, url, ResetIndleElapsedTime));
+        }
+
+        private void SectionItem3TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        {
+            ResetIndleElapsedTime();
+
+            var title = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? "Museo Ferroviario" : "Oficnia del Historiador";
+
+            var url = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? model.RailwayMuseumBillboardUri : model.OHCCBillboardUri;
+
+            this.NavigationPushPageAsync(new InformationContentPage(title, url, ResetIndleElapsedTime));
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
+        {
+            ResetIndleElapsedTime();
+        }
+
+        private bool CheckFornIndleStatus()
+        {
+            var endIndleCheck = INDLE_LIMIT_TIME < indleStopwatch.Elapsed;
+
+            if (endIndleCheck)
+            {
+                Xamarin.Forms.Application.Current.MainPage.NavigationPopModalPageAsync();
+            }
+
+            return !endIndleCheck;
+        }
+
+        private void ResetIndleElapsedTime()
+        {
+            indleStopwatch.Reset();
+            indleStopwatch.Start();
         }
 
         private void PresentActiveSection()
@@ -100,51 +201,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
             Section3Image.Source = null;
             Section3Image.Source = Xamarin.Forms.ImageSource.FromResource(string.Format("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.{0}-Section-Item-3.jpg", activeSection), GetType().Assembly);
 
-        }
-
-        private void OHCCSectionTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
-        {
-            if (activeSection == Enumerations.InformationMenuSection.OHCC) return;
-
-            activeSection = Enumerations.InformationMenuSection.OHCC;
-
-            PresentActiveSection();
-        }
-
-        private void RailwayMuseumSectionTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
-        {
-            if (activeSection == Enumerations.InformationMenuSection.RailwayMuseum) return;
-
-            activeSection = Enumerations.InformationMenuSection.RailwayMuseum;
-
-            PresentActiveSection();
-        }
-
-        private void SectionItem1TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
-        {
-            var title = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? "Museo Ferroviario" : "Oficnia del Historiador";
-
-            var url = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? model.RailwayMuseumAboutUri : model.OHCCAboutUri;
-
-            this.NavigationPushPageAsync(new InformationContentPage(title, url));
-        }
-
-        private void SectionItem2TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
-        {
-            var title = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? "Museo Ferroviario" : "Oficnia del Historiador";
-
-            var url = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? model.RailwayMuseumOfferUri : model.OHCCOfferUri;
-
-            this.NavigationPushPageAsync(new InformationContentPage(title, url));
-        }
-
-        private void SectionItem3TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
-        {
-            var title = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? "Museo Ferroviario" : "Oficnia del Historiador";
-
-            var url = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? model.RailwayMuseumBillboardUri : model.OHCCBillboardUri;
-
-            this.NavigationPushPageAsync(new InformationContentPage(title, url));
         }
     }
 }
