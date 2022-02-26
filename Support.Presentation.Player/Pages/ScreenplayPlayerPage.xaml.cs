@@ -24,11 +24,17 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 
             demo = !loop;
             empty = placards.Length <= 0;
+
+            IsEnabled = false;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            if (IsEnabled) return;
+
+            IsEnabled = true;
 
             Xamarin.Essentials.DeviceDisplay.MainDisplayInfoChanged += DeviceDisplay_MainDisplayInfoChanged;
 
