@@ -53,6 +53,11 @@
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <AndroidSupportedAbis>
     </AndroidSupportedAbis>
+    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidSigningKeyStore>C:\Work\Dossiers\+SSC\Signature\Android\SSC.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>matorr3S/*-e21</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>ssc</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>matorr3S/*-e21</AndroidSigningKeyPass>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
