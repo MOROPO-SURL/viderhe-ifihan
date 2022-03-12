@@ -373,6 +373,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             }
         }
 
+        #endregion
+
         private void ScreenplayPresentIterationComplete_Callback()
         {
             if (scheduledRelaunche == null) return;
@@ -404,8 +406,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                 Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(true);
             }
         }
-
-        #endregion
 
         private void AnimateOutCurrentStep(System.EventHandler completeEventHandler)
         {
