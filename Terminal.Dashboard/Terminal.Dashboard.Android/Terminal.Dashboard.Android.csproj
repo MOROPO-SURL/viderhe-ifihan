@@ -44,15 +44,21 @@
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidDexTool>d8</AndroidDexTool>
-    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
-    <BundleAssemblies>true</BundleAssemblies>
+    <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
+    <BundleAssemblies>false</BundleAssemblies>
     <AndroidLinkTool>r8</AndroidLinkTool>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <AotAssemblies>true</AotAssemblies>
-    <EnableLLVM>true</EnableLLVM>
-    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
     <AndroidSupportedAbis>
     </AndroidSupportedAbis>
+    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidSigningKeyStore>C:\Work\Dossiers\+SSC\Signature\Android\SSC.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>matorr3S/*-e21</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>ssc</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>matorr3S/*-e21</AndroidSigningKeyPass>
+    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />

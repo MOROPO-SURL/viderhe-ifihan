@@ -1,4 +1,6 @@
-﻿[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer.VLCVideoPlayerViewRenderer))]
+﻿using SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Extensions;
+
+[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer.VLCVideoPlayerViewRenderer))]
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 {
@@ -28,6 +30,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 
                     SetAreTransportControlsEnabled();
 
+                    SetAspectStrech();
+
                     SetAutoPlay();
 
                     SetSource();
@@ -44,6 +48,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
             if (e.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.ShowControlsProperty.PropertyName)
             {
                 SetAreTransportControlsEnabled();
+            }
+            else if (e.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.StrechAspectProperty.PropertyName)
+            {
+                SetAspectStrech();
             }
             else if (e.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.SourceProperty.PropertyName)
             {
@@ -107,6 +115,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
             if (Control == null || disposed) return;
 
             Control.AreTransportControlsEnabled = Element.ShowControls;
+        }
+
+        private void SetAspectStrech()
+        {
+            Control.Stretch = Element.StrechAspect.ToUWP();
         }
 
         private void SetSource()

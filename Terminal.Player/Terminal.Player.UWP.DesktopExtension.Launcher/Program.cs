@@ -2,6 +2,15 @@
 {
     internal class Program
     {
+        [System.Runtime.InteropServices.DllImport("USER32.DLL")]
+        public static extern bool SetForegroundWindow(System.IntPtr hHnd);
+
+        [System.Runtime.InteropServices.DllImport("USER32.DLL")]
+        public static extern bool SetActiveWindow(System.IntPtr hHnd);
+
+        [System.Runtime.InteropServices.DllImport("USER32.DLL")]
+        public static extern bool SetWindowPost(System.IntPtr hHnd, System.IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+
         internal static void Main(string[] args)
         {
             System.Console.Title = "Viderhe Player Launcher";
@@ -29,6 +38,27 @@
                     };
 
                     System.Diagnostics.Process.Start(shutdownProcessStartInfo);
+
+                    break;
+
+                case "start-proccess":
+                    var discriminator = Windows.Storage.ApplicationData.Current.LocalSettings.Values["discriminator"] as string;
+
+                    var launchaAppProcessStartInfo = new System.Diagnostics.ProcessStartInfo(discriminator)
+                    {
+                        CreateNoWindow = true,
+                        UseShellExecute = false,
+                        WindowStyle = System.Diagnostics.ProcessWindowStyle.Maximized
+                    };
+
+                    var proccess = System.Diagnostics.Process.Start(launchaAppProcessStartInfo);
+
+                    if (proccess.MainWindowHandle != System.IntPtr.Zero)
+                    {
+                        SetForegroundWindow(proccess.MainWindowHandle);
+                        SetWindowPost(proccess.MainWindowHandle, new System.IntPtr(-1), 0, 0, 0, 0, 0x0001 | 0x0002);
+                        SetActiveWindow(proccess.MainWindowHandle);
+                    }
 
                     break;
 

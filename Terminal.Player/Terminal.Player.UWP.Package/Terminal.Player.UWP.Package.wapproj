@@ -164,7 +164,7 @@
     <Content Include="Images\Wide310x150Logo.scale-400.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Terminal.Player.UWP.DesktopExtension.Launcher\Terminal.Player.UWP.DesktopExtension.Launcher.csproj" />
+    <ProjectReference Include="..\Terminal.Player.UWP.DesktopExtension.Helper\Terminal.Player.UWP.DesktopExtension.Helper.csproj" />
     <ProjectReference Include="..\Terminal.Player.UWP\Terminal.Player.UWP.csproj" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
