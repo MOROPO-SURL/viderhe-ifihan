@@ -24,6 +24,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
                 OverlapHorizontalAlignment = context.OverlapHorizontalAlignment,
                 Title = context.Title,
+                TitleFontFamily = context.TitleFontFamily,
                 TitleFontSize = context.TitleFontSize
             };
 

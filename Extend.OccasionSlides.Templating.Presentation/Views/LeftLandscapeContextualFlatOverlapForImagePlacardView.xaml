@@ -56,6 +56,7 @@
                                 Opacity="0"
                                 Text="{Binding Path=Title, Mode=OneTime}"
                                 TextColor="{Binding Path=TextColor, Mode=OneTime}"
+                                FontFamily="{Binding Path=TitleFontFamily}"
                                 FontSize="{Binding Path=TitleFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <StackLayout
                                 x:Name="InfoBlocksLayout"

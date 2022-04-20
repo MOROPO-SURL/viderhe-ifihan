@@ -20,6 +20,7 @@
                     TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
                     OverlapHorizontalAlignment = context.OverlapHorizontalAlignment,
                     Title = context.Title,
+                    TitleFontFamily = context.TitleFontFamily,
                     TitleFontSize = context.TitleFontSize,
                     ContentBlocks = context.ContentBlocks
                 };
@@ -50,6 +51,7 @@
                     TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
                     OverlapHorizontalAlignment = context.OverlapHorizontalAlignment,
                     Title = context.Title,
+                    TitleFontFamily = context.TitleFontFamily,
                     TitleFontSize = context.TitleFontSize,
                     ContentBlocks = context.ContentBlocks
                 };
@@ -80,6 +82,7 @@
                     TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
                     OverlapHorizontalAlignment = context.OverlapHorizontalAlignment,
                     Title = context.Title,
+                    TitleFontFamily = context.TitleFontFamily,
                     TitleFontSize = context.TitleFontSize,
                     ContentBlocks = context.ContentBlocks
                 };

@@ -8,6 +8,8 @@
 
         public string Title { get; set; }
 
+        public string TitleFontFamily { get; set; }
+
         public int TitleFontSize { get; set; }
 
         public TextContentBlockModel[] ContentBlocks { get; set; }

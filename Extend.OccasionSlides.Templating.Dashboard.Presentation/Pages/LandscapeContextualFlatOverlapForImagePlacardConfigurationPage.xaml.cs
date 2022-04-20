@@ -69,6 +69,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
                             TextColor = BindingContextPageModel.TextColor.ToHex(),
                             Title = BindingContextPageModel.Title,
+                            TitleFontFamily = BindingContextPageModel.TitleFontFamily,
                             TitleFontSize = BindingContextPageModel.TitleFontSize,
                             ContentBlocks = BindingContextPageModel.ContentBlocks.ToArray()
                         })
@@ -95,6 +96,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
                             TextColor = BindingContextPageModel.TextColor.ToHex(),
                             Title = BindingContextPageModel.Title,
+                            TitleFontFamily = BindingContextPageModel.TitleFontFamily,
                             TitleFontSize = BindingContextPageModel.TitleFontSize,
                             ContentBlocks = BindingContextPageModel.ContentBlocks.ToArray()
                         })
@@ -258,6 +260,21 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                         break;
                 }
             });
+        }
+
+        private void TitleFontFamilyClearButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            BindingContextPageModel.TitleFontFamily = null;
+        }
+
+        private void TitleFontFamilyPickButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.EmbeddedFontFamilyNamePickPage(TitleFontFamilyPicked_Callback));
+        }
+
+        private void TitleFontFamilyPicked_Callback(string selection)
+        {
+            BindingContextPageModel.TitleFontFamily = selection;
         }
 
         private void ContextedImagePicked_Callback(Support.Presentation.Models.View.ImageViewModel selection)

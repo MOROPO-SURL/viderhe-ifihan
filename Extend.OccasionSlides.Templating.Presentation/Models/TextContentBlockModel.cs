@@ -4,6 +4,7 @@
     {
         private int priority;
         private string header;
+        private string headerFontFamily;
         private int headerFontSize;
         private bool isHeaderVisible;
         private string content;
@@ -23,6 +24,8 @@
         public int Priority { get => priority; set => SetProperty(ref priority, value); }
 
         public string Header { get => header; set => SetProperty(ref header, value); }
+
+        public string HeaderFontFamily { get => headerFontFamily; set => SetProperty(ref headerFontFamily, value); }
 
         public int HeaderFontSize { get => headerFontSize; set => SetProperty(ref headerFontSize, value); }
 

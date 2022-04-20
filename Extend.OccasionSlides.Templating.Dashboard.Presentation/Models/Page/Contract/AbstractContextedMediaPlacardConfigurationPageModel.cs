@@ -5,6 +5,7 @@
         private Templating.Presentation.Enumerations.OverlapShapeKind overlapShapeKind;
         private Templating.Presentation.Enumerations.OverlapSize overlapSize;
         private string title;
+        private string titleFontFamily;
         private int titleFontSize;
 
         public AbstractContextedMediaPlacardConfigurationPageModel()
@@ -36,6 +37,8 @@
         public Templating.Presentation.Enumerations.OverlapSize[] AvailableOverlapSizes { get; private set; }
 
         public string Title { get => title; set => SetProperty(ref title, value); }
+
+        public string TitleFontFamily { get => titleFontFamily; set => SetProperty(ref titleFontFamily, value); }
 
         public int TitleFontSize { get => titleFontSize; set => SetProperty(ref titleFontSize, value); }
 
