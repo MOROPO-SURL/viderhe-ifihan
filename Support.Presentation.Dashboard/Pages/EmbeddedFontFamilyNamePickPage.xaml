@@ -41,16 +41,18 @@
                                     CornerRadius="0"
                                     WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}">
                                     <StackLayout
-                                        Orientation="Horizontal"
                                         Padding="6"
                                         Spacing="3">
                                         <Label 
                                             HorizontalOptions="StartAndExpand" VerticalOptions="Center"
                                             Text="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 1234567890"
-                                            FontFamily="{Binding .}" />
+                                            FontFamily="{Binding .}"
+                                            FontSize="Medium" />
                                         <Label 
                                             HorizontalOptions="StartAndExpand" VerticalOptions="Center"
-                                            Text="{Binding .}" />
+                                            Text="{Binding .}"
+                                            TextColor="#3E3E3E"
+                                            FontAttributes="Italic" />
                                         <Button 
                                             BackgroundColor="Accent"
                                             Text="Seleccionar"
