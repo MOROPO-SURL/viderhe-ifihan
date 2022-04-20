@@ -50,7 +50,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                Xamarin.Forms.Forms.Init(e);
+                var assembliesToInclude = new System.Collections.Generic.List<System.Reflection.Assembly>
+                {
+                    typeof(ImageCircle.Forms.Plugin.UWP.ImageCircleRenderer).Assembly
+                };
+
+                Xamarin.Forms.Forms.Init(e, assembliesToInclude);
 
                 FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 

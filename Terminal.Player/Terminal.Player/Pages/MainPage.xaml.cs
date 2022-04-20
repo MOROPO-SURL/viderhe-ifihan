@@ -357,21 +357,25 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                 {
                     var timeOfDay = System.DateTime.Now.TimeOfDay;
 
-                    foreach (var item in task.Result.ScheduledRelaunches)
+                    var orderScheduledRelaunches = task.Result.ScheduledRelaunches.OrderBy(entity => entity.Time).ToArray();
+
+                    foreach (var item in orderScheduledRelaunches)
                     {
-                        if (timeOfDay + Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME < item.Time) continue;
+                        if (timeOfDay + Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME > item.Time) continue;
 
                         scheduledRelaunche = item;
 
                         break;
                     }
 
-                    if (scheduledRelaunche == null) scheduledRelaunche = task.Result.ScheduledRelaunches[0];
+                    if (scheduledRelaunche == null) scheduledRelaunche = orderScheduledRelaunches[0];
                 }
 
                 AnimateOutCurrentStep(CurrentStepAnimateOut_Completed);
             }
         }
+
+        #endregion
 
         private void ScreenplayPresentIterationComplete_Callback()
         {
@@ -404,8 +408,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                 Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(true);
             }
         }
-
-        #endregion
 
         private void AnimateOutCurrentStep(System.EventHandler completeEventHandler)
         {

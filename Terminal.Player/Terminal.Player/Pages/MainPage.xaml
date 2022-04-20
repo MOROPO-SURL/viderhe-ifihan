@@ -5,7 +5,6 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:renderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Player.Views.Rendered"
     xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
-    xmlns:supportpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Player.Pages.MainPage"
@@ -64,8 +63,7 @@
                     Spacing="0">
                     <ffimageloadingsvg:SvgCachedImage
                         WidthRequest="180"
-                        Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Player.Assets.Images.viderhe-identity-high-contrast-light.svg"
-                        Aspect="AspectFill" />
+                        Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Player.Assets.Images.viderhe-identity-high-contrast-light.svg" />
                 </StackLayout>
                 <!--<StackLayout 
                     x:Name="ProductIdentityContainer"
