@@ -8,6 +8,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Font\CreteRound-Italic.ttf" />
+    <None Remove="Assets\Font\CreteRound-Regular.ttf" />
+    <None Remove="Assets\Font\EuphoriaScript-Regular.ttf" />
+    <None Remove="Assets\Font\ExpletusSans-Bold.ttf" />
+    <None Remove="Assets\Font\ExpletusSans-Medium.ttf" />
+    <None Remove="Assets\Font\ExpletusSans-SemiBold.ttf" />
+    <None Remove="Assets\Font\PermanentMarker-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Font\CreteRound-Italic.ttf" />
+    <EmbeddedResource Include="Assets\Font\CreteRound-Regular.ttf" />
+    <EmbeddedResource Include="Assets\Font\EuphoriaScript-Regular.ttf" />
+    <EmbeddedResource Include="Assets\Font\ExpletusSans-Bold.ttf" />
+    <EmbeddedResource Include="Assets\Font\ExpletusSans-Medium.ttf" />
+    <EmbeddedResource Include="Assets\Font\ExpletusSans-SemiBold.ttf" />
+    <EmbeddedResource Include="Assets\Font\PermanentMarker-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.3" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />

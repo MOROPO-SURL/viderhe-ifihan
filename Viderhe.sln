@@ -117,10 +117,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.OccasionSlides.Templ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.OccasionSlides.Templating.Presentation", "Extend.OccasionSlides.Templating.Presentation\Extend.OccasionSlides.Templating.Presentation.csproj", "{87DEA43C-11BE-429E-ACB1-88810B7301A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extend.OccasionSlides.Templating.Dashboard.Presentation", "Extend.OccasionSlides.Templating.Dashboard.Presentation\Extend.OccasionSlides.Templating.Dashboard.Presentation.csproj", "{D2829EDD-E4AC-451F-A0FF-F17293182E9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.OccasionSlides.Templating.Dashboard.Presentation", "Extend.OccasionSlides.Templating.Dashboard.Presentation\Extend.OccasionSlides.Templating.Dashboard.Presentation.csproj", "{D2829EDD-E4AC-451F-A0FF-F17293182E9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cloud.Persistence.EF", "Cloud.Persistence.EF\Cloud.Persistence.EF.csproj", "{35495147-E7A8-4F85-917F-76A4B33E112F}"
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cloud.Persistence.EF", "Cloud.Persistence.EF\Cloud.Persistence.EF.csproj", "{35495147-E7A8-4F85-917F-76A4B33E112F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Player.UWP.DesktopExtension.Helper", "Terminal.Player\Terminal.Player.UWP.DesktopExtension.Helper\Terminal.Player.UWP.DesktopExtension.Helper.csproj", "{6C2DA28A-AAB9-498B-A1F6-ED74D9FB2F20}"
 EndProject
