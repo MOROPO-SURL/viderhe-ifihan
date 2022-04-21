@@ -25,14 +25,28 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
             if (IsEnabled) return;
 
-            var embeddedFontFamilyNames = Extend.Templating.Presentation.Helpers.Provisioning.EmbeddedFontFamilyNamesProvisioningHelper.Instance.GetAll();
+            BindingContextPageModel.IsBusy = true;
 
-            foreach (var item in embeddedFontFamilyNames)
+            System.Threading.Tasks.Task.Run(() =>
             {
-                BindingContextPageModel.Items.Add(item);
-            }
+                var embeddedFontFamilyNames = Extend.Templating.Presentation.Helpers.Provisioning.EmbeddedFontFamilyNamesProvisioningHelper.Instance.GetAll();
 
-            IsEnabled = true;
+                foreach (var item in embeddedFontFamilyNames)
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        BindingContextPageModel.Items.Add(item);
+                    });
+                }
+            }).ContinueWith(_ =>
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    IsEnabled = true;
+
+                    BindingContextPageModel.IsBusy = false;
+                });
+            });            
         }
 
         private void ItemOverviewPickButton_Clicked(object sender, System.EventArgs eventArgs)

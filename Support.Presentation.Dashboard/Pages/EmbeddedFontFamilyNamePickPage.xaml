@@ -23,7 +23,7 @@
                     <FlexLayout
                         Margin="5"
                         Wrap="Wrap"
-                        AlignItems="Start" AlignContent="Start"
+                        AlignItems="Center" AlignContent="Start"
                         BindableLayout.ItemsSource="{Binding Path=Items}">
                         <BindableLayout.EmptyView>
                             <Label
@@ -63,19 +63,9 @@
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </FlexLayout>
-                    <Button
-                        IsVisible="{Binding Path=HasMoreItems}"
-                        IsEnabled="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
-                        Margin="5,0,5,5"
-                        HorizontalOptions="Center"
-                        Text="Mostrar más"
-                        Clicked="LoadNextPageButtton_Clicked" />
-                    <ActivityIndicator
-                        IsVisible="{Binding Path=IsBusy}"
-                        Margin="5,0,5,5"
-                        IsRunning="{Binding Path=IsBusy}" />
                 </StackLayout>
             </ScrollView>
+            <views:BusyView />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>
