@@ -267,8 +267,8 @@
                                         <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <Label
                                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -277,6 +277,8 @@
                                     <Entry
                                         Grid.Column="0" Grid.Row="1"
                                         Text="{Binding Path=TitleFontFamily}"
+                                        Placeholder="Sistema"
+                                        PlaceholderColor="Black"
                                         IsReadOnly="True" />
                                     <Button
                                         Grid.Column="1" Grid.Row="1"

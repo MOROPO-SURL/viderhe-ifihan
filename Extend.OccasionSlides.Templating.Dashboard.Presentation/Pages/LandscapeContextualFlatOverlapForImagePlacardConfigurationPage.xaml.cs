@@ -136,7 +136,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void AddContentBlockButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.TextContentBlockConfigurationPopupPage(TextContentBlockCreation_Callback));
+            this.NavigationPushPageAsync(new Block.TextContentBlockConfigurationPage(TextContentBlockCreation_Callback));
         }
 
         private void ContentBlockOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -167,7 +167,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                     case OPTION_COMMON_EDIT:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.TextContentBlockConfigurationPopupPage(TextContentBlockEdition_Callback, target));
+                            this.NavigationPushPageAsync(new Block.TextContentBlockConfigurationPage(target, TextContentBlockEdition_Callback));
                         });
 
                         break;

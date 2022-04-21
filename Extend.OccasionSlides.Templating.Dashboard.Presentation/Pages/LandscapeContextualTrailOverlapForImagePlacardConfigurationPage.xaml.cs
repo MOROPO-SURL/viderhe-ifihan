@@ -69,6 +69,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
                             TextColor = BindingContextPageModel.TextColor.ToHex(),
                             Title = BindingContextPageModel.Title,
+                            TitleFontFamily = BindingContextPageModel.TitleFontFamily,
                             TitleFontSize = BindingContextPageModel.TitleFontSize,
                             ContentBlocks = BindingContextPageModel.ContentBlocks.ToArray()
                         })
@@ -95,6 +96,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
                             TextColor = BindingContextPageModel.TextColor.ToHex(),
                             Title = BindingContextPageModel.Title,
+                            TitleFontFamily = BindingContextPageModel.TitleFontFamily,
                             TitleFontSize = BindingContextPageModel.TitleFontSize,
                             ContentBlocks = BindingContextPageModel.ContentBlocks.ToArray()
                         })
@@ -134,7 +136,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void AddContentBlockButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.TextContentBlockConfigurationPopupPage(TextContentBlockCreation_Callback));
+            this.NavigationPushPageAsync(new Block.TextContentBlockConfigurationPage(TextContentBlockCreation_Callback));
         }
 
         private void ContentBlockOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -165,7 +167,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                     case OPTION_COMMON_EDIT:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.TextContentBlockConfigurationPopupPage(TextContentBlockEdition_Callback, target));
+                            this.NavigationPushPageAsync(new Block.TextContentBlockConfigurationPage(target, TextContentBlockEdition_Callback));
                         });
 
                         break;
@@ -258,6 +260,21 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                         break;
                 }
             });
+        }
+
+        private void TitleFontFamilyClearButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            BindingContextPageModel.TitleFontFamily = null;
+        }
+
+        private void TitleFontFamilyPickButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.EmbeddedFontFamilyNamePickPage(TitleFontFamilyPicked_Callback));
+        }
+
+        private void TitleFontFamilyPicked_Callback(string selection)
+        {
+            BindingContextPageModel.TitleFontFamily = selection;
         }
 
         private void ContextedImagePicked_Callback(Support.Presentation.Models.View.ImageViewModel selection)

@@ -16,6 +16,7 @@
             <converters:OverlapWidthToLeftContentPaddingConverter x:Key="OverlapWidthToLeftContentPaddingConverter" />
             <converters:OverlapWidthToInfoBlockPaddingConverter x:Key="OverlapWidthToInfoBlockPaddingConverter" />
             <converters:OverlapWidthToInfoBlockLabelPaddingConverter x:Key="OverlapWidthToInfoBlockLabelPaddingConverter" />
+            <converters:HeaderFontFamilyNameToFontAttributesConverter x:Key="HeaderFontFamilyNameToFontAttributesConverter" />
             <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
@@ -56,7 +57,7 @@
                                 Opacity="0"
                                 Text="{Binding Path=Title, Mode=OneTime}"
                                 TextColor="{Binding Path=TextColor, Mode=OneTime}"
-                                FontFamily="{Binding Path=TitleFontFamily}"
+                                FontFamily="{Binding Path=TitleFontFamily, Mode=OneTime}"
                                 FontSize="{Binding Path=TitleFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <StackLayout
                                 x:Name="InfoBlocksLayout"
@@ -73,11 +74,13 @@
                                                 Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource OverlapWidthToInfoBlockLabelPaddingConverter}}"
                                                 Text="{Binding Path=Header, Mode=OneTime}"
                                                 TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
-                                                FontAttributes="Italic,Bold"
+                                                FontAttributes="{Binding Path=HeaderFontFamily, Mode=OneTime, Converter={StaticResource HeaderFontFamilyNameToFontAttributesConverter}}"
+                                                FontFamily="{Binding Path=HeaderFontFamily, Mode=OneTime}"
                                                 FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"/>
                                             <Label
                                                 Text="{Binding Path=Content, Mode=OneTime}"
                                                 TextColor="{Binding Source={Reference Wrapper}, Path=BindingContext.TextColor, Mode=OneTime}"
+                                                FontFamily="{Binding Path=ContentFontFamily, Mode=OneTime}"
                                                 FontSize="{Binding Path=ContentFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                                         </StackLayout>
                                     </DataTemplate>

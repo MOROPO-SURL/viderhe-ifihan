@@ -4,11 +4,10 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</RootNamespace>
-    <Version>0.3.0.0</Version>
+    <Version>0.4.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.11" />
     <PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.5" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
   </ItemGroup>
@@ -24,9 +23,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>LocalizedResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\Popup\TextContentBlockConfigurationPopupPage.xaml.cs">
-      <DependentUpon>TextContentBlockConfigurationPopupPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Pages\LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml.cs">
       <DependentUpon>LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml</DependentUpon>
@@ -48,6 +44,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Block\TextContentBlockConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LandscapeContextualCommonOverlapForImagePlacardThumbnailView.xaml">

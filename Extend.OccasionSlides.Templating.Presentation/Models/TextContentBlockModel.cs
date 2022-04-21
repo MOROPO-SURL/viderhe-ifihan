@@ -9,6 +9,7 @@
         private bool isHeaderVisible;
         private string content;
         private int contentMaxLine;
+        private string contentFontFamily;
         private int contentFontSize;
 
         public TextContentBlockModel()
@@ -35,6 +36,8 @@
 
         public int ContentMaxLine { get => contentMaxLine; set => SetProperty(ref contentMaxLine, value); }
 
+        public string ContentFontFamily { get => contentFontFamily; set => SetProperty(ref contentFontFamily, value); }
+
         public int ContentFontSize { get => contentFontSize; set => SetProperty(ref contentFontSize, value); }
 
         public object Clone()
@@ -44,10 +47,12 @@
                 Id = Id,
                 Priority = Priority,
                 Header = Header,
+                HeaderFontFamily = HeaderFontFamily,
                 HeaderFontSize = HeaderFontSize,
                 IsHeaderVisible = IsHeaderVisible,
                 Content = Content,
                 ContentMaxLine = ContentMaxLine,
+                ContentFontFamily = ContentFontFamily,
                 ContentFontSize = ContentFontSize
             };
         }

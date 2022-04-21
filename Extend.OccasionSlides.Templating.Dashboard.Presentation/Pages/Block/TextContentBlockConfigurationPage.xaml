@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Block.TextContentBlockConfigurationPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BoolToFieldsetBackgroudnColorStringConverter" FalseString="White" TrueString="#66FFFFFF" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Aplicar"
+            Clicked="ApplyToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Cancelar"
+            Clicked="CancelToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView>
+                <Grid 
+                    Margin="10"
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Frame 
+                        Grid.Column="0"
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF"
+                        VerticalOptions="Start">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label 
+                                Grid.ColumnSpan="2" Grid.Row="0"
+                                Text="Bloque de Texto" 
+                                Style="{StaticResource FormLabel}" />
+                            <Frame 
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                Style="{StaticResource FormFieldFrame}"
+                                Margin="0,0,0,6">
+                                <StackLayout>
+                                    <Label Text="Texto" Style="{StaticResource FormLabel}" />
+                                    <Editor 
+                                        HeightRequest="180"
+                                        Text="{Binding Path=Content}" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame 
+                                Grid.Column="0" Grid.Row="2"
+                                Style="{StaticResource FormFieldFrame}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        Grid.ColumnSpan="3" Grid.Row="0"
+                                        Text="Fuente" 
+                                        Style="{StaticResource FormLabel}" />
+                                    <Entry
+                                        Grid.Column="0" Grid.Row="1"
+                                        Text="{Binding Path=ContentFontFamily}"
+                                        Placeholder="Sistema"
+                                        PlaceholderColor="Black"
+                                        IsReadOnly="True" />
+                                    <Button
+                                        Grid.Column="1" Grid.Row="1"
+                                        Text="Seleccionar"
+                                        Clicked="ContentFontFamilyPickButton_Clicked" />
+                                    <Button 
+                                        Grid.Column="2" Grid.Row="1"
+                                        IsEnabled="{Binding Path=ContentFontFamily, Converter={StaticResource NotNullToBooleanConverter}}"
+                                        Style="{StaticResource TextIconButton}"
+                                        Text="&#xF413;"
+                                        Clicked="ContentFontFamilyClearButton_Clicked" />
+                                </Grid>
+                            </Frame>
+                            <Frame 
+                                Grid.Column="1" Grid.Row="2"
+                                Style="{StaticResource FormFieldFrame}">
+                                <StackLayout>
+                                    <Label Text="Tamaño" Style="{StaticResource FormLabel}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Path=ContentFontSize}" VerticalTextAlignment="Center" />
+                                        <Label Text="Puntos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                        <Stepper Value="{Binding Path=ContentFontSize}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1"
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="{Binding Source={Reference IsHeaderVisibleSwitch}, Path=IsToggled, Converter={StaticResource BoolToFieldsetBackgroudnColorStringConverter}}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <StackLayout>
+                                <Label Text="Usar Cabecera?" Style="{StaticResource FormLabel}" />
+                                <Switch
+                                    x:Name="IsHeaderVisibleSwitch"
+                                    IsToggled="{Binding Path=IsHeaderVisible}" />
+                            </StackLayout>
+                            <StackLayout IsVisible="{Binding Source={Reference IsHeaderVisibleSwitch}, Path=IsToggled}">
+                                <Frame 
+                                    Style="{StaticResource FormFieldFrame}"
+                                    Margin="0,0,0,6">
+                                    <StackLayout>
+                                        <Label Text="Texto" Style="{StaticResource FormLabel}" />
+                                        <Entry Text="{Binding Path=Header}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Style="{StaticResource FormFieldFrame}"
+                                    Margin="0,0,0,6">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            Grid.ColumnSpan="3" Grid.Row="0"
+                                            Text="Fuente" 
+                                            Style="{StaticResource FormLabel}" />
+                                        <Entry
+                                            Grid.Column="0" Grid.Row="1"
+                                            Text="{Binding Path=HeaderFontFamily}"
+                                            Placeholder="Sistema"
+                                            PlaceholderColor="Black"
+                                            IsReadOnly="True" />
+                                        <Button
+                                            Grid.Column="1" Grid.Row="1"
+                                            Text="Seleccionar"
+                                            Clicked="HeaderFontFamilyPickButton_Clicked" />
+                                        <Button 
+                                            Grid.Column="2" Grid.Row="1"
+                                            IsEnabled="{Binding Path=HeaderFontFamily, Converter={StaticResource NotNullToBooleanConverter}}"
+                                            Style="{StaticResource TextIconButton}"
+                                            Text="&#xF413;"
+                                            Clicked="HeaderFontFamilyClearButton_Clicked" />
+                                    </Grid>
+                                </Frame>
+                                <Frame Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Tamaño" Style="{StaticResource FormLabel}" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Path=HeaderFontSize}" VerticalTextAlignment="Center" />
+                                            <Label Text="Puntos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                            <Stepper Value="{Binding Path=HeaderFontSize}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:ContentPage>
