@@ -23,7 +23,7 @@
                     <FlexLayout
                         Margin="5"
                         Wrap="Wrap"
-                        AlignItems="Start" AlignContent="Start"
+                        AlignItems="Center" AlignContent="Start"
                         BindableLayout.ItemsSource="{Binding Path=Items}">
                         <BindableLayout.EmptyView>
                             <Label
@@ -65,6 +65,7 @@
                     </FlexLayout>
                 </StackLayout>
             </ScrollView>
+            <views:BusyView />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>
