@@ -11,6 +11,11 @@
                 return new Views.LandscapeContextualCommonOverlapForImagePlacardThumbnailView(model);
             }
 
+            if (model.Template.Id == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
+            {
+                return new Views.CenteredTraslucentIntroOverImagePlacardThumbnailView(model);
+            }
+
             return null;
         }
     }

@@ -4,19 +4,23 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating</RootNamespace>
-    <Version>0.4.0.0</Version>
+    <Version>0.4.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="5A2F1E9B-EC2C-46A4-92EC-2975EC6DFEEE-landscape.png" />
     <None Remove="5F1E38D6-DABB-4B90-8845-C07E8F5DD9E0-landscape.png" />
     <None Remove="BFB19355-B4DF-4FAC-BAAF-9951943818BE-landscape.png" />
+    <None Remove="FA754670-FD62-4E36-B6C7-400B6689F00C-landscape.png" />
+    <None Remove="FA754670-FD62-4E36-B6C7-400B6689F00C-portrait.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="5A2F1E9B-EC2C-46A4-92EC-2975EC6DFEEE-landscape.png" />
     <EmbeddedResource Include="5F1E38D6-DABB-4B90-8845-C07E8F5DD9E0-landscape.png" />
     <EmbeddedResource Include="BFB19355-B4DF-4FAC-BAAF-9951943818BE-landscape.png" />
+    <EmbeddedResource Include="FA754670-FD62-4E36-B6C7-400B6689F00C-landscape.png" />
+    <EmbeddedResource Include="FA754670-FD62-4E36-B6C7-400B6689F00C-portrait.png" />
   </ItemGroup>
 
   <ItemGroup>

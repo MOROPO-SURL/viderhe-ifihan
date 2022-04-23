@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</RootNamespace>
-    <Version>0.4.0.0</Version>
+    <Version>0.4.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,8 +27,8 @@
     <Compile Update="Pages\LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml.cs">
       <DependentUpon>LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LandscapeContextualCommonOverlapForImagePlacardThumbnailView.xaml.cs">
-      <DependentUpon>LandscapeContextualCommonOverlapForImagePlacardThumbnailView.xaml</DependentUpon>
+    <Compile Update="Views\CommonPlacardThumbnailView.xaml.cs">
+      <DependentUpon>CommonPlacardThumbnailView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -36,6 +36,9 @@
     <EmbeddedResource Update="LocalizedResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\CenteredTraslucentIntroOverImagePlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\LandscapeContextualFlatOverlapForImagePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -49,7 +52,10 @@
     <EmbeddedResource Update="Pages\Block\TextContentBlockConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapeContextualCommonOverlapForImagePlacardThumbnailView.xaml">
+    <EmbeddedResource Update="Views\CenteredTraslucentIntroOverImagePlacardThumbnailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CommonPlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

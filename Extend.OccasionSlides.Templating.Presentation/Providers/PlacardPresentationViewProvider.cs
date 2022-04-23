@@ -95,6 +95,30 @@
                 return new Views.RightLandscapeContextualTrailOverlapForImagePlacardView(targetPlacardViewModel);
             }
 
+            if (model.Template.Id == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.CenteredTraslucentIntroOverImagePlacardContextModel>(model.SerializedContext);
+
+                var targetPlacardViewModel = new Models.View.CenteredTraslucentIntroOverImagePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    HeadImageSource = context.HeadImage != null ? Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.HeadImage.Id)) : null,
+                    BackgroundImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.BackgroundImage.Id)),
+                    BackgroundImageZoomingEnabled = context.BackgroundImageZoomingEnabled,
+                    OverlapOpacity = context.OverlapOpacity,
+                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
+                    TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
+                    ContentBoxPresentationKind = context.ContentBoxPresentationKind,
+                    Title = context.Title,
+                    TitleFontFamily = context.TitleFontFamily,
+                    TitleFontSize = context.TitleFontSize,
+                    ContentBlocks = context.ContentBlocks
+                };
+
+                return new Views.CenteredTraslucentIntroOverImagePlacardView(targetPlacardViewModel);
+            }
+
             return null;
         }
     }

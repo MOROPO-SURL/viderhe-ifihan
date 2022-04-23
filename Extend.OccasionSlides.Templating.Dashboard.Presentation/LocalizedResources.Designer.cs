@@ -71,11 +71,47 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Banda Flotante Horizontal.
+        /// </summary>
+        internal static string FloatBandHorizontal {
+            get {
+                return ResourceManager.GetString("FloatBandHorizontal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Banda Flotante Vertical.
+        /// </summary>
+        internal static string FloatBandVertical {
+            get {
+                return ResourceManager.GetString("FloatBandVertical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cuadro Flotante Ajustado.
+        /// </summary>
+        internal static string FloatBoxFilled {
+            get {
+                return ResourceManager.GetString("FloatBoxFilled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cuádruple.
         /// </summary>
         internal static string Fourfold {
             get {
                 return ResourceManager.GetString("Fourfold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inmersivo.
+        /// </summary>
+        internal static string Inmersive {
+            get {
+                return ResourceManager.GetString("Inmersive", resourceCulture);
             }
         }
         
