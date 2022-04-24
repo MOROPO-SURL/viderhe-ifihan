@@ -10,11 +10,11 @@
 
             if (concreteValue == -1) return concreteValue;
 
-            var applicationPageWidth = Xamarin.Forms.Application.Current.MainPage.Width;
+            var applicationPageLargeSize = System.Math.Max(Xamarin.Forms.Application.Current.MainPage.Width, Xamarin.Forms.Application.Current.MainPage.Height);
 
-            if (applicationPageWidth == RELATIVE_REFERENCE_SIZE) return concreteValue;
+            if (applicationPageLargeSize == RELATIVE_REFERENCE_SIZE) return concreteValue;
 
-            return concreteValue * Xamarin.Forms.Application.Current.MainPage.Width / RELATIVE_REFERENCE_SIZE;
+            return concreteValue * applicationPageLargeSize / RELATIVE_REFERENCE_SIZE;
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
