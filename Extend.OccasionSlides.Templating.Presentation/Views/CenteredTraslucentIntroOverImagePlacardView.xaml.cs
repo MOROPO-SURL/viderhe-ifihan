@@ -9,6 +9,7 @@
             BindingContext = model;
 
             OverlapLayout.BackgroundColor = model.OverlapBackgroundColor.MultiplyAlpha(model.OverlapOpacity);
+            OverlapLayout.IsVisible = false;
         }
 
         public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;
@@ -26,6 +27,210 @@
             base.DisposeUnmanagementResources();
 
             BackgroundImagen.Source = null;
+        }
+
+        public override void PerformPlacardStarup()
+        {
+            base.PerformPlacardStarup();
+
+            var concreteBindingContext = BindingContext as Models.View.CenteredTraslucentIntroOverImagePlacardViewModel;
+
+            var internalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            {
+                Delay = "2000",
+                IsParallel = true
+            };
+
+            OverlapLayout.IsVisible = true;
+
+            int overlapShowInAnimationDuration = 650;
+            int infoBlockShoInAnimationDuration = 600;
+
+            var infoBlockLayoutIndex = 1;
+
+            switch (concreteBindingContext.ContentBoxPresentationKind)
+            {
+                case Enumerations.CenteredContentBoxPresentationKind.Inmersive:
+                    OverlapLayout.Opacity = 0;
+
+                    TitleLabel.Scale = 0;
+
+                    foreach (var infoBlockLayout in InfoBlocksLayout.Children)
+                    {
+                        infoBlockLayout.Scale = 0;
+                    }
+
+                    internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+                    {
+                        Target = OverlapLayout,
+                        Opacity = 1,
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.Linear,
+                        Duration = overlapShowInAnimationDuration.ToString()
+                    });
+                    internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                    {
+                        Target = TitleLabel,
+                        Scale = 1,
+                        Delay = overlapShowInAnimationDuration.ToString(),
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                        Duration = infoBlockShoInAnimationDuration.ToString()
+                    });
+                    
+                    foreach (var infoBlockLayout in InfoBlocksLayout.Children)
+                    {
+                        internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                        {
+                            Target = infoBlockLayout,
+                            Scale = 1,
+                            Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * infoBlockLayoutIndex++).ToString(),
+                            EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                            Duration = infoBlockShoInAnimationDuration.ToString()
+                        });
+                    }
+
+                    break;
+
+                case Enumerations.CenteredContentBoxPresentationKind.FloatBandHorizontal:
+                    OverlapLayout.TranslationY = Height;
+
+                    TitleLabel.Opacity = 0;
+
+                    foreach (var infoBlockLayout in InfoBlocksLayout.Children)
+                    {
+                        infoBlockLayout.Opacity = 0;
+                    }
+
+                    internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
+                    {
+                        Target = OverlapLayout,
+                        TranslateY = 0,
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                        Duration = overlapShowInAnimationDuration.ToString()
+                    });
+                    internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                    {
+                        Target = TitleLabel,
+                        Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Left,
+                        RelativeOffset = 100d,
+                        Delay = overlapShowInAnimationDuration.ToString(),
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        Duration = infoBlockShoInAnimationDuration.ToString()
+                    });
+
+                    var iteration = 1;
+
+                    foreach (var infoBlockLayout in InfoBlocksLayout.Children)
+                    {
+                        internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                        {
+                            Target = infoBlockLayout,
+                            Direction = iteration++ % 2 == 0 ? XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Left : XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Right,
+                            RelativeOffset = 100d,
+                            Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * infoBlockLayoutIndex++).ToString(),
+                            EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                            Duration = infoBlockShoInAnimationDuration.ToString()
+                        });
+                    }
+
+                    break;
+
+                case Enumerations.CenteredContentBoxPresentationKind.FloatBandVertical:
+                    OverlapLayout.TranslationX = Width;
+
+                    TitleLabel.Opacity = 0;
+
+                    foreach (var infoBlockLayout in InfoBlocksLayout.Children)
+                    {
+                        infoBlockLayout.Opacity = 0;
+                    }
+
+                    internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    {
+                        Target = OverlapLayout,
+                        TranslateX = 0,
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                        Duration = overlapShowInAnimationDuration.ToString()
+                    });
+                    internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                    {
+                        Target = TitleLabel,
+                        Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down,
+                        RelativeOffset = 100d,
+                        Delay = overlapShowInAnimationDuration.ToString(),
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        Duration = infoBlockShoInAnimationDuration.ToString()
+                    });
+
+                    foreach (var infoBlockLayout in InfoBlocksLayout.Children)
+                    {
+                        internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                        {
+                            Target = infoBlockLayout,
+                            Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                            RelativeOffset = 100d,
+                            Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * infoBlockLayoutIndex++).ToString(),
+                            EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                            Duration = infoBlockShoInAnimationDuration.ToString()
+                        });
+                    }
+
+                    break;
+
+                case Enumerations.CenteredContentBoxPresentationKind.FloatBoxFilled:
+                default:
+                    OverlapLayout.Scale = 0;
+
+                    TitleLabel.Scale = 0;
+
+                    foreach (var infoBlockLayout in InfoBlocksLayout.Children)
+                    {
+                        infoBlockLayout.Scale = 0;
+                    }
+
+                    internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                    {
+                        Target = OverlapLayout,
+                        Scale = 1,
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                        Duration = overlapShowInAnimationDuration.ToString()
+                    });
+                    internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                    {
+                        Target = TitleLabel,
+                        Scale = 1,
+                        Delay = overlapShowInAnimationDuration.ToString(),
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                        Duration = infoBlockShoInAnimationDuration.ToString()
+                    });
+
+                    foreach (var infoBlockLayout in InfoBlocksLayout.Children)
+                    {
+                        internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                        {
+                            Target = infoBlockLayout,
+                            Scale = 1,
+                            Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * infoBlockLayoutIndex++).ToString(),
+                            EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                            Duration = infoBlockShoInAnimationDuration.ToString()
+                        });
+                    }
+
+                    break;
+            }
+
+            internalShowInStoryboard.Begin();
+
+            if (concreteBindingContext.ScreenPresentationTime > System.TimeSpan.Zero)
+            {
+                var presentedImageZoominAnimation = new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                {
+                    Target = BackgroundImagen,
+                    Scale = 1.2,
+                    Duration = concreteBindingContext.ScreenPresentationTime.TotalMilliseconds.ToString()
+                };
+
+                presentedImageZoominAnimation.Begin();
+            }
         }
     }
 }

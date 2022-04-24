@@ -17,6 +17,7 @@
             <converters:CenteredContentBoxPresentationKindToColumSpanConverter x:Key="CenteredContentBoxPresentationKindToColumSpanConverter" />
             <converters:HeaderFontFamilyNameToFontAttributesConverter x:Key="HeaderFontFamilyNameToFontAttributesConverter" />
             <converters:CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxPaddingConverter x:Key="CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxPaddingConverter" PlacardView="{Reference RootView}" />
+            <converters:CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxSpacingConverter x:Key="CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxSpacingConverter" PlacardView="{Reference RootView}" />
             <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
@@ -47,7 +48,7 @@
                     <StackLayout 
                         HorizontalOptions="Center" VerticalOptions="Center"
                         Padding="{Binding Source={Reference RootView}, Path=Width, Converter={StaticResource CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxPaddingConverter}}"
-                        Spacing="0">
+                        Spacing="{Binding Source={Reference RootView}, Path=Width, Converter={StaticResource CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxSpacingConverter}}">
                         <Label
                             x:Name="TitleLabel"
                             HorizontalTextAlignment="Center"
@@ -57,7 +58,7 @@
                             FontSize="{Binding Path=TitleFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         <StackLayout
                             x:Name="InfoBlocksLayout"
-                            Spacing="0"
+                            Spacing="{Binding Source={Reference RootView}, Path=Width, Converter={StaticResource CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxSpacingConverter}}"
                             BindableLayout.ItemsSource="{Binding Path=ContentBlocks}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
