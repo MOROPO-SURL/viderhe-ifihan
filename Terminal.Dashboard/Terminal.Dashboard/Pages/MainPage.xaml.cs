@@ -202,14 +202,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     Kind = Enumerations.ActionKind.DashboardSettings,
                     Caption = "Ajustes",
                     IconGlyph = "\uf66a",
-                    Enabled = true
+                    // TODO Restore to spected behavior!!
+                    Enabled = false
                 },
                 new Models.View.ActionViewModel
                 {
                     Kind = Enumerations.ActionKind.DashboardHelp,
                     Caption = "Ayuda",
                     IconGlyph = "\uf87d",
-                    Enabled = true
+                    // TODO Restore to spected behavior!!
+                    Enabled = false
                 }
             };
 

@@ -22,15 +22,8 @@
             </Grid.RowDefinitions>
             <Label
                 Grid.ColumnSpan="2" Grid.Row="0"
-                Style="{StaticResource ConfigurationStepSubtitleLabelStyle}">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="Reproductor no asociado con su cuenta. Registre mediante " />
-                        <Span Text="Viderhe Control" FontAttributes="Bold" />
-                        <Span Text=" un nuevo reproductor con el identificador siguiente:" />
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
+                Style="{StaticResource ConfigurationStepSubtitleLabelStyle}"
+                Text="Reproductor no asociado con su cuenta. Registre mediante Viderhe Control un nuevo reproductor con el identificador siguiente:" />
             <Label 
                 Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"
                 Text="&#xF237;"

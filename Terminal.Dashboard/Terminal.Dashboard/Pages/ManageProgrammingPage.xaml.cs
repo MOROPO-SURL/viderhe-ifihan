@@ -12,6 +12,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private const string OPTION_COMMON_EDIT = "Modificar";
         private const string OPTION_COMMON_DELETE = "Eliminar";
 
+        private const string OPTION_FRAME_PLACARD_EDIT = "Modificar Marco";
         private const string OPTION_FRAME_ORDER = "Cambiar Prioridad";
         private const string OPTION_FRAME_DELETE = "Quitar";
 
@@ -39,7 +40,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void AddPlacardButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new TemplatePickPage(RequireReloadPlacards_Callback));
+            this.NavigationPushPageAsync(new TemplatePickPage(PlacardEditionCompleted_Callback));
         }
 
         private void PlacardOverviewOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -111,7 +112,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_COMMON_EDIT:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var placardEditPage = Providers.PlacardConfigurationPageProvider.Instance.GetEditionPageByDescriptor(target.Placard, RequireReloadPlacards_Callback);
+                            var placardEditPage = Providers.PlacardConfigurationPageProvider.Instance.GetEditionPageByDescriptor(target.Placard, PlacardEditionCompleted_Callback);
 
                             if (placardEditPage != null)
                             {
@@ -179,6 +180,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var extraOptions = new System.Collections.Generic.List<string>
             {
+                OPTION_FRAME_PLACARD_EDIT,
                 OPTION_COMMON_PREVIEW
             };
 
@@ -193,6 +195,23 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 switch (actionSheetTask.Result)
                 {
+                    case OPTION_FRAME_PLACARD_EDIT:
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                        {
+                            var placardEditPage = Providers.PlacardConfigurationPageProvider.Instance.GetEditionPageByDescriptor(targetFrameViewModel.Placard, PlacardEditionCompleted_Callback);
+
+                            if (placardEditPage != null)
+                            {
+                                this.NavigationPushPageAsync(placardEditPage);
+                            }
+                            else
+                            {
+                                Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Aviso", "Plantilla no compatible con la versión actual del sistema.");
+                            }
+                        });
+
+                        break;
+
                     case OPTION_FRAME_DELETE:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
@@ -242,7 +261,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_FRAME_ORDER:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            this.NavigationPushModalPageAsync(new FramePriorityChangePage(BindingContextPageModel.Frames, targetFrameViewModel, LoadCurrentScreenplayFrames));
+                            this.NavigationPushModalPageAsync(new FramePriorityChangePage(BindingContextPageModel.Frames, targetFrameViewModel, () => LoadCurrentScreenplayFrames()));
                         });                        
 
                         break;
@@ -366,7 +385,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (!IsEnabled) return;
 
-            RequireReloadPlacards_Callback();
+            PlacardEditionCompleted_Callback();
         }
 
         private void ScreenplaySelection_Callback(Models.View.ScreenplayViewModel target)
@@ -379,9 +398,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             this.NavigationPopModalPageAsync();
         }
 
-        private void RequireReloadPlacards_Callback()
+        private void PlacardEditionCompleted_Callback()
         {
-            LoadNextPlacardsPage(true);
+            if (BindingContextPageModel.SelectedScreenplay == null)
+            {
+                LoadNextPlacardsPage(true);
+            }
+            else
+            {
+                LoadCurrentScreenplayFrames(() => LoadNextPlacardsPage(true));
+            }
         }
 
         private void ReloadScreenplays()
@@ -418,7 +444,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                             if (PlacardOverviewCollectionView.Width > 0)
                             {
-                                RequireReloadPlacards_Callback();
+                                PlacardEditionCompleted_Callback();
                             }
                         }
                         else
@@ -530,33 +556,41 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             placardPageLimit = currentPlacardCollectionViewCellColumnCount * rowCount;
         }
 
-        private void LoadCurrentScreenplayFrames()
+        private void LoadCurrentScreenplayFrames(System.Action callback = null)
         {
             BindingContextPageModel.IsBusy = true;
 
-            System.Threading.Tasks.Task.Run(async () =>
-            {
-                var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
+            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
-                var result = await client.FilterAsync(new Cloud.Api.Common.Models.Filter.FrameFilterModel { ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id });
-
-                BindingContextPageModel.Frames = result.OrderBy(e => e.Priority).Select(m => new Support.Presentation.Models.View.FrameViewModel
-                {
-                    Id = m.Id,
-                    Priority = m.Priority,
-                    Placard = m.Placard.ToViewModel()
-                }).ToArray();
-            }).ContinueWith(task =>
+            client.FilterAsync(new Cloud.Api.Common.Models.Filter.FrameFilterModel { ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id }).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    BindingContextPageModel.IsBusy = false;
-
                     if (task.Exception != null || task.IsCanceled)
                     {
+                        BindingContextPageModel.IsBusy = false;
+
                         BindingContextPageModel.Frames = new Support.Presentation.Models.View.FrameViewModel[] { };
 
                         BindingContextPageModel.SelectedScreenplay = null;
+                    }
+                    else
+                    {
+                        BindingContextPageModel.Frames = task.Result.OrderBy(e => e.Priority).Select(m => new Support.Presentation.Models.View.FrameViewModel
+                        {
+                            Id = m.Id,
+                            Priority = m.Priority,
+                            Placard = m.Placard.ToViewModel()
+                        }).ToArray();
+
+                        if (callback == null)
+                        {
+                            BindingContextPageModel.IsBusy = false;
+                        }
+                        else
+                        {
+                            callback.Invoke();
+                        }
                     }
                 });
             });

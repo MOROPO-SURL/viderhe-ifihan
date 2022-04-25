@@ -99,7 +99,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
                         return model;
                     }).ToArray(),
-                    ScheduledRelaunches = player.ScheduledRelaunches.OrderBy(entity => entity.Time).Select(entity => new ScheduledRelaunchDisplayModel
+                    ScheduledRelaunches = player.ScheduledRelaunches.Select(entity => new ScheduledRelaunchDisplayModel
                     {
                         Id = entity.Id,
                         Time = entity.Time
