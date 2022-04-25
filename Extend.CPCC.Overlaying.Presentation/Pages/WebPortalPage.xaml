@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<sscxftoolkitmvvmpages:ContentPage
+<sscxftoolkitmvvmpages:BindingContextedContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Models.Page"
     xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages.ProjectWebPortalPage"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages.WebPortalPage"
+    x:TypeArguments="pagemodels:WebPortalPageModel"
     BackgroundColor="White"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -22,7 +24,7 @@
             </Grid.RowDefinitions>
             <Label
                 Grid.Column="1" Grid.Row="0"                
-                Text="Portal del proyecto Callejón de los Milagros"
+                Text="{Binding Path=Title}"
                 TextColor="Black"
                 FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.NormalHeaderTextFontSize}"
                 HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />            
@@ -42,7 +44,7 @@
                 Color="Gray" />
             <WebView 
                 Grid.ColumnSpan="2" Grid.Row="2"
-                Source="http://www.elcallejon.net/"
+                Source="{Binding Path=Url}"
                 Navigating="WebView_Navigating"
                 Navigated="WebView_Navigated" />
             <ContentView
@@ -55,4 +57,4 @@
             </ContentView>
         </Grid>
     </ContentPage.Content>
-</sscxftoolkitmvvmpages:ContentPage>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

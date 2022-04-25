@@ -80,13 +80,14 @@
                         <Button
                             Grid.Column="0" Grid.Row="0"
                             Style="{StaticResource SectionLaunchButtonStyle}"
-                            Text="Colectivo">
+                            Text="Galería QR"
+                            Clicked="QRGalleryPresentButton_Clicked">
                             <Button.ImageSource>
                                 <FontImageSource
                                     FontFamily="{StaticResource IconFontFamily}"
                                     Color="Black"
                                     Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
-                                    Glyph="&#xf848;"/>
+                                    Glyph="&#xf433;"/>
                             </Button.ImageSource>
                         </Button>
                         <Button
@@ -128,7 +129,8 @@
                         <Button
                             Grid.Column="1" Grid.Row="1"
                             Style="{StaticResource SectionLaunchButtonStyle}"
-                            Text="Café Nuevo Mundo">
+                            Text="Café Nuevo Mundo"
+                            Clicked="CoffePresentButton_Clicked">
                             <Button.ImageSource>
                                 <FontImageSource
                                     FontFamily="{StaticResource IconFontFamily}"

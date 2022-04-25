@@ -2,9 +2,9 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages
 {
-    public partial class ProjectWebPortalPage : XFToolKit.Mvvm.Pages.ContentPage
+    public partial class WebPortalPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.WebPortalPageModel>
     {
-        public ProjectWebPortalPage()
+        public WebPortalPage(Models.Page.WebPortalPageModel model) : base(model)
         {
             InitializeComponent();
         }
@@ -16,6 +16,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages
 
         private void WebView_Navigating(object sender, Xamarin.Forms.WebNavigatingEventArgs eventArgs)
         {
+            if (!BindingContextPageModel.IsNavigationEnabled)
+            {
+                eventArgs.Cancel = true;
+
+                return;
+            }
+
             (sender as Xamarin.Forms.WebView).IsEnabled = false;
 
             BusyView.IsVisible = true;
