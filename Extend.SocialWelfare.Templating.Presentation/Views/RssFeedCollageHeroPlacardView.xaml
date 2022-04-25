@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views.RssFeedCollageHeroPlacardView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <x:Double x:Key="FeedTitleFontSize">32</x:Double>
+            <x:Double x:Key="FeedDescriptionFontSize">18</x:Double>
+            <converters:IsNullToStringConverter x:Key="HeroFeedItemFeaturedImageSourceIsNullToTitleTextColorStringConverter" CaseFalse="White" CaseTrue="Black" />
+            <converters:HeroFeedItemFeaturedImageSourceToLayoutOptionsConverter x:Key="HeroFeedItemFeaturedImageSourceToLayoutOptionsConverter" />
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid 
+                x:Name="PlacardLayout"
+                BackgroundColor="LightGray"
+                RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <StackLayout
+                    x:Name="HeadLayout"
+                    Grid.Row="0"
+                    Spacing="0">
+                    <StackLayout
+                        VerticalOptions="FillAndExpand"
+                        BackgroundColor="White"
+                        Padding="30">
+                        <ffimageloadingforms:CachedImage
+                            IsVisible="{Binding Path=FeedImageSource, Converter={StaticResource NotNullToBooleanConverter}}"
+                            HorizontalOptions="Start"
+                            Margin="0,8"
+                            BackgroundColor="LightGray"
+                            Source="{Binding Path=FeedImageSource}" />
+                        <Label
+                            Text="{Binding Path=FeedTitle}"
+                            FontAttributes="Bold"
+                            FontSize="{Binding Source={StaticResource FeedTitleFontSize}, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        <Label
+                            Text="{Binding Path=FeedDescription}"
+                            FontSize="{Binding Source={StaticResource FeedDescriptionFontSize}, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />                    
+                    </StackLayout>
+                    <BoxView
+                        Grid.ColumnSpan="2" Grid.Row="1"
+                        HeightRequest="5"
+                        Color="{Binding Path=TintColor}" />                    
+                </StackLayout>
+                <Grid
+                    Grid.Row="1"
+                    Margin="30"
+                    ColumnSpacing="30" RowSpacing="30">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid
+                        Grid.Column="0" Grid.RowSpan="3"
+                        BackgroundColor="White">
+                        <ffimageloadingforms:CachedImage
+                            IsVisible="{Binding Path=HeroFeedItem.FeaturedImageSource, Converter={StaticResource NotNullToBooleanConverter}}"
+                            Aspect="AspectFill"
+                            Source="{Binding Path=HeroFeedItem.FeaturedImageSource}" />
+                        <BoxView
+                            IsVisible="{Binding Path=HeroFeedItem.FeaturedImageSource, Converter={StaticResource NotNullToBooleanConverter}}"
+                            Color="#7F000000" />
+                        <StackLayout
+                            Padding="20"
+                            VerticalOptions="{Binding Path=HeroFeedItem.FeaturedImageSource, Converter={StaticResource HeroFeedItemFeaturedImageSourceToLayoutOptionsConverter}}">
+                            <Label
+                                Text="{Binding Path=HeroFeedItem.Title}"
+                                TextColor="{Binding Path=HeroFeedItem.FeaturedImageSource, Converter={StaticResource HeroFeedItemFeaturedImageSourceIsNullToTitleTextColorStringConverter}}"
+                                FontAttributes="Bold"
+                                FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        </StackLayout>
+                    </Grid>
+                    <StackLayout
+                        BindingContext="{Binding Path=SecoundFeedItem}"
+                        Grid.Column="1" Grid.Row="0"
+                        BackgroundColor="White"
+                        Orientation="Horizontal">
+                        <ffimageloadingforms:CachedImage
+                            Grid.Column="0"
+                            IsVisible="{Binding Path=FeaturedImageSource, Converter={StaticResource NotNullToBooleanConverter}}"
+                            WidthRequest="{Binding Source={RelativeSource AncestorType={Type StackLayout}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=2}"
+                            Aspect="AspectFill"
+                            Source="{Binding Path=FeaturedImageSource}" />
+                        <StackLayout
+                            Padding="20">
+                            <Label
+                                Text="{Binding Path=Title}"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="5"
+                                FontAttributes="Bold"
+                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        BindingContext="{Binding Path=ThirdFeedItem}"
+                        Grid.Column="1" Grid.Row="1"
+                        BackgroundColor="White"
+                        Orientation="Horizontal">
+                        <ffimageloadingforms:CachedImage
+                            Grid.Column="0"
+                            IsVisible="{Binding Path=FeaturedImageSource, Converter={StaticResource NotNullToBooleanConverter}}"
+                            WidthRequest="{Binding Source={RelativeSource AncestorType={Type StackLayout}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=2}"
+                            Aspect="AspectFill"
+                            Source="{Binding Path=FeaturedImageSource}" />
+                        <StackLayout
+                            Padding="20">
+                            <Label
+                                Text="{Binding Path=Title}"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="5"
+                                FontAttributes="Bold"
+                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout
+                        BindingContext="{Binding Path=FourthFeedItem}"
+                        Grid.Column="1" Grid.Row="2"
+                        BackgroundColor="White"
+                        Orientation="Horizontal">
+                        <ffimageloadingforms:CachedImage
+                            Grid.Column="0"
+                            IsVisible="{Binding Path=FeaturedImageSource, Converter={StaticResource NotNullToBooleanConverter}}"
+                            WidthRequest="{Binding Source={RelativeSource AncestorType={Type StackLayout}}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=2}"
+                            Aspect="AspectFill"
+                            Source="{Binding Path=FeaturedImageSource}" />
+                        <StackLayout
+                            Padding="20">
+                            <Label
+                                Text="{Binding Path=Title}"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="5"
+                                FontAttributes="Bold"
+                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+                <StackLayout
+                    Grid.RowSpan="2"
+                    VerticalOptions="Center"
+                    IsVisible="{Binding IsBusy}">
+                    <ActivityIndicator IsRunning="{Binding Path=IsBusy}" />
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

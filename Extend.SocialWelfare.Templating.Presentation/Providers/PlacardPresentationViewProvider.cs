@@ -14,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 
                 var protocol = context.IsWeatherCacheMicroServerRequireSecureConnection ? "https" : "http";
 
-                return new InmersiveCityWeatherOverviewView(new Models.View.InmersiveCityWeatherOverviewViewModel
+                return new InmersiveCityWeatherOverviewPlacardView(new Models.View.InmersiveCityWeatherOverviewPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
@@ -23,6 +23,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
                     City = context.City,
                     ServiceBaseUri = new System.Uri(string.Format("{0}://{1}/api/", protocol, context.WeatherCacheMicroServerHost))
                 });
+            }
+
+            if (model.Template.Id == RssFeedCollageHeroTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<RssFeedCollageHeroContextModel>(model.SerializedContext);
+
+                return new RssFeedCollageHeroPlacardView(context);
             }
 
             return null;

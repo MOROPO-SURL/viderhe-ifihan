@@ -3,18 +3,18 @@ using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Pages
 {
-    public partial class InmersiveCityWeatherOverviewConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.InmersiveCityWeatherOverviewConfigurationPageModel>
+    public partial class InmersiveCityWeatherOverviewPlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.InmersiveCityWeatherOverviewPlacardConfigurationPageModel>
     {
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
         private System.Action successfulCompleteCallbackAction;
 
-        public InmersiveCityWeatherOverviewConfigurationPage(System.Action successfulCompleteCallbackAction)
+        public InmersiveCityWeatherOverviewPlacardConfigurationPage(System.Action successfulCompleteCallbackAction)
             : this(null, successfulCompleteCallbackAction)
         {
         }
 
-        public InmersiveCityWeatherOverviewConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(Factories.InmersiveCityWeatherOverviewConfigurationPageModelFactory.Build(placardViewModel))
+        public InmersiveCityWeatherOverviewPlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
+            : base(Factories.InmersiveCityWeatherOverviewPlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
             InitializeComponent();
 

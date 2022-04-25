@@ -4,17 +4,19 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating</RootNamespace>
-    <Version>0.2.0.0</Version>
+    <Version>0.2.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="2E4818BE-1E31-4CA7-B1F1-408A66B72D5D-landscape.png" />
     <None Remove="2E4818BE-1E31-4CA7-B1F1-408A66B72D5D-portrait.png" />
+    <None Remove="4D66C3C9-4DDD-485E-AA1B-C72069982B40-landscape.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="2E4818BE-1E31-4CA7-B1F1-408A66B72D5D-landscape.png" />
     <EmbeddedResource Include="2E4818BE-1E31-4CA7-B1F1-408A66B72D5D-portrait.png" />
+    <EmbeddedResource Include="4D66C3C9-4DDD-485E-AA1B-C72069982B40-landscape.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page
 {
-    public class InmersiveCityWeatherOverviewConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
+    public class InmersiveCityWeatherOverviewPlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
         private Support.Presentation.Models.View.ImageViewModel backgroundCityImage;
         private string weatherCacheMicroServerHost;
@@ -10,7 +10,7 @@
         private Weather.Api.Common.Models.CityModel city;
         private Weather.Api.Common.Models.CityModel[] availableCities;
 
-        public InmersiveCityWeatherOverviewConfigurationPageModel()
+        public InmersiveCityWeatherOverviewPlacardConfigurationPageModel()
         {
             ScreenPresentationTimeSecounds = 15;
 

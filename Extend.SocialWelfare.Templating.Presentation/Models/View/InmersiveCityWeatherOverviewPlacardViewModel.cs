@@ -1,12 +1,12 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Models.View
 {
-    public class InmersiveCityWeatherOverviewViewModel : Common.Templating.Presentation.Models.View.AbstractScreenTimedPlacardViewModel
+    public class InmersiveCityWeatherOverviewPlacardViewModel : Common.Templating.Presentation.Models.View.AbstractScreenTimedPlacardViewModel
     {
         private bool isBusy;
 
         private Weather.Api.Common.Models.WeatherOverviewModel weatherOverview;
 
-        public InmersiveCityWeatherOverviewViewModel()
+        public InmersiveCityWeatherOverviewPlacardViewModel()
         {
             Now = System.DateTime.Now;
         }

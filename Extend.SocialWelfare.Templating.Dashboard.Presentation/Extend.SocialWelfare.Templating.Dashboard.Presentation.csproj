@@ -4,10 +4,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation</RootNamespace>
-    <Version>0.2.0.0</Version>
+    <Version>0.2.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.5" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
   </ItemGroup>
 
@@ -17,7 +18,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Pages\InmersiveCityWeatherOverviewConfigurationPage.xaml">
+    <Compile Update="Pages\InmersiveCityWeatherOverviewPlacardConfigurationPage.xaml.cs">
+      <DependentUpon>InmersiveCityWeatherOverviewPlacardConfigurationPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\InmersiveCityWeatherOverviewPlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\RssFeedCollageHeroPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\InmersiveCityWeatherOverviewPlacardThumnailView.xaml">

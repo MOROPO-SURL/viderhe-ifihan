@@ -6,7 +6,12 @@
         {
             if (templateDescriptor is Descriptors.InmersiveCityWeatherOverviewTemplateDescriptor)
             {
-                return new Pages.InmersiveCityWeatherOverviewConfigurationPage(completedActionCallback);
+                return new Pages.InmersiveCityWeatherOverviewPlacardConfigurationPage(completedActionCallback);
+            }
+
+            if (templateDescriptor is Descriptors.RssFeedCollageHeroTemplateDescriptor)
+            {
+                return new Pages.RssFeedCollageHeroPlacardConfigurationPage(completedActionCallback);
             }
 
             return null;
@@ -16,7 +21,12 @@
         {
             if (placardViewModel.Template.Id == Descriptors.InmersiveCityWeatherOverviewTemplateDescriptor.ID)
             {
-                return new Pages.InmersiveCityWeatherOverviewConfigurationPage(placardViewModel, completedActionCallback);
+                return new Pages.InmersiveCityWeatherOverviewPlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.RssFeedCollageHeroTemplateDescriptor.ID)
+            {
+                return new Pages.RssFeedCollageHeroPlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;
