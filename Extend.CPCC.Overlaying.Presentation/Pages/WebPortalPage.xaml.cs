@@ -11,7 +11,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages
 
         private void CloseButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPopPageAsync();
+            this.NavigationPopModalPageAsync();
         }
 
         private void WebView_Navigating(object sender, Xamarin.Forms.WebNavigatingEventArgs eventArgs)

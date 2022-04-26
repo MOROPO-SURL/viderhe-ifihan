@@ -73,7 +73,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
 
             animation.Begin();
 
-            Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Xamarin.Forms.NavigationPage(new Pages.NMTourPage(InteractivePresentationComplete_Callback)));
+            Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Pages.NMTourPage(InteractivePresentationComplete_Callback));
         }
 
         private void InteractivePresentationComplete_Callback()
