@@ -13,9 +13,11 @@
             <x:Double x:Key="FeedTitleFontSize">32</x:Double>
             <x:Double x:Key="FeedDescriptionFontSize">18</x:Double>
             <converters:IsNullToStringConverter x:Key="HeroFeedItemFeaturedImageSourceIsNullToTitleTextColorStringConverter" CaseFalse="White" CaseTrue="Black" />
+            <converters:IsNullToStringConverter x:Key="HeroFeedItemFeaturedImageSourceIsNullToPublishedTextColorStringConverter" CaseFalse="Gray" CaseTrue="DimGray" />
             <converters:HeroFeedItemFeaturedImageSourceToLayoutOptionsConverter x:Key="HeroFeedItemFeaturedImageSourceToLayoutOptionsConverter" />
             <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:NullToBooleanConverter x:Key="NullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
@@ -26,8 +28,8 @@
                 BackgroundColor="LightGray"
                 RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
                     <RowDefinition />
+                    <RowDefinition Height="4*" />
                 </Grid.RowDefinitions>
                 <StackLayout
                     x:Name="HeadLayout"
@@ -36,7 +38,7 @@
                     <StackLayout
                         VerticalOptions="FillAndExpand"
                         BackgroundColor="White"
-                        Padding="30">
+                        Padding="{Binding Source=30, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
                         <ffimageloadingforms:CachedImage
                             IsVisible="{Binding Path=FeedImageSource, Converter={StaticResource NotNullToBooleanConverter}}"
                             HorizontalOptions="Start"
@@ -70,23 +72,38 @@
                         <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid
+                        BindingContext="{Binding Path=HeroFeedItem}"
                         Grid.Column="0" Grid.RowSpan="3"
                         BackgroundColor="White">
                         <ffimageloadingforms:CachedImage
-                            IsVisible="{Binding Path=HeroFeedItem.FeaturedImageSource, Converter={StaticResource NotNullToBooleanConverter}}"
+                            IsVisible="{Binding Path=FeaturedImageSource, Converter={StaticResource NotNullToBooleanConverter}}"
                             Aspect="AspectFill"
-                            Source="{Binding Path=HeroFeedItem.FeaturedImageSource}" />
+                            Source="{Binding Path=FeaturedImageSource}" />
                         <BoxView
-                            IsVisible="{Binding Path=HeroFeedItem.FeaturedImageSource, Converter={StaticResource NotNullToBooleanConverter}}"
+                            IsVisible="{Binding Path=FeaturedImageSource, Converter={StaticResource NotNullToBooleanConverter}}"
                             Color="#7F000000" />
                         <StackLayout
-                            Padding="20"
-                            VerticalOptions="{Binding Path=HeroFeedItem.FeaturedImageSource, Converter={StaticResource HeroFeedItemFeaturedImageSourceToLayoutOptionsConverter}}">
+                            Padding="30"
+                            VerticalOptions="{Binding Path=FeaturedImageSource, Converter={StaticResource HeroFeedItemFeaturedImageSourceToLayoutOptionsConverter}}">
                             <Label
-                                Text="{Binding Path=HeroFeedItem.Title}"
-                                TextColor="{Binding Path=HeroFeedItem.FeaturedImageSource, Converter={StaticResource HeroFeedItemFeaturedImageSourceIsNullToTitleTextColorStringConverter}}"
+                                Text="{Binding Path=Title}"
+                                TextColor="{Binding Path=FeaturedImageSource, Converter={StaticResource HeroFeedItemFeaturedImageSourceIsNullToTitleTextColorStringConverter}}"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="3"
                                 FontAttributes="Bold"
-                                FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            <Label
+                                IsVisible="{Binding Path=Published, Converter={StaticResource NotNullToBooleanConverter}}"
+                                Text="{Binding Path=Published}"
+                                TextColor="{Binding Path=FeaturedImageSource, Converter={StaticResource HeroFeedItemFeaturedImageSourceIsNullToPublishedTextColorStringConverter}}"
+                                FontAttributes="Bold"
+                                FontSize="{Binding Source=21, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            <Label
+                                IsVisible="{Binding Path=FeaturedImageSource, Converter={StaticResource NullToBooleanConverter}}"
+                                Text="{Binding Path=Summary}"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="8"
+                                FontSize="{Binding Source=28, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         </StackLayout>
                     </Grid>
                     <StackLayout
@@ -108,6 +125,18 @@
                                 MaxLines="5"
                                 FontAttributes="Bold"
                                 FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            <Label
+                                IsVisible="{Binding Path=Published, Converter={StaticResource NotNullToBooleanConverter}}"
+                                Text="{Binding Path=Published}"
+                                TextColor="DimGray"
+                                FontAttributes="Bold"
+                                FontSize="{Binding Source=14, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            <Label
+                                IsVisible="{Binding Path=FeaturedImageSource, Converter={StaticResource NullToBooleanConverter}}"
+                                Text="{Binding Path=Summary}"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="3"
+                                FontSize="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         </StackLayout>
                     </StackLayout>
                     <StackLayout
@@ -129,6 +158,18 @@
                                 MaxLines="5"
                                 FontAttributes="Bold"
                                 FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            <Label
+                                IsVisible="{Binding Path=Published, Converter={StaticResource NotNullToBooleanConverter}}"
+                                Text="{Binding Path=Published}"
+                                TextColor="DimGray"
+                                FontAttributes="Bold"
+                                FontSize="{Binding Source=14, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            <Label
+                                IsVisible="{Binding Path=FeaturedImageSource, Converter={StaticResource NullToBooleanConverter}}"
+                                Text="{Binding Path=Summary}"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="3"
+                                FontSize="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         </StackLayout>
                     </StackLayout>
                     <StackLayout
@@ -150,6 +191,18 @@
                                 MaxLines="5"
                                 FontAttributes="Bold"
                                 FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            <Label
+                                IsVisible="{Binding Path=Published, Converter={StaticResource NotNullToBooleanConverter}}"
+                                Text="{Binding Path=Published}"
+                                TextColor="DimGray"
+                                FontAttributes="Bold"
+                                FontSize="{Binding Source=14, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            <Label
+                                IsVisible="{Binding Path=FeaturedImageSource, Converter={StaticResource NullToBooleanConverter}}"
+                                Text="{Binding Path=Summary}"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="3"
+                                FontSize="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         </StackLayout>
                     </StackLayout>
                 </Grid>

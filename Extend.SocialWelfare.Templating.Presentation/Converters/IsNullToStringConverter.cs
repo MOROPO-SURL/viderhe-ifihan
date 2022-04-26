@@ -2,9 +2,9 @@
 {
     public class IsNullToStringConverter : Xamarin.Forms.IValueConverter
     {
-        public object CaseTrue { get; set; }
+        public string CaseTrue { get; set; }
 
-        public object CaseFalse { get; set; }
+        public string CaseFalse { get; set; }
 
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
