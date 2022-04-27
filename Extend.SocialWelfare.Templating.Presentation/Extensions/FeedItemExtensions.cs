@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Extensions
+﻿using System.Linq;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Extensions
 {
     public static class FeedItemExtensions
     {
@@ -7,7 +9,7 @@
             var result = new Models.View.RssFeedItemViewModel
             {
                 Title = target.Title,
-                Summary = target.Description,
+                Summary = System.Text.RegularExpressions.Regex.Replace(target.Description, "<[^>]*>", " ").Trim(),
                 Published = target.PublishingDate
             };
 
@@ -39,6 +41,32 @@
                     result.FeaturedImageSource = Xamarin.Forms.ImageSource.FromUri(new System.Uri(rss20FeedItem.Enclosure.Url));
                 }
             }
+
+            try
+            {
+                if (result.FeaturedImageSource == null)
+                {
+                    var descriptionDocument = System.Xml.Linq.XDocument.Parse(target.Description);
+
+                    if (descriptionDocument.Descendants("img").Any())
+                    {
+                        var imgTag = descriptionDocument.Descendants("img").First();
+
+                        var imageSrc = imgTag.Attribute("src").Value;
+
+                        // TODO Pending for WebP image format suppor for UWP on FFImageLoading
+                        if (Xamarin.Forms.Device.RuntimePlatform != Xamarin.Forms.Device.UWP)
+                        {
+                            result.FeaturedImageSource = Xamarin.Forms.ImageSource.FromUri(new System.Uri(imageSrc));
+                        }
+                        else if (!imageSrc.EndsWith(".webp"))
+                        {
+                            result.FeaturedImageSource = Xamarin.Forms.ImageSource.FromUri(new System.Uri(imageSrc));
+                        }
+                    }
+                }
+            }
+            catch { }
 
             return result;
         }

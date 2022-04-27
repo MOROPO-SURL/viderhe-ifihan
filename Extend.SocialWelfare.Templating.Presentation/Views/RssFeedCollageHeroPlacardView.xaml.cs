@@ -20,6 +20,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
                 IsBusy = true,
                 TintColor = Xamarin.Forms.Color.FromHex(model.TintColor)
             };
+
+            IsEnabled = false;
         }
 
         public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;
@@ -75,6 +77,49 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
                     }
 
                     concreteBindingContextModel.IsBusy = false;
+
+                    var infoShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+                    {
+                        IsParallel = true
+                    };
+
+                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
+                    {
+                        Target = HeadLayout,
+                        TranslateY = 0,
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        Duration = "700"
+                    });
+                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    {
+                        Target = HeroFeedItemLayout,
+                        TranslateX = 0,
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        Delay = "500"
+                    });
+                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    {
+                        Target = SecoundFeedItemLayout,
+                        TranslateX = 0,
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        Delay = "900"
+                    });
+                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    {
+                        Target = ThirdFeedItemLayout,
+                        TranslateX = 0,
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        Delay = "1100"
+                    });
+                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    {
+                        Target = FourthFeedItemLayout,
+                        TranslateX = 0,
+                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        Delay = "1300"
+                    });
+
+                    infoShowInStoryboard.Begin();
                 });
             });
         }
@@ -92,6 +137,25 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
             concreteBindingContextModel.SecoundFeedItem = null;
             concreteBindingContextModel.ThirdFeedItem = null;
             concreteBindingContextModel.FourthFeedItem = null;
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+
+            if (IsEnabled || width == -1 || height == -1) return;
+
+            IsEnabled = true;
+
+            HeadLayout.TranslationY = HeadLayout.Height * -1;
+
+            HeroFeedItemLayout.TranslationX = HeroFeedItemLayout.Width * -1;
+
+            SecoundFeedItemLayout.TranslationX = SecoundFeedItemLayout.Width;
+            
+            ThirdFeedItemLayout.TranslationX = ThirdFeedItemLayout.Width;
+            
+            FourthFeedItemLayout.TranslationX = FourthFeedItemLayout.Width;
         }
     }
 }
