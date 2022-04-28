@@ -56,7 +56,7 @@
                     <BoxView
                         Grid.ColumnSpan="2" Grid.Row="1"
                         HeightRequest="5"
-                        Color="{Binding Path=TintColor}" />                    
+                        Color="{Binding Path=TintColor, Mode=OneTime}" />                    
                 </StackLayout>
                 <Grid
                     Grid.Row="1"
@@ -109,6 +109,8 @@
                                     MaxLines="8"
                                     FontSize="{Binding Source=28, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             </StackLayout>
+                            <BoxView x:Name="HeroFeedItemTintFlatBoxView" />
+                            <BoxView x:Name="HeroFeedItemLightFlatBoxView" Color="GhostWhite" />
                         </Grid>
                     </Grid>
                     <Grid
@@ -147,6 +149,8 @@
                                     FontSize="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             </StackLayout>
                         </StackLayout>
+                        <BoxView x:Name="SecoundFeedItemTintFlatBoxView" />
+                        <BoxView x:Name="SecoundFeedItemLightFlatBoxView" Color="GhostWhite" />
                     </Grid>
                     <Grid
                         Grid.Column="1" Grid.Row="1"
@@ -184,6 +188,8 @@
                                     FontSize="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             </StackLayout>
                         </StackLayout>
+                        <BoxView x:Name="ThirdFeedItemTintFlatBoxView" />
+                        <BoxView x:Name="ThirdFeedItemLightFlatBoxView" Color="GhostWhite" />
                     </Grid>
                     <Grid
                         Grid.Column="1" Grid.Row="2"
@@ -221,6 +227,8 @@
                                     FontSize="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             </StackLayout>
                         </StackLayout>
+                        <BoxView x:Name="FourthFeedItemTintFlatBoxView" />
+                        <BoxView x:Name="FourthFeedItemLightFlatBoxView" Color="GhostWhite" />
                     </Grid>
                 </Grid>
                 <StackLayout
