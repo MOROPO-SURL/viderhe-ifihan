@@ -62,6 +62,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Abajo.
+        /// </summary>
+        internal static string Bottom {
+            get {
+                return ResourceManager.GetString("Bottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dual.
         /// </summary>
         internal static string Dual {
@@ -175,6 +184,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         internal static string Single {
             get {
                 return ResourceManager.GetString("Single", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arriba.
+        /// </summary>
+        internal static string Top {
+            get {
+                return ResourceManager.GetString("Top", resourceCulture);
             }
         }
         

@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</RootNamespace>
-    <Version>0.4.3.0</Version>
+    <Version>0.4.3.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,6 +30,9 @@
     <Compile Update="Views\CommonPlacardThumbnailView.xaml.cs">
       <DependentUpon>CommonPlacardThumbnailView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PortraitTranslucentContextualOverlapForImagePlacardThumbnailView.xaml.cs">
+      <DependentUpon>PortraitTranslucentContextualOverlapForImagePlacardThumbnailView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -50,6 +53,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Block\TextContentBlockConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\PortraitContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CenteredTraslucentIntroOverImagePlacardThumbnailView.xaml">

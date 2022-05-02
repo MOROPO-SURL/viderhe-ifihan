@@ -8,7 +8,12 @@
                 model.Template.Id == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID ||
                 model.Template.Id == Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor.ID)
             {
-                return new Views.LandscapeContextualCommonOverlapForImagePlacardThumbnailView(model);
+                return new Views.PortraitTranslucentContextualOverlapForImagePlacardThumbnailView(model);
+            }
+
+            if (model.Template.Id == Descriptors.PortraitTranslucentContextualOverlapForImageTemplateDescriptor.ID)
+            {
+                return new Views.PortraitTranslucentContextualOverlapForImagePlacardThumbnailView(model);
             }
 
             if (model.Template.Id == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)

@@ -9,6 +9,11 @@
                 return new Pages.LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage(completedActionCallback);
             }
 
+            if (templateDescriptor is Descriptors.PortraitTranslucentContextualOverlapForImageTemplateDescriptor)
+            {
+                return new Pages.PortraitContextualTranslucentOverlapForImagePlacardConfigurationPage(completedActionCallback);
+            }
+
             if (templateDescriptor is Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor)
             {
                 return new Pages.LandscapeContextualFlatOverlapForImagePlacardConfigurationPage(completedActionCallback);
@@ -32,6 +37,11 @@
             if (placardViewModel.Template.Id == Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor.ID)
             {
                 return new Pages.LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.PortraitTranslucentContextualOverlapForImageTemplateDescriptor.ID)
+            {
+                return new Pages.PortraitContextualTranslucentOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             if (placardViewModel.Template.Id == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID)

@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation</RootNamespace>
-    <Version>0.4.3.0</Version>
+    <Version>0.4.3.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -275,6 +275,9 @@
     <Compile Update="Views\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
       <DependentUpon>RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PortraitTranslucentContextualOverlapForImagePlacardView.xaml.cs">
+      <DependentUpon>PortraitTranslucentContextualOverlapForImagePlacardView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -290,6 +293,9 @@
     <EmbeddedResource Update="Views\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\PortraitFlatContextualOverlapForImagePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\RightLandscapeContextualFlatOverlapForImagePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -297,6 +303,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PortraitTranslucentContextualOverlapForImagePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

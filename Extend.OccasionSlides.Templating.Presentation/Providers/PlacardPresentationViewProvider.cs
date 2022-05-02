@@ -33,6 +33,29 @@
                 return new Views.RightLandscapeContextualTranslucentOverlapForImagePlacardView(targetPlacardViewModel);
             }
 
+            if (model.Template.Id == Descriptors.PortraitTranslucentContextualOverlapForImageTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.PortraitTranslucentContextualOverlapForImagePlacardContextModel>(model.SerializedContext);
+
+                var targetPlacardViewModel = new Models.View.PortraitTranslucentContextualOverlapForImagePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.ContextedImage.Id)),
+                    ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
+                    OverlapShapeKind = context.OverlapShapeKind,
+                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
+                    TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
+                    OverlapVerticalAlignment = context.OverlapVerticalAlignment,
+                    Title = context.Title,
+                    TitleFontFamily = context.TitleFontFamily,
+                    TitleFontSize = context.TitleFontSize,
+                    ContentBlocks = context.ContentBlocks
+                };
+
+                return new Views.PortraitTranslucentContextualOverlapForImagePlacardView(targetPlacardViewModel);
+            }
+
             if (model.Template.Id == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeContextualFlatOverlapForImagePlacardContextModel>(model.SerializedContext);
@@ -62,6 +85,31 @@
                 }
 
                 return new Views.RightLandscapeContextualFlatOverlapForImagePlacardView(targetPlacardViewModel);
+            }
+
+            if (model.Template.Id == Descriptors.PortraitFlatContextualOverlapForImageTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.PortraitFlatContextualOverlapForImagePlacardContextModel>(model.SerializedContext);
+
+                var targetPlacardViewModel = new Models.View.PortraitFlatContextualOverlapForImagePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.ContextedImage.Id)),
+                    ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
+                    ContextedImageCenteredAtPresentation = context.ContextedImageCenteredAtPresentation,
+                    OverlapShapeKind = context.OverlapShapeKind,
+                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
+                    UseOverlapShadown = context.UseOverlapShadown,
+                    TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
+                    OverlapVerticalAlignment = context.OverlapVerticalAlignment,
+                    Title = context.Title,
+                    TitleFontFamily = context.TitleFontFamily,
+                    TitleFontSize = context.TitleFontSize,
+                    ContentBlocks = context.ContentBlocks
+                };
+
+                return new Views.PortraitFlatContextualOverlapForImagePlacardView(targetPlacardViewModel);
             }
 
             if (model.Template.Id == Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor.ID)
