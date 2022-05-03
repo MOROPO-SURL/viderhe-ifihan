@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Descriptors
 {
-    public class PortraitFlatContextualOverlapForImageTemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
+    public class PortraitFlatContextualOverlapForImageTemplateDescriptor// : Common.Templating.Descriptors.ITemplateDescriptor
     {
         public static System.Guid ID = System.Guid.Parse("787D2F5E-9815-445E-8BDF-3FFE3DEBB5BF");
 
