@@ -265,10 +265,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj" />
     <ProjectReference Include="..\Extend.OccasionSlides.Templating\Extend.OccasionSlides.Templating.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml.cs">
+      <DependentUpon>LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
       <DependentUpon>LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml</DependentUpon>
     </Compile>
@@ -282,6 +286,9 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Views\CenteredTraslucentIntroOverImagePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LeftLandscapeContextualFlatOverlapForImagePlacardView.xaml">
@@ -306,6 +313,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\PortraitTranslucentContextualOverlapForImagePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RightLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

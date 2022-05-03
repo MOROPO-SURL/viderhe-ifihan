@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Templating.Dashboard.Presentation\Extend.Essential.Templating.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\Extend.OccasionSlides.Templating.Presentation\Extend.OccasionSlides.Templating.Presentation.csproj" />
     <ProjectReference Include="..\Extend.OccasionSlides.Templating\Extend.OccasionSlides.Templating.csproj" />
   </ItemGroup>
@@ -55,6 +56,9 @@
     <EmbeddedResource Update="Pages\Block\TextContentBlockConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\LandscapeTranslucentContextualOverlapForImageSecuencePlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\PortraitContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -62,6 +66,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CommonPlacardThumbnailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LandscapeTranslucentContextualOverlapForImageSecuencePlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

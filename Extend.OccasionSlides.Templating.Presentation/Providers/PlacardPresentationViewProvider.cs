@@ -33,6 +33,34 @@
                 return new Views.RightLandscapeContextualTranslucentOverlapForImagePlacardView(targetPlacardViewModel);
             }
 
+            if (model.Template.Id == Descriptors.LandscapeTranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel>(model.SerializedContext);
+
+                var targetPlacardViewModel = new Models.View.LandscapeTranslucentContextualOverlapForImageSecuencePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    PresentedPictureSlideSecuence = context.PresentedPictureSlideSecuence,
+                    OverlapSize = context.OverlapSize,
+                    OverlapShapeKind = context.OverlapShapeKind,
+                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
+                    TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
+                    OverlapHorizontalAlignment = context.OverlapHorizontalAlignment,
+                    Title = context.Title,
+                    TitleFontFamily = context.TitleFontFamily,
+                    TitleFontSize = context.TitleFontSize,
+                    ContentBlocks = context.ContentBlocks
+                };
+
+                if (context.OverlapHorizontalAlignment == Enumerations.OverlapHorizontalAlignment.Left)
+                {
+                    return new Views.LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView(targetPlacardViewModel);
+                }
+
+                return new Views.RightLandscapeTranslucentContextualOverlapForImageSecuencePlacardView(targetPlacardViewModel);
+            }
+
             if (model.Template.Id == Descriptors.PortraitTranslucentContextualOverlapForImageTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.PortraitTranslucentContextualOverlapForImagePlacardContextModel>(model.SerializedContext);
