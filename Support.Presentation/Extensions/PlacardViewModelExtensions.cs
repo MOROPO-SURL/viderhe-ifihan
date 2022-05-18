@@ -4,7 +4,11 @@
     {
         public static bool SupportedByMainDisplayOrientation(this Models.View.PlacardViewModel target)
         {
+            if (target == null) return false;
+
             if (target.PlayerOrientationSupportKind != null) return IsDisplayOrientationCompatible(target.PlayerOrientationSupportKind.Value);
+
+            if (target.Template == null) return false;
 
             return IsDisplayOrientationCompatible(target.Template.PlayerOrientationSupport);
         }
