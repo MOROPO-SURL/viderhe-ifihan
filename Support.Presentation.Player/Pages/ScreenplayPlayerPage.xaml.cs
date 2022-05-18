@@ -55,12 +55,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 
         private void DeviceDisplay_MainDisplayInfoChanged(object sender, Xamarin.Essentials.DisplayInfoChangedEventArgs e)
         {
-            if (presenter.CurrentPlacardViewModel == null) return;
-
-            if (!presenter.CurrentPlacardViewModel.SupportedByMainDisplayOrientation())
-            {
-                presenter.RequestPresentNextFrame();
-            }
+            RequestPresentNextFrame();
         }
 
         public void RequestPresentNextFrame()

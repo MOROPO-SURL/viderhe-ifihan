@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cloud.Api.Connect\Cloud.Api.Connect.csproj" />
+    <ProjectReference Include="..\Support.Extend.Templating.Presentation\Support.Extend.Templating.Presentation.csproj" />
     <ProjectReference Include="..\Support.Presentation\Support.Presentation.csproj" />
   </ItemGroup>
 
@@ -28,6 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Pages\EmbeddedFontFamilyNamePickPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\ImageDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
