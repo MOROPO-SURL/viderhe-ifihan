@@ -2,6 +2,7 @@
 using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Providers.Facade;
 using System.Linq;
 
+// TODO Rename and relocate as PlacardPresentationViewProvisioningHelper
 namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Providers
 {
     public sealed class PlacardPresentationViewProvider

@@ -33,14 +33,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
                         ControllerHideOnTouch = false,
                     };
 
-                    playerView.Player.RepeatMode = Com.Google.Android.Exoplayer2.Player.RepeatModeOff;
-
                     playerView.Player.AddListener(this);
 
                     SetNativeControl(playerView);
                 }
 
                 SetAreTransportControlsEnabled();
+
+                SetAspectStrech();
 
                 SetAutoPlay();
 
@@ -84,6 +84,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
             {
                 SetAreTransportControlsEnabled();
             }
+            else if (args.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.StrechAspectProperty.PropertyName)
+            {
+                SetAspectStrech();
+            }
             else if (args.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.SourceProperty.PropertyName)
             {
                 SetSource();
@@ -106,27 +110,44 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
             }
         }
 
+        private void SetAspectStrech()
+        {
+            switch (Element.StrechAspect)
+            {
+                case Xamarin.Forms.Aspect.AspectFit:
+                    Control.ResizeMode = AspectRatioFrameLayout.ResizeModeFit;
+
+                    break;
+                case Xamarin.Forms.Aspect.AspectFill:
+                    Control.ResizeMode = AspectRatioFrameLayout.ResizeModeZoom;
+
+                    break;
+                case Xamarin.Forms.Aspect.Fill:
+                default:
+                    Control.ResizeMode = AspectRatioFrameLayout.ResizeModeFill;
+
+                    break;
+            }
+        }
+
+        private void SetAutoPlay()
+        {
+            Control.Player.PlayWhenReady = Element.AutoPlay;
+        }
+
         private void SetSource()
         {
-            var hasSetSource = false;
-
             var mediaSourceFactory = new Com.Google.Android.Exoplayer2.Source.ExtractorMediaSource.Factory(new DefaultDataSourceFactory(Context, "Viderhe ExoPlayer"));
 
-            var userAgent = Com.Google.Android.Exoplayer2.Util.Util.GetUserAgent(Context, "Viderhe");
-            var defaultHttpDataSourceFactory = new DefaultHttpDataSourceFactory(userAgent);
-            var defaultDataSourceFactory = new DefaultDataSourceFactory(Context, null, defaultHttpDataSourceFactory);            
+            Com.Google.Android.Exoplayer2.Source.IMediaSource mediaSource = null;
 
             if (Element.Source is XFToolKit.Presentation.Sources.Video.UriVideoSource)
             {
                 var uri = (Element.Source as XFToolKit.Presentation.Sources.Video.UriVideoSource).Uri;
 
-                var extractorMediaSource = new Com.Google.Android.Exoplayer2.Source.ExtractorMediaSource(Android.Net.Uri.Parse(uri), defaultDataSourceFactory, new Com.Google.Android.Exoplayer2.Extractor.DefaultExtractorsFactory(), null, null);
-
                 if (!string.IsNullOrWhiteSpace(uri))
                 {
-                    (Control.Player as SimpleExoPlayer).Prepare(extractorMediaSource);
-
-                    hasSetSource = true;
+                    mediaSource = mediaSourceFactory.CreateMediaSource(Android.Net.Uri.Parse(uri));
                 }
             }
             else if (Element.Source is XFToolKit.Presentation.Sources.Video.FileVideoSource)
@@ -135,9 +156,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
 
                 if (!string.IsNullOrWhiteSpace(filename))
                 {
-                    (Control.Player as SimpleExoPlayer).Prepare(mediaSourceFactory.CreateMediaSource(Android.Net.Uri.Parse(filename)));
-
-                    hasSetSource = true;
+                    mediaSource = mediaSourceFactory.CreateMediaSource(Android.Net.Uri.Parse(filename));
                 }
             }
             else if (Element.Source is XFToolKit.Presentation.Sources.Video.ResourceVideoSource)
@@ -151,15 +170,18 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
                     var filename = System.IO.Path.GetFileNameWithoutExtension(path).ToLowerInvariant();
                     var uri = "android.resource://" + package + "/raw/" + filename;
 
-                    (Control.Player as SimpleExoPlayer).Prepare(mediaSourceFactory.CreateMediaSource(Android.Net.Uri.Parse(uri)));
-
-                    hasSetSource = true;
+                    mediaSource = mediaSourceFactory.CreateMediaSource(Android.Net.Uri.Parse(uri));
                 }
             }
 
-            if (hasSetSource && Element.AutoPlay)
+            if (mediaSource != null)
             {
-                Control.Player.PlayWhenReady = true;
+                (Control.Player as SimpleExoPlayer).Prepare(Element.Repeat ? new Com.Google.Android.Exoplayer2.Source.LoopingMediaSource(mediaSource) : mediaSource);
+
+                if (Element.AutoPlay)
+                {
+                    Control.Player.PlayWhenReady = true;
+                }
             }
         }
 
@@ -173,11 +195,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
         private void OnStopRequested(object sender, System.EventArgs args)
         {
             try { Control.Player.Stop(); } catch { }
-        }
-
-        private void SetAutoPlay()
-        {
-            Control.Player.PlayWhenReady = Element.AutoPlay;
         }
 
         #region IPlayerEventListener implementation
