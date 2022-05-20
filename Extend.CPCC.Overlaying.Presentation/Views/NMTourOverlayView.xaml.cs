@@ -73,6 +73,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
 
             animation.Begin();
 
+            var presenter = Xamarin.Forms.DependencyService.Get<Common.Templating.Presentation.Presenters.Facade.IOvarlablePresenter>();
+
+            presenter.SuspendPresentation();
+
             Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Pages.NMTourPage(InteractivePresentationComplete_Callback));
         }
 
@@ -88,6 +92,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
             animation.Completed += ShowInAnimation_Completed;
 
             animation.Begin();
+
+            var presenter = Xamarin.Forms.DependencyService.Get<Common.Templating.Presentation.Presenters.Facade.IOvarlablePresenter>();
+
+            presenter.ResumePresentation();
         }
 
         public override void ShowIn()
