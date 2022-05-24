@@ -8,7 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         {
             if (placardViewModel == null) return new Models.Page.PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.PortraitPicturePresentingPictureSlideSecuencePlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.PortraitPicturePresentingPictureSlideSecuencePlacardContextModel>(placardViewModel.SerializedContext);
 
             var result = new Models.Page.PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPageModel
             {

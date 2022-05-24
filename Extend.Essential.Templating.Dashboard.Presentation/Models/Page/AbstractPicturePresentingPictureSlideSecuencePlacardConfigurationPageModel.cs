@@ -10,7 +10,13 @@
         public AbstractPicturePresentingPictureSlideSecuencePlacardConfigurationPageModel()
         {
             PictureSlidePresentationSecounds = 10;
-            AvailableLayoutModes = new Templating.Presentation.Enumerations.PictureLayoutMode[] { Templating.Presentation.Enumerations.PictureLayoutMode.AspectFit, Templating.Presentation.Enumerations.PictureLayoutMode.AspectFill, Templating.Presentation.Enumerations.PictureLayoutMode.Fill, Templating.Presentation.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf };
+            AvailableLayoutModes = new Enumerations.PictureLayoutMode[] 
+            { 
+                Enumerations.PictureLayoutMode.AspectFit, 
+                Enumerations.PictureLayoutMode.AspectFill, 
+                Enumerations.PictureLayoutMode.Fill, 
+                Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf
+            };
 
             PresentedSlides = new System.Collections.ObjectModel.ObservableCollection<View.PictureSlideViewModel>();
         }
@@ -19,7 +25,7 @@
 
         public System.Collections.ObjectModel.ObservableCollection<View.PictureSlideViewModel> PresentedSlides { get; set; }
 
-        public Templating.Presentation.Enumerations.PictureLayoutMode[] AvailableLayoutModes { get; private set; }
+        public Templating.Enumerations.PictureLayoutMode[] AvailableLayoutModes { get; private set; }
         
         public int PictureSlidePresentationSecounds { get => pictureSlidePresentationSecounds; set => SetProperty(ref pictureSlidePresentationSecounds, value); }
 
