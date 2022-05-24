@@ -5,11 +5,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
 {
     public partial class PictureSlideSecuencePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        private Models.Context.PictureSlideSecuencePlacardContextModel context;
+        private Templating.Models.Context.PictureSlideSecuencePlacardContextModel context;
 
         private Common.Templating.Presentation.Presenters.ScreenplayPresenter screenplayPresenter;
 
-        public PictureSlideSecuencePlacardView(Models.Context.PictureSlideSecuencePlacardContextModel context)
+        public PictureSlideSecuencePlacardView(Templating.Models.Context.PictureSlideSecuencePlacardContextModel context)
         {
             InitializeComponent();
 
@@ -51,7 +51,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
                 {
                     Id = System.Guid.NewGuid(),
                     Template = targetTemplateViewModel,
-                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Models.Context.SimplePicturePlacardContextModel
+                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.SimplePicturePlacardContextModel
                     {
                         Image = item.Image,
                         LayoutMode = item.LayoutMode,
@@ -70,7 +70,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
         {
             if (model.Template.Id != Descriptors.SimplePictureTemplateDescriptor.ID) throw new System.InvalidOperationException();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.SimplePicturePlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.SimplePicturePlacardContextModel>(model.SerializedContext);
 
             if (context.LayoutMode == Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf)
             {

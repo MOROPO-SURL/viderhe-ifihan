@@ -8,6 +8,8 @@
 
             var target = value as Support.Presentation.Models.View.PlacardViewModel;
 
+            if (target.Template == null) return false;
+
             if (target.PlayerOrientationSupportKind != null)
             {
                 return target.PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;

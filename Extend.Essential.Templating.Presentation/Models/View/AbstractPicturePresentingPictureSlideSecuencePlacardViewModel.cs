@@ -13,7 +13,7 @@
 
         public int PresenterImageHeigth { get; set; }
 
-        public Context.PictureSlideSecuencePlacardContextModel PresentedPictureSlideSecuence { get; set; }
+        public Templating.Models.Context.PictureSlideSecuencePlacardContextModel PresentedPictureSlideSecuence { get; set; }
 
         public bool PresentedPictureSlideSecuenceCenteredAtPresentation { get; set; }
 

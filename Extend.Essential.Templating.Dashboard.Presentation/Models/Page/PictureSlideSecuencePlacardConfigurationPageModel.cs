@@ -8,7 +8,13 @@
         {
             PicturePresentationSecounds = 10;
 
-            AvailableLayoutModes = new Templating.Presentation.Enumerations.PictureLayoutMode[] { Templating.Presentation.Enumerations.PictureLayoutMode.AspectFit, Templating.Presentation.Enumerations.PictureLayoutMode.AspectFill, Templating.Presentation.Enumerations.PictureLayoutMode.Fill, Templating.Presentation.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf };
+            AvailableLayoutModes = new Enumerations.PictureLayoutMode[] 
+            { 
+                Enumerations.PictureLayoutMode.AspectFit, 
+                Enumerations.PictureLayoutMode.AspectFill, 
+                Enumerations.PictureLayoutMode.Fill, 
+                Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf 
+            };
 
             Slides = new System.Collections.ObjectModel.ObservableCollection<View.PictureSlideViewModel>();
         }
@@ -19,7 +25,7 @@
             set => SetProperty(ref picturePresentationSecounds, value);
         }
 
-        public Templating.Presentation.Enumerations.PictureLayoutMode[] AvailableLayoutModes { get; private set; }
+        public Enumerations.PictureLayoutMode[] AvailableLayoutModes { get; private set; }
 
         public System.Collections.ObjectModel.ObservableCollection<View.PictureSlideViewModel> Slides { get; set; }
 

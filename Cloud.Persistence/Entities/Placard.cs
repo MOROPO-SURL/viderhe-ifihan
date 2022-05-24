@@ -27,11 +27,18 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
         [Required]
         public string SerializedContext { get; set; }
 
+        public System.Collections.Generic.ICollection<PlacardImageBridge> ImageBridges { get; set; }
+
+        public System.Collections.Generic.ICollection<PlacardVideoBridge> VideoBridges { get; set; }
+
         public Placard()
         {
             Id = System.Guid.NewGuid();
 
             CreateAt = System.DateTime.Now;
+
+            ImageBridges = new System.Collections.Generic.List<PlacardImageBridge>();
+            VideoBridges = new System.Collections.Generic.List<PlacardVideoBridge>();
         }
     }
 }

@@ -4,9 +4,9 @@
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var layoutMode = (Templating.Presentation.Enumerations.PictureLayoutMode)value;
+            var layoutMode = (Enumerations.PictureLayoutMode)value;
 
-            return layoutMode == Templating.Presentation.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf;
+            return layoutMode == Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf;
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
