@@ -5,7 +5,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 {
     public partial class EditSimpleVideoPlacardPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EditSimpleVideoPlacardPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
-        private Templating.Presentation.Models.Context.SimpleVideoPlacardContextModel contextModel;
+        private Templating.Models.Context.SimpleVideoPlacardContextModel contextModel;
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
@@ -21,7 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             this.placardViewModel = placardViewModel;
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
 
-            contextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.SimpleVideoPlacardContextModel>(placardViewModel.SerializedContext);
+            contextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.SimpleVideoPlacardContextModel>(placardViewModel.SerializedContext);
         }
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
@@ -51,7 +51,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                     PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
                     Label = BindingContextPageModel.Label,
                     TemplateId = placardViewModel.Template.Id,
-                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.SimpleVideoPlacardContextModel
+                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.SimpleVideoPlacardContextModel
                     {
                         RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                         Video = contextModel.Video

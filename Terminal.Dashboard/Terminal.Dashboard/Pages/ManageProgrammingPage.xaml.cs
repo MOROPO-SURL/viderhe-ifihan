@@ -50,8 +50,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             var extraOptions = new System.Collections.Generic.List<string>
             {
                 OPTION_COMMON_PREVIEW,
-                OPTION_COMMON_EDIT,
-                OPTION_COMMON_DELETE
+                OPTION_COMMON_EDIT
             };
 
             if (BindingContextPageModel.SelectedScreenplay != null)
@@ -59,7 +58,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 extraOptions.Insert(0, OPTION_PLACARD_SEQUENCE);
             }
 
-            DisplayActionSheet("Opciones de Marco", OPTION_COMMON_CANCEL, null, extraOptions.ToArray()).ContinueWith(actionSheetTask =>
+            if (target.Placard.Template == null)
+            {
+                extraOptions.Clear();
+            }
+
+            DisplayActionSheet("Opciones de Marco", OPTION_COMMON_CANCEL, OPTION_COMMON_DELETE, extraOptions.ToArray()).ContinueWith(actionSheetTask =>
             {
                 switch (actionSheetTask.Result)
                 {

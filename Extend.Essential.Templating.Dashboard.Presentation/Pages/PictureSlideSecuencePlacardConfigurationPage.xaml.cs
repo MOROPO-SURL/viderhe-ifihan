@@ -86,14 +86,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                         Label = BindingContextPageModel.Label,
                         TemplateId = Descriptors.PictureSlideSecuenceTemplateDescriptor.ID,
                         PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.PictureSlideSecuencePlacardContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.PictureSlideSecuencePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             PicturePresentationSecounds = BindingContextPageModel.PicturePresentationSecounds,
                             PictureTransitionId = Transitioning.Transitions.ScalingGrowFadeOutInTransitionDescriptor.ID,
-                            Slides = BindingContextPageModel.Slides.Select(item => new Templating.Presentation.Models.Context.PictureSlideContextModel
+                            Slides = BindingContextPageModel.Slides.Select(item => new Templating.Models.Context.PictureSlideContextModel
                             {
-                                Image = new Common.Templating.Presentation.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
+                                Image = new Common.Templating.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
                                 LayoutMode = item.LayoutMode
                             }).ToArray()
                         })
@@ -107,14 +107,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                         Label = BindingContextPageModel.Label,
                         TemplateId = placardViewModel.Template.Id,
                         PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.PictureSlideSecuencePlacardContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.PictureSlideSecuencePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             PicturePresentationSecounds = BindingContextPageModel.PicturePresentationSecounds,
                             PictureTransitionId = Transitioning.Transitions.ScalingGrowFadeOutInTransitionDescriptor.ID,
-                            Slides = BindingContextPageModel.Slides.Select(item => new Templating.Presentation.Models.Context.PictureSlideContextModel
+                            Slides = BindingContextPageModel.Slides.Select(item => new Templating.Models.Context.PictureSlideContextModel
                             {
-                                Image = new Common.Templating.Presentation.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
+                                Image = new Common.Templating.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
                                 LayoutMode = item.LayoutMode
                             }).ToArray()
                         })

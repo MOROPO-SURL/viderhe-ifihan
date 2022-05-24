@@ -65,16 +65,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                     {
                         Label = BindingContextPageModel.Label,
                         TemplateId = Descriptors.PortraitPicturePresentingPictureSlideSecuenceTemplateDescriptor.ID,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.PortraitPicturePresentingPictureSlideSecuencePlacardContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.PortraitPicturePresentingPictureSlideSecuencePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             PresenterImage = BindingContextPageModel.PresenterImage.ToContextModel(),
                             PresenterSide = BindingContextPageModel.PresenterSide,
-                            PresentedPictureSlideSecuence = new Templating.Presentation.Models.Context.PictureSlideSecuencePlacardContextModel
+                            PresentedPictureSlideSecuence = new Templating.Models.Context.PictureSlideSecuencePlacardContextModel
                             {
-                                Slides = BindingContextPageModel.PresentedSlides.Select(item => new Templating.Presentation.Models.Context.PictureSlideContextModel
+                                Slides = BindingContextPageModel.PresentedSlides.Select(item => new Templating.Models.Context.PictureSlideContextModel
                                 {
-                                    Image = new Common.Templating.Presentation.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
+                                    Image = new Common.Templating.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
                                     LayoutMode = item.LayoutMode
                                 }).ToArray(),
                                 PicturePresentationSecounds = BindingContextPageModel.PictureSlidePresentationSecounds,
@@ -90,16 +90,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
                         TemplateId = placardViewModel.Template.Id,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.PortraitPicturePresentingPictureSlideSecuencePlacardContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.PortraitPicturePresentingPictureSlideSecuencePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             PresenterImage = BindingContextPageModel.PresenterImage.ToContextModel(),
                             PresenterSide = BindingContextPageModel.PresenterSide,
-                            PresentedPictureSlideSecuence = new Templating.Presentation.Models.Context.PictureSlideSecuencePlacardContextModel
+                            PresentedPictureSlideSecuence = new Templating.Models.Context.PictureSlideSecuencePlacardContextModel
                             {
-                                Slides = BindingContextPageModel.PresentedSlides.Select(item => new Templating.Presentation.Models.Context.PictureSlideContextModel
+                                Slides = BindingContextPageModel.PresentedSlides.Select(item => new Templating.Models.Context.PictureSlideContextModel
                                 {
-                                    Image = new Common.Templating.Presentation.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
+                                    Image = new Common.Templating.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
                                     LayoutMode = item.LayoutMode
                                 }).ToArray(),
                                 PicturePresentationSecounds = BindingContextPageModel.PictureSlidePresentationSecounds,

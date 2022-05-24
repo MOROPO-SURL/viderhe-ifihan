@@ -114,6 +114,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
                     //    });
                     //};
                 }
+                else if (unspectedHttpStatus == System.Net.HttpStatusCode.Conflict)
+                {
+                    message = string.Format("Esta operación no puede realizarse pues compromete la integridad del sistema.{0}{0}Compruebe que el elemento a modificar o eliminar no sea necesario en otras secciones.", System.Environment.NewLine);
+                }
             }
 
             MainPage.DisplayAlert(title, message, "Aceptar").ContinueWith(task => { continuationCallback?.Invoke(); });
