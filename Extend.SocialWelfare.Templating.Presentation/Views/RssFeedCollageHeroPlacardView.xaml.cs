@@ -5,9 +5,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 {
     public partial class RssFeedCollageHeroPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        private Models.Context.RssFeedCollageHeroContextModel placardContext;
+        private Templating.Models.Context.RssFeedCollageHeroContextModel placardContext;
 
-        public RssFeedCollageHeroPlacardView(Models.Context.RssFeedCollageHeroContextModel model)
+        public RssFeedCollageHeroPlacardView(Templating.Models.Context.RssFeedCollageHeroContextModel model)
         {
             InitializeComponent();
 

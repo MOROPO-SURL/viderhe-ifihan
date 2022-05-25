@@ -8,7 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
         {
             if (placardViewModel == null) return new Models.Page.InmersiveCityWeatherOverviewPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.InmersiveCityWeatherOverviewContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.InmersiveCityWeatherOverviewContextModel>(placardViewModel.SerializedContext);
 
             return new Models.Page.InmersiveCityWeatherOverviewPlacardConfigurationPageModel
             {

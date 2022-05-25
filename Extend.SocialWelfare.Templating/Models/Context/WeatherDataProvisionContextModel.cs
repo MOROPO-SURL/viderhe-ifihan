@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Models.Context
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Models.Context
 {
-    public class WeatherDataProvisionContextModel : Common.Templating.Presentation.Models.Context.AbstractScreenTimedPlacardContextModel
+    public class WeatherDataProvisionContextModel : Common.Templating.Models.Context.AbstractScreenTimedPlacardContextModel
     {
         public string WeatherCacheMicroServerHost { get; set; }
 

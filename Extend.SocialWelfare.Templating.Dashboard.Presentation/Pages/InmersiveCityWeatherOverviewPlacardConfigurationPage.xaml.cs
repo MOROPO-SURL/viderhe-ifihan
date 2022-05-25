@@ -29,7 +29,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
                 IsEnabled = false;
 
-                BindingContextPageModel.Service = Templating.Presentation.Enumerations.WeatherDataProvisionService.OpenWeatherMap;
+                BindingContextPageModel.Service = Enumerations.WeatherDataProvisionService.OpenWeatherMap;
             }
             else
             {
@@ -99,7 +99,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                     {
                         Label = BindingContextPageModel.Label,
                         TemplateId = Descriptors.InmersiveCityWeatherOverviewTemplateDescriptor.ID,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.InmersiveCityWeatherOverviewContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.InmersiveCityWeatherOverviewContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
@@ -119,7 +119,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
                         TemplateId = placardViewModel.Template.Id,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.InmersiveCityWeatherOverviewContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.InmersiveCityWeatherOverviewContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),

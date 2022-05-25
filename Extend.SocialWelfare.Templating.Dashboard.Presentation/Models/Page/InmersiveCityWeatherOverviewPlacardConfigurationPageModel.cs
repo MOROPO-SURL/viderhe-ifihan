@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page
+﻿using SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Enumerations;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page
 {
     public class InmersiveCityWeatherOverviewPlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
@@ -6,7 +8,7 @@
         private string weatherCacheMicroServerHost;
         private bool isWeatherCacheMicroServerRequireSecureConnection;
         private bool isWeatherCacheMicroServerSecureConnectionStrict;
-        private Templating.Presentation.Enumerations.WeatherDataProvisionService service;
+        private WeatherDataProvisionService service;
         private Weather.Api.Common.Models.CityModel city;
         private Weather.Api.Common.Models.CityModel[] availableCities;
 
@@ -14,9 +16,9 @@
         {
             ScreenPresentationTimeSecounds = 15;
 
-            AvailableServices = new Templating.Presentation.Enumerations.WeatherDataProvisionService[]
+            AvailableServices = new WeatherDataProvisionService[]
             {
-                Templating.Presentation.Enumerations.WeatherDataProvisionService.OpenWeatherMap
+                WeatherDataProvisionService.OpenWeatherMap
             };
         }
 
@@ -28,9 +30,9 @@
 
         public bool IsWeatherCacheMicroServerSecureConnectionStrict { get => isWeatherCacheMicroServerSecureConnectionStrict; set => SetProperty(ref isWeatherCacheMicroServerSecureConnectionStrict, value); }
 
-        public Templating.Presentation.Enumerations.WeatherDataProvisionService Service { get => service; set => SetProperty(ref service, value); }
+        public WeatherDataProvisionService Service { get => service; set => SetProperty(ref service, value); }
 
-        public Templating.Presentation.Enumerations.WeatherDataProvisionService[] AvailableServices { get; private set; }
+        public WeatherDataProvisionService[] AvailableServices { get; private set; }
 
         public Weather.Api.Common.Models.CityModel City { get => city; set => SetProperty(ref city, value); }
 

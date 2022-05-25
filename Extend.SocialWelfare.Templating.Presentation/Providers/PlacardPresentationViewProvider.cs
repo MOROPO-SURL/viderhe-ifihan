@@ -1,5 +1,4 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Descriptors;
-using SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Models.Context;
 using SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Providers
@@ -10,7 +9,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
         {
             if (model.Template.Id == InmersiveCityWeatherOverviewTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<InmersiveCityWeatherOverviewContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.InmersiveCityWeatherOverviewContextModel>(model.SerializedContext);
 
                 var protocol = context.IsWeatherCacheMicroServerRequireSecureConnection ? "https" : "http";
 
@@ -27,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 
             if (model.Template.Id == RssFeedCollageHeroTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<RssFeedCollageHeroContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.RssFeedCollageHeroContextModel>(model.SerializedContext);
 
                 return new RssFeedCollageHeroPlacardView(context);
             }

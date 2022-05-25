@@ -6,7 +6,7 @@
         {
             if (placardViewModel == null) return new Models.Page.RssFeedCollageHeroPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.RssFeedCollageHeroContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.RssFeedCollageHeroContextModel>(placardViewModel.SerializedContext);
 
             return new Models.Page.RssFeedCollageHeroPlacardConfigurationPageModel
             {
