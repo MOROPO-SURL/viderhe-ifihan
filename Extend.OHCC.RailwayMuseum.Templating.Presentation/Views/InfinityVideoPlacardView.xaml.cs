@@ -39,7 +39,7 @@
                 {
                     Id = System.Guid.NewGuid(),
                     Template = targetTemplateViewModel,
-                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Essential.Templating.Presentation.Models.Context.SimpleVideoPlacardContextModel
+                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Essential.Templating.Models.Context.SimpleVideoPlacardContextModel
                     {
                         RequireUnobstructedPresetation = false,
                         Video = (BindingContext as Models.View.InfinityVideoPlacardViewModel).Video
@@ -56,7 +56,7 @@
         {
             if (model.Template.Id != Essential.Templating.Descriptors.SimpleVideoTemplateDescriptor.ID) throw new System.InvalidOperationException();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Essential.Templating.Presentation.Models.Context.SimpleVideoPlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Essential.Templating.Models.Context.SimpleVideoPlacardContextModel>(model.SerializedContext);
 
             return new StrechAspectFillVideoPlacardView(new Essential.Templating.Presentation.Models.View.SimpleVideoPlacardViewModel
             {

@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating</RootNamespace>
-    <Version>0.6.2.0</Version>
+    <Version>0.7.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,20 +21,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="2F3BA1AC-2476-4767-928D-68FCDD38436A-landscape.png" />
-    <EmbeddedResource Include="825472FB-DBA0-4F81-BFC5-E5D3997B79B9-landscape.png" />
-    <EmbeddedResource Include="57ABCEFA-538C-496D-8DA0-9051AB05331D-landscape.png" />
-    <EmbeddedResource Include="B78BFD08-143F-40BA-AC5D-9AC825019581-landscape.png" />
-    <EmbeddedResource Include="BE7FDBAB-4535-4349-92AF-DE7E40219E03-landscape.png" />
-    <EmbeddedResource Include="C83B76A9-53B6-4D88-B18A-CAAD4D9F5338-landscape.png" />
-    <EmbeddedResource Include="CD1BAC6A-5C97-4BE6-B146-B7393D39FD01-landscape.png" />
-    <EmbeddedResource Include="CD1BAC6A-5C97-4BE6-B146-B7393D39FD01-portrait.png" />
-    <EmbeddedResource Include="D49EAB3A-F407-4E0E-835B-F15BFD917269-landscape.png" />
-    <EmbeddedResource Include="D49EAB3A-F407-4E0E-835B-F15BFD917269-portrait.png" />
+    <EmbeddedResource Include="Assets\2F3BA1AC-2476-4767-928D-68FCDD38436A-landscape.png" />
+    <EmbeddedResource Include="Assets\825472FB-DBA0-4F81-BFC5-E5D3997B79B9-landscape.png" />
+    <EmbeddedResource Include="Assets\57ABCEFA-538C-496D-8DA0-9051AB05331D-landscape.png" />
+    <EmbeddedResource Include="Assets\B78BFD08-143F-40BA-AC5D-9AC825019581-landscape.png" />
+    <EmbeddedResource Include="Assets\BE7FDBAB-4535-4349-92AF-DE7E40219E03-landscape.png" />
+    <EmbeddedResource Include="Assets\C83B76A9-53B6-4D88-B18A-CAAD4D9F5338-landscape.png" />
+    <EmbeddedResource Include="Assets\CD1BAC6A-5C97-4BE6-B146-B7393D39FD01-landscape.png" />
+    <EmbeddedResource Include="Assets\CD1BAC6A-5C97-4BE6-B146-B7393D39FD01-portrait.png" />
+    <EmbeddedResource Include="Assets\D49EAB3A-F407-4E0E-835B-F15BFD917269-landscape.png" />
+    <EmbeddedResource Include="Assets\D49EAB3A-F407-4E0E-835B-F15BFD917269-portrait.png" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Templating\Extend.Essential.Templating.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,7 @@
 {
     public class InfinityVideoPlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel
     {
-        public Common.Templating.Presentation.Models.Context.VideoContextModel Video { get; set; }
+        public Common.Templating.Models.Context.VideoContextModel Video { get; set; }
 
         public int StartMargin { get; set; }
 

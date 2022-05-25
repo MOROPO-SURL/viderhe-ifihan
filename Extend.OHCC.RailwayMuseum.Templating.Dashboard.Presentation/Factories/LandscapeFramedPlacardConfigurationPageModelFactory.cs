@@ -6,7 +6,7 @@
         {
             if (placardViewModel == null) return new Models.Page.LandscapeFramedPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.LandscapeFramedPlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapeFramedPlacardContextModel>(placardViewModel.SerializedContext);
 
             return new Models.Page.LandscapeFramedPlacardConfigurationPageModel
             {

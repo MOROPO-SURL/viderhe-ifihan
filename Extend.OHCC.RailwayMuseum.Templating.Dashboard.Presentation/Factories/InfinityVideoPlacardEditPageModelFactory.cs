@@ -7,7 +7,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
     {
         public static Models.Page.InfinityVideoPlacardEditPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            var contextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.InfinityVideoPlacardContextModel>(placardViewModel.SerializedContext);
+            var contextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.InfinityVideoPlacardContextModel>(placardViewModel.SerializedContext);
 
             return new Models.Page.InfinityVideoPlacardEditPageModel
             {

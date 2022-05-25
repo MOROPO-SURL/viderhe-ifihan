@@ -8,7 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         {
             if (placardViewModel == null) return new Models.Page.CornerTileVideoPresentingVideoPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.CornerTileVideoPresentingVideoPlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.CornerTileVideoPresentingVideoPlacardContextModel>(placardViewModel.SerializedContext);
 
             return new Models.Page.CornerTileVideoPresentingVideoPlacardConfigurationPageModel
             {

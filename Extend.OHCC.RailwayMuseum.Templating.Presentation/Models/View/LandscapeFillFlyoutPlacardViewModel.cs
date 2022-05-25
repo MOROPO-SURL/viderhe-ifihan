@@ -2,11 +2,11 @@
 {
     public class LandscapeFillFlyoutPlacardViewModel : Contract.AbstractMuseographyPlacardViewModel
     {
-        public Common.Templating.Presentation.Models.Context.ImageContextModel ContextedImage { get; set; }
+        public Common.Templating.Models.Context.ImageContextModel ContextedImage { get; set; }
 
         public bool ContextedImageZoomingEnabled { get; set; }
 
-        public Essential.Templating.Presentation.Enumerations.PictureLayoutMode ContextedImageLayoutMode { get; set; }
+        public Essential.Templating.Enumerations.PictureLayoutMode ContextedImageLayoutMode { get; set; }
 
         public Enumerations.FlyoutShapeKind FlyoutShapeKind { get; set; }
 

@@ -5,7 +5,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
 {
     public partial class InfinityVideoPlacardEditPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.InfinityVideoPlacardEditPageModel>
     {
-        private Templating.Presentation.Models.Context.InfinityVideoPlacardContextModel contextModel;
+        private Templating.Models.Context.InfinityVideoPlacardContextModel contextModel;
 
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
         private System.Action successfulCompleteCallbackAction;
@@ -18,7 +18,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
             this.placardViewModel = placardViewModel;
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
 
-            contextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.InfinityVideoPlacardContextModel>(placardViewModel.SerializedContext);
+            contextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.InfinityVideoPlacardContextModel>(placardViewModel.SerializedContext);
         }
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
@@ -35,7 +35,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                     PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
                     Label = BindingContextPageModel.Label,
                     TemplateId = placardViewModel.Template.Id,
-                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.InfinityVideoPlacardContextModel
+                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.InfinityVideoPlacardContextModel
                     {
                         RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                         Video = contextModel.Video,

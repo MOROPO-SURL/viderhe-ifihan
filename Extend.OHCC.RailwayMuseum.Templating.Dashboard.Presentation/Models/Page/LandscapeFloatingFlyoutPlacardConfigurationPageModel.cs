@@ -1,44 +1,46 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page
+﻿using SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page
 {
     public class LandscapeFloatingFlyoutPlacardConfigurationPageModel : Contract.AbstractImagedMuseographyPlacardConfigurationPageModel
     {
-        private Templating.Presentation.Enumerations.FlyoutShapeKind flyoutShapeKind;
-        private Templating.Presentation.Enumerations.FlyoutBackgroundColorMode flyoutBackgroundColorMode;
-        private Templating.Presentation.Enumerations.FlyoutHorizontalOrientation flyoutHorizontalOrientation;
+        private FlyoutShapeKind flyoutShapeKind;
+        private FlyoutBackgroundColorMode flyoutBackgroundColorMode;
+        private FlyoutHorizontalOrientation flyoutHorizontalOrientation;
 
         public LandscapeFloatingFlyoutPlacardConfigurationPageModel()
         {
-            AvailableFlyoutShapeKinds = new Templating.Presentation.Enumerations.FlyoutShapeKind[]
+            AvailableFlyoutShapeKinds = new FlyoutShapeKind[]
             {
-                Templating.Presentation.Enumerations.FlyoutShapeKind.Train,
-                Templating.Presentation.Enumerations.FlyoutShapeKind.Tally
+                FlyoutShapeKind.Train,
+                FlyoutShapeKind.Tally
             };
 
-            AvailableFlyoutBackgroundColorModes = new Templating.Presentation.Enumerations.FlyoutBackgroundColorMode[]
+            AvailableFlyoutBackgroundColorModes = new FlyoutBackgroundColorMode[]
             {
-                Templating.Presentation.Enumerations.FlyoutBackgroundColorMode.Primary,
-                Templating.Presentation.Enumerations.FlyoutBackgroundColorMode.Secoundary,
-                Templating.Presentation.Enumerations.FlyoutBackgroundColorMode.Light,
-                Templating.Presentation.Enumerations.FlyoutBackgroundColorMode.Dark
+                FlyoutBackgroundColorMode.Primary,
+                FlyoutBackgroundColorMode.Secoundary,
+                FlyoutBackgroundColorMode.Light,
+                FlyoutBackgroundColorMode.Dark
             };
 
-            AvailableFlyoutHorizontalOrientations = new Templating.Presentation.Enumerations.FlyoutHorizontalOrientation[]
+            AvailableFlyoutHorizontalOrientations = new FlyoutHorizontalOrientation[]
             {
-                Templating.Presentation.Enumerations.FlyoutHorizontalOrientation.Left,
-                Templating.Presentation.Enumerations.FlyoutHorizontalOrientation.Right
+                FlyoutHorizontalOrientation.Left,
+                FlyoutHorizontalOrientation.Right
             };
         }
 
-        public Templating.Presentation.Enumerations.FlyoutShapeKind FlyoutShapeKind { get => flyoutShapeKind; set => SetProperty(ref flyoutShapeKind, value); }
+        public FlyoutShapeKind FlyoutShapeKind { get => flyoutShapeKind; set => SetProperty(ref flyoutShapeKind, value); }
 
-        public Templating.Presentation.Enumerations.FlyoutShapeKind[] AvailableFlyoutShapeKinds { get; private set; }
+        public FlyoutShapeKind[] AvailableFlyoutShapeKinds { get; private set; }
 
-        public Templating.Presentation.Enumerations.FlyoutBackgroundColorMode FlyoutBackgroundColorMode { get => flyoutBackgroundColorMode; set => SetProperty(ref flyoutBackgroundColorMode, value); }
+        public FlyoutBackgroundColorMode FlyoutBackgroundColorMode { get => flyoutBackgroundColorMode; set => SetProperty(ref flyoutBackgroundColorMode, value); }
 
-        public Templating.Presentation.Enumerations.FlyoutBackgroundColorMode[] AvailableFlyoutBackgroundColorModes { get; private set; }
+        public FlyoutBackgroundColorMode[] AvailableFlyoutBackgroundColorModes { get; private set; }
 
-        public Templating.Presentation.Enumerations.FlyoutHorizontalOrientation FlyoutHorizontalOrientation { get => flyoutHorizontalOrientation; set => SetProperty(ref flyoutHorizontalOrientation, value); }
+        public FlyoutHorizontalOrientation FlyoutHorizontalOrientation { get => flyoutHorizontalOrientation; set => SetProperty(ref flyoutHorizontalOrientation, value); }
 
-        public Templating.Presentation.Enumerations.FlyoutHorizontalOrientation[] AvailableFlyoutHorizontalOrientations { get; private set; }
+        public FlyoutHorizontalOrientation[] AvailableFlyoutHorizontalOrientations { get; private set; }
     }
 }

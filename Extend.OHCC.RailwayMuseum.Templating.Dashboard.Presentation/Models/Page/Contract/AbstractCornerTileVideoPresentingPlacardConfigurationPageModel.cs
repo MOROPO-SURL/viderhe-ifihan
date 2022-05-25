@@ -1,29 +1,31 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page.Contract
+﻿using SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page.Contract
 {
     public abstract class AbstractCornerTileVideoPresentingPlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledPlacardConfigurationPageModel
     {
         private Support.Presentation.Models.View.VideoViewModel presenterTileVideo;
-        private Templating.Presentation.Enumerations.ScreenCorner presenterTileVideoScreenCorner;
+        private ScreenCorner presenterTileVideoScreenCorner;
         private System.TimeSpan presenterTileVideoPlayDelay;
 
         public AbstractCornerTileVideoPresentingPlacardConfigurationPageModel()
         {
-            PresenterTileVideoScreenCorner = Templating.Presentation.Enumerations.ScreenCorner.BottonRight;
+            PresenterTileVideoScreenCorner = ScreenCorner.BottonRight;
 
-            AvailablePresenterTileVideoScreenCorners = new Templating.Presentation.Enumerations.ScreenCorner[] 
+            AvailablePresenterTileVideoScreenCorners = new ScreenCorner[] 
             {
-                Templating.Presentation.Enumerations.ScreenCorner.TopLeft,
-                Templating.Presentation.Enumerations.ScreenCorner.TopRight,
-                Templating.Presentation.Enumerations.ScreenCorner.BottomLeft,
-                Templating.Presentation.Enumerations.ScreenCorner.BottonRight 
+                ScreenCorner.TopLeft,
+                ScreenCorner.TopRight,
+                ScreenCorner.BottomLeft,
+                ScreenCorner.BottonRight 
             };
         }
 
         public Support.Presentation.Models.View.VideoViewModel PresenterTileVideo { get => presenterTileVideo; set => SetProperty(ref presenterTileVideo, value); }
 
-        public Templating.Presentation.Enumerations.ScreenCorner PresenterTileVideoScreenCorner { get => presenterTileVideoScreenCorner; set => SetProperty(ref presenterTileVideoScreenCorner, value); }
+        public ScreenCorner PresenterTileVideoScreenCorner { get => presenterTileVideoScreenCorner; set => SetProperty(ref presenterTileVideoScreenCorner, value); }
 
-        public Templating.Presentation.Enumerations.ScreenCorner[] AvailablePresenterTileVideoScreenCorners { get; private set; }
+        public ScreenCorner[] AvailablePresenterTileVideoScreenCorners { get; private set; }
 
         public System.TimeSpan PresenterTileVideoPlayDelay { get => presenterTileVideoPlayDelay; set => SetProperty(ref presenterTileVideoPlayDelay, value); }
 

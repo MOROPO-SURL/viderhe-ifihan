@@ -1,13 +1,13 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.Context
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Models.Context
 {
     public class LandscapeFillFlyoutPlacardContextModel : Contract.AbstractImagedMuseographyPlacardContextModel
     {
         public LandscapeFillFlyoutPlacardContextModel()
         {
-            ContextedImageLayoutMode = Essential.Templating.Presentation.Enumerations.PictureLayoutMode.AspectFill;
+            ContextedImageLayoutMode = Essential.Templating.Enumerations.PictureLayoutMode.AspectFill;
         }
 
-        public Essential.Templating.Presentation.Enumerations.PictureLayoutMode ContextedImageLayoutMode { get; set; }
+        public Essential.Templating.Enumerations.PictureLayoutMode ContextedImageLayoutMode { get; set; }
 
         public Enumerations.FlyoutShapeKind FlyoutShapeKind { get; set; }
 
