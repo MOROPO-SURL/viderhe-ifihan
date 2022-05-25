@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Providers
+﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Providers
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
@@ -6,7 +8,7 @@
         {
             if (model.Template.Id == Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeContextualTranslucentOverlapForImagePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeContextualTranslucentOverlapForImagePlacardContextModel>(model.SerializedContext);
 
                 var targetPlacardViewModel = new Models.View.LandscapeContextualTranslucentOverlapForImagePlacardViewModel
                 {
@@ -35,12 +37,11 @@
 
             if (model.Template.Id == Descriptors.LandscapeTranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel>(model.SerializedContext);
 
                 var targetPlacardViewModel = new Models.View.LandscapeTranslucentContextualOverlapForImageSecuencePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    ScreenPresentationTime = context.ScreenPresentationTime,
                     PresentedPictureSlideSecuence = context.PresentedPictureSlideSecuence,
                     OverlapSize = context.OverlapSize,
                     OverlapShapeKind = context.OverlapShapeKind,
@@ -63,7 +64,7 @@
 
             if (model.Template.Id == Descriptors.PortraitTranslucentContextualOverlapForImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.PortraitTranslucentContextualOverlapForImagePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitTranslucentContextualOverlapForImagePlacardContextModel>(model.SerializedContext);
 
                 var targetPlacardViewModel = new Models.View.PortraitTranslucentContextualOverlapForImagePlacardViewModel
                 {
@@ -86,7 +87,7 @@
 
             if (model.Template.Id == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeContextualFlatOverlapForImagePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeContextualFlatOverlapForImagePlacardContextModel>(model.SerializedContext);
 
                 var targetPlacardViewModel = new Models.View.LandscapeContextualFlatOverlapForImagePlacardViewModel
                 {
@@ -117,7 +118,7 @@
 
             if (model.Template.Id == Descriptors.PortraitFlatContextualOverlapForImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.PortraitFlatContextualOverlapForImagePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitFlatContextualOverlapForImagePlacardContextModel>(model.SerializedContext);
 
                 var targetPlacardViewModel = new Models.View.PortraitFlatContextualOverlapForImagePlacardViewModel
                 {
@@ -142,7 +143,7 @@
 
             if (model.Template.Id == Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeContextualTrailOverlapForImagePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeContextualTrailOverlapForImagePlacardContextModel>(model.SerializedContext);
 
                 var targetPlacardViewModel = new Models.View.LandscapeContextualTrailOverlapForImagePlacardViewModel
                 {
@@ -173,7 +174,7 @@
 
             if (model.Template.Id == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.CenteredTraslucentIntroOverImagePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<CenteredTraslucentIntroOverImagePlacardContextModel>(model.SerializedContext);
 
                 var targetPlacardViewModel = new Models.View.CenteredTraslucentIntroOverImagePlacardViewModel
                 {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.Context.Contract
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context.Contract
 {
     public class BaseLandscapeContextualOperlapForImagePlacardContextModel : AbstractLandscapeContextedMediaPlacardContextModel
     {
@@ -7,7 +7,7 @@
 
         }
 
-        public Common.Templating.Presentation.Models.Context.ImageContextModel ContextedImage { get; set; }
+        public Common.Templating.Models.Context.ImageContextModel ContextedImage { get; set; }
 
         public bool ContextedImageZoomingEnabled { get; set; }
     }

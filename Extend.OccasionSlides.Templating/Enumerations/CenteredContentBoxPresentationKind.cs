@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Enumerations
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Enumerations
 {
     public enum CenteredContentBoxPresentationKind
     {

@@ -55,7 +55,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                     {
                         Label = BindingContextPageModel.Label,
                         TemplateId = Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor.ID,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.LandscapeContextualTranslucentOverlapForImagePlacardContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.LandscapeContextualTranslucentOverlapForImagePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
@@ -80,7 +80,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
                         TemplateId = placardViewModel.Template.Id,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.LandscapeContextualTranslucentOverlapForImagePlacardContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.LandscapeContextualTranslucentOverlapForImagePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
@@ -137,7 +137,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ContentBlockOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Templating.Presentation.Models.TextContentBlockModel;
+            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Templating.Models.Context.TextContentBlockContextModel;
 
             var extraOptions = new System.Collections.Generic.List<string>
             {
@@ -278,14 +278,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             BindingContextPageModel.ContextedImage = selection;
         }
 
-        private void TextContentBlockCreation_Callback(Templating.Presentation.Models.TextContentBlockModel model)
+        private void TextContentBlockCreation_Callback(Templating.Models.Context.TextContentBlockContextModel model)
         {
             model.Priority = BindingContextPageModel.ContentBlocks.Count;
 
             BindingContextPageModel.ContentBlocks.Add(model);
         }
 
-        private void TextContentBlockEdition_Callback(Templating.Presentation.Models.TextContentBlockModel model)
+        private void TextContentBlockEdition_Callback(Templating.Models.Context.TextContentBlockContextModel model)
         {
             var target = BindingContextPageModel.ContentBlocks.First(item => item.Id == model.Id);
 

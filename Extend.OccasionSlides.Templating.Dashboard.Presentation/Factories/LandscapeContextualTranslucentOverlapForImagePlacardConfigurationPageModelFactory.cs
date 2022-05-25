@@ -9,7 +9,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         {
             if (placardViewModel == null) return new Models.Page.LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.LandscapeContextualTranslucentOverlapForImagePlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapeContextualTranslucentOverlapForImagePlacardContextModel>(placardViewModel.SerializedContext);
 
             var result = new Models.Page.LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPageModel
             {

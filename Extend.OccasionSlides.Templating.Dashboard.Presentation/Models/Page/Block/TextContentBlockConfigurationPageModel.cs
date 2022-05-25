@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Block
 {
-    public class TextContentBlockModel : XFToolKit.Mvvm.Models.BaseBindableModel, System.ICloneable
+    public class TextContentBlockConfigurationPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private int priority;
         private string header;
@@ -12,7 +12,7 @@
         private string contentFontFamily;
         private int contentFontSize;
 
-        public TextContentBlockModel()
+        public TextContentBlockConfigurationPageModel()
         {
             Id = System.Guid.NewGuid();
 
@@ -39,22 +39,5 @@
         public string ContentFontFamily { get => contentFontFamily; set => SetProperty(ref contentFontFamily, value); }
 
         public int ContentFontSize { get => contentFontSize; set => SetProperty(ref contentFontSize, value); }
-
-        public object Clone()
-        {
-            return new TextContentBlockModel
-            {
-                Id = Id,
-                Priority = Priority,
-                Header = Header,
-                HeaderFontFamily = HeaderFontFamily,
-                HeaderFontSize = HeaderFontSize,
-                IsHeaderVisible = IsHeaderVisible,
-                Content = Content,
-                ContentMaxLine = ContentMaxLine,
-                ContentFontFamily = ContentFontFamily,
-                ContentFontSize = ContentFontSize
-            };
-        }
     }
 }

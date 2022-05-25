@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating</RootNamespace>
-    <Version>0.4.3.2</Version>
+    <Version>0.5.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,14 +19,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="2AFABF13-7976-4C71-9483-9E805AB9A0A1-landscape.png" />
-    <EmbeddedResource Include="5A2F1E9B-EC2C-46A4-92EC-2975EC6DFEEE-landscape.png" />
-    <EmbeddedResource Include="5F1E38D6-DABB-4B90-8845-C07E8F5DD9E0-landscape.png" />
-    <EmbeddedResource Include="787D2F5E-9815-445E-8BDF-3FFE3DEBB5BF-portrait.png" />
-    <EmbeddedResource Include="BFB19355-B4DF-4FAC-BAAF-9951943818BE-landscape.png" />
-    <EmbeddedResource Include="C3F857EA-227D-44BA-90C1-39091E1E70C7-portrait.png" />
-    <EmbeddedResource Include="FA754670-FD62-4E36-B6C7-400B6689F00C-landscape.png" />
-    <EmbeddedResource Include="FA754670-FD62-4E36-B6C7-400B6689F00C-portrait.png" />
+    <EmbeddedResource Include="Assets\2AFABF13-7976-4C71-9483-9E805AB9A0A1-landscape.png" />
+    <EmbeddedResource Include="Assets\5A2F1E9B-EC2C-46A4-92EC-2975EC6DFEEE-landscape.png" />
+    <EmbeddedResource Include="Assets\5F1E38D6-DABB-4B90-8845-C07E8F5DD9E0-landscape.png" />
+    <EmbeddedResource Include="Assets\787D2F5E-9815-445E-8BDF-3FFE3DEBB5BF-portrait.png" />
+    <EmbeddedResource Include="Assets\BFB19355-B4DF-4FAC-BAAF-9951943818BE-landscape.png" />
+    <EmbeddedResource Include="Assets\C3F857EA-227D-44BA-90C1-39091E1E70C7-portrait.png" />
+    <EmbeddedResource Include="Assets\FA754670-FD62-4E36-B6C7-400B6689F00C-landscape.png" />
+    <EmbeddedResource Include="Assets\FA754670-FD62-4E36-B6C7-400B6689F00C-portrait.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+    <ProjectReference Include="..\Extend.Essential.Templating\Extend.Essential.Templating.csproj" />
   </ItemGroup>
 
 </Project>

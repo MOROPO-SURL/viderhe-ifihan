@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.Context
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context
 {
     public class LandscapeContextualTrailOverlapForImagePlacardContextModel : Contract.BaseLandscapeContextualOperlapForImagePlacardContextModel
     {

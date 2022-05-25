@@ -49,7 +49,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 {
                     Id = System.Guid.NewGuid(),
                     Template = targetTemplateViewModel,
-                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Essential.Templating.Presentation.Models.Context.SimplePicturePlacardContextModel
+                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Essential.Templating.Models.Context.SimplePicturePlacardContextModel
                     {
                         Image = item.Image,
                         LayoutMode = item.LayoutMode,
@@ -139,9 +139,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
         {
             if (model.Template.Id != Essential.Templating.Descriptors.SimplePictureTemplateDescriptor.ID) throw new System.InvalidOperationException();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Essential.Templating.Presentation.Models.Context.SimplePicturePlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Essential.Templating.Models.Context.SimplePicturePlacardContextModel>(model.SerializedContext);
 
-            if (context.LayoutMode == Essential.Templating.Presentation.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf)
+            if (context.LayoutMode == Essential.Templating.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf)
             {
                 return new Essential.Templating.Presentation.Views.SelfOpaqueFillSimplePicturePlacardView(new Essential.Templating.Presentation.Models.View.SelfOpaqueFillSimplePicturePlacardViewModel
                 {

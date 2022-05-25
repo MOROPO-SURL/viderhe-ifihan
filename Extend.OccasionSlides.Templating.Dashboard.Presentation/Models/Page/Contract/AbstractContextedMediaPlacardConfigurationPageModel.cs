@@ -1,9 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Contract
+﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Contract
 {
     public abstract class AbstractContextedMediaPlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
-        private Templating.Presentation.Enumerations.OverlapShapeKind overlapShapeKind;
-        private Templating.Presentation.Enumerations.OverlapSize overlapSize;
+        private OverlapShapeKind overlapShapeKind;
+        private OverlapSize overlapSize;
         private string title;
         private string titleFontFamily;
         private int titleFontSize;
@@ -12,29 +14,29 @@
         {
             TitleFontSize = 48;
             
-            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.TextContentBlockModel>();
+            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Models.Context.TextContentBlockContextModel>();
 
-            AvailableOverlapShapeKinds = new Templating.Presentation.Enumerations.OverlapShapeKind[]
+            AvailableOverlapShapeKinds = new OverlapShapeKind[]
             {
-                Templating.Presentation.Enumerations.OverlapShapeKind.Rectangle,
-                Templating.Presentation.Enumerations.OverlapShapeKind.TriangleFullTop,
-                Templating.Presentation.Enumerations.OverlapShapeKind.TriangleFullBottom
+                OverlapShapeKind.Rectangle,
+                OverlapShapeKind.TriangleFullTop,
+                OverlapShapeKind.TriangleFullBottom
             };
-            AvailableOverlapSizes = new Templating.Presentation.Enumerations.OverlapSize[]
+            AvailableOverlapSizes = new OverlapSize[]
             {
-                Templating.Presentation.Enumerations.OverlapSize.Short,
-                Templating.Presentation.Enumerations.OverlapSize.Medium,
-                Templating.Presentation.Enumerations.OverlapSize.Large
+                OverlapSize.Short,
+                OverlapSize.Medium,
+                OverlapSize.Large
             };
         }
 
-        public Templating.Presentation.Enumerations.OverlapShapeKind OverlapShapeKind { get => overlapShapeKind; set => SetProperty(ref overlapShapeKind, value); }
+        public OverlapShapeKind OverlapShapeKind { get => overlapShapeKind; set => SetProperty(ref overlapShapeKind, value); }
 
-        public Templating.Presentation.Enumerations.OverlapShapeKind[] AvailableOverlapShapeKinds { get; private set; }
+        public OverlapShapeKind[] AvailableOverlapShapeKinds { get; private set; }
 
-        public Templating.Presentation.Enumerations.OverlapSize OverlapSize { get => overlapSize; set => SetProperty(ref overlapSize, value); }
+        public OverlapSize OverlapSize { get => overlapSize; set => SetProperty(ref overlapSize, value); }
 
-        public Templating.Presentation.Enumerations.OverlapSize[] AvailableOverlapSizes { get; private set; }
+        public OverlapSize[] AvailableOverlapSizes { get; private set; }
 
         public string Title { get => title; set => SetProperty(ref title, value); }
 
@@ -42,6 +44,6 @@
 
         public int TitleFontSize { get => titleFontSize; set => SetProperty(ref titleFontSize, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.TextContentBlockModel> ContentBlocks { get; private set; }
+        public System.Collections.ObjectModel.ObservableCollection<Templating.Models.Context.TextContentBlockContextModel> ContentBlocks { get; private set; }
     }
 }

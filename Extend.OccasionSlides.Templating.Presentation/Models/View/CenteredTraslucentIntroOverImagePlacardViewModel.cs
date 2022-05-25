@@ -8,7 +8,7 @@
 
         public int TitleFontSize { get; set; }
 
-        public TextContentBlockModel[] ContentBlocks { get; set; }
+        public Templating.Models.Context.TextContentBlockContextModel[] ContentBlocks { get; set; }
 
         public Enumerations.CenteredContentBoxPresentationKind ContentBoxPresentationKind { get; set; }
 

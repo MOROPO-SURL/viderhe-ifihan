@@ -1,15 +1,16 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Enumerations;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Enumerations;
+using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Enumerations;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page
 {
     public class LandscapeTranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
-        private Templating.Presentation.Enumerations.OverlapShapeKind overlapShapeKind;
-        private Templating.Presentation.Enumerations.OverlapSize overlapSize;
+        private OverlapShapeKind overlapShapeKind;
+        private OverlapSize overlapSize;
         private string title;
         private string titleFontFamily;
         private int titleFontSize;
-        private Templating.Presentation.Enumerations.OverlapHorizontalAlignment overlapHorizontalAlignment;
+        private OverlapHorizontalAlignment overlapHorizontalAlignment;
         private Xamarin.Forms.Color overlapBackgroundColor;
         private Xamarin.Forms.Color textColor;
         private int pictureSlidePresentationSecounds;
@@ -18,33 +19,39 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         {
             TitleFontSize = 48;
 
-            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.TextContentBlockModel>();
+            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Models.Context.TextContentBlockContextModel>();
             PictureSlidePresentationSecounds = 10;
-            AvailableLayoutModes = new PictureLayoutMode[] { PictureLayoutMode.AspectFit, PictureLayoutMode.AspectFill, PictureLayoutMode.Fill, PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf };
+            AvailableLayoutModes = new PictureLayoutMode[] 
+            { 
+                PictureLayoutMode.AspectFit, 
+                PictureLayoutMode.AspectFill, 
+                PictureLayoutMode.Fill, 
+                PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf 
+            };
 
             PresentedSlides = new System.Collections.ObjectModel.ObservableCollection<Essential.Templating.Dashboard.Presentation.Models.View.PictureSlideViewModel>();
 
-            AvailableOverlapShapeKinds = new Templating.Presentation.Enumerations.OverlapShapeKind[]
+            AvailableOverlapShapeKinds = new OverlapShapeKind[]
             {
-                Templating.Presentation.Enumerations.OverlapShapeKind.Rectangle,
-                Templating.Presentation.Enumerations.OverlapShapeKind.TriangleFullTop,
-                Templating.Presentation.Enumerations.OverlapShapeKind.TriangleFullBottom
+                OverlapShapeKind.Rectangle,
+                OverlapShapeKind.TriangleFullTop,
+                OverlapShapeKind.TriangleFullBottom
             };
-            AvailableOverlapSizes = new Templating.Presentation.Enumerations.OverlapSize[]
+            AvailableOverlapSizes = new OverlapSize[]
             {
-                Templating.Presentation.Enumerations.OverlapSize.Short,
-                Templating.Presentation.Enumerations.OverlapSize.Medium,
-                Templating.Presentation.Enumerations.OverlapSize.Large
+                OverlapSize.Short,
+                OverlapSize.Medium,
+                OverlapSize.Large
             };
         }
 
-        public Templating.Presentation.Enumerations.OverlapShapeKind OverlapShapeKind { get => overlapShapeKind; set => SetProperty(ref overlapShapeKind, value); }
+        public OverlapShapeKind OverlapShapeKind { get => overlapShapeKind; set => SetProperty(ref overlapShapeKind, value); }
 
-        public Templating.Presentation.Enumerations.OverlapShapeKind[] AvailableOverlapShapeKinds { get; private set; }
+        public OverlapShapeKind[] AvailableOverlapShapeKinds { get; private set; }
 
-        public Templating.Presentation.Enumerations.OverlapSize OverlapSize { get => overlapSize; set => SetProperty(ref overlapSize, value); }
+        public OverlapSize OverlapSize { get => overlapSize; set => SetProperty(ref overlapSize, value); }
 
-        public Templating.Presentation.Enumerations.OverlapSize[] AvailableOverlapSizes { get; private set; }
+        public OverlapSize[] AvailableOverlapSizes { get; private set; }
 
         public string Title { get => title; set => SetProperty(ref title, value); }
 
@@ -52,11 +59,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public int TitleFontSize { get => titleFontSize; set => SetProperty(ref titleFontSize, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.TextContentBlockModel> ContentBlocks { get; private set; }
+        public System.Collections.ObjectModel.ObservableCollection<Templating.Models.Context.TextContentBlockContextModel> ContentBlocks { get; private set; }
 
-        public Templating.Presentation.Enumerations.OverlapHorizontalAlignment OverlapHorizontalAlignment { get => overlapHorizontalAlignment; set => SetProperty(ref overlapHorizontalAlignment, value); }
+        public OverlapHorizontalAlignment OverlapHorizontalAlignment { get => overlapHorizontalAlignment; set => SetProperty(ref overlapHorizontalAlignment, value); }
 
-        public Templating.Presentation.Enumerations.OverlapHorizontalAlignment[] AvailableOverlapHorizontalAlignments { get; private set; }
+        public OverlapHorizontalAlignment[] AvailableOverlapHorizontalAlignments { get; private set; }
 
         public Xamarin.Forms.Color OverlapBackgroundColor { get => overlapBackgroundColor; set => SetProperty(ref overlapBackgroundColor, value); }
 
@@ -64,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public System.Collections.ObjectModel.ObservableCollection<Essential.Templating.Dashboard.Presentation.Models.View.PictureSlideViewModel> PresentedSlides { get; set; }
 
-        public Essential.Templating.Presentation.Enumerations.PictureLayoutMode[] AvailableLayoutModes { get; private set; }
+        public PictureLayoutMode[] AvailableLayoutModes { get; private set; }
 
         public int PictureSlidePresentationSecounds { get => pictureSlidePresentationSecounds; set => SetProperty(ref pictureSlidePresentationSecounds, value); }
     }

@@ -2,23 +2,23 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Block
 {
-    public partial class TextContentBlockConfigurationPage : XFToolKit.Mvvm.Pages.ContentPage
+    public partial class TextContentBlockConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.Block.TextContentBlockConfigurationPageModel>
     {
-        private System.Action<Templating.Presentation.Models.TextContentBlockModel> applyCallbackAction;
+        private System.Action<Templating.Models.Context.TextContentBlockContextModel> applyCallbackAction;
 
-        public TextContentBlockConfigurationPage(System.Action<Templating.Presentation.Models.TextContentBlockModel> applyCallbackAction)
+        public TextContentBlockConfigurationPage(System.Action<Templating.Models.Context.TextContentBlockContextModel> applyCallbackAction)
             : this(null, applyCallbackAction)
         {
         }
 
-        public TextContentBlockConfigurationPage(Templating.Presentation.Models.TextContentBlockModel model, System.Action<Templating.Presentation.Models.TextContentBlockModel> applyCallbackAction)
+        public TextContentBlockConfigurationPage(Templating.Models.Context.TextContentBlockContextModel model, System.Action<Templating.Models.Context.TextContentBlockContextModel> applyCallbackAction)
+            : base(Factories.TextContentBlockConfigurationPageModelFactory.Build(model))
         {
             this.applyCallbackAction = applyCallbackAction;
 
             InitializeComponent();
 
             Title = model != null ? "Modificar Bloque de Texto" : "Agregar Bloque de Texto";
-            BindingContext = model ?? new Templating.Presentation.Models.TextContentBlockModel();
         }
 
         protected override void DisposeUnmanagementResources()
@@ -30,7 +30,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
-            applyCallbackAction.Invoke(BindingContext as Templating.Presentation.Models.TextContentBlockModel);
+            applyCallbackAction.Invoke(new Templating.Models.Context.TextContentBlockContextModel
+            {
+                Id = BindingContextPageModel.Id,
+                Priority = BindingContextPageModel.Priority,
+                Content = BindingContextPageModel.Content,
+                ContentFontFamily = BindingContextPageModel.ContentFontFamily,
+                ContentFontSize = BindingContextPageModel.ContentFontSize,
+                ContentMaxLine = BindingContextPageModel.ContentMaxLine,
+                IsHeaderVisible = BindingContextPageModel.IsHeaderVisible,
+                Header = BindingContextPageModel.Header,
+                HeaderFontFamily = BindingContextPageModel.HeaderFontFamily,
+                HeaderFontSize = BindingContextPageModel.HeaderFontSize
+            });
 
             this.NavigationPopPageAsync();
         }
@@ -50,7 +62,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ContentFontFamilyClearButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            (BindingContext as Templating.Presentation.Models.TextContentBlockModel).ContentFontFamily = null;
+            BindingContextPageModel.ContentFontFamily = null;
         }
 
         private void ContentFontFamilyPickButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -60,7 +72,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void HeaderFontFamilyClearButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            (BindingContext as Templating.Presentation.Models.TextContentBlockModel).HeaderFontFamily = null;
+            BindingContextPageModel.HeaderFontFamily = null;
         }
 
         private void HeaderFontFamilyPickButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -70,12 +82,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ContentFontFamilyPicked_Callback(string selection)
         {
-            (BindingContext as Templating.Presentation.Models.TextContentBlockModel).ContentFontFamily = selection;
+            BindingContextPageModel.ContentFontFamily = selection;
         }
 
         private void HeaderFontFamilyPicked_Callback(string selection)
         {
-            (BindingContext as Templating.Presentation.Models.TextContentBlockModel).HeaderFontFamily = selection;
+            BindingContextPageModel.HeaderFontFamily = selection;
         }
     }
 }

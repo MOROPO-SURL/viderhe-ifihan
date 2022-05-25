@@ -54,7 +54,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                     {
                         Label = BindingContextPageModel.Label,
                         TemplateId = Descriptors.LandscapeTranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             OverlapSize = BindingContextPageModel.OverlapSize,
@@ -66,11 +66,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             TitleFontFamily = BindingContextPageModel.TitleFontFamily,
                             TitleFontSize = BindingContextPageModel.TitleFontSize,
                             ContentBlocks = BindingContextPageModel.ContentBlocks.ToArray(),
-                            PresentedPictureSlideSecuence = new Essential.Templating.Presentation.Models.Context.PictureSlideSecuencePlacardContextModel
+                            PresentedPictureSlideSecuence = new Essential.Templating.Models.Context.PictureSlideSecuencePlacardContextModel
                             {
-                                Slides = BindingContextPageModel.PresentedSlides.Select(item => new Essential.Templating.Presentation.Models.Context.PictureSlideContextModel
+                                Slides = BindingContextPageModel.PresentedSlides.Select(item => new Essential.Templating.Models.Context.PictureSlideContextModel
                                 {
-                                    Image = new Common.Templating.Presentation.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
+                                    Image = new Common.Templating.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
                                     LayoutMode = item.LayoutMode
                                 }).ToArray(),
                                 PicturePresentationSecounds = BindingContextPageModel.PictureSlidePresentationSecounds,
@@ -85,7 +85,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
                         TemplateId = placardViewModel.Template.Id,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             OverlapSize = BindingContextPageModel.OverlapSize,
@@ -97,11 +97,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             TitleFontFamily = BindingContextPageModel.TitleFontFamily,
                             TitleFontSize = BindingContextPageModel.TitleFontSize,
                             ContentBlocks = BindingContextPageModel.ContentBlocks.ToArray(),
-                            PresentedPictureSlideSecuence = new Essential.Templating.Presentation.Models.Context.PictureSlideSecuencePlacardContextModel
+                            PresentedPictureSlideSecuence = new Essential.Templating.Models.Context.PictureSlideSecuencePlacardContextModel
                             {
-                                Slides = BindingContextPageModel.PresentedSlides.Select(item => new Essential.Templating.Presentation.Models.Context.PictureSlideContextModel
+                                Slides = BindingContextPageModel.PresentedSlides.Select(item => new Essential.Templating.Models.Context.PictureSlideContextModel
                                 {
-                                    Image = new Common.Templating.Presentation.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
+                                    Image = new Common.Templating.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
                                     LayoutMode = item.LayoutMode
                                 }).ToArray(),
                                 PicturePresentationSecounds = BindingContextPageModel.PictureSlidePresentationSecounds,
@@ -171,7 +171,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ContentBlockOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Templating.Presentation.Models.TextContentBlockModel;
+            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Templating.Models.Context.TextContentBlockContextModel;
 
             var extraOptions = new System.Collections.Generic.List<string>
             {
@@ -307,14 +307,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             BindingContextPageModel.TitleFontFamily = selection;
         }
 
-        private void TextContentBlockCreation_Callback(Templating.Presentation.Models.TextContentBlockModel model)
+        private void TextContentBlockCreation_Callback(Templating.Models.Context.TextContentBlockContextModel model)
         {
             model.Priority = BindingContextPageModel.ContentBlocks.Count;
 
             BindingContextPageModel.ContentBlocks.Add(model);
         }
 
-        private void TextContentBlockEdition_Callback(Templating.Presentation.Models.TextContentBlockModel model)
+        private void TextContentBlockEdition_Callback(Templating.Models.Context.TextContentBlockContextModel model)
         {
             var target = BindingContextPageModel.ContentBlocks.First(item => item.Id == model.Id);
 

@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.Context
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context
 {
-    public class LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel : Common.Templating.Presentation.Models.Context.AbstractPlacardContextModel
+    public class LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel : Common.Templating.Models.Context.AbstractPlacardContextModel
     {
         public Enumerations.OverlapShapeKind OverlapShapeKind { get; set; }
 
@@ -12,11 +12,11 @@
 
         public int TitleFontSize { get; set; }
 
-        public TextContentBlockModel[] ContentBlocks { get; set; }
+        public TextContentBlockContextModel[] ContentBlocks { get; set; }
 
         public Enumerations.OverlapHorizontalAlignment OverlapHorizontalAlignment { get; set; }
 
-        public Essential.Templating.Presentation.Models.Context.PictureSlideSecuencePlacardContextModel PresentedPictureSlideSecuence { get; set; }
+        public Essential.Templating.Models.Context.PictureSlideSecuencePlacardContextModel PresentedPictureSlideSecuence { get; set; }
 
         public string OverlapBackgroundColor { get; set; }
 

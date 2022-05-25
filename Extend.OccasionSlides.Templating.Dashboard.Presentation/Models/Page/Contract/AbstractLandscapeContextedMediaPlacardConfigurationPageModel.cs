@@ -1,20 +1,22 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Contract
+﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Contract
 {
     public abstract class AbstractLandscapeContextedMediaPlacardConfigurationPageModel : AbstractContextedMediaPlacardConfigurationPageModel
     {
-        private Templating.Presentation.Enumerations.OverlapHorizontalAlignment pverlapHorizontalAlignment;
+        private OverlapHorizontalAlignment pverlapHorizontalAlignment;
 
         public AbstractLandscapeContextedMediaPlacardConfigurationPageModel()
         {
-            AvailableOverlapHorizontalAlignments = new Templating.Presentation.Enumerations.OverlapHorizontalAlignment[]
+            AvailableOverlapHorizontalAlignments = new OverlapHorizontalAlignment[]
             {
-                Templating.Presentation.Enumerations.OverlapHorizontalAlignment.Left,
-                Templating.Presentation.Enumerations.OverlapHorizontalAlignment.Right
+                OverlapHorizontalAlignment.Left,
+                OverlapHorizontalAlignment.Right
             };
         }
 
-        public Templating.Presentation.Enumerations.OverlapHorizontalAlignment OverlapHorizontalAlignment { get => pverlapHorizontalAlignment; set => SetProperty(ref pverlapHorizontalAlignment, value); }
+        public OverlapHorizontalAlignment OverlapHorizontalAlignment { get => pverlapHorizontalAlignment; set => SetProperty(ref pverlapHorizontalAlignment, value); }
 
-        public Templating.Presentation.Enumerations.OverlapHorizontalAlignment[] AvailableOverlapHorizontalAlignments { get; private set; }
+        public OverlapHorizontalAlignment[] AvailableOverlapHorizontalAlignments { get; private set; }
     }
 }

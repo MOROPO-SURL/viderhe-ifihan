@@ -10,7 +10,7 @@
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.PortraitContextualTranslucentOverlapForImagePlacardConfigurationPage"
-    x:TypeArguments="pagemodels:PortraitContextualTranslucentOverlapForImagePlacardConfigurationPageModel">
+    x:TypeArguments="pagemodels:PortraitTranslucentContextualOverlapForImagePlacardConfigurationPageModel">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />

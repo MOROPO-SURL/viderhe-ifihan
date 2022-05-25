@@ -8,7 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         {
             InitializeComponent();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel>(model.SerializedContext);
 
             var iterationCount = context.PresentedPictureSlideSecuence.Slides.Length;
 

@@ -6,7 +6,7 @@
         {
             if (placardViewModel == null) return new Models.Page.LandscapeTranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel>(placardViewModel.SerializedContext);
 
             var result = new Models.Page.LandscapeTranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel
             {

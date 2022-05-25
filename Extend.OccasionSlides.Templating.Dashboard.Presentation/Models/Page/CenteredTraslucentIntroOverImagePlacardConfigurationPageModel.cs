@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page
+﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page
 {
     public class CenteredTraslucentIntroOverImagePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
@@ -7,7 +9,7 @@
         private bool backgroundImageZoomingEnabled;
         private Xamarin.Forms.Color overlapBackgroundColor;
         private Xamarin.Forms.Color textColor;
-        private Templating.Presentation.Enumerations.CenteredContentBoxPresentationKind contentBoxPresentationKind;
+        private CenteredContentBoxPresentationKind contentBoxPresentationKind;
         private string title;
         private string titleFontFamily;
         private int titleFontSize;
@@ -19,13 +21,13 @@
             OverlapOpacity = 50;
             OverlapBackgroundColor = Xamarin.Forms.Color.Black;
             TextColor = Xamarin.Forms.Color.White;
-            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.TextContentBlockModel>();
-            AvailableContentBoxPresentationKinds = new Templating.Presentation.Enumerations.CenteredContentBoxPresentationKind[]
+            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Models.Context.TextContentBlockContextModel>();
+            AvailableContentBoxPresentationKinds = new CenteredContentBoxPresentationKind[]
             {
-                Templating.Presentation.Enumerations.CenteredContentBoxPresentationKind.Inmersive,
-                Templating.Presentation.Enumerations.CenteredContentBoxPresentationKind.FloatBoxFilled,
-                Templating.Presentation.Enumerations.CenteredContentBoxPresentationKind.FloatBandHorizontal,
-                Templating.Presentation.Enumerations.CenteredContentBoxPresentationKind.FloatBandVertical
+                CenteredContentBoxPresentationKind.Inmersive,
+                CenteredContentBoxPresentationKind.FloatBoxFilled,
+                CenteredContentBoxPresentationKind.FloatBandHorizontal,
+                CenteredContentBoxPresentationKind.FloatBandVertical
             };
         }
 
@@ -47,11 +49,11 @@
 
         public int TitleFontSize { get => titleFontSize; set => SetProperty(ref titleFontSize, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.TextContentBlockModel> ContentBlocks { get; private set; }
+        public System.Collections.ObjectModel.ObservableCollection<Templating.Models.Context.TextContentBlockContextModel> ContentBlocks { get; private set; }
 
-        public Templating.Presentation.Enumerations.CenteredContentBoxPresentationKind ContentBoxPresentationKind { get => contentBoxPresentationKind; set => SetProperty(ref contentBoxPresentationKind, value); }
+        public CenteredContentBoxPresentationKind ContentBoxPresentationKind { get => contentBoxPresentationKind; set => SetProperty(ref contentBoxPresentationKind, value); }
 
-        public Templating.Presentation.Enumerations.CenteredContentBoxPresentationKind[] AvailableContentBoxPresentationKinds { get; private set; }
+        public CenteredContentBoxPresentationKind[] AvailableContentBoxPresentationKinds { get; private set; }
 
         protected override void DisposeUnmanagementResources()
         {

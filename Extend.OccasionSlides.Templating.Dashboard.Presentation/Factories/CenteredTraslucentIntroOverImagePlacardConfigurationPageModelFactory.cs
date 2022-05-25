@@ -8,7 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         {
             if (placardViewModel == null) return new Models.Page.CenteredTraslucentIntroOverImagePlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.CenteredTraslucentIntroOverImagePlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.CenteredTraslucentIntroOverImagePlacardContextModel>(placardViewModel.SerializedContext);
 
             var result = new Models.Page.CenteredTraslucentIntroOverImagePlacardConfigurationPageModel
             {
