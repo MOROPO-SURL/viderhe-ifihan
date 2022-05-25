@@ -176,6 +176,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         [HttpDelete("{key}")]
         public ActionResult Delete(System.Guid key)
         {
+            if (dbContext.PlacardImageBridges.Any(item => item.ImageId == key))
+            {
+                return Conflict();
+            }
+
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
             var account = dbContext.Accounts.Include(e => e.ImageBridges).ThenInclude(b => b.Image).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);

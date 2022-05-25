@@ -1,5 +1,4 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.Providers.Facade;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Providers.Facade;
 using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
 using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
 using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
@@ -7,7 +6,7 @@ using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Presenters
 {
-    public class ScreenplayPresenter : System.IDisposable
+    public class ScreenplayPresenter : Facade.IOvarlablePresenter, System.IDisposable
     {
         private System.Action presentationEndedCallbackAction;
         private System.Action screenplayPresentIterationCompleteCallbackAction;
@@ -26,10 +25,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         private Xamarin.Forms.Layout<Xamarin.Forms.View> container;
 
+        private bool suspended;
         private bool loop;
 
         public ScreenplayPresenter(Xamarin.Forms.Layout<Xamarin.Forms.View> container, System.Func<PlacardViewModel, BasePlacardPresentationView> placardViewModelToPresentationViewFunction, PlacardViewModel[] placards, ITransitionProviderFacade transitionProvider, System.Action presentationEndedCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction, System.Action screenplayPresentIterationCompleteCallbackAction = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
         {
+            suspended = false;
+
             this.container = container;
             this.placardViewModelToPresentationViewFunction = placardViewModelToPresentationViewFunction;
             this.placards = placards;
@@ -72,7 +74,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             switch (immediacyMode)
             {
                 case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately:
-                    // TODO Perform required actions
+                    framesStack.Clear();
+
+                    PresentNextPlacardPresentationView();
 
                     break;
 
@@ -97,6 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             {
                 case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately:
                     framesStack.Clear();
+                    
                     loop = false;
 
                     presentationEndedCallbackAction?.Invoke();
@@ -106,6 +111,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
                 case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete:
                     framesStack.Clear();
+                    
                     loop = false;
 
                     break;
@@ -120,12 +126,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         private void PlacardPresentationView_PresentationComplete(object sender, System.EventArgs eventArgs)
         {
-            (sender as BasePlacardPresentationView).PresentationComplete -= PlacardPresentationView_PresentationComplete;
-
             PresentNextPlacardPresentationView();
         }
 
-        private void OnMotionTransitionCompletedCallback(BasePlacardPresentationView incomingFrameView)
+        private void MotionTransitionCompleted_Callback(BasePlacardPresentationView incomingFrameView)
         {
             if (outgoingFrameView != null)
             {
@@ -142,10 +146,24 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             }
 
             outgoingFrameView = null;
+
+            if (suspended)
+            {
+                incomingFrameView.PresentationComplete -= PlacardPresentationView_PresentationComplete;
+
+                container.Children.Remove(incomingFrameView);
+
+                if (incomingFrameView is System.IDisposable)
+                {
+                    (incomingFrameView as System.IDisposable).Dispose();
+                }
+            }
         }
 
         private void PresentNextPlacardPresentationView()
         {
+            if (suspended) return;
+
             CurrentPlacardViewModel = null;
 
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
@@ -171,7 +189,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
                         outgoingFrameView = container.Children.FirstOrDefault() as BasePlacardPresentationView;
 
-                        var transition = transitionProvider.GetRandom(incomingFrameView, outgoingFrameView, OnMotionTransitionCompletedCallback);
+                        if (outgoingFrameView != null)
+                        {
+                            outgoingFrameView.PresentationComplete -= PlacardPresentationView_PresentationComplete;
+                        }
+
+                        var transition = transitionProvider.GetRandom(incomingFrameView, outgoingFrameView, MotionTransitionCompleted_Callback);
 
                         transition?.GetReady(container);
 
@@ -207,6 +230,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                             }
 
                             outgoingFrameView = null;
+
+                            if (suspended)
+                            {
+                                incomingFrameView.PresentationComplete -= PlacardPresentationView_PresentationComplete;
+
+                                container.Children.Remove(incomingFrameView);
+
+                                if (incomingFrameView is System.IDisposable)
+                                {
+                                    (incomingFrameView as System.IDisposable).Dispose();
+                                }
+                            }
                         }
 
                         placardPlayingCallbackAction?.Invoke(model.Id);
@@ -230,6 +265,33 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                 }
             });
         }
+
+        #region IOverlablePresenter implementation
+
+        public void SuspendPresentation()
+        {
+            suspended = true;
+
+            if (!(container.Children.FirstOrDefault() is BasePlacardPresentationView currentPlacardFrameView)) return;
+
+            currentPlacardFrameView.PresentationComplete -= PlacardPresentationView_PresentationComplete;
+
+            container.Children.Remove(currentPlacardFrameView);
+
+            if (currentPlacardFrameView is System.IDisposable)
+            {
+                (currentPlacardFrameView as System.IDisposable).Dispose();
+            }
+        }
+
+        public void ResumePresentation()
+        {
+            suspended = false;
+
+            RequestPresentNextFrame();
+        }
+
+        #endregion
 
         #region IDisposable Support
         private bool disposedValue = false; // Para detectar llamadas redundantes

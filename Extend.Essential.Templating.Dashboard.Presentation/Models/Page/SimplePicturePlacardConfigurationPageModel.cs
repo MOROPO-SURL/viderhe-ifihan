@@ -3,23 +3,29 @@
     public class SimplePicturePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
         private Support.Presentation.Models.View.ImageViewModel image;
-        private Templating.Presentation.Enumerations.PictureLayoutMode layoutMode;
+        private Enumerations.PictureLayoutMode layoutMode;
         private bool isZoomingEnabled;
 
         public SimplePicturePlacardConfigurationPageModel()
         {
             ScreenPresentationTimeSecounds = 15;
 
-            AvailableLayoutModes = new Templating.Presentation.Enumerations.PictureLayoutMode[] { Templating.Presentation.Enumerations.PictureLayoutMode.AspectFit, Templating.Presentation.Enumerations.PictureLayoutMode.AspectFill, Templating.Presentation.Enumerations.PictureLayoutMode.Fill, Templating.Presentation.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf };
+            AvailableLayoutModes = new Enumerations.PictureLayoutMode[] 
+            { 
+                Enumerations.PictureLayoutMode.AspectFit, 
+                Enumerations.PictureLayoutMode.AspectFill, 
+                Enumerations.PictureLayoutMode.Fill, 
+                Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf
+            };
         }
 
-        public Templating.Presentation.Enumerations.PictureLayoutMode LayoutMode { get => layoutMode; set => SetProperty(ref layoutMode, value); }
+        public Enumerations.PictureLayoutMode LayoutMode { get => layoutMode; set => SetProperty(ref layoutMode, value); }
 
         public Support.Presentation.Models.View.ImageViewModel Image { get => image; set => SetProperty(ref image, value); }
 
         public bool IsZoomingEnabled { get => isZoomingEnabled; set => SetProperty(ref isZoomingEnabled, value); }
 
-        public Templating.Presentation.Enumerations.PictureLayoutMode[] AvailableLayoutModes { get; private set; }
+        public Enumerations.PictureLayoutMode[] AvailableLayoutModes { get; private set; }
 
         protected override void DisposeUnmanagementResources()
         {
