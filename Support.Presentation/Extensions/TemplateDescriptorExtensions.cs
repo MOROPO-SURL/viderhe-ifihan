@@ -7,7 +7,9 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions
         public static Models.View.TemplateViewModel ToViewModel<TTemplateDescriptor>(this TTemplateDescriptor templateDescriptor)
             where TTemplateDescriptor : class, ITemplateDescriptor
         {
-            var resourceId = string.Format("{0}.{1}{2}.png", templateDescriptor.GetType().AssemblyQualifiedName.Split(',')[1].Trim(), templateDescriptor.Id.ToString().ToUpper(), templateDescriptor.PlayerOrientationSupport.ToImageResourceNameSufix());
+            if (templateDescriptor == null) return null;
+
+            var resourceId = string.Format("{0}.Assets.{1}{2}.png", templateDescriptor.GetType().AssemblyQualifiedName.Split(',')[1].Trim(), templateDescriptor.Id.ToString().ToUpper(), templateDescriptor.PlayerOrientationSupport.ToImageResourceNameSufix());
 
             var model = new Models.View.TemplateViewModel
             {

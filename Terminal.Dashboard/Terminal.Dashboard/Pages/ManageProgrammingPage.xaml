@@ -284,7 +284,7 @@
                                     </Grid.RowDefinitions>
                                     <Grid 
                                         Grid.Row="0"
-                                        HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width}">
+                                        HeightRequest="{Binding Source={RelativeSource AncestorType={Type Grid}}, Path=Width}">
                                         <BoxView Color="White" Opacity="0.2" />
                                         <ContentView Content="{Binding Path=Placard, Converter={StaticResource PlacardViewModelToPlacardThumbnailWrapViewConverter}}" />
                                         <Label
@@ -299,7 +299,6 @@
                                         <Button 
                                             HorizontalOptions="End" VerticalOptions="Start"
                                             Padding="0,6"
-                                            IsEnabled="{Binding Path=Placard, Converter={StaticResource NotNullToBooleanConverter}}"
                                             Text="&#xF1D9;"
                                             Style="{StaticResource OptionsTextIconButton}"
                                             FontSize="Medium"
