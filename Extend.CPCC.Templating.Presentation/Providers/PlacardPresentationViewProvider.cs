@@ -6,7 +6,7 @@
         {
             if (model.Template.Id == Descriptors.PortraitPosterVideoEventPromotionTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.PortraitPosterVideoEventPromotionPlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.PortraitPosterVideoEventPromotionPlacardContextModel>(model.SerializedContext);
 
                 return new Views.PortraitPosterVideoEventPromotionPlacardView(new Models.View.PortraitPosterVideoEventPromotionPlacardViewModel
                 {

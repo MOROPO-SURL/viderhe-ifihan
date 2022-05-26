@@ -64,7 +64,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
                     {
                         Label = BindingContextPageModel.Label,
                         TemplateId = Descriptors.PortraitPosterVideoEventPromotionTemplateDescriptor.ID,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.PortraitPosterVideoEventPromotionPlacardContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.PortraitPosterVideoEventPromotionPlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             Poster = BindingContextPageModel.EventPoster.ToContextModel(),
@@ -79,7 +79,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
                         TemplateId = placardViewModel.Template.Id,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Presentation.Models.Context.PortraitPosterVideoEventPromotionPlacardContextModel
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.PortraitPosterVideoEventPromotionPlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             Poster = BindingContextPageModel.EventPoster.ToContextModel(),
