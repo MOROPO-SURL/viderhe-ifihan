@@ -2,15 +2,15 @@
 {
     public class PortraitPicturePresentingPicturePlacardConfigurationPageModel : AbstractPicturePresentingPicturePlacardConfigurationPageModel
     {
-        private Templating.Presentation.Enumerations.PortraitPresentationSide presenterSide;
+        private Enumerations.PortraitPresentationSide presenterSide;
 
         public PortraitPicturePresentingPicturePlacardConfigurationPageModel()
         {
-            PresenterSide = Templating.Presentation.Enumerations.PortraitPresentationSide.Top;
+            PresenterSide = Enumerations.PortraitPresentationSide.Top;
         }
 
-        public Templating.Presentation.Enumerations.PortraitPresentationSide PresenterSide { get => presenterSide; set => SetProperty(ref presenterSide, value); }
+        public Enumerations.PortraitPresentationSide PresenterSide { get => presenterSide; set => SetProperty(ref presenterSide, value); }
 
-        public Templating.Presentation.Enumerations.PortraitPresentationSide[] PortraitPresentationSides { get => new[] { Templating.Presentation.Enumerations.PortraitPresentationSide.Top, Templating.Presentation.Enumerations.PortraitPresentationSide.Bottom }; }
+        public Enumerations.PortraitPresentationSide[] PortraitPresentationSides { get => new[] { Enumerations.PortraitPresentationSide.Top, Enumerations.PortraitPresentationSide.Bottom }; }
     }
 }

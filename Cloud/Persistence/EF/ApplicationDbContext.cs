@@ -16,6 +16,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF
         {
         }
 
+#if DEBUG
+        public override bool TraceChanges => false;
+#endif
+
         public DbSet<User> Users { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -61,6 +65,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF
         public DbSet<Screenplay> ScreenPlays { get; set; }
         public DbSet<Frame> Frames { get; set; }
         public DbSet<Placard> Placards { get; set; }
+        public DbSet<PlacardImageBridge> PlacardImageBridges { get; set; }
+        public DbSet<PlacardVideoBridge> PlacardVideoBridges { get; set; }
         public DbSet<Moderator> Moderators { get; set; }
         public DbSet<Transition> Transitions { get; set; }
         public DbSet<Overlay> Overlays { get; set; }
