@@ -13,7 +13,9 @@
             new Configurators.FrameEntityTypeConfigurator(),
             new Configurators.PlayerEntityTypeConfigurator(),
             new Configurators.ModeratorEntityTypeConfigurator(),
-            new Configurators.ScheduledRelaunchEntityTypeConfigurator()
+            new Configurators.ScheduledRelaunchEntityTypeConfigurator(),
+            new Configurators.PlacardImageBridgeEntityTypeConfigurator(),
+            new Configurators.PlacardVideoBridgeEntityTypeConfigurator()
         };
     }
 }

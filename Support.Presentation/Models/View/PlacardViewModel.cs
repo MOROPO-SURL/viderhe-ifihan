@@ -27,7 +27,7 @@
                 // TODO: libere los recursos no administrados (objetos no administrados) y reemplace el siguiente finalizador.
                 // TODO: configure los campos grandes en nulos.
 
-                Template.Dispose();
+                Template?.Dispose();
 
                 Template = null;
 

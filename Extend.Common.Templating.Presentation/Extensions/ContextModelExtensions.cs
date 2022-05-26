@@ -2,7 +2,7 @@
 {
     public static class ContextModelExtensions
     {
-        public static Support.Presentation.Models.View.ImageViewModel ToViewModel(this Models.Context.ImageContextModel target)
+        public static Support.Presentation.Models.View.ImageViewModel ToViewModel(this Templating.Models.Context.ImageContextModel target)
         {
             return new Support.Presentation.Models.View.ImageViewModel
             {
@@ -16,7 +16,7 @@
             };
         }
 
-        public static Support.Presentation.Models.View.VideoViewModel ToViewModel(this Models.Context.VideoContextModel target)
+        public static Support.Presentation.Models.View.VideoViewModel ToViewModel(this Templating.Models.Context.VideoContextModel target)
         {
             return new Support.Presentation.Models.View.VideoViewModel
             {

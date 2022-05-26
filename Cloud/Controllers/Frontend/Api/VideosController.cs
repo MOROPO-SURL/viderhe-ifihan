@@ -214,6 +214,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         [HttpDelete("{videoId}")]
         public ActionResult Delete(System.Guid videoId)
         {
+            if (dbContext.PlacardVideoBridges.Any(item => item.VideoId == videoId))
+            {
+                return Conflict();
+            }
+
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
             var account = dbContext.Accounts.Include(e => e.VideoBridges).ThenInclude(b => b.Video).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);

@@ -2,11 +2,11 @@
 {
     public static class ViewModelExtensions
     {
-        public static Models.Context.ImageContextModel ToContextModel(this Support.Presentation.Models.View.ImageViewModel target)
+        public static Templating.Models.Context.ImageContextModel ToContextModel(this Support.Presentation.Models.View.ImageViewModel target)
         {
             var sizes = target.Resolution.Split('x');
 
-            var result = new Models.Context.ImageContextModel
+            var result = new Templating.Models.Context.ImageContextModel
             {
                 Id = target.Id,
                 ThumbnailId = target.ThumbnailId,
@@ -20,11 +20,11 @@
 
             return result;
         }
-        public static Models.Context.VideoContextModel ToContextModel(this Support.Presentation.Models.View.VideoViewModel target)
+        public static Templating.Models.Context.VideoContextModel ToContextModel(this Support.Presentation.Models.View.VideoViewModel target)
         {
             var sizes = target.FrameSize.Split('x');
 
-            var result = new Models.Context.VideoContextModel
+            var result = new Templating.Models.Context.VideoContextModel
             {
                 Id = target.Id,
                 CreateAt = target.CreateAt,
