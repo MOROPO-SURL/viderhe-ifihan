@@ -6,7 +6,7 @@
         {
             if (model.Template.Id == Descriptors.EventLiveStreamTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.EventLiveStreamPlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.EventLiveStreamPlacardContextModel>(model.SerializedContext);
 
                 return new Views.EventLiveStreamPlacardView(new Models.View.EventLiveStreamPlacardViewModel
                 {

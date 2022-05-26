@@ -8,7 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Pr
         {
             if (placardViewModel == null) return new Models.Page.EventLiveStreamPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Presentation.Models.Context.EventLiveStreamPlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.EventLiveStreamPlacardContextModel>(placardViewModel.SerializedContext);
 
             return new Models.Page.EventLiveStreamPlacardConfigurationPageModel
             {

@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Models.Context
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Models.Context
 {
-    public class CoLabHackathonTeamPlacardContextModel : Common.Templating.Presentation.Models.Context.AbstractScreenTimedPlacardContextModel
+    public class CoLabHackathonTeamPlacardContextModel : Common.Templating.Models.Context.AbstractScreenTimedPlacardContextModel
     {
         public string Chalange { get; set; }
 
