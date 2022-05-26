@@ -35,6 +35,34 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
             entity.Account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
             entity.Template = templateRepository.Get(inputModel.TemplateId);
+
+            var dependencyImages = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetImages(inputModel.TemplateId, inputModel.SerializedContext);
+
+            if (dependencyImages != null)
+            {
+                foreach (var item in dependencyImages)
+                {
+                    entity.ImageBridges.Add(new Persistence.Entities.PlacardImageBridge
+                    {
+                        Placard = entity,
+                        ImageId = item.Id
+                    });
+                }
+            }
+
+            var dependencyVideos = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetVideos(inputModel.TemplateId, inputModel.SerializedContext);
+
+            if (dependencyVideos != null)
+            {
+                foreach (var item in dependencyVideos)
+                {
+                    entity.VideoBridges.Add(new Persistence.Entities.PlacardVideoBridge
+                    {
+                        Placard = entity,
+                        VideoId = item.Id
+                    });
+                }
+            }
         }
 
         protected override void PreEdit(Persistence.Entities.Placard entity, PlacardInputModel inputModel)
@@ -44,6 +72,37 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
             if (entity.Account.Id != accountId) throw new System.InvalidOperationException();
+
+            entity.ImageBridges.Clear();
+            entity.VideoBridges.Clear();
+
+            var dependencyImages = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetImages(inputModel.TemplateId, inputModel.SerializedContext);
+
+            if (dependencyImages != null)
+            {
+                foreach (var item in dependencyImages)
+                {
+                    entity.ImageBridges.Add(new Persistence.Entities.PlacardImageBridge
+                    {
+                        Placard = entity,
+                        ImageId = item.Id
+                    });
+                }
+            }
+
+            var dependencyVideos = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetVideos(inputModel.TemplateId, inputModel.SerializedContext);
+
+            if (dependencyVideos != null)
+            {
+                foreach (var item in dependencyVideos)
+                {
+                    entity.VideoBridges.Add(new Persistence.Entities.PlacardVideoBridge
+                    {
+                        Placard = entity,
+                        VideoId = item.Id
+                    });
+                }
+            }
         }
 
         protected override void PreDelete(Persistence.Entities.Placard entity)

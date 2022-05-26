@@ -8,6 +8,11 @@
 
             var model = value as Support.Presentation.Models.View.PlacardViewModel;
 
+            if (model.Template == null)
+            {
+                return new Views.UnsupportedPlacardThumbnailView();
+            }
+
             if (model.PlayerOrientationSupportKind != null)
             {
                 if (model.PlayerOrientationSupportKind != Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait)

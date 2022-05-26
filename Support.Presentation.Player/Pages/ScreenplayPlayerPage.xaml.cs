@@ -17,6 +17,8 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 
             presenter = new Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards, Extend.Transitioning.Presentation.Providers.TransitionProvider.Instance, presentationEndedCallbackAction, loop, placardPlayingCallbackAction, screenplayPresentIterationCompleteCallbackAction, placardViewTransitionCompleteCallbackAction);
 
+            Xamarin.Forms.DependencyService.RegisterSingleton<Viderhe.Extend.Common.Templating.Presentation.Presenters.Facade.IOvarlablePresenter>(presenter);
+
             if (overlay != null)
             {
                 OverlayContainer.Content = overlay;
@@ -81,6 +83,11 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             });
         }
 
+        public void RequestPausePresentation()
+        {
+
+        }
+
         private BasePlacardPresentationView PlacardViewModelToPresentationView(Models.View.PlacardViewModel model)
         {
             return Extend.Templating.Presentation.Providers.PlacardPresentationViewProvider.Instance.GetFor(model);
@@ -95,6 +102,8 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             presenter.Dispose();
 
             presenter = null;
+
+            Xamarin.Forms.DependencyService.RegisterSingleton<Viderhe.Extend.Common.Templating.Presentation.Presenters.Facade.IOvarlablePresenter>(null);
         }
     }
 }
