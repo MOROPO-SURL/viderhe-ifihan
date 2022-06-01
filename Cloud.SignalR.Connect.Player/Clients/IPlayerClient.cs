@@ -2,13 +2,14 @@
 {
     public interface IPlayerClient
     {
-        System.Threading.Tasks.Task PresentNextFrame();
-        System.Threading.Tasks.Task PresentPreviousFrame();
-        System.Threading.Tasks.Task RestartScreenplay(Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
-        System.Threading.Tasks.Task ReloadScreenplay(Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
-        System.Threading.Tasks.Task SetAudioLevel(int percent);
-        System.Threading.Tasks.Task SetAudioEnabled(bool enabled);
-        System.Threading.Tasks.Task Close(bool restart);
-        System.Threading.Tasks.Task Shutdown(bool restart);
+        System.Threading.Tasks.Task OnPresentNextFrameRequestAsync();
+        System.Threading.Tasks.Task OnPresentPreviousFrameRequestAsync();
+        System.Threading.Tasks.Task OnPresentInterventionPlacardsRequestAsync(Api.Common.Models.PlacardDisplayModel[] placards);
+        System.Threading.Tasks.Task OnRestartScreenplayRequestAsync(Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
+        System.Threading.Tasks.Task OnReloadScreenplayRequestAsync(Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
+        System.Threading.Tasks.Task OnSetAudioLevelRequestAsync(int percent);
+        System.Threading.Tasks.Task OnSetAudioEnabledRequestAsync(bool enabled);
+        System.Threading.Tasks.Task OnCloseRequestAsync(bool restart);
+        System.Threading.Tasks.Task OnShutdownRequestAsync(bool restart);
     }
 }
