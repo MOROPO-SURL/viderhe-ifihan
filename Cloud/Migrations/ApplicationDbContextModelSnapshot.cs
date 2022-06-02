@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
@@ -14,8 +15,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Core.Persistence.EF.Entities.Trace", b =>
                 {
@@ -1325,13 +1327,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.EmailContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_organizationemailcontactitembridges_emailcontactitems_contac~")
+                        .HasConstraintName("fk_organizationemailcontactitembridges_emailcontactitems_conta~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationIdentity", "Organization")
                         .WithMany("OrganizationEmailContactItemBridges")
                         .HasForeignKey("OrganizationId")
-                        .HasConstraintName("fk_organizationemailcontactitembridges_organizationidentities_o~")
+                        .HasConstraintName("fk_organizationemailcontactitembridges_organizationidentities_~")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1353,13 +1355,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PhoneContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_organizationphonecontactitembridges_phonecontactitems_contac~")
+                        .HasConstraintName("fk_organizationphonecontactitembridges_phonecontactitems_conta~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationIdentity", "Organization")
                         .WithMany("OrganizationPhoneContactItemBridges")
                         .HasForeignKey("OrganizationId")
-                        .HasConstraintName("fk_organizationphonecontactitembridges_organizationidentities_o~")
+                        .HasConstraintName("fk_organizationphonecontactitembridges_organizationidentities_~")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1368,13 +1370,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PostalContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_organizationpostalcontactitembridges_postalcontactitems_cont~")
+                        .HasConstraintName("fk_organizationpostalcontactitembridges_postalcontactitems_con~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationIdentity", "Organization")
                         .WithMany("OrganizationPostalContactItemBridges")
                         .HasForeignKey("OrganizationId")
-                        .HasConstraintName("fk_organizationpostalcontactitembridges_organizationidentities_~")
+                        .HasConstraintName("fk_organizationpostalcontactitembridges_organizationidentities~")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1383,13 +1385,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.SocialContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_organizationsocialcontactitembridges_socialcontactitems_cont~")
+                        .HasConstraintName("fk_organizationsocialcontactitembridges_socialcontactitems_con~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationIdentity", "Organization")
                         .WithMany("OrganizationSocialContactItemBridges")
                         .HasForeignKey("OrganizationId")
-                        .HasConstraintName("fk_organizationsocialcontactitembridges_organizationidentities_~")
+                        .HasConstraintName("fk_organizationsocialcontactitembridges_organizationidentities~")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1398,13 +1400,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.WebSiteContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_organizationwebsitecontactitembridges_websitecontactitems_co~")
+                        .HasConstraintName("fk_organizationwebsitecontactitembridges_websitecontactitems_c~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationIdentity", "Organization")
                         .WithMany("OrganizationWebSiteContactItemBridges")
                         .HasForeignKey("OrganizationId")
-                        .HasConstraintName("fk_organizationwebsitecontactitembridges_organizationidentities~")
+                        .HasConstraintName("fk_organizationwebsitecontactitembridges_organizationidentitie~")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1413,7 +1415,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.EmailContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_personemailcontactitembridges_emailcontactitems_contactitemid")
+                        .HasConstraintName("fk_personemailcontactitembridges_emailcontactitems_contactitem~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", "Person")
@@ -1436,7 +1438,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PhoneContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_personphonecontactitembridges_phonecontactitems_contactitemid")
+                        .HasConstraintName("fk_personphonecontactitembridges_phonecontactitems_contactitem~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", "Person")
@@ -1451,7 +1453,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PostalContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_personpostalcontactitembridges_postalcontactitems_contactite~")
+                        .HasConstraintName("fk_personpostalcontactitembridges_postalcontactitems_contactit~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", "Person")
@@ -1466,7 +1468,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.SocialContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_personsocialcontactitembridges_socialcontactitems_contactite~")
+                        .HasConstraintName("fk_personsocialcontactitembridges_socialcontactitems_contactit~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", "Person")
@@ -1481,7 +1483,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.WebSiteContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_personwebsitecontactitembridges_websitecontactitems_contacti~")
+                        .HasConstraintName("fk_personwebsitecontactitembridges_websitecontactitems_contact~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", "Person")

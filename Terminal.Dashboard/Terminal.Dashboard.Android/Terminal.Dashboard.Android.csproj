@@ -21,6 +21,7 @@
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,7 +31,6 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidDexTool>d8</AndroidDexTool>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
   </PropertyGroup>
@@ -45,11 +45,9 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidDexTool>d8</AndroidDexTool>
     <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
-    <BundleAssemblies>false</BundleAssemblies>
     <AndroidLinkTool>r8</AndroidLinkTool>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <AotAssemblies>true</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
     <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
     <AndroidSupportedAbis>
     </AndroidSupportedAbis>
@@ -58,7 +56,6 @@
     <AndroidSigningStorePass>matorr3S/*-e21</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>ssc</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>matorr3S/*-e21</AndroidSigningKeyPass>
-    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
