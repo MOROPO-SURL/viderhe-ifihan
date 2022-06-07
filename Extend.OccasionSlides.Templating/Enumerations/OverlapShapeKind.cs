@@ -4,6 +4,8 @@
     {
         Rectangle,
         TriangleFullTop,
-        TriangleFullBottom
+        TriangleFullBottom,
+        TriangleMiddleTop,
+        TriangleMiddleBottom
     }
 }

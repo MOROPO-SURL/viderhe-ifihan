@@ -168,6 +168,12 @@
   <data name="TriangleFullTop" xml:space="preserve">
     <value>Triángulo Completo Arriba</value>
   </data>
+  <data name="TriangleMiddleBottom" xml:space="preserve">
+    <value>Triángulo Medio Abajo</value>
+  </data>
+  <data name="TriangleMiddleTop" xml:space="preserve">
+    <value>Triángulo Medio Arriba</value>
+  </data>
   <data name="Triplex" xml:space="preserve">
     <value>Triple</value>
   </data>

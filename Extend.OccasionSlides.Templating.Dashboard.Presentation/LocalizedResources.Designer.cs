@@ -215,6 +215,24 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Triángulo Medio Abajo.
+        /// </summary>
+        internal static string TriangleMiddleBottom {
+            get {
+                return ResourceManager.GetString("TriangleMiddleBottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triángulo Medio Arriba.
+        /// </summary>
+        internal static string TriangleMiddleTop {
+            get {
+                return ResourceManager.GetString("TriangleMiddleTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Triple.
         /// </summary>
         internal static string Triplex {

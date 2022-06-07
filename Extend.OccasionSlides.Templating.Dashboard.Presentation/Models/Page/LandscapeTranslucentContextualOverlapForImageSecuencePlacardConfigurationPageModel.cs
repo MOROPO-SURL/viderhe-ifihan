@@ -35,7 +35,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             {
                 OverlapShapeKind.Rectangle,
                 OverlapShapeKind.TriangleFullTop,
-                OverlapShapeKind.TriangleFullBottom
+                OverlapShapeKind.TriangleFullBottom,
+                OverlapShapeKind.TriangleMiddleTop,
+                OverlapShapeKind.TriangleMiddleBottom
             };
             AvailableOverlapSizes = new OverlapSize[]
             {

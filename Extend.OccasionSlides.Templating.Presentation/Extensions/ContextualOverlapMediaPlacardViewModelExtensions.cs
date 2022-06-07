@@ -22,6 +22,23 @@
 
                         return SkiaSharp.SKPath.ParseSvgPathData(string.Format("M 0 0 H {0} L {1} {2} H 0 z", contentBoxWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), topOvarlapVintageWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), paintSurfaceHeight));
 
+                    case Enumerations.OverlapShapeKind.TriangleMiddleTop:
+                    case Enumerations.OverlapShapeKind.TriangleMiddleBottom:
+                        var middleBottomOvarlapVintageWidth = contentBoxWidth + (columnWidth / 2);
+                        var middleBottomOvarlapVintageHeight = paintSurfaceHeight / 3;
+
+                        if (target.OverlapShapeKind == Enumerations.OverlapShapeKind.TriangleMiddleBottom)
+                        {
+                            middleBottomOvarlapVintageHeight *= 2;
+                        }
+
+                        return SkiaSharp.SKPath.ParseSvgPathData(string.Format(
+                            "M 0 0 H {2} L {0} {1} L {2} {3} H 0 z",                             
+                            middleBottomOvarlapVintageWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), 
+                            middleBottomOvarlapVintageHeight.ToString(System.Globalization.CultureInfo.InvariantCulture), 
+                            contentBoxWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), 
+                            paintSurfaceHeight));
+
                     case Enumerations.OverlapShapeKind.Rectangle:
                     default:
                         var paddingSimulationWidth = contentBoxWidth + placardWidth / Providers.ConstantProvider.CONTEXTUAL_OVERLAP_PADDING_BY_WRAPPER_WIDTH_RAZON;
@@ -38,7 +55,12 @@
 
                     var bottomOvarlapVintageWidth = contentBoxWidth + topOverlapVintageExtraWith;
 
-                    return SkiaSharp.SKPath.ParseSvgPathData(string.Format("M {3} 0 h -{0} l {1} {2} H {3} z", bottomOvarlapVintageWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), topOverlapVintageExtraWith.ToString(System.Globalization.CultureInfo.InvariantCulture), paintSurfaceHeight, paintSurfaceWidth));
+                    return SkiaSharp.SKPath.ParseSvgPathData(string.Format(
+                        "M {3} 0 h -{0} l {1} {2} H {3} z", 
+                        bottomOvarlapVintageWidth.ToString(System.Globalization.CultureInfo.InvariantCulture), 
+                        topOverlapVintageExtraWith.ToString(System.Globalization.CultureInfo.InvariantCulture), 
+                        paintSurfaceHeight, 
+                        paintSurfaceWidth));
 
                 case Enumerations.OverlapShapeKind.TriangleFullBottom:
                     var bottomOverlapVintageExtraWdith = columnWidth / 2;
@@ -49,6 +71,28 @@
                         bottomOverlapVintageExtraWdith.ToString(System.Globalization.CultureInfo.InvariantCulture),
                         paintSurfaceHeight,
                         paintSurfaceWidth));
+
+                case Enumerations.OverlapShapeKind.TriangleMiddleTop:
+                case Enumerations.OverlapShapeKind.TriangleMiddleBottom:
+                    var shortVintageEdgeWidth = paintSurfaceWidth - contentBoxWidth;
+
+                    var largeVintageEdgeWidth = paintSurfaceWidth - contentBoxWidth - (columnWidth / 2);
+
+                    var middleBottomOvarlapVintageHeight = paintSurfaceHeight / 3;
+
+                    if (target.OverlapShapeKind == Enumerations.OverlapShapeKind.TriangleMiddleBottom)
+                    {
+                        middleBottomOvarlapVintageHeight *= 2;
+                    }
+
+                    return SkiaSharp.SKPath.ParseSvgPathData(string.Format(
+                        "M {4} 0 H {0} L {1} {2} L {0} {3} H {4} z",
+                        shortVintageEdgeWidth.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                        largeVintageEdgeWidth.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                        middleBottomOvarlapVintageHeight.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                        paintSurfaceHeight.ToString(System.Globalization.CultureInfo.InvariantCulture),
+                        paintSurfaceWidth));
+
 
                 case Enumerations.OverlapShapeKind.Rectangle:
                 default:
