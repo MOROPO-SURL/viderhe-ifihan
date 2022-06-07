@@ -74,7 +74,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    if (task.Exception != null)
+                    if (task.Exception != null || task.IsCanceled)
                     {
                         Xamarin.Forms.DependencyService.Get<Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
