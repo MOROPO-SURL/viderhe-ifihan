@@ -43,6 +43,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 OverlapSize.Medium,
                 OverlapSize.Large
             };
+            AvailableOverlapHorizontalAlignments = new OverlapHorizontalAlignment[]
+            {
+                OverlapHorizontalAlignment.Left,
+                OverlapHorizontalAlignment.Right
+            };
         }
 
         public OverlapShapeKind OverlapShapeKind { get => overlapShapeKind; set => SetProperty(ref overlapShapeKind, value); }

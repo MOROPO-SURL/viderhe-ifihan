@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View
 {
-    public class LandscapeTranslucentContextualOverlapForImageSecuencePlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel
+    public class LandscapeTranslucentContextualOverlapForImageSecuencePlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel, Contract.IContextualOverlapPlacardViewModelSKPathTransformable
     {
         public Enumerations.OverlapShapeKind OverlapShapeKind { get; set; }
 

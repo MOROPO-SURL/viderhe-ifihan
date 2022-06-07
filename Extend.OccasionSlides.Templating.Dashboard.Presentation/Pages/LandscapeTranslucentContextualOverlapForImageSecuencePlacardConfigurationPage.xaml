@@ -93,138 +93,116 @@
                     <Frame 
                         Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"
                         Style="{StaticResource FormFieldFrame}"
+                        Padding="0"
                         BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">
-                        <StackLayout>
-                            <Label Text="Fondo" Style="{StaticResource FormLabel}" />
-                            <Grid ColumnSpacing="10" RowSpacing="10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Frame 
-                                    Grid.ColumnSpan="2" Grid.Row="0"
-                                    Style="{StaticResource FormFieldFrame}"
-                                    Padding="0">
-                                    <Grid RowSpacing="0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition />
-                                        </Grid.RowDefinitions>
-                                        <Label
-                                            Grid.Column="0" Grid.Row="0"
-                                            Style="{StaticResource FormLabel}"
-                                            Margin="10,10,10,6"
-                                            Text="Secuencia de Imágenes" />
-                                        <Button
-                                            Grid.Column="1" Grid.Row="0"
-                                            VerticalOptions="Start"
-                                            Text="Agregar"
-                                            Clicked="IncludeImagesButton_Clicked" />
-                                        <ScrollView
-                                            Margin="0"
-                                            Grid.ColumnSpan="2" Grid.Row="1"
-                                            Orientation="Vertical">
-                                            <ContentView 
-                                                Padding="0,10,0,20"
-                                                BackgroundColor="DimGray">
-                                                <FlexLayout
-                                                    Margin="10,0,10,0"
-                                                    Wrap="Wrap"
-                                                    AlignItems="Start" AlignContent="Start"
-                                                    BindableLayout.ItemsSource="{Binding Path=PresentedSlides}">
-                                                    <BindableLayout.EmptyView>
+                        <Grid RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <BoxView 
+                                Grid.ColumnSpan="2" Grid.Row="0"
+                                Color="White" />
+                            <Label
+                                Grid.Column="0" Grid.Row="0"
+                                Style="{StaticResource FormLabel}"
+                                Padding="10,10,10,6"
+                                Text="Secuencia de Imágenes" />
+                            <Button
+                                Grid.Column="1" Grid.Row="0"
+                                VerticalOptions="Start"
+                                Text="Agregar"
+                                Clicked="IncludeImagesButton_Clicked" />
+                            <ScrollView
+                                Margin="0"
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                Orientation="Vertical">
+                                <ContentView 
+                                    Padding="0,10,0,20"                                    
+                                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}">
+                                    <FlexLayout
+                                        Margin="10,0,10,0"
+                                        Wrap="Wrap"
+                                        AlignItems="Start" AlignContent="Start"
+                                        BindableLayout.ItemsSource="{Binding Path=PresentedSlides}">
+                                        <BindableLayout.EmptyView>
+                                            <Label
+                                                Margin="10"
+                                                Text="No se han agregado elementos"
+                                                TextColor="DimGray" />
+                                        </BindableLayout.EmptyView>
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid
+                                                    Margin="10"
+                                                    BackgroundColor="Black"
+                                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
+                                                    RowSpacing="0">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                        <RowDefinition />
+                                                    </Grid.RowDefinitions>
+                                                    <BoxView
+                                                        Grid.Row="0"
+                                                        Color="SlateGray"
+                                                        IsVisible="{Binding Path=LayoutMode, Converter={StaticResource IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter}}" />
+                                                    <ffimageloadingforms:CachedImage 
+                                                        Grid.Row="0"
+                                                        HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                                        Source="{Binding Path=Image, Converter={StaticResource ImageViewModelToThumbnailImageSourceConverter}}"
+                                                        Aspect="{Binding Path=LayoutMode, Converter={StaticResource PictureLayoutModeToXamarinFormAspectConverter}}"
+                                                        CacheType="Disk"
+                                                        CacheDuration="8760:00:00" />
+                                                    <ImageButton
+                                                        Grid.Row="0"
+                                                        VerticalOptions="Start" HorizontalOptions="End"
+                                                        Margin="4"
+                                                        WidthRequest="24"
+                                                        HeightRequest="24"
+                                                        BackgroundColor="#99000000"
+                                                        BorderWidth="0"
+                                                        CornerRadius="12"
+                                                        Clicked="ImageDeleteButton_Clicked">
+                                                        <ImageButton.Padding>
+                                                            <OnPlatform x:TypeArguments="Thickness">
+                                                                <On Platform="UWP" Value="1,0,0,0" />
+                                                            </OnPlatform>
+                                                        </ImageButton.Padding>
+                                                        <ImageButton.Source>
+                                                            <FontImageSource 
+                                                                Color="White"
+                                                                FontFamily="{StaticResource IconFontFamily}"
+                                                                Glyph="&#xF156;" />
+                                                        </ImageButton.Source>
+                                                    </ImageButton>
+                                                    <StackLayout
+                                                        Grid.Row="1"
+                                                        Padding="8"
+                                                        BackgroundColor="White"
+                                                        Orientation="Vertical">
                                                         <Label
-                                                        Margin="10"
-                                                        Text="No se han agregado elementos"
-                                                        TextColor="White" />
-                                                    </BindableLayout.EmptyView>
-                                                    <BindableLayout.ItemTemplate>
-                                                        <DataTemplate>
-                                                            <Grid
-                                                                Margin="10"
-                                                                BackgroundColor="Black"
-                                                                WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
-                                                                RowSpacing="0">
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition Height="Auto" />
-                                                                    <RowDefinition />
-                                                                </Grid.RowDefinitions>
-                                                                <BoxView
-                                                                    Grid.Row="0"
-                                                                    Color="SlateGray"
-                                                                    IsVisible="{Binding Path=LayoutMode, Converter={StaticResource IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter}}" />
-                                                                <ffimageloadingforms:CachedImage 
-                                                                    Grid.Row="0"
-                                                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-                                                                    Source="{Binding Path=Image, Converter={StaticResource ImageViewModelToThumbnailImageSourceConverter}}"
-                                                                    Aspect="{Binding Path=LayoutMode, Converter={StaticResource PictureLayoutModeToXamarinFormAspectConverter}}"
-                                                                    CacheType="Disk"
-                                                                    CacheDuration="8760:00:00" />
-                                                                <ImageButton
-                                                                    Grid.Row="0"
-                                                                    VerticalOptions="Start" HorizontalOptions="End"
-                                                                    Margin="4"
-                                                                    WidthRequest="24"
-                                                                    HeightRequest="24"
-                                                                    BackgroundColor="#99000000"
-                                                                    BorderWidth="0"
-                                                                    CornerRadius="12"
-                                                                    Clicked="ImageDeleteButton_Clicked">
-                                                                    <ImageButton.Padding>
-                                                                        <OnPlatform x:TypeArguments="Thickness">
-                                                                            <On Platform="UWP" Value="1,0,0,0" />
-                                                                        </OnPlatform>
-                                                                    </ImageButton.Padding>
-                                                                    <ImageButton.Source>
-                                                                        <FontImageSource 
-                                                                            Color="White"
-                                                                            FontFamily="{StaticResource IconFontFamily}"
-                                                                            Glyph="&#xF156;" />
-                                                                    </ImageButton.Source>
-                                                                </ImageButton>
-                                                                <StackLayout
-                                                                    Grid.Row="1"
-                                                                    Padding="8"
-                                                                    BackgroundColor="White"
-                                                                    Orientation="Vertical">
-                                                                    <Label
-                                                                        VerticalOptions="Center"
-                                                                        Text="Presentación"
-                                                                        FontAttributes="Bold"
-                                                                        FontSize="Caption" />
-                                                                    <Picker
-                                                                        HorizontalOptions="FillAndExpand"
-                                                                        ItemsSource="{Binding Path=AvailableLayoutModes}"
-                                                                        SelectedItem="{Binding Path=LayoutMode}"
-                                                                        ItemDisplayBinding="{Binding Converter={StaticResource EssentialStringToLocalizeStringConverter}}" />
-                                                                </StackLayout>
-                                                            </Grid>
-                                                        </DataTemplate>
-                                                    </BindableLayout.ItemTemplate>
-                                                </FlexLayout>
-                                            </ContentView>
-                                        </ScrollView>
-                                    </Grid>
-                                </Frame>
-                                <Frame 
-                                    Grid.Column="0" Grid.Row="1"
-                                    Style="{StaticResource FormFieldFrame}">
-                                    <StackLayout>
-                                        <Label Text="Usar ecfecto Zooming?" Style="{StaticResource FormLabel}" />
-                                        <Switch IsToggled="{Binding Path=ContextedImageZoomingEnabled}" />
-                                    </StackLayout>
-                                </Frame>
-                            </Grid>
-                        </StackLayout>
+                                                            VerticalOptions="Center"
+                                                            Text="Presentación"
+                                                            FontAttributes="Bold"
+                                                            FontSize="Caption" />
+                                                        <Picker
+                                                            HorizontalOptions="FillAndExpand"
+                                                            ItemsSource="{Binding Path=AvailableLayoutModes}"
+                                                            SelectedItem="{Binding Path=LayoutMode}"
+                                                            ItemDisplayBinding="{Binding Converter={StaticResource EssentialStringToLocalizeStringConverter}}" />
+                                                    </StackLayout>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </FlexLayout>
+                                </ContentView>
+                            </ScrollView>
+                        </Grid>
                     </Frame>
                     <Frame 
                         Grid.Column="2" Grid.Row="2"

@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View
 {
-    public class LandscapeContextualFlatOverlapForImagePlacardViewModel : Contract.AbstractLandscapeContextualOperlapForImagePlacardViewModel
+    public class LandscapeContextualFlatOverlapForImagePlacardViewModel : Contract.AbstractLandscapeContextualOperlapForImagePlacardViewModel, Contract.IContextualOverlapPlacardViewModelSKPathTransformable
     {
         public Xamarin.Forms.Color OverlapBackgroundColor { get; set; }
 

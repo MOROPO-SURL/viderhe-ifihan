@@ -8,8 +8,8 @@
 
         public Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport => Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape;
 
-        public string Name => "Imagen con Superposición Contextual Translúcida";
+        public string Name => "Secuencia de Imágenes con Superposición Contextual Translúcida";
 
-        public string Description => "Rellena la pantalla en horizontal con una imagen y la contextualiza con información superpuesta con un fondo de color con transparencia y marco seleccionado.";
+        public string Description => "Muestra una secuencia de imagen y la contextualiza con información superpuesta con un fondo de color con transparencia y marco seleccionado.";
     }
 }
