@@ -178,7 +178,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
                     foreach (var accountExtension in dynamicLoadExtensions)
                     {
-                        var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", accountExtension.Id.ToString(), accountExtension.Version));
+                        var extensionDirectoryInfo = new System.IO.DirectoryInfo(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", server, accountExtension.Id.ToString(), accountExtension.Version));
 
                         if (!extensionDirectoryInfo.Exists)
                         {

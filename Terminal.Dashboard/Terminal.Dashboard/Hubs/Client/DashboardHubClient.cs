@@ -139,8 +139,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
 
         public System.Threading.Tasks.Task OnPlayingPlacardAsync(string playerId, System.Guid placardId)
         {
-            System.Diagnostics.Debug.WriteLine("Hub Client Method Invoke : PlayingPlacard: {0}, {1}", playerId, placardId);
-
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
