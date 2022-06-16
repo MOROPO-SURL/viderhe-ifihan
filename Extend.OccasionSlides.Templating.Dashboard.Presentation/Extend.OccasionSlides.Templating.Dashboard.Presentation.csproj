@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</RootNamespace>
-    <Version>0.5.1.0</Version>
+    <Version>0.5.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
