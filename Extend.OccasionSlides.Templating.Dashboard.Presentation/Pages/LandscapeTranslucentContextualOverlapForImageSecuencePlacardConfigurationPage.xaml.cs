@@ -1,4 +1,5 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages
@@ -65,7 +66,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             Title = BindingContextPageModel.Title,
                             TitleFontFamily = BindingContextPageModel.TitleFontFamily,
                             TitleFontSize = BindingContextPageModel.TitleFontSize,
-                            ContentBlocks = BindingContextPageModel.ContentBlocks.ToArray(),
+                            ContentBlocks = BindingContextPageModel.ContentBlocks.Select(item => item.ToContextModel()).ToArray(),
                             PresentedPictureSlideSecuence = new Essential.Templating.Models.Context.PictureSlideSecuencePlacardContextModel
                             {
                                 Slides = BindingContextPageModel.PresentedSlides.Select(item => new Essential.Templating.Models.Context.PictureSlideContextModel
@@ -96,7 +97,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             Title = BindingContextPageModel.Title,
                             TitleFontFamily = BindingContextPageModel.TitleFontFamily,
                             TitleFontSize = BindingContextPageModel.TitleFontSize,
-                            ContentBlocks = BindingContextPageModel.ContentBlocks.ToArray(),
+                            ContentBlocks = BindingContextPageModel.ContentBlocks.Select(item => item.ToContextModel()).ToArray(),
                             PresentedPictureSlideSecuence = new Essential.Templating.Models.Context.PictureSlideSecuencePlacardContextModel
                             {
                                 Slides = BindingContextPageModel.PresentedSlides.Select(item => new Essential.Templating.Models.Context.PictureSlideContextModel
@@ -171,7 +172,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ContentBlockOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Templating.Models.Context.TextContentBlockContextModel;
+            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.TextContentBlockViewModel;
 
             var extraOptions = new System.Collections.Generic.List<string>
             {
@@ -307,21 +308,23 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             BindingContextPageModel.TitleFontFamily = selection;
         }
 
-        private void TextContentBlockCreation_Callback(Templating.Models.Context.TextContentBlockContextModel model)
+        private void TextContentBlockCreation_Callback(Models.View.TextContentBlockViewModel model)
         {
             model.Priority = BindingContextPageModel.ContentBlocks.Count;
 
             BindingContextPageModel.ContentBlocks.Add(model);
         }
 
-        private void TextContentBlockEdition_Callback(Templating.Models.Context.TextContentBlockContextModel model)
+        private void TextContentBlockEdition_Callback(Models.View.TextContentBlockViewModel model)
         {
             var target = BindingContextPageModel.ContentBlocks.First(item => item.Id == model.Id);
 
             target.Header = model.Header;
+            target.HeaderFontFamily = model.HeaderFontFamily;
             target.HeaderFontSize = model.HeaderFontSize;
             target.IsHeaderVisible = model.IsHeaderVisible;
             target.Content = model.Content;
+            target.ContentFontFamily = model.ContentFontFamily;
             target.ContentFontSize = model.ContentFontSize;
             target.ContentMaxLine = model.ContentMaxLine;
         }

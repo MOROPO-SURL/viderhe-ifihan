@@ -21,7 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             OverlapOpacity = 50;
             OverlapBackgroundColor = Xamarin.Forms.Color.Black;
             TextColor = Xamarin.Forms.Color.White;
-            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Models.Context.TextContentBlockContextModel>();
+            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<View.TextContentBlockViewModel>();
             AvailableContentBoxPresentationKinds = new CenteredContentBoxPresentationKind[]
             {
                 CenteredContentBoxPresentationKind.Inmersive,
@@ -49,7 +49,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public int TitleFontSize { get => titleFontSize; set => SetProperty(ref titleFontSize, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Templating.Models.Context.TextContentBlockContextModel> ContentBlocks { get; private set; }
+        public System.Collections.ObjectModel.ObservableCollection<View.TextContentBlockViewModel> ContentBlocks { get; private set; }
 
         public CenteredContentBoxPresentationKind ContentBoxPresentationKind { get => contentBoxPresentationKind; set => SetProperty(ref contentBoxPresentationKind, value); }
 

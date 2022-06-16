@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories
+﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories
 {
     public static class LandscapeTranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModelFactory
     {
@@ -36,7 +38,7 @@
             {
                 foreach (var item in context.ContentBlocks)
                 {
-                    result.ContentBlocks.Add(item);
+                    result.ContentBlocks.Add(item.ToViewModel());
                 }
             }
 

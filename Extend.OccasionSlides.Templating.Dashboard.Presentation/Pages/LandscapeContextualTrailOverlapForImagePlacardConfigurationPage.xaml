@@ -310,7 +310,7 @@
                     <Frame 
                         Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"
                         Style="{StaticResource FormFieldFrame}"
-                        BackgroundColor="#66FFFFFF"
+                        BackgroundColor="Transparent"
                         VerticalOptions="Start"
                         Padding="0">
                         <Grid RowSpacing="0">
@@ -341,7 +341,10 @@
                                 Spacing="0"
                                 BindableLayout.ItemsSource="{Binding Path=ContentBlocks}">
                                 <BindableLayout.EmptyView>
-                                    <Label Margin="10" Text="Sin elementos que mostrar" />
+                                    <Label 
+                                        BackgroundColor="#66FFFFFF"
+                                        Padding="10" 
+                                        Text="Sin elementos que mostrar" />
                                 </BindableLayout.EmptyView>
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>

@@ -2,7 +2,7 @@
 {
     public static class TextContentBlockConfigurationPageModelFactory
     {
-        public static Models.Page.Block.TextContentBlockConfigurationPageModel Build(Templating.Models.Context.TextContentBlockContextModel model)
+        public static Models.Page.Block.TextContentBlockConfigurationPageModel Build(Models.View.TextContentBlockViewModel model)
         {
             if (model == null) return new Models.Page.Block.TextContentBlockConfigurationPageModel();
 

@@ -30,10 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
     <ProjectReference Include="..\Extend.Essential.Templating\Extend.Essential.Templating.csproj" />
   </ItemGroup>

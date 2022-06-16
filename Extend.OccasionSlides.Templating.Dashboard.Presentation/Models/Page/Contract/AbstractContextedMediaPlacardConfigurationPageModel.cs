@@ -14,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         {
             TitleFontSize = 48;
             
-            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Models.Context.TextContentBlockContextModel>();
+            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<View.TextContentBlockViewModel>();
 
             AvailableOverlapShapeKinds = new OverlapShapeKind[]
             {
@@ -46,6 +46,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public int TitleFontSize { get => titleFontSize; set => SetProperty(ref titleFontSize, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Templating.Models.Context.TextContentBlockContextModel> ContentBlocks { get; private set; }
+        public System.Collections.ObjectModel.ObservableCollection<View.TextContentBlockViewModel> ContentBlocks { get; private set; }
     }
 }

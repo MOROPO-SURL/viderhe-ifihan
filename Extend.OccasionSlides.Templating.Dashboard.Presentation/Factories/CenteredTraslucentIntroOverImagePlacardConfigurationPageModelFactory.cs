@@ -1,4 +1,5 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories
 {
@@ -31,7 +32,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             {
                 foreach (var item in context.ContentBlocks)
                 {
-                    result.ContentBlocks.Add(item);
+                    result.ContentBlocks.Add(item.ToViewModel());
                 }
             }
 

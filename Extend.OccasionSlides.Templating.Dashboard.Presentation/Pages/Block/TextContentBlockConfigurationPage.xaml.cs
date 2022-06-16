@@ -4,14 +4,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 {
     public partial class TextContentBlockConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.Block.TextContentBlockConfigurationPageModel>
     {
-        private System.Action<Templating.Models.Context.TextContentBlockContextModel> applyCallbackAction;
+        private System.Action<Models.View.TextContentBlockViewModel> applyCallbackAction;
 
-        public TextContentBlockConfigurationPage(System.Action<Templating.Models.Context.TextContentBlockContextModel> applyCallbackAction)
+        public TextContentBlockConfigurationPage(System.Action<Models.View.TextContentBlockViewModel> applyCallbackAction)
             : this(null, applyCallbackAction)
         {
         }
 
-        public TextContentBlockConfigurationPage(Templating.Models.Context.TextContentBlockContextModel model, System.Action<Templating.Models.Context.TextContentBlockContextModel> applyCallbackAction)
+        public TextContentBlockConfigurationPage(Models.View.TextContentBlockViewModel model, System.Action<Models.View.TextContentBlockViewModel> applyCallbackAction)
             : base(Factories.TextContentBlockConfigurationPageModelFactory.Build(model))
         {
             this.applyCallbackAction = applyCallbackAction;
@@ -30,7 +30,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
-            applyCallbackAction.Invoke(new Templating.Models.Context.TextContentBlockContextModel
+            applyCallbackAction.Invoke(new Models.View.TextContentBlockViewModel
             {
                 Id = BindingContextPageModel.Id,
                 Priority = BindingContextPageModel.Priority,
