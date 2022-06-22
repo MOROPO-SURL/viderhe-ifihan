@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Common\Cloud.SignalR.Connect.Common.csproj" />
   </ItemGroup>
 
