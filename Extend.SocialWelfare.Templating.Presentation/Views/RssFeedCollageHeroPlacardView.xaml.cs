@@ -17,7 +17,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
             {
                 ScreenPresentationTime = model.ScreenPresentationTime,
                 RequireUnobstructedPresetation = model.RequireUnobstructedPresetation,
-                IsBusy = true,
+                //IsBusy = true,
                 TintColor = Xamarin.Forms.Color.FromHex(model.TintColor)
             };
 
@@ -83,7 +83,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
                         }
                     }
 
-                    concreteBindingContextModel.IsBusy = false;
+                    //concreteBindingContextModel.IsBusy = false;
 
                     var infoShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
                     {
