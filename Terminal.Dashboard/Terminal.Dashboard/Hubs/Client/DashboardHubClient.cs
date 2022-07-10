@@ -35,10 +35,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
                 .WithAutomaticReconnect()
                 .Build();
 
-            connection.On<string>(nameof(PlayerConnected), PlayerConnected);
-            connection.On<string>(nameof(PlayerDisconnected), PlayerDisconnected);
-            connection.On<string, System.Guid>(nameof(PlayingPlacard), PlayingPlacard);
-            connection.On<string, int, bool>(nameof(PlayerUpdateEnvironmentConfiguration), PlayerUpdateEnvironmentConfiguration);
+            connection.On<string>(nameof(OnPlayerConnectedAsync), OnPlayerConnectedAsync);
+            connection.On<string>(nameof(OnPlayerDisconnectedAsync), OnPlayerDisconnectedAsync);
+            connection.On<string, System.Guid>(nameof(OnPlayingPlacardAsync), OnPlayingPlacardAsync);
+            connection.On<string, int, bool>(nameof(OnPlayerUpdateEnvironmentConfigurationAsync), OnPlayerUpdateEnvironmentConfigurationAsync);
         }
 
         public void GetReady(System.Collections.ObjectModel.ObservableCollection<Models.View.PlayerViewModel> players)
@@ -61,7 +61,17 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
             await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentPreviousFrame), playerId);
         }
 
-        public async System.Threading.Tasks.Task RequestPlayerRestarScreenplayAsync(string playerId, ScreenplayHandlingImmediacyMode immediacyMode)
+        public async System.Threading.Tasks.Task PlayerPresentInterventionScreenplayAsync(string playerId, System.Guid screenplayId)
+        {
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentInterventionScreenplay), playerId, screenplayId);
+        }
+
+        public async System.Threading.Tasks.Task PlayerPresentInterventionPlacardAsync(string playerId, System.Guid placardId)
+        {
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentInterventionPlacard), playerId, placardId);
+        }
+
+        public async System.Threading.Tasks.Task RequestPlayerRestartScreenplayAsync(string playerId, ScreenplayHandlingImmediacyMode immediacyMode)
         {
             await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerRestarScreenplay), playerId, immediacyMode);
         }
@@ -91,7 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
             await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerShutdown), playerId, restart);
         }
 
-        public System.Threading.Tasks.Task PlayerConnected(string playerId)
+        public System.Threading.Tasks.Task OnPlayerConnectedAsync(string playerId)
         {
             try
             {
@@ -102,7 +112,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
-        public System.Threading.Tasks.Task PlayerDisconnected(string playerId)
+        public System.Threading.Tasks.Task OnPlayerDisconnectedAsync(string playerId)
         {
             try
             {
@@ -113,7 +123,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
-        public System.Threading.Tasks.Task PlayerUpdateEnvironmentConfiguration(string playerId, int audioLevel, bool audioEnabled)
+        public System.Threading.Tasks.Task OnPlayerUpdateEnvironmentConfigurationAsync(string playerId, int audioLevel, bool audioEnabled)
         {
             try
             {
@@ -127,10 +137,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
-        public System.Threading.Tasks.Task PlayingPlacard(string playerId, System.Guid placardId)
+        public System.Threading.Tasks.Task OnPlayingPlacardAsync(string playerId, System.Guid placardId)
         {
-            System.Diagnostics.Debug.WriteLine("Hub Client Method Invoke : PlayingPlacard: {0}, {1}", playerId, placardId);
-
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
@@ -149,10 +157,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
                 // TODO: libere los recursos no administrados (objetos no administrados) y reemplace el siguiente finalizador.
                 // TODO: configure los campos grandes en nulos.
 
-                connection.Remove(nameof(PlayerConnected));
-                connection.Remove(nameof(PlayerDisconnected));
-                connection.Remove(nameof(PlayingPlacard));
-                connection.Remove(nameof(PlayerUpdateEnvironmentConfiguration));
+                connection.Remove(nameof(OnPlayerConnectedAsync));
+                connection.Remove(nameof(OnPlayerDisconnectedAsync));
+                connection.Remove(nameof(OnPlayingPlacardAsync));
+                connection.Remove(nameof(OnPlayerUpdateEnvironmentConfigurationAsync));
 
                 connection.StopAsync().ContinueWith(task =>
                 {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR;
+using SmartSolucionesCuba.SAPRESSC.Core.Persistence.Repositories;
 using SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Common.Enumerations;
 using System.Linq;
 
@@ -8,10 +9,14 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
     public class DashboardHub : Hub<SignalR.Connect.Dashboard.Clients.IDashboardClient>, SignalR.Connect.Dashboard.Hubs.IDashboardHub
     {
         private readonly IHubContext<PlayerHub, SignalR.Connect.Player.Clients.IPlayerClient> playerHubContext;
+        private readonly IEntityRepository<Persistence.Entities.Screenplay, System.Guid> screenplayRepository;
+        private readonly IEntityRepository<Persistence.Entities.Placard, System.Guid> placardRepository;
 
-        public DashboardHub(IHubContext<PlayerHub, SignalR.Connect.Player.Clients.IPlayerClient> playerHubContext)
+        public DashboardHub(IEntityRepository<Persistence.Entities.Placard, System.Guid> placardRepository, IEntityRepository<Persistence.Entities.Screenplay, System.Guid> screenplayRepository, IHubContext<PlayerHub, SignalR.Connect.Player.Clients.IPlayerClient> playerHubContext)
         {
             this.playerHubContext = playerHubContext;
+            this.screenplayRepository = screenplayRepository;
+            this.placardRepository = placardRepository;
         }
 
         public async override System.Threading.Tasks.Task OnConnectedAsync()
@@ -31,7 +36,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
             {
                 var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).PresentNextFrame();
+                playerHubContext.Clients.Client(playerContext.ConnectionId).OnPresentNextFrameRequestAsync();
             }
             catch { }
         }
@@ -44,7 +49,48 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
             {
                 var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).PresentPreviousFrame();
+                playerHubContext.Clients.Client(playerContext.ConnectionId).OnPresentPreviousFrameRequestAsync();
+            }
+            catch { }
+        }
+
+        public void PlayerPresentInterventionScreenplay(string playerId, System.Guid screenplayId)
+        {
+            var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+
+            try
+            {
+                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+
+                var screenplay = screenplayRepository.Get(screenplayId);
+
+                playerHubContext.Clients.Client(playerContext.ConnectionId).OnPresentInterventionPlacardsRequestAsync(screenplay.Frames.OrderBy(e => e.Priority).Where(e => e.Placard.Template.Enabled).Select((Persistence.Entities.Frame entity) =>
+                {
+                    var model = new Api.Common.Models.PlacardDisplayModel();
+
+                    model.Import(entity.Placard);
+
+                    return model;
+                }).ToArray());
+            }
+            catch { }
+        }
+
+        public void PlayerPresentInterventionPlacard(string playerId, System.Guid placardId)
+        {
+            var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+
+            try
+            {
+                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+
+                var entity = placardRepository.Get(placardId);
+
+                var model = new Api.Common.Models.PlacardDisplayModel();
+
+                model.Import(entity);
+
+                playerHubContext.Clients.Client(playerContext.ConnectionId).OnPresentInterventionPlacardsRequestAsync(new Api.Common.Models.PlacardDisplayModel[] { model });
             }
             catch { }
         }
@@ -57,7 +103,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
             {
                 var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).RestartScreenplay(immediancyMode);
+                playerHubContext.Clients.Client(playerContext.ConnectionId).OnRestartScreenplayRequestAsync(immediancyMode);
             }
             catch { }
         }
@@ -70,7 +116,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
             {
                 var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).ReloadScreenplay(immediancyMode);
+                playerHubContext.Clients.Client(playerContext.ConnectionId).OnReloadScreenplayRequestAsync(immediancyMode);
             }
             catch { }
         }
@@ -83,7 +129,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
             {
                 var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).SetAudioEnabled(enabled);
+                playerHubContext.Clients.Client(playerContext.ConnectionId).OnSetAudioEnabledRequestAsync(enabled);
             }
             catch { }
         }
@@ -96,7 +142,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
             {
                 var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).SetAudioLevel(percent);
+                playerHubContext.Clients.Client(playerContext.ConnectionId).OnSetAudioLevelRequestAsync(percent);
             }
             catch { }
         }
@@ -109,7 +155,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
             {
                 var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).Close(restart);
+                playerHubContext.Clients.Client(playerContext.ConnectionId).OnCloseRequestAsync(restart);
             }
             catch { }
         }
@@ -122,7 +168,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
             {
                 var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).Shutdown(restart);
+                playerHubContext.Clients.Client(playerContext.ConnectionId).OnShutdownRequestAsync(restart);
             }
             catch { }
         }

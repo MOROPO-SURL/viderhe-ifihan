@@ -6,6 +6,10 @@
 
         void PlayerPresentPreviousFrame(string playerId);
 
+        void PlayerPresentInterventionScreenplay(string playerId, System.Guid screenplayId);
+
+        void PlayerPresentInterventionPlacard(string playerId, System.Guid placardId);
+
         void PlayerRestarScreenplay(string playerId, Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
 
         void PlayerReloadScreenplay(string playerId, Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
