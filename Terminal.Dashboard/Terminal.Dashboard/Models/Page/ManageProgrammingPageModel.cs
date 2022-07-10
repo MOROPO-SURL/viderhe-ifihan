@@ -38,7 +38,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 
         public bool HasMorePlacards { get => hasMorePlacards; set => SetProperty(ref hasMorePlacards, value); }
 
-        public View.ScreenplayViewModel SelectedScreenplay
+        public ScreenplayViewModel SelectedScreenplay
         {
             get => selectedScreenPlay;
             set => SetProperty(ref selectedScreenPlay, value, () =>

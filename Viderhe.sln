@@ -113,6 +113,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cloud.Persistence.EF", "Clo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Player.UWP.DesktopExtension.Helper", "Terminal.Player\Terminal.Player.UWP.DesktopExtension.Helper\Terminal.Player.UWP.DesktopExtension.Helper.csproj", "{6C2DA28A-AAB9-498B-A1F6-ED74D9FB2F20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Red5ServerCleaner", "Red5ServerCleaner\Red5ServerCleaner.csproj", "{91810773-4915-46CD-B836-5005BC20276B}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UICCamaguey", "UICCamaguey", "{2BB4D03D-7380-4890-B7B5-2C889753328F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.UICCamaguey", "Extend.UICCamaguey\Extend.UICCamaguey.csproj", "{E23A8DD5-DBFD-4B1B-AB98-7205BEDAD4BE}"

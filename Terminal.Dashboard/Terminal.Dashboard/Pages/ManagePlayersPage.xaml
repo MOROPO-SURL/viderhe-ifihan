@@ -25,7 +25,7 @@
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BooleanToPlayerConnectionStateGlyphIconStringConverter" FalseString="&#xf83a;" TrueString="&#xf503;" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BooleanToPlayerAudioEnablingSwichGlyphIconStringConverter" FalseString="&#xf57e;" TrueString="&#xf581;" />
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
-            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="240" ChildAbsoluteHorizontalMargin="10" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="275" ChildAbsoluteHorizontalMargin="10" />
 
             <converters:AllTrueMultiConverter x:Key="AllTrueMultiConverter" />
             <converters:IsPlayerConnectedToViewConverter x:Key="IsPlayerConnectedToViewConverter" />
@@ -190,6 +190,11 @@
                                         Text="&#xf4ad;"
                                         Style="{StaticResource ActionButton}"
                                         Clicked="PlayerNextButton_Clicked" />
+                                    <Button 
+                                        IsEnabled="{Binding Path=IsConnected}"
+                                        Text="&#xF523;"
+                                        Style="{StaticResource ActionButton}"
+                                        Clicked="PlayerInterventionButton_Clicked" />
                                 </StackLayout>
                                 <StackLayout                                 
                                     Grid.Column="0" Grid.Row="4"
@@ -231,6 +236,12 @@
                                             </MultiBinding>
                                         </Button.IsEnabled>
                                     </Button>
+                                    <Button 
+                                        IsEnabled="{Binding Path=IsConnected}"
+                                        Text="&#x0043;"
+                                        Style="{StaticResource ActionButton}"
+                                        FontFamily="Viderhe Font Icons"
+                                        Clicked="PlayerCloseButton_Clicked" />
                                     <Button 
                                         IsEnabled="{Binding Path=IsConnected}"
                                         Text="&#xf905;"
