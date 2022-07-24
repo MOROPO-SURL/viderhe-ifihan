@@ -4,7 +4,7 @@
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return (Enumerations.OverlapVerticalAlignment)value == Enumerations.OverlapVerticalAlignment.Top ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.End;
+            return (Enumerations.OverlapAlignment)value == Enumerations.OverlapAlignment.Start ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.End;
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)

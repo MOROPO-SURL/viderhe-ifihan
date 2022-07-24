@@ -8,7 +8,7 @@
 
             var contentBoxWidth = columnWidth * (target.OverlapSize.ToColumnCount() - 1) + extraWidth;
 
-            if (target.OverlapHorizontalAlignment == Enumerations.OverlapHorizontalAlignment.Left)
+            if (target.OverlapAlignment == Enumerations.OverlapAlignment.Start)
             {
                 switch (target.OverlapShapeKind)
                 {

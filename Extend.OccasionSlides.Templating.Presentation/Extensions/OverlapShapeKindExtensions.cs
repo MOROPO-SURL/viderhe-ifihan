@@ -2,11 +2,11 @@
 {
     public static class OverlapShapeKindExtensions
     {
-        public static SkiaSharp.SKPath ToVerticalSKPath(this Enumerations.OverlapShapeKind target, Enumerations.OverlapVerticalAlignment verticalAlignment, int paintSurfaceWidth, int paintSurfaceHeight, double contentLayoutHeight, double extraHeight = 0d)
+        public static SkiaSharp.SKPath ToVerticalSKPath(this Enumerations.OverlapShapeKind target, Enumerations.OverlapAlignment overlapAlignment, int paintSurfaceWidth, int paintSurfaceHeight, double contentLayoutHeight, double extraHeight = 0d)
         {
             var ovarlapVintageHeight = contentLayoutHeight + (paintSurfaceHeight / 12);
 
-            if (verticalAlignment == Enumerations.OverlapVerticalAlignment.Top)
+            if (overlapAlignment == Enumerations.OverlapAlignment.Start)
             {
                 switch (target)
                 {

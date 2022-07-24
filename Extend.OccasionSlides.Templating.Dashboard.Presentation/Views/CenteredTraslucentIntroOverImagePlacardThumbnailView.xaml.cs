@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Views
+﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context.Placard;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Views
 {
     public partial class CenteredTraslucentIntroOverImagePlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.CenteredTraslucentIntroOverImagePlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<CenteredTraslucentIntroOverImagePlacardContextModel>(model.SerializedContext);
 
             BackgroundImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.BackgroundImage.ThumbnailId));
 

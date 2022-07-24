@@ -6,6 +6,6 @@
 
         Enumerations.OverlapSize OverlapSize { get; set; }
 
-        Enumerations.OverlapHorizontalAlignment OverlapHorizontalAlignment { get; set; }
+        Enumerations.OverlapAlignment OverlapAlignment { get; set; }
     }
 }

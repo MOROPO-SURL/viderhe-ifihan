@@ -1,4 +1,4 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context;
+﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context.Placard;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Providers
 {
@@ -6,11 +6,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
     {
         public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model)
         {
-            if (model.Template.Id == Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.TranslucentContextualOverlapForImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeContextualTranslucentOverlapForImagePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TranslucentContextualOverlapForImagePlacardContextModel>(model.SerializedContext);
 
-                var targetPlacardViewModel = new Models.View.LandscapeContextualTranslucentOverlapForImagePlacardViewModel
+                var targetPlacardViewModel = new Models.View.TranslucentContextualOverlapForImagePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
@@ -20,14 +20,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     OverlapShapeKind = context.OverlapShapeKind,
                     OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
                     TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
-                    OverlapHorizontalAlignment = context.OverlapHorizontalAlignment,
+                    OverlapAlignment = context.OverlapAlignment,
                     Title = context.Title,
                     TitleFontFamily = context.TitleFontFamily,
                     TitleFontSize = context.TitleFontSize,
                     ContentBlocks = context.ContentBlocks
                 };
 
-                if (context.OverlapHorizontalAlignment == Enumerations.OverlapHorizontalAlignment.Left)
+                if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                {
+                    return new Views.PortraitTranslucentContextualOverlapForImagePlacardView(targetPlacardViewModel);
+                }
+
+                if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
                     return new Views.LeftLandscapeContextualTranslucentOverlapForImagePlacardView(targetPlacardViewModel);
                 }
@@ -35,11 +40,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 return new Views.RightLandscapeContextualTranslucentOverlapForImagePlacardView(targetPlacardViewModel);
             }
 
-            if (model.Template.Id == Descriptors.LandscapeTranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.TranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TranslucentContextualOverlapForImageSecuencePlacardContextModel>(model.SerializedContext);
 
-                var targetPlacardViewModel = new Models.View.LandscapeTranslucentContextualOverlapForImageSecuencePlacardViewModel
+                var targetPlacardViewModel = new Models.View.TranslucentContextualOverlapForImageSecuencePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     PresentedPictureSlideSecuence = context.PresentedPictureSlideSecuence,
@@ -47,14 +52,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     OverlapShapeKind = context.OverlapShapeKind,
                     OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
                     TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
-                    OverlapHorizontalAlignment = context.OverlapHorizontalAlignment,
+                    OverlapAlignment = context.OverlapAlignment,
                     Title = context.Title,
                     TitleFontFamily = context.TitleFontFamily,
                     TitleFontSize = context.TitleFontSize,
                     ContentBlocks = context.ContentBlocks
                 };
 
-                if (context.OverlapHorizontalAlignment == Enumerations.OverlapHorizontalAlignment.Left)
+                if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
                     return new Views.LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView(targetPlacardViewModel);
                 }
@@ -62,34 +67,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 return new Views.RightLandscapeTranslucentContextualOverlapForImageSecuencePlacardView(targetPlacardViewModel);
             }
 
-            if (model.Template.Id == Descriptors.PortraitTranslucentContextualOverlapForImageTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.FlatContextualOverlapForImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitTranslucentContextualOverlapForImagePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<FlatContextualOverlapForImagePlacardContextModel>(model.SerializedContext);
 
-                var targetPlacardViewModel = new Models.View.PortraitTranslucentContextualOverlapForImagePlacardViewModel
-                {
-                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    ScreenPresentationTime = context.ScreenPresentationTime,
-                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.ContextedImage.Id)),
-                    ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
-                    OverlapShapeKind = context.OverlapShapeKind,
-                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
-                    TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
-                    OverlapVerticalAlignment = context.OverlapVerticalAlignment,
-                    Title = context.Title,
-                    TitleFontFamily = context.TitleFontFamily,
-                    TitleFontSize = context.TitleFontSize,
-                    ContentBlocks = context.ContentBlocks
-                };
-
-                return new Views.PortraitTranslucentContextualOverlapForImagePlacardView(targetPlacardViewModel);
-            }
-
-            if (model.Template.Id == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID)
-            {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeContextualFlatOverlapForImagePlacardContextModel>(model.SerializedContext);
-
-                var targetPlacardViewModel = new Models.View.LandscapeContextualFlatOverlapForImagePlacardViewModel
+                var targetPlacardViewModel = new Models.View.FlatContextualOverlapForImagePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
@@ -101,14 +83,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     OverlapShapeKind = context.OverlapShapeKind,
                     OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
                     TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
-                    OverlapHorizontalAlignment = context.OverlapHorizontalAlignment,
+                    OverlapAlignment = context.OverlapAlignment,
                     Title = context.Title,
                     TitleFontFamily = context.TitleFontFamily,
                     TitleFontSize = context.TitleFontSize,
                     ContentBlocks = context.ContentBlocks
                 };
 
-                if (context.OverlapHorizontalAlignment == Enumerations.OverlapHorizontalAlignment.Left)
+                if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                {
+                    return new Views.PortraitFlatContextualOverlapForImagePlacardView(targetPlacardViewModel);
+                }
+
+                if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
                     return new Views.LeftLandscapeContextualFlatOverlapForImagePlacardView(targetPlacardViewModel);
                 }
@@ -116,36 +103,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 return new Views.RightLandscapeContextualFlatOverlapForImagePlacardView(targetPlacardViewModel);
             }
 
-            if (model.Template.Id == Descriptors.PortraitFlatContextualOverlapForImageTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.TrailContextualOverlapForImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitFlatContextualOverlapForImagePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TrailContextualOverlapForImagePlacardContextModel>(model.SerializedContext);
 
-                var targetPlacardViewModel = new Models.View.PortraitFlatContextualOverlapForImagePlacardViewModel
-                {
-                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    ScreenPresentationTime = context.ScreenPresentationTime,
-                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.ContextedImage.Id)),
-                    ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
-                    ContextedImageCenteredAtPresentation = context.ContextedImageCenteredAtPresentation,
-                    OverlapShapeKind = context.OverlapShapeKind,
-                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
-                    UseOverlapShadown = context.UseOverlapShadown,
-                    TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
-                    OverlapVerticalAlignment = context.OverlapVerticalAlignment,
-                    Title = context.Title,
-                    TitleFontFamily = context.TitleFontFamily,
-                    TitleFontSize = context.TitleFontSize,
-                    ContentBlocks = context.ContentBlocks
-                };
-
-                return new Views.PortraitFlatContextualOverlapForImagePlacardView(targetPlacardViewModel);
-            }
-
-            if (model.Template.Id == Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor.ID)
-            {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeContextualTrailOverlapForImagePlacardContextModel>(model.SerializedContext);
-
-                var targetPlacardViewModel = new Models.View.LandscapeContextualTrailOverlapForImagePlacardViewModel
+                var targetPlacardViewModel = new Models.View.TrailContextualOverlapForImagePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
@@ -157,14 +119,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     OverlapShapeKind = context.OverlapShapeKind,
                     OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
                     TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
-                    OverlapHorizontalAlignment = context.OverlapHorizontalAlignment,
+                    OverlapAlignment = context.OverlapAlignment,
                     Title = context.Title,
                     TitleFontFamily = context.TitleFontFamily,
                     TitleFontSize = context.TitleFontSize,
                     ContentBlocks = context.ContentBlocks
                 };
 
-                if (context.OverlapHorizontalAlignment == Enumerations.OverlapHorizontalAlignment.Left)
+                if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
                     return new Views.LeftLandscapeContextualTrailOverlapForImagePlacardView(targetPlacardViewModel);
                 }

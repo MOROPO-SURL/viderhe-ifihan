@@ -5,7 +5,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 {
     public partial class LeftLandscapeContextualFlatOverlapForImagePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LeftLandscapeContextualFlatOverlapForImagePlacardView(Models.View.LandscapeContextualFlatOverlapForImagePlacardViewModel model)
+        public LeftLandscapeContextualFlatOverlapForImagePlacardView(Models.View.FlatContextualOverlapForImagePlacardViewModel model)
         {
             InitializeComponent();
 
@@ -28,7 +28,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
         {
             base.PerformPlacardStarup();
 
-            var concreteBindingContext = BindingContext as Models.View.LandscapeContextualFlatOverlapForImagePlacardViewModel;
+            var concreteBindingContext = BindingContext as Models.View.FlatContextualOverlapForImagePlacardViewModel;
 
             var contentBoxWidth = Width * ((concreteBindingContext.OverlapSize.ToColumnCount() - 1) / 6d);
 
@@ -58,7 +58,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                 {
                     Target = ContextedImagen,
-                    TranslateX = concreteBindingContext.OverlapHorizontalAlignment == Enumerations.OverlapHorizontalAlignment.Left ? contentBoxWidth / 2 : contentBoxWidth / 2 * -1,
+                    TranslateX = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? contentBoxWidth / 2 : contentBoxWidth / 2 * -1,
                     EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
                     Delay = "100"
                 });
@@ -113,21 +113,21 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
         private void OverlapContentWrapLayout_PaintSurface(object sender, SKPaintSurfaceEventArgs eventArgs)
         {
-            var concreteBindingContext = BindingContext as Models.View.LandscapeContextualFlatOverlapForImagePlacardViewModel;
+            var concreteBindingContext = BindingContext as Models.View.FlatContextualOverlapForImagePlacardViewModel;
 
             eventArgs.Surface.Canvas.Clear();
 
             var paint = new SkiaSharp.SKPaint()
             {
                 Style = SkiaSharp.SKPaintStyle.Fill,
-                Color = (BindingContext as Models.View.LandscapeContextualFlatOverlapForImagePlacardViewModel).OverlapBackgroundColor.ToSKColor()
+                Color = (BindingContext as Models.View.FlatContextualOverlapForImagePlacardViewModel).OverlapBackgroundColor.ToSKColor()
             };
 
             if (concreteBindingContext.UseOverlapShadown)
             {
                 var shadowRawColors = new string[] { "#090806", "#15120e", "#211d16", "#2c271e", "#383126", "#443b2e", "#4f4636", "#5b503d", "#675a45", "#655a45", "#73644d" };
 
-                var index = (int)((BindingContext as Models.View.LandscapeContextualFlatOverlapForImagePlacardViewModel).OverlapBackgroundColor.Luminosity * 10);
+                var index = (int)((BindingContext as Models.View.FlatContextualOverlapForImagePlacardViewModel).OverlapBackgroundColor.Luminosity * 10);
 
                 paint.ImageFilter = SkiaSharp.SKImageFilter.CreateDropShadow(7f, 0f, 8f, 8f, SkiaSharp.SKColor.Parse(shadowRawColors[index]));
             }

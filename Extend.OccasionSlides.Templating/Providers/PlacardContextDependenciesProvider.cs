@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context.Placard;
+using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
 {
@@ -8,7 +9,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
         {
             if (templateId == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.CenteredTraslucentIntroOverImagePlacardContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<CenteredTraslucentIntroOverImagePlacardContextModel>(serializedContext);
 
                 var result = new System.Collections.Generic.List<Common.Templating.Models.Context.ImageContextModel>
                 {
@@ -23,46 +24,32 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
                 return result.ToArray();
             }
 
-            if (templateId == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID)
+            if (templateId == Descriptors.FlatContextualOverlapForImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeContextualFlatOverlapForImagePlacardContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<FlatContextualOverlapForImagePlacardContextModel>(serializedContext);
 
                 return new[] { context.ContextedImage };
             }
 
-            if (templateId == Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor.ID)
+            if (templateId == Descriptors.TrailContextualOverlapForImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeContextualTrailOverlapForImagePlacardContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TrailContextualOverlapForImagePlacardContextModel>(serializedContext);
 
                 return new[] { context.ContextedImage };
             }
 
-            if (templateId == Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor.ID)
+            if (templateId == Descriptors.TranslucentContextualOverlapForImageTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeContextualTranslucentOverlapForImagePlacardContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TranslucentContextualOverlapForImagePlacardContextModel>(serializedContext);
 
                 return new[] { context.ContextedImage };
             }
 
-            if (templateId == Descriptors.LandscapeTranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            if (templateId == Descriptors.TranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeTranslucentContextualOverlapForImageSecuencePlacardContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TranslucentContextualOverlapForImageSecuencePlacardContextModel>(serializedContext);
 
                 return context.PresentedPictureSlideSecuence.Slides.Select(item => item.Image).ToArray();
-            }
-
-            if (templateId == Descriptors.PortraitFlatContextualOverlapForImageTemplateDescriptor.ID)
-            {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.PortraitFlatContextualOverlapForImagePlacardContextModel>(serializedContext);
-
-                return new[] { context.ContextedImage };
-            }
-
-            if (templateId == Descriptors.PortraitTranslucentContextualOverlapForImageTemplateDescriptor.ID)
-            {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.PortraitTranslucentContextualOverlapForImagePlacardContextModel>(serializedContext);
-
-                return new[] { context.ContextedImage };
             }
 
             return null;

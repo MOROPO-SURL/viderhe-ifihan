@@ -4,29 +4,24 @@
     {
         public Xamarin.Forms.Page GetCreationEntryPointPageByDescriptor(Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, System.Action completedActionCallback)
         {
-            if (templateDescriptor is Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor)
+            if (templateDescriptor is Descriptors.TranslucentContextualOverlapForImageTemplateDescriptor)
             {
-                return new Pages.LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage(completedActionCallback);
+                return new Pages.TranslucentContextualOverlapForImagePlacardConfigurationPage(completedActionCallback);
             }
 
-            if (templateDescriptor is Descriptors.PortraitTranslucentContextualOverlapForImageTemplateDescriptor)
+            if (templateDescriptor is Descriptors.FlatContextualOverlapForImageTemplateDescriptor)
             {
-                return new Pages.PortraitContextualTranslucentOverlapForImagePlacardConfigurationPage(completedActionCallback);
+                return new Pages.FlatContextualOverlapForImagePlacardConfigurationPage(completedActionCallback);
             }
 
-            if (templateDescriptor is Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor)
+            if (templateDescriptor is Descriptors.TrailContextualOverlapForImageTemplateDescriptor)
             {
-                return new Pages.LandscapeContextualFlatOverlapForImagePlacardConfigurationPage(completedActionCallback);
+                return new Pages.TrailContextualOverlapForImagePlacardConfigurationPage(completedActionCallback);
             }
 
-            if (templateDescriptor is Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor)
+            if (templateDescriptor is Descriptors.TranslucentContextualOverlapForImageSecuenceTemplateDescriptor)
             {
-                return new Pages.LandscapeContextualTrailOverlapForImagePlacardConfigurationPage(completedActionCallback);
-            }
-
-            if (templateDescriptor is Descriptors.LandscapeTranslucentContextualOverlapForImageSecuenceTemplateDescriptor)
-            {
-                return new Pages.LandscapeTranslucentContextualOverlapForImageSecuencePlacardConfigurationPage(completedActionCallback);
+                return new Pages.TranslucentContextualOverlapForImageSecuencePlacardConfigurationPage(completedActionCallback);
             }
 
             if (templateDescriptor is Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor)
@@ -39,29 +34,24 @@
 
         public Xamarin.Forms.Page GetEditionPageByDescriptor(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action completedActionCallback)
         {
-            if (placardViewModel.Template.Id == Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor.ID)
+            if (placardViewModel.Template.Id == Descriptors.TranslucentContextualOverlapForImageTemplateDescriptor.ID)
             {
-                return new Pages.LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
+                return new Pages.TranslucentContextualOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
-            if (placardViewModel.Template.Id == Descriptors.PortraitTranslucentContextualOverlapForImageTemplateDescriptor.ID)
+            if (placardViewModel.Template.Id == Descriptors.FlatContextualOverlapForImageTemplateDescriptor.ID)
             {
-                return new Pages.PortraitContextualTranslucentOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
+                return new Pages.FlatContextualOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
-            if (placardViewModel.Template.Id == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID)
+            if (placardViewModel.Template.Id == Descriptors.TrailContextualOverlapForImageTemplateDescriptor.ID)
             {
-                return new Pages.LandscapeContextualFlatOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
+                return new Pages.TrailContextualOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
-            if (placardViewModel.Template.Id == Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor.ID)
+            if (placardViewModel.Template.Id == Descriptors.TranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
             {
-                return new Pages.LandscapeContextualTrailOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
-            }
-
-            if (placardViewModel.Template.Id == Descriptors.LandscapeTranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
-            {
-                return new Pages.LandscapeTranslucentContextualOverlapForImageSecuencePlacardConfigurationPage(placardViewModel, completedActionCallback);
+                return new Pages.TranslucentContextualOverlapForImageSecuencePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             if (placardViewModel.Template.Id == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)

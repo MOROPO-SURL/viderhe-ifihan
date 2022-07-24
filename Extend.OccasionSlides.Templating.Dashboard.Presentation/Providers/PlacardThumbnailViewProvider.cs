@@ -4,16 +4,11 @@
     {
         public Xamarin.Forms.ContentView GetPlacardThumnailView(Support.Presentation.Models.View.PlacardViewModel model)
         {
-            if (model.Template.Id == Descriptors.LandscapeContextualTranslucentOverlapForImageTemplateDescriptor.ID ||
-                model.Template.Id == Descriptors.LandscapeContextualFlatOverlapForImageTemplateDescriptor.ID ||
-                model.Template.Id == Descriptors.LandscapeContextualTrailOverlapForImageTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.TranslucentContextualOverlapForImageTemplateDescriptor.ID ||
+                model.Template.Id == Descriptors.FlatContextualOverlapForImageTemplateDescriptor.ID ||
+                model.Template.Id == Descriptors.TrailContextualOverlapForImageTemplateDescriptor.ID)
             {
-                return new Views.PortraitTranslucentContextualOverlapForImagePlacardThumbnailView(model);
-            }
-
-            if (model.Template.Id == Descriptors.PortraitTranslucentContextualOverlapForImageTemplateDescriptor.ID)
-            {
-                return new Views.PortraitTranslucentContextualOverlapForImagePlacardThumbnailView(model);
+                return new Views.CommonContextualOverlapForImagePlacardThumbnailView(model);
             }
 
             if (model.Template.Id == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
@@ -21,9 +16,9 @@
                 return new Views.CenteredTraslucentIntroOverImagePlacardThumbnailView(model);
             }
 
-            if (model.Template.Id == Descriptors.LandscapeTranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.TranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
             {
-                return new Views.LandscapeTranslucentContextualOverlapForImageSecuencePlacardThumbnailView(model);
+                return new Views.TranslucentContextualOverlapForImageSecuencePlacardThumbnailView(model);
             }
 
             return null;

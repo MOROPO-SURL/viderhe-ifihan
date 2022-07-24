@@ -123,6 +123,9 @@
   <data name="Dual" xml:space="preserve">
     <value>Dual</value>
   </data>
+  <data name="End" xml:space="preserve">
+    <value>Final</value>
+  </data>
   <data name="FloatBandHorizontal" xml:space="preserve">
     <value>Banda Flotante Horizontal</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="Single" xml:space="preserve">
     <value>Único</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Inicio</value>
   </data>
   <data name="Top" xml:space="preserve">
     <value>Arriba</value>

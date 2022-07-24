@@ -5,7 +5,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 {
     public partial class PortraitFlatContextualOverlapForImagePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public PortraitFlatContextualOverlapForImagePlacardView(Models.View.PortraitFlatContextualOverlapForImagePlacardViewModel model)
+        public PortraitFlatContextualOverlapForImagePlacardView(Models.View.FlatContextualOverlapForImagePlacardViewModel model)
         {
             InitializeComponent();
 
@@ -28,9 +28,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
         {
             base.PerformPlacardStarup();
 
-            var concreteBindingContext = BindingContext as Models.View.PortraitFlatContextualOverlapForImagePlacardViewModel;
+            var concreteBindingContext = BindingContext as Models.View.FlatContextualOverlapForImagePlacardViewModel;
 
-            OverlapLayout.TranslationY = concreteBindingContext.OverlapVerticalAlignment == Enumerations.OverlapVerticalAlignment.Top ? Height * -1 : Height;
+            OverlapLayout.TranslationY = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? Height * -1 : Height;
 
             OverlapLayout.IsVisible = true;
 
@@ -55,7 +55,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
                 {
                     Target = ContextedImagen,
-                    TranslateY = concreteBindingContext.OverlapVerticalAlignment == Enumerations.OverlapVerticalAlignment.Top ? OverlapContentLayout.Height / 2 : OverlapContentLayout.Height / 2 * -1,
+                    TranslateY = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? OverlapContentLayout.Height / 2 : OverlapContentLayout.Height / 2 * -1,
                     EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
                     Delay = "100"
                 });
@@ -63,7 +63,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
             internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
             {
                 Target = TitleLabel,
-                Direction = concreteBindingContext.OverlapVerticalAlignment == Enumerations.OverlapVerticalAlignment.Top ? XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down : XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                Direction = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down : XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                 RelativeOffset = 100d,
                 Delay = overlapShowInAnimationDuration.ToString(),
                 EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
@@ -77,7 +77,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                 {
                     Target = infoBlockLayout,
-                    Direction = concreteBindingContext.OverlapVerticalAlignment == Enumerations.OverlapVerticalAlignment.Top ? XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down : XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                    Direction = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down : XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                     RelativeOffset = 100d,
                     Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * index++).ToString(),
                     EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
@@ -109,26 +109,26 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
         private void OverlapContentWrapLayout_PaintSurface(object sender, SKPaintSurfaceEventArgs eventArgs)
         {
-            var concreteBindingContext = BindingContext as Models.View.PortraitFlatContextualOverlapForImagePlacardViewModel;
+            var concreteBindingContext = BindingContext as Models.View.FlatContextualOverlapForImagePlacardViewModel;
 
             eventArgs.Surface.Canvas.Clear();
 
             var paint = new SkiaSharp.SKPaint()
             {
                 Style = SkiaSharp.SKPaintStyle.Fill,
-                Color = (BindingContext as Models.View.PortraitFlatContextualOverlapForImagePlacardViewModel).OverlapBackgroundColor.ToSKColor()
+                Color = (BindingContext as Models.View.FlatContextualOverlapForImagePlacardViewModel).OverlapBackgroundColor.ToSKColor()
             };
 
             if (concreteBindingContext.UseOverlapShadown)
             {
                 var shadowRawColors = new string[] { "#090806", "#15120e", "#211d16", "#2c271e", "#383126", "#443b2e", "#4f4636", "#5b503d", "#675a45", "#655a45", "#73644d" };
 
-                var index = (int)((BindingContext as Models.View.LandscapeContextualFlatOverlapForImagePlacardViewModel).OverlapBackgroundColor.Luminosity * 10);
+                var index = (int)((BindingContext as Models.View.FlatContextualOverlapForImagePlacardViewModel).OverlapBackgroundColor.Luminosity * 10);
 
                 paint.ImageFilter = SkiaSharp.SKImageFilter.CreateDropShadow(7f, 0f, 8f, 8f, SkiaSharp.SKColor.Parse(shadowRawColors[index]));
             }
 
-            eventArgs.Surface.Canvas.DrawPath(concreteBindingContext.OverlapShapeKind.ToVerticalSKPath(concreteBindingContext.OverlapVerticalAlignment, eventArgs.Info.Width, eventArgs.Info.Height, OverlapContentLayout.Height), paint);
+            eventArgs.Surface.Canvas.DrawPath(concreteBindingContext.OverlapShapeKind.ToVerticalSKPath(concreteBindingContext.OverlapAlignment, eventArgs.Info.Width, eventArgs.Info.Height, OverlapContentLayout.Height), paint);
         }
     }
 }

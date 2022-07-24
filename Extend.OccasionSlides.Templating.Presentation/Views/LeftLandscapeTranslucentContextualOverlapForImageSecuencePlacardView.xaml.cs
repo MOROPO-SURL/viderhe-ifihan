@@ -8,7 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
     {
         private Common.Templating.Presentation.Presenters.ScreenplayPresenter screenplayPresenter;
 
-        public LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView(Models.View.LandscapeTranslucentContextualOverlapForImageSecuencePlacardViewModel model)
+        public LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView(Models.View.TranslucentContextualOverlapForImageSecuencePlacardViewModel model)
         {
             InitializeComponent();
 
@@ -31,7 +31,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
         {
             base.PerformPlacardStarup();
 
-            var concreteBindingContext = BindingContext as Models.View.LandscapeTranslucentContextualOverlapForImageSecuencePlacardViewModel;
+            var concreteBindingContext = BindingContext as Models.View.TranslucentContextualOverlapForImageSecuencePlacardViewModel;
 
             var placards = new System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel>();
 
@@ -122,14 +122,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
         private void OverlapContentWrapLayout_PaintSurface(object sender, SKPaintSurfaceEventArgs eventArgs)
         {
-            var concreteBindingContext = BindingContext as Models.View.LandscapeTranslucentContextualOverlapForImageSecuencePlacardViewModel;
+            var concreteBindingContext = BindingContext as Models.View.TranslucentContextualOverlapForImageSecuencePlacardViewModel;
 
             eventArgs.Surface.Canvas.Clear();
 
             var paint = new SkiaSharp.SKPaint()
             {
                 Style = SkiaSharp.SKPaintStyle.Fill,
-                Color = (BindingContext as Models.View.LandscapeTranslucentContextualOverlapForImageSecuencePlacardViewModel).OverlapBackgroundColor.ToSKColor().WithAlpha(Providers.ConstantProvider.TRANSLUCED_OPACITY_LEVEL)
+                Color = (BindingContext as Models.View.TranslucentContextualOverlapForImageSecuencePlacardViewModel).OverlapBackgroundColor.ToSKColor().WithAlpha(Providers.ConstantProvider.TRANSLUCED_OPACITY_LEVEL)
             };
 
             eventArgs.Surface.Canvas.DrawPath(concreteBindingContext.ToHorizontalSKPath(eventArgs.Info.Width, eventArgs.Info.Height, Wrapper.Width), paint);

@@ -1,4 +1,5 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         }
 
         public CenteredTraslucentIntroOverImagePlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(Factories.CenteredTraslucentIntroOverImagePlacardConfigurationPageModelFactory.Build(placardViewModel))
+            : base(Factories.Placard.CenteredTraslucentIntroOverImagePlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
             InitializeComponent();
 
@@ -56,7 +57,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                     {
                         Label = BindingContextPageModel.Label,
                         TemplateId = Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.CenteredTraslucentIntroOverImagePlacardContextModel
+                        PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.Placard.CenteredTraslucentIntroOverImagePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
@@ -81,7 +83,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
                         TemplateId = placardViewModel.Template.Id,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.CenteredTraslucentIntroOverImagePlacardContextModel
+                        PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.Placard.CenteredTraslucentIntroOverImagePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),

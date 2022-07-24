@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</RootNamespace>
-    <Version>0.5.3.0</Version>
+    <Version>0.6.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,14 +25,26 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>LocalizedResources.resx</DependentUpon>
     </Compile>
-    <Compile Update="Pages\LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml.cs">
-      <DependentUpon>LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml</DependentUpon>
+    <Compile Update="Pages\FlatContextualOverlapForImagePlacardConfigurationPage.xaml.cs">
+      <DependentUpon>FlatContextualOverlapForImagePlacardConfigurationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\TrailContextualOverlapForImagePlacardConfigurationPage.xaml.cs">
+      <DependentUpon>TrailContextualOverlapForImagePlacardConfigurationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\TranslucentContextualOverlapForImagePlacardConfigurationPage.xaml.cs">
+      <DependentUpon>TranslucentContextualOverlapForImagePlacardConfigurationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\TranslucentContextualOverlapForImageSecuencePlacardConfigurationPage.xaml.cs">
+      <DependentUpon>TranslucentContextualOverlapForImageSecuencePlacardConfigurationPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\CommonPlacardThumbnailView.xaml.cs">
       <DependentUpon>CommonPlacardThumbnailView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\PortraitTranslucentContextualOverlapForImagePlacardThumbnailView.xaml.cs">
-      <DependentUpon>PortraitTranslucentContextualOverlapForImagePlacardThumbnailView.xaml</DependentUpon>
+    <Compile Update="Views\CommonContextualOverlapForImagePlacardThumbnailView.xaml.cs">
+      <DependentUpon>CommonContextualOverlapForImagePlacardThumbnailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\TranslucentContextualOverlapForImageSecuencePlacardThumbnailView.xaml.cs">
+      <DependentUpon>TranslucentContextualOverlapForImageSecuencePlacardThumbnailView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -44,22 +56,19 @@
     <EmbeddedResource Update="Pages\CenteredTraslucentIntroOverImagePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\LandscapeContextualFlatOverlapForImagePlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\FlatContextualOverlapForImagePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\LandscapeContextualTrailOverlapForImagePlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\TrailContextualOverlapForImagePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\LandscapeContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\TranslucentContextualOverlapForImagePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Block\TextContentBlockConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\LandscapeTranslucentContextualOverlapForImageSecuencePlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PortraitContextualTranslucentOverlapForImagePlacardConfigurationPage.xaml">
+    <EmbeddedResource Update="Pages\TranslucentContextualOverlapForImageSecuencePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CenteredTraslucentIntroOverImagePlacardThumbnailView.xaml">
@@ -68,7 +77,7 @@
     <EmbeddedResource Update="Views\CommonPlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapeTranslucentContextualOverlapForImageSecuencePlacardThumbnailView.xaml">
+    <EmbeddedResource Update="Views\TranslucentContextualOverlapForImageSecuencePlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

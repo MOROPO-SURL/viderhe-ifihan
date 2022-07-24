@@ -17,6 +17,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public CenteredTraslucentIntroOverImagePlacardConfigurationPageModel()
         {
+            ScreenPresentationTimeSecounds = 10;
             TitleFontSize = 48;
             OverlapOpacity = 50;
             OverlapBackgroundColor = Xamarin.Forms.Color.Black;

@@ -5,7 +5,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 {
     public partial class LeftLandscapeContextualTrailOverlapForImagePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LeftLandscapeContextualTrailOverlapForImagePlacardView(Models.View.LandscapeContextualTrailOverlapForImagePlacardViewModel model)
+        public LeftLandscapeContextualTrailOverlapForImagePlacardView(Models.View.TrailContextualOverlapForImagePlacardViewModel model)
         {
             InitializeComponent();
 
@@ -68,7 +68,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
         {
             base.PerformPlacardStarup();
 
-            var concreteBindingContext = BindingContext as Models.View.LandscapeContextualTrailOverlapForImagePlacardViewModel;
+            var concreteBindingContext = BindingContext as Models.View.TrailContextualOverlapForImagePlacardViewModel;
 
             var contentBoxWidth = Width * ((concreteBindingContext.OverlapSize.ToColumnCount() - 1) / 6d);
 
@@ -98,7 +98,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                 {
                     Target = ContextedImagen,
-                    TranslateX = concreteBindingContext.OverlapHorizontalAlignment == Enumerations.OverlapHorizontalAlignment.Left ? contentBoxWidth / 2 : contentBoxWidth / 2 * -1,
+                    TranslateX = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? contentBoxWidth / 2 : contentBoxWidth / 2 * -1,
                     EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
                     Delay = "100"
                 });
@@ -153,14 +153,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
         private void OverlapContentWrapLayoutCanvasView_PaintSurface(object sender, SKPaintSurfaceEventArgs eventArgs)
         {
-            var concreteBindingContext = BindingContext as Models.View.LandscapeContextualTrailOverlapForImagePlacardViewModel;
+            var concreteBindingContext = BindingContext as Models.View.TrailContextualOverlapForImagePlacardViewModel;
 
             eventArgs.Surface.Canvas.Clear();
 
             var paint = new SkiaSharp.SKPaint()
             {
                 Style = SkiaSharp.SKPaintStyle.Fill,
-                Color = (BindingContext as Models.View.LandscapeContextualTrailOverlapForImagePlacardViewModel).OverlapBackgroundColor.ToSKColor()
+                Color = (BindingContext as Models.View.TrailContextualOverlapForImagePlacardViewModel).OverlapBackgroundColor.ToSKColor()
             };
 
             eventArgs.Surface.Canvas.DrawPath(concreteBindingContext.ToHorizontalSKPath(eventArgs.Info.Width, eventArgs.Info.Height, Wrapper.Width), paint);
@@ -168,7 +168,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
         private void OverlapContentWrapTrailCanvasView_PaintSurface(object sender, SKPaintSurfaceEventArgs eventArgs)
         {
-            var concreteBindingContext = BindingContext as Models.View.LandscapeContextualTrailOverlapForImagePlacardViewModel;
+            var concreteBindingContext = BindingContext as Models.View.TrailContextualOverlapForImagePlacardViewModel;
 
             eventArgs.Surface.Canvas.Clear();
 
@@ -177,7 +177,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
             var paint = new SkiaSharp.SKPaint()
             {
                 Style = SkiaSharp.SKPaintStyle.Fill,
-                Color = (BindingContext as Models.View.LandscapeContextualTrailOverlapForImagePlacardViewModel).OverlapBackgroundColor.MultiplyAlpha(1 - ((int)canvasView.BindingContext + 1) / ((int)concreteBindingContext.OverlapTrailMode + 2d)).ToSKColor()
+                Color = (BindingContext as Models.View.TrailContextualOverlapForImagePlacardViewModel).OverlapBackgroundColor.MultiplyAlpha(1 - ((int)canvasView.BindingContext + 1) / ((int)concreteBindingContext.OverlapTrailMode + 2d)).ToSKColor()
             };
 
             eventArgs.Surface.Canvas.DrawPath(concreteBindingContext.ToHorizontalSKPath(eventArgs.Info.Width, eventArgs.Info.Height, Wrapper.Width, Wrapper.Width * 0.02 * ((int)canvasView.BindingContext + 1)), paint);
