@@ -34,7 +34,7 @@
                     <skiaformviews:SKCanvasView PaintSurface="OverlapContentWrapLayout_PaintSurface" />
                     <StackLayout
                         x:Name="OverlapContentLayout"
-                        VerticalOptions="{Binding Path=OverlapVerticalAlignment, Converter={StaticResource OverlapVerticalAlignmentToLayoutOptionsConverter}, Mode=OneTime}"
+                        VerticalOptions="{Binding Path=OverlapAlignment, Converter={StaticResource OverlapVerticalAlignmentToLayoutOptionsConverter}, Mode=OneTime}"
                         Padding="{Binding Source={Reference Wrapper}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=20}"
                         Spacing="0">
                         <Label
