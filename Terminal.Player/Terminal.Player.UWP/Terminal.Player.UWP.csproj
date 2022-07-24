@@ -224,6 +224,10 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Extend.Common.Templating\Extend.Common.Templating.csproj">
+      <Project>{571b8648-903d-4322-addc-60ddbe97974f}</Project>
+      <Name>Extend.Common.Templating</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj">
       <Project>{7b10ab64-aec2-4109-bbb6-cbe522c1273c}</Project>
       <Name>Extend.Common.Transitioning.Presentation</Name>
