@@ -22,7 +22,7 @@
         internal const string ACTIONSHEET_PICKIMAGE_OPTION_CAMARA = "Captura con la Cámara";
         internal const string ACTIONSHEET_PICKIMAGE_OPTION_GALLERY = "Galería de Imágenes";
 
-        public string FallbackUserProfileImageUrl => string.Format("http://{0}/img/default-person-picture.jpg", Support.Presentation.Managers.SessionMemoryManager.Instance.Server);
+        public string FallbackUserProfileImageUrl => string.Format("{0}://{1}/img/default-person-picture.jpg", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host);
 
         public SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex[] Sex_All => (SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex[])System.Enum.GetValues(typeof(SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex));
 

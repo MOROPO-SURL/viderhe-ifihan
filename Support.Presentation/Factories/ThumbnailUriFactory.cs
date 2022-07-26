@@ -4,7 +4,9 @@
     {
         public static System.Uri BuildThumbnailUri(System.Guid thumbnailId)
         {
-            return new System.Uri(string.Format("http://{0}/media/default/thumbnail/{1}", Xamarin.Forms.DependencyService.Get<Providers.Facade.ICloudServerProviderFacade>().CloudServerHost, thumbnailId));
+            var cloudServerProvider = Xamarin.Forms.DependencyService.Get<Providers.Facade.ICloudServerProviderFacade>();
+
+            return new System.Uri(string.Format("{0}://{1}/media/default/thumbnail/{2}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, thumbnailId));
         }
     }
 }
