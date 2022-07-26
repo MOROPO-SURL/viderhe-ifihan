@@ -4,7 +4,7 @@
     {
         public string BuildImageUrl(Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider, System.Guid imageId)
         {
-            return string.Format("http://{0}/media/image/{1}/w/{2}/h/{3}", cloudServerProvider.CloudServerHost, imageId, (int)Xamarin.Forms.Application.Current.MainPage.Width, (int)Xamarin.Forms.Application.Current.MainPage.Height);
+            return string.Format("{0}://{1}/media/image/{2}/w/{3}/h/{4}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, imageId, (int)Xamarin.Forms.Application.Current.MainPage.Width, (int)Xamarin.Forms.Application.Current.MainPage.Height);
         }
     }
 }
