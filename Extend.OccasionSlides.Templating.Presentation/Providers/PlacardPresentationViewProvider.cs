@@ -126,6 +126,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     ContentBlocks = context.ContentBlocks
                 };
 
+                if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                {
+                    return new Views.PortraitTrailContextualOverlapForImagePlacardView(targetPlacardViewModel);
+                }
+
                 if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
                     return new Views.LeftLandscapeContextualTrailOverlapForImagePlacardView(targetPlacardViewModel);

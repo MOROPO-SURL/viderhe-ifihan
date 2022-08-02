@@ -6,7 +6,7 @@
 
         public System.Guid Id => ID;
 
-        public Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport => Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape;
+        public Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport => Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
 
         public string Name => "Imagen con Superposición Contextual Plana con Estela";
 
