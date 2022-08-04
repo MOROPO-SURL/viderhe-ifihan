@@ -4,7 +4,8 @@
     {
         public string BuildImageUrl(Support.Presentation.Providers.Facade.ICloudServerProviderFacade cloudServerProvider, System.Guid imageId)
         {
-            return string.Format("http://{0}/media/default/image/{1}", cloudServerProvider.CloudServerHost, imageId);
+
+            return string.Format("{0}://{1}/media/default/image/{2}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, imageId);
         }
     }
 }

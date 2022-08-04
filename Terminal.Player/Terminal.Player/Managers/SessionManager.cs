@@ -27,7 +27,7 @@
         public System.Guid? AccountDefaultOverlayId { get; set; }
         public string AccountSerializedOverlayContext { get; set; }
 
-        public SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("http://{0}/api/", Support.Presentation.Managers.SessionMemoryManager.Instance.CloudServerHost), null, () => ExtraHeaders);
+        public SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host), null, () => ExtraHeaders);
 
         public System.Collections.Generic.KeyValuePair<string, string>[] ExtraHeaders
         {

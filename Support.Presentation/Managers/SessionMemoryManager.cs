@@ -42,7 +42,19 @@
 
         #region ICloudServerProviderFacade implementation
 
-        public string CloudServerHost => Server;
+        public string Host => Server;
+
+        public bool UseSSL
+        {
+            get
+            {
+#if DEBUG
+                return false;
+#else
+                return true;
+#endif
+            }
+        }
 
         #endregion
     }
