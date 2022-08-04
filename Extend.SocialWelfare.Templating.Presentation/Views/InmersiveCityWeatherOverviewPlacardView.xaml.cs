@@ -27,7 +27,9 @@
 
             var weatherApiConnectClient = new Weather.Api.Connect.Clients.OpenWeatherMapApiConnectClient(new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(concreteBindingContextModel.ServiceBaseUri.ToString()));
 
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            var weatherApiConnectStartAt = System.DateTime.Now;
+
+            #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             weatherApiConnectClient.GetOverviewByCityAsync(int.Parse(concreteBindingContextModel.City.Id)).ContinueWith(task =>
             {
                 if (task.IsCanceled || task.Exception != null)
@@ -39,6 +41,12 @@
 
                     return;
                 }
+
+                var weatherApiConnectElapsedTime = System.DateTime.Now - weatherApiConnectStartAt;
+
+                var weitTime = System.TimeSpan.FromSeconds(5) - weatherApiConnectElapsedTime;
+
+                if (weitTime > System.TimeSpan.Zero) System.Threading.Thread.Sleep(weitTime);
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -133,7 +141,7 @@
                     weatherInfoShowInStoryboard.Begin();
                 });
             });
-#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+            #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 
             var globalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
             { 
