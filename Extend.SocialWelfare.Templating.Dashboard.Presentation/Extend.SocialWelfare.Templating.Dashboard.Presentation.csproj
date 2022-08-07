@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation</RootNamespace>
-    <Version>0.4.2.0</Version>
+    <Version>0.4.2.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,16 +21,28 @@
     <Compile Update="Pages\InmersiveCityWeatherOverviewPlacardConfigurationPage.xaml.cs">
       <DependentUpon>InmersiveCityWeatherOverviewPlacardConfigurationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\HeroLocalNowDateTimePlacardConfigurationPage.xaml.cs">
+      <DependentUpon>HeroLocalNowDateTimePlacardConfigurationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\HeroLocalNowDateTimePlacardThumbnailView.xaml.cs">
+      <DependentUpon>HeroLocalNowDateTimePlacardThumbnailView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Pages\InmersiveCityWeatherOverviewPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\HeroLocalNowDateTimePlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\RssFeedCollageHeroPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\InmersiveCityWeatherOverviewPlacardThumnailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\HeroLocalNowDateTimePlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

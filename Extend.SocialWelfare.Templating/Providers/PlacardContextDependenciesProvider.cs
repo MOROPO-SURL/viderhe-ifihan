@@ -6,9 +6,18 @@
         {
             if (templateId == Descriptors.InmersiveCityWeatherOverviewTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.InmersiveCityWeatherOverviewContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.InmersiveCityWeatherOverviewPlacardContextModel>(serializedContext);
 
                 return new[] { context.BackgroundCityImage };
+            }
+
+            if (templateId == Descriptors.HeroLocalNowDateTimeTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.HeroLocalNowDateTimePlacardContextModel>(serializedContext);
+
+                if (context.Background.Kind != Enumerations.BackgroundKind.Image) return null;
+
+                return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(context.Background.SerializedContext) };
             }
 
             return null;
@@ -16,6 +25,15 @@
 
         public Common.Templating.Models.Context.VideoContextModel[] GetVideos(System.Guid templateId, string serializedContext)
         {
+            if (templateId == Descriptors.HeroLocalNowDateTimeTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.HeroLocalNowDateTimePlacardContextModel>(serializedContext);
+
+                if (context.Background.Kind != Enumerations.BackgroundKind.Video) return null;
+
+                return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.VideoContextModel>(context.Background.SerializedContext) };
+            }
+
             return null;
         }
     }

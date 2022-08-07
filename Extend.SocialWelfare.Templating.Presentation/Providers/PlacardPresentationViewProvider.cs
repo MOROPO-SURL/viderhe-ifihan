@@ -1,5 +1,4 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Descriptors;
-using SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Providers
 {
@@ -9,11 +8,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
         {
             if (model.Template.Id == InmersiveCityWeatherOverviewTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.InmersiveCityWeatherOverviewContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.InmersiveCityWeatherOverviewPlacardContextModel>(model.SerializedContext);
 
                 var protocol = context.IsWeatherCacheMicroServerRequireSecureConnection ? "https" : "http";
 
-                return new InmersiveCityWeatherOverviewPlacardView(new Models.View.InmersiveCityWeatherOverviewPlacardViewModel
+                return new Views.InmersiveCityWeatherOverviewPlacardView(new Models.View.Placard.InmersiveCityWeatherOverviewPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
@@ -26,9 +25,25 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 
             if (model.Template.Id == RssFeedCollageHeroTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.RssFeedCollageHeroContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.RssFeedCollageHeroPlacardContextModel>(model.SerializedContext);
 
-                return new RssFeedCollageHeroPlacardView(context);
+                return new Views.RssFeedCollageHeroPlacardView(context);
+            }
+
+            if (model.Template.Id == HeroLocalNowDateTimeTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.HeroLocalNowDateTimePlacardContextModel>(model.SerializedContext);
+
+                return new Views.HeroLocalNowDateTimePlacardView(new Models.View.Placard.HeroLocalNowDateTimePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    Style = context.Style,
+                    IsDateTimeFramed = context.IsDateTimeFramed,
+                    TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
+                    Culture = context.Culture == null ? System.Globalization.CultureInfo.CurrentCulture : System.Globalization.CultureInfo.GetCultureInfo(context.Culture),
+                    Background = context.Background
+                });
             }
 
             return null;

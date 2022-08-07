@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views
+﻿using SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Models.View.Placard;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views
 {
     public partial class InmersiveCityWeatherOverviewPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public InmersiveCityWeatherOverviewPlacardView(Models.View.InmersiveCityWeatherOverviewPlacardViewModel model)
+        public InmersiveCityWeatherOverviewPlacardView(InmersiveCityWeatherOverviewPlacardViewModel model)
         {
             InitializeComponent();
 
@@ -23,7 +25,7 @@
         {
             base.PerformPlacardStarup();
 
-            var concreteBindingContextModel = BindingContext as Models.View.InmersiveCityWeatherOverviewPlacardViewModel;
+            var concreteBindingContextModel = BindingContext as InmersiveCityWeatherOverviewPlacardViewModel;
 
             var weatherApiConnectClient = new Weather.Api.Connect.Clients.OpenWeatherMapApiConnectClient(new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(concreteBindingContextModel.ServiceBaseUri.ToString()));
 

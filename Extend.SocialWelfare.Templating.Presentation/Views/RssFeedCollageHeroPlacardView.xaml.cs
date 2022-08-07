@@ -5,15 +5,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 {
     public partial class RssFeedCollageHeroPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        private Templating.Models.Context.RssFeedCollageHeroContextModel placardContext;
+        private Templating.Models.Context.Placard.RssFeedCollageHeroPlacardContextModel placardContext;
 
-        public RssFeedCollageHeroPlacardView(Templating.Models.Context.RssFeedCollageHeroContextModel model)
+        public RssFeedCollageHeroPlacardView(Templating.Models.Context.Placard.RssFeedCollageHeroPlacardContextModel model)
         {
             InitializeComponent();
 
             placardContext = model;
 
-            BindingContext = new Models.View.RssFeedCollageHeroPlacardViewModel
+            BindingContext = new Models.View.Placard.RssFeedCollageHeroPlacardViewModel
             {
                 ScreenPresentationTime = model.ScreenPresentationTime,
                 RequireUnobstructedPresetation = model.RequireUnobstructedPresetation,
@@ -43,7 +43,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
         {
             base.PerformPlacardStarup();
 
-            var concreteBindingContextModel = BindingContext as Models.View.RssFeedCollageHeroPlacardViewModel;
+            var concreteBindingContextModel = BindingContext as Models.View.Placard.RssFeedCollageHeroPlacardViewModel;
 
             CodeHollow.FeedReader.FeedReader.ReadAsync(placardContext.FeedUrl).ContinueWith(task =>
             {
@@ -209,7 +209,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 
             placardContext = null;
 
-            var concreteBindingContextModel = BindingContext as Models.View.RssFeedCollageHeroPlacardViewModel;
+            var concreteBindingContextModel = BindingContext as Models.View.Placard.RssFeedCollageHeroPlacardViewModel;
 
             concreteBindingContextModel.FeedImageSource = null;
             concreteBindingContextModel.HeroFeedItem = null;

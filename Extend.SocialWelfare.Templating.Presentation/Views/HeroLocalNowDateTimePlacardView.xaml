@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Converters"
+    xmlns:placardviewmodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Models.View.Placard"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views.HeroLocalNowDateTimePlacardView"
+    x:DataType="placardviewmodels:HeroLocalNowDateTimePlacardViewModel">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="PlacardLayout">
+                <ContentView Content="{Binding Path=Background, Converter={StaticResource BackgroundToViewConverter}}" />
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

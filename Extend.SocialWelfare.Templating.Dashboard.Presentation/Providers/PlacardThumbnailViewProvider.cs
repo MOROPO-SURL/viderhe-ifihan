@@ -14,6 +14,11 @@
                 return new XFToolKit.Mvvm.Views.ContentView { BackgroundColor = Xamarin.Forms.Color.Black };
             }
 
+            if (model.Template.Id == Descriptors.HeroLocalNowDateTimeTemplateDescriptor.ID)
+            {
+                return new Views.HeroLocalNowDateTimePlacardThumbnailView(model);
+            }
+
             return null;
         }
     }
