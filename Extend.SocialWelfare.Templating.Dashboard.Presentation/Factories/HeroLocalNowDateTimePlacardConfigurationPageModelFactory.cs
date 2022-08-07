@@ -16,7 +16,8 @@
                 Style = context.Style,
                 IsDateTimeFramed = context.IsDateTimeFramed,
                 Background = context.Background,
-                Culture = context.Culture
+                Culture = context.Culture,
+                TextColor = Xamarin.Forms.Color.FromHex(context.TextColor)
             };
         }
     }

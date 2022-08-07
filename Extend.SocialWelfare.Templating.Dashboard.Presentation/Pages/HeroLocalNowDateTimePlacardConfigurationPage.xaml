@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page"
+    xmlns:behaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Behaviors"
     xmlns:presentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation"
     xmlns:supportpresentationdashboardviewmodels="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
@@ -205,23 +206,27 @@
                                 Style="{StaticResource FormLabel}" />
                             <simplecolorpicker:ColorPickerEntry 
                                 EditAlfa="False"
-                                Color="{Binding Path=TextColor}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame Grid.Column="2" Grid.Row="5" Style="{StaticResource FormFieldFrame}">
-                        <StackLayout>
-                            <Label Text="Enmarcar?" Style="{StaticResource FormLabel}" />
-                            <Switch IsToggled="{Binding Path=IsDateTimeFramed}" />
+                                Color="{Binding Path=TextColor}">
+                                <simplecolorpicker:ColorPickerEntry.Behaviors>
+                                    <behaviors:SimpleColorPickerEntryBehavior PreviewBorderColor="DimGray" />
+                                </simplecolorpicker:ColorPickerEntry.Behaviors>
+                            </simplecolorpicker:ColorPickerEntry>
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="2" Grid.Row="6"
+                        Grid.Column="2" Grid.Row="5"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Idioma" Style="{StaticResource FormLabel}" />
                             <Picker
                                 SelectedItem="{Binding Path=Culture}"
                                 ItemsSource="{Binding Path=AvailableCultures}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="2" Grid.Row="6" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Enmarcar?" Style="{StaticResource FormLabel}" />
+                            <Switch IsToggled="{Binding Path=IsDateTimeFramed}" />
                         </StackLayout>
                     </Frame>
                 </Grid>

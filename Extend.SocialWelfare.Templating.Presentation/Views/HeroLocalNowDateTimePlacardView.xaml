@@ -4,18 +4,72 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Converters"
     xmlns:placardviewmodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Models.View.Placard"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views.HeroLocalNowDateTimePlacardView"
     x:DataType="placardviewmodels:HeroLocalNowDateTimePlacardViewModel">
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{Binding Path=TextColor}" />
+            </Style>
+            <Style TargetType="BoxView">
+                <Setter Property="Color" Value="{Binding Path=TextColor}" />
+            </Style>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="PlacardLayout">
                 <ContentView Content="{Binding Path=Background, Converter={StaticResource BackgroundToViewConverter}}" />
+                <Grid 
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="3" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout
+                        Grid.Column="0" Grid.Row="0"
+                        VerticalOptions="Center"
+                        Padding="32,0"
+                        IsClippedToBounds="True"
+                        Spacing="0">
+                        <Label
+                            x:Name="DayOWeekLabel"
+                            HorizontalTextAlignment="Center"
+                            Text="MIERCOLES"
+                            FontSize="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        <Label
+                            x:Name="MonthAndDayLabel"
+                            HorizontalTextAlignment="Center"
+                            Text="DICIEMBRE 21"
+                            FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    </StackLayout>
+                    <BoxView
+                        Grid.Column="1"
+                        x:Name="SeparatorBoxView"
+                        VerticalOptions="Center"
+                        HeightRequest="{Binding Source=192, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    <StackLayout
+                        Grid.Column="2"
+                        VerticalOptions="Center"
+                        Padding="32,0"
+                        IsClippedToBounds="True">
+                        <Label
+                            x:Name="TimeLabel"
+                            HorizontalOptions="Center"
+                            Text="10:30 AM"
+                            FontSize="{Binding Source=192, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        <BoxView 
+                            Color="Transparent"
+                            HeightRequest="{Binding Source=10, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    </StackLayout>
+                </Grid>
             </Grid>
         </Grid>
     </ContentView.Content>

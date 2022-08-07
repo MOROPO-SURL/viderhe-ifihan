@@ -1,12 +1,12 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Pages
 {
     public partial class HeroLocalNowDateTimePlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.HeroLocalNowDateTimePlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private const string BACKGROUND_OPTION_SOLID = "Color Sólido";
-        private const string BACKGROUND_OPTION_GRADIENT_GALLERY = "Gradiente Prediseñado";
-        private const string BACKGROUND_OPTION_GRADIENT_CUSTOM = "Gradiente Personalizado";
+        private const string BACKGROUND_OPTION_GRADIENT_GALLERY = "Gradiente";
         private const string BACKGROUND_OPTION_GRADIENT_IMAGE = "Imagen";
         private const string BACKGROUND_OPTION_GRADIENT_VIDEO = "Video";
 
@@ -76,7 +76,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                     await client.CreateAsync(new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Label = BindingContextPageModel.Label,
-                        TemplateId = Descriptors.RssFeedCollageHeroTemplateDescriptor.ID,
+                        TemplateId = Descriptors.HeroLocalNowDateTimeTemplateDescriptor.ID,
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.Placard.HeroLocalNowDateTimePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
@@ -139,8 +139,46 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
         {
             DisplayActionSheet("Seleccione el tipo de fondo a definir:", "Cancelar", null, new string[] { BACKGROUND_OPTION_SOLID, BACKGROUND_OPTION_GRADIENT_GALLERY, BACKGROUND_OPTION_GRADIENT_IMAGE }).ContinueWith(displayActionSheetTask =>
             {
-                
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    switch (displayActionSheetTask.Result)
+                    {
+                        case BACKGROUND_OPTION_SOLID:
+                            var color = await Xam.Plugin.SimpleColorPicker.ColorPickerDialog.Show(this.Content as Xamarin.Forms.Layout<Xamarin.Forms.View>, "Defina el color a utilizar como fondo:", Xamarin.Forms.Color.Accent);
+
+                            BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
+                            {
+                                Kind = Enumerations.BackgroundKind.Solid,
+                                SerializedContext = color.ToHex()
+                            };
+
+                            break;
+
+                        case BACKGROUND_OPTION_GRADIENT_IMAGE:
+                            Support.Presentation.Models.View.ImageViewModel except = null;
+
+                            if (BindingContextPageModel.Background != null && BindingContextPageModel.Background.Kind == Enumerations.BackgroundKind.Image)
+                            {
+                                except = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(BindingContextPageModel.Background.SerializedContext).ToViewModel();
+                            }
+
+                            var imagePickPage = new Support.Presentation.Dashboard.Pages.ImagePickPage(BackgroundImagePick_Callback, except);
+
+                            await this.NavigationPushPageAsync(imagePickPage);
+
+                            break;
+                    }
+                });                
             });
+        }
+
+        private void BackgroundImagePick_Callback(Support.Presentation.Models.View.ImageViewModel target)
+        {
+            BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
+            {
+                Kind = Enumerations.BackgroundKind.Image,
+                SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(target.ToContextModel())
+            };
         }
 
         #region IValidableFormPage implementation

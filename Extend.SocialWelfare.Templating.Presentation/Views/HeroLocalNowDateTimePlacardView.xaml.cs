@@ -7,6 +7,11 @@
             InitializeComponent();
 
             BindingContext = model;
+
+            DayOWeekLabel.Opacity = 0;
+            MonthAndDayLabel.Opacity = 0;
+            TimeLabel.Opacity = 0;
+            SeparatorBoxView.Opacity = 0;
         }
 
         public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;
@@ -17,6 +22,57 @@
         {
             Xamarin.Forms.Grid.SetColumn(view, 0);
             Xamarin.Forms.Grid.SetRow(view, 0);
+        }
+
+        public override void PerformPlacardStarup()
+        {
+            base.PerformPlacardStarup();
+
+            DayOWeekLabel.TranslationX = MonthAndDayLabel.TranslationX = (DayOWeekLabel.Parent as Xamarin.Forms.View).Width;
+            TimeLabel.TranslationX = (TimeLabel.Parent as Xamarin.Forms.View).Width * -1;
+            DayOWeekLabel.Opacity = 1;
+            MonthAndDayLabel.Opacity = 1;
+            TimeLabel.Opacity = 1;
+
+            var showInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            {
+                IsParallel = true
+            };
+
+            showInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            {
+                Target = SeparatorBoxView,
+                Opacity = 1,
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                Duration = "600"
+            });
+
+            showInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+            {
+                Target = DayOWeekLabel,
+                TranslateX = 0,
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                Duration = "700",
+                Delay = "900"
+            });
+            showInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+            {
+                Target = MonthAndDayLabel,
+                TranslateX = 0,
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                Duration = "700",
+                Delay = "1200"
+            });
+            showInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+            {
+                Target = TimeLabel,
+                TranslateX = 0,
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                Duration = "700",
+                Delay = "1500"
+            });
+
+            showInStoryboard.Begin();
         }
     }
 }
