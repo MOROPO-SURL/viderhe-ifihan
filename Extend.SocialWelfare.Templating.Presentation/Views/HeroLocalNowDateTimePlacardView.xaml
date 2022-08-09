@@ -25,7 +25,7 @@
         <Grid x:Name="Wrapper">
             <Grid x:Name="PlacardLayout">
                 <ContentView Content="{Binding Path=Background, Converter={StaticResource BackgroundToViewConverter}}" />
-                <Grid 
+                <Grid
                     HorizontalOptions="Center" VerticalOptions="Center"
                     ColumnSpacing="0">
                     <Grid.ColumnDefinitions>
