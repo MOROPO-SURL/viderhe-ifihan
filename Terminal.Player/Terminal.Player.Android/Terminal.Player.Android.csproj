@@ -48,7 +48,7 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidDexTool>d8</AndroidDexTool>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-    <AotAssemblies>true</AotAssemblies>
+    <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
     <AndroidSupportedAbis />
     <MandroidI18n />
@@ -57,7 +57,7 @@
     <AndroidLinkTool>r8</AndroidLinkTool>
     <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
     <AndroidKeyStore>true</AndroidKeyStore>
-    <AndroidSigningKeyStore>C:\Work\Dossiers\+SSC\Signature\Android\SSC.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyStore>W:\Dossiers\+SSC\Signature\Android\SSC.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>matorr3S/*-e21</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>ssc</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>matorr3S/*-e21</AndroidSigningKeyPass>
