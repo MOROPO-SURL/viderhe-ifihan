@@ -139,9 +139,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
             SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.HorizontalSplashImageId, model.VerticalSplashImageId, defaultOverlay, model.SerializedOverlayContext);
         }
 
-        public async System.Threading.Tasks.Task SignInAsync(string server, string login, string password)
+        public async System.Threading.Tasks.Task SignInAsync(string server, bool useSSL, string login, string password)
         {
             Support.Presentation.Managers.SessionMemoryManager.Instance.Server = server;
+            Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL = useSSL;
 
             var userApiClient = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 

@@ -27,7 +27,7 @@
         {
             BindingContextPageModel.IsBusy = true;
 
-            Managers.SessionManager.Instance.SignInAsync(BindingContextPageModel.TargetCloudHostName, BindingContextPageModel.UserName, BindingContextPageModel.Password).ContinueWith(task =>
+            Managers.SessionManager.Instance.SignInAsync(BindingContextPageModel.TargetCloudHostName, BindingContextPageModel.TargetCloudProtocolIndex == 0, BindingContextPageModel.UserName, BindingContextPageModel.Password).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
