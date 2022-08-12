@@ -12,6 +12,12 @@
             MonthAndDayLabel.Opacity = 0;
             TimeLabel.Opacity = 0;
             SeparatorBoxView.Opacity = 0;
+
+            var now = System.DateTime.Now;
+
+            DayOWeekLabel.Text = now.ToString("dddd", model.Culture).ToUpper();
+            MonthAndDayLabel.Text = now.ToString("MMMM dd", model.Culture).ToUpper();
+            TimeLabel.Text = now.ToString("hh:mm tt", System.Globalization.CultureInfo.InvariantCulture);
         }
 
         public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;

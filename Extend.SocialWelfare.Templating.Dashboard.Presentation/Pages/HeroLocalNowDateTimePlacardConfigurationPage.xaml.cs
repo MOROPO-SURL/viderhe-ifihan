@@ -84,7 +84,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                             Style = BindingContextPageModel.Style,
                             TextColor = BindingContextPageModel.TextColor.ToHex(),
                             IsDateTimeFramed = BindingContextPageModel.IsDateTimeFramed,
-                            Culture = BindingContextPageModel.Culture,
+                            Culture = BindingContextPageModel.AvailableCultures[BindingContextPageModel.CultureIndex],
                             Background = BindingContextPageModel.Background
                         })
                     });
@@ -103,7 +103,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                             Style = BindingContextPageModel.Style,
                             TextColor = BindingContextPageModel.TextColor.ToHex(),
                             IsDateTimeFramed = BindingContextPageModel.IsDateTimeFramed,
-                            Culture = BindingContextPageModel.Culture,
+                            Culture = BindingContextPageModel.AvailableCultures[BindingContextPageModel.CultureIndex],
                             Background = BindingContextPageModel.Background
                         })
                     });

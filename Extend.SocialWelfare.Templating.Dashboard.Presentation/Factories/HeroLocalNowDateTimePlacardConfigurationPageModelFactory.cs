@@ -8,7 +8,7 @@
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.HeroLocalNowDateTimePlacardContextModel>(placardViewModel.SerializedContext);
 
-            return new Models.Page.HeroLocalNowDateTimePlacardConfigurationPageModel
+            var result = new Models.Page.HeroLocalNowDateTimePlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 Label = placardViewModel.Label,
@@ -16,9 +16,17 @@
                 Style = context.Style,
                 IsDateTimeFramed = context.IsDateTimeFramed,
                 Background = context.Background,
-                Culture = context.Culture,
                 TextColor = Xamarin.Forms.Color.FromHex(context.TextColor)
             };
+
+            foreach (var item in result.AvailableCultures)
+            {
+                if (context.Culture.Equals(item.ToString())) break;
+
+                result.CultureIndex++;
+            }
+
+            return result;
         }
     }
 }

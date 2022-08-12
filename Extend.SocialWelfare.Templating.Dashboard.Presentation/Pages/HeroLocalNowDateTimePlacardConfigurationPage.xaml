@@ -219,7 +219,7 @@
                         <StackLayout>
                             <Label Text="Idioma" Style="{StaticResource FormLabel}" />
                             <Picker
-                                SelectedItem="{Binding Path=Culture}"
+                                SelectedIndex="{Binding Path=CultureIndex}"
                                 ItemsSource="{Binding Path=AvailableCultures}" />
                         </StackLayout>
                     </Frame>

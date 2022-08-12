@@ -42,12 +42,10 @@
                         <Label
                             x:Name="DayOWeekLabel"
                             HorizontalTextAlignment="Center"
-                            Text="MIERCOLES"
                             FontSize="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         <Label
                             x:Name="MonthAndDayLabel"
                             HorizontalTextAlignment="Center"
-                            Text="DICIEMBRE 21"
                             FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     </StackLayout>
                     <BoxView
@@ -63,7 +61,6 @@
                         <Label
                             x:Name="TimeLabel"
                             HorizontalOptions="Center"
-                            Text="10:30 AM"
                             FontSize="{Binding Source=192, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         <BoxView 
                             Color="Transparent"

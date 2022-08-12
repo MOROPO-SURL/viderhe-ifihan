@@ -2,21 +2,19 @@
 {
     public class HeroLocalNowDateTimePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
-        private const string DEFAULT_CULTURE = "es-ES";
-
         private Enumerations.HeroNowDateTimeStyle style;
         private bool isDateTimeFramed;
         private Templating.Models.Context.BackgroundContextModel background;
         private Xamarin.Forms.Color textColor;
-        private string culture;
+        private int cultureIndex;
 
         public HeroLocalNowDateTimePlacardConfigurationPageModel()
         {
             ScreenPresentationTimeSecounds = 5;
             Style = Enumerations.HeroNowDateTimeStyle.DateTimeWithSeparatorRectangle;
             AvailableStyles = new Enumerations.HeroNowDateTimeStyle[] { Enumerations.HeroNowDateTimeStyle.DateTimeWithSeparatorRectangle };
-            Culture = DEFAULT_CULTURE;
-            AvailableCultures = new string[] { DEFAULT_CULTURE, "en-EN" };
+            CultureIndex = 0;
+            AvailableCultures = new string[] { "es-ES", "en-EN" };
         }
 
         public Enumerations.HeroNowDateTimeStyle Style { get => style; set => SetProperty(ref style, value); }
@@ -29,7 +27,7 @@
 
         public Xamarin.Forms.Color TextColor { get => textColor; set =>  SetProperty(ref textColor, value); }
 
-        public string Culture { get => culture; set => SetProperty(ref culture, value); }
+        public int CultureIndex { get => cultureIndex; set => SetProperty(ref cultureIndex, value); }
 
         public string[] AvailableCultures { get; private set; }
     }
