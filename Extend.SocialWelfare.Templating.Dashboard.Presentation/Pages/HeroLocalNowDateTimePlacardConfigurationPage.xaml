@@ -20,6 +20,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <presentationconverters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
         </ResourceDictionary>
@@ -65,6 +66,7 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -154,7 +156,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="5"
+                        Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="6"
                         Style="{StaticResource FormFieldFrame}"
                         Padding="0"
                         VerticalOptions="Start">
@@ -213,8 +215,41 @@
                             </simplecolorpicker:ColorPickerEntry>
                         </StackLayout>
                     </Frame>
+                    <Frame Grid.Column="2" Grid.Row="5" Style="{StaticResource FormFieldFrame}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.ColumnSpan="3" Grid.Row="0"
+                                Text="Fuente" 
+                                Style="{StaticResource FormLabel}" />
+                            <Entry
+                                Grid.Column="0" Grid.Row="1"
+                                Text="{Binding Path=TextFontFamily}"
+                                Placeholder="Sistema"
+                                PlaceholderColor="Black"
+                                IsReadOnly="True" />
+                            <Button
+                                Grid.Column="1" Grid.Row="1"
+                                Text="Seleccionar"
+                                Clicked="TextFontFamilyPickButton_Clicked" />
+                            <Button 
+                                Grid.Column="2" Grid.Row="1"
+                                IsEnabled="{Binding Path=TextFontFamily, Converter={StaticResource NotNullToBooleanConverter}}"
+                                Style="{StaticResource TextIconButton}"
+                                Text="&#xF413;"
+                                Clicked="TextFontFamilyClearButton_Clicked" />
+                        </Grid>
+                    </Frame>
                     <Frame 
-                        Grid.Column="2" Grid.Row="5"
+                        Grid.Column="2" Grid.Row="6"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Idioma" Style="{StaticResource FormLabel}" />
@@ -223,7 +258,7 @@
                                 ItemsSource="{Binding Path=AvailableCultures}" />
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Column="2" Grid.Row="6" Style="{StaticResource FormFieldFrame}">
+                    <Frame Grid.Column="2" Grid.Row="7" Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Enmarcar?" Style="{StaticResource FormLabel}" />
                             <Switch IsToggled="{Binding Path=IsDateTimeFramed}" />

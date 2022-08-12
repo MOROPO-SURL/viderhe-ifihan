@@ -83,6 +83,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
                             Style = BindingContextPageModel.Style,
                             TextColor = BindingContextPageModel.TextColor.ToHex(),
+                            TextFontFamily = BindingContextPageModel.TextFontFamily,
                             IsDateTimeFramed = BindingContextPageModel.IsDateTimeFramed,
                             Culture = BindingContextPageModel.AvailableCultures[BindingContextPageModel.CultureIndex],
                             Background = BindingContextPageModel.Background
@@ -102,6 +103,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
                             Style = BindingContextPageModel.Style,
                             TextColor = BindingContextPageModel.TextColor.ToHex(),
+                            TextFontFamily = BindingContextPageModel.TextFontFamily,
                             IsDateTimeFramed = BindingContextPageModel.IsDateTimeFramed,
                             Culture = BindingContextPageModel.AvailableCultures[BindingContextPageModel.CultureIndex],
                             Background = BindingContextPageModel.Background
@@ -170,6 +172,21 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                     }
                 });                
             });
+        }
+
+        private void TextFontFamilyClearButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            BindingContextPageModel.TextFontFamily = null;
+        }
+
+        private void TextFontFamilyPickButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.EmbeddedFontFamilyNamePickPage(TextFontFamilyPicked_Callback));
+        }
+
+        private void TextFontFamilyPicked_Callback(string selection)
+        {
+            BindingContextPageModel.TextFontFamily = selection;
         }
 
         private void BackgroundImagePick_Callback(Support.Presentation.Models.View.ImageViewModel target)

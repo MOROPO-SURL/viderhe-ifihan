@@ -8,16 +8,23 @@
 
             BindingContext = model;
 
-            DayOWeekLabel.Opacity = 0;
-            MonthAndDayLabel.Opacity = 0;
-            TimeLabel.Opacity = 0;
-            SeparatorBoxView.Opacity = 0;
+            if (model.TextFontFamily != null)
+            {
+                DayOWeekLabel.FontFamily = model.TextFontFamily;
+                MonthAndDayLabel.FontFamily = model.TextFontFamily;
+                TimeLabel.FontFamily = model.TextFontFamily;
+            }    
 
             var now = System.DateTime.Now;
 
             DayOWeekLabel.Text = now.ToString("dddd", model.Culture).ToUpper();
             MonthAndDayLabel.Text = now.ToString("MMMM dd", model.Culture).ToUpper();
             TimeLabel.Text = now.ToString("hh:mm tt", System.Globalization.CultureInfo.InvariantCulture);
+
+            DayOWeekLabel.Opacity = 0;
+            MonthAndDayLabel.Opacity = 0;
+            TimeLabel.Opacity = 0;
+            SeparatorBoxView.Opacity = 0;
         }
 
         public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;

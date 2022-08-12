@@ -10,6 +10,8 @@
 
         public Xamarin.Forms.Color TextColor { get; set; }
 
+        public string TextFontFamily { get; set; }
+
         public System.Globalization.CultureInfo Culture { get; set; }
     }
 }

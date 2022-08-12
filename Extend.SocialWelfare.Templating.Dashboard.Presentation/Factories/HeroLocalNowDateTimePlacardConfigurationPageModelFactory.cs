@@ -16,7 +16,8 @@
                 Style = context.Style,
                 IsDateTimeFramed = context.IsDateTimeFramed,
                 Background = context.Background,
-                TextColor = Xamarin.Forms.Color.FromHex(context.TextColor)
+                TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
+                TextFontFamily = context.TextFontFamily
             };
 
             foreach (var item in result.AvailableCultures)

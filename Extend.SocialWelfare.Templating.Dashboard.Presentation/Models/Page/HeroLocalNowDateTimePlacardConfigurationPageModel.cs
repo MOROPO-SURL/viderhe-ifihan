@@ -6,6 +6,7 @@
         private bool isDateTimeFramed;
         private Templating.Models.Context.BackgroundContextModel background;
         private Xamarin.Forms.Color textColor;
+        private string textFontFamily;
         private int cultureIndex;
 
         public HeroLocalNowDateTimePlacardConfigurationPageModel()
@@ -23,9 +24,11 @@
 
         public bool IsDateTimeFramed { get => isDateTimeFramed; set => SetProperty(ref isDateTimeFramed, value); }
 
-        public Templating.Models.Context.BackgroundContextModel Background { get => background; set =>  SetProperty(ref background, value); }
+        public Templating.Models.Context.BackgroundContextModel Background { get => background; set => SetProperty(ref background, value); }
 
-        public Xamarin.Forms.Color TextColor { get => textColor; set =>  SetProperty(ref textColor, value); }
+        public Xamarin.Forms.Color TextColor { get => textColor; set => SetProperty(ref textColor, value); }
+
+        public string TextFontFamily { get => textFontFamily; set => SetProperty(ref textFontFamily, value); }
 
         public int CultureIndex { get => cultureIndex; set => SetProperty(ref cultureIndex, value); }
 

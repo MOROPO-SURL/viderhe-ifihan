@@ -8,6 +8,8 @@
 
         public string TextColor { get; set; }
 
+        public string TextFontFamily { get; set; }
+
         public BackgroundContextModel Background { get; set; }
 
         public string Culture { get; set; }

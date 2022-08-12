@@ -41,6 +41,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
                     Style = context.Style,
                     IsDateTimeFramed = context.IsDateTimeFramed,
                     TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
+                    TextFontFamily = context.TextFontFamily,
                     Culture = context.Culture == null ? System.Globalization.CultureInfo.CurrentCulture : System.Globalization.CultureInfo.GetCultureInfo(context.Culture),
                     Background = context.Background
                 });
