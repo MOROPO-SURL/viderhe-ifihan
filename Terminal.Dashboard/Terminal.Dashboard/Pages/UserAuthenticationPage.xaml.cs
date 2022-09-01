@@ -30,7 +30,7 @@
         {
             BindingContextPageModel.IsBusy = true;
 
-            Managers.SessionManager.Instance.SignInAsync(BindingContextPageModel.TargetCloudHostName, BindingContextPageModel.TargetCloudProtocolIndex == 0, BindingContextPageModel.UserName, BindingContextPageModel.Password).ContinueWith(task =>
+            Managers.SessionManager.Instance.SignInAsync(BindingContextPageModel.TargetCloudHostName, BindingContextPageModel.TargetCloudProtocolIndex == 0, BindingContextPageModel.UserName, BindingContextPageModel.Password, SignIn_Callback).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -71,6 +71,16 @@
                                 {
                                     message = "Usuario y/o contraseña incorrectos.";
                                 }
+                                else if (unspectedHttpStatus == System.Net.HttpStatusCode.ServiceUnavailable)
+                                {
+                                    message = "Servicio no disponible en este momento.";
+                                }
+                            }
+                            else
+                            {
+                                var nativeMessage = Xamarin.Forms.DependencyService.Get<Managers.Facade.IApplicationManagerFacade>().GetUnhandleExceptionMessage(targetException);
+
+                                if (nativeMessage != null) message = nativeMessage;
                             }
                         }
 
@@ -83,6 +93,14 @@
 
                     Xamarin.Forms.Application.Current.MainPage = new Xamarin.Forms.NavigationPage(new MainPage());
                 });
+            });
+        }
+
+        private void SignIn_Callback(string message)
+        {
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                BindingContextPageModel.BusyProgressMessage = message;
             });
         }
     }
