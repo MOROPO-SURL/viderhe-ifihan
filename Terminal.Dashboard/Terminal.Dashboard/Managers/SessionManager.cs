@@ -246,7 +246,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
             var ffImageLoadingHttpClient = new System.Net.Http.HttpClient();
 
-            ffImageLoadingHttpClient.DefaultRequestHeaders.Add(AuthenticationType, AuthorizationToken);
+            ffImageLoadingHttpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(AuthenticationType, AuthorizationToken);
 
             FFImageLoading.ImageService.Instance.Initialize(new FFImageLoading.Config.Configuration
             {
