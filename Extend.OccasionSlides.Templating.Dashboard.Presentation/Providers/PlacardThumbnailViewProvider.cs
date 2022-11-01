@@ -8,17 +8,17 @@
                 model.Template.Id == Descriptors.FlatContextualOverlapForImageTemplateDescriptor.ID ||
                 model.Template.Id == Descriptors.TrailContextualOverlapForImageTemplateDescriptor.ID)
             {
-                return new Views.CommonContextualOverlapForImagePlacardThumbnailView(model);
+                return new Views.Thumbnail.CommonContextualOverlapForImagePlacardThumbnailView(model);
             }
 
             if (model.Template.Id == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
             {
-                return new Views.CenteredTraslucentIntroOverImagePlacardThumbnailView(model);
+                return new Views.Thumbnail.CenteredTraslucentIntroOverImagePlacardThumbnailView(model);
             }
 
             if (model.Template.Id == Descriptors.TranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
             {
-                return new Views.TranslucentContextualOverlapForImageSecuencePlacardThumbnailView(model);
+                return new Views.Thumbnail.TranslucentContextualOverlapForImageSecuencePlacardThumbnailView(model);
             }
 
             return null;

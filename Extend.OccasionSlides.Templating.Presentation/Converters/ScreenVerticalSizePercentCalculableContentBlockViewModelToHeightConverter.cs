@@ -1,0 +1,19 @@
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters
+{
+    public class ScreenVerticalSizePercentCalculableContentBlockViewModelToHeightConverter : Xamarin.Forms.IValueConverter
+    {
+        public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null || !(value is Models.View.Block.TransparentSeparatorContentBlockViewModel)) return -1;
+
+            var target = value as Models.View.Block.TransparentSeparatorContentBlockViewModel;
+
+            return Xamarin.Forms.Application.Current.MainPage.Height * target.HeightByScreenVerticalSizePercent / 100;
+        }
+
+        public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return null;
+        }
+    }
+}

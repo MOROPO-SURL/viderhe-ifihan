@@ -1,17 +1,17 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions;
+using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Placard
 {
     public static class TrailContextualOverlapForImagePlacardConfigurationPageModelFactory
     {
-        public static Models.Page.TrailContextualOverlapForImagePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static Models.Page.Configuration.Placard.TrailContextualOverlapForImagePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.TrailContextualOverlapForImagePlacardConfigurationPageModel();
+            if (placardViewModel == null) return new Models.Page.Configuration.Placard.TrailContextualOverlapForImagePlacardConfigurationPageModel();
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.TrailContextualOverlapForImagePlacardContextModel>(placardViewModel.SerializedContext);
 
-            var result = new Models.Page.TrailContextualOverlapForImagePlacardConfigurationPageModel
+            var result = new Models.Page.Configuration.Placard.TrailContextualOverlapForImagePlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 Label = placardViewModel.Label,
@@ -23,11 +23,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 OverlapSize = context.OverlapSize,
                 OverlapShapeKind = context.OverlapShapeKind,
                 OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
-                TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
-                OverlapAlignment = context.OverlapAlignment,
-                Title = context.Title,
-                TitleFontFamily = context.TitleFontFamily,
-                TitleFontSize = context.TitleFontSize
+                OverlapAlignment = context.OverlapAlignment
             };
 
             if (context.ContentBlocks != null)

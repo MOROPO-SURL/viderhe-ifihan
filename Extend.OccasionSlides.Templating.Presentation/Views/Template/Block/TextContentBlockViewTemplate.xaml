@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:blockviewmodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Template.Block.TextContentBlockViewTemplate"
+    x:DataType="blockviewmodels:TextContentBlockViewModel">
+    <Label 
+        Text="{Binding Path=Text, Mode=OneTime}"
+        TextColor="{Binding Path=TextColor, Mode=OneTime}"
+        LineBreakMode="WordWrap"
+        MaxLines="{Binding Path=TextMaxLineCount, Mode=OneTime}"
+        FontFamily="{Binding Path=TextFontFamily, Mode=OneTime}"
+        FontSize="{Binding Path=TextFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+</DataTemplate>

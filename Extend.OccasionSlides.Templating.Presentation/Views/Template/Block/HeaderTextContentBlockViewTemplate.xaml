@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataTemplate 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:blockviewmodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Template.Block.HeaderTextContentBlockViewTemplate" 
+    x:DataType="blockviewmodels:HeaderTextContentBlockViewModel">
+    <StackLayout Spacing="0">
+        <Label
+            Text="{Binding Path=Header, Mode=OneTime}"
+            TextColor="{Binding Path=HeaderColor, Mode=OneTime}"
+            LineBreakMode="TailTruncation"
+            FontFamily="{Binding Path=HeaderFontFamily, Mode=OneTime}"
+            FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"/>
+        <Label
+            Text="{Binding Path=Text, Mode=OneTime}"
+            TextColor="{Binding Path=TextColor, Mode=OneTime}"
+            LineBreakMode="WordWrap"
+            MaxLines="{Binding Path=TextMaxLineCount, Mode=OneTime}"
+            FontFamily="{Binding Path=TextFontFamily, Mode=OneTime}"
+            FontSize="{Binding Path=TextFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+    </StackLayout>
+</DataTemplate>

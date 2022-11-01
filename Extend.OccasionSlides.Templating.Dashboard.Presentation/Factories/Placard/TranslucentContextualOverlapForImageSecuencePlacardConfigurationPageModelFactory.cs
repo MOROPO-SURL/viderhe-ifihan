@@ -1,27 +1,23 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Placard
 {
     public static class TranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModelFactory
     {
-        public static Models.Page.TranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static Models.Page.Configuration.Placard.TranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.TranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel();
+            if (placardViewModel == null) return new Models.Page.Configuration.Placard.TranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel();
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.TranslucentContextualOverlapForImageSecuencePlacardContextModel>(placardViewModel.SerializedContext);
 
-            var result = new Models.Page.TranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel
+            var result = new Models.Page.Configuration.Placard.TranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 Label = placardViewModel.Label,
                 OverlapSize = context.OverlapSize,
                 OverlapShapeKind = context.OverlapShapeKind,
                 OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
-                TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
                 OverlapAlignment = context.OverlapAlignment,
-                Title = context.Title,
-                TitleFontFamily = context.TitleFontFamily,
-                TitleFontSize = context.TitleFontSize,
                 PictureSlidePresentationSecounds = System.Convert.ToInt32(context.PresentedPictureSlideSecuence.PicturePresentationSecounds)
             };
 

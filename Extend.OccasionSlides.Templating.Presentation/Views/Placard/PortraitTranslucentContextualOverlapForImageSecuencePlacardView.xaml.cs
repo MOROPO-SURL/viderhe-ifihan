@@ -1,0 +1,161 @@
+﻿using SkiaSharp.Views.Forms;
+using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
+using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Extensions;
+using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Placard
+{
+    public partial class PortraitTranslucentContextualOverlapForImageSecuencePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
+    {
+        private Common.Templating.Presentation.Presenters.ScreenplayPresenter screenplayPresenter;
+
+        public PortraitTranslucentContextualOverlapForImageSecuencePlacardView(TranslucentContextualOverlapForImageSecuencePlacardViewModel model)
+        {
+            InitializeComponent();
+
+            BindingContext = model;
+
+            OverlapLayout.IsVisible = false;
+        }
+
+        public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;
+
+        public override Xamarin.Forms.View PlacardView => PlacardLayout;
+
+        public override void ConfigureLayout(Xamarin.Forms.View view)
+        {
+            Xamarin.Forms.Grid.SetColumn(view, 0);
+            Xamarin.Forms.Grid.SetRow(view, 0);
+        }
+
+        public override void PerformPlacardStarup()
+        {
+            base.PerformPlacardStarup();
+
+            var concreteBindingContext = BindingContext as TranslucentContextualOverlapForImageSecuencePlacardViewModel;
+
+            var placards = new System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel>();
+
+            var targetTemplateDescriptor = new Essential.Templating.Descriptors.SimplePictureTemplateDescriptor();
+
+            var targetTemplateViewModel = new Support.Presentation.Models.View.TemplateViewModel
+            {
+                Id = targetTemplateDescriptor.Id,
+                PlayerOrientationSupport = Common.Templating.Enumerations.PlayerOrientationSupportKind.Any
+            };
+
+            foreach (var item in concreteBindingContext.PresentedPictureSlideSecuence.Slides)
+            {
+                placards.Add(new Support.Presentation.Models.View.PlacardViewModel
+                {
+                    Id = System.Guid.NewGuid(),
+                    Template = targetTemplateViewModel,
+                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Essential.Templating.Models.Context.SimplePicturePlacardContextModel
+                    {
+                        Image = item.Image,
+                        LayoutMode = item.LayoutMode,
+                        ScreenPresentationTime = System.TimeSpan.FromSeconds(concreteBindingContext.PresentedPictureSlideSecuence.PicturePresentationSecounds),
+                        IsZoomingEnabled = true
+                    })
+                });
+            }
+
+            screenplayPresenter = new Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards.ToArray(), new Essential.Templating.Presentation.Providers.PictureSlideSecuenceTransitionProvider(), EndPresentation, false, null);
+
+            screenplayPresenter.BeginPresentation();
+
+            OverlapLayout.TranslationY = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? Height * -1 : Height;
+
+            OverlapLayout.IsVisible = true;
+
+            int overlapShowInAnimationDuration = 650;
+            int infoBlockShoInAnimationDuration = 600;
+
+            var internalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            {
+                Delay = "2000",
+                IsParallel = true
+            };
+
+            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
+            {
+                Target = OverlapLayout,
+                TranslateY = 0,
+                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                Duration = overlapShowInAnimationDuration.ToString()
+            });
+
+            var index = 0;
+
+            foreach (var infoBlockLayout in InfoBlocksLayout.Children)
+            {
+                internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                {
+                    Target = infoBlockLayout,
+                    Direction = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down : XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                    RelativeOffset = 100d,
+                    Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * index++).ToString(),
+                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                    Duration = infoBlockShoInAnimationDuration.ToString()
+                });
+            }
+
+            internalShowInStoryboard.Begin();
+        }
+
+        protected override void DisposeUnmanagementResources()
+        {
+            base.DisposeUnmanagementResources();
+
+            screenplayPresenter.Dispose();
+
+            screenplayPresenter = null;
+        }
+
+        private void OverlapContentWrapLayout_PaintSurface(object sender, SKPaintSurfaceEventArgs eventArgs)
+        {
+            var concreteBindingContext = BindingContext as TranslucentContextualOverlapForImageSecuencePlacardViewModel;
+
+            eventArgs.Surface.Canvas.Clear();
+
+            var paint = new SkiaSharp.SKPaint()
+            {
+                Style = SkiaSharp.SKPaintStyle.Fill,
+                Color = (BindingContext as TranslucentContextualOverlapForImageSecuencePlacardViewModel).OverlapBackgroundColor.ToSKColor().WithAlpha(Providers.ConstantProvider.TRANSLUCED_OPACITY_LEVEL)
+            };
+
+            eventArgs.Surface.Canvas.DrawPath(concreteBindingContext.OverlapShapeKind.ToVerticalSKPath(concreteBindingContext.OverlapAlignment, eventArgs.Info.Width, eventArgs.Info.Height, OverlapContentLayout.Height), paint);
+        }
+
+        private Common.Presentation.Views.BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model)
+        {
+            if (model.Template.Id != Essential.Templating.Descriptors.SimplePictureTemplateDescriptor.ID) throw new System.InvalidOperationException();
+
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Essential.Templating.Models.Context.SimplePicturePlacardContextModel>(model.SerializedContext);
+
+            if (context.LayoutMode == Essential.Templating.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf)
+            {
+                return new Essential.Templating.Presentation.Views.SelfOpaqueFillSimplePicturePlacardView(new Essential.Templating.Presentation.Models.View.SelfOpaqueFillSimplePicturePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
+                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Image.ThumbnailId)),
+                    Aspect = context.LayoutMode.ToXamarinFormsAspect(),
+                    ZoomingEnabled = context.IsZoomingEnabled
+                });
+            }
+            else
+            {
+                return new Essential.Templating.Presentation.Views.SimplePicturePlacardView(new Essential.Templating.Presentation.Models.View.SimplePicturePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
+                    Aspect = context.LayoutMode.ToXamarinFormsAspect(),
+                    ZoomingEnabled = context.IsZoomingEnabled
+                });
+            }
+        }
+    }
+}

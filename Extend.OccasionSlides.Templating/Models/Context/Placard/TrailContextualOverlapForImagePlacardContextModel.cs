@@ -2,13 +2,7 @@
 {
     public class TrailContextualOverlapForImagePlacardContextModel : Common.Templating.Models.Context.AbstractScreenTimedPlacardContextModel
     {
-        public string Title { get; set; }
-
-        public string TitleFontFamily { get; set; }
-
-        public int TitleFontSize { get; set; }
-
-        public TextContentBlockContextModel[] ContentBlocks { get; set; }
+        public Block.Contract.AbstractContentBlockContextModel[] ContentBlocks { get; set; }
 
         public Enumerations.OverlapAlignment OverlapAlignment { get; set; }
 
@@ -27,7 +21,5 @@
         public bool ContextedImageZoomingEnabled { get; set; }
 
         public bool ContextedImageCenteredAtPresentation { get; set; }
-
-        public string TextColor { get; set; }
     }
 }

@@ -6,27 +6,27 @@
         {
             if (templateDescriptor is Descriptors.TranslucentContextualOverlapForImageTemplateDescriptor)
             {
-                return new Pages.TranslucentContextualOverlapForImagePlacardConfigurationPage(completedActionCallback);
+                return new Pages.Configuration.Placard.TranslucentContextualOverlapForImagePlacardConfigurationPage(completedActionCallback);
             }
 
             if (templateDescriptor is Descriptors.FlatContextualOverlapForImageTemplateDescriptor)
             {
-                return new Pages.FlatContextualOverlapForImagePlacardConfigurationPage(completedActionCallback);
+                return new Pages.Configuration.Placard.FlatContextualOverlapForImagePlacardConfigurationPage(completedActionCallback);
             }
 
             if (templateDescriptor is Descriptors.TrailContextualOverlapForImageTemplateDescriptor)
             {
-                return new Pages.TrailContextualOverlapForImagePlacardConfigurationPage(completedActionCallback);
+                return new Pages.Configuration.Placard.TrailContextualOverlapForImagePlacardConfigurationPage(completedActionCallback);
             }
 
             if (templateDescriptor is Descriptors.TranslucentContextualOverlapForImageSecuenceTemplateDescriptor)
             {
-                return new Pages.TranslucentContextualOverlapForImageSecuencePlacardConfigurationPage(completedActionCallback);
+                return new Pages.Configuration.Placard.TranslucentContextualOverlapForImageSecuencePlacardConfigurationPage(completedActionCallback);
             }
 
             if (templateDescriptor is Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor)
             {
-                return new Pages.CenteredTraslucentIntroOverImagePlacardConfigurationPage(completedActionCallback);
+                return new Pages.Configuration.Placard.CenteredTraslucentIntroOverImagePlacardConfigurationPage(completedActionCallback);
             }
 
             return null;
@@ -36,27 +36,27 @@
         {
             if (placardViewModel.Template.Id == Descriptors.TranslucentContextualOverlapForImageTemplateDescriptor.ID)
             {
-                return new Pages.TranslucentContextualOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
+                return new Pages.Configuration.Placard.TranslucentContextualOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             if (placardViewModel.Template.Id == Descriptors.FlatContextualOverlapForImageTemplateDescriptor.ID)
             {
-                return new Pages.FlatContextualOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
+                return new Pages.Configuration.Placard.FlatContextualOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             if (placardViewModel.Template.Id == Descriptors.TrailContextualOverlapForImageTemplateDescriptor.ID)
             {
-                return new Pages.TrailContextualOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
+                return new Pages.Configuration.Placard.TrailContextualOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             if (placardViewModel.Template.Id == Descriptors.TranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
             {
-                return new Pages.TranslucentContextualOverlapForImageSecuencePlacardConfigurationPage(placardViewModel, completedActionCallback);
+                return new Pages.Configuration.Placard.TranslucentContextualOverlapForImageSecuencePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             if (placardViewModel.Template.Id == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
             {
-                return new Pages.CenteredTraslucentIntroOverImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
+                return new Pages.Configuration.Placard.CenteredTraslucentIntroOverImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;

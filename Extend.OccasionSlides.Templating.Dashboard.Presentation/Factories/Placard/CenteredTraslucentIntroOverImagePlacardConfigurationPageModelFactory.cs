@@ -1,17 +1,17 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions;
+using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Placard
 {
     public static class CenteredTraslucentIntroOverImagePlacardConfigurationPageModelFactory
     {
-        public static Models.Page.CenteredTraslucentIntroOverImagePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static Models.Page.Configuration.Placard.CenteredTraslucentIntroOverImagePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.CenteredTraslucentIntroOverImagePlacardConfigurationPageModel();
+            if (placardViewModel == null) return new Models.Page.Configuration.Placard.CenteredTraslucentIntroOverImagePlacardConfigurationPageModel();
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.CenteredTraslucentIntroOverImagePlacardContextModel>(placardViewModel.SerializedContext);
 
-            var result = new Models.Page.CenteredTraslucentIntroOverImagePlacardConfigurationPageModel
+            var result = new Models.Page.Configuration.Placard.CenteredTraslucentIntroOverImagePlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 Label = placardViewModel.Label,
@@ -21,11 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 BackgroundImageZoomingEnabled = context.BackgroundImageZoomingEnabled,
                 OverlapOpacity = System.Convert.ToInt32(context.OverlapOpacity * 100),
                 OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
-                TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
-                ContentBoxPresentationKind = context.ContentBoxPresentationKind,
-                Title = context.Title,
-                TitleFontFamily = context.TitleFontFamily,
-                TitleFontSize = context.TitleFontSize
+                ContentBoxPresentationKind = context.ContentBoxPresentationKind
             };
 
             if (context.ContentBlocks != null)

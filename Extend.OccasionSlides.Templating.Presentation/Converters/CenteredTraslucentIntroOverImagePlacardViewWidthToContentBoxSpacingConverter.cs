@@ -2,7 +2,7 @@
 {
     public class CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxSpacingConverter : Xamarin.Forms.IValueConverter
     {
-        public Views.CenteredTraslucentIntroOverImagePlacardView PlacardView { get; set; }
+        public Views.Placard.CenteredTraslucentIntroOverImagePlacardView PlacardView { get; set; }
 
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

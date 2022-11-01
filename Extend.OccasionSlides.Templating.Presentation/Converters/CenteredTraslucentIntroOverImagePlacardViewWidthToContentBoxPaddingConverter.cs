@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters
+﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters
 {
     public class CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxPaddingConverter : Xamarin.Forms.IValueConverter
     {
-        public Views.CenteredTraslucentIntroOverImagePlacardView PlacardView { get; set; }
+        public Views.Placard.CenteredTraslucentIntroOverImagePlacardView PlacardView { get; set; }
 
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
@@ -12,7 +14,7 @@
 
             if (width <= 0) return new Xamarin.Forms.Thickness();
 
-            var concreteBindingContext = PlacardView.BindingContext as Models.View.CenteredTraslucentIntroOverImagePlacardViewModel;
+            var concreteBindingContext = PlacardView.BindingContext as CenteredTraslucentIntroOverImagePlacardViewModel;
 
             var avaragePlacardSize = (width + PlacardView.Height) / 2d;
 

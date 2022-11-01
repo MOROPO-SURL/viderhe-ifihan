@@ -2,7 +2,7 @@
 {
     public static class ContextualOverlapMediaPlacardViewModelExtensions
     {
-        public static SkiaSharp.SKPath ToHorizontalSKPath(this Models.View.Contract.IContextualOverlapPlacardViewModelSKPathTransformable target, int paintSurfaceWidth, int paintSurfaceHeight, double placardWidth, double extraWidth = 0d)
+        public static SkiaSharp.SKPath ToHorizontalSKPath(this Models.View.Placard.Contract.IContextualOverlapSKPathTransformablePlacardViewModel target, int paintSurfaceWidth, int paintSurfaceHeight, double placardWidth, double extraWidth = 0d)
         {
             var columnWidth = paintSurfaceWidth / System.Convert.ToDouble(target.OverlapSize.ToColumnCount());
 

@@ -270,58 +270,73 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml.cs">
+    <Compile Update="Views\Placard\LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml.cs">
       <DependentUpon>LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
+    <Compile Update="Views\Placard\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
       <DependentUpon>LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
+    <Compile Update="Views\Placard\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
       <DependentUpon>RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\PortraitTranslucentContextualOverlapForImagePlacardView.xaml.cs">
+    <Compile Update="Views\Placard\PortraitTranslucentContextualOverlapForImagePlacardView.xaml.cs">
       <DependentUpon>PortraitTranslucentContextualOverlapForImagePlacardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Template\Block\TextContentBlockViewTemplate.xaml.cs">
+      <DependentUpon>TextContentBlockViewTemplate.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\CenteredTraslucentIntroOverImagePlacardView.xaml">
+    <EmbeddedResource Update="Views\Template\Block\HeaderTextContentBlockViewTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
+    <EmbeddedResource Update="Views\Template\Block\ImageContentBlockViewTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LeftLandscapeContextualFlatOverlapForImagePlacardView.xaml">
+    <EmbeddedResource Update="Views\Template\Block\TextContentBlockViewTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LeftLandscapeContextualTrailOverlapForImagePlacardView.xaml">
+    <EmbeddedResource Update="Views\Placard\CenteredTraslucentIntroOverImagePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml">
+    <EmbeddedResource Update="Views\Placard\LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PortraitFlatContextualOverlapForImagePlacardView.xaml">
+    <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualFlatOverlapForImagePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PortraitTrailContextualOverlapForImagePlacardView.xaml">
+    <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTrailOverlapForImagePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PortraitTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
+    <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\RightLandscapeContextualFlatOverlapForImagePlacardView.xaml">
+    <EmbeddedResource Update="Views\Placard\PortraitFlatContextualOverlapForImagePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\RightLandscapeContextualTrailOverlapForImagePlacardView.xaml">
+    <EmbeddedResource Update="Views\Placard\PortraitTrailContextualOverlapForImagePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml">
+    <EmbeddedResource Update="Views\Placard\PortraitTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PortraitTranslucentContextualOverlapForImagePlacardView.xaml">
+    <EmbeddedResource Update="Views\Placard\RightLandscapeContextualFlatOverlapForImagePlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\RightLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
+    <EmbeddedResource Update="Views\Placard\RightLandscapeContextualTrailOverlapForImagePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Placard\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Placard\PortraitTranslucentContextualOverlapForImagePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Placard\RightLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Template\Block\TransparentSeparatorContentBlockViewTemplate.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
