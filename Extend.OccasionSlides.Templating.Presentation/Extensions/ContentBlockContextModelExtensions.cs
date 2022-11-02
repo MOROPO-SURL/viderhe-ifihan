@@ -7,6 +7,26 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
     {
         public static Models.View.Block.Contract.AbstractContentBlockViewModel ToViewModel(this Templating.Models.Context.Block.Contract.AbstractContentBlockContextModel target)
         {
+            if (target is Templating.Models.Context.Block.HeaderTextContentBlockContextModel)
+            {
+                var concreteTarget = target as Templating.Models.Context.Block.HeaderTextContentBlockContextModel;
+
+                return new Models.View.Block.HeaderTextContentBlockViewModel
+                {
+                    Id = concreteTarget.Id,
+                    Priority = concreteTarget.Priority,
+                    Text = concreteTarget.Text,
+                    TextColor = Xamarin.Forms.Color.FromHex(concreteTarget.TextColor),
+                    TextFontFamily = concreteTarget.TextFontFamily,
+                    TextFontSize = concreteTarget.TextFontSize,
+                    TextMaxLineCount = concreteTarget.TextMaxLineCount,
+                    Header = concreteTarget.Header,
+                    HeaderColor = Xamarin.Forms.Color.FromHex(concreteTarget.HeaderColor),
+                    HeaderFontFamily = concreteTarget.HeaderFontFamily,
+                    HeaderFontSize = concreteTarget.HeaderFontSize
+                };
+            }
+
             if (target is Templating.Models.Context.Block.TextContentBlockContextModel)
             {
                 var concreteTarget = target as Templating.Models.Context.Block.TextContentBlockContextModel;
@@ -20,26 +40,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     TextFontFamily = concreteTarget.TextFontFamily,
                     TextFontSize = concreteTarget.TextFontSize,
                     TextMaxLineCount = concreteTarget.TextMaxLineCount
-                };
-            }
-
-            if (target is Templating.Models.Context.Block.HeaderTextContentBlockContextModel)
-            {
-                var concreteTarget = target as Templating.Models.Context.Block.HeaderTextContentBlockContextModel;
-
-                return new Models.View.Block.HeaderTextContentBlockViewModel
-                {
-                    Id= concreteTarget.Id,
-                    Priority = concreteTarget.Priority,
-                    Text = concreteTarget.Text,
-                    TextColor= Xamarin.Forms.Color.FromHex(concreteTarget.TextColor),
-                    TextFontFamily = concreteTarget.TextFontFamily,
-                    TextFontSize = concreteTarget.TextFontSize,
-                    TextMaxLineCount = concreteTarget.TextMaxLineCount,
-                    Header = concreteTarget.Header,
-                    HeaderColor = Xamarin.Forms.Color.FromHex(concreteTarget.HeaderColor),
-                    HeaderFontFamily = concreteTarget.HeaderFontFamily,
-                    HeaderFontSize = concreteTarget.HeaderFontSize
                 };
             }
 

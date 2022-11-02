@@ -18,6 +18,7 @@
             Id = System.Guid.NewGuid();
 
             textFontSize = 21;
+            textMaxLineCount = 1;
             headerFontSize = 16;
         }
 

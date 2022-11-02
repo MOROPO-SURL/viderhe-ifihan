@@ -4,11 +4,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 {
     public class ContentBlockTemplateSelector : Xamarin.Forms.DataTemplateSelector
     {
+        public event System.EventHandler OptionButtonClicked;
+
         protected override Xamarin.Forms.DataTemplate OnSelectTemplate(object item, Xamarin.Forms.BindableObject container)
         {
-            if (item is TextContentBlockViewModel) return new Block.TextContentBlockViewTemplate();
+            if (item is HeaderTextContentBlockViewModel) return new Block.HeaderTextContentBlockViewTemplate(OptionButtonClicked);
 
-            if (item is HeaderTextContentBlockViewModel) return new Block.HeaderTextContentBlockViewTemplate();
+            if (item is TextContentBlockViewModel) return new Block.TextContentBlockViewTemplate(OptionButtonClicked);
 
             if (item is TransparentSeparatorContentBlockViewModel) return new Block.TransparentSeparatorContentBlockViewTemplate();
 

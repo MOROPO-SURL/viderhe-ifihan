@@ -13,6 +13,7 @@
             Id = System.Guid.NewGuid();
 
             textFontSize = 21;
+            textMaxLineCount = 1;
         }
 
         public System.Guid Id { get; set; }

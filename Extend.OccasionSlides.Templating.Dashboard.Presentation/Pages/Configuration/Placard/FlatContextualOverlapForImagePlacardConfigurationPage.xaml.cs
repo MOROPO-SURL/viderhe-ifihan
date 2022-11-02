@@ -13,9 +13,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         private const string OPTION_COMMON_EDIT = "Modificar";
         private const string OPTION_COMMON_DELETE = "Eliminar";
 
-        private const string OPTION_CREATE_CONTENT_BLOCK_TEXT = "Texto";
-        private const string OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT = "Texto Encabezado";
-
         private const string OPTION_FRAME_ORDERTO_BEFORE = "Aumentar Prioridad";
         private const string OPTION_FRAME_ORDERTO_AFTER = "Disminuir Prioridad";
 
@@ -75,6 +72,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             OverlapAlignment = BindingContextPageModel.OverlapAlignment,
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
                             ContentBlocks = BindingContextPageModel.ContentBlocks.Select(item => item.ToContextModel()).ToArray()
+                        }, new Newtonsoft.Json.JsonSerializerSettings
+                        {
+                            TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
                         })
                     });
                 }
@@ -99,6 +99,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             OverlapAlignment = BindingContextPageModel.OverlapAlignment,
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
                             ContentBlocks = BindingContextPageModel.ContentBlocks.Select(item => item.ToContextModel()).ToArray()
+                        }, new Newtonsoft.Json.JsonSerializerSettings
+                        {
+                            TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
                         })
                     });
                 }
@@ -136,26 +139,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void AddContentBlockButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var options = new string[] { OPTION_CREATE_CONTENT_BLOCK_TEXT, OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT };
-
-            DisplayActionSheet("Nuevo Bloque de Contenido", OPTION_COMMON_CANCEL, null, options).ContinueWith(actionSheetTask =>
-            {
-                switch (actionSheetTask.Result)
-                {
-                    case OPTION_CREATE_CONTENT_BLOCK_TEXT:
-                        this.NavigationPushPageAsync(new Block.TextContentBlockConfigurationPage(ContentBlockCreation_Callback));
-
-                        break;
-
-                    case OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT:
-                        this.NavigationPushPageAsync(new Block.HeaderTextContentBlockConfigurationPage(ContentBlockCreation_Callback));
-
-                        break;
-
-                    default:
-                        break;
-                }
-            });
+            Presenters.ContentBlockCreationSheetPresenter.PresentForCreate(this, ContentBlockCreation_Callback);
         }
 
         private void ContentBlockOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -185,7 +169,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                     case OPTION_COMMON_EDIT:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            target.LaunchConfigurationPage(this, ContentBlockEdition_Callback);
+                            Presenters.ContentBlockCreationSheetPresenter.PresentForEdit(target, this, ContentBlockEdition_Callback);
                         });
 
                         break;

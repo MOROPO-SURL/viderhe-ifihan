@@ -9,7 +9,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         {
             if (placardViewModel == null) return new Models.Page.Configuration.Placard.TrailContextualOverlapForImagePlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.TrailContextualOverlapForImagePlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.TrailContextualOverlapForImagePlacardContextModel>(placardViewModel.SerializedContext, new Newtonsoft.Json.JsonSerializerSettings
+            {
+                TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
+            });
 
             var result = new Models.Page.Configuration.Placard.TrailContextualOverlapForImagePlacardConfigurationPageModel
             {

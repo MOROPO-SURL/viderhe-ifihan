@@ -3,9 +3,15 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:blockviewmodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Template.Block.HeaderTextContentBlockViewTemplate" 
     x:DataType="blockviewmodels:HeaderTextContentBlockViewModel">
     <StackLayout Spacing="0">
+        <StackLayout.Resources>
+            <ResourceDictionary>
+                <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+            </ResourceDictionary>
+        </StackLayout.Resources>
         <Label
             Text="{Binding Path=Header, Mode=OneTime}"
             TextColor="{Binding Path=HeaderColor, Mode=OneTime}"

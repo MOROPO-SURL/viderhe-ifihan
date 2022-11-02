@@ -2,11 +2,6 @@
 {
     public class TextContentBlockContextModel : Contract.AbstractContentBlockContextModel
     {
-        public TextContentBlockContextModel()
-        {
-            TextMaxLineCount = 1;
-        }
-
         public string Text { get; set; }
 
         public int TextMaxLineCount { get; set; }

@@ -2,11 +2,33 @@
 <DataTemplate 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Converters"
     xmlns:blockviewmodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;assembly=SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Views.Template.Block.TextContentBlockViewTemplate"
     x:DataType="blockviewmodels:TextContentBlockViewModel">
-    <StackLayout>
+    <Grid 
+        Padding="8"
+        BackgroundColor="{Binding Path=Priority, Converter={StaticResource InfoBlockPriorityToColorConverter}}">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <converters:InfoBlockPriorityToColorConverter x:Key="InfoBlockPriorityToColorConverter" DefaultColor="GhostWhite" AlternativeColor="WhiteSmoke" />
+            </ResourceDictionary>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
         <Label 
+            Grid.Column="0"
             Text="Texto Simple" />
-    </StackLayout>
+        <Button 
+            x:Name="OptionsButton"
+            Grid.Column="1"
+            VerticalOptions="Center"
+            Style="{StaticResource OptionsTextIconButton}"
+            Padding="0,6"
+            Text="&#xF1D9;"
+            FontSize="Medium"
+            Clicked="OptionsButton_Clicked" />
+    </Grid>
 </DataTemplate>

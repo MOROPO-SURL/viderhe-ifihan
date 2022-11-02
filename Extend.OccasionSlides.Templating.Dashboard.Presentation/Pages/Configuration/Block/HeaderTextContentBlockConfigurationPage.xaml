@@ -6,6 +6,7 @@
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Block.HeaderTextContentBlockConfigurationPage"
     x:TypeArguments="blockpagemodels:HeaderTextContentBlockConfigurationPageModel">
     <ContentPage.Resources>
@@ -53,12 +54,103 @@
                         <ColumnDefinition Width="2*" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
                     <Frame 
-                        Grid.Column="0"
+                        Grid.Column="0" Grid.RowSpan="4"
                         Style="{StaticResource FormFieldFrame}"
-                        BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Texto" Style="{StaticResource FormLabel}" />
+                            <Editor 
+                                HeightRequest="360"
+                                Text="{Binding Path=Text}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="0"
+                        Style="{StaticResource FormFieldFrame}">
                         <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.ColumnSpan="3" Grid.Row="0"
+                                Text="Fuente" 
+                                Style="{StaticResource FormLabel}" />
+                            <Entry
+                                Grid.Column="0" Grid.Row="1"
+                                Text="{Binding Path=TextFontFamily}"
+                                Placeholder="Sistema"
+                                PlaceholderColor="Black"
+                                IsReadOnly="True" />
+                            <Button
+                                Grid.Column="1" Grid.Row="1"
+                                Text="Seleccionar"
+                                Clicked="TextFontFamilyPickButton_Clicked" />
+                            <Button 
+                                Grid.Column="2" Grid.Row="1"
+                                IsEnabled="{Binding Path=TextFontFamily, Converter={StaticResource NotNullToBooleanConverter}}"
+                                Style="{StaticResource TextIconButton}"
+                                Text="&#xF413;"
+                                Clicked="TextFontFamilyClearButton_Clicked" />
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Tamaño" Style="{StaticResource FormLabel}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Path=TextFontSize}" VerticalTextAlignment="Center" />
+                                <Label Text="Puntos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                <Stepper Value="{Binding Path=TextFontSize}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Grid.Column="1" Grid.Row="2"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Color" Style="{StaticResource FormLabel}" />
+                            <simplecolorpicker:ColorPickerEntry 
+                                EditAlfa="False"
+                                ColorPreviewButtonBorder="DimGray"
+                                Color="{Binding Path=TextColor}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Número Máximo de Líneas" Style="{StaticResource FormLabel}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Path=TextMaxLineCount}" VerticalTextAlignment="Center" />
+                                <Label Text="Líneas" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                <Stepper
+                                    Minimum="1"
+                                    Value="{Binding Path=TextMaxLineCount}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.ColumnSpan="2" Grid.Row="4"
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF">
+                        <Grid 
+                            ColumnSpacing="10" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*" />
                                 <ColumnDefinition />
@@ -67,24 +159,25 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Label 
                                 Grid.ColumnSpan="2" Grid.Row="0"
-                                Text="Bloque de Texto" 
+                                Text="Encabezado" 
                                 Style="{StaticResource FormLabel}" />
                             <Frame 
-                                Grid.ColumnSpan="2" Grid.Row="1"
+                                Grid.Column="0" Grid.Row="1" Grid.RowSpan="3"
                                 Style="{StaticResource FormFieldFrame}"
-                                Margin="0,0,0,6">
+                                VerticalOptions="Start">
                                 <StackLayout>
                                     <Label Text="Texto" Style="{StaticResource FormLabel}" />
                                     <Editor 
-                                        HeightRequest="180"
-                                        Text="{Binding Path=Text}" />
+                                        HeightRequest="240"
+                                        Text="{Binding Path=Header}" />
                                 </StackLayout>
                             </Frame>
                             <Frame 
-                                Grid.Column="0" Grid.Row="2"
+                                Grid.Column="1" Grid.Row="1"
                                 Style="{StaticResource FormFieldFrame}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -102,20 +195,20 @@
                                         Style="{StaticResource FormLabel}" />
                                     <Entry
                                         Grid.Column="0" Grid.Row="1"
-                                        Text="{Binding Path=TextFontFamily}"
+                                        Text="{Binding Path=HeaderFontFamily}"
                                         Placeholder="Sistema"
                                         PlaceholderColor="Black"
                                         IsReadOnly="True" />
                                     <Button
                                         Grid.Column="1" Grid.Row="1"
                                         Text="Seleccionar"
-                                        Clicked="TextFontFamilyPickButton_Clicked" />
+                                        Clicked="HeaderFontFamilyPickButton_Clicked" />
                                     <Button 
                                         Grid.Column="2" Grid.Row="1"
-                                        IsEnabled="{Binding Path=TextFontFamily, Converter={StaticResource NotNullToBooleanConverter}}"
+                                        IsEnabled="{Binding Path=HeaderFontFamily, Converter={StaticResource NotNullToBooleanConverter}}"
                                         Style="{StaticResource TextIconButton}"
                                         Text="&#xF413;"
-                                        Clicked="TextFontFamilyClearButton_Clicked" />
+                                        Clicked="HeaderFontFamilyClearButton_Clicked" />
                                 </Grid>
                             </Frame>
                             <Frame 
@@ -124,75 +217,25 @@
                                 <StackLayout>
                                     <Label Text="Tamaño" Style="{StaticResource FormLabel}" />
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Path=TextFontSize}" VerticalTextAlignment="Center" />
+                                        <Label Text="{Binding Path=HeaderFontSize}" VerticalTextAlignment="Center" />
                                         <Label Text="Puntos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
-                                        <Stepper Value="{Binding Path=TextFontSize}" />
+                                        <Stepper Value="{Binding Path=HeaderFontSize}" />
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>
+                            <Frame
+                                Grid.Column="1" Grid.Row="3"
+                                Style="{StaticResource FormFieldFrame}"
+                                VerticalOptions="Start">
+                                <StackLayout>
+                                    <Label Text="Color" Style="{StaticResource FormLabel}" />
+                                    <simplecolorpicker:ColorPickerEntry 
+                                        EditAlfa="False"
+                                        ColorPreviewButtonBorder="DimGray"
+                                        Color="{Binding Path=HeaderColor}" />
+                                </StackLayout>
+                            </Frame>
                         </Grid>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="1"
-                        Style="{StaticResource FormFieldFrame}"
-                        VerticalOptions="Start">
-                        <StackLayout>
-                            <StackLayout>
-                                <Frame 
-                                    Style="{StaticResource FormFieldFrame}"
-                                    Margin="0,0,0,6">
-                                    <StackLayout>
-                                        <Label Text="Texto" Style="{StaticResource FormLabel}" />
-                                        <Entry Text="{Binding Path=Header}" />
-                                    </StackLayout>
-                                </Frame>
-                                <Frame 
-                                    Style="{StaticResource FormFieldFrame}"
-                                    Margin="0,0,0,6">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Label
-                                            Grid.ColumnSpan="3" Grid.Row="0"
-                                            Text="Fuente" 
-                                            Style="{StaticResource FormLabel}" />
-                                        <Entry
-                                            Grid.Column="0" Grid.Row="1"
-                                            Text="{Binding Path=HeaderFontFamily}"
-                                            Placeholder="Sistema"
-                                            PlaceholderColor="Black"
-                                            IsReadOnly="True" />
-                                        <Button
-                                            Grid.Column="1" Grid.Row="1"
-                                            Text="Seleccionar"
-                                            Clicked="HeaderFontFamilyPickButton_Clicked" />
-                                        <Button 
-                                            Grid.Column="2" Grid.Row="1"
-                                            IsEnabled="{Binding Path=HeaderFontFamily, Converter={StaticResource NotNullToBooleanConverter}}"
-                                            Style="{StaticResource TextIconButton}"
-                                            Text="&#xF413;"
-                                            Clicked="HeaderFontFamilyClearButton_Clicked" />
-                                    </Grid>
-                                </Frame>
-                                <Frame Style="{StaticResource FormFieldFrame}">
-                                    <StackLayout>
-                                        <Label Text="Tamaño" Style="{StaticResource FormLabel}" />
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding Path=HeaderFontSize}" VerticalTextAlignment="Center" />
-                                            <Label Text="Puntos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
-                                            <Stepper Value="{Binding Path=HeaderFontSize}" />
-                                        </StackLayout>
-                                    </StackLayout>
-                                </Frame>
-                            </StackLayout>
-                        </StackLayout>
                     </Frame>
                 </Grid>
             </ScrollView>

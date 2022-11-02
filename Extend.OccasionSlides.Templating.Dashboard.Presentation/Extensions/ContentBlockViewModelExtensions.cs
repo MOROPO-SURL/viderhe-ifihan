@@ -1,7 +1,6 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
 using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block.Contract;
-using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions
 {
@@ -9,22 +8,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
     {
         public static Templating.Models.Context.Block.Contract.AbstractContentBlockContextModel ToContextModel(this AbstractContentBlockViewModel target)
         {
-            if (target is TextContentBlockViewModel)
-            {
-                var concreteTarget = target as TextContentBlockViewModel;
-
-                return new Templating.Models.Context.Block.TextContentBlockContextModel
-                {
-                    Id = concreteTarget.Id,
-                    Priority = concreteTarget.Priority,
-                    Text = concreteTarget.Text,
-                    TextColor = concreteTarget.TextColor.ToHex(),
-                    TextFontFamily = concreteTarget.TextFontFamily,
-                    TextFontSize = concreteTarget.TextFontSize,
-                    TextMaxLineCount = concreteTarget.TextMaxLineCount
-                };
-            }
-
             if (target is HeaderTextContentBlockViewModel)
             {
                 var concreteTarget = target as HeaderTextContentBlockViewModel;
@@ -42,6 +25,22 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                     HeaderColor = concreteTarget.HeaderColor.ToHex(),
                     HeaderFontFamily = concreteTarget.HeaderFontFamily,
                     HeaderFontSize = concreteTarget.HeaderFontSize
+                };
+            }
+
+            if (target is TextContentBlockViewModel)
+            {
+                var concreteTarget = target as TextContentBlockViewModel;
+
+                return new Templating.Models.Context.Block.TextContentBlockContextModel
+                {
+                    Id = concreteTarget.Id,
+                    Priority = concreteTarget.Priority,
+                    Text = concreteTarget.Text,
+                    TextColor = concreteTarget.TextColor.ToHex(),
+                    TextFontFamily = concreteTarget.TextFontFamily,
+                    TextFontSize = concreteTarget.TextFontSize,
+                    TextMaxLineCount = concreteTarget.TextMaxLineCount
                 };
             }
 
@@ -73,35 +72,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                     FilterSerializationContext = concreteTarget.FilterSerializationContext
                 };
             }
-
-            throw new System.InvalidOperationException();
-        }
-
-        public static void LaunchConfigurationPage(this AbstractContentBlockViewModel target, Xamarin.Forms.Page page, System.Action<AbstractContentBlockViewModel> callbackAction)
-        {
-            if (target is TextContentBlockViewModel)
-            {
-                page.NavigationPushPageAsync(new Pages.Configuration.Block.TextContentBlockConfigurationPage(target as TextContentBlockViewModel, callbackAction));
-
-                return;
-            }
-
-            if (target is HeaderTextContentBlockViewModel)
-            {
-                page.NavigationPushPageAsync(new Pages.Configuration.Block.HeaderTextContentBlockConfigurationPage(target as HeaderTextContentBlockViewModel, callbackAction));
-
-                return;
-            }
-
-            //if (target is TransparentSeparatorContentBlockViewModel)
-            //{
-
-            //}
-
-            //if (target is ImageContentBlockViewModel)
-            //{
-
-            //}
 
             throw new System.InvalidOperationException();
         }
@@ -145,8 +115,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             //{
 
             //}
-
-            throw new System.InvalidOperationException();
         }
     }
 }

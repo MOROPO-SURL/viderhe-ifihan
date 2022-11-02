@@ -6,9 +6,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
     {
         protected override Xamarin.Forms.DataTemplate OnSelectTemplate(object item, Xamarin.Forms.BindableObject container)
         {
-            if (item is TextContentBlockViewModel) return new Block.TextContentBlockViewTemplate();
-
             if (item is HeaderTextContentBlockViewModel) return new Block.HeaderTextContentBlockViewTemplate();
+
+            if (item is TextContentBlockViewModel) return new Block.TextContentBlockViewTemplate();
 
             if (item is TransparentSeparatorContentBlockViewModel) return new Block.TransparentSeparatorContentBlockViewTemplate();
 

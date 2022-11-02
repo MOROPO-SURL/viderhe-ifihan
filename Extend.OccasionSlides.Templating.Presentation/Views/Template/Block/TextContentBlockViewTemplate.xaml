@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:blockviewmodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Template.Block.TextContentBlockViewTemplate"
     x:DataType="blockviewmodels:TextContentBlockViewModel">
     <Label 
@@ -11,5 +12,11 @@
         LineBreakMode="WordWrap"
         MaxLines="{Binding Path=TextMaxLineCount, Mode=OneTime}"
         FontFamily="{Binding Path=TextFontFamily, Mode=OneTime}"
-        FontSize="{Binding Path=TextFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+        FontSize="{Binding Path=TextFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
+        <Label.Resources>
+            <ResourceDictionary>
+                <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+            </ResourceDictionary>
+        </Label.Resources>
+    </Label>
 </DataTemplate>
