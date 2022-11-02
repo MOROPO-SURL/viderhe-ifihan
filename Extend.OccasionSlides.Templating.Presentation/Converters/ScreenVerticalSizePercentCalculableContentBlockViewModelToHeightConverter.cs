@@ -4,9 +4,9 @@
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value == null || !(value is Models.View.Block.TransparentSeparatorContentBlockViewModel)) return -1;
+            if (value == null || !(value is Models.View.Block.Contract.IScreenVerticalSizePercentCalculableContentBlockViewModel)) return -1;
 
-            var target = value as Models.View.Block.TransparentSeparatorContentBlockViewModel;
+            var target = value as Models.View.Block.Contract.IScreenVerticalSizePercentCalculableContentBlockViewModel;
 
             return Xamarin.Forms.Application.Current.MainPage.Height * target.HeightByScreenVerticalSizePercent / 100;
         }

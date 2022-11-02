@@ -111,10 +111,17 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
             //}
 
-            //if (target is ImageContentBlockViewModel)
-            //{
+            if (target is ImageContentBlockViewModel)
+            {
+                var concreteTarget = target as ImageContentBlockViewModel;
+                var concreteSource = source as ImageContentBlockViewModel;
 
-            //}
+                concreteTarget.Image = concreteSource.Image;
+                concreteTarget.HorizontalAlignament = concreteSource.HorizontalAlignament;
+                concreteTarget.HeightByScreenVerticalSizePercent = concreteSource.HeightByScreenVerticalSizePercent;
+
+                return;
+            }
         }
     }
 }

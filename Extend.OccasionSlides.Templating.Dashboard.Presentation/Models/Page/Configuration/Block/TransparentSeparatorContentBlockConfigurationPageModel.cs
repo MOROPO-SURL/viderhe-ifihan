@@ -4,6 +4,8 @@
     {
         private double heightByScreenVerticalSizePercent;
 
+        public System.Guid Id { get; set; }
+
         public double HeightByScreenVerticalSizePercent { get => heightByScreenVerticalSizePercent; set => SetProperty(ref heightByScreenVerticalSizePercent, value); }
     }
 }

@@ -14,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
             if (item is TransparentSeparatorContentBlockViewModel) return new Block.TransparentSeparatorContentBlockViewTemplate();
 
-            if (item is ImageContentBlockViewModel) return new Block.ImageContentBlockViewTemplate();
+            if (item is ImageContentBlockViewModel) return new Block.ImageContentBlockViewTemplate(OptionButtonClicked);
 
             throw new System.InvalidOperationException();
         }

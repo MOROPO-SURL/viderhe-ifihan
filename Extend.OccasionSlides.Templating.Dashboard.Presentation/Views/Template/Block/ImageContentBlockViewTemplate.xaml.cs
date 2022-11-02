@@ -2,9 +2,18 @@
 {
     public partial class ImageContentBlockViewTemplate : Xamarin.Forms.DataTemplate
     {
-        public ImageContentBlockViewTemplate()
+        private readonly System.EventHandler optionButtonClicked;
+
+        public ImageContentBlockViewTemplate(System.EventHandler optionButtonClicked)
         {
             InitializeComponent();
+
+            this.optionButtonClicked = optionButtonClicked;
+        }
+
+        private void OptionsButton_Clicked(object sender, System.EventArgs e)
+        {
+            optionButtonClicked?.Invoke(sender, e);
         }
     }
 }

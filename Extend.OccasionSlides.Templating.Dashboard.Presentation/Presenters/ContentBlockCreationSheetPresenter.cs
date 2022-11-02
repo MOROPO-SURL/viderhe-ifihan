@@ -8,10 +8,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         private const string OPTION_COMMON_CANCEL = "Cancelar";
         private const string OPTION_CREATE_CONTENT_BLOCK_TEXT = "Texto";
         private const string OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT = "Texto Encabezado";
+        private const string OPTION_CREATE_CONTENT_BLOCK_IMAGE = "Imagen";
 
         internal static void PresentForCreate(Xamarin.Forms.Page page, System.Action<AbstractContentBlockViewModel> callbackAction)
         {
-            var options = new string[] { OPTION_CREATE_CONTENT_BLOCK_TEXT, OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT };
+            var options = new string[] { OPTION_CREATE_CONTENT_BLOCK_TEXT, OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT, OPTION_CREATE_CONTENT_BLOCK_IMAGE };
 
             page.DisplayActionSheet("Nuevo Bloque de Contenido", OPTION_COMMON_CANCEL, null, options).ContinueWith(actionSheetTask =>
             {
@@ -26,6 +27,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
                         case OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT:
                             page.NavigationPushPageAsync(new Pages.Configuration.Block.HeaderTextContentBlockConfigurationPage(callbackAction));
+
+                            break;
+
+                        case OPTION_CREATE_CONTENT_BLOCK_IMAGE:
+                            page.NavigationPushPageAsync(new Pages.Configuration.Block.ImageContentBlockConfigurationPage(callbackAction));
 
                             break;
 
@@ -57,10 +63,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
             //}
 
-            //if (target is ImageContentBlockViewModel)
-            //{
+            if (target is Templating.Presentation.Models.View.Block.ImageContentBlockViewModel)
+            {
+                page.NavigationPushPageAsync(new Pages.Configuration.Block.ImageContentBlockConfigurationPage(target as Templating.Presentation.Models.View.Block.ImageContentBlockViewModel, callbackAction));
 
-            //}
+                return;
+            }
 
             throw new System.InvalidOperationException();
         }

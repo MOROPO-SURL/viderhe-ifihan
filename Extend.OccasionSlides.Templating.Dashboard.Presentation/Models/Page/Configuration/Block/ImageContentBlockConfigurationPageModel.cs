@@ -5,33 +5,37 @@
         private double heightByScreenVerticalSizePercent;
         private Support.Presentation.Models.View.ImageViewModel image;
         private Essential.Templating.Enumerations.PictureLayoutMode layoutMode;
-        private Enumerations.ContentHorizontalAlignament horizontalAlignament;
+        private Xamarin.Forms.LayoutAlignment horizontalAlignament;
 
         public ImageContentBlockConfigurationPageModel()
         {
+            horizontalAlignament = Xamarin.Forms.LayoutAlignment.Center;
+            heightByScreenVerticalSizePercent = 30;
+
             AvailableLayoutModes = new Essential.Templating.Enumerations.PictureLayoutMode[]
             {
                 Essential.Templating.Enumerations.PictureLayoutMode.AspectFit,
                 Essential.Templating.Enumerations.PictureLayoutMode.AspectFill,
-                Essential.Templating.Enumerations.PictureLayoutMode.Fill,
-                Essential.Templating.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf
+                Essential.Templating.Enumerations.PictureLayoutMode.Fill
             };
 
-            AvailableContentHorizontalAlignaments = new Enumerations.ContentHorizontalAlignament[]
+            AvailableContentHorizontalAlignaments = new Xamarin.Forms.LayoutAlignment[]
             {
-                Enumerations.ContentHorizontalAlignament.Center,
-                Enumerations.ContentHorizontalAlignament.Left,
-                Enumerations.ContentHorizontalAlignament.Right
+                Xamarin.Forms.LayoutAlignment.Center,
+                Xamarin.Forms.LayoutAlignment.Start,
+                Xamarin.Forms.LayoutAlignment.End
             };
         }
 
+        public System.Guid Id { get; set; }
+
         public double HeightByScreenVerticalSizePercent { get => heightByScreenVerticalSizePercent; set => SetProperty(ref heightByScreenVerticalSizePercent, value); }
 
-        public Support.Presentation.Models.View.ImageViewModel Image { get => image; set => image = value; }
+        public Support.Presentation.Models.View.ImageViewModel Image { get => image; set => SetProperty(ref image, value); }
 
-        public Essential.Templating.Enumerations.PictureLayoutMode LayoutMode { get => layoutMode; set => layoutMode = value; }
+        public Essential.Templating.Enumerations.PictureLayoutMode LayoutMode { get => layoutMode; set => SetProperty(ref layoutMode, value); }
 
-        public Enumerations.ContentHorizontalAlignament HorizontalAlignament { get => horizontalAlignament; set => horizontalAlignament = value; }
+        public Xamarin.Forms.LayoutAlignment HorizontalAlignament { get => horizontalAlignament; set => SetProperty(ref horizontalAlignament, value); }
 
         public Enumerations.ImageFilterKind? FilterKind { get; set; }
 
@@ -39,6 +43,6 @@
 
         public Essential.Templating.Enumerations.PictureLayoutMode[] AvailableLayoutModes { get; private set; }
 
-        public Enumerations.ContentHorizontalAlignament[] AvailableContentHorizontalAlignaments { get; private set; }
+        public Xamarin.Forms.LayoutAlignment[] AvailableContentHorizontalAlignaments { get; private set; }
     }
 }

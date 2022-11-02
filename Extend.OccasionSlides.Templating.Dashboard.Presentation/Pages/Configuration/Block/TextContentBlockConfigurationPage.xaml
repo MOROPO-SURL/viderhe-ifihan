@@ -12,7 +12,6 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
-            <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BoolToFieldsetBackgroudnColorStringConverter" FalseString="White" TrueString="#66FFFFFF" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
