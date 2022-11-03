@@ -78,6 +78,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             var contentBoxWidth = Width * ((concreteBindingContext.OverlapSize.ToColumnCount() - 1) / 6d);
 
+            foreach (var item in InfoBlocksLayout.Children)
+            {
+                item.Opacity = 0;
+            }
+
             OverlapLayout.TranslationX = Width * (concreteBindingContext.OverlapSize.ToColumnCount() / 6d);
 
             OverlapLayout.IsVisible = true;

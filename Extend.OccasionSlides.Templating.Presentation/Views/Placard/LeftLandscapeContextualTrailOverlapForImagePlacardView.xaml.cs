@@ -71,6 +71,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             var concreteBindingContext = BindingContext as TrailContextualOverlapForImagePlacardViewModel;
 
+            foreach (var item in InfoBlocksLayout.Children)
+            {
+                item.Opacity = 0;
+            }
+
             var contentBoxWidth = Width * ((concreteBindingContext.OverlapSize.ToColumnCount() - 1) / 6d);
 
             OverlapLayout.TranslationX = Width * (concreteBindingContext.OverlapSize.ToColumnCount() / 6d) * -1;

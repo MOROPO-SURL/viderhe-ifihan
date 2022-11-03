@@ -44,6 +44,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 PlayerOrientationSupport = Common.Templating.Enumerations.PlayerOrientationSupportKind.Any
             };
 
+            foreach (var item in InfoBlocksLayout.Children)
+            {
+                item.Opacity = 0;
+            }
+
             foreach (var item in concreteBindingContext.PresentedPictureSlideSecuence.Slides)
             {
                 placards.Add(new Support.Presentation.Models.View.PlacardViewModel
