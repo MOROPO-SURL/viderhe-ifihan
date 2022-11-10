@@ -28,7 +28,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
         public PlayerHubClient()
         {
             connection = new HubConnectionBuilder()
-                .WithUrl(string.Format("http://{0}/hubs/player", Support.Presentation.Managers.SessionMemoryManager.Instance.CloudServerHost), options =>
+                .WithUrl(string.Format("{0}://{1}/hubs/player", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host), options =>
                 {
                     options.Headers = new System.Collections.Generic.Dictionary<string, string>();
 

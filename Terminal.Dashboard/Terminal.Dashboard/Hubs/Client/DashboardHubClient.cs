@@ -28,7 +28,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
         public DashboardHubClient()
         {
             connection = new HubConnectionBuilder()
-                .WithUrl(string.Format("http://{0}/hubs/dashboard", Support.Presentation.Managers.SessionMemoryManager.Instance.CloudServerHost), options =>
+                .WithUrl(string.Format("{0}://{1}/hubs/dashboard", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host), options =>
                 {
                     options.AccessTokenProvider = () => System.Threading.Tasks.Task.FromResult(Managers.SessionManager.Instance.AuthorizationToken);
                 })
