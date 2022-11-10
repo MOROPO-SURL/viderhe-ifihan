@@ -34,6 +34,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             var concreteBindingContext = BindingContext as TranslucentContextualOverlapForImageSecuencePlacardViewModel;
 
+            foreach (var item in InfoBlocksLayout.Children)
+            {
+                item.Opacity = 0;
+            }
+
             var placards = new System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel>();
 
             var targetTemplateDescriptor = new Essential.Templating.Descriptors.SimplePictureTemplateDescriptor();

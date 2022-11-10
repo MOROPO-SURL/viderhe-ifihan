@@ -31,6 +31,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             var concreteBindingContext = BindingContext as TranslucentContextualOverlapForImagePlacardViewModel;
 
+            foreach (var item in InfoBlocksLayout.Children)
+            {
+                item.Opacity = 0;
+            }
+
             OverlapLayout.TranslationY = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? Height * -1 : Height;
 
             OverlapLayout.IsVisible = true;
