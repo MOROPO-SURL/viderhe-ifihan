@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Views.AmbientalDashboardPlacardView">
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid 
+                x:Name="PlacardLayout"
+                ColumnSpacing="0" RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label
+                    Grid.Column="1" Grid.Row="0"
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    Text="{Binding Path=LastReading.Temperature, StringFormat='{0}°C'}"
+                    FontAttributes="Bold"
+                    FontSize="144" />
+                <microcharts:ChartView
+                    Grid.ColumnSpan="2" Grid.Row="1"
+                    Chart="{Binding Path=Chart}"/>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

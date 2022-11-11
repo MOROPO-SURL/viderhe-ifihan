@@ -18,6 +18,17 @@
                 });
             }
 
+            if (model.Template.Id == Descriptors.AmbientalDashboardTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.AmbientalDashboardPlacardContextModel>(model.SerializedContext);
+
+                return new Views.AmbientalDashboardPlacardView(new Models.View.AmbientalDashboardPlacardViewModel
+                {
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation
+                }, new System.Uri(context.IoTPlatformEndpointBaseUri));
+            }
+
             return null;
         }
     }

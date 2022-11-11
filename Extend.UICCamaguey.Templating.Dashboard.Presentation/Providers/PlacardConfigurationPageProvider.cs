@@ -9,6 +9,11 @@
                 return new Pages.EventLiveStreamPlacardConfigurationPage(completedActionCallback);
             }
 
+            if (templateDescriptor is Descriptors.AmbientalDashboardTemplateDescriptor)
+            {
+                return new Pages.AmbientalDashboardPlacardConfigurationPage(completedActionCallback);
+            }
+
             return null;
         }
 
@@ -17,6 +22,11 @@
             if (placardViewModel.Template.Id == Descriptors.EventLiveStreamTemplateDescriptor.ID)
             {
                 return new Pages.EventLiveStreamPlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.AmbientalDashboardTemplateDescriptor.ID)
+            {
+                return new Pages.AmbientalDashboardPlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;

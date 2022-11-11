@@ -1,0 +1,66 @@
+﻿using System.Linq;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Views
+{
+    public partial class AmbientalDashboardPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
+    {
+        private Hubs.Client.AmbientalHubConnectClient ambientalHubConnectClient;
+        private MOROPO.UIC.IoTPlatform.Interop.Sync.Receptor.API.Connect.Clients.AmbientalReadingsApiConnectClient ambientalReadingsApiConnectClient;
+
+        public AmbientalDashboardPlacardView(Models.View.AmbientalDashboardPlacardViewModel model, System.Uri ioTPlatformEndpointBaseUri)
+        {
+            InitializeComponent();
+
+            ambientalHubConnectClient = new Hubs.Client.AmbientalHubConnectClient(ioTPlatformEndpointBaseUri, model);
+            ambientalReadingsApiConnectClient = new MOROPO.UIC.IoTPlatform.Interop.Sync.Receptor.API.Connect.Clients.AmbientalReadingsApiConnectClient(new Providers.IoTSyncReceptorApiHttpClientHelperProvider(new System.Uri(string.Format("{0}api/", ioTPlatformEndpointBaseUri))));
+
+            BindingContext = model;
+        }
+
+        public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;
+
+        public override Xamarin.Forms.View PlacardView => PlacardLayout;
+
+        public override void ConfigureLayout(Xamarin.Forms.View view)
+        {
+            Xamarin.Forms.Grid.SetColumn(view, 0);
+            Xamarin.Forms.Grid.SetRow(view, 0);
+        }
+
+        public override void PerformPlacardStarup()
+        {
+            base.PerformPlacardStarup();
+
+            ambientalReadingsApiConnectClient.GetPaginateAsync().ContinueWith(task =>
+            {
+                if (task.IsFaulted || task.IsCanceled)
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(EndPresentation);
+
+                    return;
+                }
+
+                ambientalHubConnectClient.Connect();
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    (BindingContext as Models.View.AmbientalDashboardPlacardViewModel).Chart.Entries = new System.Collections.Generic.List<Microcharts.ChartEntry>(task.Result.List.Select(item => new Microcharts.ChartEntry((float)item.Temperature)
+                    {
+                        Label = item.CreatedAt.ToShortTimeString(),
+                        ValueLabel = string.Format("{0}°C", item.Temperature)
+                    }));
+                });
+            });
+        }
+
+        protected override void DisposeUnmanagementResources()
+        {
+            base.DisposeUnmanagementResources();
+
+            ambientalHubConnectClient.Dispose();
+
+            ambientalHubConnectClient = null;
+            ambientalReadingsApiConnectClient = null;
+        }
+    }
+}

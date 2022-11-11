@@ -4,20 +4,22 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220524195158_FixPlacardInconsistencyPlusSchemaMigration")]
-    partial class FixPlacardInconsistencyPlusSchemaMigration
+    [Migration("20221110031952_InitialSchemaMigration")]
+    partial class InitialSchemaMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Core.Persistence.EF.Entities.Trace", b =>
                 {
@@ -73,7 +75,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_groups");
 
-                    b.ToTable("groups","viderhe_sapressc_core_securitylocal");
+                    b.ToTable("groups","viderhe-uiccamaguey_sapressc_core_securitylocal");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Core.Security.Persistence.Entities.GroupRoleBridge", b =>
@@ -90,7 +92,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("RoleId")
                         .HasName("ix_grouprolebridges_roleid");
 
-                    b.ToTable("grouprolebridges","viderhe_sapressc_core_securitylocal");
+                    b.ToTable("grouprolebridges","viderhe-uiccamaguey_sapressc_core_securitylocal");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Core.Security.Persistence.Entities.Role", b =>
@@ -113,7 +115,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_roles");
 
-                    b.ToTable("roles","viderhe_sapressc_core_securitylocal");
+                    b.ToTable("roles","viderhe-uiccamaguey_sapressc_core_securitylocal");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Core.Security.Persistence.Entities.User", b =>
@@ -151,7 +153,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_users");
 
-                    b.ToTable("users","viderhe_sapressc_core_securitylocal");
+                    b.ToTable("users","viderhe-uiccamaguey_sapressc_core_securitylocal");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Core.Security.Persistence.Entities.UserGroupBridge", b =>
@@ -172,7 +174,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("GroupId")
                         .HasName("ix_usergroupbridges_groupid");
 
-                    b.ToTable("usergroupbridges","viderhe_sapressc_core_securitylocal");
+                    b.ToTable("usergroupbridges","viderhe-uiccamaguey_sapressc_core_securitylocal");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.EmailContactItem", b =>
@@ -191,7 +193,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_emailcontactitems");
 
-                    b.ToTable("emailcontactitems","viderhe_sapressc_middleware_identity");
+                    b.ToTable("emailcontactitems","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.Membership", b =>
@@ -211,7 +213,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("PersonId")
                         .HasName("ix_memberships_personid");
 
-                    b.ToTable("memberships","viderhe_sapressc_middleware_identity");
+                    b.ToTable("memberships","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationEmailContactItemBridge", b =>
@@ -228,7 +230,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_organizationemailcontactitembridges_contactitemid");
 
-                    b.ToTable("organizationemailcontactitembridges","viderhe_sapressc_middleware_identity");
+                    b.ToTable("organizationemailcontactitembridges","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationIdentity", b =>
@@ -262,7 +264,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("OwnerId")
                         .HasName("ix_organizationidentities_ownerid");
 
-                    b.ToTable("organizationidentities","viderhe_sapressc_middleware_identity");
+                    b.ToTable("organizationidentities","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationPhoneContactItemBridge", b =>
@@ -279,7 +281,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_organizationphonecontactitembridges_contactitemid");
 
-                    b.ToTable("organizationphonecontactitembridges","viderhe_sapressc_middleware_identity");
+                    b.ToTable("organizationphonecontactitembridges","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationPostalContactItemBridge", b =>
@@ -296,7 +298,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_organizationpostalcontactitembridges_contactitemid");
 
-                    b.ToTable("organizationpostalcontactitembridges","viderhe_sapressc_middleware_identity");
+                    b.ToTable("organizationpostalcontactitembridges","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationSocialContactItemBridge", b =>
@@ -313,7 +315,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_organizationsocialcontactitembridges_contactitemid");
 
-                    b.ToTable("organizationsocialcontactitembridges","viderhe_sapressc_middleware_identity");
+                    b.ToTable("organizationsocialcontactitembridges","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationWebSiteContactItemBridge", b =>
@@ -330,7 +332,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_organizationwebsitecontactitembridges_contactitemid");
 
-                    b.ToTable("organizationwebsitecontactitembridges","viderhe_sapressc_middleware_identity");
+                    b.ToTable("organizationwebsitecontactitembridges","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonEmailContactItemBridge", b =>
@@ -347,7 +349,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_personemailcontactitembridges_contactitemid");
 
-                    b.ToTable("personemailcontactitembridges","viderhe_sapressc_middleware_identity");
+                    b.ToTable("personemailcontactitembridges","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", b =>
@@ -387,7 +389,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ImageId")
                         .HasName("ix_personidentities_imageid");
 
-                    b.ToTable("personidentities","viderhe_sapressc_middleware_identity");
+                    b.ToTable("personidentities","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonPhoneContactItemBridge", b =>
@@ -404,7 +406,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_personphonecontactitembridges_contactitemid");
 
-                    b.ToTable("personphonecontactitembridges","viderhe_sapressc_middleware_identity");
+                    b.ToTable("personphonecontactitembridges","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonPostalContactItemBridge", b =>
@@ -421,7 +423,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_personpostalcontactitembridges_contactitemid");
 
-                    b.ToTable("personpostalcontactitembridges","viderhe_sapressc_middleware_identity");
+                    b.ToTable("personpostalcontactitembridges","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonSocialContactItemBridge", b =>
@@ -438,7 +440,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_personsocialcontactitembridges_contactitemid");
 
-                    b.ToTable("personsocialcontactitembridges","viderhe_sapressc_middleware_identity");
+                    b.ToTable("personsocialcontactitembridges","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonWebSiteContactItemBridge", b =>
@@ -455,7 +457,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ContactItemId")
                         .HasName("ix_personwebsitecontactitembridges_contactitemid");
 
-                    b.ToTable("personwebsitecontactitembridges","viderhe_sapressc_middleware_identity");
+                    b.ToTable("personwebsitecontactitembridges","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PhoneContactItem", b =>
@@ -474,7 +476,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_phonecontactitems");
 
-                    b.ToTable("phonecontactitems","viderhe_sapressc_middleware_identity");
+                    b.ToTable("phonecontactitems","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PostalContactItem", b =>
@@ -502,7 +504,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("RegionId")
                         .HasName("ix_postalcontactitems_regionid");
 
-                    b.ToTable("postalcontactitems","viderhe_sapressc_middleware_identity");
+                    b.ToTable("postalcontactitems","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.SocialContactItem", b =>
@@ -521,7 +523,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_socialcontactitems");
 
-                    b.ToTable("socialcontactitems","viderhe_sapressc_middleware_identity");
+                    b.ToTable("socialcontactitems","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.WebSiteContactItem", b =>
@@ -540,7 +542,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_websitecontactitems");
 
-                    b.ToTable("websitecontactitems","viderhe_sapressc_middleware_identity");
+                    b.ToTable("websitecontactitems","viderhe-uiccamaguey_sapressc_middleware_identity");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Image", b =>
@@ -578,7 +580,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ThumbnailId")
                         .HasName("ix_images_thumbnailid");
 
-                    b.ToTable("images","viderhe_sapressc_middleware_media");
+                    b.ToTable("images","viderhe-uiccamaguey_sapressc_middleware_media");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Thumbnail", b =>
@@ -601,7 +603,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_thumbnails");
 
-                    b.ToTable("thumbnails","viderhe_sapressc_middleware_media");
+                    b.ToTable("thumbnails","viderhe-uiccamaguey_sapressc_middleware_media");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Media.Persistence.Entities.Video", b =>
@@ -659,7 +661,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("ThumbnailId")
                         .HasName("ix_videos_thumbnailid");
 
-                    b.ToTable("videos","viderhe_sapressc_middleware_media");
+                    b.ToTable("videos","viderhe-uiccamaguey_sapressc_middleware_media");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Region.Persistence.Entities.Country", b =>
@@ -687,7 +689,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .IsUnique()
                         .HasName("ix_countries_name");
 
-                    b.ToTable("countries","viderhe_sapressc_middleware_region");
+                    b.ToTable("countries","viderhe-uiccamaguey_sapressc_middleware_region");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Region.Persistence.Entities.Locality", b =>
@@ -713,7 +715,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .IsUnique()
                         .HasName("ix_localities_name_municipalityid");
 
-                    b.ToTable("localities","viderhe_sapressc_middleware_region");
+                    b.ToTable("localities","viderhe-uiccamaguey_sapressc_middleware_region");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Region.Persistence.Entities.Municipality", b =>
@@ -739,7 +741,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .IsUnique()
                         .HasName("ix_municipalities_name_stateid");
 
-                    b.ToTable("municipalities","viderhe_sapressc_middleware_region");
+                    b.ToTable("municipalities","viderhe-uiccamaguey_sapressc_middleware_region");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.SAPRESSC.Middleware.Region.Persistence.Entities.Region", b =>
@@ -755,7 +757,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasKey("Id")
                         .HasName("pk_regions");
 
-                    b.ToTable("regions","viderhe_sapressc_middleware_region");
+                    b.ToTable("regions","viderhe-uiccamaguey_sapressc_middleware_region");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("Region");
                 });
@@ -779,7 +781,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("CountryId")
                         .HasName("ix_states_countryid");
 
-                    b.ToTable("states","viderhe_sapressc_middleware_region");
+                    b.ToTable("states","viderhe-uiccamaguey_sapressc_middleware_region");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Account", b =>
@@ -1227,7 +1229,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("CountryId")
                         .HasName("ix_regions_countryid");
 
-                    b.ToTable("regions","viderhe_sapressc_middleware_region");
+                    b.ToTable("regions","viderhe-uiccamaguey_sapressc_middleware_region");
 
                     b.HasDiscriminator().HasValue("CountryRegion");
                 });
@@ -1242,7 +1244,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("LocalityId")
                         .HasName("ix_regions_localityid");
 
-                    b.ToTable("regions","viderhe_sapressc_middleware_region");
+                    b.ToTable("regions","viderhe-uiccamaguey_sapressc_middleware_region");
 
                     b.HasDiscriminator().HasValue("LocalityRegion");
                 });
@@ -1257,7 +1259,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("MunicipalityId")
                         .HasName("ix_regions_municipalityid");
 
-                    b.ToTable("regions","viderhe_sapressc_middleware_region");
+                    b.ToTable("regions","viderhe-uiccamaguey_sapressc_middleware_region");
 
                     b.HasDiscriminator().HasValue("MunicipalityRegion");
                 });
@@ -1272,7 +1274,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasIndex("StateId")
                         .HasName("ix_regions_stateid");
 
-                    b.ToTable("regions","viderhe_sapressc_middleware_region");
+                    b.ToTable("regions","viderhe-uiccamaguey_sapressc_middleware_region");
 
                     b.HasDiscriminator().HasValue("StateRegion");
                 });
@@ -1327,13 +1329,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.EmailContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_organizationemailcontactitembridges_emailcontactitems_contac~")
+                        .HasConstraintName("fk_organizationemailcontactitembridges_emailcontactitems_conta~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationIdentity", "Organization")
                         .WithMany("OrganizationEmailContactItemBridges")
                         .HasForeignKey("OrganizationId")
-                        .HasConstraintName("fk_organizationemailcontactitembridges_organizationidentities_o~")
+                        .HasConstraintName("fk_organizationemailcontactitembridges_organizationidentities_~")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1355,13 +1357,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PhoneContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_organizationphonecontactitembridges_phonecontactitems_contac~")
+                        .HasConstraintName("fk_organizationphonecontactitembridges_phonecontactitems_conta~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationIdentity", "Organization")
                         .WithMany("OrganizationPhoneContactItemBridges")
                         .HasForeignKey("OrganizationId")
-                        .HasConstraintName("fk_organizationphonecontactitembridges_organizationidentities_o~")
+                        .HasConstraintName("fk_organizationphonecontactitembridges_organizationidentities_~")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1370,13 +1372,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PostalContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_organizationpostalcontactitembridges_postalcontactitems_cont~")
+                        .HasConstraintName("fk_organizationpostalcontactitembridges_postalcontactitems_con~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationIdentity", "Organization")
                         .WithMany("OrganizationPostalContactItemBridges")
                         .HasForeignKey("OrganizationId")
-                        .HasConstraintName("fk_organizationpostalcontactitembridges_organizationidentities_~")
+                        .HasConstraintName("fk_organizationpostalcontactitembridges_organizationidentities~")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1385,13 +1387,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.SocialContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_organizationsocialcontactitembridges_socialcontactitems_cont~")
+                        .HasConstraintName("fk_organizationsocialcontactitembridges_socialcontactitems_con~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationIdentity", "Organization")
                         .WithMany("OrganizationSocialContactItemBridges")
                         .HasForeignKey("OrganizationId")
-                        .HasConstraintName("fk_organizationsocialcontactitembridges_organizationidentities_~")
+                        .HasConstraintName("fk_organizationsocialcontactitembridges_organizationidentities~")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1400,13 +1402,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.WebSiteContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_organizationwebsitecontactitembridges_websitecontactitems_co~")
+                        .HasConstraintName("fk_organizationwebsitecontactitembridges_websitecontactitems_c~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.OrganizationIdentity", "Organization")
                         .WithMany("OrganizationWebSiteContactItemBridges")
                         .HasForeignKey("OrganizationId")
-                        .HasConstraintName("fk_organizationwebsitecontactitembridges_organizationidentities~")
+                        .HasConstraintName("fk_organizationwebsitecontactitembridges_organizationidentitie~")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
@@ -1415,7 +1417,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.EmailContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_personemailcontactitembridges_emailcontactitems_contactitemid")
+                        .HasConstraintName("fk_personemailcontactitembridges_emailcontactitems_contactitem~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", "Person")
@@ -1438,7 +1440,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PhoneContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_personphonecontactitembridges_phonecontactitems_contactitemid")
+                        .HasConstraintName("fk_personphonecontactitembridges_phonecontactitems_contactitem~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", "Person")
@@ -1453,7 +1455,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PostalContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_personpostalcontactitembridges_postalcontactitems_contactite~")
+                        .HasConstraintName("fk_personpostalcontactitembridges_postalcontactitems_contactit~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", "Person")
@@ -1468,7 +1470,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.SocialContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_personsocialcontactitembridges_socialcontactitems_contactite~")
+                        .HasConstraintName("fk_personsocialcontactitembridges_socialcontactitems_contactit~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", "Person")
@@ -1483,7 +1485,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.WebSiteContactItem", "ContactItem")
                         .WithMany()
                         .HasForeignKey("ContactItemId")
-                        .HasConstraintName("fk_personwebsitecontactitembridges_websitecontactitems_contacti~")
+                        .HasConstraintName("fk_personwebsitecontactitembridges_websitecontactitems_contact~")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("SmartSolucionesCuba.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity", "Person")

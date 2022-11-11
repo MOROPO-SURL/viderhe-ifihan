@@ -1,0 +1,23 @@
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Presentation.Factories
+{
+    public static class AmbientalDashboardPlacardConfigurationPageModelFactory
+    {
+        public static Models.Page.AmbientalDashboardPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        {
+            if (placardViewModel == null) return new Models.Page.AmbientalDashboardPlacardConfigurationPageModel();
+
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.AmbientalDashboardPlacardContextModel>(placardViewModel.SerializedContext);
+
+            return new Models.Page.AmbientalDashboardPlacardConfigurationPageModel
+            {
+                RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                PlayerOrientationSupportKind = placardViewModel.PlayerOrientationSupportKind == null ? Common.Templating.Dashboard.Presentation.Enumerations.ConfigurationPlayerOrientationSupportKind.Inherited : placardViewModel.PlayerOrientationSupportKind.Value.ToConfiguration(),
+                Label = placardViewModel.Label,
+                ScreenPresentationTimeSecounds = System.Convert.ToInt32(context.ScreenPresentationTime.TotalSeconds),
+                IoTPlatformEndpointBaseUri = context.IoTPlatformEndpointBaseUri
+            };
+        }
+    }
+}

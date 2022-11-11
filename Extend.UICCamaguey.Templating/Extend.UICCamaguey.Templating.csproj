@@ -4,15 +4,17 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating</RootNamespace>
-    <Version>0.4.0.0</Version>
+    <Version>0.5.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="A9419619-2399-4F4B-83A7-4E7CC7C48546-landscape.png" />
+    <None Remove="Assets\4D4D1831-A130-4903-9F54-F9BA91379146-landscape.png" />
     <None Remove="C32C4B89-56D2-4D0D-91B5-E8D1984AA339-landscape.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\4D4D1831-A130-4903-9F54-F9BA91379146-landscape.png" />
     <EmbeddedResource Include="Assets\A9419619-2399-4F4B-83A7-4E7CC7C48546-landscape.png" />
     <EmbeddedResource Include="Assets\C32C4B89-56D2-4D0D-91B5-E8D1984AA339-landscape.png" />
   </ItemGroup>

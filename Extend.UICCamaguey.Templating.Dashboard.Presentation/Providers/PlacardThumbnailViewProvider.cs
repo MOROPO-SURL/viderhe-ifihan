@@ -9,6 +9,11 @@
                 return new Views.EventLiveStreamPlacardThumbnailView();
             }
 
+            if (model.Template.Id == Descriptors.AmbientalDashboardTemplateDescriptor.ID)
+            {
+                return new Views.AmbientalDashboardPlacardThumbnailView();
+            }
+
             return null;
         }
     }
