@@ -16,7 +16,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Pr
                 PlayerOrientationSupportKind = placardViewModel.PlayerOrientationSupportKind == null ? Common.Templating.Dashboard.Presentation.Enumerations.ConfigurationPlayerOrientationSupportKind.Inherited : placardViewModel.PlayerOrientationSupportKind.Value.ToConfiguration(),
                 Label = placardViewModel.Label,
                 ScreenPresentationTimeSecounds = System.Convert.ToInt32(context.ScreenPresentationTime.TotalSeconds),
-                IoTPlatformEndpointBaseUri = context.IoTPlatformEndpointBaseUri
+                IoTPlatformEndpointBaseUri = context.IoTPlatformEndpointBaseUri,
+                AmbientalVariable = context.AmbientalVariable
             };
         }
     }

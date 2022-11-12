@@ -69,7 +69,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Pr
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            IoTPlatformEndpointBaseUri = BindingContextPageModel.IoTPlatformEndpointBaseUri
+                            IoTPlatformEndpointBaseUri = BindingContextPageModel.IoTPlatformEndpointBaseUri,
+                            AmbientalVariable = BindingContextPageModel.AmbientalVariable
                         })
                     });
                 }
@@ -84,7 +85,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Pr
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            IoTPlatformEndpointBaseUri = BindingContextPageModel.IoTPlatformEndpointBaseUri
+                            IoTPlatformEndpointBaseUri = BindingContextPageModel.IoTPlatformEndpointBaseUri,
+                            AmbientalVariable = BindingContextPageModel.AmbientalVariable
                         })
                     });
                 }

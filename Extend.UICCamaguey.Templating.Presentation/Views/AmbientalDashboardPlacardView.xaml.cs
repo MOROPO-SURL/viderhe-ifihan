@@ -40,15 +40,67 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation
                     return;
                 }
 
-                ambientalHubConnectClient.Connect();
-
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    (BindingContext as Models.View.AmbientalDashboardPlacardViewModel).Chart.Entries = new System.Collections.Generic.List<Microcharts.ChartEntry>(task.Result.List.Select(item => new Microcharts.ChartEntry((float)item.Temperature)
+                    var contreteBindingContext = BindingContext as Models.View.AmbientalDashboardPlacardViewModel;
+
+                    if (task.Result.MaxPageCount > 0)
                     {
-                        Label = item.CreatedAt.ToShortTimeString(),
-                        ValueLabel = string.Format("{0}°C", item.Temperature)
+                        contreteBindingContext.LastReading = task.Result.List.Last();
+                    }
+
+                    string template;
+                    
+                    switch (contreteBindingContext.AmbientalVariable)
+                    {
+                        case Enumerations.AmbientalVariable.Humidity:
+                            template = "{0}%";
+
+                            break;
+
+                        case Enumerations.AmbientalVariable.SmogPPM:
+                            template = "{0} ppm";
+
+                            break;
+
+                        case Enumerations.AmbientalVariable.Temperature:
+                        default:
+                            template = "{0}°C";
+
+                            break;
+                    }
+
+                    contreteBindingContext.Chart.Entries = new System.Collections.Generic.List<Microcharts.ChartEntry>(task.Result.List.Select(item =>
+                    {
+                        double value;
+
+                        switch (contreteBindingContext.AmbientalVariable)
+                        {
+                            case Enumerations.AmbientalVariable.Humidity:
+                                value = item.Humidity;
+
+                                break;
+
+                            case Enumerations.AmbientalVariable.SmogPPM:
+                                value = item.SmogPPM;
+
+                                break;
+
+                            case Enumerations.AmbientalVariable.Temperature:
+                            default:
+                                value = item.Temperature;
+
+                                break;
+                        }
+
+                        return new Microcharts.ChartEntry((float)value)
+                        {
+                            Label = item.CreatedAt.ToShortTimeString(),
+                            ValueLabel = string.Format(template, value)
+                        };
                     }));
+
+                    ambientalHubConnectClient.Connect();
                 });
             });
         }

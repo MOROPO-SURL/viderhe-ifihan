@@ -20,5 +20,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation
         public AmbientalReadingDisplayModel LastReading { get => lastReading; set => SetProperty(ref lastReading, value); }
         
         public Microcharts.LineChart Chart { get => chart; set => SetProperty(ref chart, value); }
+
+        public Enumerations.AmbientalVariable AmbientalVariable { get; set; }
     }
 }

@@ -25,7 +25,8 @@
                 return new Views.AmbientalDashboardPlacardView(new Models.View.AmbientalDashboardPlacardViewModel
                 {
                     ScreenPresentationTime = context.ScreenPresentationTime,
-                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    AmbientalVariable = context.AmbientalVariable,
                 }, new System.Uri(context.IoTPlatformEndpointBaseUri));
             }
 

@@ -37,13 +37,56 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
+                    string template;
+
+                    switch (viewModel.AmbientalVariable)
+                    {
+                        case Enumerations.AmbientalVariable.Humidity:
+                            template = "{0}%";
+
+                            break;
+
+                        case Enumerations.AmbientalVariable.SmogPPM:
+                            template = "{0} ppm";
+
+                            break;
+
+                        case Enumerations.AmbientalVariable.Temperature:
+                        default:
+                            template = "{0}°C";
+
+                            break;
+                    }
+
                     var currents = new System.Collections.Generic.List<Microcharts.ChartEntry>(viewModel.Chart.Entries);
 
                     currents.RemoveAt(0);
-                    currents.Add(new Microcharts.ChartEntry((float)last.Temperature)
+
+                    double value;
+
+                    switch (viewModel.AmbientalVariable)
+                    {
+                        case Enumerations.AmbientalVariable.Humidity:
+                            value = last.Humidity;
+
+                            break;
+
+                        case Enumerations.AmbientalVariable.SmogPPM:
+                            value = last.SmogPPM;
+
+                            break;
+
+                        case Enumerations.AmbientalVariable.Temperature:
+                        default:
+                            value = last.Temperature;
+
+                            break;
+                    }
+
+                    currents.Add(new Microcharts.ChartEntry((float)value)
                     {
                         Label = last.CreatedAt.ToShortTimeString(),
-                        ValueLabel = string.Format("{0}°C", last.Temperature)
+                        ValueLabel = string.Format(template, value)
                     });
 
                     viewModel.Chart.Entries = currents;

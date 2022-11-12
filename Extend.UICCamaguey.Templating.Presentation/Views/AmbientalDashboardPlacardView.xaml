@@ -2,11 +2,18 @@
 <extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Converters"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Views.AmbientalDashboardPlacardView">
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Views.AmbientalDashboardPlacardView"
+    x:Name="RootView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:AmbientalReadingDisplayModelToLastValuePresentationConverter x:Key="AmbientalReadingDisplayModelToLastValuePresentationConverter" PlacardView="{Reference RootView}" />
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
-        <Grid x:Name="Wrapper">
+        <Grid x:Name="Wrapper" BackgroundColor="White">
             <Grid 
                 x:Name="PlacardLayout"
                 ColumnSpacing="0" RowSpacing="0">
@@ -21,7 +28,7 @@
                 <Label
                     Grid.Column="1" Grid.Row="0"
                     HorizontalOptions="Center" VerticalOptions="Center"
-                    Text="{Binding Path=LastReading.Temperature, StringFormat='{0}°C'}"
+                    Text="{Binding Path=LastReading, Converter={StaticResource AmbientalReadingDisplayModelToLastValuePresentationConverter}}"
                     FontAttributes="Bold"
                     FontSize="144" />
                 <microcharts:ChartView
