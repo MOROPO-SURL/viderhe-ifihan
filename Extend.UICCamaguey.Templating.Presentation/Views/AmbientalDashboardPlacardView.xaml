@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Views.AmbientalDashboardPlacardView"
@@ -10,6 +11,7 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:AmbientalReadingDisplayModelToLastValuePresentationConverter x:Key="AmbientalReadingDisplayModelToLastValuePresentationConverter" PlacardView="{Reference RootView}" />
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
@@ -30,7 +32,7 @@
                     HorizontalOptions="Center" VerticalOptions="Center"
                     Text="{Binding Path=LastReading, Converter={StaticResource AmbientalReadingDisplayModelToLastValuePresentationConverter}}"
                     FontAttributes="Bold"
-                    FontSize="144" />
+                    FontSize="{Binding Source=144, Converter={StaticResource SizeToRelativeValueConverter}}" />
                 <microcharts:ChartView
                     Grid.ColumnSpan="2" Grid.Row="1"
                     Chart="{Binding Path=Chart}"/>
