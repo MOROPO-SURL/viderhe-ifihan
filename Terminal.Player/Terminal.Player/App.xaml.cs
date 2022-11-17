@@ -12,7 +12,7 @@
 
             Support.Presentation.Helpers.ImageUriFactoryHelper.Instance.Initialize();
 
-            MainPage = new Pages.MainPage();
+            MainPage = new Pages.StartingPage();
         }
 
         protected override void OnStart()
