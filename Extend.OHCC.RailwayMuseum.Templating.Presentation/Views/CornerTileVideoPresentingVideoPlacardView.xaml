@@ -39,6 +39,7 @@
                         Source="{Binding Path=PresenterTileVideoSource}"
                         ShowControls="False"
                         AutoPlay="False"
+                        IsMuted="True"
                         StrechAspect="AspectFill"
                         StatusUpdated="PresenterTileVideoPlayerView_StatusUpdated" />
                 </Grid>
