@@ -3,6 +3,7 @@
     public class SessionMemoryManager : Providers.Facade.ICloudServerProviderFacade
     {
         private const string LAST_CLOUD_SERVER_KEY = "last-cloud-server";
+        private const string LAST_CLOUD_SECURITY_KEY = "last-cloud-security";
 
         private static SessionMemoryManager instance;
 
@@ -27,7 +28,16 @@
             }
             else
             {
-                Server = "cloud.viderhe.local";
+                Server = "cloud.viderhe.net";
+            }
+
+            if (Xamarin.Forms.Application.Current.Properties.ContainsKey(LAST_CLOUD_SECURITY_KEY))
+            {
+                UseSSL = (bool)Xamarin.Forms.Application.Current.Properties[LAST_CLOUD_SECURITY_KEY];
+            }
+            else
+            {
+                UseSSL = true;
             }
         }
 
@@ -36,13 +46,16 @@
         public void Persist()
         {
             Xamarin.Forms.Application.Current.Properties[LAST_CLOUD_SERVER_KEY] = Server;
+            Xamarin.Forms.Application.Current.Properties[LAST_CLOUD_SECURITY_KEY] = UseSSL;
 
             Xamarin.Forms.Application.Current.SavePropertiesAsync();
         }
 
         #region ICloudServerProviderFacade implementation
 
-        public string CloudServerHost => Server;
+        public string Host => Server;
+
+        public bool UseSSL { get; set; }
 
         #endregion
     }

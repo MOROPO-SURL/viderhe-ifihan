@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
+using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
 using SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Common.Enumerations;
+using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
 using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
@@ -26,7 +28,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
         public PlayerHubClient()
         {
             connection = new HubConnectionBuilder()
-                .WithUrl(string.Format("http://{0}/hubs/player", Support.Presentation.Managers.SessionMemoryManager.Instance.CloudServerHost), options =>
+                .WithUrl(string.Format("{0}://{1}/hubs/player", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host), options =>
                 {
                     options.Headers = new System.Collections.Generic.Dictionary<string, string>();
 
@@ -40,14 +42,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
                 .WithAutomaticReconnect()
                 .Build();
 
-            connection.On(nameof(PresentNextFrame), PresentNextFrame);
-            connection.On(nameof(PresentPreviousFrame), PresentPreviousFrame);
-            connection.On<ScreenplayHandlingImmediacyMode>(nameof(RestartScreenplay), RestartScreenplay);
-            connection.On<ScreenplayHandlingImmediacyMode>(nameof(ReloadScreenplay), ReloadScreenplay);
-            connection.On<bool>(nameof(SetAudioEnabled), SetAudioEnabled);
-            connection.On<int>(nameof(SetAudioLevel), SetAudioLevel);
-            connection.On<bool>(nameof(Close), Close);
-            connection.On<bool>(nameof(Shutdown), Shutdown);
+            connection.On(nameof(OnPresentNextFrameRequestAsync), OnPresentNextFrameRequestAsync);
+            connection.On(nameof(OnPresentPreviousFrameRequestAsync), OnPresentPreviousFrameRequestAsync);
+            connection.On<PlacardDisplayModel[]>(nameof(OnPresentInterventionPlacardsRequestAsync), OnPresentInterventionPlacardsRequestAsync);
+            connection.On<ScreenplayHandlingImmediacyMode>(nameof(OnRestartScreenplayRequestAsync), OnRestartScreenplayRequestAsync);
+            connection.On<ScreenplayHandlingImmediacyMode>(nameof(OnReloadScreenplayRequestAsync), OnReloadScreenplayRequestAsync);
+            connection.On<bool>(nameof(OnSetAudioEnabledRequestAsync), OnSetAudioEnabledRequestAsync);
+            connection.On<int>(nameof(OnSetAudioLevelRequestAsync), OnSetAudioLevelRequestAsync);
+            connection.On<bool>(nameof(OnCloseRequestAsync), OnCloseRequestAsync);
+            connection.On<bool>(nameof(OnShutdownRequestAsync), OnShutdownRequestAsync);
         }
 
         private async System.Threading.Tasks.Task Connection_ClosedAsync(System.Exception arg)
@@ -94,7 +97,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
             connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Player.Hubs.IPlayerHub.NotifyPlayingPlacard), placardId);
         }
 
-        public System.Threading.Tasks.Task PresentNextFrame()
+        public System.Threading.Tasks.Task OnPresentNextFrameRequestAsync()
         {
             if (Xamarin.Forms.Application.Current.MainPage.Navigation.ModalStack.Count > 0)
             {
@@ -106,7 +109,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
-        public System.Threading.Tasks.Task PresentPreviousFrame()
+        public System.Threading.Tasks.Task OnPresentPreviousFrameRequestAsync()
         {
             if (Xamarin.Forms.Application.Current.MainPage.Navigation.ModalStack.Count > 0)
             {
@@ -118,7 +121,19 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
-        public System.Threading.Tasks.Task RestartScreenplay(ScreenplayHandlingImmediacyMode immediacyMode)
+        public System.Threading.Tasks.Task OnPresentInterventionPlacardsRequestAsync(PlacardDisplayModel[] placards)
+        {
+            if (Xamarin.Forms.Application.Current.MainPage.Navigation.ModalStack.Count > 0)
+            {
+                var screenplayPlayerPage = Xamarin.Forms.Application.Current.MainPage.Navigation.ModalStack.First() as Support.Presentation.Player.Pages.ScreenplayPlayerPage;
+
+                screenplayPlayerPage.PresentInterventionPlacards(placards.Select(m => m.ToViewModel()).ToArray());
+            }
+
+            return System.Threading.Tasks.Task.CompletedTask;
+        }
+
+        public System.Threading.Tasks.Task OnRestartScreenplayRequestAsync(ScreenplayHandlingImmediacyMode immediacyMode)
         {
             if (Xamarin.Forms.Application.Current.MainPage.Navigation.ModalStack.Count > 0)
             {
@@ -130,7 +145,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
-        public System.Threading.Tasks.Task ReloadScreenplay(ScreenplayHandlingImmediacyMode immediacyMode)
+        public System.Threading.Tasks.Task OnReloadScreenplayRequestAsync(ScreenplayHandlingImmediacyMode immediacyMode)
         {
             if (Xamarin.Forms.Application.Current.MainPage.Navigation.ModalStack.Count > 0)
             {
@@ -144,28 +159,28 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
-        public System.Threading.Tasks.Task SetAudioLevel(int percent)
+        public System.Threading.Tasks.Task OnSetAudioLevelRequestAsync(int percent)
         {
             Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().SetAudioLevel(percent);
 
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
-        public System.Threading.Tasks.Task SetAudioEnabled(bool enabled)
+        public System.Threading.Tasks.Task OnSetAudioEnabledRequestAsync(bool enabled)
         {
             Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().SetAudioEnabled(enabled);
 
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
-        public System.Threading.Tasks.Task Close(bool restart)
+        public System.Threading.Tasks.Task OnCloseRequestAsync(bool restart)
         {
             Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().Close(restart);
 
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
-        public System.Threading.Tasks.Task Shutdown(bool restart)
+        public System.Threading.Tasks.Task OnShutdownRequestAsync(bool restart)
         {
             return Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().ShutdownAsync(restart);
         }
@@ -187,10 +202,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
 
                 connection.Closed -= Connection_ClosedAsync;
 
-                connection.Remove(nameof(PresentNextFrame));
-                connection.Remove(nameof(PresentPreviousFrame));
-                connection.Remove(nameof(RestartScreenplay));
-                connection.Remove(nameof(ReloadScreenplay));
+                connection.Remove(nameof(OnPresentNextFrameRequestAsync));
+                connection.Remove(nameof(OnPresentPreviousFrameRequestAsync));
+                connection.Remove(nameof(OnRestartScreenplayRequestAsync));
+                connection.Remove(nameof(OnReloadScreenplayRequestAsync));
 
                 connection.StopAsync().ContinueWith(task =>
                 {

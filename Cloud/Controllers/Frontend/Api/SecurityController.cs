@@ -32,10 +32,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
                     if (userIdentity.HasClaim(match => match.Type.Equals(SAPRESSC.Core.Web.Security.ClaimTypes.AccountDisabled) && match.Value.Equals(true.ToString())) || account == null)
                     {
-                        return Forbid();
+                        return Forbid(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
                     }
 
-                    userIdentity.AddClaim(new System.Security.Claims.Claim(Security.Authorization.Policies.ACCOUNT_ASSOCIATED, account.Id.ToString()));
+                    userIdentity.AddClaim(new System.Security.Claims.Claim(Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION, account.Id.ToString()));
 
                     var moderator = account.ModeratorBridges.First(b => b.Moderator.UserId == userIdentity.Name).Moderator;
 
@@ -49,7 +49,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpPost("[action]")]
-        [Microsoft.AspNetCore.Authorization.Authorize(Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
+        [Microsoft.AspNetCore.Authorization.Authorize(Policy = Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION)]
         public ActionResult ChangePassword([FromBody]Cloud.Api.Common.Models.UserPasswordChangeRequestModel model)
         {
             if (ModelState.IsValid)

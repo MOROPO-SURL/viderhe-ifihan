@@ -1,6 +1,4 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
-using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 {
@@ -68,6 +66,11 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
         public void RequestPresentPreviousFrame()
         {
             presenter.RequestPresentPreviousFrame();
+        }
+
+        public void PresentInterventionPlacards(Models.View.PlacardViewModel[] placards)
+        {
+            presenter.PresentInterventionPlacards(placards);
         }
 
         public void RequestRestart(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)

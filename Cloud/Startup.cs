@@ -164,7 +164,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
                     policy.AddAuthenticationSchemes(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
                     policy.RequireClaim(System.Security.Claims.ClaimTypes.NameIdentifier);
                 });
-                options.AddPolicy(Security.Authorization.Policies.ACCOUNT_ASSOCIATED, policy =>
+                options.AddPolicy(Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION, policy =>
                 {
                     policy.AddAuthenticationSchemes(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
                     policy.AddRequirements(new Security.Authorization.Requirement.AccountModerationRequirement());
