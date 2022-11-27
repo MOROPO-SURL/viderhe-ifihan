@@ -161,12 +161,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
                 var model = await accountApiClient.GetCurrentAsync();
 
-                AccountId = model.Id;
-
-                var overalyDescriptor = model.DefaultOverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(model.DefaultOverlayId.Value);
-
-                SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.HorizontalSplashImageId, model.VerticalSplashImageId, overalyDescriptor, model.SerializedOverlayContext);
-
                 AccountExtensions = model.Extensions.ToArray();
 
                 // MotoTouch does not support dynamic assembly loading
@@ -231,6 +225,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                         }
                     }
                 }
+
+                AccountId = model.Id;
+
+                var overalyDescriptor = model.DefaultOverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(model.DefaultOverlayId.Value);
+
+                SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.HorizontalSplashImageId, model.VerticalSplashImageId, overalyDescriptor, model.SerializedOverlayContext);
             }
             catch (System.Exception e)
             {
