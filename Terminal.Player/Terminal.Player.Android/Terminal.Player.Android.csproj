@@ -58,8 +58,7 @@
     <MandroidI18n />
     <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <AndroidLinkTool>r8</AndroidLinkTool>
-    <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
+    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidKeyStore>true</AndroidKeyStore>
     <AndroidSigningKeyStore>W:\Dossiers\+SSC\Signature\Android\SSC.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>matorr3S/*-e21</AndroidSigningStorePass>
