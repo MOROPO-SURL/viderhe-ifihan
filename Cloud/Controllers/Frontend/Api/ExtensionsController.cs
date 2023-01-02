@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 {
-    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_ASSOCIATED)]
+    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION)]
     [Route("api/[area]/[controller]")]
     [Area("account")]
     [ApiController]
-    public class ExtensionsController : SAPRESSC.Core.Web.Common.Controllers.BaseWebController
+    public class ExtensionsController : MOROPO.SAPRESSC.Core.Web.Common.Controllers.BaseWebController
     {
         private readonly Microsoft.Extensions.Configuration.IConfiguration configuration;
 
