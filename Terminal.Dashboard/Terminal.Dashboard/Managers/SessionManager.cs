@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 {
-    public sealed class SessionManager : SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade
+    public sealed class SessionManager : MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
         private static SessionManager instance;
 
@@ -24,7 +24,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
         public bool HasAuthenticatedIdentity => Moderator != null;
 
-        public SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Server), GetAuthorizeHeader, null);
+        public MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Server), GetAuthorizeHeader, null);
 
         public string AuthenticationType { get; private set; }
         public string AuthorizationToken { get; private set; }
