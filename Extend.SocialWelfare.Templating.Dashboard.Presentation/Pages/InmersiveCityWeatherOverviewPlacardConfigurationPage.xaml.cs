@@ -91,7 +91,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 if (placardViewModel == null)
                 {
@@ -196,7 +196,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
             if (!System.Uri.IsWellFormedUriString(baseUrl, System.UriKind.Absolute)) return;
 
-            var weatherApiConnectClient = new Weather.Api.Connect.Clients.OpenWeatherMapApiConnectClient(new SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(baseUrl));
+            var weatherApiConnectClient = new Weather.Api.Connect.Clients.OpenWeatherMapApiConnectClient(new MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(baseUrl));
 
             weatherApiConnectClient.GetCitiesAsync().ContinueWith(task =>
             {

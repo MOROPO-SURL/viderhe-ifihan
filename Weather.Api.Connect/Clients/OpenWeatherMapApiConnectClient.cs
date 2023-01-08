@@ -4,9 +4,9 @@
     {
         private const string TARGET_CONTROLLER = "openweathermap";
 
-        private readonly SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper;
+        private readonly MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper;
 
-        public OpenWeatherMapApiConnectClient(SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper)
+        public OpenWeatherMapApiConnectClient(MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper)
         {
             this.httpClientHelper = httpClientHelper;
         }
