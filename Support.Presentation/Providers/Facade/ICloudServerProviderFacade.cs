@@ -2,6 +2,8 @@
 {
     public interface ICloudServerProviderFacade
     {
-        string CloudServerHost { get; }
+        string Host { get; }
+
+        bool UseSSL { get; }
     }
 }

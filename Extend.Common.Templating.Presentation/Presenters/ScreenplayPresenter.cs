@@ -25,10 +25,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         private Xamarin.Forms.Layout<Xamarin.Forms.View> container;
 
+        private ScreenplayPresenter interventionPresenter;
+
         private bool suspended;
         private bool loop;
 
-        public ScreenplayPresenter(Xamarin.Forms.Layout<Xamarin.Forms.View> container, System.Func<PlacardViewModel, BasePlacardPresentationView> placardViewModelToPresentationViewFunction, PlacardViewModel[] placards, ITransitionProviderFacade transitionProvider, System.Action presentationEndedCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction, System.Action screenplayPresentIterationCompleteCallbackAction = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
+        public ScreenplayPresenter(Xamarin.Forms.Layout<Xamarin.Forms.View> container, System.Func<PlacardViewModel, BasePlacardPresentationView> placardViewModelToPresentationViewFunction, PlacardViewModel[] placards, ITransitionProviderFacade transitionProvider, System.Action screenplayPresentationEndedCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction, System.Action screenplayPresentIterationCompleteCallbackAction = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
         {
             suspended = false;
 
@@ -36,7 +38,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             this.placardViewModelToPresentationViewFunction = placardViewModelToPresentationViewFunction;
             this.placards = placards;
             this.transitionProvider = transitionProvider;
-            this.presentationEndedCallbackAction = presentationEndedCallbackAction;
+            this.presentationEndedCallbackAction = screenplayPresentationEndedCallbackAction;
             this.placardPlayingCallbackAction = placardPlayingCallbackAction;
             this.screenplayPresentIterationCompleteCallbackAction = screenplayPresentIterationCompleteCallbackAction;
             this.placardViewTransitionCompleteCallbackAction = placardViewTransitionCompleteCallbackAction;
@@ -67,6 +69,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             framesStack.Push(placards[targetIndex]);
 
             PresentNextPlacardPresentationView();
+        }
+
+        public void PresentInterventionPlacards(PlacardViewModel[] placards)
+        {
+            SuspendPresentation();
+
+            interventionPresenter = new ScreenplayPresenter(container, placardViewModelToPresentationViewFunction, placards, transitionProvider, InterventionPlacardsPresentationCompleted_Callback, false, null);
+
+            interventionPresenter.BeginPresentation();
         }
 
         public void RequestRestart(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
@@ -133,7 +144,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
         {
             if (outgoingFrameView != null)
             {
-                container.Children.Remove(outgoingFrameView);
+                container?.Children.Remove(outgoingFrameView);
             }
 
             incomingFrameView.OnShowInTransitionComplete();
@@ -158,6 +169,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                     (incomingFrameView as System.IDisposable).Dispose();
                 }
             }
+        }
+
+        private void InterventionPlacardsPresentationCompleted_Callback()
+        {
+            interventionPresenter.Dispose();
+
+            interventionPresenter = null;
+
+            ResumePresentation();
         }
 
         private void PresentNextPlacardPresentationView()
@@ -314,9 +334,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                 framesStack = null;
                 presentationEndedCallbackAction = null;
                 placardPlayingCallbackAction = null;
+                screenplayPresentIterationCompleteCallbackAction = null;
                 placardViewTransitionCompleteCallbackAction = null;
                 placardViewModelToPresentationViewFunction = null;
                 transitionProvider = null;
+                container = null;
 
                 disposedValue = true;
             }

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Red5ServerCleaner": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\Miguel\\AppData\\Local\\Temp"
+    }
+  }
+}

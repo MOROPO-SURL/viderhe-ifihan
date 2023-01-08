@@ -6,9 +6,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
     public class PlayerHub : Hub<SignalR.Connect.Player.Clients.IPlayerClient>, SignalR.Connect.Player.Hubs.IPlayerHub
     {
         private readonly IHubContext<DashboardHub, SignalR.Connect.Dashboard.Clients.IDashboardClient> dashboardHubContext;
-        private readonly SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
+        private readonly MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
 
-        public PlayerHub(SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, IHubContext<DashboardHub, SignalR.Connect.Dashboard.Clients.IDashboardClient> dashboardHubContext)
+        public PlayerHub(MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, IHubContext<DashboardHub, SignalR.Connect.Dashboard.Clients.IDashboardClient> dashboardHubContext)
         {
             this.dashboardHubContext = dashboardHubContext;
             this.accountRepository = accountRepository;
@@ -24,7 +24,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
 
             var playerId = Helpers.Security.PlayerSecurityHelper.UnprotectPlayerId(protectedPlayerId);
 
-            await dashboardHubContext.Clients.Group(accountId).PlayerConnected(playerId);
+            await dashboardHubContext.Clients.Group(accountId).OnPlayerConnectedAsync(playerId);
 
             await Groups.AddToGroupAsync(Context.ConnectionId, accountId.ToString());
 
@@ -44,7 +44,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
 
             Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.Remove(playerContext);
 
-            await dashboardHubContext.Clients.Group(playerContext.AccountId.ToString()).PlayerDisconnected(playerContext.PlayerId);
+            await dashboardHubContext.Clients.Group(playerContext.AccountId.ToString()).OnPlayerDisconnectedAsync(playerContext.PlayerId);
 
             await base.OnDisconnectedAsync(exception);
         }
@@ -53,7 +53,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
         {
             var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.ConnectionId == Context.ConnectionId);
 
-            dashboardHubContext.Clients.Group(playerContext.AccountId.ToString()).PlayingPlacard(playerContext.PlayerId, placardId);
+            dashboardHubContext.Clients.Group(playerContext.AccountId.ToString()).OnPlayingPlacardAsync(playerContext.PlayerId, placardId);
         }
 
         public void UpdateEnvironmentConfiguration(int audioLevel, bool audioEnabled)
@@ -63,7 +63,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
             playerContext.AudioEnabled = audioEnabled;
             playerContext.AudioLevel = audioLevel;
 
-            dashboardHubContext.Clients.Group(playerContext.AccountId.ToString()).PlayerUpdateEnvironmentConfiguration(playerContext.PlayerId, playerContext.AudioLevel, playerContext.AudioEnabled);
+            dashboardHubContext.Clients.Group(playerContext.AccountId.ToString()).OnPlayerUpdateEnvironmentConfigurationAsync(playerContext.PlayerId, playerContext.AudioLevel, playerContext.AudioEnabled);
         }
     }
 }
