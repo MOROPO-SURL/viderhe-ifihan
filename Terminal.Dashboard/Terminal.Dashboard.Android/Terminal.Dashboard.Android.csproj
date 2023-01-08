@@ -30,7 +30,6 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidDexTool>d8</AndroidDexTool>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AotAssemblies>false</AotAssemblies>
@@ -51,7 +50,6 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidDexTool>d8</AndroidDexTool>
     <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
-    <BundleAssemblies>false</BundleAssemblies>
     <AndroidLinkTool>r8</AndroidLinkTool>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <AotAssemblies>false</AotAssemblies>
