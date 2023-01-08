@@ -2,6 +2,6 @@
 {
     public static class Policies
     {
-        public const string ACCOUNT_ASSOCIATED = "user-account-tied";
+        public const string ACCOUNT_VALIDATED_MODERATION = "account-validated-moderation-policy";
     }
 }
