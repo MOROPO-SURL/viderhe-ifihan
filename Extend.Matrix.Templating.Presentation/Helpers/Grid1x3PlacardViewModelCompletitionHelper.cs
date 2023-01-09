@@ -18,7 +18,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Help
 
             foreach (var item in context.OneOfThreeTargetPlacards)
             {
-                var placardId = (System.Guid) item;
+                var placardId = System.Guid.Parse(item as string);
 
                 var placard = await apiConnectClient.GetAsync(placardId);
 
@@ -27,7 +27,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Help
 
             foreach (var item in context.TwoOfThreeTargetPlacards)
             {
-                var placardId = (System.Guid)item;
+                var placardId = System.Guid.Parse(item as string);
 
                 var placard = await apiConnectClient.GetAsync(placardId);
 
@@ -36,7 +36,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Help
 
             foreach (var item in context.ThreeOfThreeTargetPlacards)
             {
-                var placardId = (System.Guid)item;
+                var placardId = System.Guid.Parse(item as string);
 
                 var placard = await apiConnectClient.GetAsync(placardId);
 

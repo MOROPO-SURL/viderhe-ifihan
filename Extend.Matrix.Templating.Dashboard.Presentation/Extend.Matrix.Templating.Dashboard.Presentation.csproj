@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	  <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Presentation</AssemblyName>
+	  <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Presentation</RootNamespace>
+	  <Version>0.1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.Matrix.Templating.Presentation\Extend.Matrix.Templating.Presentation.csproj" />
+    <ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\LandscapeGrid1x3PlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
