@@ -2,6 +2,6 @@
 {
     public interface IPlacardViewModelCompletitionHelperFacade
     {
-        void Complete(Support.Presentation.Models.View.PlacardViewModel viewModel, Cloud.Api.Common.Models.PlacardDisplayModel apiModel);
+        void Complete(Support.Presentation.Models.View.PlacardViewModel model);
     }
 }

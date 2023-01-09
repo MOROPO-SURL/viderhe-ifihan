@@ -368,7 +368,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
                     if (completitionHelper != null)
                     {
-                        completitionHelper.Complete(result, m);
+                        completitionHelper.Complete(result);
                     }
 
                     return result;
