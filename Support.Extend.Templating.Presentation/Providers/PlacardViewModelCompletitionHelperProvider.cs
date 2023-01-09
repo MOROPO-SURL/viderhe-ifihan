@@ -25,12 +25,12 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Pro
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating.Presentation,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IPlacardViewModelCompletitionHelperProvider).IsAssignableFrom(t));
+            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IPlacardViewModelCompletitionHelperProviderFacade).IsAssignableFrom(t));
         }
 
         public IPlacardViewModelCompletitionHelperFacade GetFor(Cloud.Api.Common.Models.PlacardDisplayModel model)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardViewModelCompletitionHelperProvider>();
+            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardViewModelCompletitionHelperProviderFacade>();
 
             foreach (var provider in providers)
             {
