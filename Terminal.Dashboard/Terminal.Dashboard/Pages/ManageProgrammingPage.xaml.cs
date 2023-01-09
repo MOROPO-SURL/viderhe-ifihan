@@ -1,4 +1,5 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View;
+using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
 using SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers.Facade;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
@@ -45,7 +46,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void PlacardOverviewOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.PlacardOverviewViewModel;
+            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as PlacardOverviewViewModel;
 
             var extraOptions = new System.Collections.Generic.List<string>
             {
@@ -500,13 +501,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                       {
                           if (currentPlacardsPageNumber == 1)
                           {
-                              BindingContextPageModel.PlacardOverviews = new System.Collections.ObjectModel.ObservableCollection<Models.View.PlacardOverviewViewModel>(task.Result.List.Select(item => new Models.View.PlacardOverviewViewModel(item.ToViewModel())));
+                              BindingContextPageModel.PlacardOverviews = new System.Collections.ObjectModel.ObservableCollection<PlacardOverviewViewModel>(task.Result.List.Select(item => new PlacardOverviewViewModel(item.ToViewModel())));
                           }
                           else
                           {
                               foreach (var item in task.Result.List)
                               {
-                                  BindingContextPageModel.PlacardOverviews.Add(new Models.View.PlacardOverviewViewModel(item.ToViewModel(), true));
+                                  BindingContextPageModel.PlacardOverviews.Add(new PlacardOverviewViewModel(item.ToViewModel(), true));
                               }
                           }
 
