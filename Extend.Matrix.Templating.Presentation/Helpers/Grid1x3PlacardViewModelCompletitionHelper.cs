@@ -6,11 +6,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Help
 {
     public class Grid1x3PlacardViewModelCompletitionHelper : Common.Templating.Presentation.Helpers.Facade.IPlacardViewModelCompletitionHelperFacade
     {
-        public void Complete(Support.Presentation.Models.View.PlacardViewModel model)
+        public async System.Threading.Tasks.Task CompleteAsync(Support.Presentation.Models.View.PlacardViewModel model)
         {
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapeGrid1x3PlacardContextModel>(model.SerializedContext);
 
-            var apiClient = new PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+            var apiConnectClient = new PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
             var transformedOneOfThreeTargetPlacards = new List<object>();
             var transformedTwoOfThreeTargetPlacards = new List<object>();
@@ -20,33 +20,27 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Help
             {
                 var placardId = (System.Guid) item;
 
-                var getTask = apiClient.GetAsync(placardId);
+                var placard = await apiConnectClient.GetAsync(placardId);
 
-                getTask.Wait();
-
-                transformedOneOfThreeTargetPlacards.Add(getTask.Result.ToViewModel());
+                transformedOneOfThreeTargetPlacards.Add(placard.ToViewModel());
             }
 
             foreach (var item in context.TwoOfThreeTargetPlacards)
             {
                 var placardId = (System.Guid)item;
 
-                var getTask = apiClient.GetAsync(placardId);
+                var placard = await apiConnectClient.GetAsync(placardId);
 
-                getTask.Wait();
-
-                transformedTwoOfThreeTargetPlacards.Add(getTask.Result.ToViewModel());
+                transformedTwoOfThreeTargetPlacards.Add(placard.ToViewModel());
             }
 
             foreach (var item in context.ThreeOfThreeTargetPlacards)
             {
                 var placardId = (System.Guid)item;
 
-                var getTask = apiClient.GetAsync(placardId);
+                var placard = await apiConnectClient.GetAsync(placardId);
 
-                getTask.Wait();
-
-                transformedThreeOfThreeTargetPlacards.Add(getTask.Result.ToViewModel());
+                transformedThreeOfThreeTargetPlacards.Add(placard.ToViewModel());
             }
 
             context.OneOfThreeTargetPlacards = transformedOneOfThreeTargetPlacards.ToArray();
