@@ -11,7 +11,9 @@
                 return new Views.LandscapeGrid1x3PlacardView(new Models.View.LandscapeGrid1x3PlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    OneOfThreeTargetPlacards = context.TwoOfThreeTargetPlacardIds.
+                    OneOfThreeTargetPlacards = context.OneOfThreeTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[],
+                    TwoOfThreeTargetPlacards = context.TwoOfThreeTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[],
+                    ThreeOfThreeTargetPlacards = context.ThreeOfThreeTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[]
                 });
             }
 
@@ -22,7 +24,10 @@
                 return new Views.LandscapeGrid2x2PlacardView(new Models.View.LandscapeGrid2x2PlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    PresentedPictureSlideSecuence = context.PresentedPictureSlideSecuence
+                    OneOfFourTargetPlacards = context.OneOfFourTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[],
+                    TwoOfFourTargetPlacards = context.TwoOfFourTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[],
+                    ThreeOfFourTargetPlacards = context.ThreeOfFourTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[],
+                    FourOfFourTargetPlacards = context.FourOfFourTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[]
                 });
             }
 

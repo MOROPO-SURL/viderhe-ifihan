@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cloud.Api.Connect\Cloud.Api.Connect.csproj" />
     <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
     <ProjectReference Include="..\Extend.Matrix.Templating\Extend.Matrix.Templating.csproj" />
     <ProjectReference Include="..\Support.Extend.Templating.Presentation\Support.Extend.Templating.Presentation.csproj" />

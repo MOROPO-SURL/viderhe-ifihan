@@ -2,10 +2,10 @@
 {
     public abstract class AbstractGrid1x3PlacardContextModel : Common.Templating.Models.Context.AbstractPlacardContextModel
     {
-        public System.Guid[] OneOfThreeTargetPlacardIds { get; set; }
+        public object[] OneOfThreeTargetPlacards { get; set; }
 
-        public System.Guid[] TwoOfThreeTargetPlacardIds { get; set; }
+        public object[] TwoOfThreeTargetPlacards { get; set; }
 
-        public System.Guid[] ThreeOfThreeTargetPlacardIds { get; set; }
+        public object[] ThreeOfThreeTargetPlacards { get; set; }
     }
 }

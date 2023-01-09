@@ -48,17 +48,17 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
                 switch (i)
                 {
                     case 0:
-                        oneOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.OneOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
+                        oneOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.OneOfFourTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
 
                         break;
 
                     case 1:
-                        twoOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.TwoOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
+                        twoOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.TwoOfFourTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
 
                         break;
 
                     case 2:
-                        threeOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.ThreeOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
+                        threeOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.ThreeOfFourTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
 
                         break;
 
