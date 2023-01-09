@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Views.LandscapeGrid2x2PlacardView">
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="PlacardLayout">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+            </Grid>
+            <Grid Grid.Column="0" Grid.Row="0" IsClippedToBounds="True" />
+            <Grid Grid.Column="1" Grid.Row="0" IsClippedToBounds="True" />
+            <Grid Grid.Column="0" Grid.Row="1" IsClippedToBounds="True" />
+            <Grid Grid.Column="1" Grid.Row="1" IsClippedToBounds="True" />
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

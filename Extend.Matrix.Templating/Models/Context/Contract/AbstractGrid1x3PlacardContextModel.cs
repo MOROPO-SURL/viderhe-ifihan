@@ -1,17 +1,11 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Models.Context.Contract
 {
-    public abstract class AbstractGrid1x3PlacardContextModel
+    public abstract class AbstractGrid1x3PlacardContextModel : Common.Templating.Models.Context.AbstractPlacardContextModel
     {
-        public System.Guid OneOfThreeTargetId { get; set; }
+        public System.Guid[] OneOfThreeTargetPlacardIds { get; set; }
 
-        public Enumerations.MatrixItemTargetKind OneOfThreeTargetKind { get; set; }
+        public System.Guid[] TwoOfThreeTargetPlacardIds { get; set; }
 
-        public System.Guid TwoOfThreeTargetId { get; set; }
-
-        public Enumerations.MatrixItemTargetKind TwoOfThreeTargetKind { get; set; }
-
-        public System.Guid ThreeOfThreeTargetId { get; set; }
-
-        public Enumerations.MatrixItemTargetKind ThreeOfThreeTargetKind { get; set; }
+        public System.Guid[] ThreeOfThreeTargetPlacardIds { get; set; }
     }
 }

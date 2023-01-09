@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	<AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation</AssemblyName>
+	<RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation</RootNamespace>
+	<Version>0.1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
+    <ProjectReference Include="..\Extend.Matrix.Templating\Extend.Matrix.Templating.csproj" />
+    <ProjectReference Include="..\Support.Extend.Templating.Presentation\Support.Extend.Templating.Presentation.csproj" />
+    <ProjectReference Include="..\Support.Extend.Transitioning.Presentation\Support.Extend.Transitioning.Presentation.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\LandscapeGrid2x2PlacardView.xaml.cs">
+      <DependentUpon>LandscapeGrid2x2PlacardView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\LandscapeGrid1x3PlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LandscapeGrid2x2PlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
