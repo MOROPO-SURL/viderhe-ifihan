@@ -1,25 +1,10 @@
 ﻿using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Helpers
 {
-    public sealed class PlacardThumbnailViewProvider
+    public class PlacardThumbnailViewProvisioningHelper : Support.Presentation.Dashboard.Helpers.Facade.IPlacardThumbnailViewProvisioningHelperFacade
     {
-        private static PlacardThumbnailViewProvider instance;
-
-        public static PlacardThumbnailViewProvider Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new PlacardThumbnailViewProvider();
-                }
-
-                return instance;
-            }
-        }
-
-        private PlacardThumbnailViewProvider()
+        public PlacardThumbnailViewProvisioningHelper()
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
                 .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating.Dashboard.Presentation,\\sVersion=")).ToArray();
