@@ -2,6 +2,6 @@
 {
     public interface IPlacardViewModelCompletitionHelperFacade
     {
-        void Complete(Support.Presentation.Models.View.PlacardViewModel model);
+        System.Threading.Tasks.Task CompleteAsync(Support.Presentation.Models.View.PlacardViewModel model);
     }
 }
