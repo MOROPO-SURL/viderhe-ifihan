@@ -42,6 +42,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
             this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.PlacardsPickPage(OneOfThreePlacardsSelected_Callback, new Cloud.Api.Common.Models.Filter.PlacardFilterModel
             {
                 PlayerOrientationSupportKind = Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait
+            }, item =>
+            {
+                if (item.PlayerOrientationSupportKind == null)
+                {
+                    var descriptor = Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(item.Template.Id);
+
+                    return descriptor.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait || descriptor.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
+                }
+
+                return true;
             }));
         }
 
