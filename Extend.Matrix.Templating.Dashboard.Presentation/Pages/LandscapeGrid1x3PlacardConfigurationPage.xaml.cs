@@ -55,6 +55,42 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
             }));
         }
 
+        private void IncludeTwoOfThreePlacardsButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.PlacardsPickPage(TwoOfThreePlacardsSelected_Callback, new Cloud.Api.Common.Models.Filter.PlacardFilterModel
+            {
+                PlayerOrientationSupportKind = Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait
+            }, item =>
+            {
+                if (item.PlayerOrientationSupportKind == null)
+                {
+                    var descriptor = Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(item.Template.Id);
+
+                    return descriptor.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait || descriptor.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
+                }
+
+                return true;
+            }));
+        }
+
+        private void IncludeThreeOfThreePlacardsButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.PlacardsPickPage(ThreeOfThreePlacardsSelected_Callback, new Cloud.Api.Common.Models.Filter.PlacardFilterModel
+            {
+                PlayerOrientationSupportKind = Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait
+            }, item =>
+            {
+                if (item.PlayerOrientationSupportKind == null)
+                {
+                    var descriptor = Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(item.Template.Id);
+
+                    return descriptor.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait || descriptor.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
+                }
+
+                return true;
+            }));
+        }
+
         private void PlacardOneOfThreeDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
         {
             DisplayAlert("Confirmar", "Está seguro que desea eliminar este cartel de la secuencia?", "Eliminar", "Cancelar").ContinueWith(task =>
@@ -66,6 +102,36 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
                     var item = (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel;
 
                     BindingContextPageModel.OneOfThreeTargetPlacards.Remove(item);
+                });
+            });
+        }
+
+        private void PlacardTowOfThreeDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayAlert("Confirmar", "Está seguro que desea eliminar este cartel de la secuencia?", "Eliminar", "Cancelar").ContinueWith(task =>
+            {
+                if (!task.Result) return;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    var item = (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel;
+
+                    BindingContextPageModel.TwoOfThreeTargetPlacards.Remove(item);
+                });
+            });
+        }
+
+        private void PlacardThreeOfThreeDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayAlert("Confirmar", "Está seguro que desea eliminar este cartel de la secuencia?", "Eliminar", "Cancelar").ContinueWith(task =>
+            {
+                if (!task.Result) return;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    var item = (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel;
+
+                    BindingContextPageModel.ThreeOfThreeTargetPlacards.Remove(item);
                 });
             });
         }
@@ -154,6 +220,22 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
             foreach (var item in selection)
             {
                 BindingContextPageModel.OneOfThreeTargetPlacards.Add(item);
+            }
+        }
+
+        private void TwoOfThreePlacardsSelected_Callback(Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel[] selection)
+        {
+            foreach (var item in selection)
+            {
+                BindingContextPageModel.TwoOfThreeTargetPlacards.Add(item);
+            }
+        }
+
+        private void ThreeOfThreePlacardsSelected_Callback(Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel[] selection)
+        {
+            foreach (var item in selection)
+            {
+                BindingContextPageModel.ThreeOfThreeTargetPlacards.Add(item);
             }
         }
 

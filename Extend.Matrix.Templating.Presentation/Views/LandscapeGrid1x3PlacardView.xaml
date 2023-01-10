@@ -12,10 +12,10 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" IsClippedToBounds="True" />
+                <Grid Grid.Column="1" IsClippedToBounds="True" />
+                <Grid Grid.Column="2" IsClippedToBounds="True" />
             </Grid>
-            <Grid Grid.Column="0" IsClippedToBounds="True" />
-            <Grid Grid.Column="1" IsClippedToBounds="True" />
-            <Grid Grid.Column="2" IsClippedToBounds="True" />
         </Grid>
     </ContentView.Content>
 </extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

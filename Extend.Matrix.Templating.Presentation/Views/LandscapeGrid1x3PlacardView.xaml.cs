@@ -60,11 +60,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
                         break;
                 }
             }
-        }
-
-        public override void StartShowInWhenReady(Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition)
-        {
-            base.StartShowInWhenReady(transition);
 
             oneOfThreeScreenplayPresenter.BeginPresentation();
             twoOfThreeScreenplayPresenter.BeginPresentation();
