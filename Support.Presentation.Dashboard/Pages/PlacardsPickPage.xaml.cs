@@ -7,21 +7,21 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
     public partial class PlacardsPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PlacardsPickPageModel>
     {
         private System.Action<Models.View.PlacardOverviewViewModel[]> placardsSelectedCallbackAction;
-        private Cloud.Api.Common.Models.Filter.PlacardFilterModel filter;
+        private Cloud.Api.Common.Models.Filter.PlacardFilterModel remoteFilter;
+        private System.Func<Cloud.Api.Common.Models.PlacardDisplayModel, bool> localFilter;
         private int limit;
 
-        private Cloud.Api.Common.Models.PlacardDisplayModel[] rawPlacards;
+        private Models.View.PlacardOverviewViewModel[] placards;
         private int currentItemsPageNumber;
 
-        public PlacardsPickPage(System.Action<Models.View.PlacardOverviewViewModel[]> placardsSelectedCallbackAction, int limit = 25) : this(placardsSelectedCallbackAction, null, limit) { }
-
-        public PlacardsPickPage(System.Action<Models.View.PlacardOverviewViewModel[]> placardsSelectedCallbackAction, Cloud.Api.Common.Models.Filter.PlacardFilterModel filter = null, int limit = 25)
+        public PlacardsPickPage(System.Action<Models.View.PlacardOverviewViewModel[]> placardsSelectedCallbackAction, Cloud.Api.Common.Models.Filter.PlacardFilterModel remoteFilter = null, System.Func<Cloud.Api.Common.Models.PlacardDisplayModel, bool> localFilter = null, int limit = 25)
             : base(new Models.Page.PlacardsPickPageModel { IsBusy = true })
         {
             InitializeComponent();
 
             this.placardsSelectedCallbackAction = placardsSelectedCallbackAction;
-            this.filter = filter;
+            this.remoteFilter = remoteFilter;
+            this.localFilter = localFilter;
             this.limit = limit;
         }
 
@@ -29,7 +29,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
         {
             base.OnAppearing();
 
-            if (rawPlacards != null) return;
+            if (placards != null) return;
 
             LoadNextItemsPage(true);
         }
@@ -73,7 +73,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
             var requestTask = placardsApiConnectClient.GetAsync();
 
-            if (filter != null) requestTask = placardsApiConnectClient.FilterAsync(filter);
+            if (remoteFilter != null) requestTask = placardsApiConnectClient.FilterAsync(remoteFilter);
 
             requestTask.ContinueWith(task =>
             {
@@ -90,7 +90,14 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                     }
                     else
                     {
-                        rawPlacards = task.Result;
+                        if (localFilter == null)
+                        {
+                            placards = task.Result.Select(item => new Models.View.PlacardOverviewViewModel(item.ToViewModel(), true)).ToArray();
+                        }
+                        else
+                        {
+                            placards = task.Result.Where(localFilter).Select(item => new Models.View.PlacardOverviewViewModel(item.ToViewModel(), true)).ToArray();
+                        }
 
                         PresentNextItemsPage();
                     }
@@ -107,14 +114,14 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                 BindingContextPageModel.SelectablePlacards.Clear();
             }
 
-            var targetPlacads = rawPlacards.Skip((currentItemsPageNumber - 1) * limit).Take(limit);
+            var targetPlacads = placards.Skip((currentItemsPageNumber - 1) * limit).Take(limit);
 
             foreach (var item in targetPlacads)
             {
-                BindingContextPageModel.SelectablePlacards.Add(new Models.View.SelectableModelViewModel<Models.View.PlacardOverviewViewModel> { Model = new Models.View.PlacardOverviewViewModel(item.ToViewModel(), true) });
+                BindingContextPageModel.SelectablePlacards.Add(new Models.View.SelectableModelViewModel<Models.View.PlacardOverviewViewModel> { Model = item });
             }
 
-            BindingContextPageModel.HasMoreImages = currentItemsPageNumber < (rawPlacards.Length / limit);
+            BindingContextPageModel.HasMoreImages = currentItemsPageNumber < (placards.Length / limit);
         }
 
         protected override void DisposeUnmanagementResources()
@@ -122,7 +129,10 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
             base.DisposeUnmanagementResources();
 
             placardsSelectedCallbackAction = null;
-            filter = null;
+            remoteFilter = null;
+            localFilter = null;
+
+            placards = null;
         }
     }
 }
