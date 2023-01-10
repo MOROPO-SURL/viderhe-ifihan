@@ -20,7 +20,7 @@
         {
             if (PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any || PlayerOrientationSupportKindExclusive)
             {
-                if (!string.IsNullOrEmpty(Label.Trim()))
+                if (!string.IsNullOrEmpty(Label?.Trim()))
                 {
                     if (TemplateId != null)
                     {
@@ -39,22 +39,22 @@
             }
             else
             {
-                if (!string.IsNullOrEmpty(Label.Trim()))
+                if (!string.IsNullOrEmpty(Label?.Trim()))
                 {
                     if (TemplateId != null)
                     {
-                        return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any) && item.TemplateId == TemplateId && item.Label.Contains(Label);
+                        return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == null) && item.TemplateId == TemplateId && item.Label.Contains(Label);
                     }
 
-                    return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any) && item.Label.Contains(Label);
+                    return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == null) && item.Label.Contains(Label);
                 }
 
                 if (TemplateId != null)
                 {
-                    return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any) && item.TemplateId == TemplateId;
+                    return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == null) && item.TemplateId == TemplateId;
                 }
 
-                return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
+                return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == null;
             }
         }
     }

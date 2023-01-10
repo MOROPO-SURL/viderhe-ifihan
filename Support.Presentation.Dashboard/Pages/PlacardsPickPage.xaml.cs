@@ -10,7 +10,8 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
         private Cloud.Api.Common.Models.Filter.PlacardFilterModel filter;
         private int limit;
 
-        private int currentImagesPageNumber;
+        private Cloud.Api.Common.Models.PlacardDisplayModel[] rawPlacards;
+        private int currentItemsPageNumber;
 
         public PlacardsPickPage(System.Action<Models.View.PlacardOverviewViewModel[]> placardsSelectedCallbackAction, int limit = 25) : this(placardsSelectedCallbackAction, null, limit) { }
 
@@ -22,19 +23,15 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
             this.placardsSelectedCallbackAction = placardsSelectedCallbackAction;
             this.filter = filter;
             this.limit = limit;
-
-            IsEnabled = false;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (IsEnabled) return;
+            if (rawPlacards != null) return;
 
             LoadNextItemsPage(true);
-
-            IsEnabled = true;
         }
 
         private void ApplyToolbarItem_Activated(object sender, System.EventArgs e)
@@ -61,15 +58,22 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
         private void LoadNextItemsPage(bool restart = false)
         {
-            BindingContextPageModel.IsBusy = true;
+            if (!restart)
+            {
+                PresentNextItemsPage();
 
-            if (restart) currentImagesPageNumber = 0;
+                return;
+            }
+
+            BindingContextPageModel.IsBusy = true;
 
             var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
-            var requestTask = placardsApiConnectClient.GetPaginateAsync(++currentImagesPageNumber, limit);
+            currentItemsPageNumber = 0;
 
-            if (filter != null) requestTask = placardsApiConnectClient.FilterPaginateAsync(filter, currentImagesPageNumber, limit);
+            var requestTask = placardsApiConnectClient.GetAsync();
+
+            if (filter != null) requestTask = placardsApiConnectClient.FilterAsync(filter);
 
             requestTask.ContinueWith(task =>
             {
@@ -79,29 +83,38 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        Xamarin.Forms.DependencyService.Get<Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception, () =>
+                        {
+                            Xamarin.Forms.Device.BeginInvokeOnMainThread(() => this.NavigationPopPageAsync());
+                        });
                     }
                     else
                     {
-                        var relevantImages = task.Result.List.Select(item => new Models.View.PlacardOverviewViewModel(item.ToViewModel(), true)).Select(item => new Models.View.SelectableModelViewModel<Models.View.PlacardOverviewViewModel>
-                        {
-                            Model = item
-                        });
+                        rawPlacards = task.Result;
 
-                        if (currentImagesPageNumber == 1)
-                        {
-                            BindingContextPageModel.SelectablePlacards.Clear();
-                        }
-
-                        foreach (var item in relevantImages)
-                        {
-                            BindingContextPageModel.SelectablePlacards.Add(item);
-                        }
-
-                        BindingContextPageModel.HasMoreImages = task.Result.HasNext && task.Result.List.Count > 0;
+                        PresentNextItemsPage();
                     }
                 });
             });
+        }
+
+        private void PresentNextItemsPage()
+        {
+            currentItemsPageNumber++;
+
+            if (currentItemsPageNumber == 1)
+            {
+                BindingContextPageModel.SelectablePlacards.Clear();
+            }
+
+            var targetPlacads = rawPlacards.Skip((currentItemsPageNumber - 1) * limit).Take(limit);
+
+            foreach (var item in targetPlacads)
+            {
+                BindingContextPageModel.SelectablePlacards.Add(new Models.View.SelectableModelViewModel<Models.View.PlacardOverviewViewModel> { Model = new Models.View.PlacardOverviewViewModel(item.ToViewModel(), true) });
+            }
+
+            BindingContextPageModel.HasMoreImages = currentItemsPageNumber < (rawPlacards.Length / limit);
         }
 
         protected override void DisposeUnmanagementResources()
