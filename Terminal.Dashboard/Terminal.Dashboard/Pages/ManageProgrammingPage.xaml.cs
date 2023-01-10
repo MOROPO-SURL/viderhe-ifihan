@@ -254,11 +254,30 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         break;
 
                     case OPTION_COMMON_PREVIEW:
-                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { targetFrameViewModel.Placard }, ScreenplayPresentationComplete_Callback, false);
+                            var completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
+                            {
+                                Id = targetFrameViewModel.Placard.Id
+                            });
 
-                            this.NavigationPushModalPageAsync(screenplayPlayerPage);
+                            var previewPlacard = new Support.Presentation.Models.View.PlacardViewModel
+                            {
+                                Id = targetFrameViewModel.Placard.Id,
+                                Label = targetFrameViewModel.Placard.Label,
+                                PlayerOrientationSupportKind = targetFrameViewModel.Placard.PlayerOrientationSupportKind,
+                                SerializedContext = targetFrameViewModel.Placard.SerializedContext,
+                                Template = targetFrameViewModel.Placard.Template
+                            };
+
+                            if (completitionHelper != null)
+                            {
+                                await completitionHelper.CompleteAsync(targetFrameViewModel.Placard);
+                            }
+
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { previewPlacard }, ScreenplayPresentationComplete_Callback, false);
+
+                            await this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
 
                         break;
@@ -278,11 +297,30 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             });
         }
 
-        private void ScreenplayFramesPlayButton_Clicked(object sender, System.EventArgs eventArgs)
+        private async void ScreenplayFramesPlayButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(BindingContextPageModel.Frames.Select(m => m.Placard).ToArray(), ScreenplayPresentationComplete_Callback, false);
+            var screenplayPlacards = BindingContextPageModel.Frames.Select(m => m.Placard).ToArray();
 
-            this.NavigationPushModalPageAsync(screenplayPlayerPage);
+            var previewPlacards = new System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel>();
+
+            foreach (var item in screenplayPlacards)
+            {
+                var completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
+                {
+                    Id = item.Id
+                });
+
+                if (completitionHelper != null)
+                {
+                    await completitionHelper.CompleteAsync(item);
+                }
+
+                previewPlacards.Add(item);
+            }
+
+            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(previewPlacards.ToArray(), ScreenplayPresentationComplete_Callback, false);
+
+            await this.NavigationPushModalPageAsync(screenplayPlayerPage);
         }
 
         private void AddScreenplayButton_Clicked(object sender, System.EventArgs eventArgs)
