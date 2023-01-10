@@ -4,6 +4,8 @@
     {
         public static Models.Page.LandscapeGrid2x2PlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
+            if (placardViewModel == null) return new Models.Page.LandscapeGrid2x2PlacardConfigurationPageModel();
+
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapeGrid2x2PlacardContextModel>(placardViewModel.SerializedContext);
 
             var result = new Models.Page.LandscapeGrid2x2PlacardConfigurationPageModel

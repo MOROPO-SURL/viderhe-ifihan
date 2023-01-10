@@ -133,9 +133,10 @@
                     </StackLayout>
                 </Frame>
                 <Frame
-                    Grid.ColumnSpan="3" Grid.Row="0"
+                    Grid.ColumnSpan="3" Grid.Row="3"
                     Style="{StaticResource FormFieldFrame}"
-                    Padding="0">
+                    Padding="0"
+                    HeightRequest="320">
                     <Grid RowSpacing="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
@@ -146,7 +147,7 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Label 
-                            x:Name="ImagesLabel"
+                            x:Name="OneOfThreePlacardsLabel"
                             Grid.Column="0" Grid.Row="0"
                             Style="{StaticResource FormLabel}"
                             Margin="10,10,10,6"
@@ -173,7 +174,7 @@
                                             ValidableFormPage="{Reference FormPage}"
                                             FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultCollectionFlexLayoutValidationPresenter.Instance}"
                                             TargetProperty="{Static BindableLayout.ItemsSourceProperty}"
-                                            Label="{Reference ImagesLabel}">
+                                            Label="{Reference OneOfThreePlacardsLabel}">
                                             <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
                                                 <supportpresentationdashboardvalidators:MinCountFormFieldValidator MinCount="1" />
                                             </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>

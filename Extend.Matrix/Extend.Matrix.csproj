@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common\Extend.Common.csproj" />
+    <ProjectReference Include="..\Extend.Matrix.Templating\Extend.Matrix.Templating.csproj" />
   </ItemGroup>
 
 </Project>

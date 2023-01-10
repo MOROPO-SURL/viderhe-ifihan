@@ -39,7 +39,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
 
         private void IncludeOneOfThreePlacardsButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.PlacardsPickPage(OneOfThreePlacardsSelected_Callback));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.PlacardsPickPage(OneOfThreePlacardsSelected_Callback, new Cloud.Api.Common.Models.Filter.PlacardFilterModel
+            {
+                PlayerOrientationSupportKind = Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait
+            }));
         }
 
         private void PlacardOneOfThreeDeleteButton_Clicked(object sender, System.EventArgs eventArgs)

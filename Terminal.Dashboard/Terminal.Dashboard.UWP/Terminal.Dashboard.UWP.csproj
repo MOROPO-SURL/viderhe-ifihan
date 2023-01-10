@@ -320,6 +320,22 @@
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Matrix.Templating.Dashboard.Presentation\Extend.Matrix.Templating.Dashboard.Presentation.csproj">
+      <Project>{469ec042-07ce-4de5-919b-fab791cdf168}</Project>
+      <Name>Extend.Matrix.Templating.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Matrix.Templating.Presentation\Extend.Matrix.Templating.Presentation.csproj">
+      <Project>{562860bb-8d28-4bd6-871e-f467fc826339}</Project>
+      <Name>Extend.Matrix.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Matrix.Templating\Extend.Matrix.Templating.csproj">
+      <Project>{4b26a6d9-110c-4fe3-8295-40a79bc7bc0e}</Project>
+      <Name>Extend.Matrix.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Matrix\Extend.Matrix.csproj">
+      <Project>{3564a42a-1e61-46e5-8cbb-57ab859c8d7e}</Project>
+      <Name>Extend.Matrix</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj">
       <Project>{f36158f5-5a62-40f5-8f5e-ce85d8277f20}</Project>
       <Name>Support.Presentation.Dashboard</Name>
