@@ -107,7 +107,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         var completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
                         {
-                            Id = target.Placard.Id
+                            Id = target.Placard.Id,
+                            Template = new Cloud.Api.Common.Models.TemplateDisplayModel
+                            {
+                                Id = target.Placard.Template.Id
+                            }
                         });
 
                         var previewPlacard = new Support.Presentation.Models.View.PlacardViewModel
@@ -277,7 +281,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             var completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
                             {
-                                Id = targetFrameViewModel.Placard.Id
+                                Id = targetFrameViewModel.Placard.Id,
+                                Template = new Cloud.Api.Common.Models.TemplateDisplayModel
+                                {
+                                    Id = targetFrameViewModel.Placard.Template.Id
+                                }
                             });
 
                             var previewPlacard = new Support.Presentation.Models.View.PlacardViewModel
@@ -326,7 +334,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 var completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
                 {
-                    Id = item.Id
+                    Id = item.Id,
+                    Template = new Cloud.Api.Common.Models.TemplateDisplayModel
+                    {
+                        Id = item.Template.Id
+                    }
                 });
 
                 if (completitionHelper != null)
