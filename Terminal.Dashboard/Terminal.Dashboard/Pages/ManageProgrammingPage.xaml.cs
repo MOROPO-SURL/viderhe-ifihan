@@ -64,7 +64,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 extraOptions.Clear();
             }
 
-            DisplayActionSheet("Opciones de Marco", OPTION_COMMON_CANCEL, OPTION_COMMON_DELETE, extraOptions.ToArray()).ContinueWith(actionSheetTask =>
+            DisplayActionSheet("Opciones de Marco", OPTION_COMMON_CANCEL, OPTION_COMMON_DELETE, extraOptions.ToArray()).ContinueWith(async actionSheetTask =>
             {
                 switch (actionSheetTask.Result)
                 {
@@ -105,9 +105,28 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         break;
 
                     case OPTION_COMMON_PREVIEW:
+                        var completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
+                        {
+                            Id = target.Placard.Id
+                        });
+
+                        var previewPlacard = new Support.Presentation.Models.View.PlacardViewModel
+                        {
+                            Id = target.Placard.Id,
+                            Label = target.Placard.Label,
+                            PlayerOrientationSupportKind = target.Placard.PlayerOrientationSupportKind,
+                            SerializedContext = target.Placard.SerializedContext,
+                            Template = target.Placard.Template
+                        };
+
+                        if (completitionHelper != null)
+                        {
+                            await completitionHelper.CompleteAsync(previewPlacard);
+                        }
+
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { target.Placard }, ScreenplayPresentationComplete_Callback, false);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { previewPlacard }, ScreenplayPresentationComplete_Callback, false);
 
                             this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
@@ -272,7 +291,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                             if (completitionHelper != null)
                             {
-                                await completitionHelper.CompleteAsync(targetFrameViewModel.Placard);
+                                await completitionHelper.CompleteAsync(previewPlacard);
                             }
 
                             var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { previewPlacard }, ScreenplayPresentationComplete_Callback, false);
