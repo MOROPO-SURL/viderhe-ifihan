@@ -7,15 +7,21 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
     public partial class PlacardsPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PlacardsPickPageModel>
     {
         private System.Action<Models.View.PlacardOverviewViewModel[]> placardsSelectedCallbackAction;
+        private Cloud.Api.Common.Models.Filter.PlacardFilterModel filter;
+        private int limit;
 
         private int currentImagesPageNumber;
 
-        public PlacardsPickPage(System.Action<Models.View.PlacardOverviewViewModel[]> placardsSelectedCallbackAction)
+        public PlacardsPickPage(System.Action<Models.View.PlacardOverviewViewModel[]> placardsSelectedCallbackAction, int limit = 25) : this(placardsSelectedCallbackAction, null, limit) { }
+
+        public PlacardsPickPage(System.Action<Models.View.PlacardOverviewViewModel[]> placardsSelectedCallbackAction, Cloud.Api.Common.Models.Filter.PlacardFilterModel filter = null, int limit = 25)
             : base(new Models.Page.PlacardsPickPageModel { IsBusy = true })
         {
             InitializeComponent();
 
             this.placardsSelectedCallbackAction = placardsSelectedCallbackAction;
+            this.filter = filter;
+            this.limit = limit;
 
             IsEnabled = false;
         }
@@ -61,7 +67,11 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
             var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
-            placardsApiConnectClient.GetPaginateAsync(++currentImagesPageNumber).ContinueWith(task =>
+            var requestTask = placardsApiConnectClient.GetPaginateAsync(++currentImagesPageNumber, limit);
+
+            if (filter != null) requestTask = placardsApiConnectClient.FilterPaginateAsync(filter, currentImagesPageNumber, limit);
+
+            requestTask.ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -99,6 +109,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
             base.DisposeUnmanagementResources();
 
             placardsSelectedCallbackAction = null;
+            filter = null;
         }
     }
 }
