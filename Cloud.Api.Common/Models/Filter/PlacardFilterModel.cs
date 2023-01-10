@@ -5,6 +5,7 @@
         public PlacardFilterModel()
         {
             PlayerOrientationSupportKind = Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
+            PlayerOrientationSupportKindExclusive = false;
         }
 
         public string Label { get; set; }
@@ -13,24 +14,48 @@
 
         public Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupportKind { get; set; }
 
+        public bool PlayerOrientationSupportKindExclusive { get; set; }
+
         public System.Linq.Expressions.Expression<System.Func<Persistence.Entities.Placard, bool>> GetSelector()
         {
-            if (!string.IsNullOrEmpty(Label.Trim()))
+            if (PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any || PlayerOrientationSupportKindExclusive)
             {
-                if (TemplateId != null)
+                if (!string.IsNullOrEmpty(Label.Trim()))
                 {
-                    return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind && item.TemplateId == TemplateId && item.Label.Contains(Label);
+                    if (TemplateId != null)
+                    {
+                        return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind && item.TemplateId == TemplateId && item.Label.Contains(Label);
+                    }
+
+                    return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind && item.Label.Contains(Label);
                 }
 
-                return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind && item.Label.Contains(Label);
-            }
+                if (TemplateId != null)
+                {
+                    return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind && item.TemplateId == TemplateId;
+                }
 
-            if (TemplateId != null)
+                return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind;
+            }
+            else
             {
-                return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind && item.TemplateId == TemplateId;
-            }
+                if (!string.IsNullOrEmpty(Label.Trim()))
+                {
+                    if (TemplateId != null)
+                    {
+                        return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any) && item.TemplateId == TemplateId && item.Label.Contains(Label);
+                    }
 
-            return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind;
+                    return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any) && item.Label.Contains(Label);
+                }
+
+                if (TemplateId != null)
+                {
+                    return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any) && item.TemplateId == TemplateId;
+                }
+
+                return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
+            }
         }
     }
 }
