@@ -6,7 +6,7 @@
     x:Class="SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Views.LandscapeGrid1x3PlacardView">
     <ContentView.Content>
         <Grid x:Name="Wrapper">
-            <Grid x:Name="PlacardLayout">
+            <Grid x:Name="PlacardLayout" ColumnSpacing="2" BackgroundColor="DimGray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
