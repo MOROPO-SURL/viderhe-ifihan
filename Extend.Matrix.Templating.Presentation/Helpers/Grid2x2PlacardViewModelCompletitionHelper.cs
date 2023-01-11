@@ -1,5 +1,4 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Helpers
 {
@@ -22,7 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Help
 
                 var placard = await apiConnectClient.GetAsync(placardId);
 
-                transformedOneOfFourTargetPlacards.Add(placard.ToViewModel());
+                transformedOneOfFourTargetPlacards.Add(placard);
             }
 
             foreach (var item in context.TwoOfFourTargetPlacards)
@@ -31,7 +30,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Help
 
                 var placard = await apiConnectClient.GetAsync(placardId);
 
-                transformedTwoOfFourTargetPlacards.Add(placard.ToViewModel());
+                transformedTwoOfFourTargetPlacards.Add(placard);
             }
 
             foreach (var item in context.ThreeOfFourTargetPlacards)
@@ -40,7 +39,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Help
 
                 var placard = await apiConnectClient.GetAsync(placardId);
 
-                transformedThreeOfFourTargetPlacards.Add(placard.ToViewModel());
+                transformedThreeOfFourTargetPlacards.Add(placard);
             }
 
             foreach (var item in context.FourOfFourTargetPlacards)
@@ -49,7 +48,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Help
 
                 var placard = await apiConnectClient.GetAsync(placardId);
 
-                transformedFourOfFourTargetPlacards.Add(placard.ToViewModel());
+                transformedFourOfFourTargetPlacards.Add(placard);
             }
 
             context.OneOfFourTargetPlacards = transformedOneOfFourTargetPlacards.ToArray();

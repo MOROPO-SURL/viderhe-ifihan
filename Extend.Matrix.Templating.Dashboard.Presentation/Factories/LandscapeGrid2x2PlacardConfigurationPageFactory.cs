@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Presentation.Factories
+﻿using SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Extensions;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Presentation.Factories
 {
     public static class LandscapeGrid2x2PlacardConfigurationPageFactory
     {
@@ -16,22 +18,22 @@
 
             foreach (var item in context.OneOfFourTargetPlacards)
             {
-                result.OneOfFourTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item as Support.Presentation.Models.View.PlacardViewModel, true));
+                result.OneOfFourTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
             }
 
             foreach (var item in context.TwoOfFourTargetPlacards)
             {
-                result.TwoOfFourTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item as Support.Presentation.Models.View.PlacardViewModel, true));
+                result.TwoOfFourTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
             }
 
             foreach (var item in context.ThreeOfFourTargetPlacards)
             {
-                result.ThreeOfFourTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item as Support.Presentation.Models.View.PlacardViewModel, true));
+                result.ThreeOfFourTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
             }
 
             foreach (var item in context.FourOfFourTargetPlacards)
             {
-                result.FourOfFourTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item as Support.Presentation.Models.View.PlacardViewModel, true));
+                result.FourOfFourTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
             }
 
             return result;

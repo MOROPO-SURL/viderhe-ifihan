@@ -1,4 +1,7 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Providers
+﻿using SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Extensions;
+using System.Linq;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Providers
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
@@ -11,9 +14,9 @@
                 return new Views.LandscapeGrid1x3PlacardView(new Models.View.LandscapeGrid1x3PlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    OneOfThreeTargetPlacards = context.OneOfThreeTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[],
-                    TwoOfThreeTargetPlacards = context.TwoOfThreeTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[],
-                    ThreeOfThreeTargetPlacards = context.ThreeOfThreeTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[]
+                    OneOfThreeTargetPlacards = context.OneOfThreeTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    TwoOfThreeTargetPlacards = context.TwoOfThreeTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    ThreeOfThreeTargetPlacards = context.ThreeOfThreeTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray()
                 });
             }
 
@@ -24,10 +27,10 @@
                 return new Views.LandscapeGrid2x2PlacardView(new Models.View.LandscapeGrid2x2PlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    OneOfFourTargetPlacards = context.OneOfFourTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[],
-                    TwoOfFourTargetPlacards = context.TwoOfFourTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[],
-                    ThreeOfFourTargetPlacards = context.ThreeOfFourTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[],
-                    FourOfFourTargetPlacards = context.FourOfFourTargetPlacards as Support.Presentation.Models.View.PlacardViewModel[]
+                    OneOfFourTargetPlacards = context.OneOfFourTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    TwoOfFourTargetPlacards = context.TwoOfFourTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    ThreeOfFourTargetPlacards = context.ThreeOfFourTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    FourOfFourTargetPlacards = context.FourOfFourTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray()
                 });
             }
 

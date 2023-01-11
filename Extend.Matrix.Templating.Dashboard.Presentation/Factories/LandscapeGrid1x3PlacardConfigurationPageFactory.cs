@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Presentation.Factories
+﻿using SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Extensions;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Presentation.Factories
 {
     public static class LandscapeGrid1x3PlacardConfigurationPageFactory
     {
@@ -16,17 +18,17 @@
 
             foreach (var item in context.OneOfThreeTargetPlacards)
             {
-                result.OneOfThreeTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item as Support.Presentation.Models.View.PlacardViewModel, true));
+                result.OneOfThreeTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
             }
 
             foreach (var item in context.TwoOfThreeTargetPlacards)
             {
-                result.TwoOfThreeTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item as Support.Presentation.Models.View.PlacardViewModel, true));
+                result.TwoOfThreeTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
             }
 
             foreach (var item in context.ThreeOfThreeTargetPlacards)
             {
-                result.ThreeOfThreeTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item as Support.Presentation.Models.View.PlacardViewModel, true));
+                result.ThreeOfThreeTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
             }
 
             return result;
