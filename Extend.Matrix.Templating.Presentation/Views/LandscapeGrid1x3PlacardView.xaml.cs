@@ -44,18 +44,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
                 switch (i)
                 {
                     case 0:
-                        oneOfThreeScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.OneOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
+                        oneOfThreeScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.OneOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, () => Xamarin.Essentials.DisplayOrientation.Portrait);
 
                         break;
 
                     case 1:
-                        twoOfThreeScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.TwoOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
+                        twoOfThreeScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.TwoOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, () => Xamarin.Essentials.DisplayOrientation.Portrait);
 
                         break;
 
                     case 2:
                     default:
-                        threeOfThreeScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.ThreeOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
+                        threeOfThreeScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.ThreeOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, () => Xamarin.Essentials.DisplayOrientation.Portrait);
 
                         break;
                 }
@@ -87,9 +87,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
             EndPresentation();
         }
 
-        private BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model)
+        private BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
         {
-            return Support.Extend.Templating.Presentation.Providers.PlacardPresentationViewProvider.Instance.GetFor(model);
+            return Support.Extend.Templating.Presentation.Providers.PlacardPresentationViewProvider.Instance.GetFor(model, getOrientationFunction);
         }
     }
 }
