@@ -1,11 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View
 {
     public class PlacardOverviewViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
     {
-        private Support.Presentation.Models.View.PlacardViewModel reference;
-        private Support.Presentation.Models.View.PlacardViewModel placard;
+        private Presentation.Models.View.PlacardViewModel reference;
+        private Presentation.Models.View.PlacardViewModel placard;
 
-        public PlacardOverviewViewModel(Support.Presentation.Models.View.PlacardViewModel reference, bool load = true)
+        public PlacardOverviewViewModel(Presentation.Models.View.PlacardViewModel reference, bool load = true)
         {
             this.reference = reference;
 
@@ -14,7 +14,7 @@
             LoadPlacardModel();
         }
 
-        public Support.Presentation.Models.View.PlacardViewModel Placard { get => placard; set => SetProperty(ref placard, value); }
+        public Presentation.Models.View.PlacardViewModel Placard { get => placard; set => SetProperty(ref placard, value); }
 
         public void LoadPlacardModel()
         {

@@ -2,12 +2,12 @@
 <ContentView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Converters"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views.LandscapePlacardThumbnailWrapView"
-    VerticalOptions="Center"
+    x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views.PortraitPlacardThumbnailWrapView"
+    HorizontalOptions="Center"
     BackgroundColor="Black"
-    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}">
+    WidthRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}">
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:PlacardViewModelToPlacardThumbnailViewConverter x:Key="PlacardViewModelToPlacardThumbnailViewConverter" />

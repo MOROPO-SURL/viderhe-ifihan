@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Converters
 {
     public class AllTrueMultiConverter : Xamarin.Forms.IMultiValueConverter
     {
