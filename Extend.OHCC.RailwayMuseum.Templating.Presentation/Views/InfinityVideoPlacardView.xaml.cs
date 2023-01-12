@@ -52,7 +52,7 @@
             screenplayPresenter.BeginPresentation();
         } 
 
-        private Common.Presentation.Views.BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model)
+        private Common.Presentation.Views.BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
         {
             if (model.Template.Id != Essential.Templating.Descriptors.SimpleVideoTemplateDescriptor.ID) throw new System.InvalidOperationException();
 
