@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Presentation</RootNamespace>
-    <Version>0.7.1.0</Version>
+    <Version>0.7.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
