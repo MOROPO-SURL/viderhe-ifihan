@@ -2,7 +2,7 @@
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 {
     public partial class PlacardPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PlacardPickPageModel>
     {
@@ -93,7 +93,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 }
             }
 
-            var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Managers.SessionManager.Instance);
+            var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
             placardsApiConnectClient.GetPaginateAsync(++currentPlacardsPageNumber, placardPageLimit).ContinueWith(task =>
             {
@@ -101,7 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {
