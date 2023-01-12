@@ -6,8 +6,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
-        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model)
+        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
         {
+            var orientation = getOrientationFunction.Invoke();
+
             if (model.Template.Id == Descriptors.TranslucentContextualOverlapForImageTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TranslucentContextualOverlapForImagePlacardContextModel>(model.SerializedContext, new Newtonsoft.Json.JsonSerializerSettings { TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto });
@@ -25,7 +27,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
                 };
 
-                if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
                 {
                     return new Views.Placard.PortraitTranslucentContextualOverlapForImagePlacardView(targetPlacardViewModel);
                 }
@@ -53,7 +55,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
                 };
 
-                if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
                 {
                     return new Views.Placard.PortraitTranslucentContextualOverlapForImageSecuencePlacardView(targetPlacardViewModel);
                 }
@@ -85,7 +87,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
                 };
 
-                if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
                 {
                     return new Views.Placard.PortraitFlatContextualOverlapForImagePlacardView(targetPlacardViewModel);
                 }
@@ -120,7 +122,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
                 };
 
-                if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
                 {
                     return new Views.Placard.PortraitTrailContextualOverlapForImagePlacardView(targetPlacardViewModel);
                 }
