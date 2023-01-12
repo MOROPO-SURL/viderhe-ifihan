@@ -48,7 +48,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             presentationEndedCallbackAction = screenplayPresentationEndedCallbackAction;
 
             framesStack = new System.Collections.Generic.Stack<PlacardViewModel>(placards.Reverse());
-            this.getOrientationFunction = getOrientationFunction;
         }
 
         public PlacardViewModel CurrentPlacardViewModel { get; set; }
