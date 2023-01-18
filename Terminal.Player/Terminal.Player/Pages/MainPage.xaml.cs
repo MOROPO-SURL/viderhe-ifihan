@@ -302,6 +302,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             }
             else
             {
+                Managers.SessionManager.Instance.AuthenticationType = task.Result.AuthenticationType;
+                Managers.SessionManager.Instance.AuthenticationToken = task.Result.AuthenticationToken;
+
                 // MotoTouch does not support dynamic assembly loading
                 if (Xamarin.Forms.Device.RuntimePlatform != Xamarin.Forms.Device.iOS)
                 {

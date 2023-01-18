@@ -212,6 +212,28 @@
                                                             FontFamily="Material Design Icons"
                                                             FontSize="24" />
                                                     </Grid>
+                                                    <ImageButton
+                                                        Grid.Row="0"
+                                                        VerticalOptions="Start" HorizontalOptions="End"
+                                                        Margin="4"
+                                                        WidthRequest="24"
+                                                        HeightRequest="24"
+                                                        BackgroundColor="#99000000"
+                                                        BorderWidth="0"
+                                                        CornerRadius="12"
+                                                        Clicked="PlacardOneOfThreeDeleteButton_Clicked">
+                                                        <ImageButton.Padding>
+                                                            <OnPlatform x:TypeArguments="Thickness">
+                                                                <On Platform="UWP" Value="1,0,0,0" />
+                                                            </OnPlatform>
+                                                        </ImageButton.Padding>
+                                                        <ImageButton.Source>
+                                                            <FontImageSource 
+                                                                Color="White"
+                                                                FontFamily="{StaticResource IconFontFamily}"
+                                                                Glyph="&#xF156;" />
+                                                        </ImageButton.Source>
+                                                    </ImageButton>
                                                     <StackLayout 
                                                         Grid.Row="1"
                                                         BackgroundColor="White"
@@ -312,6 +334,28 @@
                                                             FontFamily="Material Design Icons"
                                                             FontSize="24" />
                                                     </Grid>
+                                                    <ImageButton
+                                                        Grid.Row="0"
+                                                        VerticalOptions="Start" HorizontalOptions="End"
+                                                        Margin="4"
+                                                        WidthRequest="24"
+                                                        HeightRequest="24"
+                                                        BackgroundColor="#99000000"
+                                                        BorderWidth="0"
+                                                        CornerRadius="12"
+                                                        Clicked="PlacardTowOfThreeDeleteButton_Clicked">
+                                                        <ImageButton.Padding>
+                                                            <OnPlatform x:TypeArguments="Thickness">
+                                                                <On Platform="UWP" Value="1,0,0,0" />
+                                                            </OnPlatform>
+                                                        </ImageButton.Padding>
+                                                        <ImageButton.Source>
+                                                            <FontImageSource 
+                                                                Color="White"
+                                                                FontFamily="{StaticResource IconFontFamily}"
+                                                                Glyph="&#xF156;" />
+                                                        </ImageButton.Source>
+                                                    </ImageButton>
                                                     <StackLayout 
                                                         Grid.Row="1"
                                                         BackgroundColor="White"
@@ -412,6 +456,28 @@
                                                             FontFamily="Material Design Icons"
                                                             FontSize="24" />
                                                     </Grid>
+                                                    <ImageButton
+                                                        Grid.Row="0"
+                                                        VerticalOptions="Start" HorizontalOptions="End"
+                                                        Margin="4"
+                                                        WidthRequest="24"
+                                                        HeightRequest="24"
+                                                        BackgroundColor="#99000000"
+                                                        BorderWidth="0"
+                                                        CornerRadius="12"
+                                                        Clicked="PlacardThreeOfThreeDeleteButton_Clicked">
+                                                        <ImageButton.Padding>
+                                                            <OnPlatform x:TypeArguments="Thickness">
+                                                                <On Platform="UWP" Value="1,0,0,0" />
+                                                            </OnPlatform>
+                                                        </ImageButton.Padding>
+                                                        <ImageButton.Source>
+                                                            <FontImageSource 
+                                                                Color="White"
+                                                                FontFamily="{StaticResource IconFontFamily}"
+                                                                Glyph="&#xF156;" />
+                                                        </ImageButton.Source>
+                                                    </ImageButton>
                                                     <StackLayout 
                                                         Grid.Row="1"
                                                         BackgroundColor="White"

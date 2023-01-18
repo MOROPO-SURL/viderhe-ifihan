@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using MOROPO.SAPRESSC.Core.Persistence.Repositories;
 using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
 using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models.Filter;
+using System;
 using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
@@ -28,6 +29,12 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
             return e => e.Account.Id == accountId && e.Template.Enabled;
+        }
+
+        [Microsoft.AspNetCore.Authorization.AllowAnonymous]
+        public override ActionResult<PlacardDisplayModel> Get(Guid key)
+        {
+            return base.Get(key);
         }
 
         protected override void PreCreate(Persistence.Entities.Placard entity, PlacardInputModel inputModel)

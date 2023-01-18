@@ -43,6 +43,7 @@
     <ProjectReference Include="..\..\Extend.Essential.Overlaying.Presentation\Extend.Essential.Overlaying.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
     <ProjectReference Include="..\..\Extend.Matrix.Templating.Presentation\Extend.Matrix.Templating.Presentation.csproj" />
+    <ProjectReference Include="..\..\Extend.Matrix.Templating\Extend.Matrix.Templating.csproj" />
     <ProjectReference Include="..\..\Extend.Matrix\Extend.Matrix.csproj" />
     <ProjectReference Include="..\..\Support.Presentation.Player\Support.Presentation.Player.csproj" />
     <ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj" />

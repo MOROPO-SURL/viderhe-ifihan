@@ -256,6 +256,14 @@
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Matrix.Templating.Presentation\Extend.Matrix.Templating.Presentation.csproj">
+      <Project>{562860bb-8d28-4bd6-871e-f467fc826339}</Project>
+      <Name>Extend.Matrix.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Matrix\Extend.Matrix.csproj">
+      <Project>{3564a42a-1e61-46e5-8cbb-57ab859c8d7e}</Project>
+      <Name>Extend.Matrix</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj">
       <Project>{44A1EA24-59C5-4E9D-AF01-C65297998114}</Project>
       <Name>Support.Presentation</Name>

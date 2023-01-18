@@ -32,7 +32,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
                 {
                     options.Headers = new System.Collections.Generic.Dictionary<string, string>();
 
-                    var securityHeaders = Managers.SessionManager.Instance.ExtraHeaders;
+                    var extraHeaders = Managers.SessionManager.Instance.GetExtraHeaders();
+
+                    var securityHeaders = extraHeaders;
 
                     foreach (var header in securityHeaders)
                     {
