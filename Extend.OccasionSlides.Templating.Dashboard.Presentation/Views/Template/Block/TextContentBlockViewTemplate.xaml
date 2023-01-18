@@ -18,12 +18,22 @@
             <ColumnDefinition />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
         <Label 
-            Grid.Column="0"
-            Text="Texto Simple" />
+            Grid.Column="0" Grid.Row="0"
+            Text="{Binding Path=Text}"
+            LineBreakMode="TailTruncation" />
+        <Label 
+            Grid.Column="0" Grid.Row="1"
+            Text="Texto Simple"
+            FontAttributes="Italic"
+            TextColor="DimGray" />
         <Button 
             x:Name="OptionsButton"
-            Grid.Column="1"
+            Grid.Column="1" Grid.RowSpan="2"
             VerticalOptions="Center"
             Style="{StaticResource OptionsTextIconButton}"
             Padding="0,6"

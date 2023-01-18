@@ -18,7 +18,7 @@
             <viewtemplateselectors:ContentBlockTemplateSelector x:Key="ContentBlockTemplateSelector" OptionButtonClicked="ContentBlockOptionsButton_Clicked" />
 
             <commonconverters:StringToLocalizeStringConverter x:Key="CommonStringToLocalizeStringConverter" />
-            <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />            
+            <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BoolToStringConverter" FalseString="No" TrueString="Si" />
@@ -260,49 +260,6 @@
                                         Padding="10" 
                                         Text="Sin elementos que mostrar" />
                                 </BindableLayout.EmptyView>
-                                <!--<BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid 
-                                            Padding="8"
-                                            BackgroundColor="{Binding Path=Priority, Converter={StaticResource InfoBlockPriorityToColorConverter}}">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition />
-                                                <ColumnDefinition Width="Auto" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <Label 
-                                                Grid.Column="0" Grid.Row="0"
-                                                Text="{Binding Path=Content}" />
-                                            <Label
-                                                Grid.Column="0" Grid.Row="1"
-                                                Text="{Binding Path=ContentFontSize, StringFormat='(Tamaño: {0} puntos)'}" 
-                                                TextColor="DimGray"
-                                                FontSize="Caption" />
-                                            <StackLayout Grid.Column="0" Grid.Row="2">
-                                                <Label>
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="Cabecera?: " FontAttributes="Bold" />
-                                                            <Span Text="{Binding Path=IsHeaderVisible, Converter={StaticResource BoolToStringConverter}}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                            </StackLayout>
-                                            <Button 
-                                                Grid.Column="1" Grid.RowSpan="3"
-                                                VerticalOptions="Center"
-                                                Style="{StaticResource OptionsTextIconButton}"
-                                                Padding="0,6"
-                                                Text="&#xF1D9;"
-                                                FontSize="Medium"
-                                                Clicked="ContentBlockOptionsButton_Clicked" />
-                                        </Grid>
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>-->
                             </StackLayout>
                         </Grid>
                     </Frame>

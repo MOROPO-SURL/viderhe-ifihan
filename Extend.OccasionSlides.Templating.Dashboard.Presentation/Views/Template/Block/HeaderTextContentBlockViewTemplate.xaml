@@ -18,12 +18,26 @@
             <ColumnDefinition />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
         <Label 
-            Grid.Column="0"
-            Text="Texto con Encabezado" />
+            Grid.Column="0" Grid.Row="0"
+            Text="{Binding Path=Header}"
+            TextDecorations="Underline" />
+        <Label 
+            Grid.Column="0" Grid.Row="1"
+            Text="{Binding Path=Text}" />
+        <Label 
+            Grid.Column="0" Grid.Row="2"
+            Text="Texto con Encabezado"
+            FontAttributes="Italic"
+            TextColor="DimGray" />
         <Button 
             x:Name="OptionsButton"
-            Grid.Column="1"
+            Grid.Column="1" Grid.RowSpan="3"
             VerticalOptions="Center"
             Style="{StaticResource OptionsTextIconButton}"
             Padding="0,6"

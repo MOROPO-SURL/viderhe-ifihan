@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Converters"
+    xmlns:viewtemplateselectors="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Views.Template"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
@@ -13,8 +14,9 @@
     x:TypeArguments="pagemodels:TrailContextualOverlapForImagePlacardConfigurationPageModel">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <viewtemplateselectors:ContentBlockTemplateSelector x:Key="ContentBlockTemplateSelector" OptionButtonClicked="ContentBlockOptionsButton_Clicked" />
+
             <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />
-            <converters:InfoBlockPriorityToColorConverter x:Key="InfoBlockPriorityToColorConverter" DefaultColor="GhostWhite" AlternativeColor="WhiteSmoke" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BoolToStringConverter" FalseString="No" TrueString="Si" />
@@ -245,70 +247,8 @@
                             </Frame>
                         </StackLayout>
                     </Frame>
-                    <!--<Frame 
-                        Grid.Column="0" Grid.Row="3"
-                        Style="{StaticResource FormFieldFrame}"
-                        BackgroundColor="#66FFFFFF"
-                        VerticalOptions="Start">
-                        <StackLayout>
-                            <Label Text="Título" Style="{StaticResource FormLabel}" />
-                            <Frame 
-                                Style="{StaticResource FormFieldFrame}"
-                                Margin="0,0,0,6">
-                                <StackLayout>
-                                    <Label Text="Texto" Style="{StaticResource FormLabel}" />
-                                    <Entry Text="{Binding Path=Title}" />
-                                </StackLayout>
-                            </Frame>
-                            <Frame 
-                                Style="{StaticResource FormFieldFrame}"
-                                Margin="0,0,0,6">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <Label
-                                        Grid.ColumnSpan="3" Grid.Row="0"
-                                        Text="Fuente" 
-                                        Style="{StaticResource FormLabel}" />
-                                    <Entry
-                                        Grid.Column="0" Grid.Row="1"
-                                        Text="{Binding Path=TitleFontFamily}"
-                                        Placeholder="Sistema"
-                                        PlaceholderColor="Black"
-                                        IsReadOnly="True" />
-                                    <Button
-                                        Grid.Column="1" Grid.Row="1"
-                                        Text="Seleccionar"
-                                        Clicked="TitleFontFamilyPickButton_Clicked" />
-                                    <Button 
-                                        Grid.Column="2" Grid.Row="1"
-                                        IsEnabled="{Binding Path=TitleFontFamily, Converter={StaticResource NotNullToBooleanConverter}}"
-                                        Style="{StaticResource TextIconButton}"
-                                        Text="&#xF413;"
-                                        Clicked="TitleFontFamilyClearButton_Clicked" />
-                                </Grid>
-                            </Frame>
-                            <Frame Style="{StaticResource FormFieldFrame}">
-                                <StackLayout>
-                                    <Label Text="Tamaño" Style="{StaticResource FormLabel}" />
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Path=TitleFontSize}" VerticalTextAlignment="Center" />
-                                        <Label Text="Puntos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
-                                        <Stepper Value="{Binding Path=TitleFontSize}" />
-                                    </StackLayout>
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </Frame>-->
                     <Frame 
-                        Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"
+                        Grid.ColumnSpan="3" Grid.Row="3"
                         Style="{StaticResource FormFieldFrame}"
                         BackgroundColor="Transparent"
                         VerticalOptions="Start"
@@ -339,56 +279,14 @@
                             <StackLayout
                                 Grid.ColumnSpan="2" Grid.Row="1"
                                 Spacing="0"
-                                BindableLayout.ItemsSource="{Binding Path=ContentBlocks}">
+                                BindableLayout.ItemsSource="{Binding Path=ContentBlocks}"
+                                BindableLayout.ItemTemplateSelector="{StaticResource ContentBlockTemplateSelector}">
                                 <BindableLayout.EmptyView>
                                     <Label 
                                         BackgroundColor="#66FFFFFF"
                                         Padding="10" 
                                         Text="Sin elementos que mostrar" />
                                 </BindableLayout.EmptyView>
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid 
-                                            Padding="8"
-                                            BackgroundColor="{Binding Path=Priority, Converter={StaticResource InfoBlockPriorityToColorConverter}}">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition />
-                                                <ColumnDefinition Width="Auto" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <Label 
-                                                Grid.Column="0" Grid.Row="0"
-                                                Text="{Binding Path=Content}" />
-                                            <Label
-                                                Grid.Column="0" Grid.Row="1"
-                                                Text="{Binding Path=ContentFontSize, StringFormat='(Tamaño: {0} puntos)'}" 
-                                                TextColor="DimGray"
-                                                FontSize="Caption" />
-                                            <StackLayout Grid.Column="0" Grid.Row="2">
-                                                <Label>
-                                                    <Label.FormattedText>
-                                                        <FormattedString>
-                                                            <Span Text="Cabecera?: " FontAttributes="Bold" />
-                                                            <Span Text="{Binding Path=IsHeaderVisible, Converter={StaticResource BoolToStringConverter}}" />
-                                                        </FormattedString>
-                                                    </Label.FormattedText>
-                                                </Label>
-                                            </StackLayout>
-                                            <Button 
-                                                Grid.Column="1" Grid.RowSpan="3"
-                                                VerticalOptions="Center"
-                                                Style="{StaticResource OptionsTextIconButton}"
-                                                Padding="0,6"
-                                                Text="&#xF1D9;"
-                                                FontSize="Medium"
-                                                Clicked="ContentBlockOptionsButton_Clicked" />
-                                        </Grid>
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
                             </StackLayout>
                         </Grid>
                     </Frame>
