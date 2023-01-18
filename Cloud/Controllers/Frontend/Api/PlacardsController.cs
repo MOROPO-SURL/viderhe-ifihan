@@ -30,6 +30,12 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             return e => e.Account.Id == accountId && e.Template.Enabled;
         }
 
+        [Microsoft.AspNetCore.Authorization.AllowAnonymous]
+        public override ActionResult<PlacardDisplayModel> Get(System.Guid key)
+        {
+            return base.Get(key);
+        }
+
         protected override void PreCreate(Persistence.Entities.Placard entity, PlacardInputModel inputModel)
         {
             base.PreCreate(entity, inputModel);
