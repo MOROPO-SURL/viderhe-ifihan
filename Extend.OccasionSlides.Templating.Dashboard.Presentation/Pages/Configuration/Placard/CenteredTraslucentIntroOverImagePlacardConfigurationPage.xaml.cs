@@ -13,9 +13,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         private const string OPTION_COMMON_EDIT = "Modificar";
         private const string OPTION_COMMON_DELETE = "Eliminar";
 
-        private const string OPTION_FRAME_ORDERTO_BEFORE = "Aumentar Prioridad";
-        private const string OPTION_FRAME_ORDERTO_AFTER = "Disminuir Prioridad";
-
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
         private System.Action successfulCompleteCallbackAction;
 
@@ -69,7 +66,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             ContentBoxPresentationKind = BindingContextPageModel.ContentBoxPresentationKind,
                             OverlapOpacity = BindingContextPageModel.OverlapOpacity / 100d,
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
-                            ContentBlocks = BindingContextPageModel.ContentBlocks.Select(item => item.ToContextModel()).ToArray()
+                            ContentBlocks = BindingContextPageModel.ContentBlocks.Select(item => item.Target.ToContextModel()).ToArray()
                         }, new Newtonsoft.Json.JsonSerializerSettings
                         {
                             TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
@@ -94,7 +91,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                             ContentBoxPresentationKind = BindingContextPageModel.ContentBoxPresentationKind,
                             OverlapOpacity = BindingContextPageModel.OverlapOpacity / 100d,
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
-                            ContentBlocks = BindingContextPageModel.ContentBlocks.Select(item => item.ToContextModel()).ToArray()
+                            ContentBlocks = BindingContextPageModel.ContentBlocks.Select(item => item.Target.ToContextModel()).ToArray()
                         }, new Newtonsoft.Json.JsonSerializerSettings
                         {
                             TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
@@ -140,21 +137,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ContentBlockOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel;
+            var model = (sender as Xamarin.Forms.BindableObject).BindingContext as Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel;
 
             var extraOptions = new System.Collections.Generic.List<string>
             {
                 OPTION_COMMON_EDIT,
-                //if (targetFrameViewModel.CanOrderUp)
-                //{
-                //    extraOptions.Add(OPTION_FRAME_ORDERTO_BEFORE);
-                //}
-
-                //if (targetFrameViewModel.CanOrderDown)
-                //{
-                //    extraOptions.Add(OPTION_FRAME_ORDERTO_AFTER);
-                //}
-
                 OPTION_COMMON_DELETE
             };
 
@@ -165,7 +152,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                     case OPTION_COMMON_EDIT:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            Presenters.ContentBlockCreationSheetPresenter.PresentForEdit(target, this, ContentBlockEdition_Callback);
+                            Presenters.ContentBlockCreationSheetPresenter.PresentForEdit(model, this, ContentBlockEdition_Callback);
                         });
 
                         break;
@@ -179,77 +166,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    var targetIndex = BindingContextPageModel.ContentBlocks.IndexOf(target);
+                                    var target = BindingContextPageModel.ContentBlocks.First(item => item.Target == model);
 
-                                    BindingContextPageModel.ContentBlocks.RemoveAt(targetIndex);
+                                    BindingContextPageModel.ContentBlocks.Remove(target);
 
-                                    for (var index = targetIndex; index < BindingContextPageModel.ContentBlocks.Count; index++)
-                                    {
-                                        var item = BindingContextPageModel.ContentBlocks.ElementAt(index);
-
-                                        item.Priority = index;
-                                    }
+                                    UpdatePriorities();
                                 });
                             });
                         });
-
-                        break;
-
-                    case OPTION_FRAME_ORDERTO_BEFORE:
-                        //BindingContextPageModel.IsBusy = true;
-
-                        //System.Threading.Tasks.Task.Run(async () =>
-                        //{
-                        //    var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
-
-                        //    await client.OrderUpAsync(target.Id);
-                        //}).ContinueWith(task =>
-                        //{
-                        //    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                        //    {
-                        //        if (task.Exception != null && !task.IsCanceled)
-                        //        {
-                        //            BindingContextPageModel.IsBusy = false;
-
-                        //            (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
-                        //        }
-                        //        else
-                        //        {
-                        //            Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Prioridad del marco aumentada con exito.");
-
-                        //            LoadCurrentScreenplayFrames();
-                        //        }
-                        //    });
-                        //});
-
-                        break;
-
-                    case OPTION_FRAME_ORDERTO_AFTER:
-                        //BindingContextPageModel.IsBusy = true;
-
-                        //System.Threading.Tasks.Task.Run(async () =>
-                        //{
-                        //    var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
-
-                        //    await client.OrderDownAsync(target.Id);
-                        //}).ContinueWith(task =>
-                        //{
-                        //    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                        //    {
-                        //        if (task.Exception != null && !task.IsCanceled)
-                        //        {
-                        //            BindingContextPageModel.IsBusy = false;
-
-                        //            (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
-                        //        }
-                        //        else
-                        //        {
-                        //            Presenters.NotificationPresenter.Instance.PresentNotification("Información", "Prioridad del marco disminuida con exito.");
-
-                        //            LoadCurrentScreenplayFrames();
-                        //        }
-                        //    });
-                        //});
 
                         break;
 
@@ -269,14 +193,96 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         {
             model.Priority = BindingContextPageModel.ContentBlocks.Count;
 
-            BindingContextPageModel.ContentBlocks.Add(model);
+            BindingContextPageModel.ContentBlocks.Add(new Models.View.ContentBlockCollectionItemViewModel { Target = model });
         }
 
         private void ContentBlockEdition_Callback(Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel model)
         {
-            var target = BindingContextPageModel.ContentBlocks.First(item => item.Id == model.Id);
+            var item = BindingContextPageModel.ContentBlocks.First(i => i.Target.Id == model.Id);
 
-            target.Merge(model);
+            item.Target.Merge(model);
+        }
+
+        private void ContentBlockCollectionViewDropGestureRecognizer_Drop(object sender, Xamarin.Forms.DropEventArgs e)
+        {
+            var dropItem = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ContentBlockCollectionItemViewModel;
+
+            var beingDraggedItem = BindingContextPageModel.ContentBlocks.First(i => i.IsBeingDragged);
+
+            if (dropItem == null || beingDraggedItem == dropItem) return;
+
+            BindingContextPageModel.ContentBlocks.Remove(beingDraggedItem);
+
+            if (dropItem.Target.Priority == BindingContextPageModel.ContentBlocks.Count)
+            {
+                BindingContextPageModel.ContentBlocks.Add(beingDraggedItem);
+            }
+            else
+            {
+                BindingContextPageModel.ContentBlocks.Insert(dropItem.Target.Priority, beingDraggedItem);
+            }
+
+            dropItem.IsBeingDraggedOverAtStart = false;
+            dropItem.IsBeingDraggedOverAtEnd = false;
+
+            UpdatePriorities();
+
+            e.Handled = true;
+        }
+
+        private void ContentBlockCollectionViewDropGestureRecognizer_DragLeave(object sender, Xamarin.Forms.DragEventArgs e)
+        {
+            foreach (var item in BindingContextPageModel.ContentBlocks)
+            {
+                item.IsBeingDraggedOverAtStart = false;
+                item.IsBeingDraggedOverAtEnd = false;
+            }
+        }
+
+        private void ContentBlockCollectionViewDropGestureRecognizer_DragOver(object sender, Xamarin.Forms.DragEventArgs e)
+        {
+            var dragOverItem = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ContentBlockCollectionItemViewModel;
+
+            var beingDraggedItem = BindingContextPageModel.ContentBlocks.FirstOrDefault(item => item.IsBeingDragged);
+
+            foreach (var item in BindingContextPageModel.ContentBlocks)
+            {
+                if (dragOverItem == item)
+                {
+                    if (item.IsBeingDragged)
+                    {
+                        item.IsBeingDraggedOverAtStart = false;
+                        item.IsBeingDraggedOverAtEnd = false;
+                    }
+                    else
+                    {
+                        item.IsBeingDraggedOverAtStart = item.Target.Priority < beingDraggedItem.Target.Priority;
+                        item.IsBeingDraggedOverAtEnd = item.Target.Priority > beingDraggedItem.Target.Priority;
+                    }
+                }
+                else
+                {
+                    item.IsBeingDraggedOverAtStart = false;
+                    item.IsBeingDraggedOverAtEnd = false;
+                }
+            }
+        }
+
+        private void ContentBlockCollectionItemViewDragGestureRecognizer_DragStarting(object sender, Xamarin.Forms.DragStartingEventArgs e)
+        {
+            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ContentBlockCollectionItemViewModel;
+
+            foreach (var item in BindingContextPageModel.ContentBlocks)
+            {
+                item.IsBeingDragged = target == item;
+            }
+        }
+
+        private void ContentBlockCollectionItemViewDragGestureRecognizer_DropCompleted(object sender, Xamarin.Forms.DropCompletedEventArgs e)
+        {
+            var beingDraggedItem = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ContentBlockCollectionItemViewModel;
+
+            beingDraggedItem.IsBeingDragged = false;
         }
 
         protected override void DisposeUnmanagementResources()
@@ -285,6 +291,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
             placardViewModel = null;
             successfulCompleteCallbackAction = null;
+        }
+
+        private void UpdatePriorities()
+        {
+            var counter = 0;
+
+            foreach (var item in BindingContextPageModel.ContentBlocks)
+            {
+                item.Target.Priority = counter++;
+            }
         }
     }
 }

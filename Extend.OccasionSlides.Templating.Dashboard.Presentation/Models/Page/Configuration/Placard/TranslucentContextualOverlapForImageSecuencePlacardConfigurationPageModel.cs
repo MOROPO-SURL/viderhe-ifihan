@@ -13,7 +13,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public TranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel()
         {
-            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel>();
+            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<View.ContentBlockCollectionItemViewModel>();
             PictureSlidePresentationSecounds = 10;
             AvailableLayoutModes = new PictureLayoutMode[]
             {
@@ -54,7 +54,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public OverlapSize[] AvailableOverlapSizes { get; private set; }
 
-        public System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel> ContentBlocks { get; private set; }
+        public System.Collections.ObjectModel.ObservableCollection<View.ContentBlockCollectionItemViewModel> ContentBlocks { get; private set; }
 
         public OverlapAlignment OverlapAlignment { get => overlapAlignment; set => SetProperty(ref overlapAlignment, value); }
 

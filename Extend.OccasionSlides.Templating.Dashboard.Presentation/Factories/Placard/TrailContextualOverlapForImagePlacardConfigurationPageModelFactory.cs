@@ -33,7 +33,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             {
                 foreach (var item in context.ContentBlocks)
                 {
-                    result.ContentBlocks.Add(item.ToViewModel());
+                    result.ContentBlocks.Add(new Models.View.ContentBlockCollectionItemViewModel { Target = item.ToViewModel() });
                 }
             }
 

@@ -2,9 +2,11 @@
 {
     public class ImageContentBlockViewModel : Contract.AbstractContentBlockViewModel, Contract.IScreenVerticalSizePercentCalculableContentBlockViewModel
     {
+        private Support.Presentation.Models.View.ImageViewModel image;
+
         public double HeightByScreenVerticalSizePercent { get; set; }
 
-        public Support.Presentation.Models.View.ImageViewModel Image { get; set; }
+        public Support.Presentation.Models.View.ImageViewModel Image { get => image; set => SetProperty(ref image, value); }
 
         public Xamarin.Forms.Aspect LayoutMode { get; set; }
 

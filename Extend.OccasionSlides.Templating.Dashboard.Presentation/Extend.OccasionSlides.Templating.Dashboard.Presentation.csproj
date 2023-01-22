@@ -43,18 +43,6 @@
     <Compile Update="Views\Thumbnail\CommonContextualOverlapForImagePlacardThumbnailView.xaml.cs">
       <DependentUpon>CommonContextualOverlapForImagePlacardThumbnailView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Template\Block\HeaderTextContentBlockViewTemplate.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Template\Block\ImageContentBlockViewTemplate.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Template\Block\TextContentBlockViewTemplate.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Template\Block\TransparentSeparatorContentBlockViewTemplate.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
     <Compile Update="Views\Thumbnail\TranslucentContextualOverlapForImageSecuencePlacardThumbnailView.xaml.cs">
       <DependentUpon>TranslucentContextualOverlapForImageSecuencePlacardThumbnailView.xaml</DependentUpon>
     </Compile>
@@ -87,6 +75,18 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Configuration\Placard\TranslucentContextualOverlapForImageSecuencePlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Block\HeaderTextContentBlockView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Block\ImageContentBlockView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Block\TextContentBlockView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Block\TransparentSeparatorContentBlockView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Thumbnail\CenteredTraslucentIntroOverImagePlacardThumbnailView.xaml">

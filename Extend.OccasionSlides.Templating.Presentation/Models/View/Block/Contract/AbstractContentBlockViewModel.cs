@@ -2,10 +2,8 @@
 {
     public abstract class AbstractContentBlockViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
     {
-        private int priority;
-
         public System.Guid Id { get; set; }
 
-        public int Priority { get => priority; set => SetProperty(ref priority, value); }
+        public int Priority { get; set; }
     }
 }

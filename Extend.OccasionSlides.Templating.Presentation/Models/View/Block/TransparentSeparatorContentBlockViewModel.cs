@@ -2,6 +2,8 @@
 {
     public class TransparentSeparatorContentBlockViewModel : Contract.AbstractContentBlockViewModel, Contract.IScreenVerticalSizePercentCalculableContentBlockViewModel
     {
-        public double HeightByScreenVerticalSizePercent { get; set; }
+        private double heightByScreenVerticalSizePercent;
+
+        public double HeightByScreenVerticalSizePercent { get => heightByScreenVerticalSizePercent; set => SetProperty(ref heightByScreenVerticalSizePercent, value); }
     }
 }

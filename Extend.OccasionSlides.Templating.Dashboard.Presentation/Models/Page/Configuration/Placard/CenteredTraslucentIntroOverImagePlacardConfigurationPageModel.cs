@@ -16,7 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             ScreenPresentationTimeSecounds = 10;
             OverlapOpacity = 50;
             OverlapBackgroundColor = Xamarin.Forms.Color.Black;
-            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel>();
+            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<View.ContentBlockCollectionItemViewModel>();
             AvailableContentBoxPresentationKinds = new CenteredContentBoxPresentationKind[]
             {
                 CenteredContentBoxPresentationKind.Inmersive,
@@ -36,7 +36,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public Xamarin.Forms.Color OverlapBackgroundColor { get => overlapBackgroundColor; set => SetProperty(ref overlapBackgroundColor, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel> ContentBlocks { get; private set; }
+        public System.Collections.ObjectModel.ObservableCollection<View.ContentBlockCollectionItemViewModel> ContentBlocks { get; private set; }
 
         public CenteredContentBoxPresentationKind ContentBoxPresentationKind { get => contentBoxPresentationKind; set => SetProperty(ref contentBoxPresentationKind, value); }
 

@@ -2,7 +2,9 @@
 {
     public class HeaderTextContentBlockViewModel : TextContentBlockViewModel
     {
-        public string Header { get; set; }
+        private string header;
+
+        public string Header { get => header; set => SetProperty(ref header, value); }
 
         public string HeaderFontFamily { get; set; }
 

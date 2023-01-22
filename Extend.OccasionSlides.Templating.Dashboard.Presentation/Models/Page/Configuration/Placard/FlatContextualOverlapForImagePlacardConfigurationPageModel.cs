@@ -16,7 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         public FlatContextualOverlapForImagePlacardConfigurationPageModel()
         {
             ScreenPresentationTimeSecounds = 10;
-            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel>();
+            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<View.ContentBlockCollectionItemViewModel>();
             AvailableOverlapShapeKinds = new OverlapShapeKind[]
             {
                 OverlapShapeKind.Rectangle,
@@ -47,7 +47,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public OverlapSize[] AvailableOverlapSizes { get; private set; }
 
-        public System.Collections.ObjectModel.ObservableCollection<Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel> ContentBlocks { get; private set; }
+        public System.Collections.ObjectModel.ObservableCollection<View.ContentBlockCollectionItemViewModel> ContentBlocks { get; private set; }
 
         public Xamarin.Forms.Color OverlapBackgroundColor { get => overlapBackgroundColor; set => SetProperty(ref overlapBackgroundColor, value); }
 

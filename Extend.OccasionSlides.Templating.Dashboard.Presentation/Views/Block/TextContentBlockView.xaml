@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:blockviewmodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;assembly=SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Views.Block.TextContentBlockView"
+    x:DataType="blockviewmodels:TextContentBlockViewModel">
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Column="0" Grid.Row="0"
+                Text="{Binding Path=Text}"
+                LineBreakMode="TailTruncation" />
+            <Label
+                Grid.Column="0" Grid.Row="1"
+                Text="Texto Simple"
+                FontAttributes="Italic"
+                TextColor="DimGray" />
+            <Button 
+                Grid.Column="1" Grid.RowSpan="2"
+                Style="{StaticResource OptionsTextIconButton}"
+                WidthRequest="32" HeightRequest="48"
+                VerticalOptions="Center"
+                Padding="0"
+                Text="&#xF1D9;"
+                FontSize="Medium"
+                Clicked="OptionsButton_Clicked" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

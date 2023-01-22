@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Converters"
-    xmlns:viewtemplateselectors="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Views.Template"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:essentialextendtemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation"
     xmlns:essentialextendtemplatingdashboardpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation"
@@ -16,9 +15,8 @@
     x:TypeArguments="pagemodels:TranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <viewtemplateselectors:ContentBlockTemplateSelector x:Key="ContentBlockTemplateSelector" OptionButtonClicked="ContentBlockOptionsButton_Clicked" />
-
             <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />
+            <converters:ContentBlockToViewConverter x:Key="ContentBlockToViewConverter" OptionButtonClicked="ContentBlockOptionsButton_Clicked" />
             <essentialextendtemplatingpresentationconverters:PictureLayoutModeToXamarinFormAspectConverter x:Key="PictureLayoutModeToXamarinFormAspectConverter" />
             <essentialextendtemplatingdashboardpresentationconverters:IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter x:Key="IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter" />
             <essentialextendtemplatingdashboardpresentationconverters:StringToLocalizeStringConverter x:Key="EssentialStringToLocalizeStringConverter" />
@@ -26,6 +24,8 @@
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BoolToStringConverter" FalseString="No" TrueString="Si" />
             <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="20" />
+            <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="IsBeingDraggedToColorStringConverter" FalseString="White" TrueString="Beige" />
+            <sscxftoolkitpresentationconverters:EnumerableEmptyToBooleanConverter x:Key="EnumerableEmptyToBooleanConverter" Inverse="True" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -289,8 +289,7 @@
                     <Frame 
                         Grid.ColumnSpan="3" Grid.Row="4"
                         Style="{StaticResource FormFieldFrame}"
-                        BackgroundColor="Transparent"
-                        VerticalOptions="Start"
+                        BackgroundColor="#66FFFFFF"
                         Padding="0">
                         <Grid RowSpacing="0">
                             <Grid.ColumnDefinitions>
@@ -315,18 +314,58 @@
                                 VerticalOptions="Start"
                                 Text="Agregar"
                                 Clicked="AddContentBlockButton_Clicked" />
-                            <StackLayout
+                            <CollectionView
+                                x:Name="ContentBlockCollectionView"
                                 Grid.ColumnSpan="2" Grid.Row="1"
-                                Spacing="0"
-                                BindableLayout.ItemsSource="{Binding Path=ContentBlocks}"
-                                BindableLayout.ItemTemplateSelector="{StaticResource ContentBlockTemplateSelector}">
-                                <BindableLayout.EmptyView>
+                                Margin="10,0"
+                                ItemsSource="{Binding Path=ContentBlocks}">
+                                <CollectionView.Header>
+                                    <BoxView IsVisible="{Binding Path=ContentBlocks, Converter={StaticResource EnumerableEmptyToBooleanConverter}}" Color="Transparent" HeightRequest="5" />
+                                </CollectionView.Header>
+                                <CollectionView.Footer>
+                                    <BoxView IsVisible="{Binding Path=ContentBlocks, Converter={StaticResource EnumerableEmptyToBooleanConverter}}" Color="Transparent" HeightRequest="5" />
+                                </CollectionView.Footer>
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.EmptyView>
                                     <Label 
-                                        BackgroundColor="#66FFFFFF"
-                                        Padding="10" 
+                                        Padding="5,10" 
                                         Text="Sin elementos que mostrar" />
-                                </BindableLayout.EmptyView>
-                            </StackLayout>
+                                </CollectionView.EmptyView>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Spacing="10">
+                                            <StackLayout.GestureRecognizers>
+                                                <DropGestureRecognizer
+                                                    AllowDrop="True"
+                                                    Drop="ContentBlockCollectionViewDropGestureRecognizer_Drop"
+                                                    DragLeave="ContentBlockCollectionViewDropGestureRecognizer_DragLeave"
+                                                    DragOver="ContentBlockCollectionViewDropGestureRecognizer_DragOver" />
+                                            </StackLayout.GestureRecognizers>
+                                            <BoxView
+                                                Color="DimGray"
+                                                HeightRequest="30"
+                                                IsVisible="{Binding Path=IsBeingDraggedOverAtStart}" />
+                                            <ContentView 
+                                                Content="{Binding Converter={StaticResource ContentBlockToViewConverter}}" 
+                                                BackgroundColor="{Binding Path=IsBeingDragged, Converter={StaticResource IsBeingDraggedToColorStringConverter}}" 
+                                                Padding="10">
+                                                <ContentView.GestureRecognizers>
+                                                    <DragGestureRecognizer
+                                                        CanDrag="True"
+                                                        DragStarting="ContentBlockCollectionItemViewDragGestureRecognizer_DragStarting"
+                                                        DropCompleted="ContentBlockCollectionItemViewDragGestureRecognizer_DropCompleted"/>
+                                                </ContentView.GestureRecognizers>
+                                            </ContentView>
+                                            <BoxView
+                                                Color="DimGray"
+                                                HeightRequest="30"
+                                                IsVisible="{Binding Path=IsBeingDraggedOverAtEnd}" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
                         </Grid>
                     </Frame>
                 </Grid>
