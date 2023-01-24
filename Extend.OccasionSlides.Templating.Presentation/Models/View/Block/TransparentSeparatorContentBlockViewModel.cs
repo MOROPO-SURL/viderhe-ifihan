@@ -1,9 +1,9 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block
 {
-    public class TransparentSeparatorContentBlockViewModel : Contract.AbstractContentBlockViewModel, Contract.IScreenVerticalSizePercentCalculableContentBlockViewModel
+    public class TransparentSeparatorContentBlockViewModel : Contract.AbstractContentBlockViewModel
     {
-        private double heightByScreenVerticalSizePercent;
+        private Enumerations.SeparatorSizingMode sizingMode;
 
-        public double HeightByScreenVerticalSizePercent { get => heightByScreenVerticalSizePercent; set => SetProperty(ref heightByScreenVerticalSizePercent, value); }
+        public Enumerations.SeparatorSizingMode SizingMode { get => sizingMode; set => SetProperty(ref sizingMode, value); }
     }
 }

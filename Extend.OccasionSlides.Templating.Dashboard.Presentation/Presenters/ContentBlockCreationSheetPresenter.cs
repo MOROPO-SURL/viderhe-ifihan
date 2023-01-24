@@ -9,10 +9,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         private const string OPTION_CREATE_CONTENT_BLOCK_TEXT = "Texto";
         private const string OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT = "Texto Encabezado";
         private const string OPTION_CREATE_CONTENT_BLOCK_IMAGE = "Imagen";
+        private const string OPTION_CREATE_CONTENT_BLOCK_SEPARATOR_TRANSPARENT = "Separador Transparent";
 
         internal static void PresentForCreate(Xamarin.Forms.Page page, System.Action<AbstractContentBlockViewModel> callbackAction)
         {
-            var options = new string[] { OPTION_CREATE_CONTENT_BLOCK_TEXT, OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT, OPTION_CREATE_CONTENT_BLOCK_IMAGE };
+            var options = new string[] { 
+                OPTION_CREATE_CONTENT_BLOCK_TEXT, 
+                OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT, 
+                OPTION_CREATE_CONTENT_BLOCK_IMAGE,
+                OPTION_CREATE_CONTENT_BLOCK_SEPARATOR_TRANSPARENT
+            };
 
             page.DisplayActionSheet("Nuevo Bloque de Contenido", OPTION_COMMON_CANCEL, null, options).ContinueWith(actionSheetTask =>
             {
@@ -32,6 +38,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
                         case OPTION_CREATE_CONTENT_BLOCK_IMAGE:
                             page.NavigationPushPageAsync(new Pages.Configuration.Block.ImageContentBlockConfigurationPage(callbackAction));
+
+                            break;
+
+                        case OPTION_CREATE_CONTENT_BLOCK_SEPARATOR_TRANSPARENT:
+                            page.NavigationPushPageAsync(new Pages.Configuration.Block.TransparentSeparatorContentBlockConfigurationPage(callbackAction));
 
                             break;
 
@@ -58,10 +69,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 return;
             }
 
-            //if (target is TransparentSeparatorContentBlockViewModel)
-            //{
+            if (target is Templating.Presentation.Models.View.Block.TransparentSeparatorContentBlockViewModel)
+            {
+                page.NavigationPushPageAsync(new Pages.Configuration.Block.TransparentSeparatorContentBlockConfigurationPage(target as Templating.Presentation.Models.View.Block.TransparentSeparatorContentBlockViewModel, callbackAction));
 
-            //}
+                return;
+            }
 
             if (target is Templating.Presentation.Models.View.Block.ImageContentBlockViewModel)
             {

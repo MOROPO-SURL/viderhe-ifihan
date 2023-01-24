@@ -2,6 +2,6 @@
 {
     public class TransparentSeparatorContentBlockContextModel : Contract.AbstractContentBlockContextModel
     {
-        public double HeightByScreenVerticalSizePercent { get; set; }
+        public Enumerations.SeparatorSizingMode SizingMode { get; set; }
     }
 }

@@ -3,15 +3,15 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:blockviewmodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block"
-    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters"    
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Template.Block.TransparentSeparatorContentBlockViewTemplate"
     x:DataType="blockviewmodels:TransparentSeparatorContentBlockViewModel">
     <ContentView
         BackgroundColor="Transparent"
-        HeightRequest="{Binding Converter={StaticResource ScreenVerticalSizePercentCalculableContentBlockViewModelToHeightConverter}}">
+        HeightRequest="{Binding Path=SizingMode, Converter={StaticResource SizingModeToHeightConverter}}">
         <ContentView.Resources>
             <ResourceDictionary>
-                <converters:ScreenVerticalSizePercentCalculableContentBlockViewModelToHeightConverter x:Key="ScreenVerticalSizePercentCalculableContentBlockViewModelToHeightConverter" />
+                <converters:SizingModeToHeightConverter x:Key="SizingModeToHeightConverter" />
             </ResourceDictionary>
         </ContentView.Resources>
     </ContentView>

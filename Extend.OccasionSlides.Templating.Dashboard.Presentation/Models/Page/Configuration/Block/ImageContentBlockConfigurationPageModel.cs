@@ -9,6 +9,8 @@
 
         public ImageContentBlockConfigurationPageModel()
         {
+            Id = System.Guid.NewGuid();
+
             horizontalAlignament = Xamarin.Forms.LayoutAlignment.Center;
             heightByScreenVerticalSizePercent = 30;
 

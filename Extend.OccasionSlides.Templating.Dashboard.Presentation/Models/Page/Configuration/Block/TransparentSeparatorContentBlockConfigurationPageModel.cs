@@ -2,10 +2,19 @@
 {
     public class TransparentSeparatorContentBlockConfigurationPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {
-        private double heightByScreenVerticalSizePercent;
+        private Enumerations.SeparatorSizingMode sizingMode;
 
+        public TransparentSeparatorContentBlockConfigurationPageModel()
+        {
+            Id = System.Guid.NewGuid();
+
+            AvailableSizingModes = (Enumerations.SeparatorSizingMode[])System.Enum.GetValues(typeof(Enumerations.SeparatorSizingMode));
+        }
+        
         public System.Guid Id { get; set; }
 
-        public double HeightByScreenVerticalSizePercent { get => heightByScreenVerticalSizePercent; set => SetProperty(ref heightByScreenVerticalSizePercent, value); }
+        public Enumerations.SeparatorSizingMode SizingMode { get => sizingMode; set => SetProperty(ref sizingMode, value); }
+
+        public Enumerations.SeparatorSizingMode[] AvailableSizingModes { get; private set; }
     }
 }

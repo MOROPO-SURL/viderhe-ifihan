@@ -51,7 +51,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 {
                     Id = concreteTarget.Id,
                     Priority = concreteTarget.Priority,
-                    HeightByScreenVerticalSizePercent = concreteTarget.HeightByScreenVerticalSizePercent
+                    SizingMode = concreteTarget.SizingMode
                 };
             }
 

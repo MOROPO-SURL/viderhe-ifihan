@@ -15,11 +15,11 @@
             </Grid.RowDefinitions>
             <Label 
                 Grid.Column="0" Grid.Row="0"
-                Text="{Binding Path=Priority}"
+                Text="{Binding Path=SizingMode}"
                 LineBreakMode="TailTruncation" />
             <Label 
                 Grid.Column="0" Grid.Row="1"
-                Text="Separador Vacío"
+                Text="Separador Transparente"
                 FontAttributes="Italic"
                 TextColor="DimGray" />
             <Button 

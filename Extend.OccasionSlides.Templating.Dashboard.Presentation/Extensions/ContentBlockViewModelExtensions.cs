@@ -52,7 +52,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 {
                     Id = concreteTarget.Id,
                     Priority = concreteTarget.Priority,
-                    HeightByScreenVerticalSizePercent = concreteTarget.HeightByScreenVerticalSizePercent
+                    SizingMode = concreteTarget.SizingMode
                 };
             }
 
@@ -106,10 +106,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 return;
             }
 
-            //if (target is TransparentSeparatorContentBlockViewModel)
-            //{
+            if (target is TransparentSeparatorContentBlockViewModel)
+            {
+                var concreteTarget = target as TransparentSeparatorContentBlockViewModel;
+                var concreteSource = source as TransparentSeparatorContentBlockViewModel;
 
-            //}
+                concreteTarget.SizingMode = concreteSource.SizingMode;
+            }
 
             if (target is ImageContentBlockViewModel)
             {
