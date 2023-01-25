@@ -4,7 +4,7 @@
     {
         public static SkiaSharp.SKPath ToVerticalSKPath(this Enumerations.OverlapShapeKind target, Enumerations.OverlapAlignment overlapAlignment, int paintSurfaceWidth, int paintSurfaceHeight, double contentLayoutHeight, double extraHeight = 0d)
         {
-            var overlapHeight = contentLayoutHeight + extraHeight;
+            var overlapHeight = (contentLayoutHeight + extraHeight) * Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Density;
             var ovarlapVintageHeight = overlapHeight + (paintSurfaceHeight / 12);
 
             if (overlapAlignment == Enumerations.OverlapAlignment.Start)

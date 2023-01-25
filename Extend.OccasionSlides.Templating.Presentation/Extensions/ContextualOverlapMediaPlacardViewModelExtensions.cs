@@ -6,7 +6,7 @@
         {
             var columnWidth = paintSurfaceWidth / System.Convert.ToDouble(target.OverlapSize.ToColumnCount());
 
-            var contentBoxWidth = columnWidth * (target.OverlapSize.ToColumnCount() - 1) + extraWidth;
+            var contentBoxWidth = columnWidth * (target.OverlapSize.ToColumnCount() - 1) + (extraWidth * Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Density);
 
             if (target.OverlapAlignment == Enumerations.OverlapAlignment.Start)
             {
