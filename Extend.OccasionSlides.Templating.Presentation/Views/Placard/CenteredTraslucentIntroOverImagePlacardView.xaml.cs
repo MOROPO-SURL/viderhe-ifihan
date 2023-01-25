@@ -57,6 +57,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
+                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+
                         infoBlockLayout.Scale = 0;
                     }
 
@@ -70,6 +72,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
+                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+
                         internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
                         {
                             Target = infoBlockLayout,
@@ -87,6 +91,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
+                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+
                         infoBlockLayout.Opacity = 0;
                     }
 
@@ -102,6 +108,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
+                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+
                         internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                         {
                             Target = infoBlockLayout,
@@ -120,6 +128,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
+                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+
                         infoBlockLayout.Opacity = 0;
                     }
 
@@ -133,6 +143,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
+                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+
                         internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                         {
                             Target = infoBlockLayout,
@@ -152,6 +164,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
+                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+
                         infoBlockLayout.Scale = 0;
                     }
 
@@ -165,6 +179,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
+                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+
                         internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
                         {
                             Target = infoBlockLayout,

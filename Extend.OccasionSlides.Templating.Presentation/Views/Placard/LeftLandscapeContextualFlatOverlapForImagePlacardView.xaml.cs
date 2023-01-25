@@ -33,6 +33,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             foreach (var item in InfoBlocksLayout.Children)
             {
+                if (item.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+
                 item.Opacity = 0;
             }
 
@@ -74,6 +76,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             foreach (var infoBlockLayout in InfoBlocksLayout.Children)
             {
+                if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+
                 internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                 {
                     Target = infoBlockLayout,
