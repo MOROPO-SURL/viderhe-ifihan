@@ -101,6 +101,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
             connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Player.Hubs.IPlayerHub.UpdateEnvironmentConfiguration), platformControlHelper.AudioLevel, platformControlHelper.IsAudioEnabled);
         }
 
+        public void UpdateEnvironmentConfiguration(int audioLevel, bool isAudioEnabled)
+        {
+            connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Player.Hubs.IPlayerHub.UpdateEnvironmentConfiguration), audioLevel, isAudioEnabled);
+        }
+
         public void NotifyPlayingPlacard(System.Guid placardId)
         {
             connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Player.Hubs.IPlayerHub.NotifyPlayingPlacard), placardId);
