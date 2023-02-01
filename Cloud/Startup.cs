@@ -265,7 +265,14 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
                 app.UseHsts();
             }
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                ContentTypeProvider = new Microsoft.AspNetCore.StaticFiles.FileExtensionContentTypeProvider(new System.Collections.Generic.Dictionary<string, string>
+                {
+                    { ".apk", "application/vnd.android.package-archive" }
+                })
+            });
+
             app.UseAuthentication();
             app.UseSession();
 
