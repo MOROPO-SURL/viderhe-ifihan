@@ -155,6 +155,35 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 return new Views.Placard.CenteredTraslucentIntroOverImagePlacardView(targetPlacardViewModel);
             }
 
+            if (model.Template.Id == Descriptors.TrailContextualOverlapForVideoTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TrailContextualOverlapForVideoPlacardContextModel>(model.SerializedContext, new Newtonsoft.Json.JsonSerializerSettings
+                {
+                    TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
+                });
+
+                var targetPlacardViewModel = new Models.View.Placard.TrailContextualOverlapForVideoPlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ContextedVideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
+                    IsContextedVideoFramed = context.IsContextedVideoFramed,
+                    ContextedVideoCenteredAtPresentation = context.ContextedVideoCenteredAtPresentation,
+                    OverlapTrailMode = context.OverlapTrailMode,
+                    OverlapSize = context.OverlapSize,
+                    OverlapShapeKind = context.OverlapShapeKind,
+                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
+                    OverlapAlignment = context.OverlapAlignment,
+                    ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
+                };
+
+                if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
+                {
+                    return new Views.Placard.LeftLandscapeContextualTrailOverlapForVideoPlacardView(targetPlacardViewModel);
+                }
+
+                return new Views.Placard.RightLandscapeContextualTrailOverlapForVideoPlacardView(targetPlacardViewModel);
+            }
+
             return null;
         }
     }

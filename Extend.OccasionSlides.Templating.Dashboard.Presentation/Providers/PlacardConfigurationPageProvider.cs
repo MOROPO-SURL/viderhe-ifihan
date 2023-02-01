@@ -29,6 +29,11 @@
                 return new Pages.Configuration.Placard.CenteredTraslucentIntroOverImagePlacardConfigurationPage(completedActionCallback);
             }
 
+            if (templateDescriptor is Descriptors.TrailContextualOverlapForVideoTemplateDescriptor)
+            {
+                return new Pages.Configuration.Placard.TrailContextualOverlapForVideoPlacardConfigurationPage(completedActionCallback);
+            }
+
             return null;
         }
 
@@ -57,6 +62,11 @@
             if (placardViewModel.Template.Id == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
             {
                 return new Pages.Configuration.Placard.CenteredTraslucentIntroOverImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.TrailContextualOverlapForVideoTemplateDescriptor.ID)
+            {
+                return new Pages.Configuration.Placard.TrailContextualOverlapForVideoPlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;
