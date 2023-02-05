@@ -14,7 +14,7 @@
 
         public Xamarin.Forms.ImageSource ContextedImageSource { get; set; }
 
-        public bool ContextedImageAspectToFitAndComplementFilled { get; set; }
+        public Xamarin.Forms.ImageSource ContextedImageThumbnailSource { get; set; }
 
         public bool ContextedImageZoomingEnabled { get; set; }
 

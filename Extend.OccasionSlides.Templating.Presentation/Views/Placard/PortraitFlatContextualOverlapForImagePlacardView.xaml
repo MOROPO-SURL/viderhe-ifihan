@@ -9,6 +9,7 @@
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:skiaformviews="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Placard.PortraitFlatContextualOverlapForImagePlacardView">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -18,21 +19,39 @@
             <converters:OverlapWidthToInfoBlockLabelPaddingConverter x:Key="OverlapWidthToInfoBlockLabelPaddingConverter" />
             <converters:HeaderFontFamilyNameToFontAttributesConverter x:Key="HeaderFontFamilyNameToFontAttributesConverter" />
             <converters:OverlapVerticalAlignmentToLayoutOptionsConverter x:Key="OverlapVerticalAlignmentToLayoutOptionsConverter" />
+            <converters:IsNullToImageAspectConverter x:Key="IsNullToImageAspectConverter" />
             <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="PlacardLayout">
-                <ffimageloadingforms:CachedImage
-                    x:Name="ContextedImagen"
-                    BackgroundColor="Black"
-                    FadeAnimationEnabled="False"
-                    Source="{Binding Path=ContextedImageSource, Mode=OneTime}" 
-                    Aspect="AspectFill"
-                    CacheType="Disk"
-                    CacheDuration="8760:00:00" />
+                <Grid 
+                    x:Name="ContextedImageWrapper"
+                    BackgroundColor="Black">
+                    <ffimageloadingforms:CachedImage
+                        x:Name="ContextedImageThumbnailImage"
+                        IsVisible="{Binding Path=ContextedImageThumbnailSource, Converter={StaticResource NotNullToBooleanConverter}, Mode=OneTime}"
+                        Source="{Binding Path=ContextedImageThumbnailSource, Mode=OneTime}"
+                        Aspect="AspectFill"
+                        CacheType="Disk"
+                        CacheDuration="8760:00:00"
+                        FadeAnimationEnabled="False"
+                        IsOpaque="False">
+                        <ffimageloadingforms:CachedImage.Transformations>
+                            <fftransformations:BlurredTransformation />
+                        </ffimageloadingforms:CachedImage.Transformations>
+                    </ffimageloadingforms:CachedImage>
+                    <ffimageloadingforms:CachedImage
+                        x:Name="ContextedImagen"
+                        FadeAnimationEnabled="False"
+                        Source="{Binding Path=ContextedImageSource, Mode=OneTime}" 
+                        Aspect="{Binding Path=ContextedImageThumbnailSource, Converter={StaticResource IsNullToImageAspectConverter}}"
+                        CacheType="Disk"
+                        CacheDuration="8760:00:00" />
+                </Grid>
                 <Grid x:Name="OverlapLayout">
                     <skiaformviews:SKCanvasView PaintSurface="OverlapContentWrapLayout_PaintSurface" />
                     <StackLayout

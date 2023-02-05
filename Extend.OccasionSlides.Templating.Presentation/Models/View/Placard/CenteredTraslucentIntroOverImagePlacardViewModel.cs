@@ -12,7 +12,7 @@
 
         public Xamarin.Forms.ImageSource BackgroundImageSource { get; set; }
 
-        public bool BackgroundImageAspectToFitAndComplementFilled { get; set; }
+        public Xamarin.Forms.ImageSource BackgroundImageThumbnailSource { get; set; }
 
         public bool BackgroundImageZoomingEnabled { get; set; }
 

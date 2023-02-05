@@ -8,6 +8,7 @@
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Placard.CenteredTraslucentIntroOverImagePlacardView"
     x:Name="RootView">
     <ContentView.Resources>
@@ -21,8 +22,10 @@
             <converters:HeaderFontFamilyNameToFontAttributesConverter x:Key="HeaderFontFamilyNameToFontAttributesConverter" />
             <converters:CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxPaddingConverter x:Key="CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxPaddingConverter" PlacardView="{Reference RootView}" />
             <converters:CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxSpacingConverter x:Key="CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxSpacingConverter" PlacardView="{Reference RootView}" />
+            <converters:IsNullToImageAspectConverter x:Key="IsNullToImageAspectConverter" />
             <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
 
             <Style TargetType="Label">
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
@@ -37,15 +40,31 @@
                     <ColumnDefinition Width="3*" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <ffimageloadingforms:CachedImage
-                    x:Name="BackgroundImagen"
+                <Grid 
+                    x:Name="BackgroundImageWrapper"
                     Grid.ColumnSpan="3"
-                    BackgroundColor="Black"
-                    FadeAnimationEnabled="False"
-                    Source="{Binding Path=BackgroundImageSource, Mode=OneTime}" 
-                    Aspect="AspectFill"
-                    CacheType="Disk"
-                    CacheDuration="8760:00:00" />
+                    BackgroundColor="Black">
+                    <ffimageloadingforms:CachedImage
+                        x:Name="BackgroundImageThumbnailImage"
+                        IsVisible="{Binding Path=BackgroundImageThumbnailSource, Converter={StaticResource NotNullToBooleanConverter}, Mode=OneTime}"
+                        Source="{Binding Path=BackgroundImageThumbnailSource, Mode=OneTime}"
+                        Aspect="AspectFill"
+                        CacheType="Disk"
+                        CacheDuration="8760:00:00"
+                        FadeAnimationEnabled="False"
+                        IsOpaque="False">
+                        <ffimageloadingforms:CachedImage.Transformations>
+                            <fftransformations:BlurredTransformation />
+                        </ffimageloadingforms:CachedImage.Transformations>
+                    </ffimageloadingforms:CachedImage>
+                    <ffimageloadingforms:CachedImage
+                        x:Name="BackgroundImagen"
+                        FadeAnimationEnabled="False"
+                        Source="{Binding Path=BackgroundImageSource, Mode=OneTime}" 
+                        Aspect="{Binding Path=BackgroundImageThumbnailSource, Converter={StaticResource IsNullToImageAspectConverter}}"
+                        CacheType="Disk"
+                        CacheDuration="8760:00:00" />
+                </Grid>
                 <Grid
                     x:Name="OverlapLayout"
                     Grid.Column="{Binding Path=ContentBoxPresentationKind, Converter={StaticResource CenteredContentBoxPresentationKindToColumIndexConverter}, Mode=OneTime}"

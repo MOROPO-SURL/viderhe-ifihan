@@ -29,6 +29,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
             base.DisposeUnmanagementResources();
 
             BackgroundImagen.Source = null;
+            BackgroundImageThumbnailImage.Source = null;
         }
 
         public override void PerformPlacardStarup()
@@ -196,11 +197,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             internalShowInStoryboard.Begin();
 
-            if (concreteBindingContext.ScreenPresentationTime > System.TimeSpan.Zero)
+            if (concreteBindingContext.BackgroundImageZoomingEnabled && concreteBindingContext.ScreenPresentationTime > System.TimeSpan.Zero)
             {
                 var presentedImageZoominAnimation = new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
                 {
-                    Target = BackgroundImagen,
+                    Target = BackgroundImageWrapper,
                     Scale = 1.2,
                     Duration = concreteBindingContext.ScreenPresentationTime.TotalMilliseconds.ToString()
                 };

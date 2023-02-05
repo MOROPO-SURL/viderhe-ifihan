@@ -92,7 +92,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
             {
                 internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
                 {
-                    Target = ContextedImagen,
+                    Target = ContextedImageWrapper,
                     TranslateY = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? OverlapContentLayout.Height / 2 : OverlapContentLayout.Height / 2 * -1,
                     EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
                     Delay = "100"
@@ -122,7 +122,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
             {
                 var presentedImageZoominAnimation = new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
                 {
-                    Target = ContextedImagen,
+                    Target = ContextedImageWrapper,
                     Scale = 1.2,
                     Duration = concreteBindingContext.ScreenPresentationTime.TotalMilliseconds.ToString()
                 };
@@ -136,6 +136,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
             base.DisposeUnmanagementResources();
 
             ContextedImagen.Source = null;
+            ContextedImageThumbnailImage.Source = null;
         }
 
         private void OverlapContentWrapLayout_PaintSurface(object sender, SKPaintSurfaceEventArgs eventArgs)
