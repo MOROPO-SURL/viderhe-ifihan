@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using MOROPO.SAPRESSC.Core.Persistence.Repositories;
 using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
 using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models.Filter;
-using System;
 using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
@@ -32,7 +31,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [Microsoft.AspNetCore.Authorization.AllowAnonymous]
-        public override ActionResult<PlacardDisplayModel> Get(Guid key)
+        public override ActionResult<PlacardDisplayModel> Get(System.Guid key)
         {
             return base.Get(key);
         }
