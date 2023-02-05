@@ -21,6 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 ScreenPresentationTimeSecounds = System.Convert.ToInt32(context.ScreenPresentationTime.TotalSeconds),
                 ContextedImage = context.ContextedImage.ToViewModel(),
                 ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
+                ContextedImageLayoutMode = context.ContextedImageAspectToFitAndComplementFilled ? Essential.Templating.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf : Essential.Templating.Enumerations.PictureLayoutMode.AspectFill,
                 OverlapSize = context.OverlapSize,
                 OverlapShapeKind = context.OverlapShapeKind,
                 OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),

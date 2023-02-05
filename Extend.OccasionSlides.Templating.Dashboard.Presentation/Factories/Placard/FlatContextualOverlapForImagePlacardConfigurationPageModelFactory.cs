@@ -22,6 +22,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 ContextedImage = context.ContextedImage.ToViewModel(),
                 ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
                 ContextedImageCenteredAtPresentation = context.ContextedImageCenteredAtPresentation,
+                ContextedImageLayoutMode = context.ContextedImageAspectToFitAndComplementFilled ? Essential.Templating.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf : Essential.Templating.Enumerations.PictureLayoutMode.AspectFill,
                 UseOverlapShadown = context.UseOverlapShadown,
                 OverlapSize = context.OverlapSize,
                 OverlapShapeKind = context.OverlapShapeKind,

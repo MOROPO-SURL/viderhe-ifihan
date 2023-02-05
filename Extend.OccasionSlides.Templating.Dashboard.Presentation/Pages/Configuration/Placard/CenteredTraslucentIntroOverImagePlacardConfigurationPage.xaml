@@ -25,7 +25,7 @@
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BoolToStringConverter" FalseString="No" TrueString="Si" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="IsBeingDraggedToColorStringConverter" FalseString="White" TrueString="Beige" />
-            <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="HasBackgroundImageToColorStringConverter" FalseString="Black" TrueString="DimGay" />
+            <sscxftoolkitpresentationconverters:NullToStringConverter x:Key="HasBackgroundImageToColorStringConverter" TrueValue="Black" FalseValue="DimGray" />
             <sscxftoolkitpresentationconverters:EnumerableEmptyToBooleanConverter x:Key="EnumerableEmptyToBooleanConverter" Inverse="True" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -147,7 +147,7 @@
                                                 <TapGestureRecognizer Tapped="PickBackgroundImageButton_Clicked" />
                                             </Grid.GestureRecognizers>
                                             <ffimageloadingforms:CachedImage 
-                                                BackgroundColor="{Binding Source={Binding Path=BackgroudImage, Converter={StaticResource NotNullToBooleanConverter}}, Converter={StaticResource HasBackgroundImageToColorStringConverter}}"
+                                                BackgroundColor="{Binding Path=BackgroundImage, Converter={StaticResource HasBackgroundImageToColorStringConverter}}"
                                                 HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
                                                 CacheType="Disk"
                                                 CacheDuration="8760:00:00"
