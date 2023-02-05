@@ -19,9 +19,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 Label = placardViewModel.Label,
                 ScreenPresentationTimeSecounds = System.Convert.ToInt32(context.ScreenPresentationTime.TotalSeconds),
-                HeaderImage = context.HeadImage?.ToViewModel(),
                 BackgroundImage = context.BackgroundImage.ToViewModel(),
                 BackgroundImageZoomingEnabled = context.BackgroundImageZoomingEnabled,
+                BackgroundImageLayoutMode = context.BackgroundImageAspectToFitAndComplementFilled ? Essential.Templating.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf : Essential.Templating.Enumerations.PictureLayoutMode.AspectFill,
                 OverlapOpacity = System.Convert.ToInt32(context.OverlapOpacity * 100),
                 OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
                 ContentBoxPresentationKind = context.ContentBoxPresentationKind

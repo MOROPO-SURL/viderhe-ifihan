@@ -60,9 +60,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            HeadImage = BindingContextPageModel.HeaderImage?.ToContextModel(),
                             BackgroundImage = BindingContextPageModel.BackgroundImage.ToContextModel(),
                             BackgroundImageZoomingEnabled = BindingContextPageModel.BackgroundImageZoomingEnabled,
+                            BackgroundImageAspectToFitAndComplementFilled = BindingContextPageModel.BackgroundImageLayoutMode == Essential.Templating.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf,
                             ContentBoxPresentationKind = BindingContextPageModel.ContentBoxPresentationKind,
                             OverlapOpacity = BindingContextPageModel.OverlapOpacity / 100d,
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
@@ -85,9 +85,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            HeadImage = BindingContextPageModel.HeaderImage?.ToContextModel(),
                             BackgroundImage = BindingContextPageModel.BackgroundImage.ToContextModel(),
                             BackgroundImageZoomingEnabled = BindingContextPageModel.BackgroundImageZoomingEnabled,
+                            BackgroundImageAspectToFitAndComplementFilled = BindingContextPageModel.BackgroundImageLayoutMode == Essential.Templating.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf,
                             ContentBoxPresentationKind = BindingContextPageModel.ContentBoxPresentationKind,
                             OverlapOpacity = BindingContextPageModel.OverlapOpacity / 100d,
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),

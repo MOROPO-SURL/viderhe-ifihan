@@ -67,8 +67,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Frame 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -223,17 +221,8 @@
                                     <Label Text="Color de Fondo" Style="{StaticResource FormLabel}" />
                                     <simplecolorpicker:ColorPickerEntry 
                                         EditAlfa="False"
+                                        ColorPreviewButtonBorder="DimGray"
                                         Color="{Binding Path=OverlapBackgroundColor}" />
-                                </StackLayout>
-                            </Frame>
-                            <Frame 
-                                Style="{StaticResource FormFieldFrame}"
-                                Margin="0,0,0,6">
-                                <StackLayout>
-                                    <Label Text="Color de Textos" Style="{StaticResource FormLabel}" />
-                                    <simplecolorpicker:ColorPickerEntry 
-                                        EditAlfa="False"
-                                        Color="{Binding Path=TextColor}" />
                                 </StackLayout>
                             </Frame>
                             <Frame Style="{StaticResource FormFieldFrame}">

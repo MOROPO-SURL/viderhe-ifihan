@@ -12,8 +12,6 @@
 
         public string OverlapBackgroundColor { get; set; }
 
-        public bool UseOverlapShadown { get; set; }
-
         public Enumerations.OverlapTrailMode OverlapTrailMode { get; set; }
 
         public Common.Templating.Models.Context.VideoContextModel ContextedVideo { get; set; }

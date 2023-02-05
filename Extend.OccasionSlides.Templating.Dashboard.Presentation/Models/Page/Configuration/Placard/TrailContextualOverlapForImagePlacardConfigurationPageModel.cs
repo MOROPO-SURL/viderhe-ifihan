@@ -12,6 +12,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         private bool contextedImageCenteredAtPresentation;
         private Support.Presentation.Models.View.ImageViewModel contextedImage;
         private bool contextedImageZoomingEnabled;
+        private Essential.Templating.Enumerations.PictureLayoutMode contextedImageLayoutMode;
 
         public TrailContextualOverlapForImagePlacardConfigurationPageModel()
         {
@@ -45,6 +46,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 OverlapTrailMode.Triplex,
                 OverlapTrailMode.Fourfold
             };
+            AvailablePictureLayoutModes = new Essential.Templating.Enumerations.PictureLayoutMode[]
+            {
+                Essential.Templating.Enumerations.PictureLayoutMode.AspectFill,
+                Essential.Templating.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf
+            };
         }
 
         public OverlapShapeKind OverlapShapeKind { get => overlapShapeKind; set => SetProperty(ref overlapShapeKind, value); }
@@ -71,7 +77,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public Support.Presentation.Models.View.ImageViewModel ContextedImage { get => contextedImage; set => SetProperty(ref contextedImage, value); }
 
+        public Essential.Templating.Enumerations.PictureLayoutMode ContextedImageLayoutMode { get => contextedImageLayoutMode; set => contextedImageLayoutMode = value; }
+
         public bool ContextedImageZoomingEnabled { get => contextedImageZoomingEnabled; set => SetProperty(ref contextedImageZoomingEnabled, value); }
+
+        public Essential.Templating.Enumerations.PictureLayoutMode[] AvailablePictureLayoutModes { get; private set; }
 
         protected override void DisposeUnmanagementResources()
         {

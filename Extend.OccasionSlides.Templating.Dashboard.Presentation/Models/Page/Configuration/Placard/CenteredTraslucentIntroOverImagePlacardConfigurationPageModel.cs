@@ -4,12 +4,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 {
     public class CenteredTraslucentIntroOverImagePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
-        private Support.Presentation.Models.View.ImageViewModel headerImage;
         private Support.Presentation.Models.View.ImageViewModel backgroundImage;
         private bool backgroundImageZoomingEnabled;
         private Xamarin.Forms.Color overlapBackgroundColor;
         private CenteredContentBoxPresentationKind contentBoxPresentationKind;
         private int overlapOpacity;
+        private Essential.Templating.Enumerations.PictureLayoutMode backgroundImageLayoutMode;
 
         public CenteredTraslucentIntroOverImagePlacardConfigurationPageModel()
         {
@@ -17,6 +17,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             OverlapOpacity = 50;
             OverlapBackgroundColor = Xamarin.Forms.Color.Black;
             ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<View.ContentBlockCollectionItemViewModel>();
+            BackgroundImageLayoutMode = Essential.Templating.Enumerations.PictureLayoutMode.AspectFill;
             AvailableContentBoxPresentationKinds = new CenteredContentBoxPresentationKind[]
             {
                 CenteredContentBoxPresentationKind.Inmersive,
@@ -24,11 +25,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 CenteredContentBoxPresentationKind.FloatBandHorizontal,
                 CenteredContentBoxPresentationKind.FloatBandVertical
             };
+            AvailablePictureLayoutModes = new Essential.Templating.Enumerations.PictureLayoutMode[]
+            {
+                Essential.Templating.Enumerations.PictureLayoutMode.AspectFill,
+                Essential.Templating.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf
+            };
         }
 
-        public Support.Presentation.Models.View.ImageViewModel HeaderImage { get => headerImage; set => SetProperty(ref headerImage, value); }
-
         public Support.Presentation.Models.View.ImageViewModel BackgroundImage { get => backgroundImage; set => SetProperty(ref backgroundImage, value); }
+
+        public Essential.Templating.Enumerations.PictureLayoutMode BackgroundImageLayoutMode { get => backgroundImageLayoutMode; set => SetProperty(ref backgroundImageLayoutMode, value); }
 
         public bool BackgroundImageZoomingEnabled { get => backgroundImageZoomingEnabled; set => SetProperty(ref backgroundImageZoomingEnabled, value); }
 
@@ -42,11 +48,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public CenteredContentBoxPresentationKind[] AvailableContentBoxPresentationKinds { get; private set; }
 
+        public Essential.Templating.Enumerations.PictureLayoutMode[] AvailablePictureLayoutModes { get; private set; }
+
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
 
-            HeaderImage = null;
             BackgroundImage = null;
         }
     }

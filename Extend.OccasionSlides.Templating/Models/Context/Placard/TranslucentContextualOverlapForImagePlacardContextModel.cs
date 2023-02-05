@@ -12,9 +12,9 @@
 
         public string OverlapBackgroundColor { get; set; }
 
-        public bool UseOverlapShadown { get; set; }
-
         public Common.Templating.Models.Context.ImageContextModel ContextedImage { get; set; }
+
+        public bool ContextedImageAspectToFitAndComplementFilled { get; set; }
 
         public bool ContextedImageZoomingEnabled { get; set; }
 

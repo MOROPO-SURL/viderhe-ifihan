@@ -10,9 +10,9 @@
 
         public string OverlapBackgroundColor { get; set; }
 
-        public Common.Templating.Models.Context.ImageContextModel HeadImage { get; set; }
-
         public Common.Templating.Models.Context.ImageContextModel BackgroundImage { get; set; }
+
+        public bool BackgroundImageAspectToFitAndComplementFilled { get; set; }
 
         public bool BackgroundImageZoomingEnabled { get; set; }
     }

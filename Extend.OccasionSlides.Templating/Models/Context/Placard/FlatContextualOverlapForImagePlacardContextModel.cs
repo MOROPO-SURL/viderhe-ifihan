@@ -16,6 +16,8 @@
 
         public Common.Templating.Models.Context.ImageContextModel ContextedImage { get; set; }
 
+        public bool ContextedImageAspectToFitAndComplementFilled { get; set; }
+
         public bool ContextedImageZoomingEnabled { get; set; }
 
         public bool ContextedImageCenteredAtPresentation { get; set; }

@@ -10,6 +10,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         private Xamarin.Forms.Color overlapBackgroundColor;
         private Support.Presentation.Models.View.ImageViewModel contextedImage;
         private bool contextedImageZoomingEnabled;
+        private Essential.Templating.Enumerations.PictureLayoutMode contextedImageLayoutMode;
 
         public TranslucentContextualOverlapForImagePlacardConfigurationPageModel()
         {
@@ -34,6 +35,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 OverlapAlignment.Start,
                 OverlapAlignment.End
             };
+            AvailablePictureLayoutModes = new Essential.Templating.Enumerations.PictureLayoutMode[]
+            {
+                Essential.Templating.Enumerations.PictureLayoutMode.AspectFill,
+                Essential.Templating.Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf
+            };
             OverlapBackgroundColor = Xamarin.Forms.Color.Black;
         }
 
@@ -55,7 +61,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public Support.Presentation.Models.View.ImageViewModel ContextedImage { get => contextedImage; set => SetProperty(ref contextedImage, value); }
 
+        public Essential.Templating.Enumerations.PictureLayoutMode ContextedImageLayoutMode { get => contextedImageLayoutMode; set => contextedImageLayoutMode = value; }
+
         public bool ContextedImageZoomingEnabled { get => contextedImageZoomingEnabled; set => SetProperty(ref contextedImageZoomingEnabled, value); }
+
+        public Essential.Templating.Enumerations.PictureLayoutMode[] AvailablePictureLayoutModes { get; private set; }
 
         protected override void DisposeUnmanagementResources()
         {

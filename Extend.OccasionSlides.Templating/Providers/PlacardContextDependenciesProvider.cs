@@ -7,7 +7,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
     {
         public Common.Templating.Models.Context.ImageContextModel[] GetImages(System.Guid templateId, string serializedContext)
         {
-            // TODO Register images in blocks!!
+            // TODO Register images in ImageSet blocks!!
 
             if (templateId == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
             {
@@ -21,9 +21,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
                     context.BackgroundImage
                 };
 
-                if (context.HeadImage != null)
+                foreach (var item in context.ContentBlocks)
                 {
-                    result.Add(context.HeadImage);
+                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+
+                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
                 }
 
                 return result.ToArray();
@@ -36,7 +38,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
                     TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
                 });
 
-                return new[] { context.ContextedImage };
+                var result = new System.Collections.Generic.List<Common.Templating.Models.Context.ImageContextModel>
+                {
+                    context.ContextedImage
+                };
+
+                foreach (var item in context.ContentBlocks)
+                {
+                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+
+                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                }
+
+                return result.ToArray();
             }
 
             if (templateId == Descriptors.TrailContextualOverlapForImageTemplateDescriptor.ID)
@@ -46,7 +60,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
                     TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
                 });
 
-                return new[] { context.ContextedImage };
+                var result = new System.Collections.Generic.List<Common.Templating.Models.Context.ImageContextModel>
+                {
+                    context.ContextedImage
+                };
+
+                foreach (var item in context.ContentBlocks)
+                {
+                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+
+                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                }
+
+                return result.ToArray();
             }
 
             if (templateId == Descriptors.TranslucentContextualOverlapForImageTemplateDescriptor.ID)
@@ -56,7 +82,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
                     TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
                 });
 
-                return new[] { context.ContextedImage };
+                var result = new System.Collections.Generic.List<Common.Templating.Models.Context.ImageContextModel>
+                {
+                    context.ContextedImage
+                };
+
+                foreach (var item in context.ContentBlocks)
+                {
+                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+
+                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                }
+
+                return result.ToArray();
             }
 
             if (templateId == Descriptors.TranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
@@ -66,7 +104,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
                     TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
                 });
 
-                return context.PresentedPictureSlideSecuence.Slides.Select(item => item.Image).ToArray();
+                var result = context.PresentedPictureSlideSecuence.Slides.Select(item => item.Image).ToList();
+
+                foreach (var item in context.ContentBlocks)
+                {
+                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+
+                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                }
+
+                return result.ToArray();
             }
 
             return null;

@@ -226,6 +226,7 @@
                                     <Label Text="Color de Fondo" Style="{StaticResource FormLabel}" />
                                     <simplecolorpicker:ColorPickerEntry 
                                         EditAlfa="False"
+                                        ColorPreviewButtonBorder="DimGray"
                                         Color="{Binding Path=OverlapBackgroundColor}" />
                                 </StackLayout>
                             </Frame>

@@ -6,6 +6,8 @@
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Converters"
     xmlns:commonconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:extendessentialpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation"
+    xmlns:extendessentialdashboardpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
@@ -17,10 +19,13 @@
             <commonconverters:StringToLocalizeStringConverter x:Key="CommonStringToLocalizeStringConverter" />
             <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />
             <converters:ContentBlockToViewConverter x:Key="ContentBlockToViewConverter" OptionButtonClicked="ContentBlockOptionsButton_Clicked" />
+            <extendessentialpresentationconverters:PictureLayoutModeToXamarinFormAspectConverter x:Key="PictureLayoutModeToXamarinFormAspectConverter" />
+            <extendessentialdashboardpresentationconverters:StringToLocalizeStringConverter x:Key="ExtendEssentialStringToLocalizeStringConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BoolToStringConverter" FalseString="No" TrueString="Si" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="IsBeingDraggedToColorStringConverter" FalseString="White" TrueString="Beige" />
+            <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="HasBackgroundImageToColorStringConverter" FalseString="Black" TrueString="DimGay" />
             <sscxftoolkitpresentationconverters:EnumerableEmptyToBooleanConverter x:Key="EnumerableEmptyToBooleanConverter" Inverse="True" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -142,12 +147,12 @@
                                                 <TapGestureRecognizer Tapped="PickBackgroundImageButton_Clicked" />
                                             </Grid.GestureRecognizers>
                                             <ffimageloadingforms:CachedImage 
-                                                BackgroundColor="Black"
+                                                BackgroundColor="{Binding Source={Binding Path=BackgroudImage, Converter={StaticResource NotNullToBooleanConverter}}, Converter={StaticResource HasBackgroundImageToColorStringConverter}}"
                                                 HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
                                                 CacheType="Disk"
                                                 CacheDuration="8760:00:00"
                                                 Source="{Binding Path=BackgroundImage, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
-                                                Aspect="AspectFill" />
+                                                Aspect="{Binding Path=BackgroundImageLayoutMode, Converter={StaticResource PictureLayoutModeToXamarinFormAspectConverter}}" />
                                             <StackLayout 
                                                 HorizontalOptions="Center" VerticalOptions="End"
                                                 Padding="4"
@@ -170,6 +175,17 @@
                                 </Frame>
                                 <Frame 
                                     Grid.Column="0" Grid.Row="1"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Presentación" Style="{StaticResource FormLabel}" />
+                                        <Picker 
+                                            ItemsSource="{Binding Path=AvailablePictureLayoutModes}" 
+                                            SelectedItem="{Binding Path=BackgroundImageLayoutMode}"
+                                            ItemDisplayBinding="{Binding Converter={StaticResource ExtendEssentialStringToLocalizeStringConverter}}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="1" Grid.Row="1"
                                     Style="{StaticResource FormFieldFrame}">
                                     <StackLayout>
                                         <Label Text="Usar ecfecto Zooming?" Style="{StaticResource FormLabel}" />

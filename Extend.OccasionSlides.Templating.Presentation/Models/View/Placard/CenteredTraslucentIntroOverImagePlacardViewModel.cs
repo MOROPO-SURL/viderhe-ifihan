@@ -10,10 +10,17 @@
 
         public Xamarin.Forms.Color OverlapBackgroundColor { get; set; }
 
-        public Xamarin.Forms.ImageSource HeadImageSource { get; set; }
-
         public Xamarin.Forms.ImageSource BackgroundImageSource { get; set; }
 
+        public bool BackgroundImageAspectToFitAndComplementFilled { get; set; }
+
         public bool BackgroundImageZoomingEnabled { get; set; }
+
+        protected override void DisposeUnmanagementResources()
+        {
+            base.DisposeUnmanagementResources();
+
+            BackgroundImageSource = null;
+        }
     }
 }
