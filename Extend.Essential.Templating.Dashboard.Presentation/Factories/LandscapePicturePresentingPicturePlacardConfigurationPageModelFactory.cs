@@ -13,6 +13,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             return new Models.Page.LandscapePicturePresentingPicturePlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                DefineBeginAt = placardViewModel.BeginAt != null,
+                BeginAt = placardViewModel.BeginAt,
+                DefineEndAt = placardViewModel.EndAt != null,
+                EndAt = placardViewModel.EndAt,
                 Label = placardViewModel.Label,
                 ScreenPresentationTimeSecounds = System.Convert.ToInt32(context.ScreenPresentationTime.TotalSeconds),
                 PresenterImage = context.PresenterImage.ToViewModel(),
