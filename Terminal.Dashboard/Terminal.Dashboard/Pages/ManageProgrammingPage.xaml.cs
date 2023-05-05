@@ -185,6 +185,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             Id = target.Placard.Id,
                             Label = target.Placard.Label,
                             PlayerOrientationSupportKind = target.Placard.PlayerOrientationSupportKind,
+                            BeginAt = target.Placard.BeginAt,
+                            EndAt = target.Placard.EndAt,
                             SerializedContext = target.Placard.SerializedContext,
                             Template = target.Placard.Template
                         };
