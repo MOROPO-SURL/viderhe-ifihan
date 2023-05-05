@@ -18,6 +18,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private const string OPTION_FRAME_DELETE = "Quitar";
 
         private const string OPTION_PLACARD_SEQUENCE = "Agregar a Secuencia";
+        private const string OPTION_PLACARD_PLACARD_CLONE = "Duplicar";
 
         private int currentPlacardsPageNumber;
         private int currentPlacardCollectionViewCellColumnCount = 3;
@@ -51,7 +52,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             var extraOptions = new System.Collections.Generic.List<string>
             {
                 OPTION_COMMON_PREVIEW,
-                OPTION_COMMON_EDIT
+                OPTION_COMMON_EDIT,
+                OPTION_PLACARD_PLACARD_CLONE
             };
 
             if (BindingContextPageModel.SelectedScreenplay != null)
@@ -70,8 +72,37 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 Support.Presentation.Models.View.PlacardViewModel placardClone;
 
+                var placardsClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+
                 switch (actionSheetTask.Result)
                 {
+                    case OPTION_PLACARD_PLACARD_CLONE:
+                        await placardsClient.CreateAsync(new Cloud.Api.Common.Models.PlacardInputModel
+                        {
+                            Label = string.Format("(Copia) {0}", target.Placard.Label),
+                            TemplateId = target.Placard.Template.Id,
+                            SerializedContext = target.Placard.SerializedContext
+                        }).ContinueWith(cloneTask =>
+                        {
+                            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                            {
+                                BindingContextPageModel.IsBusy = false;
+
+                                if (cloneTask.Exception != null || cloneTask.IsCanceled)
+                                {
+                                    Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(cloneTask.Exception);
+                                }
+                                else
+                                {
+                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Marco duplicado con éxito.");
+
+                                    PlacardEditionCompleted_Callback();
+                                }
+                            });
+                        });
+
+                        break;
+
                     case OPTION_COMMON_DELETE:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
@@ -81,11 +112,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Managers.SessionManager.Instance);
-
                                 try
                                 {
-                                    await client.Delete(target.Placard.Id);
+                                    await placardsClient.Delete(target.Placard.Id);
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
@@ -190,11 +219,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
+                                var framesClient = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
                                 try
                                 {
-                                    await client.CreateAsync(new Cloud.Api.Common.Models.FrameInputModel
+                                    await framesClient.CreateAsync(new Cloud.Api.Common.Models.FrameInputModel
                                     {
                                         ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id,
                                         PlacardId = target.Placard.Id,
