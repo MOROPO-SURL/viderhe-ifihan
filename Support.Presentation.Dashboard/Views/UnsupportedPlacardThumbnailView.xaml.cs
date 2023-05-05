@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views
 {
     public partial class UnsupportedPlacardThumbnailView : Xamarin.Forms.ContentView
     {
