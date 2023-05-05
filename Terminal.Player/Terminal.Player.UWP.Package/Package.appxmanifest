@@ -8,9 +8,9 @@
   IgnorableNamespaces="uap rescap desktop">
 
   <Identity
-    Name="MOROPO.Viderhe.Player"
+    Name="MOROPO.VIDERHE.Player"
     Publisher="CN=MOROPO S.U.R.L."
-    Version="0.6.0.0" />
+    Version="0.7.0.0" />
 
   <Properties>
     <DisplayName>VIDERHE Player</DisplayName>
