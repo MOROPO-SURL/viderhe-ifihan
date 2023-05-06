@@ -195,7 +195,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                 {
                     var model = framesStack.Pop();
 
-                    while (!model.SupportedByTargetOrientation(getOrientationFunction))
+                    while (!IsPresentable(model))
                     {
                         model = null;
 
@@ -287,6 +287,17 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                     PresentNextPlacardPresentationView();
                 }
             });
+        }
+
+        private bool IsPresentable(PlacardViewModel model)
+        {
+            if (!model.SupportedByTargetOrientation(getOrientationFunction)) return false;
+
+            if (model.BeginAt != null && System.DateTime.Now.Date < model.BeginAt) return false;
+
+            if (model.EndAt != null && System.DateTime.Now.Date > model.EndAt) return false;
+
+            return true;
         }
 
         #region IOverlablePresenter implementation

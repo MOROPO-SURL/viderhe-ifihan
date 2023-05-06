@@ -41,7 +41,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Pro
                 return result;
             }
 
-            throw new System.InvalidOperationException();
+            return null;
         }
     }
 }
