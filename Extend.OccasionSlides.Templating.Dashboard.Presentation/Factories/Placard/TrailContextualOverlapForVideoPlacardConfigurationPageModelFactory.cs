@@ -17,6 +17,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             var result = new Models.Page.Configuration.Placard.TrailContextualOverlapForVideoPlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                DefineBeginAt = placardViewModel.BeginAt != null,
+                BeginAt = placardViewModel.BeginAt ?? System.DateTime.Now.Date,
+                DefineEndAt = placardViewModel.EndAt != null,
+                EndAt = placardViewModel.EndAt ?? System.DateTime.Now.Date,
                 Label = placardViewModel.Label,
                 ContextedVideo = context.ContextedVideo.ToViewModel(),
                 IsContextedVideoFramed = context.IsContextedVideoFramed,

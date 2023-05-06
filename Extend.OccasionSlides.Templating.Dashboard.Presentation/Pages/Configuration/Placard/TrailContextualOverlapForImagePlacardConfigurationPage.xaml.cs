@@ -50,7 +50,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
                 if (placardViewModel == null)
                 {
-                    await client.CreateAsync(new Cloud.Api.Common.Models.PlacardInputModel
+                    var model = new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Label = BindingContextPageModel.Label,
                         TemplateId = Descriptors.TrailContextualOverlapForImageTemplateDescriptor.ID,
@@ -72,11 +72,23 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                         {
                             TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
                         })
-                    });
+                    };
+
+                    if (BindingContextPageModel.DefineBeginAt)
+                    {
+                        model.BeginAt = BindingContextPageModel.BeginAt;
+                    }
+
+                    if (BindingContextPageModel.DefineEndAt)
+                    {
+                        model.EndAt = BindingContextPageModel.EndAt;
+                    }
+
+                    await client.CreateAsync(model);
                 }
                 else
                 {
-                    await client.EditAsync(new Cloud.Api.Common.Models.PlacardInputModel
+                    var model = new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
@@ -99,7 +111,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                         {
                             TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
                         })
-                    });
+                    };
+
+                    if (BindingContextPageModel.DefineBeginAt)
+                    {
+                        model.BeginAt = BindingContextPageModel.BeginAt;
+                    }
+
+                    if (BindingContextPageModel.DefineEndAt)
+                    {
+                        model.EndAt = BindingContextPageModel.EndAt;
+                    }
+
+                    await client.EditAsync(model);
                 }
             }).ContinueWith(task =>
             {
