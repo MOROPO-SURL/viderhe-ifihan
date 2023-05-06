@@ -64,6 +64,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                     {
                         Label = BindingContextPageModel.Label,
                         TemplateId = Descriptors.LandscapePicturePresentingPictureTemplateDescriptor.ID,
+                        BeginAt = !BindingContextPageModel.DefineBeginAt ? null : BindingContextPageModel.BeginAt,
+                        EndAt = !BindingContextPageModel.DefineEndAt ? null : BindingContextPageModel.EndAt,
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.LandscapePicturePresentingPicturePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
@@ -83,6 +85,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
                         TemplateId = placardViewModel.Template.Id,
+                        BeginAt = !BindingContextPageModel.DefineBeginAt ? null : BindingContextPageModel.BeginAt,
+                        EndAt = !BindingContextPageModel.DefineEndAt ? null : BindingContextPageModel.EndAt,
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.LandscapePicturePresentingPicturePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
