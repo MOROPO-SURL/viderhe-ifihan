@@ -178,7 +178,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                     }
 
                     var counter = 1;
-                    var missingAccountExtensionsCount = dynamicLoadExtensions.Length;
+                    var missingAccountExtensionsCount = missingAccountExtensions.Count;
 
                     foreach (var missingAccountExtension in missingAccountExtensions)
                     {
