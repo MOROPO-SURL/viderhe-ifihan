@@ -13,6 +13,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
             return new Models.Page.CornerTileVideoPresentingVideoPlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                DefineBeginAt = placardViewModel.BeginAt != null,
+                BeginAt = placardViewModel.BeginAt ?? System.DateTime.Now.Date,
+                DefineEndAt = placardViewModel.EndAt != null,
+                EndAt = placardViewModel.EndAt ?? System.DateTime.Now.Date,
                 Label = placardViewModel.Label,
                 PresenterTileVideo = context.PresenterTileVideo.ToViewModel(),
                 PresenterTileVideoPlayDelay = context.PresenterTileVideoPlayDelay,

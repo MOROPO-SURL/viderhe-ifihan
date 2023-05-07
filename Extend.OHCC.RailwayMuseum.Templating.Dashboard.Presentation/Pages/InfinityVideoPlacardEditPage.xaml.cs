@@ -29,7 +29,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
             {
                 var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
-                await client.EditAsync(new Cloud.Api.Common.Models.PlacardInputModel
+                var model = new Cloud.Api.Common.Models.PlacardInputModel
                 {
                     Id = placardViewModel.Id,
                     PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
@@ -42,7 +42,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                         StartMargin = BindingContextPageModel.StartMargin,
                         EndMargin = BindingContextPageModel.EndMargin
                     })
-                });
+                };
+
+                if (BindingContextPageModel.DefineBeginAt)
+                {
+                    model.BeginAt = BindingContextPageModel.BeginAt;
+                }
+
+                if (BindingContextPageModel.DefineEndAt)
+                {
+                    model.EndAt = BindingContextPageModel.EndAt;
+                }
+
+                await client.EditAsync(model);
             }).ContinueWith((System.Threading.Tasks.Task task) =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
