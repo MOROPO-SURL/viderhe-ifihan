@@ -13,6 +13,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
             var result = new Models.Page.LandscapeGrid2x2PlacardConfigurationPageModel
             {
                 Label = placardViewModel.Label,
+                DefineBeginAt = placardViewModel.BeginAt != null,
+                BeginAt = placardViewModel.BeginAt ?? System.DateTime.Now.Date,
+                DefineEndAt = placardViewModel.EndAt != null,
+                EndAt = placardViewModel.EndAt ?? System.DateTime.Now.Date,
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation
             };
 

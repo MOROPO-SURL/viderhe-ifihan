@@ -159,7 +159,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
 
                 if (placardViewModel == null)
                 {
-                    await client.CreateAsync(new Cloud.Api.Common.Models.PlacardInputModel
+                    var model = new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Label = BindingContextPageModel.Label,
                         TemplateId = Descriptors.LandscapeGrid1x3TemplateDescriptor.ID,
@@ -170,11 +170,23 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
                             TwoOfThreeTargetPlacards = BindingContextPageModel.TwoOfThreeTargetPlacards.Select(item => item.Placard.Id.ToString()).ToArray(),
                             ThreeOfThreeTargetPlacards = BindingContextPageModel.ThreeOfThreeTargetPlacards.Select(item => item.Placard.Id.ToString()).ToArray()
                         })
-                    });
+                    };
+
+                    if (BindingContextPageModel.DefineBeginAt)
+                    {
+                        model.BeginAt = BindingContextPageModel.BeginAt;
+                    }
+
+                    if (BindingContextPageModel.DefineEndAt)
+                    {
+                        model.EndAt = BindingContextPageModel.EndAt;
+                    }
+
+                    await client.CreateAsync(model);
                 }
                 else
                 {
-                    await client.EditAsync(new Cloud.Api.Common.Models.PlacardInputModel
+                    var model = new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
@@ -186,7 +198,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
                             TwoOfThreeTargetPlacards = BindingContextPageModel.TwoOfThreeTargetPlacards.Select(item => item.Placard.Id.ToString()).ToArray(),
                             ThreeOfThreeTargetPlacards = BindingContextPageModel.ThreeOfThreeTargetPlacards.Select(item => item.Placard.Id.ToString()).ToArray()
                         })
-                    });
+                    };
+
+                    if (BindingContextPageModel.DefineBeginAt)
+                    {
+                        model.BeginAt = BindingContextPageModel.BeginAt;
+                    }
+
+                    if (BindingContextPageModel.DefineEndAt)
+                    {
+                        model.EndAt = BindingContextPageModel.EndAt;
+                    }
+
+                    await client.EditAsync(model);
                 }
             }).ContinueWith(task =>
             {
