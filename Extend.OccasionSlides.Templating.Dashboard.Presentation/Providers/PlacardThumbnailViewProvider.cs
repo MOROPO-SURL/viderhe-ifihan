@@ -26,6 +26,11 @@
                 return new Views.Thumbnail.TrailContextualOverlapForVideoPlacardThumbnailView(model);
             }
 
+            if (model.Template.Id == Descriptors.TranslucentContextualOverlapForVideoTemplateDescriptor.ID)
+            {
+                return new Views.Thumbnail.TranslucentContextualOverlapForVideoPlacardThumbnailView(model);
+            }
+
             return null;
         }
     }

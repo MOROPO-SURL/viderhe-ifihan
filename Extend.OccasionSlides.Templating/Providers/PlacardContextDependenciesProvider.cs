@@ -131,6 +131,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
                 return new[] { context.ContextedVideo };
             }
 
+            if (templateId == Descriptors.TranslucentContextualOverlapForVideoTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TranslucentContextualOverlapForVideoPlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
+                {
+                    TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
+                });
+
+                return new[] { context.ContextedVideo };
+            }
+
             return null;
         }
     }

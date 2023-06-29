@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters"
+    xmlns:viewtemplates="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Template"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:skiaformviews="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Placard.LeftLandscapeContextualTranslucentOverlapForVideoPlacardView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <viewtemplates:ContentBlockTemplateSelector x:Key="ContentBlockTemplateSelector" />
+
+            <converters:OverlapSizeToColumnSpanConverter x:Key="OverlapSizeToColumnSpanConverter" />
+            <converters:OverlapSizeToColumnSpanConverter x:Key="OverlapSizeToContentColumnSpanConverter" IsForContent="True" />
+            <converters:OverlapWidthToLeftContentPaddingConverter x:Key="OverlapWidthToLeftContentPaddingConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="PlacardLayout">
+                <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
+                    x:Name="ContextedVideo"
+                    VerticalOptions="Center" HorizontalOptions="Center"
+                    BackgroundColor="Black"
+                    StrechAspect="AspectFill"
+                    Source="{Binding Path=ContextedVideoSource}"
+                    ShowControls="False"
+                    AutoPlay="True"
+                    StatusUpdated="VideoPlayer_StatusUpdated" />
+                <Grid
+                    x:Name="OverlapLayout"
+                    ColumnSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <skiaformviews:SKCanvasView
+                        Grid.ColumnSpan="{Binding Path=OverlapSize, Converter={StaticResource OverlapSizeToColumnSpanConverter}, Mode=OneTime}"
+                        PaintSurface="OverlapContentWrapLayout_PaintSurface" />
+                    <Grid
+                        Grid.ColumnSpan="{Binding Path=OverlapSize, Converter={StaticResource OverlapSizeToContentColumnSpanConverter}, Mode=OneTime}"
+                        Padding="{Binding Source={Reference Wrapper}, Path=Width, Converter={StaticResource OverlapWidthToLeftContentPaddingConverter}}">
+                        <StackLayout 
+                            VerticalOptions="Center"
+                            Spacing="0">
+                            <StackLayout
+                                x:Name="InfoBlocksLayout"
+                                Spacing="0"
+                                BindableLayout.ItemsSource="{Binding Path=ContentBlocks}"
+                                BindableLayout.ItemTemplateSelector="{StaticResource ContentBlockTemplateSelector}" />
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

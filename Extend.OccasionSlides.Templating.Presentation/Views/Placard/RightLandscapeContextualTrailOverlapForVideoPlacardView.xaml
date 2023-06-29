@@ -34,6 +34,7 @@
                     VerticalOptions="Center" HorizontalOptions="Center"
                     BackgroundColor="Black"
                     Source="{Binding Path=ContextedVideoSource}"
+                    StrechAspect="AspectFill"
                     ShowControls="False"
                     AutoPlay="True"
                     StatusUpdated="VideoPlayer_StatusUpdated" />

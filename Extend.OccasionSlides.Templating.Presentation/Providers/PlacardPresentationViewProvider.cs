@@ -187,6 +187,32 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 return new Views.Placard.RightLandscapeContextualTrailOverlapForVideoPlacardView(targetPlacardViewModel);
             }
 
+            if (model.Template.Id == Descriptors.TranslucentContextualOverlapForVideoTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TranslucentContextualOverlapForVideoPlacardContextModel>(model.SerializedContext, new Newtonsoft.Json.JsonSerializerSettings
+                {
+                    TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
+                });
+
+                var targetPlacardViewModel = new Models.View.Placard.TranslucentContextualOverlapForVideoPlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ContextedVideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
+                    OverlapSize = context.OverlapSize,
+                    OverlapShapeKind = context.OverlapShapeKind,
+                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
+                    OverlapAlignment = context.OverlapAlignment,
+                    ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
+                };
+
+                if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
+                {
+                    return new Views.Placard.LeftLandscapeContextualTranslucentOverlapForVideoPlacardView(targetPlacardViewModel);
+                }
+
+                return new Views.Placard.RightLandscapeContextualTranslucentOverlapForVideoPlacardView(targetPlacardViewModel);
+            }
+
             return null;
         }
     }

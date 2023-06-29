@@ -12,6 +12,7 @@
     <None Remove="5A2F1E9B-EC2C-46A4-92EC-2975EC6DFEEE-landscape.png" />
     <None Remove="5F1E38D6-DABB-4B90-8845-C07E8F5DD9E0-landscape.png" />
     <None Remove="787D2F5E-9815-445E-8BDF-3FFE3DEBB5BF-portrait.png" />
+    <None Remove="Assets\2AFC0F5E-6601-4AF8-BCC2-A2D3493E0BB1-landscape.png" />
     <None Remove="Assets\8720E8C5-80AA-49E2-AF95-264DAEB3A91A-landscape.png" />
     <None Remove="BFB19355-B4DF-4FAC-BAAF-9951943818BE-landscape.png" />
     <None Remove="C3F857EA-227D-44BA-90C1-39091E1E70C7-portrait.png" />
@@ -25,6 +26,7 @@
     <EmbeddedResource Include="Assets\8720E8C5-80AA-49E2-AF95-264DAEB3A91A-landscape.png" />
     <EmbeddedResource Include="Assets\5F1E38D6-DABB-4B90-8845-C07E8F5DD9E0-landscape.png" />
     <EmbeddedResource Include="Assets\787D2F5E-9815-445E-8BDF-3FFE3DEBB5BF-portrait.png" />
+    <EmbeddedResource Include="Assets\2AFC0F5E-6601-4AF8-BCC2-A2D3493E0BB1-landscape.png" />
     <EmbeddedResource Include="Assets\BFB19355-B4DF-4FAC-BAAF-9951943818BE-landscape.png" />
     <EmbeddedResource Include="Assets\2AFABF13-7976-4C71-9483-9E805AB9A0A1-portrait.png" />
     <EmbeddedResource Include="Assets\FA754670-FD62-4E36-B6C7-400B6689F00C-landscape.png" />
