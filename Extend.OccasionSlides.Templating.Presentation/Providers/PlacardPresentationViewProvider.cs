@@ -213,6 +213,34 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 return new Views.Placard.RightLandscapeContextualTranslucentOverlapForVideoPlacardView(targetPlacardViewModel);
             }
 
+            if (model.Template.Id == Descriptors.FlatContextualOverlapForVideoTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<FlatContextualOverlapForVideoPlacardContextModel>(model.SerializedContext, new Newtonsoft.Json.JsonSerializerSettings
+                {
+                    TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
+                });
+
+                var targetPlacardViewModel = new Models.View.Placard.FlatContextualOverlapForVideoPlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ContextedVideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
+                    ContextedVideoCenteredAtPresentation = context.ContextedVideoCenteredAtPresentation,
+                    OverlapSize = context.OverlapSize,
+                    OverlapShapeKind = context.OverlapShapeKind,
+                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
+                    OverlapAlignment = context.OverlapAlignment,
+                    ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray(),
+                    UseOverlapShadown = context.UseOverlapShadown
+                };
+
+                if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
+                {
+                    return new Views.Placard.LeftLandscapeContextualFlatOverlapForVideoPlacardView(targetPlacardViewModel);
+                }
+
+                return new Views.Placard.RightLandscapeContextualFlatOverlapForVideoPlacardView(targetPlacardViewModel);
+            }
+
             return null;
         }
     }

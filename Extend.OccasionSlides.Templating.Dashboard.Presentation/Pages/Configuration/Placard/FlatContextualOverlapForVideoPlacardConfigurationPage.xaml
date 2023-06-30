@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Converters"
+    xmlns:commonconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:extendessentialpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation"
+    xmlns:extendessentialdashboardpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Placard.FlatContextualOverlapForVideoPlacardConfigurationPage"
+    x:TypeArguments="pagemodels:FlatContextualOverlapForVideoPlacardConfigurationPageModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <commonconverters:StringToLocalizeStringConverter x:Key="CommonStringToLocalizeStringConverter" />
+            <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />
+            <converters:ContentBlockToViewConverter x:Key="ContentBlockToViewConverter" OptionButtonClicked="ContentBlockOptionsButton_Clicked" />
+            <extendessentialpresentationconverters:PictureLayoutModeToXamarinFormAspectConverter x:Key="PictureLayoutModeToXamarinFormAspectConverter" />
+            <extendessentialdashboardpresentationconverters:StringToLocalizeStringConverter x:Key="ExtendEssentialStringToLocalizeStringConverter" />
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BoolToStringConverter" FalseString="No" TrueString="Si" />
+            <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="IsBeingDraggedToColorStringConverter" FalseString="White" TrueString="Beige" />
+            <sscxftoolkitpresentationconverters:NullToStringConverter x:Key="HasBackgroundImageToColorStringConverter" TrueValue="Black" FalseValue="DimGray" />
+            <sscxftoolkitpresentationconverters:EnumerableEmptyToBooleanConverter x:Key="EnumerableEmptyToBooleanConverter" Inverse="True" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Aplicar"
+            Clicked="ApplyToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Cancelar"
+            Clicked="CancelToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView>
+                <Grid 
+                    Margin="10"
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Frame 
+                        Grid.ColumnSpan="3" Grid.Row="0"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Etiqueta" Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=Label}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.ColumnSpan="2" Grid.Row="0"
+                                Text="Fecha de incio" 
+                                Style="{StaticResource FormLabel}" />
+                            <Switch 
+                                Grid.Column="0" Grid.Row="1"
+                                IsToggled="{Binding Path=DefineBeginAt}" />
+                            <DatePicker 
+                                Grid.Column="1" Grid.Row="1"
+                                IsEnabled="{Binding DefineBeginAt}"
+                                Date="{Binding Path=BeginAt}" />
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                Grid.ColumnSpan="2" Grid.Row="0"
+                                Text="Fecha de fin" 
+                                Style="{StaticResource FormLabel}" />
+                            <Switch 
+                                Grid.Column="0" Grid.Row="1"
+                                IsToggled="{Binding Path=DefineEndAt}" />
+                            <DatePicker 
+                                Grid.Column="1" Grid.Row="1"
+                                IsEnabled="{Binding DefineEndAt}"
+                                Date="{Binding Path=EndAt}" />
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="2" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="A Pantalla Completa" Style="{StaticResource FormLabel}" />
+                            <Switch IsToggled="{Binding Path=RequireUnobstructedPresetation}" />
+                        </StackLayout>
+                    </Frame>
+                    <Grid
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"
+                        VerticalOptions="Start"
+                        ColumnSpacing="10" RowSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Frame 
+                            Grid.ColumnSpan="2" Grid.Row="0"
+                            Style="{StaticResource FormFieldFrame}"
+                            Padding="0">
+                            <Grid RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Label 
+                                    x:Name="ContextedVideoLabel"
+                                    Grid.Column="0" Grid.Row="0"
+                                    Style="{StaticResource FormLabel}"
+                                    Margin="10,10,10,6"
+                                    Text="Video" />
+                                <Button
+                                    Grid.Column="1" Grid.Row="0"
+                                    VerticalOptions="Start"
+                                    Text="Seleccionar"
+                                    Clicked="PickContextedVideoButton_Clicked"  />
+                                <ffimageloadingforms:CachedImage
+                                    Margin="0"
+                                    Grid.ColumnSpan="2" Grid.Row="1"
+                                    BackgroundColor="Black"
+                                    Source="{Binding Path=ContextedVideo, Converter={StaticResource VideoViewModelToThumbnailImageSourceConverter}}"
+                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00" />
+                                <Grid 
+                                    Grid.ColumnSpan="2" Grid.Row="1"
+                                    IsVisible="{Binding Path=ContextedVideo, Converter={StaticResource NotNullToBooleanConverter}}"
+                                    BackgroundColor="#99000000">
+                                    <Label 
+                                        IsVisible="{Binding Path=ContextedVideo.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                        VerticalOptions="End" 
+                                        Padding="8"
+                                        BackgroundColor="#99000000"
+                                        Text="{Binding Path=ContextedVideo.About}"
+                                        TextColor="White"
+                                        LineBreakMode="TailTruncation" />
+                                    <ImageButton 
+                                        HorizontalOptions="Center" VerticalOptions="Center"
+                                        WidthRequest="120"
+                                        Clicked="ContextedVideoPlayButton_Clicked">
+                                        <ImageButton.Source>
+                                            <FontImageSource 
+                                                Color="White"
+                                                FontFamily="{StaticResource IconFontFamily}"
+                                                Glyph="&#xf40c;" />
+                                        </ImageButton.Source>
+                                    </ImageButton>
+                                </Grid>
+                            </Grid>
+                        </Frame>
+                        <Frame 
+                            Grid.Column="0" Grid.Row="1"
+                            Style="{StaticResource FormFieldFrame}">
+                            <StackLayout>
+                                <Label Text="Matener centrado Video?" Style="{StaticResource FormLabel}" />
+                                <Switch IsToggled="{Binding Path=ContextedVideoCenteredAtPresentation}" />
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                    <Frame 
+                        Grid.Column="2" Grid.Row="2"
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Contenedor" Style="{StaticResource FormLabel}" />
+                            <Frame 
+                                Style="{StaticResource FormFieldFrame}"
+                                Margin="0,0,0,6">
+                                <StackLayout>
+                                    <Label Text="Tamaño" Style="{StaticResource FormLabel}" />
+                                    <Picker 
+                                        ItemsSource="{Binding Path=AvailableOverlapSizes}" 
+                                        SelectedItem="{Binding Path=OverlapSize}"
+                                        ItemDisplayBinding="{Binding Converter={StaticResource StringToLocalizeStringConverter}}"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame 
+                                Style="{StaticResource FormFieldFrame}"
+                                Margin="0,0,0,6">
+                                <StackLayout>
+                                    <Label Text="Terminación" Style="{StaticResource FormLabel}" />
+                                    <Picker 
+                                        ItemsSource="{Binding Path=AvailableOverlapShapeKinds}" 
+                                        SelectedItem="{Binding Path=OverlapShapeKind}"
+                                        ItemDisplayBinding="{Binding Converter={StaticResource StringToLocalizeStringConverter}}"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame 
+                                Style="{StaticResource FormFieldFrame}"
+                                Margin="0,0,0,6">
+                                <StackLayout>
+                                    <Label Text="Alineación" Style="{StaticResource FormLabel}" />
+                                    <Picker 
+                                        ItemsSource="{Binding Path=AvailableOverlapAlignments}" 
+                                        SelectedItem="{Binding Path=OverlapAlignment}"
+                                        ItemDisplayBinding="{Binding Converter={StaticResource StringToLocalizeStringConverter}}"/>
+                                </StackLayout>
+                            </Frame>
+                            <Frame 
+                                Style="{StaticResource FormFieldFrame}"
+                                Margin="0,0,0,6">
+                                <StackLayout>
+                                    <Label Text="Color de Fondo" Style="{StaticResource FormLabel}" />
+                                    <simplecolorpicker:ColorPickerEntry 
+                                        EditAlfa="False"
+                                        ColorPreviewButtonBorder="DimGray"
+                                        Color="{Binding Path=OverlapBackgroundColor}" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame Style="{StaticResource FormFieldFrame}">
+                                <StackLayout>
+                                    <Label Text="Mostrar Sombra" Style="{StaticResource FormLabel}" />
+                                    <Switch IsToggled="{Binding Path=UseOverlapShadown}" />
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.ColumnSpan="3" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF"
+                        Padding="0">
+                        <Grid RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <BoxView 
+                                Grid.ColumnSpan="2" Grid.Row="0"
+                                Color="White" />
+                            <Label
+                                x:Name="InfoBlocksLabel"
+                                Grid.Column="0" Grid.Row="0"
+                                Style="{StaticResource FormLabel}"
+                                Margin="10,10,10,6"
+                                Text="Bloques de Información" />
+                            <Button
+                                Grid.Column="1" Grid.Row="0"
+                                VerticalOptions="Start"
+                                Text="Agregar"
+                                Clicked="AddContentBlockButton_Clicked" />
+                            <CollectionView
+                                x:Name="ContentBlockCollectionView"
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                Margin="10,0"
+                                ItemsSource="{Binding Path=ContentBlocks}">
+                                <CollectionView.Header>
+                                    <BoxView IsVisible="{Binding Path=ContentBlocks, Converter={StaticResource EnumerableEmptyToBooleanConverter}}" Color="Transparent" HeightRequest="5" />
+                                </CollectionView.Header>
+                                <CollectionView.Footer>
+                                    <BoxView IsVisible="{Binding Path=ContentBlocks, Converter={StaticResource EnumerableEmptyToBooleanConverter}}" Color="Transparent" HeightRequest="5" />
+                                </CollectionView.Footer>
+                                <CollectionView.ItemsLayout>
+                                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.EmptyView>
+                                    <Label 
+                                        Padding="5,10" 
+                                        Text="Sin elementos que mostrar" />
+                                </CollectionView.EmptyView>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Spacing="10">
+                                            <StackLayout.GestureRecognizers>
+                                                <DropGestureRecognizer
+                                                    AllowDrop="True"
+                                                    Drop="ContentBlockCollectionViewDropGestureRecognizer_Drop"
+                                                    DragLeave="ContentBlockCollectionViewDropGestureRecognizer_DragLeave"
+                                                    DragOver="ContentBlockCollectionViewDropGestureRecognizer_DragOver" />
+                                            </StackLayout.GestureRecognizers>
+                                            <BoxView
+                                                Color="DimGray"
+                                                HeightRequest="30"
+                                                IsVisible="{Binding Path=IsBeingDraggedOverAtStart}" />
+                                            <ContentView 
+                                                Content="{Binding Converter={StaticResource ContentBlockToViewConverter}}" 
+                                                BackgroundColor="{Binding Path=IsBeingDragged, Converter={StaticResource IsBeingDraggedToColorStringConverter}}" 
+                                                Padding="10">
+                                                <ContentView.GestureRecognizers>
+                                                    <DragGestureRecognizer
+                                                        CanDrag="True"
+                                                        DragStarting="ContentBlockCollectionItemViewDragGestureRecognizer_DragStarting"
+                                                        DropCompleted="ContentBlockCollectionItemViewDragGestureRecognizer_DropCompleted"/>
+                                                </ContentView.GestureRecognizers>
+                                            </ContentView>
+                                            <BoxView
+                                                Color="DimGray"
+                                                HeightRequest="30"
+                                                IsVisible="{Binding Path=IsBeingDraggedOverAtEnd}" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

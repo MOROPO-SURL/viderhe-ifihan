@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</RootNamespace>
-    <Version>0.14.0.0</Version>
+    <Version>0.15.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -68,6 +68,9 @@
     <EmbeddedResource Update="Pages\Configuration\Placard\FlatContextualOverlapForImagePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Configuration\Placard\FlatContextualOverlapForVideoPlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\Configuration\Placard\TrailContextualOverlapForImagePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -102,6 +105,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\CommonPlacardThumbnailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Thumbnail\FlatContextualOverlapForVideoPlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Thumbnail\TrailContextualOverlapForVideoPlacardThumbnailView.xaml">

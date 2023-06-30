@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation</RootNamespace>
-    <Version>0.14.0.0</Version>
+    <Version>0.15.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -288,10 +288,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualFlatOverlapForVideoPlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTrailOverlapForVideoPlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTranslucentOverlapForVideoPlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Placard\RightLandscapeContextualFlatOverlapForVideoPlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Placard\RightLandscapeContextualTrailOverlapForVideoPlacardView.xaml">

@@ -39,6 +39,11 @@
                 return new Pages.Configuration.Placard.TranslucentContextualOverlapForVideoPlacardConfigurationPage(completedActionCallback);
             }
 
+            if (templateDescriptor is Descriptors.FlatContextualOverlapForVideoTemplateDescriptor)
+            {
+                return new Pages.Configuration.Placard.FlatContextualOverlapForVideoPlacardConfigurationPage(completedActionCallback);
+            }
+
             return null;
         }
 
@@ -77,6 +82,11 @@
             if (placardViewModel.Template.Id == Descriptors.TranslucentContextualOverlapForVideoTemplateDescriptor.ID)
             {
                 return new Pages.Configuration.Placard.TranslucentContextualOverlapForVideoPlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.FlatContextualOverlapForVideoTemplateDescriptor.ID)
+            {
+                return new Pages.Configuration.Placard.FlatContextualOverlapForVideoPlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;
