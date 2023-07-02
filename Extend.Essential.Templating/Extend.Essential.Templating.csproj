@@ -1,52 +1,57 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>MOROPO.VIDERHE.Extend.Essential.Templating</AssemblyName>
-    <RootNamespace>MOROPO.VIDERHE.Extend.Essential.Templating</RootNamespace>
-    <Version>0.3.0.0</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Extend.Essential.Templating</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.Essential.Templating</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2023, Todos los derechos reservados.</Copyright>
+		<Version>2.0.0</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="014FCE66-7BBD-472A-9955-EC01E93FA5FF-landscape.png" />
-    <None Remove="08C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
-    <None Remove="08C0C0E5-C6DD-4E1C-B821-FACF619DD99D-portrait.png" />
-    <None Remove="5172FEC6-78DB-4B26-BB61-14E0EB6C8342-landscape.png" />
-    <None Remove="88C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
-    <None Remove="88C0C0E5-C6DD-4E1C-B821-FACF619DD99D-portrait.png" />
-    <None Remove="A709675B-DABB-4A1E-B1A6-30A2C8691CF9-landscape.png" />
-    <None Remove="A709675B-DABB-4A1E-B1A6-30A2C8691CF9-portrait.png" />
-    <None Remove="B95B3064-2BDE-4237-80CF-9A31CC7536BA-portrait.png" />
-    <None Remove="BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0-landscape.png" />
-    <None Remove="BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0-portrait.png" />
-    <None Remove="D95695DB-C210-4E6C-92DA-344354D0731E-landscape.png" />
-    <None Remove="D95695DB-C210-4E6C-92DA-344354D0731E-portrait.png" />
-    <None Remove="FA334577-0D4C-4366-9B68-A23D9D4AE004-landscape.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="014FCE66-7BBD-472A-9955-EC01E93FA5FF-landscape.png" />
+		<None Remove="08C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
+		<None Remove="08C0C0E5-C6DD-4E1C-B821-FACF619DD99D-portrait.png" />
+		<None Remove="5172FEC6-78DB-4B26-BB61-14E0EB6C8342-landscape.png" />
+		<None Remove="88C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
+		<None Remove="88C0C0E5-C6DD-4E1C-B821-FACF619DD99D-portrait.png" />
+		<None Remove="A709675B-DABB-4A1E-B1A6-30A2C8691CF9-landscape.png" />
+		<None Remove="A709675B-DABB-4A1E-B1A6-30A2C8691CF9-portrait.png" />
+		<None Remove="B95B3064-2BDE-4237-80CF-9A31CC7536BA-portrait.png" />
+		<None Remove="BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0-landscape.png" />
+		<None Remove="BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0-portrait.png" />
+		<None Remove="D95695DB-C210-4E6C-92DA-344354D0731E-landscape.png" />
+		<None Remove="D95695DB-C210-4E6C-92DA-344354D0731E-portrait.png" />
+		<None Remove="FA334577-0D4C-4366-9B68-A23D9D4AE004-landscape.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Assets\014FCE66-7BBD-472A-9955-EC01E93FA5FF-landscape.png" />
-    <EmbeddedResource Include="Assets\08C0C0E5-C6DD-4E1C-B821-FACF619DD99D-portrait.png" />
-    <EmbeddedResource Include="Assets\88C0C0E5-C6DD-4E1C-B821-FACF619DD99D-portrait.png" />
-    <EmbeddedResource Include="Assets\A709675B-DABB-4A1E-B1A6-30A2C8691CF9-landscape.png" />
-    <EmbeddedResource Include="Assets\5172FEC6-78DB-4B26-BB61-14E0EB6C8342-landscape.png" />
-    <EmbeddedResource Include="Assets\A709675B-DABB-4A1E-B1A6-30A2C8691CF9-portrait.png" />
-    <EmbeddedResource Include="Assets\B95B3064-2BDE-4237-80CF-9A31CC7536BA-portrait.png" />
-    <EmbeddedResource Include="Assets\BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0-portrait.png" />
-    <EmbeddedResource Include="Assets\D95695DB-C210-4E6C-92DA-344354D0731E-landscape.png" />
-    <EmbeddedResource Include="Assets\D95695DB-C210-4E6C-92DA-344354D0731E-portrait.png" />
-    <EmbeddedResource Include="Assets\FA334577-0D4C-4366-9B68-A23D9D4AE004-landscape.png" />
-    <EmbeddedResource Include="Assets\08C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
-    <EmbeddedResource Include="Assets\88C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
-    <EmbeddedResource Include="Assets\BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0-landscape.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Assets\014FCE66-7BBD-472A-9955-EC01E93FA5FF-landscape.png" />
+		<EmbeddedResource Include="Assets\08C0C0E5-C6DD-4E1C-B821-FACF619DD99D-portrait.png" />
+		<EmbeddedResource Include="Assets\88C0C0E5-C6DD-4E1C-B821-FACF619DD99D-portrait.png" />
+		<EmbeddedResource Include="Assets\A709675B-DABB-4A1E-B1A6-30A2C8691CF9-landscape.png" />
+		<EmbeddedResource Include="Assets\5172FEC6-78DB-4B26-BB61-14E0EB6C8342-landscape.png" />
+		<EmbeddedResource Include="Assets\A709675B-DABB-4A1E-B1A6-30A2C8691CF9-portrait.png" />
+		<EmbeddedResource Include="Assets\B95B3064-2BDE-4237-80CF-9A31CC7536BA-portrait.png" />
+		<EmbeddedResource Include="Assets\BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0-portrait.png" />
+		<EmbeddedResource Include="Assets\D95695DB-C210-4E6C-92DA-344354D0731E-landscape.png" />
+		<EmbeddedResource Include="Assets\D95695DB-C210-4E6C-92DA-344354D0731E-portrait.png" />
+		<EmbeddedResource Include="Assets\FA334577-0D4C-4366-9B68-A23D9D4AE004-landscape.png" />
+		<EmbeddedResource Include="Assets\08C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
+		<EmbeddedResource Include="Assets\88C0C0E5-C6DD-4E1C-B821-FACF619DD99D-landscape.png" />
+		<EmbeddedResource Include="Assets\BC45E572-CE72-46F2-BD39-0FCBFFC7A6C0-landscape.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+	</ItemGroup>
 
 </Project>

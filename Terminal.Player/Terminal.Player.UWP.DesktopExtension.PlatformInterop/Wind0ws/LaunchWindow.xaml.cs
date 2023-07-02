@@ -6,7 +6,7 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.DesktopExtension.PlatformInterop.Wi
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class LauncherWindow : System.Windows.Window
+    public partial class LaunchWindow : System.Windows.Window
     {
         [System.Runtime.InteropServices.DllImport("User32.dll", SetLastError = true)]
         private static extern void SwitchToThisWindow(IntPtr hWnd, bool fAltTab);
@@ -22,7 +22,7 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.DesktopExtension.PlatformInterop.Wi
         private AppServiceConnection appServiceConnection;
         private System.Diagnostics.Process launchProcess;
 
-        public LauncherWindow()
+        public LaunchWindow()
         {
             InitializeComponent();
         }
@@ -81,7 +81,7 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.DesktopExtension.PlatformInterop.Wi
 
                         appServiceConnection = new AppServiceConnection
                         {
-                            AppServiceName = "SupportInteropService",
+                            AppServiceName = "PlatformInteropService",
                             PackageFamilyName = Windows.ApplicationModel.Package.Current.Id.FamilyName
                         };
 

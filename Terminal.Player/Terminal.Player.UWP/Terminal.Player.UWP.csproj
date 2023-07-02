@@ -230,6 +230,18 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.8.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Cloud.Api.Common\Cloud.Api.Common.csproj">
+      <Project>{4d9e2d5f-55c3-497a-9ea0-89ced1acd180}</Project>
+      <Name>Cloud.Api.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cloud.Api.Connect\Cloud.Api.Connect.csproj">
+      <Project>{0bee0e5c-b306-4e5f-ac02-2b340a7bff6e}</Project>
+      <Name>Cloud.Api.Connect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cloud.Persistence\Cloud.Persistence.csproj">
+      <Project>{4d4db49c-07e6-40db-a116-1146651260dc}</Project>
+      <Name>Cloud.Persistence</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj">
       <Project>{7b10ab64-aec2-4109-bbb6-cbe522c1273c}</Project>
       <Name>Extend.Common.Transitioning.Presentation</Name>

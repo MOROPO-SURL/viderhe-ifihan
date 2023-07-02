@@ -1,5 +1,5 @@
 ﻿<Window 
-    x:Class="MOROPO.VIDERHE.Terminal.Player.UWP.DesktopExtension.PlatformInterop.Wind0ws.LauncherWindow"
+    x:Class="MOROPO.VIDERHE.Terminal.Player.UWP.DesktopExtension.PlatformInterop.Wind0ws.LaunchWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="VIDERHE Player | Lanzador" Height="450" Width="800"
