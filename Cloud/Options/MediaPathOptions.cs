@@ -7,5 +7,7 @@
         public string ThumbnailMediaPath { get; set; }
 
         public string VideoMediaPath { get; set; }
+
+        public string SoundMediaPath { get; set; }
     }
 }

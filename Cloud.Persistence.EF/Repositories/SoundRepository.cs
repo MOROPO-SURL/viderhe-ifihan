@@ -1,0 +1,16 @@
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
+{
+    public class SoundRepository : MOROPO.SAPRESSC.Core.Persistence.EF.Repositories.AbstractEntityRepository<Entities.Sound, System.Guid>
+    {
+        public SoundRepository(DbContext dbContext) : base(dbContext)
+        {
+        }
+
+        protected override System.Linq.IQueryable<Entities.Sound> GetQueryableDbSet()
+        {
+            return base.GetQueryableDbSet().Include(entiy => entiy.Thumbnail);
+        }
+    }
+}
