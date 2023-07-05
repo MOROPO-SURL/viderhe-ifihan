@@ -6,7 +6,7 @@
 
         public System.DateTime CreateAt { get; set; }
 
-        public MagicGradients.IGradientSource Source { get; set; }
+        public MagicGradients.CssGradientSource Source { get; set; }
 
         public string About { get; set; }
     }

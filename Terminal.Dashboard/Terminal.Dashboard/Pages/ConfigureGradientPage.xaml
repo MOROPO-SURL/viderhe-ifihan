@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
+    xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardpresenters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Presenters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"    
+    xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ConfigureGradientPage"
+    x:TypeArguments="pagemodels:ConfigureGradientPageModel"
+    x:Name="FormPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Aplicar"
+            Activated="ApplyToolbarItem_Activated">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Cancelar"
+            Activated="CancelToolbarItem_Activated">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView>
+                <Grid 
+                    Padding="10"                     
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout 
+                        IsVisible="{Binding Path=IsValid, Converter={StaticResource BoolToBoolNegationConverter}}"
+                        Grid.ColumnSpan="2" Grid.Row="0"
+                        BindableLayout.ItemsSource="{Binding Path=ValidationMessages}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid 
+                                    BackgroundColor="Tomato"
+                                    RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <BoxView 
+                                        Grid.Column="0" Grid.RowSpan="2"
+                                        Color="Red" />
+                                    <Label
+                                        Grid.Column="1" Grid.Row="0"
+                                        Padding="5,5,5,2"
+                                        Text="{Binding Path=Caption}"
+                                        TextColor="White"
+                                        FontAttributes="Bold" />
+                                    <Label 
+                                        Grid.Column="1" Grid.Row="1"
+                                        Padding="5,0,5,5"
+                                        Text="{Binding Path=Message}"
+                                        TextColor="White" />
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    <Frame
+                        Grid.ColumnSpan="2" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                x:Name="ReferenceLabel"
+                                Text="Referencia" 
+                                Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=About}">
+                                <Entry.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
+                                        TargetProperty="{Static Entry.TextProperty}"
+                                        Label="{Reference ReferenceLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Grid.Column="0" Grid.Row="2"
+                        Style="{StaticResource FormFieldFrame}">
+                        <mg:GradientView 
+                            GradientSource="{Binding Path=Source}"
+                            HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"/>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="2"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Código" Style="{StaticResource FormLabel}" />
+                            <Editor Text="{Binding Path=Data}" VerticalOptions="FillAndExpand" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

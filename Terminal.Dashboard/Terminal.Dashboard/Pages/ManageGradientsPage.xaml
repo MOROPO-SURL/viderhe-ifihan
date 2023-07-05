@@ -1,14 +1,129 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageGradientsPage"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageGradientsPage"   
+    x:TypeArguments="pagemodels:ManageGradientsPageModel"
     Title="Gradientes">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="10" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Agregar"
+            Activated="AddToolbarItem_Activated">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf415;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem
+            Text="Actualizar"
+            Clicked="ReloadToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource IconFontFamily}" Glyph="&#xf6ea;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <StackLayout Spacing="0">
+                    <FlexLayout
+                        Margin="5"
+                        Wrap="Wrap"
+                        AlignItems="Start" AlignContent="Start"
+                        BindableLayout.ItemsSource="{Binding Path=Items}">
+                        <BindableLayout.EmptyView>
+                            <Label
+                                IsVisible="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
+                                Margin="20"
+                                Text="Sin elementos que mostrar"
+                                TextColor="Black" />
+                        </BindableLayout.EmptyView>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="5" Padding="0"
+                                    BackgroundColor="White"
+                                    CornerRadius="0"
+                                    HasShadow="False"
+                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}">
+                                    <Grid RowSpacing="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <mg:GradientView 
+                                            Grid.Row="0" Grid.Column="0"
+                                            BackgroundColor="Black"
+                                            HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                            GradientSource="{Binding Path=Source}" />
+                                        <StackLayout 
+                                            Grid.Row="0" Grid.Column="0"
+                                            IsVisible="{Binding Path=About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                            VerticalOptions="End" 
+                                            Padding="8"
+                                            BackgroundColor="#99000000">
+                                            <Label 
+                                                Text="{Binding Path=About}"
+                                                TextColor="White"
+                                                LineBreakMode="TailTruncation" />
+                                        </StackLayout>
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            Orientation="Horizontal"
+                                            Padding="6" Spacing="3">
+                                            <Button 
+                                                HorizontalOptions="EndAndExpand"
+                                                Text="Modificar"
+                                                Clicked="ItemDetailButton_Clicked" />
+                                            <Button 
+                                                BackgroundColor="IndianRed"
+                                                Text="Eliminar"
+                                                TextColor="White"
+                                                Clicked="ItemDeleteButton_Clicked" />
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                    <Button
+                        IsVisible="{Binding Path=HasMoreItems}"
+                        IsEnabled="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
+                        Margin="5,0,5,5"
+                        HorizontalOptions="Center"
+                        Text="Mostrar más"
+                        Clicked="LoadNextPageButtton_Clicked" />
+                    <ActivityIndicator
+                        IsVisible="{Binding Path=IsBusy}"
+                        Margin="5,0,5,5"
+                        IsRunning="{Binding Path=IsBusy}" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
-</ContentPage>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>
