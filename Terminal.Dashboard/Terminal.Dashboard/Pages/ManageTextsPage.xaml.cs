@@ -26,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ItemCopyButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            Xamarin.Essentials.Clipboard.SetTextAsync(((sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.TextViewModel).Content).ContinueWith(task =>
+            Xamarin.Essentials.Clipboard.SetTextAsync(((sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.TextViewModel).Content).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -44,7 +44,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ItemDetailButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new ConfigureTextPage(RequiredReload_Callback, (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.TextViewModel));
+            this.NavigationPushPageAsync(new ConfigureTextPage(RequiredReload_Callback, (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.TextViewModel));
         }
 
         private void ItemDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -64,7 +64,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 try
                 {
-                    await client.Delete(((sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.TextViewModel).Id);
+                    await client.Delete(((sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.TextViewModel).Id);
                 }
                 catch (System.Exception ex)
                 {
@@ -140,7 +140,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         foreach (var item in task.Result.List)
                         {
-                            BindingContextPageModel.Items.Add(new Models.View.TextViewModel
+                            BindingContextPageModel.Items.Add(new Support.Presentation.Dashboard.Models.View.TextViewModel
                             {
                                 Id = item.Id,
                                 About = item.About,

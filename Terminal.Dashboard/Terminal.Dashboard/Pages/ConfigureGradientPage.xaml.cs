@@ -10,7 +10,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private System.Action completedCallackAction;
 
-        public ConfigureGradientPage(System.Action completedCallackAction, Models.View.GradientViewModel model = null)
+        public ConfigureGradientPage(System.Action completedCallackAction, Support.Presentation.Dashboard.Models.View.GradientViewModel model = null)
             : base(Factories.ConfigureGradientPageModelFactory.Build(model))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();

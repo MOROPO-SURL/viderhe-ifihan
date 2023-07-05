@@ -2,7 +2,7 @@
 {
     public static class ConfigureTextPageModelFactory
     {
-        public static Models.Page.ConfigureTextPageModel Build(Models.View.TextViewModel target)
+        public static Models.Page.ConfigureTextPageModel Build(Support.Presentation.Dashboard.Models.View.TextViewModel target)
         {
             var result = new Models.Page.ConfigureTextPageModel();
 

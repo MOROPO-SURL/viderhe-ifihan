@@ -10,7 +10,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private System.Action completedCallackAction;
 
-        public ConfigureTextPage(System.Action completedCallackAction, Models.View.TextViewModel model = null)
+        public ConfigureTextPage(System.Action completedCallackAction, Support.Presentation.Dashboard.Models.View.TextViewModel model = null)
             : base(Factories.ConfigureTextPageModelFactory.Build(model))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();

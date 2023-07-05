@@ -64,13 +64,13 @@
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <Frame
-                                    Margin="5" Padding="10"
+                                    Margin="5" Padding="0"
                                     BackgroundColor="White"
                                     CornerRadius="0"
                                     HasShadow="False"
                                     WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
                                     HeightRequest="280">
-                                    <StackLayout Spacing="10">
+                                    <StackLayout Spacing="10" Padding="10">
                                         <Label 
                                             Text="{Binding Path=About}"
                                             TextColor="DimGray"

@@ -6,7 +6,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
     {
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
-        public EditSoundPage(Models.View.SoundViewModel  viewModel)
+        public EditSoundPage(Support.Presentation.Dashboard.Models.View.SoundViewModel  viewModel)
             : base(new Models.Page.EditSoundPageModel
             {
                 Sound = viewModel

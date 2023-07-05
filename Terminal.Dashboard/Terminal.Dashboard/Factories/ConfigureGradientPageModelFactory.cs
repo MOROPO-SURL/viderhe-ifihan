@@ -2,7 +2,7 @@
 {
     public static class ConfigureGradientPageModelFactory
     {
-        public static Models.Page.ConfigureGradientPageModel Build(Models.View.GradientViewModel target)
+        public static Models.Page.ConfigureGradientPageModel Build(Support.Presentation.Dashboard.Models.View.GradientViewModel target)
         {
             var result = new Models.Page.ConfigureGradientPageModel();
 

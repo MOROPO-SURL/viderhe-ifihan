@@ -26,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ItemDetailButton_Clicked(object sender, System.EventArgs e)
         {
-            this.NavigationPushPageAsync(new ConfigureGradientPage(RequiredReload_Callback, (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.GradientViewModel));
+            this.NavigationPushPageAsync(new ConfigureGradientPage(RequiredReload_Callback, (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.GradientViewModel));
         }
 
         private void ItemDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -46,7 +46,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 try
                 {
-                    await client.Delete(((sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.GradientViewModel).Id);
+                    await client.Delete(((sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.GradientViewModel).Id);
                 }
                 catch (System.Exception ex)
                 {
@@ -122,7 +122,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         foreach (var item in task.Result.List)
                         {
-                            BindingContextPageModel.Items.Add(new Models.View.GradientViewModel
+                            BindingContextPageModel.Items.Add(new Support.Presentation.Dashboard.Models.View.GradientViewModel
                             {
                                 Id = item.Id,
                                 About = item.About,

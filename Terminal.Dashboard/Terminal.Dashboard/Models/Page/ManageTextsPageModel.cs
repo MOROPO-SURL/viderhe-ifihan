@@ -6,10 +6,10 @@
 
         public ManageTextsPageModel()
         {
-            Items = new System.Collections.ObjectModel.ObservableCollection<View.TextViewModel>();
+            Items = new System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.TextViewModel>();
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<View.TextViewModel> Items { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.TextViewModel> Items { get; set; }
 
         public bool HasMoreItems { get => hasMoreItems; set => SetProperty(ref hasMoreItems, value); }
 

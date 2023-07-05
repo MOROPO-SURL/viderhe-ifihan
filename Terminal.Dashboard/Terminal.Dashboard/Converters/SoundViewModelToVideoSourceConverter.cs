@@ -8,7 +8,7 @@
 
             try
             {
-                return XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.SoundUriFactory.BuildUri((value as Models.View.SoundViewModel).Id, string.Format(".{0}", (value as Models.View.SoundViewModel).Extension.ToLowerInvariant())).AbsoluteUri);
+                return XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.SoundUriFactory.BuildUri((value as Support.Presentation.Dashboard.Models.View.SoundViewModel).Id, string.Format(".{0}", (value as Support.Presentation.Dashboard.Models.View.SoundViewModel).Extension.ToLowerInvariant())).AbsoluteUri);
             }
             catch
             {
