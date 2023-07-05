@@ -76,7 +76,7 @@
                                             <RowDefinition />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-                                        <mg:GradientView 
+                                        <mg:GradientView
                                             Grid.Row="0" Grid.Column="0"
                                             BackgroundColor="Black"
                                             HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"

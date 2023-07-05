@@ -5,5 +5,15 @@
         public GradientRepository(Microsoft.EntityFrameworkCore.DbContext dbContext) : base(dbContext)
         {
         }
+
+        public override System.Func<Entities.Gradient, object> GetPagingOrderSelector()
+        {
+            return entity => entity.CreateAt;
+        }
+
+        public override bool IsPagingOrderDescending()
+        {
+            return true;    
+        }
     }
 }

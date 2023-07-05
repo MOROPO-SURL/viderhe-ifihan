@@ -125,6 +125,7 @@
                         Grid.Column="0" Grid.Row="2"
                         Style="{StaticResource FormFieldFrame}">
                         <mg:GradientView 
+                            BackgroundColor="Black"
                             GradientSource="{Binding Path=Source}"
                             HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"/>
                     </Frame>
