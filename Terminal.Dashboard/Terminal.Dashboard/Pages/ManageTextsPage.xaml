@@ -1,14 +1,126 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageTextsPage"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageTextsPage"   
+    x:TypeArguments="pagemodels:ManageTextsPageModel"
     Title="Textos">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="480" ChildAbsoluteHorizontalMargin="10" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Agregar"
+            Activated="AddToolbarItem_Activated">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf415;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem
+            Text="Actualizar"
+            Clicked="ReloadToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource IconFontFamily}" Glyph="&#xf6ea;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <StackLayout Spacing="0">
+                    <FlexLayout
+                        Margin="5"
+                        Wrap="Wrap"
+                        AlignItems="Start" AlignContent="Start"
+                        BindableLayout.ItemsSource="{Binding Path=Items}">
+                        <BindableLayout.EmptyView>
+                            <Label
+                                IsVisible="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
+                                Margin="20"
+                                Text="Sin elementos que mostrar"
+                                TextColor="Black" />
+                        </BindableLayout.EmptyView>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="5" Padding="10"
+                                    BackgroundColor="White"
+                                    CornerRadius="0"
+                                    HasShadow="False"
+                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
+                                    HeightRequest="280">
+                                    <StackLayout Spacing="10">
+                                        <Label 
+                                            Text="{Binding Path=About}"
+                                            TextColor="DimGray"
+                                            FontAttributes="Italic"
+                                            LineBreakMode="TailTruncation"
+                                            FontSize="14" />
+                                        <Label
+                                            VerticalOptions="FillAndExpand"
+                                            Margin="0,0,0,5"
+                                            Text="{Binding Path=Content}"                                        
+                                            LineBreakMode="TailTruncation"
+                                            MaxLines="8"
+                                            FontSize="16" />
+                                        <StackLayout
+                                            Grid.Row="2"
+                                            Orientation="Horizontal" 
+                                            Spacing="3">
+                                            <Button 
+                                                BackgroundColor="{StaticResource PrimaryColor}"
+                                                Text="Copiar"
+                                                TextColor="White"
+                                                Clicked="ItemCopyButton_Clicked" />
+                                            <Button 
+                                                HorizontalOptions="EndAndExpand"
+                                                Text="Modificar"
+                                                Clicked="ItemDetailButton_Clicked" />
+                                            <Button 
+                                                BackgroundColor="IndianRed"
+                                                Text="Eliminar"
+                                                TextColor="White"
+                                                Clicked="ItemDeleteButton_Clicked" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                    <Button
+                        IsVisible="{Binding Path=HasMoreItems}"
+                        IsEnabled="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
+                        Margin="5,0,5,5"
+                        HorizontalOptions="Center"
+                        Text="Mostrar más"
+                        Clicked="LoadNextPageButtton_Clicked" />
+                    <ActivityIndicator
+                        IsVisible="{Binding Path=IsBusy}"
+                        Margin="5,0,5,5"
+                        IsRunning="{Binding Path=IsBusy}" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
-</ContentPage>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>
