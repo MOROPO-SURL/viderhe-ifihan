@@ -1,4 +1,5 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
@@ -26,12 +27,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void OverviewPlayButton_Clicked(object sender, System.EventArgs e)
         {
-            BindingContextPageModel.Target = (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.SoundViewModel;
+            BindingContextPageModel.Target = (sender as Xamarin.Forms.BindableObject).BindingContext as SoundViewModel;
         }
 
         private void OverviewEditButton_Clicked(object sender, System.EventArgs e)
         {
-            this.NavigationPushPageAsync(new EditSoundPage((sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.SoundViewModel));
+            this.NavigationPushPageAsync(new EditSoundPage((sender as Xamarin.Forms.BindableObject).BindingContext as SoundViewModel));
         }
 
         private void DismissTargetButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -56,7 +57,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 try
                 {
-                    await client.DeleteAsync(((sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.SoundViewModel).Id);
+                    await client.DeleteAsync(((sender as Xamarin.Forms.BindableObject).BindingContext as SoundViewModel).Id);
                 }
                 catch (System.Exception ex)
                 {
@@ -177,7 +178,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         foreach (var item in task.Result.List)
                         {
-                            BindingContextPageModel.Items.Add(new Support.Presentation.Dashboard.Models.View.SoundViewModel
+                            BindingContextPageModel.Items.Add(new SoundViewModel
                             {
                                 Id = item.Id,
                                 About = item.About,

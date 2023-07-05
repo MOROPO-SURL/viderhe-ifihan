@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.Page"
+    xmlns:views="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views"
+    xmlns:supportpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.SoundPickPage"
+    x:TypeArguments="pagemodels:SoundPickPageModel"
+    Title="Seleccionar Audio">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <supportpresentationconverters:SoundViewModelToVideoSourceConverter x:Key="SoundViewModelToVideoSourceConverter" />
+
+            <sscxftoolkitpresentationconverters:FileSizeLongToStringConverter x:Key="FileSizeLongToStringConverter" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="480" ChildAbsoluteHorizontalMargin="10" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <views:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <StackLayout Spacing="0">
+                    <FlexLayout
+                        Margin="5"
+                        Wrap="Wrap"
+                        AlignItems="Start" AlignContent="Start"
+                        BindableLayout.ItemsSource="{Binding Path=Items}">
+                        <BindableLayout.EmptyView>
+                            <Label
+                                IsVisible="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
+                                Margin="10"
+                                Text="Sin elementos que mostrar"
+                                TextColor="Black" />
+                        </BindableLayout.EmptyView>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame
+                                    Margin="5" Padding="0"
+                                    BackgroundColor="White"
+                                    HasShadow="False"
+                                    CornerRadius="0"
+                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
+                                    HeightRequest="128">
+                                    <Grid ColumnSpacing="8" RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="128" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <BoxView 
+                                            Grid.Column="0" Grid.RowSpan="3"
+                                            BackgroundColor="DimGray" />
+                                        <Label
+                                            Grid.Column="0" Grid.RowSpan="3"
+                                            HorizontalOptions="Center" VerticalOptions="Center"
+                                            Text="&#xF759;"
+                                            TextColor="LightGray"
+                                            FontFamily="{StaticResource IconFontFamily}"
+                                            FontSize="60" />
+                                        <StackLayout
+                                            Grid.Column="1" Grid.Row="0"
+                                            Orientation="Horizontal"
+                                            Padding="0,8,8,8" Spacing="8">
+                                            <ContentView 
+                                                VerticalOptions="Center"
+                                                BackgroundColor="Black"
+                                                Padding="4,2">
+                                                <Label 
+                                                    Text="{Binding Path=Extension}" 
+                                                    TextColor="White"
+                                                    FontAttributes="Bold" />
+                                            </ContentView>
+                                            <Label
+                                                VerticalOptions="Center"
+                                                Margin="10,0,0,0"
+                                                Text="&#xf5a1;"
+                                                FontFamily="{StaticResource IconFontFamily}" />
+                                            <Label
+                                                VerticalOptions="Center"
+                                                Text="{Binding Path=Length, Converter={StaticResource FileSizeLongToStringConverter}}" />
+                                            <Label
+                                                VerticalOptions="Center"
+                                                Margin="10,0,0,0"
+                                                Text="&#xf0f0;"
+                                                FontFamily="{StaticResource IconFontFamily}" />
+                                            <Label
+                                                VerticalOptions="Center" HorizontalOptions="StartAndExpand"
+                                                Text="{Binding Path=CreateAt}" />
+                                        </StackLayout>
+                                        <Label 
+                                            Grid.Column="1" Grid.Row="1"
+                                            Padding="0,0,8,0"
+                                            Text="{Binding Path=About}"
+                                            LineBreakMode="TailTruncation"
+                                            MaxLines="2" />
+                                        <StackLayout
+                                            Grid.Column="1" Grid.Row="2"
+                                            Orientation="Horizontal"
+                                            Padding="0,8,8,8" Spacing="4">
+                                            <Button 
+                                                Text="Escuchar"
+                                                TextColor="White"
+                                                HorizontalOptions="StartAndExpand"
+                                                BackgroundColor="{StaticResource PrimaryColor}"
+                                                Clicked="ItemPlayButton_Clicked" />
+                                            <Button 
+                                                BackgroundColor="Accent"
+                                                Text="Seleccionar"
+                                                TextColor="White"
+                                                Clicked="ItemPickButton_Clicked" />
+                                        </StackLayout>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                    <Button
+                        IsVisible="{Binding Path=HasMoreItems}"
+                        IsEnabled="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
+                        Margin="5,0,5,5"
+                        HorizontalOptions="Center"
+                        Text="Mostrar más"
+                        Clicked="LoadNextPageButtton_Clicked" />
+                    <ActivityIndicator
+                        IsVisible="{Binding Path=IsBusy}"
+                        Margin="5,0,5,5"
+                        IsRunning="{Binding Path=IsBusy}" />
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
-    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters"
+    xmlns:supportpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"    
     xmlns:supportpresentationdashboardpresenters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Presenters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
@@ -17,7 +17,7 @@
     Title="Modificar Audio">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:SoundViewModelToVideoSourceConverter x:Key="SoundViewModelToVideoSourceConverter" />
+            <supportpresentationconverters:SoundViewModelToVideoSourceConverter x:Key="SoundViewModelToVideoSourceConverter" />
 
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />

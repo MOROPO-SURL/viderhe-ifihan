@@ -1,4 +1,5 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
@@ -6,7 +7,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
     {
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
-        public EditSoundPage(Support.Presentation.Dashboard.Models.View.SoundViewModel  viewModel)
+        public EditSoundPage(SoundViewModel viewModel)
             : base(new Models.Page.EditSoundPageModel
             {
                 Sound = viewModel
