@@ -6,9 +6,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
     public partial class HeroLocalNowDateTimePlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.HeroLocalNowDateTimePlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private const string BACKGROUND_OPTION_SOLID = "Color Sólido";
-        private const string BACKGROUND_OPTION_GRADIENT_GALLERY = "Gradiente";
-        private const string BACKGROUND_OPTION_GRADIENT_IMAGE = "Imagen";
-        private const string BACKGROUND_OPTION_GRADIENT_VIDEO = "Video";
+        private const string BACKGROUND_OPTION_GRADIENT = "Gradiente";
+        private const string BACKGROUND_OPTION_IMAGE = "Imagen";
+        private const string BACKGROUND_OPTION_VIDEO = "Video";
 
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
@@ -163,7 +163,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
         private void BackgroundGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
         {
-            DisplayActionSheet("Seleccione el tipo de fondo a definir:", "Cancelar", null, new string[] { BACKGROUND_OPTION_SOLID, BACKGROUND_OPTION_GRADIENT_GALLERY, BACKGROUND_OPTION_GRADIENT_IMAGE }).ContinueWith(displayActionSheetTask =>
+            DisplayActionSheet("Seleccione el tipo de fondo a definir:", "Cancelar", null, new string[] { BACKGROUND_OPTION_SOLID, BACKGROUND_OPTION_GRADIENT, BACKGROUND_OPTION_IMAGE }).ContinueWith(displayActionSheetTask =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -180,7 +180,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
                             break;
 
-                        case BACKGROUND_OPTION_GRADIENT_IMAGE:
+                        case BACKGROUND_OPTION_IMAGE:
                             Support.Presentation.Models.View.ImageViewModel except = null;
 
                             if (BindingContextPageModel.Background != null && BindingContextPageModel.Background.Kind == Enumerations.BackgroundKind.Image)
@@ -191,6 +191,20 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                             var imagePickPage = new Support.Presentation.Dashboard.Pages.ImagePickPage(BackgroundImagePick_Callback, except);
 
                             await this.NavigationPushPageAsync(imagePickPage);
+
+                            break;
+
+                        case BACKGROUND_OPTION_GRADIENT:
+                            //Support.Presentation.Dashboard.Models.View.GradientViewModel currentGradient = null;
+
+                            //if (BindingContextPageModel.Background != null && BindingContextPageModel.Background.Kind == Enumerations.BackgroundKind.Image)
+                            //{
+                            //    currentGradient = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.>(BindingContextPageModel.Background.SerializedContext).ToViewModel();
+                            //}
+
+                            //var imagePickPage = new Support.Presentation.Dashboard.Pages.ImagePickPage(BackgroundImagePick_Callback, currentGradient);
+
+                            //await this.NavigationPushPageAsync(imagePickPage);
 
                             break;
                     }
