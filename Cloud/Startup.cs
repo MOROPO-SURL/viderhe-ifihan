@@ -106,10 +106,14 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
             services.AddScoped<IEntityRepository<Persistence.Entities.Extension, System.Guid>, Persistence.EF.Repositories.ExtensionRespository>();
             services.AddScoped<IEntityRepository<Persistence.Entities.Template, System.Guid>, Persistence.EF.Repositories.TemplateRepository>();
             services.AddScoped<IEntityRepository<Persistence.Entities.ScheduledRelaunch, System.Guid>, Persistence.EF.Repositories.ScheduledRelaunchRepository>();
+            services.AddScoped<IEntityRepository<Persistence.Entities.Sound, System.Guid>, Persistence.EF.Repositories.SoundRepository>();
+            services.AddScoped<IEntityRepository<Persistence.Entities.Gradient, System.Guid>, Persistence.EF.Repositories.GradientRepository>();
+            services.AddScoped<IEntityRepository<Persistence.Entities.Text, System.Guid>, Persistence.EF.Repositories.TextRepository>();
 
             services.AddSingleton<MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade, Managers.ImageFileManager>();
             services.AddSingleton<MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IThumbnailFileManagerFacade, Managers.ThumbnailFileManager>();
             services.AddSingleton<MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IVideoFileManagerFacade, Managers.VideoFileManager>();
+            services.AddSingleton<Managers.SoundFileManager>();
 
             services.AddMediaToolkit(configuration["FFmpeg:MainBinaryPath"]);
 

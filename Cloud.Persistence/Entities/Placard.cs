@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
 {
@@ -31,9 +32,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
         [Required]
         public string SerializedContext { get; set; }
 
-        public System.Collections.Generic.ICollection<PlacardImageBridge> ImageBridges { get; set; }
+        public List<PlacardImageBridge> ImageBridges { get; set; }
 
-        public System.Collections.Generic.ICollection<PlacardVideoBridge> VideoBridges { get; set; }
+        public List<PlacardVideoBridge> VideoBridges { get; set; }
+
+        public List<PlacardSoundBridge> SoundBridges { get; set; }
+
+        public List<PlacardGradientBridge> GradientBridges { get; set; }
 
         public Placard()
         {
@@ -41,8 +46,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
 
             CreateAt = System.DateTime.Now;
 
-            ImageBridges = new System.Collections.Generic.List<PlacardImageBridge>();
-            VideoBridges = new System.Collections.Generic.List<PlacardVideoBridge>();
+            ImageBridges = new List<PlacardImageBridge>();
+            VideoBridges = new List<PlacardVideoBridge>();
+            SoundBridges = new List<PlacardSoundBridge>();
+            GradientBridges = new List<PlacardGradientBridge>();
         }
     }
 }
