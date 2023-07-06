@@ -28,6 +28,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
                     mediaElement.MediaFailed += OnMediaElementSourceFailed;
                     mediaElement.CurrentStateChanged += OnMediaElementCurrentStateChanged;
 
+                    Element.PlayRequested += Play_Requested;
+
                     SetAreTransportControlsEnabled();
 
                     SetAspectStrech();
@@ -65,9 +67,28 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 
         protected override void Dispose(bool disposing)
         {
+            if (Control != null)
+            {
+                Control.MediaFailed += OnMediaElementSourceFailed;
+                Control.CurrentStateChanged += OnMediaElementCurrentStateChanged;
+
+                Element.PlayRequested -= Play_Requested;
+
+                Control.Stop();
+            }
+
+            Control?.Stop();
+
             base.Dispose(disposing);
 
             disposed = true;
+        }
+
+        private void Play_Requested(object sender, System.EventArgs eventArgs)
+        {
+            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady;
+
+            Control.Play();
         }
 
         private void OnMediaElementSourceFailed(object sender, VLC.MediaFailedRoutedEventArgs eventArgs)
@@ -171,6 +192,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
             if (!hasSetSource)
             {
                 (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
+
+                Control.Stop();
             }
         }
 

@@ -47,6 +47,92 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Pres
             this.NavigationPopPageAsync();
         }
 
+        private void PickHeaderTextButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.TextPickPage(PickHeaderText_Callback));
+        }
+
+        private void HeaderTextSaveButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayPromptAsync("Salvar Texto", "Especifique una referencia para este texto").ContinueWith(task =>
+            {
+                if (string.IsNullOrEmpty(task.Result)) return;
+
+                BindingContextPageModel.IsBusy = true;
+
+                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+
+                apiConnectClient.CreateAsync(new Cloud.Api.Common.Models.TextInputModel
+                {
+                    About = task.Result,
+                    Content = BindingContextPageModel.Header
+                }).ContinueWith(_task =>
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        if (_task.IsCanceled || _task.IsFaulted)
+                        {
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        }
+                        else
+                        {
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                        }
+
+                        BindingContextPageModel.IsBusy = false;
+                    });
+                });
+            });
+        }
+
+        private void PickHighlightsTextButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.TextPickPage(PickHighlightsText_Callback));
+        }
+
+        private void HighlightsTextSaveButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayPromptAsync("Salvar Texto", "Especifique una referencia para este texto").ContinueWith(task =>
+            {
+                if (string.IsNullOrEmpty(task.Result)) return;
+
+                BindingContextPageModel.IsBusy = true;
+
+                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+
+                apiConnectClient.CreateAsync(new Cloud.Api.Common.Models.TextInputModel
+                {
+                    About = task.Result,
+                    Content = BindingContextPageModel.Highlights
+                }).ContinueWith(_task =>
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        if (_task.IsCanceled || _task.IsFaulted)
+                        {
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        }
+                        else
+                        {
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                        }
+
+                        BindingContextPageModel.IsBusy = false;
+                    });
+                });
+            });
+        }
+
+        private void PickHeaderText_Callback(Support.Presentation.Dashboard.Models.View.TextViewModel target)
+        {
+            BindingContextPageModel.Header = target.Content;
+        }
+
+        private void PickHighlightsText_Callback(Support.Presentation.Dashboard.Models.View.TextViewModel target)
+        {
+            BindingContextPageModel.Highlights = target.Content;
+        }
+
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
