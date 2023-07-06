@@ -195,16 +195,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                             break;
 
                         case BACKGROUND_OPTION_GRADIENT:
-                            //Support.Presentation.Dashboard.Models.View.GradientViewModel currentGradient = null;
-
-                            //if (BindingContextPageModel.Background != null && BindingContextPageModel.Background.Kind == Enumerations.BackgroundKind.Image)
-                            //{
-                            //    currentGradient = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.>(BindingContextPageModel.Background.SerializedContext).ToViewModel();
-                            //}
-
-                            //var imagePickPage = new Support.Presentation.Dashboard.Pages.ImagePickPage(BackgroundImagePick_Callback, currentGradient);
-
-                            //await this.NavigationPushPageAsync(imagePickPage);
+                            await this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.GradientPickPage(BackgroundGradientPick_Callback));
 
                             break;
                     }
@@ -233,6 +224,21 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
             {
                 Kind = Enumerations.BackgroundKind.Image,
                 SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(target.ToContextModel())
+            };
+        }
+
+        private void BackgroundGradientPick_Callback(Support.Presentation.Dashboard.Models.View.GradientViewModel target)
+        {
+            BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
+            {
+                Kind = Enumerations.BackgroundKind.Gradient,
+                SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Common.Templating.Models.Context.GradientContextModel
+                {
+                    Id = target.Id,
+                    About = target.About,
+                    CreateAt = target.CreateAt,
+                    Data = target.Source.Stylesheet
+                })
             };
         }
 

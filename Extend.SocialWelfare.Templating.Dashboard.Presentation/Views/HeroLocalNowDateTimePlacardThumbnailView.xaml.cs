@@ -18,9 +18,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                     break;
 
                 case Enumerations.BackgroundKind.Gradient:
+                    var gradientModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.GradientContextModel>(context.Background.SerializedContext);
+
                     Content = new MagicGradients.GradientView
                     {
-                        GradientSource = MagicGradients.CssGradientSource.Parse(context.Background.SerializedContext)
+                        GradientSource = MagicGradients.CssGradientSource.Parse(gradientModel.Data)
                     };
 
                     break;

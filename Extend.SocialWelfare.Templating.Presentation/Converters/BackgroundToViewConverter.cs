@@ -16,7 +16,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
                         return new Views.Background.SolidBackgroundView(new Models.View.Background.SolidBackgroundViewModel { Color = Xamarin.Forms.Color.FromHex(target.SerializedContext) });
 
                     case Enumerations.BackgroundKind.Gradient:
-                        return new Views.Background.GradientBackgroundView(new Models.View.Background.GradientBackgroundViewModel { Source = MagicGradients.CssGradientSource.Parse(target.SerializedContext) });
+                        var gradientModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.GradientContextModel>(target.SerializedContext);
+
+                        return new Views.Background.GradientBackgroundView(new Models.View.Background.GradientBackgroundViewModel { Source = MagicGradients.CssGradientSource.Parse(gradientModel.Data) });
 
                     case Enumerations.BackgroundKind.Image:
                         var imageModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(target.SerializedContext).ToViewModel();
