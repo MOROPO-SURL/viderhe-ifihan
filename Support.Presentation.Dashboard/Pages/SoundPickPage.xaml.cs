@@ -6,9 +6,11 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
     {
         private System.Action<Models.View.SoundViewModel> itemPickedCallbackAction;
 
+        private Models.View.SoundViewModel except;
+
         private int currentItemsPageNumber;
 
-        public SoundPickPage(System.Action<Models.View.SoundViewModel> itemPickedCallbackAction)
+        public SoundPickPage(System.Action<Models.View.SoundViewModel> itemPickedCallbackAction, Models.View.SoundViewModel except = null)
             : base(new Models.Page.SoundPickPageModel
             {
                 IsBusy = true
@@ -17,6 +19,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
             InitializeComponent();
 
             this.itemPickedCallbackAction = itemPickedCallbackAction;
+            this.except = except;
 
             IsEnabled = false;
         }
@@ -80,6 +83,8 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
                         foreach (var item in task.Result.List)
                         {
+                            if (except != null && except.Id == item.Id) continue;
+
                             BindingContextPageModel.Items.Add(new Models.View.SoundViewModel
                             {
                                 Id = item.Id,
@@ -105,6 +110,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
             base.DisposeUnmanagementResources();
 
             itemPickedCallbackAction = null;
+            except = null;
         }
     }
 }

@@ -6,9 +6,11 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
     {
         private System.Action<Models.View.GradientViewModel> itemPickedCallbackAction;
 
+        private Models.View.GradientViewModel except;
+        
         private int currentItemsPageNumber;
 
-        public GradientPickPage(System.Action<Models.View.GradientViewModel> itemPickedCallbackAction)
+        public GradientPickPage(System.Action<Models.View.GradientViewModel> itemPickedCallbackAction, Models.View.GradientViewModel except = null)
             : base(new Models.Page.GradientPickPageModel
             {
                 IsBusy = true
@@ -17,6 +19,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
             InitializeComponent();
 
             this.itemPickedCallbackAction = itemPickedCallbackAction;
+            this.except = except;
 
             IsEnabled = false;
         }
@@ -75,6 +78,8 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
                         foreach (var item in task.Result.List)
                         {
+                            if (except != null && except.Id == item.Id) continue;
+
                             BindingContextPageModel.Items.Add(new Models.View.GradientViewModel
                             {
                                 Id = item.Id,
@@ -95,6 +100,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
             base.DisposeUnmanagementResources();
 
             itemPickedCallbackAction = null;
+            except = null;
         }
     }
 }
