@@ -22,6 +22,7 @@
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            
             <presentationconverters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>

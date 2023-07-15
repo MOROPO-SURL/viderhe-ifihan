@@ -2,6 +2,10 @@
 {
     public class InmersiveCityWeatherOverviewPlacardContextModel : WeatherDataProvisionContextModel
     {
-        public Common.Templating.Models.Context.ImageContextModel BackgroundCityImage { get; set; }
+        public BackgroundContextModel Background { get; set; }
+
+        public string TextColor { get; set; }
+
+        public string OverlayColor { get; set; }
     }
 }

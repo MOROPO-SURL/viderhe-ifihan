@@ -8,6 +8,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
         {
             InitializeComponent();
 
+            if (model.OverlayColor != null)
+            {
+                WeatherInfoLayout.BackgroundColor = model.OverlayColor.Value;
+            }
+
             BindingContext = model;
         }
 
@@ -168,6 +173,20 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
             if (concreteBindingContextModel.WeatherOverview != null) return;
 
             concreteBindingContextModel.IsBusy = true;
+        }
+
+        protected override void DisposeUnmanagementResources()
+        {
+            base.DisposeUnmanagementResources();
+
+            if (BackgroundContentView.Content is Background.ImageBackgroundView)
+            {
+                (BackgroundContentView.Content as Background.ImageBackgroundView).Source = null;
+            }
+            else if (BackgroundContentView.Content is Background.GradientBackgroundView)
+            {
+                (BackgroundContentView.Content as Background.GradientBackgroundView).GradientSource = null;
+            }
         }
     }
 }

@@ -4,17 +4,20 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 {
     public class InmersiveCityWeatherOverviewPlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
-        private Support.Presentation.Models.View.ImageViewModel backgroundCityImage;
+        private Templating.Models.Context.BackgroundContextModel background;
         private string weatherCacheMicroServerHost;
         private bool isWeatherCacheMicroServerRequireSecureConnection;
         private bool isWeatherCacheMicroServerSecureConnectionStrict;
         private WeatherDataProvisionService service;
         private Weather.Api.Common.Models.CityModel city;
         private Weather.Api.Common.Models.CityModel[] availableCities;
+        private Xamarin.Forms.Color textColor;
+        private Xamarin.Forms.Color? overlayColor;
 
         public InmersiveCityWeatherOverviewPlacardConfigurationPageModel()
         {
             ScreenPresentationTimeSecounds = 15;
+            TextColor = Xamarin.Forms.Color.White;
 
             AvailableServices = new WeatherDataProvisionService[]
             {
@@ -22,7 +25,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
             };
         }
 
-        public Support.Presentation.Models.View.ImageViewModel BackgroundCityImage { get => backgroundCityImage; set => SetProperty(ref backgroundCityImage, value); }
+        public Templating.Models.Context.BackgroundContextModel Background { get => background; set => SetProperty(ref background, value); }
 
         public string WeatherCacheMicroServerHost { get => weatherCacheMicroServerHost; set => SetProperty(ref weatherCacheMicroServerHost, value); }
 
@@ -38,11 +41,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
         public Weather.Api.Common.Models.CityModel[] AvailableCities { get => availableCities; set => SetProperty(ref availableCities, value); }
 
+        public Xamarin.Forms.Color TextColor { get => textColor; set => SetProperty(ref textColor, value); }
+
+        public Xamarin.Forms.Color? OverlayColor { get => overlayColor; set => SetProperty(ref overlayColor, value); }
+
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
 
-            backgroundCityImage = null;
+            background = null;
         }
 
         public void Consolidate()

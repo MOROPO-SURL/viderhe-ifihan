@@ -12,15 +12,23 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 
                 var protocol = context.IsWeatherCacheMicroServerRequireSecureConnection ? "https" : "http";
 
-                return new Views.InmersiveCityWeatherOverviewPlacardView(new Models.View.Placard.InmersiveCityWeatherOverviewPlacardViewModel
+                var viewModel = new Models.View.Placard.InmersiveCityWeatherOverviewPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
-                    BackgroundCityImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.BackgroundCityImage.Id)),
+                    Background = context.Background,
+                    TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
                     Service = context.Service,
                     City = context.City,
                     ServiceBaseUri = new System.Uri(string.Format("{0}://{1}/api/", protocol, context.WeatherCacheMicroServerHost))
-                });
+                };
+
+                if (context.OverlayColor != null)
+                {
+                    viewModel.OverlayColor = Xamarin.Forms.Color.FromHex(context.OverlayColor);
+                }
+
+                return new Views.InmersiveCityWeatherOverviewPlacardView(viewModel);
             }
 
             if (model.Template.Id == RssFeedCollageHeroTemplateDescriptor.ID)

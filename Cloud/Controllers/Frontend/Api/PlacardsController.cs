@@ -70,6 +70,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                     });
                 }
             }
+
+            // Handle Gradient & Sound Contrains
         }
 
         protected override void PreEdit(Persistence.Entities.Placard entity, PlacardInputModel inputModel)

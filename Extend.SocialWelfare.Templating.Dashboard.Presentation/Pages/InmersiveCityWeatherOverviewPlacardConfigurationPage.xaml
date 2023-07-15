@@ -3,10 +3,11 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page"
+    xmlns:presentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Pages.InmersiveCityWeatherOverviewPlacardConfigurationPage"
     x:TypeArguments="pagemodels:InmersiveCityWeatherOverviewPlacardConfigurationPageModel">
     <ContentPage.Resources>
@@ -17,8 +18,11 @@
                 <Setter Property="CornerRadius" Value="0" />
                 <Setter Property="Padding" Value="12" />
             </Style>
+            
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            
+            <presentationconverters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -200,22 +204,21 @@
                     </Frame>
                     <Frame 
                         Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5"
+                        Style="{StaticResource FormFieldFrame}"
                         Padding="0"
                         VerticalOptions="Start">
                         <StackLayout>
                             <Label
                                 Margin="12,12,12,0"
-                                Text="Imagen de Fondo" 
+                                Text="Fondo" 
                                 Style="{StaticResource FormLabel}" />
-                            <Grid HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}">
+                            <Grid HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}">
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="BackgroundImageGestureRecognizer_Tapped" />
+                                    <TapGestureRecognizer Tapped="BackgroundGestureRecognizer_Tapped" />
                                 </Grid.GestureRecognizers>
-                                <ffimageloadingforms:CachedImage 
+                                <ContentView
                                     BackgroundColor="Black"
-                                    CacheType="Disk"
-                                    CacheDuration="8760:00:00"
-                                    Source="{Binding Path=BackgroundCityImage, Converter={StaticResource ImageViewModelToImageSourceConverter}}" />
+                                    Content="{Binding Path=Background, Converter={StaticResource BackgroundToViewConverter}}" />
                                 <StackLayout 
                                     HorizontalOptions="Center" VerticalOptions="End"
                                     Padding="4"
@@ -236,6 +239,38 @@
                             </Grid>
                         </StackLayout>
                     </Frame>
+                    <StackLayout 
+                        Grid.Column="2" Grid.Row="5"
+                        Spacing="10">
+                        <Frame Grid.Column="2" Grid.Row="5" Style="{StaticResource FormFieldFrame}">
+                            <StackLayout>
+                                <Label 
+                                    x:Name="TextColorLabel"
+                                    Text="Color del Texto" 
+                                    Style="{StaticResource FormLabel}" />
+                                <simplecolorpicker:ColorPickerEntry 
+                                    EditAlfa="False"
+                                    Color="{Binding Path=TextColor}" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame 
+                            Grid.Column="2" Grid.Row="6" 
+                            VerticalOptions="Start"
+                            Style="{StaticResource FormFieldFrame}">
+                            <StackLayout>
+                                <Label 
+                                    Text="Capa de Contraste" 
+                                    Style="{StaticResource FormLabel}" />
+                                <Switch 
+                                    IsToggled="{Binding Path=OverlayColor, Converter={StaticResource NotNullToBooleanConverter}, Mode=OneWay}"
+                                    Toggled="OverlayUseSwitch_Toggled" />
+                                <simplecolorpicker:ColorPickerEntry 
+                                    x:Name="OverlayColorPickerEntry"
+                                    IsVisible="{Binding Path=OverlayColor, Converter={StaticResource NotNullToBooleanConverter}, Mode=OneWay}"
+                                    EditAlfa="True" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
                 </Grid>
             </ScrollView>
             <supportpresentationdashboardviews:BusyView />

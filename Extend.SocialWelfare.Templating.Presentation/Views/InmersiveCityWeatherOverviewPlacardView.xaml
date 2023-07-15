@@ -5,31 +5,26 @@
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Converters"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views.InmersiveCityWeatherOverviewPlacardView">
     <ContentView.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            
             <converters:WeatherOverviewModelToConditionFontGlyphConverter x:Key="WeatherOverviewModelToConditionFontGlyphConverter" />
             <converters:FloatToRoundedFloatConverter x:Key="FloatToRoundedFloatConverter" />
+            <converters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
 
             <Style TargetType="Label">
-                <Setter Property="TextColor" Value="White" />
+                <Setter Property="TextColor" Value="{Binding Path=TextColor, Mode=OneTime}" />
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="PlacardLayout">
-                <ffimageloadingforms:CachedImage
-                    FadeAnimationEnabled="False"
-                    Source="{Binding Path=BackgroundCityImageSource}" 
-                    Aspect="AspectFill"
-                    CacheType="Disk"
-                    CacheDuration="8760:00:00" />
+                <ContentView x:Name="BackgroundContentView" Content="{Binding Path=Background, Converter={StaticResource BackgroundToViewConverter}}" />
                 <StackLayout 
                     x:Name="WeatherInfoLayout"
-                    BackgroundColor="#99000000"
                     Padding="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=20}"
                     Opacity="0">
                     <StackLayout
@@ -120,7 +115,7 @@
                             <BoxView
                                 Grid.Column="1" Grid.RowSpan="2"
                                 WidthRequest="1"
-                                Color="White" />
+                                Color="{Binding Path=TextColor, Mode=OneTime}" />
                             <Label
                                 Grid.Column="2" Grid.Row="0"
                                 Text="máxima"
@@ -170,7 +165,7 @@
                             <BoxView
                                 Grid.Column="1"
                                 WidthRequest="1"
-                                Color="White" />
+                                Color="{Binding Path=TextColor, Mode=OneTime}" />
                             <StackLayout
                                 Grid.Column="2"
                                 Spacing="0">
@@ -201,7 +196,7 @@
                                 Grid.Column="0"
                                 WidthRequest="1"
                                 Opacity="0"
-                                Color="White" />
+                                Color="{Binding Path=TextColor, Mode=OneTime}" />
                             <StackLayout
                                 x:Name="HumidityInfoLayout"
                                 Grid.Column="1"
@@ -225,7 +220,7 @@
                                 Grid.Column="2"
                                 WidthRequest="1"
                                 Opacity="0"
-                                Color="White" />
+                                Color="{Binding Path=TextColor, Mode=OneTime}" />
                             <StackLayout
                                 x:Name="PressureInfoLayout"
                                 Grid.Column="3"
@@ -249,7 +244,7 @@
                                 Grid.Column="4"
                                 Opacity="0"
                                 WidthRequest="1"
-                                Color="White" />
+                                Color="{Binding Path=TextColor, Mode=OneTime}" />
                             <Grid
                                 x:Name="WindInfoLayout"
                                 Grid.Column="5"

@@ -8,7 +8,12 @@
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.InmersiveCityWeatherOverviewPlacardContextModel>(serializedContext);
 
-                return new[] { context.BackgroundCityImage };
+                if (context.Background.Kind == Enumerations.BackgroundKind.Image)
+                {
+                    return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(context.Background.SerializedContext) };
+                }
+
+                return null;
             }
 
             if (templateId == Descriptors.HeroLocalNowDateTimeTemplateDescriptor.ID)

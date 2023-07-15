@@ -5,6 +5,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 {
     public partial class InmersiveCityWeatherOverviewPlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.InmersiveCityWeatherOverviewPlacardConfigurationPageModel>
     {
+        private const string BACKGROUND_OPTION_SOLID = "Color Sólido";
+        private const string BACKGROUND_OPTION_GRADIENT = "Gradiente";
+        private const string BACKGROUND_OPTION_IMAGE = "Imagen";
+
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
         private System.Action successfulCompleteCallbackAction;
 
@@ -16,6 +20,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
         public InmersiveCityWeatherOverviewPlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
             : base(Factories.InmersiveCityWeatherOverviewPlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
+            IsEnabled = false;
+
             InitializeComponent();
 
             this.placardViewModel = placardViewModel;
@@ -27,13 +33,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
                 Title = string.Format("Nuevo Marco ({0})", templateDescriptor.Name);
 
-                IsEnabled = false;
-
                 BindingContextPageModel.Service = Enumerations.WeatherDataProvisionService.OpenWeatherMap;
             }
             else
             {
                 Title = string.Format("Modificando Marco ({0})", placardViewModel.Template.Name);
+            }
+
+            if (BindingContextPageModel.OverlayColor != null)
+            {
+                OverlayColorPickerEntry.Color = BindingContextPageModel.OverlayColor.Value;
             }
 
             BindingContextPageModel.PropertyChanged += BindingContextPageModel_PropertyChanged;
@@ -45,12 +54,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
             if (!IsEnabled)
             {
+                if (placardViewModel != null)
+                {
+                    ReloadRequiredData();
+                }
+
                 IsEnabled = true;
-
-                return;
             }
-
-            ReloadRequiredData();
         }
 
         protected override void DisposeUnmanagementResources()
@@ -76,11 +86,60 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
             }
         }
 
-        private void BackgroundImageGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
+        private void BackgroundGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
         {
-            IsEnabled = false;
+            DisplayActionSheet("Seleccione el tipo de fondo a definir:", "Cancelar", null, new string[] { BACKGROUND_OPTION_SOLID, BACKGROUND_OPTION_GRADIENT, BACKGROUND_OPTION_IMAGE }).ContinueWith(displayActionSheetTask =>
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    switch (displayActionSheetTask.Result)
+                    {
+                        case BACKGROUND_OPTION_SOLID:
+                            var color = await Xam.Plugin.SimpleColorPicker.ColorPickerDialog.Show(this.Content as Xamarin.Forms.Layout<Xamarin.Forms.View>, "Defina el color a utilizar como fondo:", Xamarin.Forms.Color.Accent);
 
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(BackgroundImagePicked_Callback, BindingContextPageModel.BackgroundCityImage));
+                            BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
+                            {
+                                Kind = Enumerations.BackgroundKind.Solid,
+                                SerializedContext = color.ToHex()
+                            };
+
+                            break;
+
+                        case BACKGROUND_OPTION_IMAGE:
+                            Support.Presentation.Models.View.ImageViewModel except = null;
+
+                            if (BindingContextPageModel.Background != null && BindingContextPageModel.Background.Kind == Enumerations.BackgroundKind.Image)
+                            {
+                                except = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(BindingContextPageModel.Background.SerializedContext).ToViewModel();
+                            }
+
+                            var imagePickPage = new Support.Presentation.Dashboard.Pages.ImagePickPage(BackgroundImagePick_Callback, except);
+
+                            await this.NavigationPushPageAsync(imagePickPage);
+
+                            break;
+
+                        case BACKGROUND_OPTION_GRADIENT:
+                            await this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.GradientPickPage(BackgroundGradientPick_Callback));
+
+                            break;
+                    }
+                });
+            });
+        }
+
+        private void OverlayUseSwitch_Toggled(object sender, Xamarin.Forms.ToggledEventArgs eventArgs)
+        {
+            if (BindingContextPageModel == null || !IsEnabled) return;
+
+            if (eventArgs.Value)
+            {
+                BindingContextPageModel.OverlayColor = OverlayColorPickerEntry.Color;
+            }
+            else
+            {
+                BindingContextPageModel.OverlayColor = null;
+            }
         }
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
@@ -103,7 +162,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            BackgroundCityImage = BindingContextPageModel.BackgroundCityImage.ToContextModel(),
+                            Background = BindingContextPageModel.Background,
+                            TextColor = BindingContextPageModel.TextColor.ToHex(),
+                            OverlayColor = BindingContextPageModel.OverlayColor == null ? null : OverlayColorPickerEntry.Color.ToHex(),
                             WeatherCacheMicroServerHost = BindingContextPageModel.WeatherCacheMicroServerHost,
                             IsWeatherCacheMicroServerRequireSecureConnection = BindingContextPageModel.IsWeatherCacheMicroServerRequireSecureConnection,
                             IsWeatherCacheMicroServerSecureConnectionStrict = BindingContextPageModel.IsWeatherCacheMicroServerSecureConnectionStrict,
@@ -135,7 +196,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            BackgroundCityImage = BindingContextPageModel.BackgroundCityImage.ToContextModel(),
+                            Background = BindingContextPageModel.Background,
+                            TextColor = BindingContextPageModel.TextColor.ToHex(),
+                            OverlayColor = BindingContextPageModel.OverlayColor == null ? null : OverlayColorPickerEntry.Color.ToHex(),
                             WeatherCacheMicroServerHost = BindingContextPageModel.WeatherCacheMicroServerHost,
                             IsWeatherCacheMicroServerRequireSecureConnection = BindingContextPageModel.IsWeatherCacheMicroServerRequireSecureConnection,
                             IsWeatherCacheMicroServerSecureConnectionStrict = BindingContextPageModel.IsWeatherCacheMicroServerSecureConnectionStrict,
@@ -200,14 +263,28 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
             BindingContextPageModel.City = (sender as Xamarin.Forms.Picker).SelectedItem as Weather.Api.Common.Models.CityModel;
         }
 
-        private void BackgroundImagePicked_Callback(Support.Presentation.Models.View.ImageViewModel selection)
+        private void BackgroundImagePick_Callback(Support.Presentation.Models.View.ImageViewModel target)
         {
-            BindingContextPageModel.BackgroundCityImage = selection;
-
-            if (string.IsNullOrEmpty(BindingContextPageModel.Label))
+            BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
             {
-                BindingContextPageModel.Label = selection.About;
-            }
+                Kind = Enumerations.BackgroundKind.Image,
+                SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(target.ToContextModel())
+            };
+        }
+
+        private void BackgroundGradientPick_Callback(Support.Presentation.Dashboard.Models.View.GradientViewModel target)
+        {
+            BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
+            {
+                Kind = Enumerations.BackgroundKind.Gradient,
+                SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Common.Templating.Models.Context.GradientContextModel
+                {
+                    Id = target.Id,
+                    About = target.About,
+                    CreateAt = target.CreateAt,
+                    Data = target.Source.Stylesheet
+                })
+            };
         }
 
         private void ReloadRequiredData()
@@ -226,6 +303,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
+                    BindingContextPageModel.PropertyChanged -= BindingContextPageModel_PropertyChanged;
+
                     if (task.IsCanceled || task.Exception != null)
                     {
                         Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);                        
@@ -234,8 +313,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                     {
                         BindingContextPageModel.AvailableCities = task.Result;
                     }
-
-                    BindingContextPageModel.PropertyChanged -= BindingContextPageModel_PropertyChanged;
 
                     if (placardViewModel != null)
                     {
@@ -247,8 +324,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                     BindingContextPageModel.PropertyChanged += BindingContextPageModel_PropertyChanged;
 
                     BindingContextPageModel.IsBusy = false;
-
-                    IsEnabled = true;
                 });
             });
         }

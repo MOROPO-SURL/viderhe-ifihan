@@ -60,6 +60,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
+
+            if (Content is Templating.Presentation.Views.Background.ImageBackgroundView)
+            {
+                (Content as Templating.Presentation.Views.Background.ImageBackgroundView).Source = null;
+            }
+            else if (Content is Templating.Presentation.Views.Background.GradientBackgroundView)
+            {
+                (Content as Templating.Presentation.Views.Background.GradientBackgroundView).GradientSource = null;
+            }
         }
     }
 }

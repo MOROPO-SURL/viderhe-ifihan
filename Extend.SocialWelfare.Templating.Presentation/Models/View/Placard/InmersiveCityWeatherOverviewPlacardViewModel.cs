@@ -21,7 +21,11 @@
 
         public Weather.Api.Common.Models.WeatherOverviewModel WeatherOverview { get => weatherOverview; set => SetProperty(ref weatherOverview, value); }
 
-        public Xamarin.Forms.ImageSource BackgroundCityImageSource { get; set; }
+        public Templating.Models.Context.BackgroundContextModel Background { get; set; }
+
+        public Xamarin.Forms.Color TextColor { get; set; }
+
+        public Xamarin.Forms.Color? OverlayColor { get; set; }
 
         public bool IsBusy { get => isBusy; set => SetProperty(ref isBusy, value); }
 
@@ -29,7 +33,7 @@
         {
             base.DisposeUnmanagementResources();
 
-            BackgroundCityImageSource = null;
+            Background = null;
             WeatherOverview = null;
         }
     }

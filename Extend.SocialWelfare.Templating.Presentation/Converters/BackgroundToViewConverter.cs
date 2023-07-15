@@ -38,6 +38,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
                     //    };
                 }
             }
+            //else
+            //{
+            //    DisposeCallbackAction?.Invoke();
+            //}
 
             return null;
         }

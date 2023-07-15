@@ -1,6 +1,4 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
-
-namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Factories
+﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Factories
 {
     public static class InmersiveCityWeatherOverviewPlacardConfigurationPageModelFactory
     {
@@ -10,7 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.InmersiveCityWeatherOverviewPlacardContextModel>(placardViewModel.SerializedContext);
 
-            return new Models.Page.InmersiveCityWeatherOverviewPlacardConfigurationPageModel
+            var result = new Models.Page.InmersiveCityWeatherOverviewPlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 DefineBeginAt = placardViewModel.BeginAt != null,
@@ -19,13 +17,21 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                 EndAt = placardViewModel.EndAt ?? System.DateTime.Now.Date,
                 Label = placardViewModel.Label,
                 ScreenPresentationTimeSecounds = System.Convert.ToInt32(context.ScreenPresentationTime.TotalSeconds),
-                BackgroundCityImage = context.BackgroundCityImage.ToViewModel(),
+                Background = context.Background,
+                TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
                 WeatherCacheMicroServerHost = context.WeatherCacheMicroServerHost,
                 IsWeatherCacheMicroServerRequireSecureConnection = context.IsWeatherCacheMicroServerRequireSecureConnection,
                 IsWeatherCacheMicroServerSecureConnectionStrict = context.IsWeatherCacheMicroServerSecureConnectionStrict,
                 Service = context.Service,
                 City = context.City
             };
+
+            if (context.OverlayColor != null)
+            {
+                result.OverlayColor = Xamarin.Forms.Color.FromHex(context.OverlayColor);
+            }
+
+            return result;
         }
     }
 }
