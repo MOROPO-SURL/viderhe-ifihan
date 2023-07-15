@@ -66,18 +66,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 
                     weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
-                        Target = ConditionLabel,
+                        Target = TemperatureLabel,
                         Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up
                     });
                     weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
-                        Target = ConditionDetailLabel,
+                        Target = ConditionLabel,
                         Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                         Delay = "200"
                     });
                     weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
-                        Target = TemperatureLabel,
+                        Target = ConditionDetailLabel,
                         Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                         Delay = "400"
                     });

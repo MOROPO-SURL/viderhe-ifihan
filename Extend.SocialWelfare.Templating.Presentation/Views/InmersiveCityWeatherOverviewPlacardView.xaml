@@ -3,19 +3,23 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views.InmersiveCityWeatherOverviewPlacardView">
     <ContentView.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
-            
+
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+
             <converters:WeatherOverviewModelToConditionFontGlyphConverter x:Key="WeatherOverviewModelToConditionFontGlyphConverter" />
             <converters:FloatToRoundedFloatConverter x:Key="FloatToRoundedFloatConverter" />
             <converters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
 
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{Binding Path=TextColor, Mode=OneTime}" />
+                <Setter Property="FontSize" Value="{Binding Source=21, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
@@ -34,10 +38,10 @@
                             Text="{Binding Path=Now, StringFormat='{0:dddd, MMMM dd, yyyy}'}" />
                         <Label 
                             Text="{Binding Path=Now, StringFormat='{0:h:mm tt}'}"
-                            FontSize="Medium" />
+                            FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         <Label
                             Text="{Binding Path=City.Name, Mode=OneTime}"
-                            FontSize="Large" />
+                            FontSize="{Binding Source=28, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     </StackLayout>
                     <Grid 
                         VerticalOptions="FillAndExpand"
@@ -56,28 +60,30 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <StackLayout 
+                        <Label
+                            x:Name="TemperatureLabel"
                             Grid.Column="0" Grid.Row="0"
-                            Margin="0,16,0,4"
+                            Margin="0,20,0,5"
+                            Opacity="0"
+                            Text="{Binding Path=WeatherOverview.Temperature, Converter={StaticResource FloatToRoundedFloatConverter}, StringFormat='{0}°C'}"
+                            FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        <StackLayout 
+                            Grid.Column="0" Grid.Row="1"
+                            Margin="0,0,0,25"
                             Spacing="0">
                             <Label
                                 x:Name="ConditionLabel"
                                 Opacity="0"
                                 Text="{Binding Path=WeatherOverview, Converter={StaticResource WeatherOverviewModelToConditionFontGlyphConverter}}"
                                 FontFamily="Weather Icons"
-                                FontSize="96" />
+                                FontSize="{Binding Source=108, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <Label
                                 x:Name="ConditionDetailLabel"
                                 Opacity="0"
                                 Text="{Binding Path=WeatherOverview.ConditionDetail}"
-                                HorizontalTextAlignment="Center" />
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Italic" />
                         </StackLayout>
-                        <Label
-                            x:Name="TemperatureLabel"
-                            Grid.Column="0" Grid.Row="1"
-                            Opacity="0"
-                            Text="{Binding Path=WeatherOverview.Temperature, Converter={StaticResource FloatToRoundedFloatConverter}, StringFormat='{0}°C'}"
-                            FontSize="Header" />
                         <StackLayout
                             x:Name="TemperatureFeelLikeLayout"
                             Grid.Column="0" Grid.Row="2"
@@ -85,10 +91,10 @@
                             Spacing="0">
                             <Label
                                 Text="sensación:"
-                                FontAttributes="Italic" />
+                                FontAttributes="Bold" />
                             <Label
                                 Text="{Binding Path=WeatherOverview.TemperatureFeelLike, Converter={StaticResource FloatToRoundedFloatConverter}, StringFormat='{0}°C'}"
-                                FontSize="Title" />
+                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         </StackLayout>
                         <Grid
                             x:Name="TemperatureLimitsLayout"
@@ -107,11 +113,11 @@
                             <Label
                                 Grid.Column="0" Grid.Row="0"
                                 Text="mínima"
-                                FontAttributes="Italic" />
+                                FontAttributes="Bold" />
                             <Label
                                 Grid.Column="0" Grid.Row="1"
                                 Text="{Binding Path=WeatherOverview.MinTemperature, Converter={StaticResource FloatToRoundedFloatConverter}, StringFormat='{0}°C'}"
-                                FontSize="Title" />
+                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <BoxView
                                 Grid.Column="1" Grid.RowSpan="2"
                                 WidthRequest="1"
@@ -119,20 +125,21 @@
                             <Label
                                 Grid.Column="2" Grid.Row="0"
                                 Text="máxima"
-                                FontAttributes="Italic" />
+                                FontAttributes="Bold" />
                             <Label
                                 Grid.Column="2" Grid.Row="1"
                                 Text="{Binding Path=WeatherOverview.MaxTemperature, Converter={StaticResource FloatToRoundedFloatConverter}, StringFormat='{0}°C'}"
-                                FontSize="Title" />
+                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         </Grid>
                         <Label
                             x:Name="SourceInfoLayout"
                             Grid.ColumnSpan="2" Grid.Row="6"
                             VerticalOptions="End"
-                            Opacity="0">
+                            Opacity="0"
+                            FontSize="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{Binding Path=Service}" FontAttributes="Bold" />
+                                    <Span Text="{Binding Path=Service}" />
                                     <Span Text=" (" />
                                     <Span Text="{Binding Path=WeatherOverview.MeasuredAt, StringFormat='{0:dd/MM/yyyy h:mm tt}'}" />
                                     <Span Text=")" />
@@ -157,7 +164,7 @@
                                     Text="&#xf051;"
                                     HorizontalTextAlignment="Center"
                                     FontFamily="Weather Icons"
-                                    FontSize="Large" />
+                                    FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                                 <Label
                                     Text="{Binding Path=WeatherOverview.SunRiseAt, StringFormat='{0:h:mm tt}'}"
                                     HorizontalTextAlignment="Center" />
@@ -173,7 +180,7 @@
                                     Text="&#xf052;"
                                     HorizontalTextAlignment="Center"
                                     FontFamily="Weather Icons"
-                                    FontSize="Large" />
+                                    FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                                 <Label
                                     Text="{Binding Path=WeatherOverview.SunSetAt, StringFormat='{0:h:mm tt}'}"
                                     HorizontalTextAlignment="Center" />
@@ -269,7 +276,7 @@
                                     Text="&#xf0b1;"
                                     Rotation="{Binding Path=WeatherOverview.WindDegrees}"
                                     FontFamily="Weather Icons"
-                                    FontSize="Medium" />
+                                    FontSize="{Binding Source=18, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                                 <Label 
                                     Grid.Column="1" Grid.Row="1"
                                     VerticalOptions="Center">
