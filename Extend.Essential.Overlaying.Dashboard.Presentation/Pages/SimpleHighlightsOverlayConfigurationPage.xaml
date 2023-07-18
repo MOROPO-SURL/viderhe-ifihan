@@ -12,10 +12,11 @@
     x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Presentation.Pages.SimpleHighlightsOverlayConfigurationPage"
     x:TypeArguments="pagemodels:SimpleHighlightsOverlayConfigurationPageModel"
     x:Name="FormPage"
-    Title="Configurar Mascara (Cinta Informativa Simple)">
+    Title="Configurar Máscara (Cinta Informativa Simple)">
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -106,19 +107,32 @@
                                 x:Name="HeaderLabel"
                                 Text="Cabecera" 
                                 Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=Header}">
-                                <Entry.Behaviors>
-                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
-                                        ValidableFormPage="{Reference FormPage}"
-                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
-                                        TargetProperty="{Static Entry.TextProperty}"
-                                        Label="{Reference HeaderLabel}">
-                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
-                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
-                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
-                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
-                                </Entry.Behaviors>
-                            </Entry>
+                            <StackLayout Orientation="Horizontal">
+                                <Entry Text="{Binding Path=Header}" HorizontalOptions="FillAndExpand">
+                                    <Entry.Behaviors>
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                            ValidableFormPage="{Reference FormPage}"
+                                            FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
+                                            TargetProperty="{Static Entry.TextProperty}"
+                                            Label="{Reference HeaderLabel}">
+                                            <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                            </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                    </Entry.Behaviors>
+                                </Entry>
+                                <Button
+                                    Text="&#xF528;"
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    BorderWidth="0"
+                                    Clicked="PickHeaderTextButton_Clicked" />
+                                <Button
+                                    IsEnabled="{Binding Path=Header, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                    Text="&#xF193;"
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    BorderWidth="0"
+                                    Clicked="HeaderTextSaveButton_Clicked" />
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                     <Frame 
@@ -142,6 +156,19 @@
                                     </supportpresentationdashboardbehaviors:ViewValidationBehavior>
                                 </Editor.Behaviors>
                             </Editor>
+                            <StackLayout Orientation="Horizontal">
+                                <Button
+                                    Text="&#xF528;"
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    BorderWidth="0"
+                                    Clicked="PickHighlightsTextButton_Clicked" />
+                                <Button
+                                    IsEnabled="{Binding Path=Highlights, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                    Text="&#xF193;"
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    BorderWidth="0"
+                                    Clicked="HighlightsTextSaveButton_Clicked" />
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                 </Grid>

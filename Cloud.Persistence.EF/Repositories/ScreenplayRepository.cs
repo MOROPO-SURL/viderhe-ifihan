@@ -8,6 +8,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
         {
         }
 
+        public override System.Func<Entities.Screenplay, object> GetPagingOrderSelector()
+        {
+            return entity => entity.Title;
+        }
+
         protected override System.Linq.IQueryable<Entities.Screenplay> GetQueryableDbSet()
         {
             return base.GetQueryableDbSet()

@@ -17,6 +17,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
                 .Include(entity => entity.Screenplays)
                 .Include(entity => entity.DefaultOverlay)
                 .Include(entity => entity.ExtensionBridges)
+                .Include(entity => entity.GradientBridges)
+                .Include(entity => entity.TextBridges)
                 .Include(entity => entity.ImageBridges).ThenInclude(bridge => bridge.Image)
                 .Include(entity => entity.ModeratorBridges).ThenInclude(bridge => bridge.Moderator).ThenInclude(e => e.Identity).ThenInclude(e => e.Image)
                 .Include(entity => entity.Players).ThenInclude(entity => entity.Screenplay);
