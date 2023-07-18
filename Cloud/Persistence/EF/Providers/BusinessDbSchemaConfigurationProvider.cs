@@ -15,7 +15,12 @@
             new Configurators.ModeratorEntityTypeConfigurator(),
             new Configurators.ScheduledRelaunchEntityTypeConfigurator(),
             new Configurators.PlacardImageBridgeEntityTypeConfigurator(),
-            new Configurators.PlacardVideoBridgeEntityTypeConfigurator()
+            new Configurators.PlacardVideoBridgeEntityTypeConfigurator(),
+            new Configurators.AccountSoundBridgeEntityTypeConfigurator(),
+            new Configurators.AccountGradientBridgeEntityTypeConfigurator(),
+            new Configurators.AccountTextBridgeEntityTypeConfigurator(),
+            new Configurators.PlacardSoundBridgeEntityTypeConfigurator(),
+            new Configurators.PlacardGradientBridgeEntityTypeConfigurator()
         };
     }
 }

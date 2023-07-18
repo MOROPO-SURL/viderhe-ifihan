@@ -1,0 +1,13 @@
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View
+{
+    public class GradientViewModel
+    {
+        public System.Guid Id { get; set; }
+
+        public System.DateTime CreateAt { get; set; }
+
+        public MagicGradients.CssGradientSource Source { get; set; }
+
+        public string About { get; set; }
+    }
+}

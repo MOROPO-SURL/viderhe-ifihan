@@ -14,9 +14,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 DefineBeginAt = placardViewModel.BeginAt != null,
-                BeginAt = placardViewModel.BeginAt,
+                BeginAt = placardViewModel.BeginAt ?? System.DateTime.Now.Date,
                 DefineEndAt = placardViewModel.EndAt != null,
-                EndAt = placardViewModel.EndAt,
+                EndAt = placardViewModel.EndAt ?? System.DateTime.Now.Date,
                 Label = placardViewModel.Label,
                 ScreenPresentationTimeSecounds = System.Convert.ToInt32(context.ScreenPresentationTime.TotalSeconds),
                 PresenterImage = context.PresenterImage.ToViewModel(),
