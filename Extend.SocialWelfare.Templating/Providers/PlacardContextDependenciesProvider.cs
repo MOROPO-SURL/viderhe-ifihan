@@ -25,6 +25,15 @@
                 return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(context.Background.SerializedContext) };
             }
 
+            if (templateId == Descriptors.OverlayHeroCityTimeWeatherTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.OverlayHeroCityTimeWeatherPlacardContextModel>(serializedContext);
+
+                if (context.Background.Kind != Enumerations.BackgroundKind.Image) return null;
+
+                return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(context.Background.SerializedContext) };
+            }
+
             return null;
         }
 

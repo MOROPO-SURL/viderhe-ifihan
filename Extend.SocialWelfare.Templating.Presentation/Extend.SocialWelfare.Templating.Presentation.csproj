@@ -36,6 +36,9 @@
     <Compile Update="Views\HeroLocalNowDateTimePlacardView.xaml.cs">
       <DependentUpon>HeroLocalNowDateTimePlacardView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\LandscapeOverlayHeroCityTimeWeatherPlacardView.xaml.cs">
+      <DependentUpon>LandscapeOverlayHeroCityTimeWeatherPlacardView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\RssFeedCollageHeroPlacardView.xaml.cs">
       <DependentUpon>RssFeedCollageHeroPlacardView.xaml</DependentUpon>
     </Compile>
@@ -46,6 +49,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\HeroLocalNowDateTimePlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LandscapeOverlayHeroCityTimeWeatherPlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PortraitOverlayHeroCityTimeWeatherPlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\RssFeedCollageHeroPlacardView.xaml">

@@ -19,6 +19,11 @@
                 return new Pages.HeroLocalNowDateTimePlacardConfigurationPage(completedCallbackAction);
             }
 
+            if (templateDescriptor is Descriptors.OverlayHeroCityTimeWeatherTemplateDescriptor)
+            {
+                return new Pages.OverlayHeroCityTimeWeatherPlacardConfigurationPage(completedCallbackAction);
+            }
+
             return null;
         }
 
@@ -37,6 +42,11 @@
             if (placardViewModel.Template.Id == Descriptors.HeroLocalNowDateTimeTemplateDescriptor.ID)
             {
                 return new Pages.HeroLocalNowDateTimePlacardConfigurationPage(placardViewModel, completedCallbackAction);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.OverlayHeroCityTimeWeatherTemplateDescriptor.ID)
+            {
+                return new Pages.OverlayHeroCityTimeWeatherPlacardConfigurationPage(placardViewModel, completedCallbackAction);
             }
 
             return null;

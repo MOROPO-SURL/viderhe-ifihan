@@ -19,6 +19,11 @@
                 return new Views.HeroLocalNowDateTimePlacardThumbnailView(model);
             }
 
+            if (model.Template.Id == Descriptors.OverlayHeroCityTimeWeatherTemplateDescriptor.ID)
+            {
+                return new Views.OverlayHeroCityTimeWeatherPlacardThumbnailView(model);
+            }
+
             return null;
         }
     }

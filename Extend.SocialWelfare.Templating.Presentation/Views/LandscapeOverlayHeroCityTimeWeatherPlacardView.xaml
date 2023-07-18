@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Converters"
+    xmlns:placardviewmodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Models.View.Placard"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views.LandscapeOverlayHeroCityTimeWeatherPlacardView"
+    x:DataType="placardviewmodels:OverlayHeroCityTimeWeatherPlacardViewModel">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:WeatherOverviewModelToConditionFontGlyphConverter x:Key="WeatherOverviewModelToConditionFontGlyphConverter" />
+            <converters:FloatToRoundedFloatConverter x:Key="FloatToRoundedFloatConverter" />
+            <converters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
+            
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{Binding Path=TextColor}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="PlacardLayout">
+                <ContentView x:Name="BackgroundContentView" Content="{Binding Path=Background, Converter={StaticResource BackgroundToViewConverter}}" />
+                <BoxView x:Name="OverlayBoxView" Color="Transparent" />
+                <Grid 
+                    HorizontalOptions="Center" VerticalOptions="Center"
+                    ColumnSpacing="12" RowSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        x:Name="CityLabel"
+                        Grid.Column="0" Grid.Row="0"
+                        Text="{Binding Path=City.Name, Mode=OneTime}"
+                        FontSize="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    <Label 
+                        x:Name="DateLabel"
+                        Grid.Column="0" Grid.Row="1"
+                        Text="{Binding Path=Now, StringFormat='{0:dddd, MMMM dd, yyyy}'}"
+                        FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    <Label 
+                        x:Name="TimeLabel"
+                        Grid.Column="0" Grid.Row="2"
+                        FontSize="{Binding Source=180, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    <Grid 
+                        x:Name="WeatherLayout"
+                        Grid.Column="1" Grid.RowSpan="3"
+                        ColumnSpacing="0" RowSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Column="0" Grid.Row="0"
+                            Text="{Binding Path=WeatherOverview, Converter={StaticResource WeatherOverviewModelToConditionFontGlyphConverter}}"
+                            FontFamily="Weather Icons"
+                            FontSize="{Binding Source=192, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        <Label
+                            Grid.Column="1" Grid.Row="0"
+                            Text="{Binding Path=WeatherOverview.Temperature, Converter={StaticResource FloatToRoundedFloatConverter}, StringFormat='{0}°C'}"
+                            FontSize="{Binding Source=96, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        <Label
+                            Grid.ColumnSpan="2" Grid.Row="1"
+                            Text="{Binding Path=WeatherOverview.ConditionDetail}"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Italic"
+                            FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

@@ -55,6 +55,39 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
                 });
             }
 
+            if (model.Template.Id == OverlayHeroCityTimeWeatherTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.OverlayHeroCityTimeWeatherPlacardContextModel>(model.SerializedContext);
+
+                var protocol = context.IsWeatherCacheMicroServerRequireSecureConnection ? "https" : "http";
+
+                var viewModel = new Models.View.Placard.OverlayHeroCityTimeWeatherPlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    Background = context.Background,
+                    TextColor = Xamarin.Forms.Color.FromHex(context.TextColor),
+                    Service = context.Service,
+                    City = context.City,
+                    ServiceBaseUri = new System.Uri(string.Format("{0}://{1}/api/", protocol, context.WeatherCacheMicroServerHost)),
+                    Now = System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(System.DateTimeOffset.Now, context.TimeZoneId).DateTime
+                };
+
+                if (context.OverlayColor != null)
+                {
+                    viewModel.OverlayColor = Xamarin.Forms.Color.FromHex(context.OverlayColor);
+                }
+
+                var orientation = getOrientationFunction.Invoke();
+
+                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                {
+                    return new Views.PortraitOverlayHeroCityTimeWeatherPlacardView(viewModel);
+                }
+
+                return new Views.LandscapeOverlayHeroCityTimeWeatherPlacardView(viewModel);
+            }
+
             return null;
         }
     }
