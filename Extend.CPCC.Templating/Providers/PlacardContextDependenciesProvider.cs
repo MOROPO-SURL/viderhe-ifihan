@@ -2,6 +2,11 @@
 {
     public class PlacardContextDependenciesProvider : Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider
     {
+        public Common.Templating.Models.Context.GradientContextModel[] GetGradients(System.Guid templateId, string serializedContext)
+        {
+            return null;
+        }
+
         public Common.Templating.Models.Context.ImageContextModel[] GetImages(System.Guid templateId, string serializedContext)
         {
             if (templateId == Descriptors.PortraitPosterVideoEventPromotionTemplateDescriptor.ID)
@@ -11,6 +16,11 @@
                 return new[] { context.Poster };
             }
 
+            return null;
+        }
+
+        public Common.Templating.Models.Context.SoundContextModel[] GetSounds(System.Guid templatedId, string serializedContxt)
+        {
             return null;
         }
 
