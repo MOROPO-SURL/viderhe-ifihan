@@ -8,6 +8,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Providers
 {
     public class PlacardContextDependenciesProvider : Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider
     {
+        public GradientContextModel[] GetGradients(Guid templateId, string serializedContext)
+        {
+            return null;
+        }
+
         public ImageContextModel[] GetImages(Guid templateId, string serializedContext)
         {
             if (templateId == PictureSlideSecuenceTemplateDescriptor.ID)
@@ -74,6 +79,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Providers
                 return result.ToArray();
             }
 
+            return null;
+        }
+
+        public SoundContextModel[] GetSounds(Guid templatedId, string serializedContxt)
+        {
             return null;
         }
 
