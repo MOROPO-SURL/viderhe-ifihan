@@ -71,7 +71,33 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 }
             }
 
-            // Handle Gradient & Sound Contrains
+            var dependencyGradients = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetGradients(inputModel.TemplateId, inputModel.SerializedContext);
+
+            if (dependencyGradients != null)
+            {
+                foreach (var item in dependencyGradients)
+                {
+                    entity.GradientBridges.Add(new Persistence.Entities.PlacardGradientBridge
+                    {
+                        Placard = entity,
+                        GradientId = item.Id
+                    });
+                }
+            }
+
+            var dependencySounds = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetSounds(inputModel.TemplateId, inputModel.SerializedContext);
+
+            if (dependencySounds != null)
+            {
+                foreach (var item in dependencySounds)
+                {
+                    entity.SoundBridges.Add(new Persistence.Entities.PlacardSoundBridge
+                    {
+                        Placard = entity,
+                        SoundId = item.Id
+                    });
+                }
+            }
         }
 
         protected override void PreEdit(Persistence.Entities.Placard entity, PlacardInputModel inputModel)
@@ -84,6 +110,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
             entity.ImageBridges.Clear();
             entity.VideoBridges.Clear();
+            entity.GradientBridges.Clear();
+            entity.SoundBridges.Clear();
 
             var dependencyImages = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetImages(inputModel.TemplateId, inputModel.SerializedContext);
 
@@ -109,6 +137,34 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                     {
                         Placard = entity,
                         VideoId = item.Id
+                    });
+                }
+            }
+
+            var dependencyGradients = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetGradients(inputModel.TemplateId, inputModel.SerializedContext);
+
+            if (dependencyGradients != null)
+            {
+                foreach (var item in dependencyGradients)
+                {
+                    entity.GradientBridges.Add(new Persistence.Entities.PlacardGradientBridge
+                    {
+                        Placard = entity,
+                        GradientId = item.Id
+                    });
+                }
+            }
+
+            var dependencySounds = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetSounds(inputModel.TemplateId, inputModel.SerializedContext);
+
+            if (dependencySounds != null)
+            {
+                foreach (var item in dependencySounds)
+                {
+                    entity.SoundBridges.Add(new Persistence.Entities.PlacardSoundBridge
+                    {
+                        Placard = entity,
+                        SoundId = item.Id
                     });
                 }
             }

@@ -57,5 +57,37 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Helpers.Provisio
 
             return null;
         }
+
+        public Viderhe.Extend.Common.Templating.Models.Context.GradientContextModel[] GetGradients(System.Guid templateId, string serializedContext)
+        {
+            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Viderhe.Extend.Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider>();
+
+            foreach (var provider in providers)
+            {
+                var result = provider.GetGradients(templateId, serializedContext);
+
+                if (result == null) continue;
+
+                return result;
+            }
+
+            return null;
+        }
+
+        public Viderhe.Extend.Common.Templating.Models.Context.SoundContextModel[] GetSounds(System.Guid templateId, string serializedContext)
+        {
+            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Viderhe.Extend.Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider>();
+
+            foreach (var provider in providers)
+            {
+                var result = provider.GetSounds(templateId, serializedContext);
+
+                if (result == null) continue;
+
+                return result;
+            }
+
+            return null;
+        }
     }
 }
