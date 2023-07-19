@@ -20,6 +20,9 @@
             <supportpresentationdashboardconverters:PlacardViewModelToPlacardThumbnailWrapViewConverter x:Key="PlacardViewModelToPlacardThumbnailWrapViewConverter" />
             <supportpresentationdashboardconverters:PlacardToIsAnyPlayerOrientationSupportedConverter x:Key="PlacardToIsAnyPlayerOrientationSupportedConverter" />
 
+            <sscxftoolkitpresentationconverters:NullToStringConverter x:Key="PlacardPanelTitleNullToStringConverter" FalseValue="Marcos (filtrados)" TrueValue="Marcos" />
+            <sscxftoolkitpresentationconverters:NullToStringConverter x:Key="FilterIconNullToStringConverter" FalseValue="&#xF232;" TrueValue="&#xF233;" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
             <sscxftoolkitpresentationconverters:IfNullOrEmptyToStringConverter x:Key="IfNullOrEmptyToStringConverter" StringReplacement="Descripción no especificada" />
             <sscxftoolkitpresentationconverters:NullToBooleanConverter x:Key="NullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
@@ -251,10 +254,21 @@
                 <Label 
                     VerticalOptions="Center" 
                     HorizontalOptions="FillAndExpand"
-                    Text="Marcos"
+                    Text="{Binding Path=LabelFilterParam, Converter={StaticResource PlacardPanelTitleNullToStringConverter}}"
                     FontSize="Medium" />
                 <Button 
-                    Text="&#xf415;"
+                    Text="{Binding Path=LabelFilterParam, Converter={StaticResource FilterIconNullToStringConverter}}"
+                    Style="{StaticResource TextIconButton}"
+                    FontSize="Medium"
+                    Clicked="RequestFilterButton_Clicked" />
+                <Button 
+                    Text="&#xF235;"
+                    IsEnabled="{Binding Path=LabelFilterParam, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                    Style="{StaticResource TextIconButton}"
+                    FontSize="Medium"
+                    Clicked="ClearFilterButton_Clicked" />
+                <Button 
+                    Text="&#xF415;"
                     Style="{StaticResource TextIconButton}"
                     FontSize="Medium"
                     Clicked="AddPlacardButton_Clicked" />

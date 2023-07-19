@@ -30,7 +30,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             IsEnabled = false;
 
-            BindingContext = new Models.Page.ManageProgrammingPageModel(ScreenplaySelection_Callback);
+            BindingContext = new Models.Page.ManageProgrammingPageModel(ScreenplaySelection_Callback, LabelFilterParamaChange_Callback);
         }
 
         protected override void OnAppearing()
@@ -547,6 +547,33 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             PlacardEditionCompleted_Callback();
         }
 
+        private void RequestFilterButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayPromptAsync("Filtrar Marcos", "Especifique la etiqueta o parte de esta relativa al el marco que está buscando:", "Filtrar", "Cancelar",  initialValue: BindingContextPageModel.LabelFilterParam).ContinueWith(task =>
+            {
+                if (task.Result == null) return;
+
+                if (string.IsNullOrEmpty(task.Result))
+                {
+                    BindingContextPageModel.LabelFilterParam = null;
+                }
+                else
+                {
+                    BindingContextPageModel.LabelFilterParam = task.Result;
+                }
+            });
+        }
+
+        private void ClearFilterButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayAlert("Quitar Filtro", "Está seguro que desea quitar el filtro actual para el listado de Marcos?", "Quitar", "Cancelar").ContinueWith(task =>
+            {
+                if (!task.Result) return;
+
+                BindingContextPageModel.LabelFilterParam = null;
+            });
+        }
+        
         private void ScreenplaySelection_Callback(Models.View.ScreenplayViewModel target)
         {
             LoadCurrentScreenplayFrames();
@@ -567,6 +594,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 LoadCurrentScreenplayFrames(() => LoadNextPlacardsPage(true));
             }
+        }
+
+        private void LabelFilterParamaChange_Callback()
+        {
+            LoadNextPlacardsPage(true);
         }
 
         private void ReloadScreenplays()
@@ -631,19 +663,37 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 currentPlacardsPageNumber = 0;
 
-                foreach (var item in BindingContextPageModel.PlacardOverviews)
+                if (BindingContextPageModel.PlacardOverviews != null)
                 {
-                    item?.Dispose();
+                    foreach (var item in BindingContextPageModel.PlacardOverviews)
+                    {
+                        item?.Dispose();
+                    }
+
+                    BindingContextPageModel.PlacardOverviews.Clear();
+
+                    BindingContextPageModel.PlacardOverviews = null;
                 }
-
-                BindingContextPageModel.PlacardOverviews.Clear();
-
-                BindingContextPageModel.PlacardOverviews = null;
             }
 
             var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Managers.SessionManager.Instance);
 
-            _ = placardsApiConnectClient.GetPaginateAsync(++currentPlacardsPageNumber, placardPageLimit).ContinueWith(task =>
+            System.Threading.Tasks.Task<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Cloud.Api.Common.Models.PlacardDisplayModel>> apiConnectClientTask;
+
+            if (!string.IsNullOrEmpty(BindingContextPageModel.LabelFilterParam))
+            {
+                apiConnectClientTask = placardsApiConnectClient.FilterPaginateAsync(new Cloud.Api.Common.Models.Filter.PlacardFilterModel
+                {
+                    Label = BindingContextPageModel.LabelFilterParam,
+                    PlayerOrientationSupportKind = Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any
+                }, ++currentPlacardsPageNumber, placardPageLimit);
+            }
+            else
+            {
+                apiConnectClientTask = placardsApiConnectClient.GetPaginateAsync(++currentPlacardsPageNumber, placardPageLimit);
+            }
+
+            _ = apiConnectClientTask.ContinueWith(task =>
               {
                   Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                   {
