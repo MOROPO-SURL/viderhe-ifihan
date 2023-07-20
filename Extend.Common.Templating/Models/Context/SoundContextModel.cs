@@ -18,7 +18,7 @@
 
         public string AudioChannelOutput { get; set; }
 
-        public System.Guid ThumbnailId { get; set; }
+        public System.Guid? ThumbnailId { get; set; }
 
         public string ThumbnailContentType { get; set; }
     }

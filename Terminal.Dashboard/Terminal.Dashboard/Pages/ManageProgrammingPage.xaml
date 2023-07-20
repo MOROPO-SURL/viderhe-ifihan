@@ -15,6 +15,8 @@
         <ResourceDictionary>
             <converters:TemplateViewModelToTemplateThumbnailWrapViewConverter x:Key="TemplateViewModelToTemplateThumbnailWrapViewConverter" />
             <converters:BoolToManageProgrammingPageLayoutToolbarItemIconConverter x:Key="BoolToManageProgrammingPageLayoutToolbarItemIconConverter" />
+            <converters:ComplementationKindToGlyphConverter x:Key="ComplementationKindToGlyphConverter" />
+
             <supportpresentationdashboardconverters:CollectionViewWidthToSelfVerticalGridItemsLayoutConverter x:Key="CollectionViewWidthToSelfVerticalGridItemsLayoutConverter" ChildMinWidth="200" ChildAbsoluteHorizontalMargin="10" />
             <supportpresentationdashboardconverters:AllTrueMultiConverter x:Key="AllTrueMultiConverter" />
             <supportpresentationdashboardconverters:PlacardViewModelToPlacardThumbnailWrapViewConverter x:Key="PlacardViewModelToPlacardThumbnailWrapViewConverter" />
@@ -309,6 +311,15 @@
                                             Padding="4"
                                             Text="&#xf884;"
                                             TextColor="White"
+                                            FontFamily="Material Design Icons"
+                                            FontSize="24" />
+                                        <Label
+                                            IsVisible="{Binding Path=Placard.ComplementationKind, Converter={StaticResource NotNullToBooleanConverter}, Mode=OneTime}"
+                                            HorizontalOptions="Start" VerticalOptions="Start"
+                                            BackgroundColor="White"
+                                            Padding="4"
+                                            Text="{Binding Path=Placard.ComplementationKind, Converter={StaticResource ComplementationKindToGlyphConverter}, Mode=OneTime}"
+                                            TextColor="{StaticResource PrimaryColor}"
                                             FontFamily="Material Design Icons"
                                             FontSize="24" />
                                         <Button 
