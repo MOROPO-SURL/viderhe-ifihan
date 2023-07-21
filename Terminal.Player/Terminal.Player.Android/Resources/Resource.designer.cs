@@ -25,7 +25,387 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Microcharts.Droid.Resource.String.library_name = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.library_name;
+			global::MediaManager.Resource.Attribute.ad_marker_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.ad_marker_color;
+			global::MediaManager.Resource.Attribute.ad_marker_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.ad_marker_width;
+			global::MediaManager.Resource.Attribute.alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.alpha;
+			global::MediaManager.Resource.Attribute.auto_show = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.auto_show;
+			global::MediaManager.Resource.Attribute.bar_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.bar_height;
+			global::MediaManager.Resource.Attribute.buffered_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.buffered_color;
+			global::MediaManager.Resource.Attribute.controller_layout_id = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.controller_layout_id;
+			global::MediaManager.Resource.Attribute.default_artwork = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.default_artwork;
+			global::MediaManager.Resource.Attribute.fastforward_increment = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fastforward_increment;
+			global::MediaManager.Resource.Attribute.font = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.font;
+			global::MediaManager.Resource.Attribute.fontProviderAuthority = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderAuthority;
+			global::MediaManager.Resource.Attribute.fontProviderCerts = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderCerts;
+			global::MediaManager.Resource.Attribute.fontProviderFetchStrategy = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderFetchStrategy;
+			global::MediaManager.Resource.Attribute.fontProviderFetchTimeout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderFetchTimeout;
+			global::MediaManager.Resource.Attribute.fontProviderPackage = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderPackage;
+			global::MediaManager.Resource.Attribute.fontProviderQuery = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontProviderQuery;
+			global::MediaManager.Resource.Attribute.fontStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontStyle;
+			global::MediaManager.Resource.Attribute.fontVariationSettings = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontVariationSettings;
+			global::MediaManager.Resource.Attribute.fontWeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.fontWeight;
+			global::MediaManager.Resource.Attribute.hide_during_ads = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.hide_during_ads;
+			global::MediaManager.Resource.Attribute.hide_on_touch = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.hide_on_touch;
+			global::MediaManager.Resource.Attribute.keep_content_on_player_reset = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.keep_content_on_player_reset;
+			global::MediaManager.Resource.Attribute.played_ad_marker_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.played_ad_marker_color;
+			global::MediaManager.Resource.Attribute.played_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.played_color;
+			global::MediaManager.Resource.Attribute.player_layout_id = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.player_layout_id;
+			global::MediaManager.Resource.Attribute.repeat_toggle_modes = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.repeat_toggle_modes;
+			global::MediaManager.Resource.Attribute.resize_mode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.resize_mode;
+			global::MediaManager.Resource.Attribute.rewind_increment = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.rewind_increment;
+			global::MediaManager.Resource.Attribute.scrubber_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.scrubber_color;
+			global::MediaManager.Resource.Attribute.scrubber_disabled_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.scrubber_disabled_size;
+			global::MediaManager.Resource.Attribute.scrubber_dragged_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.scrubber_dragged_size;
+			global::MediaManager.Resource.Attribute.scrubber_drawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.scrubber_drawable;
+			global::MediaManager.Resource.Attribute.scrubber_enabled_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.scrubber_enabled_size;
+			global::MediaManager.Resource.Attribute.show_buffering = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.show_buffering;
+			global::MediaManager.Resource.Attribute.show_shuffle_button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.show_shuffle_button;
+			global::MediaManager.Resource.Attribute.show_timeout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.show_timeout;
+			global::MediaManager.Resource.Attribute.shutter_background_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.shutter_background_color;
+			global::MediaManager.Resource.Attribute.surface_type = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.surface_type;
+			global::MediaManager.Resource.Attribute.touch_target_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.touch_target_height;
+			global::MediaManager.Resource.Attribute.ttcIndex = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.ttcIndex;
+			global::MediaManager.Resource.Attribute.unplayed_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.unplayed_color;
+			global::MediaManager.Resource.Attribute.use_artwork = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.use_artwork;
+			global::MediaManager.Resource.Attribute.use_controller = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Attribute.use_controller;
+			global::MediaManager.Resource.Color.exo_edit_mode_background_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.exo_edit_mode_background_color;
+			global::MediaManager.Resource.Color.exo_error_message_background_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.exo_error_message_background_color;
+			global::MediaManager.Resource.Color.notification_action_color_filter = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.notification_action_color_filter;
+			global::MediaManager.Resource.Color.notification_icon_bg_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.notification_icon_bg_color;
+			global::MediaManager.Resource.Color.notification_material_background_media_default_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.notification_material_background_media_default_color;
+			global::MediaManager.Resource.Color.primary_text_default_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.primary_text_default_material_dark;
+			global::MediaManager.Resource.Color.ripple_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.ripple_material_light;
+			global::MediaManager.Resource.Color.secondary_text_default_material_dark = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.secondary_text_default_material_dark;
+			global::MediaManager.Resource.Color.secondary_text_default_material_light = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Color.secondary_text_default_material_light;
+			global::MediaManager.Resource.Dimension.compat_button_inset_horizontal_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::MediaManager.Resource.Dimension.compat_button_inset_vertical_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_button_inset_vertical_material;
+			global::MediaManager.Resource.Dimension.compat_button_padding_horizontal_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::MediaManager.Resource.Dimension.compat_button_padding_vertical_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_button_padding_vertical_material;
+			global::MediaManager.Resource.Dimension.compat_control_corner_material = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_control_corner_material;
+			global::MediaManager.Resource.Dimension.compat_notification_large_icon_max_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_notification_large_icon_max_height;
+			global::MediaManager.Resource.Dimension.compat_notification_large_icon_max_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.compat_notification_large_icon_max_width;
+			global::MediaManager.Resource.Dimension.exo_media_button_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.exo_media_button_height;
+			global::MediaManager.Resource.Dimension.exo_media_button_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.exo_media_button_width;
+			global::MediaManager.Resource.Dimension.notification_action_icon_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_action_icon_size;
+			global::MediaManager.Resource.Dimension.notification_action_text_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_action_text_size;
+			global::MediaManager.Resource.Dimension.notification_big_circle_margin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_big_circle_margin;
+			global::MediaManager.Resource.Dimension.notification_content_margin_start = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_content_margin_start;
+			global::MediaManager.Resource.Dimension.notification_large_icon_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_large_icon_height;
+			global::MediaManager.Resource.Dimension.notification_large_icon_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_large_icon_width;
+			global::MediaManager.Resource.Dimension.notification_main_column_padding_top = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_main_column_padding_top;
+			global::MediaManager.Resource.Dimension.notification_media_narrow_margin = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_media_narrow_margin;
+			global::MediaManager.Resource.Dimension.notification_right_icon_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_right_icon_size;
+			global::MediaManager.Resource.Dimension.notification_right_side_padding_top = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_right_side_padding_top;
+			global::MediaManager.Resource.Dimension.notification_small_icon_background_padding = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_small_icon_background_padding;
+			global::MediaManager.Resource.Dimension.notification_small_icon_size_as_large = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_small_icon_size_as_large;
+			global::MediaManager.Resource.Dimension.notification_subtext_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_subtext_size;
+			global::MediaManager.Resource.Dimension.notification_top_pad = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_top_pad;
+			global::MediaManager.Resource.Dimension.notification_top_pad_large_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Dimension.notification_top_pad_large_text;
+			global::MediaManager.Resource.Drawable.exo_controls_fastforward = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_controls_fastforward;
+			global::MediaManager.Resource.Drawable.exo_controls_fullscreen_enter = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_controls_fullscreen_enter;
+			global::MediaManager.Resource.Drawable.exo_controls_fullscreen_exit = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_controls_fullscreen_exit;
+			global::MediaManager.Resource.Drawable.exo_controls_next = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_controls_next;
+			global::MediaManager.Resource.Drawable.exo_controls_pause = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_controls_pause;
+			global::MediaManager.Resource.Drawable.exo_controls_play = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_controls_play;
+			global::MediaManager.Resource.Drawable.exo_controls_previous = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_controls_previous;
+			global::MediaManager.Resource.Drawable.exo_controls_repeat_all = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_controls_repeat_all;
+			global::MediaManager.Resource.Drawable.exo_controls_repeat_off = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_controls_repeat_off;
+			global::MediaManager.Resource.Drawable.exo_controls_repeat_one = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_controls_repeat_one;
+			global::MediaManager.Resource.Drawable.exo_controls_rewind = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_controls_rewind;
+			global::MediaManager.Resource.Drawable.exo_edit_mode_logo = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_edit_mode_logo;
+			global::MediaManager.Resource.Drawable.exo_icon_fastforward = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_icon_fastforward;
+			global::MediaManager.Resource.Drawable.exo_icon_next = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_icon_next;
+			global::MediaManager.Resource.Drawable.exo_icon_pause = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_icon_pause;
+			global::MediaManager.Resource.Drawable.exo_icon_play = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_icon_play;
+			global::MediaManager.Resource.Drawable.exo_icon_previous = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_icon_previous;
+			global::MediaManager.Resource.Drawable.exo_icon_rewind = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_icon_rewind;
+			global::MediaManager.Resource.Drawable.exo_icon_stop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_icon_stop;
+			global::MediaManager.Resource.Drawable.exo_media_action_repeat_all = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_media_action_repeat_all;
+			global::MediaManager.Resource.Drawable.exo_media_action_repeat_off = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_media_action_repeat_off;
+			global::MediaManager.Resource.Drawable.exo_media_action_repeat_one = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_media_action_repeat_one;
+			global::MediaManager.Resource.Drawable.exo_notification_fastforward = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_notification_fastforward;
+			global::MediaManager.Resource.Drawable.exo_notification_next = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_notification_next;
+			global::MediaManager.Resource.Drawable.exo_notification_pause = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_notification_pause;
+			global::MediaManager.Resource.Drawable.exo_notification_play = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_notification_play;
+			global::MediaManager.Resource.Drawable.exo_notification_previous = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_notification_previous;
+			global::MediaManager.Resource.Drawable.exo_notification_rewind = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_notification_rewind;
+			global::MediaManager.Resource.Drawable.exo_notification_small_icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_notification_small_icon;
+			global::MediaManager.Resource.Drawable.exo_notification_stop = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.exo_notification_stop;
+			global::MediaManager.Resource.Drawable.notification_action_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_action_background;
+			global::MediaManager.Resource.Drawable.notification_bg = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_bg;
+			global::MediaManager.Resource.Drawable.notification_bg_low = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_bg_low;
+			global::MediaManager.Resource.Drawable.notification_bg_low_normal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_bg_low_normal;
+			global::MediaManager.Resource.Drawable.notification_bg_low_pressed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_bg_low_pressed;
+			global::MediaManager.Resource.Drawable.notification_bg_normal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_bg_normal;
+			global::MediaManager.Resource.Drawable.notification_bg_normal_pressed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_bg_normal_pressed;
+			global::MediaManager.Resource.Drawable.notification_icon_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_icon_background;
+			global::MediaManager.Resource.Drawable.notification_template_icon_bg = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_template_icon_bg;
+			global::MediaManager.Resource.Drawable.notification_template_icon_low_bg = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_template_icon_low_bg;
+			global::MediaManager.Resource.Drawable.notification_tile_bg = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notification_tile_bg;
+			global::MediaManager.Resource.Drawable.notify_panel_notification_icon_bg = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::MediaManager.Resource.Id.accessibility_action_clickable_span = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_action_clickable_span;
+			global::MediaManager.Resource.Id.accessibility_custom_action_0 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_0;
+			global::MediaManager.Resource.Id.accessibility_custom_action_1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_1;
+			global::MediaManager.Resource.Id.accessibility_custom_action_10 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_10;
+			global::MediaManager.Resource.Id.accessibility_custom_action_11 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_11;
+			global::MediaManager.Resource.Id.accessibility_custom_action_12 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_12;
+			global::MediaManager.Resource.Id.accessibility_custom_action_13 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_13;
+			global::MediaManager.Resource.Id.accessibility_custom_action_14 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_14;
+			global::MediaManager.Resource.Id.accessibility_custom_action_15 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_15;
+			global::MediaManager.Resource.Id.accessibility_custom_action_16 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_16;
+			global::MediaManager.Resource.Id.accessibility_custom_action_17 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_17;
+			global::MediaManager.Resource.Id.accessibility_custom_action_18 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_18;
+			global::MediaManager.Resource.Id.accessibility_custom_action_19 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_19;
+			global::MediaManager.Resource.Id.accessibility_custom_action_2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_2;
+			global::MediaManager.Resource.Id.accessibility_custom_action_20 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_20;
+			global::MediaManager.Resource.Id.accessibility_custom_action_21 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_21;
+			global::MediaManager.Resource.Id.accessibility_custom_action_22 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_22;
+			global::MediaManager.Resource.Id.accessibility_custom_action_23 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_23;
+			global::MediaManager.Resource.Id.accessibility_custom_action_24 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_24;
+			global::MediaManager.Resource.Id.accessibility_custom_action_25 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_25;
+			global::MediaManager.Resource.Id.accessibility_custom_action_26 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_26;
+			global::MediaManager.Resource.Id.accessibility_custom_action_27 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_27;
+			global::MediaManager.Resource.Id.accessibility_custom_action_28 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_28;
+			global::MediaManager.Resource.Id.accessibility_custom_action_29 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_29;
+			global::MediaManager.Resource.Id.accessibility_custom_action_3 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_3;
+			global::MediaManager.Resource.Id.accessibility_custom_action_30 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_30;
+			global::MediaManager.Resource.Id.accessibility_custom_action_31 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_31;
+			global::MediaManager.Resource.Id.accessibility_custom_action_4 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_4;
+			global::MediaManager.Resource.Id.accessibility_custom_action_5 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_5;
+			global::MediaManager.Resource.Id.accessibility_custom_action_6 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_6;
+			global::MediaManager.Resource.Id.accessibility_custom_action_7 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_7;
+			global::MediaManager.Resource.Id.accessibility_custom_action_8 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_8;
+			global::MediaManager.Resource.Id.accessibility_custom_action_9 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.accessibility_custom_action_9;
+			global::MediaManager.Resource.Id.action0 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action0;
+			global::MediaManager.Resource.Id.actions = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.actions;
+			global::MediaManager.Resource.Id.action_container = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_container;
+			global::MediaManager.Resource.Id.action_divider = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_divider;
+			global::MediaManager.Resource.Id.action_image = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_image;
+			global::MediaManager.Resource.Id.action_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.action_text;
+			global::MediaManager.Resource.Id.all = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.all;
+			global::MediaManager.Resource.Id.always = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.always;
+			global::MediaManager.Resource.Id.async = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.async;
+			global::MediaManager.Resource.Id.blocking = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.blocking;
+			global::MediaManager.Resource.Id.cancel_action = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.cancel_action;
+			global::MediaManager.Resource.Id.chronometer = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.chronometer;
+			global::MediaManager.Resource.Id.dialog_button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.dialog_button;
+			global::MediaManager.Resource.Id.end_padder = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.end_padder;
+			global::MediaManager.Resource.Id.exo_artwork = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_artwork;
+			global::MediaManager.Resource.Id.exo_buffering = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_buffering;
+			global::MediaManager.Resource.Id.exo_content_frame = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_content_frame;
+			global::MediaManager.Resource.Id.exo_controller = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_controller;
+			global::MediaManager.Resource.Id.exo_controller_placeholder = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_controller_placeholder;
+			global::MediaManager.Resource.Id.exo_duration = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_duration;
+			global::MediaManager.Resource.Id.exo_error_message = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_error_message;
+			global::MediaManager.Resource.Id.exo_ffwd = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_ffwd;
+			global::MediaManager.Resource.Id.exo_next = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_next;
+			global::MediaManager.Resource.Id.exo_overlay = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_overlay;
+			global::MediaManager.Resource.Id.exo_pause = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_pause;
+			global::MediaManager.Resource.Id.exo_play = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_play;
+			global::MediaManager.Resource.Id.exo_position = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_position;
+			global::MediaManager.Resource.Id.exo_prev = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_prev;
+			global::MediaManager.Resource.Id.exo_progress = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_progress;
+			global::MediaManager.Resource.Id.exo_repeat_toggle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_repeat_toggle;
+			global::MediaManager.Resource.Id.exo_rew = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_rew;
+			global::MediaManager.Resource.Id.exo_shuffle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_shuffle;
+			global::MediaManager.Resource.Id.exo_shutter = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_shutter;
+			global::MediaManager.Resource.Id.exo_subtitles = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_subtitles;
+			global::MediaManager.Resource.Id.exo_track_selection_view = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.exo_track_selection_view;
+			global::MediaManager.Resource.Id.fill = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.fill;
+			global::MediaManager.Resource.Id.fit = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.fit;
+			global::MediaManager.Resource.Id.fixed_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.fixed_height;
+			global::MediaManager.Resource.Id.fixed_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.fixed_width;
+			global::MediaManager.Resource.Id.forever = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.forever;
+			global::MediaManager.Resource.Id.icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.icon;
+			global::MediaManager.Resource.Id.icon_group = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.icon_group;
+			global::MediaManager.Resource.Id.info = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.info;
+			global::MediaManager.Resource.Id.italic = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.italic;
+			global::MediaManager.Resource.Id.line1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.line1;
+			global::MediaManager.Resource.Id.line3 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.line3;
+			global::MediaManager.Resource.Id.media_actions = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.media_actions;
+			global::MediaManager.Resource.Id.never = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.never;
+			global::MediaManager.Resource.Id.none = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.none;
+			global::MediaManager.Resource.Id.normal = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.normal;
+			global::MediaManager.Resource.Id.notification_background = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.notification_background;
+			global::MediaManager.Resource.Id.notification_main_column = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.notification_main_column;
+			global::MediaManager.Resource.Id.notification_main_column_container = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.notification_main_column_container;
+			global::MediaManager.Resource.Id.one = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.one;
+			global::MediaManager.Resource.Id.right_icon = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.right_icon;
+			global::MediaManager.Resource.Id.right_side = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.right_side;
+			global::MediaManager.Resource.Id.status_bar_latest_event_content = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.status_bar_latest_event_content;
+			global::MediaManager.Resource.Id.surface_view = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.surface_view;
+			global::MediaManager.Resource.Id.tag_accessibility_actions = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.tag_accessibility_actions;
+			global::MediaManager.Resource.Id.tag_accessibility_clickable_spans = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.tag_accessibility_clickable_spans;
+			global::MediaManager.Resource.Id.tag_accessibility_heading = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.tag_accessibility_heading;
+			global::MediaManager.Resource.Id.tag_accessibility_pane_title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.tag_accessibility_pane_title;
+			global::MediaManager.Resource.Id.tag_screen_reader_focusable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.tag_screen_reader_focusable;
+			global::MediaManager.Resource.Id.tag_transition_group = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.tag_transition_group;
+			global::MediaManager.Resource.Id.tag_unhandled_key_event_manager = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.tag_unhandled_key_event_manager;
+			global::MediaManager.Resource.Id.tag_unhandled_key_listeners = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.tag_unhandled_key_listeners;
+			global::MediaManager.Resource.Id.text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.text;
+			global::MediaManager.Resource.Id.text2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.text2;
+			global::MediaManager.Resource.Id.texture_view = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.texture_view;
+			global::MediaManager.Resource.Id.time = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.time;
+			global::MediaManager.Resource.Id.title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.title;
+			global::MediaManager.Resource.Id.zoom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Id.zoom;
+			global::MediaManager.Resource.Integer.cancel_button_image_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.cancel_button_image_alpha;
+			global::MediaManager.Resource.Integer.status_bar_notification_info_maxnum = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::MediaManager.Resource.Layout.custom_dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.custom_dialog;
+			global::MediaManager.Resource.Layout.exo_list_divider = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.exo_list_divider;
+			global::MediaManager.Resource.Layout.exo_playback_control_view = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.exo_playback_control_view;
+			global::MediaManager.Resource.Layout.exo_player_control_view = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.exo_player_control_view;
+			global::MediaManager.Resource.Layout.exo_player_view = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.exo_player_view;
+			global::MediaManager.Resource.Layout.exo_simple_player_view = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.exo_simple_player_view;
+			global::MediaManager.Resource.Layout.exo_track_selection_dialog = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.exo_track_selection_dialog;
+			global::MediaManager.Resource.Layout.notification_action = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_action;
+			global::MediaManager.Resource.Layout.notification_action_tombstone = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_action_tombstone;
+			global::MediaManager.Resource.Layout.notification_media_action = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_media_action;
+			global::MediaManager.Resource.Layout.notification_media_cancel_action = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_media_cancel_action;
+			global::MediaManager.Resource.Layout.notification_template_big_media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_big_media;
+			global::MediaManager.Resource.Layout.notification_template_big_media_custom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_big_media_custom;
+			global::MediaManager.Resource.Layout.notification_template_big_media_narrow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_big_media_narrow;
+			global::MediaManager.Resource.Layout.notification_template_big_media_narrow_custom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_big_media_narrow_custom;
+			global::MediaManager.Resource.Layout.notification_template_custom_big = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_custom_big;
+			global::MediaManager.Resource.Layout.notification_template_icon_group = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_icon_group;
+			global::MediaManager.Resource.Layout.notification_template_lines_media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_lines_media;
+			global::MediaManager.Resource.Layout.notification_template_media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_media;
+			global::MediaManager.Resource.Layout.notification_template_media_custom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_media_custom;
+			global::MediaManager.Resource.Layout.notification_template_part_chronometer = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_part_chronometer;
+			global::MediaManager.Resource.Layout.notification_template_part_time = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Layout.notification_template_part_time;
+			global::MediaManager.Resource.String.exo_controls_fastforward_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_controls_fastforward_description;
+			global::MediaManager.Resource.String.exo_controls_fullscreen_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_controls_fullscreen_description;
+			global::MediaManager.Resource.String.exo_controls_next_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_controls_next_description;
+			global::MediaManager.Resource.String.exo_controls_pause_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_controls_pause_description;
+			global::MediaManager.Resource.String.exo_controls_play_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_controls_play_description;
+			global::MediaManager.Resource.String.exo_controls_previous_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_controls_previous_description;
+			global::MediaManager.Resource.String.exo_controls_repeat_all_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_controls_repeat_all_description;
+			global::MediaManager.Resource.String.exo_controls_repeat_off_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_controls_repeat_off_description;
+			global::MediaManager.Resource.String.exo_controls_repeat_one_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_controls_repeat_one_description;
+			global::MediaManager.Resource.String.exo_controls_rewind_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_controls_rewind_description;
+			global::MediaManager.Resource.String.exo_controls_stop_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_controls_stop_description;
+			global::MediaManager.Resource.String.exo_download_completed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_download_completed;
+			global::MediaManager.Resource.String.exo_download_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_download_description;
+			global::MediaManager.Resource.String.exo_download_downloading = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_download_downloading;
+			global::MediaManager.Resource.String.exo_download_failed = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_download_failed;
+			global::MediaManager.Resource.String.exo_download_notification_channel_name = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_download_notification_channel_name;
+			global::MediaManager.Resource.String.exo_download_removing = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_download_removing;
+			global::MediaManager.Resource.String.exo_item_list = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_item_list;
+			global::MediaManager.Resource.String.exo_media_action_repeat_all_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_media_action_repeat_all_description;
+			global::MediaManager.Resource.String.exo_media_action_repeat_off_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_media_action_repeat_off_description;
+			global::MediaManager.Resource.String.exo_media_action_repeat_one_description = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_media_action_repeat_one_description;
+			global::MediaManager.Resource.String.exo_track_bitrate = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_bitrate;
+			global::MediaManager.Resource.String.exo_track_mono = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_mono;
+			global::MediaManager.Resource.String.exo_track_resolution = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_resolution;
+			global::MediaManager.Resource.String.exo_track_selection_auto = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_selection_auto;
+			global::MediaManager.Resource.String.exo_track_selection_none = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_selection_none;
+			global::MediaManager.Resource.String.exo_track_selection_title_audio = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_selection_title_audio;
+			global::MediaManager.Resource.String.exo_track_selection_title_text = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_selection_title_text;
+			global::MediaManager.Resource.String.exo_track_selection_title_video = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_selection_title_video;
+			global::MediaManager.Resource.String.exo_track_stereo = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_stereo;
+			global::MediaManager.Resource.String.exo_track_surround = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_surround;
+			global::MediaManager.Resource.String.exo_track_surround_5_point_1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_surround_5_point_1;
+			global::MediaManager.Resource.String.exo_track_surround_7_point_1 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_surround_7_point_1;
+			global::MediaManager.Resource.String.exo_track_unknown = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.exo_track_unknown;
+			global::MediaManager.Resource.String.status_bar_notification_info_overflow = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.String.status_bar_notification_info_overflow;
+			global::MediaManager.Resource.Style.ExoMediaButton = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ExoMediaButton;
+			global::MediaManager.Resource.Style.ExoMediaButton_FastForward = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ExoMediaButton_FastForward;
+			global::MediaManager.Resource.Style.ExoMediaButton_Next = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ExoMediaButton_Next;
+			global::MediaManager.Resource.Style.ExoMediaButton_Pause = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ExoMediaButton_Pause;
+			global::MediaManager.Resource.Style.ExoMediaButton_Play = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ExoMediaButton_Play;
+			global::MediaManager.Resource.Style.ExoMediaButton_Previous = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ExoMediaButton_Previous;
+			global::MediaManager.Resource.Style.ExoMediaButton_Rewind = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.ExoMediaButton_Rewind;
+			global::MediaManager.Resource.Style.TextAppearance_Compat_Notification = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification;
+			global::MediaManager.Resource.Style.TextAppearance_Compat_Notification_Info = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::MediaManager.Resource.Style.TextAppearance_Compat_Notification_Info_Media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Info_Media;
+			global::MediaManager.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::MediaManager.Resource.Style.TextAppearance_Compat_Notification_Line2_Media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2_Media;
+			global::MediaManager.Resource.Style.TextAppearance_Compat_Notification_Media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Media;
+			global::MediaManager.Resource.Style.TextAppearance_Compat_Notification_Time = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::MediaManager.Resource.Style.TextAppearance_Compat_Notification_Time_Media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Time_Media;
+			global::MediaManager.Resource.Style.TextAppearance_Compat_Notification_Title = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::MediaManager.Resource.Style.TextAppearance_Compat_Notification_Title_Media = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.TextAppearance_Compat_Notification_Title_Media;
+			global::MediaManager.Resource.Style.Widget_Compat_NotificationActionContainer = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::MediaManager.Resource.Style.Widget_Compat_NotificationActionText = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Style.Widget_Compat_NotificationActionText;
+			global::MediaManager.Resource.Styleable.AspectRatioFrameLayout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AspectRatioFrameLayout;
+			global::MediaManager.Resource.Styleable.AspectRatioFrameLayout_resize_mode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.AspectRatioFrameLayout_resize_mode;
+			global::MediaManager.Resource.Styleable.ColorStateListItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ColorStateListItem;
+			global::MediaManager.Resource.Styleable.ColorStateListItem_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ColorStateListItem_alpha;
+			global::MediaManager.Resource.Styleable.ColorStateListItem_android_alpha = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::MediaManager.Resource.Styleable.ColorStateListItem_android_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.ColorStateListItem_android_color;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_ad_marker_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_ad_marker_color;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_ad_marker_width = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_ad_marker_width;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_bar_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_bar_height;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_buffered_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_buffered_color;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_played_ad_marker_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_played_ad_marker_color;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_played_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_played_color;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_scrubber_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_scrubber_color;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_scrubber_disabled_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_scrubber_disabled_size;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_scrubber_dragged_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_scrubber_dragged_size;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_scrubber_drawable = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_scrubber_drawable;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_scrubber_enabled_size = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_scrubber_enabled_size;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_touch_target_height = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_touch_target_height;
+			global::MediaManager.Resource.Styleable.DefaultTimeBar_unplayed_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.DefaultTimeBar_unplayed_color;
+			global::MediaManager.Resource.Styleable.FontFamily = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily;
+			global::MediaManager.Resource.Styleable.FontFamilyFont = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont;
+			global::MediaManager.Resource.Styleable.FontFamilyFont_android_font = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_android_font;
+			global::MediaManager.Resource.Styleable.FontFamilyFont_android_fontStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::MediaManager.Resource.Styleable.FontFamilyFont_android_fontVariationSettings = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_android_fontVariationSettings;
+			global::MediaManager.Resource.Styleable.FontFamilyFont_android_fontWeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::MediaManager.Resource.Styleable.FontFamilyFont_android_ttcIndex = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_android_ttcIndex;
+			global::MediaManager.Resource.Styleable.FontFamilyFont_font = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_font;
+			global::MediaManager.Resource.Styleable.FontFamilyFont_fontStyle = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::MediaManager.Resource.Styleable.FontFamilyFont_fontVariationSettings = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_fontVariationSettings;
+			global::MediaManager.Resource.Styleable.FontFamilyFont_fontWeight = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::MediaManager.Resource.Styleable.FontFamilyFont_ttcIndex = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamilyFont_ttcIndex;
+			global::MediaManager.Resource.Styleable.FontFamily_fontProviderAuthority = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::MediaManager.Resource.Styleable.FontFamily_fontProviderCerts = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::MediaManager.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::MediaManager.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::MediaManager.Resource.Styleable.FontFamily_fontProviderPackage = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::MediaManager.Resource.Styleable.FontFamily_fontProviderQuery = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::MediaManager.Resource.Styleable.GradientColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor;
+			global::MediaManager.Resource.Styleable.GradientColorItem = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColorItem;
+			global::MediaManager.Resource.Styleable.GradientColorItem_android_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColorItem_android_color;
+			global::MediaManager.Resource.Styleable.GradientColorItem_android_offset = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColorItem_android_offset;
+			global::MediaManager.Resource.Styleable.GradientColor_android_centerColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_centerColor;
+			global::MediaManager.Resource.Styleable.GradientColor_android_centerX = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_centerX;
+			global::MediaManager.Resource.Styleable.GradientColor_android_centerY = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_centerY;
+			global::MediaManager.Resource.Styleable.GradientColor_android_endColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_endColor;
+			global::MediaManager.Resource.Styleable.GradientColor_android_endX = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_endX;
+			global::MediaManager.Resource.Styleable.GradientColor_android_endY = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_endY;
+			global::MediaManager.Resource.Styleable.GradientColor_android_gradientRadius = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_gradientRadius;
+			global::MediaManager.Resource.Styleable.GradientColor_android_startColor = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_startColor;
+			global::MediaManager.Resource.Styleable.GradientColor_android_startX = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_startX;
+			global::MediaManager.Resource.Styleable.GradientColor_android_startY = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_startY;
+			global::MediaManager.Resource.Styleable.GradientColor_android_tileMode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_tileMode;
+			global::MediaManager.Resource.Styleable.GradientColor_android_type = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.GradientColor_android_type;
+			global::MediaManager.Resource.Styleable.PlayerControlView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerControlView;
+			global::MediaManager.Resource.Styleable.PlayerControlView_controller_layout_id = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerControlView_controller_layout_id;
+			global::MediaManager.Resource.Styleable.PlayerControlView_fastforward_increment = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerControlView_fastforward_increment;
+			global::MediaManager.Resource.Styleable.PlayerControlView_repeat_toggle_modes = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerControlView_repeat_toggle_modes;
+			global::MediaManager.Resource.Styleable.PlayerControlView_rewind_increment = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerControlView_rewind_increment;
+			global::MediaManager.Resource.Styleable.PlayerControlView_show_shuffle_button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerControlView_show_shuffle_button;
+			global::MediaManager.Resource.Styleable.PlayerControlView_show_timeout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerControlView_show_timeout;
+			global::MediaManager.Resource.Styleable.PlayerView = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView;
+			global::MediaManager.Resource.Styleable.PlayerView_auto_show = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_auto_show;
+			global::MediaManager.Resource.Styleable.PlayerView_controller_layout_id = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_controller_layout_id;
+			global::MediaManager.Resource.Styleable.PlayerView_default_artwork = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_default_artwork;
+			global::MediaManager.Resource.Styleable.PlayerView_fastforward_increment = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_fastforward_increment;
+			global::MediaManager.Resource.Styleable.PlayerView_hide_during_ads = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_hide_during_ads;
+			global::MediaManager.Resource.Styleable.PlayerView_hide_on_touch = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_hide_on_touch;
+			global::MediaManager.Resource.Styleable.PlayerView_keep_content_on_player_reset = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_keep_content_on_player_reset;
+			global::MediaManager.Resource.Styleable.PlayerView_player_layout_id = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_player_layout_id;
+			global::MediaManager.Resource.Styleable.PlayerView_repeat_toggle_modes = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_repeat_toggle_modes;
+			global::MediaManager.Resource.Styleable.PlayerView_resize_mode = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_resize_mode;
+			global::MediaManager.Resource.Styleable.PlayerView_rewind_increment = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_rewind_increment;
+			global::MediaManager.Resource.Styleable.PlayerView_show_buffering = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_show_buffering;
+			global::MediaManager.Resource.Styleable.PlayerView_show_shuffle_button = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_show_shuffle_button;
+			global::MediaManager.Resource.Styleable.PlayerView_show_timeout = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_show_timeout;
+			global::MediaManager.Resource.Styleable.PlayerView_shutter_background_color = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_shutter_background_color;
+			global::MediaManager.Resource.Styleable.PlayerView_surface_type = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_surface_type;
+			global::MediaManager.Resource.Styleable.PlayerView_use_artwork = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_use_artwork;
+			global::MediaManager.Resource.Styleable.PlayerView_use_controller = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Styleable.PlayerView_use_controller;
 			global::SkiaSharp.Views.Forms.Resource.Animation.abc_fade_in = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_fade_in;
 			global::SkiaSharp.Views.Forms.Resource.Animation.abc_fade_out = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_fade_out;
 			global::SkiaSharp.Views.Forms.Resource.Animation.abc_grow_fade_in_from_bottom = global::SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -14771,145 +15151,154 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			public const int exo_icon_stop = 2131165311;
 			
 			// aapt resource value: 0x7F070080
-			public const int exo_notification_fastforward = 2131165312;
+			public const int exo_media_action_repeat_all = 2131165312;
 			
 			// aapt resource value: 0x7F070081
-			public const int exo_notification_next = 2131165313;
+			public const int exo_media_action_repeat_off = 2131165313;
 			
 			// aapt resource value: 0x7F070082
-			public const int exo_notification_pause = 2131165314;
+			public const int exo_media_action_repeat_one = 2131165314;
 			
 			// aapt resource value: 0x7F070083
-			public const int exo_notification_play = 2131165315;
+			public const int exo_notification_fastforward = 2131165315;
 			
 			// aapt resource value: 0x7F070084
-			public const int exo_notification_previous = 2131165316;
+			public const int exo_notification_next = 2131165316;
 			
 			// aapt resource value: 0x7F070085
-			public const int exo_notification_rewind = 2131165317;
+			public const int exo_notification_pause = 2131165317;
 			
 			// aapt resource value: 0x7F070086
-			public const int exo_notification_small_icon = 2131165318;
+			public const int exo_notification_play = 2131165318;
 			
 			// aapt resource value: 0x7F070087
-			public const int exo_notification_stop = 2131165319;
+			public const int exo_notification_previous = 2131165319;
 			
 			// aapt resource value: 0x7F070088
-			public const int ic_arrow_down_24dp = 2131165320;
+			public const int exo_notification_rewind = 2131165320;
 			
 			// aapt resource value: 0x7F070089
-			public const int ic_mtrl_checked_circle = 2131165321;
+			public const int exo_notification_small_icon = 2131165321;
 			
 			// aapt resource value: 0x7F07008A
-			public const int ic_mtrl_chip_checked_black = 2131165322;
+			public const int exo_notification_stop = 2131165322;
 			
 			// aapt resource value: 0x7F07008B
-			public const int ic_mtrl_chip_checked_circle = 2131165323;
+			public const int ic_arrow_down_24dp = 2131165323;
 			
 			// aapt resource value: 0x7F07008C
-			public const int ic_mtrl_chip_close_circle = 2131165324;
+			public const int ic_mtrl_checked_circle = 2131165324;
 			
 			// aapt resource value: 0x7F07008D
-			public const int material_ic_calendar_black_24dp = 2131165325;
+			public const int ic_mtrl_chip_checked_black = 2131165325;
 			
 			// aapt resource value: 0x7F07008E
-			public const int material_ic_clear_black_24dp = 2131165326;
+			public const int ic_mtrl_chip_checked_circle = 2131165326;
 			
 			// aapt resource value: 0x7F07008F
-			public const int material_ic_edit_black_24dp = 2131165327;
+			public const int ic_mtrl_chip_close_circle = 2131165327;
 			
 			// aapt resource value: 0x7F070090
-			public const int material_ic_keyboard_arrow_left_black_24dp = 2131165328;
+			public const int material_ic_calendar_black_24dp = 2131165328;
 			
 			// aapt resource value: 0x7F070091
-			public const int material_ic_keyboard_arrow_right_black_24dp = 2131165329;
+			public const int material_ic_clear_black_24dp = 2131165329;
 			
 			// aapt resource value: 0x7F070092
-			public const int material_ic_menu_arrow_down_black_24dp = 2131165330;
+			public const int material_ic_edit_black_24dp = 2131165330;
 			
 			// aapt resource value: 0x7F070093
-			public const int material_ic_menu_arrow_up_black_24dp = 2131165331;
+			public const int material_ic_keyboard_arrow_left_black_24dp = 2131165331;
 			
 			// aapt resource value: 0x7F070094
-			public const int mtrl_dialog_background = 2131165332;
+			public const int material_ic_keyboard_arrow_right_black_24dp = 2131165332;
 			
 			// aapt resource value: 0x7F070095
-			public const int mtrl_dropdown_arrow = 2131165333;
+			public const int material_ic_menu_arrow_down_black_24dp = 2131165333;
 			
 			// aapt resource value: 0x7F070096
-			public const int mtrl_ic_arrow_drop_down = 2131165334;
+			public const int material_ic_menu_arrow_up_black_24dp = 2131165334;
 			
 			// aapt resource value: 0x7F070097
-			public const int mtrl_ic_arrow_drop_up = 2131165335;
+			public const int mtrl_dialog_background = 2131165335;
 			
 			// aapt resource value: 0x7F070098
-			public const int mtrl_ic_cancel = 2131165336;
+			public const int mtrl_dropdown_arrow = 2131165336;
 			
 			// aapt resource value: 0x7F070099
-			public const int mtrl_ic_error = 2131165337;
+			public const int mtrl_ic_arrow_drop_down = 2131165337;
 			
 			// aapt resource value: 0x7F07009A
-			public const int mtrl_popupmenu_background = 2131165338;
+			public const int mtrl_ic_arrow_drop_up = 2131165338;
 			
 			// aapt resource value: 0x7F07009B
-			public const int mtrl_popupmenu_background_dark = 2131165339;
+			public const int mtrl_ic_cancel = 2131165339;
 			
 			// aapt resource value: 0x7F07009C
-			public const int mtrl_tabs_default_indicator = 2131165340;
+			public const int mtrl_ic_error = 2131165340;
 			
 			// aapt resource value: 0x7F07009D
-			public const int navigation_empty_icon = 2131165341;
+			public const int mtrl_popupmenu_background = 2131165341;
 			
 			// aapt resource value: 0x7F07009E
-			public const int notification_action_background = 2131165342;
+			public const int mtrl_popupmenu_background_dark = 2131165342;
 			
 			// aapt resource value: 0x7F07009F
-			public const int notification_bg = 2131165343;
+			public const int mtrl_tabs_default_indicator = 2131165343;
 			
 			// aapt resource value: 0x7F0700A0
-			public const int notification_bg_low = 2131165344;
+			public const int navigation_empty_icon = 2131165344;
 			
 			// aapt resource value: 0x7F0700A1
-			public const int notification_bg_low_normal = 2131165345;
+			public const int notification_action_background = 2131165345;
 			
 			// aapt resource value: 0x7F0700A2
-			public const int notification_bg_low_pressed = 2131165346;
+			public const int notification_bg = 2131165346;
 			
 			// aapt resource value: 0x7F0700A3
-			public const int notification_bg_normal = 2131165347;
+			public const int notification_bg_low = 2131165347;
 			
 			// aapt resource value: 0x7F0700A4
-			public const int notification_bg_normal_pressed = 2131165348;
+			public const int notification_bg_low_normal = 2131165348;
 			
 			// aapt resource value: 0x7F0700A5
-			public const int notification_icon_background = 2131165349;
+			public const int notification_bg_low_pressed = 2131165349;
 			
 			// aapt resource value: 0x7F0700A6
-			public const int notification_template_icon_bg = 2131165350;
+			public const int notification_bg_normal = 2131165350;
 			
 			// aapt resource value: 0x7F0700A7
-			public const int notification_template_icon_low_bg = 2131165351;
+			public const int notification_bg_normal_pressed = 2131165351;
 			
 			// aapt resource value: 0x7F0700A8
-			public const int notification_tile_bg = 2131165352;
+			public const int notification_icon_background = 2131165352;
 			
 			// aapt resource value: 0x7F0700A9
-			public const int notify_panel_notification_icon_bg = 2131165353;
+			public const int notification_template_icon_bg = 2131165353;
 			
 			// aapt resource value: 0x7F0700AA
-			public const int powerby_signature = 2131165354;
+			public const int notification_template_icon_low_bg = 2131165354;
 			
 			// aapt resource value: 0x7F0700AB
-			public const int preference_list_divider_material = 2131165355;
+			public const int notification_tile_bg = 2131165355;
 			
 			// aapt resource value: 0x7F0700AC
-			public const int test_custom_background = 2131165356;
+			public const int notify_panel_notification_icon_bg = 2131165356;
 			
 			// aapt resource value: 0x7F0700AD
-			public const int tooltip_frame_dark = 2131165357;
+			public const int powerby_signature = 2131165357;
 			
 			// aapt resource value: 0x7F0700AE
-			public const int tooltip_frame_light = 2131165358;
+			public const int preference_list_divider_material = 2131165358;
+			
+			// aapt resource value: 0x7F0700AF
+			public const int test_custom_background = 2131165359;
+			
+			// aapt resource value: 0x7F0700B0
+			public const int tooltip_frame_dark = 2131165360;
+			
+			// aapt resource value: 0x7F0700B1
+			public const int tooltip_frame_light = 2131165361;
 			
 			static Drawable()
 			{
@@ -16764,232 +17153,238 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
 			public const int exo_item_list = 2131623991;
 			
 			// aapt resource value: 0x7F0E0038
-			public const int exo_track_bitrate = 2131623992;
+			public const int exo_media_action_repeat_all_description = 2131623992;
 			
 			// aapt resource value: 0x7F0E0039
-			public const int exo_track_mono = 2131623993;
+			public const int exo_media_action_repeat_off_description = 2131623993;
 			
 			// aapt resource value: 0x7F0E003A
-			public const int exo_track_resolution = 2131623994;
+			public const int exo_media_action_repeat_one_description = 2131623994;
 			
 			// aapt resource value: 0x7F0E003B
-			public const int exo_track_selection_auto = 2131623995;
+			public const int exo_track_bitrate = 2131623995;
 			
 			// aapt resource value: 0x7F0E003C
-			public const int exo_track_selection_none = 2131623996;
+			public const int exo_track_mono = 2131623996;
 			
 			// aapt resource value: 0x7F0E003D
-			public const int exo_track_selection_title_audio = 2131623997;
+			public const int exo_track_resolution = 2131623997;
 			
 			// aapt resource value: 0x7F0E003E
-			public const int exo_track_selection_title_text = 2131623998;
+			public const int exo_track_selection_auto = 2131623998;
 			
 			// aapt resource value: 0x7F0E003F
-			public const int exo_track_selection_title_video = 2131623999;
+			public const int exo_track_selection_none = 2131623999;
 			
 			// aapt resource value: 0x7F0E0040
-			public const int exo_track_stereo = 2131624000;
+			public const int exo_track_selection_title_audio = 2131624000;
 			
 			// aapt resource value: 0x7F0E0041
-			public const int exo_track_surround = 2131624001;
+			public const int exo_track_selection_title_text = 2131624001;
 			
 			// aapt resource value: 0x7F0E0042
-			public const int exo_track_surround_5_point_1 = 2131624002;
+			public const int exo_track_selection_title_video = 2131624002;
 			
 			// aapt resource value: 0x7F0E0043
-			public const int exo_track_surround_7_point_1 = 2131624003;
+			public const int exo_track_stereo = 2131624003;
 			
 			// aapt resource value: 0x7F0E0044
-			public const int exo_track_unknown = 2131624004;
+			public const int exo_track_surround = 2131624004;
 			
 			// aapt resource value: 0x7F0E0045
-			public const int expand_button_title = 2131624005;
+			public const int exo_track_surround_5_point_1 = 2131624005;
 			
 			// aapt resource value: 0x7F0E0046
-			public const int exposed_dropdown_menu_content_description = 2131624006;
+			public const int exo_track_surround_7_point_1 = 2131624006;
 			
 			// aapt resource value: 0x7F0E0047
-			public const int fab_transformation_scrim_behavior = 2131624007;
+			public const int exo_track_unknown = 2131624007;
 			
 			// aapt resource value: 0x7F0E0048
-			public const int fab_transformation_sheet_behavior = 2131624008;
+			public const int expand_button_title = 2131624008;
 			
 			// aapt resource value: 0x7F0E0049
-			public const int fallback_menu_item_copy_link = 2131624009;
+			public const int exposed_dropdown_menu_content_description = 2131624009;
 			
 			// aapt resource value: 0x7F0E004A
-			public const int fallback_menu_item_open_in_browser = 2131624010;
+			public const int fab_transformation_scrim_behavior = 2131624010;
 			
 			// aapt resource value: 0x7F0E004B
-			public const int fallback_menu_item_share_link = 2131624011;
+			public const int fab_transformation_sheet_behavior = 2131624011;
 			
 			// aapt resource value: 0x7F0E004C
-			public const int hide_bottom_view_on_scroll_behavior = 2131624012;
+			public const int fallback_menu_item_copy_link = 2131624012;
 			
 			// aapt resource value: 0x7F0E004D
-			public const int icon_content_description = 2131624013;
+			public const int fallback_menu_item_open_in_browser = 2131624013;
 			
 			// aapt resource value: 0x7F0E004E
-			public const int item_view_role_description = 2131624014;
+			public const int fallback_menu_item_share_link = 2131624014;
 			
 			// aapt resource value: 0x7F0E004F
-			public const int library_name = 2131624015;
+			public const int hide_bottom_view_on_scroll_behavior = 2131624015;
 			
 			// aapt resource value: 0x7F0E0050
-			public const int material_slider_range_end = 2131624016;
+			public const int icon_content_description = 2131624016;
 			
 			// aapt resource value: 0x7F0E0051
-			public const int material_slider_range_start = 2131624017;
+			public const int item_view_role_description = 2131624017;
 			
 			// aapt resource value: 0x7F0E0052
-			public const int mtrl_badge_numberless_content_description = 2131624018;
+			public const int material_slider_range_end = 2131624018;
 			
 			// aapt resource value: 0x7F0E0053
-			public const int mtrl_chip_close_icon_content_description = 2131624019;
+			public const int material_slider_range_start = 2131624019;
 			
 			// aapt resource value: 0x7F0E0054
-			public const int mtrl_exceed_max_badge_number_content_description = 2131624020;
+			public const int mtrl_badge_numberless_content_description = 2131624020;
 			
 			// aapt resource value: 0x7F0E0055
-			public const int mtrl_exceed_max_badge_number_suffix = 2131624021;
+			public const int mtrl_chip_close_icon_content_description = 2131624021;
 			
 			// aapt resource value: 0x7F0E0056
-			public const int mtrl_picker_a11y_next_month = 2131624022;
+			public const int mtrl_exceed_max_badge_number_content_description = 2131624022;
 			
 			// aapt resource value: 0x7F0E0057
-			public const int mtrl_picker_a11y_prev_month = 2131624023;
+			public const int mtrl_exceed_max_badge_number_suffix = 2131624023;
 			
 			// aapt resource value: 0x7F0E0058
-			public const int mtrl_picker_announce_current_selection = 2131624024;
+			public const int mtrl_picker_a11y_next_month = 2131624024;
 			
 			// aapt resource value: 0x7F0E0059
-			public const int mtrl_picker_cancel = 2131624025;
+			public const int mtrl_picker_a11y_prev_month = 2131624025;
 			
 			// aapt resource value: 0x7F0E005A
-			public const int mtrl_picker_confirm = 2131624026;
+			public const int mtrl_picker_announce_current_selection = 2131624026;
 			
 			// aapt resource value: 0x7F0E005B
-			public const int mtrl_picker_date_header_selected = 2131624027;
+			public const int mtrl_picker_cancel = 2131624027;
 			
 			// aapt resource value: 0x7F0E005C
-			public const int mtrl_picker_date_header_title = 2131624028;
+			public const int mtrl_picker_confirm = 2131624028;
 			
 			// aapt resource value: 0x7F0E005D
-			public const int mtrl_picker_date_header_unselected = 2131624029;
+			public const int mtrl_picker_date_header_selected = 2131624029;
 			
 			// aapt resource value: 0x7F0E005E
-			public const int mtrl_picker_day_of_week_column_header = 2131624030;
+			public const int mtrl_picker_date_header_title = 2131624030;
 			
 			// aapt resource value: 0x7F0E005F
-			public const int mtrl_picker_invalid_format = 2131624031;
+			public const int mtrl_picker_date_header_unselected = 2131624031;
 			
 			// aapt resource value: 0x7F0E0060
-			public const int mtrl_picker_invalid_format_example = 2131624032;
+			public const int mtrl_picker_day_of_week_column_header = 2131624032;
 			
 			// aapt resource value: 0x7F0E0061
-			public const int mtrl_picker_invalid_format_use = 2131624033;
+			public const int mtrl_picker_invalid_format = 2131624033;
 			
 			// aapt resource value: 0x7F0E0062
-			public const int mtrl_picker_invalid_range = 2131624034;
+			public const int mtrl_picker_invalid_format_example = 2131624034;
 			
 			// aapt resource value: 0x7F0E0063
-			public const int mtrl_picker_navigate_to_year_description = 2131624035;
+			public const int mtrl_picker_invalid_format_use = 2131624035;
 			
 			// aapt resource value: 0x7F0E0064
-			public const int mtrl_picker_out_of_range = 2131624036;
+			public const int mtrl_picker_invalid_range = 2131624036;
 			
 			// aapt resource value: 0x7F0E0065
-			public const int mtrl_picker_range_header_only_end_selected = 2131624037;
+			public const int mtrl_picker_navigate_to_year_description = 2131624037;
 			
 			// aapt resource value: 0x7F0E0066
-			public const int mtrl_picker_range_header_only_start_selected = 2131624038;
+			public const int mtrl_picker_out_of_range = 2131624038;
 			
 			// aapt resource value: 0x7F0E0067
-			public const int mtrl_picker_range_header_selected = 2131624039;
+			public const int mtrl_picker_range_header_only_end_selected = 2131624039;
 			
 			// aapt resource value: 0x7F0E0068
-			public const int mtrl_picker_range_header_title = 2131624040;
+			public const int mtrl_picker_range_header_only_start_selected = 2131624040;
 			
 			// aapt resource value: 0x7F0E0069
-			public const int mtrl_picker_range_header_unselected = 2131624041;
+			public const int mtrl_picker_range_header_selected = 2131624041;
 			
 			// aapt resource value: 0x7F0E006A
-			public const int mtrl_picker_save = 2131624042;
+			public const int mtrl_picker_range_header_title = 2131624042;
 			
 			// aapt resource value: 0x7F0E006B
-			public const int mtrl_picker_text_input_date_hint = 2131624043;
+			public const int mtrl_picker_range_header_unselected = 2131624043;
 			
 			// aapt resource value: 0x7F0E006C
-			public const int mtrl_picker_text_input_date_range_end_hint = 2131624044;
+			public const int mtrl_picker_save = 2131624044;
 			
 			// aapt resource value: 0x7F0E006D
-			public const int mtrl_picker_text_input_date_range_start_hint = 2131624045;
+			public const int mtrl_picker_text_input_date_hint = 2131624045;
 			
 			// aapt resource value: 0x7F0E006E
-			public const int mtrl_picker_text_input_day_abbr = 2131624046;
+			public const int mtrl_picker_text_input_date_range_end_hint = 2131624046;
 			
 			// aapt resource value: 0x7F0E006F
-			public const int mtrl_picker_text_input_month_abbr = 2131624047;
+			public const int mtrl_picker_text_input_date_range_start_hint = 2131624047;
 			
 			// aapt resource value: 0x7F0E0070
-			public const int mtrl_picker_text_input_year_abbr = 2131624048;
+			public const int mtrl_picker_text_input_day_abbr = 2131624048;
 			
 			// aapt resource value: 0x7F0E0071
-			public const int mtrl_picker_toggle_to_calendar_input_mode = 2131624049;
+			public const int mtrl_picker_text_input_month_abbr = 2131624049;
 			
 			// aapt resource value: 0x7F0E0072
-			public const int mtrl_picker_toggle_to_day_selection = 2131624050;
+			public const int mtrl_picker_text_input_year_abbr = 2131624050;
 			
 			// aapt resource value: 0x7F0E0073
-			public const int mtrl_picker_toggle_to_text_input_mode = 2131624051;
+			public const int mtrl_picker_toggle_to_calendar_input_mode = 2131624051;
 			
 			// aapt resource value: 0x7F0E0074
-			public const int mtrl_picker_toggle_to_year_selection = 2131624052;
+			public const int mtrl_picker_toggle_to_day_selection = 2131624052;
 			
 			// aapt resource value: 0x7F0E0075
-			public const int nav_app_bar_navigate_up_description = 2131624053;
+			public const int mtrl_picker_toggle_to_text_input_mode = 2131624053;
 			
 			// aapt resource value: 0x7F0E0076
-			public const int nav_app_bar_open_drawer_description = 2131624054;
+			public const int mtrl_picker_toggle_to_year_selection = 2131624054;
 			
 			// aapt resource value: 0x7F0E0077
-			public const int not_set = 2131624055;
+			public const int nav_app_bar_navigate_up_description = 2131624055;
 			
 			// aapt resource value: 0x7F0E0078
-			public const int overflow_tab_title = 2131624056;
+			public const int nav_app_bar_open_drawer_description = 2131624056;
 			
 			// aapt resource value: 0x7F0E0079
-			public const int password_toggle_content_description = 2131624057;
+			public const int not_set = 2131624057;
 			
 			// aapt resource value: 0x7F0E007A
-			public const int path_password_eye = 2131624058;
+			public const int overflow_tab_title = 2131624058;
 			
 			// aapt resource value: 0x7F0E007B
-			public const int path_password_eye_mask_strike_through = 2131624059;
+			public const int password_toggle_content_description = 2131624059;
 			
 			// aapt resource value: 0x7F0E007C
-			public const int path_password_eye_mask_visible = 2131624060;
+			public const int path_password_eye = 2131624060;
 			
 			// aapt resource value: 0x7F0E007D
-			public const int path_password_strike_through = 2131624061;
+			public const int path_password_eye_mask_strike_through = 2131624061;
 			
 			// aapt resource value: 0x7F0E007E
-			public const int preference_copied = 2131624062;
+			public const int path_password_eye_mask_visible = 2131624062;
 			
 			// aapt resource value: 0x7F0E007F
-			public const int search_menu_title = 2131624063;
+			public const int path_password_strike_through = 2131624063;
 			
 			// aapt resource value: 0x7F0E0080
-			public const int status_bar_notification_info_overflow = 2131624064;
+			public const int preference_copied = 2131624064;
 			
 			// aapt resource value: 0x7F0E0081
-			public const int summary_collapsed_preference_list = 2131624065;
+			public const int search_menu_title = 2131624065;
 			
 			// aapt resource value: 0x7F0E0082
-			public const int v7_preference_off = 2131624066;
+			public const int status_bar_notification_info_overflow = 2131624066;
 			
 			// aapt resource value: 0x7F0E0083
-			public const int v7_preference_on = 2131624067;
+			public const int summary_collapsed_preference_list = 2131624067;
+			
+			// aapt resource value: 0x7F0E0084
+			public const int v7_preference_off = 2131624068;
+			
+			// aapt resource value: 0x7F0E0085
+			public const int v7_preference_on = 2131624069;
 			
 			static String()
 			{

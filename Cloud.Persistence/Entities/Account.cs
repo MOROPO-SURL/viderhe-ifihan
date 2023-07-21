@@ -44,19 +44,25 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
 
         public System.DateTime CreateAt { get; set; }
 
-        public ICollection<Player> Players { get; set; }
+        public List<Player> Players { get; set; }
 
-        public ICollection<Screenplay> Screenplays { get; set; }
+        public List<Screenplay> Screenplays { get; set; }
 
-        public ICollection<Placard> Placards { get; set; }
+        public List<Placard> Placards { get; set; }
 
-        public ICollection<AccountModeratorBridge> ModeratorBridges { get; set; }
+        public List<AccountModeratorBridge> ModeratorBridges { get; set; }
 
-        public ICollection<AccountImageBridge> ImageBridges { get; set; }
+        public List<AccountImageBridge> ImageBridges { get; set; }
 
-        public ICollection<AccountVideoBridge> VideoBridges { get; set; }
+        public List<AccountVideoBridge> VideoBridges { get; set; }
 
-        public ICollection<AccountExtensionBridge> ExtensionBridges { get; set; }
+        public List<AccountExtensionBridge> ExtensionBridges { get; set; }
+
+        public List<AccountSoundBridge> SoundBridges { get; set; }
+
+        public List<AccountGradientBridge> GradientBridges { get; set; }
+
+        public List<AccountTextBridge> TextBridges { get; set; }
 
         public bool Enabled { get; set; }
 
@@ -77,6 +83,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
             ImageBridges = new List<AccountImageBridge>();
             VideoBridges = new List<AccountVideoBridge>();
             ExtensionBridges = new List<AccountExtensionBridge>();
+            SoundBridges = new List<AccountSoundBridge>();
+            GradientBridges = new List<AccountGradientBridge>();
+            TextBridges = new List<AccountTextBridge>();
         }
 
         public object GetSignableEntityModel()

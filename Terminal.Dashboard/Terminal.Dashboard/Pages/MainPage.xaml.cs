@@ -124,6 +124,21 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     break;
 
+                case Enumerations.ActionKind.ManageGradients:
+                    this.NavigationPushPageAsync(new ManageGradientsPage());
+
+                    break;
+
+                case Enumerations.ActionKind.ManageSounds:
+                    this.NavigationPushPageAsync(new ManageSoundsPage());
+
+                    break;
+
+                case Enumerations.ActionKind.ManageTexts:
+                    this.NavigationPushPageAsync(new ManageTextsPage());
+
+                    break;
+
                 default:
                     DisplayAlert("Aviso", "Sección no disponible para esta versión", "Aceptar");
 
@@ -178,9 +193,30 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 },
                 new Models.View.ActionViewModel
                 {
+                    Kind = Enumerations.ActionKind.ManageGradients,
+                    Caption = "Gradientes",
+                    IconGlyph = "\uF69F",
+                    Enabled = true
+                },
+                new Models.View.ActionViewModel
+                {
                     Kind = Enumerations.ActionKind.ManageVideos,
                     Caption = "Videos",
                     IconGlyph = "\uF567",
+                    Enabled = true
+                },
+                new Models.View.ActionViewModel
+                {
+                    Kind = Enumerations.ActionKind.ManageSounds,
+                    Caption = "Audios",
+                    IconGlyph = "\uF759",
+                    Enabled = true
+                },
+                new Models.View.ActionViewModel
+                {
+                    Kind = Enumerations.ActionKind.ManageTexts,
+                    Caption = "Textos",
+                    IconGlyph = "\uFB53",
                     Enabled = true
                 },
                 new Models.View.ActionViewModel

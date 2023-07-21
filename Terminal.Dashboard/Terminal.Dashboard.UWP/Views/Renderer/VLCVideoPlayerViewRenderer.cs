@@ -21,10 +21,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
             {
                 if (Control == null)
                 {
-                    SetNativeControl(new VLC.MediaElement());
+                    var mediaElement = new VLC.MediaElement();
 
-                    Control.MediaFailed += OnMediaElementSourceFailed;
-                    Control.CurrentStateChanged += OnMediaElementCurrentStateChanged;
+                    SetNativeControl(mediaElement);
+
+                    mediaElement.MediaFailed += OnMediaElementSourceFailed;
+                    mediaElement.CurrentStateChanged += OnMediaElementCurrentStateChanged;
+
+                    Element.PlayRequested += Play_Requested;
 
                     SetAreTransportControlsEnabled();
 
@@ -33,15 +37,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
                     SetAutoPlay();
 
                     SetSource();
-
-                    Element.ReleaseRequested += Element_ReleaseRequested;
                 }
             }
-        }
-
-        private void Element_ReleaseRequested(object sender, System.EventArgs e)
-        {
-            Dispose();
         }
 
         protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -70,23 +67,28 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 
         protected override void Dispose(bool disposing)
         {
-            if (disposed) return;
+            if (Control != null)
+            {
+                Control.MediaFailed += OnMediaElementSourceFailed;
+                Control.CurrentStateChanged += OnMediaElementCurrentStateChanged;
 
-            Element.ReleaseRequested -= Element_ReleaseRequested;
+                Element.PlayRequested -= Play_Requested;
 
-            Control.MediaFailed -= OnMediaElementSourceFailed;
-            Control.CurrentStateChanged -= OnMediaElementCurrentStateChanged;
+                Control.Stop();
+            }
 
-            Control.Stop();
-
-            Control.Source = null;
-            Control.MediaSource = null;
-
-            SetNativeControl(null);
+            Control?.Stop();
 
             base.Dispose(disposing);
 
             disposed = true;
+        }
+
+        private void Play_Requested(object sender, System.EventArgs eventArgs)
+        {
+            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady;
+
+            Control.Play();
         }
 
         private void OnMediaElementSourceFailed(object sender, VLC.MediaFailedRoutedEventArgs eventArgs)
@@ -190,6 +192,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
             if (!hasSetSource)
             {
                 (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
+
+                Control.Stop();
             }
         }
 
