@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sscxftoolkitmvvmviews:ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:sscxftoolkitmvvmviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Views;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.PlacardComplementVideoView">
+    <ContentView.Content>
+        <Grid
+            x:Name="VideoPlayerViewLayout"
+            Margin="30">
+            <BoxView Color="White" Opacity="0.2" />
+            <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
+                x:Name="VideoPlayerView"
+                BackgroundColor="Black"
+                Margin="6"
+                ShowControls="False"
+                AutoPlay="True"
+                IsMuted="True"
+                StrechAspect="AspectFill" />
+        </Grid>
+    </ContentView.Content>
+</sscxftoolkitmvvmviews:ContentView>

@@ -70,6 +70,34 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                     });
                 }
             }
+
+            var dependencyGradients = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetGradients(inputModel.TemplateId, inputModel.SerializedContext);
+
+            if (dependencyGradients != null)
+            {
+                foreach (var item in dependencyGradients)
+                {
+                    entity.GradientBridges.Add(new Persistence.Entities.PlacardGradientBridge
+                    {
+                        Placard = entity,
+                        GradientId = item.Id
+                    });
+                }
+            }
+
+            var dependencySounds = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetSounds(inputModel.TemplateId, inputModel.SerializedContext);
+
+            if (dependencySounds != null)
+            {
+                foreach (var item in dependencySounds)
+                {
+                    entity.SoundBridges.Add(new Persistence.Entities.PlacardSoundBridge
+                    {
+                        Placard = entity,
+                        SoundId = item.Id
+                    });
+                }
+            }
         }
 
         protected override void PreEdit(Persistence.Entities.Placard entity, PlacardInputModel inputModel)
@@ -81,7 +109,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             if (entity.Account.Id != accountId) throw new System.InvalidOperationException();
 
             entity.ImageBridges.Clear();
-            entity.VideoBridges.Clear();
+            entity.GradientBridges.Clear();
 
             var dependencyImages = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetImages(inputModel.TemplateId, inputModel.SerializedContext);
 
@@ -96,6 +124,49 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                     });
                 }
             }
+
+            var dependencyGradients = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetGradients(inputModel.TemplateId, inputModel.SerializedContext);
+
+            if (dependencyGradients != null)
+            {
+                foreach (var item in dependencyGradients)
+                {
+                    entity.GradientBridges.Add(new Persistence.Entities.PlacardGradientBridge
+                    {
+                        Placard = entity,
+                        GradientId = item.Id
+                    });
+                }
+            }
+
+            UpdateVideoDependencies(entity, inputModel);
+
+            UpdateSoundDependencies(entity, inputModel);
+        }
+
+        protected override void PreDelete(Persistence.Entities.Placard entity)
+        {
+            base.PreDelete(entity);
+
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+
+            if (entity.Account.Id != accountId) throw new System.InvalidOperationException();
+        }
+    
+        private void UpdateVideoDependencies(Persistence.Entities.Placard entity, PlacardInputModel inputModel)
+        {
+            Persistence.Entities.PlacardVideoBridge complementVideoBridge = null;
+
+            if (entity.ComplementationKind == Persistence.Enumerations.PlacardComplementationKind.Video)
+            {
+                var currentVideoComplementContextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Extend.Common.Templating.Models.Context.VideoComplementContextModel>(entity.SerializedComplementation);
+
+                complementVideoBridge = entity.VideoBridges.FirstOrDefault(bridge => bridge.VideoId == currentVideoComplementContextModel.Video.Id);
+            }
+
+            entity.VideoBridges.Clear();
+
+            if (complementVideoBridge != null) entity.VideoBridges.Add(complementVideoBridge);
 
             var dependencyVideos = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetVideos(inputModel.TemplateId, inputModel.SerializedContext);
 
@@ -112,13 +183,34 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             }
         }
 
-        protected override void PreDelete(Persistence.Entities.Placard entity)
+        private void UpdateSoundDependencies(Persistence.Entities.Placard entity, PlacardInputModel inputModel)
         {
-            base.PreDelete(entity);
+            Persistence.Entities.PlacardSoundBridge complementSoundBridge = null;
 
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            if (entity.ComplementationKind == Persistence.Enumerations.PlacardComplementationKind.Sound)
+            {
+                var currentSoundComplementContextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Extend.Common.Templating.Models.Context.SoundComplementContextModel>(entity.SerializedComplementation);
 
-            if (entity.Account.Id != accountId) throw new System.InvalidOperationException();
+                complementSoundBridge = entity.SoundBridges.FirstOrDefault(bridge => bridge.SoundId == currentSoundComplementContextModel.Sound.Id);
+            }
+
+            entity.SoundBridges.Clear();
+
+            if (complementSoundBridge != null) entity.SoundBridges.Add(complementSoundBridge);
+
+            var dependencySounds = Support.Extend.Templating.Helpers.Provisioning.PlacardContextDependenciesProvisioningHelper.Instance.GetSounds(inputModel.TemplateId, inputModel.SerializedContext);
+
+            if (dependencySounds != null)
+            {
+                foreach (var item in dependencySounds)
+                {
+                    entity.SoundBridges.Add(new Persistence.Entities.PlacardSoundBridge
+                    {
+                        Placard = entity,
+                        SoundId = item.Id
+                    });
+                }
+            }
         }
     }
 }

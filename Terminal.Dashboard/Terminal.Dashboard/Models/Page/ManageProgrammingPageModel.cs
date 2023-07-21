@@ -5,6 +5,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
     public class ManageProgrammingPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private readonly System.Action<ScreenplayViewModel> selectedScreenplayCallbackAction;
+        private readonly System.Action labelFilterParamaChangeCallbackAction;
 
         private ScreenplayViewModel[] screenplays;
         private Support.Presentation.Models.View.FrameViewModel[] frames;
@@ -12,10 +13,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
         private ScreenplayViewModel selectedScreenPlay;
         private bool useExpandedLayout;
         private System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel> placardOverviews;
+        private string labelFilterParam;
 
-        public ManageProgrammingPageModel(System.Action<ScreenplayViewModel> selectedScreenplayCallbackAction)
+        public ManageProgrammingPageModel(System.Action<ScreenplayViewModel> selectedScreenplayCallbackAction, System.Action labelFilterParamaChangeCallbackAction)
         {
             this.selectedScreenplayCallbackAction = selectedScreenplayCallbackAction;
+            this.labelFilterParamaChangeCallbackAction = labelFilterParamaChangeCallbackAction;
 
             Screenplays = new ScreenplayViewModel[] { };
             Frames = new Support.Presentation.Models.View.FrameViewModel[] { };
@@ -48,6 +51,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
         }
 
         public bool UseExpandedLayout { get => useExpandedLayout; set => SetProperty(ref useExpandedLayout, value); }
+
+        public string LabelFilterParam { get => labelFilterParam; set => SetProperty(ref labelFilterParam, value, labelFilterParamaChangeCallbackAction); }
 
         protected override void DisposeUnmanagementResources()
         {

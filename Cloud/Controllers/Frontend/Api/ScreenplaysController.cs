@@ -31,7 +31,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         public override ActionResult<ScreenplayDisplayModel[]> Get()
         {
-            return Ok(Repository.GetAll().Where(GetGlobalSelector()).Select(entity => EntityToDisplayModel(entity)).ToArray());
+            return Ok(Repository.GetAll().Where(GetGlobalSelector()).OrderBy(entity => entity.Title).Select(entity => EntityToDisplayModel(entity)).ToArray());
         }
 
         protected override void PreCreate(Persistence.Entities.Screenplay entity, ScreenplayInputModel inputModel)
