@@ -4,13 +4,13 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 {
     public partial class SoundPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.SoundPickPageModel>
     {
-        private System.Action<Models.View.SoundViewModel> itemPickedCallbackAction;
+        private System.Action<Presentation.Models.View.SoundViewModel> itemPickedCallbackAction;
 
-        private Models.View.SoundViewModel except;
+        private Presentation.Models.View.SoundViewModel except;
 
         private int currentItemsPageNumber;
 
-        public SoundPickPage(System.Action<Models.View.SoundViewModel> itemPickedCallbackAction, Models.View.SoundViewModel except = null)
+        public SoundPickPage(System.Action<Presentation.Models.View.SoundViewModel> itemPickedCallbackAction, Presentation.Models.View.SoundViewModel except = null)
             : base(new Models.Page.SoundPickPageModel
             {
                 IsBusy = true
@@ -39,7 +39,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
         {
             BindingContextPageModel.IsBusy = true;
 
-            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.SoundViewModel;
+            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Presentation.Models.View.SoundViewModel;
 
             itemPickedCallbackAction.Invoke(targetModel);
 
@@ -85,7 +85,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                         {
                             if (except != null && except.Id == item.Id) continue;
 
-                            BindingContextPageModel.Items.Add(new Models.View.SoundViewModel
+                            BindingContextPageModel.Items.Add(new Presentation.Models.View.SoundViewModel
                             {
                                 Id = item.Id,
                                 About = item.About,
