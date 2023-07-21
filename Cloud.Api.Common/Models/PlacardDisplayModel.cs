@@ -16,6 +16,10 @@
 
         public string SerializedContext { get; set; }
 
+        public Persistence.Enumerations.PlacardComplementationKind? ComplementationKind { get; set; }
+
+        public string SerializedComplementation { get; set; }
+
         public void Import(Persistence.Entities.Placard entity)
         {
             Id = entity.Id;
@@ -24,6 +28,8 @@
             BeginAt = entity.BeginAt;
             EndAt = entity.EndAt;
             SerializedContext = entity.SerializedContext;
+            ComplementationKind = entity.ComplementationKind;
+            SerializedComplementation = entity.SerializedComplementation;
 
             Template = new TemplateDisplayModel();
 

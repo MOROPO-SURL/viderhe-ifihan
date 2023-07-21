@@ -16,6 +16,10 @@
 
         public string SerializedContext { get; set; }
 
+        public Cloud.Persistence.Enumerations.PlacardComplementationKind? ComplementationKind { get; set; }
+
+        public string SerializedComplementation { get; set; }
+
         #region IDisposable Support
         private bool disposedValue = false; // Para detectar llamadas redundantes
 
