@@ -1101,6 +1101,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.Property<DateTime?>("BeginAt")
                         .HasColumnName("beginat");
 
+                    b.Property<int?>("ComplementationKind")
+                        .HasColumnName("complementationkind");
+
                     b.Property<DateTime>("CreateAt")
                         .HasColumnName("createat");
 
@@ -1113,6 +1116,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
 
                     b.Property<int?>("PlayerOrientationSupportKind")
                         .HasColumnName("playerorientationsupportkind");
+
+                    b.Property<string>("SerializedComplementation")
+                        .HasColumnName("serializedcomplementation");
 
                     b.Property<string>("SerializedContext")
                         .IsRequired()

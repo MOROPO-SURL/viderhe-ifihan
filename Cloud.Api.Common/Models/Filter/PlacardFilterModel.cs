@@ -18,44 +18,48 @@
 
         public System.Linq.Expressions.Expression<System.Func<Persistence.Entities.Placard, bool>> GetSelector()
         {
-            if (PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any || PlayerOrientationSupportKindExclusive)
-            {
-                if (!string.IsNullOrEmpty(Label?.Trim()))
-                {
-                    if (TemplateId != null)
-                    {
-                        return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind && item.TemplateId == TemplateId && item.Label.Contains(Label);
-                    }
+            // TODO Fix for expected behavior!!
 
-                    return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind && item.Label.Contains(Label);
-                }
+            return item => item.Label.ToLower().Contains(Label.ToLower());
 
-                if (TemplateId != null)
-                {
-                    return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind && item.TemplateId == TemplateId;
-                }
+            //if (PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any || PlayerOrientationSupportKindExclusive)
+            //{
+            //    if (!string.IsNullOrEmpty(Label?.Trim()))
+            //    {
+            //        if (TemplateId != null)
+            //        {
+            //            return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind && item.TemplateId == TemplateId && item.Label.Contains(Label);
+            //        }
 
-                return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind;
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(Label?.Trim()))
-                {
-                    if (TemplateId != null)
-                    {
-                        return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == null) && item.TemplateId == TemplateId && item.Label.Contains(Label);
-                    }
+            //        return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind && item.Label.Contains(Label);
+            //    }
 
-                    return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == null) && item.Label.Contains(Label);
-                }
+            //    if (TemplateId != null)
+            //    {
+            //        return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind && item.TemplateId == TemplateId;
+            //    }
 
-                if (TemplateId != null)
-                {
-                    return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == null) && item.TemplateId == TemplateId;
-                }
+            //    return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind;
+            //}
+            //else
+            //{
+            //    if (!string.IsNullOrEmpty(Label?.Trim()))
+            //    {
+            //        if (TemplateId != null)
+            //        {
+            //            return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == null) && item.TemplateId == TemplateId && item.Label.Contains(Label);
+            //        }
 
-                return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == null;
-            }
+            //        return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == null) && item.Label.Contains(Label);
+            //    }
+
+            //    if (TemplateId != null)
+            //    {
+            //        return item => (item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == null) && item.TemplateId == TemplateId;
+            //    }
+
+            //    return item => item.PlayerOrientationSupportKind == PlayerOrientationSupportKind || item.PlayerOrientationSupportKind == null;
+            //}
         }
     }
 }

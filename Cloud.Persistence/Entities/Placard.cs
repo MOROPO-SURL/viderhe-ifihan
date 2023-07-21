@@ -32,6 +32,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
         [Required]
         public string SerializedContext { get; set; }
 
+        public Enumerations.PlacardComplementationKind? ComplementationKind { get; set; }
+
+        public string SerializedComplementation { get; set; }
+
         public List<PlacardImageBridge> ImageBridges { get; set; }
 
         public List<PlacardVideoBridge> VideoBridges { get; set; }

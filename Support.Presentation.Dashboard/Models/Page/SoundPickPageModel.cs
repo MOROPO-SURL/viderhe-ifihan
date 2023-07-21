@@ -6,10 +6,10 @@
 
         public SoundPickPageModel()
         {
-            Items = new System.Collections.ObjectModel.ObservableCollection<View.SoundViewModel>();
+            Items = new System.Collections.ObjectModel.ObservableCollection<Presentation.Models.View.SoundViewModel>();
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<View.SoundViewModel> Items { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<Presentation.Models.View.SoundViewModel> Items { get; set; }
 
         public bool HasMoreItems { get => hasMoreItems; set => SetProperty(ref hasMoreItems, value); }
 
