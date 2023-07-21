@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.VideoComplementConfigurationPage"
+    x:TypeArguments="pagemodels:VideoComplementConfigurationPageModel"
+    x:Name="FormPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Aplicar"
+            Clicked="ApplyToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Cancelar"
+            Clicked="CancelToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView>
+                <Grid 
+                    Margin="10,0,10,10"
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout 
+                        Grid.ColumnSpan="3" Grid.Row="0"
+                        Padding="0,10,0,0"
+                        IsVisible="{Binding Path=IsValid, Converter={StaticResource BoolToBoolNegationConverter}}"
+                        BindableLayout.ItemsSource="{Binding Path=ValidationMessages}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid 
+                                    BackgroundColor="Tomato"
+                                    RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <BoxView 
+                                        Grid.Column="0" Grid.RowSpan="2"
+                                        Color="Red" />
+                                    <Label
+                                        Grid.Column="1" Grid.Row="0"
+                                        Padding="5,5,5,2"
+                                        Text="{Binding Path=Caption}"
+                                        TextColor="White"
+                                        FontAttributes="Bold" />
+                                    <Label 
+                                        Grid.Column="1" Grid.Row="1"
+                                        Padding="5,0,5,5"
+                                        Text="{Binding Path=Message}"
+                                        TextColor="White" />
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    <Frame 
+                        Grid.Column="0" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}"
+                        Padding="0"
+                        VerticalOptions="Start">
+                        <Grid RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Label 
+                                Grid.Column="0" Grid.Row="0"
+                                Style="{StaticResource FormLabel}"
+                                Margin="10,10,10,6"
+                                Text="Video" />
+                            <Button
+                                Grid.Column="1" Grid.Row="0"
+                                VerticalOptions="Start"
+                                Text="Seleccionar"
+                                Clicked="PickVideoButton_Clicked"  />
+                            <ffimageloadingforms:CachedImage
+                                Margin="0"
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                BackgroundColor="Black"
+                                Source="{Binding Path=Video, Converter={StaticResource VideoViewModelToThumbnailImageSourceConverter}}"
+                                Aspect="AspectFill"
+                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width}"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
+                            <Grid 
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                IsVisible="{Binding Path=Video, Converter={StaticResource NotNullToBooleanConverter}}"
+                                BackgroundColor="#99000000">
+                                <Label 
+                                    IsVisible="{Binding Path=Video.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                    VerticalOptions="End" 
+                                    Padding="8"
+                                    BackgroundColor="#99000000"
+                                    Text="{Binding Path=Video.About}"
+                                    TextColor="White"
+                                    LineBreakMode="TailTruncation" />
+                                <ImageButton 
+                                    HorizontalOptions="Center" VerticalOptions="Center"
+                                    WidthRequest="120"
+                                    Clicked="VideoPlayButton_Clicked">
+                                    <ImageButton.Source>
+                                        <FontImageSource 
+                                            Color="White"
+                                            FontFamily="{StaticResource IconFontFamily}"
+                                            Glyph="&#xf40c;" />
+                                    </ImageButton.Source>
+                                </ImageButton>
+                            </Grid>
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Posición" Style="{StaticResource FormLabel}" />
+                            <Picker ItemsSource="{Binding Path=AvailableVideoComplementPositions}" SelectedItem="{Binding Path=Position}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="2" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Tiempo de Retraso" Style="{StaticResource FormLabel}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Path=Delay}" VerticalTextAlignment="Center" />
+                                <Label Text="Segundos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                <Stepper Value="{Binding Path=Delay}" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

@@ -208,6 +208,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
                     {
                         var incomingFrameView = placardViewModelToPresentationViewFunction.Invoke(model, getOrientationFunction);
 
+                        if (model.ComplementationKind != null)
+                        {
+                            (incomingFrameView.BindingContext as Models.View.AbstractPlacardViewModel).ComplementationKind = model.ComplementationKind;
+                            (incomingFrameView.BindingContext as Models.View.AbstractPlacardViewModel).SerializedComplementation = model.SerializedComplementation;
+                        }
+
                         incomingFrameView.PresentationComplete += PlacardPresentationView_PresentationComplete;
 
                         outgoingFrameView = container.Children.FirstOrDefault() as BasePlacardPresentationView;
@@ -305,6 +311,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
         public void SuspendPresentation()
         {
             suspended = true;
+
+            MediaManager.CrossMediaManager.Current.Stop();
 
             if (!(container.Children.FirstOrDefault() is BasePlacardPresentationView currentPlacardFrameView)) return;
 
