@@ -1,4 +1,5 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 {
@@ -53,6 +54,13 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             presenter.BeginPresentation();
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            this.NavigationPopModalPageAsync();
+
+            return true;
+        }
+
         private void DeviceDisplay_MainDisplayInfoChanged(object sender, Xamarin.Essentials.DisplayInfoChangedEventArgs e)
         {
             RequestPresentNextFrame();
@@ -105,6 +113,9 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             presenter.Dispose();
 
             presenter = null;
+
+            // TODO Check for alternative!!
+            MediaManager.CrossMediaManager.Current.Stop();
 
             Xamarin.Forms.DependencyService.RegisterSingleton<Viderhe.Extend.Common.Templating.Presentation.Presenters.Facade.IOvarlablePresenter>(null);
         }

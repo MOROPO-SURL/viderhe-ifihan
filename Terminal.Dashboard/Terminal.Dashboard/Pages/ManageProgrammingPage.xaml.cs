@@ -238,7 +238,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             Label = target.Placard.Label,
                             PlayerOrientationSupportKind = target.Placard.PlayerOrientationSupportKind,
                             SerializedContext = target.Placard.SerializedContext,
-                            Template = target.Placard.Template
+                            Template = target.Placard.Template,
+                            ComplementationKind = target.Placard.ComplementationKind,
+                            SerializedComplementation = target.Placard.SerializedComplementation
                         };
 
                         if (completitionHelper != null)
@@ -464,7 +466,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 Label = targetFrameViewModel.Placard.Label,
                                 PlayerOrientationSupportKind = targetFrameViewModel.Placard.PlayerOrientationSupportKind,
                                 SerializedContext = targetFrameViewModel.Placard.SerializedContext,
-                                Template = targetFrameViewModel.Placard.Template
+                                Template = targetFrameViewModel.Placard.Template,
+                                ComplementationKind = targetFrameViewModel.Placard.ComplementationKind,
+                                SerializedComplementation = targetFrameViewModel.Placard.SerializedComplementation
                             };
 
                             if (completitionHelper != null)
