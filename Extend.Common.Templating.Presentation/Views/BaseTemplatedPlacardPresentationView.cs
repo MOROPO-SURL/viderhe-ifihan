@@ -4,6 +4,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.View
 {
     public class BaseTemplatedPlacardPresentationView : Common.Presentation.Views.BasePlacardPresentationView
     {
+        public Xamarin.CommunityToolkit.UI.Views.MediaElement SoundComplementMediaElement;
+
         public virtual void StartShowInWhenReady(Transitioning.Presentation.Transitions.Contract.AbstractTransition transition)
         {
             transition.PerformMotion();
@@ -17,16 +19,24 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.View
             {
                 var model = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.SoundComplementContextModel>((BindingContext as Models.View.AbstractPlacardViewModel).SerializedComplementation);
 
-                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(model.Delay)).ContinueWith(async _ =>
+                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(model.Delay)).ContinueWith(_ =>
                 {
-                    MediaManager.CrossMediaManager.Current.ClearQueueOnPlay = true;                    
-
-                    if (model.Repeat)
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
-                        MediaManager.CrossMediaManager.Current.MediaItemFinished += CrossMediaManagerCurrent_MediaItemFinished;
-                    }
+                        SoundComplementMediaElement = new Xamarin.CommunityToolkit.UI.Views.MediaElement
+                        {
+                            IsLooping = model.Repeat,
+                            IsVisible = Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android,
+                            Opacity = Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android ? 0 : 1,
+                            AutoPlay = true,
+                            ShowsPlaybackControls = false,
+                            Source = Xamarin.CommunityToolkit.Core.MediaSource.FromUri(Support.Presentation.Factories.SoundUriFactory.BuildUri(model.Sound.Id, model.Sound.Extension))
+                        };
 
-                    await MediaManager.CrossMediaManager.Current.Play(Support.Presentation.Factories.SoundUriFactory.BuildUri(model.Sound.Id, model.Sound.Extension).ToString());
+                        ConfigureLayout(SoundComplementMediaElement);
+
+                        WrapLayout.Children.Add(SoundComplementMediaElement);
+                    });                  
                 });            
             }
             else if ((BindingContext as Models.View.AbstractPlacardViewModel).ComplementationKind == Cloud.Persistence.Enumerations.PlacardComplementationKind.Video)
@@ -59,13 +69,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.View
             });
         }
 
-        private void CrossMediaManagerCurrent_MediaItemFinished(object sender, MediaManager.Media.MediaItemEventArgs eventArgs)
-        {
-            MediaManager.CrossMediaManager.Current.SeekTo(System.TimeSpan.Zero);
-
-            MediaManager.CrossMediaManager.Current.Play();
-        }
-
         public virtual void PerformPlacardStarup() { }
 
         protected override void DisposeUnmanagementResources()
@@ -74,14 +77,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.View
 
             if ((BindingContext as Models.View.AbstractPlacardViewModel).ComplementationKind == Cloud.Persistence.Enumerations.PlacardComplementationKind.Sound)
             {
-                MediaManager.CrossMediaManager.Current.MediaItemFinished -= CrossMediaManagerCurrent_MediaItemFinished;
+                SoundComplementMediaElement.Stop();
 
-                MediaManager.CrossMediaManager.Current.Stop();
+                SoundComplementMediaElement.Source = null;
+
+                WrapLayout.Children.Remove(SoundComplementMediaElement);
+
+                SoundComplementMediaElement = null;
             }
             else if ((BindingContext as Models.View.AbstractPlacardViewModel).ComplementationKind == Cloud.Persistence.Enumerations.PlacardComplementationKind.Video)
             {
-                MediaManager.CrossMediaManager.Current.MediaItemFinished -= CrossMediaManagerCurrent_MediaItemFinished;
-
                 var complementVideoView = WrapLayout.Children.Last() as PlacardComplementVideoView;
 
                 WrapLayout.Children.Remove(complementVideoView);
