@@ -115,7 +115,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             presenter = null;
 
             // TODO Check for alternative!!
-            MediaManager.CrossMediaManager.Current.Stop();
+            //MediaManager.CrossMediaManager.Current.Stop();
 
             Xamarin.Forms.DependencyService.RegisterSingleton<Viderhe.Extend.Common.Templating.Presentation.Presenters.Facade.IOvarlablePresenter>(null);
         }
