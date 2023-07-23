@@ -59,8 +59,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP
 
                 FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
 
-                MediaManager.CrossMediaManager.Current.Init();
-
                 ImageCircle.Forms.Plugin.UWP.ImageCircleRenderer.Init();
 
                 Rg.Plugins.Popup.Popup.Init();
