@@ -170,7 +170,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                             IsWeatherCacheMicroServerSecureConnectionStrict = BindingContextPageModel.IsWeatherCacheMicroServerSecureConnectionStrict,
                             Service = BindingContextPageModel.Service,
                             City = BindingContextPageModel.City,
-                            TimeZoneId = BindingContextPageModel.TimeZone.Id
+                            TimeZoneId = BindingContextPageModel.DateTimeZoneId
                         })
                     };
 
@@ -205,7 +205,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                             IsWeatherCacheMicroServerSecureConnectionStrict = BindingContextPageModel.IsWeatherCacheMicroServerSecureConnectionStrict,
                             Service = BindingContextPageModel.Service,
                             City = BindingContextPageModel.City,
-                            TimeZoneId = BindingContextPageModel.TimeZone.Id
+                            TimeZoneId = BindingContextPageModel.DateTimeZoneId
                         })
                     };
 

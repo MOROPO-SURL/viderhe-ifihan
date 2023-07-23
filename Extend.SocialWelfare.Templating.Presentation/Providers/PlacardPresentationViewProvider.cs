@@ -70,7 +70,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
                     Service = context.Service,
                     City = context.City,
                     ServiceBaseUri = new System.Uri(string.Format("{0}://{1}/api/", protocol, context.WeatherCacheMicroServerHost)),
-                    Now = System.TimeZoneInfo.ConvertTimeBySystemTimeZoneId(System.DateTimeOffset.Now, context.TimeZoneId).DateTime
+                    Now = NodaTime.Instant.FromDateTimeUtc(System.DateTime.Now.ToUniversalTime()).InZone(NodaTime.DateTimeZoneProviders.Tzdb[context.TimeZoneId]).ToDateTimeUnspecified()
                 };
 
                 if (context.OverlayColor != null)

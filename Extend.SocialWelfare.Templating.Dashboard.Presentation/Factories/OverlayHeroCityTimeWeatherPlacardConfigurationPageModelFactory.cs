@@ -24,7 +24,7 @@
                 IsWeatherCacheMicroServerSecureConnectionStrict = context.IsWeatherCacheMicroServerSecureConnectionStrict,
                 Service = context.Service,
                 City = context.City,
-                TimeZone = System.TimeZoneInfo.FindSystemTimeZoneById(context.TimeZoneId)
+                DateTimeZoneId = context.TimeZoneId
             };
 
             if (context.OverlayColor != null)

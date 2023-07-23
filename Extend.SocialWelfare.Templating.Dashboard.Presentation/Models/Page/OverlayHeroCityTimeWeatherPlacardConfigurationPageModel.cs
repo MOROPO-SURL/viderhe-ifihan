@@ -13,7 +13,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
         private Weather.Api.Common.Models.CityModel[] availableCities;
         private Xamarin.Forms.Color textColor;
         private Xamarin.Forms.Color? overlayColor;
-        private System.TimeZoneInfo timeZone;
+        private string dateTimeZoneId;
 
         public OverlayHeroCityTimeWeatherPlacardConfigurationPageModel()
         {
@@ -24,8 +24,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
             {
                 WeatherDataProvisionService.OpenWeatherMap
             };
-
-            AvailableTimeZones = System.TimeZoneInfo.GetSystemTimeZones();
         }
 
         public Templating.Models.Context.BackgroundContextModel Background { get => background; set => SetProperty(ref background, value); }
@@ -48,9 +46,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
         public Xamarin.Forms.Color? OverlayColor { get => overlayColor; set => SetProperty(ref overlayColor, value); }
 
-        public System.TimeZoneInfo TimeZone { get => timeZone; set => timeZone = value; }
-
-        public System.Collections.ObjectModel.ReadOnlyCollection<System.TimeZoneInfo> AvailableTimeZones { get; private set; }
+        public string DateTimeZoneId { get => dateTimeZoneId; set => dateTimeZoneId = value; }
 
         protected override void DisposeUnmanagementResources()
         {

@@ -8,6 +8,7 @@
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
+    xmlns:nodatimes="clr-namespace:NodaTime;assembly=NodaTime"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Pages.OverlayHeroCityTimeWeatherPlacardConfigurationPage"
     x:TypeArguments="pagemodels:OverlayHeroCityTimeWeatherPlacardConfigurationPageModel">
     <ContentPage.Resources>
@@ -246,8 +247,8 @@
                             <StackLayout>
                                 <Label Text="Zona Horaria" Style="{StaticResource FormLabel}" />
                                 <Picker
-                                    ItemsSource="{Binding Path=AvailableTimeZones}"
-                                    SelectedItem="{Binding Path=TimeZone}" />
+                                    ItemsSource="{Binding Source={Static nodatimes:DateTimeZoneProviders.Tzdb}, Path=Ids}"
+                                    SelectedItem="{Binding Path=DateTimeZoneId}" />
                             </StackLayout>
                         </Frame>
                         <Frame Style="{StaticResource FormFieldFrame}">
