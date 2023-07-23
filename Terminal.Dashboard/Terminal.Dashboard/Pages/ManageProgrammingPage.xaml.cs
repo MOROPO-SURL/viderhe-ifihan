@@ -13,8 +13,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private const string OPTION_COMMON_EDIT = "Modificar";
         private const string OPTION_COMMON_DELETE = "Eliminar";
 
-        private const string OPTION_FRAME_PLACARD_EDIT = "Modificar Marco";
-        private const string OPTION_FRAME_PLACARD_COMPLEMENT = "Complementar Marco";
+        private const string OPTION_FRAME_PLACARD_SEARCH = "Buscar Marco";
         private const string OPTION_FRAME_ORDER = "Cambiar Prioridad";
         private const string OPTION_FRAME_DELETE = "Quitar";
 
@@ -353,7 +352,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var extraOptions = new System.Collections.Generic.List<string>
             {
-                OPTION_FRAME_PLACARD_EDIT,
+                OPTION_FRAME_PLACARD_SEARCH,
                 OPTION_COMMON_PREVIEW
             };
 
@@ -368,47 +367,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 Extend.Common.Templating.Presentation.Helpers.Facade.IPlacardViewModelCompletitionHelperFacade completitionHelper;
 
-                Support.Presentation.Models.View.PlacardViewModel placardClone;
-
                 switch (actionSheetTask.Result)
                 {
-                    case OPTION_FRAME_PLACARD_EDIT:
-                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
-                            {
-                                Id = targetFrameViewModel.Placard.Id,
-                                Template = new Cloud.Api.Common.Models.TemplateDisplayModel
-                                {
-                                    Id = targetFrameViewModel.Placard.Template.Id
-                                }
-                            });
-
-                            placardClone = new Support.Presentation.Models.View.PlacardViewModel
-                            {
-                                Id = targetFrameViewModel.Placard.Id,
-                                Label = targetFrameViewModel.Placard.Label,
-                                PlayerOrientationSupportKind = targetFrameViewModel.Placard.PlayerOrientationSupportKind,
-                                SerializedContext = targetFrameViewModel.Placard.SerializedContext,
-                                Template = targetFrameViewModel.Placard.Template
-                            };
-
-                            if (completitionHelper != null)
-                            {
-                                await completitionHelper.CompleteAsync(placardClone);
-                            }
-
-                            var placardEditPage = Providers.PlacardConfigurationPageProvider.Instance.GetEditionPageByDescriptor(placardClone, PlacardEditionCompleted_Callback);
-
-                            if (placardEditPage != null)
-                            {
-                                await this.NavigationPushPageAsync(placardEditPage);
-                            }
-                            else
-                            {
-                                Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Aviso", "Plantilla no compatible con la versión actual del sistema.");
-                            }
-                        });
+                    case OPTION_FRAME_PLACARD_SEARCH:
+                        BindingContextPageModel.LabelFilterParam = targetFrameViewModel.Placard.Label;
 
                         break;
 
@@ -460,7 +422,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 }
                             });
 
-                            placardClone = new Support.Presentation.Models.View.PlacardViewModel
+                            var placardClone = new Support.Presentation.Models.View.PlacardViewModel
                             {
                                 Id = targetFrameViewModel.Placard.Id,
                                 Label = targetFrameViewModel.Placard.Label,
