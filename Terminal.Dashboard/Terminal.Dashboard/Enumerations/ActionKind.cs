@@ -11,6 +11,9 @@
         ManageImages,
         ManageVideos,
         ManagePlayers,
-        ManageScreenplays
+        ManageScreenplays,
+        ManageSounds,
+        ManageGradients,
+        ManageTexts
     }
 }

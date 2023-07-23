@@ -3,5 +3,9 @@
     public abstract class AbstractPlacardViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
     {
         public bool RequireUnobstructedPresetation { get; set; }
+
+        public Cloud.Persistence.Enumerations.PlacardComplementationKind? ComplementationKind { get; set; }
+
+        public string SerializedComplementation { get; set; }
     }
 }

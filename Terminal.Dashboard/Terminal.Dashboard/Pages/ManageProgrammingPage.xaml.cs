@@ -13,12 +13,17 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private const string OPTION_COMMON_EDIT = "Modificar";
         private const string OPTION_COMMON_DELETE = "Eliminar";
 
-        private const string OPTION_FRAME_PLACARD_EDIT = "Modificar Marco";
+        private const string OPTION_FRAME_PLACARD_SEARCH = "Buscar Marco";
         private const string OPTION_FRAME_ORDER = "Cambiar Prioridad";
         private const string OPTION_FRAME_DELETE = "Quitar";
 
         private const string OPTION_PLACARD_SEQUENCE = "Agregar a Secuencia";
-        private const string OPTION_PLACARD_PLACARD_CLONE = "Duplicar";
+        private const string OPTION_PLACARD_CLONE = "Duplicar";
+        private const string OPTION_PLACARD_COMPLEMENTATION = "Complementar";
+        private const string OPTION_PLACARD_COMPLEMENT_EDIT = "Configurar Complemento";
+        private const string OPTION_PLACARD_COMPLEMENT_REMOVE = "Quitar Complemento";
+        private const string OPTION_PLACARD_COMPLEMENTATION_VIDEO = "Video";
+        private const string OPTION_PLACARD_COMPLEMENTATION_SOUND = "Sonido";
 
         private int currentPlacardsPageNumber;
         private int currentPlacardCollectionViewCellColumnCount = 3;
@@ -30,7 +35,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             IsEnabled = false;
 
-            BindingContext = new Models.Page.ManageProgrammingPageModel(ScreenplaySelection_Callback);
+            BindingContext = new Models.Page.ManageProgrammingPageModel(ScreenplaySelection_Callback, LabelFilterParamaChange_Callback);
         }
 
         protected override void OnAppearing()
@@ -53,8 +58,18 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 OPTION_COMMON_PREVIEW,
                 OPTION_COMMON_EDIT,
-                OPTION_PLACARD_PLACARD_CLONE
+                OPTION_PLACARD_CLONE
             };
+
+            if (target.Placard.ComplementationKind == null)
+            {
+                extraOptions.Add(OPTION_PLACARD_COMPLEMENTATION);
+            }
+            else
+            {
+                extraOptions.Add(OPTION_PLACARD_COMPLEMENT_EDIT);
+                extraOptions.Add(OPTION_PLACARD_COMPLEMENT_REMOVE);
+            }
 
             if (BindingContextPageModel.SelectedScreenplay != null)
             {
@@ -76,7 +91,76 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 switch (actionSheetTask.Result)
                 {
-                    case OPTION_PLACARD_PLACARD_CLONE:
+                    case OPTION_PLACARD_COMPLEMENTATION:
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                        {
+                            DisplayActionSheet("Complementar Marco con:", OPTION_COMMON_CANCEL, null, new string[] { OPTION_PLACARD_COMPLEMENTATION_VIDEO, OPTION_PLACARD_COMPLEMENTATION_SOUND }).ContinueWith(_task =>
+                            {
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    switch (_task.Result)
+                                    {
+                                        case OPTION_PLACARD_COMPLEMENTATION_VIDEO:
+                                            this.NavigationPushPageAsync(new VideoComplementConfigurationPage(target.Placard, PlacardEditionCompleted_Callback));
+
+                                            break;
+
+                                        case OPTION_PLACARD_COMPLEMENTATION_SOUND:
+                                            this.NavigationPushPageAsync(new SoundComplementConfigurationPage(target.Placard, PlacardEditionCompleted_Callback));
+
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                });
+                            });
+                        });                        
+
+                        break;
+
+                    case OPTION_PLACARD_COMPLEMENT_EDIT:
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                        {
+                            if (target.Placard.ComplementationKind == Cloud.Persistence.Enumerations.PlacardComplementationKind.Video)
+                            {
+                                this.NavigationPushPageAsync(new VideoComplementConfigurationPage(target.Placard, PlacardEditionCompleted_Callback));
+                            }
+                            else
+                            {
+                                this.NavigationPushPageAsync(new SoundComplementConfigurationPage(target.Placard, PlacardEditionCompleted_Callback));
+                            }                            
+                        });
+
+                        break;
+
+                    case OPTION_PLACARD_COMPLEMENT_REMOVE:
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                        {
+                            DisplayAlert("Confirmar", "Está seguro que desea quitar el complemento a este marco?", "Quitar", "Cancelar").ContinueWith(async task =>
+                            {
+                                if (!task.Result) return;
+
+                                var client = new Cloud.Api.Connect.Clients.ComplementationsApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+
+                                await client.EditAsync(new Cloud.Api.Common.Models.ComplementationInputModel
+                                {
+                                    PlacardId = target.Placard.Id,
+                                    ComplementationKind = null,
+                                    SerializedComplementation = null
+                                });
+
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    PlacardEditionCompleted_Callback();
+
+                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                                });
+                            });
+                        });
+
+                        break;
+
+                    case OPTION_PLACARD_CLONE:
                         await placardsClient.CreateAsync(new Cloud.Api.Common.Models.PlacardInputModel
                         {
                             Label = string.Format("(Copia) {0}", target.Placard.Label),
@@ -153,7 +237,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             Label = target.Placard.Label,
                             PlayerOrientationSupportKind = target.Placard.PlayerOrientationSupportKind,
                             SerializedContext = target.Placard.SerializedContext,
-                            Template = target.Placard.Template
+                            Template = target.Placard.Template,
+                            ComplementationKind = target.Placard.ComplementationKind,
+                            SerializedComplementation = target.Placard.SerializedComplementation
                         };
 
                         if (completitionHelper != null)
@@ -266,7 +352,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var extraOptions = new System.Collections.Generic.List<string>
             {
-                OPTION_FRAME_PLACARD_EDIT,
+                OPTION_FRAME_PLACARD_SEARCH,
                 OPTION_COMMON_PREVIEW
             };
 
@@ -281,47 +367,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 Extend.Common.Templating.Presentation.Helpers.Facade.IPlacardViewModelCompletitionHelperFacade completitionHelper;
 
-                Support.Presentation.Models.View.PlacardViewModel placardClone;
-
                 switch (actionSheetTask.Result)
                 {
-                    case OPTION_FRAME_PLACARD_EDIT:
-                        Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                        {
-                            completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
-                            {
-                                Id = targetFrameViewModel.Placard.Id,
-                                Template = new Cloud.Api.Common.Models.TemplateDisplayModel
-                                {
-                                    Id = targetFrameViewModel.Placard.Template.Id
-                                }
-                            });
-
-                            placardClone = new Support.Presentation.Models.View.PlacardViewModel
-                            {
-                                Id = targetFrameViewModel.Placard.Id,
-                                Label = targetFrameViewModel.Placard.Label,
-                                PlayerOrientationSupportKind = targetFrameViewModel.Placard.PlayerOrientationSupportKind,
-                                SerializedContext = targetFrameViewModel.Placard.SerializedContext,
-                                Template = targetFrameViewModel.Placard.Template
-                            };
-
-                            if (completitionHelper != null)
-                            {
-                                await completitionHelper.CompleteAsync(placardClone);
-                            }
-
-                            var placardEditPage = Providers.PlacardConfigurationPageProvider.Instance.GetEditionPageByDescriptor(placardClone, PlacardEditionCompleted_Callback);
-
-                            if (placardEditPage != null)
-                            {
-                                await this.NavigationPushPageAsync(placardEditPage);
-                            }
-                            else
-                            {
-                                Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Aviso", "Plantilla no compatible con la versión actual del sistema.");
-                            }
-                        });
+                    case OPTION_FRAME_PLACARD_SEARCH:
+                        BindingContextPageModel.LabelFilterParam = targetFrameViewModel.Placard.Label;
 
                         break;
 
@@ -373,13 +422,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 }
                             });
 
-                            placardClone = new Support.Presentation.Models.View.PlacardViewModel
+                            var placardClone = new Support.Presentation.Models.View.PlacardViewModel
                             {
                                 Id = targetFrameViewModel.Placard.Id,
                                 Label = targetFrameViewModel.Placard.Label,
                                 PlayerOrientationSupportKind = targetFrameViewModel.Placard.PlayerOrientationSupportKind,
                                 SerializedContext = targetFrameViewModel.Placard.SerializedContext,
-                                Template = targetFrameViewModel.Placard.Template
+                                Template = targetFrameViewModel.Placard.Template,
+                                ComplementationKind = targetFrameViewModel.Placard.ComplementationKind,
+                                SerializedComplementation = targetFrameViewModel.Placard.SerializedComplementation
                             };
 
                             if (completitionHelper != null)
@@ -547,6 +598,33 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             PlacardEditionCompleted_Callback();
         }
 
+        private void RequestFilterButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayPromptAsync("Filtrar Marcos", "Especifique la etiqueta o parte de esta relativa al el marco que está buscando:", "Filtrar", "Cancelar",  initialValue: BindingContextPageModel.LabelFilterParam).ContinueWith(task =>
+            {
+                if (task.Result == null) return;
+
+                if (string.IsNullOrEmpty(task.Result))
+                {
+                    BindingContextPageModel.LabelFilterParam = null;
+                }
+                else
+                {
+                    BindingContextPageModel.LabelFilterParam = task.Result;
+                }
+            });
+        }
+
+        private void ClearFilterButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayAlert("Quitar Filtro", "Está seguro que desea quitar el filtro actual para el listado de Marcos?", "Quitar", "Cancelar").ContinueWith(task =>
+            {
+                if (!task.Result) return;
+
+                BindingContextPageModel.LabelFilterParam = null;
+            });
+        }
+        
         private void ScreenplaySelection_Callback(Models.View.ScreenplayViewModel target)
         {
             LoadCurrentScreenplayFrames();
@@ -567,6 +645,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 LoadCurrentScreenplayFrames(() => LoadNextPlacardsPage(true));
             }
+        }
+
+        private void LabelFilterParamaChange_Callback()
+        {
+            LoadNextPlacardsPage(true);
         }
 
         private void ReloadScreenplays()
@@ -631,19 +714,37 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 currentPlacardsPageNumber = 0;
 
-                foreach (var item in BindingContextPageModel.PlacardOverviews)
+                if (BindingContextPageModel.PlacardOverviews != null)
                 {
-                    item?.Dispose();
+                    foreach (var item in BindingContextPageModel.PlacardOverviews)
+                    {
+                        item?.Dispose();
+                    }
+
+                    BindingContextPageModel.PlacardOverviews.Clear();
+
+                    BindingContextPageModel.PlacardOverviews = null;
                 }
-
-                BindingContextPageModel.PlacardOverviews.Clear();
-
-                BindingContextPageModel.PlacardOverviews = null;
             }
 
             var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Managers.SessionManager.Instance);
 
-            _ = placardsApiConnectClient.GetPaginateAsync(++currentPlacardsPageNumber, placardPageLimit).ContinueWith(task =>
+            System.Threading.Tasks.Task<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Cloud.Api.Common.Models.PlacardDisplayModel>> apiConnectClientTask;
+
+            if (!string.IsNullOrEmpty(BindingContextPageModel.LabelFilterParam))
+            {
+                apiConnectClientTask = placardsApiConnectClient.FilterPaginateAsync(new Cloud.Api.Common.Models.Filter.PlacardFilterModel
+                {
+                    Label = BindingContextPageModel.LabelFilterParam,
+                    PlayerOrientationSupportKind = Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any
+                }, ++currentPlacardsPageNumber, placardPageLimit);
+            }
+            else
+            {
+                apiConnectClientTask = placardsApiConnectClient.GetPaginateAsync(++currentPlacardsPageNumber, placardPageLimit);
+            }
+
+            _ = apiConnectClientTask.ContinueWith(task =>
               {
                   Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                   {
