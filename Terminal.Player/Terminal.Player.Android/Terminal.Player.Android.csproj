@@ -86,6 +86,9 @@
     <PackageReference Include="name.atsushieno.proguard.facebook">
       <Version>5.3.2.2</Version>
     </PackageReference>
+    <PackageReference Include="NodaTime">
+      <Version>3.1.9</Version>
+    </PackageReference>
     <PackageReference Include="SSCXFToolKit.IoC">
       <Version>0.2.0-alpha</Version>
     </PackageReference>
