@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating</RootNamespace>
-    <Version>0.7.1</Version>
+    <Version>0.7.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
