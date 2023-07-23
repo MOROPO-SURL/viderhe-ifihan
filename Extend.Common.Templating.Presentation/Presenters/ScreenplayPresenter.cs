@@ -312,8 +312,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
         {
             suspended = true;
 
-            MediaManager.CrossMediaManager.Current.Stop();
-
             if (!(container.Children.FirstOrDefault() is BasePlacardPresentationView currentPlacardFrameView)) return;
 
             currentPlacardFrameView.PresentationComplete -= PlacardPresentationView_PresentationComplete;
