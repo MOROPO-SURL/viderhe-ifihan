@@ -50,7 +50,9 @@
         <uap:Extension Category="windows.appService">
           <uap:AppService Name="SupportInteropService" />
         </uap:Extension>
-        <desktop:Extension Category="windows.fullTrustProcess" Executable="Terminal.Player.UWP.DesktopExtension.Helper\ViderhePlayerHelper.exe" />
+        <desktop:Extension 
+			Category="windows.fullTrustProcess" 
+			Executable="Terminal.Player.UWP.DesktopExtension.Helper\ViderhePlayerHelper.exe" />
       </Extensions>
     </Application>
   </Applications>
