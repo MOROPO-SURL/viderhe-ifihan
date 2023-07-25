@@ -227,7 +227,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (BindingContextPageModel.Items == null)
                             {
-                                BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.OverviewViewModel<Support.Presentation.Models.View.ImageViewModel>>();
+                                BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<OverviewViewModel<ImageViewModel>>();
                             }
                             else
                             {
@@ -237,7 +237,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         foreach (var item in task.Result.List)
                         {
-                            BindingContextPageModel.Items.Add(new Support.Presentation.Dashboard.Models.View.OverviewViewModel<Support.Presentation.Models.View.ImageViewModel>(item.ToViewModel(), true));
+                            BindingContextPageModel.Items.Add(new OverviewViewModel<ImageViewModel>(item.ToViewModel(), true));
                         }
 
                         BindingContextPageModel.HasMoreItems = task.Result.HasNext && task.Result.List.Count > 0;
