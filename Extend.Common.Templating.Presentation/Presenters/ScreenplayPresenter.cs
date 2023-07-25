@@ -76,6 +76,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         public void PresentInterventionPlacards(PlacardViewModel[] placards)
         {
+            if (suspended) throw new System.InvalidOperationException();
+
             SuspendPresentation();
 
             interventionPresenter = new ScreenplayPresenter(container, placardViewModelToPresentationViewFunction, placards, transitionProvider, InterventionPlacardsPresentationCompleted_Callback, false, null);
