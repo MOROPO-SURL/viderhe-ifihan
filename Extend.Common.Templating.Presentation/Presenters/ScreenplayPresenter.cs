@@ -316,12 +316,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
             currentPlacardFrameView.PresentationComplete -= PlacardPresentationView_PresentationComplete;
 
-            container.Children.Remove(currentPlacardFrameView);
-
-            if (currentPlacardFrameView is System.IDisposable)
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
-                (currentPlacardFrameView as System.IDisposable).Dispose();
-            }
+                container.Children.Remove(currentPlacardFrameView);
+
+                if (currentPlacardFrameView is System.IDisposable)
+                {
+                    (currentPlacardFrameView as System.IDisposable).Dispose();
+                }
+            });
         }
 
         public void ResumePresentation()
