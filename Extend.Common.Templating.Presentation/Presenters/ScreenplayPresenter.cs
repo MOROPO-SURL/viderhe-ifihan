@@ -59,7 +59,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         public void RequestPresentNextFrame()
         {
-            PresentNextPlacardPresentationView();
+            if (suspended && interventionPresenter != null) InterventionPlacardsPresentationCompleted_Callback();
+            else PresentNextPlacardPresentationView();
         }
 
         public void RequestPresentPreviousFrame()
