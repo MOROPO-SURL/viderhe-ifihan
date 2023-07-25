@@ -37,6 +37,8 @@
 
         public string TargetIdentityLastName { get => targetIdentityLastName; set => SetProperty(ref targetIdentityLastName, value); }
 
+        public System.Guid? TargetIdentityImageId { get; set; }
+
         public Xamarin.Forms.ImageSource TargetIdentityImageSource { get => targetIdentityImageSource; set => SetProperty(ref targetIdentityImageSource, value); }
 
         public string TargetIdentityImageContentType { get; set; }
