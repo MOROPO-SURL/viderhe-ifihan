@@ -27,16 +27,18 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
         {
             BindingContextPageModel.IsBusy = true;
 
-            var targetImageViewModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Presentation.Models.View.ImageViewModel;
+            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.OverviewViewModel<Presentation.Models.View.ImageViewModel>;
 
-            imagePickedCallbackAction.Invoke(targetImageViewModel);
+            imagePickedCallbackAction.Invoke(targetModel.Presented);
 
             this.NavigationPopPageAsync();
         }
 
         private void ImageOverviewDetailButton_Clicked(object sender, System.EventArgs e)
         {
-            this.NavigationPushPageAsync(new ImageDetailPage((sender as Xamarin.Forms.BindableObject).BindingContext as Presentation.Models.View.ImageViewModel));
+            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.OverviewViewModel<Presentation.Models.View.ImageViewModel>;
+
+            this.NavigationPushPageAsync(new ImageDetailPage(targetModel.Presented));
         }
 
         private void LoadNextPageButtton_Clicked(object sender, System.EventArgs eventArgs)
@@ -154,9 +156,9 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                         }
 
                         BindingContextPageModel.HasMoreItems = task.Result.HasNext && task.Result.List.Count > 0;
-
-                        BindingContextPageModel.IsBusy = false;
                     }
+
+                    BindingContextPageModel.IsBusy = false;
                 });
             });
         }
