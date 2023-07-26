@@ -504,12 +504,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             BindingContextPageModel.IsBusy = true;
 
-            System.Threading.Tasks.Task.Run(async () =>
-            {
-                var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
+            var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
-                return await client.GetPaginateAsync();
-            }).ContinueWith(task =>
+            client.GetPaginateAsync().ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
