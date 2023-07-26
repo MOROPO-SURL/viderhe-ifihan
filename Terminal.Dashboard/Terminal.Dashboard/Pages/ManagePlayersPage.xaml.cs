@@ -55,7 +55,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerPresentNextFrameAsync(model.Id).ContinueWith(hubTask =>
+            Hubs.Client.DashboardHubClient.Instance.RequestPlayerPresentNextFrameAsync(new Models.View.PlayerViewModel[] { model }).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -74,7 +74,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerPresentPreviousFrameAsync(model.Id).ContinueWith(hubTask =>
+            Hubs.Client.DashboardHubClient.Instance.RequestPlayerPresentPreviousFrameAsync(new Models.View.PlayerViewModel[] { model }).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -100,7 +100,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerSetAudioEnabledAsync(model.Id, !model.AudioEnabled).ContinueWith(hubTask =>
+            Hubs.Client.DashboardHubClient.Instance.RequestPlayerSetAudioEnabledAsync(new Models.View.PlayerViewModel[] { model }, !model.AudioEnabled).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -117,7 +117,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerAudioVolumeChangeAsync(model.Id, model.AudioLevel + 10).ContinueWith(hubTask =>
+            Hubs.Client.DashboardHubClient.Instance.RequestPlayerAudioVolumeChangeAsync(new Models.View.PlayerViewModel[] { model }, model.AudioLevel + 10).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -134,7 +134,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerAudioVolumeChangeAsync(model.Id, model.AudioLevel - 10).ContinueWith(hubTask =>
+            Hubs.Client.DashboardHubClient.Instance.RequestPlayerAudioVolumeChangeAsync(new Models.View.PlayerViewModel[] { model }, model.AudioLevel - 10).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -161,7 +161,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (!confirmationDialogTask.Result) return;
 
-                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerTerminateAsync(model.Id, true).ContinueWith(hubTask =>
+                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerTerminateAsync(new Models.View.PlayerViewModel[] { model }, true).ContinueWith(hubTask =>
                             {
                                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -186,7 +186,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (!confirmationDialogTask.Result) return;
 
-                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerTerminateAsync(model.Id, false).ContinueWith(hubTask =>
+                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerTerminateAsync(new Models.View.PlayerViewModel[] { model }, false).ContinueWith(hubTask =>
                             {
                                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -226,7 +226,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (!confirmationDialogTask.Result) return;
 
-                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerCloseAsync(model.Id, true).ContinueWith(hubTask =>
+                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerCloseAsync(new Models.View.PlayerViewModel[] { model }, true).ContinueWith(hubTask =>
                             {
                                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -251,7 +251,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (!confirmationDialogTask.Result) return;
 
-                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerCloseAsync(model.Id, false).ContinueWith(hubTask =>
+                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerCloseAsync(new Models.View.PlayerViewModel[] { model }, false).ContinueWith(hubTask =>
                             {
                                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -285,7 +285,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 if (task.Result == SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerRestartScreenplayAsync(model.Id, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
+                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerRestartScreenplayAsync(new Models.View.PlayerViewModel[] { model }, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -302,7 +302,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 if (task.Result == SCREENPLAY_HANDLING_MODE_IMMEDIATELY)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerRestartScreenplayAsync(model.Id, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
+                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerRestartScreenplayAsync(new Models.View.PlayerViewModel[] { model }, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -334,7 +334,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 if (task.Result == SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(model.Id, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
+                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(new Models.View.PlayerViewModel[] { model }, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -351,7 +351,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 if (task.Result == SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(model.Id, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
+                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(new Models.View.PlayerViewModel[] { model }, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -368,7 +368,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 if (task.Result == SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(model.Id, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
+                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(new Models.View.PlayerViewModel[] { model }, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -385,7 +385,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 if (task.Result == SCREENPLAY_HANDLING_MODE_IMMEDIATELY)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(model.Id, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
+                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(new Models.View.PlayerViewModel[] { model }, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -478,7 +478,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    Hubs.Client.DashboardHubClient.Instance.PlayerPresentInterventionPlacardAsync((param as Models.View.PlayerViewModel).Id, target.Id).ContinueWith(hubTask =>
+                    Hubs.Client.DashboardHubClient.Instance.PlayerPresentInterventionPlacardAsync(new Models.View.PlayerViewModel[] { param as Models.View.PlayerViewModel }, target.Id).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -528,6 +528,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 About = model.About,
                                 Screenplay = model.Screenplay,
                                 IsConnected = model.IsConnected,
+                                IsEnabled = model.IsConnected,
                                 AudioLevel = model.AudioLevel,
                                 AudioEnabled = model.AudioEnabled,
                                 OverlayId = model.OverlayId,

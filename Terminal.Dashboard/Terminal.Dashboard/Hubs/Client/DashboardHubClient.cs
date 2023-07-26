@@ -39,6 +39,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
             connection.On<string>(nameof(OnPlayerDisconnectedAsync), OnPlayerDisconnectedAsync);
             connection.On<string, System.Guid>(nameof(OnPlayingPlacardAsync), OnPlayingPlacardAsync);
             connection.On<string, int, bool>(nameof(OnPlayerUpdateEnvironmentConfigurationAsync), OnPlayerUpdateEnvironmentConfigurationAsync);
+            connection.On<string, bool>(nameof(OnPlayerActionRequestResultAsync), OnPlayerActionRequestResultAsync);
         }
 
         public void GetReady(System.Collections.ObjectModel.ObservableCollection<Models.View.PlayerViewModel> players)
@@ -51,61 +52,85 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
             }
         }
 
-        public async System.Threading.Tasks.Task RequestPlayerPresentNextFrameAsync(string playerId)
+        public async System.Threading.Tasks.Task RequestPlayerPresentNextFrameAsync(Models.View.PlayerViewModel[] players)
         {
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentNextFrame), playerId);
+            DisablePlayers(players);
+
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentNextFrame), players.Select(item => item.Id).ToArray());
         }
 
-        public async System.Threading.Tasks.Task RequestPlayerPresentPreviousFrameAsync(string playerId)
+        public async System.Threading.Tasks.Task RequestPlayerPresentPreviousFrameAsync(Models.View.PlayerViewModel[] players)
         {
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentPreviousFrame), playerId);
+            DisablePlayers(players);
+
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentPreviousFrame), players.Select(item => item.Id).ToArray());
         }
 
-        public async System.Threading.Tasks.Task PlayerPresentInterventionScreenplayAsync(string playerId, System.Guid screenplayId)
+        public async System.Threading.Tasks.Task PlayerPresentInterventionScreenplayAsync(Models.View.PlayerViewModel[] players, System.Guid screenplayId)
         {
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentInterventionScreenplay), playerId, screenplayId);
+            DisablePlayers(players);
+
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentInterventionScreenplay), players.Select(item => item.Id).ToArray(), screenplayId);
         }
 
-        public async System.Threading.Tasks.Task PlayerPresentInterventionPlacardAsync(string playerId, System.Guid placardId)
+        public async System.Threading.Tasks.Task PlayerPresentInterventionPlacardAsync(Models.View.PlayerViewModel[] players, System.Guid placardId)
         {
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentInterventionPlacard), playerId, placardId);
+            DisablePlayers(players);
+
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentInterventionPlacard), players.Select(item => item.Id).ToArray(), placardId);
         }
 
-        public async System.Threading.Tasks.Task RequestPlayerRestartScreenplayAsync(string playerId, ScreenplayHandlingImmediacyMode immediacyMode)
+        public async System.Threading.Tasks.Task RequestPlayerRestartScreenplayAsync(Models.View.PlayerViewModel[] players, ScreenplayHandlingImmediacyMode immediacyMode)
         {
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerRestarScreenplay), playerId, immediacyMode);
+            DisablePlayers(players);
+
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerRestartScreenplay), players.Select(item => item.Id).ToArray(), immediacyMode);
         }
 
-        public async System.Threading.Tasks.Task RequestPlayerReloadScreenplayAsync(string playerId, ScreenplayHandlingImmediacyMode immediacyMode)
+        public async System.Threading.Tasks.Task RequestPlayerReloadScreenplayAsync(Models.View.PlayerViewModel[] players, ScreenplayHandlingImmediacyMode immediacyMode)
         {
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerReloadScreenplay), playerId, immediacyMode);
+            DisablePlayers(players);
+
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerReloadScreenplay), players.Select(item => item.Id).ToArray(), immediacyMode);
         }
 
-        public async System.Threading.Tasks.Task RequestPlayerSetAudioEnabledAsync(string playerId, bool enabled)
+        public async System.Threading.Tasks.Task RequestPlayerSetAudioEnabledAsync(Models.View.PlayerViewModel[] players, bool enabled)
         {
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerSetAudioEnabled), playerId, enabled);
+            DisablePlayers(players);
+
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerSetAudioEnabled), players.Select(item => item.Id).ToArray(), enabled);
         }
 
-        public async System.Threading.Tasks.Task RequestPlayerAudioVolumeChangeAsync(string playerId, int percent)
+        public async System.Threading.Tasks.Task RequestPlayerAudioVolumeChangeAsync(Models.View.PlayerViewModel[] players, int percent)
         {
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerSetAudioLevel), playerId, percent);
+            DisablePlayers(players);
+
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerSetAudioLevel), players.Select(item => item.Id).ToArray(), percent);
         }
 
-        public async System.Threading.Tasks.Task RequestPlayerCloseAsync(string playerId, bool restart)
+        public async System.Threading.Tasks.Task RequestPlayerCloseAsync(Models.View.PlayerViewModel[] players, bool restart)
         {
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerClose), playerId, restart);
+            DisablePlayers(players);
+
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerClose), players.Select(item => item.Id).ToArray(), restart);
         }
 
-        public async System.Threading.Tasks.Task RequestPlayerTerminateAsync(string playerId, bool restart)
+        public async System.Threading.Tasks.Task RequestPlayerTerminateAsync(Models.View.PlayerViewModel[] players, bool restart)
         {
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerShutdown), playerId, restart);
+            DisablePlayers(players);
+
+            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerShutdown), players.Select(item => item.Id).ToArray(), restart);
         }
 
         public System.Threading.Tasks.Task OnPlayerConnectedAsync(string playerId)
         {
             try
             {
-                players.First(m => m.Id == playerId).IsConnected = true;
+                var player = players.First(m => m.Id == playerId);
+
+                player.IsConnected = true;
+
+                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(3)).ContinueWith(_ => player.IsEnabled = true);
             }
             catch { }
 
@@ -116,7 +141,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
         {
             try
             {
-                players.First(m => m.Id == playerId).IsConnected = false;
+                var player = players.First(m => m.Id == playerId);
+
+                player.IsConnected = false;
+                player.IsEnabled = false;
             }
             catch { }
 
@@ -140,6 +168,26 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
         public System.Threading.Tasks.Task OnPlayingPlacardAsync(string playerId, System.Guid placardId)
         {
             return System.Threading.Tasks.Task.CompletedTask;
+        }
+
+
+        public System.Threading.Tasks.Task OnPlayerActionRequestResultAsync(string playerId, bool success)
+        {
+            try
+            {
+                players.First(m => m.Id == playerId).IsEnabled = true;
+            }
+            catch { }
+
+            return System.Threading.Tasks.Task.CompletedTask;
+        }
+
+        private void DisablePlayers(Models.View.PlayerViewModel[] players)
+        {
+            foreach (var item in players)
+            {
+                item.IsEnabled = false;
+            }
         }
 
         #region IDisposable Support

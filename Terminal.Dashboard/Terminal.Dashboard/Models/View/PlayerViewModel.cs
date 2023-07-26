@@ -3,6 +3,7 @@
     public class PlayerViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
     {
         private bool isConnected;
+        private bool isEnabled;
         private int audioLevel;
         private bool audioEnabled;
 
@@ -15,6 +16,8 @@
         public Cloud.Api.Common.Models.ScreenplayDisplayModel Screenplay { get; set; }
 
         public bool IsConnected { get => isConnected; set => SetProperty(ref isConnected, value); }
+
+        public bool IsEnabled { get => isEnabled; set => SetProperty(ref isEnabled, value); }
 
         public int AudioLevel { get => audioLevel; set => SetProperty(ref audioLevel, value); }
 
