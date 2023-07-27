@@ -25,6 +25,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
 
         private System.Collections.ObjectModel.ObservableCollection<Models.View.PlayerViewModel> players;
 
+        private System.Action playerConnectionStatusChangeCallbackAction;
+
         public DashboardHubClient()
         {
             connection = new HubConnectionBuilder()
@@ -42,9 +44,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
             connection.On<string, bool>(nameof(OnPlayerActionRequestResultAsync), OnPlayerActionRequestResultAsync);
         }
 
-        public void GetReady(System.Collections.ObjectModel.ObservableCollection<Models.View.PlayerViewModel> players)
+        public void GetReady(System.Collections.ObjectModel.ObservableCollection<Models.View.PlayerViewModel> players, System.Action playerConnectionStatusChangeCallbackAction)
         {
             this.players = players;
+            this.playerConnectionStatusChangeCallbackAction = playerConnectionStatusChangeCallbackAction;
 
             if (connection.State == HubConnectionState.Disconnected)
             {
@@ -130,7 +133,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
 
                 player.IsConnected = true;
 
-                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(3)).ContinueWith(_ => player.IsEnabled = true);
+                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(3)).ContinueWith(_ =>
+                {
+                    player.IsEnabled = true;
+
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(playerConnectionStatusChangeCallbackAction);
+                });
             }
             catch { }
 
@@ -145,6 +153,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
 
                 player.IsConnected = false;
                 player.IsEnabled = false;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(playerConnectionStatusChangeCallbackAction);
             }
             catch { }
 
@@ -204,6 +214,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
 
                 // TODO: libere los recursos no administrados (objetos no administrados) y reemplace el siguiente finalizador.
                 // TODO: configure los campos grandes en nulos.
+
+                playerConnectionStatusChangeCallbackAction = null;
 
                 connection.Remove(nameof(OnPlayerConnectedAsync));
                 connection.Remove(nameof(OnPlayerDisconnectedAsync));

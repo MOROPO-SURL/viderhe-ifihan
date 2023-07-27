@@ -237,7 +237,7 @@
                                     AlignContent="Start"
                                     BindableLayout.ItemsSource="{Binding Path=Tags}">
                                     <BindableLayout.EmptyView>
-                                        <Label Margin="5" Text="Sin elementos que mostrar" />
+                                        <Label Margin="6" Text="Sin elementos que mostrar" />
                                     </BindableLayout.EmptyView>
                                     <BindableLayout.ItemTemplate>
                                         <DataTemplate>
