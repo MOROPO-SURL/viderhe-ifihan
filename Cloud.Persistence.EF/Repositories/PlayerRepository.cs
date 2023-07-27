@@ -15,7 +15,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
                 .Include(entity => entity.Account).ThenInclude(entity => entity.HorizontalSplash)
                 .Include(entity => entity.Account).ThenInclude(entity => entity.ExtensionBridges)
                 .Include(entity => entity.Screenplay).ThenInclude(entity => entity.Frames).ThenInclude(entity => entity.Placard).ThenInclude(entity => entity.Template)
-                .Include(entity => entity.ScheduledRelaunches);
+                .Include(entity => entity.ScheduledRelaunches)
+                .Include(entity => entity.TagBridges).ThenInclude(bridge => bridge.Tag);
         }
 
         public override System.Func<Entities.Player, object> GetPagingOrderSelector()

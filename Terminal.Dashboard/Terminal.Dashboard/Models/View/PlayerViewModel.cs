@@ -26,5 +26,7 @@
         public System.Guid? OverlayId { get; set; }
 
         public string SerializedOverlayContext { get; set; }
+
+        public Cloud.Api.Common.Models.TagDisplayModel[] Tags { get; set; }
     }
 }

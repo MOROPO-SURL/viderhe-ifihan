@@ -8,6 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
         public Player()
         {
             ScheduledRelaunches = new System.Collections.Generic.List<ScheduledRelaunch>();
+            TagBridges = new System.Collections.Generic.List<PlayerTagBridge>();
         }
 
         [Key, RegularExpression(@"^[0-9A-Z]{7}$")]
@@ -36,6 +37,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
         public string Signature { get; set; }
 
         public System.Collections.Generic.List<ScheduledRelaunch> ScheduledRelaunches { get; set; }
+
+        public System.Collections.Generic.List<PlayerTagBridge> TagBridges { get; set; }
 
         public object GetSignableEntityModel()
         {

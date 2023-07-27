@@ -1190,6 +1190,23 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                     b.ToTable("placardsoundbridges");
                 });
 
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.PlacardTagBridge", b =>
+                {
+                    b.Property<Guid>("PlacardId")
+                        .HasColumnName("placardid");
+
+                    b.Property<Guid>("TagId")
+                        .HasColumnName("tagid");
+
+                    b.HasKey("PlacardId", "TagId")
+                        .HasName("pk_placardtagbridges");
+
+                    b.HasIndex("TagId")
+                        .HasName("ix_placardtagbridges_tagid");
+
+                    b.ToTable("placardtagbridges");
+                });
+
             modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.PlacardVideoBridge", b =>
                 {
                     b.Property<Guid>("PlacardId")
@@ -1249,6 +1266,23 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .HasName("ix_players_screenplayid");
 
                     b.ToTable("players");
+                });
+
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.PlayerTagBridge", b =>
+                {
+                    b.Property<string>("PlayerId")
+                        .HasColumnName("playerid");
+
+                    b.Property<Guid>("TagId")
+                        .HasColumnName("tagid");
+
+                    b.HasKey("PlayerId", "TagId")
+                        .HasName("pk_playertagbridges");
+
+                    b.HasIndex("TagId")
+                        .HasName("ix_playertagbridges_tagid");
+
+                    b.ToTable("playertagbridges");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.ScheduledRelaunch", b =>
@@ -1337,6 +1371,38 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .HasName("ix_sounds_thumbnailid");
 
                     b.ToTable("sounds");
+                });
+
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Tag", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id");
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnName("accountid");
+
+                    b.Property<string>("Color")
+                        .HasColumnName("color");
+
+                    b.Property<int>("Group")
+                        .HasColumnName("group");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnName("name");
+
+                    b.HasKey("Id")
+                        .HasName("pk_tags");
+
+                    b.HasIndex("AccountId")
+                        .HasName("ix_tags_accountid");
+
+                    b.HasIndex("Group", "Name", "AccountId")
+                        .IsUnique()
+                        .HasName("ix_tags_group_name_accountid");
+
+                    b.ToTable("tags");
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Template", b =>
@@ -1960,6 +2026,21 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.PlacardTagBridge", b =>
+                {
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Placard", "Placard")
+                        .WithMany("TagBridges")
+                        .HasForeignKey("PlacardId")
+                        .HasConstraintName("fk_placardtagbridges_placards_placardid")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Tag", "Tag")
+                        .WithMany()
+                        .HasForeignKey("TagId")
+                        .HasConstraintName("fk_placardtagbridges_tags_tagid")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.PlacardVideoBridge", b =>
                 {
                     b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Placard", "Placard")
@@ -1995,6 +2076,21 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .OnDelete(DeleteBehavior.SetNull);
                 });
 
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.PlayerTagBridge", b =>
+                {
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Player", "Player")
+                        .WithMany("TagBridges")
+                        .HasForeignKey("PlayerId")
+                        .HasConstraintName("fk_playertagbridges_players_playerid")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Tag", "Tag")
+                        .WithMany()
+                        .HasForeignKey("TagId")
+                        .HasConstraintName("fk_playertagbridges_tags_tagid")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.ScheduledRelaunch", b =>
                 {
                     b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Player", "Player")
@@ -2019,6 +2115,15 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Migrations
                         .WithMany()
                         .HasForeignKey("ThumbnailId")
                         .HasConstraintName("fk_sounds_thumbnails_thumbnailid");
+                });
+
+            modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Tag", b =>
+                {
+                    b.HasOne("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Account", "Account")
+                        .WithMany()
+                        .HasForeignKey("AccountId")
+                        .HasConstraintName("fk_tags_accounts_accountid")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities.Template", b =>

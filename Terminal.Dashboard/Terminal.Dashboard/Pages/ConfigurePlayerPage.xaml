@@ -52,7 +52,7 @@
     <ContentPage.Content>
         <Grid>
             <supportpresentationdashboardviews:BackgroundView />
-            <ScrollView>
+            <ScrollView Orientation="Vertical">
                 <Grid 
                     Margin="10,0,10,10"
                     ColumnSpacing="10" RowSpacing="10">
@@ -62,6 +62,7 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -165,7 +166,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3"
+                        Grid.ColumnSpan="3" Grid.Row="3"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label 
@@ -200,7 +201,64 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4"
+                        Grid.ColumnSpan="3" Grid.Row="4"
+                        Style="{StaticResource FormFieldFrame}"
+                        Padding="0">
+                        <Grid>
+                            <StackLayout Margin="6">
+                                <Label
+                                    Margin="6,6,6,0"
+                                    Text="Etiquetas" 
+                                    Style="{StaticResource FormLabel}" />
+                                <BoxView
+                                    Margin="6,0"
+                                    HeightRequest="2"
+                                    Color="DimGray" />
+                                <FlexLayout
+                                    IsClippedToBounds="True"
+                                    Wrap="Wrap"
+                                    Direction="Column"
+                                    AlignItems="Center"
+                                    AlignContent="Start"
+                                    BindableLayout.ItemsSource="{Binding Path=Tags}">
+                                    <BindableLayout.EmptyView>
+                                        <Label Margin="5" Text="Sin elementos que mostrar" />
+                                    </BindableLayout.EmptyView>
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid
+                                                BackgroundColor="{StaticResource AccentColor}"
+                                                Margin="6" Padding="8">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Column="0"
+                                                    Margin="4,0,0,0"
+                                                    VerticalOptions="Center"
+                                                    Text="{Binding Path=Name}"
+                                                    TextColor="White" />
+                                                <Button
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource TextIconButton}"
+                                                    VerticalOptions="Center"
+                                                    Text="&#xFA78;"
+                                                    TextColor="White"
+                                                    Clicked="RemoveTagButton_Clicked" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </FlexLayout>
+                            </StackLayout>
+                            <Button
+                                HorizontalOptions="End" VerticalOptions="Start"
+                                Text="Agregar"
+                                Clicked="AddTagButton_Clicked" />
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.ColumnSpan="3" Grid.Row="5"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Descripción" Style="{StaticResource FormLabel}" />

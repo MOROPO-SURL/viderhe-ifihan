@@ -5,6 +5,19 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
 {
     public class Placard : MOROPO.SAPRESSC.Core.Persistence.Entities.IEntity<System.Guid>
     {
+        public Placard()
+        {
+            Id = System.Guid.NewGuid();
+
+            CreateAt = System.DateTime.Now;
+
+            ImageBridges = new List<PlacardImageBridge>();
+            VideoBridges = new List<PlacardVideoBridge>();
+            SoundBridges = new List<PlacardSoundBridge>();
+            GradientBridges = new List<PlacardGradientBridge>();
+            TagBridges = new List<PlacardTagBridge>();
+        }
+
         [Key]
         public System.Guid Id { get; set; }
 
@@ -44,16 +57,6 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
 
         public List<PlacardGradientBridge> GradientBridges { get; set; }
 
-        public Placard()
-        {
-            Id = System.Guid.NewGuid();
-
-            CreateAt = System.DateTime.Now;
-
-            ImageBridges = new List<PlacardImageBridge>();
-            VideoBridges = new List<PlacardVideoBridge>();
-            SoundBridges = new List<PlacardSoundBridge>();
-            GradientBridges = new List<PlacardGradientBridge>();
-        }
+        public List<PlacardTagBridge> TagBridges { get; set; }
     }
 }

@@ -529,7 +529,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 AudioLevel = model.AudioLevel,
                                 AudioEnabled = model.AudioEnabled,
                                 OverlayId = model.OverlayId,
-                                SerializedOverlayContext = model.SerializedOverlayContext
+                                SerializedOverlayContext = model.SerializedOverlayContext,
+                                Tags = model.Tags
                             });
                         }
 
