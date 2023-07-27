@@ -29,6 +29,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public bool AudioEnabled { get; set; }
 
+        public TagDisplayModel[] Tags { get; set; }
+
         public void Import(Persistence.Entities.Player entity)
         {
             Id = entity.Id;
@@ -36,6 +38,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
             About = entity.About;
             OverlayId = entity.OverlayId;
             SerializedOverlayContext = entity.SerializedOverlayContext;
+            Tags = entity.TagBridges.Select(bridge => new TagDisplayModel
+            {
+                Id = bridge.TagId,
+                Name = bridge.Tag.Name,
+                Group = bridge.Tag.Group,
+                Color = bridge.Tag.Color
+            }).ToArray();
 
             if (entity.Screenplay == null) return;
 

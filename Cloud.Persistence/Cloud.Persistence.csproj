@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SAPRESSC.Middleware.Security.Essential.Persistence" Version="2.2.6.6" />
-    <PackageReference Include="SAPRESSC.Middleware.Identity.Persistence" Version="2.2.6.6" />
+    <PackageReference Include="SAPRESSC.Middleware.Security.Essential.Persistence" Version="2.2.9" />
+    <PackageReference Include="SAPRESSC.Middleware.Identity.Persistence" Version="2.2.9" />
   </ItemGroup>
 
   <ItemGroup>
