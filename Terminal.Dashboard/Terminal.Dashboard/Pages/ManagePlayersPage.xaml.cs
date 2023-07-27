@@ -5,7 +5,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
     public partial class ManagePlayersPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManagePlayersPageModel>
     {
-        private const string SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE = "Completado el Marco Actual";
+        private const string SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE = "Completado el Cartel Actual";
         private const string SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE = "Completado el Ciclo Actual";
         private const string SCREENPLAY_HANDLING_MODE_IMMEDIATELY = "Inmediatamente";
 
@@ -78,7 +78,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Siguiente Marco", "Solicitud de reproducción de siguiente marco enviada con éxito.");
+                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Siguiente Cartel", "Solicitud de reproducción de siguiente cartel enviada con éxito.");
                 });
             });
         }
@@ -97,7 +97,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Marco Anterior", "Solicitud de reproducción de marco anterior enviada con éxito.");
+                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Cartel Anterior", "Solicitud de reproducción de cartel anterior enviada con éxito.");
                 });
             });
         }
@@ -308,7 +308,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion cuando termine el marco actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion cuando termine el cartel actual enviada con éxito.");
                         });
                     });
 
@@ -374,7 +374,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el marco actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el cartel actual enviada con éxito.");
                         });
                     });
 
@@ -443,7 +443,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Siguiente Marco", "Solicitud de reproducción de siguiente marco enviada con éxito.");
+                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Siguiente Cartel", "Solicitud de reproducción de siguiente cartel enviada con éxito.");
                 });
             });
         }
@@ -469,7 +469,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Marco Anterior", "Solicitud de reproducción de marco anterior enviada con éxito.");
+                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Cartel Anterior", "Solicitud de reproducción de cartel anterior enviada con éxito.");
                 });
             });
         }
@@ -685,7 +685,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion cuando termine el marco actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion cuando termine el cartel actual enviada con éxito.");
                         });
                     });
 
@@ -758,7 +758,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el marco actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el cartel actual enviada con éxito.");
                         });
                     });
 
@@ -872,7 +872,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Intervenir", "Solicitud de intervención con marco enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Intervenir", "Solicitud de intervención con cartel enviada con éxito.");
                         });
                     });
                 });
@@ -895,7 +895,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Intervenir", "Solicitud de intervención con marco enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Intervenir", "Solicitud de intervención con cartel enviada con éxito.");
                         });
                     });
                 });
