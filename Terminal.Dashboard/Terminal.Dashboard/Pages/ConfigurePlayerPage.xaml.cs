@@ -9,9 +9,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         Contract.IOverlayContextConfigurationPage
     {
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+        private readonly bool editing;
 
         private bool pageModelHasChanges;
-        private readonly bool editing;
+        private Models.View.PlayerViewModel model;
         private Extend.Common.Overlaying.Descriptors.IOverlayDescriptor recoverableOverlay;
         private string recoverableSerializedOverlayContext;
 
@@ -24,6 +25,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             InitializeComponent();
 
+            this.model = model;
             this.successCallbackAction = successCallbackAction;
 
             editing = model != null;
@@ -37,6 +39,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             else
             {
                 Title = "Agregar Reproductor";
+
+                ProgramRelaunchToolbarItem.IsEnabled = false;
             }
 
             BindingContextPageModel.PropertyChanged += PageModel_PropertyChanged;
@@ -246,6 +250,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as Cloud.Api.Common.Models.TagDisplayModel));
             });
+        }
+
+        private void ProgramRelaunchToolbarItem_Clicked(object sender, System.EventArgs e)
+        {
+            this.NavigationPushPageAsync(new ManagePlayerScheduledRelaunchsPage(model));
         }
 
         private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
