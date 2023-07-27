@@ -36,57 +36,68 @@
                         Text="Nombre" />
                     <Entry Text="{Binding Path=Name}" />
                 </StackLayout>
-                <Grid>
-                    <StackLayout Margin="6,0">
-                        <Label
-                            Text="Etiquetas" 
-                            Style="{StaticResource FormLabel}" />
-                        <BoxView
-                            HeightRequest="2"
-                            Color="DimGray" />
-                        <FlexLayout
-                            IsClippedToBounds="True"
-                            Wrap="Wrap"
-                            Direction="Column"
-                            AlignItems="Center"
-                            AlignContent="Start"
-                            BindableLayout.ItemsSource="{Binding Path=Tags}">
-                            <BindableLayout.EmptyView>
-                                <Label Margin="6" Text="Sin elementos que mostrar" />
-                            </BindableLayout.EmptyView>
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid
-                                        BackgroundColor="{StaticResource AccentColor}"
-                                        Margin="6" Padding="8">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Label
-                                            Grid.Column="0"
-                                            Margin="4,0,0,0"
-                                            VerticalOptions="Center"
-                                            Text="{Binding Path=Name}"
-                                            TextColor="White" />
-                                        <Button
-                                            Grid.Column="1"
-                                            Style="{StaticResource TextIconButton}"
-                                            VerticalOptions="Center"
-                                            Text="&#xFA78;"
-                                            TextColor="White"
-                                            Clicked="RemoveTagButton_Clicked" />
-                                    </Grid>
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
-                        </FlexLayout>
-                    </StackLayout>
+                <Grid Margin="6,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0" Grid.Row="0"
+                        VerticalOptions="End"
+                        Text="Etiquetas" 
+                        Style="{StaticResource FormLabel}" />
                     <Button
-                        HorizontalOptions="End" VerticalOptions="Start"
+                        Grid.Column="1" Grid.Row="0"
                         Text="Agregar"
                         Clicked="AddTagButton_Clicked" />
+                    <BoxView
+                        Grid.ColumnSpan="2" Grid.Row="1"
+                        HeightRequest="2"
+                        Color="DimGray" />
+                    <FlexLayout
+                        Grid.ColumnSpan="2" Grid.Row="2"
+                        IsClippedToBounds="True"
+                        Wrap="Wrap"
+                        Direction="Column"
+                        AlignItems="Center"
+                        AlignContent="Start"
+                        BindableLayout.ItemsSource="{Binding Path=Tags}">
+                        <BindableLayout.EmptyView>
+                            <Label Margin="6" Text="Sin elementos que mostrar" />
+                        </BindableLayout.EmptyView>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    BackgroundColor="{StaticResource AccentColor}"
+                                    Margin="6" Padding="8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Column="0"
+                                        Margin="4,0,0,0"
+                                        VerticalOptions="Center"
+                                        Text="{Binding Path=Name}"
+                                        TextColor="White" />
+                                    <Button
+                                        Grid.Column="1"
+                                        Style="{StaticResource TextIconButton}"
+                                        VerticalOptions="Center"
+                                        Text="&#xFA78;"
+                                        TextColor="White"
+                                        Clicked="RemoveTagButton_Clicked" />
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
                 </Grid>
-                <Grid Margin="0,6,0,0">
+                <Grid Margin="0,12,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
