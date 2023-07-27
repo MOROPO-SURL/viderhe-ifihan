@@ -14,6 +14,7 @@
         ManageScreenplays,
         ManageSounds,
         ManageGradients,
-        ManageTexts
+        ManageTexts,
+        ManageTags
     }
 }
