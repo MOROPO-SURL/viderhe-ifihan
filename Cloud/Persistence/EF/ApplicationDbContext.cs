@@ -63,6 +63,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF
 
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Player> Players { get; set; }
+        public DbSet<PlayerTagBridge> PlayerTagBridges { get; set; }
         public DbSet<Template> Templates { get; set; }
         public DbSet<Sound> Sounds { get; set; }
         public DbSet<Gradient> Gradients { get; set; }
@@ -73,6 +74,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF
         public DbSet<PlacardVideoBridge> PlacardVideoBridges { get; set; }
         public DbSet<PlacardSoundBridge> PlacardSoundBridges { get; set; }
         public DbSet<PlacardGradientBridge> PlacardGradientBridges { get; set; }
+        public DbSet<PlacardTagBridge> PlacardTagBridges { get; set; }
         public DbSet<Moderator> Moderators { get; set; }
         public DbSet<Transition> Transitions { get; set; }
         public DbSet<Overlay> Overlays { get; set; }
@@ -85,5 +87,6 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF
         public DbSet<AccountGradientBridge> AccountGradientBridges { get; set; }
         public DbSet<AccountTextBridge> AccountTextBridges { get; set; }
         public DbSet<ScheduledRelaunch> ScheduledRelaunches { get; set; }
+        public DbSet<Tag> Tags { get; set; }
     }
 }

@@ -2,11 +2,9 @@
 <sscxftoolkitmvvmpages:ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:views="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views"
-    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
-    mc:Ignorable="d"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm" 
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.ImageDetailPage"
     Title="Detalles de la Imagen">
     <ContentPage.ToolbarItems>
@@ -26,7 +24,12 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid BackgroundColor="Black">
-            <Image Source="{Binding Converter={StaticResource ImageViewModelToImageSourceConverter}}" />
+            <ffimageloadingforms:CachedImage 
+                Grid.Row="0" Grid.Column="0"
+                BackgroundColor="Black"
+                Source="{Binding Converter={StaticResource ImageViewModelToImageSourceConverter}}"
+                CacheType="Disk"
+                CacheDuration="8760:00:00" />
             <views:ImageDetailView />
         </Grid>
     </ContentPage.Content>

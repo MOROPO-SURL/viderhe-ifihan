@@ -4,11 +4,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF</RootNamespace>
-	<Version>1.4.2</Version>
+	<Version>1.5.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SAPRESSC.Core.Persistence.EF" Version="2.2.6.6" />
+    <PackageReference Include="SAPRESSC.Core.Persistence.EF" Version="2.2.9" />
   </ItemGroup>
 
   <ItemGroup>

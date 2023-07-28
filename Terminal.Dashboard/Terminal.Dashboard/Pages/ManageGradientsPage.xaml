@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
+    xmlns:supportpresentationdashboardconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Converters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
@@ -15,7 +16,9 @@
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
-            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="10" />
+
+            <supportpresentationdashboardconverters:AllTrueMultiConverter x:Key="AllTrueMultiConverter" />
+            <supportpresentationdashboardconverters:CollectionViewWidthToSelfVerticalGridItemsLayoutConverter x:Key="CollectionViewWidthToSelfVerticalGridItemsLayoutConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="10" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -49,81 +52,81 @@
     <ContentPage.Content>
         <Grid>
             <supportpresentationdashboardviews:BackgroundView />
-            <ScrollView Orientation="Vertical">
-                <StackLayout Spacing="0">
-                    <FlexLayout
-                        Margin="5"
-                        Wrap="Wrap"
-                        AlignItems="Start" AlignContent="Start"
-                        BindableLayout.ItemsSource="{Binding Path=Items}">
-                        <BindableLayout.EmptyView>
-                            <Label
-                                IsVisible="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
-                                Margin="20"
-                                Text="Sin elementos que mostrar"
-                                TextColor="Black" />
-                        </BindableLayout.EmptyView>
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                <Frame
-                                    Margin="5" Padding="0"
-                                    BackgroundColor="White"
-                                    CornerRadius="0"
-                                    HasShadow="False"
-                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}">
-                                    <Grid RowSpacing="0">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <mg:GradientView
-                                            Grid.Row="0" Grid.Column="0"
-                                            BackgroundColor="Black"
-                                            HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-                                            GradientSource="{Binding Path=Source}" />
-                                        <StackLayout 
-                                            Grid.Row="0" Grid.Column="0"
-                                            IsVisible="{Binding Path=About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
-                                            VerticalOptions="End" 
-                                            Padding="8"
-                                            BackgroundColor="#99000000">
-                                            <Label 
-                                                Text="{Binding Path=About}"
-                                                TextColor="White"
-                                                LineBreakMode="TailTruncation" />
-                                        </StackLayout>
-                                        <StackLayout
-                                            Grid.Row="1"
-                                            Orientation="Horizontal"
-                                            Padding="6" Spacing="3">
-                                            <Button 
-                                                HorizontalOptions="EndAndExpand"
-                                                Text="Modificar"
-                                                Clicked="ItemDetailButton_Clicked" />
-                                            <Button 
-                                                BackgroundColor="IndianRed"
-                                                Text="Eliminar"
-                                                TextColor="White"
-                                                Clicked="ItemDeleteButton_Clicked" />
-                                        </StackLayout>
-                                    </Grid>
-                                </Frame>
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
-                    </FlexLayout>
-                    <Button
-                        IsVisible="{Binding Path=HasMoreItems}"
-                        IsEnabled="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
-                        Margin="5,0,5,5"
-                        HorizontalOptions="Center"
-                        Text="Mostrar más"
-                        Clicked="LoadNextPageButtton_Clicked" />
-                    <ActivityIndicator
-                        IsVisible="{Binding Path=IsBusy}"
-                        Margin="5,0,5,5"
-                        IsRunning="{Binding Path=IsBusy}" />
-                </StackLayout>
-            </ScrollView>
+            <StackLayout Spacing="0" SizeChanged="GradientCollectionWrapperStackLayout_SizeChanged">
+                <CollectionView
+                    x:Name="GradientCollectionView"
+                    SelectionMode="None"
+                    VerticalOptions="FillAndExpand"
+                    ItemsLayout="{Binding Source={x:Reference GradientCollectionView}, Path=Width, Converter={StaticResource CollectionViewWidthToSelfVerticalGridItemsLayoutConverter}}"
+                    ItemsSource="{Binding Path=Items}"
+                    Scrolled="GradientCollectionView_Scrolled">
+                    <CollectionView.Margin>
+                        <OnPlatform x:TypeArguments="Thickness" Default="5,5,5,0">
+                            <On Platform="Android" Value="10,10,10,0" />
+                        </OnPlatform>
+                    </CollectionView.Margin>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame
+                                Margin="5" Padding="0"
+                                BackgroundColor="White"
+                                CornerRadius="0"
+                                HasShadow="False">
+                                <Grid RowSpacing="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <mg:GradientView
+                                        Grid.Row="0" Grid.Column="0"
+                                        BackgroundColor="Black"
+                                        HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                        GradientSource="{Binding Path=Presented.Source}" />
+                                    <StackLayout 
+                                        Grid.Row="0" Grid.Column="0"
+                                        IsVisible="{Binding Path=Presented.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                        VerticalOptions="End" 
+                                        Padding="8"
+                                        BackgroundColor="#99000000">
+                                        <Label 
+                                            Text="{Binding Path=Presented.About}"
+                                            TextColor="White"
+                                            LineBreakMode="TailTruncation" />
+                                    </StackLayout>
+                                    <StackLayout
+                                        Grid.Row="1"
+                                        Orientation="Horizontal"
+                                        Padding="6" Spacing="3">
+                                        <Button 
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="Modificar"
+                                            BackgroundColor="LightGray"
+                                            Clicked="ItemDetailButton_Clicked" />
+                                        <Button 
+                                            BackgroundColor="IndianRed"
+                                            Text="Eliminar"
+                                            TextColor="White"
+                                            Clicked="ItemDeleteButton_Clicked" />
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Button
+                    Margin="10"
+                    HorizontalOptions="Center"
+                    Text="Mostrar más"
+                    Clicked="LoadNextPageButtton_Clicked">
+                    <Button.IsEnabled>
+                        <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                            <Binding Path="HasMoreItems" />
+                            <Binding Path="IsBusy" Converter="{StaticResource BoolToBoolNegationConverter}" />
+                        </MultiBinding>
+                    </Button.IsEnabled>
+                </Button>
+            </StackLayout>
+            <supportpresentationdashboardviews:BusyView />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>

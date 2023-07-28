@@ -2,24 +2,25 @@
 {
     public class VideoPickPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {
-        private bool hasMoreVideos;
+        private bool hasMoreItems;
+        private System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<Presentation.Models.View.VideoViewModel>> items;
 
         public VideoPickPageModel()
         {
-            Videos = new System.Collections.ObjectModel.ObservableCollection<Presentation.Models.View.VideoViewModel>();
+            Items = new System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<Presentation.Models.View.VideoViewModel>>();
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<Presentation.Models.View.VideoViewModel> Videos { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<Presentation.Models.View.VideoViewModel>> Items { get => items; set => SetProperty(ref items, value); }
 
-        public bool HasMoreVideos { get => hasMoreVideos; set => SetProperty(ref hasMoreVideos, value); }
+        public bool HasMoreItems { get => hasMoreItems; set => SetProperty(ref hasMoreItems, value); }
 
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
 
-            Videos.Clear();
+            Items.Clear();
 
-            Videos = null;
+            Items = null;
         }
     }
 }
