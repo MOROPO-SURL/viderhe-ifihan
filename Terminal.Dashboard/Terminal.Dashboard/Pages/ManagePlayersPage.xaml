@@ -22,6 +22,8 @@
             <Setter Property="HeightRequest" Value="{StaticResource ActionButtonSizeComponent}" />
         </Style>
         <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:NullToStringConverter x:Key="FilterIconNullToStringConverter" FalseValue="&#xF232;" TrueValue="&#xF233;" />
             <sscxftoolkitpresentationconverters:IfNullOrEmptyToStringConverter x:Key="StringNullOrEmptyToDefaultConverter" StringReplacement="Descripción no especificada." />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BooleanToPlayerConnectionStateGlyphIconStringConverter" FalseString="&#xf83a;" TrueString="&#xf503;" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BooleanToPlayerAudioEnablingSwichGlyphIconStringConverter" FalseString="&#xf57e;" TrueString="&#xf581;" />
@@ -29,6 +31,7 @@
             <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="275" ChildAbsoluteHorizontalMargin="10" />
 
             <supportpresentationdashboardconverters:AllTrueMultiConverter x:Key="AllTrueMultiConverter" />
+            
             <converters:IsPlayerConnectedToViewConverter x:Key="IsPlayerConnectedToViewConverter" />
             <converters:PlayerAudioLevelKnownToBooleanConverter x:Key="PlayerAudioLevelKnownToBooleanConverter" />
             <converters:PlayerAudioLevelReachedToBooleanConverter x:Key="MaxPlayerAudioLevelReachedToBooleanConverter" TargetAudioLevel="100" />
@@ -64,9 +67,104 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid>
-            <supportpresentationdashboardviews:BackgroundView />
-            <ScrollView Orientation="Vertical">
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <supportpresentationdashboardviews:BackgroundView Grid.RowSpan="2" />
+            <Grid 
+                Grid.Row="0"
+                Padding="10"
+                BackgroundColor="#a4a4a4"
+                ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>                
+                <StackLayout                                 
+                    Grid.Column="0"
+                    BackgroundColor="#ccd4eb"
+                    Orientation="Horizontal"
+                    Padding="2" Spacing="0">
+                    <Label 
+                        Margin="10,0"
+                        HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"
+                        Text="Guiones"
+                        TextColor="DimGray"
+                        FontAttributes="Bold" />
+                    <Button 
+                        IsEnabled="{Binding Path=IsBatchActionEnabled}"
+                        Text="&#xf708;"
+                        Style="{StaticResource ActionButton}"
+                        Clicked="PlayersReloadButton_Clicked" />
+                    <Button 
+                        IsEnabled="{Binding Path=IsBatchActionEnabled}"
+                        Text="&#xf4ab;"
+                        Style="{StaticResource ActionButton}"
+                        Clicked="PlayersBackwardButton_Clicked" />
+                    <Button 
+                        IsEnabled="{Binding Path=IsBatchActionEnabled}"
+                        Text="&#xf4ae;"
+                        Style="{StaticResource ActionButton}"
+                        Clicked="PlayersPreviousButton_Clicked" />
+                    <Button 
+                        IsEnabled="{Binding Path=IsBatchActionEnabled}"
+                        Text="&#xf4ad;"
+                        Style="{StaticResource ActionButton}"
+                        Clicked="PlayersNextButton_Clicked" />
+                    <Button 
+                        IsEnabled="{Binding Path=IsBatchActionEnabled}"
+                        Text="&#xF523;"
+                        Style="{StaticResource ActionButton}"
+                        Clicked="PlayersInterventionButton_Clicked" />
+                </StackLayout>
+                <StackLayout                                 
+                    Grid.Column="1"
+                    BackgroundColor="#ccd4eb"
+                    Orientation="Horizontal"
+                    Padding="2" Spacing="0">
+                    <Label 
+                        Margin="10,0"
+                        HorizontalOptions="FillAndExpand" VerticalTextAlignment="Center"
+                        Text="Pantallas"
+                        TextColor="DimGray"
+                        FontAttributes="Bold" />
+                    <Button 
+                        IsEnabled="{Binding Path=IsBatchActionEnabled}"
+                        Text="{Binding Path=IsGlobalAudioEnabled, Converter={StaticResource BooleanToPlayerAudioEnablingSwichGlyphIconStringConverter}}"
+                        Style="{StaticResource ActionButton}"
+                        Clicked="PlayersAudioEnabledSwitchButton_Clicked" />
+                    <Button 
+                        IsEnabled="{Binding Path=IsBatchActionEnabled}"
+                        Text="&#x0043;"
+                        Style="{StaticResource ActionButton}"
+                        FontFamily="Viderhe Font Icons"
+                        Clicked="PlayersCloseButton_Clicked" />
+                    <Button 
+                        IsEnabled="{Binding Path=IsBatchActionEnabled}"
+                        Text="&#xf905;"
+                        Style="{StaticResource ActionButton}"
+                        Clicked="PlayersTerminateButton_Clicked" />
+                </StackLayout>                
+                <Button 
+                    Grid.Column="3"
+                    Text="{Binding Path=Filter, Converter={StaticResource FilterIconNullToStringConverter}}"
+                    Style="{StaticResource TextIconButton}"
+                    FontSize="Medium"
+                    Clicked="RequestFilterButton_Clicked" />
+                <Button 
+                    Grid.Column="4"
+                    Text="&#xF235;"
+                    IsEnabled="{Binding Path=Filter, Converter={StaticResource NotNullToBooleanConverter}}"
+                    Style="{StaticResource TextIconButton}"
+                    FontSize="Medium"
+                    Clicked="ClearFilterButton_Clicked" />
+            </Grid>
+            <ScrollView Grid.Row="1" Orientation="Vertical">
                 <FlexLayout
                     Margin="5"
                     Wrap="Wrap"
@@ -75,7 +173,7 @@
                     <BindableLayout.EmptyView>
                         <Label
                             IsVisible="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
-                            Margin="20"
+                            Margin="10"
                             Text="Sin elementos que mostrar"
                             TextColor="Black" />
                     </BindableLayout.EmptyView>
@@ -172,30 +270,60 @@
                                         TextColor="DimGray"
                                         FontAttributes="Bold" />
                                     <Button 
-                                        IsEnabled="{Binding Path=IsConnected}"
                                         Text="&#xf708;"
                                         Style="{StaticResource ActionButton}"
-                                        Clicked="PlayerReloadButton_Clicked" />
+                                        Clicked="PlayerReloadButton_Clicked">
+                                        <Button.IsEnabled>
+                                            <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                                                <Binding Path="IsConnected" />
+                                                <Binding Path="IsEnabled" />
+                                            </MultiBinding>
+                                        </Button.IsEnabled>
+                                    </Button>
                                     <Button 
-                                        IsEnabled="{Binding Path=IsConnected}"
                                         Text="&#xf4ab;"
                                         Style="{StaticResource ActionButton}"
-                                        Clicked="PlayerBackwardButton_Clicked" />
+                                        Clicked="PlayerBackwardButton_Clicked">
+                                        <Button.IsEnabled>
+                                            <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                                                <Binding Path="IsConnected" />
+                                                <Binding Path="IsEnabled" />
+                                            </MultiBinding>
+                                        </Button.IsEnabled>
+                                    </Button>
                                     <Button 
-                                        IsEnabled="{Binding Path=IsConnected}"
                                         Text="&#xf4ae;"
                                         Style="{StaticResource ActionButton}"
-                                        Clicked="PlayerPreviousButton_Clicked"/>
+                                        Clicked="PlayerPreviousButton_Clicked">
+                                        <Button.IsEnabled>
+                                            <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                                                <Binding Path="IsConnected" />
+                                                <Binding Path="IsEnabled" />
+                                            </MultiBinding>
+                                        </Button.IsEnabled>
+                                    </Button>
                                     <Button 
-                                        IsEnabled="{Binding Path=IsConnected}"
                                         Text="&#xf4ad;"
                                         Style="{StaticResource ActionButton}"
-                                        Clicked="PlayerNextButton_Clicked" />
+                                        Clicked="PlayerNextButton_Clicked">
+                                        <Button.IsEnabled>
+                                            <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                                                <Binding Path="IsConnected" />
+                                                <Binding Path="IsEnabled" />
+                                            </MultiBinding>
+                                        </Button.IsEnabled>
+                                    </Button>
                                     <Button 
-                                        IsEnabled="{Binding Path=IsConnected}"
                                         Text="&#xF523;"
                                         Style="{StaticResource ActionButton}"
-                                        Clicked="PlayerInterventionButton_Clicked" />
+                                        Clicked="PlayerInterventionButton_Clicked">
+                                        <Button.IsEnabled>
+                                            <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                                                <Binding Path="IsConnected" />
+                                                <Binding Path="IsEnabled" />
+                                            </MultiBinding>
+                                        </Button.IsEnabled>
+                                    </Button>
                                 </StackLayout>
                                 <StackLayout                                 
                                     Grid.Column="0" Grid.Row="4"
@@ -209,10 +337,17 @@
                                         TextColor="DimGray"
                                         FontAttributes="Bold" />
                                     <Button 
-                                        IsEnabled="{Binding Path=IsConnected}"
                                         Text="{Binding Path=AudioEnabled, Converter={StaticResource BooleanToPlayerAudioEnablingSwichGlyphIconStringConverter}}"
                                         Style="{StaticResource ActionButton}"
-                                        Clicked="PlayerAudioEnabledSwitchButton_Clicked" />
+                                        Clicked="PlayerAudioEnabledSwitchButton_Clicked">
+                                        <Button.IsEnabled>
+                                            <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                                                <Binding Path="IsConnected" />
+                                                <Binding Path="IsEnabled" />
+                                                <Binding Path="AudioEnabled" />
+                                            </MultiBinding>
+                                        </Button.IsEnabled>
+                                    </Button>
                                     <Button 
                                         Text="&#xf75d;"
                                         Style="{StaticResource ActionButton}"
@@ -220,6 +355,7 @@
                                         <Button.IsEnabled>
                                             <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
                                                 <Binding Path="IsConnected" />
+                                                <Binding Path="IsEnabled" />
                                                 <Binding Path="AudioEnabled" />
                                                 <Binding Path="AudioLevel" Converter="{StaticResource MinPlayerAudioLevelReachedToBooleanConverter}" />
                                             </MultiBinding>
@@ -232,29 +368,42 @@
                                         <Button.IsEnabled>
                                             <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
                                                 <Binding Path="IsConnected" />
+                                                <Binding Path="IsEnabled" />
                                                 <Binding Path="AudioEnabled" />
                                                 <Binding Path="AudioLevel" Converter="{StaticResource MaxPlayerAudioLevelReachedToBooleanConverter}" />
                                             </MultiBinding>
                                         </Button.IsEnabled>
                                     </Button>
                                     <Button 
-                                        IsEnabled="{Binding Path=IsConnected}"
                                         Text="&#x0043;"
                                         Style="{StaticResource ActionButton}"
                                         FontFamily="Viderhe Font Icons"
-                                        Clicked="PlayerCloseButton_Clicked" />
+                                        Clicked="PlayerCloseButton_Clicked">
+                                        <Button.IsEnabled>
+                                            <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                                                <Binding Path="IsConnected" />
+                                                <Binding Path="IsEnabled" />
+                                            </MultiBinding>
+                                        </Button.IsEnabled>
+                                    </Button>
                                     <Button 
-                                        IsEnabled="{Binding Path=IsConnected}"
                                         Text="&#xf905;"
                                         Style="{StaticResource ActionButton}"
-                                        Clicked="PlayerTerminateButton_Clicked" />
+                                        Clicked="PlayerTerminateButton_Clicked">
+                                        <Button.IsEnabled>
+                                            <MultiBinding Converter="{StaticResource AllTrueMultiConverter}">
+                                                <Binding Path="IsConnected" />
+                                                <Binding Path="IsEnabled" />
+                                            </MultiBinding>
+                                        </Button.IsEnabled>
+                                    </Button>
                                 </StackLayout>
                             </Grid>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </FlexLayout>
             </ScrollView>
-            <supportpresentationdashboardviews:BusyView />
+            <supportpresentationdashboardviews:BusyView Grid.RowSpan="2" />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>

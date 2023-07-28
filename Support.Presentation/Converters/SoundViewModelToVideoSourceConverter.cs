@@ -10,7 +10,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Converters
 
             try
             {
-                return XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Factories.SoundUriFactory.BuildUri((value as SoundViewModel).Id, string.Format(".{0}", (value as SoundViewModel).Extension.ToLowerInvariant())).AbsoluteUri);
+                return Factories.SoundUriFactory.BuildUri((value as SoundViewModel).Id, string.Format(".{0}", (value as SoundViewModel).Extension.ToLowerInvariant())).AbsoluteUri;
             }
             catch
             {

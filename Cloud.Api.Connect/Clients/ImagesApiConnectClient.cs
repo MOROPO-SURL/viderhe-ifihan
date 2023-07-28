@@ -26,9 +26,9 @@
             await httpClientHelper.PostFormAsync("account/images", new System.Net.Http.MultipartFormDataContent { formContent, fileContent });
         }
 
-        public async System.Threading.Tasks.Task<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.ImageDisplayModel>> GetPageAsync(int page = 1)
+        public async System.Threading.Tasks.Task<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.ImageDisplayModel>> GetPageAsync(int page = 1, int limit = 15)
         {
-            return await httpClientHelper.GetAsync<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.ImageDisplayModel>>(string.Format("account/images/page/{0}", page));
+            return await httpClientHelper.GetAsync<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.ImageDisplayModel>>(string.Format("account/images/page/{0}/limit/{1}", page, limit));
         }
 
         public virtual async System.Threading.Tasks.Task EditAsync(Common.Models.ImageInputModel inputModel)

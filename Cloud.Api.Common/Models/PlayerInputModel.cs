@@ -19,6 +19,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public string About { get; set; }
 
+        public TagDisplayModel[] Tags { get; set; }
+
         public Persistence.Entities.Player Export()
         {
             var entity = new Persistence.Entities.Player
@@ -47,6 +49,17 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
             entity.About = About;
             entity.OverlayId = OverlayId;
             entity.SerializedOverlayContext = SerializedOverlayContext;
+
+            entity.TagBridges.Clear();
+
+            foreach (var item in Tags)
+            {
+                entity.TagBridges.Add(new Persistence.Entities.PlayerTagBridge
+                {
+                    PlayerId = entity.Id,
+                    TagId = item.Id
+                });
+            }
         }
     }
 }

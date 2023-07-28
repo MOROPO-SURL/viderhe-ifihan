@@ -33,9 +33,9 @@
             await httpClientHelper.PutFormAsync(urlOrResource, new System.Net.Http.MultipartFormDataContent { formContent, fileContent });
         }
 
-        public async System.Threading.Tasks.Task<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.VideoDisplayModel>> GetPageAsync(int page = 1)
+        public async System.Threading.Tasks.Task<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.VideoDisplayModel>> GetPageAsync(int page = 1, int limit = 15)
         {
-            return await httpClientHelper.GetAsync<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.VideoDisplayModel>>(string.Format("account/videos/page/{0}", page));
+            return await httpClientHelper.GetAsync<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.VideoDisplayModel>>(string.Format("account/videos/page/{0}/limit/{1}", page, limit));
         }
 
         public virtual async System.Threading.Tasks.Task EditAsync(Common.Models.VideoInputModel inputModel)

@@ -110,6 +110,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
             services.AddScoped<IEntityRepository<Persistence.Entities.Sound, System.Guid>, Persistence.EF.Repositories.SoundRepository>();
             services.AddScoped<IEntityRepository<Persistence.Entities.Gradient, System.Guid>, Persistence.EF.Repositories.GradientRepository>();
             services.AddScoped<IEntityRepository<Persistence.Entities.Text, System.Guid>, Persistence.EF.Repositories.TextRepository>();
+            services.AddScoped<IEntityRepository<Persistence.Entities.Tag, System.Guid>, Persistence.EF.Repositories.TagRepository>();
 
             services.AddSingleton<MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade, Managers.ImageFileManager>();
             services.AddSingleton<MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IThumbnailFileManagerFacade, Managers.ThumbnailFileManager>();

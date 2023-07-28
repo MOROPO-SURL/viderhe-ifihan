@@ -112,6 +112,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             ContentData = imagePickedData,
                             ContentType = BindingContextPageModel.TargetIdentityImageContentType
                         };
+
+                        if (BindingContextPageModel.TargetIdentityImageId != null)
+                        {
+                            model.Identity.Image.Id = BindingContextPageModel.TargetIdentityImageId.Value;
+                        }
                     }
 
                     await client.EditAsync(model);

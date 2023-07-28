@@ -7,7 +7,7 @@
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    xmlns:sscxftoolkitpresentationviewrendereds="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:xctuiviewss="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageSoundsPage"    
     x:TypeArguments="pagemodels:ManageSoundsPageModel"
     Title="Audios">
@@ -181,10 +181,11 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition />
                             </Grid.RowDefinitions>
-                            <sscxftoolkitpresentationviewrendereds:VideoPlayerView
+                            <xctuiviewss:MediaElement
                                 Grid.RowSpan="2"
                                 BackgroundColor="Black"
                                 AutoPlay="False"
+                                ShowsPlaybackControls="True"
                                 Source="{Binding Path=Target, Converter={StaticResource SoundViewModelToVideoSourceConverter}}" />
                             <Label 
                                 Grid.Row="0"

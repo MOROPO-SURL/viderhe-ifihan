@@ -14,10 +14,12 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
     [ApiController]
     public class ModeratorsController : MOROPO.SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementController<Persistence.Entities.Moderator, System.Guid, ModeratorInputModel, ModeratorDisplayModel>
     {
+        private readonly IEntityRepository<MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image, System.Guid> imageRepository;
         private readonly MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager;
 
-        public ModeratorsController(MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager, IEntityRepository<Persistence.Entities.Moderator, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<ModeratorsController> localizer, ILogger<ModeratorsController> logger) : base(repository, localizer, logger)
+        public ModeratorsController(MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager, IEntityRepository<MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image, System.Guid> imageRepository, IEntityRepository<Persistence.Entities.Moderator, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<ModeratorsController> localizer, ILogger<ModeratorsController> logger) : base(repository, localizer, logger)
         {
+            this.imageRepository = imageRepository;
             this.imageFileManager = imageFileManager;
         }
 
@@ -77,6 +79,53 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             }
 
             entity.User.Signature = MOROPO.SAPRESSC.Middleware.Security.Essential.Persistence.EF.Helpers.Integrity.UserIntegrityHelper.GetSignature(entity.User);
+        }
+
+        protected override void PreEdit(Persistence.Entities.Moderator entity, ModeratorInputModel inputModel)
+        {
+            base.PreEdit(entity, inputModel);
+
+            if (inputModel.User.NewPassword != null)
+            {
+                entity.User.Password = inputModel.User.NewPassword.ToHashedPassword();
+            }
+
+            if (inputModel.Identity.Image != null)
+            {
+                using (var imageMemoryStream = new System.IO.MemoryStream(inputModel.Identity.Image.ContentData))
+                {
+                    using (var imageSkData = SkiaSharp.SKData.Create(imageMemoryStream))
+                    {
+                        using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                        {
+                            entity.Identity.Image = new MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image
+                            {
+                                ContentType = inputModel.Identity.Image.ContentType,
+                                Length = inputModel.Identity.Image.ContentData.LongLength,
+                                Width = imageSkBitmap.Width,
+                                Height = imageSkBitmap.Height,
+                                About = string.Format("Image for Moderator: {0}", inputModel.Id)
+                            };
+
+                            imageFileManager.SaveImageFileContent(entity.Identity.Image.Id, inputModel.Identity.Image.ContentData, inputModel.Identity.Image.ContentType);
+                        }
+                    }
+                }
+            }
+        }
+
+        protected override void PostEdit(Persistence.Entities.Moderator entity, ModeratorInputModel inputModel)
+        {
+            base.PostEdit(entity, inputModel);
+
+            if (inputModel.Identity.Image != null)
+            {
+                var oldLogoImage = imageRepository.Get(inputModel.Identity.Image.Id);
+
+                imageRepository.Delete(oldLogoImage, User.Identity.Name);
+
+                imageFileManager.DeleteImageFile(oldLogoImage);
+            }
         }
     }
 }

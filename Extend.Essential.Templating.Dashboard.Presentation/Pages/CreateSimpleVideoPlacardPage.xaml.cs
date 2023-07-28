@@ -25,7 +25,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             this.templateDescriptor = templateDescriptor;
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
 
-            Title = string.Format("Nuevo Marco ({0})", templateDescriptor.Name);
+            Title = string.Format("Nuevo Cartel ({0})", templateDescriptor.Name);
         }
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
