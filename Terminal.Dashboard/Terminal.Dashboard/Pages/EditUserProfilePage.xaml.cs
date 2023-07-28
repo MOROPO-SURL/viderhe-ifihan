@@ -17,7 +17,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             TargetIdentityName = Managers.SessionManager.Instance.Moderator.Identity.Name,
             TargetIdentityLastName = Managers.SessionManager.Instance.Moderator.Identity.LastName,
             TargetIdentityImageSource = Managers.SessionManager.Instance.Moderator.Identity.Image != null ?
-                Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(Managers.SessionManager.Instance.Moderator.Identity.Image.Id)) :
+                Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/media/moderator/{2}", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host, Managers.SessionManager.Instance.Moderator.Identity.Image.Id))) :
                 Xamarin.Forms.ImageSource.FromUri(new System.Uri(Helpers.ConstantProvisioningHelper.Instance.FallbackUserProfileImageUrl)),
             TargetIdentitySex = Managers.SessionManager.Instance.Moderator.Identity.Sex,
             TargetIdentityAbout = Managers.SessionManager.Instance.Moderator.Identity.About
@@ -105,6 +105,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     ContentData = imagePickedData,
                     ContentType = BindingContextPageModel.TargetIdentityImageContentType
                 };
+
+                if (Managers.SessionManager.Instance.Moderator.Identity.Image != null)
+                {
+                    model.Identity.Image.Id = Managers.SessionManager.Instance.Moderator.Identity.Image.Id;
+                }
             }
 
             client.EditAsync(model).ContinueWith(task =>

@@ -13,7 +13,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private const string OPTION_COMMON_EDIT = "Modificar";
         private const string OPTION_COMMON_DELETE = "Eliminar";
 
-        private const string OPTION_FRAME_PLACARD_SEARCH = "Buscar Marco";
+        private const string OPTION_FRAME_PLACARD_SEARCH = "Buscar Cartel";
         private const string OPTION_FRAME_ORDER = "Cambiar Prioridad";
         private const string OPTION_FRAME_DELETE = "Quitar";
 
@@ -81,7 +81,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 extraOptions.Clear();
             }
 
-            DisplayActionSheet("Opciones de Marco", OPTION_COMMON_CANCEL, OPTION_COMMON_DELETE, extraOptions.ToArray()).ContinueWith(async actionSheetTask =>
+            DisplayActionSheet("Opciones de Cartel", OPTION_COMMON_CANCEL, OPTION_COMMON_DELETE, extraOptions.ToArray()).ContinueWith(async actionSheetTask =>
             {
                 Extend.Common.Templating.Presentation.Helpers.Facade.IPlacardViewModelCompletitionHelperFacade completitionHelper;
 
@@ -94,7 +94,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_PLACARD_COMPLEMENTATION:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            DisplayActionSheet("Complementar Marco con:", OPTION_COMMON_CANCEL, null, new string[] { OPTION_PLACARD_COMPLEMENTATION_VIDEO, OPTION_PLACARD_COMPLEMENTATION_SOUND }).ContinueWith(_task =>
+                            DisplayActionSheet("Complementar Cartel con:", OPTION_COMMON_CANCEL, null, new string[] { OPTION_PLACARD_COMPLEMENTATION_VIDEO, OPTION_PLACARD_COMPLEMENTATION_SOUND }).ContinueWith(_task =>
                             {
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                 {
@@ -136,7 +136,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_PLACARD_COMPLEMENT_REMOVE:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            DisplayAlert("Confirmar", "Está seguro que desea quitar el complemento a este marco?", "Quitar", "Cancelar").ContinueWith(async task =>
+                            DisplayAlert("Confirmar", "Está seguro que desea quitar el complemento a este cartel?", "Quitar", "Cancelar").ContinueWith(async task =>
                             {
                                 if (!task.Result) return;
 
@@ -178,7 +178,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 }
                                 else
                                 {
-                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Marco duplicado con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cartel duplicado con éxito.");
 
                                     PlacardEditionCompleted_Callback();
                                 }
@@ -190,7 +190,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_COMMON_DELETE:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            DisplayAlert("Confirmar", "Esta seguro que desea eliminar el marco seleccionado?", OPTION_COMMON_DELETE, OPTION_COMMON_CANCEL).ContinueWith(async task =>
+                            DisplayAlert("Confirmar", "Esta seguro que desea eliminar el cartel seleccionado?", OPTION_COMMON_DELETE, OPTION_COMMON_CANCEL).ContinueWith(async task =>
                             {
                                 if (!task.Result) return;
 
@@ -202,7 +202,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Marco eliminado con exito.");
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cartel eliminado con exito.");
 
                                         LoadNextPlacardsPage(true, BindingContextPageModel.SelectedScreenplay != null);
                                     });
@@ -301,7 +301,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_PLACARD_SEQUENCE:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            DisplayAlert("Confirmar", "Esta seguro que desea agregar este marco a la secuencia del Guion seleccionado?", "Agregar", OPTION_COMMON_CANCEL).ContinueWith(async task =>
+                            DisplayAlert("Confirmar", "Esta seguro que desea agregar este cartel a la secuencia del Guion seleccionado?", "Agregar", OPTION_COMMON_CANCEL).ContinueWith(async task =>
                             {
                                 if (!task.Result) return;
 
@@ -320,7 +320,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Marco agregado a la secuencia con exito.");
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cartel agregado a la secuencia con exito.");
 
                                         LoadCurrentScreenplayFrames();
                                     });
@@ -363,7 +363,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             extraOptions.Add(OPTION_FRAME_DELETE);
 
-            DisplayActionSheet("Opciones de Marco en Secuencia", OPTION_COMMON_CANCEL, null, extraOptions.ToArray()).ContinueWith(actionSheetTask =>
+            DisplayActionSheet("Opciones de Cartel en Secuencia", OPTION_COMMON_CANCEL, null, extraOptions.ToArray()).ContinueWith(actionSheetTask =>
             {
                 Extend.Common.Templating.Presentation.Helpers.Facade.IPlacardViewModelCompletitionHelperFacade completitionHelper;
 
@@ -377,7 +377,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_FRAME_DELETE:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            DisplayAlert("Confirmar", "Esta seguro que desea eliminar de la secuencia el marco seleccionado?", OPTION_FRAME_DELETE, OPTION_COMMON_CANCEL).ContinueWith(async dialogTask =>
+                            DisplayAlert("Confirmar", "Esta seguro que desea eliminar de la secuencia el cartel seleccionado?", OPTION_FRAME_DELETE, OPTION_COMMON_CANCEL).ContinueWith(async dialogTask =>
                             {
                                 if (!dialogTask.Result) return;
 
@@ -391,7 +391,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Marco eliminado de la secuencia con exito.");
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cartel eliminado de la secuencia con exito.");
 
                                         LoadCurrentScreenplayFrames();
                                     });
@@ -600,7 +600,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void RequestFilterButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            DisplayPromptAsync("Filtrar Marcos", "Especifique la etiqueta o parte de esta relativa al el marco que está buscando:", "Filtrar", "Cancelar",  initialValue: BindingContextPageModel.LabelFilterParam).ContinueWith(task =>
+            DisplayPromptAsync("Filtrar Carteles", "Especifique la etiqueta o parte de esta relativa al el cartel que está buscando:", "Filtrar", "Cancelar",  initialValue: BindingContextPageModel.LabelFilterParam).ContinueWith(task =>
             {
                 if (task.Result == null) return;
 
@@ -617,7 +617,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ClearFilterButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            DisplayAlert("Quitar Filtro", "Está seguro que desea quitar el filtro actual para el listado de Marcos?", "Quitar", "Cancelar").ContinueWith(task =>
+            DisplayAlert("Quitar Filtro", "Está seguro que desea quitar el filtro actual para el listado de Carteles?", "Quitar", "Cancelar").ContinueWith(task =>
             {
                 if (!task.Result) return;
 

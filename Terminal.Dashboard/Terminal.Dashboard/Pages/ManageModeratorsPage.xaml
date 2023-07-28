@@ -77,7 +77,8 @@
                                     VerticalOptions="Center"
                                     HeightRequest="96" WidthRequest="96"
                                     Source="{Binding Path=ImageSource}"
-                                    BorderThickness="0" />
+                                    BorderThickness="2"
+                                    BorderColor="LightGray" />
                                 <StackLayout 
                                     Grid.Column="1" 
                                     VerticalOptions="Center">

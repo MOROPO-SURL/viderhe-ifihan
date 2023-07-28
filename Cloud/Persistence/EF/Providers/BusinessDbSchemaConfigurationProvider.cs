@@ -6,12 +6,14 @@
 
         public System.Collections.Generic.ICollection<MOROPO.SAPRESSC.Core.Persistence.EF.Configurators.IEntityTypeConfigurator> EntityTypeConfigurators => new System.Collections.Generic.List<MOROPO.SAPRESSC.Core.Persistence.EF.Configurators.IEntityTypeConfigurator>
         {
+            new Configurators.TagEntityTypeConfigurator(),
             new Configurators.AccountImageBridgeEntityTypeConfigurator(),
             new Configurators.AccountExtensionBridgeEntityTypeConfigurator(),
             new Configurators.AccountModeratorBridgeEntityTypeConfigurator(),
             new Configurators.AccountVideoBridgeEntityTypeConfigurator(),
             new Configurators.FrameEntityTypeConfigurator(),
             new Configurators.PlayerEntityTypeConfigurator(),
+            new Configurators.PlayerTagBridgeEntityTypeConfigurator(),
             new Configurators.ModeratorEntityTypeConfigurator(),
             new Configurators.ScheduledRelaunchEntityTypeConfigurator(),
             new Configurators.PlacardImageBridgeEntityTypeConfigurator(),
@@ -20,7 +22,8 @@
             new Configurators.AccountGradientBridgeEntityTypeConfigurator(),
             new Configurators.AccountTextBridgeEntityTypeConfigurator(),
             new Configurators.PlacardSoundBridgeEntityTypeConfigurator(),
-            new Configurators.PlacardGradientBridgeEntityTypeConfigurator()
+            new Configurators.PlacardGradientBridgeEntityTypeConfigurator(),
+            new Configurators.PlacardTagBridgeEntityTypeConfigurator()
         };
     }
 }

@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MOROPO.SAPRESSC.Core.Common.Models;
 using MOROPO.SAPRESSC.Core.Persistence.Repositories;
 using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
+using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models.Filter;
 using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
@@ -9,7 +11,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION)]
     [Route("api/[area]/[controller]")]
     [Area("account")]
-    public class PlayersController : MOROPO.SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementController<Persistence.Entities.Player, string, PlayerInputModel, PlayerDisplayModel>
+    public class PlayersController : MOROPO.SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementFilteredController<Persistence.Entities.Player, string, PlayerInputModel, PlayerDisplayModel, Cloud.Api.Common.Models.Filter.PlayerFilterModel>
     {
         private readonly IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
         private readonly IEntityRepository<Persistence.Entities.Extension, System.Guid> extensionRepository;
@@ -119,6 +121,46 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             {
                 return NoContent();
             }
+        }
+
+        public override ActionResult<PlayerDisplayModel[]> Get()
+        {
+            return Ok(Repository.FindBy(GetGlobalSelector()).Select(entity => EntityToDisplayModel(entity)).ToArray());
+        }
+
+        public override ActionResult<PlayerDisplayModel[]> GetFiltered([FromBody] PlayerFilterModel filterModel)
+        {
+            var tagIds = filterModel.Tags.Select(item => item.Id).ToArray();
+
+            PlayerDisplayModel[] result = null;
+
+            if (!string.IsNullOrEmpty(filterModel.Name))
+            {
+                if (filterModel.Tags.Length > 0)
+                {
+                    result = Repository.FindBy(GetGlobalSelector()).Where(entity => entity.Name.ToLower().Contains(filterModel.Name.ToLower())).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.TagId))).Select(entity => EntityToDisplayModel(entity)).ToArray();
+                }
+                else
+                {
+                    result = Repository.FindBy(GetGlobalSelector()).Where(entity => entity.Name.ToLower().Contains(filterModel.Name.ToLower())).Select(entity => EntityToDisplayModel(entity)).ToArray();
+                }
+            }
+            else
+            {
+                result = Repository.FindBy(GetGlobalSelector()).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.TagId))).Select(entity => EntityToDisplayModel(entity)).ToArray();
+            }
+
+            return Ok(result);
+        }
+
+        public override ActionResult<PaginationModel<PlayerDisplayModel>> GetPaginateFiltered([FromBody] PlayerFilterModel filterModel, int sheet = 1, int limit = 25)
+        {
+            return NotFound();
+        }
+
+        public override ActionResult<PaginationModel<PlayerDisplayModel>> GetPaginate(int sheet = 1, int limit = 25)
+        {
+            return NotFound();
         }
 
         public override ActionResult Create([FromBody] PlayerInputModel inputModel)

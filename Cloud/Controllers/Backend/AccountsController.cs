@@ -440,6 +440,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                             Moderator = modelInput.Export()
                         };
 
+                        bridge.Moderator.ModerationKind = Persistence.Enumerations.ModerationKind.Privileged;
+
                         if (modelInput.ImageFile != null)
                         {
                             using (var memoryStream = new System.IO.MemoryStream())

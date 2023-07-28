@@ -4,12 +4,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Cloud.Persistence</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Cloud.Persistence</RootNamespace>
-	<Version>1.4.2</Version>
+	<Version>1.5.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SAPRESSC.Middleware.Security.Essential.Persistence" Version="2.2.6.6" />
-    <PackageReference Include="SAPRESSC.Middleware.Identity.Persistence" Version="2.2.6.6" />
+    <PackageReference Include="SAPRESSC.Middleware.Security.Essential.Persistence" Version="2.2.9" />
+    <PackageReference Include="SAPRESSC.Middleware.Identity.Persistence" Version="2.2.9" />
   </ItemGroup>
 
   <ItemGroup>
