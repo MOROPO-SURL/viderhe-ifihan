@@ -21,119 +21,126 @@
             Padding="10" Margin="20"
             BackgroundColor="White"
             WidthRequest="360">
-            <Grid ColumnSpacing="0" RowSpacing="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+            <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Grid
-                    Grid.ColumnSpan="2" Grid.Row="0"
-                    ColumnSpacing="12" RowSpacing="8"
-                    Margin="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <icplugin:CircleImage
-                        Grid.Column="0" Grid.Row="0"
-                        VerticalOptions="Center"
-                        HeightRequest="96" WidthRequest="96"
-                        Source="{Binding Path=ImageSource}"
-                        BorderThickness="0" />
-                    <StackLayout
-                        Grid.Column="1" Grid.Row="0"
-                        VerticalOptions="Center">
-                        <Label
-                            Text="{Binding Path=Model.User.Id}"
-                            TextColor="Black"
-                            FontSize="Medium" />
-                        <Label 
-                            Text="{Binding Path=FullName}" 
-                            TextColor="Black" />
+                <ScrollView
+                    Grid.Row="0"
+                    VerticalOptions="FillAndExpand"
+                    Orientation="Vertical">
+                    <StackLayout Spacing="0">
+                        <StackLayout
+                            Spacing="8"
+                            Margin="0,20">
+                            <icplugin:CircleImage
+                                HorizontalOptions="Center"
+                                HeightRequest="188" WidthRequest="188"
+                                Source="{Binding Path=ImageSource}"
+                                BorderThickness="4"
+                                BorderColor="LightGray"/>
+                            <StackLayout Spacing="4">
+                                <Label
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Path=Model.User.Id}"
+                                    TextColor="Black"
+                                    FontSize="Medium" />
+                                <Label 
+                                    HorizontalTextAlignment="Center"
+                                    Text="{Binding Path=FullName}" 
+                                    TextColor="Black" />
+                            </StackLayout>
+                        </StackLayout>
+                        <Grid ColumnSpacing="0" RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <StackLayout 
+                                Grid.Column="0" Grid.Row="0"
+                                Margin="10,0,10,10">
+                                <Label Text="Creado" Style="{StaticResource FormLabel}" />
+                                <Label Text="{Binding Path=Model.User.Created}" />
+                            </StackLayout>
+                            <StackLayout 
+                                Grid.Column="1" Grid.Row="0"
+                                Margin="10,0,10,10">
+                                <Label Text="Habilitado?" Style="{StaticResource FormLabel}" />
+                                <Label Text="{Binding Path=Model.User.Enabled, Converter={StaticResource BoolToStringConverter}}" />
+                            </StackLayout>
+                            <StackLayout 
+                                Grid.Column="0" Grid.Row="1"
+                                Margin="10,0,10,10">
+                                <Label Text="Renovar Contraseña?" Style="{StaticResource FormLabel}" />
+                                <Label Text="{Binding Path=Model.User.PasswordChangeRequired, Converter={StaticResource BoolToStringConverter}}" />
+                            </StackLayout>
+                            <StackLayout 
+                                Grid.Column="1" Grid.Row="1"
+                                Margin="10,0,10,10">
+                                <Label Text="Todos los Privilegios?" Style="{StaticResource FormLabel}" />
+                                <Label Text="{Binding Path=Model.IsPrivileged, Converter={StaticResource BoolToStringConverter}}" />
+                            </StackLayout>
+                            <StackLayout 
+                                Grid.Column="0" Grid.Row="2"
+                                Margin="10,0,10,10">
+                                <Label Text="Última Autenticación" Style="{StaticResource FormLabel}" />
+                                <Label Text="{Binding Path=Model.User.LastSessionDate}" />
+                            </StackLayout>
+                            <StackLayout 
+                                Grid.Column="1" Grid.Row="2"
+                                Margin="10,0,10,10">
+                                <Label Text="Fallos de Autenticación" Style="{StaticResource FormLabel}" />
+                                <Label Text="{Binding Path=Model.User.FailAuthenticationCount}" />
+                            </StackLayout>
+                            <StackLayout 
+                                Grid.Column="0" Grid.Row="3"
+                                Margin="10,0,10,10">
+                                <Label Text="Sexo" Style="{StaticResource FormLabel}" />
+                                <Label Text="{Binding Path=Model.Identity.Sex, Converter={StaticResource StringToLocalizeStringConverter}}" />
+                            </StackLayout>
+                            <StackLayout 
+                                Grid.ColumnSpan="2" Grid.Row="5"
+                                Margin="10,0,10,20">
+                                <Label Text="Descripción" Style="{StaticResource FormLabel}" />
+                                <Label 
+                                    Text="{Binding Path=Model.Identity.About, Converter={StaticResource IfNullOrEmptyToStringConverter}}"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="5" />
+                            </StackLayout>
+                        </Grid>
                     </StackLayout>
-                </Grid>
-                <Button 
-                    Grid.Column="1" Grid.Row="0"
-                    HorizontalOptions="End" VerticalOptions="Start"
-                    Padding="6"
-                    Text="&#xf5ad;"
-                    Style="{StaticResource OptionsTextIconButton}"
-                    FontSize="Medium"
-                    Clicked="CloseButton_Clicked" />
-                <StackLayout 
-                    Grid.Column="0" Grid.Row="1"
-                    Margin="10,0,10,10">
-                    <Label Text="Creado" Style="{StaticResource FormLabel}" />
-                    <Label Text="{Binding Path=Model.User.Created}" />
-                </StackLayout>
-                <StackLayout 
-                    Grid.Column="1" Grid.Row="1"
-                    Margin="10,0,10,10">
-                    <Label Text="Habilitado?" Style="{StaticResource FormLabel}" />
-                    <Label Text="{Binding Path=Model.User.Enabled, Converter={StaticResource BoolToStringConverter}}" />
-                </StackLayout>
-                <StackLayout 
-                    Grid.Column="0" Grid.Row="2"
-                    Margin="10,0,10,10">
-                    <Label Text="Renovar Contraseña?" Style="{StaticResource FormLabel}" />
-                    <Label Text="{Binding Path=Model.User.PasswordChangeRequired, Converter={StaticResource BoolToStringConverter}}" />
-                </StackLayout>
-                <StackLayout 
-                    Grid.Column="1" Grid.Row="2"
-                    Margin="10,0,10,10">
-                    <Label Text="Todos los Privilegios?" Style="{StaticResource FormLabel}" />
-                    <Label Text="{Binding Path=Model.IsPrivileged, Converter={StaticResource BoolToStringConverter}}" />
-                </StackLayout>
-                <StackLayout 
-                    Grid.Column="0" Grid.Row="3"
-                    Margin="10,0,10,10">
-                    <Label Text="Última Autenticación" Style="{StaticResource FormLabel}" />
-                    <Label Text="{Binding Path=Model.User.LastSessionDate}" />
-                </StackLayout>
-                <StackLayout 
-                    Grid.Column="1" Grid.Row="3"
-                    Margin="10,0,10,10">
-                    <Label Text="Fallos de Autenticación" Style="{StaticResource FormLabel}" />
-                    <Label Text="{Binding Path=Model.User.FailAuthenticationCount}" />
-                </StackLayout>
-                <StackLayout 
-                    Grid.Column="0" Grid.Row="4"
-                    Margin="10,0,10,10">
-                    <Label Text="Sexo" Style="{StaticResource FormLabel}" />
-                    <Label Text="{Binding Path=Model.Identity.Sex, Converter={StaticResource StringToLocalizeStringConverter}}" />
-                </StackLayout>
-                <StackLayout 
-                    Grid.ColumnSpan="2" Grid.Row="5"
-                    Margin="10,0,10,10">
-                    <Label Text="Descripción" Style="{StaticResource FormLabel}" />
-                    <Label 
-                        Text="{Binding Path=Model.Identity.About, Converter={StaticResource IfNullOrEmptyToStringConverter}}"
-                        LineBreakMode="TailTruncation"
-                        MaxLines="5" />
-                </StackLayout>
+                </ScrollView>
                 <Button
-                    Grid.ColumnSpan="2" Grid.Row="6"
+                    Grid.Row="1"
                     Margin="10,0,10,10"
                     Text="Modificar"
                     Clicked="EditButton_Clicked" />
                 <Button
-                    Grid.ColumnSpan="2" Grid.Row="7"
                     IsVisible="{Binding Path=IsCurrentUser, Converter={StaticResource BoolToBoolNegationConverter}}"
+                    Grid.Row="2"
                     Margin="10,0,10,10"
                     BackgroundColor="IndianRed"
                     Text="Eliminar"
                     TextColor="White"
                     Clicked="DeleteButton_Clicked" />
+                <Button 
+                    Grid.RowSpan="3"
+                    HorizontalOptions="End" VerticalOptions="Start"
+                    Padding="6"
+                    BackgroundColor="White"
+                    Text="&#xf5ad;"
+                    Style="{StaticResource OptionsTextIconButton}"
+                    FontSize="Medium"
+                    Clicked="CloseButton_Clicked" />
             </Grid>
         </Frame>
     </ContentPage.Content>

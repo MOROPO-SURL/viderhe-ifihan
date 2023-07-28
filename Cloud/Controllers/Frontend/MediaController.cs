@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MOROPO.SAPRESSC.Core.Persistence.Repositories;
 using MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade;
 using SmartSolucionesCuba.Viderhe.Cloud.Extensions;
 using System.Linq;
@@ -10,14 +11,16 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
     [Route("[controller]")]
     public class MediaController : MOROPO.SAPRESSC.Core.Web.Common.Controllers.BaseWebController
     {
-        private readonly MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
+        private readonly IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
+        private readonly IEntityRepository<Persistence.Entities.Moderator, System.Guid> moderatorRepository;
         private readonly IImageFileManagerFacade imageFileManager;
         private readonly IThumbnailFileManagerFacade thumbnailFileManager;
 
-        public MediaController(MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, IImageFileManagerFacade imageFileManager, IThumbnailFileManagerFacade thumbnailFileManager, Microsoft.Extensions.Localization.IStringLocalizer<MediaController> localizer, ILogger<MediaController> logger)
+        public MediaController(IEntityRepository<Persistence.Entities.Moderator, System.Guid> moderatorRepository, IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, IImageFileManagerFacade imageFileManager, IThumbnailFileManagerFacade thumbnailFileManager, Microsoft.Extensions.Localization.IStringLocalizer<MediaController> localizer, ILogger<MediaController> logger)
             : base(localizer, logger)
         {
             this.accountRepository = accountRepository;
+            this.moderatorRepository = moderatorRepository;
             this.imageFileManager = imageFileManager;
             this.thumbnailFileManager = thumbnailFileManager;
         }
@@ -172,11 +175,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
         {
             try
             {
-                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
+                var moderator = moderatorRepository.FindOneBy(entity => entity.Identity.ImageId == key);
 
-                var moderator = account.ModeratorBridges.First(b => b.Moderator.Id == key).Moderator;
-
-                return new FileContentResult(imageFileManager.GetImageFileContent(moderator.Identity.Image), account.Logo.ContentType);
+                return new FileContentResult(imageFileManager.GetImageFileContent(moderator.Identity.Image), moderator.Identity.Image.ContentType);
             }
             catch (System.IO.IOException e)
             {

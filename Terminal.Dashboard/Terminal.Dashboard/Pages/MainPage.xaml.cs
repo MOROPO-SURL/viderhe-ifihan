@@ -139,6 +139,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     break;
 
+                case Enumerations.ActionKind.ManageTags:
+                    this.NavigationPushPageAsync(new ManageTagsPage());
+
+                    break;
+
                 default:
                     DisplayAlert("Aviso", "Sección no disponible para esta versión", "Aceptar");
 
@@ -217,6 +222,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     Kind = Enumerations.ActionKind.ManageTexts,
                     Caption = "Textos",
                     IconGlyph = "\uFB53",
+                    Enabled = true
+                },
+                new Models.View.ActionViewModel
+                {
+                    Kind = Enumerations.ActionKind.ManageTags,
+                    Caption = "Etiquetas",
+                    IconGlyph = "\uF4F9",
                     Enabled = true
                 },
                 new Models.View.ActionViewModel

@@ -19,7 +19,10 @@
             //result.TargetIdentityAlias = target.Model.Identity.Alias;
             //result.TargetIdentityCivilStatus = target.Model.Identity.CivilStatus;
             result.TargetIdentitySex = target.Model.Identity.Sex;
-            result.TargetIdentityImageSource = target.Model.Identity.Image != null ? Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(target.Model.Identity.Image.Id)) : null;
+            result.TargetIdentityImageId = target.Model.Identity.Image?.Id;
+            result.TargetIdentityImageSource = target.Model.Identity.Image != null ?
+                Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/media/moderator/{2}", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host, target.Model.Identity.Image.Id))) :
+                Xamarin.Forms.ImageSource.FromUri(new System.Uri(Helpers.ConstantProvisioningHelper.Instance.FallbackUserProfileImageUrl));
 
             return result;
         }
