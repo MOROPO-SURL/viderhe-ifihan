@@ -28,12 +28,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Pr
             {
                 var templateDescriptor = new Descriptors.AmbientalDashboardTemplateDescriptor();
 
-                Title = string.Format("Nuevo Marco ({0})", templateDescriptor.Name);
+                Title = string.Format("Nuevo Cartel ({0})", templateDescriptor.Name);
 
                 return;
             }
 
-            Title = string.Format("Modificando Marco ({0})", placardViewModel.Template.Name);
+            Title = string.Format("Modificando Cartel ({0})", placardViewModel.Template.Name);
         }
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
