@@ -29,12 +29,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
             {
                 var templateDescriptor = new Descriptors.LandscapeGrid1x3TemplateDescriptor();
 
-                Title = string.Format("Nuevo Marco ({0})", templateDescriptor.Name);
+                Title = string.Format("Nuevo Cartel ({0})", templateDescriptor.Name);
 
                 return;
             }
 
-            Title = string.Format("Modificando Marco ({0})", placardViewModel.Template.Name);
+            Title = string.Format("Modificando Cartel ({0})", placardViewModel.Template.Name);
         }
 
         private void IncludeOneOfThreePlacardsButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -93,7 +93,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
 
         private void PlacardOneOfThreeDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            DisplayAlert("Confirmar", "Está seguro que desea eliminar este marco de la secuencia?", "Eliminar", "Cancelar").ContinueWith(task =>
+            DisplayAlert("Confirmar", "Está seguro que desea eliminar este cartel de la secuencia?", "Eliminar", "Cancelar").ContinueWith(task =>
             {
                 if (!task.Result) return;
 
@@ -108,7 +108,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
 
         private void PlacardTowOfThreeDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            DisplayAlert("Confirmar", "Está seguro que desea eliminar este marco de la secuencia?", "Eliminar", "Cancelar").ContinueWith(task =>
+            DisplayAlert("Confirmar", "Está seguro que desea eliminar este cartel de la secuencia?", "Eliminar", "Cancelar").ContinueWith(task =>
             {
                 if (!task.Result) return;
 
@@ -123,7 +123,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
 
         private void PlacardThreeOfThreeDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            DisplayAlert("Confirmar", "Está seguro que desea eliminar este marco de la secuencia?", "Eliminar", "Cancelar").ContinueWith(task =>
+            DisplayAlert("Confirmar", "Está seguro que desea eliminar este cartel de la secuencia?", "Eliminar", "Cancelar").ContinueWith(task =>
             {
                 if (!task.Result) return;
 
