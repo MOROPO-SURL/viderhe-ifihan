@@ -3,6 +3,7 @@
     public class PlayerViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
     {
         private bool isConnected;
+        private bool isEnabled;
         private int audioLevel;
         private bool audioEnabled;
 
@@ -16,6 +17,8 @@
 
         public bool IsConnected { get => isConnected; set => SetProperty(ref isConnected, value); }
 
+        public bool IsEnabled { get => isEnabled; set => SetProperty(ref isEnabled, value); }
+
         public int AudioLevel { get => audioLevel; set => SetProperty(ref audioLevel, value); }
 
         public bool AudioEnabled { get => audioEnabled; set => SetProperty(ref audioEnabled, value); }
@@ -23,5 +26,7 @@
         public System.Guid? OverlayId { get; set; }
 
         public string SerializedOverlayContext { get; set; }
+
+        public Cloud.Api.Common.Models.TagDisplayModel[] Tags { get; set; }
     }
 }

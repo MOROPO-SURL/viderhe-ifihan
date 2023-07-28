@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:TabbedPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:tabpages="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Tabs"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageTagsPage"
+    Title="Etiquetas">
+    <tabpages:ManagePlayerTagsPage Title="Reproductores" />
+    <tabpages:ManagePlacardTagsPage Title="Carteles" />
+</sscxftoolkitmvvmpages:TabbedPage>

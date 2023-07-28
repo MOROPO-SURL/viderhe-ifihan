@@ -6,7 +6,7 @@
         {
             if (model != null)
             {
-                return new Models.Page.ConfigurePlayerPageModel
+                var _model = new Models.Page.ConfigurePlayerPageModel
                 {
                     IsBusy = true,
                     Id = model.Id,
@@ -16,6 +16,13 @@
                     Overlay = model.OverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(model.OverlayId.Value),
                     SerializedOverlayContext = model.SerializedOverlayContext
                 };
+
+                foreach (var item in model.Tags)
+                {
+                    _model.Tags.Add(item);
+                }
+
+                return _model;
             }
             else
             {
