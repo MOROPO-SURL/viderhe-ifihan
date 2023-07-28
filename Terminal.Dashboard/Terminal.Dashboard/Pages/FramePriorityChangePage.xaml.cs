@@ -43,7 +43,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     }
                     else
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Prioridad del marco aumentada con exito.");
+                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Prioridad del cartel aumentada con exito.");
 
                         successCallbackAction.Invoke();
 

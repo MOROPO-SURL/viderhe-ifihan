@@ -5,8 +5,7 @@
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Dashboard</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Dashboard</RootNamespace>
-    <AssemblyVersion>1.4.0.0</AssemblyVersion>
-    <FileVersion>1.4.0.0</FileVersion>
+	<Version>1.5.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -30,7 +29,7 @@
     <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.3" />
     <PackageReference Include="SSCXFToolKit.IoC" Version="0.2.0-alpha" />
     <PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
-    <PackageReference Include="SSCXFToolKit.Presentation" Version="0.6.2" />
+    <PackageReference Include="SSCXFToolKit.Presentation" Version="0.6.3" />
     <PackageReference Include="SSCXFToolKit.Presentation.Transform" Version="0.3.0-alpha" />
     <PackageReference Include="Toasts.Forms.Plugin" Version="3.3.2" />
     <PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.5" />
@@ -90,7 +89,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ManageTagsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Popup\FilterPlayerPopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Popup\TagPickPopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\SoundComplementConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Tabs\ManagePlacardTagsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Tabs\ManagePlayerTagsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\VideoComplementConfigurationPage.xaml">

@@ -13,7 +13,6 @@
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
-            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="480" ChildAbsoluteHorizontalMargin="10" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -21,10 +20,9 @@
             <views:BackgroundView />
             <ScrollView Orientation="Vertical">
                 <StackLayout Spacing="0">
-                    <FlexLayout
+                    <StackLayout
                         Margin="5"
-                        Wrap="Wrap"
-                        AlignItems="Start" AlignContent="Start"
+                        Spacing="0"
                         BindableLayout.ItemsSource="{Binding Path=Items}">
                         <BindableLayout.EmptyView>
                             <Label
@@ -39,9 +37,7 @@
                                     Margin="5" Padding="0"
                                     BackgroundColor="White"
                                     HasShadow="False"
-                                    CornerRadius="0"
-                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
-                                    HeightRequest="280">
+                                    CornerRadius="0">
                                     <StackLayout Spacing="10" Padding="10">
                                         <Label 
                                             Text="{Binding Path=About}"
@@ -67,7 +63,7 @@
                                 </Frame>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
-                    </FlexLayout>
+                    </StackLayout>
                     <Button
                         IsVisible="{Binding Path=HasMoreItems}"
                         IsEnabled="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
@@ -75,12 +71,9 @@
                         HorizontalOptions="Center"
                         Text="Mostrar más"
                         Clicked="LoadNextPageButtton_Clicked" />
-                    <ActivityIndicator
-                        IsVisible="{Binding Path=IsBusy}"
-                        Margin="5,0,5,5"
-                        IsRunning="{Binding Path=IsBusy}" />
                 </StackLayout>
             </ScrollView>
+            <views:BusyView />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>

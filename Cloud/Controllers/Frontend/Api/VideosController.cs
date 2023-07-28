@@ -39,11 +39,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         [HttpGet]
         [HttpGet("page/{page}")]
-        public ActionResult<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<VideoDisplayModel>> GetPage(int page = 1)
+        [HttpGet("page/{page}/limit/{limit}")]
+        public ActionResult<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<VideoDisplayModel>> GetPage(int page = 1, int limit = 15)
         {
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
-
-            var limit = 16;
 
             var account = dbContext.Accounts.Include(e => e.VideoBridges).ThenInclude(b => b.Video).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
 

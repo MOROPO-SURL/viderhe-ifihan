@@ -13,6 +13,7 @@
         {
             Screenplays = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.ScreenplayDisplayModel>();
             AvailableOverlays = new System.Collections.Generic.List<Extend.Common.Overlaying.Descriptors.IOverlayDescriptor>(Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptors());
+            Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>();
 
             AvailableOverlays.Insert(0, null);
         }
@@ -48,6 +49,8 @@
         public string SerializedOverlayContext { get => serializedOverlayContext; set => SetProperty(ref serializedOverlayContext, value); }
 
         public System.Collections.Generic.List<Extend.Common.Overlaying.Descriptors.IOverlayDescriptor> AvailableOverlays { get; set; }
+
+        public System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel> Tags { get; set; }
 
         protected override void DisposeUnmanagementResources()
         {

@@ -28,149 +28,229 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Hubs
             await base.OnConnectedAsync();
         }
 
-        public void PlayerPresentNextFrame(string playerId)
+        public void PlayerPresentNextFrame(string[] playerIds)
         {
             var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            try
+            var caller = Clients.Caller;
+
+            foreach (var playerId in playerIds)
             {
-                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
-
-                playerHubContext.Clients.Client(playerContext.ConnectionId).OnPresentNextFrameRequestAsync();
-            }
-            catch { }
-        }
-
-        public void PlayerPresentPreviousFrame(string playerId)
-        {
-            var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
-
-            try
-            {
-                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
-
-                playerHubContext.Clients.Client(playerContext.ConnectionId).OnPresentPreviousFrameRequestAsync();
-            }
-            catch { }
-        }
-
-        public void PlayerPresentInterventionScreenplay(string playerId, System.Guid screenplayId)
-        {
-            var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
-
-            try
-            {
-                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
-
-                var screenplay = screenplayRepository.Get(screenplayId);
-
-                playerHubContext.Clients.Client(playerContext.ConnectionId).OnPresentInterventionPlacardsRequestAsync(screenplay.Frames.OrderBy(e => e.Priority).Where(e => e.Placard.Template.Enabled).Select((Persistence.Entities.Frame entity) =>
+                try
                 {
-                    var model = new Api.Common.Models.PlacardDisplayModel();
+                    var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
 
-                    model.Import(entity.Placard);
-
-                    return model;
-                }).ToArray());
+                    playerHubContext.Clients.Client(playerContext.ConnectionId).OnPresentNextFrameRequestAsync().ContinueWith(task =>
+                    {
+                        caller.OnPlayerActionRequestResultAsync(playerContext.PlayerId, !task.IsCanceled && task.Exception == null);
+                    });
+                }
+                catch { }
             }
-            catch { }
         }
 
-        public void PlayerPresentInterventionPlacard(string playerId, System.Guid placardId)
+        public void PlayerPresentPreviousFrame(string[] playerIds)
         {
             var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            try
+            var caller = Clients.Caller;
+
+            foreach (var playerId in playerIds)
             {
-                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+                try
+                {
+                    var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
 
-                var entity = placardRepository.Get(placardId);
-
-                var model = new Api.Common.Models.PlacardDisplayModel();
-
-                model.Import(entity);
-
-                playerHubContext.Clients.Client(playerContext.ConnectionId).OnPresentInterventionPlacardsRequestAsync(new Api.Common.Models.PlacardDisplayModel[] { model });
+                    playerHubContext.Clients.Client(playerContext.ConnectionId).OnPresentPreviousFrameRequestAsync().ContinueWith(task =>
+                    {
+                        caller.OnPlayerActionRequestResultAsync(playerContext.PlayerId, !task.IsCanceled && task.Exception == null);
+                    });
+                }
+                catch { }
             }
-            catch { }
         }
 
-        public void PlayerRestarScreenplay(string playerId, ScreenplayHandlingImmediacyMode immediancyMode)
+        public void PlayerPresentInterventionScreenplay(string[] playerIds, System.Guid screenplayId)
         {
             var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            try
-            {
-                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+            var caller = Clients.Caller;
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).OnRestartScreenplayRequestAsync(immediancyMode);
+            var screenplay = screenplayRepository.Get(screenplayId);
+
+            foreach (var playerId in playerIds)
+            {
+                try
+                {
+                    var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+
+                    playerHubContext.Clients.Client(playerContext.ConnectionId).OnPresentInterventionPlacardsRequestAsync(screenplay.Frames.OrderBy(e => e.Priority).Where(e => e.Placard.Template.Enabled).Select((Persistence.Entities.Frame entity) =>
+                    {
+                        var model = new Api.Common.Models.PlacardDisplayModel();
+
+                        model.Import(entity.Placard);
+
+                        return model;
+                    }).ToArray()).ContinueWith(task =>
+                    {
+                        caller.OnPlayerActionRequestResultAsync(playerContext.PlayerId, !task.IsCanceled && task.Exception == null);
+                    });
+                }
+                catch { }
             }
-            catch { }
         }
 
-        public void PlayerReloadScreenplay(string playerId, ScreenplayHandlingImmediacyMode immediancyMode)
+        public void PlayerPresentInterventionPlacard(string[] playerIds, System.Guid placardId)
         {
             var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            try
-            {
-                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+            var caller = Clients.Caller;
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).OnReloadScreenplayRequestAsync(immediancyMode);
+            var entity = placardRepository.Get(placardId);
+
+            var model = new Api.Common.Models.PlacardDisplayModel();
+
+            model.Import(entity);
+
+            foreach (var playerId in playerIds)
+            {
+                try
+                {
+                    var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+
+                    playerHubContext.Clients.Client(playerContext.ConnectionId).OnPresentInterventionPlacardsRequestAsync(new Api.Common.Models.PlacardDisplayModel[] { model }).ContinueWith(task =>
+                    {
+                        caller.OnPlayerActionRequestResultAsync(playerContext.PlayerId, !task.IsCanceled && task.Exception == null);
+                    });
+                }
+                catch { }
             }
-            catch { }
         }
 
-        public void PlayerSetAudioEnabled(string playerId, bool enabled)
+        public void PlayerRestartScreenplay(string[] playerIds, ScreenplayHandlingImmediacyMode immediancyMode)
         {
             var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            try
-            {
-                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+            var caller = Clients.Caller;
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).OnSetAudioEnabledRequestAsync(enabled);
+            foreach (var playerId in playerIds)
+            {
+                try
+                {
+                    var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+
+                    playerHubContext.Clients.Client(playerContext.ConnectionId).OnRestartScreenplayRequestAsync(immediancyMode).ContinueWith(task =>
+                    {
+                        caller.OnPlayerActionRequestResultAsync(playerContext.PlayerId, !task.IsCanceled && task.Exception == null);
+                    });
+                }
+                catch { }
             }
-            catch { }
         }
 
-        public void PlayerSetAudioLevel(string playerId, int percent)
+        public void PlayerReloadScreenplay(string[] playerIds, ScreenplayHandlingImmediacyMode immediancyMode)
         {
             var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            try
-            {
-                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+            var caller = Clients.Caller;
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).OnSetAudioLevelRequestAsync(percent);
+            foreach (var playerId in playerIds)
+            {
+                try
+                {
+                    var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+
+                    playerHubContext.Clients.Client(playerContext.ConnectionId).OnReloadScreenplayRequestAsync(immediancyMode).ContinueWith(task =>
+                    {
+                        caller.OnPlayerActionRequestResultAsync(playerContext.PlayerId, !task.IsCanceled && task.Exception == null);
+                    });
+                }
+                catch { }
             }
-            catch { }
         }
 
-        public void PlayerClose(string playerId, bool restart = false)
+        public void PlayerSetAudioEnabled(string[] playerIds, bool enabled)
         {
             var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            try
-            {
-                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+            var caller = Clients.Caller;
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).OnCloseRequestAsync(restart);
+            foreach (var playerId in playerIds)
+            {
+                try
+                {
+                    var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+
+                    playerHubContext.Clients.Client(playerContext.ConnectionId).OnSetAudioEnabledRequestAsync(enabled).ContinueWith(task =>
+                    {
+                        caller.OnPlayerActionRequestResultAsync(playerContext.PlayerId, !task.IsCanceled && task.Exception == null);
+                    });
+                }
+                catch { }
             }
-            catch { }
         }
 
-        public void PlayerShutdown(string playerId, bool restart = false)
+        public void PlayerSetAudioLevel(string[] playerIds, int percent)
         {
             var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
-            try
-            {
-                var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+            var caller = Clients.Caller;
 
-                playerHubContext.Clients.Client(playerContext.ConnectionId).OnShutdownRequestAsync(restart);
+            foreach (var playerId in playerIds)
+            {
+                try
+                {
+                    var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+
+                    playerHubContext.Clients.Client(playerContext.ConnectionId).OnSetAudioLevelRequestAsync(percent).ContinueWith(task =>
+                    {
+                        caller.OnPlayerActionRequestResultAsync(playerContext.PlayerId, !task.IsCanceled && task.Exception == null);
+                    });
+                }
+                catch { }
             }
-            catch { }
+        }
+
+        public void PlayerClose(string[] playerIds, bool restart = false)
+        {
+            var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+
+            var caller = Clients.Caller;
+
+            foreach (var playerId in playerIds)
+            {
+                try
+                {
+                    var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+
+                    playerHubContext.Clients.Client(playerContext.ConnectionId).OnCloseRequestAsync(restart).ContinueWith(task =>
+                    {
+                        caller.OnPlayerActionRequestResultAsync(playerContext.PlayerId, !task.IsCanceled && task.Exception == null);
+                    });
+                }
+                catch { }
+            }
+        }
+
+        public void PlayerShutdown(string[] playerIds, bool restart = false)
+        {
+            var accountId = System.Guid.Parse(Context.User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+
+            var caller = Clients.Caller;
+
+            foreach (var playerId in playerIds)
+            {
+                try
+                {
+                    var playerContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.First(m => m.AccountId == accountId && m.PlayerId == playerId);
+
+                    playerHubContext.Clients.Client(playerContext.ConnectionId).OnShutdownRequestAsync(restart).ContinueWith(task =>
+                    {
+                        caller.OnPlayerActionRequestResultAsync(playerContext.PlayerId, !task.IsCanceled && task.Exception == null);
+                    });
+                }
+                catch { }
+            }
         }
     }
 }

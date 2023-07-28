@@ -16,7 +16,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
         actions: new string[] { "android.intent.action.MAIN" },
         Categories = new string[] 
         {
-            "android.intent.category.HOME",
             "android.intent.category.DEFAULT",
             "android.intent.category.LEANBACK_LAUNCHER"
         })]

@@ -113,7 +113,7 @@
                         <StackLayout>
                             <Label 
                                 x:Name="LabelLabel"
-                                Text="Etiqueta" 
+                                Text="Nombre" 
                                 Style="{StaticResource FormLabel}" />
                             <Entry Text="{Binding Path=Label}">
                                 <Entry.Behaviors>

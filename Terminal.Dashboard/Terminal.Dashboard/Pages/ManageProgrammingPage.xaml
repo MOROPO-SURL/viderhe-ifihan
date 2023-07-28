@@ -22,7 +22,7 @@
             <supportpresentationdashboardconverters:PlacardViewModelToPlacardThumbnailWrapViewConverter x:Key="PlacardViewModelToPlacardThumbnailWrapViewConverter" />
             <supportpresentationdashboardconverters:PlacardToIsAnyPlayerOrientationSupportedConverter x:Key="PlacardToIsAnyPlayerOrientationSupportedConverter" />
 
-            <sscxftoolkitpresentationconverters:NullToStringConverter x:Key="PlacardPanelTitleNullToStringConverter" FalseValue="Marcos (filtrados)" TrueValue="Marcos" />
+            <sscxftoolkitpresentationconverters:NullToStringConverter x:Key="PlacardPanelTitleNullToStringConverter" FalseValue="Carteles (filtrados)" TrueValue="Carteles" />
             <sscxftoolkitpresentationconverters:NullToStringConverter x:Key="FilterIconNullToStringConverter" FalseValue="&#xF232;" TrueValue="&#xF233;" />
             <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
             <sscxftoolkitpresentationconverters:IfNullOrEmptyToStringConverter x:Key="IfNullOrEmptyToStringConverter" StringReplacement="Descripción no especificada" />
@@ -240,14 +240,14 @@
                     HorizontalTextAlignment="Center"
                     Margin="30"
                     TextColor="{StaticResource PrimaryColor}"
-                    Text="Seleccione el guion para gestionar secuencia de marcos" />
+                    Text="Seleccione el guion para gestionar secuencia de carteles" />
             </StackLayout>
             <StackLayout
                 Grid.Column="2" Grid.Row="0"
                 Padding="10"
                 Orientation="Horizontal"
                 BackgroundColor="#a4a4a4"
-                Spacing="4">
+                Spacing="5">
                 <Label
                     VerticalOptions="Center" 
                     Text="&#xf0e5;"

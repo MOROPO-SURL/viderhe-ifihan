@@ -92,7 +92,7 @@
                         FontSize="Medium" />
                     <Label               
                         HorizontalTextAlignment="Center"
-                        Text="Seleccione la posición en la secuencia a la que quiere mover el marco"
+                        Text="Seleccione la posición en la secuencia a la que quiere mover el cartel"
                         TextColor="White" />
                 </StackLayout>
                 <CollectionView
