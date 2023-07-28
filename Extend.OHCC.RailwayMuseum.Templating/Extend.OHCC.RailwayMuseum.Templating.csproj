@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating</RootNamespace>
-    <Version>0.10.2</Version>
+    <Version>0.11.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
