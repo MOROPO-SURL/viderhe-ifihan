@@ -21,7 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
             this.templateDescriptor = templateDescriptor;
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
 
-            Title = string.Format("Nuevo Marco ({0})", templateDescriptor.Name);
+            Title = string.Format("Nuevo Cartel ({0})", templateDescriptor.Name);
         }
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)

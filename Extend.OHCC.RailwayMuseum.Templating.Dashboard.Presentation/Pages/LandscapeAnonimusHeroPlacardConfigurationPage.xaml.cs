@@ -29,12 +29,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
             {
                 var templateDescriptor = new Descriptors.LandscapeAnonimusHeroTemplateDescriptor();
 
-                Title = string.Format("Nuevo Marco ({0})", templateDescriptor.Name);
+                Title = string.Format("Nuevo Cartel ({0})", templateDescriptor.Name);
 
                 return;
             }
 
-            Title = string.Format("Modificando Marco ({0})", placardViewModel.Template.Name);
+            Title = string.Format("Modificando Cartel ({0})", placardViewModel.Template.Name);
         }
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)

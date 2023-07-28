@@ -10,7 +10,7 @@
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Pages.InfinityVideoPlacardEditPage"
     x:TypeArguments="pagemodels:InfinityVideoPlacardEditPageModel"
-    Title="Modificando Marco (Video Infinito)">
+    Title="Modificando Cartel (Video Infinito)">
     <ContentPage.Resources>
         <ResourceDictionary>
             <commonconverters:StringToLocalizeStringConverter x:Key="CommonStringToLocalizeStringConverter" />
@@ -69,7 +69,7 @@
                         Grid.ColumnSpan="3" Grid.Row="0"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Etiqueta" Style="{StaticResource FormLabel}" />
+                            <Label Text="Nombre" Style="{StaticResource FormLabel}" />
                             <Entry Text="{Binding Path=Label}" />
                         </StackLayout>
                     </Frame>
