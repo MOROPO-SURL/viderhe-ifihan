@@ -75,7 +75,7 @@
                     </Grid.RowDefinitions>
                     <Frame Grid.ColumnSpan="3" Grid.Row="0">
                         <StackLayout>
-                            <Label Text="Etiqueta" Style="{StaticResource FormLabel}" />
+                            <Label Text="Nombre" Style="{StaticResource FormLabel}" />
                             <Entry Text="{Binding Path=Label}" />
                         </StackLayout>
                     </Frame>

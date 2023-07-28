@@ -34,11 +34,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
             {
                 var templateDescriptor = new Descriptors.HeroLocalNowDateTimeTemplateDescriptor();
 
-                Title = string.Format("Nuevo Marco ({0})", templateDescriptor.Name);
+                Title = string.Format("Nuevo Cartel ({0})", templateDescriptor.Name);
             }
             else
             {
-                Title = string.Format("Modificando Marco ({0})", placardViewModel.Template.Name);
+                Title = string.Format("Modificando Cartel ({0})", placardViewModel.Template.Name);
             }
         }
 

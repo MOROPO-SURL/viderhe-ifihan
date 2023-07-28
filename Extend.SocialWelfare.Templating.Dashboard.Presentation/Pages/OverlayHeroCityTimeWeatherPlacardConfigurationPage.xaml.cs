@@ -31,13 +31,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
             {
                 var templateDescriptor = new Descriptors.OverlayHeroCityTimeWeatherTemplateDescriptor();
 
-                Title = string.Format("Nuevo Marco ({0})", templateDescriptor.Name);
+                Title = string.Format("Nuevo Cartel ({0})", templateDescriptor.Name);
 
                 BindingContextPageModel.Service = Enumerations.WeatherDataProvisionService.OpenWeatherMap;
             }
             else
             {
-                Title = string.Format("Modificando Marco ({0})", placardViewModel.Template.Name);
+                Title = string.Format("Modificando Cartel ({0})", placardViewModel.Template.Name);
             }
 
             if (BindingContextPageModel.OverlayColor != null)
