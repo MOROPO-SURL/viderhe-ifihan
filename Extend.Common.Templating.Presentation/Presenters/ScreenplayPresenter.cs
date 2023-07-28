@@ -59,7 +59,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         public void RequestPresentNextFrame()
         {
-            PresentNextPlacardPresentationView();
+            if (suspended && interventionPresenter != null) InterventionPlacardsPresentationCompleted_Callback();
+            else PresentNextPlacardPresentationView();
         }
 
         public void RequestPresentPreviousFrame()
@@ -76,6 +77,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
         public void PresentInterventionPlacards(PlacardViewModel[] placards)
         {
+            if (suspended) throw new System.InvalidOperationException();
+
             SuspendPresentation();
 
             interventionPresenter = new ScreenplayPresenter(container, placardViewModelToPresentationViewFunction, placards, transitionProvider, InterventionPlacardsPresentationCompleted_Callback, false, null);
@@ -316,12 +319,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
             currentPlacardFrameView.PresentationComplete -= PlacardPresentationView_PresentationComplete;
 
-            container.Children.Remove(currentPlacardFrameView);
-
-            if (currentPlacardFrameView is System.IDisposable)
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
-                (currentPlacardFrameView as System.IDisposable).Dispose();
-            }
+                container.Children.Remove(currentPlacardFrameView);
+
+                if (currentPlacardFrameView is System.IDisposable)
+                {
+                    (currentPlacardFrameView as System.IDisposable).Dispose();
+                }
+            });
         }
 
         public void ResumePresentation()

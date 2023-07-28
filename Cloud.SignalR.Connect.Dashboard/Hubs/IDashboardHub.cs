@@ -2,24 +2,24 @@
 {
     public interface IDashboardHub
     {
-        void PlayerPresentNextFrame(string playerId);
+        void PlayerPresentNextFrame(string[] playerIds);
 
-        void PlayerPresentPreviousFrame(string playerId);
+        void PlayerPresentPreviousFrame(string[] playerIds);
 
-        void PlayerPresentInterventionScreenplay(string playerId, System.Guid screenplayId);
+        void PlayerPresentInterventionScreenplay(string[] playerIds, System.Guid screenplayId);
 
-        void PlayerPresentInterventionPlacard(string playerId, System.Guid placardId);
+        void PlayerPresentInterventionPlacard(string[] playerIds, System.Guid placardId);
 
-        void PlayerRestarScreenplay(string playerId, Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
+        void PlayerRestartScreenplay(string[] playerIds, Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
 
-        void PlayerReloadScreenplay(string playerId, Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
+        void PlayerReloadScreenplay(string[] playerIds, Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
 
-        void PlayerSetAudioEnabled(string playerId, bool enabled);
+        void PlayerSetAudioEnabled(string[] playerIds, bool enabled);
 
-        void PlayerSetAudioLevel(string playerId, int percent);
+        void PlayerSetAudioLevel(string[] playerIds, int percent);
 
-        void PlayerClose(string playerId, bool restart = false);
+        void PlayerClose(string[] playerIds, bool restart = false);
 
-        void PlayerShutdown(string playerId, bool restart = false);
+        void PlayerShutdown(string[] playerIds, bool restart = false);
     }
 }

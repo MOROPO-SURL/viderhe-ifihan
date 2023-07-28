@@ -14,7 +14,7 @@
     x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages.EditSimpleVideoPlacardPage"
     x:TypeArguments="pagemodels:EditSimpleVideoPlacardPageModel"
     x:Name="FormPage"
-    Title="Modificando Marco (Video Simple)">
+    Title="Modificando Cartel (Video Simple)">
     <ContentPage.Resources>
         <ResourceDictionary>
             <commonconverters:StringToLocalizeStringConverter x:Key="CommonStringToLocalizeStringConverter" />
@@ -112,7 +112,7 @@
                         <StackLayout>
                             <Label 
                                 x:Name="LabelLabel"
-                                Text="Etiqueta" 
+                                Text="Nombre" 
                                 Style="{StaticResource FormLabel}" />
                             <Entry Text="{Binding Path=Label}">
                                 <Entry.Behaviors>
