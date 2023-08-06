@@ -144,6 +144,7 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Label
+                                x:Name="BeginAtDatePickerLabel"
                                 Grid.ColumnSpan="2" Grid.Row="0"
                                 Text="Fecha de incio" 
                                 Style="{StaticResource FormLabel}" />
@@ -151,6 +152,7 @@
                                 Grid.Column="0" Grid.Row="1"
                                 IsToggled="{Binding Path=DefineBeginAt}" />
                             <DatePicker 
+                                x:Name="BeginAtDatePicker"
                                 Grid.Column="1" Grid.Row="1"
                                 IsEnabled="{Binding DefineBeginAt, Mode=OneWay}"
                                 Date="{Binding Path=BeginAt}" />
@@ -169,16 +171,33 @@
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Label
+                                x:Name="EndAtLabel"
                                 Grid.ColumnSpan="2" Grid.Row="0"
                                 Text="Fecha de fin" 
                                 Style="{StaticResource FormLabel}" />
                             <Switch 
+                                x:Name="DefineEndAtSwitch"
                                 Grid.Column="0" Grid.Row="1"
                                 IsToggled="{Binding Path=DefineEndAt}" />
                             <DatePicker 
                                 Grid.Column="1" Grid.Row="1"
                                 IsEnabled="{Binding DefineEndAt, Mode=OneWay}"
-                                Date="{Binding Path=EndAt}" />
+                                Date="{Binding Path=EndAt}">
+                                <DatePicker.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultCachedImageValidationPresenter.Instance}"
+                                        TargetProperty="{Static DatePicker.DateProperty}"
+                                        Label="{Reference EndAtLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:DateComparisonFormFieldValidator 
+                                                ReferenceField="{Reference BeginAtDatePicker}" 
+                                                ReferenceFieldLabel="{Reference BeginAtDatePickerLabel}"
+                                                FieldValidationSwich="{Reference DefineEndAtSwitch}" />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </DatePicker.Behaviors>
+                            </DatePicker>
                         </Grid>
                     </Frame>
                     <Frame 
