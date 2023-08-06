@@ -135,85 +135,93 @@
                             <Switch IsToggled="{Binding Path=RequireUnobstructedPresetation}" />
                         </StackLayout>
                     </Frame>
-                    <Grid
+                    <Frame 
                         Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2"
                         VerticalOptions="Start"
-                        ColumnSpacing="10" RowSpacing="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Frame 
-                            Grid.ColumnSpan="2" Grid.Row="0"
-                            Style="{StaticResource FormFieldFrame}"
-                            Padding="0">
-                            <Grid RowSpacing="0">
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF">
+                        <StackLayout>
+                            <Label Text="Fondo" Style="{StaticResource FormLabel}" />
+                            <Grid ColumnSpacing="10" RowSpacing="10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
-                                    <RowDefinition />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <Label 
-                                    x:Name="ContextedVideoLabel"
-                                    Grid.Column="0" Grid.Row="0"
-                                    Style="{StaticResource FormLabel}"
-                                    Margin="10,10,10,6"
-                                    Text="Video" />
-                                <Button
-                                    Grid.Column="1" Grid.Row="0"
-                                    VerticalOptions="Start"
-                                    Text="Seleccionar"
-                                    Clicked="PickContextedVideoButton_Clicked"  />
-                                <ffimageloadingforms:CachedImage
-                                    Margin="0"
-                                    Grid.ColumnSpan="2" Grid.Row="1"
-                                    BackgroundColor="Black"
-                                    Source="{Binding Path=ContextedVideo, Converter={StaticResource VideoViewModelToThumbnailImageSourceConverter}}"
-                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
-                                    CacheType="Disk"
-                                    CacheDuration="8760:00:00" />
-                                <Grid 
-                                    Grid.ColumnSpan="2" Grid.Row="1"
-                                    IsVisible="{Binding Path=ContextedVideo, Converter={StaticResource NotNullToBooleanConverter}}"
-                                    BackgroundColor="#99000000">
-                                    <Label 
-                                        IsVisible="{Binding Path=ContextedVideo.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
-                                        VerticalOptions="End" 
-                                        Padding="8"
-                                        BackgroundColor="#99000000"
-                                        Text="{Binding Path=ContextedVideo.About}"
-                                        TextColor="White"
-                                        LineBreakMode="TailTruncation" />
-                                    <ImageButton 
-                                        HorizontalOptions="Center" VerticalOptions="Center"
-                                        WidthRequest="120"
-                                        Clicked="ContextedVideoPlayButton_Clicked">
-                                        <ImageButton.Source>
-                                            <FontImageSource 
-                                                Color="White"
-                                                FontFamily="{StaticResource IconFontFamily}"
-                                                Glyph="&#xf40c;" />
-                                        </ImageButton.Source>
-                                    </ImageButton>
-                                </Grid>
+                                <Frame 
+                                    Grid.ColumnSpan="2" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}"
+                                    Padding="0">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Label 
+                                            x:Name="ContextedVideoLabel"
+                                            Grid.Column="0" Grid.Row="0"
+                                            Style="{StaticResource FormLabel}"
+                                            Margin="10,10,10,6"
+                                            Text="Video" />
+                                        <Button
+                                            Grid.Column="1" Grid.Row="0"
+                                            VerticalOptions="Start"
+                                            Style="{StaticResource TextIconButton}"
+                                            Text="&#xF90E;"
+                                            FontSize="Medium"
+                                            Clicked="PickContextedVideoButton_Clicked" />
+                                        <ffimageloadingforms:CachedImage
+                                            Margin="0"
+                                            Grid.ColumnSpan="2" Grid.Row="1"
+                                            BackgroundColor="Black"
+                                            Source="{Binding Path=ContextedVideo, Converter={StaticResource VideoViewModelToThumbnailImageSourceConverter}}"
+                                            HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                            CacheType="Disk"
+                                            CacheDuration="8760:00:00" />
+                                        <Grid 
+                                            Grid.ColumnSpan="2" Grid.Row="1"
+                                            IsVisible="{Binding Path=ContextedVideo, Converter={StaticResource NotNullToBooleanConverter}}"
+                                            BackgroundColor="#99000000">
+                                            <Label 
+                                                IsVisible="{Binding Path=ContextedVideo.About, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                                VerticalOptions="End" 
+                                                Padding="8"
+                                                BackgroundColor="#99000000"
+                                                Text="{Binding Path=ContextedVideo.About}"
+                                                TextColor="White"
+                                                LineBreakMode="TailTruncation" />
+                                            <ImageButton 
+                                                HorizontalOptions="Center" VerticalOptions="Center"
+                                                WidthRequest="120"
+                                                Clicked="ContextedVideoPlayButton_Clicked">
+                                                <ImageButton.Source>
+                                                    <FontImageSource 
+                                                        Color="White"
+                                                        FontFamily="{StaticResource IconFontFamily}"
+                                                        Glyph="&#xf40c;" />
+                                                </ImageButton.Source>
+                                            </ImageButton>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="0" Grid.Row="1"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Matener centrado Video?" Style="{StaticResource FormLabel}" />
+                                        <Switch IsToggled="{Binding Path=ContextedVideoCenteredAtPresentation}" />
+                                    </StackLayout>
+                                </Frame>
                             </Grid>
-                        </Frame>
-                        <Frame 
-                            Grid.Column="0" Grid.Row="1"
-                            Style="{StaticResource FormFieldFrame}">
-                            <StackLayout>
-                                <Label Text="Matener centrado Video?" Style="{StaticResource FormLabel}" />
-                                <Switch IsToggled="{Binding Path=ContextedVideoCenteredAtPresentation}" />
-                            </StackLayout>
-                        </Frame>
-                    </Grid>
+                        </StackLayout>
+                    </Frame>
                     <Frame 
                         Grid.Column="2" Grid.Row="2"
                         Style="{StaticResource FormFieldFrame}"
@@ -302,7 +310,9 @@
                             <Button
                                 Grid.Column="1" Grid.Row="0"
                                 VerticalOptions="Start"
-                                Text="Agregar"
+                                Style="{StaticResource TextIconButton}"
+                                Text="&#xF415;"
+                                FontSize="Medium"
                                 Clicked="AddContentBlockButton_Clicked" />
                             <CollectionView
                                 x:Name="ContentBlockCollectionView"

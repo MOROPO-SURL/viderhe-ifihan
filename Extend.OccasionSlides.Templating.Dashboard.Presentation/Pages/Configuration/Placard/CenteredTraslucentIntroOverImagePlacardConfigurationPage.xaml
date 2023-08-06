@@ -313,7 +313,9 @@
                             <Button
                                 Grid.Column="1" Grid.Row="0"
                                 VerticalOptions="Start"
-                                Text="Agregar"
+                                Style="{StaticResource TextIconButton}"
+                                Text="&#xF415;"
+                                FontSize="Medium"
                                 Clicked="AddContentBlockButton_Clicked" />
                             <CollectionView
                                 x:Name="ContentBlockCollectionView"

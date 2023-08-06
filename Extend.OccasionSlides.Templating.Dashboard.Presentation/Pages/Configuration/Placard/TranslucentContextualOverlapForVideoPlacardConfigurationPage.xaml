@@ -67,7 +67,6 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Frame 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -157,8 +156,10 @@
                             <Button
                                 Grid.Column="1" Grid.Row="0"
                                 VerticalOptions="Start"
-                                Text="Seleccionar"
-                                Clicked="PickContextedVideoButton_Clicked"  />
+                                Style="{StaticResource TextIconButton}"
+                                Text="&#xF90E;"
+                                FontSize="Medium"
+                                Clicked="PickContextedVideoButton_Clicked" />
                             <ffimageloadingforms:CachedImage
                                 Margin="0"
                                 Grid.ColumnSpan="2" Grid.Row="1"
@@ -272,7 +273,9 @@
                             <Button
                                 Grid.Column="1" Grid.Row="0"
                                 VerticalOptions="Start"
-                                Text="Agregar"
+                                Style="{StaticResource TextIconButton}"
+                                Text="&#xF415;"
+                                FontSize="Medium"
                                 Clicked="AddContentBlockButton_Clicked" />
                             <CollectionView
                                 x:Name="ContentBlockCollectionView"
