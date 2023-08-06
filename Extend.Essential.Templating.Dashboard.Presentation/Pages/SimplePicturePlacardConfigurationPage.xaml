@@ -246,7 +246,7 @@
                                 <DatePicker.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"
-                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultCachedImageValidationPresenter.Instance}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultDatePickerValidationPresenter.Instance}"
                                         TargetProperty="{Static DatePicker.DateProperty}"
                                         Label="{Reference EndAtLabel}">
                                         <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
