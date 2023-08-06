@@ -1,5 +1,6 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages
 {
@@ -71,7 +72,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                             PresenterSide = BindingContextPageModel.PresenterSide,
                             PresentedVideo = BindingContextPageModel.PresentedVideo.ToContextModel(),
                             PresentedVideoCenteredAtPresentation = BindingContextPageModel.PresentedVideoCenteredAtPresentation
-                        })
+                        }),
+                        Tags = BindingContextPageModel.Tags.ToArray()
                     };
 
                     if (BindingContextPageModel.DefineBeginAt)
@@ -100,7 +102,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                             PresenterSide = BindingContextPageModel.PresenterSide,
                             PresentedVideo = BindingContextPageModel.PresentedVideo.ToContextModel(),
                             PresentedVideoCenteredAtPresentation = BindingContextPageModel.PresentedVideoCenteredAtPresentation
-                        })
+                        }),
+                        Tags = BindingContextPageModel.Tags.ToArray()
                     };
 
                     if (BindingContextPageModel.DefineBeginAt)
@@ -144,7 +147,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
         private void PickPresenterImageButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(PresenterImagePickedCallback, BindingContextPageModel.PresenterImage));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(PresenterImagePicked_Callback, BindingContextPageModel.PresenterImage));
         }
 
         private void PickPresentedVideoButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -162,7 +165,27 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoDetailPage(BindingContextPageModel.PresentedVideo));
         }
 
-        private void PresenterImagePickedCallback(Support.Presentation.Models.View.ImageViewModel selection)
+        private void AddTagButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage(Cloud.Persistence.Enumerations.TagGroup.Placard, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
+        }
+
+        private void RemoveTagButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayAlert("Quitar Etiqueta", "Está seguro quitar esta etiqueta de este cartel?", "Quitar", "Cancelar").ContinueWith(task =>
+            {
+                if (!task.Result) return;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as Cloud.Api.Common.Models.TagDisplayModel));
+            });
+        }
+
+        private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
+        {
+            BindingContextPageModel.Tags.Add(model);
+        }
+
+        private void PresenterImagePicked_Callback(Support.Presentation.Models.View.ImageViewModel selection)
         {
             BindingContextPageModel.PresenterImage = selection;
         }

@@ -74,6 +74,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <StackLayout 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -135,7 +136,66 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.Row="2"
+                        Grid.ColumnSpan="3" Grid.Row="2"
+                        Style="{StaticResource FormFieldFrame}"
+                        Padding="0">
+                        <Grid>
+                            <StackLayout Margin="6">
+                                <Label
+                                    Margin="6,6,6,0"
+                                    Text="Etiquetas" 
+                                    Style="{StaticResource FormLabel}" />
+                                <BoxView
+                                    Margin="6,4,6,0"
+                                    HeightRequest="2"
+                                    Color="DimGray" />
+                                <FlexLayout
+                                    IsClippedToBounds="True"
+                                    Wrap="Wrap"
+                                    Direction="Column"
+                                    AlignItems="Center"
+                                    AlignContent="Start"
+                                    BindableLayout.ItemsSource="{Binding Path=Tags}">
+                                    <BindableLayout.EmptyView>
+                                        <Label Margin="6" Text="Sin elementos que mostrar" />
+                                    </BindableLayout.EmptyView>
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid
+                                                BackgroundColor="{StaticResource AccentColor}"
+                                                Margin="6" Padding="8">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Column="0"
+                                                    Margin="4,0,0,0"
+                                                    VerticalOptions="Center"
+                                                    Text="{Binding Path=Name}"
+                                                    TextColor="White" />
+                                                <Button
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource TextIconButton}"
+                                                    VerticalOptions="Center"
+                                                    Text="&#xFA78;"
+                                                    TextColor="White"
+                                                    Clicked="RemoveTagButton_Clicked" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </FlexLayout>
+                            </StackLayout>
+                            <Button
+                                HorizontalOptions="End" VerticalOptions="Start"
+                                Text="&#xF415;"
+                                Style="{StaticResource TextIconButton}"
+                                FontSize="Medium"
+                                Clicked="AddTagButton_Clicked" />
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.Row="3"
                         Style="{StaticResource FormFieldFrame}">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -162,7 +222,7 @@
                         </Grid>
                     </Frame>
                     <Frame 
-                        Grid.Column="1" Grid.Row="2"
+                        Grid.Column="1" Grid.Row="3"
                         Style="{StaticResource FormFieldFrame}">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -204,7 +264,7 @@
                         </Grid>
                     </Frame>
                     <Frame 
-                        Grid.Column="2" Grid.Row="2"
+                        Grid.Column="2" Grid.Row="3"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="A Pantalla Completa" Style="{StaticResource FormLabel}" />
@@ -212,7 +272,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.Row="3"
+                        Grid.Column="0" Grid.Row="4"
                         Style="{StaticResource FormFieldFrame}"
                         Padding="0">
                         <StackLayout 
@@ -266,7 +326,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.Row="4"
+                        Grid.Column="0" Grid.Row="5"
                         Style="{StaticResource FormFieldFrame}"
                         VerticalOptions="Start">
                         <StackLayout>
@@ -278,7 +338,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"
+                        Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"
                         Style="{StaticResource FormFieldFrame}"
                         Padding="0">
                         <Grid RowSpacing="0">
@@ -399,7 +459,7 @@
                         </Grid>
                     </Frame>
                     <Frame
-                        Grid.Column="1" Grid.Row="4"
+                        Grid.Column="1" Grid.Row="5"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Tiempo en Pantalla (c/u)" Style="{StaticResource FormLabel}" />
@@ -418,7 +478,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="2" Grid.Row="4"
+                        Grid.Column="2" Grid.Row="5"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Matener centrada Secuencia de Imágenes Presentada?" Style="{StaticResource FormLabel}" />

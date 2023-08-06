@@ -16,7 +16,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
                 .Include(e => e.ImageBridges)
                 .Include(e => e.VideoBridges)
                 .Include(e => e.GradientBridges)
-                .Include(e => e.SoundBridges);
+                .Include(e => e.SoundBridges)
+                .Include(e => e.TagBridges).ThenInclude(b => b.Tag);
         }
 
         public override System.Func<Entities.Placard, object> GetPagingOrderSelector()

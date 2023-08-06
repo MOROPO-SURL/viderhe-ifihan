@@ -1,6 +1,7 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
 using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages
 {
@@ -40,7 +41,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
         private void PickImageButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(ImagePickedCallback, BindingContextPageModel.Image));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.ImagePickPage(ImagePicked_Callback, BindingContextPageModel.Image));
         }
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
@@ -78,7 +79,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                             LayoutMode = BindingContextPageModel.LayoutMode,
                             IsZoomingEnabled = BindingContextPageModel.IsZoomingEnabled,
                             Image = BindingContextPageModel.Image.ToContextModel()
-                        })
+                        }),
+                        Tags = BindingContextPageModel.Tags.ToArray()
                     };
 
                     if (BindingContextPageModel.DefineBeginAt)
@@ -108,7 +110,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                             LayoutMode = BindingContextPageModel.LayoutMode,
                             IsZoomingEnabled = BindingContextPageModel.IsZoomingEnabled,
                             Image = BindingContextPageModel.Image.ToContextModel()
-                        })
+                        }),
+                        Tags = BindingContextPageModel.Tags.ToArray()
                     };
 
                     if (BindingContextPageModel.DefineBeginAt)
@@ -150,7 +153,27 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             this.NavigationPopPageAsync();
         }
 
-        private void ImagePickedCallback(Support.Presentation.Models.View.ImageViewModel selection)
+        private void AddTagButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage(Cloud.Persistence.Enumerations.TagGroup.Placard, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
+        }
+
+        private void RemoveTagButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayAlert("Quitar Etiqueta", "Está seguro quitar esta etiqueta de este cartel?", "Quitar", "Cancelar").ContinueWith(task =>
+            {
+                if (!task.Result) return;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as Cloud.Api.Common.Models.TagDisplayModel));
+            });
+        }
+
+        private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
+        {
+            BindingContextPageModel.Tags.Add(model);
+        }
+
+        private void ImagePicked_Callback(Support.Presentation.Models.View.ImageViewModel selection)
         {
             BindingContextPageModel.Image = selection;
 

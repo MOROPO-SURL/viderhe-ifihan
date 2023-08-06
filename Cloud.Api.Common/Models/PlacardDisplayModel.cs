@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using System.Linq;
+
+namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 {
     public class PlacardDisplayModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Placard, System.Guid>
     {
@@ -20,6 +22,8 @@
 
         public string SerializedComplementation { get; set; }
 
+        public TagDisplayModel[] Tags { get; set; }
+
         public void Import(Persistence.Entities.Placard entity)
         {
             Id = entity.Id;
@@ -30,6 +34,13 @@
             SerializedContext = entity.SerializedContext;
             ComplementationKind = entity.ComplementationKind;
             SerializedComplementation = entity.SerializedComplementation;
+            Tags = entity.TagBridges.Select(bridge => new TagDisplayModel
+            {
+                Id = bridge.TagId,
+                Name = bridge.Tag.Name,
+                Group = bridge.Tag.Group,
+                Color = bridge.Tag.Color
+            }).ToArray();
 
             Template = new TemplateDisplayModel();
 
