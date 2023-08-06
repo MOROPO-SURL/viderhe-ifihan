@@ -70,5 +70,48 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         {
             BindingContextPageModel.TextFontFamily = selection;
         }
+
+        private void PickTextButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.TextPickPage(PickText_Callback));
+        }
+
+        private void TextSaveButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayPromptAsync("Salvar Texto", "Especifique una referencia para este texto").ContinueWith(task =>
+            {
+                if (string.IsNullOrEmpty(task.Result)) return;
+
+                BindingContextPageModel.IsBusy = true;
+
+                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+
+                apiConnectClient.CreateAsync(new Cloud.Api.Common.Models.TextInputModel
+                {
+                    About = task.Result,
+                    Content = BindingContextPageModel.Text
+                }).ContinueWith(_task =>
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        if (_task.IsCanceled || _task.IsFaulted)
+                        {
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        }
+                        else
+                        {
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                        }
+
+                        BindingContextPageModel.IsBusy = false;
+                    });
+                });
+            });
+        }
+
+        private void PickText_Callback(Support.Presentation.Dashboard.Models.View.TextViewModel target)
+        {
+            BindingContextPageModel.Text = target.Content;
+        }
     }
 }

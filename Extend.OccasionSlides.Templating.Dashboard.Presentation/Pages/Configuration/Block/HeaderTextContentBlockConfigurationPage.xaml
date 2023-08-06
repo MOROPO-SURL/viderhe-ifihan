@@ -12,6 +12,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BoolToFieldsetBackgroudnColorStringConverter" FalseString="White" TrueString="#66FFFFFF" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -70,6 +71,19 @@
                             <Editor 
                                 HeightRequest="360"
                                 Text="{Binding Path=Text}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Button
+                                    Text="&#xF528;"
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    BorderWidth="0"
+                                    Clicked="PickTextButton_Clicked" />
+                                <Button
+                                    IsEnabled="{Binding Path=Text, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                    Text="&#xF193;"
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    BorderWidth="0"
+                                    Clicked="TextSaveButton_Clicked" />
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                     <Frame 
@@ -149,7 +163,7 @@
                         Grid.ColumnSpan="2" Grid.Row="4"
                         Style="{StaticResource FormFieldFrame}"
                         BackgroundColor="#66FFFFFF">
-                        <Grid 
+                        <Grid
                             ColumnSpacing="10" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*" />
@@ -159,7 +173,7 @@
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
                             <Label 
                                 Grid.ColumnSpan="2" Grid.Row="0"
@@ -169,12 +183,37 @@
                                 Grid.Column="0" Grid.Row="1" Grid.RowSpan="3"
                                 Style="{StaticResource FormFieldFrame}"
                                 VerticalOptions="Start">
-                                <StackLayout>
-                                    <Label Text="Texto" Style="{StaticResource FormLabel}" />
+                                <Grid HeightRequest="320">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label 
+                                        Grid.ColumnSpan="3" Grid.Row="0"
+                                        Text="Texto" Style="{StaticResource FormLabel}" />
                                     <Editor 
-                                        HeightRequest="240"
+                                        Grid.ColumnSpan="3" Grid.Row="1"
                                         Text="{Binding Path=Header}" />
-                                </StackLayout>
+                                    <Button
+                                        Grid.Column="0" Grid.Row="2"
+                                        Text="&#xF528;"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        BorderWidth="0"
+                                        Clicked="PickHeaderButton_Clicked" />
+                                    <Button
+                                        Grid.Column="1" Grid.Row="2"
+                                        IsEnabled="{Binding Path=Header, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                        Text="&#xF193;"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        BorderWidth="0"
+                                        Clicked="HeaderSaveButton_Clicked" />
+                                </Grid>
                             </Frame>
                             <Frame 
                                 Grid.Column="1" Grid.Row="1"
@@ -239,6 +278,7 @@
                     </Frame>
                 </Grid>
             </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>

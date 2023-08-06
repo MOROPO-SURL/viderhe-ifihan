@@ -12,6 +12,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -69,6 +70,19 @@
                             <Editor 
                                 HeightRequest="360"
                                 Text="{Binding Path=Text}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Button
+                                    Text="&#xF528;"
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    BorderWidth="0"
+                                    Clicked="PickTextButton_Clicked" />
+                                <Button
+                                    IsEnabled="{Binding Path=Text, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                                    Text="&#xF193;"
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    BorderWidth="0"
+                                    Clicked="TextSaveButton_Clicked" />
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                     <Frame 
@@ -146,6 +160,7 @@
                     </Frame>
                 </Grid>
             </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>
