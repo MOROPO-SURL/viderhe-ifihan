@@ -14,10 +14,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\moropo-logo-dark.svg" />
     <None Remove="Assets\Images\viderhe-identity-main.svg" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\moropo-logo-dark.svg" />
     <EmbeddedResource Include="Assets\Images\viderhe-identity-main.svg" />
   </ItemGroup>
 
