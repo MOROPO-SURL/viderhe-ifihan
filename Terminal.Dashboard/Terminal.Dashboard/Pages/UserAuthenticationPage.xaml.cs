@@ -9,7 +9,7 @@
         {
             InitializeComponent();
 
-            CopyRightLabel.Text = string.Format("© 2021 - {0} Todos los derechos reservados", System.DateTime.Now.Year);
+            CopyRightLabel.Text = string.Format("© 2022 - {0} Todos los derechos reservados", System.DateTime.Now.Year);
         }
 
         protected override bool OnBackButtonPressed()
