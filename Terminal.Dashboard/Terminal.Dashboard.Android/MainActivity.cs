@@ -6,7 +6,12 @@ using Android.OS;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid
 {
-    [Activity(Label = "VIDERHE Control", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Landscape)]
+    [Activity(
+        Label = "VIDERHE Control", 
+        Icon = "@mipmap/icon", 
+        Theme = "@style/MainTheme", 
+        MainLauncher = false, 
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Landscape)]
     public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -15,13 +20,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(savedInstanceState);
-
-            //var isTablet = false;
-            
-            //if (!isTablet)
-            //{
-            //    RequestedOrientation = ScreenOrientation.Landscape;
-            //}
 
             Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
