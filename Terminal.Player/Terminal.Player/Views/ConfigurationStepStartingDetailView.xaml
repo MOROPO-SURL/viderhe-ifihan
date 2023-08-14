@@ -33,7 +33,7 @@
                 Grid.ColumnSpan="2" Grid.Row="0"
                 Text="Conectando con el servicio para verificar el reproductor e identificar su cuenta ..."
                 Style="{StaticResource ConfigurationStepSubtitleLabelStyle}"
-                FontSize="{Binding Source=23, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                FontSize="{Binding Source=32, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
             <Label 
                 Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"
                 Text="&#xF48B;"
@@ -60,11 +60,13 @@
                 Orientation="Horizontal">
                 <Button
                     Padding="{Binding Source={StaticResource ButtonPadding}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
+                    BackgroundColor="Accent"
                     Text="Especificar Servidor"
                     FontSize="{Binding Source=18, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                     Clicked="ChangeServerButton_Clicked" />
                 <Button
                     Padding="{Binding Source={StaticResource ButtonPadding}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
+                    BackgroundColor="Accent"
                     Text="Ajustes del Sistema"
                     FontSize="{Binding Source=18, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                     Clicked="OpenSystemSettingsButton_Clicked" />

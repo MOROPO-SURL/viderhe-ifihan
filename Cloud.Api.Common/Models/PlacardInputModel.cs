@@ -21,6 +21,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
         [Required]
         public string SerializedContext { get; set; }
 
+        public TagDisplayModel[] Tags { get; set; }
+
         public Persistence.Entities.Placard Export()
         {
             var entity = new Persistence.Entities.Placard();
@@ -48,6 +50,17 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
             entity.BeginAt = BeginAt;
             entity.EndAt = EndAt;
             entity.SerializedContext = SerializedContext;
+
+            entity.TagBridges.Clear();
+
+            foreach (var item in Tags)
+            {
+                entity.TagBridges.Add(new Persistence.Entities.PlacardTagBridge
+                {
+                    PlacardId = entity.Id,
+                    TagId = item.Id
+                });
+            }
         }
     }
 }

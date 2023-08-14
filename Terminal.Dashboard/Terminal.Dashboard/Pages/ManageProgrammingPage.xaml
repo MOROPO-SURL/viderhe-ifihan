@@ -42,7 +42,7 @@
             Text="Actualizar"
             Clicked="ReloadToolbarItem_Clicked">
             <ToolbarItem.IconImageSource>
-                <FontImageSource FontFamily="{StaticResource IconFontFamily}" Glyph="&#xf6ea;">
+                <FontImageSource FontFamily="{StaticResource IconFontFamily}" Glyph="&#xF450;">
                     <FontImageSource.Color>
                         <OnPlatform x:TypeArguments="Color">
                             <On Platform="UWP" Value="Black" />

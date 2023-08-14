@@ -12,6 +12,7 @@
         public AbstractPlacardConfigurationPageModel()
         {
             AvailableConfigurationPlayerOrientationSupportKinds = new[] { Enumerations.ConfigurationPlayerOrientationSupportKind.Inherited, Enumerations.ConfigurationPlayerOrientationSupportKind.Landscape, Enumerations.ConfigurationPlayerOrientationSupportKind.Portrait };
+            Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>();
         }
 
         public bool RequireUnobstructedPresetation { get => requireUnobstructedPresetation; set => SetProperty(ref requireUnobstructedPresetation, value); }
@@ -27,5 +28,7 @@
         public Enumerations.ConfigurationPlayerOrientationSupportKind PlayerOrientationSupportKind { get => playerOrientationSupportKind; set => SetProperty(ref playerOrientationSupportKind, value); }
 
         public Enumerations.ConfigurationPlayerOrientationSupportKind[] AvailableConfigurationPlayerOrientationSupportKinds { get; private set; }
+
+        public System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel> Tags { get; set; }
     }
 }

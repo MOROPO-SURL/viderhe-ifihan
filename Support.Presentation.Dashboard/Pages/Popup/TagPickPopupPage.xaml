@@ -2,9 +2,9 @@
 <popup:PopupPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:views="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views"
     xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup.TagPickPopupPage">
+    x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage">
     <ContentPage.Content>
         <Frame
             HorizontalOptions="Center" VerticalOptions="Center"
@@ -70,7 +70,7 @@
                             Clicked="CloseButton_Clicked" />
                     </Grid>
                 </StackLayout>
-                <supportpresentationdashboardviews:BusyView />
+                <views:BusyView />
             </Grid>
         </Frame>
     </ContentPage.Content>
