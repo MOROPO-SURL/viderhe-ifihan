@@ -302,17 +302,17 @@
                                 <ContentView
                                     BackgroundColor="Black"
                                     Content="{Binding Path=Background, Converter={StaticResource BackgroundToViewConverter}}">
-                                    <!--<ContentView.Behaviors>
+                                    <ContentView.Behaviors>
                                         <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                             ValidableFormPage="{Reference FormPage}"
-                                            FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:Defa.Instance}"
+                                            FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultContentViewValidationPresenter.Instance}"
                                             TargetProperty="{Static ContentView.ContentProperty}"
                                             Label="{Reference BackgroundLabel}">
                                             <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
                                                 <supportpresentationdashboardvalidators:NotNullFormFieldValidator />
                                             </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
                                         </supportpresentationdashboardbehaviors:ViewValidationBehavior>
-                                    </ContentView.Behaviors>-->
+                                    </ContentView.Behaviors>
                                 </ContentView>
                                 <StackLayout 
                                     HorizontalOptions="Center" VerticalOptions="End"

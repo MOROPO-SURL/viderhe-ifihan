@@ -288,6 +288,7 @@
                     <Frame Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5">
                         <StackLayout>
                             <Label
+                                x:Name="ServerHostLabel"
                                 Style="{StaticResource FormLabel}"
                                 Text="Servidor Intermedio Weather" />
                             <StackLayout Orientation="Horizontal">
@@ -296,7 +297,19 @@
                                     BackgroundColor="LightGray"
                                     Text="{Binding Path=WeatherCacheMicroServerHost}"
                                     Placeholder="Ej: weather.viderhe.net"
-                                    IsReadOnly="True" />
+                                    IsReadOnly="True">
+                                    <Entry.Behaviors>
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                            ValidableFormPage="{Reference FormPage}"
+                                            FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
+                                            TargetProperty="{Static Entry.TextProperty}"
+                                            Label="{Reference ServerHostLabel}">
+                                            <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                            </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                    </Entry.Behaviors>
+                                </Entry>
                                 <Button 
                                     FontFamily="{StaticResource IconFontFamily}"
                                     Text="&#xf90b;"
@@ -306,11 +319,26 @@
                     </Frame>
                     <Frame Grid.Column="2" Grid.Row="5">
                         <StackLayout>
-                            <Label Text="Servicio" Style="{StaticResource FormLabel}" />
+                            <Label 
+                                x:Name="ServiceLabel"
+                                Text="Servicio" 
+                                Style="{StaticResource FormLabel}" />
                             <Picker
                                 IsEnabled="{Binding Path=WeatherCacheMicroServerHost, Converter={StaticResource NotNullToBooleanConverter}}"
                                 SelectedItem="{Binding Path=Service}"
-                                ItemsSource="{Binding Path=AvailableServices}" />
+                                ItemsSource="{Binding Path=AvailableServices}">
+                                <Picker.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultPickerValidationPresenter.Instance}"
+                                        TargetProperty="{Static Picker.SelectedItemProperty}"
+                                        Label="{Reference ServiceLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:NotNullFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Picker.Behaviors>
+                            </Picker>
                         </StackLayout>
                     </Frame>
                     <Frame Grid.Column="0" Grid.Row="6">
@@ -329,13 +357,28 @@
                     </Frame>
                     <Frame Grid.Column="2" Grid.Row="6">
                         <StackLayout>
-                            <Label Text="Ciudad" Style="{StaticResource FormLabel}" />
+                            <Label 
+                                x:Name="CityLabel"
+                                Text="Ciudad" 
+                                Style="{StaticResource FormLabel}" />
                             <Picker
                                 x:Name="CityPicker"
                                 IsEnabled="{Binding Path=WeatherCacheMicroServerHost, Converter={StaticResource NotNullToBooleanConverter}}"
                                 ItemsSource="{Binding Path=AvailableCities}"
                                 ItemDisplayBinding="{Binding Path=Name}"
-                                SelectedIndexChanged="CityPicker_SelectedIndexChanged"/>
+                                SelectedIndexChanged="CityPicker_SelectedIndexChanged">
+                                <Picker.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultPickerValidationPresenter.Instance}"
+                                        TargetProperty="{Static Picker.SelectedItemProperty}"
+                                        Label="{Reference CityLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:NotNullFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Picker.Behaviors>
+                            </Picker>
                         </StackLayout>
                     </Frame>
                     <Frame 
@@ -345,6 +388,7 @@
                         VerticalOptions="Start">
                         <StackLayout>
                             <Label
+                                x:Name="BackgroundLabel"
                                 Margin="12,12,12,0"
                                 Text="Fondo" 
                                 Style="{StaticResource FormLabel}" />
@@ -354,7 +398,19 @@
                                 </Grid.GestureRecognizers>
                                 <ContentView
                                     BackgroundColor="Black"
-                                    Content="{Binding Path=Background, Converter={StaticResource BackgroundToViewConverter}}" />
+                                    Content="{Binding Path=Background, Converter={StaticResource BackgroundToViewConverter}}">
+                                    <ContentView.Behaviors>
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                            ValidableFormPage="{Reference FormPage}"
+                                            FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultContentViewValidationPresenter.Instance}"
+                                            TargetProperty="{Static ContentView.ContentProperty}"
+                                            Label="{Reference BackgroundLabel}">
+                                            <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                <supportpresentationdashboardvalidators:NotNullFormFieldValidator />
+                                            </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                    </ContentView.Behaviors>
+                                </ContentView>
                                 <StackLayout 
                                     HorizontalOptions="Center" VerticalOptions="End"
                                     Padding="4"
