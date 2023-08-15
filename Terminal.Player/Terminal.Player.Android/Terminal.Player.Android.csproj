@@ -130,6 +130,7 @@
     <Compile Include="Receivers\BootBroadcastReceiver.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashActivity.cs" />
     <Compile Include="Views\Renderer\ExoVideoPlayerViewRenderer.cs" />
     <Compile Include="Views\Renderer\FontOverflowLabelRenderer.cs" />
     <Compile Include="Views\Renderer\IndeterminableProgressBarViewRenderer.cs" />
@@ -151,7 +152,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable-xhdpi\splash_viderhe_player.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj">
@@ -224,21 +225,6 @@
     <AndroidResource Include="Resources\mipmap-anydpi-v26\ic_launcher_round.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\powerby_signature.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\powerby_signature.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\powerby_signature.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\powerby_signature.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\powerby_signature.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
   </ItemGroup>
   <ItemGroup>
@@ -255,6 +241,24 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\xml\network_security_config.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\splash_screen.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\splash_viderhe_player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\splash_viderhe_player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-ldpi\splash_viderhe_player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash_viderhe_player.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\splash_viderhe_player.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

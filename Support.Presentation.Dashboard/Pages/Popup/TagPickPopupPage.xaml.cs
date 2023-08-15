@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
+namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.Popup
 {
     public partial class TagPickPopupPage : Rg.Plugins.Popup.Pages.PopupPage
     {
@@ -23,7 +23,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
         {
             base.OnAppearing();
 
-            var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
             apiConnectClient.FilterAsync(new Cloud.Api.Common.Models.Filter.TagFilterModel
             {
@@ -36,7 +36,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {
@@ -84,7 +84,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
                     return;
                 }
 
-                var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(Managers.SessionManager.Instance);
+                var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 var model = new Cloud.Api.Common.Models.TagInputModel
                 {
@@ -100,7 +100,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
                     {
                         if (_task.Exception != null || _task.IsCanceled)
                         {
-                            (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(_task.Exception);
+                            (Xamarin.Forms.Application.Current as Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(_task.Exception);
 
                             bindingContextPageModel.IsBusy = false;
                         }
