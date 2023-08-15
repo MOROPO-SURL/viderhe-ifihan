@@ -7,11 +7,13 @@ using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Placard
 {
-    public partial class CenteredTraslucentIntroOverImagePlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<CenteredTraslucentIntroOverImagePlacardConfigurationPageModel>
+    public partial class CenteredTraslucentIntroOverImagePlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<CenteredTraslucentIntroOverImagePlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private const string OPTION_COMMON_CANCEL = "Cancelar";
         private const string OPTION_COMMON_EDIT = "Modificar";
         private const string OPTION_COMMON_DELETE = "Eliminar";
+
+        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
         private System.Action successfulCompleteCallbackAction;
@@ -24,6 +26,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         public CenteredTraslucentIntroOverImagePlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
             : base(Factories.Placard.CenteredTraslucentIntroOverImagePlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
+            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+
             InitializeComponent();
 
             this.placardViewModel = placardViewModel;
@@ -43,6 +47,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
+            BindingContextPageModel.ResetValidationState();
+
+            foreach (var validationBehavior in validationBehaviors)
+            {
+                var result = validationBehavior.Evaluate();
+
+                if (!BindingContextPageModel.IsValid) continue;
+
+                if (!result) BindingContextPageModel.IsValid = false;
+            }
+
+            if (!BindingContextPageModel.IsValid) return;
+
             BindingContextPageModel.IsBusy = true;
 
             System.Threading.Tasks.Task.Run(async () =>
@@ -70,7 +87,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                         }, new Newtonsoft.Json.JsonSerializerSettings
                         {
                             TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
-                        })
+                        }),
+                        Tags = BindingContextPageModel.Tags.ToArray()
                     };
 
                     if (BindingContextPageModel.DefineBeginAt)
@@ -107,7 +125,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                         }, new Newtonsoft.Json.JsonSerializerSettings
                         {
                             TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
-                        })
+                        }),
+                        Tags = BindingContextPageModel.Tags.ToArray()
                     };
 
                     if (BindingContextPageModel.DefineBeginAt)
@@ -147,6 +166,26 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         private void CancelToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
             this.NavigationPopPageAsync();
+        }
+
+        private void AddTagButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage(Cloud.Persistence.Enumerations.TagGroup.Placard, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
+        }
+
+        private void RemoveTagButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayAlert("Quitar Etiqueta", "Está seguro quitar esta etiqueta de este cartel?", "Quitar", "Cancelar").ContinueWith(task =>
+            {
+                if (!task.Result) return;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as Cloud.Api.Common.Models.TagDisplayModel));
+            });
+        }
+
+        private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
+        {
+            BindingContextPageModel.Tags.Add(model);
         }
 
         private void PickBackgroundImageButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -326,5 +365,28 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 item.Target.Priority = counter++;
             }
         }
+
+        #region IValidableFormPage implementation
+
+        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Add(validationBehavior);
+        }
+
+        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        {
+            validationBehaviors.Remove(validationBehavior);
+        }
+
+        public void AddValidationMessage(string label, string message)
+        {
+            BindingContextPageModel.ValidationMessages.Add(new Support.Presentation.Dashboard.Models.View.ValidationMessageViewModel
+            {
+                Caption = label,
+                Message = message
+            });
+        }
+
+        #endregion
     }
 }

@@ -21,6 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 DefineEndAt = placardViewModel.EndAt != null,
                 EndAt = placardViewModel.EndAt ?? System.DateTime.Now.Date,
                 Label = placardViewModel.Label,
+                Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>(placardViewModel.Tags),
                 OverlapSize = context.OverlapSize,
                 OverlapShapeKind = context.OverlapShapeKind,
                 OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
