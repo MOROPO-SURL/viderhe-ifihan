@@ -5,8 +5,10 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:renderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Player.Views.Rendered"
     xmlns:commontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:supportpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Player.Pages.MainPage"
+    BackgroundColor="#00162c"
     ios:Page.PrefersStatusBarHidden="True">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,23 +17,20 @@
 
             <Thickness x:Key="CurrentTaskProgressBarMargin">0,30</Thickness>
             <Thickness x:Key="PageLayoutMargin">80</Thickness>
+
+            <OnPlatform x:Key="IdentityMainMargin" x:TypeArguments="Thickness" Default="0">
+                <On Platform="Android" Value="0,8,0,0" />
+            </OnPlatform>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <Grid.Background>
-                <LinearGradientBrush>
-                    <GradientStop 
-                        Color="#4314c6"
-                        Offset="0.1" />
-                    <GradientStop 
-                        Color="#1b7be8"
-                        Offset="1.0" />
-                </LinearGradientBrush>
-            </Grid.Background>
-            <Grid Margin="{Binding Source={StaticResource PageLayoutMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}">
+            <supportpresentationviews:IdentityBackgroundView />           
+            <Grid 
+                Margin="{Binding Source={StaticResource PageLayoutMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
+                ColumnSpacing="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -40,16 +39,26 @@
                     <RowDefinition />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
+                <ffimageloadingsvg:SvgCachedImage
+                    x:Name="IdentityMainSvgCachedImage"
+                    Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                    Margin="{StaticResource IdentityMainMargin}"
+                    VerticalOptions="Start"
+                    WidthRequest="{Binding Source=240, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                    Aspect="AspectFit"
+                    LoadingDelay="600"
+                    Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Player.Assets.Image.viderhe-identity-high-contrast-light.svg" />
                 <Label
                     x:Name="StepTitleLabel"
-                    Grid.Column="0" Grid.Row="0"
+                    Grid.Column="1" Grid.Row="0"
                     Opacity="0"
                     Text="{Binding Path=Title}"
                     TextColor="White"
-                    FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    FontFamily="Montserrat (Bold)"
+                    FontSize="{Binding Source=60, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                 <renderedviews:IndeterminableProgressBarView
                     x:Name="CurrentTaskProgressBar"
-                    Grid.ColumnSpan="2" Grid.Row="1"
+                    Grid.Column="1" Grid.Row="1"
                     Opacity="0"
                     Margin="{Binding Source={StaticResource CurrentTaskProgressBarMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
                     ProgressColor="White"
@@ -57,37 +66,32 @@
                 <ContentView 
                     x:Name="StepDetailContentView"
                     Content="{Binding Path=DetailContentView}"
-                    Grid.ColumnSpan="2" Grid.Row="2" />
+                    Grid.Column="1" Grid.Row="2" />
                 <StackLayout 
-                    x:Name="ProductIdentityContainer"
-                    Grid.Column="1" Grid.RowSpan="4"
+                    Grid.Column="1" Grid.Row="3"
                     HorizontalOptions="End" VerticalOptions="End"
-                    Opacity="0"
-                    Spacing="0">
+                    WidthRequest="{Binding Source=240, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                    Spacing="12">
+                    <Label 
+                        x:Name="ForBrandingLabel"
+                        Opacity="0"
+                        Text="por"
+                        TextColor="White"
+                        FontFamily="Montserrat (Italic)"
+                        FontSize="{Binding Source=18, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     <ffimageloadingsvg:SvgCachedImage
-                        WidthRequest="{Binding Source=180, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
-                        Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Player.Assets.Images.viderhe-identity-high-contrast-light.svg" />
+                        Aspect="AspectFit"
+                        LoadingDelay="1200"
+                        Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Player.Assets.Image.moropo-logo-light.svg"
+                        Finish="BrandingSvgCachedImage_Finish" />
+                    <Label 
+                        x:Name="CopyRightLabel"
+                        Opacity="0"
+                        HorizontalTextAlignment="Center"
+                        TextColor="White"
+                        FontFamily="Montserrat (Regular)"
+                        FontSize="{Binding Source=18, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"/>
                 </StackLayout>
-                <!--<StackLayout 
-                    x:Name="ProductIdentityContainer"
-                    Grid.ColumnSpan="2" Grid.Row="3"
-                    Orientation="Horizontal"
-                    Spacing="0"
-                    Opacity="0">
-                    <ffimageloadingsvg:SvgCachedImage
-                        HorizontalOptions="Start" VerticalOptions="End"
-                        WidthRequest="320" HeightRequest="120"
-                        Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Player.Assets.Images.viderhe-identity-high-contrast-light.svg"
-                        Aspect="AspectFill" />
-                    <Image HorizontalOptions="End" VerticalOptions="End">
-                        <Image.Source>
-                            <OnPlatform x:TypeArguments="ImageSource">
-                                <On Platform="Android" Value="powerby_signature.png" />
-                                <On Platform="UWP" Value="Assets/PowerbySignature.png" />
-                            </OnPlatform>
-                        </Image.Source>
-                    </Image>
-                </StackLayout>-->
             </Grid>
         </Grid>
     </ContentPage.Content>

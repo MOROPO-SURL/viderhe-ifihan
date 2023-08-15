@@ -10,7 +10,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
         Label = "VIDERHE Player", 
         Icon = "@mipmap/ic_launcher",
         Theme = "@style/AppTheme.NoActionBar", 
-        MainLauncher = true,
+        MainLauncher = false,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     [IntentFilter(
         actions: new string[] { "android.intent.action.MAIN" },

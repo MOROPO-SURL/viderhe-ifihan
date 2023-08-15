@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<AssemblyName>VIDERHEControlSetup</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Terminal.Dashboard.UWPInstaller</RootNamespace>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<ApplicationIcon>app.ico</ApplicationIcon>
+		<Authors>MOROPO S.U.R.L.</Authors>
+		<Copyright>MOROPO S.U.R.L. 2023</Copyright>
+		<AssemblyVersion>1.6.0.0</AssemblyVersion>
+		<Version>1.6.0.0</Version>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="app.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="app.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Terminal.Common.WPF.UWPInstaller\Terminal.Common.WPF.UWPInstaller.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Resources\Dependencies\x64\Microsoft.NET.CoreRuntime.2.2.appx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Dependencies\x64\Microsoft.UI.Xaml.2.4.appx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Dependencies\x64\Microsoft.VCLibs.x64.12.00.Universal.appx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Dependencies\x64\Microsoft.VCLibs.x64.14.00.appx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Dependencies\x86\Microsoft.NET.CoreRuntime.2.2.appx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Dependencies\x86\Microsoft.UI.Xaml.2.4.appx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Dependencies\x86\Microsoft.VCLibs.x86.12.00.Universal.appx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Dependencies\x86\Microsoft.VCLibs.x86.14.00.appx">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Target.cer">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="Resources\Target.msixbundle">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>
