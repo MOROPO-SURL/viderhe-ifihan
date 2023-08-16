@@ -1,4 +1,5 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Presentation.Pages
 {
@@ -71,7 +72,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Pr
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
                             IoTPlatformEndpointBaseUri = BindingContextPageModel.IoTPlatformEndpointBaseUri,
                             AmbientalVariable = BindingContextPageModel.AmbientalVariable
-                        })
+                        }),
+                        Tags = BindingContextPageModel.Tags.ToArray()
                     });
                 }
                 else
@@ -87,7 +89,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Pr
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
                             IoTPlatformEndpointBaseUri = BindingContextPageModel.IoTPlatformEndpointBaseUri,
                             AmbientalVariable = BindingContextPageModel.AmbientalVariable
-                        })
+                        }),
+                        Tags = BindingContextPageModel.Tags.ToArray()
                     });
                 }
             }).ContinueWith(task =>
@@ -117,6 +120,26 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Pr
             if (BindingContextPageModel.IsBusy) return;
 
             this.NavigationPopPageAsync();
+        }
+
+        private void AddTagButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage(Cloud.Persistence.Enumerations.TagGroup.Placard, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
+        }
+
+        private void RemoveTagButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayAlert("Quitar Etiqueta", "Está seguro quitar esta etiqueta de este cartel?", "Quitar", "Cancelar").ContinueWith(task =>
+            {
+                if (!task.Result) return;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as Cloud.Api.Common.Models.TagDisplayModel));
+            });
+        }
+
+        private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
+        {
+            BindingContextPageModel.Tags.Add(model);
         }
 
         protected override void DisposeUnmanagementResources()

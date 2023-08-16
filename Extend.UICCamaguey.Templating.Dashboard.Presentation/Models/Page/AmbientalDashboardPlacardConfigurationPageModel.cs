@@ -7,6 +7,8 @@
 
         public AmbientalDashboardPlacardConfigurationPageModel()
         {
+            ScreenPresentationTimeSecounds = 15;
+
             AvailableAmbientalVariables = new Enumerations.AmbientalVariable[]
             {
                 Enumerations.AmbientalVariable.Temperature,

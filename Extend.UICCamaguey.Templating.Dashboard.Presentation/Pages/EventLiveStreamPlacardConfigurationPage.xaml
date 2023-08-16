@@ -63,6 +63,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <StackLayout 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -124,7 +125,144 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.Row="2"
+                        Grid.ColumnSpan="3" Grid.Row="2"
+                        Style="{StaticResource FormFieldFrame}"
+                        Padding="0">
+                        <Grid>
+                            <StackLayout Margin="6">
+                                <Label
+                                    Margin="6,6,6,0"
+                                    Text="Etiquetas" 
+                                    Style="{StaticResource FormLabel}" />
+                                <BoxView
+                                    Margin="6,4,6,0"
+                                    HeightRequest="2"
+                                    Color="DimGray" />
+                                <FlexLayout
+                                    IsClippedToBounds="True"
+                                    Wrap="Wrap"
+                                    Direction="Column"
+                                    AlignItems="Center"
+                                    AlignContent="Start"
+                                    BindableLayout.ItemsSource="{Binding Path=Tags}">
+                                    <BindableLayout.EmptyView>
+                                        <Label Margin="6" Text="Sin elementos que mostrar" />
+                                    </BindableLayout.EmptyView>
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid
+                                                BackgroundColor="{StaticResource AccentColor}"
+                                                Margin="6" Padding="8">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label
+                                                    Grid.Column="0"
+                                                    Margin="4,0,0,0"
+                                                    VerticalOptions="Center"
+                                                    Text="{Binding Path=Name}"
+                                                    TextColor="White" />
+                                                <Button
+                                                    Grid.Column="1"
+                                                    Style="{StaticResource TextIconButton}"
+                                                    VerticalOptions="Center"
+                                                    Text="&#xFA78;"
+                                                    TextColor="White"
+                                                    Clicked="RemoveTagButton_Clicked" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </FlexLayout>
+                            </StackLayout>
+                            <Button
+                                HorizontalOptions="End" VerticalOptions="Start"
+                                Text="&#xF415;"
+                                Style="{StaticResource TextIconButton}"
+                                FontSize="Medium"
+                                Clicked="AddTagButton_Clicked" />
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                x:Name="BeginAtDatePickerLabel"
+                                Grid.ColumnSpan="2" Grid.Row="0"
+                                Text="Fecha de incio" 
+                                Style="{StaticResource FormLabel}" />
+                            <Switch 
+                                Grid.Column="0" Grid.Row="1"
+                                IsToggled="{Binding Path=DefineBeginAt}" />
+                            <DatePicker 
+                                x:Name="BeginAtDatePicker"
+                                Grid.Column="1" Grid.Row="1"
+                                IsEnabled="{Binding DefineBeginAt, Mode=OneWay}"
+                                Date="{Binding Path=BeginAt}" />
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label
+                                x:Name="EndAtLabel"
+                                Grid.ColumnSpan="2" Grid.Row="0"
+                                Text="Fecha de fin" 
+                                Style="{StaticResource FormLabel}" />
+                            <Switch 
+                                x:Name="DefineEndAtSwitch"
+                                Grid.Column="0" Grid.Row="1"
+                                IsToggled="{Binding Path=DefineEndAt}" />
+                            <DatePicker 
+                                Grid.Column="1" Grid.Row="1"
+                                IsEnabled="{Binding DefineEndAt, Mode=OneWay}"
+                                Date="{Binding Path=EndAt}">
+                                <DatePicker.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultDatePickerValidationPresenter.Instance}"
+                                        TargetProperty="{Static DatePicker.DateProperty}"
+                                        Label="{Reference EndAtLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:DateComparisonFormFieldValidator 
+                                                ReferenceField="{Reference BeginAtDatePicker}" 
+                                                ReferenceFieldLabel="{Reference BeginAtDatePickerLabel}"
+                                                FieldValidationSwich="{Reference DefineEndAtSwitch}" />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </DatePicker.Behaviors>
+                            </DatePicker>
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="2" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="A Pantalla Completa" Style="{StaticResource FormLabel}" />
+                            <Switch IsToggled="{Binding Path=RequireUnobstructedPresetation}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.Row="4"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Tiempo en Pantalla" Style="{StaticResource FormLabel}" />
@@ -136,15 +274,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="1" Grid.Row="2"
-                        Style="{StaticResource FormFieldFrame}">
-                        <StackLayout>
-                            <Label Text="A Pantalla Completa" Style="{StaticResource FormLabel}" />
-                            <Switch IsToggled="{Binding Path=RequireUnobstructedPresetation}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.ColumnSpan="2" Grid.Row="3"
+                        Grid.ColumnSpan="2" Grid.Row="5"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label 
@@ -167,7 +297,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="2" Grid.Row="3"
+                        Grid.Column="2" Grid.Row="5"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label 
@@ -190,8 +320,9 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.ColumnSpan="3" Grid.Row="4"
-                        Style="{StaticResource FormFieldFrame}">
+                        Grid.ColumnSpan="3" Grid.Row="6"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
                         <StackLayout>
                             <Label 
                                 x:Name="StreamUrlLabel"
