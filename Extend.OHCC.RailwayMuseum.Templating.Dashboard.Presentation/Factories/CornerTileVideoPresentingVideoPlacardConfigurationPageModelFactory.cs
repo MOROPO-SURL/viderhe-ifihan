@@ -18,6 +18,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                 DefineEndAt = placardViewModel.EndAt != null,
                 EndAt = placardViewModel.EndAt ?? System.DateTime.Now.Date,
                 Label = placardViewModel.Label,
+                Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>(placardViewModel.Tags),
                 PresenterTileVideo = context.PresenterTileVideo.ToViewModel(),
                 PresenterTileVideoPlayDelay = context.PresenterTileVideoPlayDelay,
                 PresenterTileVideoScreenCorner = context.PresenterTileVideoScreenCorner,

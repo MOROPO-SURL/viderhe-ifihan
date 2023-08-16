@@ -12,6 +12,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
             return new Models.Page.InfinityVideoPlacardEditPageModel
             {
                 Label = placardViewModel.Label,
+                Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>(placardViewModel.Tags),
                 DefineBeginAt = placardViewModel.BeginAt != null,
                 BeginAt = placardViewModel.BeginAt ?? System.DateTime.Now.Date,
                 DefineEndAt = placardViewModel.EndAt != null,
