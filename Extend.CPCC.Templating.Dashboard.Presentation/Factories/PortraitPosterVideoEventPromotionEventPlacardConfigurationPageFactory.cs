@@ -14,6 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 Label = placardViewModel.Label,
+                Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>(placardViewModel.Tags),
                 EventPoster = context.Poster.ToViewModel(),
                 EventVideo = context.Video.ToViewModel()
             };
