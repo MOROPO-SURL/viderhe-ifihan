@@ -5,7 +5,7 @@
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Player</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Player</RootNamespace>
-    <Version>1.5.0</Version>
+    <Version>1.6.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -14,11 +14,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\Images\viderhe-identity-high-contrast-light.svg" />
+    <None Remove="Assets\Image\moropo-logo-light.svg" />
+    <None Remove="Assets\Image\viderhe-identity-high-contrast-light.svg" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Assets\Images\viderhe-identity-high-contrast-light.svg" />
+    <EmbeddedResource Include="Assets\Image\moropo-logo-light.svg" />
+    <EmbeddedResource Include="Assets\Image\viderhe-identity-high-contrast-light.svg" />
   </ItemGroup>
 
   <ItemGroup>

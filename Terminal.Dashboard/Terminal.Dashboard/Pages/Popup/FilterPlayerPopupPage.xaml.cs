@@ -32,7 +32,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
 
         private void AddTagButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.TagPickPopupPage(Cloud.Persistence.Enumerations.TagGroup.Player, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage(Cloud.Persistence.Enumerations.TagGroup.Player, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
         }
 
         private void RemoveTagButton_Clicked(object sender, System.EventArgs eventArgs)

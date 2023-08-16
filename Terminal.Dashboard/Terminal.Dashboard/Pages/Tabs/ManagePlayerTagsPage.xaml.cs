@@ -111,7 +111,7 @@
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    var bindingContextPageModel = BindingContext as Models.Page.TagPickPopupPageModel;
+                    var bindingContextPageModel = BindingContext as Support.Presentation.Dashboard.Models.Page.TagPickPopupPageModel;
 
                     if (task.Exception != null || task.IsCanceled)
                     {

@@ -96,7 +96,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                                 Image = new Common.Templating.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
                                 LayoutMode = item.LayoutMode
                             }).ToArray()
-                        })
+                        }),
+                        Tags = BindingContextPageModel.Tags.ToArray()
                     };
 
                     if (BindingContextPageModel.DefineBeginAt)
@@ -129,7 +130,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                                 Image = new Common.Templating.Models.Context.ImageContextModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
                                 LayoutMode = item.LayoutMode
                             }).ToArray()
-                        })
+                        }),
+                        Tags = BindingContextPageModel.Tags.ToArray()
                     };
 
                     if (BindingContextPageModel.DefineBeginAt)
@@ -169,6 +171,26 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         private void CancelToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
             this.NavigationPopPageAsync();
+        }
+
+        private void AddTagButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage(Cloud.Persistence.Enumerations.TagGroup.Placard, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
+        }
+
+        private void RemoveTagButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayAlert("Quitar Etiqueta", "Está seguro quitar esta etiqueta de este cartel?", "Quitar", "Cancelar").ContinueWith(task =>
+            {
+                if (!task.Result) return;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as Cloud.Api.Common.Models.TagDisplayModel));
+            });
+        }
+
+        private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
+        {
+            BindingContextPageModel.Tags.Add(model);
         }
 
         private void ImagesSelected_Callback(Support.Presentation.Models.View.ImageViewModel[] selection)
