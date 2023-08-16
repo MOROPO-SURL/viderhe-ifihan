@@ -49,7 +49,8 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions
                 SerializedContext = target.SerializedContext,
                 Template = templateDescriptor.ToViewModel(),
                 ComplementationKind = target.ComplementationKind,
-                SerializedComplementation = target.SerializedComplementation
+                SerializedComplementation = target.SerializedComplementation,
+                Tags = target.Tags
             };
 
             return result;

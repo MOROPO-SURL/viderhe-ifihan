@@ -24,6 +24,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
             InitializeComponent();
 
+            CopyRightLabel.Text = string.Format("© 2022 - {0} Todos los derechos reservados", System.DateTime.Now.Year);
+
             configurationStepQueue = new System.Collections.Generic.Queue<Enumerations.ConfigurationStep>();
 
             IsEnabled = false;
@@ -37,10 +39,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
             if (!IsEnabled)
             {
-                PresentNextConfigurationStep();
+                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(2)).ContinueWith(_ => Xamarin.Forms.Device.BeginInvokeOnMainThread(PresentNextConfigurationStep));
             }
 
             IsEnabled = true;
+        }
+
+        private void BrandingSvgCachedImage_Finish(object sender, FFImageLoading.Forms.CachedImageEvents.FinishEventArgs e)
+        {
+            ForBrandingLabel.Opacity = 1;
+            CopyRightLabel.Opacity = 1;
         }
 
         private void InitializeSteps()
@@ -134,7 +142,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
             if (configurationStep == Enumerations.ConfigurationStep.Starting)
             {
-                storyboard.Animations.Add(new FadeToAnimation { Target = ProductIdentityContainer, Opacity = 1 });
                 storyboard.Animations.Add(new FadeToAnimation { Target = CurrentTaskProgressBar, Opacity = 1 });
 
                 System.Threading.Tasks.Task.Run(async () =>

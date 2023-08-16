@@ -274,7 +274,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             BeginAt = target.Placard.BeginAt,
                             EndAt = target.Placard.EndAt,
                             SerializedContext = target.Placard.SerializedContext,
-                            Template = target.Placard.Template
+                            Template = target.Placard.Template,
+                            Tags = target.Placard.Tags
                         };
 
                         if (completitionHelper != null)
