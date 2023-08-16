@@ -8,7 +8,8 @@
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.UserAuthenticationPage"
-    x:TypeArguments="pagemodels:UserAuthenticationPageModel">
+    x:TypeArguments="pagemodels:UserAuthenticationPageModel"
+    BackgroundColor="White">
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
@@ -16,13 +17,27 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
+            <StackLayout 
+                HorizontalOptions="Center" VerticalOptions="End"
+                Margin="16"
+                WidthRequest="180"
+                Spacing="8">
+                <Label Text="por" FontAttributes="Italic" />
+                <ffimageloadingsvg:SvgCachedImage
+                    Aspect="AspectFit"
+                    Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Assets.Images.moropo-logo-dark.svg" />
+                <Label 
+                    HorizontalTextAlignment="Center"
+                    x:Name="CopyRightLabel" />
+            </StackLayout>
             <ScrollView
                 HorizontalOptions="Center"
                 Orientation="Vertical">
                 <Grid>
                     <Grid 
                         HorizontalOptions="Center" VerticalOptions="Center"
-                        WidthRequest="280">
+                        WidthRequest="280"
+                        BackgroundColor="White">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="75" />
                             <ColumnDefinition />
@@ -36,10 +51,9 @@
                         </Grid.RowDefinitions>
                         <ffimageloadingsvg:SvgCachedImage
                             Grid.ColumnSpan="2" Grid.Row="0"
-                            HorizontalOptions="Center"
-                            WidthRequest="320" HeightRequest="320"
+                            Margin="24,0,24,16"
                             Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Assets.Images.viderhe-identity-main.svg"
-                            Aspect="AspectFill" />
+                            Aspect="AspectFit" />
                         <Picker
                             Grid.Column="0" Grid.Row="1"
                             ItemsSource="{Binding Path=AvailableProtocols}"
@@ -61,7 +75,7 @@
                             Grid.ColumnSpan="2" Grid.Row="4"
                             IsEnabled="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
                             HorizontalOptions="FillAndExpand"
-                            Margin="24"
+                            Margin="24,16"
                             BackgroundColor="Accent"
                             Text="Iniciar"
                             TextColor="White"

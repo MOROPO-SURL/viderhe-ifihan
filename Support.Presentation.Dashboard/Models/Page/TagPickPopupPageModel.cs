@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.Page
 {
     public class TagPickPopupPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {

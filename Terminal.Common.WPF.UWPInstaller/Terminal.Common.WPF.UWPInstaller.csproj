@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<AssemblyName>MOROPO.VIDERHE.$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+	</PropertyGroup>
+
+</Project>
