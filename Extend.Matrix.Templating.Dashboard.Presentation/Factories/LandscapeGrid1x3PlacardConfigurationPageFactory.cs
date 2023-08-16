@@ -13,6 +13,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
             var result = new Models.Page.LandscapeGrid1x3PlacardConfigurationPageModel
             {
                 Label = placardViewModel.Label,
+                Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>(placardViewModel.Tags),
                 DefineBeginAt = placardViewModel.BeginAt != null,
                 BeginAt = placardViewModel.BeginAt ?? System.DateTime.Now.Date,
                 DefineEndAt = placardViewModel.EndAt != null,
