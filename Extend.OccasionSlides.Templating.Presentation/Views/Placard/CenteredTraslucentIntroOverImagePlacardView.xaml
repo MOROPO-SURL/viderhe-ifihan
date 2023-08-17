@@ -23,7 +23,9 @@
             <converters:CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxPaddingConverter x:Key="CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxPaddingConverter" PlacardView="{Reference RootView}" />
             <converters:CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxSpacingConverter x:Key="CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxSpacingConverter" PlacardView="{Reference RootView}" />
             <converters:IsNullToImageAspectConverter x:Key="IsNullToImageAspectConverter" />
-            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" Scale="3.2" />
+            
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
 

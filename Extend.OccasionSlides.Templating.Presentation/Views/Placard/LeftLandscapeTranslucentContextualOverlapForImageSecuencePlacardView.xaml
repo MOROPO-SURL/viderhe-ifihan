@@ -19,7 +19,9 @@
             <converters:OverlapWidthToInfoBlockPaddingConverter x:Key="OverlapWidthToInfoBlockPaddingConverter" />
             <converters:OverlapWidthToInfoBlockLabelPaddingConverter x:Key="OverlapWidthToInfoBlockLabelPaddingConverter" />
             <converters:HeaderFontFamilyNameToFontAttributesConverter x:Key="HeaderFontFamilyNameToFontAttributesConverter" />
-            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" Scale="{Binding Path=Scale}" />
+            
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
     </ContentView.Resources>

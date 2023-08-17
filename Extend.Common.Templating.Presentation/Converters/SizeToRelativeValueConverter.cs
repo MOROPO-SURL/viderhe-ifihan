@@ -8,7 +8,7 @@
 
         public double Scale
         {
-            get { return (int)GetValue(ScaleParamProperty); }
+            get { return (double)GetValue(ScaleParamProperty); }
             set { SetValue(ScaleParamProperty, value); }
         }
 
