@@ -6,12 +6,18 @@
         {
             if (model.Template.Id == Descriptors.LandscapeGrid1x3TemplateDescriptor.ID)
             {
-                return new XFToolKit.Mvvm.Views.ContentView();
+                return new XFToolKit.Mvvm.Views.ContentView()
+                {
+                    Content = new Support.Presentation.Views.IdentityBackgroundView()
+                };
             }
 
             if (model.Template.Id == Descriptors.LandscapeGrid2x2TemplateDescriptor.ID)
             {
-                return new XFToolKit.Mvvm.Views.ContentView();
+                return new XFToolKit.Mvvm.Views.ContentView
+                {
+                    Content = new Support.Presentation.Views.IdentityBackgroundView()
+                };
             }
 
             return null;
