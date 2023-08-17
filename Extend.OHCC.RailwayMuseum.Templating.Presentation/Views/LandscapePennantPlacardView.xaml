@@ -13,7 +13,9 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:LandscapePennantPlacardViewHeightToContentPaddingConverter x:Key="LandscapePennantPlacardViewHeightToContentPaddingConverter" PlacardView="{Reference Self}" />
-            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+            
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" RelativeDimensionScalable="{Reference Self}" />
+            
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
         </ResourceDictionary>
