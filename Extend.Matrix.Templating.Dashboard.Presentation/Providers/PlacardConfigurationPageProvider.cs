@@ -9,6 +9,11 @@
                 return new Pages.LandscapeGrid1x3PlacardConfigurationPage(completedActionCallback);
             }
 
+            if (templateDescriptor is Descriptors.LandscapeGrid2x2TemplateDescriptor)
+            {
+                return new Pages.LandscapeGrid2x2PlacardConfigurationPage(completedActionCallback);
+            }
+
             return null;
         }
 
@@ -17,6 +22,11 @@
             if (placardViewModel.Template.Id == Descriptors.LandscapeGrid1x3TemplateDescriptor.ID)
             {
                 return new Pages.LandscapeGrid1x3PlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.LandscapeGrid2x2TemplateDescriptor.ID)
+            {
+                return new Pages.LandscapeGrid2x2PlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;
