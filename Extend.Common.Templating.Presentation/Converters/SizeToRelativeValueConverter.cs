@@ -1,8 +1,10 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters
 {
-    public class SizeToRelativeValueConverter : Xamarin.Forms.IValueConverter
+    public class SizeToRelativeValueConverter : Xamarin.Forms.BindableObject, Xamarin.Forms.IValueConverter
     {
         private const double RELATIVE_REFERENCE_SIZE = 1920;
+
+        public Views.Contract.IRelativeDimensionScalable RelativeDimensionScalable { get; set; }
 
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
@@ -14,7 +16,7 @@
 
             if (applicationPageLargeSize == RELATIVE_REFERENCE_SIZE || applicationPageLargeSize <= 0) return concreteValue;
 
-            return concreteValue * applicationPageLargeSize / RELATIVE_REFERENCE_SIZE;
+            return concreteValue * applicationPageLargeSize / RELATIVE_REFERENCE_SIZE * (RelativeDimensionScalable?.RelativeDeimensionScaleFactor ?? 1);
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
