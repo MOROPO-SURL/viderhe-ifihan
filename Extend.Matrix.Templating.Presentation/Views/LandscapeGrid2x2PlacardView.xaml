@@ -6,7 +6,7 @@
     x:Class="SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Views.LandscapeGrid2x2PlacardView">
     <ContentView.Content>
         <Grid x:Name="Wrapper">
-            <Grid x:Name="PlacardLayout">
+            <Grid x:Name="PlacardLayout" ColumnSpacing="2" RowSpacing="2" BackgroundColor="DimGray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -15,11 +15,11 @@
                     <RowDefinition />
                     <RowDefinition />
                 </Grid.RowDefinitions>
+                <Grid Grid.Column="0" Grid.Row="0" IsClippedToBounds="True" />
+                <Grid Grid.Column="1" Grid.Row="0" IsClippedToBounds="True" />
+                <Grid Grid.Column="0" Grid.Row="1" IsClippedToBounds="True" />
+                <Grid Grid.Column="1" Grid.Row="1" IsClippedToBounds="True" />
             </Grid>
-            <Grid Grid.Column="0" Grid.Row="0" IsClippedToBounds="True" />
-            <Grid Grid.Column="1" Grid.Row="0" IsClippedToBounds="True" />
-            <Grid Grid.Column="0" Grid.Row="1" IsClippedToBounds="True" />
-            <Grid Grid.Column="1" Grid.Row="1" IsClippedToBounds="True" />
         </Grid>
     </ContentView.Content>
 </extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

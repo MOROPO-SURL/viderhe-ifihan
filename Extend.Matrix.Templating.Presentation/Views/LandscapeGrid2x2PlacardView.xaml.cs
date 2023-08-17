@@ -69,11 +69,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
                         break;
                 }
             }
-        }
-
-        public override void StartShowInWhenReady(AbstractTransition transition)
-        {
-            base.StartShowInWhenReady(transition);
 
             oneOfFourScreenplayPresenter.BeginPresentation();
             twoOfFourScreenplayPresenter.BeginPresentation();
@@ -89,6 +84,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
             twoOfFourScreenplayPresenter.Dispose();
             threeOfFourScreenplayPresenter.Dispose();
             fourOfFourScreenplayPresenter.Dispose();
+
             oneOfFourScreenplayPresenter = null;
             twoOfFourScreenplayPresenter = null;
             threeOfFourScreenplayPresenter = null;
