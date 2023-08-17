@@ -2,13 +2,18 @@
 {
     public class ThicknessToRelativeValueConverter : Xamarin.Forms.IValueConverter
     {
+        public double Scale { get; set; } = 1.0;
+
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value == null || !(value is Xamarin.Forms.Thickness)) return value;
 
             var concreteValue = (Xamarin.Forms.Thickness) value;
 
-            var sizeToRelativeValueConverter = new SizeToRelativeValueConverter();
+            var sizeToRelativeValueConverter = new SizeToRelativeValueConverter
+            {
+                Scale = Scale
+            };
 
             return new Xamarin.Forms.Thickness
                 (
