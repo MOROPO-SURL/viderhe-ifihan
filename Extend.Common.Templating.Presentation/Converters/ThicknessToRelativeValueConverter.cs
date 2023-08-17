@@ -2,13 +2,7 @@
 {
     public class ThicknessToRelativeValueConverter : Xamarin.Forms.BindableObject, Xamarin.Forms.IValueConverter
     {
-        public static readonly Xamarin.Forms.BindableProperty ScaleParamProperty = Xamarin.Forms.BindableProperty.Create(nameof(Scale), typeof(double), typeof(SizeToRelativeValueConverter), 1.0d);
-
-        public double Scale
-        {
-            get { return (int)GetValue(ScaleParamProperty); }
-            set { SetValue(ScaleParamProperty, value); }
-        }
+        public Views.Contract.IRelativeDimensionScalable RelativeDimensionScalable { get; set; }
 
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
@@ -18,7 +12,7 @@
 
             var sizeToRelativeValueConverter = new SizeToRelativeValueConverter
             {
-                Scale = Scale
+                RelativeDimensionScalable = RelativeDimensionScalable
             };
 
             return new Xamarin.Forms.Thickness
