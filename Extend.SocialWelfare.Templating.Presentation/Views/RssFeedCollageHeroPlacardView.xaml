@@ -7,15 +7,19 @@
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views.RssFeedCollageHeroPlacardView">
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views.RssFeedCollageHeroPlacardView"
+    x:Name="RootView">
     <ContentView.Resources>
         <ResourceDictionary>
             <x:Double x:Key="FeedTitleFontSize">32</x:Double>
             <x:Double x:Key="FeedDescriptionFontSize">18</x:Double>
+            
             <converters:IsNullToStringConverter x:Key="HeroFeedItemFeaturedImageSourceIsNullToTitleTextColorStringConverter" CaseFalse="White" CaseTrue="Black" />
             <converters:IsNullToStringConverter x:Key="HeroFeedItemFeaturedImageSourceIsNullToPublishedTextColorStringConverter" CaseFalse="LightGray" CaseTrue="DimGray" />
             <converters:HeroFeedItemFeaturedImageSourceToLayoutOptionsConverter x:Key="HeroFeedItemFeaturedImageSourceToLayoutOptionsConverter" />
-            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+            
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" RelativeDimensionScalable="{Reference RootView}" />
+            
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:NullToBooleanConverter x:Key="NullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />

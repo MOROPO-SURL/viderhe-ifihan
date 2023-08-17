@@ -7,11 +7,13 @@
     xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views.HeroLocalNowDateTimePlacardView"
-    x:DataType="placardviewmodels:HeroLocalNowDateTimePlacardViewModel">
+    x:DataType="placardviewmodels:HeroLocalNowDateTimePlacardViewModel"
+    x:Name="RootView">
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
-            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+            
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" RelativeDimensionScalable="{Reference RootView}" />
 
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{Binding Path=TextColor}" />
