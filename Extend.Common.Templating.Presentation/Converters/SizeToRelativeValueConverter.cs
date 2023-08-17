@@ -4,15 +4,13 @@
     {
         private const double RELATIVE_REFERENCE_SIZE = 1920;
 
-        //public static readonly Xamarin.Forms.BindableProperty ConvParamProperty = Xamarin.Forms.BindableProperty.Create(nameof(Scale), typeof(double), typeof(SizeToRelativeValueConverter), 1.0d);
+        public static readonly Xamarin.Forms.BindableProperty ScaleParamProperty = Xamarin.Forms.BindableProperty.Create(nameof(Scale), typeof(double), typeof(SizeToRelativeValueConverter), 1.0d);
 
-        //public double Scale
-        //{
-        //    get { return (int)GetValue(ConvParamProperty); }
-        //    set { SetValue(ConvParamProperty, value); }
-        //}
-
-        public double Scale { get; set; } = 1.0;
+        public double Scale
+        {
+            get { return (int)GetValue(ScaleParamProperty); }
+            set { SetValue(ScaleParamProperty, value); }
+        }
 
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
