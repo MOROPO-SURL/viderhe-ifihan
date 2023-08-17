@@ -8,7 +8,8 @@
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:skiaformviews="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Placard.RightLandscapeContextualFlatOverlapForVideoPlacardView">
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Placard.RightLandscapeContextualFlatOverlapForVideoPlacardView"
+    x:Name="RootView">
     <ContentView.Resources>
         <ResourceDictionary>
             <viewtemplates:ContentBlockTemplateSelector x:Key="ContentBlockTemplateSelector" />
@@ -19,7 +20,7 @@
             <converters:OverlapSizeToColumnSpanConverter x:Key="OverlapSizeToContentColumnSpanConverter" IsForContent="True" />
             <converters:OverlapWidthToRightContentPaddingConverter x:Key="OverlapWidthToRightContentPaddingConverter" />
 
-            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" Scale="{Binding Path=Scale}" />
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" RelativeDimensionScalable="{Reference RootView}" />
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
