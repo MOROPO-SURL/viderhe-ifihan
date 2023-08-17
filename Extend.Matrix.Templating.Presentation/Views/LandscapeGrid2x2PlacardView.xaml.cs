@@ -102,7 +102,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
 
         private BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
         {
-            return PlacardPresentationViewProvider.Instance.GetFor(model, getOrientationFunction);
+            var result = PlacardPresentationViewProvider.Instance.GetFor(model, getOrientationFunction);
+
+            (result.BindingContext as Common.Templating.Presentation.Models.View.AbstractPlacardViewModel).Scale = 1 / 4;
+
+            return result;
         }
     }
 }
