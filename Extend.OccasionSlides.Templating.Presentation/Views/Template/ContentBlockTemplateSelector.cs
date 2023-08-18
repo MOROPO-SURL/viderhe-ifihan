@@ -4,15 +4,29 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 {
     public class ContentBlockTemplateSelector : Xamarin.Forms.DataTemplateSelector
     {
+        public Common.Templating.Presentation.Views.Contract.IRelativeDimensionScalable RelativeDimensionScalable { get; set; }
+
         protected override Xamarin.Forms.DataTemplate OnSelectTemplate(object item, Xamarin.Forms.BindableObject container)
         {
-            if (item is HeaderTextContentBlockViewModel) return new Block.HeaderTextContentBlockViewTemplate();
+            if (item is HeaderTextContentBlockViewModel) return new Block.HeaderTextContentBlockViewTemplate
+            {
+                RelativeDeimensionScaleFactor = RelativeDimensionScalable.RelativeDeimensionScaleFactor
+            };
 
-            if (item is TextContentBlockViewModel) return new Block.TextContentBlockViewTemplate();
+            if (item is TextContentBlockViewModel) return new Block.TextContentBlockViewTemplate
+            {
+                RelativeDeimensionScaleFactor = RelativeDimensionScalable.RelativeDeimensionScaleFactor
+            };
 
-            if (item is TransparentSeparatorContentBlockViewModel) return new Block.TransparentSeparatorContentBlockViewTemplate();
+            if (item is TransparentSeparatorContentBlockViewModel) return new Block.TransparentSeparatorContentBlockViewTemplate
+            {
+                RelativeDeimensionScaleFactor = RelativeDimensionScalable.RelativeDeimensionScaleFactor
+            };
 
-            if (item is ImageContentBlockViewModel) return new Block.ImageContentBlockViewTemplate();
+            if (item is ImageContentBlockViewModel) return new Block.ImageContentBlockViewTemplate
+            {
+                RelativeDeimensionScaleFactor = RelativeDimensionScalable.RelativeDeimensionScaleFactor
+            };
 
             throw new System.InvalidOperationException();
         }
