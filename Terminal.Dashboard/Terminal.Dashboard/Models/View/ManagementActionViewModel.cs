@@ -8,7 +8,7 @@
 
         public new string IconGlyph { get => Section.IconGlyph; private set => throw new System.InvalidOperationException(); }
 
-        public new Enumerations.ActionKind Kind { get; private set; }
+        public new Enumerations.ActionKind Kind { get; set; }
 
         private ManagementActionViewModel()
         {
@@ -19,6 +19,7 @@
         {
             Section = section;
             Kind = Enumerations.ActionKind.ManagementSection;
+            Enabled = true;
         }        
     }
 }
