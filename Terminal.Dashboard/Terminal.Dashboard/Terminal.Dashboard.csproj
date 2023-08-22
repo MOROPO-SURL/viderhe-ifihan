@@ -51,6 +51,8 @@
     <ProjectReference Include="..\..\Extend.Essential.Templating.Dashboard.Presentation\Extend.Essential.Templating.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
+    <ProjectReference Include="..\..\Support.Extend.Management.Presentation\Support.Extend.Management.Presentation.csproj" />
+    <ProjectReference Include="..\..\Support.Extend.Management\Support.Extend.Management.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Transitioning\Support.Extend.Transitioning.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Templating.Presentation\Support.Extend.Templating.Presentation.csproj" />
