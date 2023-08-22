@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation</AssemblyName>
+		<RootNamespace>SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation</RootNamespace>
+		<Version>0.1.0.0</Version>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Extend.Common.Management.Dashboard.Presentation\Extend.Common.Management.Dashboard.Presentation.csproj" />
+		<ProjectReference Include="..\Extend.Hotel.OTT.Management\Extend.Hotel.OTT.Management.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Pages\MainPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+</Project>
