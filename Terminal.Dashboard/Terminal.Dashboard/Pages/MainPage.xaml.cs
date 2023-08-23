@@ -72,6 +72,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (!action.Enabled) return;
 
+            if (action is Models.View.ManagementActionViewModel)
+            {
+                var managementSectionPage = Support.Extend.Management.Presentation.Helpers.Provisioning.ManagementSectionProvisioningHelper.Instance.GetFor((action as Models.View.ManagementActionViewModel).Section);
+
+                this.NavigationPushPageAsync(managementSectionPage);
+
+                return;
+            }
+
             switch (action.Kind)
             {
                 case Enumerations.ActionKind.ManageImages:
@@ -141,13 +150,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 case Enumerations.ActionKind.ManageTags:
                     this.NavigationPushPageAsync(new ManageTagsPage());
-
-                    break;
-
-                case Enumerations.ActionKind.ManagementSection:
-                    var managementSectionPage = Support.Extend.Management.Presentation.Helpers.Provisioning.ManagementSectionProvisioningHelper.Instance.GetFor((action as Models.View.ManagementActionViewModel).Section);
-
-                    this.NavigationPushPageAsync(managementSectionPage);
 
                     break;
 

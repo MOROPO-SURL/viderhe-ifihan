@@ -165,7 +165,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             Label = string.Format("(Copia) {0}", target.Placard.Label),
                             TemplateId = target.Placard.Template.Id,
-                            SerializedContext = target.Placard.SerializedContext
+                            SerializedContext = target.Placard.SerializedContext,
+                            Tags = target.Placard.Tags
                         }).ContinueWith(cloneTask =>
                         {
                             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
