@@ -19,7 +19,7 @@
 
             if (target.Kind == MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.ChannelKind.IPTV)
             {
-                model.IPTVUrl = new System.Uri(target.SourceSerialization);
+                model.IPTVUrl = target.SourceSerialization;
             }
             else
             {

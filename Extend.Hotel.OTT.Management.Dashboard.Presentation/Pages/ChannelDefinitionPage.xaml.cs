@@ -52,17 +52,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            if (!hasChangesFlag)
-            {
-                this.NavigationPopPageAsync();
-
-                return;
-            }
-
             BindingContextPageModel.ResetValidationState();
 
             foreach (var validationBehavior in validationBehaviors)
             {
+                if (!validationBehavior.Target.IsEnabled) continue;
+
                 var result = validationBehavior.Evaluate();
 
                 if (!BindingContextPageModel.IsValid) continue;
@@ -144,13 +139,22 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
             });
         }
 
+        private void KindPicker_SelectedIndexChanged(object sender, System.EventArgs eventArgs)
+        {
+            if (BindingContextPageModel == null) return;
+
+            RadioFrecuencyBandEntry.IsEnabled = BindingContextPageModel.Kind == MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.ChannelKind.RF;
+            
+            IPTVUrlEntry.IsEnabled = !RadioFrecuencyBandEntry.IsEnabled;
+        }
+
         private async void PickImageButton_Clicked(object sender, System.EventArgs eventArgs)
         {
             if (!Xamarin.Essentials.MediaPicker.IsCaptureSupported) PresentForImagePick();
 
-            var action = await DisplayActionSheet("Seleccionar imágen desde", "Cancelar", null, ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_CAMARA, ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_GALLERY);
+            var action = await DisplayActionSheet("Seleccionar imágen desde", "Cancelar", null, Support.Presentation.Dashboard.Providers.ConstantProvider.ACTIONSHEET_PICKIMAGE_OPTION_CAMARA, Support.Presentation.Dashboard.Providers.ConstantProvider.ACTIONSHEET_PICKIMAGE_OPTION_GALLERY);
 
-            if (action == ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_CAMARA)
+            if (action == Support.Presentation.Dashboard.Providers.ConstantProvider.ACTIONSHEET_PICKIMAGE_OPTION_CAMARA)
             {
                 var permission = await Xamarin.Essentials.Permissions.CheckStatusAsync<Xamarin.Essentials.Permissions.Camera>();
 
@@ -191,7 +195,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
                 await Xamarin.Essentials.MediaPicker.CapturePhotoAsync().ContinueWith(PickedImageContinuationTask);
             }
-            else if (action == Helpers.ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_GALLERY)
+            else if (action == Support.Presentation.Dashboard.Providers.ConstantProvider.ACTIONSHEET_PICKIMAGE_OPTION_GALLERY)
             {
                 PresentForImagePick();
             }
@@ -309,9 +313,36 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
                 BindingContextPageModel.FeatureImageExtension = MimeTypes.MimeTypeMap.GetExtension(task.Result.ContentType);
-                BindingContextPageModel.BusyProgressMessage = "Recortando imagen ...";
 
-                this.NavigationPushModalPageAsync(new Xamarin.Forms.NavigationPage(new UserProfileImageCroppingPage(croppingImageTarget, PickedImageCroppingComplete_Callback)));
+                DisplayAlert("Recortar", "Desea recortar esta imagen?", "Si", "No").ContinueWith(cropAskTask =>
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        if (cropAskTask.Result)
+                        {
+                            BindingContextPageModel.BusyProgressMessage = "Recortando imagen ...";
+
+                            this.NavigationPushModalPageAsync(new Xamarin.Forms.NavigationPage(new Support.Presentation.Dashboard.Pages.ImageCropPage(croppingImageTarget, PickedImageCroppingComplete_Callback)));
+                        }
+                        else
+                        {
+                            using (var skImage = SkiaSharp.SKImage.FromBitmap(croppingImageTarget))
+                            {
+                                using (var skData = skImage.Encode(SkiaSharp.SKEncodedImageFormat.Jpeg, 75))
+                                {
+                                    imagePickedData = skData.ToArray();
+                                }
+                            }
+
+                            croppingImageTarget.Dispose();
+
+                            BindingContextPageModel.FeatureImageSource = Xamarin.Forms.ImageSource.FromStream(() => new System.IO.MemoryStream(imagePickedData));
+
+                            BindingContextPageModel.IsBusy = false;
+                            BindingContextPageModel.BusyProgressMessage = string.Empty;
+                        }
+                    });
+                });
             });
         }
 

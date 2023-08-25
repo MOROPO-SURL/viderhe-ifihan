@@ -20,6 +20,34 @@
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Aplicar"
+            Clicked="ApplyToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Cancelar"
+            Clicked="CancelToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Grid>
             <supportpresentationdashboardviews:BackgroundView />
@@ -79,41 +107,42 @@
                         Style="{StaticResource FormFieldFrame}"
                         Padding="0"
                         VerticalOptions="Start">
-                        <StackLayout 
+                        <Grid 
                             VerticalOptions="FillAndExpand"
-                            Spacing="0">
+                            ColumnSpacing="0" RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
                             <Label 
+                                Grid.Column="0" Grid.Row="0"
                                 Margin="10,10,10,6"
-                                Text="Imagen"
+                                Text="Imagen" 
                                 Style="{StaticResource FormLabel}" />
-                            <BoxView Color="#666666" HeightRequest="1" />
-                            <Grid>
-                                <ffimageloadingforms:CachedImage 
-                                    BackgroundColor="Black"
-                                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
-                                    Source="{Binding Path=FeatureImageSource}"
-                                    Aspect="AspectFill"
-                                    CacheType="Disk"
-                                    CacheDuration="8760:00:00" />
-                                <StackLayout 
-                                    HorizontalOptions="Center" VerticalOptions="End"
-                                    Padding="4"
-                                    BackgroundColor="#99000000"
-                                    Orientation="Horizontal">
-                                    <Label
-                                        Text="&#xf740;"
-                                        TextColor="White"
-                                        FontFamily="{StaticResource IconFontFamily}"
-                                        FontSize="Medium" />
-                                    <Label
-                                        VerticalOptions="Center"
-                                        Margin="0,0,4,0"
-                                        Text="para modificar"
-                                        TextColor="White"
-                                        LineBreakMode="TailTruncation" />
-                                </StackLayout>
-                            </Grid>
-                        </StackLayout>
+                            <Button
+                                Grid.Column="1" Grid.Row="0"
+                                VerticalOptions="Start"
+                                Style="{StaticResource TextIconButton}"
+                                Text="&#xF90E;"
+                                FontSize="Medium"
+                                Clicked="PickImageButton_Clicked" />
+                            <BoxView
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                BackgroundColor="#666666" 
+                                HeightRequest="1" />
+                            <ffimageloadingforms:CachedImage 
+                                Grid.ColumnSpan="2" Grid.Row="2"
+                                BackgroundColor="Black"
+                                HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
+                                Source="{Binding Path=FeatureImageSource}"
+                                Aspect="AspectFill"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
+                        </Grid>
                     </Frame>
                     <Frame Grid.Column="1" Grid.Row="1" Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
@@ -153,16 +182,22 @@
                             <Label Text="Tipo" Style="{StaticResource FormLabel}" />
                             <Picker 
                                 ItemsSource="{Static providers:ConstantProvider.CHANNEL_KINDS}"
-                                SelectedItem="{Binding Kind}" />
+                                SelectedItem="{Binding Kind}"
+                                SelectedIndexChanged="KindPicker_SelectedIndexChanged" />
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Column="2" Grid.Row="2" Style="{StaticResource FormFieldFrame}">
+                    <Frame 
+                        Grid.Column="1" Grid.Row="3"
+                        IsVisible="{Binding Source={Reference RadioFrecuencyBandEntry}, Path=IsEnabled}"
+                        Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label 
                                 x:Name="RadioFrecuencyBandLabel"
                                 Text="Banda de Radio Frecuencia" 
                                 Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=RadioFrecuencyBand}">
+                            <Entry
+                                x:Name="RadioFrecuencyBandEntry"
+                                Text="{Binding Path=RadioFrecuencyBand}">
                                 <Entry.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"
@@ -171,20 +206,25 @@
                                         Label="{Reference RadioFrecuencyBandLabel}">
                                         <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
                                             <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
-                                            <supportpresentationdashboardvalidators:MinCountFormFieldValidator MinCount="1" />
                                         </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
                                     </supportpresentationdashboardbehaviors:ViewValidationBehavior>
                                 </Entry.Behaviors>
                             </Entry>
                         </StackLayout>
                     </Frame>
-                    <Frame Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" Style="{StaticResource FormFieldFrame}">
+                    <Frame 
+                        Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"
+                        IsVisible="{Binding Source={Reference IPTVUrlEntry}, Path=IsEnabled}"
+                        Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label 
                                 x:Name="IPTVUrlLabel"
                                 Text="URL de IPTV" 
                                 Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=IPTVUrl}">
+                            <Entry 
+                                x:Name="IPTVUrlEntry"
+                                IsEnabled="False"
+                                Text="{Binding Path=IPTVUrl}">
                                 <Entry.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"

@@ -6,7 +6,7 @@
         private bool enabled;
         private MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.ChannelKind kind;
         private int? radioFrecuencyBand;
-        private System.Uri iPTVUrl;
+        private string iPTVUrl;
         private Xamarin.Forms.ImageSource featureImageSource;
         private string description;
 
@@ -25,7 +25,7 @@
 
         public int? RadioFrecuencyBand { get => radioFrecuencyBand; set => SetProperty(ref radioFrecuencyBand, value); }
 
-        public System.Uri IPTVUrl { get => iPTVUrl; set => SetProperty(ref iPTVUrl, value); }
+        public string IPTVUrl { get => iPTVUrl; set => SetProperty(ref iPTVUrl, value); }
 
         public Xamarin.Forms.ImageSource FeatureImageSource { get => featureImageSource; set => SetProperty(ref featureImageSource, value); }
 
