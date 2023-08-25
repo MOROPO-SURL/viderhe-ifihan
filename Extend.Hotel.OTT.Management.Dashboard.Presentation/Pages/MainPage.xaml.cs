@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ContentPage
+    public partial class MainPage : Xamarin.Forms.ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private void ChannelsTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        {
+            this.NavigationPushPageAsync(new ChannelsManagementPage());
+        }
+
+        private void ProfilesTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        {
+            this.NavigationPushPageAsync(new ProfilesManagementPage());
         }
     }
 }

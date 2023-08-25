@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Converters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages.ChannelsManagementPage"
+    x:TypeArguments="pagemodels:ChannelsManagementPageModel"
+    Title="Gestionar Canales Televisivos">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <supportpresentationdashboardconverters:CollectionViewWidthToSelfVerticalGridItemsLayoutConverter x:Key="CollectionViewWidthToSelfVerticalGridItemsLayoutConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="10" />
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Agregar"
+            Clicked="AddToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf415;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem
+            Text="Actualizar"
+            Clicked="ReloadToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xF450;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <CollectionView
+                ItemsLayout="{Binding Source={RelativeSource Mode=Self}, Path=Width, Converter={StaticResource CollectionViewWidthToSelfVerticalGridItemsLayoutConverter}}"
+                ItemsSource="{Binding Path=Items}"
+                SelectionMode="None">
+                <CollectionView.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" Default="5,5,5,0">
+                        <On Platform="Android" Value="10,10,10,0" />
+                    </OnPlatform>
+                </CollectionView.Margin>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="5" Padding="0"
+                            BackgroundColor="White"
+                            HasShadow="False"
+                            CornerRadius="0"
+                            HeightRequest="136">
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label 
+                IsVisible="{Binding Path=IsBusy,Converter={StaticResource BoolToBoolNegationConverter}}"
+                Margin="10"
+                VerticalOptions="Start"
+                HorizontalTextAlignment="Center"
+                Text="Aún no se han agregado elementos" />
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

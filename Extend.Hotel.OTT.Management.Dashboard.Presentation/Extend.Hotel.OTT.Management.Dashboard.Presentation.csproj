@@ -10,14 +10,32 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Extend.Common.Management.Dashboard.Presentation\Extend.Common.Management.Dashboard.Presentation.csproj" />
 		<ProjectReference Include="..\Extend.Hotel.OTT.Management\Extend.Hotel.OTT.Management.csproj" />
+		<ProjectReference Include="..\Service.Hotel.OTT.API.Connect\Service.Hotel.OTT.API.Connect.csproj" />
+		<ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="MediaTypeMap.Core" Version="2.3.3" />
 	  <PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Pages\ChannelDefinitionPage.xaml.cs">
+	    <DependentUpon>ChannelDefinitionPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Pages\ChannelDefinitionPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Pages\ChannelsManagementPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="Pages\MainPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Pages\ProfilesManagementPage.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	</ItemGroup>

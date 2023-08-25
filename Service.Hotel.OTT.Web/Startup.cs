@@ -43,6 +43,8 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web
             
             services.AddScoped<IEntityRepository<Framework.Guama.Core.Security.Common.Persistence.Entities.Permission, int>, Framework.Guama.Core.Security.Common.Persistence.ORM.EF.Repositories.PermissionRepository>();
             services.AddScoped<IEntityRepository<Framework.Guama.Core.Persistence.ORM.EF.Entities.Trace, long>, Framework.Guama.Core.Persistence.ORM.EF.Repositories.TraceRepository>();
+            services.AddScoped<IEntityRepository<ApiKey, System.Guid>, ApiKeyRepository>();
+            services.AddScoped<IEntityRepository<Channel, System.Guid>, ChannelRepository>();
             services.AddScoped<IEntityRepository<CustomService, System.Guid>, CustmoServiceRepository>();
 
             services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade, Framework.Guama.Core.Security.Common.Persistence.ORM.EF.Providers.DbSchemaConfigurationProvider>();

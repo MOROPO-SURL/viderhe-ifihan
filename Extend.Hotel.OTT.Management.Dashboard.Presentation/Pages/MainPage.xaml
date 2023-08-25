@@ -2,13 +2,410 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages.MainPage"
-    Title="Hotel Over-The-Top - Administrar">
+    Title="Hotel Over-The-Top">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <Grid Margin="20" ColumnSpacing="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" Spacing="20">
+                        <Frame
+                            BackgroundColor="White"
+                            Padding="0"
+                            HasShadow="False">
+                            <Grid 
+                                ColumnSpacing="0" RowSpacing="10"
+                                Padding="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.ColumnSpan="3" Grid.Row="0"
+                                    BackgroundColor="DimGray"
+                                    Padding="12,10,12,12"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="Seguridad"
+                                    TextColor="White" />
+                                <StackLayout
+                                    Grid.Column="0" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xF306;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Llaves API"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="1" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xFE5A;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Registros"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                        <Frame
+                            BackgroundColor="White"
+                            Padding="0"
+                            HasShadow="False">
+                            <Grid 
+                                ColumnSpacing="0" RowSpacing="10"
+                                Padding="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.ColumnSpan="3" Grid.Row="0"
+                                    BackgroundColor="DimGray"
+                                    Padding="12,10,12,12"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="Video a Demanda"
+                                    TextColor="White" />
+                                <StackLayout
+                                    Grid.Column="0" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xF381;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Producciones"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="1" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xF1D7;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Casas Productoras"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="2" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xF64A;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Personalidades"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="0" Grid.Row="2"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xF47A;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Categorías"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="1" Grid.Row="2"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xF0C0;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Géneros"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="2" Grid.Row="2"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xF6CC;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Países"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="0" Grid.Row="3"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xF23B;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Lenguajes"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Spacing="20">
+                        <Frame
+                            BackgroundColor="White"
+                            Padding="0"
+                            HasShadow="False">
+                            <Grid 
+                                ColumnSpacing="0" RowSpacing="10"
+                                Padding="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.ColumnSpan="3" Grid.Row="0"
+                                    BackgroundColor="DimGray"
+                                    Padding="12,10,12,12"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="Instalación Hotelera"
+                                    TextColor="White" />
+                                <StackLayout
+                                    Grid.Column="0" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xFB58;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Restaurantes"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="1" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xF098;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Bares"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="2" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xF25A;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Cafeterías"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="0" Grid.Row="2"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xF4E3;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Piscinas"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="1" Grid.Row="2"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xF092;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Zonas de Playa"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="2" Grid.Row="2"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xFC9F;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Áreas Comunes"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                        <Frame
+                            BackgroundColor="White"
+                            Padding="0"
+                            HasShadow="False">
+                            <Grid 
+                                ColumnSpacing="0" RowSpacing="10"
+                                Padding="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.ColumnSpan="3" Grid.Row="0"
+                                    BackgroundColor="DimGray"
+                                    Padding="12,10,12,12"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="Televisión Hotelera"
+                                    TextColor="White" />
+                                <StackLayout
+                                    Grid.Column="0" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ProfilesTapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Label
+                                        Text="&#xFDB8;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Perfiles OTT"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="1" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ChannelsTapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Label
+                                        Text="&#xFD1C;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Canales Televisivos"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
