@@ -19,7 +19,10 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
         {
             var model = base.EntityToDisplayModel(entity);
 
-            model.FeatureImageExtension = entity.FeatureImage == null ? null : MimeTypes.MimeTypeMap.GetExtension(entity.FeatureImage.ContentType);
+            if (model.FeatureImage != null)
+            {
+                model.FeatureImage.Extension = MimeTypes.MimeTypeMap.GetExtension(entity.FeatureImage.ContentType);
+            }
 
             return model;
         }

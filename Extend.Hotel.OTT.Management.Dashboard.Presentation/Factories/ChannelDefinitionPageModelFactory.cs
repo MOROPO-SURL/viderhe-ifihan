@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Factories
+﻿using SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Extensions;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Factories
 {
     public static class ChannelDefinitionPageModelFactory
     {
@@ -11,8 +13,9 @@
                 Id = target.Id,
                 Name = target.Name,
                 Enabled = target.Enabled,
-                FeatureImageId = target.FeatureImageId,
-                FeatureImageExtension = target.FeatureImageExtension,
+                FeatureImageId = target.FeatureImage?.Id,
+                FeatureImageExtension = target.FeatureImage?.Extension,
+                FeatureImageSource = target.FeatureImage?.ToImageSource(),
                 Kind = target.Kind,
                 Description = target.Description
             };

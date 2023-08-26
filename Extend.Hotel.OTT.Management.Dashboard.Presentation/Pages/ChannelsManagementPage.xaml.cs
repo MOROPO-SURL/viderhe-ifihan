@@ -1,4 +1,5 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿    using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages
 {
@@ -7,11 +8,17 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
         public ChannelsManagementPage() : base(new Models.Page.ChannelsManagementPageModel())
         {
             InitializeComponent();
+
+            IsEnabled = false;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            if (IsEnabled) return;
+
+            IsEnabled = true;
 
             LoadItems();
         }
@@ -20,7 +27,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            this.NavigationPushPageAsync(new ChannelDefinitionPage(PersitenceChanges_Callback));
+            this.NavigationPushPageAsync(new ChannelDefinitionPage(LoadItems));
         }
 
         private void ReloadToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
@@ -30,16 +37,57 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
             LoadItems();
         }
 
-        private void PersitenceChanges_Callback()
+        private void ItemTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
-            DisplayAlert("Aviso", "Cambios aplicados con éxito.", "Aceptar");
+            BindingContextPageModel.Target = (sender as Xamarin.Forms.BindableObject).BindingContext as MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ChannelDisplayModel;
+        }
+
+        private void CloseDetailPopupButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            BindingContextPageModel.Target = null;
+        }
+
+        private void TargetEditButton_Cliked(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new ChannelDefinitionPage(LoadItems, (sender as Xamarin.Forms.BindableObject).BindingContext as MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ChannelDisplayModel));
+        }
+
+        private void TargetRemoveButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayAlert("Confirmar", "Está seguro que desea eliminar este elemento?", "Eliminar", "Cancelar").ContinueWith(deleteAskTask =>
+            {
+                if (!deleteAskTask.Result) return;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.IsBusy = true);
+
+                var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.ChannelsAPIConnectClient(Managers.SessionManager.Instance);
+
+                apiConnectClient.Delete(BindingContextPageModel.Target.Id).ContinueWith(targetDeleteTask =>
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        BindingContextPageModel.IsBusy = false;
+
+                        if (targetDeleteTask.Exception != null || targetDeleteTask.IsCanceled)
+                        {
+                            (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(deleteAskTask.Exception);
+                        }
+                        else
+                        {
+                            BindingContextPageModel.Target = null;
+
+                            LoadItems();
+                        }
+                    });                    
+                });
+            });
         }
 
         private void LoadItems()
         {
             BindingContextPageModel.IsBusy = true;
 
-            BindingContextPageModel.Items.Clear();
+            BindingContextPageModel.Items?.Clear();
 
             var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.ChannelsAPIConnectClient(Managers.SessionManager.Instance);
 
@@ -55,9 +103,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                     }
                     else
                     {
-                        foreach (var model in task.Result)
+                        if (task.Result.Length <= 0) return;
+
+                        if (BindingContextPageModel.Items == null)
                         {
-                            BindingContextPageModel.Items.Add(model);
+                            BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ChannelDisplayModel>(task.Result);
+                        }
+                        else
+                        {
+                            foreach (var model in task.Result)
+                            {
+                                BindingContextPageModel.Items.Add(model);
+                            }
                         }
                     }
                 });

@@ -37,6 +37,7 @@
         public void Mergue(Persistence.Entities.Channel entity)
         {
             entity.Name = Name;
+            entity.Enabled = Enabled;
             entity.Kind = Kind;
             entity.SourceSerialization = SourceSerialization;
             entity.Description = Description;

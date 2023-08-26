@@ -14,9 +14,7 @@
         [System.ComponentModel.DataAnnotations.Required]
         public string SourceSerialization { get; set; }
 
-        public System.Guid? FeatureImageId { get; set; }
-
-        public string FeatureImageExtension { get; set; }
+        public ImageDisplayModel FeatureImage { get; set; }
 
         public string Description { get; set; }
 
@@ -24,10 +22,17 @@
         {
             Id = entity.Id;
             Name = entity.Name;
+            Enabled = entity.Enabled;
             Kind = entity.Kind;
             SourceSerialization = entity.SourceSerialization;
-            FeatureImageId = entity.FeatureImageId;
             Description = entity.Description;
+
+            if (entity.FeatureImageId != null)
+            {
+                FeatureImage = new ImageDisplayModel();
+
+                FeatureImage.Import(entity.FeatureImage);
+            }
         }
     }
 }

@@ -30,9 +30,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
         private string apiKeyToken;
 
+        public string Server { get; private set; }
+
         public void Configure(string server, string apiKeyToken, bool isPersistent = false)
         {
             this.apiKeyToken = apiKeyToken;
+
+            Server = server;
 
             HttpClientHelper = new MOROPO.Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(string.Format("http://{0}/api/", server), null, GetExtraHeaders);
         }
