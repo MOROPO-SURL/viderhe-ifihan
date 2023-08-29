@@ -16,7 +16,9 @@
 
         public byte[] FeatureImageContent { get; set; }
 
-        public string FeatureImageContentType { get; set; }
+        public string FeatureImageExtension { get; set; }
+
+        public System.Guid? FeatureImageId { get; set; }
 
         public string Description { get; set; }
 

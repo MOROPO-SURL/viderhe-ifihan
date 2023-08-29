@@ -4,6 +4,7 @@ using MOROPO.Framework.Guama.Core.Persistence.Repositories;
 using MOROPO.Framework.Guama.Core.Presentation.Models;
 using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Attributes;
 using MOROPO.Framework.Guama.Core.Security.Common.Persistence.Entities;
+using MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Constants;
 using MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models;
 using MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities;
 using System.Linq;
@@ -22,37 +23,37 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
             this.permissionRepository = permissionRepository;
         }
 
-        [RequirePermissions(Constants.Permission.ApiKeyViewer)]
+        [RequirePermissions(Authorization.ApiKeyViewerPermission)]
         public override ActionResult<ApiKeyDisplayModel[]> Get()
         {
             return base.Get();
         }
 
-        [RequirePermissions(Constants.Permission.ApiKeyViewer)]
+        [RequirePermissions(Authorization.ApiKeyViewerPermission)]
         public override ActionResult<PaginationModel<ApiKeyDisplayModel>> GetPaginate(int sheet = 1, int limit = 25)
         {
             return base.GetPaginate(sheet, limit);
         }
 
-        [RequirePermissions(Constants.Permission.ApiKeyViewer)]
+        [RequirePermissions(Authorization.ApiKeyViewerPermission)]
         public override ActionResult<ApiKeyDisplayModel> Get(System.Guid key)
         {
             return base.Get(key);
         }
 
-        [RequirePermissions(Constants.Permission.ApiKeyEditor)]
+        [RequirePermissions(Authorization.ApiKeyCreatorPermission)]
         public override ActionResult Create([FromBody] ApiKeyInputModel inputModel)
         {
             return base.Create(inputModel);
         }
 
-        [RequirePermissions(Constants.Permission.ApiKeyEditor)]
+        [RequirePermissions(Authorization.ApiKeyEditorPermission)]
         public override ActionResult Edit([FromBody] ApiKeyInputModel inputModel)
         {
             return base.Edit(inputModel);
         }
 
-        [RequirePermissions(Constants.Permission.ApiKeyRemover)]
+        [RequirePermissions(Authorization.ApiKeyRemoverPermission)]
         public override ActionResult Delete(System.Guid key)
         {
             return base.Delete(key);
@@ -77,7 +78,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
         {
             base.PreCreate(entity, model);
 
-            entity.PermissionBridges = model.Permissions.Select(item => new ApiKeyPermissionBridge
+            entity.RoleBridges = model.Roles.Select(item => new ApiKeyRoleBridge
             {
                 Prow = entity,
                 SternId = item.Id
@@ -88,9 +89,9 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
         {
             base.PreEdit(entity, model);
 
-            entity.PermissionBridges.Clear();
+            entity.RoleBridges.Clear();
 
-            entity.PermissionBridges = model.Permissions.Select(item => new ApiKeyPermissionBridge
+            entity.RoleBridges = model.Roles.Select(item => new ApiKeyRoleBridge
             {
                 Prow = entity,
                 SternId = item.Id

@@ -8,6 +8,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Assets\DefaultPicture.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\DefaultPicture.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\Extend.Common.Management.Dashboard.Presentation\Extend.Common.Management.Dashboard.Presentation.csproj" />
 		<ProjectReference Include="..\Extend.Hotel.OTT.Management\Extend.Hotel.OTT.Management.csproj" />
 		<ProjectReference Include="..\Service.Hotel.OTT.API.Connect\Service.Hotel.OTT.API.Connect.csproj" />
@@ -26,6 +34,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Update="Pages\ApiKeyDefinitionPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Pages\ApiKeysManagementPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="Pages\ChannelDefinitionPage.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>

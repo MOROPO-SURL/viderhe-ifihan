@@ -75,13 +75,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                 Name = BindingContextPageModel.Name,
                 Enabled = BindingContextPageModel.Enabled,
                 Kind = BindingContextPageModel.Kind,
-                Description = BindingContextPageModel.Description
+                Description = BindingContextPageModel.Description,
+                FeatureImageId = BindingContextPageModel.FeatureImageId
             };
 
             if (imagePickedData != null)
             {
                 model.FeatureImageContent = imagePickedData;
-                model.FeatureImageContentType = BindingContextPageModel.FeatureImageExtension;
+                model.FeatureImageExtension = BindingContextPageModel.FeatureImageExtension;
             }
 
             if (model.Kind == MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.ChannelKind.RF)

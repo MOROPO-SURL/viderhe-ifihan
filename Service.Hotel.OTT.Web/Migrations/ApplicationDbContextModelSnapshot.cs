@@ -1216,6 +1216,10 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("expirateat");
 
+                    b.Property<bool>("HasFullAccess")
+                        .HasColumnType("boolean")
+                        .HasColumnName("hasfullaccess");
+
                     b.Property<string>("Host")
                         .HasColumnType("text")
                         .HasColumnName("host");
@@ -1236,23 +1240,23 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                     b.ToTable("apikeys");
                 });
 
-            modelBuilder.Entity("MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities.ApiKeyPermissionBridge", b =>
+            modelBuilder.Entity("MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities.ApiKeyRoleBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
                         .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
-                    b.Property<int>("SternId")
-                        .HasColumnType("integer")
+                    b.Property<Guid>("SternId")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
-                        .HasName("pk_apikeypermissionbridges");
+                        .HasName("pk_apikeyrolebridges");
 
                     b.HasIndex("SternId")
-                        .HasDatabaseName("ix_apikeypermissionbridges_sternid");
+                        .HasDatabaseName("ix_apikeyrolebridges_sternid");
 
-                    b.ToTable("apikeypermissionbridges");
+                    b.ToTable("apikeyrolebridges");
                 });
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities.Channel", b =>
@@ -2165,21 +2169,21 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                     b.Navigation("Stern");
                 });
 
-            modelBuilder.Entity("MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities.ApiKeyPermissionBridge", b =>
+            modelBuilder.Entity("MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities.ApiKeyRoleBridge", b =>
                 {
                     b.HasOne("MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities.ApiKey", "Prow")
-                        .WithMany("PermissionBridges")
+                        .WithMany("RoleBridges")
                         .HasForeignKey("ProwId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_apikeypermissionbridges_apikeys_prowid");
+                        .HasConstraintName("fk_apikeyrolebridges_apikeys_prowid");
 
-                    b.HasOne("MOROPO.Framework.Guama.Core.Security.Common.Persistence.Entities.Permission", "Stern")
+                    b.HasOne("MOROPO.Framework.Guama.Core.Security.Common.Persistence.Entities.Role", "Stern")
                         .WithMany()
                         .HasForeignKey("SternId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_apikeypermissionbridges_permissions_sternid");
+                        .HasConstraintName("fk_apikeyrolebridges_roles_sternid");
 
                     b.Navigation("Prow");
 
@@ -2417,7 +2421,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities.ApiKey", b =>
                 {
-                    b.Navigation("PermissionBridges");
+                    b.Navigation("RoleBridges");
                 });
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities.Contract.Zone", b =>

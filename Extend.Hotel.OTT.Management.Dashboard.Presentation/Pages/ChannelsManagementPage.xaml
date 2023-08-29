@@ -90,7 +90,6 @@
                                 <ffimageloadingforms:CachedImage
                                     Grid.Column="0" Grid.RowSpan="3"
                                     WidthRequest="{Binding Source={RelativeSource Mode=Self}, Path=Height}"
-                                    BackgroundColor="Black"
                                     Source="{Binding Path=FeatureImage, Converter={StaticResource ImageDisplayModelToImageSourceConverter}, Mode=OneTime}"
                                     Aspect="AspectFill"
                                     CacheType="Disk"
@@ -202,6 +201,7 @@
                     </Grid>
                 </Frame>
             </ContentView>
+            <supportpresentationdashboardviews:BusyView />
         </Grid>
     </ContentPage.Content>
 </sscxftoolkitmvvmpages:BindingContextedContentPage>

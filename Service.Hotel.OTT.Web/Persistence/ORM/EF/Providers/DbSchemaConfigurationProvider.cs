@@ -8,7 +8,7 @@
             {
                 return new System.Collections.Generic.List<Framework.Guama.Core.Persistence.ORM.EF.Configurators.IEntityTypeConfigurator>
                 {
-                    new Configurators.ApiKeyPermissionBridgeEntityTypeConfigurator(),
+                    new Configurators.ApiKeyRoleBridgeEntityTypeConfigurator(),
                     new Configurators.AVProductionAVGenreBridgeEntityTypeConfigurator(),
                     new Configurators.AVProductionAVProducerHouseBridgeEntityTypeConfigurator(),
                     new Configurators.AVProductionCountryBridgeEntityTypeConfigurator(),

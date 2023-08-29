@@ -1,4 +1,6 @@
-﻿namespace MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models
+﻿using System.Linq;
+
+namespace MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models
 {
     public class ApiKeyDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Persistence.Entities.ApiKey, System.Guid>
     {
@@ -10,13 +12,13 @@
 
         public bool Enabled { get; set; }
 
-        public System.DateTime ExpirateAt { get; set; }
+        public bool HasFullAccess { get; set; }
+
+        public System.DateTime? ExpirateAt { get; set; }
 
         public string Host { get; set; }
 
-        public Framework.Guama.Core.Security.Common.Persistence.Entities.Permission[] UngroupedPermissions { get; set; }
-
-        public System.Collections.Generic.KeyValuePair<string, Framework.Guama.Core.Security.Common.Persistence.Entities.Permission[]>[] GroupedPermissions { get; set; }
+        public RoleDisplayModel[] Roles { get; set; }
 
         public void Import(Persistence.Entities.ApiKey entity)
         {
@@ -24,8 +26,15 @@
             Name = entity.Name;
             Token = entity.Token;
             Enabled = entity.Enabled;
+            HasFullAccess = entity.HasFullAccess;
             ExpirateAt = entity.ExpirateAt;
             Host = entity.Host;
+            Roles = entity.RoleBridges.Select(item => new RoleDisplayModel
+            {
+                Id = item.SternId,
+                Name = item.Stern.Name,
+                Description = item.Stern.Description
+            }).ToArray();
         }
     }
 }

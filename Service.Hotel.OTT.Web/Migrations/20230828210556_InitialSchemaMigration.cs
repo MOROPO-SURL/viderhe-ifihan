@@ -32,6 +32,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                     name = table.Column<string>(type: "text", nullable: false),
                     token = table.Column<string>(type: "text", nullable: false),
                     enabled = table.Column<bool>(type: "boolean", nullable: false),
+                    hasfullaccess = table.Column<bool>(type: "boolean", nullable: false),
                     expirateat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     host = table.Column<string>(type: "text", nullable: true)
                 },
@@ -261,26 +262,26 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "apikeypermissionbridges",
+                name: "apikeyrolebridges",
                 columns: table => new
                 {
                     prowid = table.Column<Guid>(type: "uuid", nullable: false),
-                    sternid = table.Column<int>(type: "integer", nullable: false)
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_apikeypermissionbridges", x => new { x.prowid, x.sternid });
+                    table.PrimaryKey("pk_apikeyrolebridges", x => new { x.prowid, x.sternid });
                     table.ForeignKey(
-                        name: "fk_apikeypermissionbridges_apikeys_prowid",
+                        name: "fk_apikeyrolebridges_apikeys_prowid",
                         column: x => x.prowid,
                         principalTable: "apikeys",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_apikeypermissionbridges_permissions_sternid",
+                        name: "fk_apikeyrolebridges_roles_sternid",
                         column: x => x.sternid,
                         principalSchema: "guamaframework_core_security_common",
-                        principalTable: "permissions",
+                        principalTable: "roles",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -1260,8 +1261,8 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "ix_apikeypermissionbridges_sternid",
-                table: "apikeypermissionbridges",
+                name: "ix_apikeyrolebridges_sternid",
+                table: "apikeyrolebridges",
                 column: "sternid");
 
             migrationBuilder.CreateIndex(
@@ -1558,7 +1559,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "apikeypermissionbridges");
+                name: "apikeyrolebridges");
 
             migrationBuilder.DropTable(
                 name: "avparticipations");

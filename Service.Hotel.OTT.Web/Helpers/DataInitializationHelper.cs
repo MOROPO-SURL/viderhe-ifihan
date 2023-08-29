@@ -1,5 +1,4 @@
 ﻿using MOROPO.Framework.Guama.Core.Security.Common.Persistence.ORM.EF.Extensions;
-using MOROPO.VIDERHE.Service.Hotel.OTT.Web.Constants;
 using System.Linq;
 
 namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Helpers
@@ -10,27 +9,48 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Helpers
         {
             var permissionDbSet = dbContext.Set<Framework.Guama.Core.Security.Common.Persistence.Entities.Permission>();
 
-            if (!permissionDbSet.Any(role => role.Code.Equals(Permission.TraceViewer)))
+            if (!permissionDbSet.Any(role => role.Code.Equals(API.Common.Constants.Authorization.TraceViewerPermission)))
             {
-                permissionDbSet.Add(Permission.TraceViewer.ToPermissionEntity());
+                permissionDbSet.Add(API.Common.Constants.Authorization.TraceViewerPermission.ToPermissionEntity());
             }
 
             #region ApiKey
-            if (!permissionDbSet.Any(item => item.Code.Equals(Permission.ApiKeyViewer)))
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.ApiKeyViewerPermission)))
             {
-                permissionDbSet.Add(Permission.ApiKeyViewer.ToPermissionEntity(PermissionsFamily.ApiKeyManagement));
+                permissionDbSet.Add(API.Common.Constants.Authorization.ApiKeyViewerPermission.ToPermissionEntity(API.Common.Constants.Authorization.ApiKeyManagementPermissionGroup));
             }
-            if (!permissionDbSet.Any(item => item.Code.Equals(Permission.ApiKeyCreator)))
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.ApiKeyCreatorPermission)))
             {
-                permissionDbSet.Add(Permission.ApiKeyCreator.ToPermissionEntity(PermissionsFamily.ApiKeyManagement));
+                permissionDbSet.Add(API.Common.Constants.Authorization.ApiKeyCreatorPermission.ToPermissionEntity(API.Common.Constants.Authorization.ApiKeyManagementPermissionGroup));
             }
-            if (!permissionDbSet.Any(item => item.Code.Equals(Permission.ApiKeyEditor)))
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.ApiKeyEditorPermission)))
             {
-                permissionDbSet.Add(Permission.ApiKeyEditor.ToPermissionEntity(PermissionsFamily.ApiKeyManagement));
+                permissionDbSet.Add(API.Common.Constants.Authorization.ApiKeyEditorPermission.ToPermissionEntity(API.Common.Constants.Authorization.ApiKeyManagementPermissionGroup));
             }
-            if (!permissionDbSet.Any(item => item.Code.Equals(Permission.ApiKeyRemover)))
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.ApiKeyRemoverPermission)))
             {
-                permissionDbSet.Add(Permission.ApiKeyRemover.ToPermissionEntity(PermissionsFamily.ApiKeyManagement));
+                permissionDbSet.Add(API.Common.Constants.Authorization.ApiKeyRemoverPermission.ToPermissionEntity(API.Common.Constants.Authorization.ApiKeyManagementPermissionGroup));
+            }
+            #endregion
+
+
+
+            #region Channel
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.ChannelViewerPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.ChannelViewerPermission.ToPermissionEntity(API.Common.Constants.Authorization.ChannelManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.ChannelCreatorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.ChannelCreatorPermission.ToPermissionEntity(API.Common.Constants.Authorization.ChannelManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.ChannelEditorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.ChannelEditorPermission.ToPermissionEntity(API.Common.Constants.Authorization.ChannelManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.ChannelRemoverPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.ChannelRemoverPermission.ToPermissionEntity(API.Common.Constants.Authorization.ChannelManagementPermissionGroup));
             }
             #endregion
 

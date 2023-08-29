@@ -2,12 +2,12 @@
 
 namespace MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities
 {
-    public class ApiKeyPermissionBridge : Framework.Guama.Core.Persistence.Entities.Contract.IBridge<ApiKey, System.Guid, Permission, int>
+    public class ApiKeyRoleBridge : Framework.Guama.Core.Persistence.Entities.Contract.IBridge<ApiKey, System.Guid, Role, System.Guid>
     {
         public System.Guid ProwId { get; set; }
         public ApiKey Prow { get; set; }
         
-        public int SternId { get; set; }
-        public Permission Stern { get; set; }
+        public System.Guid SternId { get; set; }
+        public Role Stern { get; set; }
     }
 }

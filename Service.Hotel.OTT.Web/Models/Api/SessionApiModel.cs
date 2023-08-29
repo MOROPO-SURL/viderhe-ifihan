@@ -13,9 +13,14 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Models.Api
                 new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.AuthenticationMethod, AspNetCore.Authentication.ApiKey.ApiKeyDefaults.AuthenticationScheme)
             };
 
-            foreach (var bridge in entity.PermissionBridges)
+            if (entity.HasFullAccess)
             {
-                claims.AddRange(entity.PermissionBridges.Select(item => new System.Security.Claims.Claim(System.Security.Claims.ClaimsIdentity.DefaultRoleClaimType, item.Stern.Code)).ToArray());
+                claims.Add(new System.Security.Claims.Claim(Framework.Guama.Core.Presentation.Web.Security.Constants.ClaimTypes.AccountWithFullAccess, true.ToString()));
+            }
+
+            foreach (var bridge in entity.RoleBridges)
+            {
+                claims.AddRange(entity.RoleBridges.Select(item => new System.Security.Claims.Claim(System.Security.Claims.ClaimsIdentity.DefaultRoleClaimType, item.Stern.Id.ToString())).ToArray());
             }
 
             Claims = claims;

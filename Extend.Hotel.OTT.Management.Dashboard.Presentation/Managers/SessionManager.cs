@@ -43,7 +43,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
         public KeyValuePair<string, string>[] GetExtraHeaders()
         {
-            return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Constants.Authorization.API_KEY_HEADER_PROPERTY, apiKeyToken) };
+            return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, apiKeyToken) };
         }
     }
 }

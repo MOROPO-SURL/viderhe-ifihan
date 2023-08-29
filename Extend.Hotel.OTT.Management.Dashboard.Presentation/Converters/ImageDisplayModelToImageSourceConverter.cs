@@ -6,7 +6,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value == null || !(value is MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ImageDisplayModel)) return null;
+            if (value == null || !(value is MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ImageDisplayModel)) return Providers.ConstantProvider.DEFAULT_IMAGE;
 
             return (value as MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ImageDisplayModel).ToImageSource();
         }

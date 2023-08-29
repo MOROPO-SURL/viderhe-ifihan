@@ -17,11 +17,13 @@
 
         public bool Enabled { get; set; }
 
-        public System.DateTime ExpirateAt { get; set; }
+        public bool HasFullAccess { get; set; }
+
+        public System.DateTime? ExpirateAt { get; set; }
 
         public string Host { get; set; }
 
-        public Framework.Guama.Core.Security.Common.Persistence.Entities.Permission[] Permissions { get; set; }
+        public RoleDisplayModel[] Roles { get; set; }
 
         public Persistence.Entities.ApiKey Export()
         {
@@ -43,6 +45,7 @@
             entity.Token = Token;
             entity.ExpirateAt = ExpirateAt;
             entity.Enabled = Enabled;
+            entity.HasFullAccess = HasFullAccess;
             entity.Host = Host;
         }
     }

@@ -5,7 +5,7 @@
         public ApiKey()
         {
             Id = System.Guid.NewGuid();
-            PermissionBridges = new System.Collections.Generic.List<ApiKeyPermissionBridge>();
+            RoleBridges = new System.Collections.Generic.List<ApiKeyRoleBridge>();
         }
 
         [System.ComponentModel.DataAnnotations.Key]
@@ -19,10 +19,12 @@
 
         public bool Enabled { get; set; }
 
-        public System.DateTime ExpirateAt { get; set; }
+        public bool HasFullAccess { get; set; }
+
+        public System.DateTime? ExpirateAt { get; set; }
 
         public string Host { get; set; }
 
-        public System.Collections.Generic.List<ApiKeyPermissionBridge> PermissionBridges { get; set; }
+        public System.Collections.Generic.List<ApiKeyRoleBridge> RoleBridges { get; set; }
     }
 }

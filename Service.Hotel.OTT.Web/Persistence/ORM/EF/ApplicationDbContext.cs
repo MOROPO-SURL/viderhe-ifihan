@@ -60,7 +60,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Persistence.ORM.EF
         public DbSet<OrganizationWebSiteContactItemBridge> OrganizationWebSiteContactItemBridges { get; set; }
 
         public DbSet<ApiKey> ApiKeys { get; set; }
-        public DbSet<ApiKeyPermissionBridge> ApiKeyPermissionBridges { get; set; }
+        public DbSet<ApiKeyRoleBridge> ApiKeyRoleBridges { get; set; }
         public DbSet<AVCategory> AVCategories { get; set; }
         public DbSet<AVGenre> AVGenres { get; set; }
         public DbSet<AVParticipation> AVParticipations { get; set; }

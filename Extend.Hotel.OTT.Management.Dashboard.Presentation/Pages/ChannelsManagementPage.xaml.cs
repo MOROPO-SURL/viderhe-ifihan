@@ -1,5 +1,4 @@
-﻿    using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
-using System.Linq;
+﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages
 {
@@ -27,19 +26,21 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            this.NavigationPushPageAsync(new ChannelDefinitionPage(LoadItems));
+            this.NavigationPushPageAsync(new ChannelDefinitionPage(ReloadItems));
         }
 
         private void ReloadToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            LoadItems();
+            ReloadItems();
         }
 
         private void ItemTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
             BindingContextPageModel.Target = (sender as Xamarin.Forms.BindableObject).BindingContext as MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ChannelDisplayModel;
+
+            ItemsCollectionView.SelectedItems.Clear();
         }
 
         private void CloseDetailPopupButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -49,7 +50,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
         private void TargetEditButton_Cliked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new ChannelDefinitionPage(LoadItems, (sender as Xamarin.Forms.BindableObject).BindingContext as MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ChannelDisplayModel));
+            this.NavigationPushPageAsync(new ChannelDefinitionPage(ReloadItems, BindingContextPageModel.Target));
         }
 
         private void TargetRemoveButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -74,13 +75,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                         }
                         else
                         {
-                            BindingContextPageModel.Target = null;
-
-                            LoadItems();
+                            ReloadItems();
                         }
                     });                    
                 });
             });
+        }
+
+        private void ReloadItems()
+        {
+            BindingContextPageModel.Target = null;
+
+            LoadItems();
         }
 
         private void LoadItems()
@@ -95,28 +101,29 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    BindingContextPageModel.IsBusy = false;
-
                     if (task.Exception != null || task.IsCanceled)
                     {
                         (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {
-                        if (task.Result.Length <= 0) return;
-
-                        if (BindingContextPageModel.Items == null)
+                        if (task.Result.Length > 0)
                         {
-                            BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ChannelDisplayModel>(task.Result);
-                        }
-                        else
-                        {
-                            foreach (var model in task.Result)
+                            if (BindingContextPageModel.Items == null)
                             {
-                                BindingContextPageModel.Items.Add(model);
+                                BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ChannelDisplayModel>(task.Result);
+                            }
+                            else
+                            {
+                                foreach (var model in task.Result)
+                                {
+                                    BindingContextPageModel.Items.Add(model);
+                                }
                             }
                         }
                     }
+
+                    BindingContextPageModel.IsBusy = false;
                 });
             });
         }

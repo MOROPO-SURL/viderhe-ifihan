@@ -7,5 +7,7 @@
             MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.ChannelKind.RF,
             MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.ChannelKind.IPTV
         };
+
+        public static Xamarin.Forms.ImageSource DEFAULT_IMAGE = Xamarin.Forms.ImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Assets.DefaultPicture.png");
     }
 }

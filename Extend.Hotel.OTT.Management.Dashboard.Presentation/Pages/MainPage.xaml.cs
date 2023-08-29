@@ -9,12 +9,17 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
             InitializeComponent();
         }
 
-        private void ChannelsTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        private void ApiKeysTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new ApiKeysManagementPage());
+        }
+
+        private void ChannelsTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
         {
             this.NavigationPushPageAsync(new ChannelsManagementPage());
         }
 
-        private void ProfilesTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
+        private void ProfilesTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
         {
             this.NavigationPushPageAsync(new ProfilesManagementPage());
         }

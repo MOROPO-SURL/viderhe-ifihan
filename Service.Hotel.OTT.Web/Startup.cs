@@ -54,11 +54,13 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web
 
             services.AddHttpContextAccessor();
 
+            services.AddSingleton<Framework.Guama.Core.Presentation.Web.Security.Providers.Facade.IRoleIdProviderFacade>(Providers.RoleMemoryProvider.Instance);
+
             services.AddAuthentication()
                 .AddApiKeyInHeaderOrQueryParams<Providers.ApiKeySessionProvider>(ApiKeyDefaults.AuthenticationScheme, options =>
             {
                 options.Realm = "VIDERHE Hotel OTT Restfull API";
-                options.KeyName = API.Common.Constants.Authorization.API_KEY_HEADER_PROPERTY;
+                options.KeyName = API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY;
                 options.SuppressWWWAuthenticateHeader = true;
             });
 
@@ -97,7 +99,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web
             #region Swagger
             var openApiSecurityScheme = new Microsoft.OpenApi.Models.OpenApiSecurityScheme()
             {
-                Description = string.Format("Authorization Header \"{0}: {1}\"", API.Common.Constants.Authorization.API_KEY_HEADER_PROPERTY, "{token}"),
+                Description = string.Format("Authorization Header \"{0}: {1}\"", API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, "{token}"),
                 Name = "Authorization",
                 In = Microsoft.OpenApi.Models.ParameterLocation.Header,
                 Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey
@@ -116,7 +118,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web
                 {
                     return apiDescription.RelativePath.StartsWith("api/");
                 });
-                setup.AddSecurityDefinition(API.Common.Constants.Authorization.API_KEY_HEADER_PROPERTY, openApiSecurityScheme);
+                setup.AddSecurityDefinition(API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, openApiSecurityScheme);
                 setup.OperationFilter<Filters.Swagger.OperationSwaggerFilter>();
                 setup.EnableAnnotations();
                 setup.IgnoreObsoleteActions();
@@ -155,17 +157,14 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web
 
                 if (!(dbContext as Persistence.ORM.EF.ApplicationDbContext).ApiKeys.Any())
                 {
-                    var entity = new ApiKey
+                    dbContext.Set<ApiKey>().Add(new ApiKey
                     {
                         Token = configuration["Defaults:TempRootApiKeyToken"],
                         Enabled = true,
+                        HasFullAccess = true,
                         Name = "Acceso Total Temporal",
                         ExpirateAt = System.DateTime.Now.AddDays(3)
-                    };
-
-                    entity.PermissionBridges = dbContext.Set<Framework.Guama.Core.Security.Common.Persistence.Entities.Permission>().Select(item => new ApiKeyPermissionBridge { SternId = item.Id, Stern = item, Prow = entity }).ToList();
-
-                    dbContext.Set<ApiKey>().Add(entity);
+                    });
 
                     (dbContext as Framework.Guama.Core.Persistence.ORM.EF.Context.Contract.AbstractTraceableDbContext).SaveChanges("system");
                 }
