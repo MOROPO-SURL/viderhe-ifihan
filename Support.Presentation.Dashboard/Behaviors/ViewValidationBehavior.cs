@@ -2,12 +2,12 @@
 {
     public class ViewValidationBehavior : Xamarin.Forms.Behavior<Xamarin.Forms.View>, Contract.IFormFieldValidationBehavior
     {
-        private Xamarin.Forms.View target;
-
         public ViewValidationBehavior()
         {
             Validators = new System.Collections.ObjectModel.ObservableCollection<Validators.Contract.IFormFieldValidator>();
         }
+
+        public Xamarin.Forms.View Target { get; private set; }
 
         public Xamarin.Forms.Label Label { get; set; }
 
@@ -23,11 +23,11 @@
         {
             foreach (var validator in Validators)
             {
-                var result = validator.Validate(target, TargetProperty);
+                var result = validator.Validate(Target, TargetProperty);
                 
                 if (result != null)
                 {
-                    FormFieldValidationPresenter?.PresentFormFieldAsNotValid(target, Label, result);
+                    FormFieldValidationPresenter?.PresentFormFieldAsNotValid(Target, Label, result);
 
                     ValidableFormPage.AddValidationMessage(Label.Text, result);
 
@@ -35,7 +35,7 @@
                 }
             }
 
-            FormFieldValidationPresenter?.PresentFormFieldAsValid(target, Label);
+            FormFieldValidationPresenter?.PresentFormFieldAsValid(Target, Label);
 
             return true;
         }
@@ -44,7 +44,7 @@
         {
             base.OnAttachedTo(target);
 
-            this.target = target;
+            Target = target;
 
             ValidableFormPage.AddValidationBehavior(this);
         }
@@ -53,7 +53,7 @@
         {
             base.OnDetachingFrom(target);
 
-            this.target = null;
+            Target = null;
 
             ValidableFormPage.RemoveValidationBehavior(this);
         }

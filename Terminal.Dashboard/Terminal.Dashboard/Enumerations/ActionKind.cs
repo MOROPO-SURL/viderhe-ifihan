@@ -15,6 +15,7 @@
         ManageSounds,
         ManageGradients,
         ManageTexts,
-        ManageTags
+        ManageTags,
+        ManagementSection
     }
 }
