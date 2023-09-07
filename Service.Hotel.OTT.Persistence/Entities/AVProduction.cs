@@ -53,16 +53,15 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities
 
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey("VideoId")]
         public Framework.Guama.Media.Persistence.Entities.Video Video { get; set; }
-        [System.ComponentModel.DataAnnotations.Required]
         public System.Guid? VideoId { get; set; }
 
-        public long FileSize { get; set; }
+        public long? FileSize { get; set; }
 
         public bool HasSubtitle { get; set; }
 
         public string VideoFormat { get; set; }
 
-        public VideoQuality VideoQuality { get; set; }
+        public VideoQuality? VideoQuality { get; set; }
 
         public string VideoResolution { get; set; }
 

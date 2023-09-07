@@ -1066,7 +1066,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("enabled");
 
-                    b.Property<long>("FileSize")
+                    b.Property<long?>("FileSize")
                         .HasColumnType("bigint")
                         .HasColumnName("filesize");
 
@@ -1104,11 +1104,10 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                         .HasColumnName("videoformat");
 
                     b.Property<Guid?>("VideoId")
-                        .IsRequired()
                         .HasColumnType("uuid")
                         .HasColumnName("videoid");
 
-                    b.Property<int>("VideoQuality")
+                    b.Property<int?>("VideoQuality")
                         .HasColumnType("integer")
                         .HasColumnName("videoquality");
 
@@ -1212,7 +1211,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("enabled");
 
-                    b.Property<DateTime>("ExpirateAt")
+                    b.Property<DateTime?>("ExpirateAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("expirateat");
 
@@ -2089,8 +2088,6 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                     b.HasOne("MOROPO.Framework.Guama.Media.Persistence.Entities.Video", "Video")
                         .WithMany()
                         .HasForeignKey("VideoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("fk_avproductions_videos_videoid");
 
                     b.Navigation("Category");

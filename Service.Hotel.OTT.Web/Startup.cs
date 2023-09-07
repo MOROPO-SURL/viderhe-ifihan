@@ -39,13 +39,19 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web
 
             services.PerformIdentityWebCommonServiceRegistration();
             services.PerformMediaWebCommonRelativePathFileManagementServiceRegistration();
-            
-            
+
+
+            services.AddScoped<IEntityRepository<Framework.Guama.Core.Security.Common.Persistence.Entities.Role, System.Guid>, Framework.Guama.Core.Security.Common.Persistence.ORM.EF.Repositories.RoleRepository>();
             services.AddScoped<IEntityRepository<Framework.Guama.Core.Security.Common.Persistence.Entities.Permission, int>, Framework.Guama.Core.Security.Common.Persistence.ORM.EF.Repositories.PermissionRepository>();
             services.AddScoped<IEntityRepository<Framework.Guama.Core.Persistence.ORM.EF.Entities.Trace, long>, Framework.Guama.Core.Persistence.ORM.EF.Repositories.TraceRepository>();
             services.AddScoped<IEntityRepository<ApiKey, System.Guid>, ApiKeyRepository>();
             services.AddScoped<IEntityRepository<Channel, System.Guid>, ChannelRepository>();
             services.AddScoped<IEntityRepository<CustomService, System.Guid>, CustmoServiceRepository>();
+            services.AddScoped<IEntityRepository<AVCategory, int>, AVCategoryRepository>();
+            services.AddScoped<IEntityRepository<AVGenre, int>, AVGenreRepository>();
+            services.AddScoped<IEntityRepository<AVProducerHouse, System.Guid>, AVProducerHouseRepository>();
+            services.AddScoped<IEntityRepository<Personality, System.Guid>, PersonalityRepository>();
+            services.AddScoped<IEntityRepository<AVProduction, System.Guid>, AVProductionRepository>();
 
             services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade, Framework.Guama.Core.Security.Common.Persistence.ORM.EF.Providers.DbSchemaConfigurationProvider>();
             services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade, Persistence.ORM.EF.Providers.DbSchemaConfigurationProvider>();

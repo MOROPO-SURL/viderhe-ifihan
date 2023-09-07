@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using MOROPO.Framework.Guama.Core.Persistence.Repositories;
 using MOROPO.Framework.Guama.Core.Presentation.Models;
 using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Attributes;
-using MOROPO.Framework.Guama.Core.Security.Common.Persistence.Entities;
 using MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Constants;
 using MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models;
 using MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities;
@@ -16,11 +15,8 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
     [ApiController]
     public class ApiKeysController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<ApiKey, System.Guid, ApiKeyInputModel, ApiKeyDisplayModel>
     {
-        private readonly IEntityRepository<Permission, int> permissionRepository;
-
-        public ApiKeysController(IEntityRepository<Permission, int> permissionRepository, IEntityRepository<ApiKey, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<ApiKeysController> localizer, ILogger<ApiKeysController> logger) : base(repository, localizer, logger)
+        public ApiKeysController(IEntityRepository<ApiKey, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<ApiKeysController> localizer, ILogger<ApiKeysController> logger) : base(repository, localizer, logger)
         {
-            this.permissionRepository = permissionRepository;
         }
 
         [RequirePermissions(Authorization.ApiKeyViewerPermission)]
@@ -57,21 +53,6 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
         public override ActionResult Delete(System.Guid key)
         {
             return base.Delete(key);
-        }
-
-        protected override ApiKeyDisplayModel EntityToDisplayModel(ApiKey entity)
-        {
-            var model = base.EntityToDisplayModel(entity);
-
-            var permissionGroups = permissionRepository.FindBy(item => item.Family != null).GroupBy(item => item.Family).ToArray();
-
-            model.GroupedPermissions = permissionGroups.Select(item => new System.Collections.Generic.KeyValuePair<string, Permission[]>
-            (
-                item.Key,
-                item.ToArray()
-            )).ToArray();
-
-            return model;
         }
 
         protected override void PreCreate(ApiKey entity, ApiKeyInputModel model)

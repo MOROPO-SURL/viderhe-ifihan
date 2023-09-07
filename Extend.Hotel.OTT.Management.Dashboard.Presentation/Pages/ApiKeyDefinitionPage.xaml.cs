@@ -70,11 +70,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                 Name = BindingContextPageModel.Name,
                 Enabled = BindingContextPageModel.Enabled,
                 HasFullAccess = BindingContextPageModel.HasFullAccess,
-                ExpirateAt = BindingContextPageModel.ExpirateAt,
                 Host = BindingContextPageModel.Host,
                 Token = BindingContextPageModel.Token,
                 Roles = BindingContextPageModel.Roles.ToArray()
             };
+
+            if (BindingContextPageModel.IsExpirable)
+            {
+                model.ExpirateAt = BindingContextPageModel.ExpirateAtDate.Date.AddMilliseconds(BindingContextPageModel.ExpirateAtTime.TotalMilliseconds);
+            }
 
             var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.ApiKeysAPIConnectClient(Managers.SessionManager.Instance);
 
@@ -126,7 +130,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
         {
             var hashBuilder = System.Security.Cryptography.SHA256.Create();
 
-            BindingContextPageModel.Token = System.Convert.ToBase64String(hashBuilder.ComputeHash(System.Text.Encoding.UTF8.GetBytes(string.Format("{0}{1}", System.Guid.NewGuid(), System.DateTime.Now.Ticks))));
+            BindingContextPageModel.Token = string.Concat(hashBuilder.ComputeHash(System.Text.Encoding.UTF8.GetBytes(string.Format("{0}{1}", System.Guid.NewGuid(), System.DateTime.Now.Ticks))).Select(item => item.ToString("x2")));
         }
 
         #region IValidableFormPage implementation

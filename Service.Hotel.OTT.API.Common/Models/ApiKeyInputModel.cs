@@ -2,11 +2,6 @@
 {
     public class ApiKeyInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Persistence.Entities.ApiKey, System.Guid>
     {
-        public ApiKeyInputModel()
-        {
-            ExpirateAt = System.DateTime.Now.AddMonths(3);
-        }
-
         public System.Guid Id { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]

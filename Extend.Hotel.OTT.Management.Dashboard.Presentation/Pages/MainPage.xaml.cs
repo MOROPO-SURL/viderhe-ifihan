@@ -23,5 +23,20 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
         {
             this.NavigationPushPageAsync(new ProfilesManagementPage());
         }
+
+        private void RolesTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new RolesManagementPage());
+        }
+
+        private void AVGenresTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new AVGenresManagementPage());
+        }
+
+        private void AVCategoriesTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new AVCategoriesManagementPage());
+        }
     }
 }

@@ -104,6 +104,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                     if (task.Exception != null || task.IsCanceled)
                     {
                         (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+
+                        this.NavigationPopPageAsync();
                     }
                     else
                     {
@@ -120,6 +122,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                                     BindingContextPageModel.Items.Add(model);
                                 }
                             }
+                        }
+                        else
+                        {
+                            BindingContextPageModel.Items = null;
                         }
                     }
 

@@ -6,13 +6,19 @@
         private string token;
         private bool enabled;
         private bool hasFullAccess;
-        private System.DateTime? expirateAt;
+        private bool isExpirable;
+        private System.DateTime expirateAtDate;
+        private System.TimeSpan expirateAtTime;
         private string host;
 
         public ApiKeyDefinitionPageModel()
         {
+            var tomorrow = System.DateTime.Now.AddDays(1);
+
             Id = System.Guid.NewGuid();
             Roles = new System.Collections.ObjectModel.ObservableCollection<MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.RoleDisplayModel>();
+            expirateAtDate = tomorrow.Date;
+            expirateAtTime = tomorrow.TimeOfDay;
         }
 
         public System.Guid Id { get; set; }
@@ -25,9 +31,13 @@
 
         public bool HasFullAccess { get => hasFullAccess; set => SetProperty(ref hasFullAccess, value); }
 
-        public System.DateTime? ExpirateAt { get => expirateAt; set => SetProperty(ref expirateAt, value); }
+        public bool IsExpirable { get => isExpirable; set => SetProperty(ref isExpirable, value); }
 
-        public string Host { get => host; set =>SetProperty(ref host, value); }
+        public System.DateTime ExpirateAtDate { get => expirateAtDate; set => SetProperty(ref expirateAtDate, value); }
+
+        public System.TimeSpan ExpirateAtTime { get => expirateAtTime; set => SetProperty(ref expirateAtTime, value); }
+
+        public string Host { get => host; set => SetProperty(ref host, value); }
 
         public System.Collections.ObjectModel.ObservableCollection<MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.RoleDisplayModel> Roles { get; set; }
     }

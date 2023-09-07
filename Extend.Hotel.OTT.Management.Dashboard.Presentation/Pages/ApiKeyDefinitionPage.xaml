@@ -64,6 +64,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <StackLayout 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -140,9 +141,9 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.ColumnSpan="3" Grid.Row="2" 
+                        Grid.ColumnSpan="2" Grid.Row="2" 
                         Style="{StaticResource FormFieldFrame}">
-                        <Grid RowSpacing="0">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto" />
@@ -153,7 +154,7 @@
                             </Grid.RowDefinitions>
                             <Label 
                                 Grid.ColumnSpan="2" Grid.Row="0"
-                                Text="Acceso Total" 
+                                Text="Token" 
                                 Style="{StaticResource FormLabel}" />
                             <Entry 
                                 Grid.Column="0" Grid.Row="1"
@@ -163,6 +164,45 @@
                                 Grid.Column="1" Grid.Row="1"
                                 Text="Generar"
                                 Clicked="GenerateTokenButton_Clicked" />
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="2" Grid.Row="2" 
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Dirección IP" Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=Host}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame
+                        Grid.ColumnSpan="2" Grid.Row="3"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource FormFieldFrame}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label 
+                                Grid.ColumnSpan="3" Grid.Row="0"
+                                Text="Fecha de Expiración" 
+                                Style="{StaticResource FormLabel}" />
+                            <Switch 
+                                Grid.Column="0" Grid.Row="1"
+                                IsToggled="{Binding Path=IsExpirable}" />
+                            <DatePicker 
+                                Grid.Column="1" Grid.Row="1"
+                                IsEnabled="{Binding Path=IsExpirable}"
+                                Date="{Binding Path=ExpirateAtDate}" />
+                            <TimePicker
+                                Grid.Column="2" Grid.Row="1"
+                                IsEnabled="{Binding Path=IsExpirable}"
+                                Time="{Binding Path=ExpirateAtTime}"/>
                         </Grid>
                     </Frame>
                 </Grid>
