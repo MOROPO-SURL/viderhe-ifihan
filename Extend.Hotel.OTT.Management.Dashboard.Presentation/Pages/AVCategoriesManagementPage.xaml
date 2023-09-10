@@ -66,16 +66,23 @@
                             Margin="5" Padding="10,0"
                             BackgroundColor="White"
                             HasShadow="False"
-                            HeightRequest="32"
+                            HeightRequest="48"
                             CornerRadius="0">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ItemTapGestureRecognizer_Tapped" />
                             </Frame.GestureRecognizers>
-                            <Label 
-                                Text="{Binding Path=Name}"
-                                FontSize="21"
-                                VerticalTextAlignment="Center"
-                                LineBreakMode="TailTruncation" />
+                            <StackLayout Spacing="0">
+                                <Label 
+                                    Text="{Binding Path=Name}"
+                                    FontSize="21"
+                                    LineBreakMode="TailTruncation" />
+                                <Label
+                                    Text="{Binding Path=Parent, TargetNullValue='---'}"
+                                    TextColor="DimGray" 
+                                    FontSize="16"
+                                    FontAttributes="Italic"
+                                    LineBreakMode="TailTruncation" />
+                            </StackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -107,11 +114,20 @@
                                 <Label
                                     Margin="0,8,0,0"
                                     Text="Nombre"
-                                    TextColor="SlateGray"
+                                    TextColor="DimGray"
                                     FontSize="14"
                                     FontAttributes="Bold,Italic" />
                                 <Label
                                     Text="{Binding Path=Target.Name}"
+                                    FontSize="21" />
+                                <Label
+                                    Margin="0,8,0,0"
+                                    Text="Superior"
+                                    TextColor="DimGray"
+                                    FontSize="14"
+                                    FontAttributes="Bold,Italic" />
+                                <Label
+                                    Text="{Binding Path=Target.Parent, TargetNullValue='---'}"
                                     FontSize="21" />
                             </StackLayout>
                             <FlexLayout

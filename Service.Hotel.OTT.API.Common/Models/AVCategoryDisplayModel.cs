@@ -13,5 +13,17 @@
             Id = entity.Id;
             Name = entity.Name;
         }
+
+        public override string ToString()
+        {
+            return ComputeFullName();
+        }
+
+        protected string ComputeFullName()
+        {
+            if (Parent == null) return Name;
+
+            return string.Format("{0} > {1}", Parent.ComputeFullName(), Name);
+        }
     }
 }

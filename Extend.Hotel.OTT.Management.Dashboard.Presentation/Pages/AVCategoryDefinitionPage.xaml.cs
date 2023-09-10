@@ -29,6 +29,40 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
             }
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            BindingContextPageModel.IsBusy = true;
+
+            var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.AVCategoriesAPIConnectClient(Managers.SessionManager.Instance);
+
+            apiConnectClient.GetAsync().ContinueWith(task =>
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    if (task.Exception == null && !task.IsCanceled)
+                    {
+                        foreach (var model in task.Result)
+                        {
+                            if (BindingContextPageModel.Id == model.Id) continue;
+
+                            BindingContextPageModel.AvailableCategories.Add(model);
+                        }
+
+                        BindingContextPageModel.IsBusy = false;
+                    }
+                    else
+                    {
+                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception, () =>
+                        {
+                            this.NavigationPopPageAsync();
+                        });
+                    }
+                });
+            });
+        }
+
         protected override bool OnBackButtonPressed()
         {
             CancelToolbarItem_Clicked(this, System.EventArgs.Empty);
