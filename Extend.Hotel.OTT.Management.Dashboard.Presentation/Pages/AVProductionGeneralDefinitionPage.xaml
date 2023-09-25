@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Models.Page"
+    xmlns:providers="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Providers"
+    xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardpresenters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Presenters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages.AVProductionGeneralDefinitionPage"
+    x:TypeArguments="pagemodels:AVProductionGeneralDefinitionPageModel"
+    x:Name="FormPage"
+    Title="Agregar Producción Audiovisual">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Aplicar"
+            Clicked="ApplyToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Cancelar"
+            Clicked="CancelToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <Grid
+                    Padding="10,0,10,10"
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout 
+                        Grid.ColumnSpan="3" Grid.Row="0"
+                        Padding="0,10,0,0"
+                        IsVisible="{Binding Path=IsValid, Converter={StaticResource BoolToBoolNegationConverter}}"
+                        BindableLayout.ItemsSource="{Binding Path=ValidationMessages}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid 
+                                    BackgroundColor="Tomato"
+                                    RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <BoxView 
+                                        Grid.Column="0" Grid.RowSpan="2"
+                                        Color="Red" />
+                                    <Label
+                                        Grid.Column="1" Grid.Row="0"
+                                        Padding="5,5,5,2"
+                                        Text="{Binding Path=Caption}"
+                                        TextColor="White"
+                                        FontAttributes="Bold" />
+                                    <Label 
+                                        Grid.Column="1" Grid.Row="1"
+                                        Padding="5,0,5,5"
+                                        Text="{Binding Path=Message}"
+                                        TextColor="White" />
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    <Frame Grid.ColumnSpan="3" Grid.Row="1" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                x:Name="TitleLabel"
+                                Text="Título" 
+                                Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=Title}">
+                                <Entry.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
+                                        TargetProperty="{Static Entry.TextProperty}"
+                                        Label="{Reference TitleLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                            <supportpresentationdashboardvalidators:MinLengthFormFieldValidator MinLength="3" />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.Row="2" 
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Habilitada" Style="{StaticResource FormLabel}" />
+                            <Switch IsToggled="{Binding Path=Enabled}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                Text="Categoría" 
+                                Style="{StaticResource FormLabel}" />
+                            <Picker 
+                                x:Name="CategoryPicker"
+                                SelectedItem="{Binding Path=Category}"
+                                ItemsSource="{Binding Path=AvailableCategories}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="0" Grid.Row="3" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                Text="País" 
+                                Style="{StaticResource FormLabel}" />
+                            <Picker 
+                                x:Name="CountryPicker"
+                                SelectedItem="{Binding Path=Country}"
+                                ItemsSource="{Binding Path=AvailableCountries}"
+                                ItemDisplayBinding="{Binding Path=Name}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Grid.Row="3" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                Text="Lenguaje" 
+                                Style="{StaticResource FormLabel}" />
+                            <Picker 
+                                SelectedItem="{Binding Path=Language}"
+                                ItemsSource="{Static providers:ConstantProvider.LANGUAGES}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="2" Grid.Row="3" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                Text="Año" 
+                                Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=Year}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="0" Grid.Row="4" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                Text="Duración" 
+                                Style="{StaticResource FormLabel}" />
+                            <TimePicker Time="{Binding Path=Duration}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Grid.Row="4" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                Text="Calificación" 
+                                Style="{StaticResource FormLabel}" />
+                            <Picker 
+                                SelectedItem="{Binding Path=Rate}"
+                                ItemsSource="{Static providers:ConstantProvider.RATES}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="2" Grid.Row="4" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                Text="Límite de Edad" 
+                                Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=AgeEdge}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.ColumnSpan="3" Grid.Row="5" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Resumen" Style="{StaticResource FormLabel}" />
+                            <Editor HeightRequest="180" Text="{Binding Path=About}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.ColumnSpan="3" Grid.Row="6" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Argumento" Style="{StaticResource FormLabel}" />
+                            <Editor HeightRequest="320" Text="{Binding Path=Argument}" />
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

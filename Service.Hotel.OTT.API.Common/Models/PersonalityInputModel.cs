@@ -27,7 +27,10 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models
 
         public Personality Export()
         {
-            var entity = new Personality();
+            var entity = new Personality
+            {
+                Identity = new Framework.Guama.Identity.Persistence.Entities.PersonIdentity()
+            };
 
             Mergue(entity);
 

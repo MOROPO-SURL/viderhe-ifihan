@@ -18,6 +18,13 @@
             Name = entity.Identity.Name;
             BornDate = entity.Identity.BornDate;
             About = entity.Identity.About;
+
+            if (entity.Identity.ImageId != null)
+            {
+                Image = new ImageDisplayModel();
+
+                Image.Import(entity.Identity.Image);
+            }
         }
     }
 }

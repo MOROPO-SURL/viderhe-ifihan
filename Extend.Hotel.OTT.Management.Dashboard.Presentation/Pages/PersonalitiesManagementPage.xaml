@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Converters"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Converters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages.PersonalitiesManagementPage"
+    x:TypeArguments="pagemodels:PersonalitiesManagementPageModel"
+    Title="Gestionar Personalidades">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageDisplayModelToImageSourceConverter x:Key="ImageDisplayModelToImageSourceConverter" />
+
+            <supportpresentationdashboardconverters:CollectionViewWidthToSelfVerticalGridItemsLayoutConverter x:Key="CollectionViewWidthToSelfVerticalGridItemsLayoutConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="10" />
+
+            <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="EnabledBoolToStringConverter" TrueString="Sí" FalseString="No" />
+            <sscxftoolkitpresentationconverters:IfNullOrEmptyToStringConverter x:Key="IfNullOrEmptyToStringConverter" StringReplacement="---" />
+            <sscxftoolkitpresentationconverters:NullToBooleanConverter x:Key="NullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="ButtonsBindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="200" ChildAbsoluteHorizontalMargin="20" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Agregar"
+            Clicked="AddToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf415;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem
+            Text="Actualizar"
+            Clicked="ReloadToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xF450;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <CollectionView
+                x:Name="ItemsCollectionView"
+                ItemsLayout="{Binding Source={RelativeSource Mode=Self}, Path=Width, Converter={StaticResource CollectionViewWidthToSelfVerticalGridItemsLayoutConverter}}"
+                ItemsSource="{Binding Path=Items}"
+                SelectionMode="Single">
+                <CollectionView.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" Default="5,5,5,0">
+                        <On Platform="Android" Value="10,10,10,0" />
+                    </OnPlatform>
+                </CollectionView.Margin>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="5" Padding="0"
+                            BackgroundColor="White"
+                            HasShadow="False"
+                            CornerRadius="0"
+                            HeightRequest="136">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ItemTapGestureRecognizer_Tapped" />
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <ffimageloadingforms:CachedImage
+                                    Grid.Column="0" Grid.RowSpan="3"
+                                    WidthRequest="{Binding Source={RelativeSource Mode=Self}, Path=Height}"
+                                    Source="{Binding Path=Image, Converter={StaticResource ImageDisplayModelToImageSourceConverter}, Mode=OneTime}"
+                                    Aspect="AspectFill"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00" />
+                                <Label
+                                    Grid.Column="1" Grid.Row="0"
+                                    Text="{Binding Path=Name, Mode=OneTime}"
+                                    FontAttributes="Bold"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label 
+                IsVisible="{Binding Path=Items,Converter={StaticResource NullToBooleanConverter}}"
+                Margin="10"
+                VerticalOptions="Start"
+                HorizontalTextAlignment="Center"
+                Text="Aún no se han agregado elementos" />
+            <ContentView 
+                IsVisible="{Binding Path=Target, Converter={StaticResource NotNullToBooleanConverter}}"
+                BackgroundColor="#A9000000">
+                <Frame
+                    VerticalOptions="Center" HorizontalOptions="Center"
+                    Padding="0" Margin="20"
+                    WidthRequest="480"
+                    BackgroundColor="White">
+                    <Grid>
+                        <StackLayout 
+                            Margin="0,20,0,0" Padding="10"
+                            Orientation="Vertical">
+                            <StackLayout Margin="10,0" Spacing="0">
+                                <Label
+                                    Text="{Binding Path=Target.Name}"
+                                    FontAttributes="Bold"
+                                    FontSize="32"
+                                    HorizontalTextAlignment="Center" />                                
+                            </StackLayout>
+                            <FlexLayout
+                                Wrap="Wrap"
+                                AlignItems="Start" AlignContent="Start">
+                                <Button 
+                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource ButtonsBindingLayoutWidthToResponsiveChildWidthConverter}}"
+                                    Margin="10"
+                                    Text="Modificar"
+                                    Clicked="TargetEditButton_Cliked" />
+                                <Button 
+                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource ButtonsBindingLayoutWidthToResponsiveChildWidthConverter}}"
+                                    Margin="10"
+                                    BackgroundColor="IndianRed"
+                                    Text="Eliminar"
+                                    TextColor="White"
+                                    Clicked="TargetRemoveButton_Clicked" />
+                            </FlexLayout>
+                        </StackLayout>
+                        <Button
+                            HorizontalOptions="End" VerticalOptions="Start"
+                            Padding="10"
+                            BackgroundColor="Transparent"
+                            Text="&#xf5ad;"
+                            TextColor="Black"
+                            FontSize="Medium"
+                            FontFamily="Material Design Icons"
+                            BorderWidth="0"
+                            WidthRequest="48" HeightRequest="48"
+                            Clicked="CloseDetailPopupButton_Clicked" />
+                    </Grid>
+                </Frame>
+            </ContentView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

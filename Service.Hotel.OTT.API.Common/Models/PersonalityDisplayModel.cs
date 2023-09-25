@@ -27,6 +27,13 @@
             BornDate = entity.Identity.BornDate;
             Sex = entity.Identity.Sex;
             About = entity.Identity.About;
+
+            if (entity.Identity.ImageId != null)
+            {
+                Image = new ImageDisplayModel();
+
+                Image.Import(entity.Identity.Image);
+            }
         }
     }
 }

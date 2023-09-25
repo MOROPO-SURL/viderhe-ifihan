@@ -21,7 +21,10 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models
 
         public AVProducerHouse Export()
         {
-            var entity = new AVProducerHouse();
+            var entity = new AVProducerHouse
+            {
+                Identity = new Framework.Guama.Identity.Persistence.Entities.OrganizationIdentity()
+            };
 
             Mergue(entity);
 

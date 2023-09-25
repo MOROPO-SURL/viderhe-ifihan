@@ -124,6 +124,9 @@
                                     Grid.Column="0" Grid.Row="1"
                                     HorizontalOptions="Center" VerticalOptions="Start"
                                     Margin="10" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="AVProductionsTapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
                                     <Label
                                         Text="&#xF381;"
                                         TextColor="{StaticResource PrimaryColor}"
@@ -140,6 +143,9 @@
                                     Grid.Column="1" Grid.Row="1"
                                     HorizontalOptions="Center" VerticalOptions="Start"
                                     Margin="10" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="AVProducerHousesTapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
                                     <Label
                                         Text="&#xF1D7;"
                                         TextColor="{StaticResource PrimaryColor}"
@@ -156,6 +162,9 @@
                                     Grid.Column="2" Grid.Row="1"
                                     HorizontalOptions="Center" VerticalOptions="Start"
                                     Margin="10" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="PersonalitiesTapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
                                     <Label
                                         Text="&#xF64A;"
                                         TextColor="{StaticResource PrimaryColor}"

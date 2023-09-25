@@ -77,7 +77,12 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
             {
                 model.Category = new AVCategoryDisplayModel();
 
-                categoryRepository.Get(entity.CategoryId.Value).PopulateParent(model.Category, categoryRepository);
+                model.Category.Import(entity.Category);
+
+                if (entity.Category.ParentId != null)
+                {
+                    categoryRepository.Get(entity.Category.ParentId.Value).PopulateParent(model.Category, categoryRepository);
+                }
             }
 
             if (model.PosterImage != null)
