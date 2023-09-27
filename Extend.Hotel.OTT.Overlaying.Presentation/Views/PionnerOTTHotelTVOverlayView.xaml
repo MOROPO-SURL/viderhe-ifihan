@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommonoverlayingpresentationviews:BaseOverlayView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"    
+    xmlns:extendcommonoverlayingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation"
+    xmlns:extendcommonoverlayingpresentationbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation"
+    xmlns:extendcommonoverlayingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation"
+    xmlns:sscxftoolkitpresentationtransformbehaviors="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Behaviors;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
+    xmlns:sscxftoolkitpresentationtransformanimations="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.Hotel.OTT.Overlaying.Presentation.Views.PionnerOTTHotelTVOverlayView">
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="9*" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <BoxView
+                Grid.Row="1"
+                Color="IndianRed" />
+        </Grid>
+    </ContentView.Content>
+</extendcommonoverlayingpresentationviews:BaseOverlayView>

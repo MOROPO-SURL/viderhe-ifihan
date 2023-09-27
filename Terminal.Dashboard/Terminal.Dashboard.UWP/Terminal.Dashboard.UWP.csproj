@@ -343,6 +343,18 @@
       <Project>{d618a767-1083-4768-83e3-cb4525f58142}</Project>
       <Name>Extend.Hotel.OTT.Management</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Hotel.OTT.Overlaying.Dashboard.Presentation\Extend.Hotel.OTT.Overlaying.Dashboard.Presentation.csproj">
+      <Project>{248a31a0-d9cb-4787-98be-b82ff42d33d6}</Project>
+      <Name>Extend.Hotel.OTT.Overlaying.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Hotel.OTT.Overlaying.Presentation\Extend.Hotel.OTT.Overlaying.Presentation.csproj">
+      <Project>{a10fcaeb-0f8c-4086-a940-d0a41407f9e4}</Project>
+      <Name>Extend.Hotel.OTT.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Hotel.OTT.Overlaying\Extend.Hotel.OTT.Overlaying.csproj">
+      <Project>{17f961fd-2b54-41cf-9733-59085fb3350f}</Project>
+      <Name>Extend.Hotel.OTT.Overlaying</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Hotel.OTT\Extend.Hotel.OTT.csproj">
       <Project>{7544b9b7-7429-4885-8fc6-6400a9285998}</Project>
       <Name>Extend.Hotel.OTT</Name>
