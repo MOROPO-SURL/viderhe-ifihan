@@ -20,6 +20,8 @@
 
         public string SerializedComplementation { get; set; }
 
+        public Cloud.Api.Common.Models.TagDisplayModel[] Tags { get; set; }
+
         #region IDisposable Support
         private bool disposedValue = false; // Para detectar llamadas redundantes
 

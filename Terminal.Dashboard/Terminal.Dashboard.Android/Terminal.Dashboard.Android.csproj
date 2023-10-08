@@ -148,6 +148,7 @@
     <Compile Include="Managers\ApplicationManager.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashActivity.cs" />
     <Compile Include="Views\Renderer\ExoVideoPlayerViewRenderer.cs" />
     <Compile Include="Views\Renderer\IconImageCellRenderer.cs" />
   </ItemGroup>
@@ -175,9 +176,17 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\splash_viderhe_control.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Extend.Common.Management.Dashboard.Presentation\Extend.Common.Management.Dashboard.Presentation.csproj">
+      <Project>{29b3d5c3-b330-4469-8e48-afa6d571b679}</Project>
+      <Name>Extend.Common.Management.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Management\Extend.Common.Management.csproj">
+      <Project>{bb01fd97-9ee9-4ffc-b82b-1ee30aff845a}</Project>
+      <Name>Extend.Common.Management</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Common.Overlaying.Dashboard.Presentation\Extend.Common.Overlaying.Dashboard.Presentation.csproj">
       <Project>{0c4a6224-eb36-44ef-9844-6b0bfbcbba17}</Project>
       <Name>Extend.Common.Overlaying.Dashboard.Presentation</Name>
@@ -254,6 +263,14 @@
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Management.Presentation\Support.Extend.Management.Presentation.csproj">
+      <Project>{8eb24205-e599-4267-a450-684616a1d9c0}</Project>
+      <Name>Support.Extend.Management.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Management\Support.Extend.Management.csproj">
+      <Project>{0a76e425-a715-411f-adb7-8609e6c32132}</Project>
+      <Name>Support.Extend.Management</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj">
       <Project>{c6ec5e2a-cf68-4a31-b53d-0bf9ec767fa4}</Project>
       <Name>Support.Extend.Overlaying</Name>
@@ -307,6 +324,27 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values-sw600dp\flags.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\splash_screen.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\splash_viderhe_control.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-ldpi\splash_viderhe_control.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\splash_viderhe_control.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\splash_viderhe_control.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash_viderhe_control.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

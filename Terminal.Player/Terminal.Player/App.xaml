@@ -13,6 +13,7 @@
 
         <Style x:Key="ConfigurationStepSubtitleLabelStyle" TargetType="Label">
             <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontFamily" Value="Montserrat (Regular)" />
         </Style>
 
         <Style x:Key="ConfigurationStepDataIconLabelStyle" TargetType="Label">
@@ -23,11 +24,12 @@
 
         <Style x:Key="ConfigurationStepDataCaptionLabelStyle" TargetType="Label">
             <Setter Property="TextColor" Value="WhiteSmoke" />
+            <Setter Property="FontFamily" Value="Montserrat (Regular)" />
         </Style>
 
         <Style x:Key="ConfigurationStepDataValueLabelStyle" TargetType="Label">
             <Setter Property="TextColor" Value="White" />
-            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontFamily" Value="Montserrat (Bold)" />
         </Style>
     </Application.Resources>
 </Application>

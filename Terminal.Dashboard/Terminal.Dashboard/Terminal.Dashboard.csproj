@@ -5,7 +5,7 @@
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Dashboard</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Dashboard</RootNamespace>
-	<Version>1.5.0</Version>
+	<Version>1.7.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -14,10 +14,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Images\moropo-logo-dark.svg" />
     <None Remove="Assets\Images\viderhe-identity-main.svg" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\Images\moropo-logo-dark.svg" />
     <EmbeddedResource Include="Assets\Images\viderhe-identity-main.svg" />
   </ItemGroup>
 
@@ -49,6 +51,8 @@
     <ProjectReference Include="..\..\Extend.Essential.Templating.Dashboard.Presentation\Extend.Essential.Templating.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
+    <ProjectReference Include="..\..\Support.Extend.Management.Presentation\Support.Extend.Management.Presentation.csproj" />
+    <ProjectReference Include="..\..\Support.Extend.Management\Support.Extend.Management.csproj" />
     <ProjectReference Include="..\..\Extend.SpringMotion\Extend.SpringMotion.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Transitioning\Support.Extend.Transitioning.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj" />
@@ -90,9 +94,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Popup\FilterPlayerPopupPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Popup\TagPickPopupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\SoundComplementConfigurationPage.xaml">

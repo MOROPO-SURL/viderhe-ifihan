@@ -2,6 +2,8 @@
 {
     public interface IFormFieldValidationBehavior
     {
+        Xamarin.Forms.View Target { get; }
+
         bool Evaluate();
     }
 }

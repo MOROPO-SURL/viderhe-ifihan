@@ -226,7 +226,7 @@
                                     Text="Etiquetas" 
                                     Style="{StaticResource FormLabel}" />
                                 <BoxView
-                                    Margin="6,0"
+                                    Margin="6,4,6,0"
                                     HeightRequest="2"
                                     Color="DimGray" />
                                 <FlexLayout
@@ -268,7 +268,9 @@
                             </StackLayout>
                             <Button
                                 HorizontalOptions="End" VerticalOptions="Start"
-                                Text="Agregar"
+                                Text="&#xF415;"
+                                Style="{StaticResource TextIconButton}"
+                                FontSize="Medium"
                                 Clicked="AddTagButton_Clicked" />
                         </Grid>
                     </Frame>
