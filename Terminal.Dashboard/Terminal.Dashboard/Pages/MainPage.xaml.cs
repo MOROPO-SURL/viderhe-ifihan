@@ -72,6 +72,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (!action.Enabled) return;
 
+            if (action is Models.View.ManagementActionViewModel)
+            {
+                var managementSectionPage = Support.Extend.Management.Presentation.Helpers.Provisioning.ManagementSectionProvisioningHelper.Instance.GetFor((action as Models.View.ManagementActionViewModel).Section);
+
+                this.NavigationPushPageAsync(managementSectionPage);
+
+                return;
+            }
+
             switch (action.Kind)
             {
                 case Enumerations.ActionKind.ManageImages:
@@ -165,7 +174,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             BindingContextPageModel.Actions.Clear();
 
-            var actions = new Models.View.ActionViewModel[]
+            var actions = new System.Collections.Generic.List<Models.View.ActionViewModel>
             {
                 sessionAction,
                 new Models.View.ActionViewModel
@@ -244,24 +253,32 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     Caption = "Reproductores",
                     IconGlyph = "\uf448",
                     Enabled = true
-                },
-                new Models.View.ActionViewModel
-                {
-                    Kind = Enumerations.ActionKind.DashboardSettings,
-                    Caption = "Ajustes",
-                    IconGlyph = "\uf66a",
-                    // TODO Restore to spected behavior!!
-                    Enabled = false
-                },
-                new Models.View.ActionViewModel
-                {
-                    Kind = Enumerations.ActionKind.DashboardHelp,
-                    Caption = "Ayuda",
-                    IconGlyph = "\uf87d",
-                    // TODO Restore to spected behavior!!
-                    Enabled = false
                 }
             };
+
+            var managementSections = Support.Extend.Management.Providers.ManagementSectionProvider.Instance.GetAll();
+
+            foreach (var item in managementSections)
+            {
+                actions.Add(new Models.View.ManagementActionViewModel(item));
+            }
+
+            actions.Add(new Models.View.ActionViewModel
+            {
+                Kind = Enumerations.ActionKind.DashboardSettings,
+                Caption = "Ajustes",
+                IconGlyph = "\uf66a",
+                // TODO Restore to spected behavior!!
+                Enabled = false
+            });
+            actions.Add(new Models.View.ActionViewModel
+            {
+                Kind = Enumerations.ActionKind.DashboardHelp,
+                Caption = "Ayuda",
+                IconGlyph = "\uf87d",
+                // TODO Restore to spected behavior!!
+                Enabled = false
+            });
 
             foreach (var item in actions)
             {
