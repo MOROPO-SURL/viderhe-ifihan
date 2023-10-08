@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Common.Management</AssemblyName>
+		<RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Common.Management</RootNamespace>
+	</PropertyGroup>
+
+</Project>

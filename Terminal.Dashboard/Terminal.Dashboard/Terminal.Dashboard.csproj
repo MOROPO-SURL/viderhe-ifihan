@@ -5,7 +5,7 @@
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Dashboard</AssemblyName>
     <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Dashboard</RootNamespace>
-	<Version>1.6.0</Version>
+	<Version>1.7.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -53,6 +53,8 @@
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
     <ProjectReference Include="..\..\Extend.Matrix.Templating.Dashboard.Presentation\Extend.Matrix.Templating.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Matrix\Extend.Matrix.csproj" />
+    <ProjectReference Include="..\..\Support.Extend.Management.Presentation\Support.Extend.Management.Presentation.csproj" />
+    <ProjectReference Include="..\..\Support.Extend.Management\Support.Extend.Management.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Transitioning\Support.Extend.Transitioning.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Templating.Presentation\Support.Extend.Templating.Presentation.csproj" />
