@@ -18,7 +18,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Extend.Common.Management.Dashboard.Presentation\Extend.Common.Management.Dashboard.Presentation.csproj" />
 		<ProjectReference Include="..\Extend.Hotel.OTT.Management\Extend.Hotel.OTT.Management.csproj" />
-		<ProjectReference Include="..\Service.Hotel.OTT.API.Connect\Service.Hotel.OTT.API.Connect.csproj" />
 		<ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
 	</ItemGroup>
 
