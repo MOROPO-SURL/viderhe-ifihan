@@ -299,6 +299,42 @@
       <Project>{fa8fcd4c-da74-4102-b767-6a0d0150c673}</Project>
       <Name>Extend.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.csproj">
+      <Project>{ec4d6320-1967-4ecd-a09e-ced77515d6c4}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Management\Extend.ECASA.CMG.IAInternationalAirport.Management.csproj">
+      <Project>{7aec77c4-7281-43e0-ad6f-c490d9d58169}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Management</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dashboard.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dashboard.Presentation.csproj">
+      <Project>{2cafa4aa-93ee-4c37-ba6f-269ba8a818d4}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation.csproj">
+      <Project>{807484b7-8d08-467b-8a1f-7ead7b1dfa52}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Overlaying\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.csproj">
+      <Project>{e2527884-5f76-4f96-bd8c-a1e81de40c72}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.csproj">
+      <Project>{fe3685fd-54cf-4d21-883c-8a5684a082ce}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.csproj">
+      <Project>{1bee18b8-1336-4b26-b80b-f88347e3bdc8}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Templating\Extend.ECASA.CMG.IAInternationalAirport.Templating.csproj">
+      <Project>{81080891-52be-4012-b0de-f9430ba61e6c}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport\Extend.ECASA.CMG.IAInternationalAirport.csproj">
+      <Project>{5613c1db-00f2-4b25-94a0-818bcdc00a77}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj">
       <Project>{b88a5d61-11d9-4827-875e-7bd9bc5f6720}</Project>
       <Name>Extend.Essential.Transitioning.Presentation</Name>
@@ -334,30 +370,6 @@
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj">
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.Hotel.OTT.Management.Dashboard.Presentation\Extend.Hotel.OTT.Management.Dashboard.Presentation.csproj">
-      <Project>{09d58424-f4fa-4fb1-a8b9-c38220d25b93}</Project>
-      <Name>Extend.Hotel.OTT.Management.Dashboard.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.Hotel.OTT.Management\Extend.Hotel.OTT.Management.csproj">
-      <Project>{d618a767-1083-4768-83e3-cb4525f58142}</Project>
-      <Name>Extend.Hotel.OTT.Management</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.Hotel.OTT.Overlaying.Dashboard.Presentation\Extend.Hotel.OTT.Overlaying.Dashboard.Presentation.csproj">
-      <Project>{248a31a0-d9cb-4787-98be-b82ff42d33d6}</Project>
-      <Name>Extend.Hotel.OTT.Overlaying.Dashboard.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.Hotel.OTT.Overlaying.Presentation\Extend.Hotel.OTT.Overlaying.Presentation.csproj">
-      <Project>{a10fcaeb-0f8c-4086-a940-d0a41407f9e4}</Project>
-      <Name>Extend.Hotel.OTT.Overlaying.Presentation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.Hotel.OTT.Overlaying\Extend.Hotel.OTT.Overlaying.csproj">
-      <Project>{17f961fd-2b54-41cf-9733-59085fb3350f}</Project>
-      <Name>Extend.Hotel.OTT.Overlaying</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Extend.Hotel.OTT\Extend.Hotel.OTT.csproj">
-      <Project>{7544b9b7-7429-4885-8fc6-6400a9285998}</Project>
-      <Name>Extend.Hotel.OTT</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj">
       <Project>{f36158f5-5a62-40f5-8f5e-ce85d8277f20}</Project>

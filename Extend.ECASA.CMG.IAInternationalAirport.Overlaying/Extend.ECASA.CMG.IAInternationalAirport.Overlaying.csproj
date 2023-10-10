@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Overlaying</AssemblyName>
+		<RootNamespace>SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Overlaying</RootNamespace>
+		<Product>VIDERHE Extension for ECASA International Airport Ignacio Agramonte</Product>
+		<Authors>MOROPO VIDERHE DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO S.U.R.L. ECASA 2023, Todos los derechos reservados.</Copyright>
+		<Version>0.1.0</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
+
+</Project>

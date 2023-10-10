@@ -47,13 +47,11 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Cloud.Api.Connect\Cloud.Api.Connect.csproj" />
     <ProjectReference Include="..\..\Cloud.SignalR.Connect.Dashboard\Cloud.SignalR.Connect.Dashboard.csproj" />
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport\Extend.ECASA.CMG.IAInternationalAirport.csproj" />
     <ProjectReference Include="..\..\Extend.Essential.Overlaying.Dashboard.Presentation\Extend.Essential.Overlaying.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential.Templating.Dashboard.Presentation\Extend.Essential.Templating.Dashboard.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj" />
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
-    <ProjectReference Include="..\..\Extend.Hotel.OTT.Management.Dashboard.Presentation\Extend.Hotel.OTT.Management.Dashboard.Presentation.csproj" />
-    <ProjectReference Include="..\..\Extend.Hotel.OTT.Overlaying.Dashboard.Presentation\Extend.Hotel.OTT.Overlaying.Dashboard.Presentation.csproj" />
-    <ProjectReference Include="..\..\Extend.Hotel.OTT\Extend.Hotel.OTT.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Management.Presentation\Support.Extend.Management.Presentation.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Management\Support.Extend.Management.csproj" />
     <ProjectReference Include="..\..\Support.Extend.Transitioning\Support.Extend.Transitioning.csproj" />

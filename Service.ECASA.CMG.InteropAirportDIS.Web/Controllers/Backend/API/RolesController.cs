@@ -2,8 +2,8 @@
 using Microsoft.Extensions.Logging;
 using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Attributes;
 using MOROPO.Framework.Guama.Core.Security.Common.Persistence.Entities;
-using MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Constants;
-using MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models;
+using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Constants;
+using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models;
 
 namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Controllers.Backend.API
 {

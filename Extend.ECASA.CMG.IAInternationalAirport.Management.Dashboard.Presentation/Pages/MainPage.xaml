@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Pages.MainPage"
+    Title="Presentación de Información Aeroportuaria">
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <Grid Margin="20" ColumnSpacing="20">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" Spacing="20">
+                        <Frame
+                            BackgroundColor="White"
+                            Padding="0"
+                            HasShadow="False">
+                            <Grid 
+                                ColumnSpacing="0" RowSpacing="10"
+                                Padding="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.ColumnSpan="3" Grid.Row="0"
+                                    BackgroundColor="DimGray"
+                                    Padding="12,10,12,12"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="Seguridad"
+                                    TextColor="White" />
+                                <StackLayout
+                                    Grid.Column="0" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ApiKeysTapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Label
+                                        Text="&#xFBA0;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Llaves API"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="1" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="RolesTapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Label
+                                        Text="&#xF00B;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Roles de Acceso"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="2" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <Label
+                                        Text="&#xFE5A;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Registros"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Spacing="20">
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

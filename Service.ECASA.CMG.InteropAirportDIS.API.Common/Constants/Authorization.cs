@@ -12,5 +12,14 @@
         public const string ApiKeyEditorPermission = "apikey-editor-permission";
         public const string ApiKeyRemoverPermission = "apikey-remover-permission";
         #endregion
+
+        #region Role
+        public const string RoleManagementPermissionGroup = "role-management-permission-group";
+
+        public const string RoleViewerPermission = "role-viewer-permission";
+        public const string RoleCreatorPermission = "role-creator-permission";
+        public const string RoleEditorPermission = "role-editor-permission";
+        public const string RoleRemoverPermission = "role-remover-permission";
+        #endregion
     }
 }
