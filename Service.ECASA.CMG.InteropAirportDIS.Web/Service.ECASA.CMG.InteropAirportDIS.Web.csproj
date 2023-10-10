@@ -45,8 +45,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Service.ECASA.CMG.InterFIDS.API.Common\Service.ECASA.CMG.InterFIDS.API.Common.csproj" />
-	  <ProjectReference Include="..\Service.ECASA.CMG.InterFIDS.Persistence\Service.ECASA.CMG.InterFIDS.Persistence.csproj" />
+	  <ProjectReference Include="..\Service.ECASA.CMG.InterFIDS.API.Common\Service.ECASA.CMG.InteropAirportDIS.API.Common.csproj" />
+	  <ProjectReference Include="..\Service.ECASA.CMG.InterFIDS.Persistence\Service.ECASA.CMG.InteropAirportDIS.Persistence.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -16,6 +16,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Service.ECASA.CMG.InterFIDS.Persistence\Service.ECASA.CMG.InterFIDS.Persistence.csproj" />
+	  <ProjectReference Include="..\Service.ECASA.CMG.InterFIDS.Persistence\Service.ECASA.CMG.InteropAirportDIS.Persistence.csproj" />
 	</ItemGroup>
 </Project>
