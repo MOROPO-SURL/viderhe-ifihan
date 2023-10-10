@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common</RootNamespace>
+		<Product>VIDERHE FIDS Interoperation Service</Product>
+		<Authors>MOROPO VIDERHE DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO S.U.R.L. ECASA 2023, Todos los derechos reservados.</Copyright>
+		<Version>0.1.0</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="GuamaFramework.Core.Persistence.Presentation" Version="6.0.0.15" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Service.ECASA.CMG.InterFIDS.Persistence\Service.ECASA.CMG.InterFIDS.Persistence.csproj" />
+	</ItemGroup>
+</Project>
