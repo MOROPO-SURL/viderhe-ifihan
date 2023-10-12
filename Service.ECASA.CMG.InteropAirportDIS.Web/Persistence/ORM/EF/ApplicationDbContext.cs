@@ -29,5 +29,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Persistence.ORM.EF
 
         public DbSet<ApiKey> ApiKeys { get; set; }
         public DbSet<ApiKeyRoleBridge> ApiKeyRoleBridges { get; set; }
+        public DbSet<Carrier> Carriers { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Kind> Kinds { get; set; }
+        public DbSet<Operation> Operations { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+        public DbSet<Terminal> Terminals { get; set; }
     }
 }

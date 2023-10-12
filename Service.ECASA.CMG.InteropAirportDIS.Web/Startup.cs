@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.Framework.Guama.Identity.Presentation.Web.Common.Extensions;
 using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Extensions;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Helpers;
@@ -36,11 +37,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web
         {
             services.Configure<Framework.Guama.Media.Presentation.Web.Common.Options.RelativeMediaFileManagementOptions>(configuration.GetSection("FileManagement"));
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<DbContext, ApplicationDbContext>();
 
-            services.PerformMediaWebCommonServiceRegistration();
+            services.PerformIdentityWebCommonServiceRegistration();
             services.PerformMediaWebCommonRelativePathFileManagementServiceRegistration();
 
 
@@ -48,6 +49,12 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web
             services.AddScoped<IEntityRepository<Framework.Guama.Core.Security.Common.Persistence.Entities.Permission, int>, Framework.Guama.Core.Security.Common.Persistence.ORM.EF.Repositories.PermissionRepository>();
             services.AddScoped<IEntityRepository<Framework.Guama.Core.Persistence.ORM.EF.Entities.Trace, long>, Framework.Guama.Core.Persistence.ORM.EF.Repositories.TraceRepository>();
             services.AddScoped<IEntityRepository<ApiKey, System.Guid>, ApiKeyRepository>();
+            services.AddScoped<IEntityRepository<Carrier, string>, CarrierRepository>();
+            services.AddScoped<IEntityRepository<Category, System.Guid>, CategoryRepository>();
+            services.AddScoped<IEntityRepository<Kind, InterFIDS.Persistence.Enumerations.OperationKind>, KindRepository>();
+            services.AddScoped<IEntityRepository<Operation, long>, OperationRepository>();
+            services.AddScoped<IEntityRepository<Status, System.Guid>, StatusRepository>();
+            services.AddScoped<IEntityRepository<Terminal, System.Guid>, TerminalRepository>();
 
             services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade, Framework.Guama.Core.Security.Common.Persistence.ORM.EF.Providers.DbSchemaConfigurationProvider>();
             services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade, DbSchemaConfigurationProvider>();
@@ -101,9 +108,6 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web
 
         public void Configure(IApplicationBuilder app, Microsoft.Extensions.Options.IOptions<RequestLocalizationOptions> requestLocalizationOptions, Microsoft.Extensions.Logging.ILoggerFactory loggerFactory, DbContext dbContext)
         {
-            System.AppContext.SetSwitch("System.Drawing.EnableUnixSupport", true);
-            System.AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-
             loggerFactory.AddSerilog(Log.Logger);
 
             app.UseRequestLocalization(requestLocalizationOptions.Value);
