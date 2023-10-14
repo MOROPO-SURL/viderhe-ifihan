@@ -10,6 +10,6 @@
 
         public string Name => "Imagen con Superposición Contextual Plana Simple";
 
-        public string Description => "Rellena la pantalla con una imagen y la contextualiza con información superpuesta con un fondo de color solido y marco seleccionado.";
+        public string Description => "Rellena la pantalla con una imagen y la contextualiza con información superpuesta con un fondo de color sólido y marco seleccionado.";
     }
 }

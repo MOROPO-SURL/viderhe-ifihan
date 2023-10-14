@@ -68,10 +68,16 @@
     <EmbeddedResource Update="Pages\Configuration\Placard\FlatContextualOverlapForImagePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Configuration\Placard\FlatContextualOverlapForImageSecuencePlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\Configuration\Placard\FlatContextualOverlapForVideoPlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Configuration\Placard\TrailContextualOverlapForImagePlacardConfigurationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Configuration\Placard\TrailContextualOverlapForImageSecuencePlacardConfigurationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Configuration\Placard\TrailContextualOverlapForVideoPlacardConfigurationPage.xaml">
@@ -107,7 +113,13 @@
     <EmbeddedResource Update="Views\CommonPlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Thumbnail\FlatContextualOverlapForImageSecuencePlacardThumbnailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Thumbnail\FlatContextualOverlapForVideoPlacardThumbnailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Thumbnail\TrailContextualOverlapForImageSecuencePlacardThumbnailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Thumbnail\TrailContextualOverlapForVideoPlacardThumbnailView.xaml">

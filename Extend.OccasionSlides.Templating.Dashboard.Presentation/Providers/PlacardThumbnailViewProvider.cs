@@ -36,6 +36,16 @@
                 return new Views.Thumbnail.FlatContextualOverlapForVideoPlacardThumbnailView(model);
             }
 
+            if (model.Template.Id == Descriptors.FlatContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            {
+                return new Views.Thumbnail.FlatContextualOverlapForImageSecuencePlacardThumbnailView(model);
+            }
+
+            if (model.Template.Id == Descriptors.TrailContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            {
+                return new Views.Thumbnail.TrailContextualOverlapForImageSecuencePlacardThumbnailView(model);
+            }
+
             return null;
         }
     }

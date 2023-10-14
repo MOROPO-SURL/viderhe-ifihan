@@ -102,6 +102,44 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
                 return result.ToArray();
             }
 
+            if (templateId == Descriptors.FlatContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<FlatContextualOverlapForImageSecuencePlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
+                {
+                    TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
+                });
+
+                var result = context.PresentedPictureSlideSecuence.Slides.Select(item => item.Image).ToList();
+
+                foreach (var item in context.ContentBlocks)
+                {
+                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+
+                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                }
+
+                return result.ToArray();
+            }
+
+            if (templateId == Descriptors.TrailContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TrailContextualOverlapForImageSecuencePlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
+                {
+                    TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
+                });
+
+                var result = context.PresentedPictureSlideSecuence.Slides.Select(item => item.Image).ToList();
+
+                foreach (var item in context.ContentBlocks)
+                {
+                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+
+                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                }
+
+                return result.ToArray();
+            }
+
             if (templateId == Descriptors.TranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TranslucentContextualOverlapForImageSecuencePlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings

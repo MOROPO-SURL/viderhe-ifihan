@@ -21,13 +21,13 @@
         <ResourceDictionary>
             <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />
             <converters:ContentBlockToViewConverter x:Key="ContentBlockToViewConverter" OptionButtonClicked="ContentBlockOptionsButton_Clicked" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="20" />
             <essentialextendtemplatingpresentationconverters:PictureLayoutModeToXamarinFormAspectConverter x:Key="PictureLayoutModeToXamarinFormAspectConverter" />
             <essentialextendtemplatingdashboardpresentationconverters:IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter x:Key="IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter" />
             <essentialextendtemplatingdashboardpresentationconverters:StringToLocalizeStringConverter x:Key="EssentialStringToLocalizeStringConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="BoolToStringConverter" FalseString="No" TrueString="Si" />
-            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="20" />
             <sscxftoolkitpresentationconverters:BoolToStringConverter x:Key="IsBeingDraggedToColorStringConverter" FalseString="White" TrueString="Beige" />
             <sscxftoolkitpresentationconverters:EnumerableEmptyToBooleanConverter x:Key="EnumerableEmptyToBooleanConverter" Inverse="True" />
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />

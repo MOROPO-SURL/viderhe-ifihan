@@ -11,6 +11,6 @@
 
         public string Name => "Video con Superposición Contextual Plana Simple";
 
-        public string Description => "Rellena la pantalla con un video y la contextualiza con información superpuesta con un fondo de color solido y marco seleccionado.";
+        public string Description => "Rellena la pantalla con un video y la contextualiza con información superpuesta con un fondo de color sólido y marco seleccionado.";
     }
 }

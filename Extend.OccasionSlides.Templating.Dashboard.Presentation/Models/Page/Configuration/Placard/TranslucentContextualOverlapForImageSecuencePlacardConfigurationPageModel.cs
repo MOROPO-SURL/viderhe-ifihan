@@ -3,7 +3,7 @@ using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Enumerations;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard
 {
-    public class TranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
+    public class TranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledPlacardConfigurationPageModel
     {
         private OverlapShapeKind overlapShapeKind;
         private OverlapSize overlapSize;

@@ -44,6 +44,16 @@
                 return new Pages.Configuration.Placard.FlatContextualOverlapForVideoPlacardConfigurationPage(completedActionCallback);
             }
 
+            if (templateDescriptor is Descriptors.FlatContextualOverlapForImageSecuenceTemplateDescriptor)
+            {
+                return new Pages.Configuration.Placard.FlatContextualOverlapForImageSecuencePlacardConfigurationPage(completedActionCallback);
+            }
+
+            if (templateDescriptor is Descriptors.TrailContextualOverlapForImageSecuenceTemplateDescriptor)
+            {
+                return new Pages.Configuration.Placard.TrailContextualOverlapForImageSecuencePlacardConfigurationPage(completedActionCallback);
+            }
+
             return null;
         }
 
@@ -87,6 +97,16 @@
             if (placardViewModel.Template.Id == Descriptors.FlatContextualOverlapForVideoTemplateDescriptor.ID)
             {
                 return new Pages.Configuration.Placard.FlatContextualOverlapForVideoPlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.FlatContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            {
+                return new Pages.Configuration.Placard.FlatContextualOverlapForImageSecuencePlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.TrailContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            {
+                return new Pages.Configuration.Placard.TrailContextualOverlapForImageSecuencePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;

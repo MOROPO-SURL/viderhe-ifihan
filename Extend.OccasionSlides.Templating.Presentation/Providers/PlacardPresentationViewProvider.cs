@@ -102,6 +102,31 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 return new Views.Placard.RightLandscapeContextualFlatOverlapForImagePlacardView(targetPlacardViewModel);
             }
 
+            if (model.Template.Id == Descriptors.FlatContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<FlatContextualOverlapForImageSecuencePlacardContextModel>(model.SerializedContext, new Newtonsoft.Json.JsonSerializerSettings { TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto });
+
+                var targetPlacardViewModel = new Models.View.Placard.FlatContextualOverlapForImageSecuencePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    PresentedPictureSlideSecuence = context.PresentedPictureSlideSecuence,
+                    ContextedImageSecuenceCenteredAtPresentation = context.ContextedImageSecuenceCenteredAtPresentation,
+                    UseOverlapShadown = context.UseOverlapShadown,
+                    OverlapSize = context.OverlapSize,
+                    OverlapShapeKind = context.OverlapShapeKind,
+                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
+                    OverlapAlignment = context.OverlapAlignment,
+                    ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
+                };
+
+                if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
+                {
+                    return new Views.Placard.LeftLandscapeContextualFlatOverlapForImageSecuencePlacardView(targetPlacardViewModel);
+                }
+
+                return new Views.Placard.RightLandscapeContextualFlatOverlapForImageSecuencePlacardView(targetPlacardViewModel);
+            }
+
             if (model.Template.Id == Descriptors.TrailContextualOverlapForImageTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TrailContextualOverlapForImagePlacardContextModel>(model.SerializedContext, new Newtonsoft.Json.JsonSerializerSettings
@@ -136,6 +161,34 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 }
 
                 return new Views.Placard.RightLandscapeContextualTrailOverlapForImagePlacardView(targetPlacardViewModel);
+            }
+
+            if (model.Template.Id == Descriptors.TrailContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TrailContextualOverlapForImageSecuencePlacardContextModel>(model.SerializedContext, new Newtonsoft.Json.JsonSerializerSettings
+                {
+                    TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
+                });
+
+                var targetPlacardViewModel = new Models.View.Placard.TrailContextualOverlapForImageSecuencePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    PresentedPictureSlideSecuence = context.PresentedPictureSlideSecuence,
+                    ContextedImageSecuenceCenteredAtPresentation = context.ContextedImageSecuenceCenteredAtPresentation,
+                    OverlapTrailMode = context.OverlapTrailMode,
+                    OverlapSize = context.OverlapSize,
+                    OverlapShapeKind = context.OverlapShapeKind,
+                    OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
+                    OverlapAlignment = context.OverlapAlignment,
+                    ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
+                };
+
+                if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
+                {
+                    return new Views.Placard.LeftLandscapeContextualTrailOverlapForImageSecuencePlacardView(targetPlacardViewModel);
+                }
+
+                return new Views.Placard.RightLandscapeContextualTrailOverlapForImageSecuencePlacardView(targetPlacardViewModel);
             }
 
             if (model.Template.Id == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
