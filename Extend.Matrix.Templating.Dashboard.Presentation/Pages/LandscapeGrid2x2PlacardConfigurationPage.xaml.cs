@@ -164,7 +164,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
                 {
                     var item = (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel;
 
-                    BindingContextPageModel.ThreeOfFourTargetPlacards.Remove(item);
+                    BindingContextPageModel.FourOfFourTargetPlacards.Remove(item);
                 });
             });
         }
