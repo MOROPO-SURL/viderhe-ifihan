@@ -10,7 +10,7 @@
   <Identity
     Name="MOROPO.VIDERHE.Player"
     Publisher="CN=MOROPO S.U.R.L."
-    Version="1.6.3.0" />
+    Version="1.7.0.0" />
 
   <Properties>
     <DisplayName>VIDERHE Player</DisplayName>
