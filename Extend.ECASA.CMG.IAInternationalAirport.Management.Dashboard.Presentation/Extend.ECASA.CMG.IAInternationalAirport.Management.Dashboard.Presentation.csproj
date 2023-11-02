@@ -13,6 +13,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="ISO3166" Version="1.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\Extend.Common.Management.Dashboard.Presentation\Extend.Common.Management.Dashboard.Presentation.csproj" />
 		<ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Management\Extend.ECASA.CMG.IAInternationalAirport.Management.csproj" />
 		<ProjectReference Include="..\Service.ECASA.CMG.InteropAirportDIS.API.Connect\Service.ECASA.CMG.InteropAirportDIS.API.Connect.csproj" />
@@ -35,6 +39,12 @@
 	  <Compile Update="Pages\RolesManagementPage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Pages\CountryDefinitionPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>
