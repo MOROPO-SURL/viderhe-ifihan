@@ -112,6 +112,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                     }
                 }
             }
+
+            entity.User.Signature = MOROPO.SAPRESSC.Middleware.Security.Essential.Persistence.EF.Helpers.Integrity.UserIntegrityHelper.GetSignature(entity.User);
         }
 
         protected override void PostEdit(Persistence.Entities.Moderator entity, ModeratorInputModel inputModel)
