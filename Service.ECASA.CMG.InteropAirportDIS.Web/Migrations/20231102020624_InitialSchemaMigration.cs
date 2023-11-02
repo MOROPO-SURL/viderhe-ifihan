@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -27,13 +28,13 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 name: "apikeys",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    token = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    enabled = table.Column<bool>(type: "bit", nullable: false),
-                    hasfullaccess = table.Column<bool>(type: "bit", nullable: false),
-                    expirateat = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    host = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    token = table.Column<string>(type: "text", nullable: false),
+                    enabled = table.Column<bool>(type: "boolean", nullable: false),
+                    hasfullaccess = table.Column<bool>(type: "boolean", nullable: false),
+                    expirateat = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    host = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -44,9 +45,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 name: "categories",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    discriminator = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    discriminator = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,9 +59,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_location",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    isocode = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    isocode = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,9 +73,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    emailaddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    label = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    emailaddress = table.Column<string>(type: "text", nullable: false),
+                    label = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -85,8 +86,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 name: "kinds",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false),
-                    discriminator = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false),
+                    discriminator = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -98,12 +99,12 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_core_security_common",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    code = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    family = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    code = table.Column<string>(type: "text", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    family = table.Column<string>(type: "text", nullable: true),
+                    description = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -115,9 +116,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    phonenumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    label = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    phonenumber = table.Column<string>(type: "text", nullable: false),
+                    label = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -129,9 +130,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_core_security_common",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    description = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -143,9 +144,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    socialid = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    label = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    socialid = table.Column<string>(type: "text", nullable: false),
+                    label = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -156,9 +157,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 name: "statuses",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    discriminator = table.Column<int>(type: "int", nullable: false),
-                    label = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    discriminator = table.Column<int>(type: "integer", nullable: false),
+                    label = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -169,9 +170,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 name: "terminals",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    discriminator = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    discriminator = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -183,10 +184,10 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_media",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    contenttype = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    contenttype = table.Column<string>(type: "text", nullable: false),
                     length = table.Column<long>(type: "bigint", nullable: false),
-                    about = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
+                    about = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -198,15 +199,15 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 columns: table => new
                 {
                     id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    type = table.Column<int>(type: "int", nullable: false),
-                    author = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    registered = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    entityname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    beforedata = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    afterdata = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    type = table.Column<int>(type: "integer", nullable: false),
+                    author = table.Column<string>(type: "text", nullable: true),
+                    registered = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    entityname = table.Column<string>(type: "text", nullable: false),
+                    beforedata = table.Column<string>(type: "text", nullable: false),
+                    afterdata = table.Column<string>(type: "text", nullable: true),
                     nextid = table.Column<long>(type: "bigint", nullable: false),
-                    signature = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    signature = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -218,9 +219,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    url = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    label = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    url = table.Column<string>(type: "text", nullable: false),
+                    label = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -232,9 +233,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_location",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    countryid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    countryid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -252,8 +253,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 name: "apikeyrolebridges",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -278,8 +279,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_core_security_common",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<int>(type: "int", nullable: false)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -305,12 +306,12 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_media",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    contenttype = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    contenttype = table.Column<string>(type: "text", nullable: false),
                     length = table.Column<long>(type: "bigint", nullable: false),
-                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    thumbnailid = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    description = table.Column<string>(type: "text", nullable: true),
+                    thumbnailid = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -328,14 +329,14 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_media",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    createat = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    contenttype = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    createat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    contenttype = table.Column<string>(type: "text", nullable: false),
                     length = table.Column<long>(type: "bigint", nullable: false),
-                    about = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    height = table.Column<int>(type: "int", nullable: false),
-                    width = table.Column<int>(type: "int", nullable: false),
-                    thumbnailid = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    about = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
+                    height = table.Column<int>(type: "integer", nullable: false),
+                    width = table.Column<int>(type: "integer", nullable: false),
+                    thumbnailid = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -353,19 +354,19 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_media",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    createat = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    extension = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    createat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    extension = table.Column<string>(type: "text", nullable: false),
                     length = table.Column<long>(type: "bigint", nullable: false),
-                    about = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
-                    duration = table.Column<TimeSpan>(type: "time", nullable: false),
-                    format = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    framesize = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    colormodel = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    fps = table.Column<double>(type: "float", nullable: false),
-                    audioformat = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    audiochanneloutput = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    thumbnailid = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    about = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
+                    duration = table.Column<TimeSpan>(type: "interval", nullable: false),
+                    format = table.Column<string>(type: "text", nullable: false),
+                    framesize = table.Column<string>(type: "text", nullable: false),
+                    colormodel = table.Column<string>(type: "text", nullable: false),
+                    fps = table.Column<double>(type: "double precision", nullable: false),
+                    audioformat = table.Column<string>(type: "text", nullable: false),
+                    audiochanneloutput = table.Column<string>(type: "text", nullable: false),
+                    thumbnailid = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -383,9 +384,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_location",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    regionid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    regionid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -404,12 +405,12 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ownerid = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    imageid = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    borndate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    about = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    ownerid = table.Column<Guid>(type: "uuid", nullable: true),
+                    imageid = table.Column<Guid>(type: "uuid", nullable: true),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    borndate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    about = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -433,15 +434,15 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    lastname = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    alias = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    sex = table.Column<int>(type: "int", nullable: false),
-                    civilstatus = table.Column<int>(type: "int", nullable: false),
-                    imageid = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    borndate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    about = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    lastname = table.Column<string>(type: "text", nullable: true),
+                    alias = table.Column<string>(type: "text", nullable: true),
+                    sex = table.Column<int>(type: "integer", nullable: false),
+                    civilstatus = table.Column<int>(type: "integer", nullable: false),
+                    imageid = table.Column<Guid>(type: "uuid", nullable: true),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    borndate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    about = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -459,9 +460,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_location",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    stateid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    stateid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -479,11 +480,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 name: "carriers",
                 columns: table => new
                 {
-                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    identityid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    countryid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    primarycolor = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    secoundarycolor = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    id = table.Column<string>(type: "text", nullable: false),
+                    identityid = table.Column<Guid>(type: "uuid", nullable: false),
+                    countryid = table.Column<Guid>(type: "uuid", nullable: false),
+                    primarycolor = table.Column<string>(type: "text", nullable: true),
+                    secoundarycolor = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -509,8 +510,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -523,7 +524,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_organizationemailcontactitembridge_organizationidentity_prowid",
+                        name: "fk_organizationemailcontactitembridge_organizationidentity_pro~",
                         column: x => x.prowid,
                         principalSchema: "guamaframework_identity",
                         principalTable: "organizationidentity",
@@ -536,14 +537,14 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_organizationphonecontactitembridge", x => new { x.prowid, x.sternid });
                     table.ForeignKey(
-                        name: "fk_organizationphonecontactitembridge_organizationidentity_prowid",
+                        name: "fk_organizationphonecontactitembridge_organizationidentity_pro~",
                         column: x => x.prowid,
                         principalSchema: "guamaframework_identity",
                         principalTable: "organizationidentity",
@@ -563,21 +564,21 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_organizationsocialcontactitembridge", x => new { x.prowid, x.sternid });
                     table.ForeignKey(
-                        name: "fk_organizationsocialcontactitembridge_organizationidentity_prowid",
+                        name: "fk_organizationsocialcontactitembridge_organizationidentity_pr~",
                         column: x => x.prowid,
                         principalSchema: "guamaframework_identity",
                         principalTable: "organizationidentity",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_organizationsocialcontactitembridge_socialcontactitem_sternid",
+                        name: "fk_organizationsocialcontactitembridge_socialcontactitem_stern~",
                         column: x => x.sternid,
                         principalSchema: "guamaframework_identity",
                         principalTable: "socialcontactitem",
@@ -590,21 +591,21 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_organizationwebsitecontactitembridge", x => new { x.prowid, x.sternid });
                     table.ForeignKey(
-                        name: "fk_organizationwebsitecontactitembridge_organizationidentity_prowid",
+                        name: "fk_organizationwebsitecontactitembridge_organizationidentity_p~",
                         column: x => x.prowid,
                         principalSchema: "guamaframework_identity",
                         principalTable: "organizationidentity",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_organizationwebsitecontactitembridge_websitecontactitem_sternid",
+                        name: "fk_organizationwebsitecontactitembridge_websitecontactitem_ste~",
                         column: x => x.sternid,
                         principalSchema: "guamaframework_identity",
                         principalTable: "websitecontactitem",
@@ -617,15 +618,15 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    role = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false),
+                    role = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_organizationpersonmembershipbridge", x => new { x.prowid, x.sternid });
                     table.ForeignKey(
-                        name: "fk_organizationpersonmembershipbridge_organizationidentity_prowid",
+                        name: "fk_organizationpersonmembershipbridge_organizationidentity_pro~",
                         column: x => x.prowid,
                         principalSchema: "guamaframework_identity",
                         principalTable: "organizationidentity",
@@ -645,8 +646,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -672,8 +673,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -699,8 +700,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -726,8 +727,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -753,9 +754,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_location",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    name = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    municipalityid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    municipalityid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -774,16 +775,16 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 columns: table => new
                 {
                     id = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    carrierid = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    flight = table.Column<int>(type: "int", nullable: false),
-                    context = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    stardate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    enddate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    terminalid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    kindid = table.Column<int>(type: "int", nullable: false),
-                    categoryid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    statusid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    carrierid = table.Column<string>(type: "text", nullable: false),
+                    flight = table.Column<int>(type: "integer", nullable: false),
+                    context = table.Column<string>(type: "text", nullable: false),
+                    stardate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    enddate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    terminalid = table.Column<Guid>(type: "uuid", nullable: false),
+                    kindid = table.Column<int>(type: "integer", nullable: false),
+                    categoryid = table.Column<Guid>(type: "uuid", nullable: false),
+                    statusid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -825,11 +826,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_location",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    localityid = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    municipalityid = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    stateid = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    discriminator = table.Column<string>(type: "text", nullable: false),
+                    localityid = table.Column<Guid>(type: "uuid", nullable: true),
+                    municipalityid = table.Column<Guid>(type: "uuid", nullable: true),
+                    stateid = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -846,8 +847,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         column: x => x.municipalityid,
                         principalSchema: "guamaframework_location",
                         principalTable: "municipality",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.SetNull);
+                        principalColumn: "id");
                     table.ForeignKey(
                         name: "fk_location_state_stateid",
                         column: x => x.stateid,
@@ -862,13 +862,13 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    locationid = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    zipcode = table.Column<int>(type: "int", nullable: false),
-                    longitude = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    latitude = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    label = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    address = table.Column<string>(type: "text", nullable: false),
+                    locationid = table.Column<Guid>(type: "uuid", nullable: true),
+                    zipcode = table.Column<int>(type: "integer", nullable: false),
+                    longitude = table.Column<decimal>(type: "numeric", nullable: false),
+                    latitude = table.Column<decimal>(type: "numeric", nullable: false),
+                    label = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -886,21 +886,21 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_organizationpostalcontactitembridge", x => new { x.prowid, x.sternid });
                     table.ForeignKey(
-                        name: "fk_organizationpostalcontactitembridge_organizationidentity_prowid",
+                        name: "fk_organizationpostalcontactitembridge_organizationidentity_pr~",
                         column: x => x.prowid,
                         principalSchema: "guamaframework_identity",
                         principalTable: "organizationidentity",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_organizationpostalcontactitembridge_postalcontactitem_sternid",
+                        name: "fk_organizationpostalcontactitembridge_postalcontactitem_stern~",
                         column: x => x.sternid,
                         principalSchema: "guamaframework_identity",
                         principalTable: "postalcontactitem",
@@ -913,8 +913,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 schema: "guamaframework_identity",
                 columns: table => new
                 {
-                    prowid = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    sternid = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    prowid = table.Column<Guid>(type: "uuid", nullable: false),
+                    sternid = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {

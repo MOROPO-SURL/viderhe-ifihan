@@ -37,7 +37,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web
         {
             services.Configure<Framework.Guama.Media.Presentation.Web.Common.Options.RelativeMediaFileManagementOptions>(configuration.GetSection("FileManagement"));
 
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<DbContext, ApplicationDbContext>();
 
@@ -108,6 +108,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web
 
         public void Configure(IApplicationBuilder app, Microsoft.Extensions.Options.IOptions<RequestLocalizationOptions> requestLocalizationOptions, Microsoft.Extensions.Logging.ILoggerFactory loggerFactory, DbContext dbContext)
         {
+            System.AppContext.SetSwitch("System.Drawing.EnableUnixSupport", true);
+            System.AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
             loggerFactory.AddSerilog(Log.Logger);
 
             app.UseRequestLocalization(requestLocalizationOptions.Value);

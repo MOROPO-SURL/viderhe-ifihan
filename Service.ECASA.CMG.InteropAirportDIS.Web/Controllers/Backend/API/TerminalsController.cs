@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Attributes;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Constants;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models;

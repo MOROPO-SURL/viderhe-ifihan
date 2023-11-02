@@ -33,6 +33,120 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Helpers
             }
             #endregion
 
+            #region Carrier
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.CarrierCreatorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.CarrierViewerPermission.ToPermissionEntity(API.Common.Constants.Authorization.CarrierManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.CarrierCreatorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.CarrierCreatorPermission.ToPermissionEntity(API.Common.Constants.Authorization.CarrierManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.CarrierEditorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.CarrierEditorPermission.ToPermissionEntity(API.Common.Constants.Authorization.CarrierManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.CarrierRemoverPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.CarrierRemoverPermission.ToPermissionEntity(API.Common.Constants.Authorization.CarrierManagementPermissionGroup));
+            }
+            #endregion
+
+            #region Category
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.CategoryViewerPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.CategoryViewerPermission.ToPermissionEntity(API.Common.Constants.Authorization.CategoryManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.CategoryCreatorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.CategoryCreatorPermission.ToPermissionEntity(API.Common.Constants.Authorization.CategoryManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.CategoryEditorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.CategoryEditorPermission.ToPermissionEntity(API.Common.Constants.Authorization.CategoryManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.CategoryRemoverPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.CategoryRemoverPermission.ToPermissionEntity(API.Common.Constants.Authorization.CategoryManagementPermissionGroup));
+            }
+            #endregion
+
+            #region Country
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.CountryViewerPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.CountryViewerPermission.ToPermissionEntity(API.Common.Constants.Authorization.CountryManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.CountryCreatorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.CountryCreatorPermission.ToPermissionEntity(API.Common.Constants.Authorization.CountryManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.CountryEditorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.CountryEditorPermission.ToPermissionEntity(API.Common.Constants.Authorization.CountryManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.CountryRemoverPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.CountryRemoverPermission.ToPermissionEntity(API.Common.Constants.Authorization.CountryManagementPermissionGroup));
+            }
+            #endregion
+
+            #region Kind
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.KindViewerPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.KindViewerPermission.ToPermissionEntity(API.Common.Constants.Authorization.KindManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.KindCreatorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.KindCreatorPermission.ToPermissionEntity(API.Common.Constants.Authorization.KindManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.KindEditorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.KindEditorPermission.ToPermissionEntity(API.Common.Constants.Authorization.KindManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.KindRemoverPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.KindRemoverPermission.ToPermissionEntity(API.Common.Constants.Authorization.KindManagementPermissionGroup));
+            }
+            #endregion
+
+            #region Status
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.StatusViewerPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.StatusViewerPermission.ToPermissionEntity(API.Common.Constants.Authorization.StatusManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.StatusCreatorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.StatusCreatorPermission.ToPermissionEntity(API.Common.Constants.Authorization.StatusManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.StatusEditorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.StatusEditorPermission.ToPermissionEntity(API.Common.Constants.Authorization.StatusManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.StatusRemoverPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.StatusRemoverPermission.ToPermissionEntity(API.Common.Constants.Authorization.StatusManagementPermissionGroup));
+            }
+            #endregion
+
+            #region Terminal
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.TerminalViewerPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.TerminalViewerPermission.ToPermissionEntity(API.Common.Constants.Authorization.TerminalManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.TerminalCreatorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.TerminalCreatorPermission.ToPermissionEntity(API.Common.Constants.Authorization.TerminalManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.TerminalEditorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.TerminalEditorPermission.ToPermissionEntity(API.Common.Constants.Authorization.TerminalManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.TerminalRemoverPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.TerminalRemoverPermission.ToPermissionEntity(API.Common.Constants.Authorization.TerminalManagementPermissionGroup));
+            }
+            #endregion
+
             if (dbContext is Framework.Guama.Core.Persistence.ORM.EF.Context.Contract.ITraceableDbContext)
             {
                 (dbContext as Framework.Guama.Core.Persistence.ORM.EF.Context.Contract.ITraceableDbContext).SaveChanges("system");

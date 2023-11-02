@@ -3,16 +3,16 @@ using System;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Persistence.ORM.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231012004745_InitialSchemaMigration")]
+    [Migration("20231102020624_InitialSchemaMigration")]
     partial class InitialSchemaMigration
     {
         /// <inheritdoc />
@@ -20,10 +20,10 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.12")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("ProductVersion", "7.0.10")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("MOROPO.Framework.Guama.Core.Persistence.ORM.EF.Entities.Trace", b =>
                 {
@@ -32,24 +32,24 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("AfterData")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("afterdata");
 
                     b.Property<string>("Author")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("author");
 
                     b.Property<string>("BeforeData")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("beforedata");
 
                     b.Property<string>("EntityName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("entityname");
 
                     b.Property<long>("NextId")
@@ -57,15 +57,15 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasColumnName("nextid");
 
                     b.Property<DateTime>("Registered")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("registered");
 
                     b.Property<string>("Signature")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("signature");
 
                     b.Property<int>("Type")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("type");
 
                     b.HasKey("Id")
@@ -78,27 +78,27 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Code")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("code");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("description");
 
                     b.Property<string>("Family")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("family");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
@@ -111,16 +111,16 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("description");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
@@ -132,11 +132,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.Framework.Guama.Core.Security.Common.Persistence.Entities.RolePermissionBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<int>("SternId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
@@ -152,16 +152,16 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("EmailAddress")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("emailaddress");
 
                     b.Property<string>("Label")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("label");
 
                     b.HasKey("Id")
@@ -173,11 +173,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.Framework.Guama.Identity.Persistence.Entities.OrganizationEmailContactItemBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<Guid>("SternId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
@@ -193,28 +193,28 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("About")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("about");
 
                     b.Property<DateTime?>("BornDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("borndate");
 
                     b.Property<Guid?>("ImageId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("imageid");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.Property<Guid?>("OwnerId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("ownerid");
 
                     b.HasKey("Id")
@@ -232,15 +232,15 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.Framework.Guama.Identity.Persistence.Entities.OrganizationPersonMembershipBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<Guid>("SternId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.Property<string>("Role")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("role");
 
                     b.HasKey("ProwId", "SternId")
@@ -255,11 +255,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.Framework.Guama.Identity.Persistence.Entities.OrganizationPhoneContactItemBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<Guid>("SternId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
@@ -274,11 +274,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.Framework.Guama.Identity.Persistence.Entities.OrganizationPostalContactItemBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<Guid>("SternId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
@@ -293,11 +293,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.Framework.Guama.Identity.Persistence.Entities.OrganizationSocialContactItemBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<Guid>("SternId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
@@ -312,11 +312,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.Framework.Guama.Identity.Persistence.Entities.OrganizationWebSiteContactItemBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<Guid>("SternId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
@@ -331,11 +331,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.Framework.Guama.Identity.Persistence.Entities.PersonEmailContactItemBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<Guid>("SternId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
@@ -351,40 +351,40 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("About")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("about");
 
                     b.Property<string>("Alias")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("alias");
 
                     b.Property<DateTime?>("BornDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("borndate");
 
                     b.Property<int>("CivilStatus")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("civilstatus");
 
                     b.Property<Guid?>("ImageId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("imageid");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("lastname");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.Property<int>("Sex")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("sex");
 
                     b.HasKey("Id")
@@ -399,11 +399,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.Framework.Guama.Identity.Persistence.Entities.PersonPhoneContactItemBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<Guid>("SternId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
@@ -418,11 +418,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.Framework.Guama.Identity.Persistence.Entities.PersonPostalContactItemBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<Guid>("SternId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
@@ -437,11 +437,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.Framework.Guama.Identity.Persistence.Entities.PersonSocialContactItemBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<Guid>("SternId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
@@ -456,11 +456,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.Framework.Guama.Identity.Persistence.Entities.PersonWebSiteContactItemBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<Guid>("SternId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
@@ -476,16 +476,16 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("Label")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("label");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("phonenumber");
 
                     b.HasKey("Id")
@@ -498,32 +498,32 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("address");
 
                     b.Property<string>("Label")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("label");
 
                     b.Property<decimal>("Latitude")
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("numeric")
                         .HasColumnName("latitude");
 
                     b.Property<Guid?>("LocationId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("locationid");
 
                     b.Property<decimal>("Longitude")
-                        .HasColumnType("decimal(18,2)")
+                        .HasColumnType("numeric")
                         .HasColumnName("longitude");
 
                     b.Property<int>("ZipCode")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("zipcode");
 
                     b.HasKey("Id")
@@ -539,16 +539,16 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("Label")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("label");
 
                     b.Property<string>("SocialId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("socialid");
 
                     b.HasKey("Id")
@@ -561,16 +561,16 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("Label")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("label");
 
                     b.Property<string>("Url")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("url");
 
                     b.HasKey("Id")
@@ -583,17 +583,17 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("IsoCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("text")
                         .HasColumnName("isocode");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
@@ -614,17 +614,17 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<Guid?>("MunicipalityId")
                         .IsRequired()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("municipalityid");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
@@ -644,12 +644,12 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("discriminator");
 
                     b.HasKey("Id")
@@ -666,17 +666,17 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.Property<Guid?>("StateId")
                         .IsRequired()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("stateid");
 
                     b.HasKey("Id")
@@ -696,17 +696,17 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<Guid?>("CountryId")
                         .IsRequired()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("countryid");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
@@ -722,17 +722,17 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.Property<Guid?>("RegionId")
                         .IsRequired()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("regionid");
 
                     b.HasKey("Id")
@@ -748,16 +748,16 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("ContentType")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("contenttype");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("description");
 
                     b.Property<long>("Length")
@@ -766,11 +766,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.Property<Guid?>("ThumbnailId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("thumbnailid");
 
                     b.HasKey("Id")
@@ -786,25 +786,25 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("About")
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("about");
 
                     b.Property<string>("ContentType")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("contenttype");
 
                     b.Property<DateTime>("CreateAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("createat");
 
                     b.Property<int>("Height")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("height");
 
                     b.Property<long>("Length")
@@ -812,11 +812,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasColumnName("length");
 
                     b.Property<Guid?>("ThumbnailId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("thumbnailid");
 
                     b.Property<int>("Width")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("width");
 
                     b.HasKey("Id")
@@ -832,17 +832,17 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("About")
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("about");
 
                     b.Property<string>("ContentType")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("contenttype");
 
                     b.Property<long>("Length")
@@ -859,54 +859,54 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("About")
                         .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("character varying(255)")
                         .HasColumnName("about");
 
                     b.Property<string>("AudioChannelOutput")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("audiochanneloutput");
 
                     b.Property<string>("AudioFormat")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("audioformat");
 
                     b.Property<string>("ColorModel")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("colormodel");
 
                     b.Property<DateTime>("CreateAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("createat");
 
                     b.Property<TimeSpan>("Duration")
-                        .HasColumnType("time")
+                        .HasColumnType("interval")
                         .HasColumnName("duration");
 
                     b.Property<string>("Extension")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("extension");
 
                     b.Property<string>("Format")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("format");
 
                     b.Property<double>("Fps")
-                        .HasColumnType("float")
+                        .HasColumnType("double precision")
                         .HasColumnName("fps");
 
                     b.Property<string>("FrameSize")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("framesize");
 
                     b.Property<long>("Length")
@@ -914,7 +914,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasColumnName("length");
 
                     b.Property<Guid?>("ThumbnailId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("thumbnailid");
 
                     b.HasKey("Id")
@@ -930,33 +930,33 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<bool>("Enabled")
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasColumnName("enabled");
 
                     b.Property<DateTime?>("ExpirateAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("expirateat");
 
                     b.Property<bool>("HasFullAccess")
-                        .HasColumnType("bit")
+                        .HasColumnType("boolean")
                         .HasColumnName("hasfullaccess");
 
                     b.Property<string>("Host")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("host");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.Property<string>("Token")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("token");
 
                     b.HasKey("Id")
@@ -968,11 +968,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.ApiKeyRoleBridge", b =>
                 {
                     b.Property<Guid>("ProwId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("prowid");
 
                     b.Property<Guid>("SternId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("sternid");
 
                     b.HasKey("ProwId", "SternId")
@@ -987,25 +987,25 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Carrier", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("text")
                         .HasColumnName("id");
 
                     b.Property<Guid?>("CountryId")
                         .IsRequired()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("countryid");
 
                     b.Property<Guid?>("IdentityId")
                         .IsRequired()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("identityid");
 
                     b.Property<string>("PrimaryColor")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("primarycolor");
 
                     b.Property<string>("SecoundaryColor")
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("secoundarycolor");
 
                     b.HasKey("Id")
@@ -1025,16 +1025,16 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<int>("Discriminator")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("discriminator");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
@@ -1050,12 +1050,12 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Kind", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("text")
                         .HasColumnName("discriminator");
 
                     b.HasKey("Id")
@@ -1075,47 +1075,47 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasColumnType("bigint")
                         .HasColumnName("id");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("CarrierId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("text")
                         .HasColumnName("carrierid");
 
                     b.Property<Guid?>("CategoryId")
                         .IsRequired()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("categoryid");
 
                     b.Property<string>("Context")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("context");
 
                     b.Property<DateTime?>("EndDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("enddate");
 
                     b.Property<int>("Flight")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("flight");
 
                     b.Property<int>("KindId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("kindid");
 
                     b.Property<DateTime>("StarDate")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("stardate");
 
                     b.Property<Guid?>("StatusId")
                         .IsRequired()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("statusid");
 
                     b.Property<Guid?>("TerminalId")
                         .IsRequired()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("terminalid");
 
                     b.HasKey("Id")
@@ -1143,16 +1143,16 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<int>("Discriminator")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("discriminator");
 
                     b.Property<string>("Label")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("label");
 
                     b.HasKey("Id")
@@ -1169,17 +1169,17 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)")
+                        .HasColumnType("text")
                         .HasColumnName("discriminator");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.HasKey("Id")
@@ -1197,7 +1197,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                     b.HasBaseType("MOROPO.Framework.Guama.Location.Persistence.Entities.Location");
 
                     b.Property<Guid?>("LocalityId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("localityid");
 
                     b.HasIndex("LocalityId")
@@ -1213,7 +1213,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                     b.HasBaseType("MOROPO.Framework.Guama.Location.Persistence.Entities.Location");
 
                     b.Property<Guid?>("MunicipalityId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("municipalityid");
 
                     b.HasIndex("MunicipalityId")
@@ -1229,7 +1229,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                     b.HasBaseType("MOROPO.Framework.Guama.Location.Persistence.Entities.Location");
 
                     b.Property<Guid?>("StateId")
-                        .HasColumnType("uniqueidentifier")
+                        .HasColumnType("uuid")
                         .HasColumnName("stateid");
 
                     b.HasIndex("StateId")
@@ -1268,7 +1268,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasForeignKey("ProwId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_organizationemailcontactitembridge_organizationidentity_prowid");
+                        .HasConstraintName("fk_organizationemailcontactitembridge_organizationidentity_pro~");
 
                     b.HasOne("MOROPO.Framework.Guama.Identity.Persistence.Entities.EmailContactItem", "Stern")
                         .WithMany()
@@ -1306,7 +1306,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasForeignKey("ProwId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_organizationpersonmembershipbridge_organizationidentity_prowid");
+                        .HasConstraintName("fk_organizationpersonmembershipbridge_organizationidentity_pro~");
 
                     b.HasOne("MOROPO.Framework.Guama.Identity.Persistence.Entities.PersonIdentity", "Stern")
                         .WithMany("OrganizationMembershipBridges")
@@ -1327,7 +1327,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasForeignKey("ProwId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_organizationphonecontactitembridge_organizationidentity_prowid");
+                        .HasConstraintName("fk_organizationphonecontactitembridge_organizationidentity_pro~");
 
                     b.HasOne("MOROPO.Framework.Guama.Identity.Persistence.Entities.PhoneContactItem", "Stern")
                         .WithMany()
@@ -1348,14 +1348,14 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasForeignKey("ProwId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_organizationpostalcontactitembridge_organizationidentity_prowid");
+                        .HasConstraintName("fk_organizationpostalcontactitembridge_organizationidentity_pr~");
 
                     b.HasOne("MOROPO.Framework.Guama.Identity.Persistence.Entities.PostalContactItem", "Stern")
                         .WithMany()
                         .HasForeignKey("SternId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_organizationpostalcontactitembridge_postalcontactitem_sternid");
+                        .HasConstraintName("fk_organizationpostalcontactitembridge_postalcontactitem_stern~");
 
                     b.Navigation("Prow");
 
@@ -1369,14 +1369,14 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasForeignKey("ProwId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_organizationsocialcontactitembridge_organizationidentity_prowid");
+                        .HasConstraintName("fk_organizationsocialcontactitembridge_organizationidentity_pr~");
 
                     b.HasOne("MOROPO.Framework.Guama.Identity.Persistence.Entities.SocialContactItem", "Stern")
                         .WithMany()
                         .HasForeignKey("SternId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_organizationsocialcontactitembridge_socialcontactitem_sternid");
+                        .HasConstraintName("fk_organizationsocialcontactitembridge_socialcontactitem_stern~");
 
                     b.Navigation("Prow");
 
@@ -1390,14 +1390,14 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasForeignKey("ProwId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_organizationwebsitecontactitembridge_organizationidentity_prowid");
+                        .HasConstraintName("fk_organizationwebsitecontactitembridge_organizationidentity_p~");
 
                     b.HasOne("MOROPO.Framework.Guama.Identity.Persistence.Entities.WebSiteContactItem", "Stern")
                         .WithMany()
                         .HasForeignKey("SternId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_organizationwebsitecontactitembridge_websitecontactitem_sternid");
+                        .HasConstraintName("fk_organizationwebsitecontactitembridge_websitecontactitem_ste~");
 
                     b.Navigation("Prow");
 
@@ -1713,7 +1713,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                     b.HasOne("MOROPO.Framework.Guama.Location.Persistence.Entities.Municipality", "Municipality")
                         .WithMany()
                         .HasForeignKey("MunicipalityId")
-                        .OnDelete(DeleteBehavior.SetNull)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .HasConstraintName("fk_location_municipality_municipalityid");
 
                     b.Navigation("Municipality");
