@@ -124,6 +124,44 @@
                                     HorizontalOptions="Center" VerticalOptions="Start"
                                     Margin="10" Padding="10">
                                     <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="CarriersTapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Label
+                                        Text="&#xF01D;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Aerolíneas"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="1" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TerminalsTapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Label
+                                        Text="&#xF84A;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Terminales"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="2" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="CountriesTapGestureRecognizer_Tapped" />
                                     </StackLayout.GestureRecognizers>
                                     <Label
