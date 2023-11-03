@@ -2,6 +2,7 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Converters"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page"
     xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
@@ -15,6 +16,8 @@
     Title="Agregar País">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <converters:Iso3166CountryToStringConverter x:Key="Iso3166CountryToStringConverter" />
+
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -107,8 +110,10 @@
                                 Text="País ISO 3166" 
                                 Style="{StaticResource FormLabel}" />
                             <Picker
+                                x:Name="CountryPicker"
                                 ItemsSource="{Binding Path=SelectableCountries}"
-                                SelectedItem="{Binding Path=Country}">
+                                SelectedItem="{Binding Path=Country}"
+                                ItemDisplayBinding="{Binding Converter={StaticResource Iso3166CountryToStringConverter}}">
                                 <Picker.Behaviors>
                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                         ValidableFormPage="{Reference FormPage}"
@@ -116,7 +121,6 @@
                                         TargetProperty="{Static Picker.SelectedItemProperty}"
                                         Label="{Reference CountryLabel}">
                                         <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
-                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
                                         </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
                                     </supportpresentationdashboardbehaviors:ViewValidationBehavior>
                                 </Picker.Behaviors>
@@ -126,7 +130,7 @@
                     <Frame Grid.Column="1" Grid.Row="1" Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Nombre" Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=Name}" />
+                            <Entry Text="{Binding Path=LocalizedName}" />
                         </StackLayout>
                     </Frame>
                 </Grid>

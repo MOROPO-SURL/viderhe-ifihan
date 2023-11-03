@@ -19,8 +19,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
             this.definitionCallbackAction = definitionCallbackAction;
 
-            BindingContextPageModel.PropertyChanged += PageModel_PropertyChanged;
-
             if (target != null)
             {
                 isEditionMode = true;
@@ -47,9 +45,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    BindingContextPageModel.SelectableCountries = selectableCountries.ToArray();
+                    var country = BindingContextPageModel.Country;
 
+                    BindingContextPageModel.SelectableCountries = selectableCountries.ToArray();
+                    BindingContextPageModel.Country = country;
                     BindingContextPageModel.IsBusy = false;
+
+                    BindingContextPageModel.PropertyChanged += PageModel_PropertyChanged;
                 });
             });
         }

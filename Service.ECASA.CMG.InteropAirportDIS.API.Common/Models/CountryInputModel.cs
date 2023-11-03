@@ -10,7 +10,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models
         public string Name { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
-        [System.ComponentModel.DataAnnotations.RegularExpression("^[a-z]{2}$")]
+        [System.ComponentModel.DataAnnotations.RegularExpression("^[A-Z]{2}$")]
         public string IsoCode { get; set; }
 
         public Country Export()

@@ -4,6 +4,7 @@
     {
         private ISO3166.Country country;
         private string localizedName;
+        private ISO3166.Country[] selectableCountries;
 
         public CountryDefinitionPageModel()
         {
@@ -16,6 +17,6 @@
 
         public string LocalizedName { get => localizedName; set => SetProperty(ref localizedName, value); }
 
-        public ISO3166.Country[] SelectableCountries { get; set; } 
+        public ISO3166.Country[] SelectableCountries { get => selectableCountries; set => SetProperty(ref selectableCountries, value); } 
     }
 }

@@ -22,7 +22,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
         private SessionManager()
         {
 #if DEBUG
-            Configure("localhost:5071", "3f85dc10ff3f273c743ad32e1b42951e4b9568228e98f6cc707a7c8255d56326");
+            Configure("localhost:5285", "3f85dc10ff3f273c743ad32e1b42951e4b9568228e98f6cc707a7c8255d56326");
 #endif
         }
 
