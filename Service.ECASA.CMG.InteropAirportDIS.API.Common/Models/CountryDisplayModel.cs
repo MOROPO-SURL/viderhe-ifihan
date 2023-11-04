@@ -14,5 +14,17 @@
             Name = entity.Name;
             IsoCode = entity.IsoCode;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is CountryDisplayModel)) return false;
+
+            return Id == (obj as CountryDisplayModel).Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
     }
 }

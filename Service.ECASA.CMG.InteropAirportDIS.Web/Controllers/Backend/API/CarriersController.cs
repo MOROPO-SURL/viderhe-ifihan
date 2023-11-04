@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MOROPO.Framework.Guama.Core.Persistence.Repositories;
 using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Attributes;
+using MOROPO.Framework.Guama.Location.Persistence.Entities;
 using MOROPO.Framework.Guama.Media.Persistence.Entities;
 using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Managers.Facade;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Constants;
@@ -15,11 +16,13 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Controllers.Backend.API
     [ApiController]
     public class CarriersController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<Carrier, string, CarrierInputModel, CarrierDisplayModel>
     {
+        private readonly IEntityRepository<Country, System.Guid> countryRepository;
         private readonly IEntityRepository<Image, System.Guid> imageRepository;
         private readonly IImageFileManagerFacade imageFileManager;
 
-        public CarriersController(IImageFileManagerFacade imageFileManager, IEntityRepository<Image, System.Guid> imageRepository, IEntityRepository<Carrier, string> repository, Microsoft.Extensions.Localization.IStringLocalizer<CarriersController> localizer, ILogger<CarriersController> logger) : base(repository, localizer, logger)
+        public CarriersController(IImageFileManagerFacade imageFileManager, IEntityRepository<Image, System.Guid> imageRepository, IEntityRepository<Country, System.Guid> countryRepository, IEntityRepository<Carrier, string> repository, Microsoft.Extensions.Localization.IStringLocalizer<CarriersController> localizer, ILogger<CarriersController> logger) : base(repository, localizer, logger)
         {
+            this.countryRepository = countryRepository;
             this.imageRepository = imageRepository;
             this.imageFileManager = imageFileManager;
         }
@@ -64,9 +67,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Controllers.Backend.API
         {
             var model = base.EntityToDisplayModel(entity);
 
-            if (model.ImageId != null)
+            if (model.Image != null)
             {
-                model.ImageExtension = MimeTypes.MimeTypeMap.GetExtension(entity.Identity.Image.ContentType);
+                model.Image.Extension = MimeTypes.MimeTypeMap.GetExtension(entity.Identity.Image.ContentType);
             }
 
             return model;
@@ -75,6 +78,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Controllers.Backend.API
         protected override void PreCreate(Carrier entity, CarrierInputModel model)
         {
             base.PreCreate(entity, model);
+
+            entity.Country = countryRepository.Get(model.CountryId.Value);
+            entity.CountryId = entity.Country.Id;
 
             if (model.ImageContent != null)
             {
@@ -104,6 +110,12 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Controllers.Backend.API
         protected override void PreEdit(Carrier entity, CarrierInputModel model)
         {
             base.PreEdit(entity, model);
+
+            if (entity.CountryId != model.CountryId.Value)
+            {
+                entity.Country = countryRepository.Get(model.CountryId.Value);
+                entity.CountryId = entity.Country.Id;
+            }
 
             if (model.ImageContent != null)
             {

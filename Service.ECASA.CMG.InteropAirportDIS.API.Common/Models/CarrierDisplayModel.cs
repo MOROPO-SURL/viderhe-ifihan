@@ -6,9 +6,7 @@
 
         public string Name { get; set; }
 
-        public System.Guid? ImageId { get; set; }
-
-        public string ImageExtension { get; set; }
+        public ImageDisplayModel Image { get; set; }
 
         public CountryDisplayModel Country { get; set; }
 
@@ -19,15 +17,20 @@
         public void Import(Persistence.Entities.Carrier entity)
         {
             Id = entity.Id;
-            Name = entity.Identity.Name;
-            ImageId = entity.Identity.ImageId;
-            // TODO Set ImageExtension value at Controller 
+            Name = entity.Identity.Name; 
             PrimaryColor = entity.PrimaryColor;
             SecoundaryColor = entity.SecoundaryColor;
 
             Country = new CountryDisplayModel();
 
             Country.Import(entity.Country);
+
+            if (entity.Identity.ImageId != null)
+            {
+                Image = new ImageDisplayModel();
+
+                Image.Import(entity.Identity.Image);
+            }
         }
     }
 }

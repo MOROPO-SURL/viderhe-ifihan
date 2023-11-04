@@ -3,6 +3,7 @@
     public class Carrier : Framework.Guama.Core.Persistence.Entities.Contract.IEntity<string>
     {
         [System.ComponentModel.DataAnnotations.Key]
+        [System.ComponentModel.DataAnnotations.RegularExpression("^[A-Z]{3}$")]
         public string Id { get; set; }
 
         public Framework.Guama.Identity.Persistence.Entities.OrganizationIdentity Identity { get; set; }

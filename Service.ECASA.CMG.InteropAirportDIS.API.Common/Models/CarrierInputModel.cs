@@ -2,6 +2,8 @@
 {
     public class CarrierInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Persistence.Entities.Carrier, string>
     {
+        [System.ComponentModel.DataAnnotations.Required]
+        [System.ComponentModel.DataAnnotations.RegularExpression("^[A-Z]{3}$")]
         public string Id { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
@@ -21,7 +23,7 @@
 
         public Persistence.Entities.Carrier Export()
         {
-            var entity = new Persistence.Entities.Carrier { Id = Id };
+            var entity = new Persistence.Entities.Carrier { Id = Id, Identity = new Framework.Guama.Identity.Persistence.Entities.OrganizationIdentity() };
 
             Mergue(entity);
 
