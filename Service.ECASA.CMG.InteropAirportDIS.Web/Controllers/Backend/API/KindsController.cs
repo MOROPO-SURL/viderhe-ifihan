@@ -8,6 +8,9 @@ using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations;
 
 namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Controllers.Backend.API
 {
+    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = AspNetCore.Authentication.ApiKey.ApiKeyDefaults.AuthenticationScheme)]
+    [Route("api/backend/[controller]")]
+    [ApiController]
     public class KindsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<Kind, OperationKind, KindInputModel, KindDisplayModel>
     {
         public KindsController(Framework.Guama.Core.Persistence.Repositories.IEntityRepository<Kind, OperationKind> repository, Microsoft.Extensions.Localization.IStringLocalizer<KindsController> localizer, ILogger<KindsController> logger) : base(repository, localizer, logger)

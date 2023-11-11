@@ -192,12 +192,27 @@
                         Grid.Column="1" Grid.Row="2" 
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="País" Style="{StaticResource FormLabel}" />
+                            <Label 
+                                x:Name="CountryLabel"
+                                Text="País" 
+                                Style="{StaticResource FormLabel}" />
                             <Picker 
                                 x:Name="CountryPicker"
                                 ItemsSource="{Binding Path=SelectableCountries}"
                                 SelectedItem="{Binding Path=Country}"
-                                ItemDisplayBinding="{Binding Path=Name}"/>
+                                ItemDisplayBinding="{Binding Path=Name}">
+                                <Picker.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultPickerValidationPresenter.Instance}"
+                                        TargetProperty="{Static Picker.SelectedItemProperty}"
+                                        Label="{Reference CountryLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:NotNullFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                    </Picker.Behaviors>
+                                </Picker>
                         </StackLayout>
                     </Frame>
                     <Frame 

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Converters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Pages.StatusesManagementPage"
+    x:TypeArguments="pagemodels:StatusesManagementPageModel"
+    Title="Gestionar Estados">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <supportpresentationdashboardconverters:CollectionViewWidthToSelfVerticalGridItemsLayoutConverter x:Key="CollectionViewWidthToSelfVerticalGridItemsLayoutConverter" ChildMinWidth="480" ChildAbsoluteHorizontalMargin="10" />
+
+            <sscxftoolkitpresentationconverters:IfNullOrEmptyToStringConverter x:Key="IfNullOrEmptyToStringConverter" StringReplacement="---" />
+            <sscxftoolkitpresentationconverters:NullToBooleanConverter x:Key="NullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="ButtonsBindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="200" ChildAbsoluteHorizontalMargin="20" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Agregar"
+            Clicked="AddToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf415;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem
+            Text="Actualizar"
+            Clicked="ReloadToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xF450;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <CollectionView
+                x:Name="ItemsCollectionView"
+                ItemsLayout="{Binding Source={RelativeSource Mode=Self}, Path=Width, Converter={StaticResource CollectionViewWidthToSelfVerticalGridItemsLayoutConverter}}"
+                ItemsSource="{Binding Path=Items}"
+                SelectionMode="Single">
+                <CollectionView.Margin>
+                    <OnPlatform x:TypeArguments="Thickness" Default="5,5,5,0">
+                        <On Platform="Android" Value="10,10,10,0" />
+                    </OnPlatform>
+                </CollectionView.Margin>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="5" Padding="10,6,10,0"
+                            BackgroundColor="White"
+                            HasShadow="False"
+                            CornerRadius="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ItemTapGestureRecognizer_Tapped" />
+                            </Frame.GestureRecognizers>
+                            <Label Text="{Binding Path=Label}" FontSize="21" LineBreakMode="TailTruncation" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label 
+                IsVisible="{Binding Path=Items,Converter={StaticResource NullToBooleanConverter}}"
+                Margin="10"
+                VerticalOptions="Start"
+                HorizontalTextAlignment="Center"
+                Text="Aún no se han agregado elementos" />
+            <ContentView 
+                IsVisible="{Binding Path=Target, Converter={StaticResource NotNullToBooleanConverter}}"
+                BackgroundColor="#A9000000">
+                <Frame
+                    VerticalOptions="Center" HorizontalOptions="Center"
+                    Padding="0" Margin="20"
+                    WidthRequest="480"
+                    BackgroundColor="White">
+                    <Grid>
+                        <StackLayout 
+                            Margin="0,20,0,0" Padding="10"
+                            Orientation="Vertical">
+                            <StackLayout Margin="10,0" Spacing="0">
+                                <Label
+                                    Text="Nombre"
+                                    TextColor="DimGray"
+                                    FontSize="14"
+                                    FontAttributes="Bold" />
+                                <Label
+                                    Text="{Binding Path=Target.Label}"
+                                    FontSize="21" />
+                                <Label
+                                    Margin="0,8,0,0"
+                                    Text="Discriminador"
+                                    TextColor="DimGray"
+                                    FontAttributes="Bold" />
+                                <Label
+                                    Text="{Binding Path=Target.Discriminator}"
+                                    FontSize="21" />
+                            </StackLayout>
+                            <FlexLayout
+                                Wrap="Wrap"
+                                AlignItems="Start" AlignContent="Start">
+                                <Button 
+                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource ButtonsBindingLayoutWidthToResponsiveChildWidthConverter}}"
+                                    Margin="10"
+                                    Text="Modificar"
+                                    Clicked="TargetEditButton_Cliked" />
+                                <Button 
+                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource ButtonsBindingLayoutWidthToResponsiveChildWidthConverter}}"
+                                    Margin="10"
+                                    BackgroundColor="IndianRed"
+                                    Text="Eliminar"
+                                    TextColor="White"
+                                    Clicked="TargetRemoveButton_Clicked" />
+                            </FlexLayout>
+                        </StackLayout>
+                        <Button
+                            HorizontalOptions="End" VerticalOptions="Start"
+                            Padding="10"
+                            BackgroundColor="Transparent"
+                            Text="&#xf5ad;"
+                            TextColor="Black"
+                            FontSize="Medium"
+                            FontFamily="Material Design Icons"
+                            BorderWidth="0"
+                            WidthRequest="48" HeightRequest="48"
+                            Clicked="CloseDetailPopupButton_Clicked" />
+                    </Grid>
+                </Frame>
+            </ContentView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

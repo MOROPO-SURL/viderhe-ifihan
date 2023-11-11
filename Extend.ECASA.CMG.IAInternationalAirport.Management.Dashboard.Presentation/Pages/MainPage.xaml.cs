@@ -33,5 +33,20 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
         {
             this.NavigationPushPageAsync(new TerminalsManagementPage());
         }
+
+        private void StatusesTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new StatusesManagementPage());
+        }
+
+        private void CategoriesTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new CategoriesManagementPage());
+        }
+
+        private void KindsTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
+        {
+            this.NavigationPushPageAsync(new KindsManagementPage());
+        }
     }
 }

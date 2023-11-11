@@ -110,7 +110,6 @@
                                 Text="País ISO 3166" 
                                 Style="{StaticResource FormLabel}" />
                             <Picker
-                                x:Name="CountryPicker"
                                 ItemsSource="{Binding Path=SelectableCountries}"
                                 SelectedItem="{Binding Path=Country}"
                                 ItemDisplayBinding="{Binding Converter={StaticResource Iso3166CountryToStringConverter}}">

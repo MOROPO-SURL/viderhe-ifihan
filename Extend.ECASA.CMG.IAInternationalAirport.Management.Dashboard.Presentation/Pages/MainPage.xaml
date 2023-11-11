@@ -117,7 +117,92 @@
                                     Padding="12,10,12,12"
                                     FontAttributes="Bold"
                                     FontSize="18"
-                                    Text="Complementarios"
+                                    Text="Operaciones"
+                                    TextColor="White" />
+                                <StackLayout
+                                    Grid.Column="0" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="StatusesTapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Label
+                                        Text="&#xF021A;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Estados"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="1" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="CategoriesTapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Label
+                                        Text="&#xF6F8;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Categorías"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                                <StackLayout
+                                    Grid.Column="2" Grid.Row="1"
+                                    HorizontalOptions="Center" VerticalOptions="Start"
+                                    Margin="10" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="KindsTapGestureRecognizer_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Label
+                                        Text="&#xF5D4;"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="48" />
+                                    <Label 
+                                        Text="Tipos"
+                                        TextColor="{StaticResource PrimaryColor}"                                        
+                                        HorizontalTextAlignment="Center"
+                                        FontSize="18" />
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" Spacing="20">
+                        <Frame
+                            BackgroundColor="White"
+                            Padding="0"
+                            HasShadow="False">
+                            <Grid 
+                                ColumnSpacing="0" RowSpacing="10"
+                                Padding="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.ColumnSpan="3" Grid.Row="0"
+                                    BackgroundColor="DimGray"
+                                    Padding="12,10,12,12"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="Aeropuerto"
                                     TextColor="White" />
                                 <StackLayout
                                     Grid.Column="0" Grid.Row="1"
@@ -157,8 +242,34 @@
                                         HorizontalTextAlignment="Center"
                                         FontSize="18" />
                                 </StackLayout>
+                            </Grid>
+                        </Frame>
+                        <Frame
+                            BackgroundColor="White"
+                            Padding="0"
+                            HasShadow="False">
+                            <Grid 
+                                ColumnSpacing="0" RowSpacing="10"
+                                Padding="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label
+                                    Grid.ColumnSpan="3" Grid.Row="0"
+                                    BackgroundColor="DimGray"
+                                    Padding="12,10,12,12"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="Complementarios"
+                                    TextColor="White" />
                                 <StackLayout
-                                    Grid.Column="2" Grid.Row="1"
+                                    Grid.Column="0" Grid.Row="1"
                                     HorizontalOptions="Center" VerticalOptions="Start"
                                     Margin="10" Padding="10">
                                     <StackLayout.GestureRecognizers>
@@ -178,9 +289,6 @@
                                 </StackLayout>
                             </Grid>
                         </Frame>
-                    </StackLayout>
-                    <StackLayout Grid.Column="1" Spacing="20">
-                        
                     </StackLayout>
                 </Grid>
             </ScrollView>
