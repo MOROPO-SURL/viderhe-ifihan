@@ -69,7 +69,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
                 Discriminator = BindingContextPageModel.Discriminator
             };
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Clients.TerminalsAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.TerminalsAPIConnectClient(Managers.SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 

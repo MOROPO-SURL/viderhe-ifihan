@@ -12,4 +12,19 @@
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <Folder Include="Assets\Font\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
+	  <ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Templating\Extend.ECASA.CMG.IAInternationalAirport.Templating.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Views\ClassicDeparturesPlacardView.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	</ItemGroup>
+
 </Project>

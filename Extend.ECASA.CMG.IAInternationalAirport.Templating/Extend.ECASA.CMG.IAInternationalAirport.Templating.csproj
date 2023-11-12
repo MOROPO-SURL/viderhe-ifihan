@@ -12,4 +12,17 @@
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <None Remove="Assets\5675B0B4-325F-4F15-BB05-67E68573B053-landscape.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\5675B0B4-325F-4F15-BB05-67E68573B053-landscape.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+	  <ProjectReference Include="..\Service.ECASA.CMG.InteropAirportDIS.API.Common\Service.ECASA.CMG.InteropAirportDIS.API.Common.csproj" />
+	</ItemGroup>
+
 </Project>

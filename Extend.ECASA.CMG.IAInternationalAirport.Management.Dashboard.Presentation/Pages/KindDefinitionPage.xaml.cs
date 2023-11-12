@@ -42,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
             BindingContextPageModel.IsBusy = true;
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Clients.KindsAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.KindsAPIConnectClient(Managers.SessionManager.Instance);
 
             apiConnectClient.GetAsync().ContinueWith(task =>
             {
@@ -105,7 +105,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
                 Discriminator = BindingContextPageModel.Discriminator
             };
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Clients.KindsAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.KindsAPIConnectClient(Managers.SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 

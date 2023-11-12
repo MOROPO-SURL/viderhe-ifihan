@@ -80,7 +80,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
                 model.ExpirateAt = BindingContextPageModel.ExpirateAtDate.Date.AddMilliseconds(BindingContextPageModel.ExpirateAtTime.TotalMilliseconds);
             }
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Clients.ApiKeysAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.ApiKeysAPIConnectClient(Managers.SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 

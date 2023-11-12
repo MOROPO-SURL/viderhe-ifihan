@@ -22,7 +22,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Extend.Common.Management.Dashboard.Presentation\Extend.Common.Management.Dashboard.Presentation.csproj" />
 		<ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Management\Extend.ECASA.CMG.IAInternationalAirport.Management.csproj" />
-		<ProjectReference Include="..\Service.ECASA.CMG.InteropAirportDIS.API.Connect\Service.ECASA.CMG.InteropAirportDIS.API.Connect.csproj" />
+		<ProjectReference Include="..\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Backend\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Backend.csproj" />
 		<ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
 	</ItemGroup>
 

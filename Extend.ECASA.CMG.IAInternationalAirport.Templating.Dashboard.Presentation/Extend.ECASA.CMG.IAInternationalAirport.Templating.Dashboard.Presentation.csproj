@@ -12,4 +12,22 @@
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj" />
+	  <ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Pages\ClassicDeparturesPlacardConfigurationPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Views\ClassicDeparturesPlacardThumbnailView.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	</ItemGroup>
+
 </Project>

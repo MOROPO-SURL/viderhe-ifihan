@@ -1,4 +1,4 @@
-﻿namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Clients
+﻿namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients
 {
     public class RolesAPIConnectClient : Framework.Guama.Core.Presentation.API.Connect.Clients.AbstractEntityManagementApiConnectClient<Framework.Guama.Core.Security.Common.Persistence.Entities.Role, System.Guid, Common.Models.RoleInputModel, Common.Models.RoleDisplayModel>
     {

@@ -32,7 +32,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
             BindingContextPageModel.IsBusy = true;
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Clients.CountriesAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CountriesAPIConnectClient(Managers.SessionManager.Instance);
 
             apiConnectClient.GetAsync().ContinueWith(task =>
             {
@@ -96,7 +96,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
                 IsoCode = BindingContextPageModel.Country.TwoLetterCode
             };
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Clients.CountriesAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CountriesAPIConnectClient(Managers.SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 

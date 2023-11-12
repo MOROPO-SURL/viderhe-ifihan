@@ -1,4 +1,4 @@
-﻿namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Clients
+﻿namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients
 {
     public class StatusesAPIConnectClient : Framework.Guama.Core.Presentation.API.Connect.Clients.AbstractEntityManagementApiConnectClient<Persistence.Entities.Status, System.Guid, Common.Models.StatusInputModel, Common.Models.StatusDisplayModel>
     {

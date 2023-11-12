@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.ClassicDeparturesPlacardView">
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="DeparturesLayout" BackgroundColor="IndianRed">
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

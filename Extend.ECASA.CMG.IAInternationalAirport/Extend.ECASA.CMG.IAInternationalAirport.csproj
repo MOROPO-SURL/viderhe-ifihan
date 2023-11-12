@@ -15,6 +15,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Extend.Common\Extend.Common.csproj" />
 		<ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Management\Extend.ECASA.CMG.IAInternationalAirport.Management.csproj" />
+		<ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Templating\Extend.ECASA.CMG.IAInternationalAirport.Templating.csproj" />
 	</ItemGroup>
 
 </Project>

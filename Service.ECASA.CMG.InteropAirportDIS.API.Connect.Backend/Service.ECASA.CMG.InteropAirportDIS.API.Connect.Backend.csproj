@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<AssemblyName>MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect</AssemblyName>
-		<RootNamespace>MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect</RootNamespace>
+		<AssemblyName>MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend</RootNamespace>
 		<Product>VIDERHE FIDS Interoperation Service</Product>
 		<Authors>MOROPO VIDERHE DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
