@@ -117,6 +117,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
                 Discriminator = BindingContextPageModel.Discriminator.Value
             };
 
+            if (BindingContextPageModel.IsEmphasisEnabled)
+            {
+                model.EmphasisBackgroundColor = BindingContextPageModel.EmphasisBackgroundColor.ToHex();
+                model.EmphasisTextColor = BindingContextPageModel.EmphasisTextColor.ToHex();
+
+                if (BindingContextPageModel.IsBlinkAnimationEnabled)
+                {
+                    model.AlternateBackgroundColor = BindingContextPageModel.AlternateBackgroundColor.ToHex();
+                    model.AlternateTextColor = BindingContextPageModel.AlternateTextColor.ToHex();
+                }
+            }
+
             var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.StatusesAPIConnectClient(Managers.SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);

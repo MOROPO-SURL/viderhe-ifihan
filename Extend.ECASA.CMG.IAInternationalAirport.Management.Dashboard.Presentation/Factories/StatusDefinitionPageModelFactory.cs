@@ -10,7 +10,13 @@
             {
                 Id = target.Id,
                 Label = target.Label,
-                Discriminator = target.Discriminator
+                Discriminator = target.Discriminator,
+                IsEmphasisEnabled = target.EmphasisBackgroundColor != null,
+                EmphasisTextColor = target.EmphasisTextColor == null ? Xamarin.Forms.Color.Accent : Xamarin.Forms.Color.FromHex(target.EmphasisTextColor),
+                EmphasisBackgroundColor = target.EmphasisBackgroundColor == null ? Xamarin.Forms.Color.Accent : Xamarin.Forms.Color.FromHex(target.EmphasisBackgroundColor),
+                IsBlinkAnimationEnabled = target.AlternateBackgroundColor != null,
+                AlternateTextColor = target.AlternateTextColor == null ? Xamarin.Forms.Color.Accent : Xamarin.Forms.Color.FromHex(target.AlternateTextColor),
+                AlternateBackgroundColor = target.AlternateBackgroundColor == null ? Xamarin.Forms.Color.Accent : Xamarin.Forms.Color.FromHex(target.AlternateBackgroundColor)
             };
         }
     }

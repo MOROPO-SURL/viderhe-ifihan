@@ -39,10 +39,12 @@
                         {
                             Id = i,
                             Flight = i * 111,
-                            StarDate = System.DateTime.Now,
+                            StartDate = System.DateTime.Now,
                             Status = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.StatusDisplayModel
                             {
-                                Label = "Demorado"
+                                Label = "Demorado",
+                                EmphasisBackgroundColor = Xamarin.Forms.Color.AliceBlue.ToHex(),
+                                EmphasisTextColor = Xamarin.Forms.Color.Black.ToHex(),
                             },
                             Context = "Merida MEXICO",
                             Category = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.CategoryDisplayModel

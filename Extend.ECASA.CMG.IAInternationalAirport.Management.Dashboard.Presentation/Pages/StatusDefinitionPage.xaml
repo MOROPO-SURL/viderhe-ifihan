@@ -8,6 +8,7 @@
     xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Pages.StatusDefinitionPage"
     x:TypeArguments="pagemodels:StatusDefinitionPageModel"
     x:Name="FormPage"
@@ -57,6 +58,8 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
@@ -139,6 +142,109 @@
                                     </supportpresentationdashboardbehaviors:ViewValidationBehavior>
                                 </Picker.Behaviors>
                             </Picker>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.ColumnSpan="2" Grid.Row="2"
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF"
+                        HorizontalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Énfasis" Style="{StaticResource FormLabel}" />
+                            <Grid ColumnSpacing="10" RowSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Frame 
+                                    Grid.Column="0" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Habilitado?" Style="{StaticResource FormLabel}" />
+                                        <Switch IsToggled="{Binding Path=IsEmphasisEnabled}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    IsVisible="{Binding Path=IsEmphasisEnabled}"
+                                    Grid.Column="1" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Fondo" Style="{StaticResource FormLabel}" />
+                                        <simplecolorpicker:ColorPickerEntry 
+                                            EditAlfa="False"
+                                            ColorPreviewButtonBorder="DimGray"
+                                            Color="{Binding Path=EmphasisBackgroundColor}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    IsVisible="{Binding Path=IsEmphasisEnabled}"
+                                    Grid.Column="2" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Texto" Style="{StaticResource FormLabel}" />
+                                        <simplecolorpicker:ColorPickerEntry 
+                                            EditAlfa="False"
+                                            ColorPreviewButtonBorder="DimGray"
+                                            Color="{Binding Path=EmphasisTextColor}" />
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        IsVisible="{Binding Path=IsEmphasisEnabled}"
+                        Grid.ColumnSpan="2" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF"
+                        HorizontalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Animación" Style="{StaticResource FormLabel}" />
+                            <Grid ColumnSpacing="10" RowSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Frame 
+                                    Grid.Column="0" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Habilitada?" Style="{StaticResource FormLabel}" />
+                                        <Switch IsToggled="{Binding Path=IsBlinkAnimationEnabled}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    IsVisible="{Binding Path=IsBlinkAnimationEnabled}"
+                                    Grid.Column="1" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Fondo" Style="{StaticResource FormLabel}" />
+                                        <simplecolorpicker:ColorPickerEntry 
+                                            EditAlfa="False"
+                                            ColorPreviewButtonBorder="DimGray"
+                                            Color="{Binding Path=AlternateBackgroundColor}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    IsVisible="{Binding Path=IsBlinkAnimationEnabled}"
+                                    Grid.Column="2" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Texto" Style="{StaticResource FormLabel}" />
+                                        <simplecolorpicker:ColorPickerEntry 
+                                            EditAlfa="False"
+                                            ColorPreviewButtonBorder="DimGray"
+                                            Color="{Binding Path=AlternateTextColor}" />
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
                         </StackLayout>
                     </Frame>
                 </Grid>

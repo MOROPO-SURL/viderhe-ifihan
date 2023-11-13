@@ -1101,9 +1101,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("kindid");
 
-                    b.Property<DateTime>("StarDate")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("stardate");
+                        .HasColumnName("startdate");
 
                     b.Property<Guid?>("StatusId")
                         .IsRequired()
@@ -1143,9 +1143,25 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
+                    b.Property<string>("AlternateBackgroundColor")
+                        .HasColumnType("text")
+                        .HasColumnName("alternatebackgroundcolor");
+
+                    b.Property<string>("AlternateTextColor")
+                        .HasColumnType("text")
+                        .HasColumnName("alternatetextcolor");
+
                     b.Property<int>("Discriminator")
                         .HasColumnType("integer")
                         .HasColumnName("discriminator");
+
+                    b.Property<string>("EmphasisBackgroundColor")
+                        .HasColumnType("text")
+                        .HasColumnName("emphasisbackgroundcolor");
+
+                    b.Property<string>("EmphasisTextColor")
+                        .HasColumnType("text")
+                        .HasColumnName("emphasistextcolor");
 
                     b.Property<string>("Label")
                         .IsRequired()

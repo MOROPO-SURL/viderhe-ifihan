@@ -10,7 +10,7 @@
 
         public string Context { get; set; }
 
-        public System.DateTime StarDate { get; set; }
+        public System.DateTime StartDate { get; set; }
 
         public System.DateTime? EndDate { get; set; }
 
@@ -27,7 +27,7 @@
             Id = entity.Id;
             Flight = entity.Flight;
             Context = entity.Context;
-            StarDate = entity.StarDate;
+            StartDate = entity.StartDate;
             EndDate = entity.EndDate;
 
             Carrier = new CarrierDisplayModel();

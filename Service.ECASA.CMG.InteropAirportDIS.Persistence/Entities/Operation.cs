@@ -15,7 +15,7 @@
         [System.ComponentModel.DataAnnotations.Required]
         public string Context { get; set; }
 
-        public System.DateTime StarDate { get; set; }
+        public System.DateTime StartDate { get; set; }
 
         public System.DateTime? EndDate { get; set; }
 

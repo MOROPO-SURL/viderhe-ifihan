@@ -14,6 +14,7 @@
         <ResourceDictionary>
             <supportpresentationdashboardconverters:CollectionViewWidthToSelfVerticalGridItemsLayoutConverter x:Key="CollectionViewWidthToSelfVerticalGridItemsLayoutConverter" ChildMinWidth="480" ChildAbsoluteHorizontalMargin="10" />
 
+            <sscxftoolkitpresentationconverters:NullToStringConverter x:Key="NullToEnabledStringConverter" FalseValue="Habilitado" TrueValue="No Habilitado" />
             <sscxftoolkitpresentationconverters:IfNullOrEmptyToStringConverter x:Key="IfNullOrEmptyToStringConverter" StringReplacement="---" />
             <sscxftoolkitpresentationconverters:NullToBooleanConverter x:Key="NullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
@@ -94,24 +95,123 @@
                         <StackLayout 
                             Margin="0,20,0,0" Padding="10"
                             Orientation="Vertical">
-                            <StackLayout Margin="10,0" Spacing="0">
+                            <Grid Margin="10,0" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
                                 <Label
+                                    Grid.ColumnSpan="3" Grid.Row="0"
                                     Text="Nombre"
                                     TextColor="DimGray"
                                     FontSize="14"
                                     FontAttributes="Bold" />
                                 <Label
+                                    Grid.ColumnSpan="3" Grid.Row="1"
                                     Text="{Binding Path=Target.Label}"
                                     FontSize="21" />
                                 <Label
+                                    Grid.ColumnSpan="3" Grid.Row="2"
                                     Margin="0,8,0,0"
                                     Text="Discriminador"
                                     TextColor="DimGray"
                                     FontAttributes="Bold" />
                                 <Label
+                                    Grid.ColumnSpan="3" Grid.Row="3"
                                     Text="{Binding Path=Target.Discriminator}"
                                     FontSize="21" />
-                            </StackLayout>
+                                <Label
+                                    Grid.Column="0" Grid.Row="4"
+                                    Margin="0,8,0,0"
+                                    Text="Énfasis"
+                                    TextColor="DimGray"
+                                    FontAttributes="Bold" />
+                                <Label
+                                    Grid.Column="0" Grid.Row="5"
+                                    Text="{Binding Path=Target.EmphasisBackgroundColor, Converter={StaticResource NullToEnabledStringConverter}}"
+                                    FontSize="21" />
+                                <Label
+                                    IsVisible="{Binding Path=Target.EmphasisBackgroundColor, Converter={StaticResource NotNullToBooleanConverter}}"
+                                    Grid.Column="1" Grid.Row="4"
+                                    Margin="0,8,0,0"
+                                    Text="Fondo"
+                                    TextColor="DimGray"
+                                    FontAttributes="Bold" />
+                                <ContentView
+                                    IsVisible="{Binding Path=Target.EmphasisBackgroundColor, Converter={StaticResource NotNullToBooleanConverter}}"
+                                    Grid.Column="1" Grid.Row="5"
+                                    BackgroundColor="DimGray"
+                                    Padding="1"
+                                    WidthRequest="21" HeightRequest="21">
+                                    <BoxView Color="{Binding Path=Target.EmphasisBackgroundColor}" />
+                                </ContentView>
+                                <Label
+                                    IsVisible="{Binding Path=Target.EmphasisTextColor, Converter={StaticResource NotNullToBooleanConverter}}"
+                                    Grid.Column="2" Grid.Row="4"
+                                    Margin="0,8,0,0"
+                                    Text="Texto"
+                                    TextColor="DimGray"
+                                    FontAttributes="Bold" />
+                                <ContentView
+                                    IsVisible="{Binding Path=Target.EmphasisTextColor, Converter={StaticResource NotNullToBooleanConverter}}"
+                                    Grid.Column="2" Grid.Row="5"
+                                    BackgroundColor="DimGray"
+                                    Padding="1"
+                                    WidthRequest="21" HeightRequest="21">
+                                    <BoxView Color="{Binding Path=Target.EmphasisTextColor}" />
+                                </ContentView>
+                                <Label
+                                    Grid.Column="0" Grid.Row="6"
+                                    Margin="0,8,0,0"
+                                    Text="Animación"
+                                    TextColor="DimGray"
+                                    FontAttributes="Bold" />
+                                <Label
+                                    Grid.Column="0" Grid.Row="7"
+                                    Text="{Binding Path=Target.AlternateBackgroundColor, Converter={StaticResource NullToEnabledStringConverter}}"
+                                    FontSize="21" />
+                                <Label
+                                    IsVisible="{Binding Path=Target.AlternateBackgroundColor, Converter={StaticResource NotNullToBooleanConverter}}"
+                                    Grid.Column="1" Grid.Row="6"
+                                    Margin="0,8,0,0"
+                                    Text="Fondo"
+                                    TextColor="DimGray"
+                                    FontAttributes="Bold" />
+                                <ContentView
+                                    IsVisible="{Binding Path=Target.AlternateBackgroundColor, Converter={StaticResource NotNullToBooleanConverter}}"
+                                    Grid.Column="1" Grid.Row="7"
+                                    BackgroundColor="DimGray"
+                                    Padding="1"
+                                    WidthRequest="21" HeightRequest="21">
+                                    <BoxView Color="{Binding Path=Target.AlternateBackgroundColor}" />
+                                </ContentView>
+                                <Label
+                                    IsVisible="{Binding Path=Target.AlternateTextColor, Converter={StaticResource NotNullToBooleanConverter}}"
+                                    Grid.Column="2" Grid.Row="6"
+                                    Margin="0,8,0,0"
+                                    Text="Texto"
+                                    TextColor="DimGray"
+                                    FontAttributes="Bold" />
+                                <ContentView
+                                    IsVisible="{Binding Path=Target.AlternateTextColor, Converter={StaticResource NotNullToBooleanConverter}}"
+                                    Grid.Column="2" Grid.Row="7"
+                                    BackgroundColor="DimGray"
+                                    Padding="1"
+                                    WidthRequest="21" HeightRequest="21">
+                                    <BoxView Color="{Binding Path=Target.AlternateTextColor}" />
+                                </ContentView>
+                            </Grid>
                             <FlexLayout
                                 Wrap="Wrap"
                                 AlignItems="Start" AlignContent="Start">

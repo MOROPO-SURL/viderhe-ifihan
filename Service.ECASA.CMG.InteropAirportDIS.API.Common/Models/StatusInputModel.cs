@@ -9,6 +9,14 @@
         [System.ComponentModel.DataAnnotations.Required]
         public string Label { get; set; }
 
+        public string EmphasisTextColor { get; set; }
+
+        public string EmphasisBackgroundColor { get; set; }
+
+        public string AlternateTextColor { get; set; }
+
+        public string AlternateBackgroundColor { get; set; }
+
         public Persistence.Entities.Status Export()
         {
             var entity = new Persistence.Entities.Status();
@@ -27,6 +35,10 @@
         {
             entity.Discriminator = Discriminator;
             entity.Label = Label;
+            entity.EmphasisTextColor = EmphasisTextColor;
+            entity.EmphasisBackgroundColor = EmphasisBackgroundColor;
+            entity.AlternateTextColor = AlternateTextColor;
+            entity.AlternateBackgroundColor = AlternateBackgroundColor;
         }
     }
 }

@@ -8,11 +8,23 @@
 
         public string Label { get; set; }
 
+        public string EmphasisTextColor { get; set; }
+
+        public string EmphasisBackgroundColor { get; set; }
+
+        public string AlternateTextColor { get; set; }
+
+        public string AlternateBackgroundColor { get; set; }
+
         public void Import(Persistence.Entities.Status entity)
         {
             Id = entity.Id;
             Label = entity.Label;
             Discriminator = entity.Discriminator;
+            EmphasisTextColor = entity.EmphasisTextColor;
+            EmphasisBackgroundColor = entity.EmphasisBackgroundColor;
+            AlternateTextColor = entity.AlternateTextColor;
+            AlternateBackgroundColor = entity.AlternateBackgroundColor;
         }
     }
 }

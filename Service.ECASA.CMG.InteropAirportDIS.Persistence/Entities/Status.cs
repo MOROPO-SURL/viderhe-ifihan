@@ -14,5 +14,13 @@
 
         [System.ComponentModel.DataAnnotations.Required]
         public string Label { get; set; }
+
+        public string EmphasisTextColor { get; set; }
+
+        public string EmphasisBackgroundColor { get; set; }
+
+        public string AlternateTextColor { get; set; }
+
+        public string AlternateBackgroundColor { get; set; }
     }
 }
