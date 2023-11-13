@@ -2,12 +2,167 @@
 <extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Converters"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.ClassicDeparturesPlacardView">
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:communitytoolkitconverters="clr-namespace:Xamarin.CommunityToolkit.Converters;assembly=Xamarin.CommunityToolkit"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.ClassicDeparturesPlacardView"
+    x:Name="Self">
+    <ContentView.Resources>
+        <converters:ImageDisplayModelToImageSourceConverter x:Key="ImageDisplayModelToImageSourceConverter" InteroperablePlacard="{Reference Self}" />
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid x:Name="Wrapper">
-            <Grid x:Name="DeparturesLayout" BackgroundColor="IndianRed">
-            </Grid>
+            <StackLayout 
+                x:Name="DeparturesLayout" 
+                BackgroundColor="{Binding Path=BackgroundColor, Mode=OneTime}"
+                Spacing="0">
+                <Grid 
+                    BackgroundColor="DarkBlue"
+                    Padding="16"
+                    ColumnSpacing="16" RowSpacing="0">
+                    <Grid.Resources>
+                        <ResourceDictionary>
+                            <Style TargetType="Label">
+                                <Setter Property="TextColor" Value="White" />
+                            </Style>
+                        </ResourceDictionary>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0" Grid.RowSpan="2"
+                        VerticalOptions="Center"
+                        Text="&#xF5D5;"
+                        FontFamily="{StaticResource IconFontFamily}"
+                        FontSize="140" />
+                    <Label
+                        Grid.Column="1" Grid.Row="0"
+                        Text="SALIDAS / DEPARTURES"
+                        FontSize="60"
+                        FontAttributes="Bold" />
+                    <Label
+                        Grid.Column="1" Grid.Row="1"
+                        Text="Aeropuerto Internacional Ignacio Agramonte"
+                        TextColor="LightCyan"
+                        FontSize="48" />
+                </Grid>
+                <BoxView HeightRequest="4" Color="LightCyan" Margin="0,0,0,8" />
+                <Grid
+                    BackgroundColor="{Binding Path=TableHeaderBackgroundColor, Mode=OneTime}"
+                    HeightRequest="72"
+                    ColumnSpacing="0">
+                    <Grid.Resources>
+                        <ResourceDictionary>
+                            <Style TargetType="Label">
+                                <Setter Property="TextColor" Value="{Binding Path=TableHeaderTextColor, Mode=OneTime}" />
+                                <Setter Property="FontAttributes" Value="Bold" />
+                                <Setter Property="FontSize" Value="36" />
+                                <Setter Property="Margin" Value="12" />
+                                <Setter Property="VerticalTextAlignment" Value="Center" />
+                            </Style>
+                        </ResourceDictionary>
+                    </Grid.Resources>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Text="HORA" />
+                    <Label
+                        Grid.Column="1"
+                        Text="DESTINO" />
+                    <Label
+                        Grid.Column="2" Grid.ColumnSpan="2"
+                        Margin="0,12,12,12"
+                        Text="VUELO" />
+                    <Label
+                        Grid.Column="4"
+                        Text="TERMINAL" />
+                    <Label
+                        Grid.Column="5"
+                        Text="ESTADO" />
+                </Grid>
+                <CollectionView 
+                    VerticalOptions="FillAndExpand"
+                    Margin="0,2,0,0"
+                    ItemsSource="{Binding Path=Items}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="2" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                BackgroundColor="{Binding Mode=OneTime, Source={Reference DeparturesLayout}, Path=BindingContext.PrimaryRowBackgroundColor}"
+                                HeightRequest="78"
+                                ColumnSpacing="2">
+                                <Grid.Resources>
+                                    <ResourceDictionary>
+                                        <Style TargetType="Label">
+                                            <Setter Property="TextColor" Value="{Binding Source={Reference DeparturesLayout}, Path=BindingContext.PrimaryRowTextColor, Mode=OneTime}" />
+                                            <Setter Property="FontSize" Value="36" />
+                                            <Setter Property="Margin" Value="12" />
+                                        </Style>
+                                    </ResourceDictionary>
+                                </Grid.Resources>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="5*" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Text="{Binding Path=StarDate, StringFormat='{0:HH:mm}'}" />
+                                <Label
+                                    Grid.Column="1"
+                                    Text="{Binding Path=Context}"
+                                    LineBreakMode="TailTruncation" />
+                                <ffimageloadingforms:CachedImage
+                                    Grid.Column="2"
+                                    Aspect="AspectFill"
+                                    Source="{Binding Path=Carrier.Image, Converter={StaticResource ImageDisplayModelToImageSourceConverter}}"
+                                    FadeAnimationEnabled="False"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00" />
+                                <Label
+                                    Grid.Column="3">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="{Binding Path=Carrier.Id}" />
+                                                <Span Text=" " />
+                                                <Span Text="{Binding Path=Flight}" />
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label
+                                    Grid.Column="4"
+                                    Text="{Binding Path=Terminal.Name}"
+                                    LineBreakMode="TailTruncation" />
+                                <Label
+                                    Grid.Column="5"
+                                    Text="{Binding Path=Status.Label}" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
         </Grid>
     </ContentView.Content>
 </extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

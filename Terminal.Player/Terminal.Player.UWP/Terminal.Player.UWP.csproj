@@ -230,6 +230,10 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.7" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Extend.Common.Templating\Extend.Common.Templating.csproj">
+      <Project>{571b8648-903d-4322-addc-60ddbe97974f}</Project>
+      <Name>Extend.Common.Templating</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj">
       <Project>{7b10ab64-aec2-4109-bbb6-cbe522c1273c}</Project>
       <Name>Extend.Common.Transitioning.Presentation</Name>
@@ -246,6 +250,18 @@
       <Project>{E620A859-7769-472D-981A-B93DBF496926}</Project>
       <Name>Extend.Common.Templating.Presentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.csproj">
+      <Project>{1bee18b8-1336-4b26-b80b-f88347e3bdc8}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Templating\Extend.ECASA.CMG.IAInternationalAirport.Templating.csproj">
+      <Project>{81080891-52be-4012-b0de-f9430ba61e6c}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport\Extend.ECASA.CMG.IAInternationalAirport.csproj">
+      <Project>{5613c1db-00f2-4b25-94a0-818bcdc00a77}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj">
       <Project>{b88a5d61-11d9-4827-875e-7bd9bc5f6720}</Project>
       <Name>Extend.Essential.Transitioning.Presentation</Name>
@@ -261,6 +277,14 @@
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj">
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service.ECASA.CMG.InteropAirportDIS.API.Common\Service.ECASA.CMG.InteropAirportDIS.API.Common.csproj">
+      <Project>{0de1692c-1431-4354-a0b7-8ef519193903}</Project>
+      <Name>Service.ECASA.CMG.InteropAirportDIS.API.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service.ECASA.CMG.InteropAirportDIS.Persistence\Service.ECASA.CMG.InteropAirportDIS.Persistence.csproj">
+      <Project>{eab69e77-7145-4718-aa59-ebde2f456c1c}</Project>
+      <Name>Service.ECASA.CMG.InteropAirportDIS.Persistence</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj">
       <Project>{44A1EA24-59C5-4E9D-AF01-C65297998114}</Project>
