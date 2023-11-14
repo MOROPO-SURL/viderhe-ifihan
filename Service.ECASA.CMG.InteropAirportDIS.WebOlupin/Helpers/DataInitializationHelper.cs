@@ -147,6 +147,25 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Helpers
             }
             #endregion
 
+            #region Operation
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.OperationViewerPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.OperationViewerPermission.ToPermissionEntity(API.Common.Constants.Authorization.OperationManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.OperationCreatorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.OperationCreatorPermission.ToPermissionEntity(API.Common.Constants.Authorization.OperationManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.OperationEditorPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.OperationEditorPermission.ToPermissionEntity(API.Common.Constants.Authorization.OperationManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(API.Common.Constants.Authorization.OperationRemoverPermission)))
+            {
+                permissionDbSet.Add(API.Common.Constants.Authorization.OperationRemoverPermission.ToPermissionEntity(API.Common.Constants.Authorization.OperationManagementPermissionGroup));
+            }
+            #endregion
+
             if (dbContext is Framework.Guama.Core.Persistence.ORM.EF.Context.Contract.ITraceableDbContext)
             {
                 (dbContext as Framework.Guama.Core.Persistence.ORM.EF.Context.Contract.ITraceableDbContext).SaveChanges("system");

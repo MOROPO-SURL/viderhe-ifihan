@@ -12,6 +12,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
         {
             return base.GetQueryableDbSet()
                 .Include(entity => entity.Status)
+                .Include(entity => entity.Carrier).ThenInclude(entity => entity.Country)
                 .Include(entity => entity.Carrier).ThenInclude(entity => entity.Identity).ThenInclude(entity => entity.Image)
                 .Include(entity => entity.Kind)
                 .Include(entity => entity.Category)

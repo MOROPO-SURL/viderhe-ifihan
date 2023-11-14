@@ -8,10 +8,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker
         public static async System.Threading.Tasks.Task Main(string[] args)
         {
             var host = Host.CreateDefaultBuilder(args)
-                .ConfigureServices(services =>
+                .ConfigureServices((context, services) =>
                 {
-                    services.AddHostedService<FIDSSyncWorker>();
+                    services.AddHostedService<Workers.FIDSSyncWorker>();
                 })
+                .ConfigureHostOptions(options => options.BackgroundServiceExceptionBehavior = BackgroundServiceExceptionBehavior.Ignore)
                 .Build();
 
             await host.RunAsync();

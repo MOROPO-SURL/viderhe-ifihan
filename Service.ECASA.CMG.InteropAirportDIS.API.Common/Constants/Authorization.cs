@@ -75,5 +75,14 @@
         public const string CarrierEditorPermission = "carrier-editor-permission";
         public const string CarrierRemoverPermission = "carrier-remover-permission";
         #endregion
+
+        #region Operation
+        public const string OperationManagementPermissionGroup = "operation-management-permission-group";
+
+        public const string OperationViewerPermission = "operation-viewer-permission";
+        public const string OperationCreatorPermission = "operation-creator-permission";
+        public const string OperationEditorPermission = "operation-editor-permission";
+        public const string OperationRemoverPermission = "operation-remover-permission";
+        #endregion
     }
 }
