@@ -51,5 +51,17 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Backe
         {
             return base.Delete(key);
         }
+
+        protected override OperationDisplayModel EntityToDisplayModel(Operation entity)
+        {
+            var model = base.EntityToDisplayModel(entity);
+
+            if (model.Carrier.Image != null)
+            {
+                model.Carrier.Image.Extension = MimeTypes.MimeTypeMap.GetExtension(entity.Carrier.Identity.Image.ContentType);
+            }
+
+            return model;
+        }
     }
 }

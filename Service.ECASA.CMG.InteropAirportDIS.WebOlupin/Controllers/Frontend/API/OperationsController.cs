@@ -15,5 +15,17 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Front
         public OperationsController(IEntityRepository<Operation, long> repository, Microsoft.Extensions.Localization.IStringLocalizer<OperationsController> localizer, ILogger<OperationsController> logger) : base(repository, localizer, logger)
         {
         }
+
+        protected override OperationDisplayModel EntityToDisplayModel(Operation entity)
+        {
+            var model = base.EntityToDisplayModel(entity);
+
+            if (model.Carrier.Image != null)
+            {
+                model.Carrier.Image.Extension = MimeTypes.MimeTypeMap.GetExtension(entity.Carrier.Identity.Image.ContentType);
+            }
+
+            return model;
+        }
     }
 }
