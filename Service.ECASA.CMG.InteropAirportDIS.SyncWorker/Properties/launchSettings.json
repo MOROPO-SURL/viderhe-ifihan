@@ -1,0 +1,11 @@
+﻿{
+  "profiles": {
+    "Service.ECASA.CMG.InteropAirportDIS.SyncWorker": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
