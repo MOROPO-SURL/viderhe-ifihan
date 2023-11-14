@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Frontend</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Frontend</RootNamespace>
+		<Product>VIDERHE FIDS Interoperation Service</Product>
+		<Authors>MOROPO VIDERHE DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO S.U.R.L., Todos los derechos reservados.</Copyright>
+		<Version>0.1.0</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="GuamaFramework.Core.Presentation.API.Connect" Version="6.0.0.15" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Service.ECASA.CMG.InteropAirportDIS.API.Common\Service.ECASA.CMG.InteropAirportDIS.API.Common.csproj" />
+	</ItemGroup>
+
+</Project>

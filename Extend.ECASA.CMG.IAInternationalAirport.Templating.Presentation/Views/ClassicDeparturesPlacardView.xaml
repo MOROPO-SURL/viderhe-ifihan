@@ -127,7 +127,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label
                                     Grid.Column="0"
-                                    Text="{Binding Path=StarDate, StringFormat='{0:HH:mm}'}" />
+                                    Text="{Binding Path=StartDate, StringFormat='{0:HH:mm}'}" />
                                 <Label
                                     Grid.Column="1"
                                     Text="{Binding Path=Context}"

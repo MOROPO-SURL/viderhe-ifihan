@@ -8,7 +8,7 @@ using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities;
 namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Controllers.Frontend.API
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = AspNetCore.Authentication.ApiKey.ApiKeyDefaults.AuthenticationScheme)]
-    [Route("api/backend/[controller]")]
+    [Route("api/frontend/[controller]")]
     [ApiController]
     public class OperationsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiConsultFilteredController<Operation, long, OperationDisplayModel, OperationFilterModel>
     {

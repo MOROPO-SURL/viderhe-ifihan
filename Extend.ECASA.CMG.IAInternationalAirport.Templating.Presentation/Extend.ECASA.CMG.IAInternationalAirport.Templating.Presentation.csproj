@@ -24,6 +24,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
 	  <ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Templating\Extend.ECASA.CMG.IAInternationalAirport.Templating.csproj" />
+	  <ProjectReference Include="..\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
