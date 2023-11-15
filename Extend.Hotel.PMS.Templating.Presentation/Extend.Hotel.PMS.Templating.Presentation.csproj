@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Font\" />
+    <Folder Include="Models\View\" />
+    <Folder Include="Views\" />
+    <Folder Include="Providers\" />
+  </ItemGroup>
+
+</Project>
