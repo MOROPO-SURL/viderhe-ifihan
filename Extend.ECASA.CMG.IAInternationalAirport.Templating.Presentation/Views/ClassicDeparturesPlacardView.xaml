@@ -60,7 +60,6 @@
                 <BoxView HeightRequest="4" Color="LightCyan" Margin="0,0,0,8" />
                 <Grid
                     BackgroundColor="{Binding Path=TableHeaderBackgroundColor, Mode=OneTime}"
-                    HeightRequest="{Binding Source=72, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                     ColumnSpacing="0">
                     <Grid.Resources>
                         <ResourceDictionary>
@@ -83,24 +82,24 @@
                     <Label
                         Grid.Column="0"
                         Text="HORA"
-                        FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        FontSize="{Binding Path=TableHeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     <Label
                         Grid.Column="1"
                         Text="DESTINO"
-                        FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        FontSize="{Binding Path=TableHeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     <Label
                         Grid.Column="2" Grid.ColumnSpan="2"
                         Margin="0,12,12,12"
                         Text="VUELO"
-                        FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        FontSize="{Binding Path=TableHeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     <Label
                         Grid.Column="4"
                         Text="TERMINAL"
-                        FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        FontSize="{Binding Path=TableHeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     <Label
                         Grid.Column="5"
                         Text="ESTADO"
-                        FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        FontSize="{Binding Path=TableHeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                 </Grid>
                 <CollectionView 
                     VerticalOptions="FillAndExpand"
@@ -113,7 +112,6 @@
                         <DataTemplate>
                             <Grid
                                 BackgroundColor="{Binding Mode=OneTime, Source={Reference DeparturesLayout}, Path=BindingContext.PrimaryRowBackgroundColor}"
-                                HeightRequest="{Binding Source=78, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                                 ColumnSpacing="2">
                                 <Grid.Resources>
                                     <ResourceDictionary>
@@ -126,7 +124,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
                                     <ColumnDefinition Width="5*" />
-                                    <ColumnDefinition Width="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                    <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="2*" />
                                     <ColumnDefinition Width="3*" />
                                     <ColumnDefinition Width="2*" />
@@ -134,14 +132,15 @@
                                 <Label
                                     Grid.Column="0"
                                     Text="{Binding Path=StartDate, StringFormat='{0:HH:mm}'}"
-                                    FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                    FontSize="{Binding Source={Reference Self}, Path=BindingContext.RowFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                                 <Label
                                     Grid.Column="1"
                                     Text="{Binding Path=Context}"
-                                    FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                                    FontSize="{Binding Source={Reference Self}, Path=BindingContext.RowFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                                     LineBreakMode="TailTruncation" />
                                 <ffimageloadingforms:CachedImage
                                     Grid.Column="2"
+                                    WidthRequest="{Binding Source={RelativeSource Mode=Self}, Path=Height}"
                                     Aspect="AspectFill"
                                     Source="{Binding Path=Carrier.Image, Converter={StaticResource ImageDisplayModelToImageSourceConverter}}"
                                     FadeAnimationEnabled="False"
@@ -149,7 +148,7 @@
                                     CacheDuration="8760:00:00" />
                                 <Label
                                     Grid.Column="3"
-                                    FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
+                                    FontSize="{Binding Source={Reference Self}, Path=BindingContext.RowFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <FormattedString.Spans>
@@ -163,12 +162,13 @@
                                 <Label
                                     Grid.Column="4"
                                     Text="{Binding Path=Terminal.Name}"
-                                    FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                                    FontSize="{Binding Source={Reference Self}, Path=BindingContext.RowFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                                     LineBreakMode="TailTruncation" />
                                 <Label
                                     Grid.Column="5"
                                     Text="{Binding Path=Status.Label}"
-                                    FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                    FontSize="{Binding Source={Reference Self}, Path=BindingContext.RowFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                                    LineBreakMode="TailTruncation" />
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

@@ -30,11 +30,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                 BackgroundColor = Xamarin.Forms.Color.FromHex(context.BackgroundColor),
                 TableHeaderTextColor = Xamarin.Forms.Color.FromHex(context.TableHeaderTextColor),
                 TableHeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.TableHeaderBackgroundColor),
+                TableHeaderFontSize = context.TableHeaderFontSize,
                 PrimaryRowTextColor = Xamarin.Forms.Color.FromHex(context.PrimaryRowTextColor),
                 PrimaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.PrimaryRowBackgroundColor),
                 UseStrippedRows = context.UseStrippedRows,
                 SecoundaryRowTextColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowTextColor),
-                SecoundaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowBackgroundColor)
+                SecoundaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowBackgroundColor),
+                RowFontSize = context.RowFontSize,
+                Columns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicDeparturesColumn>(context.Columns)
             };
         }
     }

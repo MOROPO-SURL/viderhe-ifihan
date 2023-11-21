@@ -79,11 +79,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             BackgroundColor = BindingContextPageModel.BackgroundColor.ToHex(),
                             TableHeaderTextColor = BindingContextPageModel.TableHeaderTextColor.ToHex(),
                             TableHeaderBackgroundColor = BindingContextPageModel.TableHeaderBackgroundColor.ToHex(),
+                            TableHeaderFontSize = BindingContextPageModel.TableHeaderFontSize,
                             PrimaryRowTextColor = BindingContextPageModel.PrimaryRowTextColor.ToHex(),
                             PrimaryRowBackgroundColor = BindingContextPageModel.PrimaryRowBackgroundColor.ToHex(),
                             UseStrippedRows = BindingContextPageModel.UseStrippedRows,
                             SecoundaryRowTextColor = BindingContextPageModel.SecoundaryRowTextColor.ToHex(),
-                            SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex()
+                            SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex(),
+                            RowFontSize = BindingContextPageModel.RowFontSize,
+                            Columns = BindingContextPageModel.Columns.ToArray()
                         }),
                         Tags = BindingContextPageModel.Tags.ToArray()
                     };
@@ -121,11 +124,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             BackgroundColor = BindingContextPageModel.BackgroundColor.ToHex(),
                             TableHeaderTextColor = BindingContextPageModel.TableHeaderTextColor.ToHex(),
                             TableHeaderBackgroundColor = BindingContextPageModel.TableHeaderBackgroundColor.ToHex(),
+                            TableHeaderFontSize = BindingContextPageModel.TableHeaderFontSize,
                             PrimaryRowTextColor = BindingContextPageModel.PrimaryRowTextColor.ToHex(),
                             PrimaryRowBackgroundColor = BindingContextPageModel.PrimaryRowBackgroundColor.ToHex(),
                             UseStrippedRows = BindingContextPageModel.UseStrippedRows,
                             SecoundaryRowTextColor = BindingContextPageModel.SecoundaryRowTextColor.ToHex(),
-                            SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex()
+                            SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex(),
+                            RowFontSize = BindingContextPageModel.RowFontSize,
+                            Columns = BindingContextPageModel.Columns.ToArray()
                         }),
                         Tags = BindingContextPageModel.Tags.ToArray()
                     };

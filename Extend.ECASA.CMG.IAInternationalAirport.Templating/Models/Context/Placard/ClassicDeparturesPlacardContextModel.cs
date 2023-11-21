@@ -8,6 +8,8 @@
 
         public string TableHeaderBackgroundColor { get; set; }
 
+        public int TableHeaderFontSize { get; set; }
+
         public string PrimaryRowTextColor { get; set; }
 
         public string PrimaryRowBackgroundColor { get; set; }
@@ -17,5 +19,9 @@
         public string SecoundaryRowTextColor { get; set; }
 
         public string SecoundaryRowBackgroundColor { get; set; }
+
+        public int RowFontSize { get; set; }
+        
+        public Enumerations.ClassicDeparturesColumn[] Columns { get; set; }
     }
 }

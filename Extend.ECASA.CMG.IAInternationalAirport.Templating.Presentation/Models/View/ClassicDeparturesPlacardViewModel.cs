@@ -7,11 +7,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
     {
         private ObservableCollection<OperationDisplayModel> items;
 
+        public ClassicDeparturesPlacardViewModel()
+        {
+            Items = new ObservableCollection<OperationDisplayModel>();
+        }
+
         public Xamarin.Forms.Color BackgroundColor { get; set; }
 
         public Xamarin.Forms.Color TableHeaderTextColor { get; set; }
 
         public Xamarin.Forms.Color TableHeaderBackgroundColor { get; set; }
+
+        public int TableHeaderFontSize { get; set; }
 
         public Xamarin.Forms.Color PrimaryRowTextColor { get; set; }
 
@@ -22,6 +29,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
         public Xamarin.Forms.Color SecoundaryRowTextColor { get; set; }
 
         public Xamarin.Forms.Color SecoundaryRowBackgroundColor { get; set; }
+
+        public int RowFontSize { get; set; }
+
+        public Enumerations.ClassicDeparturesColumn[] Columns { get; set; }
 
         public ObservableCollection<OperationDisplayModel> Items { get => items; set => SetProperty(ref items, value); }
     }

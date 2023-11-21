@@ -22,10 +22,13 @@
                    BackgroundColor = Xamarin.Forms.Color.FromHex(context.BackgroundColor),
                    TableHeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.TableHeaderBackgroundColor),
                    TableHeaderTextColor = Xamarin.Forms.Color.FromHex(context.TableHeaderTextColor),
+                   TableHeaderFontSize = context.TableHeaderFontSize,
                    PrimaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.PrimaryRowBackgroundColor),
                    PrimaryRowTextColor = Xamarin.Forms.Color.FromHex(context.PrimaryRowTextColor),
                    SecoundaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowBackgroundColor),
-                   SecoundaryRowTextColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowTextColor)
+                   SecoundaryRowTextColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowTextColor),
+                   RowFontSize = context.RowFontSize,
+                   Columns = context.Columns
                 });
             }
 

@@ -43,23 +43,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
             if (!task.IsCanceled && task.Exception == null)
             {
-                if (BindingContextViewModel.Items == null)
-                {
-                    BindingContextViewModel.Items = new System.Collections.ObjectModel.ObservableCollection<MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel>();
-                }
-                else
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
                     BindingContextViewModel.Items.Clear();
+                });
 
-                    foreach (var item in task.Result)
+                foreach (var item in task.Result)
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
-                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                        {
-                            BindingContextViewModel.Items.Add(item);
-                        });
+                        BindingContextViewModel.Items.Add(item);
+                    });
 
-                        System.Threading.Thread.Sleep(System.TimeSpan.FromMilliseconds(750));
-                    }
+                    System.Threading.Thread.Sleep(System.TimeSpan.FromMilliseconds(750));
                 }
             }
 

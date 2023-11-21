@@ -69,6 +69,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <StackLayout 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -383,12 +384,12 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6"
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6" Grid.RowSpan="2"
                         Style="{StaticResource FormFieldFrame}"
                         BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">
                         <StackLayout>
-                            <Label Text="Colores" Style="{StaticResource FormLabel}" />
+                            <Label Text="Visualidad de la Tabla" Style="{StaticResource FormLabel}" />
                             <Grid ColumnSpacing="10" RowSpacing="10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
@@ -419,13 +420,14 @@
                                     BackgroundColor="#66FFFFFF"
                                     VerticalOptions="Start">
                                     <StackLayout>
-                                        <Label Text="Cabecera de tabla" Style="{StaticResource FormLabel}" />
+                                        <Label Text="Cabecera" Style="{StaticResource FormLabel}" />
                                         <Grid ColumnSpacing="10" RowSpacing="10">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Frame 
@@ -452,6 +454,18 @@
                                                         Color="{Binding Path=TableHeaderTextColor}" />
                                                 </StackLayout>
                                             </Frame>
+                                            <Frame 
+                                                Grid.Column="0" Grid.Row="1"
+                                                Style="{StaticResource FormFieldFrame}"
+                                                VerticalOptions="Start">
+                                                <StackLayout>
+                                                    <Label Text="Tamaño de Letra" Style="{StaticResource FormLabel}" />
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="{Binding Path=TableHeaderFontSize}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                                        <Stepper Value="{Binding Path=TableHeaderFontSize}" Minimum="8" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Frame>
                                         </Grid>
                                     </StackLayout>
                                 </Frame>
@@ -468,6 +482,7 @@
                                                 <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Frame 
@@ -494,6 +509,18 @@
                                                         Color="{Binding Path=PrimaryRowTextColor}" />
                                                 </StackLayout>
                                             </Frame>
+                                            <Frame 
+                                                Grid.Column="0" Grid.Row="1"
+                                                Style="{StaticResource FormFieldFrame}"
+                                                VerticalOptions="Start">
+                                                <StackLayout>
+                                                    <Label Text="Tamaño de Letra" Style="{StaticResource FormLabel}" />
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Label Text="{Binding Path=RowFontSize}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                                        <Stepper Value="{Binding Path=RowFontSize}" Minimum="8" />
+                                                    </StackLayout>
+                                                </StackLayout>
+                                            </Frame>
                                         </Grid>
                                     </StackLayout>
                                 </Frame>
@@ -511,7 +538,7 @@
                                     BackgroundColor="#66FFFFFF"
                                     VerticalOptions="Start">
                                     <StackLayout IsVisible="{Binding Path=UseStrippedRows}">
-                                        <Label Text="Filas" Style="{StaticResource FormLabel}" />
+                                        <Label Text="Filas Alternas" Style="{StaticResource FormLabel}" />
                                         <Grid ColumnSpacing="10" RowSpacing="10">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
@@ -552,8 +579,7 @@
                     </Frame>
                     <Frame 
                         Grid.Column="2" Grid.Row="6"
-                        Style="{StaticResource FormFieldFrame}"
-                        VerticalOptions="Start">
+                        Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Número de elementos por página" Style="{StaticResource FormLabel}" />
                             <StackLayout Orientation="Horizontal">
@@ -561,6 +587,56 @@
                                 <Stepper Value="{Binding Path=MaxItemsCount}" Minimum="0" />
                             </StackLayout>
                         </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="2" Grid.Row="7"
+                        Style="{StaticResource FormFieldFrame}"
+                        Padding="0"
+                        BackgroundColor="#66FFFFFF"
+                        VerticalOptions="Start">
+                        <Grid RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <BoxView 
+                                Grid.ColumnSpan="2" Grid.Row="0"
+                                Color="White" />
+                            <Label
+                                x:Name="PresentedSlidesLabel"
+                                Grid.Column="0" Grid.Row="0"
+                                Style="{StaticResource FormLabel}"
+                                Padding="10,10,10,6"
+                                Text="Columnas" />
+                            <Button
+                                Grid.Column="1" Grid.Row="0"
+                                VerticalOptions="Start"
+                                Style="{StaticResource TextIconButton}"
+                                Text="&#xF415;"
+                                FontSize="Medium" />
+                            <StackLayout
+                                Margin="0"
+                                Padding="10"
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                BindableLayout.ItemsSource="{Binding Path=Columns}"
+                                Spacing="10">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout 
+                                            BackgroundColor="White"
+                                            Orientation="Horizontal">
+                                            <Label 
+                                                Margin="10"
+                                                Text="{Binding Path=.}" />
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Grid>
                     </Frame>
                 </Grid>
             </ScrollView>
