@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Models.Context.Placard
 {
-    public class ClassicDeparturesPlacardContextModel : Contract.AbstractDeparturesPlacardContextModel
+    public class ClassicOperationsPlacardContextModel : Contract.AbstractPaginableOperationsPlacardContextModel
     {
         public string BackgroundColor { get; set; }
 

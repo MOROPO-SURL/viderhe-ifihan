@@ -12,7 +12,7 @@
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Pages.ClassicDeparturesPlacardConfigurationPage"
-    x:TypeArguments="pagemodels:ClassicDeparturesPlacardConfigurationPageModel"
+    x:TypeArguments="pagemodels:ClassicOperationsPlacardConfigurationPageModel"
     x:Name="FormPage">
     <ContentPage.Resources>
         <ResourceDictionary>

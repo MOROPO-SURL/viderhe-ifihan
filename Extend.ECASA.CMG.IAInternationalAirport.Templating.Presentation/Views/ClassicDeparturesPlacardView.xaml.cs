@@ -4,7 +4,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 {
     public partial class ClassicDeparturesPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, Facade.IInteroperablePlacardFacade, MOROPO.Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
-        public ClassicDeparturesPlacardView(Models.View.ClassicDeparturesPlacardViewModel model)
+        public ClassicDeparturesPlacardView(Models.View.ClassicOperationsPlacardViewModel model)
         {
             InitializeComponent();
 
@@ -15,7 +15,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
         public override Xamarin.Forms.View PlacardView => DeparturesLayout;
 
-        public Models.View.ClassicDeparturesPlacardViewModel BindingContextViewModel => BindingContext as Models.View.ClassicDeparturesPlacardViewModel;
+        public Models.View.ClassicOperationsPlacardViewModel BindingContextViewModel => BindingContext as Models.View.ClassicOperationsPlacardViewModel;
 
         public override void ConfigureLayout(Xamarin.Forms.View view)
         {
@@ -101,7 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             {
                 if (BindingContext == null) throw new System.InvalidOperationException();
 
-                var model = BindingContext as Models.View.ClassicDeparturesPlacardViewModel;
+                var model = BindingContext as Models.View.ClassicOperationsPlacardViewModel;
 
                 return new MOROPO.Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
                     string.Format("{0}://{1}/api/", model.UseSSL ? "https" : "http", model.APIServer),

@@ -2,15 +2,15 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Factories
 {
-    public static class ClassicDeparturesPlacardConfigurationPageModelFactory
+    public static class ClassicOperationsPlacardConfigurationPageModelFactory
     {
-        public static Models.Page.ClassicDeparturesPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static Models.Page.ClassicOperationsPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.ClassicDeparturesPlacardConfigurationPageModel();
+            if (placardViewModel == null) return new Models.Page.ClassicOperationsPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.ClassicDeparturesPlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.ClassicOperationsPlacardContextModel>(placardViewModel.SerializedContext);
 
-            return new Models.Page.ClassicDeparturesPlacardConfigurationPageModel
+            return new Models.Page.ClassicOperationsPlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 DefineBeginAt = placardViewModel.BeginAt != null,

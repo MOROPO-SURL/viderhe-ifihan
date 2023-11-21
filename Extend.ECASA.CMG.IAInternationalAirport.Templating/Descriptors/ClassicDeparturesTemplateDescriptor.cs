@@ -9,7 +9,7 @@
 
         public Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport => Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape;
 
-        public string Name => "Próximas Salidas Clásica";
+        public string Name => "Próximas Salidas Estilo Clásico";
 
         public string Description => "Muestra el listado de las próximas salidas con una visualidad clásica en forma de tabla, configurable y con datos obtenidos desde el FIDS.";
     }

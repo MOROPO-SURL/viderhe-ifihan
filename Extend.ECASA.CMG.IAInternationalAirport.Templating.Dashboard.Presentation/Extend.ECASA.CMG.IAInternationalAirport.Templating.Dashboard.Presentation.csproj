@@ -22,10 +22,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\ClassicOperationsPlacardThumbnailView.xaml.cs">
+	    <DependentUpon>ClassicOperationsPlacardThumbnailView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Pages\ClassicArraivalsPlacardConfigurationPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="Pages\ClassicDeparturesPlacardConfigurationPage.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Views\ClassicDeparturesPlacardThumbnailView.xaml">
+	  <EmbeddedResource Update="Views\ClassicOperationsPlacardThumbnailView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	</ItemGroup>

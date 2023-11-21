@@ -3,11 +3,11 @@ using System.Collections.ObjectModel;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Models.View
 {
-    public class ClassicDeparturesPlacardViewModel : Contract.AbstractDeparturesPlacardViewModel
+    public class ClassicOperationsPlacardViewModel : Contract.AbstractPaginableOperationsPlacardViewModel
     {
         private ObservableCollection<OperationDisplayModel> items;
 
-        public ClassicDeparturesPlacardViewModel()
+        public ClassicOperationsPlacardViewModel()
         {
             Items = new ObservableCollection<OperationDisplayModel>();
         }

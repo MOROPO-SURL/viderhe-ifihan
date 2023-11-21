@@ -13,10 +13,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Assets\4E2DCC18-C456-4B05-8975-89520F761BA8-landscape.png" />
 	  <None Remove="Assets\5675B0B4-325F-4F15-BB05-67E68573B053-landscape.png" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Assets\4E2DCC18-C456-4B05-8975-89520F761BA8-landscape.png" />
 	  <EmbeddedResource Include="Assets\5675B0B4-325F-4F15-BB05-67E68573B053-landscape.png" />
 	</ItemGroup>
 

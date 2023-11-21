@@ -1,6 +1,6 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Models.Page
 {
-    public class ClassicDeparturesPlacardConfigurationPageModel : Contract.AbstractDeparturesPlacardConfigurationPageModel
+    public class ClassicOperationsPlacardConfigurationPageModel : Contract.AbstractPaginableOperationsPlacardConfigurationPageModel
     {
         private Xamarin.Forms.Color backgroundColor;
         private Xamarin.Forms.Color tableHeaderTextColor;
@@ -13,7 +13,7 @@
         private Xamarin.Forms.Color secoundaryRowBackgroundColor;
         private int rowFontSize;
 
-        public ClassicDeparturesPlacardConfigurationPageModel()
+        public ClassicOperationsPlacardConfigurationPageModel()
         {
             backgroundColor = Xamarin.Forms.Color.Black;
             tableHeaderBackgroundColor = Xamarin.Forms.Color.White;

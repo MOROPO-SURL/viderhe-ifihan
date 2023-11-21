@@ -9,6 +9,11 @@
                 return new Pages.ClassicDeparturesPlacardConfigurationPage(completedActionCallback);
             }
 
+            if (templateDescriptor is Descriptors.ClassicArraivalsTemplateDescriptor)
+            {
+                return new Pages.ClassicArraivalsPlacardConfigurationPage(completedActionCallback);
+            }
+
             return null;
         }
 
@@ -17,6 +22,11 @@
             if (placardViewModel.Template.Id == Descriptors.ClassicDeparturesTemplateDescriptor.ID)
             {
                 return new Pages.ClassicDeparturesPlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.ClassicArraivalsTemplateDescriptor.ID)
+            {
+                return new Pages.ClassicArraivalsPlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;

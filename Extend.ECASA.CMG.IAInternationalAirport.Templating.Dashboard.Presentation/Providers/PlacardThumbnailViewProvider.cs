@@ -4,9 +4,9 @@
     {
         public Xamarin.Forms.ContentView GetPlacardThumnailView(Support.Presentation.Models.View.PlacardViewModel model)
         {
-            if (model.Template.Id == Descriptors.ClassicDeparturesTemplateDescriptor.ID)
+            if (model.Template.Id == Descriptors.ClassicDeparturesTemplateDescriptor.ID || model.Template.Id == Descriptors.ClassicArraivalsTemplateDescriptor.ID)
             {
-                return new Views.ClassicDeparturesPlacardThumbnailView(model);
+                return new Views.ClassicOperationsPlacardThumbnailView(model);
             }
 
             return null;
