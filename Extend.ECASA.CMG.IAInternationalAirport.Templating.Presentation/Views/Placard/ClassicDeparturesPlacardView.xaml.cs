@@ -45,6 +45,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
+                    if (BindingContextViewModel == null) return;
+
                     BindingContextViewModel.Items.Clear();
                 });
 
@@ -52,6 +54,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
+                        if (BindingContextViewModel == null) return;
+
                         BindingContextViewModel.Items.Add(item);
                     });
 
@@ -62,6 +66,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             stopwatch.Stop();
 
             var client = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Frontend.Clients.OperationsAPIConnectClient(this);
+
+            if (BindingContextViewModel == null) return;
 
             var delay = System.TimeSpan.FromSeconds(BindingContextViewModel.UpdateInterval)  - stopwatch.Elapsed;
 

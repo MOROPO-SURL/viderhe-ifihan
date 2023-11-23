@@ -28,13 +28,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\BoxedCachedImage.xaml.cs">
+	    <DependentUpon>BoxedCachedImage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Fragment\ArraivalsHeaderFragmentView.xaml.cs">
 	    <DependentUpon>ArraivalsHeaderFragmentView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Views\BoxCachedImage.xaml">
+	  <EmbeddedResource Update="Views\BoxedCachedImage.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	  <EmbeddedResource Update="Views\Fragment\ArraivalsHeaderFragmentView.xaml">

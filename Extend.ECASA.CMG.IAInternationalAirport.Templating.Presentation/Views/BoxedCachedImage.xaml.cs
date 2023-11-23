@@ -1,8 +1,8 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views
 {
-    public partial class BoxCachedImage : FFImageLoading.Forms.CachedImage
+    public partial class BoxedCachedImage : FFImageLoading.Forms.CachedImage
     {
-        public BoxCachedImage()
+        public BoxedCachedImage()
         {
             InitializeComponent();
         }

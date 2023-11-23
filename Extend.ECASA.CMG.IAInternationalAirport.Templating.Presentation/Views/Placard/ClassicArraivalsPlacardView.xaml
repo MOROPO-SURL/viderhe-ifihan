@@ -2,14 +2,23 @@
 <extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fragmentviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Fragment"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     x:Class="SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Placard.ClassicArraivalsPlacardView">
     <ContentView.Content>
         <Grid x:Name="Wrapper">
-            <StackLayout 
-                x:Name="ArraivalsLayout" 
-                BackgroundColor="{Binding Path=TableBackgroundColor, Mode=OneTime}"
-                Spacing="0" />
+            <Grid x:Name="ArraivalsLayout" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <fragmentviews:ArraivalsHeaderFragmentView Grid.Row="0" />
+                <BoxView Grid.Row="1" Color="LightCyan" HeightRequest="4" Margin="0,0,0,8" />
+                <Grid x:Name="TableHeaderGrid" Grid.Row="2" ColumnSpacing="0" />
+                <StackLayout x:Name="TableBodyStackLayout" Grid.Row="3" Margin="0,6,0,0" />
+            </Grid>
         </Grid>
     </ContentView.Content>
 </extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>
