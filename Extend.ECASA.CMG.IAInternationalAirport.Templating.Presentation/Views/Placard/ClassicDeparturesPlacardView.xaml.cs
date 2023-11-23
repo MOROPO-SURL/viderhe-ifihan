@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views
+namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Placard
 {
     public partial class ClassicDeparturesPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, Facade.IInteroperablePlacardFacade, MOROPO.Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
-        public ClassicDeparturesPlacardView(Models.View.ClassicOperationsPlacardViewModel model)
+        public ClassicDeparturesPlacardView(Models.View.Placard.ClassicOperationsPlacardViewModel model)
         {
             InitializeComponent();
 
@@ -15,7 +15,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
         public override Xamarin.Forms.View PlacardView => DeparturesLayout;
 
-        public Models.View.ClassicOperationsPlacardViewModel BindingContextViewModel => BindingContext as Models.View.ClassicOperationsPlacardViewModel;
+        public Models.View.Placard.ClassicOperationsPlacardViewModel BindingContextViewModel => BindingContext as Models.View.Placard.ClassicOperationsPlacardViewModel;
 
         public override void ConfigureLayout(Xamarin.Forms.View view)
         {
@@ -86,9 +86,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
         #region IInteroperablePlacardFacade implementation
 
-        public Models.View.Contract.AbstractInteroperablePlacardViewModel GetInteroperableModel()
+        public Models.View.Placard.Contract.AbstractInteroperablePlacardViewModel GetInteroperableModel()
         {
-            return BindingContext as Models.View.Contract.AbstractInteroperablePlacardViewModel;
+            return BindingContext as Models.View.Placard.Contract.AbstractInteroperablePlacardViewModel;
         }
 
         #endregion
@@ -101,7 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             {
                 if (BindingContext == null) throw new System.InvalidOperationException();
 
-                var model = BindingContext as Models.View.ClassicOperationsPlacardViewModel;
+                var model = BindingContext as Models.View.Placard.ClassicOperationsPlacardViewModel;
 
                 return new MOROPO.Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
                     string.Format("{0}://{1}/api/", model.UseSSL ? "https" : "http", model.APIServer),

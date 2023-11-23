@@ -8,7 +8,7 @@
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.ClassicOperationsPlacardContextModel>(model.SerializedContext);
 
-                return new Views.ClassicDeparturesPlacardView(new Models.View.ClassicOperationsPlacardViewModel
+                return new Views.Placard.ClassicDeparturesPlacardView(new Models.View.Placard.ClassicOperationsPlacardViewModel
                 {
                    ScreenPresentationTime = context.ScreenPresentationTime,
                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
@@ -19,7 +19,7 @@
                    MaxItemsCount = context.MaxItemsCount,
                    UpdateInterval = context.UpdateInterval,
                    UseStrippedRows = context.UseStrippedRows,
-                   BackgroundColor = Xamarin.Forms.Color.FromHex(context.BackgroundColor),
+                   TableBackgroundColor = Xamarin.Forms.Color.FromHex(context.TableBackgroundColor),
                    TableHeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.TableHeaderBackgroundColor),
                    TableHeaderTextColor = Xamarin.Forms.Color.FromHex(context.TableHeaderTextColor),
                    TableHeaderFontSize = context.TableHeaderFontSize,
@@ -28,7 +28,9 @@
                    SecoundaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowBackgroundColor),
                    SecoundaryRowTextColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowTextColor),
                    RowFontSize = context.RowFontSize,
-                   Columns = context.Columns
+                   Columns = context.Columns,
+                   Background = context.Background,
+                   ForegroundTransparency = context.ForegroundTransparency
                 });
             }
 
@@ -36,7 +38,7 @@
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.ClassicOperationsPlacardContextModel>(model.SerializedContext);
 
-                return new Views.ClassicArraivalsPlacardView(new Models.View.ClassicOperationsPlacardViewModel
+                return new Views.Placard.ClassicArraivalsPlacardView(new Models.View.Placard.ClassicOperationsPlacardViewModel
                 {
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
@@ -47,7 +49,7 @@
                     MaxItemsCount = context.MaxItemsCount,
                     UpdateInterval = context.UpdateInterval,
                     UseStrippedRows = context.UseStrippedRows,
-                    BackgroundColor = Xamarin.Forms.Color.FromHex(context.BackgroundColor),
+                    TableBackgroundColor = Xamarin.Forms.Color.FromHex(context.TableBackgroundColor),
                     TableHeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.TableHeaderBackgroundColor),
                     TableHeaderTextColor = Xamarin.Forms.Color.FromHex(context.TableHeaderTextColor),
                     TableHeaderFontSize = context.TableHeaderFontSize,
@@ -56,7 +58,9 @@
                     SecoundaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowBackgroundColor),
                     SecoundaryRowTextColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowTextColor),
                     RowFontSize = context.RowFontSize,
-                    Columns = context.Columns
+                    Columns = context.Columns,
+                    Background = context.Background,
+                    ForegroundTransparency = context.ForegroundTransparency
                 });
             }
 

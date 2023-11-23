@@ -1,7 +1,7 @@
 ﻿using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models;
 using System.Collections.ObjectModel;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Models.View
+namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Models.View.Placard
 {
     public class ClassicOperationsPlacardViewModel : Contract.AbstractPaginableOperationsPlacardViewModel
     {
@@ -12,8 +12,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             Items = new ObservableCollection<OperationDisplayModel>();
         }
 
-        public Xamarin.Forms.Color BackgroundColor { get; set; }
-
+        public Xamarin.Forms.Color TableBackgroundColor { get; set; }
+        
         public Xamarin.Forms.Color TableHeaderTextColor { get; set; }
 
         public Xamarin.Forms.Color TableHeaderBackgroundColor { get; set; }
@@ -32,8 +32,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
         public int RowFontSize { get; set; }
 
-        public Enumerations.ClassicDeparturesColumn[] Columns { get; set; }
+        public Enumerations.ClassicOperationsColumn[] Columns { get; set; }
 
         public ObservableCollection<OperationDisplayModel> Items { get => items; set => SetProperty(ref items, value); }
+
+        public Templating.Models.Context.BackgroundContextModel Background { get; set; }
+
+        public int ForegroundTransparency { get; set; }
     }
 }

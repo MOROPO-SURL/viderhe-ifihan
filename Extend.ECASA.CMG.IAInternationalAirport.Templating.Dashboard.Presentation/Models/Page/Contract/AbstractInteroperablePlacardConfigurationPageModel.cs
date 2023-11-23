@@ -9,7 +9,7 @@
 
         public AbstractInteroperablePlacardConfigurationPageModel()
         {
-            ScreenPresentationTimeSecounds = 15;
+            ScreenPresentationTimeSecounds = 60;
             useSSL = true;
         }
 

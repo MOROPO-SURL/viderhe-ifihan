@@ -2,7 +2,7 @@
 {
     public class ClassicOperationsPlacardConfigurationPageModel : Contract.AbstractPaginableOperationsPlacardConfigurationPageModel
     {
-        private Xamarin.Forms.Color backgroundColor;
+        private Xamarin.Forms.Color tableBackgroundColor;
         private Xamarin.Forms.Color tableHeaderTextColor;
         private Xamarin.Forms.Color tableHeaderBackgroundColor;
         private int tableHeaderFontSize;
@@ -12,23 +12,26 @@
         private Xamarin.Forms.Color secoundaryRowTextColor;
         private Xamarin.Forms.Color secoundaryRowBackgroundColor;
         private int rowFontSize;
+        private Templating.Models.Context.BackgroundContextModel background;
+        private int foregroundTransparency;
 
         public ClassicOperationsPlacardConfigurationPageModel()
         {
-            backgroundColor = Xamarin.Forms.Color.Black;
+            tableBackgroundColor = Xamarin.Forms.Color.Black;
             tableHeaderBackgroundColor = Xamarin.Forms.Color.White;
             tableHeaderTextColor = Xamarin.Forms.Color.Black;
             tableHeaderFontSize = 36;
-            primaryRowBackgroundColor = Xamarin.Forms.Color.FromHex("#363636");
+            primaryRowBackgroundColor = Xamarin.Forms.Color.FromHex("#232323");
             primaryRowTextColor = Xamarin.Forms.Color.White;
             useStrippedRows = false;
             secoundaryRowBackgroundColor = Xamarin.Forms.Color.DimGray;
             secoundaryRowTextColor = Xamarin.Forms.Color.White;
-            rowFontSize = 36;
-            Columns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicDeparturesColumn> { Enumerations.ClassicDeparturesColumn.TIME, Enumerations.ClassicDeparturesColumn.DESTINATION, Enumerations.ClassicDeparturesColumn.FLY, Enumerations.ClassicDeparturesColumn.TERMINAL, Enumerations.ClassicDeparturesColumn.STATUS };
+            rowFontSize = 36;            
+            ForegroundTransparency = 50;
         }
 
-        public Xamarin.Forms.Color BackgroundColor { get => backgroundColor; set => SetProperty(ref backgroundColor, value); }
+
+        public Xamarin.Forms.Color TableBackgroundColor { get => tableBackgroundColor; set => SetProperty(ref tableBackgroundColor, value); }
 
         public Xamarin.Forms.Color TableHeaderTextColor { get => tableHeaderTextColor; set => SetProperty(ref tableHeaderTextColor, value); }
 
@@ -48,6 +51,12 @@
 
         public int RowFontSize { get => rowFontSize; set => SetProperty(ref rowFontSize, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicDeparturesColumn> Columns { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn> VisibleColumns { get; set; }
+
+        public System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn> AvailableColumns { get; set; }
+
+        public Templating.Models.Context.BackgroundContextModel Background { get => background; set => SetProperty(ref background, value); }
+        
+        public int ForegroundTransparency { get => foregroundTransparency; set => SetProperty(ref foregroundTransparency, value); }
     }
 }

@@ -6,7 +6,7 @@
     xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.ClassicDeparturesPlacardView"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Placard.ClassicDeparturesPlacardView"
     x:Name="Self">
     <ContentView.Resources>
         <converters:ImageDisplayModelToImageSourceConverter x:Key="ImageDisplayModelToImageSourceConverter" InteroperablePlacard="{Reference Self}" />
@@ -17,7 +17,7 @@
         <Grid x:Name="Wrapper">
             <StackLayout 
                 x:Name="DeparturesLayout" 
-                BackgroundColor="{Binding Path=BackgroundColor, Mode=OneTime}"
+                BackgroundColor="{Binding Path=TableBackgroundColor, Mode=OneTime}"
                 Spacing="0">
                 <Grid 
                     BackgroundColor="DarkBlue"

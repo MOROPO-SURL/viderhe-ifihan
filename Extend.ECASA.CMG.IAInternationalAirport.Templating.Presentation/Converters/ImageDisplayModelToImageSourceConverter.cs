@@ -4,7 +4,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 {
     public class ImageDisplayModelToImageSourceConverter : Xamarin.Forms.IValueConverter
     {
-        public Views.Facade.IInteroperablePlacardFacade InteroperablePlacard { get; set; }
+        public Views.Placard.Facade.IInteroperablePlacardFacade InteroperablePlacard { get; set; }
 
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

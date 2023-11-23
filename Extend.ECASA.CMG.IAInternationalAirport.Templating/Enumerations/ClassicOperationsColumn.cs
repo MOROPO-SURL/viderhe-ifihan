@@ -1,9 +1,9 @@
 ﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Enumerations
 {
-    public enum ClassicDeparturesColumn
+    public enum ClassicOperationsColumn
     {
         TIME,
-        DESTINATION,
+        CONTEXT,
         FLY,
         CARRIER,
         FLYNUMBER,

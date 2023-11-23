@@ -6,11 +6,31 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
     {
         public GradientContextModel[] GetGradients(System.Guid templateId, string serializedContext)
         {
+            if (templateId == Descriptors.ClassicArraivalsTemplateDescriptor.ID ||
+                templateId == Descriptors.ClassicDeparturesTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.ClassicOperationsPlacardContextModel>(serializedContext);
+
+                if (context.Background.Kind != Enumerations.BackgroundKind.Gradient) return null;
+
+                return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<GradientContextModel>(context.Background.SerializedContext) };
+            }
+
             return null;
         }
 
         public ImageContextModel[] GetImages(System.Guid templateId, string serializedContext)
         {
+            if (templateId == Descriptors.ClassicArraivalsTemplateDescriptor.ID ||
+                templateId == Descriptors.ClassicDeparturesTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.ClassicOperationsPlacardContextModel>(serializedContext);
+
+                if (context.Background.Kind != Enumerations.BackgroundKind.Image) return null;
+
+                return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<ImageContextModel>(context.Background.SerializedContext) };
+            }
+
             return null;
         }
 
@@ -21,6 +41,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
         public VideoContextModel[] GetVideos(System.Guid templateId, string serializedContext)
         {
+            if (templateId == Descriptors.ClassicArraivalsTemplateDescriptor.ID ||
+                templateId == Descriptors.ClassicDeparturesTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.ClassicOperationsPlacardContextModel>(serializedContext);
+
+                if (context.Background.Kind != Enumerations.BackgroundKind.Video) return null;
+
+                return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<VideoContextModel>(context.Background.SerializedContext) };
+            }
+
             return null;
         }
     }

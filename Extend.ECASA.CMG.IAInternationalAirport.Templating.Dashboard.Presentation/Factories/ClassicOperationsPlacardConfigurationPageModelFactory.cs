@@ -27,7 +27,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                 AllowAnyCertificate = context.AllowAnyCertificate,
                 UpdateInterval = context.UpdateInterval,
                 MaxItemsCount = context.MaxItemsCount,
-                BackgroundColor = Xamarin.Forms.Color.FromHex(context.BackgroundColor),
+                TableBackgroundColor = Xamarin.Forms.Color.FromHex(context.TableBackgroundColor),
                 TableHeaderTextColor = Xamarin.Forms.Color.FromHex(context.TableHeaderTextColor),
                 TableHeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.TableHeaderBackgroundColor),
                 TableHeaderFontSize = context.TableHeaderFontSize,
@@ -37,7 +37,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                 SecoundaryRowTextColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowTextColor),
                 SecoundaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowBackgroundColor),
                 RowFontSize = context.RowFontSize,
-                Columns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicDeparturesColumn>(context.Columns)
+                VisibleColumns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn>(context.Columns),
+                Background = context.Background,
+                ForegroundTransparency = context.ForegroundTransparency
             };
         }
     }

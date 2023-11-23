@@ -28,10 +28,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Views\ClassicArraivalsPlacardView.xaml">
+	  <Compile Update="Views\Fragment\ArraivalsHeaderFragmentView.xaml.cs">
+	    <DependentUpon>ArraivalsHeaderFragmentView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Views\BoxCachedImage.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
-	  <EmbeddedResource Update="Views\ClassicDeparturesPlacardView.xaml">
+	  <EmbeddedResource Update="Views\Fragment\ArraivalsHeaderFragmentView.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Views\Fragment\DeparturesHeaderFragmentView.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Views\Placard\ClassicArraivalsPlacardView.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Views\Placard\ClassicDeparturesPlacardView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	</ItemGroup>

@@ -2,7 +2,7 @@
 {
     public class ClassicOperationsPlacardContextModel : Contract.AbstractPaginableOperationsPlacardContextModel
     {
-        public string BackgroundColor { get; set; }
+        public string TableBackgroundColor { get; set; }
 
         public string TableHeaderTextColor { get; set; }
 
@@ -22,6 +22,10 @@
 
         public int RowFontSize { get; set; }
         
-        public Enumerations.ClassicDeparturesColumn[] Columns { get; set; }
+        public Enumerations.ClassicOperationsColumn[] Columns { get; set; }
+
+        public BackgroundContextModel Background { get; set; }
+
+        public int ForegroundTransparency { get; set; }
     }
 }

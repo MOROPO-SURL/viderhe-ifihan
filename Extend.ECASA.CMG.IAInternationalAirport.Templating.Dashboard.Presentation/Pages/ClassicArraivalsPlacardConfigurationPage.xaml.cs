@@ -1,4 +1,5 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
@@ -6,6 +7,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 {
     public partial class ClassicArraivalsPlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ClassicOperationsPlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
+        private const string BACKGROUND_OPTION_GRADIENT = "Gradiente";
+        private const string BACKGROUND_OPTION_IMAGE = "Imagen";
+        private const string BACKGROUND_OPTION_VIDEO = "Video";
+
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
@@ -19,6 +24,41 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
         public ClassicArraivalsPlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
             : base(Factories.ClassicOperationsPlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
+            if (placardViewModel == null)
+            {
+                BindingContextPageModel.VisibleColumns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn> {
+                    Enumerations.ClassicOperationsColumn.TIME,
+                    Enumerations.ClassicOperationsColumn.CONTEXT,
+                    Enumerations.ClassicOperationsColumn.FLY,
+                    Enumerations.ClassicOperationsColumn.TERMINAL,
+                    Enumerations.ClassicOperationsColumn.STATUS
+                };
+                BindingContextPageModel.AvailableColumns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn>
+                {
+                    Enumerations.ClassicOperationsColumn.CARRIER,
+                    Enumerations.ClassicOperationsColumn.FLYNUMBER,
+                    Enumerations.ClassicOperationsColumn.CATEGORY,
+                    Enumerations.ClassicOperationsColumn.GATE
+                };
+            }
+            else
+            {
+                var classicOperationsColumnUniverse = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn>
+                {
+                    Enumerations.ClassicOperationsColumn.TIME,
+                    Enumerations.ClassicOperationsColumn.CONTEXT,
+                    Enumerations.ClassicOperationsColumn.FLY,
+                    Enumerations.ClassicOperationsColumn.TERMINAL,
+                    Enumerations.ClassicOperationsColumn.STATUS,
+                    Enumerations.ClassicOperationsColumn.CARRIER,
+                    Enumerations.ClassicOperationsColumn.FLYNUMBER,
+                    Enumerations.ClassicOperationsColumn.CATEGORY,
+                    Enumerations.ClassicOperationsColumn.GATE
+                };
+
+                BindingContextPageModel.AvailableColumns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn>(classicOperationsColumnUniverse.Except(BindingContextPageModel.VisibleColumns));
+            }
+
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
             InitializeComponent();
@@ -36,6 +76,27 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             }
 
             Title = string.Format("Modificando Cartel ({0})", placardViewModel.Template.Name);
+        }
+
+        protected override void DisposeUnmanagementResources()
+        {
+            base.DisposeUnmanagementResources();
+
+            placardViewModel = null;
+            successfulCompleteCallbackAction = null;
+        }
+
+        private void BackgroundClearButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayAlert("Confirmar", "Está seguro que desea retirar el fondo actual?", "Aceptar", "Cancelar").ContinueWith(task =>
+            {
+                if (!task.Result) return;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    BindingContextPageModel.Background = null;
+                });
+            });
         }
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
@@ -76,7 +137,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             AllowAnyCertificate = BindingContextPageModel.AllowAnyCertificate,
                             UpdateInterval = BindingContextPageModel.UpdateInterval,
                             MaxItemsCount = BindingContextPageModel.MaxItemsCount,
-                            BackgroundColor = BindingContextPageModel.BackgroundColor.ToHex(),
+                            TableBackgroundColor = BindingContextPageModel.TableBackgroundColor.ToHex(),
                             TableHeaderTextColor = BindingContextPageModel.TableHeaderTextColor.ToHex(),
                             TableHeaderBackgroundColor = BindingContextPageModel.TableHeaderBackgroundColor.ToHex(),
                             TableHeaderFontSize = BindingContextPageModel.TableHeaderFontSize,
@@ -86,7 +147,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             SecoundaryRowTextColor = BindingContextPageModel.SecoundaryRowTextColor.ToHex(),
                             SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex(),
                             RowFontSize = BindingContextPageModel.RowFontSize,
-                            Columns = BindingContextPageModel.Columns.ToArray()
+                            Columns = BindingContextPageModel.VisibleColumns.ToArray(),
+                            Background = BindingContextPageModel.Background,
+                            ForegroundTransparency = BindingContextPageModel.ForegroundTransparency
                         }),
                         Tags = BindingContextPageModel.Tags.ToArray()
                     };
@@ -121,7 +184,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             AllowAnyCertificate = BindingContextPageModel.AllowAnyCertificate,
                             UpdateInterval = BindingContextPageModel.UpdateInterval,
                             MaxItemsCount = BindingContextPageModel.MaxItemsCount,
-                            BackgroundColor = BindingContextPageModel.BackgroundColor.ToHex(),
+                            TableBackgroundColor = BindingContextPageModel.TableBackgroundColor.ToHex(),
                             TableHeaderTextColor = BindingContextPageModel.TableHeaderTextColor.ToHex(),
                             TableHeaderBackgroundColor = BindingContextPageModel.TableHeaderBackgroundColor.ToHex(),
                             TableHeaderFontSize = BindingContextPageModel.TableHeaderFontSize,
@@ -131,7 +194,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             SecoundaryRowTextColor = BindingContextPageModel.SecoundaryRowTextColor.ToHex(),
                             SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex(),
                             RowFontSize = BindingContextPageModel.RowFontSize,
-                            Columns = BindingContextPageModel.Columns.ToArray()
+                            Columns = BindingContextPageModel.VisibleColumns.ToArray(),
+                            Background = BindingContextPageModel.Background,
+                            ForegroundTransparency = BindingContextPageModel.ForegroundTransparency
                         }),
                         Tags = BindingContextPageModel.Tags.ToArray()
                     };
@@ -190,17 +255,64 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             });
         }
 
+        private void BackgroundGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
+        {
+            DisplayActionSheet("Seleccione el tipo de fondo a definir:", "Cancelar", null, new string[] { BACKGROUND_OPTION_GRADIENT, BACKGROUND_OPTION_IMAGE }).ContinueWith(displayActionSheetTask =>
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    switch (displayActionSheetTask.Result)
+                    {
+                        case BACKGROUND_OPTION_IMAGE:
+                            Support.Presentation.Models.View.ImageViewModel except = null;
+
+                            if (BindingContextPageModel.Background != null && BindingContextPageModel.Background.Kind == Enumerations.BackgroundKind.Image)
+                            {
+                                except = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(BindingContextPageModel.Background.SerializedContext).ToViewModel();
+                            }
+
+                            var imagePickPage = new Support.Presentation.Dashboard.Pages.ImagePickPage(BackgroundImagePick_Callback, except);
+
+                            await this.NavigationPushPageAsync(imagePickPage);
+
+                            break;
+
+                        case BACKGROUND_OPTION_GRADIENT:
+                            await this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.GradientPickPage(BackgroundGradientPick_Callback));
+
+                            break;
+                    }
+                });
+            });
+        }
+
         private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
         {
             BindingContextPageModel.Tags.Add(model);
         }
 
-        protected override void DisposeUnmanagementResources()
+        private void BackgroundImagePick_Callback(Support.Presentation.Models.View.ImageViewModel target)
         {
-            base.DisposeUnmanagementResources();
+            BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
+            {
+                Kind = Enumerations.BackgroundKind.Image,
+                SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(target.ToContextModel())
+            };
+        }
 
-            placardViewModel = null;
-            successfulCompleteCallbackAction = null;
+        private void BackgroundGradientPick_Callback(Support.Presentation.Dashboard.Models.View.GradientViewModel target)
+        {
+            BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
+            {
+                Kind = Enumerations.BackgroundKind.Gradient,
+                SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Common.Templating.Models.Context.GradientContextModel
+                {
+                    Id = target.Id,
+                    About = target.About,
+                    CreateAt = target.CreateAt,
+                    Data = target.Source.Stylesheet
+                })
+            };
         }
 
         #region IValidableFormPage implementation

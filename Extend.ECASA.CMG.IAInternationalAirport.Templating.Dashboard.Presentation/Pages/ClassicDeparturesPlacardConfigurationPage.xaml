@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Models.Page"
+    xmlns:presentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation"
     xmlns:commonconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation"
     xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
@@ -17,8 +18,12 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <commonconverters:StringToLocalizeStringConverter x:Key="CommonStringToLocalizeStringConverter" />
+
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+
+            <presentationconverters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
@@ -295,7 +300,7 @@
                         BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">
                         <StackLayout>
-                            <Label Text="Fuente de datos" Style="{StaticResource FormLabel}" />
+                            <Label Text="Origen de Datos" Style="{StaticResource FormLabel}" />
                             <Grid ColumnSpacing="10" RowSpacing="10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="2*" />
@@ -388,12 +393,13 @@
                         Style="{StaticResource FormFieldFrame}"
                         BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">
-                        <StackLayout>
-                            <Label Text="Visualidad de la Tabla" Style="{StaticResource FormLabel}" />
+                        <StackLayout Spacing="1">
+                            <Label Text="Tabla de Operaciones" Style="{StaticResource FormLabel}" Margin="0,0,0,6" />
                             <Grid ColumnSpacing="10" RowSpacing="10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition />
                                     <ColumnDefinition />
+                                    <ColumnDefinition Width="2*" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -411,7 +417,111 @@
                                         <simplecolorpicker:ColorPickerEntry 
                                             EditAlfa="False"
                                             ColorPreviewButtonBorder="DimGray"
-                                            Color="{Binding Path=BackgroundColor}" />
+                                            Color="{Binding Path=TableBackgroundColor}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="1" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Número de elementos por página" Style="{StaticResource FormLabel}" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Path=MaxItemsCount}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                            <Stepper Value="{Binding Path=MaxItemsCount}" Minimum="0" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="2" Grid.Row="0" Grid.RowSpan="6"
+                                    Style="{StaticResource FormFieldFrame}"
+                                    Padding="0"
+                                    BackgroundColor="#66FFFFFF"
+                                    VerticalOptions="Start">
+                                    <StackLayout Spacing="0">
+                                        <Label
+                                            Style="{StaticResource FormLabel}"
+                                            BackgroundColor="White"
+                                            Padding="10,10,10,6"
+                                            Text="Columnas" />
+                                        <Frame 
+                                            Style="{StaticResource FormFieldFrame}"
+                                            Margin="10" Padding="0"
+                                            BackgroundColor="#66FFFFFF">
+                                            <StackLayout>
+                                                <Label
+                                                    Style="{StaticResource FormLabel}"
+                                                    BackgroundColor="White"
+                                                    Padding="10,10,10,6"
+                                                    Text="Visibles" />
+                                                <StackLayout
+                                                    Margin="0"
+                                                    Padding="10"
+                                                    Grid.ColumnSpan="2" Grid.Row="1"
+                                                    BindableLayout.ItemsSource="{Binding Path=VisibleColumns}"
+                                                    Spacing="10">
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <StackLayout 
+                                                                BackgroundColor="White"
+                                                                Orientation="Horizontal"
+                                                                Padding="4">
+                                                                <Label 
+                                                                    Margin="10"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    VerticalTextAlignment="Center"
+                                                                    Text="{Binding Path=.}"
+                                                                    TextColor="Black" />
+                                                                <Button
+                                                                    VerticalOptions="Start"
+                                                                    Style="{StaticResource TextIconButton}"
+                                                                    Text="&#xF0049;"
+                                                                    FontSize="Medium" />
+                                                            </StackLayout>
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                        <BoxView Color="DimGray" HeightRequest="2" Margin="10,5" />
+                                        <Frame 
+                                            Style="{StaticResource FormFieldFrame}"
+                                            Margin="10" Padding="0"
+                                            BackgroundColor="#66FFFFFF">
+                                            <StackLayout>
+                                                <Label
+                                                    Style="{StaticResource FormLabel}"
+                                                    BackgroundColor="White"
+                                                    Padding="10,10,10,6"
+                                                    Text="Ocultas" />
+                                                <StackLayout
+                                                    Margin="0"
+                                                    Padding="10"
+                                                    Grid.ColumnSpan="2" Grid.Row="1"
+                                                    BindableLayout.ItemsSource="{Binding Path=AvailableColumns}"
+                                                    Spacing="10">
+                                                    <BindableLayout.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <StackLayout 
+                                                                BackgroundColor="LightGray"
+                                                                Orientation="Horizontal"
+                                                                Padding="4">
+                                                                <Label 
+                                                                    Margin="10"
+                                                                    HorizontalOptions="FillAndExpand"
+                                                                    VerticalTextAlignment="Center"
+                                                                    Text="{Binding Path=.}"
+                                                                    TextColor="Black" />
+                                                                <Button
+                                                                    VerticalOptions="Start"
+                                                                    Style="{StaticResource TextIconButton}"
+                                                                    Text="&#xF86B;"
+                                                                    FontSize="Medium" />
+                                                            </StackLayout>
+                                                        </DataTemplate>
+                                                    </BindableLayout.ItemTemplate>
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
                                     </StackLayout>
                                 </Frame>
                                 <Frame 
@@ -534,10 +644,11 @@
                                 </Frame>
                                 <Frame 
                                     Grid.ColumnSpan="2" Grid.Row="4"
+                                    IsVisible="{Binding Path=UseStrippedRows}"
                                     Style="{StaticResource FormFieldFrame}"
                                     BackgroundColor="#66FFFFFF"
                                     VerticalOptions="Start">
-                                    <StackLayout IsVisible="{Binding Path=UseStrippedRows}">
+                                    <StackLayout>
                                         <Label Text="Filas Alternas" Style="{StaticResource FormLabel}" />
                                         <Grid ColumnSpacing="10" RowSpacing="10">
                                             <Grid.ColumnDefinitions>
@@ -579,21 +690,8 @@
                     </Frame>
                     <Frame 
                         Grid.Column="2" Grid.Row="6"
-                        Style="{StaticResource FormFieldFrame}">
-                        <StackLayout>
-                            <Label Text="Número de elementos por página" Style="{StaticResource FormLabel}" />
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Path=MaxItemsCount}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
-                                <Stepper Value="{Binding Path=MaxItemsCount}" Minimum="0" />
-                            </StackLayout>
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="2" Grid.Row="7"
                         Style="{StaticResource FormFieldFrame}"
-                        Padding="0"
-                        BackgroundColor="#66FFFFFF"
-                        VerticalOptions="Start">
+                        Padding="0">
                         <Grid RowSpacing="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -607,36 +705,60 @@
                                 Grid.ColumnSpan="2" Grid.Row="0"
                                 Color="White" />
                             <Label
-                                x:Name="PresentedSlidesLabel"
                                 Grid.Column="0" Grid.Row="0"
                                 Style="{StaticResource FormLabel}"
                                 Padding="10,10,10,6"
-                                Text="Columnas" />
+                                Text="Fondo (opcional)" />
                             <Button
                                 Grid.Column="1" Grid.Row="0"
+                                IsEnabled="{Binding Path=Background, Converter={StaticResource NotNullToBooleanConverter}}"
                                 VerticalOptions="Start"
                                 Style="{StaticResource TextIconButton}"
-                                Text="&#xF415;"
-                                FontSize="Medium" />
-                            <StackLayout
-                                Margin="0"
-                                Padding="10"
+                                Text="&#xF022E;"
+                                FontSize="Medium"
+                                Clicked="BackgroundClearButton_Clicked"/>
+                            <Grid 
                                 Grid.ColumnSpan="2" Grid.Row="1"
-                                BindableLayout.ItemsSource="{Binding Path=Columns}"
-                                Spacing="10">
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackLayout 
-                                            BackgroundColor="White"
-                                            Orientation="Horizontal">
-                                            <Label 
-                                                Margin="10"
-                                                Text="{Binding Path=.}" />
-                                        </StackLayout>
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
-                            </StackLayout>
+                                HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="BackgroundGestureRecognizer_Tapped" />
+                                </Grid.GestureRecognizers>
+                                <ContentView
+                                    BackgroundColor="Black"
+                                    Content="{Binding Path=Background, Converter={StaticResource BackgroundToViewConverter}}" />
+                                <StackLayout 
+                                    HorizontalOptions="Center" VerticalOptions="End"
+                                    Padding="4"
+                                    BackgroundColor="#99000000"
+                                    Orientation="Horizontal">
+                                    <Label
+                                        Text="&#xf740;"
+                                        TextColor="White"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="Medium" />
+                                    <Label
+                                        VerticalOptions="Center"
+                                        Margin="0,0,4,0"
+                                        Text="para seleccionar"
+                                        TextColor="White"
+                                        LineBreakMode="TailTruncation" />
+                                </StackLayout>
+                            </Grid>
                         </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="2" Grid.Row="7"
+                        IsVisible="{Binding Path=Background, Converter={StaticResource NotNullToBooleanConverter}}"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Nivel de transparencia sobre el fondo" Style="{StaticResource FormLabel}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Path=ForegroundTransparency}" VerticalTextAlignment="Center" />
+                                <Label Text="%" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                <Stepper Value="{Binding Path=ForegroundTransparency}" Minimum="5" Maximum="95" Increment="5" />
+                            </StackLayout>
+                        </StackLayout>
                     </Frame>
                 </Grid>
             </ScrollView>
