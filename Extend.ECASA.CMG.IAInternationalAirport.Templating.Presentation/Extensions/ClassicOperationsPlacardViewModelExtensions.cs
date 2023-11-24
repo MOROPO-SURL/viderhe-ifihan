@@ -2,52 +2,52 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions
 {
-    public static class GridExtensions
+    public static class ClassicOperationsPlacardViewModelExtensions
     {
-        public static void InitializeAsTableHeader(this Grid target, Enumerations.ClassicOperationsColumn[] columns, MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind operationKind, Thickness itemMargin, Color itemTextColor, double itemFontSize, out Label timeSizeReferenceLabel)
+        public static void InitializeTableHeader(this Models.View.Placard.ClassicOperationsPlacardViewModel target, Grid layout, MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind operationKind, Thickness itemMargin, double itemFontSize, out Label timeSizeReferenceLabel)
         {
             timeSizeReferenceLabel = new Label
             {
                 Margin = itemMargin,
                 Text = "HORA",
-                TextColor = itemTextColor,
+                TextColor = target.TableHeaderTextColor,
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontSize = itemFontSize,
                 FontAttributes = FontAttributes.Bold
             };
 
-            foreach (var item in columns)
+            foreach (var item in target.Columns)
             {
                 switch (item)
                 {
                     case Enumerations.ClassicOperationsColumn.TIME:
-                        target.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+                        layout.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
 
                         break;
 
                     case Enumerations.ClassicOperationsColumn.CONTEXT:
-                        target.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(3, GridUnitType.Star) });
+                        layout.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(3, GridUnitType.Star) });
 
                         break;
 
                     default:
-                        target.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
+                        layout.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) });
 
                         break;
                 }
             }
 
-            for (int i = 0; i < columns.Length; i++)
+            for (int i = 0; i < target.Columns.Length; i++)
             {
-                var item = columns[i];
+                var item = target.Columns[i];
 
                 switch (item)
                 {
                     case Enumerations.ClassicOperationsColumn.TIME:
                         Grid.SetColumn(timeSizeReferenceLabel, i);
 
-                        target.Children.Add(timeSizeReferenceLabel);
+                        layout.Children.Add(timeSizeReferenceLabel);
 
                         break;
 
@@ -56,7 +56,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                         {
                             Margin = itemMargin,
                             Text = operationKind == MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival ? "ORIGEN" : "DESTINO",
-                            TextColor = itemTextColor,
+                            TextColor = target.TableHeaderTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = itemFontSize,
                             FontAttributes = FontAttributes.Bold
@@ -64,7 +64,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         Grid.SetColumn(contextLabel, i);
 
-                        target.Children.Add(contextLabel);
+                        layout.Children.Add(contextLabel);
 
                         break;
 
@@ -73,7 +73,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                         {
                             Margin = itemMargin,
                             Text = "VUELO",
-                            TextColor = itemTextColor,
+                            TextColor = target.TableHeaderTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = itemFontSize,
                             FontAttributes = FontAttributes.Bold
@@ -81,7 +81,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         Grid.SetColumn(flyLabel, i);
 
-                        target.Children.Add(flyLabel);
+                        layout.Children.Add(flyLabel);
 
                         break;
 
@@ -90,7 +90,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                         {
                             Margin = itemMargin,
                             Text = "TERMINAL",
-                            TextColor = itemTextColor,
+                            TextColor = target.TableHeaderTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = itemFontSize,
                             FontAttributes = FontAttributes.Bold
@@ -98,7 +98,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         Grid.SetColumn(terminalLabel, i);
 
-                        target.Children.Add(terminalLabel);
+                        layout.Children.Add(terminalLabel);
 
                         break;
 
@@ -107,7 +107,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                         {
                             Margin = itemMargin,
                             Text = "ESTADO",
-                            TextColor = itemTextColor,
+                            TextColor = target.TableHeaderTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = itemFontSize,
                             FontAttributes = FontAttributes.Bold
@@ -115,7 +115,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         Grid.SetColumn(statusLabel, i);
 
-                        target.Children.Add(statusLabel);
+                        layout.Children.Add(statusLabel);
 
                         break;
                 }

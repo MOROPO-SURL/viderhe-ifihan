@@ -1,26 +1,103 @@
-﻿using System.Collections.Generic;
+﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+using SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions;
+using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Placard
 {
-    public partial class ClassicDeparturesPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, Facade.IInteroperablePlacardFacade, MOROPO.Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
+    public partial class ClassicDeparturesPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, MOROPO.Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
+        private static Thickness TABLE_ITEM_MARGIN = new Thickness(12);
+
+        private static Common.Templating.Presentation.Converters.SizeToRelativeValueConverter SIZE_TO_RELATIVE_VALUE_CONVERTER = new Common.Templating.Presentation.Converters.SizeToRelativeValueConverter();
+
+        private readonly Models.View.Placard.ClassicOperationsPlacardViewModel model;
+
+        private Label timeSizeReferenceLabel;
+
         public ClassicDeparturesPlacardView(Models.View.Placard.ClassicOperationsPlacardViewModel model)
         {
             InitializeComponent();
 
             BindingContext = model;
+
+            TableLayout.BackgroundColor = model.TableBackgroundColor;
+
+            TableHeaderGrid.BackgroundColor = model.TableHeaderBackgroundColor;
+
+            if (model.Background != null)
+            {
+                BackgroundColor = model.TableBackgroundColor;
+                
+                TableLayout.BackgroundColor = TableLayout.BackgroundColor.MultiplyAlpha((100.0D - model.ForegroundTransparency) / 100);
+
+                var unresponsiveMarginFactor = (Application.Current.MainPage.Width + Application.Current.MainPage.Height) / 2 * 0.04;
+
+                var responsiveMarginFactor = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(unresponsiveMarginFactor, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture);
+
+                TableLayout.Margin = new Thickness(responsiveMarginFactor);
+
+                View backgroundView = null;
+
+                switch (model.Background.Kind)
+                {
+                    case Enumerations.BackgroundKind.Gradient:
+                        var gradientModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.GradientContextModel>(model.Background.SerializedContext);
+
+                        backgroundView = new MagicGradients.GradientView
+                        {
+                            GradientSource = MagicGradients.CssGradientSource.Parse(gradientModel.Data)
+                        };
+
+                        break;
+
+                    case Enumerations.BackgroundKind.Image:
+                        var imageModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(model.Background.SerializedContext).ToViewModel();
+
+                        backgroundView = new FFImageLoading.Forms.CachedImage
+                        {
+                            Source = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(imageModel.Id)),
+                            FadeAnimationEnabled = false,
+                            Aspect = Aspect.AspectFill,
+                            CacheType = FFImageLoading.Cache.CacheType.Disk,
+                            CacheDuration = System.TimeSpan.MaxValue
+                        };
+
+                        break;
+
+                        //case Enumerations.BackgroundKind.Video:
+                        //    var videoModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.VideoContextModel>(model.Background.SerializedContext).ToViewModel();
+
+                        //    Content = new FFImageLoading.Forms.CachedImage
+                        //    {
+                        //        Source = ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(videoModel.ThumbnailId)),
+                        //        FadeAnimationEnabled = false,
+                        //        Aspect = Aspect.AspectFill,
+                        //        CacheType = FFImageLoading.Cache.CacheType.Disk,
+                        //        CacheDuration = System.TimeSpan.MaxValue
+                        //    };
+
+                        //    break;
+                }
+
+                DeparturesLayout.Children.Insert(0, backgroundView);
+            }
+
+            var tableHeaderItemFontSize = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(model.TableHeaderFontSize, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture);
+
+            model.InitializeTableHeader(TableHeaderGrid, MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure, TABLE_ITEM_MARGIN, tableHeaderItemFontSize, out timeSizeReferenceLabel);
+
+            this.model = model;
         }
 
-        public override Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout => Wrapper;
+        public override Layout<View> WrapLayout => Wrapper;
 
-        public override Xamarin.Forms.View PlacardView => DeparturesLayout;
+        public override View PlacardView => DeparturesLayout;
 
-        public Models.View.Placard.ClassicOperationsPlacardViewModel BindingContextViewModel => BindingContext as Models.View.Placard.ClassicOperationsPlacardViewModel;
-
-        public override void ConfigureLayout(Xamarin.Forms.View view)
+        public override void ConfigureLayout(View view)
         {
-            Xamarin.Forms.Grid.SetColumn(view, 0);
-            Xamarin.Forms.Grid.SetRow(view, 0);
+            Grid.SetColumn(view, 0);
+            Grid.SetRow(view, 0);
         }
 
         public override void PerformPlacardStarup()
@@ -35,6 +112,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             }).ContinueWith(FetchOperations_Callback);
         }
 
+        protected override void DisposeUnmanagementResources()
+        {
+            base.DisposeUnmanagementResources();
+
+            timeSizeReferenceLabel = null;
+        }
+
         private void FetchOperations_Callback(System.Threading.Tasks.Task<MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel[]> task)
         {
             if (BindingContext == null) return;
@@ -43,23 +127,23 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
             if (!task.IsCanceled && task.Exception == null)
             {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    if (BindingContextViewModel == null) return;
-
-                    BindingContextViewModel.Items.Clear();
+                    TableBodyStackLayout.Children.Clear();
                 });
+
+                var tableBodyItemFontSize = SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(model.RowFontSize, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture);
+
+                var index = 0;
 
                 foreach (var item in task.Result)
                 {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    System.Threading.Thread.Sleep(System.TimeSpan.FromMilliseconds(250));
+
+                    Device.BeginInvokeOnMainThread(() =>
                     {
-                        if (BindingContextViewModel == null) return;
-
-                        BindingContextViewModel.Items.Add(item);
+                        item.AttachTo(index++, TableBodyStackLayout, TableHeaderGrid.ColumnDefinitions, model, TABLE_ITEM_MARGIN, (double)tableBodyItemFontSize, timeSizeReferenceLabel.Width);
                     });
-
-                    System.Threading.Thread.Sleep(System.TimeSpan.FromMilliseconds(750));
                 }
             }
 
@@ -67,9 +151,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
             var client = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Frontend.Clients.OperationsAPIConnectClient(this);
 
-            if (BindingContextViewModel == null) return;
-
-            var delay = System.TimeSpan.FromSeconds(BindingContextViewModel.UpdateInterval)  - stopwatch.Elapsed;
+            var delay = System.TimeSpan.FromSeconds(model.UpdateInterval) - stopwatch.Elapsed;
 
             if (delay <= System.TimeSpan.Zero)
             {
@@ -90,15 +172,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             }
         }
 
-        #region IInteroperablePlacardFacade implementation
-
-        public Models.View.Placard.Contract.AbstractInteroperablePlacardViewModel GetInteroperableModel()
-        {
-            return BindingContext as Models.View.Placard.Contract.AbstractInteroperablePlacardViewModel;
-        }
-
-        #endregion
-
         #region IHttpClientHelperProviderFacade implementation
 
         public MOROPO.Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper HttpClientHelper
@@ -106,8 +179,6 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             get
             {
                 if (BindingContext == null) throw new System.InvalidOperationException();
-
-                var model = BindingContext as Models.View.Placard.ClassicOperationsPlacardViewModel;
 
                 return new MOROPO.Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
                     string.Format("{0}://{1}/api/", model.UseSSL ? "https" : "http", model.APIServer),

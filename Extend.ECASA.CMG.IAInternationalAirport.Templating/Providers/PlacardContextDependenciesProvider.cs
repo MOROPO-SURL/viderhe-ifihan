@@ -11,7 +11,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.ClassicOperationsPlacardContextModel>(serializedContext);
 
-                if (context.Background.Kind != Enumerations.BackgroundKind.Gradient) return null;
+                if (context.Background == null || context.Background.Kind != Enumerations.BackgroundKind.Gradient) return null;
 
                 return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<GradientContextModel>(context.Background.SerializedContext) };
             }
@@ -26,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.ClassicOperationsPlacardContextModel>(serializedContext);
 
-                if (context.Background.Kind != Enumerations.BackgroundKind.Image) return null;
+                if (context.Background == null || context.Background.Kind != Enumerations.BackgroundKind.Image) return null;
 
                 return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<ImageContextModel>(context.Background.SerializedContext) };
             }
@@ -46,7 +46,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.ClassicOperationsPlacardContextModel>(serializedContext);
 
-                if (context.Background.Kind != Enumerations.BackgroundKind.Video) return null;
+                if (context.Background == null || context.Background.Kind != Enumerations.BackgroundKind.Video) return null;
 
                 return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<VideoContextModel>(context.Background.SerializedContext) };
             }

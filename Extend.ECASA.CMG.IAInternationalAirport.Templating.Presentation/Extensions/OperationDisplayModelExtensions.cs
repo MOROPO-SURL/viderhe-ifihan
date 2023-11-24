@@ -4,15 +4,24 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 {
     public static class OperationDisplayModelExtensions
     {
-        public static void AttachTo(this MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel target, StackLayout layout, ColumnDefinitionCollection columnDefinitions, Models.View.Placard.ClassicOperationsPlacardViewModel model, Thickness margin, double fontSize, double timeColumnWidth)
+        public static void AttachTo(this MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel target, int index, StackLayout layout, ColumnDefinitionCollection columnDefinitions, Models.View.Placard.ClassicOperationsPlacardViewModel model, Thickness margin, double fontSize, double timeColumnWidth)
         {
+            var useSecundaryColorProfile = model.UseStrippedRows && index % 2 != 0;
+
             var itemLayout = new Grid
             {
                 ColumnSpacing = 2,
                 ColumnDefinitions = columnDefinitions,
-                BackgroundColor = model.PrimaryRowBackgroundColor,
+                BackgroundColor = useSecundaryColorProfile ? model.SecoundaryRowBackgroundColor : model.PrimaryRowBackgroundColor,
                 VerticalOptions = LayoutOptions.Start
             };
+
+            if (model.Background != null)
+            {
+                itemLayout.BackgroundColor = itemLayout.BackgroundColor.MultiplyAlpha((100.0D - model.ForegroundTransparency) / 100);
+            }
+
+            var rowTextColor = useSecundaryColorProfile ? model.SecoundaryRowTextColor : model.PrimaryRowTextColor;
 
             for (int i = 0; i < model.Columns.Length; i++)
             {
@@ -26,7 +35,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             Margin = margin,
                             WidthRequest = timeColumnWidth,
                             Text = target.StartDate.ToString("HH:mm"),
-                            TextColor = model.PrimaryRowTextColor,
+                            TextColor = rowTextColor,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize
@@ -43,7 +52,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                         {
                             Margin = margin,
                             Text = target.Context,
-                            TextColor = model.PrimaryRowTextColor,
+                            TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize
                         };
@@ -66,7 +75,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             Margin = margin,
                             HorizontalOptions = LayoutOptions.FillAndExpand,
                             Text = string.Format("{0} {1}", target.Carrier.Id, target.Flight),
-                            TextColor = model.PrimaryRowTextColor,
+                            TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize
                         });
@@ -82,7 +91,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                         {
                             Margin = margin,
                             Text = target.Terminal.Name,
-                            TextColor = model.PrimaryRowTextColor,
+                            TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize
                         };
@@ -98,7 +107,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                         {
                             Margin = margin,
                             Text = target.Status.Label,
-                            TextColor = model.PrimaryRowTextColor,
+                            TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize
                         };
