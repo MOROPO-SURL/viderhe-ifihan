@@ -463,22 +463,45 @@
                                                     Spacing="10">
                                                     <BindableLayout.ItemTemplate>
                                                         <DataTemplate>
-                                                            <StackLayout 
-                                                                BackgroundColor="White"
-                                                                Orientation="Horizontal"
-                                                                Padding="4">
-                                                                <Label 
-                                                                    Margin="10"
-                                                                    HorizontalOptions="FillAndExpand"
-                                                                    VerticalTextAlignment="Center"
-                                                                    Text="{Binding Path=.}"
-                                                                    TextColor="Black" />
-                                                                <Button
-                                                                    VerticalOptions="Start"
-                                                                    Style="{StaticResource TextIconButton}"
-                                                                    Text="&#xF0049;"
-                                                                    FontSize="Medium"
-                                                                    Clicked="HideColumnButton_Clicked" />
+                                                            <StackLayout>
+                                                                <StackLayout.GestureRecognizers>
+                                                                    <DropGestureRecognizer
+                                                                        AllowDrop="True"
+                                                                        Drop="VisibleColumnsStackLayout_DropGestureRecognizer_Drop"
+                                                                        DragLeave="VisibleColumnsStackLayout_DropGestureRecognizer_DragLeave"
+                                                                        DragOver="VisibleColumnsStackLayout_DropGestureRecognizer_DragOver" />
+                                                                </StackLayout.GestureRecognizers>
+                                                                <BoxView
+                                                                    Color="DimGray"
+                                                                    HeightRequest="30"
+                                                                    IsVisible="{Binding Path=IsBeingDraggedOverAtStart}" />
+                                                                <StackLayout 
+                                                                    BackgroundColor="White"
+                                                                    Orientation="Horizontal"
+                                                                    Padding="4">
+                                                                    <StackLayout.GestureRecognizers>
+                                                                        <DragGestureRecognizer 
+                                                                            CanDrag="True"
+                                                                            DragStarting="VisibleColumnsStackLayout_ItemView_DragGestureRecognizer_DragStarting"
+                                                                            DropCompleted="VisibleColumnsStackLayout_ItemView_DragGestureRecognizer_DropCompleted" />
+                                                                    </StackLayout.GestureRecognizers>
+                                                                    <Label 
+                                                                        Margin="10"
+                                                                        HorizontalOptions="FillAndExpand"
+                                                                        VerticalTextAlignment="Center"
+                                                                        Text="{Binding Path=Target}"
+                                                                        TextColor="Black" />
+                                                                    <Button
+                                                                        VerticalOptions="Start"
+                                                                        Style="{StaticResource TextIconButton}"
+                                                                        Text="&#xF0049;"
+                                                                        FontSize="Medium"
+                                                                        Clicked="HideColumnButton_Clicked" />
+                                                                </StackLayout>
+                                                                <BoxView
+                                                                    Color="DimGray"
+                                                                    HeightRequest="30"
+                                                                    IsVisible="{Binding Path=IsBeingDraggedOverAtEnd}" />
                                                             </StackLayout>
                                                         </DataTemplate>
                                                     </BindableLayout.ItemTemplate>

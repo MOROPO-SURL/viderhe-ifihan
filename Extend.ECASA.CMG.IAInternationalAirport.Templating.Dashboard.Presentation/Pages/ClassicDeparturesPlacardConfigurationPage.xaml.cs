@@ -26,12 +26,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
         {
             if (placardViewModel == null)
             {
-                BindingContextPageModel.VisibleColumns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn> {
-                    Enumerations.ClassicOperationsColumn.TIME,
-                    Enumerations.ClassicOperationsColumn.CONTEXT,
-                    Enumerations.ClassicOperationsColumn.FLY,
-                    Enumerations.ClassicOperationsColumn.TERMINAL,
-                    Enumerations.ClassicOperationsColumn.STATUS
+                var index = 0;
+
+                BindingContextPageModel.VisibleColumns = new System.Collections.ObjectModel.ObservableCollection<Models.View.ClassicOperationColumnCollectionItemViewModel> {
+                    new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = Enumerations.ClassicOperationsColumn.TIME },
+                    new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = Enumerations.ClassicOperationsColumn.CONTEXT },
+                    new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = Enumerations.ClassicOperationsColumn.FLY },
+                    new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = Enumerations.ClassicOperationsColumn.TERMINAL },
+                    new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = Enumerations.ClassicOperationsColumn.STATUS }
                 };
                 BindingContextPageModel.AvailableColumns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn>
                 {
@@ -56,7 +58,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                     Enumerations.ClassicOperationsColumn.GATE
                 };
 
-                BindingContextPageModel.AvailableColumns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn>(classicOperationsColumnUniverse.Except(BindingContextPageModel.VisibleColumns));
+                BindingContextPageModel.AvailableColumns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn>(classicOperationsColumnUniverse.Except(BindingContextPageModel.VisibleColumns.Select(item => item.Target)));
             }
 
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
@@ -147,7 +149,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             SecoundaryRowTextColor = BindingContextPageModel.SecoundaryRowTextColor.ToHex(),
                             SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex(),
                             RowFontSize = BindingContextPageModel.RowFontSize,
-                            Columns = BindingContextPageModel.VisibleColumns.ToArray(),
+                            Columns = BindingContextPageModel.VisibleColumns.Select(item => item.Target).ToArray(),
                             Background = BindingContextPageModel.Background,
                             ForegroundTransparency = BindingContextPageModel.ForegroundTransparency
                         }),
@@ -194,7 +196,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             SecoundaryRowTextColor = BindingContextPageModel.SecoundaryRowTextColor.ToHex(),
                             SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex(),
                             RowFontSize = BindingContextPageModel.RowFontSize,
-                            Columns = BindingContextPageModel.VisibleColumns.ToArray(),
+                            Columns = BindingContextPageModel.VisibleColumns.Select(item => item.Target).ToArray(),
                             Background = BindingContextPageModel.Background,
                             ForegroundTransparency = BindingContextPageModel.ForegroundTransparency
                         }),
@@ -288,20 +290,102 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
         private void HideColumnButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var column = (Enumerations.ClassicOperationsColumn) (sender as Xamarin.Forms.BindableObject).BindingContext;
+            var item = (Models.View.ClassicOperationColumnCollectionItemViewModel) (sender as Xamarin.Forms.BindableObject).BindingContext;
 
-            BindingContextPageModel.VisibleColumns.Remove(column);
-            BindingContextPageModel.AvailableColumns.Add(column);
+            BindingContextPageModel.VisibleColumns.Remove(item);
+            BindingContextPageModel.AvailableColumns.Add(item.Target);
         }
 
         private void ShowColumnButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var column = (Enumerations.ClassicOperationsColumn)(sender as Xamarin.Forms.BindableObject).BindingContext;
+            var item = (Enumerations.ClassicOperationsColumn)(sender as Xamarin.Forms.BindableObject).BindingContext;
 
-            BindingContextPageModel.AvailableColumns.Remove(column);
-            BindingContextPageModel.VisibleColumns.Add(column);
+            BindingContextPageModel.AvailableColumns.Remove(item);
+            BindingContextPageModel.VisibleColumns.Add(new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = BindingContextPageModel.VisibleColumns.Count, Target = item });
         }
-        
+
+        private void VisibleColumnsStackLayout_DropGestureRecognizer_Drop(object sender, Xamarin.Forms.DropEventArgs e)
+        {
+            var dropItem = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ClassicOperationColumnCollectionItemViewModel;
+
+            var beingDraggedItem = BindingContextPageModel.VisibleColumns.First(i => i.IsBeingDragged);
+
+            if (dropItem == null || beingDraggedItem == dropItem) return;
+
+            BindingContextPageModel.VisibleColumns.Remove(beingDraggedItem);
+
+            if (dropItem.Order == BindingContextPageModel.VisibleColumns.Count)
+            {
+                BindingContextPageModel.VisibleColumns.Add(beingDraggedItem);
+            }
+            else
+            {
+                BindingContextPageModel.VisibleColumns.Insert(dropItem.Order, beingDraggedItem);
+            }
+
+            dropItem.IsBeingDraggedOverAtStart = false;
+            dropItem.IsBeingDraggedOverAtEnd = false;
+
+            ReOrderVisibleColumns();
+
+            e.Handled = true;
+        }
+
+        private void VisibleColumnsStackLayout_DropGestureRecognizer_DragLeave(object sender, Xamarin.Forms.DragEventArgs e)
+        {
+            foreach (var item in BindingContextPageModel.VisibleColumns)
+            {
+                item.IsBeingDraggedOverAtStart = false;
+                item.IsBeingDraggedOverAtEnd = false;
+            }
+        }
+
+        private void VisibleColumnsStackLayout_DropGestureRecognizer_DragOver(object sender, Xamarin.Forms.DragEventArgs e)
+        {
+            var dragOverItem = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ClassicOperationColumnCollectionItemViewModel;
+
+            var beingDraggedItem = BindingContextPageModel.VisibleColumns.FirstOrDefault(item => item.IsBeingDragged);
+
+            foreach (var item in BindingContextPageModel.VisibleColumns)
+            {
+                if (dragOverItem == item)
+                {
+                    if (item.IsBeingDragged)
+                    {
+                        item.IsBeingDraggedOverAtStart = false;
+                        item.IsBeingDraggedOverAtEnd = false;
+                    }
+                    else
+                    {
+                        item.IsBeingDraggedOverAtStart = item.Order < beingDraggedItem.Order;
+                        item.IsBeingDraggedOverAtEnd = item.Order > beingDraggedItem.Order;
+                    }
+                }
+                else
+                {
+                    item.IsBeingDraggedOverAtStart = false;
+                    item.IsBeingDraggedOverAtEnd = false;
+                }
+            }
+        }
+
+        private void VisibleColumnsStackLayout_ItemView_DragGestureRecognizer_DragStarting(object sender, Xamarin.Forms.DragStartingEventArgs e)
+        {
+            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ClassicOperationColumnCollectionItemViewModel;
+
+            foreach (var item in BindingContextPageModel.VisibleColumns)
+            {
+                item.IsBeingDragged = target == item;
+            }
+        }
+
+        private void VisibleColumnsStackLayout_ItemView_DragGestureRecognizer_DropCompleted(object sender, Xamarin.Forms.DropCompletedEventArgs e)
+        {
+            var beingDraggedItem = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ClassicOperationColumnCollectionItemViewModel;
+
+            beingDraggedItem.IsBeingDragged = false;
+        }
+
         private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
         {
             BindingContextPageModel.Tags.Add(model);
@@ -329,6 +413,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                     Data = target.Source.Stylesheet
                 })
             };
+        }
+
+        private void ReOrderVisibleColumns()
+        {
+            var counter = 0;
+
+            foreach (var item in BindingContextPageModel.VisibleColumns)
+            {
+                item.Order = counter++;
+            }
         }
 
         #region IValidableFormPage implementation

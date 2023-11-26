@@ -10,7 +10,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.ClassicOperationsPlacardContextModel>(placardViewModel.SerializedContext);
 
-            return new Models.Page.ClassicOperationsPlacardConfigurationPageModel
+            var result = new Models.Page.ClassicOperationsPlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 DefineBeginAt = placardViewModel.BeginAt != null,
@@ -36,11 +36,20 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                 UseStrippedRows = context.UseStrippedRows,
                 SecoundaryRowTextColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowTextColor),
                 SecoundaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowBackgroundColor),
+                VisibleColumns = new System.Collections.ObjectModel.ObservableCollection<Models.View.ClassicOperationColumnCollectionItemViewModel>(),
                 RowFontSize = context.RowFontSize,
-                VisibleColumns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn>(context.Columns),
                 Background = context.Background,
                 ForegroundTransparency = context.ForegroundTransparency
             };
+
+            var index = 0;
+
+            foreach (var item in context.Columns)
+            {
+                result.VisibleColumns.Add(new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = item });
+            }
+
+            return result;
         }
     }
 }

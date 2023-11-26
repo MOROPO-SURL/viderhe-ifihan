@@ -51,7 +51,7 @@
 
         public int RowFontSize { get => rowFontSize; set => SetProperty(ref rowFontSize, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn> VisibleColumns { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<View.ClassicOperationColumnCollectionItemViewModel> VisibleColumns { get; set; }
 
         public System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn> AvailableColumns { get; set; }
 
