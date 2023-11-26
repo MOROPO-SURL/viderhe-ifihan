@@ -7,7 +7,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation
         private Hubs.Client.AmbientalHubConnectClient ambientalHubConnectClient;
         private MOROPO.UIC.IoTPlatform.Interop.Sync.Receptor.API.Connect.Clients.AmbientalReadingsApiConnectClient ambientalReadingsApiConnectClient;
 
-        public AmbientalDashboardPlacardView(Models.View.AmbientalDashboardPlacardViewModel model, System.Uri ioTPlatformEndpointBaseUri)
+        public AmbientalDashboardPlacardView(Models.View.AmbientalDashboardPlacardViewModel model, System.Uri ioTPlatformEndpointBaseUri, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

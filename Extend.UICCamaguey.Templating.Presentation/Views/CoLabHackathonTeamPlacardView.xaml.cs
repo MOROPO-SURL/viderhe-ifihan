@@ -2,7 +2,7 @@
 {
     public partial class CoLabHackathonTeamPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public CoLabHackathonTeamPlacardView()
+        public CoLabHackathonTeamPlacardView(double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
         }

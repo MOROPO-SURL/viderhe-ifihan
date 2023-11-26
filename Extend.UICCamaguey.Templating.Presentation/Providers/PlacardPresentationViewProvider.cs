@@ -2,7 +2,7 @@
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
-        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
             if (model.Template.Id == Descriptors.EventLiveStreamTemplateDescriptor.ID)
             {
@@ -15,7 +15,7 @@
                     EventTitle = context.EventTitle,
                     EventPlace = context.EventPlace,
                     VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(context.StreamUrl)
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == Descriptors.AmbientalDashboardTemplateDescriptor.ID)
@@ -27,7 +27,7 @@
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     AmbientalVariable = context.AmbientalVariable,
-                }, new System.Uri(context.IoTPlatformEndpointBaseUri));
+                }, new System.Uri(context.IoTPlatformEndpointBaseUri), relativeSizeScaleFactor);
             }
 
             return null;

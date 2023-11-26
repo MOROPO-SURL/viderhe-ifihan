@@ -2,7 +2,7 @@
 {
     public partial class EventLiveStreamPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public EventLiveStreamPlacardView(Models.View.EventLiveStreamPlacardViewModel model)
+        public EventLiveStreamPlacardView(Models.View.EventLiveStreamPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
