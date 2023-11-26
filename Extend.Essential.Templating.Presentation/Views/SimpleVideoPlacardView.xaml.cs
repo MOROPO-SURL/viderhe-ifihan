@@ -4,7 +4,7 @@
     {
         private Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition;
 
-        public SimpleVideoPlacardView(Models.View.SimpleVideoPlacardViewModel model)
+        public SimpleVideoPlacardView(Models.View.SimpleVideoPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

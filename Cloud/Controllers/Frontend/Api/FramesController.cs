@@ -79,7 +79,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
                 target.Priority = priority;
                 
-                Repository.Update(target, User.Identity.Name);
+                Repository.Update(target, User.Identity.Name, true);
+
+                ReOrderFrames(target.ScreenplayId);
             }
             catch (System.InvalidOperationException e)
             {
@@ -126,6 +128,39 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
             if (entity.Placard.Account.Id != accountId) throw new System.InvalidOperationException();
+        }
+
+        protected override void PostDelete(Persistence.Entities.Frame entity)
+        {
+            base.PostDelete(entity);
+
+            ReOrderFrames(entity.ScreenplayId);
+        }
+
+        private void ReOrderFrames(System.Guid screenplayId)
+        {
+            var entities = Repository.FindBy(_entity => _entity.ScreenplayId == screenplayId).OrderBy(_entity => _entity.Priority).ToList();
+
+            if (entities.Count <= 0) return;
+
+            var index = 0;
+
+            while (entities.Count > 1)
+            {
+                var next = entities.First();
+
+                next.Priority = ++index;
+
+                Repository.Update(next, "system", false);
+
+                entities.RemoveAt(0);
+            }
+
+            var last = entities.First();
+
+            last.Priority = index + 1;
+
+            Repository.Update(last, "system");
         }
     }
 }

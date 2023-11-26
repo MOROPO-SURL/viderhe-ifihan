@@ -14,13 +14,19 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
     [MOROPO.SAPRESSC.Core.Web.Security.Attributes.CatchChangeUserPasswordRequiredException]
     public class PlacardsController : MOROPO.SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementFilteredController<Persistence.Entities.Placard, System.Guid, PlacardInputModel, PlacardDisplayModel, PlacardFilterModel>
     {
+        private System.Collections.Generic.List<System.Guid> relatedScreenplaysIds;
+
         private readonly IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
         private readonly IEntityRepository<Persistence.Entities.Template, System.Guid> templateRepository;
+        private readonly IEntityRepository<Persistence.Entities.Frame, long> frameRepository;
 
-        public PlacardsController(IEntityRepository<Persistence.Entities.Template, System.Guid> templateRepository, IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, IEntityRepository<Persistence.Entities.Placard, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<PlacardsController> localizer, ILogger<PlacardsController> logger) : base(repository, localizer, logger)
+        public PlacardsController(IEntityRepository<Persistence.Entities.Frame, long> frameRepository, IEntityRepository<Persistence.Entities.Template, System.Guid> templateRepository, IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, IEntityRepository<Persistence.Entities.Placard, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<PlacardsController> localizer, ILogger<PlacardsController> logger) : base(repository, localizer, logger)
         {
             this.accountRepository = accountRepository;
             this.templateRepository = templateRepository;
+            this.frameRepository = frameRepository;
+
+            relatedScreenplaysIds = new System.Collections.Generic.List<System.Guid>();
         }
 
         protected override System.Linq.Expressions.Expression<System.Func<Persistence.Entities.Placard, bool>> GetGlobalSelector()
@@ -151,8 +157,50 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
 
             if (entity.Account.Id != accountId) throw new System.InvalidOperationException();
+
+            var relatedFrames = frameRepository.FindBy(_entity => _entity.PlacardId == entity.Id);
+
+            foreach (var item in relatedFrames)
+            {
+                if (relatedScreenplaysIds.Contains(item.ScreenplayId)) continue;
+
+                relatedScreenplaysIds.Add(item.ScreenplayId);
+            }
         }
-    
+
+        protected override void PostDelete(Persistence.Entities.Placard entity)
+        {
+            base.PostDelete(entity);
+
+            if (relatedScreenplaysIds.Count <= 0) return;
+
+            foreach (var id in relatedScreenplaysIds)
+            {
+                var entities = frameRepository.FindBy(_entity => _entity.ScreenplayId == id).OrderBy(_entity => _entity.Priority).ToList();
+
+                if (entities.Count <= 0) return;
+
+                var index = 0;
+
+                while (entities.Count > 1)
+                {
+                    var next = entities.First();
+
+                    next.Priority = ++index;
+
+                    frameRepository.Update(next, "system", false);
+
+                    entities.RemoveAt(0);
+                }
+
+                var last = entities.First();
+
+                last.Priority = index + 1;
+
+                frameRepository.Update(last, "system");
+            }
+        }
+
         private void UpdateVideoDependencies(Persistence.Entities.Placard entity, PlacardInputModel inputModel)
         {
             Persistence.Entities.PlacardVideoBridge complementVideoBridge = null;
