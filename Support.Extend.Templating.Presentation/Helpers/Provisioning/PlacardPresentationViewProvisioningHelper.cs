@@ -2,40 +2,39 @@
 using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Providers.Facade;
 using System.Linq;
 
-// TODO Rename and relocate as PlacardPresentationViewProvisioningHelper
-namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Providers
+namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Helpers.Provisioning
 {
-    public sealed class PlacardPresentationViewProvider
+    public sealed class PlacardPresentationViewProvisioningHelper
     {
-        private static PlacardPresentationViewProvider instance;
+        private static PlacardPresentationViewProvisioningHelper instance;
 
-        public static PlacardPresentationViewProvider Instance
+        public static PlacardPresentationViewProvisioningHelper Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new PlacardPresentationViewProvider();
+                    instance = new PlacardPresentationViewProvisioningHelper();
                 }
 
                 return instance;
             }
         }
 
-        private PlacardPresentationViewProvider()
+        private PlacardPresentationViewProvisioningHelper()
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating.Presentation,\\sVersion=")).ToArray();
 
             XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IPlacardPresentationViewProviderFacade).IsAssignableFrom(t));
         }
 
-        public BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        public BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
             var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardPresentationViewProviderFacade>();
 
             foreach (var provider in providers)
             {
-                var result = provider.GetFor(model, getOrientationFunction);
+                var result = provider.GetFor(model, getOrientationFunction, relativeSizeScaleFactor);
 
                 if (result == null) continue;
 

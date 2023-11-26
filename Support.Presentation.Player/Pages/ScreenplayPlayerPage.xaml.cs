@@ -1,4 +1,5 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
+using SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Helpers.Provisioning;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
@@ -99,9 +100,9 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 
         }
 
-        private BasePlacardPresentationView PlacardViewModelToPresentationView(Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        private BasePlacardPresentationView PlacardViewModelToPresentationView(Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
-            return Extend.Templating.Presentation.Providers.PlacardPresentationViewProvider.Instance.GetFor(model, getOrientationFunction);
+            return PlacardPresentationViewProvisioningHelper.Instance.GetFor(model, getOrientationFunction, relativeSizeScaleFactor);
         }
 
         protected override void DisposeUnmanagementResources()
