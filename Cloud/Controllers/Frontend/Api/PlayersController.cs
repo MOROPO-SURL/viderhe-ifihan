@@ -125,7 +125,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         public override ActionResult<PlayerDisplayModel[]> Get()
         {
-            return Ok(Repository.FindBy(GetGlobalSelector()).Select(entity => EntityToDisplayModel(entity)).ToArray());
+            return Ok(Repository.FindBy(GetGlobalSelector()).ToArray().Select(entity => EntityToDisplayModel(entity)).ToArray());
         }
 
         public override ActionResult<PlayerDisplayModel[]> GetFiltered([FromBody] PlayerFilterModel filterModel)
@@ -142,7 +142,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 }
                 else
                 {
-                    result = Repository.FindBy(GetGlobalSelector()).Where(entity => entity.Name.ToLower().Contains(filterModel.Name.ToLower())).Select(entity => EntityToDisplayModel(entity)).ToArray();
+                    result = Repository.FindBy(GetGlobalSelector()).Where(entity => entity.Name.ToLower().Contains(filterModel.Name.ToLower())).ToArray().Select(entity => EntityToDisplayModel(entity)).ToArray();
                 }
             }
             else
