@@ -2,7 +2,7 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views
 {
-    public class BaseTemplatedPlacardPresentationView : Common.Presentation.Views.BasePlacardPresentationView, Contract.IRelativeDimensionScalable
+    public class BaseTemplatedPlacardPresentationView : Common.Presentation.Views.BasePlacardPresentationView, Facade.IRelativeSizeScalableViewFacade
     {
         public Xamarin.CommunityToolkit.UI.Views.MediaElement SoundComplementMediaElement;
 
@@ -95,9 +95,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.View
             }
         }
 
-        #region IRelativeDimensionScalable implementation
+        #region IRelativeSizeScalableViewFacade implementation
 
-        public double RelativeDeimensionScaleFactor { get; set; } = 1.0d;
+        public double RelativeSizeScaleFactor { get; set; } = 1.0d;
 
         #endregion
     }
