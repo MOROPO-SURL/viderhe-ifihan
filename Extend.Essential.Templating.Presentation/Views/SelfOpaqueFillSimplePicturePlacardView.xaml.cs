@@ -2,7 +2,7 @@
 {
     public partial class SelfOpaqueFillSimplePicturePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public SelfOpaqueFillSimplePicturePlacardView(Models.View.SelfOpaqueFillSimplePicturePlacardViewModel model)
+        public SelfOpaqueFillSimplePicturePlacardView(Models.View.SelfOpaqueFillSimplePicturePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

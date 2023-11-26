@@ -2,8 +2,13 @@
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views
 {
-    public class BaseTemplatedPlacardPresentationView : Common.Presentation.Views.BasePlacardPresentationView, Contract.IRelativeDimensionScalable
+    public class BaseTemplatedPlacardPresentationView : Common.Presentation.Views.BasePlacardPresentationView, Facade.IRelativeSizeScalableViewFacade
     {
+        public BaseTemplatedPlacardPresentationView(double relativeSizeScaleFactor)
+        {
+            RelativeSizeScaleFactor = relativeSizeScaleFactor;
+        }
+
         public Xamarin.CommunityToolkit.UI.Views.MediaElement SoundComplementMediaElement;
 
         public virtual void StartShowInWhenReady(Transitioning.Presentation.Transitions.Contract.AbstractTransition transition)
@@ -95,9 +100,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.View
             }
         }
 
-        #region IRelativeDimensionScalable implementation
+        #region IRelativeSizeScalableViewFacade implementation
 
-        public double RelativeDeimensionScaleFactor { get; set; } = 1.0d;
+        public double RelativeSizeScaleFactor { get; }
 
         #endregion
     }

@@ -4,7 +4,7 @@
     {
         private const double RELATIVE_REFERENCE_SIZE = 1920;
 
-        public Views.Contract.IRelativeDimensionScalable RelativeDimensionScalable { get; set; }
+        public Views.Facade.IRelativeSizeScalableViewFacade SizeScalableView { get; set; }
 
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
@@ -16,7 +16,7 @@
 
             if (applicationPageLargeSize == RELATIVE_REFERENCE_SIZE || applicationPageLargeSize <= 0) return concreteValue;
 
-            return concreteValue * applicationPageLargeSize / RELATIVE_REFERENCE_SIZE * (RelativeDimensionScalable?.RelativeDeimensionScaleFactor ?? 1);
+            return concreteValue * applicationPageLargeSize / RELATIVE_REFERENCE_SIZE * (SizeScalableView?.RelativeSizeScaleFactor ?? 1);
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
