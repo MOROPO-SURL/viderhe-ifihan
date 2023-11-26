@@ -14,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
 
         private int iterationCount;
 
-        public LandscapeGrid1x3PlacardView(Models.View.LandscapeGrid1x3PlacardViewModel model)
+        public LandscapeGrid1x3PlacardView(Models.View.LandscapeGrid1x3PlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -37,6 +37,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
 
             var concreteBindingContext = BindingContext as Models.View.LandscapeGrid1x3PlacardViewModel;
 
+            var relativeSizeScaleFactor = RelativeSizeScaleFactor * 1.0d / 3.0d;
+
             for (int i = 0; i < 3; i++)
             {
                 var targetView = PlacardLayout.Children[i] as Xamarin.Forms.Layout<Xamarin.Forms.View>;
@@ -44,18 +46,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
                 switch (i)
                 {
                     case 0:
-                        oneOfThreeScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.OneOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, () => Xamarin.Essentials.DisplayOrientation.Portrait);
+                        oneOfThreeScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.OneOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, () => Xamarin.Essentials.DisplayOrientation.Portrait, relativeSizeScaleFactor);
 
                         break;
 
                     case 1:
-                        twoOfThreeScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.TwoOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, () => Xamarin.Essentials.DisplayOrientation.Portrait);
+                        twoOfThreeScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.TwoOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, () => Xamarin.Essentials.DisplayOrientation.Portrait, relativeSizeScaleFactor);
 
                         break;
 
                     case 2:
                     default:
-                        threeOfThreeScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.ThreeOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, () => Xamarin.Essentials.DisplayOrientation.Portrait);
+                        threeOfThreeScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.ThreeOfThreeTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, () => Xamarin.Essentials.DisplayOrientation.Portrait, relativeSizeScaleFactor);
 
                         break;
                 }
@@ -87,13 +89,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
             EndPresentation();
         }
 
-        private BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        private BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
-            var result = Support.Extend.Templating.Presentation.Providers.PlacardPresentationViewProvider.Instance.GetFor(model, getOrientationFunction);
-
-            (result as Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView).RelativeSizeScaleFactor = 1.0d / 3.0d;
-
-            return result;
+            return Support.Extend.Templating.Presentation.Helpers.Provisioning.PlacardPresentationViewProvisioningHelper.Instance.GetFor(model, getOrientationFunction, relativeSizeScaleFactor);
         }
     }
 }

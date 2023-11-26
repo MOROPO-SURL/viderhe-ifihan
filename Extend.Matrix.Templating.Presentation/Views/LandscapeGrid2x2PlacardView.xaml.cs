@@ -1,7 +1,5 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
 using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Presenters;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.Transitions.Contract;
-using SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Providers;
 using SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning.Presentation.Providers;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Views
@@ -18,7 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
 
         private int iterationCount;
 
-        public LandscapeGrid2x2PlacardView(Models.View.LandscapeGrid2x2PlacardViewModel model)
+        public LandscapeGrid2x2PlacardView(Models.View.LandscapeGrid2x2PlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -41,6 +39,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
 
             var concreteBindingContext = BindingContext as Models.View.LandscapeGrid2x2PlacardViewModel;
 
+            var relativeSizeScaleFactor = RelativeSizeScaleFactor * 1.0d / 3.0d;
+
             for (int i = 0; i < 4; i++)
             {
                 var targetView = PlacardLayout.Children[i] as Xamarin.Forms.Layout<Xamarin.Forms.View>;
@@ -48,23 +48,23 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
                 switch (i)
                 {
                     case 0:
-                        oneOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.OneOfFourTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
+                        oneOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.OneOfFourTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, null, relativeSizeScaleFactor);
 
                         break;
 
                     case 1:
-                        twoOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.TwoOfFourTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
+                        twoOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.TwoOfFourTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, null, relativeSizeScaleFactor);
 
                         break;
 
                     case 2:
-                        threeOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.ThreeOfFourTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
+                        threeOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.ThreeOfFourTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, null, relativeSizeScaleFactor);
 
                         break;
 
                     case 3:
                     default:
-                        fourOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.FourOfFourTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null);
+                        fourOfFourScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.FourOfFourTargetPlacards, TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, null, relativeSizeScaleFactor);
 
                         break;
                 }
@@ -100,13 +100,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
             EndPresentation();
         }
 
-        private BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        private BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
-            var result = PlacardPresentationViewProvider.Instance.GetFor(model, getOrientationFunction);
-
-            (result as Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView).RelativeSizeScaleFactor = 1.0d / 4.0d;
-
-            return result;
+            return Support.Extend.Templating.Presentation.Helpers.Provisioning.PlacardPresentationViewProvisioningHelper.Instance.GetFor(model, getOrientationFunction, relativeSizeScaleFactor);
         }
     }
 }
