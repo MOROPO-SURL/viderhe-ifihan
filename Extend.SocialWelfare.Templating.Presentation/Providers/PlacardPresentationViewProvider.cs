@@ -4,7 +4,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
-        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
             if (model.Template.Id == InmersiveCityWeatherOverviewTemplateDescriptor.ID)
             {
@@ -28,14 +28,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
                     viewModel.OverlayColor = Xamarin.Forms.Color.FromHex(context.OverlayColor);
                 }
 
-                return new Views.InmersiveCityWeatherOverviewPlacardView(viewModel);
+                return new Views.InmersiveCityWeatherOverviewPlacardView(viewModel, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == RssFeedCollageHeroTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.RssFeedCollageHeroPlacardContextModel>(model.SerializedContext);
 
-                return new Views.RssFeedCollageHeroPlacardView(context);
+                return new Views.RssFeedCollageHeroPlacardView(context, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == HeroLocalNowDateTimeTemplateDescriptor.ID)
@@ -52,7 +52,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
                     TextFontFamily = context.TextFontFamily,
                     Culture = context.Culture == null ? System.Globalization.CultureInfo.CurrentCulture : System.Globalization.CultureInfo.GetCultureInfo(context.Culture),
                     Background = context.Background
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == OverlayHeroCityTimeWeatherTemplateDescriptor.ID)
@@ -82,10 +82,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 
                 if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
                 {
-                    return new Views.PortraitOverlayHeroCityTimeWeatherPlacardView(viewModel);
+                    return new Views.PortraitOverlayHeroCityTimeWeatherPlacardView(viewModel, relativeSizeScaleFactor);
                 }
 
-                return new Views.LandscapeOverlayHeroCityTimeWeatherPlacardView(viewModel);
+                return new Views.LandscapeOverlayHeroCityTimeWeatherPlacardView(viewModel, relativeSizeScaleFactor);
             }
 
             return null;

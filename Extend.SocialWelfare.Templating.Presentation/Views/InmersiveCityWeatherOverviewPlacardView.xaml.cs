@@ -4,7 +4,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 {
     public partial class InmersiveCityWeatherOverviewPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public InmersiveCityWeatherOverviewPlacardView(InmersiveCityWeatherOverviewPlacardViewModel model)
+        public InmersiveCityWeatherOverviewPlacardView(InmersiveCityWeatherOverviewPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

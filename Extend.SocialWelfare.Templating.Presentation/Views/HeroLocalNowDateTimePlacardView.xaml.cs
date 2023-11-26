@@ -2,7 +2,7 @@
 {
     public partial class HeroLocalNowDateTimePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public HeroLocalNowDateTimePlacardView(Models.View.Placard.HeroLocalNowDateTimePlacardViewModel model)
+        public HeroLocalNowDateTimePlacardView(Models.View.Placard.HeroLocalNowDateTimePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

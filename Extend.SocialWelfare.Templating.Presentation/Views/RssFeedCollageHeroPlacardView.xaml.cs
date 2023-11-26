@@ -7,7 +7,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
     {
         private Templating.Models.Context.Placard.RssFeedCollageHeroPlacardContextModel placardContext;
 
-        public RssFeedCollageHeroPlacardView(Templating.Models.Context.Placard.RssFeedCollageHeroPlacardContextModel model)
+        public RssFeedCollageHeroPlacardView(Templating.Models.Context.Placard.RssFeedCollageHeroPlacardContextModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

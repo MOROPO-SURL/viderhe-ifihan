@@ -2,7 +2,7 @@
 {
     public partial class PortraitOverlayHeroCityTimeWeatherPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public PortraitOverlayHeroCityTimeWeatherPlacardView(Models.View.Placard.OverlayHeroCityTimeWeatherPlacardViewModel model)
+        public PortraitOverlayHeroCityTimeWeatherPlacardView(Models.View.Placard.OverlayHeroCityTimeWeatherPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

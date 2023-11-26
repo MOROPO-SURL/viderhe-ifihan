@@ -17,8 +17,8 @@
             <converters:IsNullToStringConverter x:Key="HeroFeedItemFeaturedImageSourceIsNullToTitleTextColorStringConverter" CaseFalse="White" CaseTrue="Black" />
             <converters:IsNullToStringConverter x:Key="HeroFeedItemFeaturedImageSourceIsNullToPublishedTextColorStringConverter" CaseFalse="LightGray" CaseTrue="DimGray" />
             <converters:HeroFeedItemFeaturedImageSourceToLayoutOptionsConverter x:Key="HeroFeedItemFeaturedImageSourceToLayoutOptionsConverter" />
-            
-            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" RelativeDimensionScalable="{Reference RootView}" />
+
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
             
             <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
             <sscxftoolkitpresentationconverters:NullToBooleanConverter x:Key="NullToBooleanConverter" />

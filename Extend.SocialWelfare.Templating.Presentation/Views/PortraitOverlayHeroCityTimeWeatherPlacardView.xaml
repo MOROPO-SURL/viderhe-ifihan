@@ -15,7 +15,7 @@
             <converters:FloatToRoundedFloatConverter x:Key="FloatToRoundedFloatConverter" />
             <converters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
 
-            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" RelativeDimensionScalable="{Reference RootView}" />
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
 
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{Binding Path=TextColor}" />
