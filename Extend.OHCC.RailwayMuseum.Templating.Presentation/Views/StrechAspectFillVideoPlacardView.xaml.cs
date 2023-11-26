@@ -4,7 +4,7 @@
     {
         private Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition;
 
-        public StrechAspectFillVideoPlacardView(Essential.Templating.Presentation.Models.View.SimpleVideoPlacardViewModel model)
+        public StrechAspectFillVideoPlacardView(Essential.Templating.Presentation.Models.View.SimpleVideoPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

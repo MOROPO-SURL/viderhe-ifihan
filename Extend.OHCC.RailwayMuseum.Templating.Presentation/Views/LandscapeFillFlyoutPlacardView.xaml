@@ -13,8 +13,8 @@
         <ResourceDictionary>
             <converters:FlyoutHorizontalOrientationToXFHorizontalOrientationConverter x:Key="FlyoutHorizontalOrientationToXFHorizontalOrientationConverter" />
             <converters:LandscapeFillFlyoutPlacardViewWidthToContentPaddingConverter x:Key="LandscapeFillFlyoutPlacardViewWidthToContentPaddingConverter" PlacardView="{Reference Self}" />
-            
-            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" RelativeDimensionScalable="{Reference Self}" />
+
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" SizeScalableView="{Reference Self}" />
             
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>

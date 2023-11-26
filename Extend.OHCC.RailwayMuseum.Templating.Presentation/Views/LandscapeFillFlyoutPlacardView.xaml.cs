@@ -6,7 +6,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
     {
         private Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView contexteImageView;
 
-        public LandscapeFillFlyoutPlacardView(Models.View.LandscapeFillFlyoutPlacardViewModel model)
+        public LandscapeFillFlyoutPlacardView(Models.View.LandscapeFillFlyoutPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -47,7 +47,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(model.ContextedImage.Id)),
                     ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(model.ContextedImage.ThumbnailId)),
                     ZoomingEnabled = false
-                });
+                }, relativeSizeScaleFactor);
             }
             else
             {
@@ -57,7 +57,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     ScreenPresentationTime = System.TimeSpan.Zero,
                     Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(model.ContextedImage.Id)),
                     ZoomingEnabled = false
-                });
+                }, relativeSizeScaleFactor);
             }
 
             PlacardLayout.Children.Insert(0, contexteImageView);

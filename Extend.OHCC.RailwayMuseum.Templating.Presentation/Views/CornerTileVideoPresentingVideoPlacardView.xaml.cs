@@ -4,7 +4,7 @@
     {
         private Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition;
 
-        public CornerTileVideoPresentingVideoPlacardView(Models.View.CornerTileVideoPresentingVideoPlacardViewModel model)
+        public CornerTileVideoPresentingVideoPlacardView(Models.View.CornerTileVideoPresentingVideoPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

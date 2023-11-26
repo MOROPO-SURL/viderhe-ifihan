@@ -2,7 +2,7 @@
 {
     public partial class LandscapeFramedPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapeFramedPlacardView(Models.View.LandscapeFramedPlacardViewModel model)
+        public LandscapeFramedPlacardView(Models.View.LandscapeFramedPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

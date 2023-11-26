@@ -2,7 +2,7 @@
 {
     public partial class LandscapeFloatingFlyoutPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapeFloatingFlyoutPlacardView(Models.View.LandscapeFloatingFlyoutPlacardViewModel model)
+        public LandscapeFloatingFlyoutPlacardView(Models.View.LandscapeFloatingFlyoutPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

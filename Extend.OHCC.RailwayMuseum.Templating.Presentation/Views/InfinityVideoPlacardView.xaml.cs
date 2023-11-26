@@ -4,7 +4,7 @@
     {
         private Common.Templating.Presentation.Presenters.ScreenplayPresenter screenplayPresenter;
 
-        public InfinityVideoPlacardView(Models.View.InfinityVideoPlacardViewModel model)
+        public InfinityVideoPlacardView(Models.View.InfinityVideoPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -52,7 +52,7 @@
             screenplayPresenter.BeginPresentation();
         } 
 
-        private Common.Presentation.Views.BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        private Common.Presentation.Views.BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
             if (model.Template.Id != Essential.Templating.Descriptors.SimpleVideoTemplateDescriptor.ID) throw new System.InvalidOperationException();
 
@@ -62,7 +62,7 @@
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri)
-            });
+            }, relativeSizeScaleFactor);
         }
 
         protected override void DisposeUnmanagementResources()

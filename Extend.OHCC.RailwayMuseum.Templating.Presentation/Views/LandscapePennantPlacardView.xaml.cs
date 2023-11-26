@@ -2,7 +2,7 @@
 {
     public partial class LandscapePennantPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapePennantPlacardView(Models.View.LandscapePennantPlacardViewModel model)
+        public LandscapePennantPlacardView(Models.View.LandscapePennantPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

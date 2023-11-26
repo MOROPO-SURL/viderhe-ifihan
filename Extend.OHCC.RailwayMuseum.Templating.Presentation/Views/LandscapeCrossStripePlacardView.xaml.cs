@@ -2,7 +2,7 @@
 {
     public partial class LandscapeCrossStripePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapeCrossStripePlacardView(Models.View.LandscapeCrossStripePlacardViewModel model)
+        public LandscapeCrossStripePlacardView(Models.View.LandscapeCrossStripePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

@@ -6,7 +6,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
-        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
             if (model.Template.Id == InfinityVideoTemplateDescriptor.ID)
             {
@@ -18,7 +18,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     Video = context.Video,
                     StartMargin = context.StartMargin,
                     EndMargin = context.EndMargin
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == CornerTileVideoPresentingVideoTemplateDescriptor.ID)
@@ -32,7 +32,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     PresenterTileVideoPlayDelay = context.PresenterTileVideoPlayDelay,
                     PresenterTileVideoScreenCorner = context.PresenterTileVideoScreenCorner,
                     PresentedVideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri)
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == LandscapeCrossStripeTemplateDescriptor.ID)
@@ -59,7 +59,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     viewModel.StripeBackgroundColor = viewModel.StripeBackgroundColor.MultiplyAlpha(0.85);
                 }
 
-                return new LandscapeCrossStripePlacardView(viewModel);
+                return new LandscapeCrossStripePlacardView(viewModel, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == LandscapeFramedTemplateDescriptor.ID)
@@ -76,7 +76,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     ContentFontSize = context.ContentFontSize,
                     FrameStyle = context.FrameStyle,
                     BackgroundMode = context.BackgroundMode
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == LandscapePennantTemplateDescriptor.ID)
@@ -96,7 +96,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     FlyoutShapeKind = context.FlyoutShapeKind,
                     FlyoutBackgroundColorMode = context.FlyoutBackgroundColorMode,
                     PennantVerticalOrientation = context.PennantVerticalOrientation
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == LandscapeFloatingFlyoutTemplateDescriptor.ID)
@@ -116,7 +116,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     FlyoutShapeKind = context.FlyoutShapeKind,
                     FlyoutBackgroundColorMode = context.FlyoutBackgroundColorMode,
                     FlyoutHorizontalOrientation = context.FlyoutHorizontalOrientation
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == LandscapeAnonimusHeroTemplateDescriptor.ID)
@@ -133,7 +133,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     ContentFontSize = context.ContentFontSize,
                     HeroImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.HeroImage.Id)),
                     BackgroundMode = context.BackgroundMode
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == LandscapeFillFlyoutTemplateDescriptor.ID)
@@ -155,7 +155,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     FlyoutShapeKind = context.FlyoutShapeKind,
                     FlyoutBackgroundColorMode = context.FlyoutBackgroundColorMode,
                     FlyoutHorizontalOrientation = context.FlyoutHorizontalOrientation
-                });
+                }, relativeSizeScaleFactor);
             }
 
             return null;

@@ -2,7 +2,7 @@
 {
     public partial class LandscapeAnonimusHeroPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapeAnonimusHeroPlacardView(Models.View.LandscapeAnonimusHeroPlacardViewModel model)
+        public LandscapeAnonimusHeroPlacardView(Models.View.LandscapeAnonimusHeroPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
