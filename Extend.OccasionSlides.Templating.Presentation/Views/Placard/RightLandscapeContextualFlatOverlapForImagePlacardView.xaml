@@ -13,7 +13,7 @@
     x:Name="RootView">
     <ContentView.Resources>
         <ResourceDictionary>
-            <viewtemplates:ContentBlockTemplateSelector x:Key="ContentBlockTemplateSelector" RelativeDimensionScalable="{Reference RootView}" />
+            <viewtemplates:ContentBlockTemplateSelector x:Key="ContentBlockTemplateSelector" RelativeSizeScalableView="{Reference RootView}" />
 
             <converters:OverlapSizeToRightColumnIndexConverter x:Key="OverlapSizeToRightColumnIndexConverter" />
             <converters:OverlapSizeToRightColumnIndexConverter x:Key="OverlapSizeToRightContentColumnIndexConverter" IsForContent="True" />

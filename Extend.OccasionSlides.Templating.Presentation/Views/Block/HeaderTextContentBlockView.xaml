@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Block.HeaderTextContentBlockView"
+    x:Name="RootView">
+    <StackLayout.Resources>
+        <ResourceDictionary>
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
+        </ResourceDictionary>
+    </StackLayout.Resources>
+    <Label
+        Text="{Binding Path=Header, Mode=OneTime}"
+        TextColor="{Binding Path=HeaderColor, Mode=OneTime}"
+        LineBreakMode="TailTruncation"
+        FontFamily="{Binding Path=HeaderFontFamily, Mode=OneTime}"
+        FontSize="{Binding Path=HeaderFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"/>
+    <Label
+        Text="{Binding Path=Text, Mode=OneTime}"
+        TextColor="{Binding Path=TextColor, Mode=OneTime}"
+        LineBreakMode="WordWrap"
+        MaxLines="{Binding Path=TextMaxLineCount, Mode=OneTime}"
+        FontFamily="{Binding Path=TextFontFamily, Mode=OneTime}"
+        FontSize="{Binding Path=TextFontSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+</StackLayout>

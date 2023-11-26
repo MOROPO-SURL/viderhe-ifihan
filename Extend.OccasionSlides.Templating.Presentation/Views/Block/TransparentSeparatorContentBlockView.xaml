@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<BoxView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters"    
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Block.TransparentSeparatorContentBlockView"
+    Color="Transparent"
+    HeightRequest="{Binding Path=SizingMode, Converter={StaticResource SizingModeToHeightConverter}}"
+    x:Name="RootView">
+    <BoxView.Resources>
+        <ResourceDictionary>
+            <converters:SizingModeToHeightConverter x:Key="SizingModeToHeightConverter" SizeScalableView="{Reference RootView}" />
+        </ResourceDictionary>
+    </BoxView.Resources>
+</BoxView>

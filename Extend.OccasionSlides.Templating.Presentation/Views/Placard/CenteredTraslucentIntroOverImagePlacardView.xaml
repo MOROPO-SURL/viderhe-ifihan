@@ -12,7 +12,7 @@
     x:Name="RootView">
     <ContentView.Resources>
         <ResourceDictionary>
-            <viewtemplates:ContentBlockTemplateSelector x:Key="ContentBlockTemplateSelector" RelativeDimensionScalable="{Reference RootView}" />
+            <viewtemplates:ContentBlockTemplateSelector x:Key="ContentBlockTemplateSelector" RelativeSizeScalableView="{Reference RootView}" />
 
             <converters:CenteredContentBoxPresentationKindToHorizontalOptionsConverter x:Key="CenteredContentBoxPresentationKindToHorizontalOptionsConverter" />
             <converters:CenteredContentBoxPresentationKindToVerticalOptionsConverter x:Key="CenteredContentBoxPresentationKindToVerticalOptionsConverter" />

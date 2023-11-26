@@ -4,29 +4,29 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 {
     public class ContentBlockTemplateSelector : Xamarin.Forms.DataTemplateSelector
     {
-        public Common.Templating.Presentation.Views.Contract.IRelativeDimensionScalable RelativeDimensionScalable { get; set; }
+        public Common.Templating.Presentation.Views.Facade.IRelativeSizeScalableViewFacade RelativeSizeScalableView { get; set; }
 
         protected override Xamarin.Forms.DataTemplate OnSelectTemplate(object item, Xamarin.Forms.BindableObject container)
         {
-            if (item is HeaderTextContentBlockViewModel) return new Block.HeaderTextContentBlockViewTemplate
+            if (item is HeaderTextContentBlockViewModel) return new Xamarin.Forms.DataTemplate(() => new Views.Block.HeaderTextContentBlockView
             {
-                RelativeDeimensionScaleFactor = RelativeDimensionScalable.RelativeDeimensionScaleFactor
-            };
+                RelativeSizeScaleFactor = RelativeSizeScalableView.RelativeSizeScaleFactor
+            });
 
-            if (item is TextContentBlockViewModel) return new Block.TextContentBlockViewTemplate
+            if (item is TextContentBlockViewModel) return new Xamarin.Forms.DataTemplate(() => new Views.Block.TextContentBlockView
             {
-                RelativeDeimensionScaleFactor = RelativeDimensionScalable.RelativeDeimensionScaleFactor
-            };
+                RelativeSizeScaleFactor = RelativeSizeScalableView.RelativeSizeScaleFactor
+            });
 
-            if (item is TransparentSeparatorContentBlockViewModel) return new Block.TransparentSeparatorContentBlockViewTemplate
+            if (item is TransparentSeparatorContentBlockViewModel) return new Xamarin.Forms.DataTemplate(() => new Views.Block.TransparentSeparatorContentBlockView
             {
-                RelativeDeimensionScaleFactor = RelativeDimensionScalable.RelativeDeimensionScaleFactor
-            };
+                RelativeSizeScaleFactor = RelativeSizeScalableView.RelativeSizeScaleFactor
+            });
 
-            if (item is ImageContentBlockViewModel) return new Block.ImageContentBlockViewTemplate
+            if (item is ImageContentBlockViewModel) return new Xamarin.Forms.DataTemplate(() => new Views.Block.ImageContentBlockView
             {
-                RelativeDeimensionScaleFactor = RelativeDimensionScalable.RelativeDeimensionScaleFactor
-            };
+                RelativeSizeScaleFactor = RelativeSizeScalableView.RelativeSizeScaleFactor
+            });
 
             throw new System.InvalidOperationException();
         }

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ffimageloading:CachedImage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Block.ImageContentBlockView"
+    HeightRequest="{Binding Converter={StaticResource ScreenVerticalSizePercentCalculableContentBlockViewModelToHeightConverter}, Mode=OneTime}"
+    FadeAnimationEnabled="False"
+    HorizontalOptions="{Binding Path=HorizontalAlignament, Mode=OneTime}"
+    Source="{Binding Path=Image, Mode=OneTime, Converter={StaticResource ImageViewModelToImageSourceConverter}}" 
+    Aspect="AspectFit"
+    CacheType="Disk"
+    CacheDuration="8760:00:00"
+    x:Name="RootView">
+    <ffimageloading:CachedImage.Resources>
+        <ResourceDictionary>
+            <converters:ScreenVerticalSizePercentCalculableContentBlockViewModelToHeightConverter x:Key="ScreenVerticalSizePercentCalculableContentBlockViewModelToHeightConverter" SizeScalableView="{Reference RootView}" />
+        </ResourceDictionary>
+    </ffimageloading:CachedImage.Resources>
+</ffimageloading:CachedImage>
