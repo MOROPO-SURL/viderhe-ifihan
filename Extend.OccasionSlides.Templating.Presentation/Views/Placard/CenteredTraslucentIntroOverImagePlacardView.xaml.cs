@@ -4,7 +4,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 {
     public partial class CenteredTraslucentIntroOverImagePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public CenteredTraslucentIntroOverImagePlacardView(CenteredTraslucentIntroOverImagePlacardViewModel model)
+        public CenteredTraslucentIntroOverImagePlacardView(CenteredTraslucentIntroOverImagePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

@@ -6,7 +6,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
-        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
             var orientation = getOrientationFunction.Invoke();
 
@@ -30,15 +30,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                 if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
                 {
-                    return new Views.Placard.PortraitTranslucentContextualOverlapForImagePlacardView(targetPlacardViewModel);
+                    return new Views.Placard.PortraitTranslucentContextualOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
                 if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
-                    return new Views.Placard.LeftLandscapeContextualTranslucentOverlapForImagePlacardView(targetPlacardViewModel);
+                    return new Views.Placard.LeftLandscapeContextualTranslucentOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
-                return new Views.Placard.RightLandscapeContextualTranslucentOverlapForImagePlacardView(targetPlacardViewModel);
+                return new Views.Placard.RightLandscapeContextualTranslucentOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == Descriptors.TranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
@@ -58,15 +58,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                 if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
                 {
-                    return new Views.Placard.PortraitTranslucentContextualOverlapForImageSecuencePlacardView(targetPlacardViewModel);
+                    return new Views.Placard.PortraitTranslucentContextualOverlapForImageSecuencePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
                 if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
-                    return new Views.Placard.LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView(targetPlacardViewModel);
+                    return new Views.Placard.LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
-                return new Views.Placard.RightLandscapeTranslucentContextualOverlapForImageSecuencePlacardView(targetPlacardViewModel);
+                return new Views.Placard.RightLandscapeTranslucentContextualOverlapForImageSecuencePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == Descriptors.FlatContextualOverlapForImageTemplateDescriptor.ID)
@@ -91,15 +91,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                 if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
                 {
-                    return new Views.Placard.PortraitFlatContextualOverlapForImagePlacardView(targetPlacardViewModel);
+                    return new Views.Placard.PortraitFlatContextualOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
                 if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
-                    return new Views.Placard.LeftLandscapeContextualFlatOverlapForImagePlacardView(targetPlacardViewModel);
+                    return new Views.Placard.LeftLandscapeContextualFlatOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
-                return new Views.Placard.RightLandscapeContextualFlatOverlapForImagePlacardView(targetPlacardViewModel);
+                return new Views.Placard.RightLandscapeContextualFlatOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == Descriptors.FlatContextualOverlapForImageSecuenceTemplateDescriptor.ID)
@@ -121,10 +121,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                 if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
-                    return new Views.Placard.LeftLandscapeContextualFlatOverlapForImageSecuencePlacardView(targetPlacardViewModel);
+                    return new Views.Placard.LeftLandscapeContextualFlatOverlapForImageSecuencePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
-                return new Views.Placard.RightLandscapeContextualFlatOverlapForImageSecuencePlacardView(targetPlacardViewModel);
+                return new Views.Placard.RightLandscapeContextualFlatOverlapForImageSecuencePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == Descriptors.TrailContextualOverlapForImageTemplateDescriptor.ID)
@@ -152,15 +152,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                 if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
                 {
-                    return new Views.Placard.PortraitTrailContextualOverlapForImagePlacardView(targetPlacardViewModel);
+                    return new Views.Placard.PortraitTrailContextualOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
                 if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
-                    return new Views.Placard.LeftLandscapeContextualTrailOverlapForImagePlacardView(targetPlacardViewModel);
+                    return new Views.Placard.LeftLandscapeContextualTrailOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
-                return new Views.Placard.RightLandscapeContextualTrailOverlapForImagePlacardView(targetPlacardViewModel);
+                return new Views.Placard.RightLandscapeContextualTrailOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == Descriptors.TrailContextualOverlapForImageSecuenceTemplateDescriptor.ID)
@@ -185,10 +185,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                 if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
-                    return new Views.Placard.LeftLandscapeContextualTrailOverlapForImageSecuencePlacardView(targetPlacardViewModel);
+                    return new Views.Placard.LeftLandscapeContextualTrailOverlapForImageSecuencePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
-                return new Views.Placard.RightLandscapeContextualTrailOverlapForImageSecuencePlacardView(targetPlacardViewModel);
+                return new Views.Placard.RightLandscapeContextualTrailOverlapForImageSecuencePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
@@ -208,7 +208,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
                 };
 
-                return new Views.Placard.CenteredTraslucentIntroOverImagePlacardView(targetPlacardViewModel);
+                return new Views.Placard.CenteredTraslucentIntroOverImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == Descriptors.TrailContextualOverlapForVideoTemplateDescriptor.ID)
@@ -234,10 +234,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                 if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
-                    return new Views.Placard.LeftLandscapeContextualTrailOverlapForVideoPlacardView(targetPlacardViewModel);
+                    return new Views.Placard.LeftLandscapeContextualTrailOverlapForVideoPlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
-                return new Views.Placard.RightLandscapeContextualTrailOverlapForVideoPlacardView(targetPlacardViewModel);
+                return new Views.Placard.RightLandscapeContextualTrailOverlapForVideoPlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == Descriptors.TranslucentContextualOverlapForVideoTemplateDescriptor.ID)
@@ -260,10 +260,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                 if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
-                    return new Views.Placard.LeftLandscapeContextualTranslucentOverlapForVideoPlacardView(targetPlacardViewModel);
+                    return new Views.Placard.LeftLandscapeContextualTranslucentOverlapForVideoPlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
-                return new Views.Placard.RightLandscapeContextualTranslucentOverlapForVideoPlacardView(targetPlacardViewModel);
+                return new Views.Placard.RightLandscapeContextualTranslucentOverlapForVideoPlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == Descriptors.FlatContextualOverlapForVideoTemplateDescriptor.ID)
@@ -288,10 +288,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                 if (context.OverlapAlignment == Enumerations.OverlapAlignment.Start)
                 {
-                    return new Views.Placard.LeftLandscapeContextualFlatOverlapForVideoPlacardView(targetPlacardViewModel);
+                    return new Views.Placard.LeftLandscapeContextualFlatOverlapForVideoPlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
 
-                return new Views.Placard.RightLandscapeContextualFlatOverlapForVideoPlacardView(targetPlacardViewModel);
+                return new Views.Placard.RightLandscapeContextualFlatOverlapForVideoPlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
             }
 
             return null;

@@ -6,7 +6,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 {
     public partial class RightLandscapeContextualFlatOverlapForImagePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public RightLandscapeContextualFlatOverlapForImagePlacardView(FlatContextualOverlapForImagePlacardViewModel model)
+        public RightLandscapeContextualFlatOverlapForImagePlacardView(FlatContextualOverlapForImagePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

@@ -9,7 +9,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
     {
         private Common.Templating.Presentation.Presenters.ScreenplayPresenter screenplayPresenter;
 
-        public RightLandscapeContextualTrailOverlapForImageSecuencePlacardView(TrailContextualOverlapForImageSecuencePlacardViewModel model)
+        public RightLandscapeContextualTrailOverlapForImageSecuencePlacardView(TrailContextualOverlapForImageSecuencePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -218,7 +218,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
             eventArgs.Surface.Canvas.DrawPath(concreteBindingContext.ToHorizontalSKPath(eventArgs.Info.Width, eventArgs.Info.Height, Wrapper.Width, Wrapper.Width * 0.02 * ((int)canvasView.BindingContext + 1)), paint);
         }
 
-        private Common.Presentation.Views.BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        private Common.Presentation.Views.BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
             if (model.Template.Id != Essential.Templating.Descriptors.SimplePictureTemplateDescriptor.ID) throw new System.InvalidOperationException();
 
@@ -234,7 +234,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Image.ThumbnailId)),
                     Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                     ZoomingEnabled = context.IsZoomingEnabled
-                });
+                }, relativeSizeScaleFactor);
             }
             else
             {
@@ -245,7 +245,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
                     Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                     ZoomingEnabled = context.IsZoomingEnabled
-                });
+                }, relativeSizeScaleFactor);
             }
         }
     }

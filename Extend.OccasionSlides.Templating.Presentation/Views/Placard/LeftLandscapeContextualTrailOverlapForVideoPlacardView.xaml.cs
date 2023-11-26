@@ -8,7 +8,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
     {
         private Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition;
 
-        public LeftLandscapeContextualTrailOverlapForVideoPlacardView(TrailContextualOverlapForVideoPlacardViewModel model)
+        public LeftLandscapeContextualTrailOverlapForVideoPlacardView(TrailContextualOverlapForVideoPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
