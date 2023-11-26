@@ -2,7 +2,7 @@
 {
     public partial class PortraitPosterVideoEventPromotionPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public PortraitPosterVideoEventPromotionPlacardView(Models.View.PortraitPosterVideoEventPromotionPlacardViewModel model)
+        public PortraitPosterVideoEventPromotionPlacardView(Models.View.PortraitPosterVideoEventPromotionPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
