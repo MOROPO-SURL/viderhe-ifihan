@@ -14,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
         private System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction;
         private System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction;
 
-        private System.Func<PlacardViewModel, System.Func<Xamarin.Essentials.DisplayOrientation>, BasePlacardPresentationView> placardViewModelToPresentationViewFunction;
+        private System.Func<PlacardViewModel, System.Func<Xamarin.Essentials.DisplayOrientation>, double, BasePlacardPresentationView> placardViewModelToPresentationViewFunction;
 
         private System.Collections.Generic.Stack<PlacardViewModel> framesStack;
 
@@ -29,9 +29,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
         private ScreenplayPresenter interventionPresenter;
 
         private bool suspended;
+
         private bool loop;
 
-        public ScreenplayPresenter(Xamarin.Forms.Layout<Xamarin.Forms.View> container, System.Func<PlacardViewModel, System.Func<Xamarin.Essentials.DisplayOrientation>, BasePlacardPresentationView> placardViewModelToPresentationViewFunction, PlacardViewModel[] placards, ITransitionProviderFacade transitionProvider, System.Action screenplayPresentationEndedCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction, System.Action screenplayPresentIterationCompleteCallbackAction = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction = null)
+        private double relativeSizeScaleFactor;
+
+        public ScreenplayPresenter(Xamarin.Forms.Layout<Xamarin.Forms.View> container, System.Func<PlacardViewModel, System.Func<Xamarin.Essentials.DisplayOrientation>, double, BasePlacardPresentationView> placardViewModelToPresentationViewFunction, PlacardViewModel[] placards, ITransitionProviderFacade transitionProvider, System.Action screenplayPresentationEndedCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction, System.Action screenplayPresentIterationCompleteCallbackAction = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction = null, double relativeSizeScaleFactor = 1.0d)
         {
             suspended = false;
 
@@ -44,6 +47,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             this.placardViewTransitionCompleteCallbackAction = placardViewTransitionCompleteCallbackAction;
             this.getOrientationFunction = getOrientationFunction ?? (() => Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation);
             this.loop = loop;
+            this.relativeSizeScaleFactor = relativeSizeScaleFactor;
 
             presentationEndedCallbackAction = screenplayPresentationEndedCallbackAction;
 
@@ -209,7 +213,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
                     if (model != null)
                     {
-                        var incomingFrameView = placardViewModelToPresentationViewFunction.Invoke(model, getOrientationFunction);
+                        var incomingFrameView = placardViewModelToPresentationViewFunction.Invoke(model, getOrientationFunction, relativeSizeScaleFactor);
 
                         if (model.ComplementationKind != null)
                         {

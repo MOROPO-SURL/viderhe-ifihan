@@ -2,7 +2,7 @@
 {
     public partial class LandscapePicturePresentingPicturePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapePicturePresentingPicturePlacardView(Models.View.LandscapePicturePresentingPicturePlacardViewModel model)
+        public LandscapePicturePresentingPicturePlacardView(Models.View.LandscapePicturePresentingPicturePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
