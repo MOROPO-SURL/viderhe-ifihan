@@ -91,7 +91,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
         {
             var result = Support.Extend.Templating.Presentation.Providers.PlacardPresentationViewProvider.Instance.GetFor(model, getOrientationFunction);
 
-            (result as Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView).RelativeDeimensionScaleFactor = 1 / 3;
+            (result as Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView).RelativeSizeScaleFactor = 1.0d / 3.0d;
 
             return result;
         }

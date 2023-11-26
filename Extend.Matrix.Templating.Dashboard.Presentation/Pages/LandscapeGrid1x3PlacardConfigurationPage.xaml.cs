@@ -48,7 +48,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
                 {
                     var descriptor = Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(item.Template.Id);
 
-                    return descriptor.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait || descriptor.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
+                    return descriptor?.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait || descriptor?.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
                 }
 
                 return true;
@@ -66,7 +66,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
                 {
                     var descriptor = Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(item.Template.Id);
 
-                    return descriptor.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait || descriptor.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
+                    return descriptor?.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait || descriptor?.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
                 }
 
                 return true;
@@ -84,7 +84,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
                 {
                     var descriptor = Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(item.Template.Id);
 
-                    return descriptor.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait || descriptor.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
+                    return descriptor?.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait || descriptor?.PlayerOrientationSupport == Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
                 }
 
                 return true;
