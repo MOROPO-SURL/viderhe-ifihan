@@ -2,6 +2,6 @@
 {
     public interface IRelativeSizeScalableViewFacade
     {
-        double RelativeSizeScaleFactor { get; set; }
+        double RelativeSizeScaleFactor { get; }
     }
 }

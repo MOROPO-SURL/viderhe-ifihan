@@ -7,13 +7,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
-        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
             if (model.Template.Id == PictureSlideSecuenceTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PictureSlideSecuencePlacardContextModel>(model.SerializedContext);
 
-                return new PictureSlideSecuencePlacardView(context);
+                return new PictureSlideSecuencePlacardView(context, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == SimpleVideoTemplateDescriptor.ID)
@@ -24,7 +24,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri)
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == SimplePictureTemplateDescriptor.ID)
@@ -41,7 +41,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                         ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Image.ThumbnailId)),
                         Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                         ZoomingEnabled = context.IsZoomingEnabled
-                    });
+                    }, relativeSizeScaleFactor);
                 }
                 else
                 {
@@ -52,7 +52,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                         Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
                         Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                         ZoomingEnabled = context.IsZoomingEnabled
-                    });
+                    }, relativeSizeScaleFactor);
                 }
             }
 
@@ -71,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                     PresentedSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.PresentedImage.Id)),
                     PresentedImageCenteredAtPresentation = context.PresentedImageCenteredAtPresentation,
                     PresentedImageZoomingEnabled = context.PresentedImageZoomingEnabled
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == LandscapePicturePresentingVideoTemplateDescriptor.ID)
@@ -87,7 +87,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                     PresenterImageHeigth = context.PresenterImage.Height,
                     PresentedSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
                     PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == PortraitPicturePresentingPictureTemplateDescriptor.ID)
@@ -105,7 +105,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                     PresentedSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.PresentedImage.Id)),
                     PresentedImageCenteredAtPresentation = context.PresentedImageCenteredAtPresentation,
                     PresentedImageZoomingEnabled = context.PresentedImageZoomingEnabled
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == PortraitPicturePresentingVideoTemplateDescriptor.ID)
@@ -121,7 +121,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                     PresenterImageHeigth = context.PresenterImage.Height,
                     PresentedSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
                     PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == LandscapePicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
@@ -137,7 +137,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                     PresenterImageHeigth = context.PresenterImage.Height,
                     PresentedPictureSlideSecuence = context.PresentedPictureSlideSecuence,
                     PresentedPictureSlideSecuenceCenteredAtPresentation = context.PresentedPictureSlideSecuenceCenteredAtPresentation
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == PortraitPicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
@@ -153,7 +153,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                     PresenterImageHeigth = context.PresenterImage.Height,
                     PresentedPictureSlideSecuence = context.PresentedPictureSlideSecuence,
                     PresentedPictureSlideSecuenceCenteredAtPresentation = context.PresentedPictureSlideSecuenceCenteredAtPresentation
-                });
+                }, relativeSizeScaleFactor);
             }
 
             return null;
