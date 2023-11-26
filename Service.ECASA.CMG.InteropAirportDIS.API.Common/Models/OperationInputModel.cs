@@ -12,9 +12,10 @@
         [System.ComponentModel.DataAnnotations.Required]
         public string Context { get; set; }
 
-        public System.DateTime StartDate { get; set; }
+        public System.DateTime Date { get; set; }
 
-        public System.DateTime? EndDate { get; set; }
+        [System.ComponentModel.DataAnnotations.Required]
+        public string Gate { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
         public System.Guid? TerminalId { get; set; }
@@ -51,8 +52,8 @@
             entity.CategoryId = CategoryId;
             entity.StatusId = StatusId;
             entity.TerminalId = TerminalId;
-            entity.StartDate = StartDate;
-            entity.EndDate = EndDate;
+            entity.Date = Date;
+            entity.Gate = Gate;
             entity.KindId = KindId;
             entity.Flight = Flight;
             entity.Context = Context;

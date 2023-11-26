@@ -4,7 +4,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 {
     public static class ClassicOperationsPlacardViewModelExtensions
     {
-        public static void InitializeTableHeader(this Models.View.Placard.ClassicOperationsPlacardViewModel target, Grid layout, MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind operationKind, Thickness itemMargin, double itemFontSize, out Label timeSizeReferenceLabel)
+        public static void InitializeTableHeader(this Models.View.Placard.ClassicOperationsPlacardViewModel target, Grid layout, MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind operationKind, Thickness itemMargin, double itemFontSize, out Label timeSizeReferenceLabel, out Label gateSizeReferenceLabel)
         {
             timeSizeReferenceLabel = new Label
             {
@@ -17,11 +17,23 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                 FontAttributes = FontAttributes.Bold
             };
 
+            gateSizeReferenceLabel = new Label
+            {
+                Margin = itemMargin,
+                Text = "PUERTA",
+                TextColor = target.TableHeaderTextColor,
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center,
+                FontSize = itemFontSize,
+                FontAttributes = FontAttributes.Bold
+            };
+
             foreach (var item in target.Columns)
             {
                 switch (item)
                 {
                     case Enumerations.ClassicOperationsColumn.TIME:
+                    case Enumerations.ClassicOperationsColumn.GATE:
                         layout.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
 
                         break;
@@ -42,6 +54,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             {
                 var item = target.Columns[i];
 
+                var itemLabel = new Label
+                {
+                    Margin = itemMargin,
+                    TextColor = target.TableHeaderTextColor,
+                    VerticalTextAlignment = TextAlignment.Center,
+                    FontSize = itemFontSize,
+                    FontAttributes = FontAttributes.Bold,
+                    LineBreakMode = LineBreakMode.TailTruncation
+                };
+
                 switch (item)
                 {
                     case Enumerations.ClassicOperationsColumn.TIME:
@@ -49,76 +71,54 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         layout.Children.Add(timeSizeReferenceLabel);
 
-                        break;
+                        continue;
+
+                    case Enumerations.ClassicOperationsColumn.GATE:
+                        Grid.SetColumn(gateSizeReferenceLabel, i);
+
+                        layout.Children.Add(gateSizeReferenceLabel);
+
+                        continue;
 
                     case Enumerations.ClassicOperationsColumn.CONTEXT:
-                        var contextLabel = new Label
-                        {
-                            Margin = itemMargin,
-                            Text = operationKind == MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival ? "ORIGEN" : "DESTINO",
-                            TextColor = target.TableHeaderTextColor,
-                            VerticalTextAlignment = TextAlignment.Center,
-                            FontSize = itemFontSize,
-                            FontAttributes = FontAttributes.Bold
-                        };
-
-                        Grid.SetColumn(contextLabel, i);
-
-                        layout.Children.Add(contextLabel);
+                        itemLabel.Text = operationKind == MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival ? "ORIGEN" : "DESTINO";
 
                         break;
 
                     case Enumerations.ClassicOperationsColumn.FLY:
-                        var flyLabel = new Label
-                        {
-                            Margin = itemMargin,
-                            Text = "VUELO",
-                            TextColor = target.TableHeaderTextColor,
-                            VerticalTextAlignment = TextAlignment.Center,
-                            FontSize = itemFontSize,
-                            FontAttributes = FontAttributes.Bold
-                        };
-
-                        Grid.SetColumn(flyLabel, i);
-
-                        layout.Children.Add(flyLabel);
+                        itemLabel.Text = "VUELO";
 
                         break;
 
                     case Enumerations.ClassicOperationsColumn.TERMINAL:
-                        var terminalLabel = new Label
-                        {
-                            Margin = itemMargin,
-                            Text = "TERMINAL",
-                            TextColor = target.TableHeaderTextColor,
-                            VerticalTextAlignment = TextAlignment.Center,
-                            FontSize = itemFontSize,
-                            FontAttributes = FontAttributes.Bold
-                        };
-
-                        Grid.SetColumn(terminalLabel, i);
-
-                        layout.Children.Add(terminalLabel);
+                        itemLabel.Text = "TERMINAL";
 
                         break;
 
                     case Enumerations.ClassicOperationsColumn.STATUS:
-                        var statusLabel = new Label
-                        {
-                            Margin = itemMargin,
-                            Text = "ESTADO",
-                            TextColor = target.TableHeaderTextColor,
-                            VerticalTextAlignment = TextAlignment.Center,
-                            FontSize = itemFontSize,
-                            FontAttributes = FontAttributes.Bold
-                        };
+                        itemLabel.Text = "ESTADO";
 
-                        Grid.SetColumn(statusLabel, i);
+                        break;
 
-                        layout.Children.Add(statusLabel);
+                    case Enumerations.ClassicOperationsColumn.CARRIER:
+                        itemLabel.Text = "AEROLINEA";
+
+                        break;
+
+                    case Enumerations.ClassicOperationsColumn.FLYNUMBER:
+                        itemLabel.Text = "VUELO";
+
+                        break;
+
+                    case Enumerations.ClassicOperationsColumn.CATEGORY:
+                        itemLabel.Text = "CATEGORIA";
 
                         break;
                 }
+
+                Grid.SetColumn(itemLabel, i);
+
+                layout.Children.Add(itemLabel);
             }
         }
     }

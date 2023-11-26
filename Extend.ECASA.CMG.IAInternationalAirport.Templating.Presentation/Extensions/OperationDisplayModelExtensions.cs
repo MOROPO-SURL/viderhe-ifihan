@@ -4,7 +4,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 {
     public static class OperationDisplayModelExtensions
     {
-        public static void AttachTo(this MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel target, int index, StackLayout layout, ColumnDefinitionCollection columnDefinitions, Models.View.Placard.ClassicOperationsPlacardViewModel model, Thickness margin, double fontSize, double timeColumnWidth)
+        public static void AttachTo(this MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel target, int index, StackLayout layout, ColumnDefinitionCollection columnDefinitions, Models.View.Placard.ClassicOperationsPlacardViewModel model, Thickness margin, double fontSize, double timeColumnWidth, double gateColumnWidth)
         {
             var useSecundaryColorProfile = model.UseStrippedRows && index % 2 != 0;
 
@@ -34,7 +34,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                         {
                             Margin = margin,
                             WidthRequest = timeColumnWidth,
-                            Text = target.StartDate.ToString("HH:mm"),
+                            Text = target.Date.ToString("HH:mm"),
                             TextColor = rowTextColor,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
@@ -54,7 +54,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             Text = target.Context,
                             TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
-                            FontSize = fontSize
+                            FontSize = fontSize,
+                            LineBreakMode = LineBreakMode.TailTruncation
                         };
 
                         Grid.SetColumn(contextLabel, i);
@@ -68,6 +69,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         flyLayout.Children.Add(new Views.BoxedCachedImage
                         {
+                            Margin = new Thickness(margin.Left, 0, 0, 0),
                             Source = target.Carrier.Image == null ? ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", model.APIServer))) : target.Carrier.Image.ToImageSource(model)
                         });
                         flyLayout.Children.Add(new Label
@@ -77,12 +79,91 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             Text = string.Format("{0} {1}", target.Carrier.Id, target.Flight),
                             TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
-                            FontSize = fontSize
+                            FontSize = fontSize,
+                            LineBreakMode = LineBreakMode.TailTruncation
                         });
 
                         Grid.SetColumn(flyLayout, i);
 
                         itemLayout.Children.Add(flyLayout);
+
+                        break;
+
+                    case Enumerations.ClassicOperationsColumn.CARRIER:
+                        var carrierLayout = new StackLayout { Orientation = StackOrientation.Horizontal };
+
+                        carrierLayout.Children.Add(new Views.BoxedCachedImage
+                        {
+                            Margin = new Thickness(margin.Left, 0, 0, 0),
+                            Source = target.Carrier.Image == null ? ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", model.APIServer))) : target.Carrier.Image.ToImageSource(model)
+                        });
+                        carrierLayout.Children.Add(new Label
+                        {
+                            Margin = margin,
+                            HorizontalOptions = LayoutOptions.FillAndExpand,
+                            Text = target.Carrier.Id,
+                            TextColor = rowTextColor,
+                            VerticalTextAlignment = TextAlignment.Center,
+                            FontSize = fontSize,
+                            LineBreakMode = LineBreakMode.TailTruncation
+                        });
+
+                        Grid.SetColumn(carrierLayout, i);
+
+                        itemLayout.Children.Add(carrierLayout);
+
+                        break;
+
+                    case Enumerations.ClassicOperationsColumn.FLYNUMBER:
+                        var flyNumberLabel = new Label
+                        {
+                            Margin = margin,
+                            Text = target.Flight.ToString(),
+                            TextColor = rowTextColor,
+                            VerticalTextAlignment = TextAlignment.Center,
+                            FontSize = fontSize,
+                            LineBreakMode = LineBreakMode.TailTruncation
+                        };
+
+                        Grid.SetColumn(flyNumberLabel, i);
+
+                        itemLayout.Children.Add(flyNumberLabel);
+
+                        break;
+
+                    case Enumerations.ClassicOperationsColumn.CATEGORY:
+                        var categoryLabel = new Label
+                        {
+                            Margin = margin,
+                            Text = target.Category.Name,
+                            TextColor = rowTextColor,
+                            VerticalTextAlignment = TextAlignment.Center,
+                            FontSize = fontSize,
+                            LineBreakMode = LineBreakMode.TailTruncation
+                        };
+
+                        Grid.SetColumn(categoryLabel, i);
+
+                        itemLayout.Children.Add(categoryLabel);
+
+                        break;
+
+                    case Enumerations.ClassicOperationsColumn.GATE:
+                        var gateLabel = new Label
+                        {
+                            Margin = margin,
+                            WidthRequest = gateColumnWidth,
+                            Text = target.Gate,
+                            TextColor = rowTextColor,
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalTextAlignment = TextAlignment.Center,
+                            FontSize = fontSize,
+                            LineBreakMode = LineBreakMode.TailTruncation
+                        };
+
+                        Grid.SetColumn(gateLabel, i);
+
+                        itemLayout.Children.Add(gateLabel);
 
                         break;
 
@@ -93,7 +174,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             Text = target.Terminal.Name,
                             TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
-                            FontSize = fontSize
+                            FontSize = fontSize,
+                            LineBreakMode = LineBreakMode.TailTruncation
                         };
 
                         Grid.SetColumn(terminalLabel, i);
@@ -109,7 +191,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                             Text = target.Status.Label,
                             TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
-                            FontSize = fontSize
+                            FontSize = fontSize,
+                            LineBreakMode = LineBreakMode.TailTruncation
                         };
 
                         Grid.SetColumn(statusLabel, i);

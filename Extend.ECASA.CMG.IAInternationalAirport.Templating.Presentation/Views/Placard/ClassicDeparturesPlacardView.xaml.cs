@@ -14,6 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
         private readonly Models.View.Placard.ClassicOperationsPlacardViewModel model;
 
         private Label timeSizeReferenceLabel;
+        private Label gateSizeReferenceLabel;
 
         public ClassicDeparturesPlacardView(Models.View.Placard.ClassicOperationsPlacardViewModel model)
         {
@@ -85,7 +86,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
             var tableHeaderItemFontSize = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(model.TableHeaderFontSize, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture);
 
-            model.InitializeTableHeader(TableHeaderGrid, MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure, TABLE_ITEM_MARGIN, tableHeaderItemFontSize, out timeSizeReferenceLabel);
+            model.InitializeTableHeader(TableHeaderGrid, MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure, TABLE_ITEM_MARGIN, tableHeaderItemFontSize, out timeSizeReferenceLabel, out gateSizeReferenceLabel);
 
             this.model = model;
         }
@@ -142,7 +143,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        item.AttachTo(index++, TableBodyStackLayout, TableHeaderGrid.ColumnDefinitions, model, TABLE_ITEM_MARGIN, (double)tableBodyItemFontSize, timeSizeReferenceLabel.Width);
+                        item.AttachTo(index++, TableBodyStackLayout, TableHeaderGrid.ColumnDefinitions, model, TABLE_ITEM_MARGIN, (double)tableBodyItemFontSize, timeSizeReferenceLabel?.Width ?? 0, gateSizeReferenceLabel?.Width ?? 0);
                     });
                 }
             }

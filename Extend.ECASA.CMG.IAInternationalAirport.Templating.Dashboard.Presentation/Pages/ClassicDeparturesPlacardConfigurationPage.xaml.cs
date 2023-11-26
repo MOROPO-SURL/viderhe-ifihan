@@ -286,6 +286,22 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             });
         }
 
+        private void HideColumnButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            var column = (Enumerations.ClassicOperationsColumn) (sender as Xamarin.Forms.BindableObject).BindingContext;
+
+            BindingContextPageModel.VisibleColumns.Remove(column);
+            BindingContextPageModel.AvailableColumns.Add(column);
+        }
+
+        private void ShowColumnButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            var column = (Enumerations.ClassicOperationsColumn)(sender as Xamarin.Forms.BindableObject).BindingContext;
+
+            BindingContextPageModel.AvailableColumns.Remove(column);
+            BindingContextPageModel.VisibleColumns.Add(column);
+        }
+        
         private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
         {
             BindingContextPageModel.Tags.Add(model);

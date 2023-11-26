@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
+namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
 {
     /// <inheritdoc />
     public partial class InitialSchemaMigration : Migration
@@ -159,7 +159,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
                     discriminator = table.Column<int>(type: "integer", nullable: false),
-                    label = table.Column<string>(type: "text", nullable: false)
+                    label = table.Column<string>(type: "text", nullable: false),
+                    emphasistextcolor = table.Column<string>(type: "text", nullable: true),
+                    emphasisbackgroundcolor = table.Column<string>(type: "text", nullable: true),
+                    alternatetextcolor = table.Column<string>(type: "text", nullable: true),
+                    alternatebackgroundcolor = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -779,8 +783,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Web.Migrations
                     carrierid = table.Column<string>(type: "text", nullable: false),
                     flight = table.Column<int>(type: "integer", nullable: false),
                     context = table.Column<string>(type: "text", nullable: false),
-                    stardate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    enddate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    gate = table.Column<string>(type: "text", nullable: false),
+                    date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     terminalid = table.Column<Guid>(type: "uuid", nullable: false),
                     kindid = table.Column<int>(type: "integer", nullable: false),
                     categoryid = table.Column<Guid>(type: "uuid", nullable: false),

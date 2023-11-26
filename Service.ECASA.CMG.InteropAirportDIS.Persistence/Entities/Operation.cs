@@ -15,9 +15,10 @@
         [System.ComponentModel.DataAnnotations.Required]
         public string Context { get; set; }
 
-        public System.DateTime StartDate { get; set; }
+        [System.ComponentModel.DataAnnotations.Required]
+        public string Gate { get; set; }
 
-        public System.DateTime? EndDate { get; set; }
+        public System.DateTime Date { get; set; }
 
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey("TerminalId")]
         public Terminal Terminal { get; set; }

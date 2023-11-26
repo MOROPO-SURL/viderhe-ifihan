@@ -420,6 +420,7 @@
                                             Color="{Binding Path=TableBackgroundColor}" />
                                     </StackLayout>
                                 </Frame>
+                                <!--
                                 <Frame 
                                     Grid.Column="1" Grid.Row="0"
                                     Style="{StaticResource FormFieldFrame}">
@@ -431,6 +432,7 @@
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>
+                                -->
                                 <Frame 
                                     Grid.Column="2" Grid.Row="0" Grid.RowSpan="6"
                                     Style="{StaticResource FormFieldFrame}"
@@ -475,7 +477,8 @@
                                                                     VerticalOptions="Start"
                                                                     Style="{StaticResource TextIconButton}"
                                                                     Text="&#xF0049;"
-                                                                    FontSize="Medium" />
+                                                                    FontSize="Medium"
+                                                                    Clicked="HideColumnButton_Clicked" />
                                                             </StackLayout>
                                                         </DataTemplate>
                                                     </BindableLayout.ItemTemplate>
@@ -515,7 +518,8 @@
                                                                     VerticalOptions="Start"
                                                                     Style="{StaticResource TextIconButton}"
                                                                     Text="&#xF86B;"
-                                                                    FontSize="Medium" />
+                                                                    FontSize="Medium"
+                                                                    Clicked="ShowColumnButton_Clicked" />
                                                             </StackLayout>
                                                         </DataTemplate>
                                                     </BindableLayout.ItemTemplate>

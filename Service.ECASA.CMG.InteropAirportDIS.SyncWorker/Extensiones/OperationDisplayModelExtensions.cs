@@ -4,7 +4,7 @@
     {
         internal static bool IsUpdateRequired(this API.Common.Models.OperationDisplayModel model, Persistence.Entities.Departure entity)
         {
-            if (model.StartDate != entity.DateTimeP) return true;
+            if (model.Date != entity.DateTimeP) return true;
 
             if (model.EndDate != entity.DateTimeR) return true;
 
@@ -25,7 +25,7 @@
 
         internal static bool IsUpdateRequired(this API.Common.Models.OperationDisplayModel model, Persistence.Entities.Arraival entity)
         {
-            if (model.StartDate != entity.DateTimeP) return true;
+            if (model.Date != entity.DateTimeP) return true;
 
             if (model.EndDate != entity.DateTimeR) return true;
 

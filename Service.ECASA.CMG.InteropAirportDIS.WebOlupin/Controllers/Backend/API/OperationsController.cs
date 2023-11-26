@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
 using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Attributes;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Constants;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models;
@@ -12,8 +13,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Backe
     [ApiController]
     public class OperationsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<Operation, long, OperationInputModel, OperationDisplayModel>
     {
-        public OperationsController(Framework.Guama.Core.Persistence.Repositories.IEntityRepository<Operation, long> repository, Microsoft.Extensions.Localization.IStringLocalizer<OperationsController> localizer, ILogger<OperationsController> logger) : base(repository, localizer, logger)
+        private readonly IEntityRepository<Status, System.Guid> statusRepository;
+
+        public OperationsController(IEntityRepository<Status, System.Guid> statusRepository, IEntityRepository<Operation, long> repository, Microsoft.Extensions.Localization.IStringLocalizer<OperationsController> localizer, ILogger<OperationsController> logger) : base(repository, localizer, logger)
         {
+            this.statusRepository = statusRepository;
         }
 
         [RequirePermissions(Authorization.OperationViewerPermission)]

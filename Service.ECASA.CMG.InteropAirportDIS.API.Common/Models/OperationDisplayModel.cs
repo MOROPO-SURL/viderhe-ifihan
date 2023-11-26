@@ -10,7 +10,7 @@
 
         public string Context { get; set; }
 
-        public System.DateTime StartDate { get; set; }
+        public System.DateTime Date { get; set; }
 
         public System.DateTime? EndDate { get; set; }
 
@@ -22,13 +22,15 @@
         
         public StatusDisplayModel Status { get; set; }
 
+        public string Gate { get; set; }
+
         public void Import(Persistence.Entities.Operation entity)
         {
             Id = entity.Id;
             Flight = entity.Flight;
             Context = entity.Context;
-            StartDate = entity.StartDate;
-            EndDate = entity.EndDate;
+            Date = entity.Date;
+            Gate = entity.Gate;
 
             Carrier = new CarrierDisplayModel();
             Terminal = new TerminalDisplayModel();
@@ -36,7 +38,6 @@
             Category = new CategoryDisplayModel();
             Status = new StatusDisplayModel();
 
-            // TODO Set ImageExtension value at Controller 
             Carrier.Import(entity.Carrier);
             Terminal.Import(entity.Terminal);
             Kind.Import(entity.Kind);

@@ -52,25 +52,34 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
         {
             var countries = new List<CountryDisplayModel>(await countriesAPIConnectClient.GetAsync());
 
-            if (countries.Count < 1)
+            try
             {
-                var defeaultCountryId = System.Guid.NewGuid();
-
-                var model = new CountryInputModel
+                if (countries.Count < 1)
                 {
-                    Id = defeaultCountryId,
-                    IsoCode = "cu",
-                    Name = "Cuba"
-                };
+                    var defeaultCountryId = System.Guid.NewGuid();
 
-                await countriesAPIConnectClient.CreateAsync(model);
+                    var model = new CountryInputModel
+                    {
+                        Id = defeaultCountryId,
+                        IsoCode = "CU",
+                        Name = "Cuba"
+                    };
 
-                countries.Add(new CountryDisplayModel
-                {
-                    Id = model.Id,
-                    IsoCode = model.IsoCode,
-                    Name = model.Name
-                });
+                    await countriesAPIConnectClient.CreateAsync(model);
+
+                    countries.Add(new CountryDisplayModel
+                    {
+                        Id = model.Id,
+                        IsoCode = model.IsoCode,
+                        Name = model.Name
+                    });
+                }
+            }
+            catch (System.Exception exception)
+            {
+                logger.LogError(exception, "Unexpected error on worker preconditions work!!");
+
+                return;
             }
 
             while (!stoppingToken.IsCancellationRequested)
@@ -143,8 +152,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                                 Id = item.Idoper.Value,
                                 Context = item.OrigDest,
                                 Flight = int.Parse(item.NumeroVuelo),
-                                StartDate = item.DateTimeP.Value,
-                                EndDate = item.DateTimeR,
+                                Date = item.DateTimeP.Value,
+                                Gate = item.Puerta,
                                 CarrierId = carrier.Id,
                                 TerminalId = terminal.Id,
                                 CategoryId = category.Id,
@@ -159,8 +168,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                                 Id = operation.Id,
                                 Context = item.OrigDest,
                                 Flight = int.Parse(item.NumeroVuelo),
-                                StartDate = item.DateTimeP.Value,
-                                EndDate = item.DateTimeR,
+                                Date = item.DateTimeP.Value,
+                                Gate = item.Puerta,
                                 CarrierId = carrier.Id,
                                 TerminalId = terminal.Id,
                                 CategoryId = category.Id,
@@ -220,8 +229,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                                 Id = item.Idoper.Value,
                                 Context = item.OrigDest,
                                 Flight = int.Parse(item.NumeroVuelo),
-                                StartDate = item.DateTimeP.Value,
-                                EndDate = item.DateTimeR,
+                                Date = item.DateTimeP.Value,
+                                Gate = item.Puerta,
                                 CarrierId = carrier.Id,
                                 TerminalId = terminal.Id,
                                 CategoryId = category.Id,
@@ -236,8 +245,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                                 Id = operation.Id,
                                 Context = item.OrigDest,
                                 Flight = int.Parse(item.NumeroVuelo),
-                                StartDate = item.DateTimeP.Value,
-                                EndDate = item.DateTimeR,
+                                Date = item.DateTimeP.Value,
+                                Gate = item.Puerta,
                                 CarrierId = carrier.Id,
                                 TerminalId = terminal.Id,
                                 CategoryId = category.Id,
@@ -256,7 +265,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                 }
                 catch (System.Exception exception)
                 {
-                    logger.LogError(exception, "Unexpected error on departures syncronization work!!");
+                    logger.LogError(exception, "Unexpected error on operations syncronization work!!");
                 }
                 #endregion
 
@@ -305,7 +314,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
             var model = new TerminalInputModel
             {
                 Id = System.Guid.NewGuid(),
-                Name = string.Format("Aerolínea {0}", id.ToUpperInvariant()),
+                Name = string.Format("Terminal {0}", id.ToUpperInvariant()),
                 Discriminator = id
             };
 
