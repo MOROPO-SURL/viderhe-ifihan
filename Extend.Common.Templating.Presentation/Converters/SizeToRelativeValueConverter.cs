@@ -14,7 +14,7 @@
 
             var applicationPageLargeSize = System.Math.Max(Xamarin.Forms.Application.Current.MainPage.Width, Xamarin.Forms.Application.Current.MainPage.Height);
 
-            if (applicationPageLargeSize == RELATIVE_REFERENCE_SIZE || applicationPageLargeSize <= 0) return concreteValue;
+            if (applicationPageLargeSize == RELATIVE_REFERENCE_SIZE || applicationPageLargeSize <= 0) return concreteValue * (SizeScalableView?.RelativeSizeScaleFactor ?? 1);
 
             return concreteValue * applicationPageLargeSize / RELATIVE_REFERENCE_SIZE * (SizeScalableView?.RelativeSizeScaleFactor ?? 1);
         }
