@@ -2,8 +2,10 @@
 {
     public partial class TextContentBlockView : Xamarin.Forms.ContentView, Common.Templating.Presentation.Views.Facade.IRelativeSizeScalableViewFacade
     {
-        public TextContentBlockView()
+        public TextContentBlockView(double relativeSizeScaleFactor)
         {
+            RelativeSizeScaleFactor = relativeSizeScaleFactor;
+
             InitializeComponent();
         }
 

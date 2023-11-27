@@ -2,8 +2,10 @@
 {
     public partial class TransparentSeparatorContentBlockView : Xamarin.Forms.BoxView, Common.Templating.Presentation.Views.Facade.IRelativeSizeScalableViewFacade
     {
-        public TransparentSeparatorContentBlockView()
+        public TransparentSeparatorContentBlockView(double relativeSizeScaleFactor)
         {
+            RelativeSizeScaleFactor = relativeSizeScaleFactor;
+
             InitializeComponent();
         }
 

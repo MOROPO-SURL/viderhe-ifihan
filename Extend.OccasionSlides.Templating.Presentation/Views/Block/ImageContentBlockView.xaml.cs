@@ -2,8 +2,10 @@
 {
     public partial class ImageContentBlockView : FFImageLoading.Forms.CachedImage, Common.Templating.Presentation.Views.Facade.IRelativeSizeScalableViewFacade
     {
-        public ImageContentBlockView()
+        public ImageContentBlockView(double relativeSizeScaleFactor)
         {
+            RelativeSizeScaleFactor = relativeSizeScaleFactor;
+
             InitializeComponent();
         }
 
