@@ -16,7 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
         private Label timeSizeReferenceLabel;
         private Label gateSizeReferenceLabel;
 
-        public ClassicArraivalsPlacardView(Models.View.Placard.ClassicOperationsPlacardViewModel model)
+        public ClassicArraivalsPlacardView(Models.View.Placard.ClassicOperationsPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -34,7 +34,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                 var unresponsiveMarginFactor = (Application.Current.MainPage.Width + Application.Current.MainPage.Height) / 2 * 0.04;
 
-                var responsiveMarginFactor = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(unresponsiveMarginFactor, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture);
+                var responsiveMarginFactor = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(unresponsiveMarginFactor, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor;
 
                 TableLayout.Margin = new Thickness(responsiveMarginFactor);
 
@@ -84,7 +84,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                 ArraivalsLayout.Children.Insert(0, backgroundView);
             }
 
-            var tableHeaderItemFontSize = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(model.TableHeaderFontSize, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture);
+            var tableHeaderItemFontSize = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(model.TableHeaderFontSize, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor;
 
             model.InitializeTableHeader(TableHeaderGrid, MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival, TABLE_ITEM_MARGIN, tableHeaderItemFontSize, out timeSizeReferenceLabel, out gateSizeReferenceLabel);
             
@@ -133,7 +133,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                     TableBodyStackLayout.Children.Clear();
                 });
 
-                var tableBodyItemFontSize = SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(model.RowFontSize, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture);
+                var tableBodyItemFontSize = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(model.RowFontSize, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor;
 
                 var index = 0;
 
@@ -143,7 +143,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        item.AttachTo(index++, TableBodyStackLayout, TableHeaderGrid.ColumnDefinitions, model, TABLE_ITEM_MARGIN, (double)tableBodyItemFontSize, timeSizeReferenceLabel?.Width ?? 0, gateSizeReferenceLabel?.Width ?? 0);
+                        item.AttachTo(index++, TableBodyStackLayout, TableHeaderGrid.ColumnDefinitions, model, TABLE_ITEM_MARGIN, tableBodyItemFontSize, timeSizeReferenceLabel?.Width ?? 0, gateSizeReferenceLabel?.Width ?? 0);
                     });
                 }
             }

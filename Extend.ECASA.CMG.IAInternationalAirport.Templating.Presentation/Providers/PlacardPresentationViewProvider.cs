@@ -2,7 +2,7 @@
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
-        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
             if (model.Template.Id == Descriptors.ClassicDeparturesTemplateDescriptor.ID)
             {
@@ -31,7 +31,7 @@
                    Columns = context.Columns,
                    Background = context.Background,
                    ForegroundTransparency = context.ForegroundTransparency
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == Descriptors.ClassicArraivalsTemplateDescriptor.ID)
@@ -61,7 +61,7 @@
                     Columns = context.Columns,
                     Background = context.Background,
                     ForegroundTransparency = context.ForegroundTransparency
-                });
+                }, relativeSizeScaleFactor);
             }
 
             return null;

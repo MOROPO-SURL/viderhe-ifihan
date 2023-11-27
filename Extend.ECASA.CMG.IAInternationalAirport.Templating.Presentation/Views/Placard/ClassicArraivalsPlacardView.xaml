@@ -2,9 +2,13 @@
 <extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:fragmentviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Fragment"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Placard.ClassicArraivalsPlacardView">
+    x:Class="SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Placard.ClassicArraivalsPlacardView"
+    x:Name="RootView">
+    <ContentView.Resources>
+        <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="ArraivalsLayout">
@@ -15,7 +19,44 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <fragmentviews:ArraivalsHeaderFragmentView Grid.Row="0" />
+                    <Grid
+                        Grid.Row="0"
+                        BackgroundColor="DarkBlue"
+                        Padding="16"
+                        ColumnSpacing="16" RowSpacing="0">
+                        <Grid.Resources>
+                            <ResourceDictionary>
+                                <Style TargetType="Label">
+                                    <Setter Property="TextColor" Value="White" />
+                                </Style>
+                            </ResourceDictionary>
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Column="0" Grid.RowSpan="2"
+                            VerticalOptions="Center"
+                            Text="&#xF5D4;"
+                            FontFamily="{StaticResource IconFontFamily}"
+                            FontSize="{Binding Source=140, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        <Label
+                            Grid.Column="1" Grid.Row="0"
+                            Text="ARRIBOS / ARRAIVALS"
+                            FontSize="{Binding Source=60, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                            FontAttributes="Bold" />
+                        <Label
+                            Grid.Column="1" Grid.Row="1"
+                            Text="Aeropuerto Internacional Ignacio Agramonte"
+                            TextColor="LightCyan"
+                            FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    </Grid>
                     <BoxView Grid.Row="1" Color="LightCyan" HeightRequest="4" Margin="0,0,0,8" />
                     <Grid x:Name="TableHeaderGrid" Grid.Row="2" ColumnSpacing="0" />
                     <StackLayout x:Name="TableBodyStackLayout" Grid.Row="3" Margin="0,6,0,0" />
