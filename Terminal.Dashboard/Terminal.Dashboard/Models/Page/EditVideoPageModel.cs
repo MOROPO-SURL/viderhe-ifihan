@@ -1,8 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class EditVideoPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
+    public class EditVideoPageModel : FormPageModel
     {
-        public Support.Presentation.Models.View.VideoViewModel Video { get; set; }
+        public VideoViewModel Video { get; set; }
 
         protected override void DisposeUnmanagementResources()
         {

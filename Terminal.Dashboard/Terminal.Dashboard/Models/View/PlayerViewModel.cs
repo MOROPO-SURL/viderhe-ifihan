@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
 {
     public class PlayerViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
     {
@@ -13,7 +15,7 @@
 
         public string About { get; set; }
 
-        public Cloud.Api.Common.Models.ScreenplayDisplayModel Screenplay { get; set; }
+        public ScreenplayDisplayModel Screenplay { get; set; }
 
         public bool IsConnected { get => isConnected; set => SetProperty(ref isConnected, value); }
 
@@ -27,6 +29,6 @@
 
         public string SerializedOverlayContext { get; set; }
 
-        public Cloud.Api.Common.Models.TagDisplayModel[] Tags { get; set; }
+        public TagDisplayModel[] Tags { get; set; }
     }
 }

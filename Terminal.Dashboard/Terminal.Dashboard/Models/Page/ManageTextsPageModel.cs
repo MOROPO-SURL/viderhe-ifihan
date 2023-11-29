@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
     public class ManageTextsPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {
@@ -6,10 +8,10 @@
 
         public ManageTextsPageModel()
         {
-            Items = new System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.TextViewModel>();
+            Items = new System.Collections.ObjectModel.ObservableCollection<TextViewModel>();
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.TextViewModel> Items { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<TextViewModel> Items { get; set; }
 
         public bool HasMoreItems { get => hasMoreItems; set => SetProperty(ref hasMoreItems, value); }
 

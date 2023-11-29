@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Models.View
 {
-    public class VideoViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
+    public class VideoViewModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel
     {
         private string about;
 

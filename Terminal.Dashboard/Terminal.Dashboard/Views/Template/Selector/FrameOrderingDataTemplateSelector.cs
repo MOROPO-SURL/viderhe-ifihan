@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views.Template.Selector
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views.Template.Selector
 {
     public class FrameOrderingDataTemplateSelector : Xamarin.Forms.DataTemplateSelector
     {
@@ -8,7 +10,7 @@
 
         protected override Xamarin.Forms.DataTemplate OnSelectTemplate(object item, Xamarin.Forms.BindableObject container)
         {
-            var model = item as Support.Presentation.Models.View.FrameViewModel;
+            var model = item as FrameViewModel;
 
             if (model.Placard != null)
             {

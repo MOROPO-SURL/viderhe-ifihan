@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Connect.Clients
 {
     public class ImagesApiConnectClient
     {
-        private readonly MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper;
+        private readonly Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper httpClientHelper;
 
-        public ImagesApiConnectClient(MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper)
+        public ImagesApiConnectClient(Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper httpClientHelper)
         {
             this.httpClientHelper = httpClientHelper;
         }
@@ -26,12 +28,12 @@
             await httpClientHelper.PostFormAsync("account/images", new System.Net.Http.MultipartFormDataContent { formContent, fileContent });
         }
 
-        public async System.Threading.Tasks.Task<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.ImageDisplayModel>> GetPageAsync(int page = 1, int limit = 15)
+        public async System.Threading.Tasks.Task<Framework.Guama.Core.Presentation.Models.PaginationModel<ImageDisplayModel>> GetPageAsync(int page = 1, int limit = 15)
         {
-            return await httpClientHelper.GetAsync<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.ImageDisplayModel>>(string.Format("account/images/page/{0}/limit/{1}", page, limit));
+            return await httpClientHelper.GetAsync<Framework.Guama.Core.Presentation.Models.PaginationModel<ImageDisplayModel>>(string.Format("account/images/page/{0}/limit/{1}", page, limit));
         }
 
-        public virtual async System.Threading.Tasks.Task EditAsync(Common.Models.ImageInputModel inputModel)
+        public virtual async System.Threading.Tasks.Task EditAsync(ImageInputModel inputModel)
         {
             await httpClientHelper.PutAsync("account/images", inputModel);
         }

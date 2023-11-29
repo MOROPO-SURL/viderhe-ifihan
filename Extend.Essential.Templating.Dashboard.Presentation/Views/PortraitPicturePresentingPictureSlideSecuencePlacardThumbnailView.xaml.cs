@@ -1,17 +1,21 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Essential.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Views
 {
-    public partial class PortraitPicturePresentingPictureSlideSecuencePlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class PortraitPicturePresentingPictureSlideSecuencePlacardThumbnailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
-        public PortraitPicturePresentingPictureSlideSecuencePlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model)
+        public PortraitPicturePresentingPictureSlideSecuencePlacardThumbnailView(PlacardViewModel model)
         {
             InitializeComponent();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.PortraitPicturePresentingPictureSlideSecuencePlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitPicturePresentingPictureSlideSecuencePlacardContextModel>(model.SerializedContext);
 
-            PresenterImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.PresenterImage.ThumbnailId));
-            PresenterImage.VerticalOptions = context.PresenterSide == Enumerations.PortraitPresentationSide.Top ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.End;
+            PresenterImage.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildThumbnailUri(context.PresenterImage.ThumbnailId));
+            PresenterImage.VerticalOptions = context.PresenterSide == PortraitPresentationSide.Top ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.End;
 
             var iterationCount = context.PresentedPictureSlideSecuence.Slides.Length;
 
@@ -26,7 +30,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
                 var iterationImage = new FFImageLoading.Forms.CachedImage
                 {
-                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(slide.Image.ThumbnailId)),
+                    Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildThumbnailUri(slide.Image.ThumbnailId)),
                     Aspect = slide.LayoutMode.ToXamarinFormsAspect(),
                     CacheType = FFImageLoading.Cache.CacheType.Disk,
                     CacheDuration = System.TimeSpan.MaxValue

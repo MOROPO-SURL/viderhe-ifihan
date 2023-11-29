@@ -1,32 +1,36 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MOROPO.SAPRESSC.Core.Persistence.Repositories;
-using MOROPO.SAPRESSC.Core.Web.Security.Attributes;
-using MOROPO.SAPRESSC.Middleware.Identity.Persistence.Entities;
-using MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities;
-using MOROPO.SAPRESSC.Middleware.Security.Essential.Persistence.Entities;
-using SmartSolucionesCuba.Viderhe.Cloud.Models.View;
-using SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.Framework.Guama.Core.Presentation.Models.View;
+using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Attributes;
+using MOROPO.Framework.Guama.Identity.Persistence.Entities;
+using MOROPO.Framework.Guama.Media.Persistence.Entities;
+using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Managers.Facade;
+using MOROPO.Framework.Guama.Security.Essential.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Models.View;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
+namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
 {
     [Microsoft.AspNetCore.Authorization.Authorize]
     [Area("business")]
-    public class AccountsController : MOROPO.SAPRESSC.Core.Web.Backend.Controllers.AbstractHabilitableEntityManagementController<Account, System.Guid, AccountInputViewModel, AccountDisplayViewModel>
+    public class AccountsController : Framework.Guama.Core.Presentation.Web.Backend.Controllers.AbstractHabilitableEntityManagementController<Account, System.Guid, AccountInputViewModel, AccountDisplayViewModel>
     {
         private const string LOGO_IMAGE_FILE_FIELD_NAME = "LogoImageFile";
         private const string HORIZONTAL_SPLASH_IMAGE_FILE_FIELD_NAME = "HorizontalSplashImageFile";
         private const string VERTICAL_SPLASH_IMAGE_FILE_FIELD_NAME = "VerticalSplashImageFile";
 
-        private readonly MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManagerFacade;
+        private readonly IImageFileManagerFacade imageFileManagerFacade;
         private readonly IEntityRepository<User, string> userRepository;
         private readonly IEntityRepository<Extension, System.Guid> extensionRepository;
         private readonly IEntityRepository<Image, System.Guid> imageRepository;
         private readonly IEntityRepository<PersonIdentity, System.Guid> identityRepository;
         private readonly IEntityRepository<Moderator, System.Guid> moderatorRepository;
 
-        public AccountsController(IEntityRepository<Moderator, System.Guid> moderatorRepository, IEntityRepository<PersonIdentity, System.Guid> identityRepository, MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManagerFacade, IEntityRepository<User, string> userRepository, IEntityRepository<Extension, System.Guid> extensionRepository, IEntityRepository<Image, System.Guid> imageRepository, IEntityRepository<Account, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AccountsController> localizer, ILogger<AccountsController> logger) : base(repository, localizer, logger)
+        public AccountsController(IEntityRepository<Moderator, System.Guid> moderatorRepository, IEntityRepository<PersonIdentity, System.Guid> identityRepository, IImageFileManagerFacade imageFileManagerFacade, IEntityRepository<User, string> userRepository, IEntityRepository<Extension, System.Guid> extensionRepository, IEntityRepository<Image, System.Guid> imageRepository, IEntityRepository<Account, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AccountsController> localizer, ILogger<AccountsController> logger) : base(repository, localizer, logger)
         {
             this.imageFileManagerFacade = imageFileManagerFacade;
             this.userRepository = userRepository;
@@ -36,19 +40,19 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
             this.moderatorRepository = moderatorRepository;
         }
 
-        [RequirePermissions(Security.Authorization.Permission.AccountViewer)]
+        [RequirePermissions(Permission.AccountViewer)]
         public override IActionResult Index(int sheet = 1, int limit = 25)
         {
             return base.Index(sheet, limit);
         }
 
-        [RequirePermissions(Security.Authorization.Permission.AccountCreator)]
+        [RequirePermissions(Permission.AccountCreator)]
         public override IActionResult Create()
         {
             return base.Create();
         }
 
-        [RequirePermissions(Security.Authorization.Permission.AccountCreator)]
+        [RequirePermissions(Permission.AccountCreator)]
         public override IActionResult Create(AccountInputViewModel modelInput)
         {
             if (Request.Form.Files.Count > 0)
@@ -132,13 +136,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
             }
         }
 
-        [RequirePermissions(Security.Authorization.Permission.AccountEditor)]
+        [RequirePermissions(Permission.AccountEditor)]
         public override IActionResult Edit(System.Guid key)
         {
             return base.Edit(key);
         }
 
-        [RequirePermissions(Security.Authorization.Permission.AccountEditor)]
+        [RequirePermissions(Permission.AccountEditor)]
         public override IActionResult Edit(AccountInputViewModel modelInput)
         {
             ModelState.ClearValidationState(LOGO_IMAGE_FILE_FIELD_NAME);
@@ -293,25 +297,25 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
             }
         }
 
-        [RequirePermissions(Security.Authorization.Permission.AccountEditor)]
+        [RequirePermissions(Permission.AccountEditor)]
         public override IActionResult Enable(System.Guid key)
         {
             return base.Enable(key);
         }
 
-        [RequirePermissions(Security.Authorization.Permission.AccountEditor)]
+        [RequirePermissions(Permission.AccountEditor)]
         public override IActionResult Disable(System.Guid key)
         {
             return base.Disable(key);
         }
 
-        [RequirePermissions(Security.Authorization.Permission.AccountRemover)]
+        [RequirePermissions(Permission.AccountRemover)]
         public override IActionResult Delete(System.Guid key)
         {
             return base.Delete(key);
         }
 
-        [RequirePermissions(Security.Authorization.Permission.AccountRemover)]
+        [RequirePermissions(Permission.AccountRemover)]
         public override IActionResult Delete(AccountDisplayViewModel displayModel)
         {
             return base.Delete(displayModel);
@@ -338,7 +342,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 
         [HttpGet]
         [Route("edit/{key}/moderators")]
-        [RequirePermissions(Security.Authorization.Permission.AccountEditor)]
+        [RequirePermissions(Permission.AccountEditor)]
         public IActionResult Moderators(System.Guid key)
         {
             try
@@ -352,7 +356,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                     {
                         var displayModel = new ModeratorDisplayViewModel();
 
-                        displayModel.Import(e.Moderator);
+                        displayModel.Import(e.Stern);
 
                         return displayModel;
                     }).ToList()
@@ -367,14 +371,14 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                 logger.LogError(e.InnerException, e.Message);
             }
 
-            SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Danger, GetNotFoundMessage());
+            SetDefaultNotification(NotificationType.Danger, GetNotFoundMessage());
 
             return GetDefaultActionResult();
         }
 
         [HttpGet]
         [Route("edit/{key}/moderators/add")]
-        [RequirePermissions(Security.Authorization.Permission.AccountEditor)]
+        [RequirePermissions(Permission.AccountEditor)]
         public IActionResult AddModerator(System.Guid key)
         {
             try
@@ -383,7 +387,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 
                 var model = new ModeratorInputViewModel
                 {
-                    SelectableUsers = userRepository.GetAll().ToArray().Except(account.ModeratorBridges.Select(b => b.Moderator.User).ToArray()).ToArray().Select(e => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+                    SelectableUsers = userRepository.GetAll().ToArray().Except(account.ModeratorBridges.Select(b => b.Stern.User).ToArray()).ToArray().Select(e => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
                     {
                         Value = e.Id,
                         Text = e.Id
@@ -399,7 +403,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                 logger.LogError(e.InnerException, e.Message);
             }
 
-            SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Danger, GetNotFoundMessage());
+            SetDefaultNotification(NotificationType.Danger, GetNotFoundMessage());
 
             return GetDefaultActionResult();
         }
@@ -407,7 +411,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
         [HttpPost]
         [Route("edit/{key}/moderators/add")]
         [ValidateAntiForgeryToken]
-        [RequirePermissions(Security.Authorization.Permission.AccountEditor)]
+        [RequirePermissions(Permission.AccountEditor)]
         public IActionResult AddModerator(System.Guid key, ModeratorInputViewModel modelInput)
         {
             if (Request.Form.Files.Count > 0)
@@ -436,11 +440,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                     {
                         var bridge = new AccountModeratorBridge
                         {
-                            AccountId = entity.Id,
-                            Moderator = modelInput.Export()
+                            ProwId = entity.Id,
+                            Stern = modelInput.Export()
                         };
 
-                        bridge.Moderator.ModerationKind = Persistence.Enumerations.ModerationKind.Privileged;
+                        bridge.Stern.ModerationKind = ModerationKind.Privileged;
 
                         if (modelInput.ImageFile != null)
                         {
@@ -452,7 +456,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 
                                 imageFileManagerFacade.SaveImageFileContent(image.Id, memoryStream.ToArray(), modelInput.ImageFile.ContentType);
 
-                                bridge.Moderator.Identity.Image = image;
+                                bridge.Stern.Identity.Image = image;
                             }
                         }
 
@@ -460,19 +464,19 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 
                         Repository.Update(entity, User.Identity.Name);
 
-                        SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Success, GetCreationSuccessMessage());
+                        SetDefaultNotification(NotificationType.Success, GetCreationSuccessMessage());
 
                         return RedirectToAction("moderators", new { key = entity.Id });
                     }
-                    catch (MOROPO.SAPRESSC.Core.Web.Frontend.InvalidModelException e)
+                    catch (Framework.Guama.Core.Presentation.Web.Frontend.InvalidModelException e)
                     {
                         ModelState.AddModelError(e.ModelKey, e.ErrorMessage);
                     }
                 }
 
-                SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Danger, GetInvalidMessage());
+                SetDefaultNotification(NotificationType.Danger, GetInvalidMessage());
 
-                modelInput.SelectableUsers = userRepository.GetAll().ToArray().Except(entity.ModeratorBridges.Select(b => b.Moderator.User).ToArray()).ToArray().Select(e => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+                modelInput.SelectableUsers = userRepository.GetAll().ToArray().Except(entity.ModeratorBridges.Select(b => b.Stern.User).ToArray()).ToArray().Select(e => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
                 {
                     Value = e.Id,
                     Text = e.Id
@@ -487,21 +491,21 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                 logger.LogError(e.InnerException, e.Message);
             }
 
-            SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Danger, GetNotFoundMessage());
+            SetDefaultNotification(NotificationType.Danger, GetNotFoundMessage());
 
             return GetDefaultActionResult();
         }
 
         [HttpGet]
         [Route("edit/{key}/moderators/edit/{id}")]
-        [RequirePermissions(Security.Authorization.Permission.AccountEditor)]
+        [RequirePermissions(Permission.AccountEditor)]
         public IActionResult EditModerator(System.Guid key, System.Guid id)
         {
             try
             {
                 var account = Repository.Get(key);
 
-                var entity = account.ModeratorBridges.First(b => b.ModeratorId == id).Moderator;
+                var entity = account.ModeratorBridges.First(b => b.SternId == id).Stern;
 
                 var model = new ModeratorInputViewModel();
 
@@ -515,7 +519,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                 logger.LogError(e.InnerException, e.Message);
             }
 
-            SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Danger, GetNotFoundMessage());
+            SetDefaultNotification(NotificationType.Danger, GetNotFoundMessage());
 
             return GetDefaultActionResult();
         }
@@ -523,7 +527,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
         [HttpPost]
         [Route("edit/{key}/moderators/edit")]
         [ValidateAntiForgeryToken]
-        [RequirePermissions(Security.Authorization.Permission.AccountEditor)]
+        [RequirePermissions(Permission.AccountEditor)]
         public IActionResult EditModerator(System.Guid key, ModeratorInputViewModel modelInput)
         {
             ModelState.ClearValidationState("ImageFile");
@@ -551,26 +555,26 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 
                     try
                     {
-                        var bridge = entity.ModeratorBridges.First(b => b.ModeratorId == modelInput.Id);
+                        var bridge = entity.ModeratorBridges.First(b => b.SternId == modelInput.Id);
 
-                        modelInput.Mergue(bridge.Moderator);
+                        modelInput.Mergue(bridge.Stern);
 
                         if (modelInput.ImageFile == null)
                         {
-                            if (modelInput.ResetImage && bridge.Moderator.Identity.Image != null)
+                            if (modelInput.ResetImage && bridge.Stern.Identity.Image != null)
                             {
-                                imageFileManagerFacade.DeleteImageFile(bridge.Moderator.Identity.Image);
+                                imageFileManagerFacade.DeleteImageFile(bridge.Stern.Identity.Image);
 
-                                imageRepository.Delete(bridge.Moderator.Identity.Image, User.Identity.Name);
+                                imageRepository.Delete(bridge.Stern.Identity.Image, User.Identity.Name);
                             }
                         }
                         else
                         {
-                            if (bridge.Moderator.Identity.Image != null)
+                            if (bridge.Stern.Identity.Image != null)
                             {
-                                imageFileManagerFacade.DeleteImageFile(bridge.Moderator.Identity.Image);
+                                imageFileManagerFacade.DeleteImageFile(bridge.Stern.Identity.Image);
 
-                                imageRepository.Delete(bridge.Moderator.Identity.Image, User.Identity.Name);
+                                imageRepository.Delete(bridge.Stern.Identity.Image, User.Identity.Name);
                             }
 
                             using (var memoryStream = new System.IO.MemoryStream())
@@ -581,22 +585,22 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 
                                 imageFileManagerFacade.SaveImageFileContent(image.Id, memoryStream.ToArray(), modelInput.ImageFile.ContentType);
 
-                                bridge.Moderator.Identity.Image = image;
+                                bridge.Stern.Identity.Image = image;
                             }
                         }
 
                         Repository.Update(entity, User.Identity.Name);
 
-                        SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Success, GetEditionSuccessMessage());
+                        SetDefaultNotification(NotificationType.Success, GetEditionSuccessMessage());
 
                         return RedirectToAction("moderators", new { key = entity.Id });
                     }
-                    catch (MOROPO.SAPRESSC.Core.Web.Frontend.InvalidModelException e)
+                    catch (Framework.Guama.Core.Presentation.Web.Frontend.InvalidModelException e)
                     {
                         ModelState.AddModelError(e.ModelKey, e.ErrorMessage);
                     }
 
-                    SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Danger, GetInvalidMessage());
+                    SetDefaultNotification(NotificationType.Danger, GetInvalidMessage());
 
                     modelInput.Account.Import(entity);
 
@@ -608,7 +612,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                 }
             }
 
-            SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Danger, GetNotFoundMessage());
+            SetDefaultNotification(NotificationType.Danger, GetNotFoundMessage());
 
             return GetDefaultActionResult();
         }
@@ -616,34 +620,34 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
         [HttpPost]
         [Route("edit/{key}/moderators/delete")]
         [ValidateAntiForgeryToken]
-        [RequirePermissions(Security.Authorization.Permission.AccountEditor)]
+        [RequirePermissions(Permission.AccountEditor)]
         public IActionResult DeleteModerator(System.Guid key, ModeratorDisplayViewModel modelInput)
         {
             try
             {
                 var entity = Repository.Get(key);
 
-                var bridge = entity.ModeratorBridges.First(b => b.Moderator.Id == modelInput.Id);
+                var bridge = entity.ModeratorBridges.First(b => b.SternId == modelInput.Id);
 
                 entity.ModeratorBridges.Remove(bridge);
 
                 Repository.Update(entity, User.Identity.Name, false);
 
-                identityRepository.Delete(bridge.Moderator.Identity, User.Identity.Name, false);
+                identityRepository.Delete(bridge.Stern.Identity, User.Identity.Name, false);
 
-                if (bridge.Moderator.Identity.Image != null)
+                if (bridge.Stern.Identity.Image != null)
                 {
-                    imageRepository.Delete(bridge.Moderator.Identity.Image, User.Identity.Name, false);
+                    imageRepository.Delete(bridge.Stern.Identity.Image, User.Identity.Name, false);
                 }
 
-                moderatorRepository.Delete(bridge.Moderator, User.Identity.Name);
+                moderatorRepository.Delete(bridge.Stern, User.Identity.Name);
 
-                if (bridge.Moderator.Identity.Image != null)
+                if (bridge.Stern.Identity.Image != null)
                 {
-                    imageFileManagerFacade.DeleteImageFile(bridge.Moderator.Identity.Image);
+                    imageFileManagerFacade.DeleteImageFile(bridge.Stern.Identity.Image);
                 }
 
-                SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Success, GetDeletionSuccessMessage());
+                SetDefaultNotification(NotificationType.Success, GetDeletionSuccessMessage());
 
                 return RedirectToAction("moderators", new { key = entity.Id });
             }
@@ -651,7 +655,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
             {
                 logger.LogError(e.InnerException, e.Message);
 
-                SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Warning, GetOnDeletionDependecyConstrainErrorMessage());
+                SetDefaultNotification(NotificationType.Warning, GetOnDeletionDependecyConstrainErrorMessage());
 
                 return RedirectToAction("moderators", new { key });
             }
@@ -660,7 +664,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                 logger.LogError(e.InnerException, e.Message);
             }
 
-            SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Danger, GetNotFoundMessage());
+            SetDefaultNotification(NotificationType.Danger, GetNotFoundMessage());
 
             return GetSuccessDeleteActionResult();
         }
@@ -671,7 +675,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 
         [HttpGet]
         [Route("[action]/{key}")]
-        [RequirePermissions(Security.Authorization.Permission.AccountEditor)]
+        [RequirePermissions(Permission.AccountEditor)]
         public IActionResult Extensions(System.Guid key)
         {
             try
@@ -690,7 +694,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                 {
                     var descriptor = Support.Extend.Providers.ExtensionDescriptorProvider.Instance.GetDescriptorById(plugin.Id);
 
-                    modelInput.SelectableExtensions.Add(new MOROPO.SAPRESSC.Core.Common.Models.View.SelectionDescriptedItemInputViewModel<System.Guid>
+                    modelInput.SelectableExtensions.Add(new Framework.Guama.Core.Presentation.Models.View.SelectionDescriptedItemInputViewModel<System.Guid>
                     {
                         Id = plugin.Id,
                         Selected = false,
@@ -701,7 +705,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 
                 foreach (var item in modelInput.SelectableExtensions)
                 {
-                    item.Selected = entity.ExtensionBridges.Any(bridge => Helpers.Integrity.AccountExtensionBridgeIntegrityHelper.IsCorrectlySigned(bridge) && bridge.ExtensionId == item.Id);
+                    item.Selected = entity.ExtensionBridges.Any(bridge => Helpers.Integrity.AccountExtensionBridgeIntegrityHelper.IsCorrectlySigned(bridge) && bridge.SternId == item.Id);
                 }
 
                 return View(modelInput);
@@ -711,7 +715,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                 logger.LogError(e.InnerException, e.Message);
             }
 
-            SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Danger, GetNotFoundMessage());
+            SetDefaultNotification(NotificationType.Danger, GetNotFoundMessage());
 
             return GetDefaultActionResult();
         }
@@ -719,7 +723,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
         [HttpPost]
         [Route("[action]")]
         [ValidateAntiForgeryToken]
-        [RequirePermissions(Security.Authorization.Permission.AccountEditor)]
+        [RequirePermissions(Permission.AccountEditor)]
         public IActionResult Extensions(AccountExtensionsInputViewModel modelInput)
         {
             try
@@ -734,8 +738,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                 {
                     var bridge = new AccountExtensionBridge
                     {
-                        AccountId = entity.Id,
-                        ExtensionId = item.Id
+                        ProwId = entity.Id,
+                        SternId = item.Id
                     };
 
                     bridge.Signature = Helpers.Integrity.AccountExtensionBridgeIntegrityHelper.GetSignature(bridge);
@@ -747,7 +751,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
 
                 modelInput.Account = entity;
 
-                SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Success, GetEditionSuccessMessage());
+                SetDefaultNotification(NotificationType.Success, GetEditionSuccessMessage());
 
                 return RedirectToAction("extensions", new { key = entity.Id });
             }
@@ -756,7 +760,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Backend
                 logger.LogError(e.InnerException, e.Message);
             }
 
-            SetDefaultNotification(MOROPO.SAPRESSC.Core.Common.Models.View.NotificationType.Danger, GetNotFoundMessage());
+            SetDefaultNotification(NotificationType.Danger, GetNotFoundMessage());
 
             return GetDefaultActionResult();
         }

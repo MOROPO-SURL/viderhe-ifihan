@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Helpers
 {
     public sealed class ImageUriFactoryHelper
     {

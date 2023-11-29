@@ -1,4 +1,7 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
@@ -26,7 +29,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ItemCopyButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            Xamarin.Essentials.Clipboard.SetTextAsync(((sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.TextViewModel).Content).ContinueWith(task =>
+            Xamarin.Essentials.Clipboard.SetTextAsync(((sender as Xamarin.Forms.BindableObject).BindingContext as TextViewModel).Content).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -37,14 +40,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         return;
                     }
 
-                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Contenido del elemento especificado copiado al portapapeles del sistema con éxito.");
+                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Contenido del elemento especificado copiado al portapapeles del sistema con éxito.");
                 });
             });
         }
 
         private void ItemDetailButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new ConfigureTextPage(RequiredReload_Callback, (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.TextViewModel));
+            this.NavigationPushPageAsync(new ConfigureTextPage(RequiredReload_Callback, (sender as Xamarin.Forms.BindableObject).BindingContext as TextViewModel));
         }
 
         private void ItemDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -64,7 +67,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 try
                 {
-                    await client.Delete(((sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.TextViewModel).Id);
+                    await client.Delete(((sender as Xamarin.Forms.BindableObject).BindingContext as TextViewModel).Id);
                 }
                 catch (System.Exception ex)
                 {
@@ -77,13 +80,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (failException == null)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Gradiente eliminado con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Gradiente eliminado con éxito.");
 
                         RequiredReload_Callback();
                     }
                     else
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(failException);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(failException);
                     }
                 });
             });
@@ -129,7 +132,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {

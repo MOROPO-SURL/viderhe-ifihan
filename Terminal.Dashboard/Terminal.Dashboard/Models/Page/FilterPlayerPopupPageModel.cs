@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
     public class FilterPlayerPopupPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {
@@ -6,11 +8,11 @@
 
         public FilterPlayerPopupPageModel()
         {
-            Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>();
+            Tags = new System.Collections.ObjectModel.ObservableCollection<TagDisplayModel>();
         }
 
         public string Name { get => name; set => SetProperty(ref name, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel> Tags { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<TagDisplayModel> Tags { get; set; }
     }
 }

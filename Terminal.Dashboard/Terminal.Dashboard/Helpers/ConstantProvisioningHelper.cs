@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Helpers
+﻿using MOROPO.VIDERHE.Support.Presentation.Managers;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Helpers
 {
     public sealed class ConstantProvisioningHelper
     {
@@ -22,7 +24,7 @@
         internal const string ACTIONSHEET_PICKIMAGE_OPTION_CAMARA = "Captura con la Cámara";
         internal const string ACTIONSHEET_PICKIMAGE_OPTION_GALLERY = "Galería de Imágenes";
 
-        public string FallbackUserProfileImageUrl => string.Format("{0}://{1}/img/default-person-picture.jpg", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host);
+        public string FallbackUserProfileImageUrl => string.Format("{0}://{1}/img/default-person-picture.jpg", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Host);
 
         public MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex[] Sex_All => (MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex[])System.Enum.GetValues(typeof(MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex));
 

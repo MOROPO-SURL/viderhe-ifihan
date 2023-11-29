@@ -1,4 +1,7 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
@@ -6,7 +9,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
     {
         private System.Action successCallbackAction;
 
-        public FramePriorityChangePage(Support.Presentation.Models.View.FrameViewModel[] frames, Support.Presentation.Models.View.FrameViewModel target, System.Action successCallbackAction)
+        public FramePriorityChangePage(FrameViewModel[] frames, FrameViewModel target, System.Action successCallbackAction)
             : base(Factories.FramePriorityChangePageModelFactory.Build(frames, target))
         {
             this.successCallbackAction = successCallbackAction;
@@ -27,7 +30,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             BindingContextPageModel.IsBusy = true;
 
-            var pick = OrderingFrameCollectionView.SelectedItem as Support.Presentation.Models.View.FrameViewModel;
+            var pick = OrderingFrameCollectionView.SelectedItem as FrameViewModel;
 
             var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
 
@@ -39,11 +42,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         BindingContextPageModel.IsBusy = false;
 
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Prioridad del cartel aumentada con exito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Prioridad del cartel aumentada con exito.");
 
                         successCallbackAction.Invoke();
 
@@ -68,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (eventArgs.CurrentSelection.Count <= 0) return;
 
-            if ((OrderingFrameCollectionView.SelectedItem as Support.Presentation.Models.View.FrameViewModel).Placard == null) return;
+            if ((OrderingFrameCollectionView.SelectedItem as FrameViewModel).Placard == null) return;
 
             System.Threading.Tasks.Task.Delay(500).ContinueWith(_ =>
             {

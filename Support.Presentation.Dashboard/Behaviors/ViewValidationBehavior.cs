@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors
 {
     public class ViewValidationBehavior : Xamarin.Forms.Behavior<Xamarin.Forms.View>, Contract.IFormFieldValidationBehavior
     {
@@ -24,7 +24,7 @@
             foreach (var validator in Validators)
             {
                 var result = validator.Validate(Target, TargetProperty);
-                
+
                 if (result != null)
                 {
                     FormFieldValidationPresenter?.PresentFormFieldAsNotValid(Target, Label, result);

@@ -1,12 +1,15 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class SoundComplementConfigurationPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
+    public class SoundComplementConfigurationPageModel : FormPageModel
     {
-        private Support.Presentation.Models.View.SoundViewModel sound;
+        private SoundViewModel sound;
         private bool repeat;
         private int delay;
 
-        public Support.Presentation.Models.View.SoundViewModel Sound { get => sound; set => SetProperty(ref sound, value); }
+        public SoundViewModel Sound { get => sound; set => SetProperty(ref sound, value); }
 
         public bool Repeat { get => repeat; set => SetProperty(ref repeat, value); }
 

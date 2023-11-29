@@ -1,4 +1,9 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Support.Extend.Overlaying.Providers;
+using MOROPO.VIDERHE.Support.Extend.Providers;
+using MOROPO.VIDERHE.Support.Extend.Templating.Providers;
+using MOROPO.VIDERHE.Support.Extend.Transitioning.Providers;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
@@ -32,11 +37,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 return Managers.SessionManager.Instance.AccountExtensions.Select(item => new Models.View.ExtensionViewModel
                 {
-                    Descriptor = Support.Extend.Providers.ExtensionDescriptorProvider.Instance.GetDescriptorById(item.Id),
+                    Descriptor = ExtensionDescriptorProvider.Instance.GetDescriptorById(item.Id),
                     Enabled = item.Enabled,
-                    TemplateDescriptors = item.Templates.Select(t => Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray(),
-                    TransitionDescriptors = item.Transitions.Select(t => Support.Extend.Transitioning.Providers.TransitionDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray(),
-                    OverlayDescriptors = item.Overlays.Select(t => Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray()
+                    TemplateDescriptors = item.Templates.Select(t => TemplateDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray(),
+                    TransitionDescriptors = item.Transitions.Select(t => TransitionDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray(),
+                    OverlayDescriptors = item.Overlays.Select(t => OverlayDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray()
                 }).ToArray();
             }).ContinueWith(task =>
             {
@@ -46,7 +51,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {

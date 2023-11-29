@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class ConfigureModeratorPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
+    public class ConfigureModeratorPageModel : FormPageModel
     {
         private bool targetPrivileged;
         private string targetUserId;

@@ -1,16 +1,19 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
 {
     public static class VideoComplementConfigurationPageModelFactory
     {
-        public static Models.Page.VideoComplementConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel model)
+        public static Models.Page.VideoComplementConfigurationPageModel Build(PlacardViewModel model)
         {
             if (model.ComplementationKind == null) return new Models.Page.VideoComplementConfigurationPageModel();
 
-            if (model.ComplementationKind != Cloud.Persistence.Enumerations.PlacardComplementationKind.Video) throw new System.InvalidOperationException();
+            if (model.ComplementationKind != PlacardComplementationKind.Video) throw new System.InvalidOperationException();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Extend.Common.Templating.Models.Context.VideoComplementContextModel>(model.SerializedComplementation);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<VideoComplementContextModel>(model.SerializedComplementation);
 
             return new Models.Page.VideoComplementConfigurationPageModel
             {

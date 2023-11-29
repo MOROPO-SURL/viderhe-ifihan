@@ -1,4 +1,7 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Providers.Constant;
+using MOROPO.VIDERHE.Support.Presentation.Managers;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
 {
     public sealed class SessionManager : MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
@@ -23,7 +26,7 @@
         {
             get
             {
-                return new MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host), null, () => ExtraHeaders);
+                return new MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Host), null, () => ExtraHeaders);
             }
         }
 
@@ -33,8 +36,8 @@
             {
                 return new System.Collections.Generic.KeyValuePair<string, string>[]
                 {
-                    new System.Collections.Generic.KeyValuePair<string, string>(Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.ACCOUNT_ID_HEADER_KEY, Account?.Id.ToString()),
-                    new System.Collections.Generic.KeyValuePair<string, string>(Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY, ConfigurationManager.Instance.ProtectedPlayerId)
+                    new System.Collections.Generic.KeyValuePair<string, string>(SecurityConstantProvider.ACCOUNT_ID_HEADER_KEY, Account?.Id.ToString()),
+                    new System.Collections.Generic.KeyValuePair<string, string>(SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY, ConfigurationManager.Instance.ProtectedPlayerId)
                 };
             }
         }

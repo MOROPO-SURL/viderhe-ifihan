@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
-{
-    public partial class VideoDetailPage : XFToolKit.Mvvm.Pages.ContentPage
-    {
-        private System.Action<Presentation.Models.View.VideoViewModel> editRequestActionCallback;
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-        public VideoDetailPage(Presentation.Models.View.VideoViewModel model, System.Action<Presentation.Models.View.VideoViewModel> editRequestActionCallback = null)
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
+{
+    public partial class VideoDetailPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.ContentPage
+    {
+        private System.Action<VideoViewModel> editRequestActionCallback;
+
+        public VideoDetailPage(VideoViewModel model, System.Action<VideoViewModel> editRequestActionCallback = null)
         {
             InitializeComponent();
 
@@ -24,7 +26,7 @@
         {
             VideoPlayer.Pause();
 
-            editRequestActionCallback.Invoke(BindingContext as Presentation.Models.View.VideoViewModel);
+            editRequestActionCallback.Invoke(BindingContext as VideoViewModel);
         }
 
         protected override void DisposeUnmanagementResources()

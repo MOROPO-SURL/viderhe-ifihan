@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views
 {
     public partial class LandscapeTemplateThumbnailWrapView : Xamarin.Forms.ContentView
     {
-        public LandscapeTemplateThumbnailWrapView(Support.Presentation.Models.View.TemplateViewModel model)
+        public LandscapeTemplateThumbnailWrapView(TemplateViewModel model)
         {
             InitializeComponent();
 

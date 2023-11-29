@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Models.SignalR
+﻿namespace MOROPO.VIDERHE.Cloud.Models.SignalR
 {
     public class PlayerContextSignalRModel
     {

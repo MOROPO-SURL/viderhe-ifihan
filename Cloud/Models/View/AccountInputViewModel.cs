@@ -1,9 +1,11 @@
-﻿using MOROPO.SAPRESSC.Core.Web.Common.ComponentModel.DataAnnotations;
+﻿using MOROPO.Framework.Guama.Core.Presentation.Web.Common.ComponentModel.DataAnnotations;
+using MOROPO.VIDERHE.Cloud.Helpers.Integrity;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
+namespace MOROPO.VIDERHE.Cloud.Models.View
 {
-    public class AccountInputViewModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Account, System.Guid>
+    public class AccountInputViewModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Account, System.Guid>
     {
         public AccountInputViewModel()
         {
@@ -49,16 +51,16 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
         [Display(Name = "Splash Vertical")]
         public Microsoft.AspNetCore.Http.IFormFile VerticalSplashImageFile { get; set; }
 
-        public Persistence.Entities.Account Export()
+        public Account Export()
         {
-            var entity = new Persistence.Entities.Account();
+            var entity = new Account();
 
             Mergue(entity);
 
             return entity;
         }
 
-        public void Import(Persistence.Entities.Account entity)
+        public void Import(Account entity)
         {
             Id = entity.Id;
             Name = entity.Name;
@@ -71,7 +73,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
             VerticalSplashImageId = entity.VerticalSplashId;
         }
 
-        public void Mergue(Persistence.Entities.Account entity)
+        public void Mergue(Account entity)
         {
             entity.Name = Name;
             entity.Enabled = Enabled;
@@ -79,7 +81,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
             entity.PrimaryColor = PrimaryColor;
             entity.SecoundaryColor = SecoundaryColor;
 
-            entity.Signature = Helpers.Integrity.AccountIntegrityHelper.GetSignature(entity);
+            entity.Signature = AccountIntegrityHelper.GetSignature(entity);
         }
     }
 }

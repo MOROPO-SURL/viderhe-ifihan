@@ -1,4 +1,13 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Essential.Descriptors;
+using MOROPO.VIDERHE.Support.Extend.Templating.Presentation.Providers;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using MOROPO.VIDERHE.Support.Presentation.Managers;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Providers;
+using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
@@ -8,9 +17,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 {
     public partial class MainPage : Xamarin.Forms.ContentPage
     {
-        private Support.Presentation.Models.View.PlacardViewModel[] placards;
+        private PlacardViewModel[] placards;
 
-        private Cloud.Api.Common.Models.ScheduledRelaunchDisplayModel scheduledRelaunche;
+        private ScheduledRelaunchDisplayModel scheduledRelaunche;
 
         private readonly System.Collections.Generic.Queue<Enumerations.ConfigurationStep> configurationStepQueue;
 
@@ -200,9 +209,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
         private void PlacardViewTransitionComplete_Callback(Extend.Common.Presentation.Views.BasePlacardPresentationView incomingPlacardView, Extend.Common.Presentation.Views.BasePlacardPresentationView outgingPlacardView)
         {
-            var incomingPlacardViewContext = incomingPlacardView.BindingContext as Extend.Common.Templating.Presentation.Models.View.AbstractPlacardViewModel;
+            var incomingPlacardViewContext = incomingPlacardView.BindingContext as AbstractPlacardViewModel;
 
-            if (!(outgingPlacardView?.BindingContext is Extend.Common.Templating.Presentation.Models.View.AbstractPlacardViewModel outgoingPlacardViewContext))
+            if (!(outgingPlacardView?.BindingContext is AbstractPlacardViewModel outgoingPlacardViewContext))
             {
                 if (incomingPlacardViewContext.RequireUnobstructedPresetation)
                 {
@@ -224,14 +233,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
         #region Api Interaction Tasks and Callbacks
 
-        private async System.Threading.Tasks.Task<Cloud.Api.Common.Models.AccountDisplayModel> RequestAccountAsync()
+        private async System.Threading.Tasks.Task<AccountDisplayModel> RequestAccountAsync()
         {
             var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
             return await client.GetAccountAsync();
         }
 
-        private void RequestAccount_Callback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.AccountDisplayModel> task)
+        private void RequestAccount_Callback(System.Threading.Tasks.Task<AccountDisplayModel> task)
         {
             if (task.IsCanceled || task.Exception != null)
             {
@@ -265,15 +274,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             }
             else
             {
-                Support.Presentation.Managers.SessionMemoryManager.Instance.Persist();
+                SessionMemoryManager.Instance.Persist();
 
                 Managers.SessionManager.Instance.Account = new Models.View.AccountViewModel
                 {
                     Id = task.Result.Id,
                     Name = task.Result.Name,
-                    LogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(task.Result.LogoImageId)),
-                    HorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(task.Result.HorizontalSplashImageId)),
-                    VerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(task.Result.VerticalSplashImageId)),
+                    LogoImageSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(task.Result.LogoImageId)),
+                    HorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(task.Result.HorizontalSplashImageId)),
+                    VerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(task.Result.VerticalSplashImageId)),
                     PrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor),
                     SecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor),
                     DefaultOverlayId = task.Result.DefaultOverlayId,
@@ -290,14 +299,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             }
         }
 
-        private async System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlayerPlaybackConfigurationModel> RequestPlaybackConfigurationAsyncAsync()
+        private async System.Threading.Tasks.Task<PlayerPlaybackConfigurationModel> RequestPlaybackConfigurationAsyncAsync()
         {
             var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
 
             return await client.GetPlaybackConfigurationAsync();
         }
 
-        private async void RequestPlaybackConfiguration_Callback(System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlayerPlaybackConfigurationModel> task)
+        private async void RequestPlaybackConfiguration_Callback(System.Threading.Tasks.Task<PlayerPlaybackConfigurationModel> task)
         {
             if (task.IsCanceled || task.Exception != null || task.Result == null)
             {
@@ -312,9 +321,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                 // MotoTouch does not support dynamic assembly loading
                 if (Xamarin.Forms.Device.RuntimePlatform != Xamarin.Forms.Device.iOS)
                 {
-                    var dynamicLoadExtensions = Managers.SessionManager.Instance.Account.Extensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID).ToArray();
+                    var dynamicLoadExtensions = Managers.SessionManager.Instance.Account.Extensions.Where(item => item.Id != EssentialExtensionDescriptor.ID).ToArray();
 
-                    var missingAccountExtensions = new System.Collections.Generic.List<Cloud.Api.Common.Models.ExtensionDisplayModel>();
+                    var missingAccountExtensions = new System.Collections.Generic.List<ExtensionDisplayModel>();
 
                     foreach (var accountExtension in dynamicLoadExtensions)
                     {
@@ -367,13 +376,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                     }
                 }
 
-                var placardList = new System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel>();
+                var placardList = new System.Collections.Generic.List<PlacardViewModel>();
 
                 foreach (var model in task.Result.Placards)
                 {
                     var item = model.ToViewModel();
 
-                    var completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(model);
+                    var completitionHelper = PlacardViewModelCompletitionHelperProvider.Instance.GetFor(model);
 
                     if (completitionHelper != null)
                     {
@@ -393,7 +402,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
                     foreach (var item in orderScheduledRelaunches)
                     {
-                        if (timeOfDay + Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME > item.Time) continue;
+                        if (timeOfDay + ConstantProvider.RELAUNCH_PAUSE_TIME > item.Time) continue;
 
                         scheduledRelaunche = item;
 
@@ -429,7 +438,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
             {
                 var runTimeSpan = now - startUpAt;
 
-                if (runTimeSpan < Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME) return;
+                if (runTimeSpan < ConstantProvider.RELAUNCH_PAUSE_TIME) return;
 
                 if (now.TimeOfDay <= scheduledRelaunche.Time) return;
 
@@ -442,7 +451,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
 
                 var runTimeSpan = now.TimeOfDay + yesterdayElapsedTime;
 
-                if (runTimeSpan < Support.Presentation.Providers.ConstantProvider.RELAUNCH_PAUSE_TIME) return;
+                if (runTimeSpan < ConstantProvider.RELAUNCH_PAUSE_TIME) return;
 
                 if (now.TimeOfDay <= scheduledRelaunche.Time) return;
 

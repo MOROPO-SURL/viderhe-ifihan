@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered
+﻿namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Rendered
 {
-    public class CloudVideoPlayerView : XFToolKit.Presentation.Views.Rendered.VideoPlayerView
+    public class CloudVideoPlayerView : SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView
     {
     }
 }

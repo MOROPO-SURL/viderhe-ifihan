@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Common</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Common</RootNamespace>
+    <AssemblyName>MOROPO.VIDERHE.Extend.Common</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Extend.Common</RootNamespace>
   </PropertyGroup>
 
 </Project>

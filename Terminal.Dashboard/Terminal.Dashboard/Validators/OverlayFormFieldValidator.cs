@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Validators
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators.Contract;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Validators
 {
-    public class OverlayFormFieldValidator : Support.Presentation.Dashboard.Validators.Contract.IFormFieldValidator
+    public class OverlayFormFieldValidator : IFormFieldValidator
     {
         public Pages.Contract.IOverlayContextConfigurationPage ConfigurationPage { get; set; }
 

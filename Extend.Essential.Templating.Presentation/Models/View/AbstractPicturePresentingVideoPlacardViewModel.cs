@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Models.View
 {
     public abstract class AbstractPicturePresentingVideoPlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel, Facade.IPresentedByImagePlacardViewModelFacade
     {
@@ -13,7 +13,7 @@
 
         public int PresenterImageHeigth { get; set; }
 
-        public XFToolKit.Presentation.Sources.Video.VideoSource PresentedSource { get; set; }
+        public SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource PresentedSource { get; set; }
 
         public bool PresentedVideoCenteredAtPresentation { get; set; }
 

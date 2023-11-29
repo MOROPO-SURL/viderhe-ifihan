@@ -1,14 +1,20 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
     public partial class ConfigurePlayerPage : 
-        XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigurePlayerPageModel>, 
-        Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage,
+        XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigurePlayerPageModel>,
+        IValidableFormPage,
         Contract.IOverlayContextConfigurationPage
     {
-        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+        private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
         private readonly bool editing;
 
         private bool pageModelHasChanges;
@@ -21,7 +27,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         public ConfigurePlayerPage(System.Action successCallbackAction, Models.View.PlayerViewModel model = null)
             : base(Factories.ConfigurePlayerPageModelFactory.Build(model))
         {
-            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+            validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
             InitializeComponent();
 
@@ -69,7 +75,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         if (task.Exception != null || task.IsCanceled)
                         {
-                            (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                            (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
 
                             successCallbackAction = null;
 
@@ -122,7 +128,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ScreenplayPicker_SelectedIndexChanged(object target, System.EventArgs eventArgs)
         {
-            BindingContextPageModel.Screenplay = (target as Xamarin.Forms.Picker).SelectedItem as Cloud.Api.Common.Models.ScreenplayDisplayModel;
+            BindingContextPageModel.Screenplay = (target as Xamarin.Forms.Picker).SelectedItem as ScreenplayDisplayModel;
         }
 
         private void SelectedScreenplayClearButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -201,7 +207,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     if (task.Exception == null && !task.IsCanceled)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
 
                         this.NavigationPopPageAsync();
                     }
@@ -209,7 +215,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         BindingContextPageModel.IsBusy = false;
 
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                 });
             });
@@ -239,7 +245,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void AddTagButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage(Cloud.Persistence.Enumerations.TagGroup.Player, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage(TagGroup.Player, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
         }
 
         private void RemoveTagButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -248,7 +254,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 if (!task.Result) return;
 
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as Cloud.Api.Common.Models.TagDisplayModel));
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as TagDisplayModel));
             });
         }
 
@@ -257,7 +263,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             this.NavigationPushPageAsync(new ManagePlayerScheduledRelaunchsPage(model));
         }
 
-        private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
+        private void PickTagSuccess_Callback(TagDisplayModel model)
         {
             BindingContextPageModel.Tags.Add(model);
         }
@@ -280,12 +286,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         #region IValidableFormPage implementation
 
-        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void AddValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Add(validationBehavior);
         }
 
-        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void RemoveValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Remove(validationBehavior);
         }

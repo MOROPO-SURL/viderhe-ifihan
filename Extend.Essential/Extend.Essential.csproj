@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Essential</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Essential</RootNamespace>
+    <AssemblyName>MOROPO.VIDERHE.Extend.Essential</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Extend.Essential</RootNamespace>
     <Version>0.3.0.0</Version>
   </PropertyGroup>
 

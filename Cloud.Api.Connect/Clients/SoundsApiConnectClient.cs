@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Connect.Clients
 {
     public class SoundsApiConnectClient
     {
-        private readonly MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper;
+        private readonly Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper httpClientHelper;
 
-        public SoundsApiConnectClient(MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper)
+        public SoundsApiConnectClient(Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper httpClientHelper)
         {
             this.httpClientHelper = httpClientHelper;
         }
@@ -26,12 +28,12 @@
             await httpClientHelper.PostFormAsync("account/sounds", new System.Net.Http.MultipartFormDataContent { formContent, fileContent });
         }
 
-        public async System.Threading.Tasks.Task<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.SoundDisplayModel>> GetPageAsync(int page = 1)
+        public async System.Threading.Tasks.Task<Framework.Guama.Core.Presentation.Models.PaginationModel<SoundDisplayModel>> GetPageAsync(int page = 1)
         {
-            return await httpClientHelper.GetAsync<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Common.Models.SoundDisplayModel>>(string.Format("account/sounds/page/{0}", page));
+            return await httpClientHelper.GetAsync<Framework.Guama.Core.Presentation.Models.PaginationModel<SoundDisplayModel>>(string.Format("account/sounds/page/{0}", page));
         }
 
-        public virtual async System.Threading.Tasks.Task EditAsync(Common.Models.SoundInputModel inputModel)
+        public virtual async System.Threading.Tasks.Task EditAsync(SoundInputModel inputModel)
         {
             await httpClientHelper.PutAsync("account/sounds", inputModel);
         }

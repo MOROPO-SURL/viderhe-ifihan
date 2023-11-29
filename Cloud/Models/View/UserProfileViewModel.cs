@@ -1,7 +1,7 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
+﻿namespace MOROPO.VIDERHE.Cloud.Models.View
 {
-    [Microsoft.AspNetCore.Mvc.ModelMetadataType(typeof(MOROPO.SAPRESSC.Core.Web.Security.Models.View.Contrat.IUserProfileViewModel))]
-    public class UserProfileViewModel : MOROPO.SAPRESSC.Core.Web.Security.Models.View.Contrat.IUserProfileViewModel
+    [Microsoft.AspNetCore.Mvc.ModelMetadataType(typeof(Framework.Guama.Core.Presentation.Web.Security.Models.View.Contrat.IUserProfileViewModel))]
+    public class UserProfileViewModel : Framework.Guama.Core.Presentation.Web.Security.Models.View.Contrat.IUserProfileViewModel
     {
     }
 }

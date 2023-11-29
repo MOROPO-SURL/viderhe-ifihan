@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class EditUserProfilePageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
+    public class EditUserProfilePageModel : FormPageModel
     {
         private string targetUserNewPassword;
         private string targetUserNewPasswordConfirmation;

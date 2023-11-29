@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Extend.Common.Overlaying.Dashboard.Presentation.Providers.Facade;
+using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
 {
@@ -24,12 +25,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
                 .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Overlaying.Dashboard.Presentation,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(Extend.Common.Overlaying.Dashboard.Presentation.Providers.Facade.IOverlayConfigurationPageProviderFacade).IsAssignableFrom(t));
+            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IOverlayConfigurationPageProviderFacade).IsAssignableFrom(t));
         }
 
         public Xamarin.Forms.Page GetConfigurationPageByDescriptor(Extend.Common.Overlaying.Descriptors.IOverlayDescriptor overlayDescriptor, string serializedContext, System.Action<string> successfulCompleteCallbackAction)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Extend.Common.Overlaying.Dashboard.Presentation.Providers.Facade.IOverlayConfigurationPageProviderFacade>();
+            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IOverlayConfigurationPageProviderFacade>();
 
             foreach (var provider in providers)
             {

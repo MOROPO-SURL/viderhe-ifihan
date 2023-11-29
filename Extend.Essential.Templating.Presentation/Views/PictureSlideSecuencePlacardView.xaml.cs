@@ -1,15 +1,23 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
-using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Presenters;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Common.Presentation.Views;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views
 {
-    public partial class PictureSlideSecuencePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
+    public partial class PictureSlideSecuencePlacardView : BaseTemplatedPlacardPresentationView
     {
-        private Templating.Models.Context.PictureSlideSecuencePlacardContextModel context;
+        private PictureSlideSecuencePlacardContextModel context;
 
-        private Common.Templating.Presentation.Presenters.ScreenplayPresenter screenplayPresenter;
+        private ScreenplayPresenter screenplayPresenter;
 
-        public PictureSlideSecuencePlacardView(Templating.Models.Context.PictureSlideSecuencePlacardContextModel context, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public PictureSlideSecuencePlacardView(PictureSlideSecuencePlacardContextModel context, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -35,14 +43,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
         {
             base.PerformPlacardStarup();
 
-            var placards = new System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel>();
+            var placards = new System.Collections.Generic.List<PlacardViewModel>();
 
             var targetTemplateDescriptor = new Descriptors.SimplePictureTemplateDescriptor();
 
             var targetTemplateViewModel = new Support.Presentation.Models.View.TemplateViewModel
             {
                 Id = targetTemplateDescriptor.Id,
-                PlayerOrientationSupport = Common.Templating.Enumerations.PlayerOrientationSupportKind.Any
+                PlayerOrientationSupport = PlayerOrientationSupportKind.Any
             };
 
             foreach (var item in context.Slides)
@@ -66,20 +74,20 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
             screenplayPresenter.BeginPresentation();
         }
 
-        private BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
+        private BasePlacardPresentationView PlacardViewModelToPresentationView(PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
-            if (model.Template.Id != Descriptors.SimplePictureTemplateDescriptor.ID) throw new System.InvalidOperationException();
+            if (model.Template.Id != SimplePictureTemplateDescriptor.ID) throw new System.InvalidOperationException();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.SimplePicturePlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<SimplePicturePlacardContextModel>(model.SerializedContext);
 
-            if (context.LayoutMode == Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf)
+            if (context.LayoutMode == PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf)
             {
                 return new SelfOpaqueFillSimplePicturePlacardView(new Models.View.SelfOpaqueFillSimplePicturePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
-                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
-                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Image.ThumbnailId)),
+                    Source = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.Image.Id)),
+                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildThumbnailUri(context.Image.ThumbnailId)),
                     Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                     ZoomingEnabled = context.IsZoomingEnabled
                 }, relativeSizeScaleFactor);
@@ -90,7 +98,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.V
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
-                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
+                    Source = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.Image.Id)),
                     Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                     ZoomingEnabled = context.IsZoomingEnabled
                 }, relativeSizeScaleFactor);

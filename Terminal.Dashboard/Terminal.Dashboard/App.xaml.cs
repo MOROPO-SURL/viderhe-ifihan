@@ -1,8 +1,14 @@
-﻿using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Managers;
+using MOROPO.VIDERHE.Support.Presentation.Providers.Facade;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
 {
-    public partial class App : Xamarin.Forms.Application, Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade
+    public partial class App : Xamarin.Forms.Application, IExceptionHandleHelperFacade
     {
         private const string SUPPORT_ORIENTATION_MESSAGE = "Por favor contacte con el servicio de asistencia técnica para notificar esta situación.";
 
@@ -13,13 +19,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
             var sessionManager = Managers.SessionManager.Instance;
 
             Xamarin.Forms.DependencyService.Register<Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade, Providers.AccountInformationProvider>();
-            Xamarin.Forms.DependencyService.Register<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade, Presenters.NotificationPresenter>();
-            Xamarin.Forms.DependencyService.Register<Support.Presentation.Dashboard.Helpers.Facade.IPlacardThumbnailViewProvisioningHelperFacade, Helpers.PlacardThumbnailViewProvisioningHelper>();
-            Xamarin.Forms.DependencyService.RegisterSingleton<Support.Presentation.Providers.Facade.ICloudServerProviderFacade>(Support.Presentation.Managers.SessionMemoryManager.Instance);
+            Xamarin.Forms.DependencyService.Register<INotificationPresenterFacade, Presenters.NotificationPresenter>();
+            Xamarin.Forms.DependencyService.Register<IPlacardThumbnailViewProvisioningHelperFacade, Helpers.PlacardThumbnailViewProvisioningHelper>();
+            Xamarin.Forms.DependencyService.RegisterSingleton<ICloudServerProviderFacade>(SessionMemoryManager.Instance);
             Xamarin.Forms.DependencyService.RegisterSingleton<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>(sessionManager);
-            Xamarin.Forms.DependencyService.RegisterSingleton<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>(this);
+            Xamarin.Forms.DependencyService.RegisterSingleton<IExceptionHandleHelperFacade>(this);
 
-            Support.Presentation.Helpers.ImageUriFactoryHelper.Instance.Initialize();
+            ImageUriFactoryHelper.Instance.Initialize();
 
             On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
 

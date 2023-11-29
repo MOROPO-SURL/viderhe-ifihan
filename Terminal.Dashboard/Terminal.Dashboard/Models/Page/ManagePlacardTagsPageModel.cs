@@ -1,13 +1,15 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
     public class ManagePlacardTagsPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         public ManagePlacardTagsPageModel()
         {
-            Items = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>();
+            Items = new System.Collections.ObjectModel.ObservableCollection<TagDisplayModel>();
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel> Items { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<TagDisplayModel> Items { get; set; }
 
         protected override void DisposeUnmanagementResources()
         {

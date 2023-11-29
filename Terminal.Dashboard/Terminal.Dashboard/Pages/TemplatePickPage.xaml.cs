@@ -1,4 +1,8 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Descriptors;
+using MOROPO.VIDERHE.Support.Extend.Templating.Providers;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Providers;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
@@ -12,16 +16,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             this.completedCallbackAction = completedCallbackAction;
 
-            BindingContext = Support.Presentation.Providers.TemplateViewModelProvider.Instance.GetViewModels();
+            BindingContext = TemplateViewModelProvider.Instance.GetViewModels();
         }
 
         private void TemplateOverviewSelectButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var model = ((sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Models.View.TemplateViewModel);
+            var model = ((sender as Xamarin.Forms.BindableObject).BindingContext as TemplateViewModel);
 
-            Extend.Common.Templating.Descriptors.ITemplateDescriptor descriptor = null;
+            ITemplateDescriptor descriptor = null;
 
-            descriptor = Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(model.Id);
+            descriptor = TemplateDescriptorProvider.Instance.GetDescriptorById(model.Id);
 
             if (descriptor == null)
             {

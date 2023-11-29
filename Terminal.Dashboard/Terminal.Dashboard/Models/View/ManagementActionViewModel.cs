@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
+﻿using MOROPO.VIDERHE.Extend.Common.Management.Sections.Contract;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
 {
     public class ManagementActionViewModel : ActionViewModel
     {
-        public Extend.Common.Management.Sections.Contract.IManagementSection Section { get; set; }
+        public IManagementSection Section { get; set; }
 
         public new string Caption { get => Section.Name ; private set => throw new System.InvalidOperationException(); }
 
@@ -15,7 +17,7 @@
             throw new System.InvalidOperationException();
         }
 
-        public ManagementActionViewModel(Extend.Common.Management.Sections.Contract.IManagementSection section)
+        public ManagementActionViewModel(IManagementSection section)
         {
             Section = section;
             Kind = Enumerations.ActionKind.ManagementSection;

@@ -1,17 +1,22 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.Essential.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Views
 {
-    public partial class LandscapePicturePresentingVideoPlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class LandscapePicturePresentingVideoPlacardThumbnailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
-        public LandscapePicturePresentingVideoPlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model)
+        public LandscapePicturePresentingVideoPlacardThumbnailView(PlacardViewModel model)
         {
             InitializeComponent();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapePicturePresentingVideoPlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePicturePresentingVideoPlacardContextModel>(model.SerializedContext);
 
-            PresentedVideoThumnailImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.PresentedVideo.ThumbnailId));
+            PresentedVideoThumnailImage.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildThumbnailUri(context.PresentedVideo.ThumbnailId));
 
-            PresenterImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.PresenterImage.ThumbnailId));
-            PresenterImage.HorizontalOptions = context.PresenterSide == Enumerations.LandscapePresentationSide.Left ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.End;
+            PresenterImage.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildThumbnailUri(context.PresenterImage.ThumbnailId));
+            PresenterImage.HorizontalOptions = context.PresenterSide == LandscapePresentationSide.Left ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.End;
 
             BindingContext = model;
         }

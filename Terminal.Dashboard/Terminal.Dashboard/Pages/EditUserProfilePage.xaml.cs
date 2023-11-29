@@ -1,10 +1,15 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Managers;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
-    public partial class EditUserProfilePage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EditUserProfilePageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class EditUserProfilePage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EditUserProfilePageModel>, IValidableFormPage
     {
-        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+        private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
         private System.Action successCallbackAction;
 
@@ -17,13 +22,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             TargetIdentityName = Managers.SessionManager.Instance.Moderator.Identity.Name,
             TargetIdentityLastName = Managers.SessionManager.Instance.Moderator.Identity.LastName,
             TargetIdentityImageSource = Managers.SessionManager.Instance.Moderator.Identity.Image != null ?
-                Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/media/moderator/{2}", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host, Managers.SessionManager.Instance.Moderator.Identity.Image.Id))) :
+                Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/media/moderator/{2}", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Host, Managers.SessionManager.Instance.Moderator.Identity.Image.Id))) :
                 Xamarin.Forms.ImageSource.FromUri(new System.Uri(Helpers.ConstantProvisioningHelper.Instance.FallbackUserProfileImageUrl)),
             TargetIdentitySex = Managers.SessionManager.Instance.Moderator.Identity.Sex,
             TargetIdentityAbout = Managers.SessionManager.Instance.Moderator.Identity.About
         })
         {
-            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+            validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
             this.successCallbackAction = successCallbackAction;
 
@@ -122,7 +127,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         Managers.SessionManager.Instance.Moderator.Identity.LastName = BindingContextPageModel.TargetIdentityLastName;
                         Managers.SessionManager.Instance.Moderator.Identity.Sex = BindingContextPageModel.TargetIdentitySex;
 
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", string.Format("Cambios aplicados con éxito.{0}{0}Algunos cambios se mostrarán en le próximo inicio de sesión.", System.Environment.NewLine));
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", string.Format("Cambios aplicados con éxito.{0}{0}Algunos cambios se mostrarán en le próximo inicio de sesión.", System.Environment.NewLine));
 
                         this.NavigationPopPageAsync();
 
@@ -132,7 +137,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         BindingContextPageModel.IsBusy = false;
 
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                 });
             });
@@ -331,12 +336,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         #region IValidableFormPage implementation
 
-        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void AddValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Add(validationBehavior);
         }
 
-        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void RemoveValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Remove(validationBehavior);
         }

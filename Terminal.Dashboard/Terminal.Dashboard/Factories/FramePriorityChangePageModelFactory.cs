@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
 {
     public static class FramePriorityChangePageModelFactory
     {
-        public static Models.Page.FramePriorityChangePageModel Build(Support.Presentation.Models.View.FrameViewModel[] frames, Support.Presentation.Models.View.FrameViewModel target)
+        public static Models.Page.FramePriorityChangePageModel Build(FrameViewModel[] frames, FrameViewModel target)
         {
-            var framePick = new System.Collections.Generic.List<Support.Presentation.Models.View.FrameViewModel>();
+            var framePick = new System.Collections.Generic.List<FrameViewModel>();
 
             foreach (var item in frames)
             {

@@ -1,4 +1,6 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Extend.Management.Presentation.Helpers.Provisioning;
+using MOROPO.VIDERHE.Support.Extend.Management.Providers;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
@@ -74,7 +76,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (action is Models.View.ManagementActionViewModel)
             {
-                var managementSectionPage = Support.Extend.Management.Presentation.Helpers.Provisioning.ManagementSectionProvisioningHelper.Instance.GetFor((action as Models.View.ManagementActionViewModel).Section);
+                var managementSectionPage = ManagementSectionProvisioningHelper.Instance.GetFor((action as Models.View.ManagementActionViewModel).Section);
 
                 this.NavigationPushPageAsync(managementSectionPage);
 
@@ -256,7 +258,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 }
             };
 
-            var managementSections = Support.Extend.Management.Providers.ManagementSectionProvider.Instance.GetAll();
+            var managementSections = ManagementSectionProvider.Instance.GetAll();
 
             foreach (var item in managementSections)
             {

@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
     public class ManagePlayersPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
     {
-        private Cloud.Api.Common.Models.Filter.PlayerFilterModel filter;
+        private PlayerFilterModel filter;
         private bool isGlobalAudioEnabled;
         private bool isBatchActionEnabled;
 
@@ -14,7 +16,7 @@
 
         public System.Collections.ObjectModel.ObservableCollection<View.PlayerViewModel> Items { get; set; }
         
-        public Cloud.Api.Common.Models.Filter.PlayerFilterModel Filter { get => filter; set => SetProperty(ref filter, value, FilterParamaChangeCallbackAction); }
+        public PlayerFilterModel Filter { get => filter; set => SetProperty(ref filter, value, FilterParamaChangeCallbackAction); }
 
         public System.Action FilterParamaChangeCallbackAction { get; set; }
         

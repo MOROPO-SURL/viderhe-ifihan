@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Converters
+﻿using MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation.Helpers.Facade;
+
+namespace MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation.Converters
 {
     public class TextToAbsoluteLayoutBoundsConverter : Xamarin.Forms.IValueConverter
     {
@@ -8,7 +10,7 @@
 
             if (string.IsNullOrEmpty(value.ToString())) return null;
 
-            var textWidthCalculationHelper = Xamarin.Forms.DependencyService.Get<Helpers.Facade.ITextWidthCalculationHelperFacade>();
+            var textWidthCalculationHelper = Xamarin.Forms.DependencyService.Get<ITextWidthCalculationHelperFacade>();
 
             return new Xamarin.Forms.Rectangle(0, 0, textWidthCalculationHelper.CalculateTextWidth(value.ToString(), Xamarin.Forms.Font.Default), -1);
         }

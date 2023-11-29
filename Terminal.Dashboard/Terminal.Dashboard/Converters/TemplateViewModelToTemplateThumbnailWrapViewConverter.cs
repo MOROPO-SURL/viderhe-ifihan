@@ -1,4 +1,7 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters
 {
     public class TemplateViewModelToTemplateThumbnailWrapViewConverter : Xamarin.Forms.IValueConverter
     {
@@ -6,9 +9,9 @@
         {
             if (value == null) return value;
 
-            var model = value as Support.Presentation.Models.View.TemplateViewModel;
+            var model = value as TemplateViewModel;
 
-            if (model.PlayerOrientationSupport != Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait)
+            if (model.PlayerOrientationSupport != PlayerOrientationSupportKind.Portrait)
             {
                 return new Views.LandscapeTemplateThumbnailWrapView(model);
             }

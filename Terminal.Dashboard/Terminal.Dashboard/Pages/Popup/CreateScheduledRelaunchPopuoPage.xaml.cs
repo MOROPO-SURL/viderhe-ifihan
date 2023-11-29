@@ -1,4 +1,7 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
 {
     public partial class CreateScheduledRelaunchPopuoPage : Rg.Plugins.Popup.Pages.PopupPage
     {
@@ -40,7 +43,7 @@
                 {
                     if (task.Exception == null && !task.IsCanceled)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
 
                         successCallbackAction.Invoke();
 
@@ -52,7 +55,7 @@
                     {
                         concreteBindingContext.IsBusy = false;
 
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                 });
             });

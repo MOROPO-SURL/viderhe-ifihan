@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Facade;
+
+namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Converters
 {
     public class SizeToRelativeValueConverter : Xamarin.Forms.BindableObject, Xamarin.Forms.IValueConverter
     {
         private const double RELATIVE_REFERENCE_SIZE = 1920;
 
-        public Views.Facade.IRelativeSizeScalableViewFacade SizeScalableView { get; set; }
+        public IRelativeSizeScalableViewFacade SizeScalableView { get; set; }
 
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
 {
-    public class PlacardRepository : MOROPO.SAPRESSC.Core.Persistence.EF.Repositories.AbstractEntityRepository<Entities.Placard, System.Guid>
+    public class PlacardRepository : MOROPO.SAPRESSC.Core.Persistence.EF.Repositories.AbstractEntityRepository<Placard, System.Guid>
     {
         public PlacardRepository(DbContext dbContext) : base(dbContext)
         {
         }
 
-        protected override System.Linq.IQueryable<Entities.Placard> GetQueryableDbSet()
+        protected override System.Linq.IQueryable<Placard> GetQueryableDbSet()
         {
             return base.GetQueryableDbSet()
                 .Include(e => e.Account)
@@ -20,7 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
                 .Include(e => e.TagBridges).ThenInclude(b => b.Tag);
         }
 
-        public override System.Func<Entities.Placard, object> GetPagingOrderSelector()
+        public override System.Func<Placard, object> GetPagingOrderSelector()
         {
             return e => e.CreateAt;
         }

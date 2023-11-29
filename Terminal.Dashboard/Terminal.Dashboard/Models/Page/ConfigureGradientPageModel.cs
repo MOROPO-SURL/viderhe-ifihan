@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class ConfigureGradientPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
+    public class ConfigureGradientPageModel : FormPageModel
     {
         private MagicGradients.CssGradientSource source;
         private string about;

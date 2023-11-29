@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+﻿using MOROPO.VIDERHE.Support.Presentation.Managers;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
     public partial class UserAuthenticationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.UserAuthenticationPageModel>
     {
         public UserAuthenticationPage() : base(new Models.Page.UserAuthenticationPageModel { 
-            TargetCloudHostName = Support.Presentation.Managers.SessionMemoryManager.Instance.Server,
-            TargetCloudProtocolIndex = Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? 0 : 1
+            TargetCloudHostName = SessionMemoryManager.Instance.Server,
+            TargetCloudProtocolIndex = SessionMemoryManager.Instance.UseSSL ? 0 : 1
         })
         {
             InitializeComponent();

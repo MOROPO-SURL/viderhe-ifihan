@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Support.Extend.Overlaying</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Support.Extend.Overlaying</RootNamespace>
+    <AssemblyName>MOROPO.VIDERHE.Support.Extend.Overlaying</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Support.Extend.Overlaying</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Factories
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Factories
 {
     public static class ThumbnailUriFactory
     {

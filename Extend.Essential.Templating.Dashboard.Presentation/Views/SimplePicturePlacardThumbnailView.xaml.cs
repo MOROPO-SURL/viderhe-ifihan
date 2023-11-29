@@ -1,16 +1,19 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Views
 {
-    public partial class SimplePicturePlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class SimplePicturePlacardThumbnailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
-        public SimplePicturePlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model)
+        public SimplePicturePlacardThumbnailView(PlacardViewModel model)
         {
             InitializeComponent();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.SimplePicturePlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<SimplePicturePlacardContextModel>(model.SerializedContext);
 
-            Image.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Image.ThumbnailId));
+            Image.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildThumbnailUri(context.Image.ThumbnailId));
             Image.Aspect = context.LayoutMode.ToXamarinFormsAspect();
 
             BindingContext = model;

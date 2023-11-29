@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+﻿using MOROPO.VIDERHE.Support.Extend.Overlaying.Providers;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
 {
     public static class ConfigurePlayerPageModelFactory
     {
@@ -13,7 +15,7 @@
                     Name = model.Name,
                     Screenplay = model.Screenplay,
                     About = model.About,
-                    Overlay = model.OverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(model.OverlayId.Value),
+                    Overlay = model.OverlayId == null ? null : OverlayDescriptorProvider.Instance.GetDescriptorById(model.OverlayId.Value),
                     SerializedOverlayContext = model.SerializedOverlayContext
                 };
 

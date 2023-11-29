@@ -1,4 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Tabs
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Tabs
 {
     public partial class ManagePlacardTagsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManagePlacardTagsPageModel>
     {
@@ -34,7 +40,7 @@
                 var model = new Cloud.Api.Common.Models.TagInputModel
                 {
                     Id = System.Guid.NewGuid(),
-                    Group = Cloud.Persistence.Enumerations.TagGroup.Placard,
+                    Group = TagGroup.Placard,
                     Color = Xamarin.Forms.Color.Accent.ToHex(),
                     Name = task.Result
                 };
@@ -45,7 +51,7 @@
                     {
                         if (_task.Exception != null || _task.IsCanceled)
                         {
-                            (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(_task.Exception);
+                            (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(_task.Exception);
 
                             BindingContextPageModel.IsBusy = false;
                         }
@@ -75,19 +81,19 @@
 
                 var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(Managers.SessionManager.Instance);
 
-                apiConnectClient.Delete(((sender as Xamarin.Forms.BindableObject).BindingContext as Cloud.Api.Common.Models.TagDisplayModel).Id).ContinueWith(_task =>
+                apiConnectClient.Delete(((sender as Xamarin.Forms.BindableObject).BindingContext as TagDisplayModel).Id).ContinueWith(_task =>
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
                         if (_task.IsCanceled || _task.Exception != null)
                         {
-                            (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(_task.Exception);
+                            (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(_task.Exception);
 
                             BindingContextPageModel.IsBusy = false;
                         }
                         else
                         {
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Gradiente eliminado con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Gradiente eliminado con éxito.");
 
                             ReloadItems();
                         }
@@ -106,16 +112,16 @@
 
             apiConnectClient.FilterAsync(new Cloud.Api.Common.Models.Filter.TagFilterModel
             {
-                Group = Cloud.Persistence.Enumerations.TagGroup.Placard
+                Group = TagGroup.Placard
             }).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    var bindingContextPageModel = BindingContext as Support.Presentation.Dashboard.Models.Page.TagPickPopupPageModel;
+                    var bindingContextPageModel = BindingContext as TagPickPopupPageModel;
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {

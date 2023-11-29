@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
+﻿namespace MOROPO.VIDERHE.Cloud.Models.View
 {
     public class ErrorViewModel
     {

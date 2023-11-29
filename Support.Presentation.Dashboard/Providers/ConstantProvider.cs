@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Providers
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Providers
 {
     public static class ConstantProvider
     {

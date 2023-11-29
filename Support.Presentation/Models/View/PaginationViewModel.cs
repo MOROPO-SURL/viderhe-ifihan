@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Models.View
 {
-    public class PaginationViewModel<TViewModel> : XFToolKit.Mvvm.Models.BaseBindableModel
+    public class PaginationViewModel<TViewModel> : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel
     {
         private System.Collections.ObjectModel.ObservableCollection<TViewModel> items;
 

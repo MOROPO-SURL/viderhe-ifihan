@@ -1,4 +1,6 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
@@ -54,13 +56,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (failException == null)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Gradiente eliminado con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Gradiente eliminado con éxito.");
 
                         RequiredReload_Callback();
                     }
                     else
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(failException);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(failException);
                     }
                 });
             });
@@ -175,7 +177,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {

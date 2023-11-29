@@ -1,5 +1,10 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Extensions;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Extend.Essential.Descriptors;
+using MOROPO.VIDERHE.Support.Extend.Overlaying.Providers;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using MOROPO.VIDERHE.Support.Presentation.Managers;
 using System.Linq;
 using Xamarin.Forms;
 
@@ -24,11 +29,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
         public bool HasAuthenticatedIdentity => Moderator != null;
 
-        public MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Server), GetAuthorizeHeader, null);
+        public MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Server), GetAuthorizeHeader, null);
 
         public string AuthenticationType { get; private set; }
         public string AuthorizationToken { get; private set; }
-        public Cloud.Api.Common.Models.ModeratorDisplayModel Moderator { get; private set; }
+        public ModeratorDisplayModel Moderator { get; private set; }
         public System.Guid AccountId { get; private set; }
         public string AccountName { get; private set; }
         public Color AccountPrimaryColor { get; private set; }
@@ -38,7 +43,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
         public ImageSource AccountVerticalSplashImageSource { get; private set; }
         public System.Guid? AccountDefaultOverlayId { get; private set; }
         public string AccountSerializedOverlayContext { get; private set; }
-        public Cloud.Api.Common.Models.ExtensionDisplayModel[] AccountExtensions { get; private set; }
+        public ExtensionDisplayModel[] AccountExtensions { get; private set; }
 
         private System.Collections.Generic.KeyValuePair<string, string> GetAuthorizeHeader()
         {
@@ -60,9 +65,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
             AccountName = name;
             AccountPrimaryColor = primaryColor;
             AccountSecoundaryColor = secoundaryColor;
-            AccountLogoImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(logoImageId));
-            AccountHorizontalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(horizontalSplashImageId));
-            AccountVerticalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(verticalSplashImageId));
+            AccountLogoImageSource = ImageSource.FromUri(ImageUriFactory.BuildImageUri(logoImageId));
+            AccountHorizontalSplashImageSource = ImageSource.FromUri(ImageUriFactory.BuildImageUri(horizontalSplashImageId));
+            AccountVerticalSplashImageSource = ImageSource.FromUri(ImageUriFactory.BuildImageUri(verticalSplashImageId));
             AccountDefaultOverlayId = defaultOverlay?.Id ?? null;
             AccountSerializedOverlayContext = serializedOverlayContext;
         }
@@ -138,8 +143,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
         public async System.Threading.Tasks.Task SignInAsync(string server, bool useSSL, string login, string password, System.Action<string> callbackAction)
         {
-            Support.Presentation.Managers.SessionMemoryManager.Instance.Server = server;
-            Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL = useSSL;
+            SessionMemoryManager.Instance.Server = server;
+            SessionMemoryManager.Instance.UseSSL = useSSL;
 
             var userApiClient = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 
@@ -149,7 +154,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                 Password = password
             });
 
-            Support.Presentation.Managers.SessionMemoryManager.Instance.Persist();
+            SessionMemoryManager.Instance.Persist();
 
             AuthenticationType = result.Type;
             AuthorizationToken = result.Token;
@@ -166,9 +171,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                 // MotoTouch does not support dynamic assembly loading
                 if (Device.RuntimePlatform != Device.iOS)
                 {
-                    var dynamicLoadExtensions = AccountExtensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID).ToArray();
+                    var dynamicLoadExtensions = AccountExtensions.Where(item => item.Id != EssentialExtensionDescriptor.ID).ToArray();
 
-                    var missingAccountExtensions = new System.Collections.Generic.List<Cloud.Api.Common.Models.ExtensionDisplayModel>();
+                    var missingAccountExtensions = new System.Collections.Generic.List<ExtensionDisplayModel>();
 
                     foreach (var accountExtension in dynamicLoadExtensions)
                     {
@@ -228,7 +233,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
                 AccountId = model.Id;
 
-                var overalyDescriptor = model.DefaultOverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(model.DefaultOverlayId.Value);
+                var overalyDescriptor = model.DefaultOverlayId == null ? null : OverlayDescriptorProvider.Instance.GetDescriptorById(model.DefaultOverlayId.Value);
 
                 var ffImageLoadingHttpClient = new System.Net.Http.HttpClient();
 

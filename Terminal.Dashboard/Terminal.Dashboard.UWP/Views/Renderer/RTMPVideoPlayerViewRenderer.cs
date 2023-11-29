@@ -1,15 +1,16 @@
-﻿using SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Rendered;
+using SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Extensions;
 using System;
 
-[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered.CloudVideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer.RTMPVideoPlayerViewRenderer))]
+[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(CloudVideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer.RTMPVideoPlayerViewRenderer))]
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 {
-    public class RTMPVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<Extend.Common.Templating.Presentation.Views.Rendered.CloudVideoPlayerView, Windows.UI.Xaml.Controls.MediaElement>
+    public class RTMPVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<CloudVideoPlayerView, Windows.UI.Xaml.Controls.MediaElement>
     {
         Mntone.Rtmp.Client.SimpleVideoClient rtmpVideoClient;
 
-        protected override void OnElementChanged(Xamarin.Forms.Platform.UWP.ElementChangedEventArgs<Extend.Common.Templating.Presentation.Views.Rendered.CloudVideoPlayerView> eventArgs)
+        protected override void OnElementChanged(Xamarin.Forms.Platform.UWP.ElementChangedEventArgs<CloudVideoPlayerView> eventArgs)
         {
             base.OnElementChanged(eventArgs);
 

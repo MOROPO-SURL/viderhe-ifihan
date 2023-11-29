@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Managers
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Managers
 {
     public class SoundFileManager
     {
@@ -9,17 +11,17 @@
             this.mediaPathOptions = mediaPathOptions;
         }
 
-        public void DeleteFile(Persistence.Entities.Sound target)
+        public void DeleteFile(Sound target)
         {
             System.IO.File.Delete(GetAbsoluteFilePath(target));
         }
 
-        public string GetAbsoluteFilePath(Persistence.Entities.Sound target)
+        public string GetAbsoluteFilePath(Sound target)
         {
             return System.IO.Path.Combine(mediaPathOptions.Value.SoundMediaPath, string.Format("{0}.{1}", target.Id, target.Extension));
         }
 
-        public byte[] GetFileContent(Persistence.Entities.Sound target)
+        public byte[] GetFileContent(Sound target)
         {
             byte[] result;
 
@@ -37,7 +39,7 @@
 
         public void SaveFileContent(System.Guid targetId, byte[] content)
         {
-            System.IO.File.WriteAllBytes(GetAbsoluteFilePath(new Persistence.Entities.Sound { Id = targetId, Extension = "mp3" }), content);
+            System.IO.File.WriteAllBytes(GetAbsoluteFilePath(new Sound { Id = targetId, Extension = "mp3" }), content);
         }
     }
 }

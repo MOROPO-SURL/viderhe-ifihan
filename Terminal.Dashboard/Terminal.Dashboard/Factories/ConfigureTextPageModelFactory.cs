@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
 {
     public static class ConfigureTextPageModelFactory
     {
-        public static Models.Page.ConfigureTextPageModel Build(Support.Presentation.Dashboard.Models.View.TextViewModel target)
+        public static Models.Page.ConfigureTextPageModel Build(TextViewModel target)
         {
             var result = new Models.Page.ConfigureTextPageModel();
 

@@ -1,14 +1,18 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
 {
     public static class SoundComplementConfigurationPageModelFactory
     {
-        public static Models.Page.SoundComplementConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel model)
+        public static Models.Page.SoundComplementConfigurationPageModel Build(PlacardViewModel model)
         {
             if (model.ComplementationKind == null) return new Models.Page.SoundComplementConfigurationPageModel();
 
-            if (model.ComplementationKind != Cloud.Persistence.Enumerations.PlacardComplementationKind.Sound) throw new System.InvalidOperationException();
+            if (model.ComplementationKind != PlacardComplementationKind.Sound) throw new System.InvalidOperationException();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Extend.Common.Templating.Models.Context.SoundComplementContextModel>(model.SerializedComplementation);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<SoundComplementContextModel>(model.SerializedComplementation);
 
             return new Models.Page.SoundComplementConfigurationPageModel
             {

@@ -1,4 +1,4 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {

@@ -1,10 +1,14 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
-    public partial class ConfigureModeratorPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigureModeratorPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class ConfigureModeratorPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigureModeratorPageModel>, IValidableFormPage
     {
-        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+        private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
         private System.Action successCallbackAction;
 
@@ -14,7 +18,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         public ConfigureModeratorPage(System.Action successCallbackAction, Models.View.ModeratorViewModel target = null)
             : base(Factories.ConfigureModeratorPageModelFactory.Build(target))
         {
-            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+            validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
             this.successCallbackAction = successCallbackAction;
 
@@ -162,7 +166,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     if (task.Exception == null && !task.IsCanceled)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
 
                         this.NavigationPopPageAsync();
 
@@ -172,7 +176,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         BindingContextPageModel.IsBusy = false;
 
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                 });
             });
@@ -371,12 +375,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         #region IValidableFormPage implementation
 
-        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void AddValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Add(validationBehavior);
         }
 
-        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void RemoveValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Remove(validationBehavior);
         }

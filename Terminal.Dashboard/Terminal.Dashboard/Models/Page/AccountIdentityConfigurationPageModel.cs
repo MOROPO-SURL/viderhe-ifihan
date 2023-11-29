@@ -1,6 +1,9 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Extend.Overlaying.Providers;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class AccountIdentityConfigurationPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
+    public class AccountIdentityConfigurationPageModel : FormPageModel
     {
         private string name;
         private Xamarin.Forms.ImageSource logoImageSource;
@@ -13,7 +16,7 @@
 
         public AccountIdentityConfigurationPageModel()
         {
-            AvailableOverlays = Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptors();
+            AvailableOverlays = OverlayDescriptorProvider.Instance.GetDescriptors();
         }
 
         public string Name { get => name; set => SetProperty(ref name, value); }

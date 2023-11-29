@@ -1,22 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MOROPO.SAPRESSC.Core.Persistence.Repositories;
-using MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade;
-using SmartSolucionesCuba.Viderhe.Cloud.Extensions;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Managers.Facade;
+using MOROPO.VIDERHE.Cloud.Extensions;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
+namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)]
     [Route("[controller]")]
-    public class MediaController : MOROPO.SAPRESSC.Core.Web.Common.Controllers.BaseWebController
+    public class MediaController : Framework.Guama.Core.Presentation.Web.Common.Controllers.BaseWebController
     {
-        private readonly IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
-        private readonly IEntityRepository<Persistence.Entities.Moderator, System.Guid> moderatorRepository;
+        private readonly IEntityRepository<Account, System.Guid> accountRepository;
+        private readonly IEntityRepository<Moderator, System.Guid> moderatorRepository;
         private readonly IImageFileManagerFacade imageFileManager;
         private readonly IThumbnailFileManagerFacade thumbnailFileManager;
 
-        public MediaController(IEntityRepository<Persistence.Entities.Moderator, System.Guid> moderatorRepository, IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, IImageFileManagerFacade imageFileManager, IThumbnailFileManagerFacade thumbnailFileManager, Microsoft.Extensions.Localization.IStringLocalizer<MediaController> localizer, ILogger<MediaController> logger)
+        public MediaController(IEntityRepository<Moderator, System.Guid> moderatorRepository, IEntityRepository<Account, System.Guid> accountRepository, IImageFileManagerFacade imageFileManager, IThumbnailFileManagerFacade thumbnailFileManager, Microsoft.Extensions.Localization.IStringLocalizer<MediaController> localizer, ILogger<MediaController> logger)
             : base(localizer, logger)
         {
             this.accountRepository = accountRepository;
@@ -30,9 +32,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
         {
             try
             {
-                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
+                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
-                var image = account.ImageBridges.First(b => b.ImageId == key).Image;
+                var image = account.ImageBridges.First(b => b.SternId == key).Stern;
 
                 return new FileContentResult(imageFileManager.GetImageFileContent(image), image.ContentType);
             }
@@ -50,9 +52,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
         {
             try
             {
-                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
+                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
-                var image = account.ImageBridges.FirstOrDefault(b => b.ImageId == key)?.Image;
+                var image = account.ImageBridges.FirstOrDefault(b => b.SternId == key)?.Stern;
 
                 if (image == null)
                 {
@@ -134,9 +136,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
         {
             try
             {
-                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
+                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
-                var thumbnail = account.ImageBridges.First(b => b.Image.Thumbnail.Id == key).Image.Thumbnail;
+                var thumbnail = account.ImageBridges.First(b => b.Stern.Thumbnail.Id == key).Stern.Thumbnail;
 
                 return new FileContentResult(thumbnailFileManager.GetThumbnailFileContent(thumbnail), thumbnail.ContentType);
             }
@@ -154,9 +156,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
         {
             try
             {
-                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
+                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
-                var thumbnail = account.VideoBridges.First(b => b.Video.Thumbnail.Id == key).Video.Thumbnail;
+                var thumbnail = account.VideoBridges.First(b => b.Stern.Thumbnail.Id == key).Stern.Thumbnail;
 
                 return new FileContentResult(thumbnailFileManager.GetThumbnailFileContent(thumbnail), thumbnail.ContentType);
             }
@@ -193,7 +195,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
         {
             try
             {
-                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
+                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
                 return new FileContentResult(imageFileManager.GetImageFileContent(account.Logo), account.Logo.ContentType);
             }
@@ -211,7 +213,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
         {
             try
             {
-                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
+                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
                 return new FileContentResult(imageFileManager.GetImageFileContent(account.HorizontalSplash), account.HorizontalSplash.ContentType);
             }

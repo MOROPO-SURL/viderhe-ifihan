@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Providers.Facade;
+using MOROPO.VIDERHE.Extend.Common.Templating.Descriptors;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
 {
@@ -24,12 +27,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
                 .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating.Dashboard.Presentation,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(Extend.Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardConfigurationPageProviderFacade).IsAssignableFrom(t));
+            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IPlacardConfigurationPageProviderFacade).IsAssignableFrom(t));
         }
 
-        public Xamarin.Forms.Page GetCreationEntryPointPageByDescriptor(Extend.Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, System.Action completedActionCallback)
+        public Xamarin.Forms.Page GetCreationEntryPointPageByDescriptor(ITemplateDescriptor templateDescriptor, System.Action completedActionCallback)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Extend.Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardConfigurationPageProviderFacade>();
+            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardConfigurationPageProviderFacade>();
 
             foreach (var provider in providers)
             {
@@ -43,9 +46,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
             throw new System.InvalidOperationException();
         }
 
-        public Xamarin.Forms.Page GetEditionPageByDescriptor(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action completedActionCallback)
+        public Xamarin.Forms.Page GetEditionPageByDescriptor(PlacardViewModel placardViewModel, System.Action completedActionCallback)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Extend.Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardConfigurationPageProviderFacade>();
+            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardConfigurationPageProviderFacade>();
 
             foreach (var provider in providers)
             {

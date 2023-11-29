@@ -1,8 +1,8 @@
-﻿using MOROPO.SAPRESSC.Middleware.Media.Web.Common.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
+namespace MOROPO.VIDERHE.Cloud.Models.View
 {
-    public class ModeratorDisplayViewModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Moderator, System.Guid>
+    public class ModeratorDisplayViewModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Moderator, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -18,9 +18,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
 
         public System.DateTime? BornDate { get; set; }
 
-        public MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.CivilStatus CivilStatus { get; set; }
+        public Framework.Guama.Identity.Persistence.Enumerations.CivilStatus CivilStatus { get; set; }
 
-        public MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex Sex { get; set; }
+        public Framework.Guama.Identity.Persistence.Enumerations.Sex Sex { get; set; }
 
         public string About { get; set; }
 
@@ -28,7 +28,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
 
         public string ImageExtension { get; set; }
 
-        public void Import(Persistence.Entities.Moderator entity)
+        public void Import(Moderator entity)
         {
             Id = entity.Id;
             UserId = entity.UserId;
@@ -40,7 +40,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
             Sex = entity.Identity.Sex;
             About = entity.Identity.About;
             ImageId = entity.Identity.ImageId ?? System.Guid.Empty;
-            ImageExtension = entity.Identity.Image?.ContentType.ContentTypeToExtension() ?? null;
+            ImageExtension = MimeTypes.MimeTypeMap.GetExtension(entity.Identity.Image?.ContentType) ?? null;
         }
     }
 }

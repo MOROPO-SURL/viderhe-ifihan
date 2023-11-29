@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 {
-    public class AddSoundPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
+    public class AddSoundPageModel : FormPageModel
     {
         private string about;
 

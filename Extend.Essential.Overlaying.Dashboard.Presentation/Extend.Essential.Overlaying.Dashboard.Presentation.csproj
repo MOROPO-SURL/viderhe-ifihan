@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Presentation</RootNamespace>
+    <AssemblyName>MOROPO.VIDERHE.Extend.Essential.Overlaying.Dashboard.Presentation</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Extend.Essential.Overlaying.Dashboard.Presentation</RootNamespace>
     <Version>0.3.0.0</Version>
   </PropertyGroup>
 

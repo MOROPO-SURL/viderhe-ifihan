@@ -1,4 +1,6 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 {
@@ -85,13 +87,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         if (apiConnectTask.Exception != null || !apiConnectTask.IsCanceled)
                         {
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Usuario eliminado con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Usuario eliminado con éxito.");
 
                             AvailableModeratorsChange_Callback();
                         }
                         else
                         {
-                            (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(apiConnectTask.Exception);
+                            (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(apiConnectTask.Exception);
                         }
                     });
                 });
@@ -119,7 +121,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {

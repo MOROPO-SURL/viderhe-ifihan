@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Views
+﻿using MOROPO.VIDERHE.Support.Presentation.Managers;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Views
 {
     public partial class ConfigurationStepStartingDetailView : XFToolKit.Mvvm.Views.ContentView
     {
@@ -30,16 +32,16 @@
                         switch (actionSheetTask.Result)
                         {
                             case SERVER_SECURITY_SSL_OPTION:
-                                Support.Presentation.Managers.SessionMemoryManager.Instance.Server = promptTask.Result;
-                                Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL = true;
+                                SessionMemoryManager.Instance.Server = promptTask.Result;
+                                SessionMemoryManager.Instance.UseSSL = true;
 
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread(PresentServerAddress);
 
                                 break;
 
                             case SERVER_SECURITY_CLEARTEXT_OPTION:
-                                Support.Presentation.Managers.SessionMemoryManager.Instance.Server = promptTask.Result;
-                                Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL = false;
+                                SessionMemoryManager.Instance.Server = promptTask.Result;
+                                SessionMemoryManager.Instance.UseSSL = false;
 
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread(PresentServerAddress);
 
@@ -57,7 +59,7 @@
 
         private void PresentServerAddress()
         {
-            ServerAddressLabel.Text = Support.Presentation.Managers.SessionMemoryManager.Instance.Server;
+            ServerAddressLabel.Text = SessionMemoryManager.Instance.Server;
 
             FallbackOptionsLayout.IsVisible = false;
         }

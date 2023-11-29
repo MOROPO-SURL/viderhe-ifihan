@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using MOROPO.Framework.Guama.Media.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class ImageInputModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityInputModel<MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image, System.Guid>
+    public class ImageInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Image, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -10,17 +12,17 @@
 
         public string About { get; set; }
 
-        public MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image Export()
+        public Image Export()
         {
             throw new System.NotImplementedException();
         }
 
-        public void Import(MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image entity)
+        public void Import(Image entity)
         {
             About = entity.About;
         }
 
-        public void Mergue(MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image entity)
+        public void Mergue(Image entity)
         {
             entity.About = About;
         }

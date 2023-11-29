@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning</RootNamespace>
+    <AssemblyName>MOROPO.VIDERHE.Support.Extend.Transitioning</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Support.Extend.Transitioning</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xftoolkitmvvmviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Views;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views.LandscapePicturePresentingPicturePlacardThumbnailView">
+    x:Class="MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Views.LandscapePicturePresentingPicturePlacardThumbnailView">
     <ContentView.Content>
         <Grid>
             <ffimageloadingforms:CachedImage

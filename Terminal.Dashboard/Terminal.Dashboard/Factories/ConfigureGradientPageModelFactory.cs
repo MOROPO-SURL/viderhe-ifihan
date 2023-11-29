@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+
+namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
 {
     public static class ConfigureGradientPageModelFactory
     {
-        public static Models.Page.ConfigureGradientPageModel Build(Support.Presentation.Dashboard.Models.View.GradientViewModel target)
+        public static Models.Page.ConfigureGradientPageModel Build(GradientViewModel target)
         {
             var result = new Models.Page.ConfigureGradientPageModel();
 
