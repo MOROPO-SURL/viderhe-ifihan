@@ -136,7 +136,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
                 completedConfigurationStepModel = BindingContext as Models.View.ConfigurationStepViewModel;
             }
 
-            BindingContext = model;
+            try
+            {
+                BindingContext = model;
+            }
+            catch (System.Exception exp)
+            {
+
+            }
 
             completedConfigurationStepModel?.Dispose();
 

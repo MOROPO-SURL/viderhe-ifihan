@@ -37,7 +37,7 @@
             }
             else
             {
-                UseSSL = true;
+                UseSSL = false;
             }
         }
 

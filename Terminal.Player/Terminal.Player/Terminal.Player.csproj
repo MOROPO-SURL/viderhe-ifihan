@@ -14,6 +14,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Providers\HttpClientHelpeProvider.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\Image\moropo-logo-light.svg" />
     <None Remove="Assets\Image\viderhe-identity-high-contrast-light.svg" />
   </ItemGroup>
