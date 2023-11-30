@@ -3,12 +3,14 @@ using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Tabs
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Tabs
 {
-    public partial class ManagePlacardTagsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManagePlacardTagsPageModel>
+    public partial class ManagePlacardTagsPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManagePlacardTagsPageModel>
     {
-        public ManagePlacardTagsPage() : base(new Models.Page.ManagePlacardTagsPageModel())
+        public ManagePlacardTagsPage() : base(new ManagePlacardTagsPageModel())
         {
             InitializeComponent();
         }
@@ -35,9 +37,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Tabs
                     return;
                 }
 
-                var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(Managers.SessionManager.Instance);
+                var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(SessionManager.Instance);
 
-                var model = new Cloud.Api.Common.Models.TagInputModel
+                var model = new TagInputModel
                 {
                     Id = System.Guid.NewGuid(),
                     Group = TagGroup.Placard,
@@ -79,7 +81,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Tabs
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.IsBusy = true);
 
-                var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(Managers.SessionManager.Instance);
+                var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(SessionManager.Instance);
 
                 apiConnectClient.Delete(((sender as Xamarin.Forms.BindableObject).BindingContext as TagDisplayModel).Id).ContinueWith(_task =>
                 {
@@ -108,7 +110,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Tabs
 
             BindingContextPageModel.Items.Clear();
 
-            var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(SessionManager.Instance);
 
             apiConnectClient.FilterAsync(new Cloud.Api.Common.Models.Filter.TagFilterModel
             {

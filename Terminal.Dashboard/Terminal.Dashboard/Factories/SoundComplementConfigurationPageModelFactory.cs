@@ -2,7 +2,7 @@
 using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Factories
 {
     public static class SoundComplementConfigurationPageModelFactory
     {
@@ -16,7 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
 
             return new Models.Page.SoundComplementConfigurationPageModel
             {
-                Sound = new Support.Presentation.Models.View.SoundViewModel
+                Sound = new SoundViewModel
                 {
                     Id = context.Sound.Id,
                     About = context.Sound.About,

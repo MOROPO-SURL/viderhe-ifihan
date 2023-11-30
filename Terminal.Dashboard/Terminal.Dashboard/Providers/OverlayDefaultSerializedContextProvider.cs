@@ -1,7 +1,7 @@
 ﻿using MOROPO.VIDERHE.Extend.Common.Overlaying.Dashboard.Presentation.Providers.Facade;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Providers
 {
     public sealed class OverlayDefaultSerializedContextProvider
     {
@@ -23,14 +23,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Providers
         private OverlayDefaultSerializedContextProvider()
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Overlaying.Dashboard.Presentation,\\sVersion=")).ToArray();
+                .Where(a => !a.FullName.Contains(".VIDERHE.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Overlaying.Dashboard.Presentation,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IOverlayDefaultSerializedContextProviderFacade).IsAssignableFrom(t));
+            SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, SmartSolucionesCuba.XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IOverlayDefaultSerializedContextProviderFacade).IsAssignableFrom(t));
         }
 
         public string GetOverlayDefaultContextModel(Extend.Common.Overlaying.Descriptors.IOverlayDescriptor overlayDescriptor)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IOverlayDefaultSerializedContextProviderFacade>();
+            var providers = SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IOverlayDefaultSerializedContextProviderFacade>();
 
             foreach (var provider in providers)
             {

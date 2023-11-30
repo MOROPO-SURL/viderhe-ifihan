@@ -1,21 +1,23 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup
 {
     public partial class CreateScheduledRelaunchPopuoPage : Rg.Plugins.Popup.Pages.PopupPage
     {
-        private Models.View.PlayerViewModel player;
+        private PlayerViewModel player;
         private System.Action successCallbackAction;
 
-        public CreateScheduledRelaunchPopuoPage(Models.View.PlayerViewModel player, System.Action successCallbackAction)
+        public CreateScheduledRelaunchPopuoPage(PlayerViewModel player, System.Action successCallbackAction)
         {
             this.player = player;
             this.successCallbackAction = successCallbackAction;
 
             InitializeComponent();
 
-            BindingContext = new XFToolKit.Mvvm.Models.Page.BasePageModel();
+            BindingContext = new SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel();
         }
 
         protected override bool OnBackButtonPressed()
@@ -27,11 +29,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
 
         private void ApplyButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var concreteBindingContext = BindingContext as XFToolKit.Mvvm.Models.Page.BasePageModel;
+            var concreteBindingContext = BindingContext as SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel;
 
             concreteBindingContext.IsBusy = true;
 
-            var client = new Cloud.Api.Connect.Clients.ScheduledRelaunchsApiConnectClient(Managers.SessionManager.Instance);
+            var client = new Cloud.Api.Connect.Clients.ScheduledRelaunchsApiConnectClient(SessionManager.Instance);
 
             client.CreateAsync(new Cloud.Api.Common.Models.ScheduledRelaunchInputModel
             {

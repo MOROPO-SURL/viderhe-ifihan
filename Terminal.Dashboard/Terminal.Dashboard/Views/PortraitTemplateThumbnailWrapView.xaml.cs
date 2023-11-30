@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Views
 {
     public partial class PortraitTemplateThumbnailWrapView : Xamarin.Forms.ContentView
     {

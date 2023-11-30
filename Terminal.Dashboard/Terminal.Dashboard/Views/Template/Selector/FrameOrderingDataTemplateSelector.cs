@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views.Template.Selector
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Views.Template.Selector
 {
     public class FrameOrderingDataTemplateSelector : Xamarin.Forms.DataTemplateSelector
     {

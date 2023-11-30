@@ -2,11 +2,14 @@
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Factories;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class AddSoundPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AddSoundPageModel>, IValidableFormPage
+    public partial class AddSoundPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<AddSoundPageModel>, IValidableFormPage
     {
         private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
@@ -15,7 +18,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private System.Action successCallbackAction;
 
         public AddSoundPage(Plugin.FilePicker.Abstractions.FileData targetFileData, System.Action successCallbackAction)
-            : base(Factories.AddSoundPageModelFactory.Build(targetFileData))
+            : base(AddSoundPageModelFactory.Build(targetFileData))
         {
             validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
@@ -62,7 +65,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 var extension = System.IO.Path.GetExtension(targetFileData.FilePath).ToLowerInvariant();
 
-                var client = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
                 using (var fileStream = targetFileData.GetStream())
                 {

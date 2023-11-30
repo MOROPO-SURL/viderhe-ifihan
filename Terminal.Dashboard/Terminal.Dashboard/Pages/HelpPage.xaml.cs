@@ -1,8 +1,8 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Managers;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class HelpPage : XFToolKit.Mvvm.Pages.ContentPage
+    public partial class HelpPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.ContentPage
     {
         public HelpPage()
         {

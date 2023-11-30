@@ -1,8 +1,8 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class ManageGradientsPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ManageGradientsPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private bool hasMoreItems;
         private System.Collections.ObjectModel.ObservableCollection<OverviewViewModel<GradientViewModel>> items;

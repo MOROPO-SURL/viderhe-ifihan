@@ -1,12 +1,14 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageGradientsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageGradientsPageModel>
+    public partial class ManageGradientsPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManageGradientsPageModel>
     {
         private int currentItemsPageNumber;
         private int currentGradientCollectionViewCellColumnCount = 3;
@@ -35,7 +37,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     BindingContextPageModel.IsBusy = true;
                 });
 
-                var client = new Cloud.Api.Connect.Clients.GradientsApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.GradientsApiConnectClient(SessionManager.Instance);
 
                 System.Exception failException = null;
 
@@ -169,7 +171,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 }
             }
 
-            var apiConnectClient = new Cloud.Api.Connect.Clients.GradientsApiConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Cloud.Api.Connect.Clients.GradientsApiConnectClient(SessionManager.Instance);
 
             apiConnectClient.GetPaginateAsync(++currentItemsPageNumber, pagingLimit).ContinueWith(task =>
             {

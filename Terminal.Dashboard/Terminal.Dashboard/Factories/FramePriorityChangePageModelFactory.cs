@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Factories
 {
     public static class FramePriorityChangePageModelFactory
     {
@@ -14,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
                 {
                     if (item.Id != target.Id)
                     {
-                        framePick.Add(new Support.Presentation.Models.View.FrameViewModel
+                        framePick.Add(new FrameViewModel
                         {
                             Priority = item.Priority
                         });
@@ -27,7 +27,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
                 {
                     if (item.Id != target.Id)
                     {
-                        framePick.Add(new Support.Presentation.Models.View.FrameViewModel
+                        framePick.Add(new FrameViewModel
                         {
                             Priority = item.Priority
                         });

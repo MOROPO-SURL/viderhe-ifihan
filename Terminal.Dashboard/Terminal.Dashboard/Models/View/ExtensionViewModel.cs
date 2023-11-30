@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Extend.Common.Templating.Descriptors;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.View
 {
     public class ExtensionViewModel
     {

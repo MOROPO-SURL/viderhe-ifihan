@@ -5,12 +5,15 @@ using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Terminal.Dashboard.Factories;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
     public partial class VideoComplementConfigurationPage :
-        XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.VideoComplementConfigurationPageModel>,
+        SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<VideoComplementConfigurationPageModel>,
         IValidableFormPage
     {
         private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
@@ -20,7 +23,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private System.Action successfulCompleteCallbackAction;
 
         public VideoComplementConfigurationPage(PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(Factories.VideoComplementConfigurationPageModelFactory.Build(placardViewModel))
+            : base(VideoComplementConfigurationPageModelFactory.Build(placardViewModel))
         {
             validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
@@ -72,7 +75,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.ComplementationsApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.ComplementationsApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
                 await client.EditAsync(new Cloud.Api.Common.Models.ComplementationInputModel
                 {

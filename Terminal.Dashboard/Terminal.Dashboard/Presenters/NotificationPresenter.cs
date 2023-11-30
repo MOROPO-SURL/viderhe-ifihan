@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Presenters
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Presenters
 {
     public class NotificationPresenter : INotificationPresenterFacade
     {

@@ -1,15 +1,17 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageTextsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageTextsPageModel>
+    public partial class ManageTextsPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManageTextsPageModel>
     {
         private int currentItemsPageNumber;
 
-        public ManageTextsPage() : base(new Models.Page.ManageTextsPageModel { IsBusy = true })
+        public ManageTextsPage() : base(new ManageTextsPageModel { IsBusy = true })
         {
             InitializeComponent();
 
@@ -61,7 +63,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     BindingContextPageModel.IsBusy = true;
                 });
 
-                var client = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.TextsApiConnectClient(SessionManager.Instance);
 
                 System.Exception failException = null;
 
@@ -122,7 +124,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (restart) currentItemsPageNumber = 0;
 
-            var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(SessionManager.Instance);
 
             apiConnectClient.GetPaginateAsync(++currentItemsPageNumber).ContinueWith(task =>
             {

@@ -1,10 +1,10 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
-using SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class ManageProgrammingPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ManageProgrammingPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private readonly System.Action<ScreenplayViewModel> selectedScreenplayCallbackAction;
         private readonly System.Action labelFilterParamaChangeCallbackAction;

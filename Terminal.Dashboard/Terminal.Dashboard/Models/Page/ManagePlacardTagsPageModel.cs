@@ -1,8 +1,8 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class ManagePlacardTagsPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ManagePlacardTagsPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         public ManagePlacardTagsPageModel()
         {

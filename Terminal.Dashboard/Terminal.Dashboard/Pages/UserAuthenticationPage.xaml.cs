@@ -1,10 +1,14 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class UserAuthenticationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.UserAuthenticationPageModel>
+    public partial class UserAuthenticationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<UserAuthenticationPageModel>
     {
-        public UserAuthenticationPage() : base(new Models.Page.UserAuthenticationPageModel { 
+        public UserAuthenticationPage() : base(new UserAuthenticationPageModel
+        { 
             TargetCloudHostName = SessionMemoryManager.Instance.Server,
             TargetCloudProtocolIndex = SessionMemoryManager.Instance.UseSSL ? 0 : 1
         })
@@ -22,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
-                        Xamarin.Forms.DependencyService.Get<Managers.Facade.IApplicationManagerFacade>().Quit();
+                        Xamarin.Forms.DependencyService.Get<IApplicationManagerFacade>().Quit();
                     });
                 }
             });
@@ -34,7 +38,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             BindingContextPageModel.IsBusy = true;
 
-            Managers.SessionManager.Instance.SignInAsync(BindingContextPageModel.TargetCloudHostName, BindingContextPageModel.TargetCloudProtocolIndex == 0, BindingContextPageModel.UserName, BindingContextPageModel.Password, SignIn_Callback).ContinueWith(task =>
+            SessionManager.Instance.SignInAsync(BindingContextPageModel.TargetCloudHostName, BindingContextPageModel.TargetCloudProtocolIndex == 0, BindingContextPageModel.UserName, BindingContextPageModel.Password, SignIn_Callback).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -59,9 +63,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             {
                                 message = "No se puede acceder al servidor. Revise su conexión de red y/o la disponibilidad del servicio.";
                             }
-                            else if (targetException is MOROPO.SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException)
+                            else if (targetException is Framework.Guama.Core.Presentation.API.Connect.UnspectedHttpStatusException)
                             {
-                                var unspectedHttpStatus = (targetException as MOROPO.SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException).HttpStatusCode;
+                                var unspectedHttpStatus = (targetException as Framework.Guama.Core.Presentation.API.Connect.UnspectedHttpStatusException).HttpStatusCode;
 
                                 if (unspectedHttpStatus == System.Net.HttpStatusCode.BadRequest)
                                 {
@@ -82,7 +86,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             }
                             else
                             {
-                                var nativeMessage = Xamarin.Forms.DependencyService.Get<Managers.Facade.IApplicationManagerFacade>().GetUnhandleExceptionMessage(targetException);
+                                var nativeMessage = Xamarin.Forms.DependencyService.Get<IApplicationManagerFacade>().GetUnhandleExceptionMessage(targetException);
 
                                 if (nativeMessage != null) message = nativeMessage;
                             }

@@ -3,11 +3,13 @@ using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class EditSoundPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EditSoundPageModel>, IValidableFormPage
+    public partial class EditSoundPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<EditSoundPageModel>, IValidableFormPage
     {
         private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
@@ -46,7 +48,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
                 await client.EditAsync(new Cloud.Api.Common.Models.SoundInputModel
                 {

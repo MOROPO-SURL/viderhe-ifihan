@@ -3,13 +3,14 @@ using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Extensions;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageImagesPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageImagesPageModel>
+    public partial class ManageImagesPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManageImagesPageModel>
     {
         private int currentItemsPageNumber;
         private int currentImageCollectionViewCellColumnCount = 3;
@@ -41,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     BindingContextPageModel.IsBusy = true;
                 });
 
-                var client = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
                 System.Exception failException = null;
 
@@ -214,7 +215,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 }
             }
 
-            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
             imagesApiConnectClient.GetPageAsync(++currentItemsPageNumber, pagingLimit).ContinueWith(task =>
             {

@@ -1,12 +1,15 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManagePlayerScheduledRelaunchsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManagePlayerScheduledRelaunchsPageModel>
+    public partial class ManagePlayerScheduledRelaunchsPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManagePlayerScheduledRelaunchsPageModel>
     {
-        public ManagePlayerScheduledRelaunchsPage(Models.View.PlayerViewModel player) : base(new Models.Page.ManagePlayerScheduledRelaunchsPageModel(player) { IsBusy = true })
+        public ManagePlayerScheduledRelaunchsPage(PlayerViewModel player) : base(new ManagePlayerScheduledRelaunchsPageModel(player) { IsBusy = true })
         {
             InitializeComponent();
 
@@ -47,7 +50,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 BindingContextPageModel.IsBusy = true;
 
-                var client = new Cloud.Api.Connect.Clients.ScheduledRelaunchsApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.ScheduledRelaunchsApiConnectClient(SessionManager.Instance);
 
                 var target = (sender as Xamarin.Forms.BindableObject).BindingContext as ScheduledRelaunchDisplayModel;
 
@@ -76,7 +79,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             BindingContextPageModel.IsBusy = true;
 
-            var client = new Cloud.Api.Connect.Clients.ScheduledRelaunchsApiConnectClient(Managers.SessionManager.Instance);
+            var client = new Cloud.Api.Connect.Clients.ScheduledRelaunchsApiConnectClient(SessionManager.Instance);
 
             client.FilterAsync(new Cloud.Api.Common.Models.Filter.ScheduledRelaunchFilterModel
             {

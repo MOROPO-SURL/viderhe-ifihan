@@ -8,9 +8,9 @@ using MOROPO.VIDERHE.Support.Presentation.Managers;
 using System.Linq;
 using Xamarin.Forms;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Managers
 {
-    public sealed class SessionManager : MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade
+    public sealed class SessionManager : Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
         private static SessionManager instance;
 
@@ -29,7 +29,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
         public bool HasAuthenticatedIdentity => Moderator != null;
 
-        public MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Server), GetAuthorizeHeader, null);
+        public Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper HttpClientHelper => new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Server), GetAuthorizeHeader, null);
 
         public string AuthenticationType { get; private set; }
         public string AuthorizationToken { get; private set; }
@@ -76,7 +76,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
         {
             var client = new Cloud.Api.Connect.Clients.AccountApiConnectClient(this);
 
-            var input = new Cloud.Api.Common.Models.AccountInputModel
+            var input = new AccountInputModel
             {
                 Id = AccountId,
                 Name = name,
@@ -148,7 +148,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
             var userApiClient = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 
-            var result = await userApiClient.AuthenticateAsync(new Cloud.Api.Common.Models.AuthenticationIntentModel
+            var result = await userApiClient.AuthenticateAsync(new AuthenticationIntentModel
             {
                 User = login,
                 Password = password
@@ -178,7 +178,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                     foreach (var accountExtension in dynamicLoadExtensions)
                     {
                         if (System.IO.Directory.Exists(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", server, accountExtension.Id.ToString(), accountExtension.Version))) continue;
-                        
+
                         missingAccountExtensions.Add(accountExtension);
                     }
 
@@ -222,7 +222,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
                                 var attribute = a as HandlerAttribute;
 
-                                if (attribute == null && (a is ExportFontAttribute fa))
+                                if (attribute == null && a is ExportFontAttribute fa)
                                 {
                                     Xamarin.Forms.Internals.FontRegistrar.Register(fa, assembly);
                                 }
@@ -276,7 +276,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
         {
             var client = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 
-            await client.ChangePasswordAsync(new Cloud.Api.Common.Models.UserPasswordChangeRequestModel
+            await client.ChangePasswordAsync(new UserPasswordChangeRequestModel
             {
                 OldPassword = oldPassword,
                 NewPassword = newPassword

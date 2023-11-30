@@ -2,11 +2,14 @@
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Factories;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class AddVideoPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AddVideoPageModel>, IValidableFormPage
+    public partial class AddVideoPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<AddVideoPageModel>, IValidableFormPage
     {
         private const int SEGMENT_MB_LENGTH = 1;
         private const int SEGMENT_READ_BUFFER_LENGTH = 1024;
@@ -18,7 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private System.Action successCallbackAction;
 
         public AddVideoPage(Plugin.FilePicker.Abstractions.FileData targetFileData, System.Action successCallbackAction)
-            : base(Factories.AddVideoPageModelFactory.Build(targetFileData))
+            : base(AddVideoPageModelFactory.Build(targetFileData))
         {
             validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
@@ -101,7 +104,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 bytesRemaining -= bytesReaded;
                             }
 
-                            var client = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+                            var client = new Cloud.Api.Connect.Clients.VideosApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
                             if (currentSegment > 1)
                             {

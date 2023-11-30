@@ -2,11 +2,15 @@
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Factories;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ConfigureScreenplayPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigureScreenplayPageModel>, IValidableFormPage
+    public partial class ConfigureScreenplayPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ConfigureScreenplayPageModel>, IValidableFormPage
     {
         private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
@@ -14,8 +18,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private System.Action completedCallackAction;
 
-        public ConfigureScreenplayPage(System.Action completedCallackAction, Models.View.ScreenplayViewModel model = null)
-            : base(Factories.ConfigureScreenplayPageModelFactory.Build(model))
+        public ConfigureScreenplayPage(System.Action completedCallackAction, ScreenplayViewModel model = null)
+            : base(ConfigureScreenplayPageModelFactory.Build(model))
         {
             validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
@@ -74,7 +78,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(SessionManager.Instance);
 
                 if (editionMode)
                 {

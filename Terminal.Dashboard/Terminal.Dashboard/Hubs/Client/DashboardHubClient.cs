@@ -5,7 +5,7 @@ using MOROPO.VIDERHE.Cloud.SignalR.Connect.Dashboard.Hubs;
 using MOROPO.VIDERHE.Support.Presentation.Managers;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Hubs.Client
 {
     public class DashboardHubClient : IDashboardClient, System.IDisposable
     {

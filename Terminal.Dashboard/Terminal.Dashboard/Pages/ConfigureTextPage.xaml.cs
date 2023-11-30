@@ -3,11 +3,14 @@ using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Factories;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ConfigureTextPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigureTextPageModel>, IValidableFormPage
+    public partial class ConfigureTextPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ConfigureTextPageModel>, IValidableFormPage
     {
         private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
@@ -16,7 +19,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private System.Action completedCallackAction;
 
         public ConfigureTextPage(System.Action completedCallackAction, TextViewModel model = null)
-            : base(Factories.ConfigureTextPageModelFactory.Build(model))
+            : base(ConfigureTextPageModelFactory.Build(model))
         {
             validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
@@ -75,7 +78,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.TextsApiConnectClient(SessionManager.Instance);
 
                 if (editionMode)
                 {

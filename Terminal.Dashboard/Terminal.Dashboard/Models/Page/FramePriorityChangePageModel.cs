@@ -1,8 +1,8 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class FramePriorityChangePageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class FramePriorityChangePageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         public FrameViewModel[] Frames { get; set; }
 

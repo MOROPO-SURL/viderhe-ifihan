@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
     public class ConfigureTextPageModel : FormPageModel
     {

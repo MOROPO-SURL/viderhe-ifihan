@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Converters
 {
     public class IsAnyPlayerOrientationSupportKindToBooleanConverter : Xamarin.Forms.IValueConverter
     {

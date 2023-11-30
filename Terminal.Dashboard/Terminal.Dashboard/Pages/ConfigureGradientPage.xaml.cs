@@ -3,11 +3,14 @@ using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Factories;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ConfigureGradientPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigureGradientPageModel>, IValidableFormPage
+    public partial class ConfigureGradientPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ConfigureGradientPageModel>, IValidableFormPage
     {
         private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
@@ -16,7 +19,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private System.Action completedCallackAction;
 
         public ConfigureGradientPage(System.Action completedCallackAction, GradientViewModel model = null)
-            : base(Factories.ConfigureGradientPageModelFactory.Build(model))
+            : base(ConfigureGradientPageModelFactory.Build(model))
         {
             validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
@@ -75,7 +78,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.GradientsApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.GradientsApiConnectClient(SessionManager.Instance);
 
                 if (editionMode)
                 {

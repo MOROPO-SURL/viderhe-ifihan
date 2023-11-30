@@ -7,8 +7,8 @@
     <ProjectGuid>{B4F5780B-587F-4D10-BC05-A372D0CBBD8F}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP</RootNamespace>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP</AssemblyName>
+    <RootNamespace>MORPO.VIDERHE.Terminal.Dashboard.UWP</RootNamespace>
+    <AssemblyName>MOROPO.VIDERHE.Terminal.Dashboard.UWP</AssemblyName>
     <DefaultLanguage>es</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
@@ -28,7 +28,6 @@
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <AppxPackageDir>W:\Dossiers\VIDERHE\Deploy\Apps\Control\UWP\</AppxPackageDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>

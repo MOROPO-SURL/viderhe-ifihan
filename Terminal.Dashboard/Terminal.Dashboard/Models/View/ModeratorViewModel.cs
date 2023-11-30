@@ -1,7 +1,8 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 using MOROPO.VIDERHE.Support.Presentation.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.View
 {
     public class ModeratorViewModel
     {
@@ -19,6 +20,6 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
 
         public string FullName => string.IsNullOrEmpty(Model.Identity.LastName) ? Model.Identity.Name : string.Format("{0} {1}", Model.Identity.Name, Model.Identity.LastName);
 
-        public bool IsCurrentUser => Model.Id == Managers.SessionManager.Instance.Moderator.Id;
+        public bool IsCurrentUser => Model.Id == SessionManager.Instance.Moderator.Id;
     }
 }

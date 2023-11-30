@@ -4,9 +4,14 @@ using MOROPO.VIDERHE.Support.Presentation.Helpers;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Managers;
 using MOROPO.VIDERHE.Support.Presentation.Providers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Helpers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Presenters;
+using MOROPO.VIDERHE.Terminal.Dashboard.Providers;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
+namespace MOROPO.VIDERHE.Terminal.Dashboard
 {
     public partial class App : Xamarin.Forms.Application, IExceptionHandleHelperFacade
     {
@@ -16,20 +21,20 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
         {
             InitializeComponent();
 
-            var sessionManager = Managers.SessionManager.Instance;
+            var sessionManager = SessionManager.Instance;
 
-            Xamarin.Forms.DependencyService.Register<Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade, Providers.AccountInformationProvider>();
-            Xamarin.Forms.DependencyService.Register<INotificationPresenterFacade, Presenters.NotificationPresenter>();
-            Xamarin.Forms.DependencyService.Register<IPlacardThumbnailViewProvisioningHelperFacade, Helpers.PlacardThumbnailViewProvisioningHelper>();
+            Xamarin.Forms.DependencyService.Register<Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade, AccountInformationProvider>();
+            Xamarin.Forms.DependencyService.Register<INotificationPresenterFacade, NotificationPresenter>();
+            Xamarin.Forms.DependencyService.Register<IPlacardThumbnailViewProvisioningHelperFacade, PlacardThumbnailViewProvisioningHelper>();
             Xamarin.Forms.DependencyService.RegisterSingleton<ICloudServerProviderFacade>(SessionMemoryManager.Instance);
-            Xamarin.Forms.DependencyService.RegisterSingleton<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>(sessionManager);
+            Xamarin.Forms.DependencyService.RegisterSingleton<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>(sessionManager);
             Xamarin.Forms.DependencyService.RegisterSingleton<IExceptionHandleHelperFacade>(this);
 
             ImageUriFactoryHelper.Instance.Initialize();
 
             On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
 
-            Xamarin.Forms.DependencyService.Get<Managers.Facade.IApplicationManagerFacade>().RequestRequiredPermissions();
+            Xamarin.Forms.DependencyService.Get<IApplicationManagerFacade>().RequestRequiredPermissions();
 
             PresentForUserAuthentication();
         }
@@ -75,9 +80,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
             {
                 message = "No se puede acceder al servidor. Revise su conexión de red y/o la disponibilidad del servicio.";
             }
-            else if (targetException is MOROPO.SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException)
+            else if (targetException is Framework.Guama.Core.Presentation.API.Connect.UnspectedHttpStatusException)
             {
-                var unspectedHttpStatus = (targetException as MOROPO.SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException).HttpStatusCode;
+                var unspectedHttpStatus = (targetException as Framework.Guama.Core.Presentation.API.Connect.UnspectedHttpStatusException).HttpStatusCode;
 
                 if (unspectedHttpStatus == System.Net.HttpStatusCode.BadRequest)
                 {
@@ -91,7 +96,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard
                     {
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            Managers.SessionManager.Instance.SignOut();
+                            SessionManager.Instance.SignOut();
 
                             PresentForUserAuthentication();
                         });

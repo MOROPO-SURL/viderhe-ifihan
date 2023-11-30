@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
     public class AddVideoPageModel : FormPageModel
     {
@@ -12,9 +12,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
             set => SetProperty(ref about, value);
         }
 
-        private XFToolKit.Presentation.Sources.Video.VideoSource videoSource;
+        private SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource videoSource;
 
-        public XFToolKit.Presentation.Sources.Video.VideoSource VideoSource
+        public SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource VideoSource
         {
             get => videoSource;
             set => SetProperty(ref videoSource, value);

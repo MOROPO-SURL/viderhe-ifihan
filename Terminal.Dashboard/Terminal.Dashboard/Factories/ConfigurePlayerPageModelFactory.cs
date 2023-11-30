@@ -1,14 +1,16 @@
 ﻿using MOROPO.VIDERHE.Support.Extend.Overlaying.Providers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Factories
 {
     public static class ConfigurePlayerPageModelFactory
     {
-        public static Models.Page.ConfigurePlayerPageModel Build(Models.View.PlayerViewModel model)
+        public static ConfigurePlayerPageModel Build(PlayerViewModel model)
         {
             if (model != null)
             {
-                var _model = new Models.Page.ConfigurePlayerPageModel
+                var _model = new ConfigurePlayerPageModel
                 {
                     IsBusy = true,
                     Id = model.Id,
@@ -28,7 +30,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
             }
             else
             {
-                return new Models.Page.ConfigurePlayerPageModel
+                return new ConfigurePlayerPageModel
                 {
                     IsBusy = true
                 };

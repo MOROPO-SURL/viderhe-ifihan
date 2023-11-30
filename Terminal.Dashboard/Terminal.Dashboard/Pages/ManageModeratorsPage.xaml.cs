@@ -1,12 +1,15 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageModeratorsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageModeratorsPageModel>
+    public partial class ManageModeratorsPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManageModeratorsPageModel>
     {
-        public ManageModeratorsPage() : base(new Models.Page.ManageModeratorsPageModel())
+        public ManageModeratorsPage() : base(new ManageModeratorsPageModel())
         {
             InitializeComponent();
 
@@ -40,7 +43,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ActionFrame_Tapped(object sender, System.EventArgs eventArgs)
         {
-            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ModeratorViewModel;
+            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as ModeratorViewModel;
 
             ModeratorCollectionView.SelectedItems.Clear();
 
@@ -54,7 +57,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.ModeratorDetailPopupPage(target, ModeratorRequireEdit_Callback, ModeratorRequireDelete_Callback));
         }
 
-        private void ModeratorRequireEdit_Callback(Models.View.ModeratorViewModel target)
+        private void ModeratorRequireEdit_Callback(ModeratorViewModel target)
         {
             if (target.IsCurrentUser)
             {
@@ -66,7 +69,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             this.NavigationPushPageAsync(new ConfigureModeratorPage(AvailableModeratorsChange_Callback, target));
         }
 
-        private void ModeratorRequireDelete_Callback(Models.View.ModeratorViewModel target)
+        private void ModeratorRequireDelete_Callback(ModeratorViewModel target)
         {
             DisplayAlert("Confirmar", "Esta seguro que desea eliminar el usuario seleccionado?", "Eliminar", "Cancelar").ContinueWith(confirmationTask =>
             {
@@ -77,7 +80,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     BindingContextPageModel.IsBusy = true;
                 });
 
-                var client = new Cloud.Api.Connect.Clients.ModeratorsApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.ModeratorsApiConnectClient(SessionManager.Instance);
 
                 client.Delete(target.Model.Id).ContinueWith(apiConnectTask =>
                 {
@@ -111,7 +114,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             BindingContextPageModel.Items.Clear();
 
-            var apiClientConnectclient = new Cloud.Api.Connect.Clients.ModeratorsApiConnectClient(Managers.SessionManager.Instance);
+            var apiClientConnectclient = new Cloud.Api.Connect.Clients.ModeratorsApiConnectClient(SessionManager.Instance);
 
             apiClientConnectclient.GetAsync().ContinueWith(task =>
             {

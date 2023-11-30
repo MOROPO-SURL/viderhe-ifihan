@@ -1,7 +1,7 @@
 ﻿using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Converters
 {
     public class TemplateViewModelToTemplateThumbnailWrapViewConverter : Xamarin.Forms.IValueConverter
     {

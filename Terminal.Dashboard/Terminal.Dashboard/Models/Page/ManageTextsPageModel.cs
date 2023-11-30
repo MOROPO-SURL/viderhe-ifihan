@@ -1,8 +1,8 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class ManageTextsPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ManageTextsPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private bool hasMoreItems;
 

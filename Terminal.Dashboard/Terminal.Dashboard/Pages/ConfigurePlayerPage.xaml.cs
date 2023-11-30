@@ -4,28 +4,34 @@ using MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors.Contract;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Factories;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
+using MOROPO.VIDERHE.Terminal.Dashboard.Pages.Contract;
+using MOROPO.VIDERHE.Terminal.Dashboard.Providers;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ConfigurePlayerPage : 
-        XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigurePlayerPageModel>,
+    public partial class ConfigurePlayerPage :
+        SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ConfigurePlayerPageModel>,
         IValidableFormPage,
-        Contract.IOverlayContextConfigurationPage
+        IOverlayContextConfigurationPage
     {
         private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
         private readonly bool editing;
 
         private bool pageModelHasChanges;
-        private Models.View.PlayerViewModel model;
+        private PlayerViewModel model;
         private Extend.Common.Overlaying.Descriptors.IOverlayDescriptor recoverableOverlay;
         private string recoverableSerializedOverlayContext;
 
         private System.Action successCallbackAction;
 
-        public ConfigurePlayerPage(System.Action successCallbackAction, Models.View.PlayerViewModel model = null)
-            : base(Factories.ConfigurePlayerPageModelFactory.Build(model))
+        public ConfigurePlayerPage(System.Action successCallbackAction, PlayerViewModel model = null)
+            : base(ConfigurePlayerPageModelFactory.Build(model))
         {
             validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
@@ -65,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 IsEnabled = true;
 
-                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(SessionManager.Instance);
 
                 client.GetPaginateAsync().ContinueWith(task =>
                 {
@@ -152,13 +158,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (BindingContextPageModel.SerializedOverlayContext == null)
             {
-                BindingContextPageModel.SerializedOverlayContext = Providers.OverlayDefaultSerializedContextProvider.Instance.GetOverlayDefaultContextModel(BindingContextPageModel.Overlay);
+                BindingContextPageModel.SerializedOverlayContext = OverlayDefaultSerializedContextProvider.Instance.GetOverlayDefaultContextModel(BindingContextPageModel.Overlay);
             }
         }
 
         private void OverlayConfigureButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(Providers.OverlayConfigurationPageProvider.Instance.GetConfigurationPageByDescriptor(BindingContextPageModel.Overlay, BindingContextPageModel.SerializedOverlayContext, OverlayConfigurationSuccesfulComplete_Callback));
+            this.NavigationPushPageAsync(OverlayConfigurationPageProvider.Instance.GetConfigurationPageByDescriptor(BindingContextPageModel.Overlay, BindingContextPageModel.SerializedOverlayContext, OverlayConfigurationSuccesfulComplete_Callback));
         }
 
         private void ApplyToolbarItem_Activated(object sender, System.EventArgs eventArgs)
@@ -180,7 +186,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(SessionManager.Instance);
 
                 var model = new Cloud.Api.Common.Models.PlayerInputModel
                 {

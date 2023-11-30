@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views.LandscapeTemplateThumbnailWrapView"
+    x:Class="MOROPO.VIDERHE.Terminal.Dashboard.Views.LandscapeTemplateThumbnailWrapView"
     VerticalOptions="Center"
     HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"            
     BackgroundColor="Black">

@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Managers;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Factories
 {
     public static class ConfigureModeratorPageModelFactory
     {

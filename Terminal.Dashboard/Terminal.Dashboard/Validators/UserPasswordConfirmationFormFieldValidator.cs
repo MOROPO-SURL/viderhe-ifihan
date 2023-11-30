@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators.Contract;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Validators
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Validators
 {
     public class UserPasswordConfirmationFormFieldValidator : IFormFieldValidator
     {

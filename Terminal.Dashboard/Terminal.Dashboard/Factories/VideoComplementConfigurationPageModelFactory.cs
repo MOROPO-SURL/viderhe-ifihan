@@ -3,7 +3,7 @@ using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
 using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Factories
 {
     public static class VideoComplementConfigurationPageModelFactory
     {

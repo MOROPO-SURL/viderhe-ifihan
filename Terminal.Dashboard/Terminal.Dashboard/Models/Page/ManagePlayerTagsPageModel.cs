@@ -1,8 +1,8 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class ManagePlayerTagsPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ManagePlayerTagsPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         public ManagePlayerTagsPageModel()
         {

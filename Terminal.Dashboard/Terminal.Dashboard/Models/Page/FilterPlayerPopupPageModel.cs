@@ -1,8 +1,8 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class FilterPlayerPopupPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class FilterPlayerPopupPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private string name;
 

@@ -1,8 +1,8 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class ManageSoundsPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ManageSoundsPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private bool hasMoreItems;
         private SoundViewModel target;
@@ -16,10 +16,10 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 
         public bool HasMoreItems { get => hasMoreItems; set => SetProperty(ref hasMoreItems, value); }
 
-        public SoundViewModel Target 
-        { 
-            get => target; 
-            set => SetProperty(ref target, value); 
+        public SoundViewModel Target
+        {
+            get => target;
+            set => SetProperty(ref target, value);
         }
 
         protected override void DisposeUnmanagementResources()

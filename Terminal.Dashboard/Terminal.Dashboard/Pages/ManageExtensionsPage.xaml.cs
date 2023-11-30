@@ -3,13 +3,15 @@ using MOROPO.VIDERHE.Support.Extend.Providers;
 using MOROPO.VIDERHE.Support.Extend.Templating.Providers;
 using MOROPO.VIDERHE.Support.Extend.Transitioning.Providers;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageExtensionsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageExtensionsPageModel>
+    public partial class ManageExtensionsPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManageExtensionsPageModel>
     {
-        public ManageExtensionsPage() : base(new Models.Page.ManageExtensionsPageModel { IsBusy = true })
+        public ManageExtensionsPage() : base(new ManageExtensionsPageModel { IsBusy = true })
         {
             InitializeComponent();
 
@@ -35,7 +37,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 await System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(1));
 
-                return Managers.SessionManager.Instance.AccountExtensions.Select(item => new Models.View.ExtensionViewModel
+                return SessionManager.Instance.AccountExtensions.Select(item => new Models.View.ExtensionViewModel
                 {
                     Descriptor = ExtensionDescriptorProvider.Instance.GetDescriptorById(item.Id),
                     Enabled = item.Enabled,

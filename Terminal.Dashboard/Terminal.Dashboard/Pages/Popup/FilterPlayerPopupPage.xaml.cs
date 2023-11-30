@@ -1,9 +1,10 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
 using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup
 {
     public partial class FilterPlayerPopupPage : Rg.Plugins.Popup.Pages.PopupPage
     {
@@ -17,11 +18,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
 
             if (filter == null)
             {
-                BindingContext = new Models.Page.FilterPlayerPopupPageModel();
+                BindingContext = new FilterPlayerPopupPageModel();
             }
             else
             {
-                BindingContext = new Models.Page.FilterPlayerPopupPageModel
+                BindingContext = new FilterPlayerPopupPageModel
                 {
                     Name = filter.Name
                 };
@@ -69,9 +70,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
             BindingContextPageModel.Tags.Add(model);
         }
 
-        private Models.Page.FilterPlayerPopupPageModel BindingContextPageModel
+        private FilterPlayerPopupPageModel BindingContextPageModel
         {
-            get => BindingContext as Models.Page.FilterPlayerPopupPageModel;
+            get => BindingContext as FilterPlayerPopupPageModel;
         }
     }
 }

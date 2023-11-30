@@ -1,8 +1,8 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.View
 {
-    public class PlayerViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
+    public class PlayerViewModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel
     {
         private bool isConnected;
         private bool isEnabled;

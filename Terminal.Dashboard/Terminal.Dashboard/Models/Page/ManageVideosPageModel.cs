@@ -1,9 +1,9 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class ManageVideosPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ManageVideosPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private bool hasMoreItems;
         private System.Collections.ObjectModel.ObservableCollection<OverviewViewModel<VideoViewModel>> items;

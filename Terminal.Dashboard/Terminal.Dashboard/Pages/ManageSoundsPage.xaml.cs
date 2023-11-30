@@ -1,15 +1,17 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageSoundsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageSoundsPageModel>
+    public partial class ManageSoundsPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManageSoundsPageModel>
     {
         private int currentItemsPageNumber;
 
-        public ManageSoundsPage() : base(new Models.Page.ManageSoundsPageModel { IsBusy = true })
+        public ManageSoundsPage() : base(new ManageSoundsPageModel { IsBusy = true })
         {
             InitializeComponent();
 
@@ -53,7 +55,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     BindingContextPageModel.IsBusy = true;
                 });
 
-                var client = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
                 System.Exception failException = null;
 
@@ -159,7 +161,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (restart) currentItemsPageNumber = 0;
 
-            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
             imagesApiConnectClient.GetPageAsync(++currentItemsPageNumber).ContinueWith(task =>
             {

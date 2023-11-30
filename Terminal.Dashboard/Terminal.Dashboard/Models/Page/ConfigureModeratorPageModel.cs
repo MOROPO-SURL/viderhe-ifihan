@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
     public class ConfigureModeratorPageModel : FormPageModel
     {
@@ -15,7 +15,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
         private Xamarin.Forms.ImageSource targetIdentityImageSource;
         //private System.DateTime targetIdentityBornDate;
         //private SAPRESSC.Middleware.Identity.Persistence.Enumerations.CivilStatus targetIdentityCivilStatus;
-        private MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex targetIdentitySex;
+        private Framework.Guama.Identity.Persistence.Enumerations.Sex targetIdentitySex;
         //private string targetIdentityAlias;
         private string targetIdentityAbout;
 
@@ -49,7 +49,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
 
         //public SAPRESSC.Middleware.Identity.Persistence.Enumerations.CivilStatus TargetIdentityCivilStatus { get => targetIdentityCivilStatus; set => SetProperty(ref targetIdentityCivilStatus, value); }
 
-        public MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex TargetIdentitySex { get => targetIdentitySex; set => SetProperty(ref targetIdentitySex, value); }
+        public Framework.Guama.Identity.Persistence.Enumerations.Sex TargetIdentitySex { get => targetIdentitySex; set => SetProperty(ref targetIdentitySex, value); }
 
         //public string TargetIdentityAlias { get => targetIdentityAlias; set => SetProperty(ref targetIdentityAlias, value); }
 

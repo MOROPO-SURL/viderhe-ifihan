@@ -1,16 +1,19 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Terminal.Dashboard.Factories;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class FramePriorityChangePage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.FramePriorityChangePageModel>
+    public partial class FramePriorityChangePage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<FramePriorityChangePageModel>
     {
         private System.Action successCallbackAction;
 
         public FramePriorityChangePage(FrameViewModel[] frames, FrameViewModel target, System.Action successCallbackAction)
-            : base(Factories.FramePriorityChangePageModelFactory.Build(frames, target))
+            : base(FramePriorityChangePageModelFactory.Build(frames, target))
         {
             this.successCallbackAction = successCallbackAction;
 
@@ -32,7 +35,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             var pick = OrderingFrameCollectionView.SelectedItem as FrameViewModel;
 
-            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
+            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(SessionManager.Instance);
 
             client.OrderAsync(BindingContextPageModel.Target.Id, pick.Priority).ContinueWith(task =>
             {

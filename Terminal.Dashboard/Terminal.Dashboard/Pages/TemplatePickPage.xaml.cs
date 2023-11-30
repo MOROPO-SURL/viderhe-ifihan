@@ -2,11 +2,12 @@
 using MOROPO.VIDERHE.Support.Extend.Templating.Providers;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
 using MOROPO.VIDERHE.Support.Presentation.Providers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Providers;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class TemplatePickPage : XFToolKit.Mvvm.Pages.ContentPage
+    public partial class TemplatePickPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.ContentPage
     {
         private System.Action completedCallbackAction;
 
@@ -34,7 +35,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 return;
             }
 
-            var createPlacardEntryPointPage = Providers.PlacardConfigurationPageProvider.Instance.GetCreationEntryPointPageByDescriptor(descriptor, DelegationCompleted);
+            var createPlacardEntryPointPage = PlacardConfigurationPageProvider.Instance.GetCreationEntryPointPageByDescriptor(descriptor, DelegationCompleted);
 
             this.NavigationPushPageAsync(createPlacardEntryPointPage);
         }
