@@ -4,13 +4,12 @@ using MOROPO.Framework.Guama.Core.Persistence.Repositories;
 using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Managers.Facade;
 using MOROPO.VIDERHE.Cloud.Extensions;
 using MOROPO.VIDERHE.Cloud.Persistence.Entities;
-using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Linq;
 
 namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)]
-    [Route("[controller]")]
+    [Route("management/[area]/[controller]")]
     [Area("business")]
     public class MediaController : Framework.Guama.Core.Presentation.Web.Common.Controllers.BaseWebController
     {
@@ -132,7 +131,6 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
             return new NoContentResult();
         }
 
-        [Microsoft.AspNetCore.Authorization.AllowAnonymous]
         [HttpGet("[action]/{key}")]
         public IActionResult Moderator(System.Guid key)
         {

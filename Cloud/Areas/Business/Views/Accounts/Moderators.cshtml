@@ -96,7 +96,7 @@
                             <td>
                                 @if (item.ImageId != System.Guid.Empty)
                                 {
-                                    <img class="img-thumbnail" src="@Url.Action("image", "default", new { Area = "media", key = item.ImageId })" />
+                                    <img class="img-thumbnail" src="@Url.Action("moderator", "media", new { Area = "business", key = item.ImageId })" />
                                 }
                                 else
                                 {

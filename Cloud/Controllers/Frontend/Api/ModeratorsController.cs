@@ -36,23 +36,12 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 
         public override ActionResult<ModeratorDisplayModel[]> Get()
         {
-            return Ok(Repository.FindBy(GetGlobalSelector()).Select(entity => EntityToDisplayModel(entity)).ToArray());
-        }
-
-        protected override ModeratorDisplayModel EntityToDisplayModel(Moderator entity)
-        {
-            return base.EntityToDisplayModel(entity);
+            return Ok(Repository.FindBy(GetGlobalSelector()).ToArray().Select(entity => EntityToDisplayModel(entity)).ToArray());
         }
 
         protected override void PreCreate(Moderator entity, ModeratorInputModel inputModel)
         {
             base.PreCreate(entity, inputModel);
-
-            entity.AccountBridges.Add(new AccountModeratorBridge
-            {
-                SternId = entity.Id,
-                ProwId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value)
-            });
 
             if (inputModel.User.NewPassword != null)
             {
@@ -67,14 +56,14 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
                     {
                         using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
                         {
-                            entity.Identity.Image = new Image
+                            entity.Identity.Image = imageRepository.Add(new Image
                             {
                                 ContentType = inputModel.Identity.Image.ContentType,
                                 Length = inputModel.Identity.Image.ContentData.LongLength,
                                 Width = imageSkBitmap.Width,
                                 Height = imageSkBitmap.Height,
                                 About = string.Format("Image for Moderator: {0}", inputModel.Id)
-                            };
+                            }, User.Identity.Name, false);
 
                             imageFileManager.SaveImageFileContent(entity.Identity.Image.Id, inputModel.Identity.Image.ContentData, inputModel.Identity.Image.ContentType);
                         }
@@ -83,6 +72,19 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
             }
 
             entity.User.Signature = Framework.Guama.Security.Essential.Persistence.ORM.EF.Helpers.Integrity.UserIntegrityHelper.GetSignature(entity.User);
+        }
+
+        protected override void PostCreate(Moderator entity, ModeratorInputModel inputModel)
+        {
+            base.PostCreate(entity, inputModel);
+
+            entity.AccountBridges.Add(new AccountModeratorBridge
+            {
+                SternId = entity.Id,
+                ProwId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value)
+            });
+
+            Repository.Update(entity, User.Identity.Name);
         }
 
         protected override void PreEdit(Moderator entity, ModeratorInputModel inputModel)
@@ -102,14 +104,14 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
                     {
                         using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
                         {
-                            entity.Identity.Image = new Image
+                            entity.Identity.Image = imageRepository.Add(new Image
                             {
                                 ContentType = inputModel.Identity.Image.ContentType,
                                 Length = inputModel.Identity.Image.ContentData.LongLength,
                                 Width = imageSkBitmap.Width,
                                 Height = imageSkBitmap.Height,
                                 About = string.Format("Image for Moderator: {0}", inputModel.Id)
-                            };
+                            }, User.Identity.Name, false);
 
                             imageFileManager.SaveImageFileContent(entity.Identity.Image.Id, inputModel.Identity.Image.ContentData, inputModel.Identity.Image.ContentType);
                         }
@@ -131,6 +133,18 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
                 imageRepository.Delete(oldLogoImage, User.Identity.Name);
 
                 imageFileManager.DeleteImageFile(oldLogoImage);
+            }
+        }
+
+        protected override void PostDelete(Moderator entity)
+        {
+            base.PostDelete(entity);
+
+            if (entity.Identity.Image != null)
+            {
+                imageRepository.Delete(entity.Identity.Image, User.Identity.Name);
+
+                imageFileManager.DeleteImageFile(entity.Identity.Image);
             }
         }
     }
