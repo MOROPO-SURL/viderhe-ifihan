@@ -208,14 +208,86 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             return new NoContentResult();
         }
 
-        [HttpGet("[action]")]
-        public IActionResult Splash()
+        [HttpGet("thumbnail/logo")]
+        public IActionResult LogoThumbnail()
+        {
+            try
+            {
+                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
+
+                return new FileContentResult(thumbnailFileManager.GetThumbnailFileContent(account.Logo.Thumbnail), account.Logo.Thumbnail.ContentType);
+            }
+            catch (System.IO.IOException e)
+            {
+                logger.LogError(e.Message, e.InnerException);
+            }
+            catch { }
+
+            return new NoContentResult();
+        }
+
+        [HttpGet("splash/horizontal")]
+        public IActionResult HorizontalSplash()
         {
             try
             {
                 var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
                 return new FileContentResult(imageFileManager.GetImageFileContent(account.HorizontalSplash), account.HorizontalSplash.ContentType);
+            }
+            catch (System.IO.IOException e)
+            {
+                logger.LogError(e.Message, e.InnerException);
+            }
+            catch { }
+
+            return new NoContentResult();
+        }
+
+        [HttpGet("thumbnail/splash/horizontal")]
+        public IActionResult HorizontalSplashThumbnail()
+        {
+            try
+            {
+                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
+
+                return new FileContentResult(thumbnailFileManager.GetThumbnailFileContent(account.HorizontalSplash.Thumbnail), account.HorizontalSplash.Thumbnail.ContentType);
+            }
+            catch (System.IO.IOException e)
+            {
+                logger.LogError(e.Message, e.InnerException);
+            }
+            catch { }
+
+            return new NoContentResult();
+        }
+
+        [HttpGet("splash/vertical")]
+        public IActionResult VerticalSplash()
+        {
+            try
+            {
+                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
+
+                return new FileContentResult(imageFileManager.GetImageFileContent(account.VerticalSplash), account.VerticalSplash.ContentType);
+            }
+            catch (System.IO.IOException e)
+            {
+                logger.LogError(e.Message, e.InnerException);
+            }
+            catch { }
+
+            return new NoContentResult();
+        }
+
+        [HttpGet("thumbnail/splash/vertical")]
+        public IActionResult VerticalSplashThumbnail()
+        {
+            try
+            {
+                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
+
+                return new FileContentResult(thumbnailFileManager.GetThumbnailFileContent(account.VerticalSplash.Thumbnail), account.VerticalSplash.Thumbnail.ContentType);
             }
             catch (System.IO.IOException e)
             {

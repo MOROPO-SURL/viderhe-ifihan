@@ -60,14 +60,14 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Managers
             }
         }
 
-        public void SyncronizeRequiredAccountInformation(string name, Color primaryColor, Color secoundaryColor, System.Guid logoImageId, System.Guid horizontalSplashImageId, System.Guid verticalSplashImageId, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
+        public void SyncronizeRequiredAccountInformation(string name, Color primaryColor, Color secoundaryColor, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
         {
             AccountName = name;
             AccountPrimaryColor = primaryColor;
             AccountSecoundaryColor = secoundaryColor;
-            AccountLogoImageSource = ImageSource.FromUri(ImageUriFactory.BuildImageUri(logoImageId));
-            AccountHorizontalSplashImageSource = ImageSource.FromUri(ImageUriFactory.BuildImageUri(horizontalSplashImageId));
-            AccountVerticalSplashImageSource = ImageSource.FromUri(ImageUriFactory.BuildImageUri(verticalSplashImageId));
+            AccountLogoImageSource = ImageSource.FromUri(ThumbnailUriFactory.BuildLogoThumbnailUri());
+            AccountHorizontalSplashImageSource = ImageSource.FromUri(ThumbnailUriFactory.BuildSplashHorizontalThumbnailUri());
+            AccountVerticalSplashImageSource = ImageSource.FromUri(ThumbnailUriFactory.BuildSplashVerticalThumbnailUri());
             AccountDefaultOverlayId = defaultOverlay?.Id ?? null;
             AccountSerializedOverlayContext = serializedOverlayContext;
         }
@@ -138,7 +138,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Managers
 
             var model = await client.GetCurrentAsync();
 
-            SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.HorizontalSplashImageId, model.VerticalSplashImageId, defaultOverlay, model.SerializedOverlayContext);
+            SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), defaultOverlay, model.SerializedOverlayContext);
         }
 
         public async System.Threading.Tasks.Task SignInAsync(string server, bool useSSL, string login, string password, System.Action<string> callbackAction)
@@ -244,7 +244,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Managers
                     HttpClient = ffImageLoadingHttpClient
                 });
 
-                SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.HorizontalSplashImageId, model.VerticalSplashImageId, overalyDescriptor, model.SerializedOverlayContext);
+                SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), overalyDescriptor, model.SerializedOverlayContext);
             }
             catch (System.Exception e)
             {

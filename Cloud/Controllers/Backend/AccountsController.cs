@@ -7,7 +7,9 @@ using MOROPO.Framework.Guama.Identity.Persistence.Entities;
 using MOROPO.Framework.Guama.Media.Persistence.Entities;
 using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Managers.Facade;
 using MOROPO.Framework.Guama.Security.Essential.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Extensions;
 using MOROPO.VIDERHE.Cloud.Models.View;
+using MOROPO.VIDERHE.Cloud.Options;
 using MOROPO.VIDERHE.Cloud.Persistence.Entities;
 using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
 using MOROPO.VIDERHE.Cloud.Security.Authorization;
@@ -23,21 +25,27 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
         private const string HORIZONTAL_SPLASH_IMAGE_FILE_FIELD_NAME = "HorizontalSplashImageFile";
         private const string VERTICAL_SPLASH_IMAGE_FILE_FIELD_NAME = "VerticalSplashImageFile";
 
-        private readonly IImageFileManagerFacade imageFileManagerFacade;
+        private readonly IImageFileManagerFacade imageFileManager;
+        private readonly IThumbnailFileManagerFacade thumbnailFileManager;
         private readonly IEntityRepository<User, string> userRepository;
         private readonly IEntityRepository<Extension, System.Guid> extensionRepository;
         private readonly IEntityRepository<Image, System.Guid> imageRepository;
         private readonly IEntityRepository<PersonIdentity, System.Guid> identityRepository;
         private readonly IEntityRepository<Moderator, System.Guid> moderatorRepository;
+        private readonly IEntityRepository<Thumbnail, System.Guid> thumbnailRepository;
+        private readonly Microsoft.Extensions.Options.IOptions<MediaThumbnailResizeOptions> mediaThumbnailResizeOptions;
 
-        public AccountsController(IEntityRepository<Moderator, System.Guid> moderatorRepository, IEntityRepository<PersonIdentity, System.Guid> identityRepository, IImageFileManagerFacade imageFileManagerFacade, IEntityRepository<User, string> userRepository, IEntityRepository<Extension, System.Guid> extensionRepository, IEntityRepository<Image, System.Guid> imageRepository, IEntityRepository<Account, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AccountsController> localizer, ILogger<AccountsController> logger) : base(repository, localizer, logger)
+        public AccountsController(Microsoft.Extensions.Options.IOptions<MediaThumbnailResizeOptions> mediaThumbnailResizeOptions, IEntityRepository<Thumbnail, System.Guid> thumbnailRepository, IEntityRepository<Moderator, System.Guid> moderatorRepository, IEntityRepository<PersonIdentity, System.Guid> identityRepository, IThumbnailFileManagerFacade thumbnailFileManager, IImageFileManagerFacade imageFileManager, IEntityRepository<User, string> userRepository, IEntityRepository<Extension, System.Guid> extensionRepository, IEntityRepository<Image, System.Guid> imageRepository, IEntityRepository<Account, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AccountsController> localizer, ILogger<AccountsController> logger) : base(repository, localizer, logger)
         {
-            this.imageFileManagerFacade = imageFileManagerFacade;
+            this.imageFileManager = imageFileManager;
             this.userRepository = userRepository;
             this.extensionRepository = extensionRepository;
             this.imageRepository = imageRepository;
             this.identityRepository = identityRepository;
             this.moderatorRepository = moderatorRepository;
+            this.thumbnailRepository = thumbnailRepository;
+            this.thumbnailFileManager = thumbnailFileManager;
+            this.mediaThumbnailResizeOptions = mediaThumbnailResizeOptions;
         }
 
         [RequirePermissions(Permission.AccountViewer)]
@@ -102,37 +110,141 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
         {
             base.PreCreate(entity, modelInput);
 
+            SkiaSharp.SKImageInfo desiredImageInfo;
+
             using (var memoryStream = new System.IO.MemoryStream())
             {
                 modelInput.LogoImageFile.CopyTo(memoryStream);
 
-                var logoImage = new Image { ContentType = modelInput.LogoImageFile.ContentType, Length = modelInput.LogoImageFile.Length, About = "Account Logo " + entity.Id };
+                memoryStream.Position = 0;
 
-                imageFileManagerFacade.SaveImageFileContent(logoImage.Id, memoryStream.ToArray(), modelInput.LogoImageFile.ContentType);
+                using (var imageSkData = SkiaSharp.SKData.Create(memoryStream, memoryStream.Length))
+                {
+                    using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                    {
+                        var logoImage = new Image { ContentType = modelInput.LogoImageFile.ContentType, Length = modelInput.LogoImageFile.Length, About = "Account Logo " + entity.Id, Width = imageSkBitmap.Width, Height = imageSkBitmap.Height };
 
-                entity.Logo = logoImage;
+                        imageFileManager.SaveImageFileContent(logoImage.Id, memoryStream.ToArray(), modelInput.LogoImageFile.ContentType);
+
+                        entity.Logo = logoImage;
+
+                        if (imageSkBitmap.Width > imageSkBitmap.Height)
+                        {
+                            desiredImageInfo = imageSkBitmap.Info.LandscapeScale(mediaThumbnailResizeOptions.Value.DesiredWidth);
+                        }
+                        else
+                        {
+                            desiredImageInfo = imageSkBitmap.Info.PortraitScale(mediaThumbnailResizeOptions.Value.DesiredHeigth);
+                        }
+
+                        using (var thumbnailSkBitmap = imageSkBitmap.Resize(desiredImageInfo, SkiaSharp.SKFilterQuality.High))
+                        {
+                            using (var thumbnailSkImage = SkiaSharp.SKImage.FromBitmap(thumbnailSkBitmap))
+                            {
+                                var thumbnailSkData = thumbnailSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Png, 75);
+
+                                logoImage.Thumbnail = new Thumbnail
+                                {
+                                    ContentType = "image/png",
+                                    Length = thumbnailSkData.Size,
+                                    About = string.Format(string.Format("Thumbnail: {0}", logoImage.About))
+                                };
+
+                                thumbnailFileManager.SaveThumbnailFileContent(logoImage.Thumbnail.Id, thumbnailSkData.ToArray(), logoImage.Thumbnail.ContentType);
+                            }
+                        }
+                    }
+                }
             }
 
             using (var memoryStream = new System.IO.MemoryStream())
             {
                 modelInput.HorizontalSplashImageFile.CopyTo(memoryStream);
 
-                var splashImage = new Image { ContentType = modelInput.HorizontalSplashImageFile.ContentType, Length = modelInput.HorizontalSplashImageFile.Length, About = "Account Horizontal Splash " + entity.Id };
+                memoryStream.Position = 0;
 
-                imageFileManagerFacade.SaveImageFileContent(splashImage.Id, memoryStream.ToArray(), modelInput.HorizontalSplashImageFile.ContentType);
+                using (var imageSkData = SkiaSharp.SKData.Create(memoryStream, memoryStream.Length))
+                {
+                    using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                    {
+                        var splashImage = new Image { ContentType = modelInput.HorizontalSplashImageFile.ContentType, Length = modelInput.HorizontalSplashImageFile.Length, About = "Account Horizontal Splash " + entity.Id };
 
-                entity.HorizontalSplash = splashImage;
+                        imageFileManager.SaveImageFileContent(splashImage.Id, memoryStream.ToArray(), modelInput.HorizontalSplashImageFile.ContentType);
+
+                        entity.HorizontalSplash = splashImage;
+
+                        if (imageSkBitmap.Width > imageSkBitmap.Height)
+                        {
+                            desiredImageInfo = imageSkBitmap.Info.LandscapeScale(mediaThumbnailResizeOptions.Value.DesiredWidth);
+                        }
+                        else
+                        {
+                            desiredImageInfo = imageSkBitmap.Info.PortraitScale(mediaThumbnailResizeOptions.Value.DesiredHeigth);
+                        }
+
+                        using (var thumbnailSkBitmap = imageSkBitmap.Resize(desiredImageInfo, SkiaSharp.SKFilterQuality.High))
+                        {
+                            using (var thumbnailSkImage = SkiaSharp.SKImage.FromBitmap(thumbnailSkBitmap))
+                            {
+                                var thumbnailSkData = thumbnailSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Png, 75);
+
+                                splashImage.Thumbnail = new Thumbnail
+                                {
+                                    ContentType = "image/png",
+                                    Length = thumbnailSkData.Size,
+                                    About = string.Format(string.Format("Thumbnail: {0}", splashImage.About))
+                                };
+
+                                thumbnailFileManager.SaveThumbnailFileContent(splashImage.Thumbnail.Id, thumbnailSkData.ToArray(), splashImage.Thumbnail.ContentType);
+                            }
+                        }
+                    }
+                }
             }
 
             using (var memoryStream = new System.IO.MemoryStream())
             {
                 modelInput.VerticalSplashImageFile.CopyTo(memoryStream);
 
-                var splashImage = new Image { ContentType = modelInput.VerticalSplashImageFile.ContentType, Length = modelInput.VerticalSplashImageFile.Length, About = "Account Vertical Splash " + entity.Id };
+                memoryStream.Position = 0;
 
-                imageFileManagerFacade.SaveImageFileContent(splashImage.Id, memoryStream.ToArray(), modelInput.VerticalSplashImageFile.ContentType);
+                using (var imageSkData = SkiaSharp.SKData.Create(memoryStream, memoryStream.Length))
+                {
+                    using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                    {
+                        var splashImage = new Image { ContentType = modelInput.VerticalSplashImageFile.ContentType, Length = modelInput.VerticalSplashImageFile.Length, About = "Account Vertical Splash " + entity.Id };
 
-                entity.VerticalSplash = splashImage;
+                        imageFileManager.SaveImageFileContent(splashImage.Id, memoryStream.ToArray(), modelInput.VerticalSplashImageFile.ContentType);
+
+                        entity.VerticalSplash = splashImage;
+
+                        if (imageSkBitmap.Width > imageSkBitmap.Height)
+                        {
+                            desiredImageInfo = imageSkBitmap.Info.LandscapeScale(mediaThumbnailResizeOptions.Value.DesiredWidth);
+                        }
+                        else
+                        {
+                            desiredImageInfo = imageSkBitmap.Info.PortraitScale(mediaThumbnailResizeOptions.Value.DesiredHeigth);
+                        }
+
+                        using (var thumbnailSkBitmap = imageSkBitmap.Resize(desiredImageInfo, SkiaSharp.SKFilterQuality.High))
+                        {
+                            using (var thumbnailSkImage = SkiaSharp.SKImage.FromBitmap(thumbnailSkBitmap))
+                            {
+                                var thumbnailSkData = thumbnailSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Png, 75);
+
+                                splashImage.Thumbnail = new Thumbnail
+                                {
+                                    ContentType = "image/png",
+                                    Length = thumbnailSkData.Size,
+                                    About = string.Format(string.Format("Thumbnail: {0}", splashImage.About))
+                                };
+
+                                thumbnailFileManager.SaveThumbnailFileContent(splashImage.Thumbnail.Id, thumbnailSkData.ToArray(), splashImage.Thumbnail.ContentType);
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -222,17 +334,57 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
         {
             base.PreEdit(entity, modelInput);
 
+            SkiaSharp.SKImageInfo desiredImageInfo;
+
             if (modelInput.LogoImageFile != null)
             {
                 using (var memoryStream = new System.IO.MemoryStream())
                 {
                     modelInput.LogoImageFile.CopyTo(memoryStream);
 
-                    var logoImage = new Image { ContentType = modelInput.LogoImageFile.ContentType, Length = modelInput.LogoImageFile.Length, About = "Account Logo " + entity.Id };
+                    memoryStream.Position = 0;
 
-                    imageFileManagerFacade.SaveImageFileContent(logoImage.Id, memoryStream.ToArray(), modelInput.LogoImageFile.ContentType);
+                    using (var imageSkData = SkiaSharp.SKData.Create(memoryStream, memoryStream.Length))
+                    {
+                        using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                        {
+                            entity.Logo = imageRepository.Add(new Image 
+                            { 
+                                ContentType = modelInput.LogoImageFile.ContentType, 
+                                Length = modelInput.LogoImageFile.Length, About = "Account Logo " + entity.Id,
+                                Width = imageSkBitmap.Width,
+                                Height = imageSkBitmap.Height
+                            }, User.Identity.Name, false);
 
-                    entity.Logo = logoImage;
+                            imageFileManager.SaveImageFileContent(entity.Logo.Id, memoryStream.ToArray(), modelInput.LogoImageFile.ContentType);
+
+                            if (imageSkBitmap.Width > imageSkBitmap.Height)
+                            {
+                                desiredImageInfo = imageSkBitmap.Info.LandscapeScale(mediaThumbnailResizeOptions.Value.DesiredWidth);
+                            }
+                            else
+                            {
+                                desiredImageInfo = imageSkBitmap.Info.PortraitScale(mediaThumbnailResizeOptions.Value.DesiredHeigth);
+                            }
+
+                            using (var thumbnailSkBitmap = imageSkBitmap.Resize(desiredImageInfo, SkiaSharp.SKFilterQuality.High))
+                            {
+                                using (var thumbnailSkImage = SkiaSharp.SKImage.FromBitmap(thumbnailSkBitmap))
+                                {
+                                    var thumbnailSkData = thumbnailSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Png, 75);
+
+                                    entity.Logo.Thumbnail = thumbnailRepository.Add(new Thumbnail
+                                    {
+                                        ContentType = "image/png",
+                                        Length = thumbnailSkData.Size,
+                                        About = string.Format(string.Format("Thumbnail: {0}", entity.Logo.About))
+                                    }, User.Identity.Name, false);
+
+                                    thumbnailFileManager.SaveThumbnailFileContent(entity.Logo.Thumbnail.Id, thumbnailSkData.ToArray(), entity.Logo.Thumbnail.ContentType);
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
@@ -242,11 +394,49 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
                 {
                     modelInput.HorizontalSplashImageFile.CopyTo(memoryStream);
 
-                    var splashImage = new Image { ContentType = modelInput.HorizontalSplashImageFile.ContentType, Length = modelInput.HorizontalSplashImageFile.Length, About = "Account Horizontal Splash " + entity.Id };
+                    memoryStream.Position = 0;
 
-                    imageFileManagerFacade.SaveImageFileContent(splashImage.Id, memoryStream.ToArray(), modelInput.HorizontalSplashImageFile.ContentType);
+                    using (var imageSkData = SkiaSharp.SKData.Create(memoryStream, memoryStream.Length))
+                    {
+                        using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                        {
+                            entity.HorizontalSplash = imageRepository.Add(new Image { 
+                                ContentType = modelInput.HorizontalSplashImageFile.ContentType, 
+                                Length = modelInput.HorizontalSplashImageFile.Length, 
+                                About = "Account Horizontal Splash " + entity.Id,
+                                Width = imageSkBitmap.Width,
+                                Height = imageSkBitmap.Height
+                            }, User.Identity.Name, false);
 
-                    entity.HorizontalSplash = splashImage;
+                            imageFileManager.SaveImageFileContent(entity.HorizontalSplash.Id, memoryStream.ToArray(), modelInput.HorizontalSplashImageFile.ContentType);
+
+                            if (imageSkBitmap.Width > imageSkBitmap.Height)
+                            {
+                                desiredImageInfo = imageSkBitmap.Info.LandscapeScale(mediaThumbnailResizeOptions.Value.DesiredWidth);
+                            }
+                            else
+                            {
+                                desiredImageInfo = imageSkBitmap.Info.PortraitScale(mediaThumbnailResizeOptions.Value.DesiredHeigth);
+                            }
+
+                            using (var thumbnailSkBitmap = imageSkBitmap.Resize(desiredImageInfo, SkiaSharp.SKFilterQuality.High))
+                            {
+                                using (var thumbnailSkImage = SkiaSharp.SKImage.FromBitmap(thumbnailSkBitmap))
+                                {
+                                    var thumbnailSkData = thumbnailSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Png, 75);
+
+                                    entity.HorizontalSplash.Thumbnail = thumbnailRepository.Add(new Thumbnail
+                                    {
+                                        ContentType = "image/png",
+                                        Length = thumbnailSkData.Size,
+                                        About = string.Format(string.Format("Thumbnail: {0}", entity.HorizontalSplash.About))
+                                    }, User.Identity.Name, false);
+
+                                    thumbnailFileManager.SaveThumbnailFileContent(entity.HorizontalSplash.Thumbnail.Id, thumbnailSkData.ToArray(), entity.HorizontalSplash.Thumbnail.ContentType);
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
@@ -256,11 +446,49 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
                 {
                     modelInput.VerticalSplashImageFile.CopyTo(memoryStream);
 
-                    var splashImage = new Image { ContentType = modelInput.VerticalSplashImageFile.ContentType, Length = modelInput.VerticalSplashImageFile.Length, About = "Account Vertical Splash " + entity.Id };
+                    memoryStream.Position = 0;
 
-                    imageFileManagerFacade.SaveImageFileContent(splashImage.Id, memoryStream.ToArray(), modelInput.VerticalSplashImageFile.ContentType);
+                    using (var imageSkData = SkiaSharp.SKData.Create(memoryStream, memoryStream.Length))
+                    {
+                        using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                        {
+                            entity.VerticalSplash = imageRepository.Add(new Image { 
+                                ContentType = modelInput.VerticalSplashImageFile.ContentType, 
+                                Length = modelInput.VerticalSplashImageFile.Length, 
+                                About = "Account Vertical Splash " + entity.Id,
+                                Width = imageSkBitmap.Width,
+                                Height = imageSkBitmap.Height
+                            }, User.Identity.Name, false);
 
-                    entity.VerticalSplash = splashImage;
+                            imageFileManager.SaveImageFileContent(entity.VerticalSplash.Id, memoryStream.ToArray(), modelInput.VerticalSplashImageFile.ContentType);
+
+                            if (imageSkBitmap.Width > imageSkBitmap.Height)
+                            {
+                                desiredImageInfo = imageSkBitmap.Info.LandscapeScale(mediaThumbnailResizeOptions.Value.DesiredWidth);
+                            }
+                            else
+                            {
+                                desiredImageInfo = imageSkBitmap.Info.PortraitScale(mediaThumbnailResizeOptions.Value.DesiredHeigth);
+                            }
+
+                            using (var thumbnailSkBitmap = imageSkBitmap.Resize(desiredImageInfo, SkiaSharp.SKFilterQuality.High))
+                            {
+                                using (var thumbnailSkImage = SkiaSharp.SKImage.FromBitmap(thumbnailSkBitmap))
+                                {
+                                    var thumbnailSkData = thumbnailSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Png, 75);
+
+                                    entity.VerticalSplash.Thumbnail = thumbnailRepository.Add(new Thumbnail
+                                    {
+                                        ContentType = "image/png",
+                                        Length = thumbnailSkData.Size,
+                                        About = string.Format(string.Format("Thumbnail: {0}", entity.VerticalSplash.About))
+                                    }, User.Identity.Name, false);
+
+                                    thumbnailFileManager.SaveThumbnailFileContent(entity.VerticalSplash.Thumbnail.Id, thumbnailSkData.ToArray(), entity.VerticalSplash.Thumbnail.ContentType);
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -273,27 +501,39 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
             {
                 var oldLogoImage = imageRepository.Get(modelInput.LogoImageId);
 
-                imageRepository.Delete(oldLogoImage, User.Identity.Name);
+                imageRepository.Delete(oldLogoImage, User.Identity.Name, false);
 
-                imageFileManagerFacade.DeleteImageFile(oldLogoImage);
+                if (oldLogoImage.Thumbnail != null) thumbnailRepository.Delete(oldLogoImage.Thumbnail, User.Identity.Name);
+
+                imageFileManager.DeleteImageFile(oldLogoImage);
+
+                if (oldLogoImage.Thumbnail != null) thumbnailFileManager.DeleteThumbnailFile(oldLogoImage.Thumbnail);
             }
 
             if (modelInput.HorizontalSplashImageFile != null)
             {
                 var oldSplashImage = imageRepository.Get(modelInput.HorizontalSplashImageId);
 
-                imageRepository.Delete(oldSplashImage, User.Identity.Name);
+                imageRepository.Delete(oldSplashImage, User.Identity.Name, false);
 
-                imageFileManagerFacade.DeleteImageFile(oldSplashImage);
+                if (oldSplashImage.Thumbnail != null) thumbnailRepository.Delete(oldSplashImage.Thumbnail, User.Identity.Name);
+
+                imageFileManager.DeleteImageFile(oldSplashImage);
+
+                if (oldSplashImage.Thumbnail != null) thumbnailFileManager.DeleteThumbnailFile(oldSplashImage.Thumbnail);
             }
 
             if (modelInput.VerticalSplashImageFile != null)
             {
                 var oldSplashImage = imageRepository.Get(modelInput.VerticalSplashImageId);
 
-                imageRepository.Delete(oldSplashImage, User.Identity.Name);
+                imageRepository.Delete(oldSplashImage, User.Identity.Name, false);
 
-                imageFileManagerFacade.DeleteImageFile(oldSplashImage);
+                if (oldSplashImage.Thumbnail != null) thumbnailRepository.Delete(oldSplashImage.Thumbnail, User.Identity.Name);
+
+                imageFileManager.DeleteImageFile(oldSplashImage);
+
+                if (oldSplashImage.Thumbnail != null) thumbnailFileManager.DeleteThumbnailFile(oldSplashImage.Thumbnail);
             }
         }
 
@@ -327,15 +567,15 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
 
             imageRepository.Delete(entity.Logo, User.Identity.Name);
 
-            imageFileManagerFacade.DeleteImageFile(entity.Logo);
+            imageFileManager.DeleteImageFile(entity.Logo);
 
             imageRepository.Delete(entity.HorizontalSplash, User.Identity.Name);
 
-            imageFileManagerFacade.DeleteImageFile(entity.HorizontalSplash);
+            imageFileManager.DeleteImageFile(entity.HorizontalSplash);
 
             imageRepository.Delete(entity.VerticalSplash, User.Identity.Name);
 
-            imageFileManagerFacade.DeleteImageFile(entity.VerticalSplash);
+            imageFileManager.DeleteImageFile(entity.VerticalSplash);
         }
 
         #region Account Moderators Management
@@ -456,7 +696,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
 
                                 bridge.Stern.Identity.Image = imageRepository.Add(new Image { ContentType = modelInput.ImageFile.ContentType, Length = modelInput.ImageFile.Length, About = "Moderator for Account " + entity.Id }, User.Identity.Name, false);
 
-                                imageFileManagerFacade.SaveImageFileContent(bridge.Stern.Identity.Image.Id, memoryStream.ToArray(), modelInput.ImageFile.ContentType);
+                                imageFileManager.SaveImageFileContent(bridge.Stern.Identity.Image.Id, memoryStream.ToArray(), modelInput.ImageFile.ContentType);
                             }
                         }
 
@@ -563,7 +803,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
                         {
                             if (modelInput.ResetImage && bridge.Stern.Identity.Image != null)
                             {
-                                imageFileManagerFacade.DeleteImageFile(bridge.Stern.Identity.Image);
+                                imageFileManager.DeleteImageFile(bridge.Stern.Identity.Image);
 
                                 imageRepository.Delete(bridge.Stern.Identity.Image, User.Identity.Name);
                             }
@@ -572,7 +812,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
                         {
                             if (bridge.Stern.Identity.Image != null)
                             {
-                                imageFileManagerFacade.DeleteImageFile(bridge.Stern.Identity.Image);
+                                imageFileManager.DeleteImageFile(bridge.Stern.Identity.Image);
 
                                 imageRepository.Delete(bridge.Stern.Identity.Image, User.Identity.Name);
                             }
@@ -583,7 +823,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
 
                                 bridge.Stern.Identity.Image = imageRepository.Add(new Image { ContentType = modelInput.ImageFile.ContentType, Length = modelInput.ImageFile.Length, About = "Moderator " + entity.Id }, User.Identity.Name, false);
 
-                                imageFileManagerFacade.SaveImageFileContent(bridge.Stern.Identity.Image.Id, memoryStream.ToArray(), modelInput.ImageFile.ContentType);
+                                imageFileManager.SaveImageFileContent(bridge.Stern.Identity.Image.Id, memoryStream.ToArray(), modelInput.ImageFile.ContentType);
                             }
                         }
 
@@ -644,7 +884,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
 
                 if (image != null)
                 {
-                    imageFileManagerFacade.DeleteImageFile(image);
+                    imageFileManager.DeleteImageFile(image);
                 }
 
                 SetDefaultNotification(NotificationType.Success, GetDeletionSuccessMessage());
