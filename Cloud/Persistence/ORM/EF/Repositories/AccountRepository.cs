@@ -21,7 +21,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Repositories
                 .Include(entity => entity.GradientBridges)
                 .Include(entity => entity.TextBridges)
                 .Include(entity => entity.ImageBridges).ThenInclude(bridge => bridge.Stern)
-                .Include(entity => entity.ModeratorBridges).ThenInclude(bridge => bridge.Stern).ThenInclude(e => e.Identity).ThenInclude(e => e.Image)
+                .Include(entity => entity.ModeratorBridges).ThenInclude(bridge => bridge.Stern).ThenInclude(e => e.Identity).ThenInclude(e => e.Image).ThenInclude(e => e.Thumbnail)
                 .Include(entity => entity.Players).ThenInclude(entity => entity.Screenplay);
         }
     }

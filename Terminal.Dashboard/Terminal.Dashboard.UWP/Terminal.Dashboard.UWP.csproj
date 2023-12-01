@@ -343,9 +343,6 @@
       <Name>Terminal.Dashboard</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Terminal.Dashboard.UWP_TemporaryKey.pfx" />
-  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

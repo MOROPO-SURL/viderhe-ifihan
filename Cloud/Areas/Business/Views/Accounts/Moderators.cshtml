@@ -43,7 +43,7 @@
         <div class="card mb-3">
             <div class="row no-gutters">
                 <div class="col-auto">
-                    <img height="200" src="@Url.Action("image", "default", new { Area = "media", key = Model.Account.LogoImageId })" />
+                    <img height="200" src="@Url.Action("ThumbnailLogo", "Media", new { Area = "business", accountId = Model.Account.Id })" />
                 </div>
                 <div class="col">
                     <div class="card-block p-3">

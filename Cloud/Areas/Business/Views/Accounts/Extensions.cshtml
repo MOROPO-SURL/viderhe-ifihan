@@ -54,7 +54,7 @@
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-auto">
-                        <img height="200" src="@Url.Action("image", "default", new { Area = "media", key = Model.Account.Logo.Id })" />
+                        <img height="200" src="@Url.Action("ThumbnailLogo", "Media", new { Area = "business", accountId = Model.AccountId })" />
                     </div>
                     <div class="col">
                         <div class="card-block p-3">
@@ -82,7 +82,7 @@
                         for (int i = 0; i < Model.SelectableExtensions.Count(); i++)
                         {
                             <div class="col-md-6">
-                                @Html.EditorFor(model => model.SelectableExtensions[i], "SelectionDescriptedGuidIDItemInputViewModel");
+                                @Html.EditorFor(model => model.SelectableExtensions[i], "SelectionDescriptedGuidIDItemInputViewModel")
                             </div>
                         }
                     }

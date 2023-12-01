@@ -438,10 +438,12 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
                 {
                     try
                     {
+                        var moderator = moderatorRepository.Add(modelInput.Export(), User.Identity.Name, false);
+
                         var bridge = new AccountModeratorBridge
                         {
                             ProwId = entity.Id,
-                            Stern = modelInput.Export()
+                            Stern = moderator
                         };
 
                         bridge.Stern.ModerationKind = ModerationKind.Privileged;
@@ -452,11 +454,9 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
                             {
                                 modelInput.ImageFile.CopyTo(memoryStream);
 
-                                var image = new Image { ContentType = modelInput.ImageFile.ContentType, Length = modelInput.ImageFile.Length, About = "Moderator for Account " + entity.Id };
+                                bridge.Stern.Identity.Image = imageRepository.Add(new Image { ContentType = modelInput.ImageFile.ContentType, Length = modelInput.ImageFile.Length, About = "Moderator for Account " + entity.Id }, User.Identity.Name, false);
 
-                                imageFileManagerFacade.SaveImageFileContent(image.Id, memoryStream.ToArray(), modelInput.ImageFile.ContentType);
-
-                                bridge.Stern.Identity.Image = image;
+                                imageFileManagerFacade.SaveImageFileContent(bridge.Stern.Identity.Image.Id, memoryStream.ToArray(), modelInput.ImageFile.ContentType);
                             }
                         }
 
@@ -581,11 +581,9 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
                             {
                                 modelInput.ImageFile.CopyTo(memoryStream);
 
-                                var image = new Image { ContentType = modelInput.ImageFile.ContentType, Length = modelInput.ImageFile.Length, About = "Moderator " + entity.Id };
+                                bridge.Stern.Identity.Image = imageRepository.Add(new Image { ContentType = modelInput.ImageFile.ContentType, Length = modelInput.ImageFile.Length, About = "Moderator " + entity.Id }, User.Identity.Name, false);
 
-                                imageFileManagerFacade.SaveImageFileContent(image.Id, memoryStream.ToArray(), modelInput.ImageFile.ContentType);
-
-                                bridge.Stern.Identity.Image = image;
+                                imageFileManagerFacade.SaveImageFileContent(bridge.Stern.Identity.Image.Id, memoryStream.ToArray(), modelInput.ImageFile.ContentType);
                             }
                         }
 
@@ -635,6 +633,8 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
 
                 identityRepository.Delete(bridge.Stern.Identity, User.Identity.Name, false);
 
+                var image = bridge.Stern.Identity.Image;
+
                 if (bridge.Stern.Identity.Image != null)
                 {
                     imageRepository.Delete(bridge.Stern.Identity.Image, User.Identity.Name, false);
@@ -642,9 +642,9 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
 
                 moderatorRepository.Delete(bridge.Stern, User.Identity.Name);
 
-                if (bridge.Stern.Identity.Image != null)
+                if (image != null)
                 {
-                    imageFileManagerFacade.DeleteImageFile(bridge.Stern.Identity.Image);
+                    imageFileManagerFacade.DeleteImageFile(image);
                 }
 
                 SetDefaultNotification(NotificationType.Success, GetDeletionSuccessMessage());

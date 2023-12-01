@@ -32,6 +32,11 @@ namespace MOROPO.VIDERHE.Cloud
         {
             #region Ensure Required Assemblies load
 
+            _ = new Extend.Essential.Descriptors.EssentialExtensionDescriptor();
+            _ = new Extend.Essential.Overlaying.Descriptors.SimpleHighlightsOverlayDescriptor();
+            _ = new Extend.Essential.Transitioning.Transitions.ArriveTransitionDescriptor();
+            _ = new Extend.Essential.Templating.Descriptors.SimplePictureTemplateDescriptor();
+
             var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 
             var extensionRootDirectoryInfo = new System.IO.DirectoryInfo(extensionRootDirectoryPath);

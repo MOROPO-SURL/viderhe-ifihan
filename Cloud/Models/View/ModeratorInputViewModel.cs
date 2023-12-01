@@ -83,7 +83,7 @@ namespace MOROPO.VIDERHE.Cloud.Models.View
             Sex = entity.Identity.Sex;
             About = entity.Identity.About;
             ImageId = entity.Identity.ImageId ?? System.Guid.Empty;
-            ImageExtension = MimeTypes.MimeTypeMap.GetExtension(entity.Identity.Image?.ContentType) ?? null;
+            ImageExtension = entity.Identity.Image == null ? null : MimeTypes.MimeTypeMap.GetExtension(entity.Identity.Image.ContentType);
         }
 
         public void Mergue(Moderator entity)
