@@ -65,13 +65,6 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
             {
                 var extension = System.IO.Path.GetExtension(targetFileData.FilePath).ToLowerInvariant();
 
-                var contentType = string.Format("image/{0}", extension.Substring(1));
-
-                if (extension == "jpg")
-                {
-                    contentType = "image/jpeg";
-                }
-
                 var client = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
                 using (var imageFileStream = targetFileData.GetStream())
@@ -80,7 +73,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
                     await imageFileStream.ReadAsync(imageData, 0, imageData.Length);
 
-                    await client.UploadAsync(BindingContextPageModel.About, imageData, contentType, "file", targetFileData.FileName);
+                    await client.UploadAsync(BindingContextPageModel.About, imageData, MimeTypes.MimeTypeMap.GetMimeType(extension), "file", targetFileData.FileName);
                 }
             }).ContinueWith(task =>
             {

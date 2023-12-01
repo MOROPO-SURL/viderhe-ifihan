@@ -28,7 +28,7 @@
 		<PackageReference Include="MediaToolkit.NetCore" Version="0.2.1-preview" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.25" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
-		<PackageReference Include="GuamaFramework.Core.Presentation.Web.API" Version="6.0.0.18" />
+		<PackageReference Include="GuamaFramework.Core.Presentation.Web.API" Version="6.0.0.19" />
 		<PackageReference Include="GuamaFramework.Core.Security.Common.Presentation.Web.Frontend" Version="6.0.0.15" />
 		<PackageReference Include="GuamaFramework.Identity.Presentation.Web.Common" Version="6.0.0.15" />
 		<PackageReference Include="GuamaFramework.Security.Essential.Persistence.ORM.EF" Version="6.0.0.16" />
