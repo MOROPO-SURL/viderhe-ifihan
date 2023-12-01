@@ -302,7 +302,7 @@ namespace MOROPO.VIDERHE.Cloud
             app.UseAuthentication();
             app.UseSession();
             app.UseRouting();
-
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<DashboardHub>("/hubs/dashboard");
