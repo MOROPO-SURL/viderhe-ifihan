@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.DesktopExtension.Helper
+﻿namespace MOROPO.VIDERHE.Terminal.Player.UWP.DesktopExtension.PlatformInterop
 {
     /// <summary>
     /// Interaction logic for App.xaml

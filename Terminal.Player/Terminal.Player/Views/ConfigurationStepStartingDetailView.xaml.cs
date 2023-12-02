@@ -1,8 +1,9 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Managers;
+using MOROPO.VIDERHE.Terminal.Player.Helpers.Facade;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Views
+namespace MOROPO.VIDERHE.Terminal.Player.Views
 {
-    public partial class ConfigurationStepStartingDetailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class ConfigurationStepStartingDetailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
         private const string SERVER_SECURITY_SSL_OPTION = "Protegidas por SSL (https)";
         private const string SERVER_SECURITY_CLEARTEXT_OPTION = "Texto plano (http)";
@@ -54,7 +55,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Views
 
         private void OpenSystemSettingsButton_Clicked(object sender, System.EventArgs eventArgs) 
         {
-            Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>().OpenSystemSettings();
+            Xamarin.Forms.DependencyService.Get<IPlatformControlHelperFacade>().OpenSystemSettings();
         }
 
         private void PresentServerAddress()

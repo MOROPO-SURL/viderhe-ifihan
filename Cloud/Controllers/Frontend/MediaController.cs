@@ -56,26 +56,6 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
 
                 var image = account.ImageBridges.FirstOrDefault(b => b.SternId == key)?.Stern;
 
-                if (image == null)
-                {
-                    if (account.LogoId == key)
-                    {
-                        image = account.Logo;
-                    }
-                    else if (account.HorizontalSplashId == key)
-                    {
-                        image = account.HorizontalSplash;
-                    }
-                    else if (account.VerticalSplashId == key)
-                    {
-                        image = account.VerticalSplash;
-                    }
-                    else
-                    {
-                        return new NoContentResult();
-                    }
-                }
-
                 if (image.Width > 0 && image.Height > 0 && image.Width <= width && image.Height <= height)
                 {
                     return new FileContentResult(imageFileManager.GetImageFileContent(image), image.ContentType);
@@ -244,6 +224,68 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             return new NoContentResult();
         }
 
+        [HttpGet("splash/horizontal/w/{width}/h/{height}")]
+        public IActionResult HorizontalSplash(int width, int height)
+        {
+            try
+            {
+                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
+
+                if (account.HorizontalSplash.Width > 0 && account.HorizontalSplash.Height > 0 && account.HorizontalSplash.Width <= width && account.HorizontalSplash.Height <= height)
+                {
+                    return new FileContentResult(imageFileManager.GetImageFileContent(account.HorizontalSplash), account.HorizontalSplash.ContentType);
+                }
+
+                byte[] resultContent = null;
+
+                using (var imageStream = new System.IO.MemoryStream(imageFileManager.GetImageFileContent(account.HorizontalSplash)))
+                {
+                    using (var imageSkData = SkiaSharp.SKData.Create(imageStream))
+                    {
+                        using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                        {
+                            SkiaSharp.SKImageInfo desiredImageInfo;
+
+                            if (imageSkBitmap.Width <= width && imageSkBitmap.Height <= height)
+                            {
+                                return new FileContentResult(imageFileManager.GetImageFileContent(account.HorizontalSplash), account.HorizontalSplash.ContentType);
+                            }
+
+                            logger.LogDebug(">>>>>>>>>>>>>>>>> Image shake required!!");
+
+                            if (imageSkBitmap.Width > imageSkBitmap.Height)
+                            {
+                                desiredImageInfo = imageSkBitmap.Info.LandscapeScale(width);
+                            }
+                            else
+                            {
+                                desiredImageInfo = imageSkBitmap.Info.PortraitScale(height);
+                            }
+
+                            using (var cropSkBitmap = imageSkBitmap.Resize(desiredImageInfo, SkiaSharp.SKFilterQuality.High))
+                            {
+                                using (var cropSkImage = SkiaSharp.SKImage.FromBitmap(cropSkBitmap))
+                                {
+                                    var cropSkData = cropSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Png, 75);
+
+                                    resultContent = cropSkData.ToArray();
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return new FileContentResult(resultContent, "image/png");
+            }
+            catch (System.IO.DirectoryNotFoundException e)
+            {
+                logger.LogError(e.Message, e.InnerException);
+            }
+            catch { }
+
+            return new NoContentResult();
+        }
+
         [HttpGet("thumbnail/splash/horizontal")]
         public IActionResult HorizontalSplashThumbnail()
         {
@@ -272,6 +314,68 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
                 return new FileContentResult(imageFileManager.GetImageFileContent(account.VerticalSplash), account.VerticalSplash.ContentType);
             }
             catch (System.IO.IOException e)
+            {
+                logger.LogError(e.Message, e.InnerException);
+            }
+            catch { }
+
+            return new NoContentResult();
+        }
+
+        [HttpGet("splash/vertical/w/{width}/h/{height}")]
+        public IActionResult VerticalSplash(int width, int height)
+        {
+            try
+            {
+                var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
+
+                if (account.VerticalSplash.Width > 0 && account.VerticalSplash.Height > 0 && account.VerticalSplash.Width <= width && account.VerticalSplash.Height <= height)
+                {
+                    return new FileContentResult(imageFileManager.GetImageFileContent(account.VerticalSplash), account.VerticalSplash.ContentType);
+                }
+
+                byte[] resultContent = null;
+
+                using (var imageStream = new System.IO.MemoryStream(imageFileManager.GetImageFileContent(account.VerticalSplash)))
+                {
+                    using (var imageSkData = SkiaSharp.SKData.Create(imageStream))
+                    {
+                        using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                        {
+                            SkiaSharp.SKImageInfo desiredImageInfo;
+
+                            if (imageSkBitmap.Width <= width && imageSkBitmap.Height <= height)
+                            {
+                                return new FileContentResult(imageFileManager.GetImageFileContent(account.VerticalSplash), account.VerticalSplash.ContentType);
+                            }
+
+                            logger.LogDebug(">>>>>>>>>>>>>>>>> Image shake required!!");
+
+                            if (imageSkBitmap.Width > imageSkBitmap.Height)
+                            {
+                                desiredImageInfo = imageSkBitmap.Info.LandscapeScale(width);
+                            }
+                            else
+                            {
+                                desiredImageInfo = imageSkBitmap.Info.PortraitScale(height);
+                            }
+
+                            using (var cropSkBitmap = imageSkBitmap.Resize(desiredImageInfo, SkiaSharp.SKFilterQuality.High))
+                            {
+                                using (var cropSkImage = SkiaSharp.SKImage.FromBitmap(cropSkBitmap))
+                                {
+                                    var cropSkData = cropSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Png, 75);
+
+                                    resultContent = cropSkData.ToArray();
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return new FileContentResult(resultContent, "image/png");
+            }
+            catch (System.IO.DirectoryNotFoundException e)
             {
                 logger.LogError(e.Message, e.InnerException);
             }

@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Models.View
+namespace MOROPO.VIDERHE.Terminal.Player.Models.View
 {
     public class AccountViewModel
     {

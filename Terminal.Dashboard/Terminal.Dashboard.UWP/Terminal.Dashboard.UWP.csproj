@@ -8,7 +8,7 @@
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MORPO.VIDERHE.Terminal.Dashboard.UWP</RootNamespace>
-    <AssemblyName>MOROPO.VIDERHE.Terminal.Dashboard.UWP</AssemblyName>
+    <AssemblyName>VIDERHE.Control.UWP</AssemblyName>
     <DefaultLanguage>es</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>

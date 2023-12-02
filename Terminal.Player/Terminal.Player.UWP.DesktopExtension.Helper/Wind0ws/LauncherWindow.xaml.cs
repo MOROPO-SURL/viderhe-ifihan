@@ -1,12 +1,12 @@
 ﻿using Windows.ApplicationModel.AppService;
 using System;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.DesktopExtension.Helper
+namespace MOROPO.VIDERHE.Terminal.Player.UWP.DesktopExtension.PlatformInterop.Wind0ws
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : System.Windows.Window
+    public partial class LauncherWindow : System.Windows.Window
     {
         [System.Runtime.InteropServices.DllImport("User32.dll", SetLastError = true)]
         private static extern void SwitchToThisWindow(IntPtr hWnd, bool fAltTab);
@@ -22,7 +22,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.DesktopExtension.Helpe
         private AppServiceConnection appServiceConnection;
         private System.Diagnostics.Process launchProcess;
 
-        public MainWindow()
+        public LauncherWindow()
         {
             InitializeComponent();
         }

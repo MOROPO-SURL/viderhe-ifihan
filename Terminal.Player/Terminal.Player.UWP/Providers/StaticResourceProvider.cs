@@ -1,8 +1,8 @@
 ﻿using MOROPO.VIDERHE.Support.Presentation.Providers.Facade;
 
-[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Providers.StaticResourceProvider))]
+[assembly: Xamarin.Forms.Dependency(typeof(MOROPO.VIDERHE.Terminal.Player.UWP.Providers.StaticResourceProvider))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Providers
+namespace MOROPO.VIDERHE.Terminal.Player.UWP.Providers
 {
     public sealed class StaticResourceProvider : IStaticResourceProviderFacade
     {

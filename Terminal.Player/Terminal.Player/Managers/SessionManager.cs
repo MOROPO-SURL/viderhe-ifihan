@@ -1,9 +1,10 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Providers.Constant;
 using MOROPO.VIDERHE.Support.Presentation.Managers;
+using MOROPO.VIDERHE.Terminal.Player.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
+namespace MOROPO.VIDERHE.Terminal.Player.Managers
 {
-    public sealed class SessionManager : MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade
+    public sealed class SessionManager : Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
         private static SessionManager instance;
 
@@ -20,13 +21,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
             }
         }
 
-        public Models.View.AccountViewModel Account { get; set; }
+        public AccountViewModel Account { get; set; }
 
-        public MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper
+        public Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper HttpClientHelper
         {
             get
             {
-                return new MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Host), null, () => ExtraHeaders);
+                return new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Host), null, () => ExtraHeaders);
             }
         }
 

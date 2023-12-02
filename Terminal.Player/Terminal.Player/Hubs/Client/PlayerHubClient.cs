@@ -5,10 +5,10 @@ using MOROPO.VIDERHE.Cloud.SignalR.Connect.Player.Clients;
 using MOROPO.VIDERHE.Cloud.SignalR.Connect.Player.Hubs;
 using MOROPO.VIDERHE.Support.Presentation.Extensions;
 using MOROPO.VIDERHE.Support.Presentation.Managers;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Terminal.Player.Managers;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
+namespace MOROPO.VIDERHE.Terminal.Player.Hubs.Client
 {
     public class PlayerHubClient : IPlayerClient, System.IDisposable
     {
@@ -36,7 +36,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
                 {
                     options.Headers = new System.Collections.Generic.Dictionary<string, string>();
 
-                    var securityHeaders = Managers.SessionManager.Instance.ExtraHeaders;
+                    var securityHeaders = SessionManager.Instance.ExtraHeaders;
 
                     foreach (var header in securityHeaders)
                     {
@@ -71,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
         }
 
         private void ConnectionAsyncStart_Callback(System.Threading.Tasks.Task task)
-        {   
+        {
             if (task.IsCanceled || task.Exception != null)
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(15));

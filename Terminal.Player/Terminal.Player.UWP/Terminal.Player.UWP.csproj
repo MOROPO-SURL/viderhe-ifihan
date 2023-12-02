@@ -7,9 +7,9 @@
     <ProjectGuid>{C5849C14-58D6-4F97-A34E-4A8A803BE497}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Player.UWP</RootNamespace>
-    <AssemblyName>Viderhe.Player.UWP</AssemblyName>
-    <DefaultLanguage>es</DefaultLanguage>
+    <RootNamespace>MOROPO.VIDERHE.Terminal.Player.UWP</RootNamespace>
+    <AssemblyName>VIDERHE.Player.UWP</AssemblyName>
+    <DefaultLanguage>es-us</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
@@ -275,9 +275,6 @@
     <SDKReference Include="WindowsDesktop, Version=10.0.16299.0">
       <Name>Windows Desktop Extensions for the UWP</Name>
     </SDKReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="MOROPOSelfSignedDeveloperCertificate2023.pfx" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
