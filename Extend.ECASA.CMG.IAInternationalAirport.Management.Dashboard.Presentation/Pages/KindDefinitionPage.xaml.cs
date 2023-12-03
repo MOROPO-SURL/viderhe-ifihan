@@ -51,6 +51,19 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
+                    if (task.Exception != null || task.IsCanceled)
+                    {
+                        this.NavigationPopPageAsync().ContinueWith(_ =>
+                        {
+                            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                            {
+                                Helpers.SharedExceptionHandleHelper.Instance.HandleException(task.Exception);
+                            });
+                        });
+
+                        return;
+                    }
+
                     var usedOperationKinds = task.Result.Select(item => item.Id).ToArray();
 
                     var allOperationKinds = new Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind[]
@@ -128,7 +141,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
                     {
                         BindingContextPageModel.IsBusy = false;
 
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        Helpers.SharedExceptionHandleHelper.Instance.HandleException(task.Exception);
                     }
                 });
             });

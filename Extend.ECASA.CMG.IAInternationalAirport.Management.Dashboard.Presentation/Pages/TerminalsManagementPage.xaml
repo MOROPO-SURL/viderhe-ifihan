@@ -104,7 +104,7 @@
                                     Text="{Binding Path=Target.Name}"
                                     FontSize="21" />
                                 <Label
-                                    Margin="0,8,0,0"
+                                    Margin="0,12,0,0"
                                     Text="Discriminador"
                                     TextColor="DimGray"
                                     FontAttributes="Bold" />

@@ -155,7 +155,7 @@
                                     Text="{Binding Path=Target.Name}"
                                     FontSize="21" />
                                 <Label
-                                    Margin="0,8,0,0"
+                                    Margin="0,12,0,0"
                                     Text="Identificador"
                                     TextColor="DimGray"
                                     FontSize="14"
@@ -164,7 +164,7 @@
                                     Text="{Binding Path=Target.Id}"
                                     FontSize="21" />
                                 <Label
-                                    Margin="0,8,0,0"
+                                    Margin="0,12,0,0"
                                     Text="País"
                                     TextColor="DimGray"
                                     FontAttributes="Bold" />
@@ -180,7 +180,7 @@
                                     Text="{Binding Path=Target.PrimaryColor}"
                                     FontSize="21" />
                                 <Label
-                                    Margin="0,8,0,0"
+                                    Margin="0,12,0,0"
                                     Text="Color Secundario"
                                     TextColor="DimGray"
                                     FontAttributes="Bold" />

@@ -73,7 +73,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
 
                         if (targetDeleteTask.Exception != null || targetDeleteTask.IsCanceled)
                         {
-                            (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(deleteAskTask.Exception);
+                            Helpers.SharedExceptionHandleHelper.Instance.HandleException(deleteAskTask.Exception);
                         }
                         else
                         {
@@ -105,7 +105,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
                 {
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        Helpers.SharedExceptionHandleHelper.Instance.HandleException(task.Exception);
 
                         this.NavigationPopPageAsync();
                     }

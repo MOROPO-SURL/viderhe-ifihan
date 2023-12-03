@@ -47,6 +47,19 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
+                    if (task.Exception != null || task.IsCanceled)
+                    {
+                        this.NavigationPopPageAsync().ContinueWith(_ =>
+                        {
+                            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                            {
+                                Helpers.SharedExceptionHandleHelper.Instance.HandleException(task.Exception);
+                            });
+                        });
+
+                        return;
+                    }
+
                     var discriminator = BindingContextPageModel.Discriminator;
 
                     var currentStateDiscriminators = task.Result.Select(item => item.Discriminator).ToArray();
@@ -113,14 +126,14 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
 
             BindingContextPageModel.IsBusy = true;
 
-            var model = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.CategoryInputModel
+            var model = new Service.ECASA.CMG.InterFIDS.API.Common.Models.CategoryInputModel
             {
                 Id = BindingContextPageModel.Id,
                 Name = BindingContextPageModel.Name,
                 Discriminator = BindingContextPageModel.Discriminator.Value
             };
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CategoriesAPIConnectClient(SessionManager.Instance);
+            var apiConnectClient = new Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CategoriesAPIConnectClient(SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 
@@ -140,7 +153,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
                     {
                         BindingContextPageModel.IsBusy = false;
 
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        Helpers.SharedExceptionHandleHelper.Instance.HandleException(task.Exception);
                     }
                 });
             });

@@ -35,10 +35,23 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
 
             BindingContextPageModel.IsBusy = true;
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CountriesAPIConnectClient(SessionManager.Instance);
+            var apiConnectClient = new Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CountriesAPIConnectClient(SessionManager.Instance);
 
             apiConnectClient.GetAsync().ContinueWith(task =>
             {
+                if (task.Exception != null || task.IsCanceled)
+                {
+                    this.NavigationPopPageAsync().ContinueWith(_ =>
+                    {
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                        {
+                            Helpers.SharedExceptionHandleHelper.Instance.HandleException(task.Exception);
+                        });
+                    });
+
+                    return;
+                }
+
                 var selectableCountries = new System.Collections.Generic.List<ISO3166.Country>(ISO3166.Country.List);
 
                 foreach (var item in task.Result)
@@ -119,7 +132,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
                     {
                         BindingContextPageModel.IsBusy = false;
 
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        Helpers.SharedExceptionHandleHelper.Instance.HandleException(task.Exception);
                     }
                 });
             });

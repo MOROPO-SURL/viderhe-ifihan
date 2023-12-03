@@ -144,7 +144,7 @@
                                     Text="{Binding Path=Target.Name}"
                                     FontSize="21" />
                                 <Label
-                                    Margin="0,8,0,0"
+                                    Margin="0,12,0,0"
                                     Text="Código ISO 3166"
                                     TextColor="DimGray"
                                     FontAttributes="Bold" />

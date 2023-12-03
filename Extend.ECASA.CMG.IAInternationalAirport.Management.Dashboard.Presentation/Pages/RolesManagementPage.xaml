@@ -12,7 +12,7 @@
     Title="Gestionar Roles">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <supportpresentationdashboardconverters:CollectionViewWidthToSelfVerticalGridItemsLayoutConverter x:Key="CollectionViewWidthToSelfVerticalGridItemsLayoutConverter" ChildMinWidth="320" ChildAbsoluteHorizontalMargin="10" />
+            <supportpresentationdashboardconverters:CollectionViewWidthToSelfVerticalGridItemsLayoutConverter x:Key="CollectionViewWidthToSelfVerticalGridItemsLayoutConverter" ChildMinWidth="360" ChildAbsoluteHorizontalMargin="10" />
 
             <sscxftoolkitpresentationconverters:IfNullOrEmptyToStringConverter x:Key="IfNullOrEmptyToStringConverter" StringReplacement="---" />
             <sscxftoolkitpresentationconverters:NullToBooleanConverter x:Key="NullToBooleanConverter" />
@@ -64,16 +64,28 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame
-                            Margin="5" Padding="0"
+                            Margin="5" Padding="12,10"
                             BackgroundColor="White"
                             HasShadow="False"
                             CornerRadius="0"
-                            HeightRequest="136">
+                            HeightRequest="96">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="ItemTapGestureRecognizer_Tapped" />
                             </Frame.GestureRecognizers>
-                            <Grid>
-                            </Grid>
+                            <StackLayout>
+                                <Label
+                                    VerticalOptions="FillAndExpand"
+                                    Text="{Binding Path=Name}"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2"
+                                    FontSize="24" />
+                                <Label 
+                                    Text="{Binding Path=Description}"
+                                    TextColor="DimGray"
+                                    FontSize="18" 
+                                    LineBreakMode="TailTruncation"                                    
+                                    MaxLines="2"/>
+                            </StackLayout>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -97,7 +109,22 @@
                             Margin="0,20,0,0" Padding="10"
                             Orientation="Vertical">
                             <StackLayout Margin="10,0" Spacing="0">
-                                
+                                <Label
+                                    Text="Nombre"
+                                    TextColor="DimGray"
+                                    FontSize="14"
+                                    FontAttributes="Bold" />
+                                <Label
+                                    Text="{Binding Path=Target.Name}"
+                                    FontSize="21" />
+                                <Label
+                                    Margin="0,12,0,0"
+                                    Text="Descripción"
+                                    TextColor="DimGray"
+                                    FontAttributes="Bold" />
+                                <Label
+                                    Text="{Binding Path=Target.Description, TargetNullValue='---'}"
+                                    FontSize="21" />
                             </StackLayout>
                             <FlexLayout
                                 Wrap="Wrap"

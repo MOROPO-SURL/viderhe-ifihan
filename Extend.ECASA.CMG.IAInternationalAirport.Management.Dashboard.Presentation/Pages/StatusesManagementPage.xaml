@@ -123,7 +123,7 @@
                                     FontSize="21" />
                                 <Label
                                     Grid.ColumnSpan="3" Grid.Row="2"
-                                    Margin="0,8,0,0"
+                                    Margin="0,12,0,0"
                                     Text="Discriminador"
                                     TextColor="DimGray"
                                     FontAttributes="Bold" />
@@ -133,7 +133,7 @@
                                     FontSize="21" />
                                 <Label
                                     Grid.Column="0" Grid.Row="4"
-                                    Margin="0,8,0,0"
+                                    Margin="0,12,0,0"
                                     Text="Énfasis"
                                     TextColor="DimGray"
                                     FontAttributes="Bold" />
@@ -144,7 +144,7 @@
                                 <Label
                                     IsVisible="{Binding Path=Target.EmphasisBackgroundColor, Converter={StaticResource NotNullToBooleanConverter}}"
                                     Grid.Column="1" Grid.Row="4"
-                                    Margin="0,8,0,0"
+                                    Margin="0,12,0,0"
                                     Text="Fondo"
                                     TextColor="DimGray"
                                     FontAttributes="Bold" />
@@ -159,7 +159,7 @@
                                 <Label
                                     IsVisible="{Binding Path=Target.EmphasisTextColor, Converter={StaticResource NotNullToBooleanConverter}}"
                                     Grid.Column="2" Grid.Row="4"
-                                    Margin="0,8,0,0"
+                                    Margin="0,12,0,0"
                                     Text="Texto"
                                     TextColor="DimGray"
                                     FontAttributes="Bold" />
@@ -173,7 +173,7 @@
                                 </ContentView>
                                 <Label
                                     Grid.Column="0" Grid.Row="6"
-                                    Margin="0,8,0,0"
+                                    Margin="0,12,0,0"
                                     Text="Animación"
                                     TextColor="DimGray"
                                     FontAttributes="Bold" />
@@ -184,7 +184,7 @@
                                 <Label
                                     IsVisible="{Binding Path=Target.AlternateBackgroundColor, Converter={StaticResource NotNullToBooleanConverter}}"
                                     Grid.Column="1" Grid.Row="6"
-                                    Margin="0,8,0,0"
+                                    Margin="0,12,0,0"
                                     Text="Fondo"
                                     TextColor="DimGray"
                                     FontAttributes="Bold" />
@@ -199,7 +199,7 @@
                                 <Label
                                     IsVisible="{Binding Path=Target.AlternateTextColor, Converter={StaticResource NotNullToBooleanConverter}}"
                                     Grid.Column="2" Grid.Row="6"
-                                    Margin="0,8,0,0"
+                                    Margin="0,12,0,0"
                                     Text="Texto"
                                     TextColor="DimGray"
                                     FontAttributes="Bold" />

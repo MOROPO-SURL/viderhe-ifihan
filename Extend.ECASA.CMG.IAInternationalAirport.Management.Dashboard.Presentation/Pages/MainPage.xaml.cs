@@ -11,7 +11,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
 
         private void ServerConexionConfigurationToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
-
+            this.NavigationPushModalPageAsync(new ServerConectionConfigurationPage());
         }
 
         private void ApiKeysTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
