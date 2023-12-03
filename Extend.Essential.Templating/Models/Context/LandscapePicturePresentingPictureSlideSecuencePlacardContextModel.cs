@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Models.Context
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context
 {
     public class LandscapePicturePresentingPictureSlideSecuencePlacardContextModel : AbstractPicturePresentingPictureSlideSecuencePlacardContextModel
     {

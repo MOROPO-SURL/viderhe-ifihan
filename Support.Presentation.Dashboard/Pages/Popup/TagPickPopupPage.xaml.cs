@@ -1,14 +1,18 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.Popup
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Popup
 {
     public partial class TagPickPopupPage : Rg.Plugins.Popup.Pages.PopupPage
     {
-        private readonly Cloud.Persistence.Enumerations.TagGroup group;
-        private readonly System.Action<Cloud.Api.Common.Models.TagDisplayModel> pickCallbackAction;
-        private readonly Cloud.Api.Common.Models.TagDisplayModel[] exclusions;
+        private readonly TagGroup group;
+        private readonly System.Action<TagDisplayModel> pickCallbackAction;
+        private readonly TagDisplayModel[] exclusions;
 
-        public TagPickPopupPage(Cloud.Persistence.Enumerations.TagGroup group, System.Action<Cloud.Api.Common.Models.TagDisplayModel> pickCallbackAction, Cloud.Api.Common.Models.TagDisplayModel[] exclusions = null)
+        public TagPickPopupPage(TagGroup group, System.Action<TagDisplayModel> pickCallbackAction, TagDisplayModel[] exclusions = null)
         {
             this.group = group;
             this.pickCallbackAction = pickCallbackAction;
@@ -16,14 +20,14 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.Popup
 
             InitializeComponent();
 
-            BindingContext = new Models.Page.TagPickPopupPageModel { IsBusy = true };
+            BindingContext = new TagPickPopupPageModel { IsBusy = true };
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+            var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
             apiConnectClient.FilterAsync(new Cloud.Api.Common.Models.Filter.TagFilterModel
             {
@@ -32,11 +36,11 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.Popup
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    var bindingContextPageModel = BindingContext as Models.Page.TagPickPopupPageModel;
+                    var bindingContextPageModel = BindingContext as TagPickPopupPageModel;
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {
@@ -55,23 +59,23 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.Popup
 
         public void CloseButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            if ((BindingContext as Models.Page.TagPickPopupPageModel).IsBusy) return;
+            if ((BindingContext as TagPickPopupPageModel).IsBusy) return;
 
             Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync();
         }
 
         public void ApplyButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            if ((BindingContext as Models.Page.TagPickPopupPageModel).IsBusy) return;
+            if ((BindingContext as TagPickPopupPageModel).IsBusy) return;
 
             Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync();
 
-            pickCallbackAction.Invoke(TagPicker.SelectedItem as Cloud.Api.Common.Models.TagDisplayModel);
+            pickCallbackAction.Invoke(TagPicker.SelectedItem as TagDisplayModel);
         }
 
         public void AddNewButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var bindingContextPageModel = BindingContext as Models.Page.TagPickPopupPageModel;
+            var bindingContextPageModel = BindingContext as TagPickPopupPageModel;
 
             bindingContextPageModel.IsBusy = true;
 
@@ -84,9 +88,9 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.Popup
                     return;
                 }
 
-                var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var apiConnectClient = new Cloud.Api.Connect.Clients.TagsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
-                var model = new Cloud.Api.Common.Models.TagInputModel
+                var model = new TagInputModel
                 {
                     Id = System.Guid.NewGuid(),
                     Group = group,
@@ -100,7 +104,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.Popup
                     {
                         if (_task.Exception != null || _task.IsCanceled)
                         {
-                            (Xamarin.Forms.Application.Current as Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(_task.Exception);
+                            (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(_task.Exception);
 
                             bindingContextPageModel.IsBusy = false;
                         }
@@ -108,7 +112,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.Popup
                         {
                             Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync();
 
-                            pickCallbackAction.Invoke(new Cloud.Api.Common.Models.TagDisplayModel
+                            pickCallbackAction.Invoke(new TagDisplayModel
                             {
                                 Id = model.Id,
                                 Name = model.Name,

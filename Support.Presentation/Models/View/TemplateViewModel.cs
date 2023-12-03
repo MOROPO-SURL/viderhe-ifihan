@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Models.View
 {
     public class TemplateViewModel : System.IDisposable
     {
@@ -8,7 +10,7 @@
 
         public string About { get; set; }
 
-        public Viderhe.Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport { get; set; }
+        public PlayerOrientationSupportKind PlayerOrientationSupport { get; set; }
 
         public Xamarin.Forms.ImageSource ThumbnailImageSource { get; set; }
 

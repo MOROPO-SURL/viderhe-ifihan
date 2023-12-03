@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Models.Page
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Models.Page
 {
     public class PortraitPicturePresentingVideoPlacardConfigurationPageModel : AbstractPicturePresentingVideoPlacardConfigurationPageModel
     {

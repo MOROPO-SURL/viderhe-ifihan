@@ -1,12 +1,14 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+﻿using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Factories
 {
     public static class AddVideoPageModelFactory
     {
-        public static Models.Page.AddVideoPageModel Build(Plugin.FilePicker.Abstractions.FileData targetFileData)
+        public static AddVideoPageModel Build(Plugin.FilePicker.Abstractions.FileData targetFileData)
         {
-            return new Models.Page.AddVideoPageModel
+            return new AddVideoPageModel
             {
-                VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromFile(targetFileData.FilePath),
+                VideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromFile(targetFileData.FilePath),
                 Format = System.IO.Path.GetExtension(targetFileData.FilePath).Substring(1).ToUpper(),
                 About = targetFileData.FileName
             };

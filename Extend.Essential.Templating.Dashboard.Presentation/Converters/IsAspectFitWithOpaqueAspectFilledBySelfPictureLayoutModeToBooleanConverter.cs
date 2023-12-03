@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Converters
 {
     public class IsAspectFitWithOpaqueAspectFilledBySelfPictureLayoutModeToBooleanConverter : Xamarin.Forms.IValueConverter
     {

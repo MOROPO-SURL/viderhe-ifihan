@@ -1,10 +1,12 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Factories
 {
     public static class LandscapePicturePresentingPictureSlideSecuencePlacardConfigurationPageModelFactory
     {
-        public static Models.Page.LandscapePicturePresentingPictureSlideSecuencePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static Models.Page.LandscapePicturePresentingPictureSlideSecuencePlacardConfigurationPageModel Build(PlacardViewModel placardViewModel)
         {
             if (placardViewModel == null) return new Models.Page.LandscapePicturePresentingPictureSlideSecuencePlacardConfigurationPageModel();
 
@@ -18,7 +20,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                 DefineEndAt = placardViewModel.EndAt != null,
                 EndAt = placardViewModel.EndAt ?? System.DateTime.Now.Date,
                 Label = placardViewModel.Label,
-                Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>(placardViewModel.Tags),
+                Tags = new System.Collections.ObjectModel.ObservableCollection<TagDisplayModel>(placardViewModel.Tags),
                 PresenterImage = context.PresenterImage.ToViewModel(),
                 PresenterSide = context.PresenterSide,
                 PictureSlidePresentationSecounds = System.Convert.ToInt32(context.PresentedPictureSlideSecuence.PicturePresentationSecounds),
@@ -29,7 +31,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             {
                 result.PresentedSlides.Add(new Models.View.PictureSlideViewModel
                 {
-                    Image = new Support.Presentation.Models.View.ImageViewModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
+                    Image = new ImageViewModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
                     LayoutMode = item.LayoutMode
                 });
             }

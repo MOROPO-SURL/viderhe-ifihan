@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
+﻿namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.View
 {
     public class SettingSectionItemViewModel : System.IDisposable
     {

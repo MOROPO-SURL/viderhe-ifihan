@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Delegates
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Enumerations;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Delegates
 {
     public delegate void TouchActionEventHandler(object sender, TouchActionEventArgs args);
 
     public class TouchActionEventArgs : System.EventArgs
     {
-        public TouchActionEventArgs(long id, Enumerations.TouchActionKind kind, Xamarin.Forms.Point location, bool isInContact)
+        public TouchActionEventArgs(long id, TouchActionKind kind, Xamarin.Forms.Point location, bool isInContact)
         {
             Id = id;
             Kind = kind;
@@ -14,7 +16,7 @@
 
         public long Id { private set; get; }
 
-        public Enumerations.TouchActionKind Kind { private set; get; }
+        public TouchActionKind Kind { private set; get; }
 
         public Xamarin.Forms.Point Location { private set; get; }
 

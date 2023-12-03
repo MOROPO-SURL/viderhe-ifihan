@@ -2,8 +2,14 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Common.Management</AssemblyName>
-		<RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Common.Management</RootNamespace>
+		<AssemblyName>MOROPO.VIDERHE.Extend.Common.Management</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.Common.Management</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2023, Todos los derechos reservados.</Copyright>
+		<Version>2.0.0</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
 </Project>

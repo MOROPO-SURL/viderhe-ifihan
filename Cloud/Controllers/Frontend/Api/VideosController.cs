@@ -2,31 +2,34 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities;
-using MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade;
-using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
-using SmartSolucionesCuba.Viderhe.Cloud.Extensions;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.Framework.Guama.Media.Persistence.Entities;
+using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Managers.Facade;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Extensions;
+using MOROPO.VIDERHE.Cloud.Persistence.ORM.EF;
+using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
+namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 {
-    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION)]
+    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Policies.ACCOUNT_VALIDATED_MODERATION)]
     [Route("api/[area]/[controller]")]
     [Area("account")]
     [ApiController]
-    [MOROPO.SAPRESSC.Core.Web.Security.Attributes.ChangeUserPasswordRequiredAction]
-    [MOROPO.SAPRESSC.Core.Web.Security.Attributes.CatchChangeUserPasswordRequiredException]
+    [Framework.Guama.Core.Presentation.Web.Security.Attributes.ChangeUserPasswordRequiredAction]
+    [Framework.Guama.Core.Presentation.Web.Security.Attributes.CatchChangeUserPasswordRequiredException]
     public class VideosController : Controller
     {
         private readonly ILogger<VideosController> logger;
         private readonly IVideoFileManagerFacade videoFileManager;
         private readonly IThumbnailFileManagerFacade thumbnailFileManager;
-        private readonly Persistence.EF.ApplicationDbContext dbContext;
-        private readonly MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Video, System.Guid> videoRepository;
+        private readonly ApplicationDbContext dbContext;
+        private readonly IEntityRepository<Video, System.Guid> videoRepository;
         private readonly MediaToolkit.Services.IMediaToolkitService mediaToolkitService;
         private readonly IOptions<Options.MediaThumbnailResizeOptions> mediaThumbnailResizeOptions;
 
-        public VideosController(IOptions<Options.MediaThumbnailResizeOptions> mediaThumbnailResizeOptions, MediaToolkit.Services.IMediaToolkitService mediaToolkitService, MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Video, System.Guid> videoRepository, IVideoFileManagerFacade videoFileManager, IThumbnailFileManagerFacade thumbnailFileManager, Persistence.EF.ApplicationDbContext dbContext, ILogger<VideosController> logger)
+        public VideosController(IOptions<Options.MediaThumbnailResizeOptions> mediaThumbnailResizeOptions, MediaToolkit.Services.IMediaToolkitService mediaToolkitService, IEntityRepository<Video, System.Guid> videoRepository, IVideoFileManagerFacade videoFileManager, IThumbnailFileManagerFacade thumbnailFileManager, ApplicationDbContext dbContext, ILogger<VideosController> logger)
         {
             this.logger = logger;
             this.videoFileManager = videoFileManager;
@@ -40,11 +43,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         [HttpGet]
         [HttpGet("page/{page}")]
         [HttpGet("page/{page}/limit/{limit}")]
-        public ActionResult<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<VideoDisplayModel>> GetPage(int page = 1, int limit = 15)
+        public ActionResult<Framework.Guama.Core.Presentation.Models.PaginationModel<VideoDisplayModel>> GetPage(int page = 1, int limit = 15)
         {
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
-            var account = dbContext.Accounts.Include(e => e.VideoBridges).ThenInclude(b => b.Video).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
+            var account = dbContext.Accounts.Include(e => e.VideoBridges).ThenInclude(b => b.Stern).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
 
             var maxCount = account.VideoBridges.Count;
 
@@ -59,9 +62,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 page = 1;
             }
 
-            return Ok(new MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<VideoDisplayModel>
+            return Ok(new Framework.Guama.Core.Presentation.Models.PaginationModel<VideoDisplayModel>
             {
-                List = account.VideoBridges.Select(bridge => bridge.Video).OrderByDescending(b => b.CreateAt).Skip((page - 1) * limit).Take(limit).Select(entity =>
+                List = account.VideoBridges.Select(bridge => bridge.Stern).OrderByDescending(b => b.CreateAt).Skip((page - 1) * limit).Take(limit).Select(entity =>
                 {
                     var model = new VideoDisplayModel();
 
@@ -81,7 +84,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         [HttpPut("{videoId}/segment/last")]
         public async System.Threading.Tasks.Task<ActionResult> PushAsync(System.Guid videoId, Microsoft.AspNetCore.Http.IFormFile file, [FromForm] string about, int segment = 0)
         {
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
             var account = dbContext.Accounts.First(e => e.Id == accountId);
 
@@ -180,7 +183,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
                                 resizedThumbnailSkData = null;
                             }
-                            catch 
+                            catch
                             {
                                 video.Thumbnail.Length = thumbnailMediaFileInfo.Length;
                             }
@@ -198,26 +201,26 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
                             var accountVideoBridge = new Persistence.Entities.AccountVideoBridge
                             {
-                                AccountId = account.Id,
-                                VideoId = videoId
+                                ProwId = account.Id,
+                                SternId = videoId
                             };
 
                             dbContext.AccountVideoBridges.Add(accountVideoBridge);
 
                             dbContext.SaveChanges(User.Identity.Name);
                         }
-                        catch (System.Exception ex)
+                        catch (System.Exception)
                         {
                             thumbnailFileManager.DeleteThumbnailFile(video.Thumbnail);
 
-                            throw ex;
+                            throw;
                         }
                     }
-                    catch (System.Exception ex)
+                    catch (System.Exception)
                     {
                         videoFileManager.DeleteVideoFile(videoId, video.Extension);
 
-                        throw ex;
+                        throw;
                     }
                 }
             }
@@ -232,11 +235,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             {
                 try
                 {
-                    var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+                    var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
-                    var account = dbContext.Accounts.Include(e => e.VideoBridges).ThenInclude(b => b.Video).First(e => e.Id == accountId);
+                    var account = dbContext.Accounts.Include(e => e.VideoBridges).ThenInclude(b => b.Stern).First(e => e.Id == accountId);
 
-                    var entity = account.VideoBridges.First(b => b.VideoId == inputModel.Id).Video;
+                    var entity = account.VideoBridges.First(b => b.SternId == inputModel.Id).Stern;
 
                     inputModel.Mergue(entity);
 
@@ -260,28 +263,28 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         [HttpDelete("{videoId}")]
         public ActionResult Delete(System.Guid videoId)
         {
-            if (dbContext.PlacardVideoBridges.Any(item => item.VideoId == videoId))
+            if (dbContext.PlacardVideoBridges.Any(item => item.SternId == videoId))
             {
                 return Conflict();
             }
 
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
-            var account = dbContext.Accounts.Include(e => e.VideoBridges).ThenInclude(b => b.Video).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
+            var account = dbContext.Accounts.Include(e => e.VideoBridges).ThenInclude(b => b.Stern).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
 
-            var bridge = account.VideoBridges.First(b => b.VideoId == videoId);
+            var bridge = account.VideoBridges.First(b => b.SternId == videoId);
 
             dbContext.AccountVideoBridges.Remove(bridge);
 
-            dbContext.Videos.Remove(bridge.Video);
+            dbContext.Videos.Remove(bridge.Stern);
 
-            dbContext.Thumbnails.Remove(bridge.Video.Thumbnail);
+            dbContext.Thumbnails.Remove(bridge.Stern.Thumbnail);
 
             dbContext.SaveChanges(User.Identity.Name);
 
-            videoFileManager.DeleteVideoFile(bridge.VideoId, bridge.Video.Extension);
+            videoFileManager.DeleteVideoFile(bridge.SternId, bridge.Stern.Extension);
 
-            thumbnailFileManager.DeleteThumbnailFile(bridge.Video.Thumbnail);
+            thumbnailFileManager.DeleteThumbnailFile(bridge.Stern.Thumbnail);
 
             return Ok();
         }

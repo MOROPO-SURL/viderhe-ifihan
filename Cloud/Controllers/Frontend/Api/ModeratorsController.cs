@@ -1,54 +1,47 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MOROPO.SAPRESSC.Core.Persistence.Repositories;
-using MOROPO.SAPRESSC.Core.Security.Common.Persistence.Extensions;
-using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.Framework.Guama.Core.Security.Common.Persistence.Extensions;
+using MOROPO.Framework.Guama.Media.Persistence.Entities;
+using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Managers.Facade;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
+namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 {
     // TODO Firbid requiest for unprivileged moderators!!
-    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION)]
+    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Policies.ACCOUNT_VALIDATED_MODERATION)]
     [Route("api/[area]/[controller]")]
     [Area("account")]
     [ApiController]
-    public class ModeratorsController : MOROPO.SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementController<Persistence.Entities.Moderator, System.Guid, ModeratorInputModel, ModeratorDisplayModel>
+    public class ModeratorsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<Moderator, System.Guid, ModeratorInputModel, ModeratorDisplayModel>
     {
-        private readonly IEntityRepository<MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image, System.Guid> imageRepository;
-        private readonly MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager;
+        private readonly IEntityRepository<Image, System.Guid> imageRepository;
+        private readonly IImageFileManagerFacade imageFileManager;
 
-        public ModeratorsController(MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager, IEntityRepository<MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image, System.Guid> imageRepository, IEntityRepository<Persistence.Entities.Moderator, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<ModeratorsController> localizer, ILogger<ModeratorsController> logger) : base(repository, localizer, logger)
+        public ModeratorsController(IImageFileManagerFacade imageFileManager, IEntityRepository<Image, System.Guid> imageRepository, IEntityRepository<Moderator, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<ModeratorsController> localizer, ILogger<ModeratorsController> logger) : base(repository, localizer, logger)
         {
             this.imageRepository = imageRepository;
             this.imageFileManager = imageFileManager;
         }
 
-        protected override System.Linq.Expressions.Expression<System.Func<Persistence.Entities.Moderator, bool>> GetGlobalSelector()
+        protected override System.Linq.Expressions.Expression<System.Func<Moderator, bool>> GetGlobalSelector()
         {
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
-            return e => e.AccountBridges.Any(b => b.AccountId == accountId);
+            return e => e.AccountBridges.Any(b => b.ProwId == accountId);
         }
 
         public override ActionResult<ModeratorDisplayModel[]> Get()
         {
-            return Ok(Repository.FindBy(GetGlobalSelector()).Select(entity => EntityToDisplayModel(entity)).ToArray());
+            return Ok(Repository.FindBy(GetGlobalSelector()).ToArray().Select(entity => EntityToDisplayModel(entity)).ToArray());
         }
 
-        protected override ModeratorDisplayModel EntityToDisplayModel(Persistence.Entities.Moderator entity)
-        {
-            return base.EntityToDisplayModel(entity);
-        }
-
-        protected override void PreCreate(Persistence.Entities.Moderator entity, ModeratorInputModel inputModel)
+        protected override void PreCreate(Moderator entity, ModeratorInputModel inputModel)
         {
             base.PreCreate(entity, inputModel);
-
-            entity.AccountBridges.Add(new Persistence.Entities.AccountModeratorBridge
-            {
-                ModeratorId = entity.Id,
-                AccountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value)
-            });
 
             if (inputModel.User.NewPassword != null)
             {
@@ -63,14 +56,14 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                     {
                         using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
                         {
-                            entity.Identity.Image = new MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image
+                            entity.Identity.Image = imageRepository.Add(new Image
                             {
                                 ContentType = inputModel.Identity.Image.ContentType,
                                 Length = inputModel.Identity.Image.ContentData.LongLength,
                                 Width = imageSkBitmap.Width,
                                 Height = imageSkBitmap.Height,
                                 About = string.Format("Image for Moderator: {0}", inputModel.Id)
-                            };
+                            }, User.Identity.Name, false);
 
                             imageFileManager.SaveImageFileContent(entity.Identity.Image.Id, inputModel.Identity.Image.ContentData, inputModel.Identity.Image.ContentType);
                         }
@@ -78,10 +71,23 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 }
             }
 
-            entity.User.Signature = MOROPO.SAPRESSC.Middleware.Security.Essential.Persistence.EF.Helpers.Integrity.UserIntegrityHelper.GetSignature(entity.User);
+            entity.User.Signature = Framework.Guama.Security.Essential.Persistence.ORM.EF.Helpers.Integrity.UserIntegrityHelper.GetSignature(entity.User);
         }
 
-        protected override void PreEdit(Persistence.Entities.Moderator entity, ModeratorInputModel inputModel)
+        protected override void PostCreate(Moderator entity, ModeratorInputModel inputModel)
+        {
+            base.PostCreate(entity, inputModel);
+
+            entity.AccountBridges.Add(new AccountModeratorBridge
+            {
+                SternId = entity.Id,
+                ProwId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value)
+            });
+
+            Repository.Update(entity, User.Identity.Name);
+        }
+
+        protected override void PreEdit(Moderator entity, ModeratorInputModel inputModel)
         {
             base.PreEdit(entity, inputModel);
 
@@ -98,23 +104,25 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                     {
                         using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
                         {
-                            entity.Identity.Image = new MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image
+                            entity.Identity.Image = imageRepository.Add(new Image
                             {
                                 ContentType = inputModel.Identity.Image.ContentType,
                                 Length = inputModel.Identity.Image.ContentData.LongLength,
                                 Width = imageSkBitmap.Width,
                                 Height = imageSkBitmap.Height,
                                 About = string.Format("Image for Moderator: {0}", inputModel.Id)
-                            };
+                            }, User.Identity.Name, false);
 
                             imageFileManager.SaveImageFileContent(entity.Identity.Image.Id, inputModel.Identity.Image.ContentData, inputModel.Identity.Image.ContentType);
                         }
                     }
                 }
             }
+
+            entity.User.Signature = Framework.Guama.Security.Essential.Persistence.ORM.EF.Helpers.Integrity.UserIntegrityHelper.GetSignature(entity.User);
         }
 
-        protected override void PostEdit(Persistence.Entities.Moderator entity, ModeratorInputModel inputModel)
+        protected override void PostEdit(Moderator entity, ModeratorInputModel inputModel)
         {
             base.PostEdit(entity, inputModel);
 
@@ -125,6 +133,18 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 imageRepository.Delete(oldLogoImage, User.Identity.Name);
 
                 imageFileManager.DeleteImageFile(oldLogoImage);
+            }
+        }
+
+        protected override void PostDelete(Moderator entity)
+        {
+            base.PostDelete(entity);
+
+            if (entity.Identity.Image != null)
+            {
+                imageRepository.Delete(entity.Identity.Image, User.Identity.Name);
+
+                imageFileManager.DeleteImageFile(entity.Identity.Image);
             }
         }
     }

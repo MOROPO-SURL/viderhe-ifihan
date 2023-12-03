@@ -1,8 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Behaviors
+﻿namespace MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation.Behaviors
 {
     public class MarqueeLabelBehavior : Xamarin.Forms.Behavior<Xamarin.Forms.Label>
     {
-        private XFToolKit.Presentation.Transform.Animations.TranslateToAnimation animation;
+        private SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation animation;
 
         protected void Target_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -16,7 +16,7 @@
 
             var translationWidth = label.TranslationX + label.Width;
 
-            animation = new XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
+            animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
             {
                 Target = label,
                 TranslateX = label.Width * -1,

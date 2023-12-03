@@ -1,56 +1,59 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentation.Factories
+﻿using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Enumerations;
+using MOROPO.VIDERHE.Extend.Essential.Transitioning.Presentation.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Transitioning.Presentation.Factories
 {
     public static class RandomTransitionContextModelFactory
     {
-        public static Models.Context.CarouselTransitionContextModel CreateCarouselTransitionContextModel()
+        public static CarouselTransitionContextModel CreateCarouselTransitionContextModel()
         {
             var randomizer = new System.Random();
 
-            var standardTransitionDirectionCount = System.Enum.GetNames(typeof(Common.Transitioning.Presentation.Enumerations.StandardTransitionDirection)).Length;
-            var easingTypeCount = System.Enum.GetNames(typeof(XFToolKit.Presentation.Transform.Enumerations.EasingType)).Length;
+            var standardTransitionDirectionCount = System.Enum.GetNames(typeof(StandardTransitionDirection)).Length;
+            var easingTypeCount = System.Enum.GetNames(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType)).Length;
 
-            return new Models.Context.CarouselTransitionContextModel
+            return new CarouselTransitionContextModel
             {
-                Direction = (Common.Transitioning.Presentation.Enumerations.StandardTransitionDirection)randomizer.Next(0, standardTransitionDirectionCount),
-                MotionEasingType = (XFToolKit.Presentation.Transform.Enumerations.EasingType)randomizer.Next(0, easingTypeCount)
+                Direction = (StandardTransitionDirection)randomizer.Next(0, standardTransitionDirectionCount),
+                MotionEasingType = (SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType)randomizer.Next(0, easingTypeCount)
             };
         }
 
-        public static Models.Context.ArriveTransitionContextModel CreateArriveTransitionContextModel()
+        public static ArriveTransitionContextModel CreateArriveTransitionContextModel()
         {
             var randomizer = new System.Random();
 
-            var standardTransitionDirectionCount = System.Enum.GetNames(typeof(Common.Transitioning.Presentation.Enumerations.StandardTransitionDirection)).Length;
-            var easingTypeCount = System.Enum.GetNames(typeof(XFToolKit.Presentation.Transform.Enumerations.EasingType)).Length;
+            var standardTransitionDirectionCount = System.Enum.GetNames(typeof(StandardTransitionDirection)).Length;
+            var easingTypeCount = System.Enum.GetNames(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType)).Length;
 
-            return new Models.Context.ArriveTransitionContextModel
+            return new ArriveTransitionContextModel
             {
-                Direction = (Common.Transitioning.Presentation.Enumerations.StandardTransitionDirection)randomizer.Next(0, standardTransitionDirectionCount),
-                MotionEasingType = (XFToolKit.Presentation.Transform.Enumerations.EasingType)randomizer.Next(0, easingTypeCount)
+                Direction = (StandardTransitionDirection)randomizer.Next(0, standardTransitionDirectionCount),
+                MotionEasingType = (SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType)randomizer.Next(0, easingTypeCount)
             };
         }
 
-        public static Models.Context.ZoomInTransitionContextModel CreateZoomInTransitionContextModel()
+        public static ZoomInTransitionContextModel CreateZoomInTransitionContextModel()
         {
             var randomizer = new System.Random();
 
-            var easingTypeCount = System.Enum.GetNames(typeof(XFToolKit.Presentation.Transform.Enumerations.EasingType)).Length;
+            var easingTypeCount = System.Enum.GetNames(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType)).Length;
 
-            return new Models.Context.ZoomInTransitionContextModel
+            return new ZoomInTransitionContextModel
             {
-                MotionEasingType = (XFToolKit.Presentation.Transform.Enumerations.EasingType)randomizer.Next(0, easingTypeCount)
+                MotionEasingType = (SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType)randomizer.Next(0, easingTypeCount)
             };
         }
 
-        public static Models.Context.FadeInTransitionContextModel CreateFadeInTransitionContextModel()
+        public static FadeInTransitionContextModel CreateFadeInTransitionContextModel()
         {
             var randomizer = new System.Random();
 
-            var verticalTransitionOrientationCount = System.Enum.GetNames(typeof(Common.Transitioning.Presentation.Enumerations.VerticalTransitionOrientation)).Length;
+            var verticalTransitionOrientationCount = System.Enum.GetNames(typeof(VerticalTransitionOrientation)).Length;
 
-            return new Models.Context.FadeInTransitionContextModel
+            return new FadeInTransitionContextModel
             {
-                MotionDirection = (Common.Transitioning.Presentation.Enumerations.VerticalTransitionOrientation)randomizer.Next(0, verticalTransitionOrientationCount)
+                MotionDirection = (VerticalTransitionOrientation)randomizer.Next(0, verticalTransitionOrientationCount)
             };
         }
     }

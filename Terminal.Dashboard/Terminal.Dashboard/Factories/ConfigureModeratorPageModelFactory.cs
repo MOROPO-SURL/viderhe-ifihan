@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+﻿using MOROPO.VIDERHE.Support.Presentation.Managers;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Factories
 {
     public static class ConfigureModeratorPageModelFactory
     {
@@ -21,7 +23,7 @@
             result.TargetIdentitySex = target.Model.Identity.Sex;
             result.TargetIdentityImageId = target.Model.Identity.Image?.Id;
             result.TargetIdentityImageSource = target.Model.Identity.Image != null ?
-                Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/media/moderator/{2}", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host, target.Model.Identity.Image.Id))) :
+                Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/media/moderator/{2}", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Host, target.Model.Identity.Image.Id))) :
                 Xamarin.Forms.ImageSource.FromUri(new System.Uri(Helpers.ConstantProvisioningHelper.Instance.FallbackUserProfileImageUrl));
 
             return result;

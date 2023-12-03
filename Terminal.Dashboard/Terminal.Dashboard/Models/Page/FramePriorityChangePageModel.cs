@@ -1,9 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
-{
-    public class FramePriorityChangePageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
-    {
-        public Support.Presentation.Models.View.FrameViewModel[] Frames { get; set; }
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-        public Support.Presentation.Models.View.FrameViewModel Target { get; set; }
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
+{
+    public class FramePriorityChangePageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
+    {
+        public FrameViewModel[] Frames { get; set; }
+
+        public FrameViewModel Target { get; set; }
     }
 }

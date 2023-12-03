@@ -1,11 +1,16 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Extensions;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Extend.Essential.Descriptors;
+using MOROPO.VIDERHE.Support.Extend.Overlaying.Providers;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using MOROPO.VIDERHE.Support.Presentation.Managers;
 using System.Linq;
 using Xamarin.Forms;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Managers
 {
-    public sealed class SessionManager : MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade
+    public sealed class SessionManager : Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
         private static SessionManager instance;
 
@@ -24,11 +29,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
         public bool HasAuthenticatedIdentity => Moderator != null;
 
-        public MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper HttpClientHelper => new MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Server), GetAuthorizeHeader, null);
+        public Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper HttpClientHelper => new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Server), GetAuthorizeHeader, null);
 
         public string AuthenticationType { get; private set; }
         public string AuthorizationToken { get; private set; }
-        public Cloud.Api.Common.Models.ModeratorDisplayModel Moderator { get; private set; }
+        public ModeratorDisplayModel Moderator { get; private set; }
         public System.Guid AccountId { get; private set; }
         public string AccountName { get; private set; }
         public Color AccountPrimaryColor { get; private set; }
@@ -38,7 +43,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
         public ImageSource AccountVerticalSplashImageSource { get; private set; }
         public System.Guid? AccountDefaultOverlayId { get; private set; }
         public string AccountSerializedOverlayContext { get; private set; }
-        public Cloud.Api.Common.Models.ExtensionDisplayModel[] AccountExtensions { get; private set; }
+        public ExtensionDisplayModel[] AccountExtensions { get; private set; }
 
         private System.Collections.Generic.KeyValuePair<string, string> GetAuthorizeHeader()
         {
@@ -55,14 +60,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
             }
         }
 
-        public void SyncronizeRequiredAccountInformation(string name, Color primaryColor, Color secoundaryColor, System.Guid logoImageId, System.Guid horizontalSplashImageId, System.Guid verticalSplashImageId, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
+        public void SyncronizeRequiredAccountInformation(string name, Color primaryColor, Color secoundaryColor, Extend.Common.Overlaying.Descriptors.IOverlayDescriptor defaultOverlay, string serializedOverlayContext)
         {
             AccountName = name;
             AccountPrimaryColor = primaryColor;
             AccountSecoundaryColor = secoundaryColor;
-            AccountLogoImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(logoImageId));
-            AccountHorizontalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(horizontalSplashImageId));
-            AccountVerticalSplashImageSource = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(verticalSplashImageId));
+            AccountLogoImageSource = ImageSource.FromUri(ThumbnailUriFactory.BuildLogoThumbnailUri());
+            AccountHorizontalSplashImageSource = ImageSource.FromUri(ThumbnailUriFactory.BuildSplashHorizontalThumbnailUri());
+            AccountVerticalSplashImageSource = ImageSource.FromUri(ThumbnailUriFactory.BuildSplashVerticalThumbnailUri());
             AccountDefaultOverlayId = defaultOverlay?.Id ?? null;
             AccountSerializedOverlayContext = serializedOverlayContext;
         }
@@ -71,7 +76,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
         {
             var client = new Cloud.Api.Connect.Clients.AccountApiConnectClient(this);
 
-            var input = new Cloud.Api.Common.Models.AccountInputModel
+            var input = new AccountInputModel
             {
                 Id = AccountId,
                 Name = name,
@@ -133,23 +138,23 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
             var model = await client.GetCurrentAsync();
 
-            SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.HorizontalSplashImageId, model.VerticalSplashImageId, defaultOverlay, model.SerializedOverlayContext);
+            SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), defaultOverlay, model.SerializedOverlayContext);
         }
 
         public async System.Threading.Tasks.Task SignInAsync(string server, bool useSSL, string login, string password, System.Action<string> callbackAction)
         {
-            Support.Presentation.Managers.SessionMemoryManager.Instance.Server = server;
-            Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL = useSSL;
+            SessionMemoryManager.Instance.Server = server;
+            SessionMemoryManager.Instance.UseSSL = useSSL;
 
             var userApiClient = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 
-            var result = await userApiClient.AuthenticateAsync(new Cloud.Api.Common.Models.AuthenticationIntentModel
+            var result = await userApiClient.AuthenticateAsync(new AuthenticationIntentModel
             {
                 User = login,
                 Password = password
             });
 
-            Support.Presentation.Managers.SessionMemoryManager.Instance.Persist();
+            SessionMemoryManager.Instance.Persist();
 
             AuthenticationType = result.Type;
             AuthorizationToken = result.Token;
@@ -166,14 +171,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                 // MotoTouch does not support dynamic assembly loading
                 if (Device.RuntimePlatform != Device.iOS)
                 {
-                    var dynamicLoadExtensions = AccountExtensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID).ToArray();
+                    var dynamicLoadExtensions = AccountExtensions.Where(item => item.Id != EssentialExtensionDescriptor.ID).ToArray();
 
-                    var missingAccountExtensions = new System.Collections.Generic.List<Cloud.Api.Common.Models.ExtensionDisplayModel>();
+                    var missingAccountExtensions = new System.Collections.Generic.List<ExtensionDisplayModel>();
 
                     foreach (var accountExtension in dynamicLoadExtensions)
                     {
                         if (System.IO.Directory.Exists(System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "Extensions", server, accountExtension.Id.ToString(), accountExtension.Version))) continue;
-                        
+
                         missingAccountExtensions.Add(accountExtension);
                     }
 
@@ -217,7 +222,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
                                 var attribute = a as HandlerAttribute;
 
-                                if (attribute == null && (a is ExportFontAttribute fa))
+                                if (attribute == null && a is ExportFontAttribute fa)
                                 {
                                     Xamarin.Forms.Internals.FontRegistrar.Register(fa, assembly);
                                 }
@@ -228,7 +233,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
 
                 AccountId = model.Id;
 
-                var overalyDescriptor = model.DefaultOverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(model.DefaultOverlayId.Value);
+                var overalyDescriptor = model.DefaultOverlayId == null ? null : OverlayDescriptorProvider.Instance.GetDescriptorById(model.DefaultOverlayId.Value);
 
                 var ffImageLoadingHttpClient = new System.Net.Http.HttpClient();
 
@@ -239,7 +244,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
                     HttpClient = ffImageLoadingHttpClient
                 });
 
-                SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), model.LogoImageId, model.HorizontalSplashImageId, model.VerticalSplashImageId, overalyDescriptor, model.SerializedOverlayContext);
+                SyncronizeRequiredAccountInformation(model.Name, Color.FromHex(model.PrimaryColor), Color.FromHex(model.SecoundaryColor), overalyDescriptor, model.SerializedOverlayContext);
             }
             catch (System.Exception e)
             {
@@ -271,7 +276,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Managers
         {
             var client = new Cloud.Api.Connect.Clients.UserApiConnectClient(HttpClientHelper);
 
-            await client.ChangePasswordAsync(new Cloud.Api.Common.Models.UserPasswordChangeRequestModel
+            await client.ChangePasswordAsync(new UserPasswordChangeRequestModel
             {
                 OldPassword = oldPassword,
                 NewPassword = newPassword

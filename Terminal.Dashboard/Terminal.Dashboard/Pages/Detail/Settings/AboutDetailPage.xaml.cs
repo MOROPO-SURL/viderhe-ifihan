@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Detail.Settings
+﻿namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Detail.Settings
 {
     public partial class AboutDetailPage : Xamarin.Forms.ContentPage
     {

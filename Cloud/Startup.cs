@@ -6,28 +6,36 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MOROPO.SAPRESSC.Core.Persistence.EF.Extensions;
-using MOROPO.SAPRESSC.Core.Persistence.Repositories;
-using MOROPO.SAPRESSC.Core.Security.Common.Web.Frontend.Extensions;
-using MOROPO.SAPRESSC.Middleware.Identity.Web.Common.Extensions;
-using MOROPO.SAPRESSC.Middleware.Media.Web.Common.Extensions;
-using MOROPO.SAPRESSC.Middleware.Security.Essential.Persistence.EF.Extensions;
-using MOROPO.SAPRESSC.Middleware.Security.Essential.Web.Backend.Extensions;
-using MOROPO.SAPRESSC.Middleware.Security.Essential.Web.Common.Extensions;
+using Microsoft.Extensions.Hosting;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.Framework.Guama.Core.Security.Common.Presentation.Web.Frontend.Extensions;
+using MOROPO.Framework.Guama.Identity.Presentation.Web.Common.Extensions;
+using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Managers.Facade;
+using MOROPO.Framework.Guama.Security.Essential.Persistence.ORM.EF.Extensions;
+using MOROPO.Framework.Guama.Security.Essential.Presentation.Web.Backend.Extensions;
+using MOROPO.VIDERHE.Cloud.Hubs;
+using MOROPO.VIDERHE.Cloud.Managers;
+using MOROPO.VIDERHE.Cloud.Options;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Providers;
 using Serilog;
-using SmartSolucionesCuba.Viderhe.Cloud.Options;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud
+namespace MOROPO.VIDERHE.Cloud
 {
     public class Startup
     {
         private readonly IConfiguration configuration;
-        private readonly IHostingEnvironment env;
+        private readonly IWebHostEnvironment env;
 
-        public Startup(IConfiguration configuration, IHostingEnvironment env)
+        public Startup(IConfiguration configuration, IWebHostEnvironment env)
         {
             #region Ensure Required Assemblies load
+
+            _ = new Extend.Essential.Descriptors.EssentialExtensionDescriptor();
+            _ = new Extend.Essential.Overlaying.Descriptors.SimpleHighlightsOverlayDescriptor();
+            _ = new Extend.Essential.Transitioning.Transitions.ArriveTransitionDescriptor();
+            _ = new Extend.Essential.Templating.Descriptors.SimplePictureTemplateDescriptor();
 
             var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 
@@ -83,44 +91,38 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
             services.Configure<JwtOptions>(configuration.GetSection("JWT"));
             //services.Configure<FfmpegOptions>(configuration.GetSection("FFmpeg"));
 
-            //services.AddDbContext<Persistence.EF.ApplicationDbContext>(options => options.UseMySql(configuration.GetConnectionString("DefaultConnection"), mySqlOptions =>
-            //{
-            //    mySqlOptions.ServerVersion(new System.Version(configuration.GetSection("MySQLSeverVersion").Value), Pomelo.EntityFrameworkCore.MySql.Infrastructure.ServerType.MySql);
-            //}));
-            services.AddDbContext<Persistence.EF.ApplicationDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<Persistence.ORM.EF.ApplicationDbContext>(options => options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<DbContext, Persistence.EF.ApplicationDbContext>();
+            services.AddScoped<DbContext, Persistence.ORM.EF.ApplicationDbContext>();
 
             services.PerformCoreWebSecurityCommonFrontendServiceRegistration();
-            services.PerformMiddlewareSecurityEssentialWebCommonServiceRegistration();
-            services.PerformMiddlewareSecurityEssentialWebBackendServiceRegistration();
-            services.PerformMiddlewareMediaWebCommonServiceRegistration();
-            services.PerformMiddlewareIdentityWebCommonServiceRegistration();
+            services.PerformSecurityEssentialWebBackendServiceRegistration();
+            services.PerformIdentityWebCommonServiceRegistration();
 
-            services.AddScoped<IEntityRepository<Persistence.Entities.Account, System.Guid>, Persistence.EF.Repositories.AccountRepository>();
-            services.AddScoped<IEntityRepository<Persistence.Entities.Frame, long>, Persistence.EF.Repositories.FrameRepository>();
-            services.AddScoped<IEntityRepository<Persistence.Entities.Placard, System.Guid>, Persistence.EF.Repositories.PlacardRepository>();
-            services.AddScoped<IEntityRepository<Persistence.Entities.Player, string>, Persistence.EF.Repositories.PlayerRepository>();
-            services.AddScoped<IEntityRepository<Persistence.Entities.Screenplay, System.Guid>, Persistence.EF.Repositories.ScreenplayRepository>();
-            services.AddScoped<IEntityRepository<Persistence.Entities.Moderator, System.Guid>, Persistence.EF.Repositories.ModeratorRepository>();
-            services.AddScoped<IEntityRepository<Persistence.Entities.Extension, System.Guid>, Persistence.EF.Repositories.ExtensionRespository>();
-            services.AddScoped<IEntityRepository<Persistence.Entities.Template, System.Guid>, Persistence.EF.Repositories.TemplateRepository>();
-            services.AddScoped<IEntityRepository<Persistence.Entities.ScheduledRelaunch, System.Guid>, Persistence.EF.Repositories.ScheduledRelaunchRepository>();
-            services.AddScoped<IEntityRepository<Persistence.Entities.Sound, System.Guid>, Persistence.EF.Repositories.SoundRepository>();
-            services.AddScoped<IEntityRepository<Persistence.Entities.Gradient, System.Guid>, Persistence.EF.Repositories.GradientRepository>();
-            services.AddScoped<IEntityRepository<Persistence.Entities.Text, System.Guid>, Persistence.EF.Repositories.TextRepository>();
-            services.AddScoped<IEntityRepository<Persistence.Entities.Tag, System.Guid>, Persistence.EF.Repositories.TagRepository>();
+            services.AddScoped<IEntityRepository<Account, System.Guid>, Persistence.ORM.EF.Repositories.AccountRepository>();
+            services.AddScoped<IEntityRepository<Frame, long>, Persistence.ORM.EF.Repositories.FrameRepository>();
+            services.AddScoped<IEntityRepository<Placard, System.Guid>, Persistence.ORM.EF.Repositories.PlacardRepository>();
+            services.AddScoped<IEntityRepository<Player, string>, Persistence.ORM.EF.Repositories.PlayerRepository>();
+            services.AddScoped<IEntityRepository<Screenplay, System.Guid>, Persistence.ORM.EF.Repositories.ScreenplayRepository>();
+            services.AddScoped<IEntityRepository<Moderator, System.Guid>, Persistence.ORM.EF.Repositories.ModeratorRepository>();
+            services.AddScoped<IEntityRepository<Extension, System.Guid>, Persistence.ORM.EF.Repositories.ExtensionRespository>();
+            services.AddScoped<IEntityRepository<Template, System.Guid>, Persistence.ORM.EF.Repositories.TemplateRepository>();
+            services.AddScoped<IEntityRepository<ScheduledRelaunch, System.Guid>, Persistence.ORM.EF.Repositories.ScheduledRelaunchRepository>();
+            services.AddScoped<IEntityRepository<Sound, System.Guid>, Persistence.ORM.EF.Repositories.SoundRepository>();
+            services.AddScoped<IEntityRepository<Gradient, System.Guid>, Persistence.ORM.EF.Repositories.GradientRepository>();
+            services.AddScoped<IEntityRepository<Text, System.Guid>, Persistence.ORM.EF.Repositories.TextRepository>();
+            services.AddScoped<IEntityRepository<Tag, System.Guid>, Persistence.ORM.EF.Repositories.TagRepository>();
 
-            services.AddSingleton<MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade, Managers.ImageFileManager>();
-            services.AddSingleton<MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IThumbnailFileManagerFacade, Managers.ThumbnailFileManager>();
-            services.AddSingleton<MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IVideoFileManagerFacade, Managers.VideoFileManager>();
-            services.AddSingleton<Managers.SoundFileManager>();
+            services.AddSingleton<IImageFileManagerFacade, ImageFileManager>();
+            services.AddSingleton<IThumbnailFileManagerFacade, ThumbnailFileManager>();
+            services.AddSingleton<IVideoFileManagerFacade, VideoFileManager>();
+            services.AddSingleton<SoundFileManager>();
 
             services.AddMediaToolkit(configuration["FFmpeg:MainBinaryPath"]);
 
-            services.AddSingleton<MOROPO.SAPRESSC.Core.Persistence.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade, Persistence.EF.Providers.BusinessDbSchemaConfigurationProvider>();
+            services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade, BusinessDbSchemaConfigurationProvider>();
 
-            services.AddSingleton<MOROPO.SAPRESSC.Core.Persistence.EF.Helpers.Facade.IDataInitializationHelper, Helpers.BusinessDataInitializationHelper>();
+            services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Helpers.Facade.IDataInitializationHelper, Helpers.BusinessDataInitializationHelper>();
 
             services.AddScoped<Microsoft.AspNetCore.Authorization.IAuthorizationHandler, Security.Authorization.Requirement.Handler.AccountModerationRequirementHandler>();
 
@@ -130,8 +132,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
             })
             .AddCookie(config =>
             {
-                config.AccessDeniedPath = new PathString("/security/error/forbidden");
+                config.AccessDeniedPath = new PathString("/error/403");
                 config.LoginPath = new PathString("/security/account/login");
+                config.ExpireTimeSpan = System.TimeSpan.FromMinutes(5);
+                config.SlidingExpiration = true;
             })
             .AddJwtBearer(config =>
             {
@@ -180,14 +184,14 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
             });
 
             #region SAPRESSC.Core.Security concreter dependencies configuration
-            services.AddSingleton<MOROPO.SAPRESSC.Core.Web.Security.Helpers.Facade.ILicenseValidationHelperFacade, Security.Licensing.WilcardLicenseValidator>();
+            services.AddSingleton<Framework.Guama.Core.Presentation.Web.Security.Helpers.Facade.ILicenseValidationHelperFacade, Security.Licensing.WilcardLicenseValidator>();
 
-            services.AddTransient<MOROPO.SAPRESSC.Core.Web.Security.Models.View.Contrat.IUserProfileViewModel, Models.View.UserProfileViewModel>();
+            services.AddTransient<Framework.Guama.Core.Presentation.Web.Security.Models.View.Contrat.IUserProfileViewModel, Models.View.UserProfileViewModel>();
 
-            services.AddSingleton<MOROPO.SAPRESSC.Core.Web.Common.ModelBinding.IConcretModelBindHelper, Helpers.Binding.ConcretModelBindHelper>();
+            services.AddSingleton<Framework.Guama.Core.Presentation.Web.Common.ModelBinding.Contract.IConcretModelBindHelper, Helpers.Binding.ConcretModelBindHelper>();
 
-            services.AddScoped<MOROPO.SAPRESSC.Core.Web.Security.Providers.Facade.IIdentityProviderFacade, Managers.IdentityManager>();
-            services.AddScoped<MOROPO.SAPRESSC.Core.Web.Security.Managers.Facade.IUserProfileManagerFacade, Managers.UserProfileManager>();
+            services.AddScoped<Framework.Guama.Core.Presentation.Web.Security.Providers.Facade.IIdentityProviderFacade, IdentityManager>();
+            services.AddScoped<Framework.Guama.Core.Presentation.Web.Security.Managers.Facade.IUserProfileManagerFacade, UserProfileManager>();
             #endregion
 
             #region Globalization configuration
@@ -201,7 +205,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
                 options.SupportedCultures = new[] { defaultCulture };
                 options.SupportedUICultures = new[] { defaultCulture };
 
-                options.RequestCultureProviders = new[] { new MOROPO.SAPRESSC.Core.Web.Common.Localization.UrlRequestCultureProvider() };
+                options.RequestCultureProviders = new[] { new Framework.Guama.Core.Presentation.Web.Common.Localization.UrlRequestCultureProvider() };
             });
 
             services.AddSingleton<Helpers.Localization.GlobalViewLocalizationHelper>();
@@ -213,19 +217,23 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
             services.AddMemoryCache();
             services.AddSession();
 
-            services.AddSignalR();
+            services.AddSignalR(options =>
+            {
+                options.MaximumParallelInvocationsPerClient = 1;
+            });
 
             services.AddMvc(mvc =>
-                mvc.ModelBinderProviders.Insert(0, new MOROPO.SAPRESSC.Core.Web.Common.ModelBinding.AbstractsModelBinderProvider())
-            )
+            {
+                mvc.EnableEndpointRouting = false;
+                mvc.ModelBinderProviders.Insert(0, new Framework.Guama.Core.Presentation.Web.Common.ModelBinding.AbstractsModelBinderProvider());
+            })
             .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
             .AddDataAnnotationsLocalization(options =>
                 options.DataAnnotationLocalizerProvider = (type, factory) =>
                 {
                     return factory.Create(typeof(SharedResources));
                 }
-            )
-            .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_0);
+            );
 
             services.AddDataProtection()
                 .PersistKeysToFileSystem(new System.IO.DirectoryInfo(System.IO.Path.Combine(env.ContentRootPath, "dpkeys")));
@@ -233,9 +241,12 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
             services.AddSingleton<Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataProvider, Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, Microsoft.Extensions.Options.IOptions<RequestLocalizationOptions> requestLocalizationOptions, Microsoft.Extensions.Logging.ILoggerFactory loggerFactory, DbContext dbContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Microsoft.Extensions.Options.IOptions<RequestLocalizationOptions> requestLocalizationOptions, Microsoft.Extensions.Logging.ILoggerFactory loggerFactory, DbContext dbContext)
         {
             //FFMediaToolkit.FFmpegLoader.FFmpegPath = ffmpegOptions.Value.BinariesPath;
+
+            System.AppContext.SetSwitch("System.Drawing.EnableUnixSupport", true);
+            System.AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
             loggerFactory.AddSerilog(Log.Logger);
 
@@ -244,21 +255,30 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
             }
             else if (env.IsStaging())
             {
                 dbContext.Database.Migrate();
 
-                app.PerformDatabaseInitialization();
+                var dataInitializationHelpers = app.ApplicationServices.GetServices<Framework.Guama.Core.Persistence.ORM.EF.Helpers.Facade.IDataInitializationHelper>();
 
-                if (!(dbContext as Persistence.EF.ApplicationDbContext).Users.Any())
+                using (var serviceScope = app.ApplicationServices.CreateScope())
+                {
+                    var scopedDbContext = serviceScope.ServiceProvider.GetService<DbContext>();
+
+                    foreach (var dataInitializationHelper in dataInitializationHelpers)
+                    {
+                        dataInitializationHelper.InitialiseData(scopedDbContext);
+                    }
+                }
+
+                if (!(dbContext as Persistence.ORM.EF.ApplicationDbContext).Users.Any())
                 {
                     var defaultUserId = configuration["DefaultUser:Id"];
 
                     var k3y = new System.Guid(0x6abae711, 0xcd91, 0x47e7, 0xad, 0x8a, 0xae, 0x88, 0xe4, 0x50, 0x25, 0x4d);
 
-                    var protectedPassword = (dbContext as Persistence.EF.ApplicationDbContext).CreateSecureUser(k3y, defaultUserId, "system");
+                    var protectedPassword = (dbContext as Persistence.ORM.EF.ApplicationDbContext).CreateSecureUser(k3y, defaultUserId, "system");
 
                     Log.Logger.Information(string.Format(">>>>>> Protected Password : \"{0}\" => \"{1}\"", defaultUserId, protectedPassword));
                 }
@@ -281,28 +301,24 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
 
             app.UseAuthentication();
             app.UseSession();
-
-            app.UseSignalR(endpoints =>
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<Hubs.DashboardHub>("/hubs/dashboard");
-                endpoints.MapHub<Hubs.PlayerHub>("/hubs/player");
+                endpoints.MapHub<DashboardHub>("/hubs/dashboard");
+                endpoints.MapHub<PlayerHub>("/hubs/player");
             });
+
+            //app.UseMvcWithDefaultRoute();
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute("defaultLocalizedAreaRoutes",
-                    template: "{culture:regex(^[[a-z]]{{2}}(?:-[[A-Z]]{{2}})?$)}/{area:exists}/{controller=start}/{action=index}/{id?}");
-
-                routes.MapRoute(
-                    name: "defaultLocalizedRoutes",
-                    template: "{culture:regex(^[[a-z]]{{2}}(?:-[[A-Z]]{{2}})?$)}/{controller=start}/{action=index}/{id?}");
-
                 routes.MapRoute("defaultAreaRoutes",
-                    template: "{area:exists}/{controller=start}/{action=index}/{id?}");
+                    template: "{area:exists}/{controller=home}/{action=index}/{id?}");
 
                 routes.MapRoute(
                     name: "defaultRoutes",
-                    template: "{controller=start}/{action=index}/{id?}");
+                    template: "{controller=home}/{action=index}/{id?}");
             });
         }
     }

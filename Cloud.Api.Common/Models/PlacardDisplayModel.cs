@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class PlacardDisplayModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Placard, System.Guid>
+    public class PlacardDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Placard, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -10,7 +13,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public TemplateDisplayModel Template { get; set; }
 
-        public Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind? PlayerOrientationSupportKind { get; set; }
+        public PlayerOrientationSupportKind? PlayerOrientationSupportKind { get; set; }
 
         public System.DateTime? BeginAt { get; set; }
 
@@ -18,13 +21,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public string SerializedContext { get; set; }
 
-        public Persistence.Enumerations.PlacardComplementationKind? ComplementationKind { get; set; }
+        public PlacardComplementationKind? ComplementationKind { get; set; }
 
         public string SerializedComplementation { get; set; }
 
         public TagDisplayModel[] Tags { get; set; }
 
-        public void Import(Persistence.Entities.Placard entity)
+        public void Import(Placard entity)
         {
             Id = entity.Id;
             Label = entity.Label;
@@ -36,10 +39,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
             SerializedComplementation = entity.SerializedComplementation;
             Tags = entity.TagBridges.Select(bridge => new TagDisplayModel
             {
-                Id = bridge.TagId,
-                Name = bridge.Tag.Name,
-                Group = bridge.Tag.Group,
-                Color = bridge.Tag.Color
+                Id = bridge.SternId,
+                Name = bridge.Stern.Name,
+                Group = bridge.Stern.Group,
+                Color = bridge.Stern.Color
             }).ToArray();
 
             Template = new TemplateDisplayModel();

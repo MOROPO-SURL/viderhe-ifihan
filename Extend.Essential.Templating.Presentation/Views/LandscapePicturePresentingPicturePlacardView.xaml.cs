@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views
 {
-    public partial class LandscapePicturePresentingPicturePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
+    public partial class LandscapePicturePresentingPicturePlacardView : BaseTemplatedPlacardPresentationView
     {
-        public LandscapePicturePresentingPicturePlacardView(Models.View.LandscapePicturePresentingPicturePlacardViewModel model)
+        public LandscapePicturePresentingPicturePlacardView(Models.View.LandscapePicturePresentingPicturePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -38,26 +40,26 @@
 
             PresenterImage.IsVisible = true;
 
-            var internalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            var internalShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
             {
                 Delay = "2000",
                 IsParallel = true
             };
 
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
             {
                 Target = PresenterImage,
                 TranslateX = 0,                
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut
             });
 
             if (model.PresentedImageCenteredAtPresentation)
             {
-                internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                 {
                     Target = PresentedImage,
                     TranslateX = model.PresenterSide == Enumerations.LandscapePresentationSide.Left ?  width / 2 : width / 2 * -1,
-                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                    EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                     Delay = "100"
                 });
             }
@@ -66,7 +68,7 @@
 
             if (model.PresentedImageZoomingEnabled)
             {
-                var presentedImageZoominAnimation = new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                var presentedImageZoominAnimation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
                 {
                     Target = PresentedImage,
                     Scale = 1.2,

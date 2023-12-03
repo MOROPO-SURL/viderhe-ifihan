@@ -106,8 +106,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Player.Tizen.TV", "Terminal.Player.Tizen\Terminal.Player.Tizen.TV\Terminal.Player.Tizen.TV.csproj", "{1EF72239-3CE5-4231-8047-3AC5295A82D0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cloud.Persistence.EF", "Cloud.Persistence.EF\Cloud.Persistence.EF.csproj", "{35495147-E7A8-4F85-917F-76A4B33E112F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Player.UWP.DesktopExtension.Helper", "Terminal.Player\Terminal.Player.UWP.DesktopExtension.Helper\Terminal.Player.UWP.DesktopExtension.Helper.csproj", "{6C2DA28A-AAB9-498B-A1F6-ED74D9FB2F20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Player.UWP.DesktopExtension.PlatformInterop", "Terminal.Player\Terminal.Player.UWP.DesktopExtension.PlatformInterop\Terminal.Player.UWP.DesktopExtension.PlatformInterop.csproj", "{6C2DA28A-AAB9-498B-A1F6-ED74D9FB2F20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Dashboard.Android", "Terminal.Dashboard\Terminal.Dashboard.Android\Terminal.Dashboard.Android.csproj", "{1A703A61-876F-40C5-A99C-711071B4F562}"
 EndProject

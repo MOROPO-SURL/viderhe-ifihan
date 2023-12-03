@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+﻿namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class Gradient : MOROPO.SAPRESSC.Core.Persistence.Entities.IEntity<System.Guid>
+    public class Gradient : Framework.Guama.Core.Persistence.Entities.Contract.IEntity<System.Guid>
     {
         public Gradient()
         {
@@ -11,15 +9,15 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
             AccountBridges = new System.Collections.Generic.List<AccountGradientBridge>();
         }
 
-        [Key]
+        [System.ComponentModel.DataAnnotations.Key]
         public System.Guid Id { get; set; }
 
         public System.DateTime CreateAt { get; set; }
 
-        [Required]
+        [System.ComponentModel.DataAnnotations.Required]
         public string Data { get; set; }
 
-        [MaxLength(255)]
+        [System.ComponentModel.DataAnnotations.MaxLength(255)]
         public string About { get; set; }
 
         public System.Collections.Generic.List<AccountGradientBridge> AccountBridges { get; set; }

@@ -1,10 +1,12 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.Providers.Facade;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
-using System.Linq;
+﻿using System.Linq;
+using MOROPO.VIDERHE.Cloud.SignalR.Connect.Common.Enumerations;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Providers.Facade;
+using MOROPO.VIDERHE.Extend.Common.Presentation.Views;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Presenters
+namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Presenters
 {
     public class ScreenplayPresenter : Facade.IOvarlablePresenter, System.IDisposable
     {
@@ -14,7 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
         private System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction;
         private System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction;
 
-        private System.Func<PlacardViewModel, System.Func<Xamarin.Essentials.DisplayOrientation>, BasePlacardPresentationView> placardViewModelToPresentationViewFunction;
+        private System.Func<PlacardViewModel, System.Func<Xamarin.Essentials.DisplayOrientation>, double, BasePlacardPresentationView> placardViewModelToPresentationViewFunction;
 
         private System.Collections.Generic.Stack<PlacardViewModel> framesStack;
 
@@ -29,9 +31,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
         private ScreenplayPresenter interventionPresenter;
 
         private bool suspended;
+
         private bool loop;
 
-        public ScreenplayPresenter(Xamarin.Forms.Layout<Xamarin.Forms.View> container, System.Func<PlacardViewModel, System.Func<Xamarin.Essentials.DisplayOrientation>, BasePlacardPresentationView> placardViewModelToPresentationViewFunction, PlacardViewModel[] placards, ITransitionProviderFacade transitionProvider, System.Action screenplayPresentationEndedCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction, System.Action screenplayPresentIterationCompleteCallbackAction = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction = null)
+        private double relativeSizeScaleFactor;
+
+        public ScreenplayPresenter(Xamarin.Forms.Layout<Xamarin.Forms.View> container, System.Func<PlacardViewModel, System.Func<Xamarin.Essentials.DisplayOrientation>, double, BasePlacardPresentationView> placardViewModelToPresentationViewFunction, PlacardViewModel[] placards, ITransitionProviderFacade transitionProvider, System.Action screenplayPresentationEndedCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction, System.Action screenplayPresentIterationCompleteCallbackAction = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction = null, double relativeSizeScaleFactor = 1.0d)
         {
             suspended = false;
 
@@ -44,6 +49,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             this.placardViewTransitionCompleteCallbackAction = placardViewTransitionCompleteCallbackAction;
             this.getOrientationFunction = getOrientationFunction ?? (() => Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation);
             this.loop = loop;
+            this.relativeSizeScaleFactor = relativeSizeScaleFactor;
 
             presentationEndedCallbackAction = screenplayPresentationEndedCallbackAction;
 
@@ -86,18 +92,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             interventionPresenter.BeginPresentation();
         }
 
-        public void RequestRestart(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
+        public void RequestRestart(ScreenplayHandlingImmediacyMode immediacyMode)
         {
             switch (immediacyMode)
             {
-                case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately:
+                case ScreenplayHandlingImmediacyMode.Immediately:
                     framesStack.Clear();
 
                     PresentNextPlacardPresentationView();
 
                     break;
 
-                case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete:
+                case ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete:
                     framesStack.Clear();
 
                     break;
@@ -107,18 +113,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             }
         }
 
-        public void RequestReload(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
+        public void RequestReload(ScreenplayHandlingImmediacyMode immediacyMode)
         {
             if (placards.Length <= 0)
             {
-                immediacyMode = Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately;
+                immediacyMode = ScreenplayHandlingImmediacyMode.Immediately;
             }
 
             switch (immediacyMode)
             {
-                case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately:
+                case ScreenplayHandlingImmediacyMode.Immediately:
                     framesStack.Clear();
-                    
+
                     loop = false;
 
                     presentationEndedCallbackAction?.Invoke();
@@ -126,14 +132,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
                     break;
 
-                case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete:
+                case ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete:
                     framesStack.Clear();
-                    
+
                     loop = false;
 
                     break;
 
-                case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.FramesPresentationComplete:
+                case ScreenplayHandlingImmediacyMode.FramesPresentationComplete:
                 default:
                     loop = false;
 
@@ -209,12 +215,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
                     if (model != null)
                     {
-                        var incomingFrameView = placardViewModelToPresentationViewFunction.Invoke(model, getOrientationFunction);
+                        var incomingFrameView = placardViewModelToPresentationViewFunction.Invoke(model, getOrientationFunction, relativeSizeScaleFactor);
 
                         if (model.ComplementationKind != null)
                         {
-                            (incomingFrameView.BindingContext as Models.View.AbstractPlacardViewModel).ComplementationKind = model.ComplementationKind;
-                            (incomingFrameView.BindingContext as Models.View.AbstractPlacardViewModel).SerializedComplementation = model.SerializedComplementation;
+                            (incomingFrameView.BindingContext as AbstractPlacardViewModel).ComplementationKind = model.ComplementationKind;
+                            (incomingFrameView.BindingContext as AbstractPlacardViewModel).SerializedComplementation = model.SerializedComplementation;
                         }
 
                         incomingFrameView.PresentationComplete += PlacardPresentationView_PresentationComplete;

@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Managers
+﻿using MOROPO.VIDERHE.Support.Presentation.Providers.Facade;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Managers
 {
-    public class SessionMemoryManager : Providers.Facade.ICloudServerProviderFacade
+    public class SessionMemoryManager : ICloudServerProviderFacade
     {
         private const string LAST_CLOUD_SERVER_KEY = "last-cloud-server";
         private const string LAST_CLOUD_SECURITY_KEY = "last-cloud-security";
@@ -37,7 +39,7 @@
             }
             else
             {
-                UseSSL = true;
+                UseSSL = false;
             }
         }
 

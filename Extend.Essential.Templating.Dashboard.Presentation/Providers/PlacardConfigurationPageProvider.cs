@@ -1,16 +1,19 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages;
-using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Descriptors;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Providers.Facade;
+using MOROPO.VIDERHE.Extend.Common.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Descriptors;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Pages;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Providers
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Providers
 {
-    public class PlacardConfigurationPageProvider : Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardConfigurationPageProviderFacade
+    public class PlacardConfigurationPageProvider : IPlacardConfigurationPageProviderFacade
     {
-        public Xamarin.Forms.Page GetCreationEntryPointPageByDescriptor(Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, System.Action completedActionCallback)
+        public Xamarin.Forms.Page GetCreationEntryPointPageByDescriptor(ITemplateDescriptor templateDescriptor, System.Action completedActionCallback)
         {
             if (templateDescriptor is SimpleVideoTemplateDescriptor)
             {
-                return new PrePickVideoPage(templateDescriptor, completedActionCallback, (Support.Presentation.Models.View.VideoViewModel model, Common.Templating.Descriptors.ITemplateDescriptor _templateDescriptor, System.Action completeCallbackAction) =>
+                return new PrePickVideoPage(templateDescriptor, completedActionCallback, (model, _templateDescriptor, completeCallbackAction) =>
                 {
                     Xamarin.Forms.Application.Current.MainPage.NavigationPushPageAsync(new CreateSimpleVideoPlacardPage(model, _templateDescriptor as SimpleVideoTemplateDescriptor, completeCallbackAction));
                 });
@@ -59,7 +62,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             return null;
         }
 
-        public Xamarin.Forms.Page GetEditionPageByDescriptor(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action completedActionCallback)
+        public Xamarin.Forms.Page GetEditionPageByDescriptor(PlacardViewModel placardViewModel, System.Action completedActionCallback)
         {
             if (placardViewModel.Template.Id == SimplePictureTemplateDescriptor.ID)
             {

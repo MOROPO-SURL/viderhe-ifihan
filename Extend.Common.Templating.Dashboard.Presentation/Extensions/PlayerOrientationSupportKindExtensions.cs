@@ -1,34 +1,37 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Extensions
 {
     public static class PlayerOrientationSupportKindExtensions
     {
-        public static Enumerations.ConfigurationPlayerOrientationSupportKind ToConfiguration(this Templating.Enumerations.PlayerOrientationSupportKind target)
+        public static ConfigurationPlayerOrientationSupportKind ToConfiguration(this PlayerOrientationSupportKind target)
         {
             switch (target)
             {
-                case Templating.Enumerations.PlayerOrientationSupportKind.Landscape:
-                    return Enumerations.ConfigurationPlayerOrientationSupportKind.Landscape;
+                case PlayerOrientationSupportKind.Landscape:
+                    return ConfigurationPlayerOrientationSupportKind.Landscape;
 
-                case Templating.Enumerations.PlayerOrientationSupportKind.Portrait:
-                    return Enumerations.ConfigurationPlayerOrientationSupportKind.Portrait;
+                case PlayerOrientationSupportKind.Portrait:
+                    return ConfigurationPlayerOrientationSupportKind.Portrait;
 
-                case Templating.Enumerations.PlayerOrientationSupportKind.Any:
+                case PlayerOrientationSupportKind.Any:
                 default:
-                    return Enumerations.ConfigurationPlayerOrientationSupportKind.Inherited;
+                    return ConfigurationPlayerOrientationSupportKind.Inherited;
             }
         }
 
-        public static Templating.Enumerations.PlayerOrientationSupportKind? FromConfiguration(this Enumerations.ConfigurationPlayerOrientationSupportKind target)
+        public static PlayerOrientationSupportKind? FromConfiguration(this ConfigurationPlayerOrientationSupportKind target)
         {
             switch (target)
             {
-                case Enumerations.ConfigurationPlayerOrientationSupportKind.Landscape:
-                    return Templating.Enumerations.PlayerOrientationSupportKind.Landscape;
+                case ConfigurationPlayerOrientationSupportKind.Landscape:
+                    return PlayerOrientationSupportKind.Landscape;
 
-                case Enumerations.ConfigurationPlayerOrientationSupportKind.Portrait:
-                    return Templating.Enumerations.PlayerOrientationSupportKind.Portrait;
+                case ConfigurationPlayerOrientationSupportKind.Portrait:
+                    return PlayerOrientationSupportKind.Portrait;
 
-                case Enumerations.ConfigurationPlayerOrientationSupportKind.Inherited:
+                case ConfigurationPlayerOrientationSupportKind.Inherited:
                 default:
                     return null;
             }

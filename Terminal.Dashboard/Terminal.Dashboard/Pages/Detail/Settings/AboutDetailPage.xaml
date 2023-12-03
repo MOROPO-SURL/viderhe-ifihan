@@ -2,7 +2,7 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Detail.Settings.AboutDetailPage"
+    x:Class="MOROPO.VIDERHE.Terminal.Dashboard.Pages.Detail.Settings.AboutDetailPage"
     Title="Ajustes">
     <ContentPage.Content>
         <Grid>

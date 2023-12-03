@@ -1,13 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+﻿namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class AccountGradientBridge
+    public class AccountGradientBridge : Framework.Guama.Core.Persistence.Entities.Contract.IBridge<Account, System.Guid, Gradient, System.Guid>
     {
-        public System.Guid AccountId { get; set; }
+        public System.Guid ProwId { get; set; }
+        public Account Prow { get; set; }
 
-        public Account Account { get; set; }
-
-        public System.Guid GradientId { get; set; }
-
-        public Gradient Gradient { get; set; }
+        public System.Guid SternId { get; set; }
+        public Gradient Stern { get; set; }
     }
 }

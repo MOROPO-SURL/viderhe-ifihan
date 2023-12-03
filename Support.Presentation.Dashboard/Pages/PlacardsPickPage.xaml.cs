@@ -1,21 +1,26 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
 {
-    public partial class PlacardsPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PlacardsPickPageModel>
+    public partial class PlacardsPickPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<PlacardsPickPageModel>
     {
-        private System.Action<Models.View.PlacardOverviewViewModel[]> placardsSelectedCallbackAction;
-        private Cloud.Api.Common.Models.Filter.PlacardFilterModel remoteFilter;
-        private System.Func<Cloud.Api.Common.Models.PlacardDisplayModel, bool> localFilter;
+        private System.Action<PlacardOverviewViewModel[]> placardsSelectedCallbackAction;
+        private PlacardFilterModel remoteFilter;
+        private System.Func<PlacardDisplayModel, bool> localFilter;
         private int limit;
 
-        private Models.View.PlacardOverviewViewModel[] placards;
+        private PlacardOverviewViewModel[] placards;
         private int currentItemsPageNumber;
 
-        public PlacardsPickPage(System.Action<Models.View.PlacardOverviewViewModel[]> placardsSelectedCallbackAction, Cloud.Api.Common.Models.Filter.PlacardFilterModel remoteFilter = null, System.Func<Cloud.Api.Common.Models.PlacardDisplayModel, bool> localFilter = null, int limit = 25)
-            : base(new Models.Page.PlacardsPickPageModel { IsBusy = true })
+        public PlacardsPickPage(System.Action<PlacardOverviewViewModel[]> placardsSelectedCallbackAction, PlacardFilterModel remoteFilter = null, System.Func<PlacardDisplayModel, bool> localFilter = null, int limit = 25)
+            : base(new PlacardsPickPageModel { IsBusy = true })
         {
             InitializeComponent();
 
@@ -48,7 +53,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
         private void SelectionToggleLabelTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
-            ((sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.SelectableModelViewModel<Models.View.PlacardOverviewViewModel>).Selected = !((sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.SelectableModelViewModel<Models.View.PlacardOverviewViewModel>).Selected;
+            ((sender as Xamarin.Forms.BindableObject).BindingContext as SelectableModelViewModel<PlacardOverviewViewModel>).Selected = !((sender as Xamarin.Forms.BindableObject).BindingContext as SelectableModelViewModel<PlacardOverviewViewModel>).Selected;
         }
 
         private void LoadNextPageButtton_Clicked(object sender, System.EventArgs eventArgs)
@@ -67,7 +72,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
             BindingContextPageModel.IsBusy = true;
 
-            var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+            var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
             currentItemsPageNumber = 0;
 
@@ -83,7 +88,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        Xamarin.Forms.DependencyService.Get<Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception, () =>
+                        Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(task.Exception, () =>
                         {
                             Xamarin.Forms.Device.BeginInvokeOnMainThread(() => this.NavigationPopPageAsync());
                         });
@@ -92,11 +97,11 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                     {
                         if (localFilter == null)
                         {
-                            placards = task.Result.Select(item => new Models.View.PlacardOverviewViewModel(item.ToViewModel(), true)).ToArray();
+                            placards = task.Result.Select(item => new PlacardOverviewViewModel(item.ToViewModel(), true)).ToArray();
                         }
                         else
                         {
-                            placards = task.Result.Where(localFilter).Select(item => new Models.View.PlacardOverviewViewModel(item.ToViewModel(), true)).ToArray();
+                            placards = task.Result.Where(localFilter).Select(item => new PlacardOverviewViewModel(item.ToViewModel(), true)).ToArray();
                         }
 
                         PresentNextItemsPage();
@@ -118,7 +123,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
             foreach (var item in targetPlacads)
             {
-                BindingContextPageModel.SelectablePlacards.Add(new Models.View.SelectableModelViewModel<Models.View.PlacardOverviewViewModel> { Model = item });
+                BindingContextPageModel.SelectablePlacards.Add(new SelectableModelViewModel<PlacardOverviewViewModel> { Model = item });
             }
 
             BindingContextPageModel.HasMoreImages = currentItemsPageNumber < (placards.Length / limit);

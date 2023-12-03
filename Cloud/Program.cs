@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud
+namespace MOROPO.VIDERHE.Cloud
 {
     public class Program
     {
@@ -10,7 +11,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            Microsoft.AspNetCore.WebHost.CreateDefaultBuilder(args)
+            WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
     }
 }
