@@ -1,12 +1,12 @@
-﻿using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
+namespace MOROPO.VIDERHE.Cloud.Api.Connect.Clients
 {
     public class UserApiConnectClient
     {
-        private readonly MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper;
+        private readonly Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper httpClientHelper;
 
-        public UserApiConnectClient(MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper httpClientHelper)
+        public UserApiConnectClient(Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper httpClientHelper)
         {
             this.httpClientHelper = httpClientHelper;
         }

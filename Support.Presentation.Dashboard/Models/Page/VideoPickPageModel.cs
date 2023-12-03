@@ -1,16 +1,18 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page
 {
-    public class VideoPickPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class VideoPickPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private bool hasMoreItems;
-        private System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<Presentation.Models.View.VideoViewModel>> items;
+        private System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<VideoViewModel>> items;
 
         public VideoPickPageModel()
         {
-            Items = new System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<Presentation.Models.View.VideoViewModel>>();
+            Items = new System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<VideoViewModel>>();
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<Presentation.Models.View.VideoViewModel>> Items { get => items; set => SetProperty(ref items, value); }
+        public System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<VideoViewModel>> Items { get => items; set => SetProperty(ref items, value); }
 
         public bool HasMoreItems { get => hasMoreItems; set => SetProperty(ref hasMoreItems, value); }
 

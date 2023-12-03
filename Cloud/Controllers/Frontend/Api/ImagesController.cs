@@ -1,27 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade;
-using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
-using SmartSolucionesCuba.Viderhe.Cloud.Extensions;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.Framework.Guama.Media.Persistence.Entities;
+using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Managers.Facade;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Extensions;
+using MOROPO.VIDERHE.Cloud.Options;
+using MOROPO.VIDERHE.Cloud.Persistence.ORM.EF;
+using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
+namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 {
-    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION)]
+    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Policies.ACCOUNT_VALIDATED_MODERATION)]
     [Route("api/[area]/[controller]")]
     [Area("account")]
     [ApiController]
-    [MOROPO.SAPRESSC.Core.Web.Security.Attributes.ChangeUserPasswordRequiredAction]
-    [MOROPO.SAPRESSC.Core.Web.Security.Attributes.CatchChangeUserPasswordRequiredException]
+    [Framework.Guama.Core.Presentation.Web.Security.Attributes.ChangeUserPasswordRequiredAction]
+    [Framework.Guama.Core.Presentation.Web.Security.Attributes.CatchChangeUserPasswordRequiredException]
     public class ImagesController : Controller
     {
         private readonly IImageFileManagerFacade imageFileManager;
         private readonly IThumbnailFileManagerFacade thumbnailFileManager;
-        private readonly Persistence.EF.ApplicationDbContext dbContext;
-        private readonly Microsoft.Extensions.Options.IOptions<Options.MediaThumbnailResizeOptions> mediaThumbnailResizeOptions;
-        private readonly MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image, System.Guid> imageRepository;
+        private readonly ApplicationDbContext dbContext;
+        private readonly Microsoft.Extensions.Options.IOptions<MediaThumbnailResizeOptions> mediaThumbnailResizeOptions;
+        private readonly IEntityRepository<Image, System.Guid> imageRepository;
 
-        public ImagesController(MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image, System.Guid> imageRepository, IImageFileManagerFacade imageFileManager, IThumbnailFileManagerFacade thumbnailFileManager, Persistence.EF.ApplicationDbContext dbContext, Microsoft.Extensions.Options.IOptions<Options.MediaThumbnailResizeOptions> mediaThumbnailResizeOptions)
+        public ImagesController(IEntityRepository<Image, System.Guid> imageRepository, IImageFileManagerFacade imageFileManager, IThumbnailFileManagerFacade thumbnailFileManager, ApplicationDbContext dbContext, Microsoft.Extensions.Options.IOptions<MediaThumbnailResizeOptions> mediaThumbnailResizeOptions)
         {
             this.imageFileManager = imageFileManager;
             this.thumbnailFileManager = thumbnailFileManager;
@@ -33,11 +38,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         [HttpGet]
         [HttpGet("page/{page}")]
         [HttpGet("page/{page}/limit/{limit}")]
-        public ActionResult<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<ImageDisplayModel>> GetPage(int page = 1, int limit = 15)
+        public ActionResult<Framework.Guama.Core.Presentation.Models.PaginationModel<ImageDisplayModel>> GetPage(int page = 1, int limit = 15)
         {
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
-            var account = dbContext.Accounts.Include(e => e.ImageBridges).ThenInclude(b => b.Image).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
+            var account = dbContext.Accounts.Include(e => e.ImageBridges).ThenInclude(b => b.Stern).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
 
             var maxCount = account.ImageBridges.Count;
 
@@ -52,9 +57,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 page = 1;
             }
 
-            return Ok(new MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<ImageDisplayModel>
+            return Ok(new Framework.Guama.Core.Presentation.Models.PaginationModel<ImageDisplayModel>
             {
-                List = account.ImageBridges.Select(bridge => bridge.Image).OrderByDescending(e => e.CreateAt).Skip((page - 1) * limit).Take(limit).Select(entity =>
+                List = account.ImageBridges.Select(bridge => bridge.Stern).OrderByDescending(e => e.CreateAt).Skip((page - 1) * limit).Take(limit).Select(entity =>
                 {
                     var model = new ImageDisplayModel();
 
@@ -73,7 +78,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         [HttpPost]
         public ActionResult Add(Microsoft.AspNetCore.Http.IFormFile file, [FromForm] string about)
         {
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
             var account = dbContext.Accounts.First(e => e.Id == accountId);
 
@@ -86,7 +91,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             {
                 using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
                 {
-                    var image = new MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image
+                    var image = new Image
                     {
                         ContentType = file.ContentType,
                         Length = file.Length,
@@ -114,7 +119,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                         {
                             var thumbnailSkData = thumbnailSkImage.Encode(SkiaSharp.SKEncodedImageFormat.Png, 75);
 
-                            image.Thumbnail = new MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Thumbnail
+                            image.Thumbnail = new Thumbnail
                             {
                                 ContentType = "image/png",
                                 Length = thumbnailSkData.Size,
@@ -129,8 +134,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
                     dbContext.AccountImageBridges.Add(new Persistence.Entities.AccountImageBridge
                     {
-                        AccountId = accountId,
-                        ImageId = image.Id
+                        ProwId = accountId,
+                        SternId = image.Id
                     });
 
                     dbContext.SaveChanges(User.Identity.Name);
@@ -147,11 +152,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             {
                 try
                 {
-                    var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+                    var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
-                    var account = dbContext.Accounts.Include(e => e.ImageBridges).ThenInclude(b => b.Image).First(e => e.Id == accountId);
+                    var account = dbContext.Accounts.Include(e => e.ImageBridges).ThenInclude(b => b.Stern).First(e => e.Id == accountId);
 
-                    var entity = account.ImageBridges.First(b => b.ImageId == inputModel.Id).Image;
+                    var entity = account.ImageBridges.First(b => b.SternId == inputModel.Id).Stern;
 
                     inputModel.Mergue(entity);
 
@@ -175,28 +180,28 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         [HttpDelete("{key}")]
         public ActionResult Delete(System.Guid key)
         {
-            if (dbContext.PlacardImageBridges.Any(item => item.ImageId == key))
+            if (dbContext.PlacardImageBridges.Any(item => item.SternId == key))
             {
                 return Conflict();
             }
 
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
-            var account = dbContext.Accounts.Include(e => e.ImageBridges).ThenInclude(b => b.Image).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
+            var account = dbContext.Accounts.Include(e => e.ImageBridges).ThenInclude(b => b.Stern).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
 
-            var bridge = account.ImageBridges.First(b => b.ImageId == key);
+            var bridge = account.ImageBridges.First(b => b.SternId == key);
 
             dbContext.AccountImageBridges.Remove(bridge);
 
-            dbContext.Images.Remove(bridge.Image);
+            dbContext.Images.Remove(bridge.Stern);
 
-            dbContext.Thumbnails.Remove(bridge.Image.Thumbnail);
+            dbContext.Thumbnails.Remove(bridge.Stern.Thumbnail);
 
             dbContext.SaveChanges(User.Identity.Name);
 
-            imageFileManager.DeleteImageFile(bridge.Image);
+            imageFileManager.DeleteImageFile(bridge.Stern);
 
-            thumbnailFileManager.DeleteThumbnailFile(bridge.Image.Thumbnail);
+            thumbnailFileManager.DeleteThumbnailFile(bridge.Stern.Thumbnail);
 
             return Ok();
         }

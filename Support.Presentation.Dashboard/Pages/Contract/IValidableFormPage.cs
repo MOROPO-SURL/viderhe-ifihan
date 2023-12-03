@@ -1,11 +1,13 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.Contract
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors.Contract;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract
 {
     public interface IValidableFormPage
     {
-        void AddValidationBehavior(Behaviors.Contract.IFormFieldValidationBehavior validationBehavior);
+        void AddValidationBehavior(IFormFieldValidationBehavior validationBehavior);
 
-        void RemoveValidationBehavior(Behaviors.Contract.IFormFieldValidationBehavior validationBehavior);
-        
+        void RemoveValidationBehavior(IFormFieldValidationBehavior validationBehavior);
+
         void AddValidationMessage(string label, string message);
     }
 }

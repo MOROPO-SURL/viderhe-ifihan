@@ -1,35 +1,35 @@
-﻿using System;
-using System.Linq.Expressions;
-using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Extensions;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models.Filter
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter
 {
-    public class PlacardFilterModel : MOROPO.SAPRESSC.Core.Persistence.Models.Filter.IEntityFilterModel<Persistence.Entities.Placard, Guid>
+    public class PlacardFilterModel : Framework.Guama.Core.Persistence.Presentation.Models.Filter.Contract.IEntityFilterModel<Placard, System.Guid>
     {
         public PlacardFilterModel()
         {
-            PlayerOrientationSupportKind = Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any;
+            PlayerOrientationSupportKind = PlayerOrientationSupportKind.Any;
             PlayerOrientationSupportKindExclusive = false;
         }
 
         public string Label { get; set; }
 
-        public Guid? TemplateId { get; set; }
+        public System.Guid? TemplateId { get; set; }
 
-        public Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupportKind { get; set; }
+        public PlayerOrientationSupportKind PlayerOrientationSupportKind { get; set; }
 
         public bool PlayerOrientationSupportKindExclusive { get; set; }
 
-        public Expression<Func<Persistence.Entities.Placard, bool>> GetSelector()
+        public System.Linq.Expressions.Expression<System.Func<Placard, bool>> GetSelector()
         {
-            Expression<Func<Persistence.Entities.Placard, bool>> expression = null;
+            System.Linq.Expressions.Expression<System.Func<Placard, bool>> expression = null;
 
             if (!string.IsNullOrEmpty(Label?.Trim()))
             {
                 expression = item => item.Label.ToLower().Contains(Label.ToLower());
             }
 
-            if (PlayerOrientationSupportKind == Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any || PlayerOrientationSupportKindExclusive)
+            if (PlayerOrientationSupportKind == PlayerOrientationSupportKind.Any || PlayerOrientationSupportKindExclusive)
             {
                 if (TemplateId != null)
                 {

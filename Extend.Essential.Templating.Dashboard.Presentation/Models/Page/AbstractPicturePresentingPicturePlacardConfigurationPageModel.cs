@@ -1,9 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Models.Page
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Models.Page
 {
-    public abstract class AbstractPicturePresentingPicturePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
+    public abstract class AbstractPicturePresentingPicturePlacardConfigurationPageModel : AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
-        private Support.Presentation.Models.View.ImageViewModel presentedImage;
-        private Support.Presentation.Models.View.ImageViewModel presenterImage;
+        private ImageViewModel presentedImage;
+        private ImageViewModel presenterImage;
         private bool presentedImageZoomingEnabled;
         private bool presentedImageCenteredAtPresentation;
 
@@ -12,9 +15,9 @@
             ScreenPresentationTimeSecounds = 15;
         }
 
-        public Support.Presentation.Models.View.ImageViewModel PresenterImage { get => presenterImage; set => SetProperty(ref presenterImage, value); }
+        public ImageViewModel PresenterImage { get => presenterImage; set => SetProperty(ref presenterImage, value); }
 
-        public Support.Presentation.Models.View.ImageViewModel PresentedImage { get => presentedImage; set => SetProperty(ref presentedImage, value); }
+        public ImageViewModel PresentedImage { get => presentedImage; set => SetProperty(ref presentedImage, value); }
 
         public bool PresentedImageZoomingEnabled { get => presentedImageZoomingEnabled; set => SetProperty(ref presentedImageZoomingEnabled, value); }
 

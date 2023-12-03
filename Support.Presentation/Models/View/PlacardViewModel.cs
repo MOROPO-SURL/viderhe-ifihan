@@ -1,4 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Models.View
 {
     public class PlacardViewModel : System.IDisposable
     {
@@ -8,7 +12,7 @@
 
         public TemplateViewModel Template { get; set; }
 
-        public Viderhe.Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind? PlayerOrientationSupportKind { get; set; }
+        public PlayerOrientationSupportKind? PlayerOrientationSupportKind { get; set; }
 
         public System.DateTime? BeginAt { get; set; }
 
@@ -16,11 +20,11 @@
 
         public string SerializedContext { get; set; }
 
-        public Cloud.Persistence.Enumerations.PlacardComplementationKind? ComplementationKind { get; set; }
+        public PlacardComplementationKind? ComplementationKind { get; set; }
 
         public string SerializedComplementation { get; set; }
 
-        public Cloud.Api.Common.Models.TagDisplayModel[] Tags { get; set; }
+        public TagDisplayModel[] Tags { get; set; }
 
         #region IDisposable Support
         private bool disposedValue = false; // Para detectar llamadas redundantes

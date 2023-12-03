@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class SoundInputModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Sound, System.Guid>
+    public class SoundInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Sound, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -10,17 +12,17 @@
 
         public string About { get; set; }
 
-        public void Import(Persistence.Entities.Sound entity)
+        public void Import(Sound entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public Persistence.Entities.Sound Export()
+        public Sound Export()
         {
             throw new System.NotImplementedException();
         }
 
-        public void Mergue(Persistence.Entities.Sound entity)
+        public void Mergue(Sound entity)
         {
             entity.About = About;
         }

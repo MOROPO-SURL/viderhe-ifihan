@@ -1,8 +1,10 @@
-﻿using MOROPO.SAPRESSC.Core.Api.Connect.Helpers;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Providers.Constant;
+using MOROPO.VIDERHE.Support.Presentation.Managers;
+using MOROPO.VIDERHE.Terminal.Player.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
+namespace MOROPO.VIDERHE.Terminal.Player.Managers
 {
-    public sealed class SessionManager : MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade
+    public sealed class SessionManager : Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
         private static SessionManager instance;
 
@@ -19,19 +21,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
             }
         }
 
-        public Models.View.AccountViewModel Account { get; set; }
+        public AccountViewModel Account { get; set; }
 
-        public HttpClientHelper HttpClientHelper { get; private set; }
-
-        private SessionManager()
+        public Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper HttpClientHelper
         {
-            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+            get
             {
-                HttpClientHelper = new HttpClientHelper(Xamarin.Forms.DependencyService.Get<Providers.Facade.INativeHttpClientHandlerProviderFacade>().Get(), string.Format("{0}://{1}/api/", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host), null, () => ExtraHeaders);
-            }
-            else
-            {
-                HttpClientHelper = new HttpClientHelper(string.Format("{0}://{1}/api/", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host), null, () => ExtraHeaders);
+                return new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(string.Format("{0}://{1}/api/", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Host), null, () => ExtraHeaders);
             }
         }
 
@@ -41,8 +37,8 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
             {
                 return new System.Collections.Generic.KeyValuePair<string, string>[]
                 {
-                    new System.Collections.Generic.KeyValuePair<string, string>(Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.ACCOUNT_ID_HEADER_KEY, Account?.Id.ToString()),
-                    new System.Collections.Generic.KeyValuePair<string, string>(Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY, ConfigurationManager.Instance.ProtectedPlayerId)
+                    new System.Collections.Generic.KeyValuePair<string, string>(SecurityConstantProvider.ACCOUNT_ID_HEADER_KEY, Account?.Id.ToString()),
+                    new System.Collections.Generic.KeyValuePair<string, string>(SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY, ConfigurationManager.Instance.ProtectedPlayerId)
                 };
             }
         }

@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Models.Context
+﻿using MOROPO.VIDERHE.Extend.Essential.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context
 {
     public class LandscapePicturePresentingVideoPlacardContextModel : AbstractPicturePresentingVideoPlacardContextModel
     {
 
-        public Enumerations.LandscapePresentationSide PresenterSide { get; set; }
+        public LandscapePresentationSide PresenterSide { get; set; }
     }
 }

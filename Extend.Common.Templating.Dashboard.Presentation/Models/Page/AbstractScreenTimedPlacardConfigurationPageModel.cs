@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Models.Page
+﻿namespace MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Models.Page
 {
     public class AbstractScreenTimedPlacardConfigurationPageModel : AbstractPlacardConfigurationPageModel
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Converters
 {
     public class StringToLocalizeStringConverter : Xamarin.Forms.IValueConverter
     {

@@ -1,12 +1,16 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageVideosPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageVideosPageModel>
+    public partial class ManageVideosPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManageVideosPageModel>
     {
         private int currentItemsPageNumber;
         private int currentVideoCollectionViewCellColumnCount = 3;
@@ -36,7 +40,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     BindingContextPageModel.IsBusy = true;
                 });
 
-                var client = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.VideosApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
                 System.Exception failException = null;
 
@@ -55,13 +59,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (failException == null)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Video eliminado con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Video eliminado con éxito.");
 
                         RequiredReload_Callback();
                     }
                     else
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(failException);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(failException);
                     }
                 });
             });
@@ -209,7 +213,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 }
             }
 
-            var videosApiConnectClient = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+            var videosApiConnectClient = new Cloud.Api.Connect.Clients.VideosApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
             videosApiConnectClient.GetPageAsync(++currentItemsPageNumber, pagingLimit).ContinueWith(task =>
             {
@@ -217,7 +221,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {

@@ -1,9 +1,9 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.Providers.Facade;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.Transitions.Contract;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
-using System.Linq;
+﻿using System.Linq;
+using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Transitions.Contract;
+using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Providers.Facade;
+using MOROPO.VIDERHE.Extend.Common.Presentation.Views;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning.Presentation.Providers
+namespace MOROPO.VIDERHE.Support.Extend.Transitioning.Presentation.Providers
 {
     public class TransitionProvider : ITransitionProviderFacade
     {
@@ -25,14 +25,14 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning.Presentation.
         private TransitionProvider()
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Transitioning.Presentation,\\sVersion=")).ToArray();
+                .Where(a => !a.FullName.Contains(".VIDERHE.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Transitioning.Presentation,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(ITransitionProviderFacade).IsAssignableFrom(t));
+            SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, SmartSolucionesCuba.XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(ITransitionProviderFacade).IsAssignableFrom(t));
         }
 
         public AbstractTransition GetFor(System.Guid transitionDescriptorId, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<ITransitionProviderFacade>();
+            var providers = SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<ITransitionProviderFacade>();
 
             foreach (var provider in providers)
             {
@@ -48,7 +48,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning.Presentation.
 
         public AbstractTransition GetRandom(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<ITransitionProviderFacade>();
+            var providers = SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<ITransitionProviderFacade>();
 
             var randomizer = new System.Random();
 

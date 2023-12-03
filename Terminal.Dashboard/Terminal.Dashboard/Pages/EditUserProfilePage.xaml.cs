@@ -1,10 +1,18 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Helpers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class EditUserProfilePage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EditUserProfilePageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class EditUserProfilePage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<EditUserProfilePageModel>, IValidableFormPage
     {
-        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+        private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
         private System.Action successCallbackAction;
 
@@ -13,17 +21,17 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         public EditUserProfilePage(System.Action successCallbackAction) : base(new Models.Page.EditUserProfilePageModel
         {
-            TargetUserId = Managers.SessionManager.Instance.Moderator.User.Id,
-            TargetIdentityName = Managers.SessionManager.Instance.Moderator.Identity.Name,
-            TargetIdentityLastName = Managers.SessionManager.Instance.Moderator.Identity.LastName,
-            TargetIdentityImageSource = Managers.SessionManager.Instance.Moderator.Identity.Image != null ?
-                Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/media/moderator/{2}", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host, Managers.SessionManager.Instance.Moderator.Identity.Image.Id))) :
-                Xamarin.Forms.ImageSource.FromUri(new System.Uri(Helpers.ConstantProvisioningHelper.Instance.FallbackUserProfileImageUrl)),
-            TargetIdentitySex = Managers.SessionManager.Instance.Moderator.Identity.Sex,
-            TargetIdentityAbout = Managers.SessionManager.Instance.Moderator.Identity.About
+            TargetUserId = SessionManager.Instance.Moderator.User.Id,
+            TargetIdentityName = SessionManager.Instance.Moderator.Identity.Name,
+            TargetIdentityLastName = SessionManager.Instance.Moderator.Identity.LastName,
+            TargetIdentityImageSource = SessionManager.Instance.Moderator.Identity.Image != null ?
+                Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/media/moderator/{2}", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Host, SessionManager.Instance.Moderator.Identity.Image.Id))) :
+                Xamarin.Forms.ImageSource.FromUri(new System.Uri(ConstantProvisioningHelper.Instance.FallbackUserProfileImageUrl)),
+            TargetIdentitySex = SessionManager.Instance.Moderator.Identity.Sex,
+            TargetIdentityAbout = SessionManager.Instance.Moderator.Identity.About
         })
         {
-            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+            validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
             this.successCallbackAction = successCallbackAction;
 
@@ -76,22 +84,22 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             BindingContextPageModel.IsBusy = true;
 
-            var client = new Cloud.Api.Connect.Clients.ModeratorsApiConnectClient(Managers.SessionManager.Instance);
+            var client = new Cloud.Api.Connect.Clients.ModeratorsApiConnectClient(SessionManager.Instance);
 
             var model = new Cloud.Api.Common.Models.ModeratorInputModel
             {
-                Id = Managers.SessionManager.Instance.Moderator.Id,
-                IsPrivileged = Managers.SessionManager.Instance.Moderator.IsPrivileged,
+                Id = SessionManager.Instance.Moderator.Id,
+                IsPrivileged = SessionManager.Instance.Moderator.IsPrivileged,
                 User = new Cloud.Api.Common.Models.UserInputModel
                 {
-                    Id = Managers.SessionManager.Instance.Moderator.User.Id,
-                    Enabled = Managers.SessionManager.Instance.Moderator.User.Enabled,
-                    PasswordChangeRequired = Managers.SessionManager.Instance.Moderator.User.PasswordChangeRequired,
+                    Id = SessionManager.Instance.Moderator.User.Id,
+                    Enabled = SessionManager.Instance.Moderator.User.Enabled,
+                    PasswordChangeRequired = SessionManager.Instance.Moderator.User.PasswordChangeRequired,
                     NewPassword = BindingContextPageModel.TargetUserNewPassword
                 },
                 Identity = new Cloud.Api.Common.Models.PersonIdentityInputModel
                 {
-                    Id = Managers.SessionManager.Instance.Moderator.Identity.Id,
+                    Id = SessionManager.Instance.Moderator.Identity.Id,
                     Name = BindingContextPageModel.TargetIdentityName,
                     LastName = BindingContextPageModel.TargetIdentityLastName,
                     Sex = BindingContextPageModel.TargetIdentitySex
@@ -106,9 +114,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     ContentType = BindingContextPageModel.TargetIdentityImageContentType
                 };
 
-                if (Managers.SessionManager.Instance.Moderator.Identity.Image != null)
+                if (SessionManager.Instance.Moderator.Identity.Image != null)
                 {
-                    model.Identity.Image.Id = Managers.SessionManager.Instance.Moderator.Identity.Image.Id;
+                    model.Identity.Image.Id = SessionManager.Instance.Moderator.Identity.Image.Id;
                 }
             }
 
@@ -118,11 +126,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     if (task.Exception == null && !task.IsCanceled)
                     {
-                        Managers.SessionManager.Instance.Moderator.Identity.Name = BindingContextPageModel.TargetIdentityName;
-                        Managers.SessionManager.Instance.Moderator.Identity.LastName = BindingContextPageModel.TargetIdentityLastName;
-                        Managers.SessionManager.Instance.Moderator.Identity.Sex = BindingContextPageModel.TargetIdentitySex;
+                        SessionManager.Instance.Moderator.Identity.Name = BindingContextPageModel.TargetIdentityName;
+                        SessionManager.Instance.Moderator.Identity.LastName = BindingContextPageModel.TargetIdentityLastName;
+                        SessionManager.Instance.Moderator.Identity.Sex = BindingContextPageModel.TargetIdentitySex;
 
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", string.Format("Cambios aplicados con éxito.{0}{0}Algunos cambios se mostrarán en le próximo inicio de sesión.", System.Environment.NewLine));
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", string.Format("Cambios aplicados con éxito.{0}{0}Algunos cambios se mostrarán en le próximo inicio de sesión.", System.Environment.NewLine));
 
                         this.NavigationPopPageAsync();
 
@@ -132,7 +140,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         BindingContextPageModel.IsBusy = false;
 
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                 });
             });
@@ -162,9 +170,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (!Xamarin.Essentials.MediaPicker.IsCaptureSupported) PresentForImagePick();
 
-            var action = await DisplayActionSheet("Seleccionar Imágen de Perfil desde", "Cancelar", null, Helpers.ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_CAMARA, Helpers.ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_GALLERY);
+            var action = await DisplayActionSheet("Seleccionar Imágen de Perfil desde", "Cancelar", null, ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_CAMARA, ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_GALLERY);
 
-            if (action == Helpers.ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_CAMARA)
+            if (action == ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_CAMARA)
             {
                 var permission = await Xamarin.Essentials.Permissions.CheckStatusAsync<Xamarin.Essentials.Permissions.Camera>();
 
@@ -205,7 +213,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 await Xamarin.Essentials.MediaPicker.CapturePhotoAsync().ContinueWith(PickedImageContinuationTask);
             }
-            else if (action == Helpers.ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_GALLERY)
+            else if (action == ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_GALLERY)
             {
                 PresentForImagePick();
             }
@@ -331,12 +339,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         #region IValidableFormPage implementation
 
-        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void AddValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Add(validationBehavior);
         }
 
-        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void RemoveValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Remove(validationBehavior);
         }
