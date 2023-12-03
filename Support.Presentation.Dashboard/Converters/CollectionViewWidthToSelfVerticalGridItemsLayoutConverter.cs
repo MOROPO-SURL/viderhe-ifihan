@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Converters
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Converters
 {
     public class CollectionViewWidthToSelfVerticalGridItemsLayoutConverter : Xamarin.Forms.IValueConverter
     {

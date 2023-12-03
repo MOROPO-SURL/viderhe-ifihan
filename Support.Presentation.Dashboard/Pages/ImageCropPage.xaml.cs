@@ -1,10 +1,13 @@
-﻿using SkiaSharp;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Delegates;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Effects;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Enumerations;
+using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System.Collections.Generic;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
 {
-    public partial class ImageCropPage : XFToolKit.Mvvm.Pages.ContentPage
+    public partial class ImageCropPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.ContentPage
     {
         private System.Action<SKBitmap> callbackAction;
 
@@ -68,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
             private SKMatrix inverseBitmapMatrix;
 
             // Touch tracking 
-            private Effects.TouchEffect touchEffect;
+            private TouchEffect touchEffect;
 
             private Dictionary<long, TouchPoint> touchPoints;
 
@@ -283,14 +286,14 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                 InvalidateSurface();
             }
 
-            private void OnTouchEffectTouchAction(object sender, Delegates.TouchActionEventArgs args)
+            private void OnTouchEffectTouchAction(object sender, TouchActionEventArgs args)
             {
                 SKPoint pixelLocationPoint = ConvertToPixel(args.Location);
                 SKPoint bitmapLocationPoint = inverseBitmapMatrix.MapPoint(pixelLocationPoint);
 
                 switch (args.Kind)
                 {
-                    case Enumerations.TouchActionKind.Pressed:
+                    case TouchActionKind.Pressed:
                         // Convert radius to bitmap/cropping scale
                         float radius = inverseBitmapMatrix.ScaleX * RADIUS;
 
@@ -310,7 +313,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
                         break;
 
-                    case Enumerations.TouchActionKind.Moved:
+                    case TouchActionKind.Moved:
                         if (touchPoints.ContainsKey(args.Id))
                         {
                             var touchPoint = touchPoints[args.Id];
@@ -329,8 +332,8 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
                         break;
 
-                    case Enumerations.TouchActionKind.Released:
-                    case Enumerations.TouchActionKind.Cancelled:
+                    case TouchActionKind.Released:
+                    case TouchActionKind.Cancelled:
                         if (touchPoints.ContainsKey(args.Id))
                         {
                             touchPoints.Remove(args.Id);

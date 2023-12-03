@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Enumerations
+﻿namespace MOROPO.VIDERHE.Cloud.Persistence.Enumerations
 {
     public enum PlacardComplementationKind
     {

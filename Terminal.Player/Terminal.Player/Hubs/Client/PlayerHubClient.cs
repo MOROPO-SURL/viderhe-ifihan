@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
-using SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Common.Enumerations;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.SignalR.Connect.Common.Enumerations;
+using MOROPO.VIDERHE.Cloud.SignalR.Connect.Player.Clients;
+using MOROPO.VIDERHE.Cloud.SignalR.Connect.Player.Hubs;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Managers;
+using MOROPO.VIDERHE.Terminal.Player.Managers;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
+namespace MOROPO.VIDERHE.Terminal.Player.Hubs.Client
 {
-    public class PlayerHubClient : Cloud.SignalR.Connect.Player.Clients.IPlayerClient, System.IDisposable
+    public class PlayerHubClient : IPlayerClient, System.IDisposable
     {
         private static PlayerHubClient instance;
 
@@ -28,13 +32,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
         public PlayerHubClient()
         {
             connection = new HubConnectionBuilder()
-                .WithUrl(string.Format("{0}://{1}/hubs/player", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host), options =>
+                .WithUrl(string.Format("{0}://{1}/hubs/player", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Host), options =>
                 {
                     options.Headers = new System.Collections.Generic.Dictionary<string, string>();
 
-                    var extraHeaders = Managers.SessionManager.Instance.GetExtraHeaders();
-
-                    var securityHeaders = extraHeaders;
+                    var securityHeaders = SessionManager.Instance.ExtraHeaders;
 
                     foreach (var header in securityHeaders)
                     {
@@ -69,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
         }
 
         private void ConnectionAsyncStart_Callback(System.Threading.Tasks.Task task)
-        {   
+        {
             if (task.IsCanceled || task.Exception != null)
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(15));
@@ -100,17 +102,17 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Hubs.Client
         {
             var platformControlHelper = Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlatformControlHelperFacade>();
 
-            connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Player.Hubs.IPlayerHub.UpdateEnvironmentConfiguration), platformControlHelper.AudioLevel, platformControlHelper.IsAudioEnabled);
+            connection.InvokeAsync(nameof(IPlayerHub.UpdateEnvironmentConfiguration), platformControlHelper.AudioLevel, platformControlHelper.IsAudioEnabled);
         }
 
         public void UpdateEnvironmentConfiguration(int audioLevel, bool isAudioEnabled)
         {
-            connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Player.Hubs.IPlayerHub.UpdateEnvironmentConfiguration), audioLevel, isAudioEnabled);
+            connection.InvokeAsync(nameof(IPlayerHub.UpdateEnvironmentConfiguration), audioLevel, isAudioEnabled);
         }
 
         public void NotifyPlayingPlacard(System.Guid placardId)
         {
-            connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Player.Hubs.IPlayerHub.NotifyPlayingPlacard), placardId);
+            connection.InvokeAsync(nameof(IPlayerHub.NotifyPlayingPlacard), placardId);
         }
 
         public System.Threading.Tasks.Task OnPresentNextFrameRequestAsync()

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.Common.Overlaying.Descriptors
 {
     public interface IOverlayDescriptor
     {

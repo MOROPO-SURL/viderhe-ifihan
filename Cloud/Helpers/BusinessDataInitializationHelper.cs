@@ -1,43 +1,45 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MOROPO.SAPRESSC.Core.Security.Common.Persistence.EF.Extensions;
-using MOROPO.SAPRESSC.Core.Security.Common.Persistence.Entities;
+using MOROPO.Framework.Guama.Core.Security.Common.Persistence.ORM.EF.Extensions;
+using MOROPO.VIDERHE.Cloud.Helpers.Comparison;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers
+namespace MOROPO.VIDERHE.Cloud.Helpers
 {
-    public sealed class BusinessDataInitializationHelper : MOROPO.SAPRESSC.Core.Persistence.EF.Helpers.Facade.IDataInitializationHelper
+    public sealed class BusinessDataInitializationHelper : Framework.Guama.Core.Persistence.ORM.EF.Helpers.Facade.IDataInitializationHelper
     {
         public void InitialiseData(DbContext dbContext)
         {
             #region Account Permission definitions
 
-            var roleDbSet = dbContext.Set<Permission>();
+            var roleDbSet = dbContext.Set<Framework.Guama.Core.Security.Common.Persistence.Entities.Permission>();
 
-            if (!roleDbSet.Any(role => role.Code.Equals(Cloud.Security.Authorization.Permission.AccountViewer)))
+            if (!roleDbSet.Any(role => role.Code.Equals(Permission.AccountViewer)))
             {
-                roleDbSet.Add(Cloud.Security.Authorization.Permission.AccountViewer.ToPermissionEntity(Cloud.Security.Authorization.PermissionFamily.AccountManagement));
+                roleDbSet.Add(Permission.AccountViewer.ToPermissionEntity(PermissionFamily.AccountManagement));
             }
 
-            if (!roleDbSet.Any(role => role.Code.Equals(Cloud.Security.Authorization.Permission.AccountCreator)))
+            if (!roleDbSet.Any(role => role.Code.Equals(Permission.AccountCreator)))
             {
-                roleDbSet.Add(Cloud.Security.Authorization.Permission.AccountCreator.ToPermissionEntity(Cloud.Security.Authorization.PermissionFamily.AccountManagement));
+                roleDbSet.Add(Permission.AccountCreator.ToPermissionEntity(PermissionFamily.AccountManagement));
             }
 
-            if (!roleDbSet.Any(role => role.Code.Equals(Cloud.Security.Authorization.Permission.AccountEditor)))
+            if (!roleDbSet.Any(role => role.Code.Equals(Permission.AccountEditor)))
             {
-                roleDbSet.Add(Cloud.Security.Authorization.Permission.AccountEditor.ToPermissionEntity(Cloud.Security.Authorization.PermissionFamily.AccountManagement));
+                roleDbSet.Add(Permission.AccountEditor.ToPermissionEntity(PermissionFamily.AccountManagement));
             }
 
-            if (!roleDbSet.Any(role => role.Code.Equals(Cloud.Security.Authorization.Permission.AccountRemover)))
+            if (!roleDbSet.Any(role => role.Code.Equals(Permission.AccountRemover)))
             {
-                roleDbSet.Add(Cloud.Security.Authorization.Permission.AccountRemover.ToPermissionEntity(Cloud.Security.Authorization.PermissionFamily.AccountManagement));
+                roleDbSet.Add(Permission.AccountRemover.ToPermissionEntity(PermissionFamily.AccountManagement));
             }
 
             #endregion
 
             #region Extension definitions
 
-            var extensionDbSet = dbContext.Set<Persistence.Entities.Extension>();
+            var extensionDbSet = dbContext.Set<Extension>();
 
             var extensionDescriptors = Support.Extend.Providers.ExtensionDescriptorProvider.Instance.GetDescriptors();
 
@@ -63,27 +65,27 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers
 
                 if (extension == null)
                 {
-                    extension = new Persistence.Entities.Extension
+                    extension = new Extension
                     {
                         Id = extensionDescriptor.Id,
                         Enabled = true,
                         Version = extensionVersion,
-                        Templates = spectedExtensionTemplateDescriptors.Select(d => new Persistence.Entities.Template { Id = d.Id, Enabled = true }).ToList(),
-                        Transitions = spectedExtensionTransitionDescriptors.Select(d => new Persistence.Entities.Transition { Id = d.Id, Enabled = true }).ToList(),
-                        Overlays = spectedExtensionOverlayDescriptors.Select(d => new Persistence.Entities.Overlay { Id = d.Id, Enabled = true }).ToList()
+                        Templates = spectedExtensionTemplateDescriptors.Select(d => new Template { Id = d.Id, Enabled = true }).ToList(),
+                        Transitions = spectedExtensionTransitionDescriptors.Select(d => new Transition { Id = d.Id, Enabled = true }).ToList(),
+                        Overlays = spectedExtensionOverlayDescriptors.Select(d => new Overlay { Id = d.Id, Enabled = true }).ToList()
                     };
 
                     extensionDbSet.Add(extension);
                 }
                 else
                 {
-                    var spectedExtensionTemplates = spectedExtensionTemplateDescriptors.Select(d => new Persistence.Entities.Template { Id = d.Id, Enabled = true }).ToArray();
+                    var spectedExtensionTemplates = spectedExtensionTemplateDescriptors.Select(d => new Template { Id = d.Id, Enabled = true }).ToArray();
 
-                    var divergentExtensionTemplateDescriptors = extension.Templates.Except(spectedExtensionTemplates, Comparison.TemplateEntityCollectionEqualityComparisonHelper.Instance).ToList();
+                    var divergentExtensionTemplateDescriptors = extension.Templates.Except(spectedExtensionTemplates, TemplateEntityCollectionEqualityComparisonHelper.Instance).ToList();
 
-                    divergentExtensionTemplateDescriptors.AddRange(spectedExtensionTemplates.Except(extension.Templates, Comparison.TemplateEntityCollectionEqualityComparisonHelper.Instance));
+                    divergentExtensionTemplateDescriptors.AddRange(spectedExtensionTemplates.Except(extension.Templates, TemplateEntityCollectionEqualityComparisonHelper.Instance));
 
-                    var templateDbSet = dbContext.Set<Persistence.Entities.Template>();
+                    var templateDbSet = dbContext.Set<Template>();
 
                     foreach (var templateDescriptor in divergentExtensionTemplateDescriptors)
                     {
@@ -97,17 +99,17 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers
                         }
                         else
                         {
-                            extension.Templates.Add(new Persistence.Entities.Template { Id = templateDescriptor.Id, Enabled = true });
+                            extension.Templates.Add(new Template { Id = templateDescriptor.Id, Enabled = true });
                         }
                     }
 
-                    var spectedExtensionTransitions = spectedExtensionTransitionDescriptors.Select(d => new Persistence.Entities.Transition { Id = d.Id, Enabled = true }).ToArray();
+                    var spectedExtensionTransitions = spectedExtensionTransitionDescriptors.Select(d => new Transition { Id = d.Id, Enabled = true }).ToArray();
 
-                    var divergentExtensionTransitionDescriptors = extension.Transitions.Except(spectedExtensionTransitions, Comparison.TransitionEntityCollectionEqualityComparisonHelper.Instance).ToList();
+                    var divergentExtensionTransitionDescriptors = extension.Transitions.Except(spectedExtensionTransitions, TransitionEntityCollectionEqualityComparisonHelper.Instance).ToList();
 
-                    divergentExtensionTransitionDescriptors.AddRange(spectedExtensionTransitions.Except(extension.Transitions, Comparison.TransitionEntityCollectionEqualityComparisonHelper.Instance));
+                    divergentExtensionTransitionDescriptors.AddRange(spectedExtensionTransitions.Except(extension.Transitions, TransitionEntityCollectionEqualityComparisonHelper.Instance));
 
-                    var transitionDbSet = dbContext.Set<Persistence.Entities.Transition>();
+                    var transitionDbSet = dbContext.Set<Transition>();
 
                     foreach (var transitionDescriptor in divergentExtensionTransitionDescriptors)
                     {
@@ -121,17 +123,17 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers
                         }
                         else
                         {
-                            extension.Transitions.Add(new Persistence.Entities.Transition { Id = transitionDescriptor.Id, Enabled = true });
+                            extension.Transitions.Add(new Transition { Id = transitionDescriptor.Id, Enabled = true });
                         }
                     }
 
-                    var spectedExtensionOverlays = spectedExtensionOverlayDescriptors.Select(d => new Persistence.Entities.Overlay { Id = d.Id, Enabled = true }).ToArray();
+                    var spectedExtensionOverlays = spectedExtensionOverlayDescriptors.Select(d => new Overlay { Id = d.Id, Enabled = true }).ToArray();
 
-                    var divergentExtensionOverlayDescriptors = extension.Overlays.Except(spectedExtensionOverlays, Comparison.OverlayEntityCollectionEqualityComparisonHelper.Instance).ToList();
+                    var divergentExtensionOverlayDescriptors = extension.Overlays.Except(spectedExtensionOverlays, OverlayEntityCollectionEqualityComparisonHelper.Instance).ToList();
 
-                    divergentExtensionOverlayDescriptors.AddRange(spectedExtensionOverlays.Except(extension.Overlays, Comparison.OverlayEntityCollectionEqualityComparisonHelper.Instance));
+                    divergentExtensionOverlayDescriptors.AddRange(spectedExtensionOverlays.Except(extension.Overlays, OverlayEntityCollectionEqualityComparisonHelper.Instance));
 
-                    var overlayDbSet = dbContext.Set<Persistence.Entities.Overlay>();
+                    var overlayDbSet = dbContext.Set<Overlay>();
 
                     foreach (var overlayDescriptor in divergentExtensionOverlayDescriptors)
                     {
@@ -145,7 +147,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers
                         }
                         else
                         {
-                            extension.Overlays.Add(new Persistence.Entities.Overlay { Id = overlayDescriptor.Id, Enabled = true });
+                            extension.Overlays.Add(new Overlay { Id = overlayDescriptor.Id, Enabled = true });
                         }
                     }
 
@@ -167,9 +169,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers
 
             #endregion
 
-            if (dbContext is MOROPO.SAPRESSC.Core.Persistence.EF.Context.ITraceableDbContext)
+            if (dbContext is Framework.Guama.Core.Persistence.ORM.EF.Context.Contract.ITraceableDbContext)
             {
-                (dbContext as MOROPO.SAPRESSC.Core.Persistence.EF.Context.ITraceableDbContext).SaveChanges("system");
+                (dbContext as Framework.Guama.Core.Persistence.ORM.EF.Context.Contract.ITraceableDbContext).SaveChanges("system");
             }
             else
             {

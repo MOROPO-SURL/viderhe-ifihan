@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class PlayerInputModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Player, string>
+    public class PlayerInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Player, string>
     {
         [Required, RegularExpression(@"^[0-9A-Z]{7}$")]
         public string Id { get; set; }
@@ -21,9 +22,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public TagDisplayModel[] Tags { get; set; }
 
-        public Persistence.Entities.Player Export()
+        public Player Export()
         {
-            var entity = new Persistence.Entities.Player
+            var entity = new Player
             {
                 Id = Id
             };
@@ -33,7 +34,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
             return entity;
         }
 
-        public void Import(Persistence.Entities.Player entity)
+        public void Import(Player entity)
         {
             Id = entity.Id;
             Name = entity.Name;
@@ -43,7 +44,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
             SerializedOverlayContext = entity.SerializedOverlayContext;
         }
 
-        public void Mergue(Persistence.Entities.Player entity)
+        public void Mergue(Player entity)
         {
             entity.Name = Name;
             entity.About = About;
@@ -54,10 +55,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
             foreach (var item in Tags)
             {
-                entity.TagBridges.Add(new Persistence.Entities.PlayerTagBridge
+                entity.TagBridges.Add(new PlayerTagBridge
                 {
-                    PlayerId = entity.Id,
-                    TagId = item.Id
+                    ProwId = entity.Id,
+                    SternId = item.Id
                 });
             }
         }

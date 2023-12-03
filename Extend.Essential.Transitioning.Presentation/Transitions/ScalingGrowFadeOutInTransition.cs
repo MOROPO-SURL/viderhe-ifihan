@@ -1,9 +1,10 @@
-﻿using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+﻿using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Transitions.Contract;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentation.Transitions
+namespace MOROPO.VIDERHE.Extend.Essential.Transitioning.Presentation.Transitions
 {
-    public class ScalingGrowFadeOutInTransition : Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition
+    public class ScalingGrowFadeOutInTransition : AbstractTransition
     {
         private AbstractAnimation factShowInAnimation;
 
@@ -32,7 +33,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
                 storyboard.Animations.Add(new ScaleToAnimation
                 {
                     Target = outgoingPlacardPresentationView,
-                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
+                    EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
                     Scale = 1.2,
                     Duration = "3000"
                 });
@@ -41,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
             storyboard.Animations.Add(factShowInAnimation = new ScaleToAnimation
             {
                 Target = incomingPlacardPresentationView,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
                 Scale = 1.2,
                 Duration = "3000"
             });

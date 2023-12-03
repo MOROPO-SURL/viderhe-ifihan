@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.Extensions.Localization;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers.Localization
+namespace MOROPO.VIDERHE.Cloud.Helpers.Localization
 {
     public class GlobalViewLocalizationHelper
     {
@@ -37,7 +37,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers.Localization
 
         public IStringLocalizer WithCulture(System.Globalization.CultureInfo culture)
         {
-            return stringLocalizer.WithCulture(culture);
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
-{
-    public partial class ImageDetailPage : XFToolKit.Mvvm.Pages.ContentPage
-    {
-        private System.Action<Presentation.Models.View.ImageViewModel> editRequestActionCallback;
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-        public ImageDetailPage(Presentation.Models.View.ImageViewModel model, System.Action<Presentation.Models.View.ImageViewModel> editRequestActionCallback = null)
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
+{
+    public partial class ImageDetailPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.ContentPage
+    {
+        private System.Action<ImageViewModel> editRequestActionCallback;
+
+        public ImageDetailPage(ImageViewModel model, System.Action<ImageViewModel> editRequestActionCallback = null)
         {
             InitializeComponent();
 
@@ -22,7 +24,7 @@
 
         private void EditToolbarItem_Activated(object sender, System.EventArgs eventArgs)
         {
-            editRequestActionCallback.Invoke(BindingContext as Presentation.Models.View.ImageViewModel);
+            editRequestActionCallback.Invoke(BindingContext as ImageViewModel);
         }
 
         protected override void DisposeUnmanagementResources()

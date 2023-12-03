@@ -1,8 +1,9 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class PlayerDisplayModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Player, string>
+    public class PlayerDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Player, string>
     {
         public PlayerDisplayModel()
         {
@@ -31,7 +32,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public TagDisplayModel[] Tags { get; set; }
 
-        public void Import(Persistence.Entities.Player entity)
+        public void Import(Player entity)
         {
             Id = entity.Id;
             Name = entity.Name;
@@ -40,10 +41,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
             SerializedOverlayContext = entity.SerializedOverlayContext;
             Tags = entity.TagBridges.Select(bridge => new TagDisplayModel
             {
-                Id = bridge.TagId,
-                Name = bridge.Tag.Name,
-                Group = bridge.Tag.Group,
-                Color = bridge.Tag.Color
+                Id = bridge.SternId,
+                Name = bridge.Stern.Name,
+                Group = bridge.Stern.Group,
+                Color = bridge.Stern.Color
             }).ToArray();
 
             if (entity.Screenplay == null) return;

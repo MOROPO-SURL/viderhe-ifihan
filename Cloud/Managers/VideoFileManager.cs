@@ -1,15 +1,17 @@
-﻿using System.IO;
+﻿using MOROPO.Framework.Guama.Media.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Options;
+using System.IO;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Managers
+namespace MOROPO.VIDERHE.Cloud.Managers
 {
-    public class VideoFileManager : MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IVideoFileManagerFacade
+    public class VideoFileManager : Framework.Guama.Media.Presentation.Web.Common.Managers.Facade.IVideoFileManagerFacade
     {
         private const string TEMP_DIRECTORY_NAME = "temp";
 
-        private readonly Microsoft.Extensions.Options.IOptions<Options.MediaPathOptions> mediaPathOptions;
+        private readonly Microsoft.Extensions.Options.IOptions<MediaPathOptions> mediaPathOptions;
 
-        public VideoFileManager(Microsoft.Extensions.Options.IOptions<Options.MediaPathOptions> mediaPathOptions)
+        public VideoFileManager(Microsoft.Extensions.Options.IOptions<MediaPathOptions> mediaPathOptions)
         {
             this.mediaPathOptions = mediaPathOptions;
         }
@@ -70,17 +72,17 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Managers
             File.Delete(Path.Combine(mediaPathOptions.Value.VideoMediaPath, TEMP_DIRECTORY_NAME, videoId.ToString(), segment.ToString()));
         }
 
-        public string GetVideoAbsoluteFilePath(MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Video video)
+        public string GetVideoAbsoluteFilePath(Video video)
         {
             return Path.Combine(mediaPathOptions.Value.VideoMediaPath, video.Id.ToString()) + video.Extension;
         }
 
-        public byte[] GetVideoFileContent(MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Video video)
+        public byte[] GetVideoFileContent(Video video)
         {
             throw new System.NotImplementedException();
         }
 
-        public string GetVideoRelativeFilePath(MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Video video)
+        public string GetVideoRelativeFilePath(Video video)
         {
             throw new System.InvalidOperationException();
         }

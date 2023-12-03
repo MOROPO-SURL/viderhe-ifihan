@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Providers.Facade
+﻿namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Providers.Facade
 {
     public interface IEmbeddedFontFamilyNamesProviderFacade
     {

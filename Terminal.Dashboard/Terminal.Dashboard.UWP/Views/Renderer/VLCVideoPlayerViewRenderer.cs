@@ -1,10 +1,10 @@
-﻿using SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Extensions;
+﻿using MOROPO.VIDERHE.Terminal.Dashboard.UWP.Extensions;
 
-[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer.VLCVideoPlayerViewRenderer))]
+[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView), typeof(MOROPO.VIDERHE.Terminal.Dashboard.UWP.Views.Renderer.VLCVideoPlayerViewRenderer))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
+namespace MOROPO.VIDERHE.Terminal.Dashboard.UWP.Views.Renderer
 {
-    public class VLCVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<XFToolKit.Presentation.Views.Rendered.VideoPlayerView, VLC.MediaElement>
+    public class VLCVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView, VLC.MediaElement>
     {
         private bool disposed;
 
@@ -13,7 +13,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
             disposed = false;
         }
 
-        protected override void OnElementChanged(Xamarin.Forms.Platform.UWP.ElementChangedEventArgs<XFToolKit.Presentation.Views.Rendered.VideoPlayerView> eventArgs)
+        protected override void OnElementChanged(Xamarin.Forms.Platform.UWP.ElementChangedEventArgs<SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView> eventArgs)
         {
             base.OnElementChanged(eventArgs);
 
@@ -45,21 +45,21 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
         {
             base.OnElementPropertyChanged(sender, e);
 
-            if (Control == null || disposed || Element == null || (Element.AutoPlay && (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)) return;
+            if (Control == null || disposed || Element == null || (Element.AutoPlay && (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)) return;
 
-            if (e.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.ShowControlsProperty.PropertyName)
+            if (e.PropertyName == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView.ShowControlsProperty.PropertyName)
             {
                 SetAreTransportControlsEnabled();
             }
-            else if (e.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.StrechAspectProperty.PropertyName)
+            else if (e.PropertyName == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView.StrechAspectProperty.PropertyName)
             {
                 SetAspectStrech();
             }
-            else if (e.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.SourceProperty.PropertyName)
+            else if (e.PropertyName == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView.SourceProperty.PropertyName)
             {
                 SetSource();
             }
-            else if (e.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.AutoPlayProperty.PropertyName)
+            else if (e.PropertyName == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView.AutoPlayProperty.PropertyName)
             {
                 SetAutoPlay();
             }
@@ -86,7 +86,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 
         private void Play_Requested(object sender, System.EventArgs eventArgs)
         {
-            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady;
+            (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady;
 
             Control.Play();
         }
@@ -98,23 +98,23 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 
         private void OnMediaElementCurrentStateChanged(object sender, Windows.UI.Xaml.RoutedEventArgs eventArgs)
         {
-            if (Control == null || disposed || Element == null || (Element.AutoPlay && (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)) return;
+            if (Control == null || disposed || Element == null || (Element.AutoPlay && (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)) return;
 
-            var videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady;
+            var videoStatus = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady;
 
             switch (Control.CurrentState)
             {
                 case Windows.UI.Xaml.Media.MediaElementState.Playing:
                 case Windows.UI.Xaml.Media.MediaElementState.Buffering:
                 case Windows.UI.Xaml.Media.MediaElementState.Opening:
-                    videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing;
+                    videoStatus = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing;
 
                     break;
 
                 case Windows.UI.Xaml.Media.MediaElementState.Closed:
                 case Windows.UI.Xaml.Media.MediaElementState.Paused:
                 case Windows.UI.Xaml.Media.MediaElementState.Stopped:
-                    videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
+                    videoStatus = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
 
                     if (Element.AutoPlay)
                     {
@@ -125,9 +125,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
                     break;
             }
 
-            if (Element != null && (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status != videoStatus)
+            if (Element != null && (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status != videoStatus)
             {
-                (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = videoStatus;
+                (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = videoStatus;
             }
         }
 
@@ -151,9 +151,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 
             try
             {
-                if (Element.Source is XFToolKit.Presentation.Sources.Video.UriVideoSource)
+                if (Element.Source is SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.UriVideoSource)
                 {
-                    var uri = (Element.Source as XFToolKit.Presentation.Sources.Video.UriVideoSource).Uri;
+                    var uri = (Element.Source as SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.UriVideoSource).Uri;
 
                     if (!string.IsNullOrWhiteSpace(uri))
                     {
@@ -162,9 +162,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
                         hasSetSource = true;
                     }
                 }
-                else if (Element.Source is XFToolKit.Presentation.Sources.Video.FileVideoSource)
+                else if (Element.Source is SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.FileVideoSource)
                 {
-                    var file = (Element.Source as XFToolKit.Presentation.Sources.Video.FileVideoSource).File;
+                    var file = (Element.Source as SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.FileVideoSource).File;
 
                     if (!string.IsNullOrWhiteSpace(file))
                     {
@@ -173,9 +173,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
                         hasSetSource = true;
                     }
                 }
-                else if (Element.Source is XFToolKit.Presentation.Sources.Video.ResourceVideoSource)
+                else if (Element.Source is SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.ResourceVideoSource)
                 {
-                    var path = (Element.Source as XFToolKit.Presentation.Sources.Video.ResourceVideoSource).Path;
+                    var path = (Element.Source as SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.ResourceVideoSource).Path;
 
                     if (!string.IsNullOrWhiteSpace(path))
                     {
@@ -191,7 +191,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Views.Renderer
 
             if (!hasSetSource)
             {
-                (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
+                (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
 
                 Control.Stop();
             }

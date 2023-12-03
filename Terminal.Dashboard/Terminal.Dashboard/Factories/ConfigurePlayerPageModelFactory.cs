@@ -1,19 +1,23 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Factories
+﻿using MOROPO.VIDERHE.Support.Extend.Overlaying.Providers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Factories
 {
     public static class ConfigurePlayerPageModelFactory
     {
-        public static Models.Page.ConfigurePlayerPageModel Build(Models.View.PlayerViewModel model)
+        public static ConfigurePlayerPageModel Build(PlayerViewModel model)
         {
             if (model != null)
             {
-                var _model = new Models.Page.ConfigurePlayerPageModel
+                var _model = new ConfigurePlayerPageModel
                 {
                     IsBusy = true,
                     Id = model.Id,
                     Name = model.Name,
                     Screenplay = model.Screenplay,
                     About = model.About,
-                    Overlay = model.OverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(model.OverlayId.Value),
+                    Overlay = model.OverlayId == null ? null : OverlayDescriptorProvider.Instance.GetDescriptorById(model.OverlayId.Value),
                     SerializedOverlayContext = model.SerializedOverlayContext
                 };
 
@@ -26,7 +30,7 @@
             }
             else
             {
-                return new Models.Page.ConfigurePlayerPageModel
+                return new ConfigurePlayerPageModel
                 {
                     IsBusy = true
                 };

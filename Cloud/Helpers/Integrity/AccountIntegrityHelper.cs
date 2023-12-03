@@ -1,13 +1,15 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers.Integrity
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Helpers.Integrity
 {
     public static class AccountIntegrityHelper
     {
-        public static string GetSignature(Persistence.Entities.Account entity)
+        public static string GetSignature(Account entity)
         {
-            return MOROPO.SAPRESSC.Core.Persistence.Helpers.DataIntegrityHelper.GetEntitySignature(entity);
+            return Framework.Guama.Core.Persistence.Helpers.DataIntegrityHelper.GetEntitySignature(entity);
         }
 
-        public static bool IsCorrectlySigned(Persistence.Entities.Account entity)
+        public static bool IsCorrectlySigned(Account entity)
         {
             return entity.Signature == GetSignature(entity);
         }

@@ -4,12 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Converters"
-    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
-    xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:converters="clr-namespace:MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Rendered;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views.LandscapePicturePresentingVideoPlacardView">
+    x:Class="MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views.LandscapePicturePresentingVideoPlacardView">
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:PlacardLayoutHeightToRespectivePresenterImageWidthConverter x:Key="PlacardLayoutHeightToRespectivePresenterImageWidthConverter" PlacardLayout="{x:Reference PlacardLayout}" />

@@ -1,12 +1,16 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup
 {
     public partial class FilterPlayerPopupPage : Rg.Plugins.Popup.Pages.PopupPage
     {
-        private readonly System.Action<Cloud.Api.Common.Models.Filter.PlayerFilterModel> filterCallbackAction;
+        private readonly System.Action<PlayerFilterModel> filterCallbackAction;
 
-        public FilterPlayerPopupPage(Cloud.Api.Common.Models.Filter.PlayerFilterModel filter, System.Action<Cloud.Api.Common.Models.Filter.PlayerFilterModel> filterCallbackAction)
+        public FilterPlayerPopupPage(PlayerFilterModel filter, System.Action<PlayerFilterModel> filterCallbackAction)
         {
             InitializeComponent();
 
@@ -14,11 +18,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
 
             if (filter == null)
             {
-                BindingContext = new Models.Page.FilterPlayerPopupPageModel();
+                BindingContext = new FilterPlayerPopupPageModel();
             }
             else
             {
-                BindingContext = new Models.Page.FilterPlayerPopupPageModel
+                BindingContext = new FilterPlayerPopupPageModel
                 {
                     Name = filter.Name
                 };
@@ -32,7 +36,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
 
         private void AddTagButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage(Cloud.Persistence.Enumerations.TagGroup.Player, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage(TagGroup.Player, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
         }
 
         private void RemoveTagButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -41,7 +45,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
             {
                 if (!task.Result) return;
 
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as Cloud.Api.Common.Models.TagDisplayModel));
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as TagDisplayModel));
             });
         }
 
@@ -61,14 +65,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
             });
         }
 
-        private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
+        private void PickTagSuccess_Callback(TagDisplayModel model)
         {
             BindingContextPageModel.Tags.Add(model);
         }
 
-        private Models.Page.FilterPlayerPopupPageModel BindingContextPageModel
+        private FilterPlayerPopupPageModel BindingContextPageModel
         {
-            get => BindingContext as Models.Page.FilterPlayerPopupPageModel;
+            get => BindingContext as FilterPlayerPopupPageModel;
         }
     }
 }

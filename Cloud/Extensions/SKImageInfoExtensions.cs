@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Extensions
+﻿namespace MOROPO.VIDERHE.Cloud.Extensions
 {
     public static class SKImageInfoExtensions
     {

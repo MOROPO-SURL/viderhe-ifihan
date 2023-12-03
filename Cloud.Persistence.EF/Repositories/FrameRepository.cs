@@ -1,19 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
 {
-    public class FrameRepository : MOROPO.SAPRESSC.Core.Persistence.EF.Repositories.AbstractEntityRepository<Entities.Frame, long>
+    public class FrameRepository : MOROPO.SAPRESSC.Core.Persistence.EF.Repositories.AbstractEntityRepository<Frame, long>
     {
         public FrameRepository(DbContext dbContext) : base(dbContext)
         {
         }
 
-        public override System.Func<Entities.Frame, object> GetPagingOrderSelector()
+        public override System.Func<Frame, object> GetPagingOrderSelector()
         {
             return e => e.Priority;
         }
 
-        protected override System.Linq.IQueryable<Entities.Frame> GetQueryableDbSet()
+        protected override System.Linq.IQueryable<Frame> GetQueryableDbSet()
         {
             return base.GetQueryableDbSet()
                 .Include(entiy => entiy.Screenplay).ThenInclude(e => e.Frames)

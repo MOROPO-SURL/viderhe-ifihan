@@ -1,8 +1,8 @@
 ﻿using System;
 
-[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Helpers.PlatfromIntegrationHelper))]
+[assembly: Xamarin.Forms.Dependency(typeof(MOROPO.VIDERHE.Terminal.Player.UWP.Helpers.PlatfromIntegrationHelper))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Helpers
+namespace MOROPO.VIDERHE.Terminal.Player.UWP.Helpers
 {
     public class PlatfromIntegrationHelper : Extend.Common.Overlaying.Presentation.Helpers.Facade.IPlatformIntegrationHelperFacade
     {

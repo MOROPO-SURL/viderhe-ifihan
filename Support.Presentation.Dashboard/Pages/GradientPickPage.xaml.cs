@@ -1,10 +1,11 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
 {
-    public partial class GradientPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.GradientPickPageModel>
+    public partial class GradientPickPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.GradientPickPageModel>
     {
         private System.Action<GradientViewModel> itemPickedCallbackAction;
 
@@ -116,7 +117,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                 }
             }
 
-            var apiConnectClient = new Cloud.Api.Connect.Clients.GradientsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+            var apiConnectClient = new Cloud.Api.Connect.Clients.GradientsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
             apiConnectClient.GetPaginateAsync(++currentItemsPageNumber, pagingLimit).ContinueWith(task =>
             {
@@ -124,7 +125,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                 {
                     if (task.Exception != null)
                     {
-                        Xamarin.Forms.DependencyService.Get<Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {

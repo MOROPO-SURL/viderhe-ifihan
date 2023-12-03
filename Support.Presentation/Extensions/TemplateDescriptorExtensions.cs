@@ -1,17 +1,18 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Descriptors;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Descriptors;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions
+namespace MOROPO.VIDERHE.Support.Presentation.Extensions
 {
     public static class TemplateDescriptorExtensions
     {
-        public static Models.View.TemplateViewModel ToViewModel<TTemplateDescriptor>(this TTemplateDescriptor templateDescriptor)
+        public static TemplateViewModel ToViewModel<TTemplateDescriptor>(this TTemplateDescriptor templateDescriptor)
             where TTemplateDescriptor : class, ITemplateDescriptor
         {
             if (templateDescriptor == null) return null;
 
             var resourceId = string.Format("{0}.Assets.{1}{2}.png", templateDescriptor.GetType().AssemblyQualifiedName.Split(',')[1].Trim(), templateDescriptor.Id.ToString().ToUpper(), templateDescriptor.PlayerOrientationSupport.ToImageResourceNameSufix());
 
-            var model = new Models.View.TemplateViewModel
+            var model = new TemplateViewModel
             {
                 Id = templateDescriptor.Id,
                 Name = templateDescriptor.Name,
