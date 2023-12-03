@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Enumerations
+﻿namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Enumerations
 {
     public enum SweptTransitionItemMotionType
     {

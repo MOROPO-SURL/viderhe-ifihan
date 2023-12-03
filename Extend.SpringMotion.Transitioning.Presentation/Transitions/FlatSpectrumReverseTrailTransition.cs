@@ -1,8 +1,9 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.Enumerations;
+﻿using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Enumerations;
+using MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Models.Context;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Transitions
+namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Transitions
 {
     public class FlatSpectrumReverseTrailTransition : Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition
     {
@@ -13,11 +14,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
         private Xamarin.Forms.BoxView flatSpectrumHandFanSecoundaryOpaqueBoxView;
         private Xamarin.Forms.BoxView flatSpectrumHandFanNeutralOpaqueBoxView;
 
-        private Models.Context.FlatSpectrumInverseGothTransitionContextModel context;
+        private FlatSpectrumInverseGothTransitionContextModel context;
 
         private AbstractAnimation factShowInAnimation;
 
-        public FlatSpectrumReverseTrailTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.FlatSpectrumInverseGothTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
+        public FlatSpectrumReverseTrailTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, FlatSpectrumInverseGothTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
         {
             if (context.VerticalTransitionOrientation == VerticalTransitionOrientation.None && context.HorizontalTransitionOrientation == HorizontalTransitionOrientation.None) throw new System.InvalidOperationException();
 
@@ -253,7 +254,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 return new TranslateToAnimation
                 {
                     Target = target,
-                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                    EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                     TranslateX = 0,
                     Duration = "800",
                     Delay = delayMilisecounds.ToString()
@@ -263,7 +264,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
             return new TranslateToAnimation
             {
                 Target = target,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 TranslateY = 0,
                 Duration = "800",
                 Delay = delayMilisecounds.ToString()

@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
+﻿using MOROPO.VIDERHE.Extend.Common.Presentation.Views;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Providers
+namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Providers
 {
     public class TransitionProvider : Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade
     {

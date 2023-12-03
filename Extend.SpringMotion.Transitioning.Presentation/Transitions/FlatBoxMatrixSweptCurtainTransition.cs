@@ -1,7 +1,7 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Transitions
+namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Transitions
 {
     public class FlatBoxMatrixSweptCurtainTransition : Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition
     {
@@ -272,7 +272,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
                     var maxHorizontalDelay = delay * columnCount;
 
-                    result.Delay = System.Convert.ToString((int)(maxHorizontalDelay - (delay * column)));
+                    result.Delay = System.Convert.ToString((int)(maxHorizontalDelay - delay * column));
 
                     break;
 
@@ -284,7 +284,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
                     var maxVerticalDelay = delay * rowCount;
 
-                    result.Delay = System.Convert.ToString((int)(maxVerticalDelay - (delay * row)));
+                    result.Delay = System.Convert.ToString((int)(maxVerticalDelay - delay * row));
 
                     break;
             }
@@ -365,7 +365,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
                         var maxHorizontalDelay = delay * columnCount;
 
-                        result.Delay = System.Convert.ToString((int)(maxHorizontalDelay - (delay * column)));
+                        result.Delay = System.Convert.ToString((int)(maxHorizontalDelay - delay * column));
 
                         break;
 
@@ -377,7 +377,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
                         var maxVerticalDelay = delay * rowCount;
 
-                        result.Delay = System.Convert.ToString((int)(maxVerticalDelay - (delay * row)));
+                        result.Delay = System.Convert.ToString((int)(maxVerticalDelay - delay * row));
 
                         break;
                 }
@@ -414,7 +414,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
                         var maxHorizontalDelay = delay * columnCount;
 
-                        result.Delay = System.Convert.ToString((int)(maxHorizontalDelay - (delay * column)));
+                        result.Delay = System.Convert.ToString((int)(maxHorizontalDelay - delay * column));
 
                         break;
 
@@ -426,7 +426,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
                         var maxVerticalDelay = delay * rowCount;
 
-                        result.Delay = System.Convert.ToString((int)(maxVerticalDelay - (delay * row)));
+                        result.Delay = System.Convert.ToString((int)(maxVerticalDelay - delay * row));
 
                         break;
                 }

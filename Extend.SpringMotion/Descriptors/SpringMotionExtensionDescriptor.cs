@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.SpringMotion.Descriptors
 {
     public class SpringMotionExtensionDescriptor : Common.Descriptors.IExtensionDescriptor
     {

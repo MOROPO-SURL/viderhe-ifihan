@@ -1,8 +1,10 @@
-﻿using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+﻿using MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Enumerations;
+using MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Models.Context;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Transitions
+namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Transitions
 {
     public class FlatDualSpectrumHandFanCurtainTransition : Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition
     {
@@ -20,11 +22,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
         private Xamarin.Forms.BoxView endFlatSpectrumHandFanSecoundaryOpaqueBoxView;
         private Xamarin.Forms.BoxView endFlatSpectrumHandFanNeutralOpaqueBoxView;
 
-        private Models.Context.FlatDualSpectrumHandFanCurtainTransitionContextModel context;
+        private FlatDualSpectrumHandFanCurtainTransitionContextModel context;
 
         private AbstractAnimation factShowInAnimation;
 
-        public FlatDualSpectrumHandFanCurtainTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.FlatDualSpectrumHandFanCurtainTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
+        public FlatDualSpectrumHandFanCurtainTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, FlatDualSpectrumHandFanCurtainTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
         {
             this.context = context;
         }
@@ -48,7 +50,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
 
             if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
             {
-                if (context.Mode == Enumerations.DualSpectrumHandFanCurtainMode.OutRotation)
+                if (context.Mode == DualSpectrumHandFanCurtainMode.OutRotation)
                 {
                     startFlatSpectrumHandFanBoxViewVerticalTranslationY = 0;
                     endFlatSpectrumHandFanBoxViewVerticalTranslationY = 0;
@@ -56,14 +58,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
             }
             else
             {
-                if (context.Mode == Enumerations.DualSpectrumHandFanCurtainMode.OutRotation)
+                if (context.Mode == DualSpectrumHandFanCurtainMode.OutRotation)
                 {
                     startFlatSpectrumHandFanBoxViewVerticalTranslationX = 0;
                     endFlatSpectrumHandFanBoxViewVerticalTranslationX = 0;
                 }
             }
 
-            if (context.Mode == Enumerations.DualSpectrumHandFanCurtainMode.OutRotation)
+            if (context.Mode == DualSpectrumHandFanCurtainMode.OutRotation)
             {
                 startFlatSpectrumHandFanBoxViewVerticalRotation = 0;
                 endFlatSpectrumHandFanBoxViewVerticalRotation = 0;
@@ -398,20 +400,20 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 Delay = delayMilisecounds.ToString()
             };
 
-            if (context.Mode != Enumerations.DualSpectrumHandFanCurtainMode.OutRotation)
+            if (context.Mode != DualSpectrumHandFanCurtainMode.OutRotation)
             {
-                storyboard.Animations.Add(new TranslateToAnimation { TranslateX = 0, TranslateY = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
-                storyboard.Animations.Add(new RotateToAnimation { Rotation = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                storyboard.Animations.Add(new TranslateToAnimation { TranslateX = 0, TranslateY = 0, EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                storyboard.Animations.Add(new RotateToAnimation { Rotation = 0, EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
             }
             else
             {
                 if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
                 {
-                    storyboard.Animations.Add(new TranslateToXAnimation { TranslateX = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                    storyboard.Animations.Add(new TranslateToXAnimation { TranslateX = 0, EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
                 }
                 else
                 {
-                    storyboard.Animations.Add(new TranslateToYAnimation { TranslateY = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                    storyboard.Animations.Add(new TranslateToYAnimation { TranslateY = 0, EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
                 }
             }
 
@@ -444,20 +446,20 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 translateY = target.HorizontalOptions.Alignment == Xamarin.Forms.LayoutOptions.Start.Alignment ? target.HeightRequest * -1 : target.HeightRequest;
             }
 
-            if (context.Mode != Enumerations.DualSpectrumHandFanCurtainMode.InRotation)
+            if (context.Mode != DualSpectrumHandFanCurtainMode.InRotation)
             {
-                storyboard.Animations.Add(new TranslateToAnimation { TranslateX = translateX, TranslateY = translateY, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
-                storyboard.Animations.Add(new RotateToAnimation { Rotation = rotation, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                storyboard.Animations.Add(new TranslateToAnimation { TranslateX = translateX, TranslateY = translateY, EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                storyboard.Animations.Add(new RotateToAnimation { Rotation = rotation, EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
             }
             else
             {
                 if (Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
                 {
-                    storyboard.Animations.Add(new TranslateToXAnimation { TranslateX = translateX, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                    storyboard.Animations.Add(new TranslateToXAnimation { TranslateX = translateX, EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
                 }
                 else
                 {
-                    storyboard.Animations.Add(new TranslateToYAnimation { TranslateY = translateY, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
+                    storyboard.Animations.Add(new TranslateToYAnimation { TranslateY = translateY, EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut, Duration = duration.ToString() });
                 }
             }
 

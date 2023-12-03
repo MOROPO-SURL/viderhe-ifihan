@@ -1,7 +1,8 @@
-﻿using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+﻿using MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Models.Context;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Transitions
+namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Transitions
 {
     public class FlatSpectrumHandFanTransition : Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition
     {
@@ -12,11 +13,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
         private Xamarin.Forms.BoxView flatSpectrumHandFanSecoundaryOpaqueBoxView;
         private Xamarin.Forms.BoxView flatSpectrumHandFanNeutralOpaqueBoxView;
 
-        private Models.Context.BaseFlatSpectrumTransitionContextModel context;
+        private BaseFlatSpectrumTransitionContextModel context;
 
         private AbstractAnimation factShowInAnimation;
 
-        public FlatSpectrumHandFanTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.BaseFlatSpectrumTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
+        public FlatSpectrumHandFanTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, BaseFlatSpectrumTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
         {
             this.context = context;
         }
@@ -202,8 +203,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presenta
                 Delay = delayMilisecounds.ToString()
             };
 
-            storyboard.Animations.Add(new TranslateToAnimation { TranslateX = 0, TranslateY = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut });
-            storyboard.Animations.Add(new RotateToAnimation { Rotation = 0, EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut });
+            storyboard.Animations.Add(new TranslateToAnimation { TranslateX = 0, TranslateY = 0, EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut });
+            storyboard.Animations.Add(new RotateToAnimation { Rotation = 0, EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut });
 
             return storyboard;
         }

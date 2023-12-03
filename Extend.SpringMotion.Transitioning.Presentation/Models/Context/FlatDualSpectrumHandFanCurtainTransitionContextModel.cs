@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Models.Context
+﻿namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Models.Context
 {
     public class FlatDualSpectrumHandFanCurtainTransitionContextModel : BaseFlatSpectrumTransitionContextModel
     {

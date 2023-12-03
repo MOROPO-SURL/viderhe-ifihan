@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Transitions
+﻿namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Transitions
 {
     public class FlatSpectrumReverseTrailTransitionDescriptor : Common.Transitioning.Descriptors.ITransitionDescriptor
     {

@@ -1,27 +1,28 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
+﻿using MOROPO.VIDERHE.Extend.Common.Presentation.Views;
+using MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Transitions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.SpringMotion.Transitioning.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Factories
 {
     public static class RandomTransitionFactory
     {
-        public static Transitions.FlatBoxMatrixSweptCurtainTransition CreateFlatBoxMatrixSweptCurtainTransition(Xamarin.Forms.Color color, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
+        public static FlatBoxMatrixSweptCurtainTransition CreateFlatBoxMatrixSweptCurtainTransition(Xamarin.Forms.Color color, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
-            return new Transitions.FlatBoxMatrixSweptCurtainTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateFlatBoxMatrixSweptCurtainTransitionContextModel(color), motionCompletedActionCallback);
+            return new FlatBoxMatrixSweptCurtainTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateFlatBoxMatrixSweptCurtainTransitionContextModel(color), motionCompletedActionCallback);
         }
 
-        public static Transitions.FlatSpectrumHandFanTransition CreateFlatSpectrumHandFanTransition(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
+        public static FlatSpectrumHandFanTransition CreateFlatSpectrumHandFanTransition(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
-            return new Transitions.FlatSpectrumHandFanTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateBaseFlatSpectrumTransitionContextModel(), motionCompletedActionCallback);
+            return new FlatSpectrumHandFanTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateBaseFlatSpectrumTransitionContextModel(), motionCompletedActionCallback);
         }
 
-        public static Transitions.FlatSpectrumReverseTrailTransition CreateFlatSpectrumInverseGothTransition(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
+        public static FlatSpectrumReverseTrailTransition CreateFlatSpectrumInverseGothTransition(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
-            return new Transitions.FlatSpectrumReverseTrailTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateFlatSpectrumInverseGothTransitionContextModel(), motionCompletedActionCallback);
+            return new FlatSpectrumReverseTrailTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateFlatSpectrumInverseGothTransitionContextModel(), motionCompletedActionCallback);
         }
 
-        public static Transitions.FlatDualSpectrumHandFanCurtainTransition CreateFlatDualSpectrumHandFanCurtainTransition(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
+        public static FlatDualSpectrumHandFanCurtainTransition CreateFlatDualSpectrumHandFanCurtainTransition(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
-            return new Transitions.FlatDualSpectrumHandFanCurtainTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateFlatDualSpectrumHandFanCurtainTransitionContextModel(), motionCompletedActionCallback);
+            return new FlatDualSpectrumHandFanCurtainTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, RandomTransitionContextModelFactory.CreateFlatDualSpectrumHandFanCurtainTransitionContextModel(), motionCompletedActionCallback);
         }
     }
-} 
+}
