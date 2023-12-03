@@ -15,7 +15,7 @@
 	<ItemGroup>
 	  <PackageReference Include="ISO3166" Version="1.0.4" />
 	  <PackageReference Include="MediaTypeMap.Core" Version="2.3.3" />
-	  <PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.5" />
+	  <PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.7" />
 	  <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
 	</ItemGroup>
 

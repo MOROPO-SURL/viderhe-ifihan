@@ -1,5 +1,4 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
-using MOROPO.VIDERHE.Extend.Essential.Descriptors;
 using MOROPO.VIDERHE.Support.Extend.Overlaying.Providers;
 using MOROPO.VIDERHE.Support.Presentation.Dashboard.Extensions;
 using MOROPO.VIDERHE.Support.Presentation.Extensions;

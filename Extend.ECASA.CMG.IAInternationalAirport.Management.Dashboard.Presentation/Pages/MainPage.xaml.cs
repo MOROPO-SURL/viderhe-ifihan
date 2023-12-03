@@ -9,6 +9,11 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
             InitializeComponent();
         }
 
+        private void ServerConexionConfigurationToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
+        {
+
+        }
+
         private void ApiKeysTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
         {
             this.NavigationPushPageAsync(new ApiKeysManagementPage());

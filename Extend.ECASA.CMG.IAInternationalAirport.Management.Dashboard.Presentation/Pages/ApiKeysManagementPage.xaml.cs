@@ -38,6 +38,19 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
             ReloadItems();
         }
 
+        private void CopyTokenToClipboardButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Xamarin.Essentials.Clipboard.SetTextAsync(BindingContextPageModel.Target.Token).ContinueWith(task =>
+            {
+                if (task.Exception != null) return;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Token de acceso copiado al portapapeles con éxito.");
+                });
+            });
+        }
+
         private void ItemTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
             BindingContextPageModel.Target = (sender as Xamarin.Forms.BindableObject).BindingContext as Service.ECASA.CMG.InterFIDS.API.Common.Models.ApiKeyDisplayModel;

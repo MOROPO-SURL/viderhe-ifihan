@@ -29,6 +29,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
             {
                 isEditionMode = true;
                 Title = "Modificar Llave API";
+
+                return;
             }
 
             GenerateTokenButton_Clicked(this, System.EventArgs.Empty);
