@@ -18,8 +18,8 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
             this.configuration = configuration;
         }
 
-        [HttpGet("{key}/dashboard/bundle/modules")]
-        public ActionResult<ExtensionBundleModuleModel[]> DashboardBundleModules(System.Guid key)
+        [HttpGet("{key}/control/bundle/modules")]
+        public ActionResult<ExtensionBundleModuleModel[]> ControlBundleModules(System.Guid key)
         {
             var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 
@@ -30,7 +30,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
                 return NoContent();
             }
 
-            var extensionLibraryFileInfos = Providers.ViderheExtensionLibraryFileInfosProvider.GetRelevantToDashboard(extensionRootDirectoryInfo.GetDirectories().First(d => d.Name == key.ToString()));
+            var extensionLibraryFileInfos = Providers.ViderheExtensionLibraryFileInfosProvider.GetRelevantToControl(extensionRootDirectoryInfo.GetDirectories().First(d => d.Name == key.ToString()));
 
             return Ok(BuildResultModel(extensionLibraryFileInfos));
         }
