@@ -1,6 +1,8 @@
-﻿using SmartSolucionesCuba.Viderhe.Terminal.Player.Extensions;
+﻿using MOROPO.VIDERHE.Terminal.Player.Extensions;
+using MOROPO.VIDERHE.Terminal.Player.Providers.Facade;
+using MOROPO.VIDERHE.Terminal.Player.Security.Cryptography.Algorithms;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
+namespace MOROPO.VIDERHE.Terminal.Player.Managers
 {
     public class ConfigurationManager
     {
@@ -28,11 +30,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Managers
             {
                 if (playerId == null)
                 {
-                    var hostEnvironmentInfoProvider = Xamarin.Forms.DependencyService.Get<Providers.Facade.IHostEnvironmentInfoProviderFacade>();
+                    var hostEnvironmentInfoProvider = Xamarin.Forms.DependencyService.Get<IHostEnvironmentInfoProviderFacade>();
 
                     var hwId = hostEnvironmentInfoProvider.GetHardwareIdentifier();
 
-                    var hashResult = (long)Security.Cryptography.Algorithms.Fnv1a.Hash32(System.Text.Encoding.UTF8.GetBytes(hwId));
+                    var hashResult = (long)Fnv1a.Hash32(System.Text.Encoding.UTF8.GetBytes(hwId));
 
                     playerId = hashResult.ToBase36String().ToUpper();
 

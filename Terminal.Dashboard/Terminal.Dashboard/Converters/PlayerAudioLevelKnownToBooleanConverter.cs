@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters
+﻿namespace MOROPO.VIDERHE.Terminal.Dashboard.Converters
 {
     public class PlayerAudioLevelKnownToBooleanConverter : Xamarin.Forms.IValueConverter
     {

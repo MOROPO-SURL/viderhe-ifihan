@@ -1,24 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MOROPO.SAPRESSC.Core.Persistence.Repositories;
-using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
-using SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.Framework.Guama.Media.Persistence.Entities;
+using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Managers.Facade;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
+namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 {
     // TODO Firbid requiest for unprivileged moderators!!
-    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION)]
+    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Policies.ACCOUNT_VALIDATED_MODERATION)]
     [Route("api/[controller]")]
-    [MOROPO.SAPRESSC.Core.Web.Security.Attributes.ChangeUserPasswordRequiredAction]
-    [MOROPO.SAPRESSC.Core.Web.Security.Attributes.CatchChangeUserPasswordRequiredException]
-    public class AccountController : MOROPO.SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementController<Account, System.Guid, AccountInputModel, AccountDisplayModel>
+    [Framework.Guama.Core.Presentation.Web.Security.Attributes.ChangeUserPasswordRequiredAction]
+    [Framework.Guama.Core.Presentation.Web.Security.Attributes.CatchChangeUserPasswordRequiredException]
+    public class AccountController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<Account, System.Guid, AccountInputModel, AccountDisplayModel>
     {
-        private readonly MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager;
-        private readonly IEntityRepository<MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image, System.Guid> imageRepository;
+        private readonly IImageFileManagerFacade imageFileManager;
+        private readonly IEntityRepository<Image, System.Guid> imageRepository;
         private readonly IEntityRepository<Extension, System.Guid> extensionRepository;
 
-        public AccountController(IEntityRepository<Extension, System.Guid> extensionRepository, IEntityRepository<MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image, System.Guid> imageRepository, MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager, IEntityRepository<Account, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AccountController> localizer, ILogger<AccountController> logger) : base(repository, localizer, logger)
+        public AccountController(IEntityRepository<Extension, System.Guid> extensionRepository, IEntityRepository<Image, System.Guid> imageRepository, IImageFileManagerFacade imageFileManager, IEntityRepository<Account, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AccountController> localizer, ILogger<AccountController> logger) : base(repository, localizer, logger)
         {
             this.imageFileManager = imageFileManager;
             this.imageRepository = imageRepository;
@@ -28,7 +31,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         [HttpGet("[action]")]
         public ActionResult Current()
         {
-            var entity = Repository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
+            var entity = Repository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
             var model = new AccountDisplayModel();
 
@@ -36,7 +39,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
             foreach (var bridge in entity.ExtensionBridges)
             {
-                var extension = extensionRepository.Get(bridge.ExtensionId);
+                var extension = extensionRepository.Get(bridge.SternId);
 
                 var extensionDisplayModel = new ExtensionDisplayModel();
 
@@ -58,7 +61,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             return NotFound();
         }
 
-        public override ActionResult<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<AccountDisplayModel>> GetPaginate(int sheet = 1, int limit = 25)
+        public override ActionResult<Framework.Guama.Core.Presentation.Models.PaginationModel<AccountDisplayModel>> GetPaginate(int sheet = 1, int limit = 25)
         {
             return NotFound();
         }
@@ -70,7 +73,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         public override ActionResult Edit([FromBody] AccountInputModel inputModel)
         {
-            if (inputModel.Id != System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value))
+            if (inputModel.Id != System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value))
             {
                 return Forbid();
             }
@@ -93,7 +96,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 {
                     using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
                     {
-                        var image = new MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image
+                        var image = new Image
                         {
                             ContentType = inputModel.LogoImageContentType,
                             Length = inputModel.LogoImageData.Length,
@@ -117,7 +120,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 {
                     using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
                     {
-                        var image = new MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image
+                        var image = new Image
                         {
                             ContentType = inputModel.HorizontalSplashImageContentType,
                             Length = inputModel.HorizontalSplashImageData.Length,
@@ -141,7 +144,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 {
                     using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
                     {
-                        var image = new MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image
+                        var image = new Image
                         {
                             ContentType = inputModel.VerticalSplashImageContentType,
                             Length = inputModel.VerticalSplashImageData.Length,

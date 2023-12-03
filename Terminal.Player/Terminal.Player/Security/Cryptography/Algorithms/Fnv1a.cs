@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Security.Cryptography.Algorithms
+﻿namespace MOROPO.VIDERHE.Terminal.Player.Security.Cryptography.Algorithms
 {
     /// <summary>
     /// FNV-1a Hash functions

@@ -1,8 +1,13 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Descriptors;
+using MOROPO.VIDERHE.Support.Extend.Templating.Providers;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Providers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Providers;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class TemplatePickPage : XFToolKit.Mvvm.Pages.ContentPage
+    public partial class TemplatePickPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.ContentPage
     {
         private System.Action completedCallbackAction;
 
@@ -12,16 +17,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             this.completedCallbackAction = completedCallbackAction;
 
-            BindingContext = Support.Presentation.Providers.TemplateViewModelProvider.Instance.GetViewModels();
+            BindingContext = TemplateViewModelProvider.Instance.GetViewModels();
         }
 
         private void TemplateOverviewSelectButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var model = ((sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Models.View.TemplateViewModel);
+            var model = ((sender as Xamarin.Forms.BindableObject).BindingContext as TemplateViewModel);
 
-            Extend.Common.Templating.Descriptors.ITemplateDescriptor descriptor = null;
+            ITemplateDescriptor descriptor = null;
 
-            descriptor = Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(model.Id);
+            descriptor = TemplateDescriptorProvider.Instance.GetDescriptorById(model.Id);
 
             if (descriptor == null)
             {
@@ -30,7 +35,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 return;
             }
 
-            var createPlacardEntryPointPage = Providers.PlacardConfigurationPageProvider.Instance.GetCreationEntryPointPageByDescriptor(descriptor, DelegationCompleted);
+            var createPlacardEntryPointPage = PlacardConfigurationPageProvider.Instance.GetCreationEntryPointPageByDescriptor(descriptor, DelegationCompleted);
 
             this.NavigationPushPageAsync(createPlacardEntryPointPage);
         }

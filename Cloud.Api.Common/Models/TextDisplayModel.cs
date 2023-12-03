@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class TextDisplayModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Text, System.Guid>
+    public class TextDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Text, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -10,7 +12,7 @@
 
         public string About { get; set; }
 
-        public void Import(Persistence.Entities.Text entity)
+        public void Import(Text entity)
         {
             Id = entity.Id;
             Content = entity.Content;

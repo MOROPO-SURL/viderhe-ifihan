@@ -1,8 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Validators
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators.Contract;
+using MOROPO.VIDERHE.Terminal.Dashboard.Pages.Contract;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Validators
 {
-    public class OverlayFormFieldValidator : Support.Presentation.Dashboard.Validators.Contract.IFormFieldValidator
+    public class OverlayFormFieldValidator : IFormFieldValidator
     {
-        public Pages.Contract.IOverlayContextConfigurationPage ConfigurationPage { get; set; }
+        public IOverlayContextConfigurationPage ConfigurationPage { get; set; }
 
         private const string MESSAGE = "La configuración de la carátula es requerida.";
 

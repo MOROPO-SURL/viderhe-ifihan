@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Effects
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Effects
 {
     public class TouchEffect : Xamarin.Forms.RoutingEffect
     {

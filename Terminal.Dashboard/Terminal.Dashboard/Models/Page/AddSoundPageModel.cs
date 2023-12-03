@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class AddSoundPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
+    public class AddSoundPageModel : FormPageModel
     {
         private string about;
 
@@ -10,9 +12,9 @@
             set => SetProperty(ref about, value);
         }
 
-        private XFToolKit.Presentation.Sources.Video.VideoSource audioSource;
+        private SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource audioSource;
 
-        public XFToolKit.Presentation.Sources.Video.VideoSource AudioSource
+        public SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource AudioSource
         {
             get => audioSource;
             set => SetProperty(ref audioSource, value);

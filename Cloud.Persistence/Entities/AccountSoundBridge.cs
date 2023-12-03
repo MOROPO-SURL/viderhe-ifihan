@@ -1,13 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+﻿namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class AccountSoundBridge
+    public class AccountSoundBridge : Framework.Guama.Core.Persistence.Entities.Contract.IBridge<Account, System.Guid, Sound, System.Guid>
     {
-        public System.Guid AccountId { get; set; }
+        public System.Guid ProwId { get; set; }
+        public Account Prow { get; set; }
 
-        public Account Account { get; set; }
-
-        public System.Guid SoundId { get; set; }
-
-        public Sound Sound { get; set; }
+        public System.Guid SternId { get; set; }
+        public Sound Stern { get; set; }
     }
 }

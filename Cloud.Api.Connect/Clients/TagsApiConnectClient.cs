@@ -1,8 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Connect.Clients
 {
-    public class TagsApiConnectClient : MOROPO.SAPRESSC.Core.Api.Connect.Clients.AbstractEntityManagementFilteredApiConnectClient<Persistence.Entities.Tag, System.Guid, Common.Models.TagInputModel, Common.Models.TagDisplayModel, Common.Models.Filter.TagFilterModel>
+    public class TagsApiConnectClient : Framework.Guama.Core.Presentation.API.Connect.Clients.AbstractEntityManagementFilteredApiConnectClient<Tag, System.Guid, TagInputModel, TagDisplayModel, TagFilterModel>
     {
-        public TagsApiConnectClient(MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider) : base(httpClientHelperProvider)
+        public TagsApiConnectClient(Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider) : base(httpClientHelperProvider)
         {
         }
 

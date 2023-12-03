@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Models.View
 {
     public class SoundViewModel
     {

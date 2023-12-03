@@ -1,11 +1,12 @@
-﻿using MOROPO.SAPRESSC.Core.Web.Backend.Models.View;
+﻿using MOROPO.Framework.Guama.Core.Presentation.Web.Backend.Models.View;
+using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Collections.Generic;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Extensions
+namespace MOROPO.VIDERHE.Cloud.Extensions
 {
     public static class ManagementDashboardSectionProviderEnumerableExtensions
     {
-        public static Dictionary<string, ICollection<ManagementDashboardSectionViewModel>> ToManagementDashboardSectionGroups(this IEnumerable<MOROPO.SAPRESSC.Core.Web.Backend.Providers.Facade.IManagementDashboardSectionProviderFacade> self)
+        public static Dictionary<string, ICollection<ManagementDashboardSectionViewModel>> ToManagementDashboardSectionGroups(this IEnumerable<Framework.Guama.Core.Presentation.Web.Backend.Providers.Facade.IManagementDashboardSectionProviderFacade> self)
         {
             var securitySections = new List<ManagementDashboardSectionViewModel>();
             var serviceSections = new List<ManagementDashboardSectionViewModel>();
@@ -13,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Extensions
 
             foreach (var provider in self)
             {
-                if (provider is MOROPO.SAPRESSC.Middleware.Security.Essential.Web.Backend.Providers.ManagementDashboardSectionProvider)
+                if (provider is Framework.Guama.Security.Essential.Presentation.Web.Backend.Providers.ManagementDashboardSectionProvider)
                 {
                     securitySections.AddRange(provider.GetManagementDashboardSections());
                 }
@@ -25,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Extensions
                 Controller = "traces",
                 Action = "index",
                 Area = "business",
-                Role = Security.Authorization.Permission.TraceViewer
+                Role = Permission.TraceViewer
             });
 
             serviceSections.Add(new ManagementDashboardSectionViewModel
@@ -34,7 +35,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Extensions
                 Controller = "accounts",
                 Action = "index",
                 Area = "business",
-                Role = Security.Authorization.Permission.AccountViewer
+                Role = Permission.AccountViewer
             });
 
             serviceSections.Add(new ManagementDashboardSectionViewModel
@@ -43,7 +44,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Extensions
                 Controller = "templates",
                 Action = "index",
                 Area = "business",
-                Role = Security.Authorization.Permission.TraceViewer
+                Role = Permission.TraceViewer
             });
 
             serviceSections.Add(new ManagementDashboardSectionViewModel
@@ -52,7 +53,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Extensions
                 Controller = "transitions",
                 Action = "index",
                 Area = "business",
-                Role = Security.Authorization.Permission.TraceViewer
+                Role = Permission.TraceViewer
             });
 
             cloudSections.Add(new ManagementDashboardSectionViewModel
@@ -61,7 +62,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Extensions
                 Controller = "players",
                 Action = "index",
                 Area = "business",
-                Role = Security.Authorization.Permission.TraceViewer
+                Role = Permission.TraceViewer
             });
 
             cloudSections.Add(new ManagementDashboardSectionViewModel
@@ -70,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Extensions
                 Controller = "images",
                 Action = "index",
                 Area = "media",
-                Role = Security.Authorization.Permission.TraceViewer
+                Role = Permission.TraceViewer
             });
 
             cloudSections.Add(new ManagementDashboardSectionViewModel
@@ -79,7 +80,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Extensions
                 Controller = "videos",
                 Action = "index",
                 Area = "media",
-                Role = Security.Authorization.Permission.TraceViewer
+                Role = Permission.TraceViewer
             });
 
             return new Dictionary<string, ICollection<ManagementDashboardSectionViewModel>>

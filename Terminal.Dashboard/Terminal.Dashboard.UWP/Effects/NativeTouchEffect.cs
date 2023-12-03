@@ -2,9 +2,9 @@
 using Windows.UI.Xaml.Input;
 
 [assembly: Xamarin.Forms.ResolutionGroupName("XFToolKit")]
-[assembly: Xamarin.Forms.ExportEffect(typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Effects.NativeTouchEffect), "TouchEffect")]
+[assembly: Xamarin.Forms.ExportEffect(typeof(MOROPO.VIDERHE.Terminal.Dashboard.UWP.Effects.NativeTouchEffect), "TouchEffect")]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Effects
+namespace MOROPO.VIDERHE.Terminal.Dashboard.UWP.Effects
 {
     public class NativeTouchEffect : Xamarin.Forms.Platform.UWP.PlatformEffect
     {

@@ -1,7 +1,9 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Helpers.Facade
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Helpers.Facade
 {
     public interface IPlacardThumbnailViewProvisioningHelperFacade
     {
-        Xamarin.Forms.ContentView GetPlacardThumnailView(Presentation.Models.View.PlacardViewModel model);
+        Xamarin.Forms.ContentView GetPlacardThumnailView(PlacardViewModel model);
     }
 }

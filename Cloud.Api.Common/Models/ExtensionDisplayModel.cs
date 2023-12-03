@@ -1,8 +1,9 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class ExtensionDisplayModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Extension, System.Guid>
+    public class ExtensionDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Extension, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -16,7 +17,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public OverlayDisplayModel[] Overlays { get; set; }
 
-        public void Import(Persistence.Entities.Extension entity)
+        public void Import(Extension entity)
         {
             Id = entity.Id;
             Enabled = entity.Enabled;

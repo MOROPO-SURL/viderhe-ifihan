@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Overlaying.Presentation.Models.View
 {
-    public class SimpleHighlightsViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
+    public class SimpleHighlightsViewModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel
     {
         private string header;
         private string highlights;

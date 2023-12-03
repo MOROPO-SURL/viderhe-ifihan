@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Converters
 {
     public class VideoViewModelToThumbnailImageSourceConverter : Xamarin.Forms.BindableObject, Xamarin.Forms.IValueConverter
     {
@@ -8,7 +8,7 @@
 
             try
             {
-                return Xamarin.Forms.ImageSource.FromUri(Factories.ThumbnailUriFactory.BuildThumbnailUri((value as Models.View.VideoViewModel).ThumbnailId));
+                return Xamarin.Forms.ImageSource.FromUri(Factories.ThumbnailUriFactory.BuildVideoThumbnailUri((value as Models.View.VideoViewModel).ThumbnailId));
             }
             catch
             {

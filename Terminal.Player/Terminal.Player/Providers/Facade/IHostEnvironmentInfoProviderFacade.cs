@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Providers.Facade
+﻿namespace MOROPO.VIDERHE.Terminal.Player.Providers.Facade
 {
     public interface IHostEnvironmentInfoProviderFacade
     {

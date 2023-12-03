@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Presentation.Providers
+﻿using MOROPO.VIDERHE.Extend.Essential.Overlaying.Presentation.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Overlaying.Presentation.Providers
 {
     public class OverlayPresentationViewProvider : Common.Overlaying.Presentation.Providers.Facade.IOverlayPresentationViewProviderFacade
     {
@@ -8,7 +10,7 @@
 
             if (accountInformationProvider.AccountDefaultOverlayId.Value == Descriptors.SimpleHighlightsOverlayDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.SimpleHighlightsContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<SimpleHighlightsContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
 
                 return new Views.SimpleHighlightsOverlayView(new Models.View.SimpleHighlightsViewModel
                 {

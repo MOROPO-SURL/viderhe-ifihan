@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views.Template.Selector
+﻿using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Views.Template.Selector
 {
     public class ActionDataTemplateSelector : Xamarin.Forms.DataTemplateSelector
     {
@@ -8,9 +10,9 @@
 
         protected override Xamarin.Forms.DataTemplate OnSelectTemplate(object item, Xamarin.Forms.BindableObject container)
         {
-            var action = item as Models.View.ActionViewModel;
+            var action = item as ActionViewModel;
 
-            if (action is Models.View.SessionActionViewModel)
+            if (action is SessionActionViewModel)
             {
                 return SessionActionDataTemplate;
             }

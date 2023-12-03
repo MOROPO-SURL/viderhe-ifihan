@@ -1,8 +1,8 @@
-﻿using MOROPO.SAPRESSC.Core.Web.Security.Models.View.Contrat;
+﻿using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Models.View.Contrat;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Managers
+namespace MOROPO.VIDERHE.Cloud.Managers
 {
-    public class UserProfileManager : MOROPO.SAPRESSC.Core.Web.Security.Managers.Facade.IUserProfileManagerFacade
+    public class UserProfileManager : Framework.Guama.Core.Presentation.Web.Security.Managers.Facade.IUserProfileManagerFacade
     {
         public IUserProfileViewModel GetUserProfile(string username)
         {

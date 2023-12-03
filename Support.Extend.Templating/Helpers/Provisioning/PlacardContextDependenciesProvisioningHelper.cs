@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Common.Templating.Providers.Facade;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Helpers.Provisioning
+namespace MOROPO.VIDERHE.Support.Extend.Templating.Helpers.Provisioning
 {
     public sealed class PlacardContextDependenciesProvisioningHelper
     {
@@ -21,14 +23,14 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Helpers.Provisio
 
         private PlacardContextDependenciesProvisioningHelper()
         {
-            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating,\\sVersion=")).ToArray();
+            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(Viderhe.Extend.Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider).IsAssignableFrom(t));
+            SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, SmartSolucionesCuba.XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IPlacardContextDependenciesProvider).IsAssignableFrom(t));
         }
 
-        public Viderhe.Extend.Common.Templating.Models.Context.ImageContextModel[] GetImages(System.Guid templateId, string serializedContext)
+        public ImageContextModel[] GetImages(System.Guid templateId, string serializedContext)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Viderhe.Extend.Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider>();
+            var providers = SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardContextDependenciesProvider>();
 
             foreach (var provider in providers)
             {
@@ -42,9 +44,9 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Helpers.Provisio
             return null;
         }
 
-        public Viderhe.Extend.Common.Templating.Models.Context.VideoContextModel[] GetVideos(System.Guid templateId, string serializedContext)
+        public VideoContextModel[] GetVideos(System.Guid templateId, string serializedContext)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Viderhe.Extend.Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider>();
+            var providers = SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardContextDependenciesProvider>();
 
             foreach (var provider in providers)
             {
@@ -58,9 +60,9 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Helpers.Provisio
             return null;
         }
 
-        public Viderhe.Extend.Common.Templating.Models.Context.GradientContextModel[] GetGradients(System.Guid templateId, string serializedContext)
+        public GradientContextModel[] GetGradients(System.Guid templateId, string serializedContext)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Viderhe.Extend.Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider>();
+            var providers = SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardContextDependenciesProvider>();
 
             foreach (var provider in providers)
             {
@@ -74,9 +76,9 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Helpers.Provisio
             return null;
         }
 
-        public Viderhe.Extend.Common.Templating.Models.Context.SoundContextModel[] GetSounds(System.Guid templateId, string serializedContext)
+        public SoundContextModel[] GetSounds(System.Guid templateId, string serializedContext)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Viderhe.Extend.Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider>();
+            var providers = SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardContextDependenciesProvider>();
 
             foreach (var provider in providers)
             {
