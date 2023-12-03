@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators.Contract
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators.Contract
 {
     public interface IFormFieldValidator
     {

@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Helpers.Comparison
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Helpers.Comparison
 {
-    public class TransitionEntityCollectionEqualityComparisonHelper : System.Collections.Generic.IEqualityComparer<Persistence.Entities.Transition>
+    public class TransitionEntityCollectionEqualityComparisonHelper : System.Collections.Generic.IEqualityComparer<Transition>
     {
         private static TransitionEntityCollectionEqualityComparisonHelper instance;
 
@@ -17,12 +19,12 @@
             }
         }
 
-        public bool Equals(Persistence.Entities.Transition x, Persistence.Entities.Transition y)
+        public bool Equals(Transition x, Transition y)
         {
             return x.Id == y.Id;
         }
 
-        public int GetHashCode(Persistence.Entities.Transition obj)
+        public int GetHashCode(Transition obj)
         {
             return obj.Id.GetHashCode();
         }

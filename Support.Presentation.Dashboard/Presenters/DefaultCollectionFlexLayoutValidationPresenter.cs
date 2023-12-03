@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Presenters
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters
 {
     public class DefaultCollectionFlexLayoutValidationPresenter : Contract.IFormFieldValidationPresenter
     {

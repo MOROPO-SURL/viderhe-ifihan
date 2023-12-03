@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Providers.Facade
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Providers.Facade
 {
     public interface IStaticResourceProviderFacade
     {

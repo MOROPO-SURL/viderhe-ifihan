@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Overlaying.Descriptors
 {
     public class SimpleHighlightsOverlayDescriptor : Common.Overlaying.Descriptors.IOverlayDescriptor
     {

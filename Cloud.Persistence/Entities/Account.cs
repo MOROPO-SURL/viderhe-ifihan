@@ -1,8 +1,8 @@
-﻿using MOROPO.SAPRESSC.Core.Persistence.Entities;
+﻿using MOROPO.Framework.Guama.Core.Persistence.Entities.Contract;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
     public class Account : IHabilitableEntity<System.Guid>, IPersistenceSignable
     {
@@ -23,17 +23,17 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
         public System.Guid LogoId { get; set; }
 
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey("LogoId")]
-        public MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image Logo { get; set; }
+        public Framework.Guama.Media.Persistence.Entities.Image Logo { get; set; }
 
         public System.Guid HorizontalSplashId { get; set; }
 
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey("HorizontalSplashId")]
-        public MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image HorizontalSplash { get; set; }
+        public Framework.Guama.Media.Persistence.Entities.Image HorizontalSplash { get; set; }
 
         public System.Guid VerticalSplashId { get; set; }
 
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey("VerticalSplashId")]
-        public MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Image VerticalSplash { get; set; }
+        public Framework.Guama.Media.Persistence.Entities.Image VerticalSplash { get; set; }
 
         public System.Guid? DefaultOverlayId { get; set; }
 

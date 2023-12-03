@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Extensions
+﻿namespace MOROPO.VIDERHE.Terminal.Player.UWP.Extensions
 {
     public static class XamarinFormsAspectExtensions
     {

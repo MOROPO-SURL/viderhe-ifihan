@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Handlers
+﻿namespace MOROPO.VIDERHE.Terminal.Player.Handlers
 {
     public class SecureImageHttpClientHandler : System.Net.Http.HttpClientHandler
     {

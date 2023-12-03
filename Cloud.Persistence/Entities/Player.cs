@@ -1,9 +1,6 @@
-﻿using MOROPO.SAPRESSC.Core.Persistence.Entities;
-using System.ComponentModel.DataAnnotations;
-
-namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+﻿namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class Player : INamedEntity<string>, IPersistenceSignable
+    public class Player : Framework.Guama.Core.Persistence.Entities.Contract.INamedEntity<string>, Framework.Guama.Core.Persistence.Entities.Contract.IPersistenceSignable
     {
         public Player()
         {
@@ -11,10 +8,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
             TagBridges = new System.Collections.Generic.List<PlayerTagBridge>();
         }
 
-        [Key, RegularExpression(@"^[0-9A-Z]{7}$")]
+        [System.ComponentModel.DataAnnotations.Key, System.ComponentModel.DataAnnotations.RegularExpression(@"^[0-9A-Z]{7}$")]
         public string Id { get; set; }
 
-        [Required]
+        [System.ComponentModel.DataAnnotations.Required]
         public string Name { get; set; }
 
         public System.Guid AccountId { get; set; }
@@ -33,7 +30,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
 
         public string About { get; set; }
 
-        [Required]
+        [System.ComponentModel.DataAnnotations.Required]
         public string Signature { get; set; }
 
         public System.Collections.Generic.List<ScheduledRelaunch> ScheduledRelaunches { get; set; }

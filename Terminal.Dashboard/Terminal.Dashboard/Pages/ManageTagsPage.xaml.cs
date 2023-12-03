@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+﻿namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageTagsPage : XFToolKit.Mvvm.Pages.TabbedPage
+    public partial class ManageTagsPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.TabbedPage
     {
         public ManageTagsPage()
         {

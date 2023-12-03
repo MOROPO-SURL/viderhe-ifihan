@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Transitions
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Transitioning.Transitions
 {
     public class CarouselTransitionDescriptor : Common.Transitioning.Descriptors.ITransitionDescriptor
     {

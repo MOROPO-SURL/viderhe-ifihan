@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Models.View
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+
+namespace MOROPO.VIDERHE.Terminal.Player.Models.View
 {
     public class AccountViewModel
     {
@@ -11,6 +13,6 @@
         public Xamarin.Forms.Color SecoundaryColor { get; set; }
         public System.Guid? DefaultOverlayId { get; set; }
         public string SerializedOverlayContext { get; set; }
-        public System.Collections.Generic.List<Cloud.Api.Common.Models.ExtensionDisplayModel> Extensions { get; set; }
+        public System.Collections.Generic.List<ExtensionDisplayModel> Extensions { get; set; }
     }
 }

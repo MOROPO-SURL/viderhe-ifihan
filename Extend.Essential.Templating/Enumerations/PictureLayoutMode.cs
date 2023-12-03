@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Enumerations
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Templating.Enumerations
 {
     public enum PictureLayoutMode
     {

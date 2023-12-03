@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Management.Sections.Contract
+﻿namespace MOROPO.VIDERHE.Extend.Common.Management.Sections.Contract
 {
     public interface IManagementSection
     {

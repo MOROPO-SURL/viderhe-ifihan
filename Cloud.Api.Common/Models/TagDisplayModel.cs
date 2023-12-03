@@ -1,16 +1,19 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class TagDisplayModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Tag, System.Guid>
+    public class TagDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Tag, System.Guid>
     {
         public System.Guid Id { get; set; }
 
         public string Name { get; set; }
 
-        public Persistence.Enumerations.TagGroup Group { get; set; }
+        public TagGroup Group { get; set; }
 
         public string Color { get; set; }
 
-        public void Import(Persistence.Entities.Tag entity)
+        public void Import(Tag entity)
         {
             Id = entity.Id;
             Name = entity.Name;

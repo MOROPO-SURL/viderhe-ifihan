@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators.Contract;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators
 {
-    public class FormatFormFieldValidator : Contract.IFormFieldValidator
+    public class FormatFormFieldValidator : IFormFieldValidator
     {
         private const string MESSAGE = "El valor especificado no está en el formato correcto.";
 

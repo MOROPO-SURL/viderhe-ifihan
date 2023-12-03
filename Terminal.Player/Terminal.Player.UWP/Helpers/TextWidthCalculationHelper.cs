@@ -1,8 +1,8 @@
 ﻿using Xamarin.Forms.Platform.UWP;
 
-[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Helpers.TextWidthCalculationHelper))]
+[assembly: Xamarin.Forms.Dependency(typeof(MOROPO.VIDERHE.Terminal.Player.UWP.Helpers.TextWidthCalculationHelper))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Helpers
+namespace MOROPO.VIDERHE.Terminal.Player.UWP.Helpers
 {
     public class TextWidthCalculationHelper : Extend.Common.Overlaying.Presentation.Helpers.Facade.ITextWidthCalculationHelperFacade
     {

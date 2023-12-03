@@ -1,6 +1,6 @@
-﻿[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(Xamarin.Forms.ActivityIndicator), typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer.RingActivityIndicatorRenderer))]
+﻿[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(Xamarin.Forms.ActivityIndicator), typeof(MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer.RingActivityIndicatorRenderer))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer
+namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
 {
     public class RingActivityIndicatorRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<Xamarin.Forms.ActivityIndicator, Microsoft.UI.Xaml.Controls.ProgressRing>
     {

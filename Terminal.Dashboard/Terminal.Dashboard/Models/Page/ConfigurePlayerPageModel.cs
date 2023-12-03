@@ -1,19 +1,23 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Support.Extend.Overlaying.Providers;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class ConfigurePlayerPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
+    public class ConfigurePlayerPageModel : FormPageModel
     {
         private string id;
         private string name;
         private string about;
-        private Cloud.Api.Common.Models.ScreenplayDisplayModel screenplay;
+        private ScreenplayDisplayModel screenplay;
         private Extend.Common.Overlaying.Descriptors.IOverlayDescriptor overlay;
         private string serializedOverlayContext;
 
         public ConfigurePlayerPageModel()
         {
-            Screenplays = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.ScreenplayDisplayModel>();
-            AvailableOverlays = new System.Collections.Generic.List<Extend.Common.Overlaying.Descriptors.IOverlayDescriptor>(Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptors());
-            Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>();
+            Screenplays = new System.Collections.ObjectModel.ObservableCollection<ScreenplayDisplayModel>();
+            AvailableOverlays = new System.Collections.Generic.List<Extend.Common.Overlaying.Descriptors.IOverlayDescriptor>(OverlayDescriptorProvider.Instance.GetDescriptors());
+            Tags = new System.Collections.ObjectModel.ObservableCollection<TagDisplayModel>();
 
             AvailableOverlays.Insert(0, null);
         }
@@ -36,13 +40,13 @@
             set => SetProperty(ref about, value);
         }
 
-        public Cloud.Api.Common.Models.ScreenplayDisplayModel Screenplay
+        public ScreenplayDisplayModel Screenplay
         {
             get => screenplay;
             set => SetProperty(ref screenplay, value);
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.ScreenplayDisplayModel> Screenplays { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<ScreenplayDisplayModel> Screenplays { get; set; }
 
         public Extend.Common.Overlaying.Descriptors.IOverlayDescriptor Overlay { get => overlay; set => SetProperty(ref overlay, value); }
 
@@ -50,7 +54,7 @@
 
         public System.Collections.Generic.List<Extend.Common.Overlaying.Descriptors.IOverlayDescriptor> AvailableOverlays { get; set; }
 
-        public System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel> Tags { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<TagDisplayModel> Tags { get; set; }
 
         protected override void DisposeUnmanagementResources()
         {

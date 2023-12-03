@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View
 {
     public class GradientViewModel : System.IDisposable
     {

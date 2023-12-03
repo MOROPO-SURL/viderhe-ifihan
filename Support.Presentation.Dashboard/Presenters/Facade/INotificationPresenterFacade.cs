@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Presenters.Facade
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade
 {
     public interface INotificationPresenterFacade
     {

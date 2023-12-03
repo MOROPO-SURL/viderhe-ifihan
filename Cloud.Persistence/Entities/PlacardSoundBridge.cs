@@ -1,13 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+﻿namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class PlacardSoundBridge
+    public class PlacardSoundBridge : Framework.Guama.Core.Persistence.Entities.Contract.IBridge<Placard, System.Guid, Sound, System.Guid>
     {
-        public System.Guid PlacardId { get; set; }
+        public System.Guid ProwId { get; set; }
+        public Placard Prow { get; set; }
 
-        public Placard Placard { get; set; }
-
-        public System.Guid SoundId { get; set; }
-
-        public Sound Sound { get; set; }
+        public System.Guid SternId { get; set; }
+        public Sound Stern { get; set; }
     }
 }

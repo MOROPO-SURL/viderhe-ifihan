@@ -1,12 +1,15 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models.Filter
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter
 {
-    public class TagFilterModel : MOROPO.SAPRESSC.Core.Persistence.Models.Filter.IEntityFilterModel<Persistence.Entities.Tag, System.Guid>
+    public class TagFilterModel : Framework.Guama.Core.Persistence.Presentation.Models.Filter.Contract.IEntityFilterModel<Tag, System.Guid>
     {
-        public Persistence.Enumerations.TagGroup Group { get; set; }
+        public TagGroup Group { get; set; }
 
         public string Name { get; set; }
 
-        public System.Linq.Expressions.Expression<System.Func<Persistence.Entities.Tag, bool>> GetSelector()
+        public System.Linq.Expressions.Expression<System.Func<Tag, bool>> GetSelector()
         {
             if (string.IsNullOrEmpty(Name))
             {

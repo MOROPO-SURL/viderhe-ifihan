@@ -1,25 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MOROPO.SAPRESSC.Middleware.Media.Web.Common.Managers.Facade;
-using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Managers.Facade;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Managers;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Persistence.ORM.EF;
+using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
+namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 {
-    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION)]
+    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Policies.ACCOUNT_VALIDATED_MODERATION)]
     [Route("api/[area]/[controller]")]
     [Area("account")]
     [ApiController]
-    [MOROPO.SAPRESSC.Core.Web.Security.Attributes.ChangeUserPasswordRequiredAction]
-    [MOROPO.SAPRESSC.Core.Web.Security.Attributes.CatchChangeUserPasswordRequiredException]
+    [Framework.Guama.Core.Presentation.Web.Security.Attributes.ChangeUserPasswordRequiredAction]
+    [Framework.Guama.Core.Presentation.Web.Security.Attributes.CatchChangeUserPasswordRequiredException]
     public class SoundsController : Controller
     {
-        private readonly Managers.SoundFileManager soundFileManager;
+        private readonly SoundFileManager soundFileManager;
         private readonly IThumbnailFileManagerFacade thumbnailFileManager;
-        private readonly MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Sound, System.Guid> soundRepository;
-        private readonly Persistence.EF.ApplicationDbContext dbContext;
+        private readonly IEntityRepository<Sound, System.Guid> soundRepository;
+        private readonly ApplicationDbContext dbContext;
 
-        public SoundsController(Persistence.EF.ApplicationDbContext dbContext, MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Sound, System.Guid> soundRepository, IThumbnailFileManagerFacade thumbnailFileManager, Managers.SoundFileManager soundFileManager)
+        public SoundsController(ApplicationDbContext dbContext, IEntityRepository<Sound, System.Guid> soundRepository, IThumbnailFileManagerFacade thumbnailFileManager, SoundFileManager soundFileManager)
         {
             this.soundFileManager = soundFileManager;
             this.thumbnailFileManager = thumbnailFileManager;
@@ -29,13 +34,13 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         [HttpGet]
         [HttpGet("page/{page}")]
-        public ActionResult<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<SoundDisplayModel>> GetPage(int page = 1)
+        public ActionResult<Framework.Guama.Core.Presentation.Models.PaginationModel<SoundDisplayModel>> GetPage(int page = 1)
         {
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
             var limit = 15;
 
-            var account = dbContext.Accounts.Include(e => e.SoundBridges).ThenInclude(b => b.Sound).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
+            var account = dbContext.Accounts.Include(e => e.SoundBridges).ThenInclude(b => b.Stern).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
 
             var maxCount = account.SoundBridges.Count;
 
@@ -50,9 +55,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 page = 1;
             }
 
-            return Ok(new MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<SoundDisplayModel>
+            return Ok(new Framework.Guama.Core.Presentation.Models.PaginationModel<SoundDisplayModel>
             {
-                List = account.SoundBridges.Select(bridge => bridge.Sound).OrderByDescending(e => e.CreateAt).Skip((page - 1) * limit).Take(limit).Select(entity =>
+                List = account.SoundBridges.Select(bridge => bridge.Stern).OrderByDescending(e => e.CreateAt).Skip((page - 1) * limit).Take(limit).Select(entity =>
                 {
                     var model = new SoundDisplayModel();
 
@@ -71,7 +76,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         [HttpPost]
         public ActionResult Add(Microsoft.AspNetCore.Http.IFormFile file, [FromForm] string about)
         {
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
             var account = dbContext.Accounts.First(e => e.Id == accountId);
 
@@ -80,11 +85,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 file = Request.Form.Files.First();
             }
 
-            var entity = new Persistence.Entities.Sound
+            var entity = new Sound
             {
                 Extension = "mp3",
                 Length = file.Length,
-                
+
                 About = about
             };
 
@@ -96,10 +101,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
                 dbContext.Sounds.Add(entity);
 
-                dbContext.AccountSoundBridges.Add(new Persistence.Entities.AccountSoundBridge
+                dbContext.AccountSoundBridges.Add(new AccountSoundBridge
                 {
-                    AccountId = accountId,
-                    SoundId = entity.Id
+                    ProwId = accountId,
+                    SternId = entity.Id
                 });
 
                 dbContext.SaveChanges(User.Identity.Name);
@@ -115,11 +120,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             {
                 try
                 {
-                    var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+                    var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
-                    var account = dbContext.Accounts.Include(e => e.SoundBridges).ThenInclude(b => b.Sound).First(e => e.Id == accountId);
+                    var account = dbContext.Accounts.Include(e => e.SoundBridges).ThenInclude(b => b.Stern).First(e => e.Id == accountId);
 
-                    var entity = account.SoundBridges.First(b => b.SoundId == inputModel.Id).Sound;
+                    var entity = account.SoundBridges.First(b => b.SternId == inputModel.Id).Stern;
 
                     inputModel.Mergue(entity);
 
@@ -143,33 +148,33 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         [HttpDelete("{key}")]
         public ActionResult Delete(System.Guid key)
         {
-            if (dbContext.PlacardSoundBridges.Any(item => item.SoundId == key))
+            if (dbContext.PlacardSoundBridges.Any(item => item.SternId == key))
             {
                 return Conflict();
             }
 
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
-            var account = dbContext.Accounts.Include(e => e.SoundBridges).ThenInclude(b => b.Sound).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
+            var account = dbContext.Accounts.Include(e => e.SoundBridges).ThenInclude(b => b.Stern).ThenInclude(e => e.Thumbnail).First(e => e.Id == accountId);
 
-            var bridge = account.SoundBridges.First(b => b.SoundId == key);
+            var bridge = account.SoundBridges.First(b => b.SternId == key);
 
             dbContext.AccountSoundBridges.Remove(bridge);
 
-            dbContext.Sounds.Remove(bridge.Sound);
+            dbContext.Sounds.Remove(bridge.Stern);
 
-            if (bridge.Sound.ThumbnailId != null)
+            if (bridge.Stern.ThumbnailId != null)
             {
-                dbContext.Thumbnails.Remove(bridge.Sound.Thumbnail);
+                dbContext.Thumbnails.Remove(bridge.Stern.Thumbnail);
             }
 
             dbContext.SaveChanges(User.Identity.Name);
 
-            soundFileManager.DeleteFile(bridge.Sound);
+            soundFileManager.DeleteFile(bridge.Stern);
 
-            if (bridge.Sound.ThumbnailId != null)
+            if (bridge.Stern.ThumbnailId != null)
             {
-                thumbnailFileManager.DeleteThumbnailFile(bridge.Sound.Thumbnail);
+                thumbnailFileManager.DeleteThumbnailFile(bridge.Stern.Thumbnail);
             }
 
             return Ok();

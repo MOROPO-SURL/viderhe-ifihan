@@ -1,6 +1,7 @@
-﻿@using SmartSolucionesCuba.Viderhe.Cloud.Extensions;
+﻿@using MOROPO.VIDERHE.Cloud.Extensions;
+@using MOROPO.VIDERHE.Cloud.Models.View;
 
-@model SmartSolucionesCuba.Viderhe.Cloud.Models.View.ManagementDashboardViewModel
+@model ManagementDashboardViewModel
 
 @{
     ViewData["Title"] = GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer);
@@ -49,8 +50,8 @@
                     @foreach (var item in subList)
                     {
                         <div class="col-sm-4" style="text-align: center; padding-bottom: 15px; padding-top: 15px;">
-                            @if (User.HasClaim(claim => claim.Type.Equals(MOROPO.SAPRESSC.Core.Web.Security.Constants.ClaimTypes.AccountWithFullAccess) && claim.Value.Equals(true.ToString())) || User.IsInRole(item.Role))
-                            {
+                                    @if (User.HasClaim(claim => claim.Type.Equals(MOROPO.Framework.Guama.Core.Presentation.Web.Security.Constants.ClaimTypes.AccountWithFullAccess) && claim.Value.Equals(true.ToString())) || User.IsInRole(item.Role))
+                                    {
                                 <a href="@Url.Action(item.Action, item.Controller, new { item.Area })">
                                     @item.ToIconographyHtmlString()
                                     <div>@GlobalViewLocalizationHelper.Localize(item.Title, ViewLocalizer)</div>
@@ -96,8 +97,8 @@
                             @foreach (var item in subList)
                             {
                                 <div class="col-sm-4" style="text-align: center; padding-bottom: 15px; padding-top: 15px;">
-                                    @if (User.HasClaim(claim => claim.Type.Equals(MOROPO.SAPRESSC.Core.Web.Security.Constants.ClaimTypes.AccountWithFullAccess) && claim.Value.Equals(true.ToString())) || User.IsInRole(item.Role))
-                                    {
+                                        @if (User.HasClaim(claim => claim.Type.Equals(MOROPO.Framework.Guama.Core.Presentation.Web.Security.Constants.ClaimTypes.AccountWithFullAccess) && claim.Value.Equals(true.ToString())) || User.IsInRole(item.Role))
+                                        {
                                     <a href="@Url.Action(item.Action, item.Controller, new { item.Area })">
                                         @item.ToIconographyHtmlString()
                                         <div>@GlobalViewLocalizationHelper.Localize(item.Title, ViewLocalizer)</div>

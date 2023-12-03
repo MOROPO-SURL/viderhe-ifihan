@@ -1,8 +1,9 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Extend.Templating.Presentation.Helpers.Provisioning;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
 {
-    public partial class EmbeddedFontFamilyNamePickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EmbeddedFontFamilyNamePickPageModel>
+    public partial class EmbeddedFontFamilyNamePickPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EmbeddedFontFamilyNamePickPageModel>
     {
         private System.Action<string> embededdedFontFamilyNamePickedCallbackAction;
 
@@ -29,7 +30,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(() =>
             {
-                var embeddedFontFamilyNames = Extend.Templating.Presentation.Helpers.Provisioning.EmbeddedFontFamilyNamesProvisioningHelper.Instance.GetAll();
+                var embeddedFontFamilyNames = EmbeddedFontFamilyNamesProvisioningHelper.Instance.GetAll();
 
                 foreach (var item in embeddedFontFamilyNames)
                 {

@@ -2,12 +2,12 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
-    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Terminal.Dashboard.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.UserAuthenticationPage"
+    x:Class="MOROPO.VIDERHE.Terminal.Dashboard.Pages.UserAuthenticationPage"
     x:TypeArguments="pagemodels:UserAuthenticationPageModel"
     BackgroundColor="White">
     <ContentPage.Resources>
@@ -25,7 +25,7 @@
                 <Label Text="por" FontAttributes="Italic" />
                 <ffimageloadingsvg:SvgCachedImage
                     Aspect="AspectFit"
-                    Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Assets.Images.moropo-logo-dark.svg" />
+                    Source="resource://MOROPO.VIDERHE.Terminal.Dashboard.Assets.Images.moropo-logo-dark.svg" />
                 <Label 
                     HorizontalTextAlignment="Center"
                     x:Name="CopyRightLabel" />
@@ -52,7 +52,7 @@
                         <ffimageloadingsvg:SvgCachedImage
                             Grid.ColumnSpan="2" Grid.Row="0"
                             Margin="24,0,24,16"
-                            Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Assets.Images.viderhe-identity-main.svg"
+                            Source="resource://MOROPO.VIDERHE.Terminal.Dashboard.Assets.Images.viderhe-identity-main.svg"
                             Aspect="AspectFit" />
                         <Picker
                             Grid.Column="0" Grid.Row="1"

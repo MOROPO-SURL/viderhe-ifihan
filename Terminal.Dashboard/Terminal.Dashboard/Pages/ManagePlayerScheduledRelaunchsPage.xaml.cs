@@ -1,10 +1,15 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManagePlayerScheduledRelaunchsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManagePlayerScheduledRelaunchsPageModel>
+    public partial class ManagePlayerScheduledRelaunchsPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManagePlayerScheduledRelaunchsPageModel>
     {
-        public ManagePlayerScheduledRelaunchsPage(Models.View.PlayerViewModel player) : base(new Models.Page.ManagePlayerScheduledRelaunchsPageModel(player) { IsBusy = true })
+        public ManagePlayerScheduledRelaunchsPage(PlayerViewModel player) : base(new ManagePlayerScheduledRelaunchsPageModel(player) { IsBusy = true })
         {
             InitializeComponent();
 
@@ -45,9 +50,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 BindingContextPageModel.IsBusy = true;
 
-                var client = new Cloud.Api.Connect.Clients.ScheduledRelaunchsApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.ScheduledRelaunchsApiConnectClient(SessionManager.Instance);
 
-                var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Cloud.Api.Common.Models.ScheduledRelaunchDisplayModel;
+                var target = (sender as Xamarin.Forms.BindableObject).BindingContext as ScheduledRelaunchDisplayModel;
 
                 client.Delete(target.Id).ContinueWith(task =>
                 {
@@ -55,7 +60,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         if (task.Exception != null || task.IsCanceled)
                         {
-                            (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                            (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                         }
                         else
                         {
@@ -74,7 +79,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             BindingContextPageModel.IsBusy = true;
 
-            var client = new Cloud.Api.Connect.Clients.ScheduledRelaunchsApiConnectClient(Managers.SessionManager.Instance);
+            var client = new Cloud.Api.Connect.Clients.ScheduledRelaunchsApiConnectClient(SessionManager.Instance);
 
             client.FilterAsync(new Cloud.Api.Common.Models.Filter.ScheduledRelaunchFilterModel
             {
@@ -85,7 +90,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {

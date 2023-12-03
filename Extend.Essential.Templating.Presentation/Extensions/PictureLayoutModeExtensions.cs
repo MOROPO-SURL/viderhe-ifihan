@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Extensions
 {
     public static class PictureLayoutModeExtensions
     {

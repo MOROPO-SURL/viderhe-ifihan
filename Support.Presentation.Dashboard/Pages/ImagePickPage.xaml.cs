@@ -1,21 +1,25 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
 {
-    public partial class ImagePickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ImagePickPageModel>
+    public partial class ImagePickPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ImagePickPageModel>
     {
-        private System.Action<Presentation.Models.View.ImageViewModel> imagePickedCallbackAction;
+        private System.Action<ImageViewModel> imagePickedCallbackAction;
 
-        private Presentation.Models.View.ImageViewModel except;
+        private ImageViewModel except;
 
         private int currentImagesPageNumber;
         private int currentImageCollectionViewCellColumnCount = 3;
         private int pagingLimit = 15;
 
-        public ImagePickPage(System.Action<Presentation.Models.View.ImageViewModel> imagePickedCallbackAction, Presentation.Models.View.ImageViewModel except = null)
-            : base(new Models.Page.ImagePickPageModel())
+        public ImagePickPage(System.Action<ImageViewModel> imagePickedCallbackAction, ImageViewModel except = null)
+            : base(new ImagePickPageModel())
         {
             InitializeComponent();
 
@@ -27,7 +31,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
         {
             BindingContextPageModel.IsBusy = true;
 
-            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.OverviewViewModel<Presentation.Models.View.ImageViewModel>;
+            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as OverviewViewModel<ImageViewModel>;
 
             imagePickedCallbackAction.Invoke(targetModel.Presented);
 
@@ -36,7 +40,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
         private void ImageOverviewDetailButton_Clicked(object sender, System.EventArgs e)
         {
-            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.OverviewViewModel<Presentation.Models.View.ImageViewModel>;
+            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as OverviewViewModel<ImageViewModel>;
 
             this.NavigationPushPageAsync(new ImageDetailPage(targetModel.Presented));
         }
@@ -123,7 +127,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                 }
             }
 
-            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
+            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
 
             imagesApiConnectClient.GetPageAsync(++currentImagesPageNumber, pagingLimit).ContinueWith(task =>
             {
@@ -131,7 +135,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                 {
                     if (task.Exception != null)
                     {
-                        Xamarin.Forms.DependencyService.Get<Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
@@ -139,7 +143,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                         {
                             if (BindingContextPageModel.Items == null)
                             {
-                                BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<Models.View.OverviewViewModel<Presentation.Models.View.ImageViewModel>>();
+                                BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<OverviewViewModel<ImageViewModel>>();
                             }
                             else
                             {
@@ -152,7 +156,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                             // TODO Find how exept correctly!!
                             //if (except != null && except.Id == item.Id) continue;
 
-                            BindingContextPageModel.Items.Add(new Models.View.OverviewViewModel<Presentation.Models.View.ImageViewModel>(item.ToViewModel()));
+                            BindingContextPageModel.Items.Add(new OverviewViewModel<ImageViewModel>(item.ToViewModel()));
                         }
 
                         BindingContextPageModel.HasMoreItems = task.Result.HasNext && task.Result.List.Count > 0;

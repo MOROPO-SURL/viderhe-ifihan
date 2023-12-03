@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions
+namespace MOROPO.VIDERHE.Support.Presentation.Extensions
 {
     public static class CloudApiModelExtensions
     {

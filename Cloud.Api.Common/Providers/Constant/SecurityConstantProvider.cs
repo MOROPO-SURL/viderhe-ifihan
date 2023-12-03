@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Providers.Constant
+﻿namespace MOROPO.VIDERHE.Cloud.Api.Common.Providers.Constant
 {
     public static class SecurityConstantProvider
     {

@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class ManageExtensionsPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ManageExtensionsPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         public ManageExtensionsPageModel()
         {

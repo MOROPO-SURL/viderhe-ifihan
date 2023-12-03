@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Models.View
 {
     public abstract class AbstractPicturePresentingPictureSlideSecuencePlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel, Facade.IPresentedByImagePlacardViewModelFacade
     {
