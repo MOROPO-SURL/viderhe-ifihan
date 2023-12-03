@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Options
+﻿namespace MOROPO.VIDERHE.Cloud.Options
 {
     public class MediaPathOptions
     {

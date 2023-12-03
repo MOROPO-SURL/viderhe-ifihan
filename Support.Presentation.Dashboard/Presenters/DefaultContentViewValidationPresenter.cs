@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Presenters
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Contract;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters
 {
-    public class DefaultContentViewValidationPresenter : Contract.IFormFieldValidationPresenter
+    public class DefaultContentViewValidationPresenter : IFormFieldValidationPresenter
     {
         private static DefaultContentViewValidationPresenter instance;
 

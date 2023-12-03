@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators.Contract;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators
 {
-    public class MinLengthFormFieldValidator : Contract.IFormFieldValidator
+    public class MinLengthFormFieldValidator : IFormFieldValidator
     {
         private const string MESSAGE_TEMPLATE = "El valor especificado debe tener {0} o más caracteres.";
 

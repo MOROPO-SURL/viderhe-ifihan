@@ -1,15 +1,25 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Descriptors;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Pages
 {
-    public partial class SimplePicturePlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.SimplePicturePlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class SimplePicturePlacardConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<SimplePicturePlacardConfigurationPageModel>, IValidableFormPage
     {
-        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+        private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
-        private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
+        private PlacardViewModel placardViewModel;
         private System.Action successfulCompleteCallbackAction;
 
         public SimplePicturePlacardConfigurationPage(System.Action successfulCompleteCallbackAction)
@@ -17,10 +27,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
         {
         }
 
-        public SimplePicturePlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(Factories.SimplePicturePlacardConfigurationPageModelFactory.Build(placardViewModel))
+        public SimplePicturePlacardConfigurationPage(PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
+            : base(SimplePicturePlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
-            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+            validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
             InitializeComponent();
 
@@ -29,7 +39,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
             if (placardViewModel == null)
             {
-                var templateDescriptor = new Descriptors.SimplePictureTemplateDescriptor();
+                var templateDescriptor = new SimplePictureTemplateDescriptor();
 
                 Title = string.Format("Nuevo Cartel ({0})", templateDescriptor.Name);
 
@@ -63,14 +73,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 if (placardViewModel == null)
                 {
-                    var model = new Cloud.Api.Common.Models.PlacardInputModel
+                    var model = new PlacardInputModel
                     {
                         Label = BindingContextPageModel.Label,
-                        TemplateId = Descriptors.SimplePictureTemplateDescriptor.ID,
+                        TemplateId = SimplePictureTemplateDescriptor.ID,
                         PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.SimplePicturePlacardContextModel
                         {
@@ -97,7 +107,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                 }
                 else
                 {
-                    var model = new Cloud.Api.Common.Models.PlacardInputModel
+                    var model = new PlacardInputModel
                     {
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
@@ -134,11 +144,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
 
                         this.NavigationPopPageAsync();
 
@@ -155,7 +165,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
         private void AddTagButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage(Cloud.Persistence.Enumerations.TagGroup.Placard, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.TagPickPopupPage(TagGroup.Placard, PickTagSuccess_Callback, BindingContextPageModel.Tags.ToArray()));
         }
 
         private void RemoveTagButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -164,16 +174,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             {
                 if (!task.Result) return;
 
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as Cloud.Api.Common.Models.TagDisplayModel));
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as TagDisplayModel));
             });
         }
 
-        private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
+        private void PickTagSuccess_Callback(TagDisplayModel model)
         {
             BindingContextPageModel.Tags.Add(model);
         }
 
-        private void ImagePicked_Callback(Support.Presentation.Models.View.ImageViewModel selection)
+        private void ImagePicked_Callback(ImageViewModel selection)
         {
             BindingContextPageModel.Image = selection;
 
@@ -193,12 +203,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
         #region IValidableFormPage implementation
 
-        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void AddValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Add(validationBehavior);
         }
 
-        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void RemoveValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Remove(validationBehavior);
         }

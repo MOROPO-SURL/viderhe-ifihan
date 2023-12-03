@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup.FilterPlayerPopupPage">
+    x:Class="MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup.FilterPlayerPopupPage">
     <ContentPage.Content>
         <Frame
             HorizontalOptions="Center" VerticalOptions="Center"

@@ -1,20 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SmartSolucionesCuba.Viderhe.Cloud.Extensions;
+using MOROPO.VIDERHE.Cloud.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Components
+namespace MOROPO.VIDERHE.Cloud.Components
 {
     public class DashboardSidebarViewComponent : ViewComponent
     {
-        private readonly System.Collections.Generic.IEnumerable<MOROPO.SAPRESSC.Core.Web.Backend.Providers.Facade.IManagementDashboardSectionProviderFacade> managementDashboardSectionProviders;
+        private readonly System.Collections.Generic.IEnumerable<Framework.Guama.Core.Presentation.Web.Backend.Providers.Facade.IManagementDashboardSectionProviderFacade> providers;
 
-        public DashboardSidebarViewComponent(System.Collections.Generic.IEnumerable<MOROPO.SAPRESSC.Core.Web.Backend.Providers.Facade.IManagementDashboardSectionProviderFacade> managementDashboardSectionProviders)
+        public DashboardSidebarViewComponent(System.Collections.Generic.IEnumerable<Framework.Guama.Core.Presentation.Web.Backend.Providers.Facade.IManagementDashboardSectionProviderFacade> providers)
         {
-            this.managementDashboardSectionProviders = managementDashboardSectionProviders;
+            this.providers = providers;
         }
 
         public IViewComponentResult Invoke()
         {
-            return View(managementDashboardSectionProviders.ToManagementDashboardSectionGroups());
+            return View(providers.ToManagementDashboardSectionGroups());
         }
     }
 }

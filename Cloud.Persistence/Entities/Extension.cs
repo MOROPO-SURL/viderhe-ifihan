@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+﻿namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class Extension : MOROPO.SAPRESSC.Core.Persistence.Entities.IHabilitableEntity<System.Guid>
+    public class Extension : Framework.Guama.Core.Persistence.Entities.Contract.IHabilitableEntity<System.Guid>
     {
         public Extension()
         {

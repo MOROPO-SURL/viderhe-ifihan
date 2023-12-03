@@ -1,12 +1,14 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models.Filter
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter
 {
-    public class PlayerFilterModel : MOROPO.SAPRESSC.Core.Persistence.Models.Filter.IEntityFilterModel<Persistence.Entities.Player, string>
+    public class PlayerFilterModel : Framework.Guama.Core.Persistence.Presentation.Models.Filter.Contract.IEntityFilterModel<Player, string>
     {
         public string Name { get; set; }
 
         public TagDisplayModel[] Tags { get; set; }
 
-        public System.Linq.Expressions.Expression<System.Func<Persistence.Entities.Player, bool>> GetSelector()
+        public System.Linq.Expressions.Expression<System.Func<Player, bool>> GetSelector()
         {
             return entity => true;
         }

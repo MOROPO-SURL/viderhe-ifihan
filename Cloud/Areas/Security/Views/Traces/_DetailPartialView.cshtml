@@ -1,7 +1,7 @@
 ﻿@using Newtonsoft.Json
 @using Newtonsoft.Json.Linq
 
-@model SmartSolucionesCuba.Viderhe.Cloud.Models.View.TraceDisplayViewModel
+@model MOROPO.VIDERHE.Cloud.Models.View.TraceDisplayViewModel
 
 @{
     var entityName = Model.EntityName.ToString().Split('.').Last();
@@ -9,7 +9,6 @@
     var beforeData = JValue.Parse(Model.BeforeData);
 
     var afterData = JValue.Parse(Model.AfterData);
-
 }
 
 <!-- Modal -->

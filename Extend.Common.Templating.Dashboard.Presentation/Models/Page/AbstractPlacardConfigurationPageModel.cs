@@ -1,9 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Models.Page
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Models.Page
 {
     public abstract class AbstractPlacardConfigurationPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
         private bool requireUnobstructedPresetation;
-        private Enumerations.ConfigurationPlayerOrientationSupportKind playerOrientationSupportKind;
+        private ConfigurationPlayerOrientationSupportKind playerOrientationSupportKind;
         private System.DateTime beginAt;
         private System.DateTime endAt;
         private bool defineBeginAt;
@@ -11,8 +14,8 @@
 
         public AbstractPlacardConfigurationPageModel()
         {
-            AvailableConfigurationPlayerOrientationSupportKinds = new[] { Enumerations.ConfigurationPlayerOrientationSupportKind.Inherited, Enumerations.ConfigurationPlayerOrientationSupportKind.Landscape, Enumerations.ConfigurationPlayerOrientationSupportKind.Portrait };
-            Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>();
+            AvailableConfigurationPlayerOrientationSupportKinds = new[] { ConfigurationPlayerOrientationSupportKind.Inherited, ConfigurationPlayerOrientationSupportKind.Landscape, ConfigurationPlayerOrientationSupportKind.Portrait };
+            Tags = new System.Collections.ObjectModel.ObservableCollection<TagDisplayModel>();
         }
 
         public bool RequireUnobstructedPresetation { get => requireUnobstructedPresetation; set => SetProperty(ref requireUnobstructedPresetation, value); }
@@ -25,10 +28,10 @@
 
         public System.DateTime EndAt { get => endAt; set => SetProperty(ref endAt, value); }
 
-        public Enumerations.ConfigurationPlayerOrientationSupportKind PlayerOrientationSupportKind { get => playerOrientationSupportKind; set => SetProperty(ref playerOrientationSupportKind, value); }
+        public ConfigurationPlayerOrientationSupportKind PlayerOrientationSupportKind { get => playerOrientationSupportKind; set => SetProperty(ref playerOrientationSupportKind, value); }
 
-        public Enumerations.ConfigurationPlayerOrientationSupportKind[] AvailableConfigurationPlayerOrientationSupportKinds { get; private set; }
+        public ConfigurationPlayerOrientationSupportKind[] AvailableConfigurationPlayerOrientationSupportKinds { get; private set; }
 
-        public System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel> Tags { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<TagDisplayModel> Tags { get; set; }
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class FrameDisplayModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Frame, long>
+    public class FrameDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Frame, long>
     {
         public long Id { get; set; }
 
@@ -8,7 +10,7 @@
 
         public int Priority { get; set; }
 
-        public void Import(Persistence.Entities.Frame entity)
+        public void Import(Frame entity)
         {
             Id = entity.Id;
             Priority = entity.Priority;

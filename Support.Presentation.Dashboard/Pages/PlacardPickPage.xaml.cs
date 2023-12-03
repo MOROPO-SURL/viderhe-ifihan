@@ -1,12 +1,16 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
 {
-    public partial class PlacardPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PlacardPickPageModel>
+    public partial class PlacardPickPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<PlacardPickPageModel>
     {
-        private System.Action<Cloud.Api.Common.Models.PlacardDisplayModel, object> itemPickedCallbackAction;
+        private System.Action<PlacardDisplayModel, object> itemPickedCallbackAction;
 
         private int currentPlacardsPageNumber;
         private int currentPlacardCollectionViewCellColumnCount = 3;
@@ -14,8 +18,8 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
         private object callbackParam;
 
-        public PlacardPickPage(System.Action<Cloud.Api.Common.Models.PlacardDisplayModel, object> itemPickedCallbackAction, object callbackParam)
-            : base(new Models.Page.PlacardPickPageModel
+        public PlacardPickPage(System.Action<PlacardDisplayModel, object> itemPickedCallbackAction, object callbackParam)
+            : base(new PlacardPickPageModel
             {
                 IsBusy = false
             })
@@ -52,7 +56,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
         {
             BindingContextPageModel.IsBusy = true;
 
-            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.PlacardOverviewViewModel;
+            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as PlacardOverviewViewModel;
 
             itemPickedCallbackAction.Invoke(new Cloud.Api.Common.Models.PlacardDisplayModel
             {
@@ -93,7 +97,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                 }
             }
 
-            var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+            var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
             placardsApiConnectClient.GetPaginateAsync(++currentPlacardsPageNumber, placardPageLimit).ContinueWith(task =>
             {
@@ -101,19 +105,19 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                 {
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {
                         if (currentPlacardsPageNumber == 1)
                         {
-                            BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<Models.View.PlacardOverviewViewModel>(task.Result.List.Select(item => new Models.View.PlacardOverviewViewModel(item.ToViewModel())));
+                            BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<PlacardOverviewViewModel>(task.Result.List.Select(item => new PlacardOverviewViewModel(item.ToViewModel())));
                         }
                         else
                         {
                             foreach (var item in task.Result.List)
                             {
-                                BindingContextPageModel.Items.Add(new Models.View.PlacardOverviewViewModel(item.ToViewModel(), true));
+                                BindingContextPageModel.Items.Add(new PlacardOverviewViewModel(item.ToViewModel(), true));
                             }
                         }
 

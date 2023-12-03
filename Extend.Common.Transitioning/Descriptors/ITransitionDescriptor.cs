@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.Common.Transitioning.Descriptors
 {
     public interface ITransitionDescriptor
     {

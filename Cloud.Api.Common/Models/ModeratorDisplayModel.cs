@@ -1,6 +1,9 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class ModeratorDisplayModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Moderator, System.Guid>
+    public class ModeratorDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Moderator, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -10,12 +13,12 @@
 
         public bool IsPrivileged { get; set; }
 
-        public void Import(Persistence.Entities.Moderator entity)
+        public void Import(Moderator entity)
         {
             Id = entity.Id;
             User = new UserDisplayModel();
             Identity = new PersonIdentityDisplayModel();
-            IsPrivileged = entity.ModerationKind == Persistence.Enumerations.ModerationKind.Privileged;
+            IsPrivileged = entity.ModerationKind == ModerationKind.Privileged;
 
             User.Import(entity.User);
 

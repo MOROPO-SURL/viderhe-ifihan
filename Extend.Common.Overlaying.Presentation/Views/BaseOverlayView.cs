@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Views
+﻿namespace MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation.Views
 {
-    public class BaseOverlayView : XFToolKit.Mvvm.Views.ContentView
+    public class BaseOverlayView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
         public virtual void ShowIn()
         {

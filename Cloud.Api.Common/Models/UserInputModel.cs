@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
     public class UserInputModel
     {

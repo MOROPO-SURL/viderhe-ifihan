@@ -1,6 +1,9 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
+﻿using MOROPO.VIDERHE.Cloud.Helpers.Integrity;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Models.View
 {
-    public class AccountDisplayViewModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Account, System.Guid>
+    public class AccountDisplayViewModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Account, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -24,7 +27,7 @@
 
         public bool ValidSignature { get; set; }
 
-        public void Import(Persistence.Entities.Account entity)
+        public void Import(Account entity)
         {
             Id = entity.Id;
             Name = entity.Name;
@@ -36,7 +39,7 @@
             LogoImageId = entity.LogoId;
             HorizontalSplashImageId = entity.HorizontalSplashId;
             VerticalSplashImageId = entity.VerticalSplashId;
-            ValidSignature = Helpers.Integrity.AccountIntegrityHelper.IsCorrectlySigned(entity);
+            ValidSignature = AccountIntegrityHelper.IsCorrectlySigned(entity);
         }
     }
 }

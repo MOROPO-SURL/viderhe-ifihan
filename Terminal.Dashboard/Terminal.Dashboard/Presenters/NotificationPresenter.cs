@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Presenters
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Presenters
 {
-    public class NotificationPresenter : Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade
+    public class NotificationPresenter : INotificationPresenterFacade
     {
         public void PresentNotification(string title, string message, bool unnattended = true)
         {

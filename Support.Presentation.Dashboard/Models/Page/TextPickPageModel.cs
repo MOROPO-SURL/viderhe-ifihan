@@ -1,15 +1,17 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page
 {
-    public class TextPickPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class TextPickPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private bool hasMoreItems;
 
         public TextPickPageModel()
         {
-            Items = new System.Collections.ObjectModel.ObservableCollection<View.TextViewModel>();
+            Items = new System.Collections.ObjectModel.ObservableCollection<TextViewModel>();
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<View.TextViewModel> Items { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<TextViewModel> Items { get; set; }
 
         public bool HasMoreItems { get => hasMoreItems; set => SetProperty(ref hasMoreItems, value); }
 

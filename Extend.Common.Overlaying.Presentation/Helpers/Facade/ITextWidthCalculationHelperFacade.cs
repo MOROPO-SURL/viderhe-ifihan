@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Helpers.Facade
+﻿namespace MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation.Helpers.Facade
 {
     public interface ITextWidthCalculationHelperFacade
     {

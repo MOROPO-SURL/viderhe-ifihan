@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Providers
+namespace MOROPO.VIDERHE.Cloud.Providers
 {
     internal static class ViderheExtensionLibraryFileInfosProvider
     {
@@ -11,7 +11,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Providers
             if (libraryFileInfos.Length <= 0) return Enumerable.Empty<System.IO.FileInfo>();
 
             var extensionDescriptionLibraryFileInfo = libraryFileInfos
-                .Where(item => System.Text.RegularExpressions.Regex.IsMatch(item.Name, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.dll"))
+                .Where(item => System.Text.RegularExpressions.Regex.IsMatch(item.Name, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.dll"))
                 .OrderBy(item => item.Name.Length)
                 .First();
 

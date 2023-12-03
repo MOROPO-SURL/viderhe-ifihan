@@ -118,6 +118,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.OccasionSlides.Templating.Dashboard.Presentation", "Extend.OccasionSlides.Templating.Dashboard.Presentation\Extend.OccasionSlides.Templating.Dashboard.Presentation.csproj", "{D2829EDD-E4AC-451F-A0FF-F17293182E9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Player.UWP.DesktopExtension.Helper", "Terminal.Player\Terminal.Player.UWP.DesktopExtension.Helper\Terminal.Player.UWP.DesktopExtension.Helper.csproj", "{6C2DA28A-AAB9-498B-A1F6-ED74D9FB2F20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Player.UWP.DesktopExtension.PlatformInterop", "Terminal.Player\Terminal.Player.UWP.DesktopExtension.PlatformInterop\Terminal.Player.UWP.DesktopExtension.PlatformInterop.csproj", "{6C2DA28A-AAB9-498B-A1F6-ED74D9FB2F20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Dashboard.Android", "Terminal.Dashboard\Terminal.Dashboard.Android\Terminal.Dashboard.Android.csproj", "{1A703A61-876F-40C5-A99C-711071B4F562}"
 EndProject
@@ -139,7 +140,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Common.Management.Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support.Extend.Management.Presentation", "Support.Extend.Management.Presentation\Support.Extend.Management.Presentation.csproj", "{8EB24205-E599-4267-A450-684616A1D9C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Extend.Management", "Support.Extend.Management\Support.Extend.Management.csproj", "{0A76E425-A715-411F-ADB7-8609E6C32132}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support.Extend.Management", "Support.Extend.Management\Support.Extend.Management.csproj", "{0A76E425-A715-411F-ADB7-8609E6C32132}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

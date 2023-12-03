@@ -1,13 +1,17 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageSoundsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageSoundsPageModel>
+    public partial class ManageSoundsPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManageSoundsPageModel>
     {
         private int currentItemsPageNumber;
 
-        public ManageSoundsPage() : base(new Models.Page.ManageSoundsPageModel { IsBusy = true })
+        public ManageSoundsPage() : base(new ManageSoundsPageModel { IsBusy = true })
         {
             InitializeComponent();
 
@@ -51,7 +55,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     BindingContextPageModel.IsBusy = true;
                 });
 
-                var client = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
                 System.Exception failException = null;
 
@@ -70,13 +74,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (failException == null)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Audio eliminado con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Audio eliminado con éxito.");
 
                         RequiredReload_Callback();
                     }
                     else
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(failException);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(failException);
                     }
                 });
             });
@@ -157,7 +161,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (restart) currentItemsPageNumber = 0;
 
-            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
             imagesApiConnectClient.GetPageAsync(++currentItemsPageNumber).ContinueWith(task =>
             {
@@ -167,7 +171,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {

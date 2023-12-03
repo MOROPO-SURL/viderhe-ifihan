@@ -1,12 +1,14 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
 {
-    public class GradientRepository : MOROPO.SAPRESSC.Core.Persistence.EF.Repositories.AbstractEntityRepository<Entities.Gradient, System.Guid>
+    public class GradientRepository : MOROPO.SAPRESSC.Core.Persistence.EF.Repositories.AbstractEntityRepository<Gradient, System.Guid>
     {
         public GradientRepository(Microsoft.EntityFrameworkCore.DbContext dbContext) : base(dbContext)
         {
         }
 
-        public override System.Func<Entities.Gradient, object> GetPagingOrderSelector()
+        public override System.Func<Gradient, object> GetPagingOrderSelector()
         {
             return entity => entity.CreateAt;
         }

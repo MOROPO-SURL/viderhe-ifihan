@@ -1,6 +1,9 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using MOROPO.Framework.Guama.Identity.Persistence.Entities;
+using MOROPO.Framework.Guama.Identity.Persistence.Enumerations;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class PersonIdentityInputModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityInputModel<MOROPO.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity, System.Guid>
+    public class PersonIdentityInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<PersonIdentity, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -11,9 +14,9 @@
 
         public System.DateTime? BornDate { get; set; }
 
-        public MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.CivilStatus CivilStatus { get; set; }
+        public CivilStatus CivilStatus { get; set; }
 
-        public MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex Sex { get; set; }
+        public Sex Sex { get; set; }
 
         public string Alias { get; set; }
 
@@ -21,21 +24,21 @@
 
         public string About { get; set; }
 
-        public MOROPO.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity Export()
+        public PersonIdentity Export()
         {
-            var entity = new MOROPO.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity();
+            var entity = new PersonIdentity();
 
             Mergue(entity);
 
             return entity;
         }
 
-        public void Import(MOROPO.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity entity)
+        public void Import(PersonIdentity entity)
         {
             throw new System.InvalidOperationException();
         }
 
-        public void Mergue(MOROPO.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity entity)
+        public void Mergue(PersonIdentity entity)
         {
             entity.Name = Name;
             entity.LastName = LastName;

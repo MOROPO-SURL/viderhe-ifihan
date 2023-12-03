@@ -1,23 +1,28 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
-using SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Helpers.Provisioning;
+﻿using MOROPO.VIDERHE.Cloud.SignalR.Connect.Common.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Presentation.Views;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Presenters;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Extend.Templating.Presentation.Helpers.Provisioning;
+using MOROPO.VIDERHE.Support.Extend.Transitioning.Presentation.Providers;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
+namespace MOROPO.VIDERHE.Support.Presentation.Player.Pages
 {
-    public partial class ScreenplayPlayerPage : XFToolKit.Mvvm.Pages.ContentPage
+    public partial class ScreenplayPlayerPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.ContentPage
     {
-        private Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter presenter;
+        private ScreenplayPresenter presenter;
 
         private readonly bool demo;
         private readonly bool empty;
 
-        public ScreenplayPlayerPage(Models.View.PlacardViewModel[] placards, System.Action presentationEndedCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction = null, System.Action screenplayPresentIterationCompleteCallbackAction = null, Viderhe.Extend.Common.Overlaying.Presentation.Views.BaseOverlayView overlay = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
+        public ScreenplayPlayerPage(PlacardViewModel[] placards, System.Action presentationEndedCallbackAction, bool loop, System.Action<System.Guid> placardPlayingCallbackAction = null, System.Action screenplayPresentIterationCompleteCallbackAction = null, VIDERHE.Extend.Common.Overlaying.Presentation.Views.BaseOverlayView overlay = null, System.Action<BasePlacardPresentationView, BasePlacardPresentationView> placardViewTransitionCompleteCallbackAction = null)
         {
             InitializeComponent();
 
-            presenter = new Viderhe.Extend.Common.Templating.Presentation.Presenters.ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards, Extend.Transitioning.Presentation.Providers.TransitionProvider.Instance, presentationEndedCallbackAction, loop, placardPlayingCallbackAction, screenplayPresentIterationCompleteCallbackAction, placardViewTransitionCompleteCallbackAction);
+            presenter = new ScreenplayPresenter(FramesContainer, PlacardViewModelToPresentationView, placards, TransitionProvider.Instance, presentationEndedCallbackAction, loop, placardPlayingCallbackAction, screenplayPresentIterationCompleteCallbackAction, placardViewTransitionCompleteCallbackAction);
 
-            Xamarin.Forms.DependencyService.RegisterSingleton<Viderhe.Extend.Common.Templating.Presentation.Presenters.Facade.IOvarlablePresenter>(presenter);
+            Xamarin.Forms.DependencyService.RegisterSingleton<IOvarlablePresenter>(presenter);
 
             if (overlay != null)
             {
@@ -77,17 +82,17 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             presenter.RequestPresentPreviousFrame();
         }
 
-        public void PresentInterventionPlacards(Models.View.PlacardViewModel[] placards)
+        public void PresentInterventionPlacards(PlacardViewModel[] placards)
         {
             presenter.PresentInterventionPlacards(placards);
         }
 
-        public void RequestRestart(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
+        public void RequestRestart(ScreenplayHandlingImmediacyMode immediacyMode)
         {
             presenter.RequestRestart(immediacyMode);
         }
 
-        public void RequestReload(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
+        public void RequestReload(ScreenplayHandlingImmediacyMode immediacyMode)
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
@@ -100,7 +105,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
 
         }
 
-        private BasePlacardPresentationView PlacardViewModelToPresentationView(Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
+        private BasePlacardPresentationView PlacardViewModelToPresentationView(PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
             return PlacardPresentationViewProvisioningHelper.Instance.GetFor(model, getOrientationFunction, relativeSizeScaleFactor);
         }
@@ -118,7 +123,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Player.Pages
             // TODO Check for alternative!!
             //MediaManager.CrossMediaManager.Current.Stop();
 
-            Xamarin.Forms.DependencyService.RegisterSingleton<Viderhe.Extend.Common.Templating.Presentation.Presenters.Facade.IOvarlablePresenter>(null);
+            Xamarin.Forms.DependencyService.RegisterSingleton<IOvarlablePresenter>(null);
         }
     }
 }

@@ -1,16 +1,19 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Connect.Clients
 {
-    public class AccountApiConnectClient : MOROPO.SAPRESSC.Core.Api.Connect.Clients.AbstractEntityManagementApiConnectClient<Persistence.Entities.Account, System.Guid, Common.Models.AccountInputModel, Common.Models.AccountDisplayModel>
+    public class AccountApiConnectClient : Framework.Guama.Core.Presentation.API.Connect.Clients.AbstractEntityManagementApiConnectClient<Account, System.Guid, AccountInputModel, AccountDisplayModel>
     {
-        public AccountApiConnectClient(MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider) : base(httpClientHelperProvider)
+        public AccountApiConnectClient(Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider) : base(httpClientHelperProvider)
         {
         }
 
         protected override string TargetController => "account";
 
-        public async System.Threading.Tasks.Task<Common.Models.AccountDisplayModel> GetCurrentAsync()
+        public async System.Threading.Tasks.Task<AccountDisplayModel> GetCurrentAsync()
         {
-            return await httpClientHelperProvider.HttpClientHelper.GetAsync<Common.Models.AccountDisplayModel>(string.Format("{0}/current", TargetController));
+            return await httpClientHelperProvider.HttpClientHelper.GetAsync<AccountDisplayModel>(string.Format("{0}/current", TargetController));
         }
     }
 }

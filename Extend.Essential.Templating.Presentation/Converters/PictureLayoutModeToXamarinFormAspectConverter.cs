@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Converters
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Converters
 {
     public class PictureLayoutModeToXamarinFormAspectConverter : Xamarin.Forms.IValueConverter
     {

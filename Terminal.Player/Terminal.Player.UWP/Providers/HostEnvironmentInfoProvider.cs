@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 
-[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Providers.HostEnvironmentInfoProvider))]
+[assembly: Xamarin.Forms.Dependency(typeof(MOROPO.VIDERHE.Terminal.Player.UWP.Providers.HostEnvironmentInfoProvider))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Providers
+namespace MOROPO.VIDERHE.Terminal.Player.UWP.Providers
 {
     public class HostEnvironmentInfoProvider : Player.Providers.Facade.IHostEnvironmentInfoProviderFacade
     {

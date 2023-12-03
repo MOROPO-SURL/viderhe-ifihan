@@ -1,10 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+﻿namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class Frame : MOROPO.SAPRESSC.Core.Persistence.Entities.IEntity<long>
+    public class Frame : Framework.Guama.Core.Persistence.Entities.Contract.IEntity<long>
     {
-        [Key]
+        [System.ComponentModel.DataAnnotations.Key]
         public long Id { get; set; }
 
         public System.Guid ScreenplayId { get; set; }

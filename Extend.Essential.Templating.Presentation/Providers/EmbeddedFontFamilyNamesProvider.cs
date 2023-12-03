@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Providers
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Providers.Facade;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Providers
 {
-    public class EmbeddedFontFamilyNamesProvider : Common.Templating.Presentation.Providers.Facade.IEmbeddedFontFamilyNamesProviderFacade
+    public class EmbeddedFontFamilyNamesProvider : IEmbeddedFontFamilyNamesProviderFacade
     {
         public string[] GetAll()
         {

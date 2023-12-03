@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Converters
 {
     public class LandscapePresentationSideToLayoutOptionConverter : Xamarin.Forms.IValueConverter
     {

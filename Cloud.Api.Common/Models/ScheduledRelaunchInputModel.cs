@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class ScheduledRelaunchInputModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.ScheduledRelaunch, System.Guid>
+    public class ScheduledRelaunchInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<ScheduledRelaunch, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -11,9 +12,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public System.TimeSpan Time { get; set; }
 
-        public Persistence.Entities.ScheduledRelaunch Export()
+        public ScheduledRelaunch Export()
         {
-            var entity = new Persistence.Entities.ScheduledRelaunch
+            var entity = new ScheduledRelaunch
             {
                 Id = Id,
                 PlayerId = PlayerId
@@ -24,12 +25,12 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
             return entity;
         }
 
-        public void Import(Persistence.Entities.ScheduledRelaunch entity)
+        public void Import(ScheduledRelaunch entity)
         {
             throw new System.InvalidOperationException();
         }
 
-        public void Mergue(Persistence.Entities.ScheduledRelaunch entity)
+        public void Mergue(ScheduledRelaunch entity)
         {
             entity.Time = Time;
         }
