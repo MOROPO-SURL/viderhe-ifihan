@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Descriptors
 {
     public class InmersiveCityWeatherOverviewTemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
     {

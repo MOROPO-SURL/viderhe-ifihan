@@ -1,66 +1,70 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation</RootNamespace>
-    <Version>0.10.0</Version>
-    <UserSecretsId>a0e0de41-d785-42d3-bbb0-4c9a4bf1fde0</UserSecretsId>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2023, Todos los derechos reservados.</Copyright>
+		<Version>0.1.0</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.5" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.7" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2622" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj" />
-    <ProjectReference Include="..\Extend.SocialWelfare.Templating.Presentation\Extend.SocialWelfare.Templating.Presentation.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj" />
+		<ProjectReference Include="..\Extend.SocialWelfare.Templating.Presentation\Extend.SocialWelfare.Templating.Presentation.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="LocalizedResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>LocalizedResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\InmersiveCityWeatherOverviewPlacardConfigurationPage.xaml.cs">
-      <DependentUpon>InmersiveCityWeatherOverviewPlacardConfigurationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\HeroLocalNowDateTimePlacardConfigurationPage.xaml.cs">
-      <DependentUpon>HeroLocalNowDateTimePlacardConfigurationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\HeroLocalNowDateTimePlacardThumbnailView.xaml.cs">
-      <DependentUpon>HeroLocalNowDateTimePlacardThumbnailView.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="LocalizedResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>LocalizedResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\InmersiveCityWeatherOverviewPlacardConfigurationPage.xaml.cs">
+			<DependentUpon>InmersiveCityWeatherOverviewPlacardConfigurationPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\HeroLocalNowDateTimePlacardConfigurationPage.xaml.cs">
+			<DependentUpon>HeroLocalNowDateTimePlacardConfigurationPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\HeroLocalNowDateTimePlacardThumbnailView.xaml.cs">
+			<DependentUpon>HeroLocalNowDateTimePlacardThumbnailView.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="LocalizedResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\InmersiveCityWeatherOverviewPlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\HeroLocalNowDateTimePlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\OverlayHeroCityTimeWeatherPlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\RssFeedCollageHeroPlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\InmersiveCityWeatherOverviewPlacardThumnailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\HeroLocalNowDateTimePlacardThumbnailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\OverlayHeroCityTimeWeatherPlacardThumbnailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="LocalizedResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\InmersiveCityWeatherOverviewPlacardConfigurationPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\HeroLocalNowDateTimePlacardConfigurationPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\OverlayHeroCityTimeWeatherPlacardConfigurationPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\RssFeedCollageHeroPlacardConfigurationPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\InmersiveCityWeatherOverviewPlacardThumnailView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\HeroLocalNowDateTimePlacardThumbnailView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\OverlayHeroCityTimeWeatherPlacardThumbnailView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
 
 </Project>

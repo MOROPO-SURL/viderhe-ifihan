@@ -1,8 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Models.View.Placard;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Views.Background;
+
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Views
 {
     public partial class HeroLocalNowDateTimePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public HeroLocalNowDateTimePlacardView(Models.View.Placard.HeroLocalNowDateTimePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public HeroLocalNowDateTimePlacardView(HeroLocalNowDateTimePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -47,40 +50,40 @@
             MonthAndDayLabel.Opacity = 1;
             TimeLabel.Opacity = 1;
 
-            var showInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            var showInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
             {
                 IsParallel = true
             };
 
-            showInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            showInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
             {
                 Target = SeparatorBoxView,
                 Opacity = 1,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
                 Duration = "600"
             });
 
-            showInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+            showInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
             {
                 Target = DayOWeekLabel,
                 TranslateX = 0,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 Duration = "700",
                 Delay = "900"
             });
-            showInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+            showInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
             {
                 Target = MonthAndDayLabel,
                 TranslateX = 0,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 Duration = "700",
                 Delay = "1200"
             });
-            showInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+            showInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
             {
                 Target = TimeLabel,
                 TranslateX = 0,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 Duration = "700",
                 Delay = "1500"
             });
@@ -92,13 +95,13 @@
         {
             base.DisposeUnmanagementResources();
 
-            if (BackgroundContentView.Content is Background.ImageBackgroundView)
+            if (BackgroundContentView.Content is ImageBackgroundView)
             {
-                (BackgroundContentView.Content as Background.ImageBackgroundView).Source = null;
+                (BackgroundContentView.Content as ImageBackgroundView).Source = null;
             }
-            else if (BackgroundContentView.Content is Background.GradientBackgroundView)
+            else if (BackgroundContentView.Content is GradientBackgroundView)
             {
-                (BackgroundContentView.Content as Background.GradientBackgroundView).GradientSource = null;
+                (BackgroundContentView.Content as GradientBackgroundView).GradientSource = null;
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Converters
 {
     public class WeatherOverviewModelToConditionFontGlyphConverter : Xamarin.Forms.IValueConverter
     {
@@ -6,7 +6,7 @@
         {
             if (value == null) return null;
 
-            var target = value as Weather.Api.Common.Models.WeatherOverviewModel;
+            var target = value as Service.Weather.Api.Common.Models.WeatherOverviewModel;
 
             switch (target.ConditionId)
             {

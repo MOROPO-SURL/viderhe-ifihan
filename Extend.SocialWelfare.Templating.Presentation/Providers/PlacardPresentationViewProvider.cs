@@ -1,6 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Descriptors;
+﻿using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Models.Context.Placard;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Providers
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Providers
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
@@ -8,7 +9,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
         {
             if (model.Template.Id == InmersiveCityWeatherOverviewTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.InmersiveCityWeatherOverviewPlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<InmersiveCityWeatherOverviewPlacardContextModel>(model.SerializedContext);
 
                 var protocol = context.IsWeatherCacheMicroServerRequireSecureConnection ? "https" : "http";
 
@@ -33,14 +34,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 
             if (model.Template.Id == RssFeedCollageHeroTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.RssFeedCollageHeroPlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<RssFeedCollageHeroPlacardContextModel>(model.SerializedContext);
 
                 return new Views.RssFeedCollageHeroPlacardView(context, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == HeroLocalNowDateTimeTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.HeroLocalNowDateTimePlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<HeroLocalNowDateTimePlacardContextModel>(model.SerializedContext);
 
                 return new Views.HeroLocalNowDateTimePlacardView(new Models.View.Placard.HeroLocalNowDateTimePlacardViewModel
                 {
@@ -57,7 +58,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 
             if (model.Template.Id == OverlayHeroCityTimeWeatherTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.OverlayHeroCityTimeWeatherPlacardContextModel>(model.SerializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<OverlayHeroCityTimeWeatherPlacardContextModel>(model.SerializedContext);
 
                 var protocol = context.IsWeatherCacheMicroServerRequireSecureConnection ? "https" : "http";
 

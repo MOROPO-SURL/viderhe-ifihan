@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.SocialWelfare.Descriptors
 {
     public class SocialWelfareExtensionDescriptor : Common.Descriptors.IExtensionDescriptor
     {

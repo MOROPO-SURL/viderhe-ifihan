@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Models.Context.Placard
+﻿using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Models.Context.Placard
 {
     public class HeroLocalNowDateTimePlacardContextModel : Common.Templating.Models.Context.AbstractScreenTimedPlacardContextModel
     {

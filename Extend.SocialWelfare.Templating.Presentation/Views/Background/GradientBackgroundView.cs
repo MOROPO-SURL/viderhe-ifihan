@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views.Background
+﻿namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Views.Background
 {
     public class GradientBackgroundView : MagicGradients.GradientView
     {

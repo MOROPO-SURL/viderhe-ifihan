@@ -1,16 +1,17 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Enumerations;
+﻿using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Models.Context;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page
 {
     public class InmersiveCityWeatherOverviewPlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
-        private Templating.Models.Context.BackgroundContextModel background;
+        private BackgroundContextModel background;
         private string weatherCacheMicroServerHost;
         private bool isWeatherCacheMicroServerRequireSecureConnection;
         private bool isWeatherCacheMicroServerSecureConnectionStrict;
         private WeatherDataProvisionService service;
-        private Weather.Api.Common.Models.CityModel city;
-        private Weather.Api.Common.Models.CityModel[] availableCities;
+        private Service.Weather.Api.Common.Models.CityModel city;
+        private Service.Weather.Api.Common.Models.CityModel[] availableCities;
         private Xamarin.Forms.Color textColor;
         private Xamarin.Forms.Color? overlayColor;
 
@@ -25,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
             };
         }
 
-        public Templating.Models.Context.BackgroundContextModel Background { get => background; set => SetProperty(ref background, value); }
+        public BackgroundContextModel Background { get => background; set => SetProperty(ref background, value); }
 
         public string WeatherCacheMicroServerHost { get => weatherCacheMicroServerHost; set => SetProperty(ref weatherCacheMicroServerHost, value); }
 
@@ -37,9 +38,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
         public WeatherDataProvisionService[] AvailableServices { get; private set; }
 
-        public Weather.Api.Common.Models.CityModel City { get => city; set => SetProperty(ref city, value); }
+        public Service.Weather.Api.Common.Models.CityModel City { get => city; set => SetProperty(ref city, value); }
 
-        public Weather.Api.Common.Models.CityModel[] AvailableCities { get => availableCities; set => SetProperty(ref availableCities, value); }
+        public Service.Weather.Api.Common.Models.CityModel[] AvailableCities { get => availableCities; set => SetProperty(ref availableCities, value); }
 
         public Xamarin.Forms.Color TextColor { get => textColor; set => SetProperty(ref textColor, value); }
 

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Enumerations
+﻿namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Enumerations
 {
     public enum WeatherDataProvisionService
     {

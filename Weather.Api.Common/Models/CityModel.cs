@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Weather.Api.Common.Models
+﻿namespace MOROPO.VIDERHE.Service.Weather.Api.Common.Models
 {
     public class CityModel
     {

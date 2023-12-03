@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Models.View.Background
+﻿namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Models.View.Background
 {
     public class GradientBackgroundViewModel : Contract.AbstractBackgroundViewModel
     {

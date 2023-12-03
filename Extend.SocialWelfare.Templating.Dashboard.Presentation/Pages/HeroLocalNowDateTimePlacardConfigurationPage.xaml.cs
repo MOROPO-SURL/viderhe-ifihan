@@ -1,10 +1,14 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Enumerations;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.Pages
 {
-    public partial class HeroLocalNowDateTimePlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.HeroLocalNowDateTimePlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class HeroLocalNowDateTimePlacardConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<HeroLocalNowDateTimePlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private const string BACKGROUND_OPTION_SOLID = "Color Sólido";
         private const string BACKGROUND_OPTION_GRADIENT = "Gradiente";
@@ -22,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
         }
 
         public HeroLocalNowDateTimePlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(Factories.HeroLocalNowDateTimePlacardConfigurationPageModelFactory.Build(placardViewModel))
+            : base(HeroLocalNowDateTimePlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -70,14 +74,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 if (placardViewModel == null)
                 {
                     var model = new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Label = BindingContextPageModel.Label,
-                        TemplateId = Descriptors.HeroLocalNowDateTimeTemplateDescriptor.ID,
+                        TemplateId = HeroLocalNowDateTimeTemplateDescriptor.ID,
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.Placard.HeroLocalNowDateTimePlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
@@ -193,12 +197,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                     switch (displayActionSheetTask.Result)
                     {
                         case BACKGROUND_OPTION_SOLID:
-                            var color = await Xam.Plugin.SimpleColorPicker.ColorPickerDialog.Show(this.Content as Xamarin.Forms.Layout<Xamarin.Forms.View>, "Defina el color a utilizar como fondo:", Xamarin.Forms.Color.Accent);
+                            var color = await Xam.Plugin.SimpleColorPicker.ColorPickerDialog.Show(Content as Xamarin.Forms.Layout<Xamarin.Forms.View>, "Defina el color a utilizar como fondo:", Xamarin.Forms.Color.Accent);
 
                             BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
                             {
-                                Kind = Enumerations.BackgroundKind.Solid,
-                                SerializedContext = color.ToHex()
+                                Kind = BackgroundKind.Solid,
+                                SerializedContext = color?.ToHex()
                             };
 
                             break;
@@ -206,7 +210,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
                         case BACKGROUND_OPTION_IMAGE:
                             Support.Presentation.Models.View.ImageViewModel except = null;
 
-                            if (BindingContextPageModel.Background != null && BindingContextPageModel.Background.Kind == Enumerations.BackgroundKind.Image)
+                            if (BindingContextPageModel.Background != null && BindingContextPageModel.Background.Kind == BackgroundKind.Image)
                             {
                                 except = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(BindingContextPageModel.Background.SerializedContext).ToViewModel();
                             }
@@ -245,7 +249,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
         {
             BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
             {
-                Kind = Enumerations.BackgroundKind.Image,
+                Kind = BackgroundKind.Image,
                 SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(target.ToContextModel())
             };
         }
@@ -254,7 +258,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.
         {
             BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
             {
-                Kind = Enumerations.BackgroundKind.Gradient,
+                Kind = BackgroundKind.Gradient,
                 SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Common.Templating.Models.Context.GradientContextModel
                 {
                     Id = target.Id,

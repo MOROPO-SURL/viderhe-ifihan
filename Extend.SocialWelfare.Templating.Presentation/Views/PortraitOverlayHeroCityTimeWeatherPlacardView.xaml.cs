@@ -1,8 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Models.View.Placard;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Views.Background;
+
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Views
 {
     public partial class PortraitOverlayHeroCityTimeWeatherPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public PortraitOverlayHeroCityTimeWeatherPlacardView(Models.View.Placard.OverlayHeroCityTimeWeatherPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public PortraitOverlayHeroCityTimeWeatherPlacardView(OverlayHeroCityTimeWeatherPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -35,9 +38,9 @@
         {
             base.PerformPlacardStarup();
 
-            var concreteBindingContextModel = BindingContext as Models.View.Placard.OverlayHeroCityTimeWeatherPlacardViewModel;
+            var concreteBindingContextModel = BindingContext as OverlayHeroCityTimeWeatherPlacardViewModel;
 
-            var weatherApiConnectClient = new Weather.Api.Connect.Clients.OpenWeatherMapApiConnectClient(new MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(concreteBindingContextModel.ServiceBaseUri.ToString()));
+            var weatherApiConnectClient = new Service.Weather.Api.Connect.Clients.OpenWeatherMapApiConnectClient(new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(concreteBindingContextModel.ServiceBaseUri.ToString()));
 
             var weatherApiConnectStartAt = System.DateTime.Now;
 
@@ -66,15 +69,15 @@
 
                     concreteBindingContextModel.WeatherOverview = task.Result;
 
-                    var weatherInfoShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+                    var weatherInfoShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
                     {
                         IsParallel = true
                     };
 
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
                         Target = WeatherLayout,
-                        Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up
+                        Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up
                     });
 
                     concreteBindingContextModel.IsBusy = false;
@@ -84,34 +87,34 @@
             });
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 
-            var globalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            var globalShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
             {
                 IsParallel = true,
                 Delay = "1000"
             };
 
-            globalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            globalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
             {
                 Target = OverlayBoxView,
                 Opacity = 1
             });
-            globalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+            globalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
             {
                 Target = CityLabel,
                 Delay = "800",
-                Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down
+                Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down
             });
-            globalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+            globalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
             {
                 Target = DateLabel,
                 Delay = "1200",
-                Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down
+                Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down
             });
-            globalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+            globalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
             {
                 Target = TimeLabel,
                 Delay = "1500",
-                Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up
+                Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up
             });
 
             await globalShowInStoryboard.Begin();
@@ -125,13 +128,13 @@
         {
             base.DisposeUnmanagementResources();
 
-            if (BackgroundContentView.Content is Background.ImageBackgroundView)
+            if (BackgroundContentView.Content is ImageBackgroundView)
             {
-                (BackgroundContentView.Content as Background.ImageBackgroundView).Source = null;
+                (BackgroundContentView.Content as ImageBackgroundView).Source = null;
             }
-            else if (BackgroundContentView.Content is Background.GradientBackgroundView)
+            else if (BackgroundContentView.Content is GradientBackgroundView)
             {
-                (BackgroundContentView.Content as Background.GradientBackgroundView).GradientSource = null;
+                (BackgroundContentView.Content as GradientBackgroundView).GradientSource = null;
             }
         }
     }

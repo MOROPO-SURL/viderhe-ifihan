@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page
+﻿namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page
 {
     public class RssFeedCollageHeroPlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
@@ -13,7 +13,7 @@
         }
 
         public Xamarin.Forms.Color TintColor { get => tintColor; set => SetProperty(ref tintColor, value); }
-        
+
         public string FeedUrl { get => feedUrl; set => SetProperty(ref feedUrl, value); }
     }
 }

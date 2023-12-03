@@ -1,14 +1,17 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Factories
+﻿using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Models.Context.Placard;
+
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.Factories
 {
     public static class InmersiveCityWeatherOverviewPlacardConfigurationPageModelFactory
     {
-        public static Models.Page.InmersiveCityWeatherOverviewPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static InmersiveCityWeatherOverviewPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.InmersiveCityWeatherOverviewPlacardConfigurationPageModel();
+            if (placardViewModel == null) return new InmersiveCityWeatherOverviewPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.InmersiveCityWeatherOverviewPlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<InmersiveCityWeatherOverviewPlacardContextModel>(placardViewModel.SerializedContext);
 
-            var result = new Models.Page.InmersiveCityWeatherOverviewPlacardConfigurationPageModel
+            var result = new InmersiveCityWeatherOverviewPlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 DefineBeginAt = placardViewModel.BeginAt != null,

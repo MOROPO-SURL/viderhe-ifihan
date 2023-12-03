@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Behaviors
+﻿namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.Behaviors
 {
     public class SimpleColorPickerEntryBehavior : Xamarin.Forms.Behavior<Xam.Plugin.SimpleColorPicker.ColorPickerEntry>
     {

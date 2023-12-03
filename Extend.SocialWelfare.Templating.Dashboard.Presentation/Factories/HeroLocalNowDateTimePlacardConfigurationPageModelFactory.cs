@@ -1,14 +1,17 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Factories
+﻿using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Models.Context.Placard;
+
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.Factories
 {
     public static class HeroLocalNowDateTimePlacardConfigurationPageModelFactory
     {
-        public static Models.Page.HeroLocalNowDateTimePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static HeroLocalNowDateTimePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.HeroLocalNowDateTimePlacardConfigurationPageModel();
+            if (placardViewModel == null) return new HeroLocalNowDateTimePlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.HeroLocalNowDateTimePlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<HeroLocalNowDateTimePlacardContextModel>(placardViewModel.SerializedContext);
 
-            var result = new Models.Page.HeroLocalNowDateTimePlacardConfigurationPageModel
+            var result = new HeroLocalNowDateTimePlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 DefineBeginAt = placardViewModel.BeginAt != null,

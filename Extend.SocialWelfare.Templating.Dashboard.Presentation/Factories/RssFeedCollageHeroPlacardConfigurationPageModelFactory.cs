@@ -1,14 +1,17 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Dashboard.Presentation.Factories
+﻿using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Models.Context.Placard;
+
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.Factories
 {
     public static class RssFeedCollageHeroPlacardConfigurationPageModelFactory
     {
-        public static Models.Page.RssFeedCollageHeroPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static RssFeedCollageHeroPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.RssFeedCollageHeroPlacardConfigurationPageModel();
+            if (placardViewModel == null) return new RssFeedCollageHeroPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.RssFeedCollageHeroPlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<RssFeedCollageHeroPlacardContextModel>(placardViewModel.SerializedContext);
 
-            return new Models.Page.RssFeedCollageHeroPlacardConfigurationPageModel
+            return new RssFeedCollageHeroPlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 DefineBeginAt = placardViewModel.BeginAt != null,

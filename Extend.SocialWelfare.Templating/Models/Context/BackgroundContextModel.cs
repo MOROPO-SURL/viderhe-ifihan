@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Models.Context
+﻿namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Models.Context
 {
     public class BackgroundContextModel
     {

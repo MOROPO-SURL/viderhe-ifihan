@@ -1,19 +1,21 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Models.Context.Placard;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Models.View.Placard;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Views
 {
     public partial class RssFeedCollageHeroPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        private Templating.Models.Context.Placard.RssFeedCollageHeroPlacardContextModel placardContext;
+        private RssFeedCollageHeroPlacardContextModel placardContext;
 
-        public RssFeedCollageHeroPlacardView(Templating.Models.Context.Placard.RssFeedCollageHeroPlacardContextModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public RssFeedCollageHeroPlacardView(RssFeedCollageHeroPlacardContextModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
             placardContext = model;
 
-            BindingContext = new Models.View.Placard.RssFeedCollageHeroPlacardViewModel
+            BindingContext = new RssFeedCollageHeroPlacardViewModel
             {
                 ScreenPresentationTime = model.ScreenPresentationTime,
                 RequireUnobstructedPresetation = model.RequireUnobstructedPresetation,
@@ -43,7 +45,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
         {
             base.PerformPlacardStarup();
 
-            var concreteBindingContextModel = BindingContext as Models.View.Placard.RssFeedCollageHeroPlacardViewModel;
+            var concreteBindingContextModel = BindingContext as RssFeedCollageHeroPlacardViewModel;
 
             CodeHollow.FeedReader.FeedReader.ReadAsync(placardContext.FeedUrl).ContinueWith(task =>
             {
@@ -85,115 +87,115 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 
                     //concreteBindingContextModel.IsBusy = false;
 
-                    var infoShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+                    var infoShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
                     {
                         IsParallel = true
                     };
 
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
                     {
                         Target = HeadLayout,
                         TranslateY = 0,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "600"
                     });
 
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = HeroFeedItemLightFlatBoxView,
                         TranslateX = HeroFeedItemLightFlatBoxView.Width,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "700",
                         Delay = "300"
                     });
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = HeroFeedItemTintFlatBoxView,
                         TranslateX = HeroFeedItemTintFlatBoxView.Width,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "1000",
                         Delay = "500"
                     });
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = HeroFeedItemLayout,
                         TranslateX = 0,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "1000",
                         Delay = "500"
                     });
 
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = SecoundFeedItemLightFlatBoxView,
                         TranslateX = SecoundFeedItemLightFlatBoxView.Width * -1,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "700",
                         Delay = "600"
                     });
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = SecoundFeedItemTintFlatBoxView,
                         TranslateX = SecoundFeedItemTintFlatBoxView.Width * -1,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "1000",
                         Delay = "800"
                     });
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = SecoundFeedItemLayout,
                         TranslateX = 0,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "1000",
                         Delay = "800"
                     });
 
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = ThirdFeedItemTintFlatBoxView,
                         TranslateX = ThirdFeedItemLightFlatBoxView.Width * -1,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "700",
                         Delay = "800"
                     });
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = ThirdFeedItemTintFlatBoxView,
                         TranslateX = ThirdFeedItemTintFlatBoxView.Width * -1,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "1000",
                         Delay = "1000"
                     });
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = ThirdFeedItemLayout,
                         TranslateX = 0,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "1000",
                         Delay = "1000"
                     });
 
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = FourthFeedItemLightFlatBoxView,
                         TranslateX = FourthFeedItemLightFlatBoxView.Width * -1,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "700",
                         Delay = "800"
                     });
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = FourthFeedItemTintFlatBoxView,
                         TranslateX = FourthFeedItemTintFlatBoxView.Width * -1,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "1000",
                         Delay = "1000"
                     });
-                    infoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    infoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = FourthFeedItemLayout,
                         TranslateX = 0,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                         Duration = "1000",
                         Delay = "1000"
                     });
@@ -209,7 +211,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 
             placardContext = null;
 
-            var concreteBindingContextModel = BindingContext as Models.View.Placard.RssFeedCollageHeroPlacardViewModel;
+            var concreteBindingContextModel = BindingContext as RssFeedCollageHeroPlacardViewModel;
 
             concreteBindingContextModel.FeedImageSource = null;
             concreteBindingContextModel.HeroFeedItem = null;

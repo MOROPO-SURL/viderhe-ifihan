@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Models.View.Background
+﻿using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Models.View.Background.Contract;
+
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Models.View.Background
 {
-    public class SolidBackgroundViewModel : Contract.AbstractBackgroundViewModel
+    public class SolidBackgroundViewModel : AbstractBackgroundViewModel
     {
         public Xamarin.Forms.Color Color { get; set; }
     }

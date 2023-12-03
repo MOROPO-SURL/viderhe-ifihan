@@ -1,6 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Models.View.Placard;
+﻿using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Models.View.Placard;
+using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Views.Background;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Views
 {
     public partial class InmersiveCityWeatherOverviewPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
@@ -32,7 +33,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
 
             var concreteBindingContextModel = BindingContext as InmersiveCityWeatherOverviewPlacardViewModel;
 
-            var weatherApiConnectClient = new Weather.Api.Connect.Clients.OpenWeatherMapApiConnectClient(new MOROPO.SAPRESSC.Core.Api.Connect.Helpers.HttpClientHelper(concreteBindingContextModel.ServiceBaseUri.ToString()));
+            var weatherApiConnectClient = new Service.Weather.Api.Connect.Clients.OpenWeatherMapApiConnectClient(new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(concreteBindingContextModel.ServiceBaseUri.ToString()));
 
             var weatherApiConnectStartAt = System.DateTime.Now;
 
@@ -59,84 +60,84 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
                 {
                     concreteBindingContextModel.WeatherOverview = task.Result;
 
-                    var weatherInfoShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+                    var weatherInfoShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
                     {
                         IsParallel = true
                     };
 
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
                         Target = TemperatureLabel,
-                        Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up
+                        Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up
                     });
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
                         Target = ConditionLabel,
-                        Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                        Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                         Delay = "200"
                     });
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
                         Target = ConditionDetailLabel,
-                        Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                        Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                         Delay = "400"
                     });
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
                         Target = TemperatureFeelLikeLayout,
-                        Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                        Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                         Delay = "600"
                     });
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
                         Target = SunBehaviorInfoLayout,
-                        Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                        Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                         Delay = "700"
                     });
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
                         Target = TemperatureLimitsLayout,
-                        Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                        Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                         Delay = "800"
                     });
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
                         Target = HumidityInfoLayout,
-                        Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                        Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                         Delay = "1000"
                     });
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
                         Target = PressureInfoLayout,
-                        Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                        Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                         Delay = "1125"
                     });
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                     {
                         Target = WindInfoLayout,
-                        Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                        Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                         Delay = "1250"
                     });
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
                     {
                         Target = HumidityInfoLayoutEmphasisBoxView,
                         Opacity = 1,
                         Delay = "1500"
                     });
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
                     {
                         Target = PressureInfoLayoutEmphasisBoxView,
                         Opacity = 1,
                         Delay = "1500"
                     });
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
                     {
                         Target = WindInfoLayoutEmphasisBoxView,
                         Opacity = 1,
                         Delay = "1500"
                     });
 
-                    weatherInfoShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+                    weatherInfoShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
                     {
                         Target = SourceInfoLayout,
                         Opacity = 1,
@@ -150,22 +151,22 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
             });
             #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
 
-            var globalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            var globalShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
             { 
                 IsParallel = false,
                 Delay = "1000"
             };
 
-            globalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            globalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
             {
                 Target = WeatherInfoLayout,
                 Opacity = 1
             });
-            globalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+            globalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
             {
                 Target = WeatherContextLayout,
                 Delay = "1000",
-                Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up
+                Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up
             });
 
             await globalShowInStoryboard.Begin();
@@ -179,13 +180,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentati
         {
             base.DisposeUnmanagementResources();
 
-            if (BackgroundContentView.Content is Background.ImageBackgroundView)
+            if (BackgroundContentView.Content is ImageBackgroundView)
             {
-                (BackgroundContentView.Content as Background.ImageBackgroundView).Source = null;
+                (BackgroundContentView.Content as ImageBackgroundView).Source = null;
             }
-            else if (BackgroundContentView.Content is Background.GradientBackgroundView)
+            else if (BackgroundContentView.Content is GradientBackgroundView)
             {
-                (BackgroundContentView.Content as Background.GradientBackgroundView).GradientSource = null;
+                (BackgroundContentView.Content as GradientBackgroundView).GradientSource = null;
             }
         }
     }

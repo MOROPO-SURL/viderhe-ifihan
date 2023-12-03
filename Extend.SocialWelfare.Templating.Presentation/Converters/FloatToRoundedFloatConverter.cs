@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Converters
 {
     public class FloatToRoundedFloatConverter : Xamarin.Forms.IValueConverter
     {

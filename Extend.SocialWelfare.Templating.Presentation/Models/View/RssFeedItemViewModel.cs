@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Models.View
 {
     public class RssFeedItemViewModel
     {

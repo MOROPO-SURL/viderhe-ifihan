@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Providers
+﻿using MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Descriptors;
+
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Providers
 {
     public class PlacardContextDependenciesProvider : Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider
     {
         public Common.Templating.Models.Context.GradientContextModel[] GetGradients(System.Guid templateId, string serializedContext)
         {
-            if (templateId == Descriptors.InmersiveCityWeatherOverviewTemplateDescriptor.ID)
+            if (templateId == InmersiveCityWeatherOverviewTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.InmersiveCityWeatherOverviewPlacardContextModel>(serializedContext);
 
@@ -16,7 +18,7 @@
                 return null;
             }
 
-            if (templateId == Descriptors.HeroLocalNowDateTimeTemplateDescriptor.ID)
+            if (templateId == HeroLocalNowDateTimeTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.HeroLocalNowDateTimePlacardContextModel>(serializedContext);
 
@@ -25,7 +27,7 @@
                 return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.GradientContextModel>(context.Background.SerializedContext) };
             }
 
-            if (templateId == Descriptors.OverlayHeroCityTimeWeatherTemplateDescriptor.ID)
+            if (templateId == OverlayHeroCityTimeWeatherTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.OverlayHeroCityTimeWeatherPlacardContextModel>(serializedContext);
 
@@ -39,7 +41,7 @@
 
         public Common.Templating.Models.Context.ImageContextModel[] GetImages(System.Guid templateId, string serializedContext)
         {
-            if (templateId == Descriptors.InmersiveCityWeatherOverviewTemplateDescriptor.ID)
+            if (templateId == InmersiveCityWeatherOverviewTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.InmersiveCityWeatherOverviewPlacardContextModel>(serializedContext);
 
@@ -51,7 +53,7 @@
                 return null;
             }
 
-            if (templateId == Descriptors.HeroLocalNowDateTimeTemplateDescriptor.ID)
+            if (templateId == HeroLocalNowDateTimeTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.HeroLocalNowDateTimePlacardContextModel>(serializedContext);
 
@@ -60,7 +62,7 @@
                 return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(context.Background.SerializedContext) };
             }
 
-            if (templateId == Descriptors.OverlayHeroCityTimeWeatherTemplateDescriptor.ID)
+            if (templateId == OverlayHeroCityTimeWeatherTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.OverlayHeroCityTimeWeatherPlacardContextModel>(serializedContext);
 
@@ -79,7 +81,7 @@
 
         public Common.Templating.Models.Context.VideoContextModel[] GetVideos(System.Guid templateId, string serializedContext)
         {
-            if (templateId == Descriptors.HeroLocalNowDateTimeTemplateDescriptor.ID)
+            if (templateId == HeroLocalNowDateTimeTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.Placard.HeroLocalNowDateTimePlacardContextModel>(serializedContext);
 

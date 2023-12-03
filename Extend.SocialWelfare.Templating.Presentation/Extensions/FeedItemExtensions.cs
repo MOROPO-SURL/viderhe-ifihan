@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.SocialWelfare.Templating.Presentation.Extensions
+namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Presentation.Extensions
 {
     public static class FeedItemExtensions
     {
