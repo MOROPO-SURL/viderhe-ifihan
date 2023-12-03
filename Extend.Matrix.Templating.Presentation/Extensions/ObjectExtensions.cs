@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Extensions
+namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Extensions
 {
     public static class ObjectExtensions
     {

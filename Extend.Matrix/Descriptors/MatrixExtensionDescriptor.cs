@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.Matrix.Descriptors
 {
     public class MatrixExtensionDescriptor : Common.Descriptors.IExtensionDescriptor
     {

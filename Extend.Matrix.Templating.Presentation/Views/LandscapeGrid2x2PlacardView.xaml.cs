@@ -1,8 +1,8 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Presenters;
-using SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning.Presentation.Providers;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Presenters;
+using MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Models.View;
+using MOROPO.VIDERHE.Support.Extend.Transitioning.Presentation.Providers;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Views
 {
     public partial class LandscapeGrid2x2PlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
@@ -16,7 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
 
         private int iterationCount;
 
-        public LandscapeGrid2x2PlacardView(Models.View.LandscapeGrid2x2PlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public LandscapeGrid2x2PlacardView(LandscapeGrid2x2PlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -37,7 +37,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
         {
             base.PerformPlacardStarup();
 
-            var concreteBindingContext = BindingContext as Models.View.LandscapeGrid2x2PlacardViewModel;
+            var concreteBindingContext = BindingContext as LandscapeGrid2x2PlacardViewModel;
 
             var relativeSizeScaleFactor = RelativeSizeScaleFactor * 1.0d / 3.0d;
 
@@ -100,7 +100,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.View
             EndPresentation();
         }
 
-        private BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
+        private Common.Presentation.Views.BasePlacardPresentationView PlacardViewModelToPresentationView(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
             return Support.Extend.Templating.Presentation.Helpers.Provisioning.PlacardPresentationViewProvisioningHelper.Instance.GetFor(model, getOrientationFunction, relativeSizeScaleFactor);
         }

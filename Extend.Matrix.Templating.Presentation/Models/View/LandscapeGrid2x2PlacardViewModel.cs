@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Models.View
+﻿using MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Models.View.Contract;
+
+namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Models.View
 {
-    public class LandscapeGrid2x2PlacardViewModel : Contract.AbstractGrid2x2PlacardViewModel
+    public class LandscapeGrid2x2PlacardViewModel : AbstractGrid2x2PlacardViewModel
     {
     }
 }

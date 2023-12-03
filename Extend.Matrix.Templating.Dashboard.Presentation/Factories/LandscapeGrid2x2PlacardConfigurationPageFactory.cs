@@ -1,6 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Matrix.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Factories
 {
     public static class LandscapeGrid2x2PlacardConfigurationPageFactory
     {
@@ -8,7 +9,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Present
         {
             if (placardViewModel == null) return new Models.Page.LandscapeGrid2x2PlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapeGrid2x2PlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeGrid2x2PlacardContextModel>(placardViewModel.SerializedContext);
 
             var result = new Models.Page.LandscapeGrid2x2PlacardConfigurationPageModel
             {

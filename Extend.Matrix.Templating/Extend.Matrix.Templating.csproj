@@ -1,19 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-	<AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating</AssemblyName>
-	<RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating</RootNamespace>
-	<Version>0.6.0</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Extend.Matrix.Templating</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.Matrix.Templating</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2023, Todos los derechos reservados.</Copyright>
+		<Version>0.1.0</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Assets\BA1AC635-D9A0-4586-9A1A-98E87440E569-landscape.png" />
-    <EmbeddedResource Include="Assets\C6B86FAF-2583-4DA0-AE0D-FF1695F6B4FB-landscape.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Assets\BA1AC635-D9A0-4586-9A1A-98E87440E569-landscape.png" />
+		<EmbeddedResource Include="Assets\C6B86FAF-2583-4DA0-AE0D-FF1695F6B4FB-landscape.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+	</ItemGroup>
 
 </Project>

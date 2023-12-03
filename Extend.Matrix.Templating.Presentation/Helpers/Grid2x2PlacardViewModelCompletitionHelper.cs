@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using MOROPO.VIDERHE.Extend.Matrix.Templating.Models.Context;
+using System.Collections.Generic;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Helpers
+namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Helpers
 {
     public class Grid2x2PlacardViewModelCompletitionHelper : Common.Templating.Presentation.Helpers.Facade.IPlacardViewModelCompletitionHelperFacade
     {
         public async System.Threading.Tasks.Task CompleteAsync(Support.Presentation.Models.View.PlacardViewModel model)
         {
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapeGrid2x2PlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeGrid2x2PlacardContextModel>(model.SerializedContext);
 
-            var apiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+            var apiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
             var transformedOneOfFourTargetPlacards = new List<object>();
             var transformedTwoOfFourTargetPlacards = new List<object>();

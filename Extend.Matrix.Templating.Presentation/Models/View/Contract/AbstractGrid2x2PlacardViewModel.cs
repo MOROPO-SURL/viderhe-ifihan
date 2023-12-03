@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Models.View.Contract
+﻿namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Models.View.Contract
 {
     public abstract class AbstractGrid2x2PlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel
     {

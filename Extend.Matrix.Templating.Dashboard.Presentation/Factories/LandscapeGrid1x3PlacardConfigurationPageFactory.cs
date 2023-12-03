@@ -1,16 +1,18 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.Matrix.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Factories
 {
     public static class LandscapeGrid1x3PlacardConfigurationPageFactory
     {
-        public static Models.Page.LandscapeGrid1x3PlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static LandscapeGrid1x3PlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.LandscapeGrid1x3PlacardConfigurationPageModel();
+            if (placardViewModel == null) return new LandscapeGrid1x3PlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapeGrid1x3PlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeGrid1x3PlacardContextModel>(placardViewModel.SerializedContext);
 
-            var result = new Models.Page.LandscapeGrid1x3PlacardConfigurationPageModel
+            var result = new LandscapeGrid1x3PlacardConfigurationPageModel
             {
                 Label = placardViewModel.Label,
                 Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>(placardViewModel.Tags),

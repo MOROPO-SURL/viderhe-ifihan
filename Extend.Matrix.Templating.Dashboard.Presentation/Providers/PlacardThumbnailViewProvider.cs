@@ -1,20 +1,22 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Dashboard.Presentation.Providers
+﻿using MOROPO.VIDERHE.Extend.Matrix.Templating.Descriptors;
+
+namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Providers
 {
     public class PlacardThumbnailViewProvider : Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardThumbnailViewProviderFacade
     {
         public Xamarin.Forms.ContentView GetPlacardThumnailView(Support.Presentation.Models.View.PlacardViewModel model)
         {
-            if (model.Template.Id == Descriptors.LandscapeGrid1x3TemplateDescriptor.ID)
+            if (model.Template.Id == LandscapeGrid1x3TemplateDescriptor.ID)
             {
-                return new XFToolKit.Mvvm.Views.ContentView()
+                return new SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView()
                 {
                     Content = new Support.Presentation.Views.IdentityBackgroundView()
                 };
             }
 
-            if (model.Template.Id == Descriptors.LandscapeGrid2x2TemplateDescriptor.ID)
+            if (model.Template.Id == LandscapeGrid2x2TemplateDescriptor.ID)
             {
-                return new XFToolKit.Mvvm.Views.ContentView
+                return new SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
                 {
                     Content = new Support.Presentation.Views.IdentityBackgroundView()
                 };

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Matrix.Templating.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Descriptors
 {
     public class LandscapeGrid2x2TemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
     {
