@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Converters
 {
     public class InfoBlockPriorityToColorConverter : Xamarin.Forms.IValueConverter
     {

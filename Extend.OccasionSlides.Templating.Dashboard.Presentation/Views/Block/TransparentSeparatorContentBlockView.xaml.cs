@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Views.Block
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Views.Block
 {
     public partial class TransparentSeparatorContentBlockView : Xamarin.Forms.ContentView
     {
         private readonly System.EventHandler optionButtonClicked;
 
-        public TransparentSeparatorContentBlockView(Templating.Presentation.Models.View.Block.TransparentSeparatorContentBlockViewModel model, System.EventHandler optionButtonClicked)
+        public TransparentSeparatorContentBlockView(TransparentSeparatorContentBlockViewModel model, System.EventHandler optionButtonClicked)
         {
             InitializeComponent();
 

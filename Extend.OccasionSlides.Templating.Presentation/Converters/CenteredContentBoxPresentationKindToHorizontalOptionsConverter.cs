@@ -1,21 +1,23 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Converters
 {
     public class CenteredContentBoxPresentationKindToHorizontalOptionsConverter : Xamarin.Forms.IValueConverter
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            switch ((Enumerations.CenteredContentBoxPresentationKind)value)
+            switch ((CenteredContentBoxPresentationKind)value)
             {
-                case Enumerations.CenteredContentBoxPresentationKind.Inmersive:
+                case CenteredContentBoxPresentationKind.Inmersive:
                     return Xamarin.Forms.LayoutOptions.Fill;
 
-                case Enumerations.CenteredContentBoxPresentationKind.FloatBandHorizontal:
+                case CenteredContentBoxPresentationKind.FloatBandHorizontal:
                     return Xamarin.Forms.LayoutOptions.Fill;
 
-                case Enumerations.CenteredContentBoxPresentationKind.FloatBandVertical:
+                case CenteredContentBoxPresentationKind.FloatBandVertical:
                     return Xamarin.Forms.LayoutOptions.Center;
 
-                case Enumerations.CenteredContentBoxPresentationKind.FloatBoxFilled:
+                case CenteredContentBoxPresentationKind.FloatBoxFilled:
                 default:
                     return Xamarin.Forms.LayoutOptions.Center;
             }

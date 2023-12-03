@@ -1,12 +1,17 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Placard;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Presenters;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block.Contract;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Placard
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Placard
 {
-    public partial class TranslucentContextualOverlapForVideoPlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<TranslucentContextualOverlapForVideoPlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class TranslucentContextualOverlapForVideoPlacardConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<TranslucentContextualOverlapForVideoPlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private const string OPTION_COMMON_CANCEL = "Cancelar";
         private const string OPTION_COMMON_EDIT = "Modificar";
@@ -23,7 +28,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         }
 
         public TranslucentContextualOverlapForVideoPlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(Factories.Placard.TranslucentContextualOverlapForVideoPlacardConfigurationPageModelFactory.Build(placardViewModel))
+            : base(TranslucentContextualOverlapForVideoPlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -63,14 +68,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 if (placardViewModel == null)
                 {
                     var model = new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Label = BindingContextPageModel.Label,
-                        TemplateId = Descriptors.TranslucentContextualOverlapForVideoTemplateDescriptor.ID,
+                        TemplateId = TranslucentContextualOverlapForVideoTemplateDescriptor.ID,
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.Placard.TranslucentContextualOverlapForVideoPlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
@@ -183,12 +188,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void AddContentBlockButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            Presenters.ContentBlockCreationSheetPresenter.PresentForCreate(this, ContentBlockCreation_Callback);
+            ContentBlockCreationSheetPresenter.PresentForCreate(this, ContentBlockCreation_Callback);
         }
 
         private void ContentBlockOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var model = (sender as Xamarin.Forms.BindableObject).BindingContext as Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel;
+            var model = (sender as Xamarin.Forms.BindableObject).BindingContext as AbstractContentBlockViewModel;
 
             var extraOptions = new System.Collections.Generic.List<string>
             {
@@ -203,7 +208,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                     case OPTION_COMMON_EDIT:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            Presenters.ContentBlockCreationSheetPresenter.PresentForEdit(model, this, ContentBlockEdition_Callback);
+                            ContentBlockCreationSheetPresenter.PresentForEdit(model, this, ContentBlockEdition_Callback);
                         });
 
                         break;
@@ -245,14 +250,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
             this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoDetailPage(BindingContextPageModel.ContextedVideo));
         }
 
-        private void ContentBlockCreation_Callback(Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel model)
+        private void ContentBlockCreation_Callback(AbstractContentBlockViewModel model)
         {
             model.Priority = BindingContextPageModel.ContentBlocks.Count;
 
             BindingContextPageModel.ContentBlocks.Add(new Models.View.ContentBlockCollectionItemViewModel { Target = model });
         }
 
-        private void ContentBlockEdition_Callback(Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel model)
+        private void ContentBlockEdition_Callback(AbstractContentBlockViewModel model)
         {
             var item = BindingContextPageModel.ContentBlocks.First(i => i.Target.Id == model.Id);
 
@@ -265,7 +270,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ContentBlockCollectionViewDropGestureRecognizer_Drop(object sender, Xamarin.Forms.DropEventArgs e)
         {
-            var dropItem = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ContentBlockCollectionItemViewModel;
+            var dropItem = (sender as Xamarin.Forms.BindableObject).BindingContext as ContentBlockCollectionItemViewModel;
 
             var beingDraggedItem = BindingContextPageModel.ContentBlocks.First(i => i.IsBeingDragged);
 
@@ -301,7 +306,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ContentBlockCollectionViewDropGestureRecognizer_DragOver(object sender, Xamarin.Forms.DragEventArgs e)
         {
-            var dragOverItem = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ContentBlockCollectionItemViewModel;
+            var dragOverItem = (sender as Xamarin.Forms.BindableObject).BindingContext as ContentBlockCollectionItemViewModel;
 
             var beingDraggedItem = BindingContextPageModel.ContentBlocks.FirstOrDefault(item => item.IsBeingDragged);
 
@@ -330,7 +335,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ContentBlockCollectionItemViewDragGestureRecognizer_DragStarting(object sender, Xamarin.Forms.DragStartingEventArgs e)
         {
-            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ContentBlockCollectionItemViewModel;
+            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as ContentBlockCollectionItemViewModel;
 
             foreach (var item in BindingContextPageModel.ContentBlocks)
             {
@@ -340,7 +345,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         private void ContentBlockCollectionItemViewDragGestureRecognizer_DropCompleted(object sender, Xamarin.Forms.DropCompletedEventArgs e)
         {
-            var beingDraggedItem = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ContentBlockCollectionItemViewModel;
+            var beingDraggedItem = (sender as Xamarin.Forms.BindableObject).BindingContext as ContentBlockCollectionItemViewModel;
 
             beingDraggedItem.IsBeingDragged = false;
         }

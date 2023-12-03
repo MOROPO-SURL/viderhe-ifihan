@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard
 {
     public class CenteredTraslucentIntroOverImagePlacardViewModel : Common.Templating.Presentation.Models.View.AbstractScreenTimedPlacardViewModel
     {
         public Block.Contract.AbstractContentBlockViewModel[] ContentBlocks { get; set; }
 
-        public Enumerations.CenteredContentBoxPresentationKind ContentBoxPresentationKind { get; set; }
+        public CenteredContentBoxPresentationKind ContentBoxPresentationKind { get; set; }
 
         public double OverlapOpacity { get; set; }
 

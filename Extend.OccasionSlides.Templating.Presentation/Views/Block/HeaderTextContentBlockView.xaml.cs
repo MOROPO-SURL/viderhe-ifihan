@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Block
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Block
 {
     public partial class HeaderTextContentBlockView : Xamarin.Forms.StackLayout, Common.Templating.Presentation.Views.Facade.IRelativeSizeScalableViewFacade
     {

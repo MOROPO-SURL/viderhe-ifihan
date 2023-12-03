@@ -1,9 +1,12 @@
-﻿using SkiaSharp.Views.Forms;
-using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard;
+﻿using MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Converters;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard;
+using SkiaSharp.Views.Forms;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Placard
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Placard
 {
     public partial class RightLandscapeContextualTrailOverlapForImageSecuencePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
@@ -15,48 +18,48 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             BindingContext = model;
 
-            var overlapSizeToColumnSpanConverter = (Converters.OverlapSizeToColumnSpanConverter)Resources["OverlapSizeToColumnSpanConverter"];
-            var overlapSizeToRightColumnIndexConverter = (Converters.OverlapSizeToRightColumnIndexConverter)Resources["OverlapSizeToRightColumnIndexConverter"];
+            var overlapSizeToColumnSpanConverter = (OverlapSizeToColumnSpanConverter)Resources["OverlapSizeToColumnSpanConverter"];
+            var overlapSizeToRightColumnIndexConverter = (OverlapSizeToRightColumnIndexConverter)Resources["OverlapSizeToRightColumnIndexConverter"];
 
             OverlapLayout.IsVisible = false;
 
-            var singleTrailConvasView = new SKCanvasView { BindingContext = Enumerations.OverlapTrailMode.Single };
+            var singleTrailConvasView = new SKCanvasView { BindingContext = OverlapTrailMode.Single };
 
-            Xamarin.Forms.Grid.SetColumn(singleTrailConvasView, (int)overlapSizeToRightColumnIndexConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
-            Xamarin.Forms.Grid.SetColumnSpan(singleTrailConvasView, (int)overlapSizeToColumnSpanConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
+            Xamarin.Forms.Grid.SetColumn(singleTrailConvasView, (int)overlapSizeToRightColumnIndexConverter.Convert(model.OverlapSize, typeof(OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
+            Xamarin.Forms.Grid.SetColumnSpan(singleTrailConvasView, (int)overlapSizeToColumnSpanConverter.Convert(model.OverlapSize, typeof(OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
 
             singleTrailConvasView.PaintSurface += OverlapContentWrapTrailCanvasView_PaintSurface;
 
             OverlapLayout.Children.Insert(0, singleTrailConvasView);
 
-            if (model.OverlapTrailMode == Enumerations.OverlapTrailMode.Single) return;
+            if (model.OverlapTrailMode == OverlapTrailMode.Single) return;
 
-            var dualTrailConvasView = new SKCanvasView { BindingContext = Enumerations.OverlapTrailMode.Dual };
+            var dualTrailConvasView = new SKCanvasView { BindingContext = OverlapTrailMode.Dual };
 
-            Xamarin.Forms.Grid.SetColumn(dualTrailConvasView, (int)overlapSizeToRightColumnIndexConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
-            Xamarin.Forms.Grid.SetColumnSpan(dualTrailConvasView, (int)overlapSizeToColumnSpanConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
+            Xamarin.Forms.Grid.SetColumn(dualTrailConvasView, (int)overlapSizeToRightColumnIndexConverter.Convert(model.OverlapSize, typeof(OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
+            Xamarin.Forms.Grid.SetColumnSpan(dualTrailConvasView, (int)overlapSizeToColumnSpanConverter.Convert(model.OverlapSize, typeof(OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
 
             dualTrailConvasView.PaintSurface += OverlapContentWrapTrailCanvasView_PaintSurface;
 
             OverlapLayout.Children.Insert(1, dualTrailConvasView);
 
-            if (model.OverlapTrailMode == Enumerations.OverlapTrailMode.Dual) return;
+            if (model.OverlapTrailMode == OverlapTrailMode.Dual) return;
 
-            var triplexTrailConvasView = new SKCanvasView { BindingContext = Enumerations.OverlapTrailMode.Triplex };
+            var triplexTrailConvasView = new SKCanvasView { BindingContext = OverlapTrailMode.Triplex };
 
-            Xamarin.Forms.Grid.SetColumn(triplexTrailConvasView, (int)overlapSizeToRightColumnIndexConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
-            Xamarin.Forms.Grid.SetColumnSpan(triplexTrailConvasView, (int)overlapSizeToColumnSpanConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
+            Xamarin.Forms.Grid.SetColumn(triplexTrailConvasView, (int)overlapSizeToRightColumnIndexConverter.Convert(model.OverlapSize, typeof(OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
+            Xamarin.Forms.Grid.SetColumnSpan(triplexTrailConvasView, (int)overlapSizeToColumnSpanConverter.Convert(model.OverlapSize, typeof(OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
 
             triplexTrailConvasView.PaintSurface += OverlapContentWrapTrailCanvasView_PaintSurface;
 
             OverlapLayout.Children.Insert(2, triplexTrailConvasView);
 
-            if (model.OverlapTrailMode == Enumerations.OverlapTrailMode.Triplex) return;
+            if (model.OverlapTrailMode == OverlapTrailMode.Triplex) return;
 
-            var fourfoldTrailConvasView = new SKCanvasView { BindingContext = Enumerations.OverlapTrailMode.Fourfold };
+            var fourfoldTrailConvasView = new SKCanvasView { BindingContext = OverlapTrailMode.Fourfold };
 
-            Xamarin.Forms.Grid.SetColumn(fourfoldTrailConvasView, (int)overlapSizeToRightColumnIndexConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
-            Xamarin.Forms.Grid.SetColumnSpan(fourfoldTrailConvasView, (int)overlapSizeToColumnSpanConverter.Convert(model.OverlapSize, typeof(Enumerations.OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
+            Xamarin.Forms.Grid.SetColumn(fourfoldTrailConvasView, (int)overlapSizeToRightColumnIndexConverter.Convert(model.OverlapSize, typeof(OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
+            Xamarin.Forms.Grid.SetColumnSpan(fourfoldTrailConvasView, (int)overlapSizeToColumnSpanConverter.Convert(model.OverlapSize, typeof(OverlapSize), null, System.Globalization.CultureInfo.CurrentCulture));
 
             fourfoldTrailConvasView.PaintSurface += OverlapContentWrapTrailCanvasView_PaintSurface;
 
@@ -91,7 +94,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             foreach (var item in InfoBlocksLayout.Children)
             {
-                if (item.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                if (item.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
                 item.Opacity = 0;
             }
@@ -120,7 +123,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             foreach (var item in InfoBlocksLayout.Children)
             {
-                if (item.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                if (item.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
                 item.Opacity = 0;
             }
@@ -132,27 +135,27 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
             int overlapShowInAnimationDuration = 650;
             int infoBlockShoInAnimationDuration = 600;
 
-            var internalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            var internalShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
             {
                 Delay = "2000",
                 IsParallel = true
             };
 
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
             {
                 Target = OverlapLayout,
                 TranslateX = 0,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 Duration = overlapShowInAnimationDuration.ToString()
             });
 
             if (concreteBindingContext.ContextedImageSecuenceCenteredAtPresentation)
             {
-                internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                 {
                     Target = FramesContainer,
-                    TranslateX = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? contentBoxWidth / 2 : contentBoxWidth / 2 * -1,
-                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
+                    TranslateX = concreteBindingContext.OverlapAlignment == OverlapAlignment.Start ? contentBoxWidth / 2 : contentBoxWidth / 2 * -1,
+                    EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
                     Delay = "100"
                 });
             }
@@ -161,15 +164,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             foreach (var infoBlockLayout in InfoBlocksLayout.Children)
             {
-                if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                if (infoBlockLayout.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
-                internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                 {
                     Target = infoBlockLayout,
-                    Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Left,
+                    Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Left,
                     RelativeOffset = 100d,
                     Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * index++).ToString(),
-                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                    EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                     Duration = infoBlockShoInAnimationDuration.ToString()
                 });
             }
@@ -231,7 +234,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
-                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Image.ThumbnailId)),
+                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(context.Image.ThumbnailId)),
                     Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                     ZoomingEnabled = context.IsZoomingEnabled
                 }, relativeSizeScaleFactor);

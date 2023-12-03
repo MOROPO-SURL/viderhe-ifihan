@@ -1,7 +1,8 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block.Contract;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block.Contract;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Presenters
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Presenters
 {
     internal static class ContentBlockCreationSheetPresenter
     {
@@ -13,9 +14,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         internal static void PresentForCreate(Xamarin.Forms.Page page, System.Action<AbstractContentBlockViewModel> callbackAction)
         {
-            var options = new string[] { 
-                OPTION_CREATE_CONTENT_BLOCK_TEXT, 
-                OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT, 
+            var options = new string[] {
+                OPTION_CREATE_CONTENT_BLOCK_TEXT,
+                OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT,
                 OPTION_CREATE_CONTENT_BLOCK_IMAGE,
                 OPTION_CREATE_CONTENT_BLOCK_SEPARATOR_TRANSPARENT
             };
@@ -55,30 +56,30 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         internal static void PresentForEdit(AbstractContentBlockViewModel target, Xamarin.Forms.Page page, System.Action<AbstractContentBlockViewModel> callbackAction)
         {
-            if (target is Templating.Presentation.Models.View.Block.HeaderTextContentBlockViewModel)
+            if (target is HeaderTextContentBlockViewModel)
             {
-                page.NavigationPushPageAsync(new Pages.Configuration.Block.HeaderTextContentBlockConfigurationPage(target as Templating.Presentation.Models.View.Block.HeaderTextContentBlockViewModel, callbackAction));
+                page.NavigationPushPageAsync(new Pages.Configuration.Block.HeaderTextContentBlockConfigurationPage(target as HeaderTextContentBlockViewModel, callbackAction));
 
                 return;
             }
 
-            if (target is Templating.Presentation.Models.View.Block.TextContentBlockViewModel)
+            if (target is TextContentBlockViewModel)
             {
-                page.NavigationPushPageAsync(new Pages.Configuration.Block.TextContentBlockConfigurationPage(target as Templating.Presentation.Models.View.Block.TextContentBlockViewModel, callbackAction));
+                page.NavigationPushPageAsync(new Pages.Configuration.Block.TextContentBlockConfigurationPage(target as TextContentBlockViewModel, callbackAction));
 
                 return;
             }
 
-            if (target is Templating.Presentation.Models.View.Block.TransparentSeparatorContentBlockViewModel)
+            if (target is TransparentSeparatorContentBlockViewModel)
             {
-                page.NavigationPushPageAsync(new Pages.Configuration.Block.TransparentSeparatorContentBlockConfigurationPage(target as Templating.Presentation.Models.View.Block.TransparentSeparatorContentBlockViewModel, callbackAction));
+                page.NavigationPushPageAsync(new Pages.Configuration.Block.TransparentSeparatorContentBlockConfigurationPage(target as TransparentSeparatorContentBlockViewModel, callbackAction));
 
                 return;
             }
 
-            if (target is Templating.Presentation.Models.View.Block.ImageContentBlockViewModel)
+            if (target is ImageContentBlockViewModel)
             {
-                page.NavigationPushPageAsync(new Pages.Configuration.Block.ImageContentBlockConfigurationPage(target as Templating.Presentation.Models.View.Block.ImageContentBlockViewModel, callbackAction));
+                page.NavigationPushPageAsync(new Pages.Configuration.Block.ImageContentBlockConfigurationPage(target as ImageContentBlockViewModel, callbackAction));
 
                 return;
             }

@@ -1,20 +1,22 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Block
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Block
 {
-    public class TransparentSeparatorContentBlockConfigurationPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class TransparentSeparatorContentBlockConfigurationPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
-        private Enumerations.SeparatorSizingMode sizingMode;
+        private SeparatorSizingMode sizingMode;
 
         public TransparentSeparatorContentBlockConfigurationPageModel()
         {
             Id = System.Guid.NewGuid();
 
-            AvailableSizingModes = (Enumerations.SeparatorSizingMode[])System.Enum.GetValues(typeof(Enumerations.SeparatorSizingMode));
+            AvailableSizingModes = (SeparatorSizingMode[])System.Enum.GetValues(typeof(SeparatorSizingMode));
         }
-        
+
         public System.Guid Id { get; set; }
 
-        public Enumerations.SeparatorSizingMode SizingMode { get => sizingMode; set => SetProperty(ref sizingMode, value); }
+        public SeparatorSizingMode SizingMode { get => sizingMode; set => SetProperty(ref sizingMode, value); }
 
-        public Enumerations.SeparatorSizingMode[] AvailableSizingModes { get; private set; }
+        public SeparatorSizingMode[] AvailableSizingModes { get; private set; }
     }
 }

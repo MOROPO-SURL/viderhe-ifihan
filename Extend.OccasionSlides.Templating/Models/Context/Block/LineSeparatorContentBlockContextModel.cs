@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context.Block
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Block
 {
     public class LineSeparatorContentBlockContextModel : TransparentSeparatorContentBlockContextModel
     {

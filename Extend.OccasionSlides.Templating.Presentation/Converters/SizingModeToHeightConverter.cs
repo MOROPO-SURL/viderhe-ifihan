@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Converters
 {
     public class SizingModeToHeightConverter : Xamarin.Forms.IValueConverter
     {
@@ -8,9 +10,9 @@
         {
             if (value == null) return null;
 
-            if (!(value is Enumerations.SeparatorSizingMode)) return value;
+            if (!(value is SeparatorSizingMode)) return value;
 
-            return (double)Xamarin.Forms.StackLayout.SpacingProperty.DefaultValue * ((int)(Enumerations.SeparatorSizingMode)value + 1) * (SizeScalableView?.RelativeSizeScaleFactor ?? 1);
+            return (double)Xamarin.Forms.StackLayout.SpacingProperty.DefaultValue * ((int)(SeparatorSizingMode)value + 1) * (SizeScalableView?.RelativeSizeScaleFactor ?? 1);
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)

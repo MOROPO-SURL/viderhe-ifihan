@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation</RootNamespace>
-    <Version>0.21.1</Version>
+    <AssemblyName>MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation</RootNamespace>
+    <Version>0.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.5" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
+    <PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.7" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2622" />
   </ItemGroup>
 
   <ItemGroup>

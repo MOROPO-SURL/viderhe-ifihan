@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Block
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Block
 {
-    public class HeaderTextContentBlockConfigurationPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class HeaderTextContentBlockConfigurationPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private int priority;
         private string header;

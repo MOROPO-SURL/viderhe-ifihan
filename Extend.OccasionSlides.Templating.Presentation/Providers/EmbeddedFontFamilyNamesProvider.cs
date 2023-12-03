@@ -1,11 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Providers
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
 {
     public sealed class EmbeddedFontFamilyNamesProvider : Common.Templating.Presentation.Providers.Facade.IEmbeddedFontFamilyNamesProviderFacade
     {
         public string[] GetAll()
         {
-            return new string[] 
-            { 
+            return new string[]
+            {
                 "Permanent Marker (Regular)",
                 "Euphoria Script (Regular)",
                 "Crete Round (Regular)",

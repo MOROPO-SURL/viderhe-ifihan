@@ -1,17 +1,19 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Converters
 {
     public class CenteredContentBoxPresentationKindToColumSpanConverter : Xamarin.Forms.IValueConverter
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            switch ((Enumerations.CenteredContentBoxPresentationKind)value)
+            switch ((CenteredContentBoxPresentationKind)value)
             {
-                case Enumerations.CenteredContentBoxPresentationKind.Inmersive:
-                case Enumerations.CenteredContentBoxPresentationKind.FloatBandHorizontal:
+                case CenteredContentBoxPresentationKind.Inmersive:
+                case CenteredContentBoxPresentationKind.FloatBandHorizontal:
                     return 3;
 
-                case Enumerations.CenteredContentBoxPresentationKind.FloatBandVertical:
-                case Enumerations.CenteredContentBoxPresentationKind.FloatBoxFilled:
+                case CenteredContentBoxPresentationKind.FloatBandVertical:
+                case CenteredContentBoxPresentationKind.FloatBoxFilled:
                 default:
                     return 1;
             }

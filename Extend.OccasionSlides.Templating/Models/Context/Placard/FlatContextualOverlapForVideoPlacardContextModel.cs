@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context.Placard
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Placard
 {
     public class FlatContextualOverlapForVideoPlacardContextModel : Common.Templating.Models.Context.AbstractScreenTimedPlacardContextModel
     {

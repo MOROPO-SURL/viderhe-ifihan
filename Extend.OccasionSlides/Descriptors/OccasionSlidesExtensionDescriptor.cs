@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Descriptors
 {
     public class OccasionSlidesExtensionDescriptor : Common.Descriptors.IExtensionDescriptor
     {

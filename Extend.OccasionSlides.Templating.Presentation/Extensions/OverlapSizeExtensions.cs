@@ -1,18 +1,20 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Extensions
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Extensions
 {
     public static class OverlapSizeExtensions
     {
-        public static int ToColumnCount(this Enumerations.OverlapSize target)
-        { 
+        public static int ToColumnCount(this OverlapSize target)
+        {
             switch (target)
             {
-                case Enumerations.OverlapSize.Short:
+                case OverlapSize.Short:
                     return 3;
 
-                case Enumerations.OverlapSize.Medium:
+                case OverlapSize.Medium:
                     return 4;
 
-                case Enumerations.OverlapSize.Large:
+                case OverlapSize.Large:
                 default:
                     return 5;
             };

@@ -1,7 +1,9 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context.Placard;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Placard;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Providers
 {
     public class PlacardContextDependenciesProvider : Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider
     {
@@ -14,7 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
         {
             // TODO Register images in ImageSet blocks!!
 
-            if (templateId == Descriptors.CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
+            if (templateId == CenteredTraslucentIntroOverImageTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<CenteredTraslucentIntroOverImagePlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
                 {
@@ -28,15 +30,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
 
                 foreach (var item in context.ContentBlocks)
                 {
-                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+                    if (!(item is ImageContentBlockContextModel)) continue;
 
-                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                    result.Add((item as ImageContentBlockContextModel).Image);
                 }
 
                 return result.ToArray();
             }
 
-            if (templateId == Descriptors.FlatContextualOverlapForImageTemplateDescriptor.ID)
+            if (templateId == FlatContextualOverlapForImageTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<FlatContextualOverlapForImagePlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
                 {
@@ -50,15 +52,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
 
                 foreach (var item in context.ContentBlocks)
                 {
-                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+                    if (!(item is ImageContentBlockContextModel)) continue;
 
-                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                    result.Add((item as ImageContentBlockContextModel).Image);
                 }
 
                 return result.ToArray();
             }
 
-            if (templateId == Descriptors.TrailContextualOverlapForImageTemplateDescriptor.ID)
+            if (templateId == TrailContextualOverlapForImageTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TrailContextualOverlapForImagePlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
                 {
@@ -72,15 +74,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
 
                 foreach (var item in context.ContentBlocks)
                 {
-                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+                    if (!(item is ImageContentBlockContextModel)) continue;
 
-                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                    result.Add((item as ImageContentBlockContextModel).Image);
                 }
 
                 return result.ToArray();
             }
 
-            if (templateId == Descriptors.TranslucentContextualOverlapForImageTemplateDescriptor.ID)
+            if (templateId == TranslucentContextualOverlapForImageTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TranslucentContextualOverlapForImagePlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
                 {
@@ -94,15 +96,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
 
                 foreach (var item in context.ContentBlocks)
                 {
-                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+                    if (!(item is ImageContentBlockContextModel)) continue;
 
-                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                    result.Add((item as ImageContentBlockContextModel).Image);
                 }
 
                 return result.ToArray();
             }
 
-            if (templateId == Descriptors.FlatContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            if (templateId == FlatContextualOverlapForImageSecuenceTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<FlatContextualOverlapForImageSecuencePlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
                 {
@@ -113,15 +115,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
 
                 foreach (var item in context.ContentBlocks)
                 {
-                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+                    if (!(item is ImageContentBlockContextModel)) continue;
 
-                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                    result.Add((item as ImageContentBlockContextModel).Image);
                 }
 
                 return result.ToArray();
             }
 
-            if (templateId == Descriptors.TrailContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            if (templateId == TrailContextualOverlapForImageSecuenceTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TrailContextualOverlapForImageSecuencePlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
                 {
@@ -132,15 +134,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
 
                 foreach (var item in context.ContentBlocks)
                 {
-                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+                    if (!(item is ImageContentBlockContextModel)) continue;
 
-                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                    result.Add((item as ImageContentBlockContextModel).Image);
                 }
 
                 return result.ToArray();
             }
 
-            if (templateId == Descriptors.TranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
+            if (templateId == TranslucentContextualOverlapForImageSecuenceTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TranslucentContextualOverlapForImageSecuencePlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
                 {
@@ -151,9 +153,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
 
                 foreach (var item in context.ContentBlocks)
                 {
-                    if (!(item is Models.Context.Block.ImageContentBlockContextModel)) continue;
+                    if (!(item is ImageContentBlockContextModel)) continue;
 
-                    result.Add((item as Models.Context.Block.ImageContentBlockContextModel).Image);
+                    result.Add((item as ImageContentBlockContextModel).Image);
                 }
 
                 return result.ToArray();
@@ -169,7 +171,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
 
         public Common.Templating.Models.Context.VideoContextModel[] GetVideos(System.Guid templateId, string serializedContext)
         {
-            if (templateId == Descriptors.TrailContextualOverlapForVideoTemplateDescriptor.ID)
+            if (templateId == TrailContextualOverlapForVideoTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TrailContextualOverlapForVideoPlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
                 {
@@ -179,7 +181,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
                 return new[] { context.ContextedVideo };
             }
 
-            if (templateId == Descriptors.TranslucentContextualOverlapForVideoTemplateDescriptor.ID)
+            if (templateId == TranslucentContextualOverlapForVideoTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<TranslucentContextualOverlapForVideoPlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
                 {
@@ -189,7 +191,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Providers
                 return new[] { context.ContextedVideo };
             }
 
-            if (templateId == Descriptors.FlatContextualOverlapForVideoTemplateDescriptor.ID)
+            if (templateId == FlatContextualOverlapForVideoTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<FlatContextualOverlapForVideoPlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
                 {

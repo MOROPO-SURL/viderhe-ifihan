@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Descriptors
 {
     public class FlatContextualOverlapForVideoTemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
     {

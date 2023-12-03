@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating</RootNamespace>
-	<Version>0.21.1</Version>
+    <AssemblyName>MOROPO.VIDERHE.Extend.OccasionSlides.Templating</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Extend.OccasionSlides.Templating</RootNamespace>
+	<Version>0.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

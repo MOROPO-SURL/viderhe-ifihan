@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation {
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation {
     using System;
     
     
@@ -39,8 +39,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentati" +
-                            "on.LocalizedResources", typeof(LocalizedResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.LocalizedR" +
+                            "esources", typeof(LocalizedResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

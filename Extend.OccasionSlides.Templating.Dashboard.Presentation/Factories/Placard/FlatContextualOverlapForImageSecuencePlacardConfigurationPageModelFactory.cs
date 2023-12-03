@@ -1,19 +1,21 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Placard;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Placard
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Placard
 {
     public static class FlatContextualOverlapForImageSecuencePlacardConfigurationPageModelFactory
     {
-        public static Models.Page.Configuration.Placard.FlatContextualOverlapForImageSecuencePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static FlatContextualOverlapForImageSecuencePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.Configuration.Placard.FlatContextualOverlapForImageSecuencePlacardConfigurationPageModel();
+            if (placardViewModel == null) return new FlatContextualOverlapForImageSecuencePlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.FlatContextualOverlapForImageSecuencePlacardContextModel>(placardViewModel.SerializedContext, new Newtonsoft.Json.JsonSerializerSettings
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<FlatContextualOverlapForImageSecuencePlacardContextModel>(placardViewModel.SerializedContext, new Newtonsoft.Json.JsonSerializerSettings
             {
                 TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
             });
 
-            var result = new Models.Page.Configuration.Placard.FlatContextualOverlapForImageSecuencePlacardConfigurationPageModel
+            var result = new FlatContextualOverlapForImageSecuencePlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 DefineBeginAt = placardViewModel.BeginAt != null,

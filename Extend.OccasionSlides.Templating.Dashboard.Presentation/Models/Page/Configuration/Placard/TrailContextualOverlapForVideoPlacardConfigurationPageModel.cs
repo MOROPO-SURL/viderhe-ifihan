@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Enumerations;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard
 {
     public class TrailContextualOverlapForVideoPlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {

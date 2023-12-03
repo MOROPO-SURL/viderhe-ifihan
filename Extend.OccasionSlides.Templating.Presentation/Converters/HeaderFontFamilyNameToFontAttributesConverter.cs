@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Converters
 {
     public class HeaderFontFamilyNameToFontAttributesConverter : Xamarin.Forms.IValueConverter
     {

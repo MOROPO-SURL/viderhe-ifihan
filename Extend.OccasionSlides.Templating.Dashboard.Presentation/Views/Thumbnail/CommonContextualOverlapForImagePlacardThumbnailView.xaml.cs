@@ -1,8 +1,8 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context.Placard;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Placard;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Views.Thumbnail
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Views.Thumbnail
 {
-    public partial class CommonContextualOverlapForImagePlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class CommonContextualOverlapForImagePlacardThumbnailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
         public CommonContextualOverlapForImagePlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model)
         {
@@ -13,7 +13,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
                 TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
             });
 
-            ContextedImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.ContextedImage.ThumbnailId));
+            ContextedImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(context.ContextedImage.ThumbnailId));
 
             BindingContext = model;
         }

@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Block
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Block
 {
-    public class ImageContentBlockConfigurationPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ImageContentBlockConfigurationPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private double heightByScreenVerticalSizePercent;
         private Support.Presentation.Models.View.ImageViewModel image;
@@ -39,7 +41,7 @@
 
         public Xamarin.Forms.LayoutAlignment HorizontalAlignament { get => horizontalAlignament; set => SetProperty(ref horizontalAlignament, value); }
 
-        public Enumerations.ImageFilterKind? FilterKind { get; set; }
+        public ImageFilterKind? FilterKind { get; set; }
 
         public string FilterSerializationContext { get; set; }
 

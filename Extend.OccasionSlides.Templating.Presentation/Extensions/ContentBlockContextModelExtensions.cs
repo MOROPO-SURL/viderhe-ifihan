@@ -1,15 +1,18 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Block.Contract;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Extensions
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Extensions
 {
     public static class ContentBlockContextModelExtensions
     {
-        public static Models.View.Block.Contract.AbstractContentBlockViewModel ToViewModel(this Templating.Models.Context.Block.Contract.AbstractContentBlockContextModel target)
+        public static Models.View.Block.Contract.AbstractContentBlockViewModel ToViewModel(this AbstractContentBlockContextModel target)
         {
-            if (target is Templating.Models.Context.Block.HeaderTextContentBlockContextModel)
+            if (target is HeaderTextContentBlockContextModel)
             {
-                var concreteTarget = target as Templating.Models.Context.Block.HeaderTextContentBlockContextModel;
+                var concreteTarget = target as HeaderTextContentBlockContextModel;
 
                 return new Models.View.Block.HeaderTextContentBlockViewModel
                 {
@@ -27,9 +30,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 };
             }
 
-            if (target is Templating.Models.Context.Block.TextContentBlockContextModel)
+            if (target is TextContentBlockContextModel)
             {
-                var concreteTarget = target as Templating.Models.Context.Block.TextContentBlockContextModel;
+                var concreteTarget = target as TextContentBlockContextModel;
 
                 return new Models.View.Block.TextContentBlockViewModel
                 {
@@ -43,9 +46,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 };
             }
 
-            if (target is Templating.Models.Context.Block.TransparentSeparatorContentBlockContextModel)
+            if (target is TransparentSeparatorContentBlockContextModel)
             {
-                var concreteTarget = target as Templating.Models.Context.Block.TransparentSeparatorContentBlockContextModel;
+                var concreteTarget = target as TransparentSeparatorContentBlockContextModel;
 
                 return new Models.View.Block.TransparentSeparatorContentBlockViewModel
                 {
@@ -55,9 +58,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                 };
             }
 
-            if (target is Templating.Models.Context.Block.ImageContentBlockContextModel)
+            if (target is ImageContentBlockContextModel)
             {
-                var concreteTarget = target as Templating.Models.Context.Block.ImageContentBlockContextModel;
+                var concreteTarget = target as ImageContentBlockContextModel;
 
                 return new Models.View.Block.ImageContentBlockViewModel
                 {

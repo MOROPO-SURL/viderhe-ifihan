@@ -1,6 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Enumerations;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard
 {
     public class TranslucentContextualOverlapForVideoPlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledPlacardConfigurationPageModel
     {
@@ -12,7 +13,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public TranslucentContextualOverlapForVideoPlacardConfigurationPageModel()
         {
-            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<View.ContentBlockCollectionItemViewModel>();
+            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<ContentBlockCollectionItemViewModel>();
             AvailableOverlapShapeKinds = new OverlapShapeKind[]
             {
                 OverlapShapeKind.Rectangle,
@@ -43,7 +44,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public OverlapSize[] AvailableOverlapSizes { get; private set; }
 
-        public System.Collections.ObjectModel.ObservableCollection<View.ContentBlockCollectionItemViewModel> ContentBlocks { get; private set; }
+        public System.Collections.ObjectModel.ObservableCollection<ContentBlockCollectionItemViewModel> ContentBlocks { get; private set; }
 
         public OverlapAlignment OverlapAlignment { get => overlapAlignment; set => SetProperty(ref overlapAlignment, value); }
 

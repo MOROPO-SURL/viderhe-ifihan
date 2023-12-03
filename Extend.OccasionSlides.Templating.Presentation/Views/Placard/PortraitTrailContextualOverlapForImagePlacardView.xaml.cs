@@ -1,8 +1,10 @@
-﻿using SkiaSharp.Views.Forms;
-using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard;
+using SkiaSharp.Views.Forms;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Placard
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Placard
 {
     public partial class PortraitTrailContextualOverlapForImagePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
@@ -14,31 +16,31 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             OverlapLayout.IsVisible = false;
 
-            var singleTrailConvasView = new SKCanvasView { BindingContext = Enumerations.OverlapTrailMode.Single };
+            var singleTrailConvasView = new SKCanvasView { BindingContext = OverlapTrailMode.Single };
 
             singleTrailConvasView.PaintSurface += OverlapContentWrapTrailCanvasView_PaintSurface;
 
             OverlapLayout.Children.Insert(0, singleTrailConvasView);
 
-            if (model.OverlapTrailMode == Enumerations.OverlapTrailMode.Single) return;
+            if (model.OverlapTrailMode == OverlapTrailMode.Single) return;
 
-            var dualTrailConvasView = new SKCanvasView { BindingContext = Enumerations.OverlapTrailMode.Dual };
+            var dualTrailConvasView = new SKCanvasView { BindingContext = OverlapTrailMode.Dual };
 
             dualTrailConvasView.PaintSurface += OverlapContentWrapTrailCanvasView_PaintSurface;
 
             OverlapLayout.Children.Insert(1, dualTrailConvasView);
 
-            if (model.OverlapTrailMode == Enumerations.OverlapTrailMode.Dual) return;
+            if (model.OverlapTrailMode == OverlapTrailMode.Dual) return;
 
-            var triplexTrailConvasView = new SKCanvasView { BindingContext = Enumerations.OverlapTrailMode.Triplex };
+            var triplexTrailConvasView = new SKCanvasView { BindingContext = OverlapTrailMode.Triplex };
 
             triplexTrailConvasView.PaintSurface += OverlapContentWrapTrailCanvasView_PaintSurface;
 
             OverlapLayout.Children.Insert(2, triplexTrailConvasView);
 
-            if (model.OverlapTrailMode == Enumerations.OverlapTrailMode.Triplex) return;
+            if (model.OverlapTrailMode == OverlapTrailMode.Triplex) return;
 
-            var fourfoldTrailConvasView = new SKCanvasView { BindingContext = Enumerations.OverlapTrailMode.Fourfold };
+            var fourfoldTrailConvasView = new SKCanvasView { BindingContext = OverlapTrailMode.Fourfold };
 
             fourfoldTrailConvasView.PaintSurface += OverlapContentWrapTrailCanvasView_PaintSurface;
 
@@ -63,38 +65,38 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             foreach (var item in InfoBlocksLayout.Children)
             {
-                if (item.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                if (item.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
                 item.Opacity = 0;
             }
 
-            OverlapLayout.TranslationY = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? Height * -1 : Height;
+            OverlapLayout.TranslationY = concreteBindingContext.OverlapAlignment == OverlapAlignment.Start ? Height * -1 : Height;
 
             OverlapLayout.IsVisible = true;
 
             int overlapShowInAnimationDuration = 650;
             int infoBlockShoInAnimationDuration = 600;
 
-            var internalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            var internalShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
             {
                 Delay = "2000",
                 IsParallel = true
             };
 
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
             {
                 Target = OverlapLayout,
                 TranslateY = 0,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 Duration = overlapShowInAnimationDuration.ToString()
             });
             if (concreteBindingContext.ContextedImageCenteredAtPresentation)
             {
-                internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
+                internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
                 {
                     Target = ContextedImageWrapper,
-                    TranslateY = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? OverlapContentLayout.Height / 2 : OverlapContentLayout.Height / 2 * -1,
-                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
+                    TranslateY = concreteBindingContext.OverlapAlignment == OverlapAlignment.Start ? OverlapContentLayout.Height / 2 : OverlapContentLayout.Height / 2 * -1,
+                    EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicInOut,
                     Delay = "100"
                 });
             }
@@ -103,15 +105,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             foreach (var infoBlockLayout in InfoBlocksLayout.Children)
             {
-                if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                if (infoBlockLayout.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
-                internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                 {
                     Target = infoBlockLayout,
-                    Direction = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down : XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                    Direction = concreteBindingContext.OverlapAlignment == OverlapAlignment.Start ? SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down : SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                     RelativeOffset = 100d,
                     Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * index++).ToString(),
-                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                    EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                     Duration = infoBlockShoInAnimationDuration.ToString()
                 });
             }
@@ -120,7 +122,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             if (concreteBindingContext.ContextedImageZoomingEnabled && concreteBindingContext.ScreenPresentationTime > System.TimeSpan.Zero)
             {
-                var presentedImageZoominAnimation = new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                var presentedImageZoominAnimation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
                 {
                     Target = ContextedImageWrapper,
                     Scale = 1.2,

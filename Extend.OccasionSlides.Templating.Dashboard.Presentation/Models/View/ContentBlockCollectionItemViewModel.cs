@@ -1,13 +1,15 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.View
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block.Contract;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.View
 {
-    public class ContentBlockCollectionItemViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
+    public class ContentBlockCollectionItemViewModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel
     {
-        private Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel target;
+        private AbstractContentBlockViewModel target;
         private bool isBeingDragged;
         private bool isBeingDraggedOverAtStart;
         private bool isBeingDraggedOverAtEnd;
 
-        public Templating.Presentation.Models.View.Block.Contract.AbstractContentBlockViewModel Target { get => target; set => SetProperty(ref target, value); }
+        public AbstractContentBlockViewModel Target { get => target; set => SetProperty(ref target, value); }
 
         public bool IsBeingDragged { get => isBeingDragged; set => SetProperty(ref isBeingDragged, value); }
 

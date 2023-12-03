@@ -1,18 +1,21 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Block
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Block
 {
-    public partial class TransparentSeparatorContentBlockConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.Configuration.Block.TransparentSeparatorContentBlockConfigurationPageModel>
+    public partial class TransparentSeparatorContentBlockConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<TransparentSeparatorContentBlockConfigurationPageModel>
     {
-        private System.Action<Templating.Presentation.Models.View.Block.TransparentSeparatorContentBlockViewModel> applyCallbackAction;
+        private System.Action<TransparentSeparatorContentBlockViewModel> applyCallbackAction;
 
-        public TransparentSeparatorContentBlockConfigurationPage(System.Action<Templating.Presentation.Models.View.Block.TransparentSeparatorContentBlockViewModel> applyCallbackAction)
+        public TransparentSeparatorContentBlockConfigurationPage(System.Action<TransparentSeparatorContentBlockViewModel> applyCallbackAction)
             : this(null, applyCallbackAction)
         {
         }
 
-        public TransparentSeparatorContentBlockConfigurationPage(Templating.Presentation.Models.View.Block.TransparentSeparatorContentBlockViewModel model, System.Action<Templating.Presentation.Models.View.Block.TransparentSeparatorContentBlockViewModel> applyCallbackAction)
-            : base(Factories.Block.TransparentSeparatorContentBlockConfigurationPageModelFactory.Build(model))
+        public TransparentSeparatorContentBlockConfigurationPage(TransparentSeparatorContentBlockViewModel model, System.Action<TransparentSeparatorContentBlockViewModel> applyCallbackAction)
+            : base(TransparentSeparatorContentBlockConfigurationPageModelFactory.Build(model))
         {
             this.applyCallbackAction = applyCallbackAction;
 

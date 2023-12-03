@@ -1,9 +1,12 @@
-﻿using SkiaSharp.Views.Forms;
-using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard;
+﻿using MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers;
+using SkiaSharp.Views.Forms;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Placard
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Placard
 {
     public partial class PortraitTranslucentContextualOverlapForImageSecuencePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
@@ -36,7 +39,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             foreach (var item in InfoBlocksLayout.Children)
             {
-                if (item.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                if (item.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
                 item.Opacity = 0;
             }
@@ -71,24 +74,24 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             screenplayPresenter.BeginPresentation();
 
-            OverlapLayout.TranslationY = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? Height * -1 : Height;
+            OverlapLayout.TranslationY = concreteBindingContext.OverlapAlignment == OverlapAlignment.Start ? Height * -1 : Height;
 
             OverlapLayout.IsVisible = true;
 
             int overlapShowInAnimationDuration = 650;
             int infoBlockShoInAnimationDuration = 600;
 
-            var internalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            var internalShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
             {
                 Delay = "2000",
                 IsParallel = true
             };
 
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
             {
                 Target = OverlapLayout,
                 TranslateY = 0,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 Duration = overlapShowInAnimationDuration.ToString()
             });
 
@@ -96,15 +99,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             foreach (var infoBlockLayout in InfoBlocksLayout.Children)
             {
-                if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                if (infoBlockLayout.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
-                internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                 {
                     Target = infoBlockLayout,
-                    Direction = concreteBindingContext.OverlapAlignment == Enumerations.OverlapAlignment.Start ? XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down : XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                    Direction = concreteBindingContext.OverlapAlignment == OverlapAlignment.Start ? SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down : SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                     RelativeOffset = 100d,
                     Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * index++).ToString(),
-                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                    EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                     Duration = infoBlockShoInAnimationDuration.ToString()
                 });
             }
@@ -130,7 +133,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
             var paint = new SkiaSharp.SKPaint()
             {
                 Style = SkiaSharp.SKPaintStyle.Fill,
-                Color = (BindingContext as TranslucentContextualOverlapForImageSecuencePlacardViewModel).OverlapBackgroundColor.ToSKColor().WithAlpha(Providers.ConstantProvider.TRANSLUCED_OPACITY_LEVEL)
+                Color = (BindingContext as TranslucentContextualOverlapForImageSecuencePlacardViewModel).OverlapBackgroundColor.ToSKColor().WithAlpha(ConstantProvider.TRANSLUCED_OPACITY_LEVEL)
             };
 
             eventArgs.Surface.Canvas.DrawPath(concreteBindingContext.OverlapShapeKind.ToVerticalSKPath(concreteBindingContext.OverlapAlignment, eventArgs.Info.Width, eventArgs.Info.Height, OverlapContentLayout.Height), paint);
@@ -149,7 +152,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
-                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Image.ThumbnailId)),
+                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(context.Image.ThumbnailId)),
                     Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                     ZoomingEnabled = context.IsZoomingEnabled
                 }, relativeSizeScaleFactor);

@@ -1,18 +1,20 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Extensions
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Extensions
 {
     public static class ContentHorizontalAlignamentExtensions
     {
-        public static Xamarin.Forms.LayoutAlignment ToLayoutAlignment(this Enumerations.ContentHorizontalAlignament target)
+        public static Xamarin.Forms.LayoutAlignment ToLayoutAlignment(this ContentHorizontalAlignament target)
         {
             switch (target)
             {
-                case Enumerations.ContentHorizontalAlignament.Left:
+                case ContentHorizontalAlignament.Left:
                     return Xamarin.Forms.LayoutAlignment.Start;
 
-                case Enumerations.ContentHorizontalAlignament.Center:
+                case ContentHorizontalAlignament.Center:
                     return Xamarin.Forms.LayoutAlignment.Center;
 
-                case Enumerations.ContentHorizontalAlignament.Right:
+                case ContentHorizontalAlignament.Right:
                     return Xamarin.Forms.LayoutAlignment.End;
 
                 default:

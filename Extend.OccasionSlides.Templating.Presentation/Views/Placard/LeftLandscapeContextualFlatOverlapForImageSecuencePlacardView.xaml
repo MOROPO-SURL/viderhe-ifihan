@@ -2,11 +2,11 @@
 <extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters"
-    xmlns:viewtemplates="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Template"
-    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:converters="clr-namespace:MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Converters"
+    xmlns:viewtemplates="clr-namespace:MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Template"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
     xmlns:skiaformviews="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Placard.LeftLandscapeContextualFlatOverlapForImageSecuencePlacardView"
+    x:Class="MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Placard.LeftLandscapeContextualFlatOverlapForImageSecuencePlacardView"
     x:Name="RootView">
     <ContentView.Resources>
         <ResourceDictionary>

@@ -1,12 +1,14 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block.Contract;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Block.Contract;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block.Contract;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions
 {
     public static class ContentBlockViewModelExtensions
     {
-        public static Templating.Models.Context.Block.Contract.AbstractContentBlockContextModel ToContextModel(this AbstractContentBlockViewModel target)
+        public static AbstractContentBlockContextModel ToContextModel(this AbstractContentBlockViewModel target)
         {
             if (target is HeaderTextContentBlockViewModel)
             {

@@ -1,6 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Converters
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Converters
 {
     public class ContentBlockToViewConverter : Xamarin.Forms.IValueConverter
     {
@@ -10,9 +11,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         {
             if (value == null) return null;
 
-            if (!(value is Models.View.ContentBlockCollectionItemViewModel)) return value;
+            if (!(value is ContentBlockCollectionItemViewModel)) return value;
 
-            var item = value as Models.View.ContentBlockCollectionItemViewModel;
+            var item = value as ContentBlockCollectionItemViewModel;
 
             if (item.Target is TextContentBlockViewModel) return new Views.Block.TextContentBlockView(item.Target as TextContentBlockViewModel, OptionButtonClicked);
 

@@ -1,6 +1,8 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Placard
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Placard
 {
     public partial class CenteredTraslucentIntroOverImagePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
@@ -38,7 +40,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             var concreteBindingContext = BindingContext as CenteredTraslucentIntroOverImagePlacardViewModel;
 
-            var internalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            var internalShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
             {
                 Delay = "2000",
                 IsParallel = true
@@ -53,55 +55,55 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             switch (concreteBindingContext.ContentBoxPresentationKind)
             {
-                case Enumerations.CenteredContentBoxPresentationKind.Inmersive:
+                case CenteredContentBoxPresentationKind.Inmersive:
                     OverlapLayout.Opacity = 0;
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
-                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                        if (infoBlockLayout.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
                         infoBlockLayout.Scale = 0;
                     }
 
-                    internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+                    internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
                     {
                         Target = OverlapLayout,
                         Opacity = 1,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.Linear,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.Linear,
                         Duration = overlapShowInAnimationDuration.ToString()
                     });
                     
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
-                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                        if (infoBlockLayout.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
-                        internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                        internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
                         {
                             Target = infoBlockLayout,
                             Scale = 1,
                             Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * infoBlockLayoutIndex++).ToString(),
-                            EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                            EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
                             Duration = infoBlockShoInAnimationDuration.ToString()
                         });
                     }
 
                     break;
 
-                case Enumerations.CenteredContentBoxPresentationKind.FloatBandHorizontal:
+                case CenteredContentBoxPresentationKind.FloatBandHorizontal:
                     OverlapLayout.TranslationY = Height;
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
-                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                        if (infoBlockLayout.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
                         infoBlockLayout.Opacity = 0;
                     }
 
-                    internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
+                    internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
                     {
                         Target = OverlapLayout,
                         TranslateY = 0,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
                         Duration = overlapShowInAnimationDuration.ToString()
                     });
 
@@ -109,85 +111,85 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
-                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                        if (infoBlockLayout.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
-                        internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                        internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                         {
                             Target = infoBlockLayout,
-                            Direction = iteration++ % 2 == 0 ? XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Left : XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Right,
+                            Direction = iteration++ % 2 == 0 ? SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Left : SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Right,
                             RelativeOffset = 100d,
                             Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * infoBlockLayoutIndex++).ToString(),
-                            EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                            EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                             Duration = infoBlockShoInAnimationDuration.ToString()
                         });
                     }
 
                     break;
 
-                case Enumerations.CenteredContentBoxPresentationKind.FloatBandVertical:
+                case CenteredContentBoxPresentationKind.FloatBandVertical:
                     OverlapLayout.TranslationX = Width;
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
-                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                        if (infoBlockLayout.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
                         infoBlockLayout.Opacity = 0;
                     }
 
-                    internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                    internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                     {
                         Target = OverlapLayout,
                         TranslateX = 0,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
                         Duration = overlapShowInAnimationDuration.ToString()
                     });
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
-                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                        if (infoBlockLayout.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
-                        internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                        internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                         {
                             Target = infoBlockLayout,
-                            Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                            Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
                             RelativeOffset = 100d,
                             Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * infoBlockLayoutIndex++).ToString(),
-                            EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                            EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                             Duration = infoBlockShoInAnimationDuration.ToString()
                         });
                     }
 
                     break;
 
-                case Enumerations.CenteredContentBoxPresentationKind.FloatBoxFilled:
+                case CenteredContentBoxPresentationKind.FloatBoxFilled:
                 default:
                     OverlapLayout.Scale = 0;
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
-                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                        if (infoBlockLayout.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
                         infoBlockLayout.Scale = 0;
                     }
 
-                    internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                    internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
                     {
                         Target = OverlapLayout,
                         Scale = 1,
-                        EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                        EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
                         Duration = overlapShowInAnimationDuration.ToString()
                     });
 
                     foreach (var infoBlockLayout in InfoBlocksLayout.Children)
                     {
-                        if (infoBlockLayout.BindingContext is Models.View.Block.TransparentSeparatorContentBlockViewModel) continue;
+                        if (infoBlockLayout.BindingContext is TransparentSeparatorContentBlockViewModel) continue;
 
-                        internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                        internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
                         {
                             Target = infoBlockLayout,
                             Scale = 1,
                             Delay = (overlapShowInAnimationDuration + infoBlockShoInAnimationDuration / 2 * infoBlockLayoutIndex++).ToString(),
-                            EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                            EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
                             Duration = infoBlockShoInAnimationDuration.ToString()
                         });
                     }
@@ -199,7 +201,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             if (concreteBindingContext.BackgroundImageZoomingEnabled && concreteBindingContext.ScreenPresentationTime > System.TimeSpan.Zero)
             {
-                var presentedImageZoominAnimation = new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                var presentedImageZoominAnimation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
                 {
                     Target = BackgroundImageWrapper,
                     Scale = 1.2,

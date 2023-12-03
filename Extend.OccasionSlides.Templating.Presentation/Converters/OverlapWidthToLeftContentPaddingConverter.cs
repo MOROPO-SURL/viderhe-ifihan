@@ -1,10 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Converters
 {
     public class OverlapWidthToLeftContentPaddingConverter : Xamarin.Forms.IValueConverter
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var wrapperWidth = (double) value;
+            var wrapperWidth = (double)value;
 
             if (wrapperWidth == -1) return new Xamarin.Forms.Thickness();
 

@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block
 {
     public class ImageContentBlockViewModel : Contract.AbstractContentBlockViewModel, Contract.IScreenVerticalSizePercentCalculableContentBlockViewModel
     {
@@ -12,7 +14,7 @@
 
         public Xamarin.Forms.LayoutAlignment HorizontalAlignament { get; set; }
 
-        public Enumerations.ImageFilterKind? FilterKind { get; set; }
+        public ImageFilterKind? FilterKind { get; set; }
 
         public string FilterSerializationContext { get; set; }
     }

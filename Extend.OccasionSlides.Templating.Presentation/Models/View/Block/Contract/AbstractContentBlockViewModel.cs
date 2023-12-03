@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block.Contract
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block.Contract
 {
-    public abstract class AbstractContentBlockViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
+    public abstract class AbstractContentBlockViewModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel
     {
         public System.Guid Id { get; set; }
 

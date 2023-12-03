@@ -1,11 +1,13 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard.Contract
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard.Contract
 {
     public interface IContextualOverlapSKPathTransformablePlacardViewModel
     {
-        Enumerations.OverlapShapeKind OverlapShapeKind { get; set; }
+        OverlapShapeKind OverlapShapeKind { get; set; }
 
-        Enumerations.OverlapSize OverlapSize { get; set; }
+        OverlapSize OverlapSize { get; set; }
 
-        Enumerations.OverlapAlignment OverlapAlignment { get; set; }
+        OverlapAlignment OverlapAlignment { get; set; }
     }
 }

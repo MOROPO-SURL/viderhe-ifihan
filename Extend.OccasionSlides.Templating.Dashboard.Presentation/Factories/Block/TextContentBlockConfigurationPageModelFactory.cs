@@ -1,12 +1,15 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Block
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Block
 {
     public static class TextContentBlockConfigurationPageModelFactory
     {
-        public static Models.Page.Configuration.Block.TextContentBlockConfigurationPageModel Build(Templating.Presentation.Models.View.Block.TextContentBlockViewModel model)
+        public static TextContentBlockConfigurationPageModel Build(TextContentBlockViewModel model)
         {
-            if (model == null) return new Models.Page.Configuration.Block.TextContentBlockConfigurationPageModel();
+            if (model == null) return new TextContentBlockConfigurationPageModel();
 
-            var result = new Models.Page.Configuration.Block.TextContentBlockConfigurationPageModel
+            var result = new TextContentBlockConfigurationPageModel
             {
                 Id = model.Id,
                 Text = model.Text,

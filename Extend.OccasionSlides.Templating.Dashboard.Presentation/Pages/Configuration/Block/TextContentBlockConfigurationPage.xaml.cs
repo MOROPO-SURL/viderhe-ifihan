@@ -1,18 +1,21 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Block
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Block
 {
-    public partial class TextContentBlockConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.Configuration.Block.TextContentBlockConfigurationPageModel>
+    public partial class TextContentBlockConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<TextContentBlockConfigurationPageModel>
     {
-        private System.Action<Templating.Presentation.Models.View.Block.TextContentBlockViewModel> applyCallbackAction;
+        private System.Action<TextContentBlockViewModel> applyCallbackAction;
 
-        public TextContentBlockConfigurationPage(System.Action<Templating.Presentation.Models.View.Block.TextContentBlockViewModel> applyCallbackAction)
+        public TextContentBlockConfigurationPage(System.Action<TextContentBlockViewModel> applyCallbackAction)
             : this(null, applyCallbackAction)
         {
         }
 
-        public TextContentBlockConfigurationPage(Templating.Presentation.Models.View.Block.TextContentBlockViewModel model, System.Action<Templating.Presentation.Models.View.Block.TextContentBlockViewModel> applyCallbackAction)
-            : base(Factories.Block.TextContentBlockConfigurationPageModelFactory.Build(model))
+        public TextContentBlockConfigurationPage(TextContentBlockViewModel model, System.Action<TextContentBlockViewModel> applyCallbackAction)
+            : base(TextContentBlockConfigurationPageModelFactory.Build(model))
         {
             this.applyCallbackAction = applyCallbackAction;
 
@@ -84,7 +87,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
                 BindingContextPageModel.IsBusy = true;
 
-                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 apiConnectClient.CreateAsync(new Cloud.Api.Common.Models.TextInputModel
                 {

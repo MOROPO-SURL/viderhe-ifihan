@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context.Block.Contract
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Block.Contract
 {
     public abstract class AbstractContentBlockContextModel
     {

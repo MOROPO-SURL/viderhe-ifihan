@@ -1,6 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Enumerations;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Placard
 {
     public class TrailContextualOverlapForImagePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
@@ -17,7 +18,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
         public TrailContextualOverlapForImagePlacardConfigurationPageModel()
         {
             ScreenPresentationTimeSecounds = 10;
-            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<View.ContentBlockCollectionItemViewModel>();
+            ContentBlocks = new System.Collections.ObjectModel.ObservableCollection<ContentBlockCollectionItemViewModel>();
             ContextedImageLayoutMode = Essential.Templating.Enumerations.PictureLayoutMode.AspectFill;
             AvailableOverlapShapeKinds = new OverlapShapeKind[]
             {
@@ -62,7 +63,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
         public OverlapSize[] AvailableOverlapSizes { get; private set; }
 
-        public System.Collections.ObjectModel.ObservableCollection<View.ContentBlockCollectionItemViewModel> ContentBlocks { get; private set; }
+        public System.Collections.ObjectModel.ObservableCollection<ContentBlockCollectionItemViewModel> ContentBlocks { get; private set; }
 
         public OverlapAlignment OverlapAlignment { get => overlapAlignment; set => SetProperty(ref overlapAlignment, value); }
 

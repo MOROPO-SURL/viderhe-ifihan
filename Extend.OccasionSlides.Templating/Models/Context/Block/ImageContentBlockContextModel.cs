@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context.Block
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Block
 {
     public class ImageContentBlockContextModel : Contract.AbstractContentBlockContextModel
     {
@@ -8,9 +10,9 @@
 
         public Essential.Templating.Enumerations.PictureLayoutMode LayoutMode { get; set; }
 
-        public Enumerations.ContentHorizontalAlignament? HorizontalAlignament { get; set; }
+        public ContentHorizontalAlignament? HorizontalAlignament { get; set; }
 
-        public Enumerations.ImageFilterKind? FilterKind { get; set; }
+        public ImageFilterKind? FilterKind { get; set; }
 
         public string FilterSerializationContext { get; set; }
     }

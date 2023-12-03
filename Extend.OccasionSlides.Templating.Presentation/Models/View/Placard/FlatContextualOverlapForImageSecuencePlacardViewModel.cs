@@ -1,14 +1,18 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block.Contract;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard.Contract;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard
 {
-    public class FlatContextualOverlapForImageSecuencePlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel, Contract.IContextualOverlapSKPathTransformablePlacardViewModel
+    public class FlatContextualOverlapForImageSecuencePlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel, IContextualOverlapSKPathTransformablePlacardViewModel
     {
-        public Block.Contract.AbstractContentBlockViewModel[] ContentBlocks { get; set; }
+        public AbstractContentBlockViewModel[] ContentBlocks { get; set; }
 
-        public Enumerations.OverlapAlignment OverlapAlignment { get; set; }
+        public OverlapAlignment OverlapAlignment { get; set; }
 
-        public Enumerations.OverlapShapeKind OverlapShapeKind { get; set; }
+        public OverlapShapeKind OverlapShapeKind { get; set; }
 
-        public Enumerations.OverlapSize OverlapSize { get; set; }
+        public OverlapSize OverlapSize { get; set; }
 
         public Xamarin.Forms.Color OverlapBackgroundColor { get; set; }
 

@@ -1,14 +1,16 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Models.Context.Placard
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Placard
 {
     public class FlatContextualOverlapForImagePlacardContextModel : Common.Templating.Models.Context.AbstractScreenTimedPlacardContextModel
     {
         public Block.Contract.AbstractContentBlockContextModel[] ContentBlocks { get; set; }
 
-        public Enumerations.OverlapAlignment OverlapAlignment { get; set; }
+        public OverlapAlignment OverlapAlignment { get; set; }
 
-        public Enumerations.OverlapShapeKind OverlapShapeKind { get; set; }
+        public OverlapShapeKind OverlapShapeKind { get; set; }
 
-        public Enumerations.OverlapSize OverlapSize { get; set; }
+        public OverlapSize OverlapSize { get; set; }
 
         public string OverlapBackgroundColor { get; set; }
 

@@ -1,18 +1,21 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Block
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Block
 {
-    public partial class ImageContentBlockConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.Configuration.Block.ImageContentBlockConfigurationPageModel>
+    public partial class ImageContentBlockConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ImageContentBlockConfigurationPageModel>
     {
-        private System.Action<Templating.Presentation.Models.View.Block.ImageContentBlockViewModel> applyCallbackAction;
+        private System.Action<ImageContentBlockViewModel> applyCallbackAction;
 
-        public ImageContentBlockConfigurationPage(System.Action<Templating.Presentation.Models.View.Block.ImageContentBlockViewModel> applyCallbackAction)
+        public ImageContentBlockConfigurationPage(System.Action<ImageContentBlockViewModel> applyCallbackAction)
             : this(null, applyCallbackAction)
         {
         }
 
-        public ImageContentBlockConfigurationPage(Templating.Presentation.Models.View.Block.ImageContentBlockViewModel model, System.Action<Templating.Presentation.Models.View.Block.ImageContentBlockViewModel> applyCallbackAction)
-            : base(Factories.Block.ImageContentBlockConfigurationPageModelFactory.Build(model))
+        public ImageContentBlockConfigurationPage(ImageContentBlockViewModel model, System.Action<ImageContentBlockViewModel> applyCallbackAction)
+            : base(ImageContentBlockConfigurationPageModelFactory.Build(model))
         {
             this.applyCallbackAction = applyCallbackAction;
 

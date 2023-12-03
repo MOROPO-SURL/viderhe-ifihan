@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6C2DA28A-AAB9-498B-A1F6-ED74D9FB2F20}</ProjectGuid>
+    <ProjectGuid>{873EBC7C-6D26-4646-8F99-D6EA8A433775}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>MOROPO.VIDERHE.Terminal.Player.UWP.DesktopExtension.PlatformInterop</RootNamespace>
     <AssemblyName>VIDERHE.Player.UWP.DesktopExtension.PlatformInterop</AssemblyName>

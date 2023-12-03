@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Extensions
 {
     public static class AspectExtensions
     {

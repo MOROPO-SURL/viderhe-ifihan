@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Enumerations
+﻿namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations
 {
     public enum OverlapTrailMode
     {

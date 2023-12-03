@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Block
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Block
 {
     public static class HeaderTextContentBlockConfigurationPageModelFactory
     {
-        public static Models.Page.Configuration.Block.HeaderTextContentBlockConfigurationPageModel Build(Templating.Presentation.Models.View.Block.HeaderTextContentBlockViewModel model)
+        public static Models.Page.Configuration.Block.HeaderTextContentBlockConfigurationPageModel Build(HeaderTextContentBlockViewModel model)
         {
             if (model == null) return new Models.Page.Configuration.Block.HeaderTextContentBlockConfigurationPageModel();
 

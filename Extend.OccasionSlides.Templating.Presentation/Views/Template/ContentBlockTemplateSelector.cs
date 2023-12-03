@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Views.Template
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Template
 {
     public class ContentBlockTemplateSelector : Xamarin.Forms.DataTemplateSelector
     {

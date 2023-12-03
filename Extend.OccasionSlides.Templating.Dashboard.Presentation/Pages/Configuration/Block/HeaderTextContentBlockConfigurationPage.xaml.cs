@@ -1,18 +1,21 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Factories.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Models.Page.Configuration.Block;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Block;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Block
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Block
 {
-    public partial class HeaderTextContentBlockConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.Configuration.Block.HeaderTextContentBlockConfigurationPageModel>
+    public partial class HeaderTextContentBlockConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<HeaderTextContentBlockConfigurationPageModel>
     {
-        private System.Action<Templating.Presentation.Models.View.Block.HeaderTextContentBlockViewModel> applyCallbackAction;
+        private System.Action<HeaderTextContentBlockViewModel> applyCallbackAction;
 
-        public HeaderTextContentBlockConfigurationPage(System.Action<Templating.Presentation.Models.View.Block.HeaderTextContentBlockViewModel> applyCallbackAction)
+        public HeaderTextContentBlockConfigurationPage(System.Action<HeaderTextContentBlockViewModel> applyCallbackAction)
             : this(null, applyCallbackAction)
         {
         }
 
-        public HeaderTextContentBlockConfigurationPage(Templating.Presentation.Models.View.Block.HeaderTextContentBlockViewModel model, System.Action<Templating.Presentation.Models.View.Block.HeaderTextContentBlockViewModel> applyCallbackAction)
-            : base(Factories.Block.HeaderTextContentBlockConfigurationPageModelFactory.Build(model))
+        public HeaderTextContentBlockConfigurationPage(HeaderTextContentBlockViewModel model, System.Action<HeaderTextContentBlockViewModel> applyCallbackAction)
+            : base(HeaderTextContentBlockConfigurationPageModelFactory.Build(model))
         {
             this.applyCallbackAction = applyCallbackAction;
 
@@ -98,7 +101,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
                 BindingContextPageModel.IsBusy = true;
 
-                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 apiConnectClient.CreateAsync(new Cloud.Api.Common.Models.TextInputModel
                 {
@@ -131,7 +134,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Dashboard
 
                 BindingContextPageModel.IsBusy = true;
 
-                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 apiConnectClient.CreateAsync(new Cloud.Api.Common.Models.TextInputModel
                 {

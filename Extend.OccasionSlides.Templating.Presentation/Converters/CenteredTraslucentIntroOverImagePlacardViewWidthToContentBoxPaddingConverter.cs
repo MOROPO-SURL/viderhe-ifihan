@@ -1,6 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard;
+﻿using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.View.Placard;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentation.Converters
+namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Converters
 {
     public class CenteredTraslucentIntroOverImagePlacardViewWidthToContentBoxPaddingConverter : Xamarin.Forms.IValueConverter
     {
@@ -20,19 +21,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OccasionSlides.Templating.Presentat
 
             switch (concreteBindingContext.ContentBoxPresentationKind)
             {
-                case Enumerations.CenteredContentBoxPresentationKind.FloatBoxFilled:
+                case CenteredContentBoxPresentationKind.FloatBoxFilled:
                     return new Xamarin.Forms.Thickness(avaragePlacardSize * 0.1d);
 
-                case Enumerations.CenteredContentBoxPresentationKind.FloatBandHorizontal:
+                case CenteredContentBoxPresentationKind.FloatBandHorizontal:
                     return new Xamarin.Forms.Thickness(avaragePlacardSize * 0.2d, avaragePlacardSize * 0.05d);
 
-                case Enumerations.CenteredContentBoxPresentationKind.FloatBandVertical:
+                case CenteredContentBoxPresentationKind.FloatBandVertical:
                     return new Xamarin.Forms.Thickness(avaragePlacardSize * 0.1d, avaragePlacardSize * 0.2d);
 
-                case Enumerations.CenteredContentBoxPresentationKind.Inmersive:
+                case CenteredContentBoxPresentationKind.Inmersive:
                 default:
                     return new Xamarin.Forms.Thickness(avaragePlacardSize * 0.1d);
-            }            
+            }
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
