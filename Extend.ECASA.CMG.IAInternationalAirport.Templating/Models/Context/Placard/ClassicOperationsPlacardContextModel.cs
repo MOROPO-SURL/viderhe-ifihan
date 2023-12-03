@@ -1,6 +1,9 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Models.Context.Placard
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Models.Context.Placard.Contract;
+
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Models.Context.Placard
 {
-    public class ClassicOperationsPlacardContextModel : Contract.AbstractPaginableOperationsPlacardContextModel
+    public class ClassicOperationsPlacardContextModel : AbstractPaginableOperationsPlacardContextModel
     {
         public string TableBackgroundColor { get; set; }
 
@@ -21,7 +24,7 @@
         public string SecoundaryRowBackgroundColor { get; set; }
 
         public int RowFontSize { get; set; }
-        
+
         public Enumerations.ClassicOperationsColumn[] Columns { get; set; }
 
         public BackgroundContextModel Background { get; set; }

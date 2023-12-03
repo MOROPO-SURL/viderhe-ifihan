@@ -1,6 +1,8 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Models.Context;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Converters
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Converters
 {
     public class BackgroundToViewConverter : Xamarin.Forms.IValueConverter
     {
@@ -8,19 +10,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
         {
             if (value != null)
             {
-                var target = value as Templating.Models.Context.BackgroundContextModel;
+                var target = value as BackgroundContextModel;
 
                 switch (target.Kind)
                 {
-                    case Enumerations.BackgroundKind.Solid:
+                    case BackgroundKind.Solid:
                         return new Views.Background.SolidBackgroundView(new Models.View.Background.SolidBackgroundViewModel { Color = Xamarin.Forms.Color.FromHex(target.SerializedContext) });
 
-                    case Enumerations.BackgroundKind.Gradient:
+                    case BackgroundKind.Gradient:
                         var gradientModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.GradientContextModel>(target.SerializedContext);
 
                         return new Views.Background.GradientBackgroundView(new Models.View.Background.GradientBackgroundViewModel { Source = MagicGradients.CssGradientSource.Parse(gradientModel.Data) });
 
-                    case Enumerations.BackgroundKind.Image:
+                    case BackgroundKind.Image:
                         var imageModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(target.SerializedContext).ToViewModel();
 
                         return new Views.Background.ImageBackgroundView(new Models.View.Background.ImageBackgroundViewModel

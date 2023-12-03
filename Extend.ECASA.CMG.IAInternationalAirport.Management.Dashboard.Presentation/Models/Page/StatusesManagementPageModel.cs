@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page.Contract;
+
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page
 {
-    public class StatusesManagementPageModel : Contract.AbstractManagementPageModel<MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.StatusDisplayModel>
+    public class StatusesManagementPageModel : AbstractManagementPageModel<Service.ECASA.CMG.InterFIDS.API.Common.Models.StatusDisplayModel>
     {
     }
 }

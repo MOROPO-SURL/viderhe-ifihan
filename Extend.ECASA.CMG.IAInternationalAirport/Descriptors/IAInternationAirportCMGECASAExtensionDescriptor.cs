@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Descriptors
 {
     public sealed class IAInternationAirportCMGECASAExtensionDescriptor : Common.Descriptors.IExtensionDescriptor
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page
+﻿namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page
 {
     public class ApiKeyDefinitionPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
@@ -16,7 +16,7 @@
             var tomorrow = System.DateTime.Now.AddDays(1);
 
             Id = System.Guid.NewGuid();
-            Roles = new System.Collections.ObjectModel.ObservableCollection<MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.RoleDisplayModel>();
+            Roles = new System.Collections.ObjectModel.ObservableCollection<Service.ECASA.CMG.InterFIDS.API.Common.Models.RoleDisplayModel>();
             expirateAtDate = tomorrow.Date;
             expirateAtTime = tomorrow.TimeOfDay;
         }
@@ -39,6 +39,6 @@
 
         public string Host { get => host; set => SetProperty(ref host, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.RoleDisplayModel> Roles { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<Service.ECASA.CMG.InterFIDS.API.Common.Models.RoleDisplayModel> Roles { get; set; }
     }
 }

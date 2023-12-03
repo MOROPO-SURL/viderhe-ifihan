@@ -1,11 +1,16 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Pages
 {
-    public partial class ClassicDeparturesPlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ClassicOperationsPlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class ClassicDeparturesPlacardConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ClassicOperationsPlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private const string BACKGROUND_OPTION_GRADIENT = "Gradiente";
         private const string BACKGROUND_OPTION_IMAGE = "Imagen";
@@ -22,43 +27,43 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
         }
 
         public ClassicDeparturesPlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(Factories.ClassicOperationsPlacardConfigurationPageModelFactory.Build(placardViewModel))
+            : base(ClassicOperationsPlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
             if (placardViewModel == null)
             {
                 var index = 0;
 
-                BindingContextPageModel.VisibleColumns = new System.Collections.ObjectModel.ObservableCollection<Models.View.ClassicOperationColumnCollectionItemViewModel> {
-                    new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = Enumerations.ClassicOperationsColumn.TIME },
-                    new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = Enumerations.ClassicOperationsColumn.CONTEXT },
-                    new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = Enumerations.ClassicOperationsColumn.FLY },
-                    new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = Enumerations.ClassicOperationsColumn.TERMINAL },
-                    new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = Enumerations.ClassicOperationsColumn.STATUS }
+                BindingContextPageModel.VisibleColumns = new System.Collections.ObjectModel.ObservableCollection<ClassicOperationColumnCollectionItemViewModel> {
+                    new ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = ClassicOperationsColumn.TIME },
+                    new ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = ClassicOperationsColumn.CONTEXT },
+                    new ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = ClassicOperationsColumn.FLY },
+                    new ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = ClassicOperationsColumn.TERMINAL },
+                    new ClassicOperationColumnCollectionItemViewModel { Order = index++, Target = ClassicOperationsColumn.STATUS }
                 };
-                BindingContextPageModel.AvailableColumns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn>
+                BindingContextPageModel.AvailableColumns = new System.Collections.ObjectModel.ObservableCollection<ClassicOperationsColumn>
                 {
-                    Enumerations.ClassicOperationsColumn.CARRIER,
-                    Enumerations.ClassicOperationsColumn.FLYNUMBER,
-                    Enumerations.ClassicOperationsColumn.CATEGORY,
-                    Enumerations.ClassicOperationsColumn.GATE
+                    ClassicOperationsColumn.CARRIER,
+                    ClassicOperationsColumn.FLYNUMBER,
+                    ClassicOperationsColumn.CATEGORY,
+                    ClassicOperationsColumn.GATE
                 };
             }
             else
             {
-                var classicOperationsColumnUniverse = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn>
+                var classicOperationsColumnUniverse = new System.Collections.ObjectModel.ObservableCollection<ClassicOperationsColumn>
                 {
-                    Enumerations.ClassicOperationsColumn.TIME,
-                    Enumerations.ClassicOperationsColumn.CONTEXT,
-                    Enumerations.ClassicOperationsColumn.FLY,
-                    Enumerations.ClassicOperationsColumn.TERMINAL,
-                    Enumerations.ClassicOperationsColumn.STATUS,
-                    Enumerations.ClassicOperationsColumn.CARRIER,
-                    Enumerations.ClassicOperationsColumn.FLYNUMBER,
-                    Enumerations.ClassicOperationsColumn.CATEGORY,
-                    Enumerations.ClassicOperationsColumn.GATE
+                    ClassicOperationsColumn.TIME,
+                    ClassicOperationsColumn.CONTEXT,
+                    ClassicOperationsColumn.FLY,
+                    ClassicOperationsColumn.TERMINAL,
+                    ClassicOperationsColumn.STATUS,
+                    ClassicOperationsColumn.CARRIER,
+                    ClassicOperationsColumn.FLYNUMBER,
+                    ClassicOperationsColumn.CATEGORY,
+                    ClassicOperationsColumn.GATE
                 };
 
-                BindingContextPageModel.AvailableColumns = new System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn>(classicOperationsColumnUniverse.Except(BindingContextPageModel.VisibleColumns.Select(item => item.Target)));
+                BindingContextPageModel.AvailableColumns = new System.Collections.ObjectModel.ObservableCollection<ClassicOperationsColumn>(classicOperationsColumnUniverse.Except(BindingContextPageModel.VisibleColumns.Select(item => item.Target)));
             }
 
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
@@ -70,7 +75,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
             if (placardViewModel == null)
             {
-                var templateDescriptor = new Descriptors.ClassicDeparturesTemplateDescriptor();
+                var templateDescriptor = new ClassicDeparturesTemplateDescriptor();
 
                 Title = string.Format("Nuevo Cartel ({0})", templateDescriptor.Name);
 
@@ -120,14 +125,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 if (placardViewModel == null)
                 {
                     var model = new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Label = BindingContextPageModel.Label,
-                        TemplateId = Descriptors.ClassicDeparturesTemplateDescriptor.ID,
+                        TemplateId = ClassicDeparturesTemplateDescriptor.ID,
                         PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.Placard.ClassicOperationsPlacardContextModel
                         {
@@ -268,7 +273,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
                         case BACKGROUND_OPTION_IMAGE:
                             Support.Presentation.Models.View.ImageViewModel except = null;
 
-                            if (BindingContextPageModel.Background != null && BindingContextPageModel.Background.Kind == Enumerations.BackgroundKind.Image)
+                            if (BindingContextPageModel.Background != null && BindingContextPageModel.Background.Kind == BackgroundKind.Image)
                             {
                                 except = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(BindingContextPageModel.Background.SerializedContext).ToViewModel();
                             }
@@ -290,7 +295,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
         private void HideColumnButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var item = (Models.View.ClassicOperationColumnCollectionItemViewModel) (sender as Xamarin.Forms.BindableObject).BindingContext;
+            var item = (ClassicOperationColumnCollectionItemViewModel) (sender as Xamarin.Forms.BindableObject).BindingContext;
 
             BindingContextPageModel.VisibleColumns.Remove(item);
             BindingContextPageModel.AvailableColumns.Add(item.Target);
@@ -298,15 +303,15 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
         private void ShowColumnButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var item = (Enumerations.ClassicOperationsColumn)(sender as Xamarin.Forms.BindableObject).BindingContext;
+            var item = (ClassicOperationsColumn)(sender as Xamarin.Forms.BindableObject).BindingContext;
 
             BindingContextPageModel.AvailableColumns.Remove(item);
-            BindingContextPageModel.VisibleColumns.Add(new Models.View.ClassicOperationColumnCollectionItemViewModel { Order = BindingContextPageModel.VisibleColumns.Count, Target = item });
+            BindingContextPageModel.VisibleColumns.Add(new ClassicOperationColumnCollectionItemViewModel { Order = BindingContextPageModel.VisibleColumns.Count, Target = item });
         }
 
         private void VisibleColumnsStackLayout_DropGestureRecognizer_Drop(object sender, Xamarin.Forms.DropEventArgs e)
         {
-            var dropItem = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ClassicOperationColumnCollectionItemViewModel;
+            var dropItem = (sender as Xamarin.Forms.BindableObject).BindingContext as ClassicOperationColumnCollectionItemViewModel;
 
             var beingDraggedItem = BindingContextPageModel.VisibleColumns.First(i => i.IsBeingDragged);
 
@@ -342,7 +347,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
         private void VisibleColumnsStackLayout_DropGestureRecognizer_DragOver(object sender, Xamarin.Forms.DragEventArgs e)
         {
-            var dragOverItem = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ClassicOperationColumnCollectionItemViewModel;
+            var dragOverItem = (sender as Xamarin.Forms.BindableObject).BindingContext as ClassicOperationColumnCollectionItemViewModel;
 
             var beingDraggedItem = BindingContextPageModel.VisibleColumns.FirstOrDefault(item => item.IsBeingDragged);
 
@@ -371,7 +376,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
         private void VisibleColumnsStackLayout_ItemView_DragGestureRecognizer_DragStarting(object sender, Xamarin.Forms.DragStartingEventArgs e)
         {
-            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ClassicOperationColumnCollectionItemViewModel;
+            var target = (sender as Xamarin.Forms.BindableObject).BindingContext as ClassicOperationColumnCollectionItemViewModel;
 
             foreach (var item in BindingContextPageModel.VisibleColumns)
             {
@@ -381,7 +386,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
         private void VisibleColumnsStackLayout_ItemView_DragGestureRecognizer_DropCompleted(object sender, Xamarin.Forms.DropCompletedEventArgs e)
         {
-            var beingDraggedItem = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ClassicOperationColumnCollectionItemViewModel;
+            var beingDraggedItem = (sender as Xamarin.Forms.BindableObject).BindingContext as ClassicOperationColumnCollectionItemViewModel;
 
             beingDraggedItem.IsBeingDragged = false;
         }
@@ -395,7 +400,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
         {
             BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
             {
-                Kind = Enumerations.BackgroundKind.Image,
+                Kind = BackgroundKind.Image,
                 SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(target.ToContextModel())
             };
         }
@@ -404,7 +409,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
         {
             BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
             {
-                Kind = Enumerations.BackgroundKind.Gradient,
+                Kind = BackgroundKind.Gradient,
                 SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Common.Templating.Models.Context.GradientContextModel
                 {
                     Id = target.Id,

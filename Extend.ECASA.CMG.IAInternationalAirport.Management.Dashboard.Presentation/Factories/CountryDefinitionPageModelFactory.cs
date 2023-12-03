@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Factories
 {
     public static class CountryDefinitionPageModelFactory
     {
-        public static Models.Page.CountryDefinitionPageModel Build(MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.CountryDisplayModel target)
+        public static Models.Page.CountryDefinitionPageModel Build(Service.ECASA.CMG.InterFIDS.API.Common.Models.CountryDisplayModel target)
         {
             if (target == null) return new Models.Page.CountryDefinitionPageModel();
 

@@ -1,8 +1,11 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Managers;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Pages
 {
-    public partial class CarrierDefinitionPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.CarrierDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class CarrierDefinitionPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<CarrierDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private System.Action definitionCallbackAction;
 
@@ -12,7 +15,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
         private bool hasChangesFlag;
         private byte[] imagePickedData;
 
-        public CarrierDefinitionPage(System.Action definitionCallbackAction, MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.CarrierDisplayModel target = null) : base(Factories.CarrierDefinitionPageModelFactory.Build(target))
+        public CarrierDefinitionPage(System.Action definitionCallbackAction, Service.ECASA.CMG.InterFIDS.API.Common.Models.CarrierDisplayModel target = null) : base(CarrierDefinitionPageModelFactory.Build(target))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -39,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
             BindingContextPageModel.IsBusy = true;
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CountriesAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CountriesAPIConnectClient(SessionManager.Instance);
 
             apiConnectClient.GetAsync().ContinueWith(task =>
             {
@@ -49,7 +52,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
                     BindingContextPageModel.Country = null;
 
-                    var selectableCountries = new System.Collections.Generic.List<MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.CountryDisplayModel>(task.Result);
+                    var selectableCountries = new System.Collections.Generic.List<Service.ECASA.CMG.InterFIDS.API.Common.Models.CountryDisplayModel>(task.Result);
 
                     BindingContextPageModel.SelectableCountries = task.Result;
                     BindingContextPageModel.Country = country;
@@ -104,7 +107,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
             BindingContextPageModel.IsBusy = true;
 
-            var model = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.CarrierInputModel
+            var model = new Service.ECASA.CMG.InterFIDS.API.Common.Models.CarrierInputModel
             {
                 Id = BindingContextPageModel.Id ?? IdEntry.Text,
                 Name = BindingContextPageModel.Name,
@@ -120,7 +123,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
                 model.ImageExtension = BindingContextPageModel.ImageExtension;
             }
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CarriersAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CarriersAPIConnectClient(SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 

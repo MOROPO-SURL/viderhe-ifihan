@@ -1,10 +1,10 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Factories
 {
     public static class CarrierDefinitionPageModelFactory
     {
-        public static Models.Page.CarrierDefinitionPageModel Build(MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.CarrierDisplayModel target)
+        public static Models.Page.CarrierDefinitionPageModel Build(Service.ECASA.CMG.InterFIDS.API.Common.Models.CarrierDisplayModel target)
         {
             if (target == null) return new Models.Page.CarrierDefinitionPageModel();
 

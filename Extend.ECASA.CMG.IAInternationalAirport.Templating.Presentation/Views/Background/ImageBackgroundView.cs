@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Background
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Models.View.Background;
+
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Background
 {
     public class ImageBackgroundView : FFImageLoading.Forms.CachedImage
     {
-        public ImageBackgroundView(Models.View.Background.ImageBackgroundViewModel model)
+        public ImageBackgroundView(ImageBackgroundViewModel model)
         {
             Source = model.Source;
 

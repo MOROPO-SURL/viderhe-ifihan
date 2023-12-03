@@ -1,10 +1,12 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Managers;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Pages
 {
-    public partial class CountriesManagementPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.CountriesManagementPageModel>
+    public partial class CountriesManagementPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<CountriesManagementPageModel>
     {
-        public CountriesManagementPage() : base(new Models.Page.CountriesManagementPageModel())
+        public CountriesManagementPage() : base(new CountriesManagementPageModel())
         {
             InitializeComponent();
 
@@ -38,7 +40,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
         private void ItemTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
-            BindingContextPageModel.Target = (sender as Xamarin.Forms.BindableObject).BindingContext as MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.CountryDisplayModel;
+            BindingContextPageModel.Target = (sender as Xamarin.Forms.BindableObject).BindingContext as Service.ECASA.CMG.InterFIDS.API.Common.Models.CountryDisplayModel;
 
             ItemsCollectionView.SelectedItems.Clear();
         }
@@ -61,7 +63,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.IsBusy = true);
 
-                var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CountriesAPIConnectClient(Managers.SessionManager.Instance);
+                var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CountriesAPIConnectClient(SessionManager.Instance);
 
                 apiConnectClient.Delete(BindingContextPageModel.Target.Id).ContinueWith(targetDeleteTask =>
                 {
@@ -95,7 +97,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
             BindingContextPageModel.Items?.Clear();
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CountriesAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.CountriesAPIConnectClient(SessionManager.Instance);
 
             apiConnectClient.GetAsync().ContinueWith(task =>
             {
@@ -113,7 +115,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
                         {
                             if (BindingContextPageModel.Items == null)
                             {
-                                BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.CountryDisplayModel>(task.Result);
+                                BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<Service.ECASA.CMG.InterFIDS.API.Common.Models.CountryDisplayModel>(task.Result);
                             }
                             else
                             {

@@ -1,9 +1,12 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Managers;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Pages
 {
-    public partial class KindDefinitionPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.KindDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class KindDefinitionPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<KindDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private readonly System.Action definitionCallbackAction;
 
@@ -13,7 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
         private bool hasChangesFlag;
 
-        public KindDefinitionPage(System.Action definitionCallbackAction, MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.KindDisplayModel target = null) : base(Factories.KindDefinitionPageModelFactory.Build(target))
+        public KindDefinitionPage(System.Action definitionCallbackAction, Service.ECASA.CMG.InterFIDS.API.Common.Models.KindDisplayModel target = null) : base(KindDefinitionPageModelFactory.Build(target))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -42,7 +45,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
             BindingContextPageModel.IsBusy = true;
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.KindsAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.KindsAPIConnectClient(SessionManager.Instance);
 
             apiConnectClient.GetAsync().ContinueWith(task =>
             {
@@ -50,10 +53,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
                 {
                     var usedOperationKinds = task.Result.Select(item => item.Id).ToArray();
 
-                    var allOperationKinds = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind[]
+                    var allOperationKinds = new Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind[]
                     {
-                        MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival,
-                        MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure
+                        Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival,
+                        Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure
                     };
 
                     BindingContextPageModel.AvailableIds = allOperationKinds.Except(usedOperationKinds).ToArray();
@@ -99,13 +102,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
             BindingContextPageModel.IsBusy = true;
 
-            var model = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.KindInputModel
+            var model = new Service.ECASA.CMG.InterFIDS.API.Common.Models.KindInputModel
             {
                 Id = BindingContextPageModel.Id.Value,
                 Discriminator = BindingContextPageModel.Discriminator
             };
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.KindsAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.ECASA.CMG.InterFIDS.API.Connect.Backend.Clients.KindsAPIConnectClient(SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 

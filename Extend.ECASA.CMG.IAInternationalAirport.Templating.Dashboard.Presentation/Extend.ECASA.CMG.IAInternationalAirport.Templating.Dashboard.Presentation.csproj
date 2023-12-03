@@ -2,12 +2,12 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<AssemblyName>SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation</AssemblyName>
-		<RootNamespace>SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation</RootNamespace>
+		<AssemblyName>MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation</RootNamespace>
 		<Product>VIDERHE Extension for ECASA International Airport Ignacio Agramonte</Product>
 		<Authors>MOROPO VIDERHE DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
-		<Copyright>© MOROPO S.U.R.L. ECASA 2023, Todos los derechos reservados.</Copyright>
+		<Copyright>© MOROPO S.U.R.L. 2023, Todos los derechos reservados.</Copyright>
 		<Version>0.1.0</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>

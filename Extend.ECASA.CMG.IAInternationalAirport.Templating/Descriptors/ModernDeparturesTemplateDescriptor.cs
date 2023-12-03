@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Descriptors
 {
     public class ModernDeparturesTemplateDescriptor// : Common.Templating.Descriptors.ITemplateDescriptor
     {

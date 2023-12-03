@@ -1,10 +1,12 @@
-﻿using Xamarin.Forms;
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Models.View.Placard;
+using Xamarin.Forms;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions
 {
     public static class OperationDisplayModelExtensions
     {
-        public static void AttachTo(this MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel target, int index, StackLayout layout, ColumnDefinitionCollection columnDefinitions, Models.View.Placard.ClassicOperationsPlacardViewModel model, Thickness margin, double fontSize, double timeColumnWidth, double gateColumnWidth)
+        public static void AttachTo(this Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel target, int index, StackLayout layout, ColumnDefinitionCollection columnDefinitions, ClassicOperationsPlacardViewModel model, Thickness margin, double fontSize, double timeColumnWidth, double gateColumnWidth)
         {
             var useSecundaryColorProfile = model.UseStrippedRows && index % 2 != 0;
 
@@ -29,7 +31,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                 switch (column)
                 {
-                    case Enumerations.ClassicOperationsColumn.TIME:
+                    case ClassicOperationsColumn.TIME:
                         var timeLabel = new Label
                         {
                             Margin = margin,
@@ -47,7 +49,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.CONTEXT:
+                    case ClassicOperationsColumn.CONTEXT:
                         var contextLabel = new Label
                         {
                             Margin = margin,
@@ -64,7 +66,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.FLY:
+                    case ClassicOperationsColumn.FLY:
                         var flyLayout = new StackLayout { Orientation = StackOrientation.Horizontal };
 
                         flyLayout.Children.Add(new Views.BoxedCachedImage
@@ -89,7 +91,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.CARRIER:
+                    case ClassicOperationsColumn.CARRIER:
                         var carrierLayout = new StackLayout { Orientation = StackOrientation.Horizontal };
 
                         carrierLayout.Children.Add(new Views.BoxedCachedImage
@@ -114,7 +116,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.FLYNUMBER:
+                    case ClassicOperationsColumn.FLYNUMBER:
                         var flyNumberLabel = new Label
                         {
                             Margin = margin,
@@ -131,7 +133,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.CATEGORY:
+                    case ClassicOperationsColumn.CATEGORY:
                         var categoryLabel = new Label
                         {
                             Margin = margin,
@@ -148,7 +150,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.GATE:
+                    case ClassicOperationsColumn.GATE:
                         var gateLabel = new Label
                         {
                             Margin = margin,
@@ -167,7 +169,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.TERMINAL:
+                    case ClassicOperationsColumn.TERMINAL:
                         var terminalLabel = new Label
                         {
                             Margin = margin,
@@ -184,7 +186,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.STATUS:
+                    case ClassicOperationsColumn.STATUS:
                         var statusLabel = new Label
                         {
                             Margin = margin,

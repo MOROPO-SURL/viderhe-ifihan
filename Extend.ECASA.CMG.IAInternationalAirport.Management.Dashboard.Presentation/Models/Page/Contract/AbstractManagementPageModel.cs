@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page.Contract
+﻿namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page.Contract
 {
-    public abstract class AbstractManagementPageModel<T> : XFToolKit.Mvvm.Models.Page.BasePageModel where T : class
+    public abstract class AbstractManagementPageModel<T> : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel where T : class
     {
         private T target;
         private System.Collections.ObjectModel.ObservableCollection<T> items;

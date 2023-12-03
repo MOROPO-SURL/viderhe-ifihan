@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Sections
+﻿namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Sections
 {
     public sealed class InteropAirportDISMangementSection : Common.Management.Sections.Contract.IManagementSection
     {

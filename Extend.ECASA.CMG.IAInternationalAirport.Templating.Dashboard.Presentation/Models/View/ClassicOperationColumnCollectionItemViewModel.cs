@@ -1,15 +1,17 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Models.View
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Models.View
 {
-    public class ClassicOperationColumnCollectionItemViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
+    public class ClassicOperationColumnCollectionItemViewModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel
     {
-        private Enumerations.ClassicOperationsColumn target;
+        private ClassicOperationsColumn target;
         private bool isBeingDragged;
         private bool isBeingDraggedOverAtStart;
         private bool isBeingDraggedOverAtEnd;
 
         public int Order { get; set; }
 
-        public Enumerations.ClassicOperationsColumn Target { get => target; set => SetProperty(ref target, value); }
+        public ClassicOperationsColumn Target { get => target; set => SetProperty(ref target, value); }
 
         public bool IsBeingDragged { get => isBeingDragged; set => SetProperty(ref isBeingDragged, value); }
 

@@ -1,8 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Factories
+﻿namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Factories
 {
     public static class ApiKeyDefinitionPageModelFactory
     {
-        public static Models.Page.ApiKeyDefinitionPageModel Build(MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.ApiKeyDisplayModel target)
+        public static Models.Page.ApiKeyDefinitionPageModel Build(Service.ECASA.CMG.InterFIDS.API.Common.Models.ApiKeyDisplayModel target)
         {
             if (target == null) return new Models.Page.ApiKeyDefinitionPageModel();
 
@@ -15,7 +15,7 @@
                 Token = target.Token,
                 IsExpirable = target.ExpirateAt != null,
                 Host = target.Host,
-                Roles = new System.Collections.ObjectModel.ObservableCollection<MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.RoleDisplayModel>(target.Roles)
+                Roles = new System.Collections.ObjectModel.ObservableCollection<Service.ECASA.CMG.InterFIDS.API.Common.Models.RoleDisplayModel>(target.Roles)
             };
 
             if (model.IsExpirable)

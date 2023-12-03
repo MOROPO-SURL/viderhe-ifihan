@@ -1,10 +1,11 @@
-﻿using Xamarin.Forms;
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Enumerations;
+using Xamarin.Forms;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions
 {
     public static class ClassicOperationsPlacardViewModelExtensions
     {
-        public static void InitializeTableHeader(this Models.View.Placard.ClassicOperationsPlacardViewModel target, Grid layout, MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind operationKind, Thickness itemMargin, double itemFontSize, out Label timeSizeReferenceLabel, out Label gateSizeReferenceLabel)
+        public static void InitializeTableHeader(this Models.View.Placard.ClassicOperationsPlacardViewModel target, Grid layout, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind operationKind, Thickness itemMargin, double itemFontSize, out Label timeSizeReferenceLabel, out Label gateSizeReferenceLabel)
         {
             timeSizeReferenceLabel = new Label
             {
@@ -32,13 +33,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             {
                 switch (item)
                 {
-                    case Enumerations.ClassicOperationsColumn.TIME:
-                    case Enumerations.ClassicOperationsColumn.GATE:
+                    case ClassicOperationsColumn.TIME:
+                    case ClassicOperationsColumn.GATE:
                         layout.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.CONTEXT:
+                    case ClassicOperationsColumn.CONTEXT:
                         layout.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(3, GridUnitType.Star) });
 
                         break;
@@ -66,51 +67,51 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                 switch (item)
                 {
-                    case Enumerations.ClassicOperationsColumn.TIME:
+                    case ClassicOperationsColumn.TIME:
                         Grid.SetColumn(timeSizeReferenceLabel, i);
 
                         layout.Children.Add(timeSizeReferenceLabel);
 
                         continue;
 
-                    case Enumerations.ClassicOperationsColumn.GATE:
+                    case ClassicOperationsColumn.GATE:
                         Grid.SetColumn(gateSizeReferenceLabel, i);
 
                         layout.Children.Add(gateSizeReferenceLabel);
 
                         continue;
 
-                    case Enumerations.ClassicOperationsColumn.CONTEXT:
-                        itemLabel.Text = operationKind == MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival ? "ORIGEN" : "DESTINO";
+                    case ClassicOperationsColumn.CONTEXT:
+                        itemLabel.Text = operationKind == Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival ? "ORIGEN" : "DESTINO";
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.FLY:
+                    case ClassicOperationsColumn.FLY:
                         itemLabel.Text = "VUELO";
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.TERMINAL:
+                    case ClassicOperationsColumn.TERMINAL:
                         itemLabel.Text = "TERMINAL";
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.STATUS:
+                    case ClassicOperationsColumn.STATUS:
                         itemLabel.Text = "ESTADO";
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.CARRIER:
+                    case ClassicOperationsColumn.CARRIER:
                         itemLabel.Text = "AEROLINEA";
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.FLYNUMBER:
+                    case ClassicOperationsColumn.FLYNUMBER:
                         itemLabel.Text = "VUELO";
 
                         break;
 
-                    case Enumerations.ClassicOperationsColumn.CATEGORY:
+                    case ClassicOperationsColumn.CATEGORY:
                         itemLabel.Text = "CATEGORIA";
 
                         break;

@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page
 {
     public class CarrierDefinitionPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
@@ -15,7 +15,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Ma
 
         public string Name { get => name; set => SetProperty(ref name, value); }
 
-        public Xamarin.Forms.ImageSource ImageSource { get => imageSource; set =>SetProperty(ref imageSource, value); }
+        public Xamarin.Forms.ImageSource ImageSource { get => imageSource; set => SetProperty(ref imageSource, value); }
 
         public System.Guid? ImageId { get; set; }
 

@@ -1,22 +1,24 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Models.View.Placard;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Placard
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Placard
 {
-    public partial class ClassicDeparturesPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, MOROPO.Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
+    public partial class ClassicDeparturesPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
         private static Thickness TABLE_ITEM_MARGIN = new Thickness(12);
 
         private static Common.Templating.Presentation.Converters.SizeToRelativeValueConverter SIZE_TO_RELATIVE_VALUE_CONVERTER = new Common.Templating.Presentation.Converters.SizeToRelativeValueConverter();
 
-        private readonly Models.View.Placard.ClassicOperationsPlacardViewModel model;
+        private readonly ClassicOperationsPlacardViewModel model;
 
         private Label timeSizeReferenceLabel;
         private Label gateSizeReferenceLabel;
 
-        public ClassicDeparturesPlacardView(Models.View.Placard.ClassicOperationsPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public ClassicDeparturesPlacardView(ClassicOperationsPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -42,7 +44,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                 switch (model.Background.Kind)
                 {
-                    case Enumerations.BackgroundKind.Gradient:
+                    case BackgroundKind.Gradient:
                         var gradientModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.GradientContextModel>(model.Background.SerializedContext);
 
                         backgroundView = new MagicGradients.GradientView
@@ -52,7 +54,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
                         break;
 
-                    case Enumerations.BackgroundKind.Image:
+                    case BackgroundKind.Image:
                         var imageModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(model.Background.SerializedContext).ToViewModel();
 
                         backgroundView = new FFImageLoading.Forms.CachedImage
@@ -86,7 +88,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
             var tableHeaderItemFontSize = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(model.TableHeaderFontSize, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor;
 
-            model.InitializeTableHeader(TableHeaderGrid, MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure, TABLE_ITEM_MARGIN, tableHeaderItemFontSize, out timeSizeReferenceLabel, out gateSizeReferenceLabel);
+            model.InitializeTableHeader(TableHeaderGrid, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure, TABLE_ITEM_MARGIN, tableHeaderItemFontSize, out timeSizeReferenceLabel, out gateSizeReferenceLabel);
 
             this.model = model;
         }
@@ -105,11 +107,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
         {
             base.PerformPlacardStarup();
 
-            var client = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Frontend.Clients.OperationsAPIConnectClient(this);
+            var client = new Service.ECASA.CMG.InterFIDS.API.Connect.Frontend.Clients.OperationsAPIConnectClient(this);
 
-            client.FilterAsync(new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.OperationFilterModel
+            client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.OperationFilterModel
             {
-                Kind = MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure
+                Kind = Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure
             }).ContinueWith(FetchOperations_Callback);
         }
 
@@ -120,7 +122,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
             timeSizeReferenceLabel = null;
         }
 
-        private void FetchOperations_Callback(System.Threading.Tasks.Task<MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel[]> task)
+        private void FetchOperations_Callback(System.Threading.Tasks.Task<Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel[]> task)
         {
             if (BindingContext == null) return;
 
@@ -150,24 +152,24 @@ namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Te
 
             stopwatch.Stop();
 
-            var client = new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Connect.Frontend.Clients.OperationsAPIConnectClient(this);
+            var client = new Service.ECASA.CMG.InterFIDS.API.Connect.Frontend.Clients.OperationsAPIConnectClient(this);
 
             var delay = System.TimeSpan.FromSeconds(model.UpdateInterval) - stopwatch.Elapsed;
 
             if (delay <= System.TimeSpan.Zero)
             {
-                client.FilterAsync(new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.OperationFilterModel
+                client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.OperationFilterModel
                 {
-                    Kind = MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure
+                    Kind = Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure
                 }).ContinueWith(FetchOperations_Callback);
             }
             else
             {
                 System.Threading.Tasks.Task.Delay(delay).ContinueWith(delayTask =>
                 {
-                    client.FilterAsync(new MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.OperationFilterModel
+                    client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.OperationFilterModel
                     {
-                        Kind = MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure
+                        Kind = Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure
                     }).ContinueWith(FetchOperations_Callback);
                 });
             }

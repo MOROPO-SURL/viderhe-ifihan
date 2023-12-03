@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page
+﻿namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dashboard.Presentation.Models.Page
 {
     public class CountryDefinitionPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
@@ -17,6 +17,6 @@
 
         public string LocalizedName { get => localizedName; set => SetProperty(ref localizedName, value); }
 
-        public ISO3166.Country[] SelectableCountries { get => selectableCountries; set => SetProperty(ref selectableCountries, value); } 
+        public ISO3166.Country[] SelectableCountries { get => selectableCountries; set => SetProperty(ref selectableCountries, value); }
     }
 }

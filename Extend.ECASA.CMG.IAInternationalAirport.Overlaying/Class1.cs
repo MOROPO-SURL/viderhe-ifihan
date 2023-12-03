@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Extend.ECASA.CMG.IAInternationalAirport.Overlaying
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying
 {
     public class Class1
     {

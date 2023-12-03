@@ -1,6 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Models.Page
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Models.Page.Contract;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Models.Page
 {
-    public class ClassicOperationsPlacardConfigurationPageModel : Contract.AbstractPaginableOperationsPlacardConfigurationPageModel
+    public class ClassicOperationsPlacardConfigurationPageModel : AbstractPaginableOperationsPlacardConfigurationPageModel
     {
         private Xamarin.Forms.Color tableBackgroundColor;
         private Xamarin.Forms.Color tableHeaderTextColor;
@@ -12,7 +16,7 @@
         private Xamarin.Forms.Color secoundaryRowTextColor;
         private Xamarin.Forms.Color secoundaryRowBackgroundColor;
         private int rowFontSize;
-        private Templating.Models.Context.BackgroundContextModel background;
+        private BackgroundContextModel background;
         private int foregroundTransparency;
 
         public ClassicOperationsPlacardConfigurationPageModel()
@@ -26,7 +30,7 @@
             useStrippedRows = false;
             secoundaryRowBackgroundColor = Xamarin.Forms.Color.DimGray;
             secoundaryRowTextColor = Xamarin.Forms.Color.White;
-            rowFontSize = 36;            
+            rowFontSize = 36;
             ForegroundTransparency = 50;
         }
 
@@ -53,10 +57,10 @@
 
         public System.Collections.ObjectModel.ObservableCollection<View.ClassicOperationColumnCollectionItemViewModel> VisibleColumns { get; set; }
 
-        public System.Collections.ObjectModel.ObservableCollection<Enumerations.ClassicOperationsColumn> AvailableColumns { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<ClassicOperationsColumn> AvailableColumns { get; set; }
 
-        public Templating.Models.Context.BackgroundContextModel Background { get => background; set => SetProperty(ref background, value); }
-        
+        public BackgroundContextModel Background { get => background; set => SetProperty(ref background, value); }
+
         public int ForegroundTransparency { get => foregroundTransparency; set => SetProperty(ref foregroundTransparency, value); }
     }
 }
