@@ -352,3 +352,4 @@ MigrationBackup/
 .DS_Store
 /Service.ECASA.CMG.InteropAirportDIS.Web/dpkeys
 /Service.ECASA.CMG.InteropAirportDIS.Web/wwwroot/media/images
+/Service.ECASA.CMG.InteropAirportDIS.WebOlupin/.config
