@@ -106,6 +106,122 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
             });
         }
 
+        private void ImportToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            var options = new Xamarin.Essentials.PickOptions
+            {
+                PickerTitle = "Seleccionar archivo de configuración"
+            };
+
+            Xamarin.Essentials.FilePicker.PickAsync(options).ContinueWith(async task =>
+            {
+                if (task.Result == null) return;
+
+                try
+                {
+                    using (var fileStream = await task.Result.OpenReadAsync())
+                    {
+                        var content = new byte[fileStream.Length];
+
+                        await fileStream.ReadAsync(content, 0, (int)fileStream.Length);
+
+                        var serialization = System.Text.Encoding.UTF8.GetString(content);
+
+                        content = null;
+
+                        var model = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.Placard.ClassicOperationsPlacardContextModel>(serialization);
+
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                        {
+                            BindingContextPageModel.ScreenPresentationTimeSecounds = model.ForegroundTransparency;
+                            BindingContextPageModel.RequireUnobstructedPresetation = model.RequireUnobstructedPresetation;
+                            BindingContextPageModel.APIServer = model.APIServer;
+                            BindingContextPageModel.UseSSL = model.UseSSL;
+                            BindingContextPageModel.AllowAnyCertificate = model.AllowAnyCertificate;
+                            BindingContextPageModel.APIKey = model.APIKey;
+                            BindingContextPageModel.UpdateInterval = model.UpdateInterval;
+                            BindingContextPageModel.MaxItemsCount = model.MaxItemsCount;
+                            BindingContextPageModel.TableBackgroundColor = Xamarin.Forms.Color.FromHex(model.TableBackgroundColor);
+                            BindingContextPageModel.TableHeaderBackgroundColor = Xamarin.Forms.Color.FromHex(model.TableHeaderBackgroundColor);
+                            BindingContextPageModel.TableHeaderTextColor = Xamarin.Forms.Color.FromHex(model.TableHeaderTextColor);
+                            BindingContextPageModel.TableHeaderFontSize = model.TableHeaderFontSize;
+                            BindingContextPageModel.RowFontSize = BindingContextPageModel.RowFontSize;
+                            BindingContextPageModel.PrimaryRowTextColor = Xamarin.Forms.Color.FromHex(model.PrimaryRowTextColor);
+                            BindingContextPageModel.PrimaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(model.PrimaryRowBackgroundColor);
+                            BindingContextPageModel.UseStrippedRows = model.UseStrippedRows;
+                            BindingContextPageModel.SecoundaryRowTextColor = Xamarin.Forms.Color.FromHex(model.SecoundaryRowTextColor);
+                            BindingContextPageModel.SecoundaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(model.SecoundaryRowBackgroundColor);
+
+                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Configuración importada con éxito.");
+                        });
+                    }
+                }
+                catch
+                {
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        DisplayAlert("Aviso", "No fue posible importar la configuración para esta plantilla.", "Aceptar");
+                    });
+                }
+            });
+        }
+
+        private void ExportToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            var directoryPath = System.Environment.GetFolderPath(Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.UWP ? System.Environment.SpecialFolder.LocalApplicationData : System.Environment.SpecialFolder.Personal);
+
+            string filePath = null;
+
+            DisplayPromptAsync("Exportar configuración a archivo", "Por favor, especifique el nombre que desea asignarle al archivo de configuración de cartel a exportar:", "Exportar", "Cancelar").ContinueWith(task =>
+            {
+                if (string.IsNullOrEmpty(task.Result)) return;
+
+                var result = new Templating.Models.Context.Placard.ClassicOperationsPlacardContextModel
+                {
+                    ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
+                    RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
+                    APIServer = BindingContextPageModel.APIServer,
+                    UseSSL = BindingContextPageModel.UseSSL,
+                    AllowAnyCertificate = BindingContextPageModel.AllowAnyCertificate,
+                    APIKey = BindingContextPageModel.APIKey,
+                    UpdateInterval = BindingContextPageModel.UpdateInterval,
+                    ForegroundTransparency = BindingContextPageModel.ForegroundTransparency,
+                    TableBackgroundColor = BindingContextPageModel.TableBackgroundColor.ToHex(),
+                    TableHeaderFontSize = BindingContextPageModel.TableHeaderFontSize,
+                    TableHeaderTextColor = BindingContextPageModel.TableHeaderTextColor.ToHex(),
+                    TableHeaderBackgroundColor = BindingContextPageModel.TableHeaderBackgroundColor.ToHex(),
+                    RowFontSize = BindingContextPageModel.RowFontSize,
+                    PrimaryRowTextColor = BindingContextPageModel.PrimaryRowTextColor.ToHex(),
+                    PrimaryRowBackgroundColor = BindingContextPageModel.PrimaryRowBackgroundColor.ToHex(),
+                    UseStrippedRows = BindingContextPageModel.UseStrippedRows,
+                    SecoundaryRowTextColor = BindingContextPageModel.SecoundaryRowTextColor.ToHex(),
+                    SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex(),
+                    MaxItemsCount = BindingContextPageModel.MaxItemsCount
+                };
+
+                var serialization = Newtonsoft.Json.JsonConvert.SerializeObject(result);
+
+                filePath = System.IO.Path.Combine(directoryPath, string.Format("{0}.vpc", task.Result));
+
+                System.IO.File.WriteAllText(filePath, serialization);
+            }).ContinueWith(_task =>
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    if (_task.Exception != null || _task.IsCanceled)
+                    {
+                        DisplayAlert("Aviso", "No es posible exportar la configuración en este dispositivo.", "Aceptar");
+
+                        return;
+                    }
+
+                    Xamarin.Essentials.Clipboard.SetTextAsync(directoryPath);
+
+                    DisplayAlert("Confirmación", string.Format("Configuración exportada con éxito.{0}{0}La ruta del archivo es:{0}{1}{0}{0}La dirección de la carpeta contenedora ha sido copiada al portapapeles", System.Environment.NewLine, filePath), "Aceptar");
+                });
+            });
+        }
+
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
             BindingContextPageModel.ResetValidationState();

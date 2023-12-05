@@ -4,9 +4,9 @@ using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Extensions;
 
 namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Factories
 {
-    public static class ClassicOperationsPlacardConfigurationPageModelFactory
+    internal static class ClassicOperationsPlacardConfigurationPageModelFactory
     {
-        public static ClassicOperationsPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        internal static ClassicOperationsPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
             if (placardViewModel == null) return new ClassicOperationsPlacardConfigurationPageModel();
 

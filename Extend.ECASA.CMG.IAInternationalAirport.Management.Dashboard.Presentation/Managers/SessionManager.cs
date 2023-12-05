@@ -46,11 +46,11 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
 
             if (Xamarin.Forms.Application.Current.Properties.ContainsKey(LAST_INTEROP_ALLOW_CERTIFICATE_KEY))
             {
-                UseSSL = (bool)Xamarin.Forms.Application.Current.Properties[LAST_INTEROP_ALLOW_CERTIFICATE_KEY];
+                AllowAnyCertificate = (bool)Xamarin.Forms.Application.Current.Properties[LAST_INTEROP_ALLOW_CERTIFICATE_KEY];
             }
             else
             {
-                UseSSL = false;
+                AllowAnyCertificate = false;
             }
 
             if (Xamarin.Forms.Application.Current.Properties.ContainsKey(LAST_INTEROP_API_TOKEN_KEY))
