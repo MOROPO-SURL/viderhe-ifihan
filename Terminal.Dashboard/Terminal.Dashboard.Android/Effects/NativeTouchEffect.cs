@@ -3,9 +3,9 @@ using System.Linq;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: Xamarin.Forms.ResolutionGroupName("XFToolKit")]
-[assembly: Xamarin.Forms.ExportEffect(typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Effects.NativeTouchEffect), "TouchEffect")]
+[assembly: Xamarin.Forms.ExportEffect(typeof(MOROPO.VIDERHE.Terminal.Dashboard.Droid.Effects.NativeTouchEffect), "TouchEffect")]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Effects
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Effects
 {
     public class NativeTouchEffect : PlatformEffect
     {
