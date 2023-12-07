@@ -52,7 +52,7 @@
         </uap:Extension>
         <desktop:Extension 
 			Category="windows.fullTrustProcess" 
-			Executable="Terminal.Player.UWP.DesktopExtension.Helper\ViderhePlayerHelper.exe" />
+			Executable="Terminal.Player.UWP.DesktopExtension.PlatformInterop\VIDERHEPlayerPlatformInterop.exe" />
       </Extensions>
     </Application>
   </Applications>
