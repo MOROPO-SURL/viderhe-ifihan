@@ -1,6 +1,6 @@
-﻿[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Helpers.TextWidthCalculationHelper))]
+﻿[assembly: Xamarin.Forms.Dependency(typeof(MOROPO.VIDERHE.Terminal.Player.Droid.Helpers.TextWidthCalculationHelper))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Helpers
+namespace MOROPO.VIDERHE.Terminal.Player.Droid.Helpers
 {
     public class TextWidthCalculationHelper : Extend.Common.Overlaying.Presentation.Helpers.Facade.ITextWidthCalculationHelperFacade
     {
