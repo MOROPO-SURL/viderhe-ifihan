@@ -32,16 +32,11 @@ namespace MOROPO.VIDERHE.Cloud
         {
             #region Ensure Required Assemblies load
 
-            _ = new Extend.Essential.Descriptors.EssentialExtensionDescriptor();
-            _ = new Extend.Essential.Overlaying.Descriptors.SimpleHighlightsOverlayDescriptor();
-            _ = new Extend.Essential.Transitioning.Transitions.ArriveTransitionDescriptor();
-            _ = new Extend.Essential.Templating.Descriptors.SimplePictureTemplateDescriptor();
-
             var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 
             var extensionRootDirectoryInfo = new System.IO.DirectoryInfo(extensionRootDirectoryPath);
 
-            var extensionCustomRuntimeLibraries = Microsoft.Extensions.DependencyModel.DependencyContext.Default.RuntimeLibraries.Where(l => l.Type == "project" && l.Name.Contains(".Viderhe.Extend.") && !l.Name.Contains(".Viderhe.Support.Extend") && !l.Name.Contains(".Viderhe.Extend.Common")).ToList();
+            var extensionCustomRuntimeLibraries = Microsoft.Extensions.DependencyModel.DependencyContext.Default.RuntimeLibraries.Where(l => l.Type == "project" && l.Name.Contains(".VIDERHE.Extend.") && !l.Name.Contains(".VIDERHE.Support.Extend") && !l.Name.Contains(".VIDERHE.Extend.Common")).ToList();
 
             if (extensionRootDirectoryInfo.Exists)
             {
