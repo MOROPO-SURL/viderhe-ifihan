@@ -45,7 +45,9 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
                     ClassicOperationsColumn.CARRIER,
                     ClassicOperationsColumn.FLYNUMBER,
                     ClassicOperationsColumn.CATEGORY,
-                    ClassicOperationsColumn.GATE
+                    ClassicOperationsColumn.GATE,
+                    ClassicOperationsColumn.PLANNED_AT,
+                    ClassicOperationsColumn.ESTIMATED_AT
                 };
             }
             else
@@ -60,7 +62,9 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
                     ClassicOperationsColumn.CARRIER,
                     ClassicOperationsColumn.FLYNUMBER,
                     ClassicOperationsColumn.CATEGORY,
-                    ClassicOperationsColumn.GATE
+                    ClassicOperationsColumn.GATE,
+                    ClassicOperationsColumn.PLANNED_AT,
+                    ClassicOperationsColumn.ESTIMATED_AT
                 };
 
                 BindingContextPageModel.AvailableColumns = new System.Collections.ObjectModel.ObservableCollection<ClassicOperationsColumn>(classicOperationsColumnUniverse.Except(BindingContextPageModel.VisibleColumns.Select(item => item.Target)));

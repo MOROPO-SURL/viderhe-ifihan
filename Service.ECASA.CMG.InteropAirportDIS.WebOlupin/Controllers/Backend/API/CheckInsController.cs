@@ -1,0 +1,67 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Attributes;
+using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Constants;
+using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models;
+using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Backend.API
+{
+    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = AspNetCore.Authentication.ApiKey.ApiKeyDefaults.AuthenticationScheme)]
+    [Route("api/backend/[controller]")]
+    [ApiController]
+    public class CheckInsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<CheckIn, System.Guid, CheckInInputModel, CheckInDisplayModel>
+    {
+        public CheckInsController(Framework.Guama.Core.Persistence.Repositories.IEntityRepository<CheckIn, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<CheckInsController> localizer, ILogger<CheckInsController> logger) : base(repository, localizer, logger)
+        {
+        }
+
+        [RequirePermissions(Authorization.CheckInViewerPermission)]
+        public override ActionResult<CheckInDisplayModel[]> Get()
+        {
+            return base.Get();
+        }
+
+        [RequirePermissions(Authorization.CheckInViewerPermission)]
+        public override ActionResult<CheckInDisplayModel> Get(System.Guid key)
+        {
+            return base.Get(key);
+        }
+
+        [RequirePermissions(Authorization.CheckInViewerPermission)]
+        public override ActionResult<Framework.Guama.Core.Presentation.Models.PaginationModel<CheckInDisplayModel>> GetPaginate(int sheet = 1, int limit = 25)
+        {
+            return base.GetPaginate(sheet, limit);
+        }
+
+        [RequirePermissions(Authorization.CheckInCreatorPermission)]
+        public override ActionResult Create([FromBody] CheckInInputModel inputModel)
+        {
+            return base.Create(inputModel);
+        }
+
+        [RequirePermissions(Authorization.CheckInEditorPermission)]
+        public override ActionResult Edit([FromBody] CheckInInputModel inputModel)
+        {
+            return base.Edit(inputModel);
+        }
+
+        [RequirePermissions(Authorization.CheckInRemoverPermission)]
+        public override ActionResult Delete(System.Guid key)
+        {
+            return base.Delete(key);
+        }
+
+        protected override CheckInDisplayModel EntityToDisplayModel(CheckIn entity)
+        {
+            var model = base.EntityToDisplayModel(entity);
+
+            if (model.Operation.Carrier.Image != null)
+            {
+                model.Operation.Carrier.Image.Extension = MimeTypes.MimeTypeMap.GetExtension(entity.Operation.Carrier.Identity.Image.ContentType);
+            }
+
+            return model;
+        }
+    }
+}

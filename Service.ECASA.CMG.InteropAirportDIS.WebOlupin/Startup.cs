@@ -52,9 +52,10 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin
             services.AddScoped<IEntityRepository<Carrier, string>, CarrierRepository>();
             services.AddScoped<IEntityRepository<Category, System.Guid>, CategoryRepository>();
             services.AddScoped<IEntityRepository<Kind, InterFIDS.Persistence.Enumerations.OperationKind>, KindRepository>();
-            services.AddScoped<IEntityRepository<Operation, long>, OperationRepository>();
             services.AddScoped<IEntityRepository<Status, System.Guid>, StatusRepository>();
             services.AddScoped<IEntityRepository<Terminal, System.Guid>, TerminalRepository>();
+            services.AddScoped<IEntityRepository<Operation, long>, OperationRepository>();
+            services.AddScoped<IEntityRepository<CheckIn, System.Guid>, CheckInRepository>();
 
             services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade, Framework.Guama.Core.Security.Common.Persistence.ORM.EF.Providers.DbSchemaConfigurationProvider>();
             services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade, DbSchemaConfigurationProvider>();

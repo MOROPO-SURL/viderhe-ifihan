@@ -4,10 +4,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
+namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.EF.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialSchemaMigration : Migration
+    public partial class InitialShemaMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -784,7 +784,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
                     flight = table.Column<int>(type: "integer", nullable: false),
                     context = table.Column<string>(type: "text", nullable: false),
                     gate = table.Column<string>(type: "text", nullable: false),
-                    date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    plannedat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    estimatedat = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     terminalid = table.Column<Guid>(type: "uuid", nullable: false),
                     kindid = table.Column<int>(type: "integer", nullable: false),
                     categoryid = table.Column<Guid>(type: "uuid", nullable: false),
@@ -859,6 +860,29 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
                         principalTable: "state",
                         principalColumn: "id",
                         onDelete: ReferentialAction.SetNull);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "checkins",
+                columns: table => new
+                {
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    kiosknumber = table.Column<int>(type: "integer", nullable: false),
+                    operationid = table.Column<long>(type: "bigint", nullable: false),
+                    isopen = table.Column<bool>(type: "boolean", nullable: false),
+                    isvip = table.Column<bool>(type: "boolean", nullable: false),
+                    startat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    endat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("pk_checkins", x => x.id);
+                    table.ForeignKey(
+                        name: "fk_checkins_operations_operationid",
+                        column: x => x.operationid,
+                        principalTable: "operations",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -960,6 +984,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
                 table: "categories",
                 column: "discriminator",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "ix_checkins_operationid",
+                table: "checkins",
+                column: "operationid");
 
             migrationBuilder.CreateIndex(
                 name: "ix_country_isocode",
@@ -1196,11 +1225,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
                 name: "apikeyrolebridges");
 
             migrationBuilder.DropTable(
-                name: "documents",
-                schema: "guamaframework_media");
+                name: "checkins");
 
             migrationBuilder.DropTable(
-                name: "operations");
+                name: "documents",
+                schema: "guamaframework_media");
 
             migrationBuilder.DropTable(
                 name: "organizationemailcontactitembridge",
@@ -1261,19 +1290,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
                 name: "apikeys");
 
             migrationBuilder.DropTable(
-                name: "carriers");
-
-            migrationBuilder.DropTable(
-                name: "categories");
-
-            migrationBuilder.DropTable(
-                name: "kinds");
-
-            migrationBuilder.DropTable(
-                name: "statuses");
-
-            migrationBuilder.DropTable(
-                name: "terminals");
+                name: "operations");
 
             migrationBuilder.DropTable(
                 name: "emailcontactitem",
@@ -1308,11 +1325,30 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
                 schema: "guamaframework_core_security_common");
 
             migrationBuilder.DropTable(
+                name: "carriers");
+
+            migrationBuilder.DropTable(
+                name: "categories");
+
+            migrationBuilder.DropTable(
+                name: "kinds");
+
+            migrationBuilder.DropTable(
+                name: "statuses");
+
+            migrationBuilder.DropTable(
+                name: "terminals");
+
+            migrationBuilder.DropTable(
+                name: "location",
+                schema: "guamaframework_location");
+
+            migrationBuilder.DropTable(
                 name: "organizationidentity",
                 schema: "guamaframework_identity");
 
             migrationBuilder.DropTable(
-                name: "location",
+                name: "locality",
                 schema: "guamaframework_location");
 
             migrationBuilder.DropTable(
@@ -1320,16 +1356,12 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
                 schema: "guamaframework_media");
 
             migrationBuilder.DropTable(
-                name: "locality",
+                name: "municipality",
                 schema: "guamaframework_location");
 
             migrationBuilder.DropTable(
                 name: "thumbnails",
                 schema: "guamaframework_media");
-
-            migrationBuilder.DropTable(
-                name: "municipality",
-                schema: "guamaframework_location");
 
             migrationBuilder.DropTable(
                 name: "state",

@@ -32,11 +32,18 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                 switch (column)
                 {
                     case ClassicOperationsColumn.TIME:
+                        var time = target.PlannedAt;
+
+                        if (target.EstimatedAt != null)
+                        {
+                            time = target.EstimatedAt.Value;
+                        }
+
                         var timeLabel = new Label
                         {
                             Margin = margin,
                             WidthRequest = timeColumnWidth,
-                            Text = target.Date.ToString("HH:mm"),
+                            Text = time.ToString("HH:mm"),
                             TextColor = rowTextColor,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
@@ -46,6 +53,40 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                         Grid.SetColumn(timeLabel, i);
 
                         itemLayout.Children.Add(timeLabel);
+
+                        break;
+
+                    case ClassicOperationsColumn.PLANNED_AT:
+                        var plannedAtLabel = new Label
+                        {
+                            Margin = margin,
+                            Text = target.PlannedAt.ToString("HH:mm"),
+                            TextColor = rowTextColor,
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalTextAlignment = TextAlignment.Center,
+                            FontSize = fontSize
+                        };
+
+                        Grid.SetColumn(plannedAtLabel, i);
+
+                        itemLayout.Children.Add(plannedAtLabel);
+
+                        break;
+
+                    case ClassicOperationsColumn.ESTIMATED_AT:
+                        var estimateAtLabel = new Label
+                        {
+                            Margin = margin,
+                            Text = target.EstimatedAt?.ToString("HH:mm") ?? "---",
+                            TextColor = rowTextColor,
+                            HorizontalTextAlignment = TextAlignment.Center,
+                            VerticalTextAlignment = TextAlignment.Center,
+                            FontSize = fontSize
+                        };
+
+                        Grid.SetColumn(estimateAtLabel, i);
+
+                        itemLayout.Children.Add(estimateAtLabel);
 
                         break;
 

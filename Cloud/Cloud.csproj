@@ -48,6 +48,8 @@
     <ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Dashboard\Cloud.SignalR.Connect.Dashboard.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Player\Cloud.SignalR.Connect.Player.csproj" />
+    <ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Overlaying\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.csproj" />
+    <ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Templating\Extend.ECASA.CMG.IAInternationalAirport.Templating.csproj" />
     <ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport\Extend.ECASA.CMG.IAInternationalAirport.csproj" />
     <ProjectReference Include="..\Extend.Essential\Extend.Essential.csproj" />
     <ProjectReference Include="..\Support.Extend.Transitioning\Support.Extend.Transitioning.csproj" />

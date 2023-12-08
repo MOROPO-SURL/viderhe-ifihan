@@ -12,7 +12,9 @@
         [System.ComponentModel.DataAnnotations.Required]
         public string Context { get; set; }
 
-        public System.DateTime Date { get; set; }
+        public System.DateTime PlannedAt { get; set; }
+
+        public System.DateTime? EstimatedAt { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
         public string Gate { get; set; }
@@ -52,7 +54,8 @@
             entity.CategoryId = CategoryId;
             entity.StatusId = StatusId;
             entity.TerminalId = TerminalId;
-            entity.Date = Date;
+            entity.PlannedAt = PlannedAt;
+            entity.EstimatedAt = EstimatedAt;
             entity.Gate = Gate;
             entity.KindId = KindId;
             entity.Flight = Flight;

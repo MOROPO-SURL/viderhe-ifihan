@@ -2,7 +2,7 @@
 {
     public abstract class AbstractInteroperablePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
-        private string aPIServer;
+        private string apiServer;
         private bool useSSL;
         private bool allowAnyCertificate;
         private string apiKey;
@@ -13,7 +13,7 @@
             useSSL = true;
         }
 
-        public string APIServer { get => aPIServer; set => SetProperty(ref aPIServer, value); }
+        public string APIServer { get => apiServer; set => SetProperty(ref apiServer, value); }
 
         public bool UseSSL { get => useSSL; set => SetProperty(ref useSSL, value); }
 

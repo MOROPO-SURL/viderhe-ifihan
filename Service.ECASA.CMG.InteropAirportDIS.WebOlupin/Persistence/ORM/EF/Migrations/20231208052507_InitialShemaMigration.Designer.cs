@@ -9,18 +9,18 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
+namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.EF.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231125222553_InitialSchemaMigration")]
-    partial class InitialSchemaMigration
+    [Migration("20231208052507_InitialShemaMigration")]
+    partial class InitialShemaMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.10")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -1047,6 +1047,46 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
                     b.ToTable("categories");
                 });
 
+            modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.CheckIn", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<DateTime>("EndAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("endat");
+
+                    b.Property<bool>("IsOpen")
+                        .HasColumnType("boolean")
+                        .HasColumnName("isopen");
+
+                    b.Property<bool>("IsVIP")
+                        .HasColumnType("boolean")
+                        .HasColumnName("isvip");
+
+                    b.Property<int>("KioskNumber")
+                        .HasColumnType("integer")
+                        .HasColumnName("kiosknumber");
+
+                    b.Property<long>("OperationId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("operationid");
+
+                    b.Property<DateTime>("StartAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("startat");
+
+                    b.HasKey("Id")
+                        .HasName("pk_checkins");
+
+                    b.HasIndex("OperationId")
+                        .HasDatabaseName("ix_checkins_operationid");
+
+                    b.ToTable("checkins");
+                });
+
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Kind", b =>
                 {
                     b.Property<int>("Id")
@@ -1092,9 +1132,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
                         .HasColumnType("text")
                         .HasColumnName("context");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime?>("EstimatedAt")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("date");
+                        .HasColumnName("estimatedat");
 
                     b.Property<int>("Flight")
                         .HasColumnType("integer")
@@ -1108,6 +1148,10 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
                     b.Property<int>("KindId")
                         .HasColumnType("integer")
                         .HasColumnName("kindid");
+
+                    b.Property<DateTime>("PlannedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("plannedat");
 
                     b.Property<Guid?>("StatusId")
                         .IsRequired()
@@ -1664,6 +1708,18 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Migrations
                     b.Navigation("Country");
 
                     b.Navigation("Identity");
+                });
+
+            modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.CheckIn", b =>
+                {
+                    b.HasOne("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Operation", "Operation")
+                        .WithMany()
+                        .HasForeignKey("OperationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_checkins_operations_operationid");
+
+                    b.Navigation("Operation");
                 });
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Operation", b =>

@@ -10,6 +10,8 @@
         TERMINAL,
         STATUS,
         CATEGORY,
-        GATE
+        GATE,
+        PLANNED_AT,
+        ESTIMATED_AT
     }
 }

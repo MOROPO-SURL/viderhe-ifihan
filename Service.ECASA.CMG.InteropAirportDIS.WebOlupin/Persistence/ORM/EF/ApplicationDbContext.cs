@@ -32,8 +32,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
         public DbSet<Carrier> Carriers { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Kind> Kinds { get; set; }
-        public DbSet<Operation> Operations { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Terminal> Terminals { get; set; }
+        public DbSet<Operation> Operations { get; set; }
+        public DbSet<CheckIn> CheckIns { get; set; }
     }
 }

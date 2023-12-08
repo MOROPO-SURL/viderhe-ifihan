@@ -18,7 +18,10 @@
         [System.ComponentModel.DataAnnotations.Required]
         public string Gate { get; set; }
 
-        public System.DateTime Date { get; set; }
+        [System.ComponentModel.DataAnnotations.Required]
+        public System.DateTime PlannedAt { get; set; }
+
+        public System.DateTime? EstimatedAt { get; set; }
 
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey("TerminalId")]
         public Terminal Terminal { get; set; }

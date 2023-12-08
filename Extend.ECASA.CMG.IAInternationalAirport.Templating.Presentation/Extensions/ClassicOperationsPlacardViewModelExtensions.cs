@@ -115,6 +115,16 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                         itemLabel.Text = "CATEGORIA";
 
                         break;
+
+                    case ClassicOperationsColumn.PLANNED_AT:
+                        itemLabel.Text = "HORA PLANIFICADA";
+
+                        break;
+
+                    case ClassicOperationsColumn.ESTIMATED_AT:
+                        itemLabel.Text = "HORA ESTIMADA";
+
+                        break;
                 }
 
                 Grid.SetColumn(itemLabel, i);

@@ -4,9 +4,9 @@
     {
         internal static bool IsUpdateRequired(this API.Common.Models.OperationDisplayModel model, Persistence.Entities.Departure entity)
         {
-            if (model.Date != entity.DateTimeP) return true;
+            if (model.PlannedAt != entity.DateTimeP) return true;
 
-            if (model.EndDate != entity.DateTimeR) return true;
+            if (model.EstimatedAt != entity.DateTimeR) return true;
 
             if (model.Status.Discriminator != entity.Estado) return true;
 
@@ -25,9 +25,9 @@
 
         internal static bool IsUpdateRequired(this API.Common.Models.OperationDisplayModel model, Persistence.Entities.Arraival entity)
         {
-            if (model.Date != entity.DateTimeP) return true;
+            if (model.PlannedAt != entity.DateTimeP) return true;
 
-            if (model.EndDate != entity.DateTimeR) return true;
+            if (model.EstimatedAt != entity.DateTimeR) return true;
 
             if (model.Status.Discriminator != entity.Estado) return true;
 

@@ -12,4 +12,8 @@
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Extend.Common.Overlaying\Extend.Common.Overlaying.csproj" />
+	</ItemGroup>
+
 </Project>

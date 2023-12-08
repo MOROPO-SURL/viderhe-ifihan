@@ -10,9 +10,9 @@
 
         public string Context { get; set; }
 
-        public System.DateTime Date { get; set; }
+        public System.DateTime PlannedAt { get; set; }
 
-        public System.DateTime? EndDate { get; set; }
+        public System.DateTime? EstimatedAt { get; set; }
 
         public TerminalDisplayModel Terminal { get; set; }
         
@@ -29,7 +29,8 @@
             Id = entity.Id;
             Flight = entity.Flight;
             Context = entity.Context;
-            Date = entity.Date;
+            PlannedAt = entity.PlannedAt;
+            EstimatedAt = entity.EstimatedAt;
             Gate = entity.Gate;
 
             Carrier = new CarrierDisplayModel();

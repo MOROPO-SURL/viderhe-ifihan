@@ -84,5 +84,14 @@
         public const string OperationEditorPermission = "operation-editor-permission";
         public const string OperationRemoverPermission = "operation-remover-permission";
         #endregion
+
+        #region CheckIn
+        public const string CheckInManagementPermissionGroup = "checkin-management-permission-group";
+
+        public const string CheckInViewerPermission = "checkin-viewer-permission";
+        public const string CheckInCreatorPermission = "checkin-creator-permission";
+        public const string CheckInEditorPermission = "checkin-editor-permission";
+        public const string CheckInRemoverPermission = "checkin-remover-permission";
+        #endregion
     }
 }
