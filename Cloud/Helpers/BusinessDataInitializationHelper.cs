@@ -132,7 +132,7 @@ namespace MOROPO.VIDERHE.Cloud.Helpers
                             var transitionEntity = new Transition { Id = transitionDescriptor.Id, Enabled = true };
 
                             transitionDbSet.Add(transitionEntity);
-                            
+
                             extension.Transitions.Add(transitionEntity);
                         }
                     }
