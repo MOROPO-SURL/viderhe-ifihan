@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 
 namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation.Views
 {
     public partial class DinamicAirportCheckInMonitorOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView, Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
-        private static Common.Templating.Presentation.Converters.SizeToRelativeValueConverter SIZE_TO_RELATIVE_VALUE_CONVERTER = new Common.Templating.Presentation.Converters.SizeToRelativeValueConverter();
-
         private Models.Context.DinamicAirportCheckInMonitorOverlayContextModel overlayContextModel;
 
         private Service.ECASA.CMG.InterFIDS.API.Common.Models.CheckInDisplayModel checkInModel;
@@ -20,25 +17,26 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             var expectedWidth = Xamarin.Forms.Application.Current.MainPage.Width / 5;
 
-            CallToActionMessageWrapGrid.WidthRequest = expectedWidth;
-            CallToActionMessageWrapGrid.HeightRequest = expectedWidth;
+            //CallToActionMessageWrapGrid.WidthRequest = expectedWidth;
+            //CallToActionMessageWrapGrid.HeightRequest = expectedWidth;
 
-            CallToActionMessageBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
-            CallToActionMessageBackgroundBoxView.CornerRadius = new Xamarin.Forms.CornerRadius(0, expectedWidth * 0.85, 0, 0);
+            PrimaryChechInNumberBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
+            SecoundaryChechInNumberBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.BackgroundColor);
+            //CallToActionMessageBackgroundBoxView.CornerRadius = new Xamarin.Forms.CornerRadius(0, expectedWidth * 0.85, 0, 0);
 
-            var labelPaddingComponent = expectedWidth * 2d / 3d * 0.2;
+            //var labelPaddingComponent = expectedWidth * 2d / 3d * 0.2;
 
-            CallToActionMessageLabel.Text = overlayContextModel.Number.ToString();
-            CallToActionMessageLabel.TextColor = Xamarin.Forms.Color.White;
-            CallToActionMessageLabel.FontAttributes = Xamarin.Forms.FontAttributes.Bold;
-            CallToActionMessageLabel.FontFamily = "Montserrat (Bold)";
-            CallToActionMessageLabel.FontSize = overlayContextModel.Number >= 10 ? (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(210, typeof(double), null, CultureInfo.InvariantCulture) : (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(192, typeof(double), null, CultureInfo.InvariantCulture);
-            CallToActionMessageLabel.Padding = new Xamarin.Forms.Thickness(labelPaddingComponent / 2, 0, 0, labelPaddingComponent * 1.5);
+            ChechInNumberLabel.Text = overlayContextModel.Number.ToString();
+            ChechInNumberLabel.TextColor = Xamarin.Forms.Color.White;
+            //CallToActionMessageLabel.FontAttributes = Xamarin.Forms.FontAttributes.Bold;
+            //CallToActionMessageLabel.FontFamily = "Montserrat (Bold)";
+            //CallToActionMessageLabel.FontSize = overlayContextModel.Number >= 10 ? (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(210, typeof(double), null, CultureInfo.InvariantCulture) : (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(192, typeof(double), null, CultureInfo.InvariantCulture);
+            //CallToActionMessageLabel.Padding = new Xamarin.Forms.Thickness(labelPaddingComponent / 2, 0, 0, labelPaddingComponent * 1.5);
 
             PrePresentationGrid.IsVisible = false;
-            PrePresentationGrid.BackgroundColor = Xamarin.Forms.Color.FromHex(overlayContextModel.BackgroundColor);
-            PrePresentationGrid.VerticalOptions = Xamarin.Forms.LayoutOptions.End;
-            PrePresentationGrid.HeightRequest = expectedWidth * 0.85;
+            PrePresentationGrid.BackgroundColor = Xamarin.Forms.Color.White;
+            //PrePresentationGrid.VerticalOptions = Xamarin.Forms.LayoutOptions.End;
+            //PrePresentationGrid.HeightRequest = expectedWidth * 0.85;
 
             FullPresentationGrid.IsVisible = false;
             FullPresentationGrid.BackgroundColor = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
@@ -61,6 +59,14 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
         public override void ShowIn()
         {            
+        }
+
+        protected override void DisposeUnmanagementResources()
+        {
+            base.DisposeUnmanagementResources();
+
+            overlayContextModel = null;
+            checkInModel = null;
         }
 
         private System.Threading.Tasks.Task ShowPrePresentationAsync()
@@ -118,7 +124,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
         private async void FetchCheckIns_Callback(System.Threading.Tasks.Task<Service.ECASA.CMG.InterFIDS.API.Common.Models.CheckInDisplayModel[]> task)
         {
-            if (BindingContext == null) return;
+            if (overlayContextModel == null) return;
 
             var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
@@ -126,7 +132,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             {
                 checkInModel = task.Result.OrderBy(item => item.StartAt).FirstOrDefault();
 
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContext = checkInModel);
+                //Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContext = checkInModel);
 
                 if (checkInModel != null)
                 {

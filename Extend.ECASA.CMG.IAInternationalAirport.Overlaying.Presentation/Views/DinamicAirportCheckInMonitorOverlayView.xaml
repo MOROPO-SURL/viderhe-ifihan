@@ -2,33 +2,63 @@
 <extendcommonoverlayingpresentationviews:BaseOverlayView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Converters;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
     xmlns:extendcommonoverlayingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation"
     x:Class="MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation.Views.DinamicAirportCheckInMonitorOverlayView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
         <Grid>
-            <Grid x:Name="PrePresentationGrid">
-                <Label Text="En Breve ..." />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid 
+                x:Name="PrePresentationGrid"
+                Grid.Column="1" Grid.Row="1">
+                <Label Text="En Breve ..." TextColor="Black" />
             </Grid>
             <Grid 
-                x:Name="CallToActionMessageWrapGrid"
-                HorizontalOptions="Start" VerticalOptions="End">
+                x:Name="ChechInNumberWrapGrid"
+                Grid.Column="0" Grid.Row="1"
+                WidthRequest="{Binding Source={RelativeSource Mode=Self}, Path=Height}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*" />
                     <ColumnDefinition />
+                    <ColumnDefinition Width="9*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="9*" />
                     <RowDefinition />
-                    <RowDefinition Height="3*" />
                 </Grid.RowDefinitions>
                 <BoxView 
+                    x:Name="SecoundaryChechInNumberBackgroundBoxView"
                     Grid.ColumnSpan="2" Grid.RowSpan="2"
-                    x:Name="CallToActionMessageBackgroundBoxView" />
-                <Label
-                    x:Name="CallToActionMessageLabel"
-                    Grid.Column="0" Grid.Row="1"
-                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    Scale="1.65"
+                    Rotation="21"
+                    TranslationX="{Binding Source=-25, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                    TranslationY="{Binding Source=10, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                <BoxView 
+                    x:Name="PrimaryChechInNumberBackgroundBoxView"
+                    Grid.ColumnSpan="2" Grid.RowSpan="2"
+                    Scale="1.45"
+                    Rotation="7" />
+                <Label 
+                    x:Name="ChechInNumberLabel"
+                    Grid.Column="1" Grid.Row="0"
+                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                    FontFamily="Montserrat (Bold)"
+                    FontSize="{Binding Source=216, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
             </Grid>
-            <Grid x:Name="FullPresentationGrid">                
+            <Grid 
+                x:Name="FullPresentationGrid"
+                Grid.ColumnSpan="2" Grid.RowSpan="2">                
             </Grid>
         </Grid>
     </ContentView.Content>
