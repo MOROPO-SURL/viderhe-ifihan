@@ -175,6 +175,22 @@
       <Project>{E620A859-7769-472D-981A-B93DBF496926}</Project>
       <Name>Extend.Common.Templating.Presentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation.csproj">
+      <Project>{807484b7-8d08-467b-8a1f-7ead7b1dfa52}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Overlaying\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.csproj">
+      <Project>{e2527884-5f76-4f96-bd8c-a1e81de40c72}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.csproj">
+      <Project>{1bee18b8-1336-4b26-b80b-f88347e3bdc8}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Templating\Extend.ECASA.CMG.IAInternationalAirport.Templating.csproj">
+      <Project>{81080891-52be-4012-b0de-f9430ba61e6c}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Templating</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj">
       <Project>{b88a5d61-11d9-4827-875e-7bd9bc5f6720}</Project>
       <Name>Extend.Essential.Transitioning.Presentation</Name>

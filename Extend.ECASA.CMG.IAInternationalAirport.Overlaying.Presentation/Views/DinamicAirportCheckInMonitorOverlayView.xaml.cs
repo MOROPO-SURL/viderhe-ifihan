@@ -31,7 +31,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             CallToActionMessageLabel.Text = overlayContextModel.Number.ToString();
             CallToActionMessageLabel.TextColor = Xamarin.Forms.Color.White;
             CallToActionMessageLabel.FontAttributes = Xamarin.Forms.FontAttributes.Bold;
-            CallToActionMessageLabel.FontSize = overlayContextModel.Number >= 10 ? (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(210, typeof(double), null, CultureInfo.InvariantCulture) : (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(280, typeof(double), null, CultureInfo.InvariantCulture);
+            CallToActionMessageLabel.FontFamily = "Montserrat (Bold)";
+            CallToActionMessageLabel.FontSize = overlayContextModel.Number >= 10 ? (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(210, typeof(double), null, CultureInfo.InvariantCulture) : (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(192, typeof(double), null, CultureInfo.InvariantCulture);
             CallToActionMessageLabel.Padding = new Xamarin.Forms.Thickness(labelPaddingComponent / 2, 0, 0, labelPaddingComponent * 1.5);
 
             PrePresentationGrid.IsVisible = false;
@@ -42,8 +43,16 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             FullPresentationGrid.IsVisible = false;
             FullPresentationGrid.BackgroundColor = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
 
-            IsEnabled = false;
-        }
+            var client = new Service.ECASA.CMG.InterFIDS.API.Connect.Frontend.Clients.CheckInsAPIConnectClient(this);
+
+            System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(delayTask =>
+            {
+                client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.CheckInFilterModel
+                {
+                    KioskNumber = overlayContextModel.Number,
+                }).ContinueWith(FetchCheckIns_Callback);
+            });
+        } 
 
         public override void ShowOut()
         {
@@ -51,20 +60,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
         }
 
         public override void ShowIn()
-        {
-            if (!IsEnabled)
-            {
-                IsEnabled = true;
-
-                return;
-            }
-
-            var client = new Service.ECASA.CMG.InterFIDS.API.Connect.Frontend.Clients.CheckInsAPIConnectClient(this);
-
-            client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.CheckInFilterModel
-            {
-                KioskNumber = overlayContextModel.Number,
-            }).ContinueWith(FetchCheckIns_Callback);
+        {            
         }
 
         private System.Threading.Tasks.Task ShowPrePresentationAsync()
@@ -134,34 +130,41 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 if (checkInModel != null)
                 {
-                    var now = System.DateTime.Now;
+                    try
+                    {
+                        var now = System.DateTime.Now;
 
-                    if (now > checkInModel.EndAt + System.TimeSpan.FromMinutes(overlayContextModel.PostPresentationTime))
-                    {
-                        if (FullPresentationGrid.IsVisible)
+                        if (now > checkInModel.EndAt + System.TimeSpan.FromMinutes(overlayContextModel.PostPresentationTime))
                         {
-                            await HideFullPresentationAsync();
+                            if (FullPresentationGrid.IsVisible)
+                            {
+                                await HideFullPresentationAsync();
+                            }
                         }
-                    }
-                    else if (now >= checkInModel.StartAt)
-                    {
-                        if (!FullPresentationGrid.IsVisible)
+                        else if (now >= checkInModel.StartAt)
                         {
-                            await ShowFullPresentationAsync();
+                            if (!FullPresentationGrid.IsVisible)
+                            {
+                                await ShowFullPresentationAsync();
+                            }
                         }
-                    }
-                    else if (now >= checkInModel.StartAt - System.TimeSpan.FromMinutes(overlayContextModel.PrePresentationTime))
-                    {
-                        if (!PrePresentationGrid.IsVisible)
+                        else if (now >= checkInModel.StartAt - System.TimeSpan.FromMinutes(overlayContextModel.PrePresentationTime))
                         {
-                            await ShowPrePresentationAsync();
+                            if (!PrePresentationGrid.IsVisible)
+                            {
+                                await ShowPrePresentationAsync();
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (FullPresentationGrid.IsVisible) await HideFullPresentationAsync();
+                        else
+                        {
+                            if (FullPresentationGrid.IsVisible) await HideFullPresentationAsync();
 
-                        if (PrePresentationGrid.IsVisible) await HidePrePresentationAsync();
+                            if (PrePresentationGrid.IsVisible) await HidePrePresentationAsync();
+                        }
+                    }
+                    catch (System.Exception exception)
+                    {
+
                     }
                 }
             }

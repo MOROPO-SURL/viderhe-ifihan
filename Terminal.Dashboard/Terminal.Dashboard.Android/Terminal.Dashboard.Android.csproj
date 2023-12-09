@@ -247,6 +247,22 @@
       <Project>{fa8fcd4c-da74-4102-b767-6a0d0150c673}</Project>
       <Name>Extend.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation.csproj">
+      <Project>{807484b7-8d08-467b-8a1f-7ead7b1dfa52}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Overlaying\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.csproj">
+      <Project>{e2527884-5f76-4f96-bd8c-a1e81de40c72}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.csproj">
+      <Project>{1bee18b8-1336-4b26-b80b-f88347e3bdc8}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Templating\Extend.ECASA.CMG.IAInternationalAirport.Templating.csproj">
+      <Project>{81080891-52be-4012-b0de-f9430ba61e6c}</Project>
+      <Name>Extend.ECASA.CMG.IAInternationalAirport.Templating</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential.Overlaying.Dashboard.Presentation\Extend.Essential.Overlaying.Dashboard.Presentation.csproj">
       <Project>{c79fac59-2855-438c-b372-23ee0e4ebb7c}</Project>
       <Name>Extend.Essential.Overlaying.Dashboard.Presentation</Name>
@@ -282,6 +298,18 @@
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj">
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service.ECASA.CMG.InteropAirportDIS.API.Common\Service.ECASA.CMG.InteropAirportDIS.API.Common.csproj">
+      <Project>{0de1692c-1431-4354-a0b7-8ef519193903}</Project>
+      <Name>Service.ECASA.CMG.InteropAirportDIS.API.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend.csproj">
+      <Project>{3a18bcba-7dc5-4771-8a02-d8faef4aabba}</Project>
+      <Name>Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service.ECASA.CMG.InteropAirportDIS.Persistence\Service.ECASA.CMG.InteropAirportDIS.Persistence.csproj">
+      <Project>{eab69e77-7145-4718-aa59-ebde2f456c1c}</Project>
+      <Name>Service.ECASA.CMG.InteropAirportDIS.Persistence</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Support.Extend.Management.Presentation\Support.Extend.Management.Presentation.csproj">
       <Project>{8eb24205-e599-4267-a450-684616a1d9c0}</Project>
