@@ -13,6 +13,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj" />
 	  <ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Overlaying\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.csproj" />
 	  <ProjectReference Include="..\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend.csproj" />

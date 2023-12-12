@@ -165,9 +165,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.ECASA.CMG.IAInternat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation", "Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.csproj", "{FE3685FD-54CF-4D21-883C-8A5684A082CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend", "Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend.csproj", "{3A18BCBA-7DC5-4771-8A02-D8FAEF4AABBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend", "Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend.csproj", "{3A18BCBA-7DC5-4771-8A02-D8FAEF4AABBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.ECASA.CMG.InteropAirportDIS.SyncWorker", "Service.ECASA.CMG.InteropAirportDIS.SyncWorker\Service.ECASA.CMG.InteropAirportDIS.SyncWorker.csproj", "{0AECA7FC-7D22-4521-8C0F-02C52B5C5987}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.ECASA.CMG.InteropAirportDIS.SyncWorker", "Service.ECASA.CMG.InteropAirportDIS.SyncWorker\Service.ECASA.CMG.InteropAirportDIS.SyncWorker.csproj", "{0AECA7FC-7D22-4521-8C0F-02C52B5C5987}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

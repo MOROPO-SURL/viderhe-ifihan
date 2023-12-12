@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation.Views
@@ -15,29 +16,15 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             this.overlayContextModel = overlayContextModel;
 
-            var expectedWidth = Xamarin.Forms.Application.Current.MainPage.Width / 5;
-
-            //CallToActionMessageWrapGrid.WidthRequest = expectedWidth;
-            //CallToActionMessageWrapGrid.HeightRequest = expectedWidth;
-
             PrimaryChechInNumberBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
             SecoundaryChechInNumberBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.BackgroundColor);
-            //CallToActionMessageBackgroundBoxView.CornerRadius = new Xamarin.Forms.CornerRadius(0, expectedWidth * 0.85, 0, 0);
-
-            //var labelPaddingComponent = expectedWidth * 2d / 3d * 0.2;
-
+            
             ChechInNumberLabel.Text = overlayContextModel.Number.ToString();
             ChechInNumberLabel.TextColor = Xamarin.Forms.Color.White;
-            //CallToActionMessageLabel.FontAttributes = Xamarin.Forms.FontAttributes.Bold;
-            //CallToActionMessageLabel.FontFamily = "Montserrat (Bold)";
-            //CallToActionMessageLabel.FontSize = overlayContextModel.Number >= 10 ? (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(210, typeof(double), null, CultureInfo.InvariantCulture) : (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(192, typeof(double), null, CultureInfo.InvariantCulture);
-            //CallToActionMessageLabel.Padding = new Xamarin.Forms.Thickness(labelPaddingComponent / 2, 0, 0, labelPaddingComponent * 1.5);
-
+            
             PrePresentationGrid.IsVisible = false;
             PrePresentationGrid.BackgroundColor = Xamarin.Forms.Color.White;
-            //PrePresentationGrid.VerticalOptions = Xamarin.Forms.LayoutOptions.End;
-            //PrePresentationGrid.HeightRequest = expectedWidth * 0.85;
-
+            
             FullPresentationGrid.IsVisible = false;
             FullPresentationGrid.BackgroundColor = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
 
@@ -50,6 +37,20 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                     KioskNumber = overlayContextModel.Number,
                 }).ContinueWith(FetchCheckIns_Callback);
             });
+
+            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+            {
+                BindingContext = overlayContextModel.Number >= 10 ? 168 : 192;
+            }
+            else
+            {
+                BindingContext = overlayContextModel.Number >= 10 ? 168 : 216;
+            }
+
+            // TODO Remove block!!
+            NowDateLabel.Text = System.DateTime.Now.ToString("dddd dd, MMMM \\de yyyy");
+
+            NowTimeLabel.Text = System.DateTime.Now.ToString("HH:mm");
         } 
 
         public override void ShowOut()
@@ -67,18 +68,41 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             overlayContextModel = null;
             checkInModel = null;
+            PreOperationCarrierImageView.Source = null;
+            FullOperationCarrierImageView.Source = null;
         }
 
         private System.Threading.Tasks.Task ShowPrePresentationAsync()
         {
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(() => PrePresentationGrid.IsVisible = true);
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                PrePresentationGrid.BindingContext = checkInModel;
+
+                if (checkInModel.Operation.Carrier.Image != null)
+                {
+                    PreOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(overlayContextModel);
+                }
+                else
+                {
+                    PreOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", overlayContextModel.APIServer)));
+                }
+
+                PrePresentationGrid.IsVisible = true;
+            });
 
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
         private System.Threading.Tasks.Task HidePrePresentationAsync()
         {
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(() => PrePresentationGrid.IsVisible = false);
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                PrePresentationGrid.BindingContext = null;
+
+                PreOperationCarrierImageView.Source = null;
+
+                PrePresentationGrid.IsVisible = false;
+            });
 
             return System.Threading.Tasks.Task.CompletedTask;
         }
@@ -89,7 +113,16 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
-                PrePresentationGrid.IsVisible = false;
+                FullPresentationGrid.BindingContext = checkInModel;
+
+                if (checkInModel.Operation.Carrier.Image != null)
+                {
+                    FullOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(overlayContextModel);
+                }
+                else
+                {
+                    FullOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", overlayContextModel.APIServer)));
+                }
 
                 FullPresentationGrid.IsVisible = true;
             });
@@ -97,7 +130,14 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
         private System.Threading.Tasks.Task HideFullPresentationAsync()
         {
-            Xamarin.Forms.Device.BeginInvokeOnMainThread(() => FullPresentationGrid.IsVisible = false);
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                FullPresentationGrid.BindingContext = null;
+
+                FullOperationCarrierImageView.Source = null;
+
+                FullPresentationGrid.IsVisible = false;
+            });
 
             return System.Threading.Tasks.Task.CompletedTask;
         }
@@ -136,41 +176,36 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 if (checkInModel != null)
                 {
-                    try
+                    var now = System.DateTime.Now;
+
+                    if (now > checkInModel.EndAt + System.TimeSpan.FromMinutes(overlayContextModel.PostPresentationTime))
                     {
-                        var now = System.DateTime.Now;
-
-                        if (now > checkInModel.EndAt + System.TimeSpan.FromMinutes(overlayContextModel.PostPresentationTime))
+                        if (FullPresentationGrid.IsVisible)
                         {
-                            if (FullPresentationGrid.IsVisible)
-                            {
-                                await HideFullPresentationAsync();
-                            }
-                        }
-                        else if (now >= checkInModel.StartAt)
-                        {
-                            if (!FullPresentationGrid.IsVisible)
-                            {
-                                await ShowFullPresentationAsync();
-                            }
-                        }
-                        else if (now >= checkInModel.StartAt - System.TimeSpan.FromMinutes(overlayContextModel.PrePresentationTime))
-                        {
-                            if (!PrePresentationGrid.IsVisible)
-                            {
-                                await ShowPrePresentationAsync();
-                            }
-                        }
-                        else
-                        {
-                            if (FullPresentationGrid.IsVisible) await HideFullPresentationAsync();
-
-                            if (PrePresentationGrid.IsVisible) await HidePrePresentationAsync();
+                            await HideFullPresentationAsync();
                         }
                     }
-                    catch (System.Exception exception)
+                    else if (now >= checkInModel.StartAt)
                     {
+                        if (!FullPresentationGrid.IsVisible)
+                        {
+                            await ShowFullPresentationAsync();
+                        }
+                    }
+                    else if (now >= checkInModel.StartAt - System.TimeSpan.FromMinutes(overlayContextModel.PrePresentationTime))
+                    {
+                        if (FullPresentationGrid.IsVisible) await HideFullPresentationAsync();
 
+                        if (!PrePresentationGrid.IsVisible)
+                        {
+                            await ShowPrePresentationAsync();
+                        }
+                    }
+                    else
+                    {
+                        if (FullPresentationGrid.IsVisible) await HideFullPresentationAsync();
+
+                        if (PrePresentationGrid.IsVisible) await HidePrePresentationAsync();
                     }
                 }
             }
