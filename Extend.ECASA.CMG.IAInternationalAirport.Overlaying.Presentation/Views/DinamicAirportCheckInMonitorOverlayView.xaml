@@ -40,10 +40,10 @@
                     Grid.Row="0"
                     BackgroundColor="{Binding Source={Reference PrimaryChechInNumberBackgroundBoxView}, Path=Color}" />
                 <Label
+                    x:Name="PreCheckInHeadLabel"
                     Grid.Row="0"
                     Margin="100,0,20,0"
                     VerticalTextAlignment="Center"
-                    Text="INICIO DE CHECK-IN EN BREVE ..."
                     TextColor="White"
                     FontFamily="Montserrat (Bold)"
                     FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}}" />
@@ -209,14 +209,14 @@
                         FontSize="{Binding Source=192, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                 </Grid>
                 <Label 
+                    x:Name="CheckInStatusLabel"
                     BackgroundColor="White"
                     Padding="20" Margin="0,0,0,30"
                     HorizontalTextAlignment="Center"
                     LineBreakMode="TailTruncation"
-                    Text="EN PROGRESO"
                     TextColor="{Binding Source={Reference PrimaryChechInNumberBackgroundBoxView}, Path=Color}"
                     FontFamily="Montserrat (Bold)"
-                    FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                    FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                 <Grid VerticalOptions="FillAndExpand" RowSpacing="20" ColumnSpacing="20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -352,21 +352,21 @@
                         Text="&#xF0ED;"
                         Margin="0,3,0,0"
                         FontFamily="{StaticResource IconFontFamily}"
-                        FontSize="{Binding Source=34, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                        FontSize="{Binding Source=44, Converter={StaticResource SizeToRelativeValueConverter}}" />
                     <Label
                         x:Name="NowDateLabel"
                         VerticalTextAlignment="Center"
-                        FontSize="{Binding Source=28, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                        FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}" />
                     <Label
                         Text="&#xF150;"
                         Margin="20,0,0,0"
                         FontFamily="{StaticResource IconFontFamily}"
-                        FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                        FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}}" />
                     <Label
                         x:Name="NowTimeLabel"
                         HorizontalOptions="FillAndExpand"
                         VerticalTextAlignment="Center"
-                        FontSize="{Binding Source=28, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                        FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}" />
                 </StackLayout>
             </StackLayout>
         </Grid>

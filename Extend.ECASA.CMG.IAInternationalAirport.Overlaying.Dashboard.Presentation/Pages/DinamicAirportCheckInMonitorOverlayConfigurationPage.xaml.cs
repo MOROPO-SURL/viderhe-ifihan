@@ -135,7 +135,10 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dash
                 BackgroundColor = BindingContextPageModel.BackgroundColor.ToHex(),
                 AccentColor = BindingContextPageModel.AccentColor.ToHex(),
                 PrePresentationTime = BindingContextPageModel.PrePresentationTime,
-                PostPresentationTime = BindingContextPageModel.PostPresentationTime
+                PostPresentationTime = BindingContextPageModel.PostPresentationTime,
+                PreCheckInHeadLabel = BindingContextPageModel.PreCheckInHeadLabel,
+                OpenCheckInLabel = BindingContextPageModel.OpenCheckInLabel,
+                ClosedCheckInLabel = BindingContextPageModel.ClosedCheckInLabel
             }));
         }
 

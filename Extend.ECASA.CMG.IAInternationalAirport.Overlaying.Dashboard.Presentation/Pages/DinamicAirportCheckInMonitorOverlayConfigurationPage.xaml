@@ -64,6 +64,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <StackLayout 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -226,7 +227,7 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding Path=PrePresentationTime}" VerticalTextAlignment="Center" />
                                 <Label Text="Minutos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
-                                <Stepper Value="{Binding Path=PrePresentationTime}" Minimum="1" />
+                                <Stepper Value="{Binding Path=PrePresentationTime}" Minimum="0" />
                             </StackLayout>
                         </StackLayout>
                     </Frame>
@@ -238,12 +239,81 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding Path=PostPresentationTime}" VerticalTextAlignment="Center" />
                                 <Label Text="Minutos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
-                                <Stepper Value="{Binding Path=PostPresentationTime}" Minimum="1" />
+                                <Stepper Value="{Binding Path=PostPresentationTime}" Minimum="0" />
                             </StackLayout>
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3"
+                        Grid.Column="0" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                x:Name="PreCheckInHeadLabel"
+                                Text="Texto de Cabecera de Pre-Checking" 
+                                Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=PreCheckInHeadLabel}">
+                                <Entry.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
+                                        TargetProperty="{Static Entry.TextProperty}"
+                                        Label="{Reference PreCheckInHeadLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                x:Name="OpenCheckInLabel"
+                                Text="Texto de Estado Abierto del Checking" 
+                                Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=OpenCheckInLabel}">
+                                <Entry.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
+                                        TargetProperty="{Static Entry.TextProperty}"
+                                        Label="{Reference OpenCheckInLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="2" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                x:Name="ClosedCheckInLabel"
+                                Text="Texto de Estado Cerrado del Checking" 
+                                Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=ClosedCheckInLabel}">
+                                <Entry.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
+                                        TargetProperty="{Static Entry.TextProperty}"
+                                        Label="{Reference ClosedCheckInLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4"
                         Style="{StaticResource FormFieldFrame}"
                         BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">

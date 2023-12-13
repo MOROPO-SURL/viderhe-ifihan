@@ -16,6 +16,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             this.overlayContextModel = overlayContextModel;
 
+            PreCheckInHeadLabel.Text = overlayContextModel.PreCheckInHeadLabel;
+
             PrimaryChechInNumberBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
             SecoundaryChechInNumberBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.BackgroundColor);
             
@@ -124,6 +126,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                     FullOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", overlayContextModel.APIServer)));
                 }
 
+                UpdateCheckInStatus();
+
                 FullPresentationGrid.IsVisible = true;
             });
         }
@@ -142,25 +146,59 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             return System.Threading.Tasks.Task.CompletedTask;
         }
 
-        //private System.Threading.Tasks.Task UpdateFullPresentationAsync()
-        //{
-        //    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-        //    {
+        private void UpdateCheckInStatus()
+        {
+            CheckInStatusLabel.Text = overlayContextModel.ClosedCheckInLabel;
 
-        //    });
+            if (checkInModel == null || !checkInModel.IsOpen) return;
 
-        //    return System.Threading.Tasks.Task.CompletedTask;
-        //}
-        
-        //private System.Threading.Tasks.Task UpdatePrePresentationAsync()
-        //{
-        //    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-        //    {
+            CheckInStatusLabel.Text = overlayContextModel.OpenCheckInLabel;
 
-        //    });
+            if (System.DateTime.Now >= checkInModel.EndAt)
+            {
+                CheckInStatusLabel.Text = overlayContextModel.ClosedCheckInLabel;
+            }
+        }
 
-        //    return System.Threading.Tasks.Task.CompletedTask;
-        //}
+        private System.Threading.Tasks.Task UpdateFullPresentationAsync()
+        {
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                FullPresentationGrid.BindingContext = checkInModel;
+
+                if (checkInModel.Operation.Carrier.Image != null)
+                {
+                    FullOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(overlayContextModel);
+                }
+                else
+                {
+                    FullOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", overlayContextModel.APIServer)));
+                }
+
+                UpdateCheckInStatus();
+            });
+
+            return System.Threading.Tasks.Task.CompletedTask;
+        }
+
+        private System.Threading.Tasks.Task UpdatePrePresentationAsync()
+        {
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                PrePresentationGrid.BindingContext = checkInModel;
+
+                if (checkInModel.Operation.Carrier.Image != null)
+                {
+                    PreOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(overlayContextModel);
+                }
+                else
+                {
+                    PreOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", overlayContextModel.APIServer)));
+                }
+            });
+
+            return System.Threading.Tasks.Task.CompletedTask;
+        }
 
         private async void FetchCheckIns_Callback(System.Threading.Tasks.Task<Service.ECASA.CMG.InterFIDS.API.Common.Models.CheckInDisplayModel[]> task)
         {
@@ -191,6 +229,10 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                         {
                             await ShowFullPresentationAsync();
                         }
+                        else
+                        {
+                            await UpdateFullPresentationAsync();
+                        }
                     }
                     else if (now >= checkInModel.StartAt - System.TimeSpan.FromMinutes(overlayContextModel.PrePresentationTime))
                     {
@@ -199,6 +241,10 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                         if (!PrePresentationGrid.IsVisible)
                         {
                             await ShowPrePresentationAsync();
+                        }
+                        else
+                        {
+                            await UpdatePrePresentationAsync();
                         }
                     }
                     else

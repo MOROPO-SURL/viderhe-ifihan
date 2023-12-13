@@ -14,13 +14,21 @@
         private Xamarin.Forms.Color accentColor;
         private int prePresentationTime;
         private int postPresentationTime;
+        private string preCheckInHeadLabel;
+        private string openCheckInLabel;
+        private string closedCheckInLabel;
 
         public DinamicAirportCheckInMonitorOverlayConfigurationPageModel()
         {
             updateInterval = 60;
-            Number = -1;
+            number = -1;
+            prePresentationTime = 0;
+            postPresentationTime = 0;
             backgroundColor = Xamarin.Forms.Color.White;
             accentColor = Xamarin.Forms.Color.CadetBlue;
+            preCheckInHeadLabel = "PROXIMA SALIDA EN CHECK-IN ...";
+            openCheckInLabel = "ABIERTO";
+            closedCheckInLabel = "CERRADO";
         }
 
         public string APIServer { get => apiServer; set => SetProperty(ref apiServer, value); }
@@ -46,5 +54,11 @@
         public int PrePresentationTime { get => prePresentationTime; set => SetProperty(ref prePresentationTime, value); }
 
         public int PostPresentationTime { get => postPresentationTime; set => SetProperty(ref postPresentationTime, value); }
+
+        public string PreCheckInHeadLabel { get => preCheckInHeadLabel; set => SetProperty(ref preCheckInHeadLabel, value); }
+
+        public string OpenCheckInLabel { get => openCheckInLabel; set => SetProperty(ref openCheckInLabel, value); }
+
+        public string ClosedCheckInLabel { get => closedCheckInLabel; set => SetProperty(ref closedCheckInLabel, value); }
     }
 }

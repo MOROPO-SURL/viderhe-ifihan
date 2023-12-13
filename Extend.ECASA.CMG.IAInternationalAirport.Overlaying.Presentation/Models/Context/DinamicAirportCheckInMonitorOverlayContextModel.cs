@@ -23,5 +23,11 @@
         public int PrePresentationTime { get; set; }
 
         public int PostPresentationTime { get; set; }
+
+        public string PreCheckInHeadLabel { get; set; }
+
+        public string OpenCheckInLabel { get; set; }
+
+        public string ClosedCheckInLabel { get; set; }
     }
 }

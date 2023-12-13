@@ -20,7 +20,10 @@
                     BackgroundColor = Xamarin.Forms.Color.FromHex(context.BackgroundColor),
                     AccentColor = Xamarin.Forms.Color.FromHex(context.AccentColor),
                     PrePresentationTime = context.PrePresentationTime,
-                    PostPresentationTime = context.PostPresentationTime
+                    PostPresentationTime = context.PostPresentationTime,
+                    PreCheckInHeadLabel = context.PreCheckInHeadLabel,
+                    OpenCheckInLabel = context.OpenCheckInLabel,
+                    ClosedCheckInLabel = context.ClosedCheckInLabel
                 };
             }
             catch
