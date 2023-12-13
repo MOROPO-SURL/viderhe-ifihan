@@ -1,6 +1,6 @@
-﻿[assembly: Xamarin.Forms.ExportRenderer(typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views.Rendered.IconImageCell), typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Views.Renderer.IconImageCellRenderer))]
+﻿[assembly: Xamarin.Forms.ExportRenderer(typeof(MOROPO.VIDERHE.Terminal.Dashboard.Views.Rendered.IconImageCell), typeof(MOROPO.VIDERHE.Terminal.Dashboard.Droid.Views.Renderer.IconImageCellRenderer))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Views.Renderer
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Views.Renderer
 {
     public class IconImageCellRenderer : Xamarin.Forms.Platform.Android.ImageCellRenderer
     {

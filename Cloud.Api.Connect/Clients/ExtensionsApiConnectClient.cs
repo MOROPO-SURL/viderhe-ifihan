@@ -13,7 +13,7 @@ namespace MOROPO.VIDERHE.Cloud.Api.Connect.Clients
 
         public async System.Threading.Tasks.Task<ExtensionBundleModuleModel[]> GetDashboardBundleModulesAsync(System.Guid id)
         {
-            return await httpClientHelper.GetAsync<ExtensionBundleModuleModel[]>(string.Format("account/extensions/{0}/dashboard/bundle/modules", id));
+            return await httpClientHelper.GetAsync<ExtensionBundleModuleModel[]>(string.Format("account/extensions/{0}/control/bundle/modules", id));
         }
 
         public async System.Threading.Tasks.Task<ExtensionBundleModuleModel[]> GetPlayerBundleModulesAsync(System.Guid id)
