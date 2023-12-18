@@ -19,7 +19,7 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Pages
         }
 
         public LandscapeGrid2x2PlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(LandscapeGrid2x2PlacardConfigurationPageFactory.Build(placardViewModel))
+            : base(LandscapeGrid2x2PlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 

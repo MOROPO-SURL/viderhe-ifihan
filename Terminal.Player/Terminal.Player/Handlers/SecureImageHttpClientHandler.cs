@@ -4,7 +4,7 @@
     {
         protected override System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage> SendAsync(System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken)
         {
-            var extraHeaders = Managers.SessionManager.Instance.GetExtraHeaders();
+            var extraHeaders = Managers.SessionManager.Instance.ExtraHeaders;
 
             foreach (var header in extraHeaders)
             {

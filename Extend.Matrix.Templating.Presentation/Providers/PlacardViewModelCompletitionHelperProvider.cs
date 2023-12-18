@@ -10,6 +10,10 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Providers
 
             if (model.Template.Id == LandscapeGrid2x2TemplateDescriptor.ID) return new Helpers.Grid2x2PlacardViewModelCompletitionHelper();
 
+            if (model.Template.Id == LandscapeGrid2x1TemplateDescriptor.ID) return new Helpers.Grid2x1PlacardViewModelCompletitionHelper();
+
+            if (model.Template.Id == LandscapeGrid3st_2x1TemplateDescriptor.ID) return new Helpers.Grid3st_2x1PlacardViewModelCompletitionHelper();
+
             return null;
         }
     }

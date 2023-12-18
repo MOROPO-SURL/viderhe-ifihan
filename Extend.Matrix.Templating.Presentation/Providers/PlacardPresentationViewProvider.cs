@@ -36,6 +36,34 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Providers
                 }, relativeSizeScaleFactor);
             }
 
+            if (model.Template.Id == LandscapeGrid2x1TemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeGrid2x1PlacardContextModel>(model.SerializedContext);
+
+                return new Views.LandscapeGrid2x1PlacardView(new Models.View.LandscapeGrid2x1PlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    OneOfTwoTargetPlacards = context.OneOfTwoTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    IsOneOfTwoTargetPlacardsScalable = context.IsOneOfTwoTargetPlacardsScalable,
+                    TwoOfTwoTargetPlacards = context.TwoOfTwoTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    IsTwoOfTwoTargetPlacardsScalable = context.IsTwoOfTwoTargetPlacardsScalable
+                }, relativeSizeScaleFactor);
+            }
+
+            if (model.Template.Id == LandscapeGrid3st_2x1TemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeGrid3st_2x1PlacardContextModel>(model.SerializedContext);
+
+                return new Views.LandscapeGrid3st_2x1PlacardView(new Models.View.LandscapeGrid3st_2x1PlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    OneOfTwoTargetPlacards = context.OneOfTwoTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    IsOneOfTwoTargetPlacardsScalable = context.IsOneOfTwoTargetPlacardsScalable,
+                    TwoOfTwoSplitOneOfTwoTargetPlacards = context.TwoOfTwoSplitOneOfTwoTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    TwoOfTwoSplitTwoOfTwoTargetPlacards = context.TwoOfTwoSplitTwoOfTwoTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray()
+                }, relativeSizeScaleFactor);
+            }
+
             return null;
         }
     }

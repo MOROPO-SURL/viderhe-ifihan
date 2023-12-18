@@ -16,6 +16,16 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Provide
                 return new Pages.LandscapeGrid2x2PlacardConfigurationPage(completedActionCallback);
             }
 
+            if (templateDescriptor is LandscapeGrid2x1TemplateDescriptor)
+            {
+                return new Pages.LandscapeGrid2x1PlacardConfigurationPage(completedActionCallback);
+            }
+
+            if (templateDescriptor is LandscapeGrid3st_2x1TemplateDescriptor)
+            {
+                return new Pages.LandscapeGrid3st_2x1PlacardConfigurationPage(completedActionCallback);
+            }
+
             return null;
         }
 
@@ -29,6 +39,16 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Provide
             if (placardViewModel.Template.Id == LandscapeGrid2x2TemplateDescriptor.ID)
             {
                 return new Pages.LandscapeGrid2x2PlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == LandscapeGrid2x1TemplateDescriptor.ID)
+            {
+                return new Pages.LandscapeGrid2x1PlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == LandscapeGrid3st_2x1TemplateDescriptor.ID)
+            {
+                return new Pages.LandscapeGrid3st_2x1PlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;

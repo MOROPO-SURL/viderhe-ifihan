@@ -3,7 +3,7 @@ using MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Extensions;
 
 namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Factories
 {
-    public static class LandscapeGrid2x2PlacardConfigurationPageFactory
+    public static class LandscapeGrid2x2PlacardConfigurationPageModelFactory
     {
         public static Models.Page.LandscapeGrid2x2PlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {

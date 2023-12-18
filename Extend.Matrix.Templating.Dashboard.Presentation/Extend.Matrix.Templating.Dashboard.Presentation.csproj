@@ -22,8 +22,14 @@
 		<EmbeddedResource Update="Pages\LandscapeGrid1x3PlacardConfigurationPage.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\LandscapeGrid2x1PlacardConfigurationPage.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Pages\LandscapeGrid2x2PlacardConfigurationPage.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\LandscapeGrid3st_2x1PlacardConfigurationPage.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 	</ItemGroup>
 

@@ -330,13 +330,10 @@ namespace MOROPO.VIDERHE.Terminal.Player.Pages
             }
             else
             {
-                Managers.SessionManager.Instance.AuthenticationType = task.Result.AuthenticationType;
-                Managers.SessionManager.Instance.AuthenticationToken = task.Result.AuthenticationToken;
-
                 // MotoTouch does not support dynamic assembly loading
                 if (Xamarin.Forms.Device.RuntimePlatform != Xamarin.Forms.Device.iOS)
                 {
-                    var dynamicLoadExtensions = Managers.SessionManager.Instance.Account.Extensions.Where(item => item.Id != Extend.Essential.Descriptors.EssentialExtensionDescriptor.ID && item.Id != Extend.Matrix.Descriptors.MatrixExtensionDescriptor.ID).ToArray();
+                    var dynamicLoadExtensions = SessionManager.Instance.Account.Extensions.Where(item => item.Id != EssentialExtensionDescriptor.ID && item.Id != Extend.Matrix.Descriptors.MatrixExtensionDescriptor.ID).ToArray();
 
                     var missingAccountExtensions = new System.Collections.Generic.List<ExtensionDisplayModel>();
 

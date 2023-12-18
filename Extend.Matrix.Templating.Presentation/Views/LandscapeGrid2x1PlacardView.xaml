@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    x:Class="MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Views.LandscapeGrid2x1PlacardView">
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="PlacardLayout" ColumnSpacing="2" RowSpacing="2" BackgroundColor="DimGray">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" IsClippedToBounds="True" />
+                <Grid Grid.Row="1" IsClippedToBounds="True" />
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

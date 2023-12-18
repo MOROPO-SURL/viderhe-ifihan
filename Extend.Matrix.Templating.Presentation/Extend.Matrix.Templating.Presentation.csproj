@@ -13,7 +13,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2622" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -34,8 +34,14 @@
 		<EmbeddedResource Update="Views\LandscapeGrid1x3PlacardView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapeGrid2x1PlacardView.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Views\LandscapeGrid2x2PlacardView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapeGrid3st_2x1PlacardView.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 	</ItemGroup>
 
