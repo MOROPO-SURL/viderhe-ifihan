@@ -38,9 +38,9 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Pages
             Title = string.Format("Modificando Cartel ({0})", placardViewModel.Template.Name);
         }
 
-        private void IncludeOneOfTwoPlacardsButton_Clicked(object sender, System.EventArgs eventArgs)
+        private void IncludeTopCellPlacardsButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.PlacardsPickPage(OneOfTwoPlacardsSelected_Callback, new Cloud.Api.Common.Models.Filter.PlacardFilterModel
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.PlacardsPickPage(TopCellPlacardsSelected_Callback, new Cloud.Api.Common.Models.Filter.PlacardFilterModel
             {
                 PlayerOrientationSupportKind = Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape
             }, item =>
@@ -56,9 +56,9 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Pages
             }));
         }
 
-        private void IncludeTwoOfTwoPlacardsButton_Clicked(object sender, System.EventArgs eventArgs)
+        private void IncludeBottonCellPlacardsButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.PlacardsPickPage(TwoOfTwoPlacardsSelected_Callback, new Cloud.Api.Common.Models.Filter.PlacardFilterModel
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.PlacardsPickPage(BottonCellPlacardsSelected_Callback, new Cloud.Api.Common.Models.Filter.PlacardFilterModel
             {
                 PlayerOrientationSupportKind = Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape
             }, item =>
@@ -74,7 +74,7 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Pages
             }));
         }
 
-        private void PlacardOneOfTwoDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
+        private void TopCellPlacardDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
         {
             DisplayAlert("Confirmar", "Está seguro que desea eliminar este cartel de la secuencia?", "Eliminar", "Cancelar").ContinueWith(task =>
             {
@@ -84,12 +84,12 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Pages
                 {
                     var item = (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel;
 
-                    BindingContextPageModel.OneOfTwoTargetPlacards.Remove(item);
+                    BindingContextPageModel.TopCellPlacards.Remove(item);
                 });
             });
         }
 
-        private void PlacardTowOfTwoDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
+        private void BottomCellPlacardDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
         {
             DisplayAlert("Confirmar", "Está seguro que desea eliminar este cartel de la secuencia?", "Eliminar", "Cancelar").ContinueWith(task =>
             {
@@ -99,7 +99,7 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Pages
                 {
                     var item = (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel;
 
-                    BindingContextPageModel.TwoOfTwoTargetPlacards.Remove(item);
+                    BindingContextPageModel.BottomCellPlacards.Remove(item);
                 });
             });
         }
@@ -123,6 +123,17 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Pages
 
             BindingContextPageModel.IsBusy = true;
 
+            int? screenTimeDirectorScreenplayIndex = null;
+
+            if (BindingContextPageModel.IsTopCellScreenplayTimeRector)
+            {
+                screenTimeDirectorScreenplayIndex = 0;
+            }
+            else if (BindingContextPageModel.IsBottomCellScreenplayTimeRector)
+            {
+                screenTimeDirectorScreenplayIndex = 1;
+            }
+
             System.Threading.Tasks.Task.Run(async () =>
             {
                 var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
@@ -136,10 +147,11 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Pages
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.LandscapeGrid2x1PlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
-                            OneOfTwoTargetPlacards = BindingContextPageModel.OneOfTwoTargetPlacards.Select(item => item.Placard.Id.ToString()).ToArray(),
-                            IsOneOfTwoTargetPlacardsScalable = BindingContextPageModel.IsOneOfTwoTargetPlacardsScalable,
-                            TwoOfTwoTargetPlacards = BindingContextPageModel.TwoOfTwoTargetPlacards.Select(item => item.Placard.Id.ToString()).ToArray(),
-                            IsTwoOfTwoTargetPlacardsScalable = BindingContextPageModel.IsTwoOfTwoTargetPlacardsScalable
+                            TopCellPlacards = BindingContextPageModel.TopCellPlacards.Select(item => item.Placard.Id.ToString()).ToArray(),
+                            IsTopCellPlacardsScalable = BindingContextPageModel.IsTopCellPlacardsScalable,
+                            BottomCellPlacards = BindingContextPageModel.BottomCellPlacards.Select(item => item.Placard.Id.ToString()).ToArray(),
+                            IsBottomCellPlacardsScalable = BindingContextPageModel.IsBottomCellPlacardsScalable,
+                            ScreenTimeDirectorScreenplayIndex = screenTimeDirectorScreenplayIndex
                         }),
                         Tags = BindingContextPageModel.Tags.ToArray()
                     };
@@ -166,10 +178,11 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Pages
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.LandscapeGrid2x1PlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
-                            OneOfTwoTargetPlacards = BindingContextPageModel.OneOfTwoTargetPlacards.Select(item => item.Placard.Id.ToString()).ToArray(),
-                            IsOneOfTwoTargetPlacardsScalable = BindingContextPageModel.IsOneOfTwoTargetPlacardsScalable,
-                            TwoOfTwoTargetPlacards = BindingContextPageModel.TwoOfTwoTargetPlacards.Select(item => item.Placard.Id.ToString()).ToArray(),
-                            IsTwoOfTwoTargetPlacardsScalable = BindingContextPageModel.IsTwoOfTwoTargetPlacardsScalable
+                            TopCellPlacards = BindingContextPageModel.TopCellPlacards.Select(item => item.Placard.Id.ToString()).ToArray(),
+                            IsTopCellPlacardsScalable = BindingContextPageModel.IsTopCellPlacardsScalable,
+                            BottomCellPlacards = BindingContextPageModel.BottomCellPlacards.Select(item => item.Placard.Id.ToString()).ToArray(),
+                            IsBottomCellPlacardsScalable = BindingContextPageModel.IsBottomCellPlacardsScalable,
+                            ScreenTimeDirectorScreenplayIndex = screenTimeDirectorScreenplayIndex
                         }),
                         Tags = BindingContextPageModel.Tags.ToArray()
                     };
@@ -235,19 +248,19 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Pages
             BindingContextPageModel.Tags.Add(model);
         }
 
-        private void OneOfTwoPlacardsSelected_Callback(Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel[] selection)
+        private void TopCellPlacardsSelected_Callback(Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel[] selection)
         {
             foreach (var item in selection)
             {
-                BindingContextPageModel.OneOfTwoTargetPlacards.Add(item);
+                BindingContextPageModel.TopCellPlacards.Add(item);
             }
         }
 
-        private void TwoOfTwoPlacardsSelected_Callback(Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel[] selection)
+        private void BottonCellPlacardsSelected_Callback(Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel[] selection)
         {
             foreach (var item in selection)
             {
-                BindingContextPageModel.TwoOfTwoTargetPlacards.Add(item);
+                BindingContextPageModel.BottomCellPlacards.Add(item);
             }
         }
 

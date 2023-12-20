@@ -284,7 +284,7 @@
                             </Grid.RowDefinitions>
                             <Label 
                                 Grid.ColumnSpan="3" Grid.Row="0"
-                                Text="Sección Superior" 
+                                Text="Celda Superior" 
                                 Style="{StaticResource FormLabel}" />
                             <Grid
                                 Grid.ColumnSpan="3" Grid.Row="1"
@@ -300,17 +300,17 @@
                                     Orientation="Horizontal"
                                     BackgroundColor="White">
                                     <Label 
-                                        x:Name="OneOfTwoPlacardsLabel"
+                                        x:Name="TopCellPlacardsLabel"
                                         HorizontalOptions="FillAndExpand"
                                         Style="{StaticResource FormLabel}"
                                         Margin="10,10,10,6"
-                                        Text="Carteles en la Sección Superior" />
+                                        Text="Carteles" />
                                     <Button
                                         VerticalOptions="Start"
                                         Text="&#xF415;"
                                         Style="{StaticResource TextIconButton}"
                                         FontSize="Medium"
-                                        Clicked="IncludeOneOfTwoPlacardsButton_Clicked" />
+                                        Clicked="IncludeTopCellPlacardsButton_Clicked" />
                                 </StackLayout>
                                 <ScrollView
                                     Grid.Row="1"
@@ -319,13 +319,13 @@
                                     <ContentView BackgroundColor="#66FFFFFF">
                                         <FlexLayout
                                             Margin="5"
-                                            BindableLayout.ItemsSource="{Binding Path=OneOfTwoTargetPlacards}">
+                                            BindableLayout.ItemsSource="{Binding Path=TopCellPlacards}">
                                             <FlexLayout.Behaviors>
                                                 <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                                     ValidableFormPage="{Reference FormPage}"
                                                     FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultCollectionFlexLayoutValidationPresenter.Instance}"
                                                     TargetProperty="{Static BindableLayout.ItemsSourceProperty}"
-                                                    Label="{Reference OneOfTwoPlacardsLabel}">
+                                                    Label="{Reference TopCellPlacardsLabel}">
                                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
                                                         <supportpresentationdashboardvalidators:MinCountFormFieldValidator MinCount="1" />
                                                     </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
@@ -373,7 +373,7 @@
                                                                 BackgroundColor="#99000000"
                                                                 BorderWidth="0"
                                                                 CornerRadius="12"
-                                                                Clicked="PlacardOneOfTwoDeleteButton_Clicked">
+                                                                Clicked="TopCellPlacardDeleteButton_Clicked">
                                                                 <ImageButton.Padding>
                                                                     <OnPlatform x:TypeArguments="Thickness">
                                                                         <On Platform="UWP" Value="1,0,0,0" />
@@ -415,260 +415,331 @@
                                 Style="{StaticResource FormFieldFrame}"
                                 VerticalOptions="Start">
                                 <StackLayout>
+                                    <Label Text="Determina el tiempo en pantalla" Style="{StaticResource FormLabel}" />
+                                    <Switch IsToggled="{Binding Path=IsTopCellScreenplayTimeRector}" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame 
+                                Grid.Column="1" Grid.Row="2"
+                                Style="{StaticResource FormFieldFrame}"
+                                VerticalOptions="Start">
+                                <StackLayout>
                                     <Label Text="Escalar carteles" Style="{StaticResource FormLabel}" />
-                                    <Switch IsToggled="{Binding Path=IsOneOfTwoTargetPlacardsScalable}" />
+                                    <Switch IsToggled="{Binding Path=IsTopCellPlacardsScalable}" />
                                 </StackLayout>
                             </Frame>
                         </Grid>
                     </Frame>
-                    <Grid
+                    <Frame 
                         Grid.ColumnSpan="3" Grid.Row="5"
-                        HeightRequest="340"
+                        Style="{StaticResource FormFieldFrame}"
                         BackgroundColor="#66FFFFFF"
-                        RowSpacing="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <StackLayout
-                            Grid.Row="0"
-                            Orientation="Horizontal"
-                            BackgroundColor="White">
+                        VerticalOptions="Start">
+                        <Grid ColumnSpacing="10" RowSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
                             <Label 
-                                x:Name="TwoOfTwoSplitOneOfTwoPlacardsLabel"
-                                HorizontalOptions="FillAndExpand"
-                                Style="{StaticResource FormLabel}"
-                                Margin="10,10,10,6"
-                                Text="Carteles en el Sub-Cuadrante Inferrior Izquierdo" />
-                            <Button
-                                VerticalOptions="Start"
-                                Text="&#xF415;"
-                                Style="{StaticResource TextIconButton}"
-                                FontSize="Medium"
-                                Clicked="IncludeTwoOfTwoSplitOneOfTwoPlacardsButton_Clicked" />
-                        </StackLayout>
-                        <ScrollView
-                            Grid.Row="1"
-                            Margin="0"
-                            Orientation="Horizontal">
-                            <ContentView BackgroundColor="#66FFFFFF">
-                                <FlexLayout
-                                    Margin="5"
-                                    BindableLayout.ItemsSource="{Binding Path=TwoOfTwoSplitOneOfTwoTargetPlacards}">
-                                    <FlexLayout.Behaviors>
-                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior
-                                            ValidableFormPage="{Reference FormPage}"
-                                            FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultCollectionFlexLayoutValidationPresenter.Instance}"
-                                            TargetProperty="{Static BindableLayout.ItemsSourceProperty}"
-                                            Label="{Reference TwoOfTwoSplitOneOfTwoPlacardsLabel}">
-                                            <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
-                                                <supportpresentationdashboardvalidators:MinCountFormFieldValidator MinCount="1" />
-                                            </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
-                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior>
-                                    </FlexLayout.Behaviors>
-                                    <BindableLayout.EmptyView>
-                                        <Label
+                                Grid.ColumnSpan="3" Grid.Row="0"
+                                Text="Celda Inferior Izquierda" 
+                                Style="{StaticResource FormLabel}" />
+                            <Grid
+                                Grid.ColumnSpan="3" Grid.Row="1"
+                                HeightRequest="340"
+                                BackgroundColor="#66FFFFFF"
+                                RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <StackLayout
+                                    Grid.Row="0"
+                                    Orientation="Horizontal"
+                                    BackgroundColor="White">
+                                    <Label 
+                                        x:Name="BottomLeftCellPlacardsLabel"
+                                        HorizontalOptions="FillAndExpand"
+                                        Style="{StaticResource FormLabel}"
+                                        Margin="10,10,10,6"
+                                        Text="Carteles" />
+                                    <Button
+                                        VerticalOptions="Start"
+                                        Text="&#xF415;"
+                                        Style="{StaticResource TextIconButton}"
+                                        FontSize="Medium"
+                                        Clicked="IncludeBottomLeftCellPlacardsButton_Clicked" />
+                                </StackLayout>
+                                <ScrollView
+                                    Grid.Row="1"
+                                    Margin="0"
+                                    Orientation="Horizontal">
+                                    <ContentView BackgroundColor="#66FFFFFF">
+                                        <FlexLayout
                                             Margin="5"
-                                            Text="No se han agregado elementos"
-                                            TextColor="DimGray" />
-                                    </BindableLayout.EmptyView>
-                                    <BindableLayout.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid
-                                                Margin="5"
-                                                BackgroundColor="Black"
-                                                WidthRequest="200"
-                                                RowSpacing="0">
-                                                <Grid RowSpacing="0">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition />
-                                                        <RowDefinition Height="Auto" />
-                                                    </Grid.RowDefinitions>
-                                                    <Grid 
-                                                        Grid.Row="0"
-                                                        HeightRequest="{Binding Source={RelativeSource AncestorType={Type Grid}}, Path=Width}">
-                                                        <BoxView Color="White" Opacity="0.2" />
-                                                        <ContentView Content="{Binding Path=Placard, Converter={StaticResource PlacardViewModelToPlacardThumbnailWrapViewConverter}}" />
-                                                        <Label
-                                                            IsVisible="{Binding Path=Placard, Converter={StaticResource PlacardToIsAnyPlayerOrientationSupportedConverter}}"
-                                                            HorizontalOptions="Start" VerticalOptions="End"
-                                                            BackgroundColor="{StaticResource PrimaryColor}"
-                                                            Padding="4"
-                                                            Text="&#xf884;"
-                                                            TextColor="White"
-                                                            FontFamily="Material Design Icons"
-                                                            FontSize="24" />
+                                            BindableLayout.ItemsSource="{Binding Path=BottomLeftCellPlacards}">
+                                            <FlexLayout.Behaviors>
+                                                <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                                    ValidableFormPage="{Reference FormPage}"
+                                                    FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultCollectionFlexLayoutValidationPresenter.Instance}"
+                                                    TargetProperty="{Static BindableLayout.ItemsSourceProperty}"
+                                                    Label="{Reference BottomLeftCellPlacardsLabel}">
+                                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                        <supportpresentationdashboardvalidators:MinCountFormFieldValidator MinCount="1" />
+                                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                            </FlexLayout.Behaviors>
+                                            <BindableLayout.EmptyView>
+                                                <Label
+                                                    Margin="5"
+                                                    Text="No se han agregado elementos"
+                                                    TextColor="DimGray" />
+                                            </BindableLayout.EmptyView>
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid
+                                                        Margin="5"
+                                                        BackgroundColor="Black"
+                                                        WidthRequest="200"
+                                                        RowSpacing="0">
+                                                        <Grid RowSpacing="0">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition />
+                                                                <RowDefinition Height="Auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid 
+                                                                Grid.Row="0"
+                                                                HeightRequest="{Binding Source={RelativeSource AncestorType={Type Grid}}, Path=Width}">
+                                                                <BoxView Color="White" Opacity="0.2" />
+                                                                <ContentView Content="{Binding Path=Placard, Converter={StaticResource PlacardViewModelToPlacardThumbnailWrapViewConverter}}" />
+                                                                <Label
+                                                                    IsVisible="{Binding Path=Placard, Converter={StaticResource PlacardToIsAnyPlayerOrientationSupportedConverter}}"
+                                                                    HorizontalOptions="Start" VerticalOptions="End"
+                                                                    BackgroundColor="{StaticResource PrimaryColor}"
+                                                                    Padding="4"
+                                                                    Text="&#xf884;"
+                                                                    TextColor="White"
+                                                                    FontFamily="Material Design Icons"
+                                                                    FontSize="24" />
+                                                            </Grid>
+                                                            <ImageButton
+                                                                Grid.Row="0"
+                                                                VerticalOptions="Start" HorizontalOptions="End"
+                                                                Margin="4"
+                                                                WidthRequest="24"
+                                                                HeightRequest="24"
+                                                                BackgroundColor="#99000000"
+                                                                BorderWidth="0"
+                                                                CornerRadius="12"
+                                                                Clicked="BottomLeftCellPlacardDeleteButton_Clicked">
+                                                                <ImageButton.Padding>
+                                                                    <OnPlatform x:TypeArguments="Thickness">
+                                                                        <On Platform="UWP" Value="1,0,0,0" />
+                                                                    </OnPlatform>
+                                                                </ImageButton.Padding>
+                                                                <ImageButton.Source>
+                                                                    <FontImageSource 
+                                                                        Color="White"
+                                                                        FontFamily="{StaticResource IconFontFamily}"
+                                                                        Glyph="&#xF156;" />
+                                                                </ImageButton.Source>
+                                                            </ImageButton>
+                                                            <StackLayout 
+                                                                Grid.Row="1"
+                                                                BackgroundColor="White"
+                                                                Spacing="0">
+                                                                <Label
+                                                                    Margin="8,8,8,4"
+                                                                    Text="{Binding Path=Placard.Label}"
+                                                                    LineBreakMode="TailTruncation" />
+                                                                <Label 
+                                                                    VerticalOptions="Center"
+                                                                    Margin="8,0,0,8"
+                                                                    Text="{Binding Path=Placard.Template.Name}"
+                                                                    LineBreakMode="TailTruncation"
+                                                                    TextColor="DimGray"
+                                                                    FontSize="Caption" />
+                                                            </StackLayout>
+                                                        </Grid>
                                                     </Grid>
-                                                    <ImageButton
-                                                        Grid.Row="0"
-                                                        VerticalOptions="Start" HorizontalOptions="End"
-                                                        Margin="4"
-                                                        WidthRequest="24"
-                                                        HeightRequest="24"
-                                                        BackgroundColor="#99000000"
-                                                        BorderWidth="0"
-                                                        CornerRadius="12"
-                                                        Clicked="PlacardTwoOfTwoSplitOneOfTwoDeleteButton_Clicked">
-                                                        <ImageButton.Padding>
-                                                            <OnPlatform x:TypeArguments="Thickness">
-                                                                <On Platform="UWP" Value="1,0,0,0" />
-                                                            </OnPlatform>
-                                                        </ImageButton.Padding>
-                                                        <ImageButton.Source>
-                                                            <FontImageSource 
-                                                                Color="White"
-                                                                FontFamily="{StaticResource IconFontFamily}"
-                                                                Glyph="&#xF156;" />
-                                                        </ImageButton.Source>
-                                                    </ImageButton>
-                                                    <StackLayout 
-                                                        Grid.Row="1"
-                                                        BackgroundColor="White"
-                                                        Spacing="0">
-                                                        <Label
-                                                            Margin="8,8,8,4"
-                                                            Text="{Binding Path=Placard.Label}"
-                                                            LineBreakMode="TailTruncation" />
-                                                        <Label 
-                                                            VerticalOptions="Center"
-                                                            Margin="8,0,0,8"
-                                                            Text="{Binding Path=Placard.Template.Name}"
-                                                            LineBreakMode="TailTruncation"
-                                                            TextColor="DimGray"
-                                                            FontSize="Caption" />
-                                                    </StackLayout>
-                                                </Grid>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </BindableLayout.ItemTemplate>
-                                </FlexLayout>
-                            </ContentView>
-                        </ScrollView>
-                    </Grid>
-                    <Grid
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </FlexLayout>
+                                    </ContentView>
+                                </ScrollView>
+                            </Grid>
+                            <Frame 
+                                Grid.Column="0" Grid.Row="2"
+                                Style="{StaticResource FormFieldFrame}"
+                                VerticalOptions="Start">
+                                <StackLayout>
+                                    <Label Text="Determina el tiempo en pantalla" Style="{StaticResource FormLabel}" />
+                                    <Switch IsToggled="{Binding Path=IsBottomLeftCellScreenplayTimeRector}" />
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </Frame>
+                    <Frame 
                         Grid.ColumnSpan="3" Grid.Row="6"
-                        HeightRequest="340"
+                        Style="{StaticResource FormFieldFrame}"
                         BackgroundColor="#66FFFFFF"
-                        RowSpacing="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <StackLayout
-                            Grid.Row="0"
-                            Orientation="Horizontal"
-                            BackgroundColor="White">
+                        VerticalOptions="Start">
+                        <Grid ColumnSpacing="10" RowSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
                             <Label 
-                                x:Name="TwoOfTwoSplitTwoOfTwoPlacardsLabel"
-                                HorizontalOptions="FillAndExpand"
-                                Style="{StaticResource FormLabel}"
-                                Margin="10,10,10,6"
-                                Text="Carteles en el Sub-Cuadrante Inferior Derecho" />
-                            <Button
-                                VerticalOptions="Start"
-                                Text="&#xF415;"
-                                Style="{StaticResource TextIconButton}"
-                                FontSize="Medium"
-                                Clicked="IncludeTwoOfTwoSplitTwoOfTwoPlacardsButton_Clicked" />
-                        </StackLayout>
-                        <ScrollView
-                            Grid.Row="1"
-                            Margin="0"
-                            Orientation="Horizontal">
-                            <ContentView BackgroundColor="#66FFFFFF">
-                                <FlexLayout
-                                    Margin="5"
-                                    BindableLayout.ItemsSource="{Binding Path=TwoOfTwoSplitTwoOfTwoTargetPlacards}">
-                                    <FlexLayout.Behaviors>
-                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior
-                                            ValidableFormPage="{Reference FormPage}"
-                                            FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultCollectionFlexLayoutValidationPresenter.Instance}"
-                                            TargetProperty="{Static BindableLayout.ItemsSourceProperty}"
-                                            Label="{Reference TwoOfTwoSplitTwoOfTwoPlacardsLabel}">
-                                            <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
-                                                <supportpresentationdashboardvalidators:MinCountFormFieldValidator MinCount="1" />
-                                            </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
-                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior>
-                                    </FlexLayout.Behaviors>
-                                    <BindableLayout.EmptyView>
-                                        <Label
+                                Grid.ColumnSpan="3" Grid.Row="0"
+                                Text="Celda Inferior Derecha" 
+                                Style="{StaticResource FormLabel}" />
+                            <Grid
+                                Grid.ColumnSpan="3" Grid.Row="1"
+                                HeightRequest="340"
+                                BackgroundColor="#66FFFFFF"
+                                RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <StackLayout
+                                    Grid.Row="0"
+                                    Orientation="Horizontal"
+                                    BackgroundColor="White">
+                                    <Label 
+                                        x:Name="BottomRightCellPlacardsLabel"
+                                        HorizontalOptions="FillAndExpand"
+                                        Style="{StaticResource FormLabel}"
+                                        Margin="10,10,10,6"
+                                        Text="Carteles" />
+                                    <Button
+                                        VerticalOptions="Start"
+                                        Text="&#xF415;"
+                                        Style="{StaticResource TextIconButton}"
+                                        FontSize="Medium"
+                                        Clicked="IncludeBottomRightCellPlacardsButton_Clicked" />
+                                </StackLayout>
+                                <ScrollView
+                                    Grid.Row="1"
+                                    Margin="0"
+                                    Orientation="Horizontal">
+                                    <ContentView BackgroundColor="#66FFFFFF">
+                                        <FlexLayout
                                             Margin="5"
-                                            Text="No se han agregado elementos"
-                                            TextColor="DimGray" />
-                                    </BindableLayout.EmptyView>
-                                    <BindableLayout.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid
-                                                Margin="5"
-                                                BackgroundColor="Black"
-                                                WidthRequest="200"
-                                                RowSpacing="0">
-                                                <Grid RowSpacing="0">
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition />
-                                                        <RowDefinition Height="Auto" />
-                                                    </Grid.RowDefinitions>
-                                                    <Grid 
-                                                        Grid.Row="0"
-                                                        HeightRequest="{Binding Source={RelativeSource AncestorType={Type Grid}}, Path=Width}">
-                                                        <BoxView Color="White" Opacity="0.2" />
-                                                        <ContentView Content="{Binding Path=Placard, Converter={StaticResource PlacardViewModelToPlacardThumbnailWrapViewConverter}}" />
-                                                        <Label
-                                                            IsVisible="{Binding Path=Placard, Converter={StaticResource PlacardToIsAnyPlayerOrientationSupportedConverter}}"
-                                                            HorizontalOptions="Start" VerticalOptions="End"
-                                                            BackgroundColor="{StaticResource PrimaryColor}"
-                                                            Padding="4"
-                                                            Text="&#xf884;"
-                                                            TextColor="White"
-                                                            FontFamily="Material Design Icons"
-                                                            FontSize="24" />
+                                            BindableLayout.ItemsSource="{Binding Path=BottomRightCellPlacards}">
+                                            <FlexLayout.Behaviors>
+                                                <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                                    ValidableFormPage="{Reference FormPage}"
+                                                    FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultCollectionFlexLayoutValidationPresenter.Instance}"
+                                                    TargetProperty="{Static BindableLayout.ItemsSourceProperty}"
+                                                    Label="{Reference BottomRightCellPlacardsLabel}">
+                                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                        <supportpresentationdashboardvalidators:MinCountFormFieldValidator MinCount="1" />
+                                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                            </FlexLayout.Behaviors>
+                                            <BindableLayout.EmptyView>
+                                                <Label
+                                                    Margin="5"
+                                                    Text="No se han agregado elementos"
+                                                    TextColor="DimGray" />
+                                            </BindableLayout.EmptyView>
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid
+                                                        Margin="5"
+                                                        BackgroundColor="Black"
+                                                        WidthRequest="200"
+                                                        RowSpacing="0">
+                                                        <Grid RowSpacing="0">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition />
+                                                                <RowDefinition Height="Auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid 
+                                                                Grid.Row="0"
+                                                                HeightRequest="{Binding Source={RelativeSource AncestorType={Type Grid}}, Path=Width}">
+                                                                <BoxView Color="White" Opacity="0.2" />
+                                                                <ContentView Content="{Binding Path=Placard, Converter={StaticResource PlacardViewModelToPlacardThumbnailWrapViewConverter}}" />
+                                                                <Label
+                                                                    IsVisible="{Binding Path=Placard, Converter={StaticResource PlacardToIsAnyPlayerOrientationSupportedConverter}}"
+                                                                    HorizontalOptions="Start" VerticalOptions="End"
+                                                                    BackgroundColor="{StaticResource PrimaryColor}"
+                                                                    Padding="4"
+                                                                    Text="&#xf884;"
+                                                                    TextColor="White"
+                                                                    FontFamily="Material Design Icons"
+                                                                    FontSize="24" />
+                                                            </Grid>
+                                                            <ImageButton
+                                                                Grid.Row="0"
+                                                                VerticalOptions="Start" HorizontalOptions="End"
+                                                                Margin="4"
+                                                                WidthRequest="24"
+                                                                HeightRequest="24"
+                                                                BackgroundColor="#99000000"
+                                                                BorderWidth="0"
+                                                                CornerRadius="12"
+                                                                Clicked="BottomRightCellPlacardDeleteButton_Clicked">
+                                                                <ImageButton.Padding>
+                                                                    <OnPlatform x:TypeArguments="Thickness">
+                                                                        <On Platform="UWP" Value="1,0,0,0" />
+                                                                    </OnPlatform>
+                                                                </ImageButton.Padding>
+                                                                <ImageButton.Source>
+                                                                    <FontImageSource 
+                                                                        Color="White"
+                                                                        FontFamily="{StaticResource IconFontFamily}"
+                                                                        Glyph="&#xF156;" />
+                                                                </ImageButton.Source>
+                                                            </ImageButton>
+                                                            <StackLayout 
+                                                                Grid.Row="1"
+                                                                BackgroundColor="White"
+                                                                Spacing="0">
+                                                                <Label
+                                                                    Margin="8,8,8,4"
+                                                                    Text="{Binding Path=Placard.Label}"
+                                                                    LineBreakMode="TailTruncation" />
+                                                                <Label 
+                                                                    VerticalOptions="Center"
+                                                                    Margin="8,0,0,8"
+                                                                    Text="{Binding Path=Placard.Template.Name}"
+                                                                    LineBreakMode="TailTruncation"
+                                                                    TextColor="DimGray"
+                                                                    FontSize="Caption" />
+                                                            </StackLayout>
+                                                        </Grid>
                                                     </Grid>
-                                                    <ImageButton
-                                                        Grid.Row="0"
-                                                        VerticalOptions="Start" HorizontalOptions="End"
-                                                        Margin="4"
-                                                        WidthRequest="24"
-                                                        HeightRequest="24"
-                                                        BackgroundColor="#99000000"
-                                                        BorderWidth="0"
-                                                        CornerRadius="12"
-                                                        Clicked="PlacardTwoOfTwoSplitTwoOfTwoDeleteButton_Clicked">
-                                                        <ImageButton.Padding>
-                                                            <OnPlatform x:TypeArguments="Thickness">
-                                                                <On Platform="UWP" Value="1,0,0,0" />
-                                                            </OnPlatform>
-                                                        </ImageButton.Padding>
-                                                        <ImageButton.Source>
-                                                            <FontImageSource 
-                                                                Color="White"
-                                                                FontFamily="{StaticResource IconFontFamily}"
-                                                                Glyph="&#xF156;" />
-                                                        </ImageButton.Source>
-                                                    </ImageButton>
-                                                    <StackLayout 
-                                                        Grid.Row="1"
-                                                        BackgroundColor="White"
-                                                        Spacing="0">
-                                                        <Label
-                                                            Margin="8,8,8,4"
-                                                            Text="{Binding Path=Placard.Label}"
-                                                            LineBreakMode="TailTruncation" />
-                                                        <Label 
-                                                            VerticalOptions="Center"
-                                                            Margin="8,0,0,8"
-                                                            Text="{Binding Path=Placard.Template.Name}"
-                                                            LineBreakMode="TailTruncation"
-                                                            TextColor="DimGray"
-                                                            FontSize="Caption" />
-                                                    </StackLayout>
-                                                </Grid>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </BindableLayout.ItemTemplate>
-                                </FlexLayout>
-                            </ContentView>
-                        </ScrollView>
-                    </Grid>
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </FlexLayout>
+                                    </ContentView>
+                                </ScrollView>
+                            </Grid>
+                            <Frame 
+                                Grid.Column="0" Grid.Row="2"
+                                Style="{StaticResource FormFieldFrame}"
+                                VerticalOptions="Start">
+                                <StackLayout>
+                                    <Label Text="Determina el tiempo en pantalla" Style="{StaticResource FormLabel}" />
+                                    <Switch IsToggled="{Binding Path=IsBottomRightCellScreenplayTimeRector}" />
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </Frame>
                 </Grid>
             </ScrollView>
             <supportpresentationdashboardviews:BusyView />

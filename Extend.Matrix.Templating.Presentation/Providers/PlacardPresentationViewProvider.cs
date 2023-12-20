@@ -18,7 +18,8 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Providers
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     OneOfThreeTargetPlacards = context.OneOfThreeTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
                     TwoOfThreeTargetPlacards = context.TwoOfThreeTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
-                    ThreeOfThreeTargetPlacards = context.ThreeOfThreeTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray()
+                    ThreeOfThreeTargetPlacards = context.ThreeOfThreeTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    ScreenTimeDirectorScreenplayIndex = context.ScreenTimeDirectorScreenplayIndex
                 }, relativeSizeScaleFactor);
             }
 
@@ -32,7 +33,8 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Providers
                     OneOfFourTargetPlacards = context.OneOfFourTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
                     TwoOfFourTargetPlacards = context.TwoOfFourTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
                     ThreeOfFourTargetPlacards = context.ThreeOfFourTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
-                    FourOfFourTargetPlacards = context.FourOfFourTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray()
+                    FourOfFourTargetPlacards = context.FourOfFourTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    ScreenTimeDirectorScreenplayIndex = context.ScreenTimeDirectorScreenplayIndex
                 }, relativeSizeScaleFactor);
             }
 
@@ -43,10 +45,11 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Providers
                 return new Views.LandscapeGrid2x1PlacardView(new Models.View.LandscapeGrid2x1PlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    OneOfTwoTargetPlacards = context.OneOfTwoTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
-                    IsOneOfTwoTargetPlacardsScalable = context.IsOneOfTwoTargetPlacardsScalable,
-                    TwoOfTwoTargetPlacards = context.TwoOfTwoTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
-                    IsTwoOfTwoTargetPlacardsScalable = context.IsTwoOfTwoTargetPlacardsScalable
+                    TopCellPlacards = context.TopCellPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    IsTopCellPlacardsScalable = context.IsTopCellPlacardsScalable,
+                    BottomCellPlacards = context.BottomCellPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    IsBottomCellPlacardsScalable = context.IsBottomCellPlacardsScalable,
+                    ScreenTimeDirectorScreenplayIndex = context.ScreenTimeDirectorScreenplayIndex
                 }, relativeSizeScaleFactor);
             }
 
@@ -57,10 +60,11 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Providers
                 return new Views.LandscapeGrid3st_2x1PlacardView(new Models.View.LandscapeGrid3st_2x1PlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    OneOfTwoTargetPlacards = context.OneOfTwoTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
-                    IsOneOfTwoTargetPlacardsScalable = context.IsOneOfTwoTargetPlacardsScalable,
-                    TwoOfTwoSplitOneOfTwoTargetPlacards = context.TwoOfTwoSplitOneOfTwoTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
-                    TwoOfTwoSplitTwoOfTwoTargetPlacards = context.TwoOfTwoSplitTwoOfTwoTargetPlacards.Select(item => item.ToPlacardViewModel()).ToArray()
+                    TopCellPlacards = context.TopCellPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    IsTopCellPlacardsScalable = context.IsTopCellPlacardsScalable,
+                    BottomLeftCellPlacards = context.BottomLeftCellPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    BottomRightCellPlacards = context.BottomRightCellPlacards.Select(item => item.ToPlacardViewModel()).ToArray(),
+                    ScreenTimeDirectorScreenplayIndex = context.ScreenTimeDirectorScreenplayIndex
                 }, relativeSizeScaleFactor);
             }
 

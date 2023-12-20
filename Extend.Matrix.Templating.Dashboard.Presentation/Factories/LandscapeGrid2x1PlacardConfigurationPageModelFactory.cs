@@ -19,18 +19,20 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Factori
                 DefineEndAt = placardViewModel.EndAt != null,
                 EndAt = placardViewModel.EndAt ?? System.DateTime.Now.Date,
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                IsOneOfTwoTargetPlacardsScalable = context.IsOneOfTwoTargetPlacardsScalable,
-                IsTwoOfTwoTargetPlacardsScalable = context.IsTwoOfTwoTargetPlacardsScalable
+                IsTopCellPlacardsScalable = context.IsTopCellPlacardsScalable,
+                IsTopCellScreenplayTimeRector = context.ScreenTimeDirectorScreenplayIndex == 0,
+                IsBottomCellPlacardsScalable = context.IsBottomCellPlacardsScalable,
+                IsBottomCellScreenplayTimeRector = context.ScreenTimeDirectorScreenplayIndex == 1
             };
 
-            foreach (var item in context.OneOfTwoTargetPlacards)
+            foreach (var item in context.TopCellPlacards)
             {
-                result.OneOfTwoTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
+                result.TopCellPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
             }
 
-            foreach (var item in context.TwoOfTwoTargetPlacards)
+            foreach (var item in context.BottomCellPlacards)
             {
-                result.TwoOfTwoTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
+                result.BottomCellPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
             }
 
             return result;

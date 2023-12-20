@@ -11,7 +11,7 @@
             var transformedOneOfTwoTargetPlacards = new System.Collections.Generic.List<object>();
             var transformedTwoOfTwoTargetPlacards = new System.Collections.Generic.List<object>();
 
-            foreach (var item in context.OneOfTwoTargetPlacards)
+            foreach (var item in context.TopCellPlacards)
             {
                 var placardId = System.Guid.Parse(item as string);
 
@@ -20,7 +20,7 @@
                 transformedOneOfTwoTargetPlacards.Add(placard);
             }
 
-            foreach (var item in context.TwoOfTwoTargetPlacards)
+            foreach (var item in context.BottomCellPlacards)
             {
                 var placardId = System.Guid.Parse(item as string);
 
@@ -29,8 +29,8 @@
                 transformedTwoOfTwoTargetPlacards.Add(placard);
             }
 
-            context.OneOfTwoTargetPlacards = transformedOneOfTwoTargetPlacards.ToArray();
-            context.TwoOfTwoTargetPlacards = transformedTwoOfTwoTargetPlacards.ToArray();
+            context.TopCellPlacards = transformedOneOfTwoTargetPlacards.ToArray();
+            context.BottomCellPlacards = transformedTwoOfTwoTargetPlacards.ToArray();
 
             model.SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(context);
         }

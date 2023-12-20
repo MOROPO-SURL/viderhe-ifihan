@@ -285,7 +285,7 @@
                             </Grid.RowDefinitions>
                             <Label 
                                 Grid.ColumnSpan="3" Grid.Row="0"
-                                Text="Sección Superior" 
+                                Text="Celda Superior" 
                                 Style="{StaticResource FormLabel}" />
                             <Grid
                                 Grid.ColumnSpan="3" Grid.Row="1"
@@ -301,17 +301,17 @@
                                     Orientation="Horizontal"
                                     BackgroundColor="White">
                                     <Label 
-                                        x:Name="OneOfFourPlacardsLabel"
+                                        x:Name="TopCellPlacardsLabel"
                                         HorizontalOptions="FillAndExpand"
                                         Style="{StaticResource FormLabel}"
                                         Margin="10,10,10,6"
-                                        Text="Carteles en la Sección Superior" />
+                                        Text="Carteles" />
                                     <Button
                                         VerticalOptions="Start"
                                         Text="&#xF415;"
                                         Style="{StaticResource TextIconButton}"
                                         FontSize="Medium"
-                                        Clicked="IncludeOneOfTwoPlacardsButton_Clicked" />
+                                        Clicked="IncludeTopCellPlacardsButton_Clicked" />
                                 </StackLayout>
                                 <ScrollView
                                     Grid.Row="1"
@@ -320,13 +320,13 @@
                                     <ContentView BackgroundColor="#66FFFFFF">
                                         <FlexLayout
                                             Margin="5"
-                                            BindableLayout.ItemsSource="{Binding Path=OneOfTwoTargetPlacards}">
+                                            BindableLayout.ItemsSource="{Binding Path=TopCellPlacards}">
                                             <FlexLayout.Behaviors>
                                                 <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                                     ValidableFormPage="{Reference FormPage}"
                                                     FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultCollectionFlexLayoutValidationPresenter.Instance}"
                                                     TargetProperty="{Static BindableLayout.ItemsSourceProperty}"
-                                                    Label="{Reference OneOfFourPlacardsLabel}">
+                                                    Label="{Reference TopCellPlacardsLabel}">
                                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
                                                         <supportpresentationdashboardvalidators:MinCountFormFieldValidator MinCount="1" />
                                                     </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
@@ -374,7 +374,7 @@
                                                                 BackgroundColor="#99000000"
                                                                 BorderWidth="0"
                                                                 CornerRadius="12"
-                                                                Clicked="PlacardOneOfTwoDeleteButton_Clicked">
+                                                                Clicked="TopCellPlacardDeleteButton_Clicked">
                                                                 <ImageButton.Padding>
                                                                     <OnPlatform x:TypeArguments="Thickness">
                                                                         <On Platform="UWP" Value="1,0,0,0" />
@@ -416,8 +416,17 @@
                                 Style="{StaticResource FormFieldFrame}"
                                 VerticalOptions="Start">
                                 <StackLayout>
+                                    <Label Text="Determina el tiempo en pantalla" Style="{StaticResource FormLabel}" />
+                                    <Switch IsToggled="{Binding Path=IsTopCellScreenplayTimeRector}" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame 
+                                Grid.Column="1" Grid.Row="2"
+                                Style="{StaticResource FormFieldFrame}"
+                                VerticalOptions="Start">
+                                <StackLayout>
                                     <Label Text="Escalar carteles" Style="{StaticResource FormLabel}" />
-                                    <Switch IsToggled="{Binding Path=IsOneOfTwoTargetPlacardsScalable}" />
+                                    <Switch IsToggled="{Binding Path=IsTopCellPlacardsScalable}" />
                                 </StackLayout>
                             </Frame>
                         </Grid>
@@ -440,7 +449,7 @@
                             </Grid.RowDefinitions>
                             <Label 
                                 Grid.ColumnSpan="3" Grid.Row="0"
-                                Text="Sección Inferior" 
+                                Text="Celda Inferior" 
                                 Style="{StaticResource FormLabel}" />
                             <Grid
                                 Grid.ColumnSpan="3" Grid.Row="1"
@@ -456,7 +465,7 @@
                                     Orientation="Horizontal"
                                     BackgroundColor="White">
                                     <Label 
-                                        x:Name="TwoOfTwoPlacardsLabel"
+                                        x:Name="BottonCellPlacardsLabel"
                                         HorizontalOptions="FillAndExpand"
                                         Style="{StaticResource FormLabel}"
                                         Margin="10,10,10,6"
@@ -466,7 +475,7 @@
                                         Text="&#xF415;"
                                         Style="{StaticResource TextIconButton}"
                                         FontSize="Medium"
-                                        Clicked="IncludeTwoOfTwoPlacardsButton_Clicked" />
+                                        Clicked="IncludeBottonCellPlacardsButton_Clicked" />
                                 </StackLayout>
                                 <ScrollView
                                     Grid.Row="1"
@@ -475,13 +484,13 @@
                                     <ContentView BackgroundColor="#66FFFFFF">
                                         <FlexLayout
                                             Margin="5"
-                                            BindableLayout.ItemsSource="{Binding Path=TwoOfTwoTargetPlacards}">
+                                            BindableLayout.ItemsSource="{Binding Path=BottomCellPlacards}">
                                             <FlexLayout.Behaviors>
                                                 <supportpresentationdashboardbehaviors:ViewValidationBehavior
                                                     ValidableFormPage="{Reference FormPage}"
                                                     FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultCollectionFlexLayoutValidationPresenter.Instance}"
                                                     TargetProperty="{Static BindableLayout.ItemsSourceProperty}"
-                                                    Label="{Reference TwoOfTwoPlacardsLabel}">
+                                                    Label="{Reference BottonCellPlacardsLabel}">
                                                     <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
                                                         <supportpresentationdashboardvalidators:MinCountFormFieldValidator MinCount="1" />
                                                     </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
@@ -529,7 +538,7 @@
                                                                 BackgroundColor="#99000000"
                                                                 BorderWidth="0"
                                                                 CornerRadius="12"
-                                                                Clicked="PlacardTowOfTwoDeleteButton_Clicked">
+                                                                Clicked="BottomCellPlacardDeleteButton_Clicked">
                                                                 <ImageButton.Padding>
                                                                     <OnPlatform x:TypeArguments="Thickness">
                                                                         <On Platform="UWP" Value="1,0,0,0" />
@@ -571,8 +580,17 @@
                                 Style="{StaticResource FormFieldFrame}"
                                 VerticalOptions="Start">
                                 <StackLayout>
+                                    <Label Text="Determina el tiempo en pantalla" Style="{StaticResource FormLabel}" />
+                                    <Switch IsToggled="{Binding Path=IsBottomCellScreenplayTimeRector}" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame 
+                                Grid.Column="1" Grid.Row="2"
+                                Style="{StaticResource FormFieldFrame}"
+                                VerticalOptions="Start">
+                                <StackLayout>
                                     <Label Text="Escalar carteles" Style="{StaticResource FormLabel}" />
-                                    <Switch IsToggled="{Binding Path=IsTwoOfTwoTargetPlacardsScalable}" />
+                                    <Switch IsToggled="{Binding Path=IsBottonCellPlacardsScalable}" />
                                 </StackLayout>
                             </Frame>
                         </Grid>

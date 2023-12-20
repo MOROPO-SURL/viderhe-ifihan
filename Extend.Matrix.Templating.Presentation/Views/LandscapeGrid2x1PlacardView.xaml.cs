@@ -4,15 +4,18 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Views
 {
     public partial class LandscapeGrid2x1PlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        private ScreenplayPresenter oneOfTwoScreenplayPresenter;
-
-        private ScreenplayPresenter twoOfTwoScreenplayPresenter;
+        private ScreenplayPresenter topCellScreenplayPresenter;
+        private ScreenplayPresenter bottomCellScreenplayPresenter;
 
         private int iterationCount;
+        private int iterationLimit;
 
         public LandscapeGrid2x1PlacardView(Models.View.LandscapeGrid2x1PlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
+
+            iterationCount = 0;
+            iterationLimit = model.ScreenTimeDirectorScreenplayIndex == null ? 2 : 1;
 
             BindingContext = model;
         }
@@ -42,37 +45,51 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Views
                 switch (i)
                 {
                     case 0:
-                        oneOfTwoScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.OneOfTwoTargetPlacards, Support.Extend.Transitioning.Presentation.Providers.TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, null, concreteBindingContext.IsOneOfTwoTargetPlacardsScalable ? relativeSizeScaleFactor : RelativeSizeScaleFactor);
+                        System.Action topScreenplayPresenterEndedCallbackAction = ScreenplayPresenterEnded_Callback;
+
+                        if (concreteBindingContext.ScreenTimeDirectorScreenplayIndex == 1)
+                        {
+                            topScreenplayPresenterEndedCallbackAction = null;
+                        }
+
+                        topCellScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.TopCellPlacards, Support.Extend.Transitioning.Presentation.Providers.TransitionProvider.Instance, topScreenplayPresenterEndedCallbackAction, concreteBindingContext.ScreenTimeDirectorScreenplayIndex == 1, null, null, null, null, concreteBindingContext.IsTopCellPlacardsScalable ? relativeSizeScaleFactor : RelativeSizeScaleFactor);
 
                         break;
 
                     case 1:
-                        twoOfTwoScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.TwoOfTwoTargetPlacards, Support.Extend.Transitioning.Presentation.Providers.TransitionProvider.Instance, ScreenplayPresenterEnded_Callback, false, null, null, null, null, concreteBindingContext.IsTwoOfTwoTargetPlacardsScalable ? relativeSizeScaleFactor : RelativeSizeScaleFactor);
+                        System.Action bottomScreenplayPresenterEndedCallbackAction = ScreenplayPresenterEnded_Callback;
+
+                        if (concreteBindingContext.ScreenTimeDirectorScreenplayIndex == 0)
+                        {
+                            bottomScreenplayPresenterEndedCallbackAction = null;
+                        }
+
+                        bottomCellScreenplayPresenter = new ScreenplayPresenter(targetView, PlacardViewModelToPresentationView, concreteBindingContext.BottomCellPlacards, Support.Extend.Transitioning.Presentation.Providers.TransitionProvider.Instance, bottomScreenplayPresenterEndedCallbackAction, concreteBindingContext.ScreenTimeDirectorScreenplayIndex == 0, null, null, null, null, concreteBindingContext.IsBottomCellPlacardsScalable ? relativeSizeScaleFactor : RelativeSizeScaleFactor);
 
                         break;
                 }
             }
 
-            oneOfTwoScreenplayPresenter.BeginPresentation();
-            twoOfTwoScreenplayPresenter.BeginPresentation();
+            topCellScreenplayPresenter.BeginPresentation();
+            bottomCellScreenplayPresenter.BeginPresentation();
         }
 
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
 
-            oneOfTwoScreenplayPresenter.Dispose();
-            twoOfTwoScreenplayPresenter.Dispose();
+            topCellScreenplayPresenter.Dispose();
+            bottomCellScreenplayPresenter.Dispose();
 
-            oneOfTwoScreenplayPresenter = null;
-            twoOfTwoScreenplayPresenter = null;
+            topCellScreenplayPresenter = null;
+            bottomCellScreenplayPresenter = null;
         }
 
         private void ScreenplayPresenterEnded_Callback()
         {
             iterationCount++;
 
-            if (iterationCount < 4) return;
+            if (iterationCount < iterationLimit) return;
 
             EndPresentation();
         }

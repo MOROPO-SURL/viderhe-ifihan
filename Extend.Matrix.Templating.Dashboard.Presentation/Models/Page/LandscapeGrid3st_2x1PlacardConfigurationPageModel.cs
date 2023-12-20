@@ -2,34 +2,70 @@
 {
     public class LandscapeGrid3st_2x1PlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledPlacardConfigurationPageModel
     {
-        private bool isOneOfTwoTargetPlacardsScalable;
+        private bool isTopCellPlacardsScalable;
+        private bool isTopCellScreenplayTimeRector;
+        private bool isBottomLeftCellScreenplayTimeRector;
+        private bool isBottomRightCellScreenplayTimeRector;
 
         public LandscapeGrid3st_2x1PlacardConfigurationPageModel()
         {
-            OneOfTwoTargetPlacards = new System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel>();
-            TwoOfTwoSplitOneOfTwoTargetPlacards = new System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel>();
-            TwoOfTwoSplitTwoOfTwoTargetPlacards = new System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel>();
+            TopCellPlacards = new System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel>();
+            BottomLeftCellPlacards = new System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel>();
+            BottomRightCellPlacards = new System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel>();
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel> OneOfTwoTargetPlacards { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel> TopCellPlacards { get; set; }
 
-        public bool IsOneOfTwoTargetPlacardsScalable { get => isOneOfTwoTargetPlacardsScalable; set => SetProperty(ref isOneOfTwoTargetPlacardsScalable, value); }
+        public bool IsTopCellPlacardsScalable { get => isTopCellPlacardsScalable; set => SetProperty(ref isTopCellPlacardsScalable, value); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel> TwoOfTwoSplitOneOfTwoTargetPlacards { get; set; }
+        public bool IsTopCellScreenplayTimeRector { get => isTopCellScreenplayTimeRector; set => SetProperty(ref isTopCellScreenplayTimeRector, value, IsTopCellScreenplayTimeRector_ChangeCallback); }
 
-        public System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel> TwoOfTwoSplitTwoOfTwoTargetPlacards { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel> BottomLeftCellPlacards { get; set; }
+
+        public bool IsBottomLeftCellScreenplayTimeRector { get => isBottomLeftCellScreenplayTimeRector; set => SetProperty(ref isBottomLeftCellScreenplayTimeRector, value, IsBottomLeftCellScreenplayTimeRector_ChangeCallback); }
+
+        public System.Collections.ObjectModel.ObservableCollection<Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel> BottomRightCellPlacards { get; set; }
+
+        public bool IsBottomRightCellScreenplayTimeRector { get => isBottomRightCellScreenplayTimeRector; set => SetProperty(ref isBottomRightCellScreenplayTimeRector, value, IsBottomRighCellScreenplayTimeRector_ChangeCallback); }
+
+        private void IsTopCellScreenplayTimeRector_ChangeCallback()
+        {
+            if (isTopCellScreenplayTimeRector)
+            {
+                IsBottomLeftCellScreenplayTimeRector = false;
+                IsBottomRightCellScreenplayTimeRector = false;
+            }
+        }
+
+        private void IsBottomLeftCellScreenplayTimeRector_ChangeCallback()
+        {
+            if (isBottomLeftCellScreenplayTimeRector)
+            {
+                IsTopCellScreenplayTimeRector = false;
+                IsBottomRightCellScreenplayTimeRector = false;
+            }
+        }
+
+        private void IsBottomRighCellScreenplayTimeRector_ChangeCallback()
+        {
+            if (isBottomRightCellScreenplayTimeRector)
+            {
+                IsTopCellScreenplayTimeRector = false;
+                IsBottomLeftCellScreenplayTimeRector = false;
+            }
+        }
 
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
 
-            OneOfTwoTargetPlacards.Clear();
-            TwoOfTwoSplitOneOfTwoTargetPlacards.Clear();
-            TwoOfTwoSplitTwoOfTwoTargetPlacards.Clear();
+            TopCellPlacards.Clear();
+            BottomLeftCellPlacards.Clear();
+            BottomRightCellPlacards.Clear();
 
-            OneOfTwoTargetPlacards = null;
-            TwoOfTwoSplitOneOfTwoTargetPlacards = null;
-            TwoOfTwoSplitTwoOfTwoTargetPlacards = null;
+            TopCellPlacards = null;
+            BottomLeftCellPlacards = null;
+            BottomRightCellPlacards = null;
         }
     }
 }

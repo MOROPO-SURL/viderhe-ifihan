@@ -1,13 +1,13 @@
 ﻿namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Models.View
 {
-    public class LandscapeGrid2x1PlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel
+    public class LandscapeGrid2x1PlacardViewModel : Contract.AbstractGridPlacardViewModel
     {
-        public Support.Presentation.Models.View.PlacardViewModel[] OneOfTwoTargetPlacards { get; set; }
+        public Support.Presentation.Models.View.PlacardViewModel[] TopCellPlacards { get; set; }
 
-        public bool IsOneOfTwoTargetPlacardsScalable { get; set; }
+        public bool IsTopCellPlacardsScalable { get; set; }
 
-        public Support.Presentation.Models.View.PlacardViewModel[] TwoOfTwoTargetPlacards { get; set; }
+        public Support.Presentation.Models.View.PlacardViewModel[] BottomCellPlacards { get; set; }
 
-        public bool IsTwoOfTwoTargetPlacardsScalable { get; set; }
+        public bool IsBottomCellPlacardsScalable { get; set; }
     }
 }

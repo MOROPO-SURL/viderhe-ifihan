@@ -19,22 +19,25 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Dashboard.Presentation.Factori
                 DefineEndAt = placardViewModel.EndAt != null,
                 EndAt = placardViewModel.EndAt ?? System.DateTime.Now.Date,
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                IsOneOfTwoTargetPlacardsScalable = context.IsOneOfTwoTargetPlacardsScalable
+                IsTopCellPlacardsScalable = context.IsTopCellPlacardsScalable,
+                IsTopCellScreenplayTimeRector = context.ScreenTimeDirectorScreenplayIndex == 0,
+                IsBottomLeftCellScreenplayTimeRector = context.ScreenTimeDirectorScreenplayIndex == 1,
+                IsBottomRightCellScreenplayTimeRector = context.ScreenTimeDirectorScreenplayIndex == 2
             };
 
-            foreach (var item in context.OneOfTwoTargetPlacards)
+            foreach (var item in context.TopCellPlacards)
             {
-                result.OneOfTwoTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
+                result.TopCellPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
             }
 
-            foreach (var item in context.TwoOfTwoSplitOneOfTwoTargetPlacards)
+            foreach (var item in context.BottomLeftCellPlacards)
             {
-                result.TwoOfTwoSplitOneOfTwoTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
+                result.BottomLeftCellPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
             }
 
-            foreach (var item in context.TwoOfTwoSplitTwoOfTwoTargetPlacards)
+            foreach (var item in context.BottomRightCellPlacards)
             {
-                result.TwoOfTwoSplitTwoOfTwoTargetPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
+                result.BottomRightCellPlacards.Add(new Support.Presentation.Dashboard.Models.View.PlacardOverviewViewModel(item.ToPlacardViewModel(), true));
             }
 
             return result;

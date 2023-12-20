@@ -1,6 +1,6 @@
 ﻿namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Models.Context.Contract
 {
-    public abstract class AbstractGrid2x2PlacardContextModel : Common.Templating.Models.Context.AbstractPlacardContextModel
+    public abstract class AbstractGrid2x2PlacardContextModel : AbstractGridPlacardContextModel
     {
         public object[] OneOfFourTargetPlacards { get; set; }
 
