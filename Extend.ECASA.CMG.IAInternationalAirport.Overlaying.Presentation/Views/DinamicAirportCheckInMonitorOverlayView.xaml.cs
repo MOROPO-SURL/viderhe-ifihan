@@ -1,4 +1,6 @@
 ﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,14 +20,13 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             PreCheckInHeadLabel.Text = overlayContextModel.PreCheckInHeadLabel;
 
-            PrimaryChechInNumberBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
-            SecoundaryChechInNumberBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.BackgroundColor);
+            PrimaryChechInNumberBackgroundBoxView.Color = PrimaryGlobalClockBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
+            SecoundaryChechInNumberBackgroundBoxView.Color =SecoundaryGlobalClockBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.BackgroundColor);
             
             ChechInNumberLabel.Text = overlayContextModel.Number.ToString();
             ChechInNumberLabel.TextColor = Xamarin.Forms.Color.White;
             
             PrePresentationGrid.IsVisible = false;
-            PrePresentationGrid.BackgroundColor = Xamarin.Forms.Color.White;
             
             FullPresentationGrid.IsVisible = false;
             FullPresentationGrid.BackgroundColor = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
@@ -49,10 +50,9 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                 BindingContext = overlayContextModel.Number >= 10 ? 168 : 216;
             }
 
-            // TODO Remove block!!
-            NowDateLabel.Text = System.DateTime.Now.ToString("dddd dd, MMMM \\de yyyy");
+            Xamarin.Forms.Device.StartTimer(System.TimeSpan.FromSeconds(15), Timer_Callback);
 
-            NowTimeLabel.Text = System.DateTime.Now.ToString("HH:mm");
+            Timer_Callback();
         } 
 
         public override void ShowOut()
@@ -74,6 +74,17 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             FullOperationCarrierImageView.Source = null;
         }
 
+        private bool Timer_Callback()
+        {
+            var now = System.DateTime.Now;
+
+            FullNowDateLabel.Text = now.ToString("dddd dd, MMMM, \\de yyyy");
+
+            FullNowTimeLabel.Text = GlobalNowTimeLabel.Text = now.ToString("HH:mm");
+
+            return overlayContextModel != null;
+        }
+
         private System.Threading.Tasks.Task ShowPrePresentationAsync()
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
@@ -89,7 +100,86 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                     PreOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", overlayContextModel.APIServer)));
                 }
 
+                PreCheckInHeadBackgroundBoxView.TranslationY = Height / 5 / 3 * -1;
+                PreCheckInHeadBackgroundBoxView.IsVisible = false;
+                PreCheckInHeadLabel.Opacity = 0;
+                PrePresentationGrid.TranslationY = Height / 5;
+                PreOperationCarrierImageView.Scale = 0;
+                PreOperationCarrierName.Opacity = 0;
+                PreOperationFly.Opacity = 0;
+                PreOperationDestinationStackLayout.Opacity = 0;
+                PreOperationStartAtStackLayout.Opacity = 0;
+
                 PrePresentationGrid.IsVisible = true;
+
+                var prePresentationGridShowInAnimationStoryboard = new Storyboard { IsParallel = false };
+
+                var prePresentationGridTranslateToYAnimation = new TranslateToYAnimation
+                {
+                    Target = PrePresentationGrid,
+                    TranslateY = 0,
+                    Duration = "350",
+                    EasingType = EasingType.SinOut
+                };
+
+                prePresentationGridTranslateToYAnimation.Completed += (sender, eventArgs) => PreCheckInHeadBackgroundBoxView.IsVisible = true;
+
+                var preOperationDataAnimationScreenplay = new Storyboard { IsParallel = true };
+
+                preOperationDataAnimationScreenplay.Animations.Add(new ScaleToAnimation
+                {
+                    Target = PreOperationCarrierImageView,
+                    Scale = 1,
+                    Duration = "350",
+                    EasingType = EasingType.BounceOut
+                });
+                preOperationDataAnimationScreenplay.Animations.Add(new FadeToAnimation
+                {
+                    Target = PreOperationCarrierName,
+                    Opacity = 1,
+                    Delay = "350",
+                    Duration = "350"
+                });
+                preOperationDataAnimationScreenplay.Animations.Add(new FadeToAnimation
+                {
+                    Target = PreOperationFly,
+                    Opacity = 1,
+                    Delay = "525",
+                    Duration = "350"
+                });
+                preOperationDataAnimationScreenplay.Animations.Add(new FadeToAnimation
+                {
+                    Target = PreOperationDestinationStackLayout,
+                    Opacity = 1,
+                    Delay = "700",
+                    Duration = "350"
+                });
+                preOperationDataAnimationScreenplay.Animations.Add(new FadeToAnimation
+                {
+                    Target = PreOperationStartAtStackLayout,
+                    Opacity = 1,
+                    Delay = "875",
+                    Duration = "350"
+                });
+
+                prePresentationGridShowInAnimationStoryboard.Animations.Add(prePresentationGridTranslateToYAnimation);
+                prePresentationGridShowInAnimationStoryboard.Animations.Add(new TranslateToYAnimation
+                {
+                    Target = PreCheckInHeadBackgroundBoxView,
+                    TranslateY = 0,
+                    Duration = "300",
+                    EasingType = EasingType.CubicIn
+                });
+                prePresentationGridShowInAnimationStoryboard.Animations.Add(new FadeInAnimation
+                {
+                    Target = PreCheckInHeadLabel,
+                    Direction = FadeDirection.Left,
+                    Duration = "350",
+                    EasingType= EasingType.CubicOut
+                });
+                prePresentationGridShowInAnimationStoryboard.Animations.Add(preOperationDataAnimationScreenplay);
+
+                prePresentationGridShowInAnimationStoryboard.Begin();
             });
 
             return System.Threading.Tasks.Task.CompletedTask;
@@ -209,8 +299,6 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             if (!task.IsCanceled && task.Exception == null)
             {
                 checkInModel = task.Result.OrderBy(item => item.StartAt).FirstOrDefault();
-
-                //Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContext = checkInModel);
 
                 if (checkInModel != null)
                 {

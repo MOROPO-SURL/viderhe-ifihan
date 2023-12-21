@@ -2,7 +2,11 @@
 {
     public class DinamicAirportCheckInMonitorOverlayContextModel
     {
+        private System.DateTime nowAt;
+
         public int Number { get; set; }
+
+        public System.DateTime NowAt { get => nowAt; set => nowAt = value; }
 
         public string APIServer { get; set; }
 

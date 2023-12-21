@@ -31,12 +31,15 @@
             </Grid.RowDefinitions>
             <Grid 
                 x:Name="PrePresentationGrid"
-                Grid.Column="1" Grid.Row="1">
+                Grid.Column="1" Grid.Row="1"
+                IsClippedToBounds="True"
+                BackgroundColor="White">
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
                 <BoxView
+                    x:Name="PreCheckInHeadBackgroundBoxView"
                     Grid.Row="0"
                     BackgroundColor="{Binding Source={Reference PrimaryChechInNumberBackgroundBoxView}, Path=Color}" />
                 <Label
@@ -69,6 +72,7 @@
                         CacheType="Disk"
                         CacheDuration="8760:00:00" />
                     <Label
+                        x:Name="PreOperationCarrierName"
                         Grid.Column="1" Grid.Row="0"
                         VerticalTextAlignment="Center"
                         Text="{Binding Path=Operation.Carrier.Name}"
@@ -76,6 +80,7 @@
                         FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}}"
                         FontFamily="Montserrat (Regular)" />
                     <Label
+                        x:Name="PreOperationFly"
                         Grid.Column="1" Grid.Row="1"
                         VerticalTextAlignment="Center"
                         TextColor="Black"
@@ -90,6 +95,7 @@
                         </Label.FormattedText>
                     </Label>
                     <StackLayout 
+                        x:Name="PreOperationDestinationStackLayout"
                         Grid.Column="2" Grid.RowSpan="2"
                         HorizontalOptions="Center" VerticalOptions="End"
                         Margin="20,0,0,0"
@@ -107,28 +113,10 @@
                             FontSize="{Binding Source=72, Converter={StaticResource SizeToRelativeValueConverter}}"
                             FontFamily="Montserrat (Regular)" />
                     </StackLayout>
-                    <Label
-                        Grid.Column="1" Grid.Row="0"
-                        VerticalTextAlignment="Center"
-                        Text="{Binding Path=Operation.Carrier.Name}"
-                        TextColor="Black"
-                        FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}}"
-                        FontFamily="Montserrat (Regular)" />
-                    <Label
-                        Grid.Column="1" Grid.Row="1"
-                        VerticalTextAlignment="Center"
-                        TextColor="Black"
-                        FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}}"
-                        FontFamily="Montserrat (Regular)">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{Binding Path=Operation.Carrier.Id}" />
-                                <Span Text=" " />
-                                <Span Text="{Binding Path=Operation.Flight}" />
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                    <StackLayout Grid.Column="3" Grid.RowSpan="2" Spacing="0">
+                    <StackLayout 
+                        x:Name="PreOperationStartAtStackLayout"
+                        Grid.Column="3" Grid.RowSpan="2" 
+                        Spacing="0">
                         <Label
                             Text="Hora de inicio:"
                             TextColor="DimGray"
@@ -175,6 +163,39 @@
                     HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
                     FontFamily="Montserrat (Bold)"
                     FontSize="{Binding Path=., Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+            </Grid>
+            <Grid 
+                x:Name="GlobalClockWrapGrid"
+                Grid.Column="1" Grid.Row="0"
+                HorizontalOptions="End" VerticalOptions="Start">
+                <BoxView 
+                    x:Name="SecoundaryGlobalClockBackgroundBoxView"
+                    Scale="1.3"
+                    Rotation="12"
+                    TranslationX="{Binding Source=15, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                    TranslationY="{Binding Source=-10, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                <BoxView 
+                    x:Name="PrimaryGlobalClockBackgroundBoxView"
+                    Scale="1.15"
+                    Rotation="5"
+                    TranslationY="{Binding Source=-4, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"/>
+                <Grid
+                    Margin="15"
+                    WidthRequest="{Binding Source=276, Converter={StaticResource SizeToRelativeValueConverter}}">
+                    <StackLayout 
+                        HorizontalOptions="Start"
+                        Orientation="Horizontal">
+                        <Label
+                            Text="&#xF150;"
+                            FontFamily="{StaticResource IconFontFamily}"
+                            FontSize="{Binding Source=78, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                        <Label
+                            x:Name="GlobalNowTimeLabel"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalTextAlignment="Center"
+                            FontSize="{Binding Source=68, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                    </StackLayout>                    
+                </Grid>
             </Grid>
             <StackLayout 
                 x:Name="FullPresentationGrid"
@@ -352,18 +373,18 @@
                         Text="&#xF0ED;"
                         Margin="0,3,0,0"
                         FontFamily="{StaticResource IconFontFamily}"
-                        FontSize="{Binding Source=44, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                        FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}}" />
                     <Label
-                        x:Name="NowDateLabel"
+                        x:Name="FullNowDateLabel"
                         VerticalTextAlignment="Center"
                         FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}" />
                     <Label
                         Text="&#xF150;"
                         Margin="20,0,0,0"
                         FontFamily="{StaticResource IconFontFamily}"
-                        FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                        FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}}" />
                     <Label
-                        x:Name="NowTimeLabel"
+                        x:Name="FullNowTimeLabel"
                         HorizontalOptions="FillAndExpand"
                         VerticalTextAlignment="Center"
                         FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}" />
