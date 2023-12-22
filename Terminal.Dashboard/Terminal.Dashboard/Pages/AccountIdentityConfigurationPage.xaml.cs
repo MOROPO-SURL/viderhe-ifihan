@@ -67,9 +67,9 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
                             BindingContextPageModel.Name = task.Result.Name;
                             BindingContextPageModel.PrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor);
                             BindingContextPageModel.SecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
-                            BindingContextPageModel.LogoImageSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildLogoThumbnailUri());
-                            BindingContextPageModel.HorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildSplashHorizontalThumbnailUri());
-                            BindingContextPageModel.VerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildSplashVerticalThumbnailUri());
+                            BindingContextPageModel.LogoImageSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildLogoThumbnailUri(task.Result.LogoImageId));
+                            BindingContextPageModel.HorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildSplashHorizontalThumbnailUri(task.Result.HorizontalSplashImageId));
+                            BindingContextPageModel.VerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildSplashVerticalThumbnailUri(task.Result.VerticalSplashImageId));
                             BindingContextPageModel.DefaultOverlay = task.Result.DefaultOverlayId == null ? null : OverlayDescriptorProvider.Instance.GetDescriptorById(task.Result.DefaultOverlayId.Value);
                             BindingContextPageModel.SerializedOverlayContext = task.Result.SerializedOverlayContext;
 
@@ -90,7 +90,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
                             BindingContextPageModel.IsBusy = false;
 
-                            SessionManager.Instance.SyncronizeRequiredAccountInformation(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext);
+                            SessionManager.Instance.SyncronizeRequiredAccountInformation(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, task.Result.LogoImageId, task.Result.HorizontalSplashImageId, task.Result.VerticalSplashImageId, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext);
 
                             pageModelHasChanges = false;
 
