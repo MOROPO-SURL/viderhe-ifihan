@@ -208,6 +208,7 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Label
+                        x:Name="FullPresentationCheckInSymbolLabel"
                         Grid.Column="0"
                         VerticalTextAlignment="Center"
                         Text="&#xF6BF;"
@@ -215,6 +216,7 @@
                         FontFamily="{StaticResource IconFontFamily}"
                         FontSize="{Binding Source=180, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     <Label
+                        x:Name="FullPresentationCheckInLabel"
                         Grid.Column="1"
                         VerticalTextAlignment="Center"
                         LineBreakMode="TailTruncation"
@@ -223,21 +225,26 @@
                         FontFamily="Montserrat (Bold)"
                         FontSize="{Binding Source=120, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     <Label
+                        x:Name="FullPresentationCheckInDeskNumberLabel"
                         Grid.Column="2"
                         VerticalTextAlignment="Center"
                         Text="{Binding Source={Reference ChechInNumberLabel}, Path=Text}"
                         FontFamily="Montserrat (Bold)"
                         FontSize="{Binding Source=192, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                 </Grid>
-                <Label 
-                    x:Name="CheckInStatusLabel"
-                    BackgroundColor="White"
-                    Padding="20" Margin="0,0,0,30"
-                    HorizontalTextAlignment="Center"
-                    LineBreakMode="TailTruncation"
-                    TextColor="{Binding Source={Reference PrimaryChechInNumberBackgroundBoxView}, Path=Color}"
-                    FontFamily="Montserrat (Bold)"
-                    FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                <Grid Margin="0,0,0,30">
+                    <BoxView
+                        x:Name="CheckInStatusBackgroundBoxView"
+                        Color="White" />
+                    <Label 
+                        x:Name="CheckInStatusLabel"
+                        Padding="20"
+                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                        LineBreakMode="TailTruncation"
+                        TextColor="{Binding Source={Reference PrimaryChechInNumberBackgroundBoxView}, Path=Color}"
+                        FontFamily="Montserrat (Bold)"
+                        FontSize="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />                    
+                </Grid>
                 <Grid VerticalOptions="FillAndExpand" RowSpacing="20" ColumnSpacing="20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -287,6 +294,7 @@
                             CacheType="Disk"
                             CacheDuration="8760:00:00" />
                         <Label
+                            x:Name="FullOperationCarrierNameLabel"
                             Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"
                             VerticalTextAlignment="Center"
                             LineBreakMode="TailTruncation"
@@ -294,6 +302,7 @@
                             FontSize="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}}"
                             FontFamily="Montserrat (Regular)" />
                         <Label
+                            x:Name="FullOperationFlyCaptionLabel"
                             Grid.Column="1" Grid.Row="1"
                             Margin="0,10,0,0"
                             Opacity="0.8"
@@ -302,6 +311,7 @@
                             FontSize="{Binding Source=32, Converter={StaticResource SizeToRelativeValueConverter}}"
                             FontFamily="Montserrat (Bold)" />
                         <Label
+                            x:Name="FullOperationFlyLabel"
                             Grid.Column="1" Grid.Row="2"
                             VerticalTextAlignment="Center"
                             FontSize="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}}"
@@ -315,6 +325,7 @@
                             </Label.FormattedText>
                         </Label>
                         <Label
+                            x:Name="FullOperationDestinationCaptionLabel"
                             Grid.ColumnSpan="2" Grid.Row="3"
                             Margin="0,30,0,0"
                             Opacity="0.8"
@@ -323,6 +334,7 @@
                             FontSize="{Binding Source=32, Converter={StaticResource SizeToRelativeValueConverter}}"
                             FontFamily="Montserrat (Bold)" />
                         <Label
+                            x:Name="FullOperationDestinationLabel"
                             Grid.ColumnSpan="2" Grid.Row="4"
                             VerticalOptions="FillAndExpand"
                             LineBreakMode="TailTruncation"
@@ -334,12 +346,14 @@
                         Grid.Column="1" Grid.Row="0"
                         VerticalOptions="Center">
                         <Label
+                            x:Name="FullOperationStartAtCaptionLabel"
                             Opacity="0.8"
                             Text="Iniciado:"
                             TextColor="White"
                             FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}"
                             FontFamily="Montserrat (Bold)" />
                         <Label
+                            x:Name="FullOperationStartAtLabel"
                             VerticalOptions="FillAndExpand"
                             VerticalTextAlignment="Center"
                             Text="{Binding Path=StartAt, StringFormat='{0:HH\\:mm}'}"
@@ -350,12 +364,14 @@
                         Grid.Column="1" Grid.Row="1"
                         VerticalOptions="Center">
                         <Label
+                            x:Name="FullOperationEndAtCaptionLabel"
                             Opacity="0.8"
                             Text="Finaliza:"
                             TextColor="White"
                             FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}"
                             FontFamily="Montserrat (Bold)" />
                         <Label
+                            x:Name="FullOperationEndAtLabel"
                             VerticalOptions="FillAndExpand"
                             VerticalTextAlignment="Center"
                             Text="{Binding Path=EndAt, StringFormat='{0:HH\\:mm}'}"
@@ -368,7 +384,9 @@
                     Margin="0,20"
                     Color="White"
                     HeightRequest="2" />
-                <StackLayout Orientation="Horizontal" Margin="20,0">
+                <StackLayout
+                    x:Name="FullPresentationFooterStackLayout"
+                    Orientation="Horizontal" Margin="20,0">
                     <Label
                         Text="&#xF0ED;"
                         Margin="0,3,0,0"

@@ -78,7 +78,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
         {
             var now = System.DateTime.Now;
 
-            FullNowDateLabel.Text = now.ToString("dddd dd, MMMM, \\de yyyy");
+            FullNowDateLabel.Text = now.ToString("dddd dd, MMMM, yyyy");
 
             FullNowTimeLabel.Text = GlobalNowTimeLabel.Text = now.ToString("HH:mm");
 
@@ -112,14 +112,14 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 PrePresentationGrid.IsVisible = true;
 
-                var prePresentationGridShowInAnimationStoryboard = new Storyboard { IsParallel = false };
+                var showInAnimationStoryboard = new Storyboard { IsParallel = false };
 
                 var prePresentationGridTranslateToYAnimation = new TranslateToYAnimation
                 {
                     Target = PrePresentationGrid,
                     TranslateY = 0,
                     Duration = "350",
-                    EasingType = EasingType.SinOut
+                    EasingType = EasingType.CubicInOut
                 };
 
                 prePresentationGridTranslateToYAnimation.Completed += (sender, eventArgs) => PreCheckInHeadBackgroundBoxView.IsVisible = true;
@@ -131,7 +131,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                     Target = PreOperationCarrierImageView,
                     Scale = 1,
                     Duration = "350",
-                    EasingType = EasingType.BounceOut
+                    EasingType = EasingType.SpringOut
                 });
                 preOperationDataAnimationScreenplay.Animations.Add(new FadeToAnimation
                 {
@@ -162,24 +162,24 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                     Duration = "350"
                 });
 
-                prePresentationGridShowInAnimationStoryboard.Animations.Add(prePresentationGridTranslateToYAnimation);
-                prePresentationGridShowInAnimationStoryboard.Animations.Add(new TranslateToYAnimation
+                showInAnimationStoryboard.Animations.Add(prePresentationGridTranslateToYAnimation);
+                showInAnimationStoryboard.Animations.Add(new TranslateToYAnimation
                 {
                     Target = PreCheckInHeadBackgroundBoxView,
                     TranslateY = 0,
                     Duration = "300",
                     EasingType = EasingType.CubicIn
                 });
-                prePresentationGridShowInAnimationStoryboard.Animations.Add(new FadeInAnimation
+                showInAnimationStoryboard.Animations.Add(new FadeInAnimation
                 {
                     Target = PreCheckInHeadLabel,
                     Direction = FadeDirection.Left,
                     Duration = "350",
                     EasingType= EasingType.CubicOut
                 });
-                prePresentationGridShowInAnimationStoryboard.Animations.Add(preOperationDataAnimationScreenplay);
+                showInAnimationStoryboard.Animations.Add(preOperationDataAnimationScreenplay);
 
-                prePresentationGridShowInAnimationStoryboard.Begin();
+                showInAnimationStoryboard.Begin();
             });
 
             return System.Threading.Tasks.Task.CompletedTask;
@@ -218,7 +218,158 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 UpdateCheckInStatus();
 
+                FullPresentationGrid.TranslationY = Height * -1;
+                FullPresentationCheckInSymbolLabel.Opacity = 0;
+                FullPresentationCheckInLabel.Opacity = 0;
+                FullPresentationCheckInDeskNumberLabel.Scale = 0;
+                CheckInStatusBackgroundBoxView.Scale = 0;
+                CheckInStatusLabel.Opacity = 0;
+                FullOperationCarrierImageView.Scale = 0;
+                FullOperationCarrierNameLabel.Opacity = 0;
+                FullOperationFlyCaptionLabel.Opacity = 0;
+                FullOperationFlyLabel.Opacity = 0;
+                FullOperationDestinationCaptionLabel.Opacity = 0;
+                FullOperationDestinationLabel.Opacity = 0;
+                FullOperationStartAtCaptionLabel.Opacity = 0;
+                FullOperationStartAtLabel.Opacity = 0;
+                FullOperationEndAtCaptionLabel.Opacity = 0;
+                FullOperationEndAtLabel.Opacity = 0;
+                FullPresentationFooterSeparationBoxView.Opacity = 0;
+                FullPresentationFooterStackLayout.Opacity = 0;
+
                 FullPresentationGrid.IsVisible = true;
+
+                var showInContinueAnimationStoryboard = new Storyboard { IsParallel = true };
+
+                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
+                {
+                    Target = FullPresentationCheckInSymbolLabel,
+                    Direction = FadeDirection.Down,
+                    Duration = "400",
+                    EasingType = EasingType.SpringOut
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
+                {
+                    Target = FullPresentationCheckInLabel,
+                    Direction = FadeDirection.Down,
+                    Duration = "400",
+                    EasingType = EasingType.SpringOut,
+                    Delay = "200"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new ScaleToAnimation
+                {
+                    Target = FullPresentationCheckInDeskNumberLabel,
+                    Scale = 1,
+                    Duration = "400",
+                    EasingType = EasingType.SpringOut,
+                    Delay = "100"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new ScaleToAnimation
+                {
+                    Target = CheckInStatusBackgroundBoxView,
+                    Scale = 1,
+                    Duration = "200",
+                    EasingType = EasingType.SpringOut,
+                    Delay = "400"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new FadeToAnimation
+                {
+                    Target = CheckInStatusLabel,
+                    Opacity = 1,
+                    Duration = "400",
+                    Delay = "800"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new ScaleToAnimation
+                {
+                    Target = FullOperationCarrierImageView,
+                    Scale = 1,
+                    Duration = "400",
+                    EasingType = EasingType.SpringOut,
+                    Delay = "1200"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new FadeToAnimation
+                {
+                    Target = FullOperationCarrierNameLabel,
+                    Opacity = 1,
+                    Duration = "400",
+                    Delay = "1600"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
+                {
+                    Target = FullPresentationFooterSeparationBoxView,
+                    Direction = FadeDirection.Up,
+                    Duration = "400",
+                    Delay = "800"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
+                {
+                    Target = FullPresentationFooterStackLayout,
+                    Direction = FadeDirection.Up,
+                    Duration = "400",
+                    Delay = "800"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new FadeToAnimation
+                {
+                    Target = FullOperationFlyLabel,
+                    Opacity = 1,
+                    Duration = "400",
+                    Delay = "1800"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
+                {
+                    Target = FullOperationDestinationCaptionLabel,
+                    Direction = FadeDirection.Up,
+                    Duration = "400",
+                    Delay = "1900"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
+                {
+                    Target = FullOperationDestinationLabel,
+                    Direction = FadeDirection.Up,
+                    Duration = "400",
+                    Delay = "1900"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
+                {
+                    Target = FullOperationStartAtCaptionLabel,
+                    Direction = FadeDirection.Right,
+                    Duration = "400",
+                    Delay = "2000"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
+                {
+                    Target = FullOperationStartAtLabel,
+                    Direction = FadeDirection.Right,
+                    Duration = "400",
+                    Delay = "2000"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
+                {
+                    Target = FullOperationEndAtCaptionLabel,
+                    Direction = FadeDirection.Right,
+                    Duration = "400",
+                    Delay = "2100"
+                });
+                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
+                {
+                    Target = FullOperationEndAtLabel,
+                    Direction = FadeDirection.Right,
+                    Duration = "400",
+                    Delay = "2100"
+                });
+
+                var showInAnimationStoryboard = new Storyboard { IsParallel = false };
+
+                showInAnimationStoryboard.Animations.Add(new TranslateToYAnimation
+                {
+                    Target = FullPresentationGrid,
+                    TranslateY = 0,
+                    Duration = "500",
+                    EasingType = EasingType.BounceOut
+                });
+                showInAnimationStoryboard.Animations.Add(showInContinueAnimationStoryboard);
+
+                showInAnimationStoryboard.Begin();
             });
         }
 
@@ -226,11 +377,147 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
-                FullPresentationGrid.BindingContext = null;
+                var lastAnimation = new TranslateToYAnimation
+                {
+                    Target = FullPresentationGrid,
+                    TranslateY = Height * -1,
+                    Duration = "500",
+                    EasingType = EasingType.SpringOut,
+                    Delay = "750"
+                };
 
-                FullOperationCarrierImageView.Source = null;
+                lastAnimation.Completed += (sender, eventArgs) =>
+                {
+                    FullPresentationGrid.BindingContext = null;
 
-                FullPresentationGrid.IsVisible = false;
+                    FullOperationCarrierImageView.Source = null;
+
+                    checkInModel = null;
+
+                    FullPresentationGrid.IsVisible = false;
+                };
+
+                var showOutAnimationStoryboard = new Storyboard { IsParallel = true };
+
+                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                {
+                    Target = FullPresentationCheckInSymbolLabel,
+                    Direction = FadeDirection.Up,
+                    Duration = "200",
+                    EasingType = EasingType.SpringOut,
+                    Delay = "300"
+                });
+                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                {
+                    Target = FullPresentationCheckInLabel,
+                    Direction = FadeDirection.Up,
+                    Duration = "200",
+                    EasingType = EasingType.SpringOut,
+                    Delay = "275"
+                });
+                showOutAnimationStoryboard.Animations.Add(new ScaleToAnimation
+                {
+                    Target = FullPresentationCheckInDeskNumberLabel,
+                    Scale = 0,
+                    Duration = "200",
+                    EasingType = EasingType.SpringOut,
+                    Delay = "350"
+                });
+                showOutAnimationStoryboard.Animations.Add(new ScaleToAnimation
+                {
+                    Target = CheckInStatusBackgroundBoxView,
+                    Scale = 0,
+                    Duration = "200",
+                    EasingType = EasingType.SpringOut,
+                    Delay = "250"
+                });
+                showOutAnimationStoryboard.Animations.Add(new FadeToAnimation
+                {
+                    Target = CheckInStatusLabel,
+                    Opacity = 0,
+                    Duration = "200",
+                    Delay = "50"
+                });
+                showOutAnimationStoryboard.Animations.Add(new ScaleToAnimation
+                {
+                    Target = FullOperationCarrierImageView,
+                    Scale = 0,
+                    Duration = "200",
+                    EasingType = EasingType.SpringOut,
+                    Delay = "100"
+                });
+                showOutAnimationStoryboard.Animations.Add(new FadeToAnimation
+                {
+                    Target = FullOperationCarrierNameLabel,
+                    Opacity = 0,
+                    Duration = "200",
+                    Delay = "175"
+                });
+                showOutAnimationStoryboard.Animations.Add(new FadeToAnimation
+                {
+                    Target = FullOperationFlyLabel,
+                    Opacity = 0,
+                    Duration = "200",
+                    Delay = "175"
+                });
+                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                {
+                    Target = FullPresentationFooterSeparationBoxView,
+                    Direction = FadeDirection.Down,
+                    Duration = "200",
+                    Delay = "150"
+                });
+                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                {
+                    Target = FullPresentationFooterStackLayout,
+                    Direction = FadeDirection.Down,
+                    Duration = "200",
+                    Delay = "150"
+                });
+                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                {
+                    Target = FullOperationDestinationCaptionLabel,
+                    Direction = FadeDirection.Down,
+                    Duration = "200",
+                    Delay = "50"
+                });
+                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                {
+                    Target = FullOperationDestinationLabel,
+                    Direction = FadeDirection.Down,
+                    Duration = "200",
+                    Delay = "50"
+                });
+                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                {
+                    Target = FullOperationStartAtCaptionLabel,
+                    Direction = FadeDirection.Right,
+                    Duration = "200",
+                    Delay = "25"
+                });
+                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                {
+                    Target = FullOperationStartAtLabel,
+                    Direction = FadeDirection.Right,
+                    Duration = "200",
+                    Delay = "25"
+                });
+                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                {
+                    Target = FullOperationEndAtCaptionLabel,
+                    Direction = FadeDirection.Right,
+                    Duration = "200"
+                });
+                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                {
+                    Target = FullOperationEndAtLabel,
+                    Direction = FadeDirection.Right,
+                    Duration = "200"
+                });
+
+                showOutAnimationStoryboard.Animations.Add(lastAnimation);
+
+                showOutAnimationStoryboard.Begin();
             });
 
             return System.Threading.Tasks.Task.CompletedTask;
@@ -298,7 +585,27 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             if (!task.IsCanceled && task.Exception == null)
             {
-                checkInModel = task.Result.OrderBy(item => item.StartAt).FirstOrDefault();
+                var availableCheckIns = task.Result.OrderBy(item => item.StartAt);
+
+                Service.ECASA.CMG.InterFIDS.API.Common.Models.CheckInDisplayModel prospect = null;
+
+                foreach (var item in availableCheckIns)
+                {
+                    if (checkInModel != null && checkInModel.Id == item.Id)
+                    {
+                        prospect = item;
+
+                        break;
+                    }
+
+                    if (System.DateTime.Now > item.EndAt + System.TimeSpan.FromMinutes(overlayContextModel.PostPresentationTime)) continue;
+
+                    prospect = item;
+
+                    break;
+                }
+
+                checkInModel = prospect;
 
                 if (checkInModel != null)
                 {
@@ -341,6 +648,12 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                         if (PrePresentationGrid.IsVisible) await HidePrePresentationAsync();
                     }
+                }
+                else
+                {
+                    if (FullPresentationGrid.IsVisible) await HideFullPresentationAsync();
+
+                    if (PrePresentationGrid.IsVisible) await HidePrePresentationAsync();
                 }
             }
 
