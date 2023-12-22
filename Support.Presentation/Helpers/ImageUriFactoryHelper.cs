@@ -44,22 +44,22 @@ namespace MOROPO.VIDERHE.Support.Presentation.Helpers
             return string.Format("{0}://{1}/media/image/{2}/w/{3}/h/{4}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, imageId, mainDisplayInvariantWidth.Value, mainDisplayInvariantHeight.Value);
         }
 
-        internal string BuildSplashVerticalUri(ICloudServerProviderFacade cloudServerProvider, bool original = false)
+        internal string BuildSplashVerticalUri(ICloudServerProviderFacade cloudServerProvider, System.Guid discriminator, bool original = false)
         {
-            if (original) return string.Format("{0}://{1}/media/splash/vertical", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host);
+            if (original) return string.Format("{0}://{1}/media/splash/vertical?nocache={2}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, discriminator);
 
             if (mainDisplayInvariantWidth == null || mainDisplayInvariantHeight == null) Initialize();
 
-            return string.Format("{0}://{1}/media/splash/vertical/w/{2}/h/{3}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, mainDisplayInvariantWidth.Value, mainDisplayInvariantHeight.Value);
+            return string.Format("{0}://{1}/media/splash/vertical/w/{2}/h/{3}?nocache={4}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, mainDisplayInvariantWidth.Value, mainDisplayInvariantHeight.Value, discriminator);
         }
 
-        internal string BuildSplashHorizontalUri(ICloudServerProviderFacade cloudServerProvider, bool original = false)
+        internal string BuildSplashHorizontalUri(ICloudServerProviderFacade cloudServerProvider, System.Guid discriminator, bool original = false)
         {
-            if (original) return string.Format("{0}://{1}/media/splash/horizontal/", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host);
+            if (original) return string.Format("{0}://{1}/media/splash/horizontal?nocache={2}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, discriminator);
 
             if (mainDisplayInvariantWidth == null || mainDisplayInvariantHeight == null) Initialize();
 
-            return string.Format("{0}://{1}/media/splash/horizontal/w/{2}/h/{3}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, mainDisplayInvariantWidth.Value, mainDisplayInvariantHeight.Value);
+            return string.Format("{0}://{1}/media/splash/horizontal/w/{2}/h/{3}?nocache={4}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, mainDisplayInvariantWidth.Value, mainDisplayInvariantHeight.Value, discriminator);
         }
     }
 }
