@@ -9,6 +9,11 @@
                 return new Pages.DinamicAirportCheckInMonitorOverlayConfigurationPage(serializedContext, successfulCompleteCallbackAction);
             }
 
+            if (overlayDescriptor.Id == Descriptors.CorporativeMarqueeOverlayDescriptor.ID)
+            {
+                return new Pages.CorporativeMarqueeOverlayConfigurationPage(serializedContext, successfulCompleteCallbackAction);
+            }
+
             return null;
         }
     }

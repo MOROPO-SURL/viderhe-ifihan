@@ -13,6 +13,13 @@
                 return new Views.DinamicAirportCheckInMonitorOverlayView(context);
             }
 
+            if (accountInformationProvider.AccountDefaultOverlayId.Value == Descriptors.CorporativeMarqueeOverlayDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.CorporativeMarqueeOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
+
+                return new Views.CorporativeMarqueeOverlayView(context);
+            }
+
             return null;
         }
     }

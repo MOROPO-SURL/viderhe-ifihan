@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dashboard.Presentation.Models.Page"
+    xmlns:supportpresentationdashboardvalidators="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardbehaviors="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardpresenters="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardviews="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dashboard.Presentation.Pages.CorporativeMarqueeOverlayConfigurationPage"
+    x:TypeArguments="pagemodels:CorporativeMarqueeOverlayConfigurationPageModel"
+    x:Name="FormPage"
+    Title="Configurar Máscara (Cinta Corporativa de ECASA Camagüey)">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Aplicar"
+            Clicked="ApplyToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf12c;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem 
+            Text="Cancelar"
+            Clicked="CancelToolbarItem_Clicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource FontFamily="{StaticResource ToolbarIconFontFamily}" Glyph="&#xf156;">
+                    <FontImageSource.Color>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="UWP" Value="Black" />
+                        </OnPlatform>
+                    </FontImageSource.Color>
+                </FontImageSource>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <Grid 
+                    Margin="10,0,10,10"
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout 
+                        Grid.ColumnSpan="4" Grid.Row="0"
+                        IsVisible="{Binding Path=IsValid, Converter={StaticResource BoolToBoolNegationConverter}}"
+                        Padding="0,10,0,0"
+                        BindableLayout.ItemsSource="{Binding Path=ValidationMessages}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid 
+                                    BackgroundColor="Tomato"
+                                    RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="5" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <BoxView 
+                                        Grid.Column="0" Grid.RowSpan="2"
+                                        Color="Red" />
+                                    <Label
+                                        Grid.Column="1" Grid.Row="0"
+                                        Padding="5,5,5,2"
+                                        Text="{Binding Path=Caption}"
+                                        TextColor="White"
+                                        FontAttributes="Bold" />
+                                    <Label 
+                                        Grid.Column="1" Grid.Row="1"
+                                        Padding="5,0,5,5"
+                                        Text="{Binding Path=Message}"
+                                        TextColor="White" />
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    <Frame 
+                        Grid.ColumnSpan="4" Grid.Row="1"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Logotipo" Style="{StaticResource FormLabel}" />
+                            <Grid ColumnSpacing="10" RowSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ffimageloadingforms:CachedImage
+                                    Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"
+                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                    VerticalOptions="End"
+                                    BackgroundColor="Black"
+                                    Source="{Binding Path=AccountLogoImageSource}" 
+                                    Aspect="AspectFill"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00" />
+                                <Switch
+                                    Grid.Column="0" Grid.Row="1"
+                                    IsToggled="{Binding Path=IsRectangle19x6LogoSizeModeSelected}" />
+                                <Label
+                                    Grid.Column="1" Grid.Row="1"
+                                    VerticalTextAlignment="Center"
+                                    Text="Rectangular 19x6" />
+
+                                <ffimageloadingforms:CachedImage
+                                    Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0"
+                                    VerticalOptions="End"
+                                    BackgroundColor="Black"
+                                    Source="{Binding Path=AccountLogoImageSource}" 
+                                    Aspect="AspectFill"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00" />
+                                <Switch
+                                    Grid.Column="2" Grid.Row="1"
+                                    IsToggled="{Binding Path=IsRectangle4x3LogoSizeModeSelected}" />
+                                <Label
+                                    Grid.Column="3" Grid.Row="1"
+                                    VerticalTextAlignment="Center"
+                                    Text="Rectangular 4x3" />
+
+                                <ffimageloadingforms:CachedImage
+                                    Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="0"
+                                    BackgroundColor="Black"
+                                    Source="{Binding Path=AccountLogoImageSource}" 
+                                    Aspect="AspectFill"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00" />
+                                <Switch
+                                    Grid.Column="4" Grid.Row="1"
+                                    IsToggled="{Binding Path=IsRectangle1x1LogoSizeModeSelected}" />
+                                <Label
+                                    Grid.Column="5" Grid.Row="1"
+                                    VerticalTextAlignment="Center"
+                                    Text="Cuadrado 1x1" />
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.ColumnSpan="4" Grid.Row="2"
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Origen de Datos" Style="{StaticResource FormLabel}" />
+                            <Grid ColumnSpacing="10" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Frame Grid.Column="0" Grid.Row="0" Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label 
+                                            x:Name="InformationSourceKindLabel"
+                                            Text="Tipo" 
+                                            Style="{StaticResource FormLabel}" />
+                                        <Picker 
+                                            x:Name="InformationSourceKindPicker"
+                                            SelectedItem="{Binding Path=InformationSourceKind}"
+                                            ItemsSource="{Binding Path=AvaiableCorporativeInformationSourceKinds}">
+                                            <Picker.Behaviors>
+                                                <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                                    ValidableFormPage="{Reference FormPage}"
+                                                    FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultPickerValidationPresenter.Instance}"
+                                                    TargetProperty="{Static Picker.SelectedItemProperty}"
+                                                    Label="{Reference InformationSourceKindLabel}">
+                                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                        <supportpresentationdashboardvalidators:NotNullFormFieldValidator />
+                                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                            </Picker.Behaviors>
+                                        </Picker>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.ColumnSpan="3" Grid.Row="1"
+                                    Margin="0,10,0,0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label 
+                                            x:Name="InformationSourceServerLabel"
+                                            Text="Origen" 
+                                            Style="{StaticResource FormLabel}" />
+                                        <Editor 
+                                            HeightRequest="{Binding Path=InformationSourceFieldRequestHeight}"
+                                            Text="{Binding Path=InformationSource}"
+                                            Placeholder="{Binding Path=InformationSourceFieldPlaceholder}">
+                                            <Editor.Behaviors>
+                                                <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                                    ValidableFormPage="{Reference FormPage}"
+                                                    FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEditorValidationPresenter.Instance}"
+                                                    TargetProperty="{Static Editor.TextProperty}"
+                                                    Label="{Reference InformationSourceServerLabel}">
+                                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                        <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                                </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                            </Editor.Behaviors>
+                                        </Editor>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="0" Grid.Row="2"
+                                    IsVisible="{Binding Path=IsRemoteRelatedFieldFamilyVisiable}"
+                                    Margin="0,10,0,0"
+                                    VerticalOptions="Start"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Intervalo de actualización" Style="{StaticResource FormLabel}" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Path=InformationSourceUpdateMinuteInterval}" VerticalTextAlignment="Center" />
+                                            <Label Text="Minutos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                            <Stepper Value="{Binding Path=InformationSourceUpdateMinuteInterval}" Minimum="1" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2"
+                                    IsVisible="{Binding Path=IsRemoteRelatedFieldFamilyVisiable}"
+                                    Margin="0,10,0,0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label 
+                                            Text="Mensaje por defecto" 
+                                            Style="{StaticResource FormLabel}" />
+                                        <Editor 
+                                            HeightRequest="120"
+                                            Text="{Binding Path=FailbackMessage}"
+                                            Placeholder="Especifique el mensaje a mostrar en caso ed fallar el acceso a la fuente RSS ..." />
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                x:Name="HeadLabel"
+                                Text="Mensaje de inicio de cadena" 
+                                Style="{StaticResource FormLabel}" />
+                            <Editor 
+                                HeightRequest="120"
+                                Text="{Binding Path=Head}">
+                                <Editor.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEditorValidationPresenter.Instance}"
+                                        TargetProperty="{Static Editor.TextProperty}"
+                                        Label="{Reference HeadLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Editor.Behaviors>
+                            </Editor>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                x:Name="TailLabel"
+                                Text="Mensaje de final de cadena" 
+                                Style="{StaticResource FormLabel}" />
+                            <Editor 
+                                HeightRequest="120"
+                                Text="{Binding Path=Tail}">
+                                <Editor.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEditorValidationPresenter.Instance}"
+                                        TargetProperty="{Static Editor.TextProperty}"
+                                        Label="{Reference TailLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Editor.Behaviors>
+                            </Editor>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.Row="4"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                x:Name="SeparatorLabel"
+                                Text="Separador" 
+                                Style="{StaticResource FormLabel}" />
+                            <Entry Text="{Binding Path=Separator}">
+                                <Entry.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultEntryValidationPresenter.Instance}"
+                                        TargetProperty="{Static Entry.TextProperty}"
+                                        Label="{Reference SeparatorLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:RequiredFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Mostrar fecha y hora?" Style="{StaticResource FormLabel}" />
+                            <Switch IsToggled="{Binding Path=IsDateTimePresentationRequired}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.ColumnSpan="4" Grid.Row="5"
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF"
+                        VerticalOptions="Start">
+                        <StackLayout Spacing="1">
+                            <Label Text="Uso de Colores" Style="{StaticResource FormLabel}" Margin="0,0,0,6" />
+                            <Grid ColumnSpacing="10" RowSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Frame 
+                                    Grid.Column="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Fondo de la cinta" Style="{StaticResource FormLabel}" />
+                                        <simplecolorpicker:ColorPickerEntry 
+                                            EditAlfa="False"
+                                            ColorPreviewButtonBorder="DimGray"
+                                            Color="{Binding Path=BackgroundColor}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="1"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Texto de cinta" Style="{StaticResource FormLabel}" />
+                                        <simplecolorpicker:ColorPickerEntry 
+                                            EditAlfa="False"
+                                            ColorPreviewButtonBorder="DimGray"
+                                            Color="{Binding Path=TextColor}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="2"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Border de contraste" Style="{StaticResource FormLabel}" />
+                                        <simplecolorpicker:ColorPickerEntry 
+                                            EditAlfa="False"
+                                            ColorPreviewButtonBorder="DimGray"
+                                            Color="{Binding Path=FrontierColor}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="3"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Contorno del logo" Style="{StaticResource FormLabel}" />
+                                        <simplecolorpicker:ColorPickerEntry 
+                                            EditAlfa="False"
+                                            ColorPreviewButtonBorder="DimGray"
+                                            Color="{Binding Path=LogoOutlineColor}" />
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

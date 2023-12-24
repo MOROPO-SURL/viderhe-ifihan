@@ -292,9 +292,9 @@ namespace MOROPO.VIDERHE.Terminal.Player.Pages
                 {
                     Id = task.Result.Id,
                     Name = task.Result.Name,
-                    LogoImageSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildLogoUri()),
-                    HorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildSplashHorizontalUri()),
-                    VerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildSplashVerticalUri()),
+                    LogoImageSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildLogoUri(task.Result.LogoImageId)),
+                    HorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildSplashHorizontalUri(task.Result.HorizontalSplashImageId)),
+                    VerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildSplashVerticalUri(task.Result.VerticalSplashImageId)),
                     PrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor),
                     SecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor),
                     DefaultOverlayId = task.Result.DefaultOverlayId,

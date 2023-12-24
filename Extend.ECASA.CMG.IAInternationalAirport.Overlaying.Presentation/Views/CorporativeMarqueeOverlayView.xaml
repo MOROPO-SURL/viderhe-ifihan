@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommonoverlayingpresentationviews:BaseOverlayView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommonoverlayingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation"
+    xmlns:extendcommonoverlayingpresentationbehaviors="clr-namespace:MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation.Behaviors;assembly=MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation"
+    xmlns:extendcommonoverlayingpresentationconverters="clr-namespace:MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation.Converters;assembly=MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Converters;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:sscxftoolkitpresentationtransformbehaviors="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Behaviors;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
+    xmlns:sscxftoolkitpresentationtransformanimations="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation.Views.CorporativeMarqueeOverlayView"
+    x:Name="RootView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+            <extendcommontemplatingpresentationconverters:ThicknessToRelativeValueConverter x:Key="ThicknessToRelativeValueConverter" />
+            <extendcommonoverlayingpresentationconverters:TextToAbsoluteLayoutBoundsConverter x:Key="TextToAbsoluteLayoutBoundsConverter" />
+
+            <Thickness x:Key="LogoGridMargin">12,0,0,0</Thickness>
+            <Thickness x:Key="DateTimeBoxPadding">10,8</Thickness>
+            <Thickness x:Key="DateIconCorrectionMargin">0,2,0,0</Thickness>
+            <Thickness x:Key="MarqueeLabelPadding">0,12</Thickness>
+            <Thickness x:Key="LogoImageViewMargin">6</Thickness>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Behaviors>
+        <sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior>
+            <sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior.Animation>
+                <sscxftoolkitpresentationtransformanimations:TranslateToAnimation 
+                    Target="{x:Reference RootView}" 
+                    Delay="5000"
+                    EasingType="CubicOut" 
+                    TranslateY="0" />
+            </sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior.Animation>
+        </sscxftoolkitpresentationtransformbehaviors:BeginAnimationBehavior>
+    </ContentView.Behaviors>
+    <ContentView.Content>
+        <Grid ColumnSpacing="0" RowSpacing="0">
+            <StackLayout
+                VerticalOptions="End"
+                Spacing="0">
+                <Grid>
+                    <BoxView
+                        VerticalOptions="End"
+                        HeightRequest="{Binding Source=4, Converter={StaticResource SizeToRelativeValueConverter}}" 
+                        Color="{Binding Path=Context.FrontierColor}" />
+                    <Grid HorizontalOptions="End" IsVisible="{Binding Path=Context.IsDateTimePresentationRequired}">
+                        <BoxView
+                            CornerRadius="5,0,0,0"
+                            Color="{Binding Path=Context.FrontierColor}" />
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Spacing="8"
+                            Padding="{Binding Source={StaticResource DateTimeBoxPadding}, Converter={StaticResource ThicknessToRelativeValueConverter}}">
+                            <Label
+                                x:Name="DateIconLabel"
+                                Text="&#xF0ED;"
+                                Margin="{Binding Source={StaticResource DateIconCorrectionMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}"
+                                FontFamily="{StaticResource IconFontFamily}"
+                                FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                            <Label
+                                x:Name="DateLabel"
+                                Text="martes 3, diciembre, 2023"
+                                VerticalTextAlignment="Center"
+                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                            <Label
+                                x:Name="TimeIconLabel"
+                                Text="&#xF150;"
+                                FontFamily="{StaticResource IconFontFamily}"
+                                FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                            <Label
+                                x:Name="TimeLabel"
+                                Text="23:48"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalTextAlignment="Center"
+                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+                <AbsoluteLayout VerticalOptions="Center" BackgroundColor="{Binding Path=Context.BackgroundColor}">
+                    <Label
+                        x:Name="MarqueeLabel"
+                        AbsoluteLayout.LayoutFlags="None"
+                        AbsoluteLayout.LayoutBounds="{Binding Path=MarqueeContent, Converter={StaticResource TextToAbsoluteLayoutBoundsConverter}, ConverterParameter={Reference MarqueeLabel}}"
+                        Padding="{Binding Source={StaticResource MarqueeLabelPadding}, Converter={StaticResource ThicknessToRelativeValueConverter}}"
+                        Text="{Binding Path=MarqueeContent}"
+                        TextColor="{Binding Path=Context.TextColor}"
+                        LineBreakMode="NoWrap"
+                        FontFamily="Montserrat (Regular)"
+                        FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}}">
+                        <Label.Behaviors>
+                            <extendcommonoverlayingpresentationbehaviors:MarqueeLabelBehavior />
+                        </Label.Behaviors>
+                    </Label>
+                </AbsoluteLayout>
+            </StackLayout>
+            <Grid 
+                x:Name="LogoGrid"
+                HorizontalOptions="Start" VerticalOptions="End"
+                Margin="{Binding Source={StaticResource LogoGridMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}">
+                <BoxView 
+                    CornerRadius="3"
+                    Color="{Binding Path=Context.LogoOutlineColor}" />
+                <ffimageloadingforms:CachedImage
+                    x:Name="LogoImageView"
+                    Margin="{Binding Source={StaticResource LogoImageViewMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}"
+                    BackgroundColor="Black"
+                    Aspect="AspectFill"
+                    CacheType="Disk"
+                    CacheDuration="8760:00:00" />
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommonoverlayingpresentationviews:BaseOverlayView>
