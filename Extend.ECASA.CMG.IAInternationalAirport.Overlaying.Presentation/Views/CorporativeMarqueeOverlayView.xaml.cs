@@ -4,7 +4,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 {
     public partial class CorporativeMarqueeOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
-        private readonly Models.Context.CorporativeMarqueeOverlayContextModel model;
+        private Models.Context.CorporativeMarqueeOverlayContextModel model;
 
         public CorporativeMarqueeOverlayView(Models.Context.CorporativeMarqueeOverlayContextModel model)
         {
@@ -35,11 +35,6 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                 LogoGrid.HeightRequest = LogoGrid.WidthRequest / 1.3333333333333333333333333333333d;
             }
 
-            if (model.IsDateTimePresentationRequired)
-            {
-                DateIconLabel.TextColor = DateLabel.TextColor = TimeIconLabel.TextColor = TimeLabel.TextColor = Xamarin.Forms.Color.FromHex(model.FrontierColor).ToBlackOrWhiteForText();
-            }
-
             TranslationY = LogoGrid.HeightRequest;
 
             if (model.InformationSourceKind == Enumerations.CorporativeInformationSourceKind.Managed)
@@ -67,6 +62,22 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                     });
                 });
             }
+
+            if (model.IsDateTimePresentationRequired)
+            {
+                DateIconLabel.TextColor = DateLabel.TextColor = TimeIconLabel.TextColor = TimeLabel.TextColor = Xamarin.Forms.Color.FromHex(model.FrontierColor).ToBlackOrWhiteForText();
+
+                Xamarin.Forms.Device.StartTimer(System.TimeSpan.FromSeconds(15), Timer_Callback);
+
+                Timer_Callback();
+            }
+        }
+
+        protected override void DisposeUnmanagementResources()
+        {
+            base.DisposeUnmanagementResources();
+
+            model = null;
         }
 
         public override void ShowIn()
@@ -91,6 +102,17 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             };
 
             animation.Begin();
+        }
+
+        private bool Timer_Callback()
+        {
+            var now = System.DateTime.Now;
+
+            DateLabel.Text = now.ToString("dddd dd, MMMM, yyyy");
+
+            TimeLabel.Text = now.ToString("HH:mm");
+
+            return model != null;
         }
 
         private void UpdateInLineAdvises(string body)
