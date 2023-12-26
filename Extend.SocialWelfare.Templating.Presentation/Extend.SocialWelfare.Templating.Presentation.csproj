@@ -8,7 +8,7 @@
 		<Authors>MOROPO DotNet DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
 		<Copyright>© MOROPO 2023, Todos los derechos reservados.</Copyright>
-		<Version>0.1.0</Version>
+		<Version>0.1.1</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
@@ -21,12 +21,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CodeHollow.FeedReader" Version="1.2.4" />
 		<PackageReference Include="NodaTime" Version="3.1.9" />
 		<PackageReference Include="TweetinviAPI" Version="5.0.4" />
 		<PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
 		<PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
-		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2622" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
 	</ItemGroup>
 
 	<ItemGroup>
