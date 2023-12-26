@@ -16,25 +16,25 @@
             return new System.Uri(string.Format("{0}://{1}/media/thumbnail/video/{2}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, thumbnailId));
         }
 
-        public static System.Uri BuildLogoThumbnailUri()
+        public static System.Uri BuildLogoThumbnailUri(System.Guid discriminator)
         {
             var cloudServerProvider = Xamarin.Forms.DependencyService.Get<Providers.Facade.ICloudServerProviderFacade>();
 
-            return new System.Uri(string.Format("{0}://{1}/media/thumbnail/logo", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host));
+            return new System.Uri(string.Format("{0}://{1}/media/thumbnail/logo?nocache={2}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, discriminator));
         }
 
-        public static System.Uri BuildSplashVerticalThumbnailUri()
+        public static System.Uri BuildSplashVerticalThumbnailUri(System.Guid discriminator)
         {
             var cloudServerProvider = Xamarin.Forms.DependencyService.Get<Providers.Facade.ICloudServerProviderFacade>();
 
-            return new System.Uri(string.Format("{0}://{1}/media/thumbnail/splash/vertical", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host));
+            return new System.Uri(string.Format("{0}://{1}/media/thumbnail/splash/vertical?nocache={2}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, discriminator));
         }
 
-        public static System.Uri BuildSplashHorizontalThumbnailUri()
+        public static System.Uri BuildSplashHorizontalThumbnailUri(System.Guid discriminator)
         {
             var cloudServerProvider = Xamarin.Forms.DependencyService.Get<Providers.Facade.ICloudServerProviderFacade>();
 
-            return new System.Uri(string.Format("{0}://{1}/media/thumbnail/splash/horizontal/", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host));
+            return new System.Uri(string.Format("{0}://{1}/media/thumbnail/splash/horizontal?nocache={2}", cloudServerProvider.UseSSL ? "https" : "http", cloudServerProvider.Host, discriminator));
         }
     }
 }

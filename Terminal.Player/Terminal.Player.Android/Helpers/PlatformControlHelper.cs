@@ -1,6 +1,6 @@
-﻿[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Helpers.PlatformControlHelper))]
+﻿[assembly: Xamarin.Forms.Dependency(typeof(MOROPO.VIDERHE.Terminal.Player.Droid.Helpers.PlatformControlHelper))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Helpers
+namespace MOROPO.VIDERHE.Terminal.Player.Droid.Helpers
 {
     public class PlatformControlHelper : Player.Helpers.Facade.IPlatformControlHelperFacade
     {

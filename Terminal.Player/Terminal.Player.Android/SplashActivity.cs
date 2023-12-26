@@ -1,6 +1,6 @@
 ﻿using Android.App;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
+namespace MOROPO.VIDERHE.Terminal.Player.Droid
 {
     [Activity(
         Theme = "@style/AppTheme.Splash", 

@@ -4,7 +4,7 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
+namespace MOROPO.VIDERHE.Terminal.Player.Droid
 {
     [Activity(
         Label = "VIDERHE Player", 
