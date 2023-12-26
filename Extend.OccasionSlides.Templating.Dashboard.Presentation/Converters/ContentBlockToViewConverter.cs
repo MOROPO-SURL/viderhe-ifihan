@@ -23,6 +23,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
 
             if (item.Target is TransparentSeparatorContentBlockViewModel) return new Views.Block.TransparentSeparatorContentBlockView(item.Target as TransparentSeparatorContentBlockViewModel, OptionButtonClicked);
 
+            if (item.Target is GlyphContentBlockViewModel) return new Views.Block.GlyphContentBlockView(item.Target as GlyphContentBlockViewModel, OptionButtonClicked);
+            
             throw new System.InvalidOperationException();
         }
 

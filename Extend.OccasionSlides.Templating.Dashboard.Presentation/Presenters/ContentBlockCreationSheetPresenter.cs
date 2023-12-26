@@ -10,6 +10,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         private const string OPTION_CREATE_CONTENT_BLOCK_TEXT = "Texto";
         private const string OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT = "Texto Encabezado";
         private const string OPTION_CREATE_CONTENT_BLOCK_IMAGE = "Imagen";
+        private const string OPTION_CREATE_CONTENT_BLOCK_GLYPH = "Símbolo";
         private const string OPTION_CREATE_CONTENT_BLOCK_SEPARATOR_TRANSPARENT = "Separador Transparent";
 
         internal static void PresentForCreate(Xamarin.Forms.Page page, System.Action<AbstractContentBlockViewModel> callbackAction)
@@ -18,6 +19,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                 OPTION_CREATE_CONTENT_BLOCK_TEXT,
                 OPTION_CREATE_CONTENT_BLOCK_HEADERTEXT,
                 OPTION_CREATE_CONTENT_BLOCK_IMAGE,
+                OPTION_CREATE_CONTENT_BLOCK_GLYPH,
                 OPTION_CREATE_CONTENT_BLOCK_SEPARATOR_TRANSPARENT
             };
 
@@ -44,6 +46,11 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
 
                         case OPTION_CREATE_CONTENT_BLOCK_SEPARATOR_TRANSPARENT:
                             page.NavigationPushPageAsync(new Pages.Configuration.Block.TransparentSeparatorContentBlockConfigurationPage(callbackAction));
+
+                            break;
+
+                        case OPTION_CREATE_CONTENT_BLOCK_GLYPH:
+                            page.NavigationPushPageAsync(new Pages.Configuration.Block.GlyphContentBlockConfigurationPage(callbackAction));
 
                             break;
 
@@ -80,6 +87,13 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
             if (target is ImageContentBlockViewModel)
             {
                 page.NavigationPushPageAsync(new Pages.Configuration.Block.ImageContentBlockConfigurationPage(target as ImageContentBlockViewModel, callbackAction));
+
+                return;
+            }
+
+            if (target is GlyphContentBlockViewModel)
+            {
+                page.NavigationPushPageAsync(new Pages.Configuration.Block.GlyphContentBlockConfigurationPage(target as GlyphContentBlockViewModel, callbackAction));
 
                 return;
             }

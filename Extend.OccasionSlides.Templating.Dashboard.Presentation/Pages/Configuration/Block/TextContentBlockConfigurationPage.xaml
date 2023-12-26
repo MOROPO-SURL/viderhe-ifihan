@@ -128,7 +128,7 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding Path=TextFontSize}" VerticalTextAlignment="Center" />
                                 <Label Text="Puntos" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
-                                <Stepper Value="{Binding Path=TextFontSize}" />
+                                <Stepper Value="{Binding Path=TextFontSize}" Maximum="200" />
                             </StackLayout>
                         </StackLayout>
                     </Frame>

@@ -16,6 +16,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Tem
 
             if (item is ImageContentBlockViewModel) return new Xamarin.Forms.DataTemplate(() => new Block.ImageContentBlockView(RelativeSizeScalableView.RelativeSizeScaleFactor));
 
+            if (item is GlyphContentBlockViewModel) return new Xamarin.Forms.DataTemplate(() => new Block.GlyphContentBlockView(RelativeSizeScalableView.RelativeSizeScaleFactor));
+            
             throw new System.InvalidOperationException();
         }
     }

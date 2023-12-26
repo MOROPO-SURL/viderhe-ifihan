@@ -75,6 +75,20 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                 };
             }
 
+            if (target is GlyphContentBlockViewModel)
+            {
+                var concreteTarget = target as GlyphContentBlockViewModel;
+
+                return new Templating.Models.Context.Block.GlyphContentBlockContextModel
+                {
+                    Id = concreteTarget.Id,
+                    Priority = concreteTarget.Priority,
+                    Glyph = concreteTarget.Glyph,
+                    Color = concreteTarget.Color.ToHex(),
+                    FontSize = concreteTarget.FontSize
+                };
+            }
+
             throw new System.InvalidOperationException();
         }
 
@@ -124,6 +138,18 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                 concreteTarget.Image = concreteSource.Image;
                 concreteTarget.HorizontalAlignament = concreteSource.HorizontalAlignament;
                 concreteTarget.HeightByScreenVerticalSizePercent = concreteSource.HeightByScreenVerticalSizePercent;
+
+                return;
+            }
+
+            if (target is GlyphContentBlockViewModel)
+            {
+                var concreteTarget = target as GlyphContentBlockViewModel;
+                var concreteSource = source as GlyphContentBlockViewModel;
+
+                concreteTarget.Glyph = concreteSource.Glyph;
+                concreteTarget.FontSize = concreteSource.FontSize;
+                concreteTarget.Color = concreteSource.Color;
 
                 return;
             }

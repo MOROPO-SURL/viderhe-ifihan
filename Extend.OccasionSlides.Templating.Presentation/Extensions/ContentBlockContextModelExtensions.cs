@@ -75,6 +75,20 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Extension
                 };
             }
 
+            if (target is GlyphContentBlockContextModel)
+            {
+                var concreteTarget = target as GlyphContentBlockContextModel;
+
+                return new Models.View.Block.GlyphContentBlockViewModel
+                {
+                    Id = concreteTarget.Id,
+                    Priority = concreteTarget.Priority,
+                    Glyph = concreteTarget.Glyph,
+                    Color = Xamarin.Forms.Color.FromHex(concreteTarget.Color),
+                    FontSize = concreteTarget.FontSize
+                };
+            }
+
             throw new System.InvalidOperationException();
         }
     }
