@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page"
+    xmlns:views="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    x:Class="MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.GlyphPickPage"
+    x:TypeArguments="pagemodels:GlyphPickPageModel"
+    Title="Seleccionar Símbolo">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:NotNullOrEmptyStringToBooleanConverter x:Key="NotNullOrEmptyStringToBooleanConverter" />
+            <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
+            <sscxftoolkitpresentationconverters:BindingLayoutWidthToResponsiveChildWidthConverter x:Key="BindingLayoutWidthToResponsiveChildWidthConverter" ChildMinWidth="96" ChildAbsoluteHorizontalMargin="10" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <views:BackgroundView />
+            <Grid RowSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <ScrollView Grid.ColumnSpan="3" Grid.Row="0" Orientation="Vertical">
+                    <FlexLayout
+                        Margin="5"
+                        Wrap="Wrap"
+                        AlignItems="Start" AlignContent="Start"
+                        BindableLayout.ItemsSource="{Binding Path=Items}">
+                        <BindableLayout.EmptyView>
+                            <Label
+                                IsVisible="{Binding Path=IsBusy, Converter={StaticResource BoolToBoolNegationConverter}}"
+                                Margin="10"
+                                Text="Sin elementos que mostrar"
+                                TextColor="Black" />
+                        </BindableLayout.EmptyView>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Button 
+                                    Margin="5"
+                                    WidthRequest="{Binding Source={x:RelativeSource AncestorType={x:Type FlexLayout}}, Path=Width, Converter={StaticResource BindingLayoutWidthToResponsiveChildWidthConverter}}"
+                                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
+                                    Text="{Binding Path=.}" 
+                                    FontFamily="{StaticResource IconFontFamily}"
+                                    FontSize="36"
+                                    Clicked="ItemPickButton_Clicked" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </ScrollView>
+                <BoxView
+                    Grid.ColumnSpan="3" Grid.Row="1"
+                    BackgroundColor="White"
+                    Opacity="0.65"/>
+                <Button
+                    Grid.Column="0" Grid.Row="1"
+                    IsEnabled="{Binding Path=HasPreviousItems}"
+                    Margin="5"
+                    Text="Anteriores"
+                    Clicked="LoadPreviousPageButtton_Clicked" />
+                <Button
+                    Grid.Column="2" Grid.Row="1"
+                    IsEnabled="{Binding Path=HasNextItems}"
+                    Margin="5"
+                    Text="Siguientes"
+                    Clicked="LoadNextPageButtton_Clicked" />
+            </Grid>
+            <views:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

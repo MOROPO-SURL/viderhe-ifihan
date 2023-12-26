@@ -17,6 +17,12 @@ namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 
         public string SecoundaryColor { get; set; }
 
+        public System.Guid LogoImageId { get; set; }
+
+        public System.Guid HorizontalSplashImageId { get; set; }
+
+        public System.Guid VerticalSplashImageId { get; set; }
+
         public System.Guid? DefaultOverlayId { get; set; }
 
         public string SerializedOverlayContext { get; set; }
@@ -29,6 +35,9 @@ namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
             Name = entity.Name;
             PrimaryColor = entity.PrimaryColor;
             SecoundaryColor = entity.SecoundaryColor;
+            LogoImageId = entity.LogoId;
+            HorizontalSplashImageId = entity.HorizontalSplashId;
+            VerticalSplashImageId = entity.VerticalSplashId;
             DefaultOverlayId = entity.DefaultOverlayId;
             SerializedOverlayContext = entity.SerializedOverlayContext;
         }

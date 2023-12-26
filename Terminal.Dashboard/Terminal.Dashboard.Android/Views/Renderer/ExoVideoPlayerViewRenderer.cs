@@ -4,11 +4,11 @@ using Com.Google.Android.Exoplayer2.Upstream;
 using Java.Lang;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: Xamarin.Forms.ExportRenderer(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Views.Renderer.ExoVideoPlayerViewRenderer))]
+[assembly: Xamarin.Forms.ExportRenderer(typeof(SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView), typeof(MOROPO.VIDERHE.Terminal.Dashboard.Droid.Views.Renderer.ExoVideoPlayerViewRenderer))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Views.Renderer
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Views.Renderer
 {
-    public class ExoVideoPlayerViewRenderer : ViewRenderer<XFToolKit.Presentation.Views.Rendered.VideoPlayerView, PlayerView>, IPlayerEventListener
+    public class ExoVideoPlayerViewRenderer : ViewRenderer<SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView, PlayerView>, IPlayerEventListener
     {
         private bool buffered;
 
@@ -19,7 +19,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Views.Renderer
             buffered = false;
         }
 
-        protected override void OnElementChanged(ElementChangedEventArgs<XFToolKit.Presentation.Views.Rendered.VideoPlayerView> args)
+        protected override void OnElementChanged(ElementChangedEventArgs<SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView> args)
         {
             base.OnElementChanged(args);
 
@@ -86,23 +86,23 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Views.Renderer
         {
             base.OnElementPropertyChanged(sender, args);
 
-            if (args.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.ShowControlsProperty.PropertyName)
+            if (args.PropertyName == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView.ShowControlsProperty.PropertyName)
             {
                 SetAreTransportControlsEnabled();
             }
-            else if (args.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.StrechAspectProperty.PropertyName)
+            else if (args.PropertyName == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView.StrechAspectProperty.PropertyName)
             {
                 SetAspectStrech();
             }
-            else if (args.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.SourceProperty.PropertyName)
+            else if (args.PropertyName == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView.SourceProperty.PropertyName)
             {
                 SetSource();
             }
-            else if (args.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.AutoPlayProperty.PropertyName)
+            else if (args.PropertyName == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView.AutoPlayProperty.PropertyName)
             {
                 SetAutoPlay();
             }
-            else if (args.PropertyName == XFToolKit.Presentation.Views.Rendered.VideoPlayerView.IsMutedProperty.PropertyName)
+            else if (args.PropertyName == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView.IsMutedProperty.PropertyName)
             {
                 SetIsMuted();
             }
@@ -156,29 +156,29 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Views.Renderer
 
             Com.Google.Android.Exoplayer2.Source.IMediaSource mediaSource = null;
 
-            if (Element.Source is XFToolKit.Presentation.Sources.Video.UriVideoSource)
+            if (Element.Source is SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.UriVideoSource)
             {
-                var uri = (Element.Source as XFToolKit.Presentation.Sources.Video.UriVideoSource).Uri;
+                var uri = (Element.Source as SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.UriVideoSource).Uri;
 
                 if (!string.IsNullOrWhiteSpace(uri))
                 {
                     mediaSource = mediaSourceFactory.CreateMediaSource(Android.Net.Uri.Parse(uri));
                 }
             }
-            else if (Element.Source is XFToolKit.Presentation.Sources.Video.FileVideoSource)
+            else if (Element.Source is SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.FileVideoSource)
             {
-                var filename = (Element.Source as XFToolKit.Presentation.Sources.Video.FileVideoSource).File;
+                var filename = (Element.Source as SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.FileVideoSource).File;
 
                 if (!string.IsNullOrWhiteSpace(filename))
                 {
                     mediaSource = mediaSourceFactory.CreateMediaSource(Android.Net.Uri.Parse(filename));
                 }
             }
-            else if (Element.Source is XFToolKit.Presentation.Sources.Video.ResourceVideoSource)
+            else if (Element.Source is SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.ResourceVideoSource)
             {
                 var package = Context.PackageName;
 
-                var path = (Element.Source as XFToolKit.Presentation.Sources.Video.ResourceVideoSource).Path;
+                var path = (Element.Source as SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.ResourceVideoSource).Path;
 
                 if (!string.IsNullOrWhiteSpace(path))
                 {
@@ -231,23 +231,23 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Views.Renderer
 
         public void OnPlayerStateChanged(bool playWhenReady, int playbackState)
         {
-            var videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady;
+            var videoStatus = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady;
 
             switch (playbackState)
             {
                 case Com.Google.Android.Exoplayer2.Player.StateEnded:
-                    videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
+                    videoStatus = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
 
                     break;
                 case Com.Google.Android.Exoplayer2.Player.StateIdle:
                     if (!Element.AutoPlay) break;
 
-                    videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
+                    videoStatus = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
 
                     break;
 
                 case Com.Google.Android.Exoplayer2.Player.StateReady:
-                    videoStatus = XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing;
+                    videoStatus = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing;
 
                     buffered = true;
 
@@ -264,7 +264,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Views.Renderer
                     break;
             }
 
-            (Element as XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = videoStatus;
+            (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = videoStatus;
         }
 
         public void OnPositionDiscontinuity()
