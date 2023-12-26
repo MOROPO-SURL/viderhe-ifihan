@@ -8,12 +8,12 @@
 		<Authors>MOROPO DotNet DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
 		<Copyright>© MOROPO 2023, Todos los derechos reservados.</Copyright>
-		<Version>0.1.0</Version>
+		<Version>0.1.1</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Xamarin.Essentials" Version="1.8.0" />
+		<PackageReference Include="Xamarin.Essentials" Version="1.7.7" />
 	</ItemGroup>
 
 	<ItemGroup>
