@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>MOROPO.VIDERHE.Extend.OccasionSlides</AssemblyName>
     <RootNamespace>MOROPO.VIDERHE.Extend.OccasionSlides</RootNamespace>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
