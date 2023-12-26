@@ -4,7 +4,6 @@ using MOROPO.VIDERHE.Terminal.Dashboard.Enumerations;
 using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
 using MOROPO.VIDERHE.Terminal.Dashboard.Managers.Facade;
 using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
-using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
@@ -12,11 +11,11 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
     [System.ComponentModel.DesignTimeVisible(false)]
     public partial class MainPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<MainPageModel>
     {
-        private readonly SessionActionViewModel sessionAction;
+        private readonly Models.View.SessionActionViewModel sessionAction;
 
         public MainPage() : base(new MainPageModel { IsBusy = true })
         {
-            sessionAction = new SessionActionViewModel
+            sessionAction = new Models.View.SessionActionViewModel
             {
                 Kind = ActionKind.SessionDetail,
                 Enabled = true
@@ -75,13 +74,13 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
         private void ActionFrame_Tapped(object sender, System.EventArgs eventArgs)
         {
-            var action = (sender as Xamarin.Forms.BindableObject).BindingContext as ActionViewModel;
+            var action = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ActionViewModel;
 
             if (!action.Enabled) return;
 
-            if (action is ManagementActionViewModel)
+            if (action is Models.View.ManagementActionViewModel)
             {
-                var managementSectionPage = ManagementSectionProvisioningHelper.Instance.GetFor((action as ManagementActionViewModel).Section);
+                var managementSectionPage = ManagementSectionProvisioningHelper.Instance.GetFor((action as Models.View.ManagementActionViewModel).Section);
 
                 this.NavigationPushPageAsync(managementSectionPage);
 
@@ -167,7 +166,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
             }
         }
 
-        private void UserSessionEditRequired_Callback(ModeratorViewModel target)
+        private void UserSessionEditRequired_Callback(Models.View.ModeratorViewModel target)
         {
             this.NavigationPushPageAsync(new EditUserProfilePage(ConfigureSession));
         }
@@ -181,7 +180,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
         {
             BindingContextPageModel.Actions.Clear();
 
-            var actions = new System.Collections.Generic.List<ActionViewModel>
+            var actions = new System.Collections.Generic.List<Models.View.ActionViewModel>
             {
                 sessionAction,
                 new Models.View.ActionViewModel

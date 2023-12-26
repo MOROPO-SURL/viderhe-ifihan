@@ -4,13 +4,12 @@ using MOROPO.VIDERHE.Support.Presentation.Extensions;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
 using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
-using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
 namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageImagesPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManageImagesPageModel>
+    public partial class ManageImagesPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageImagesPageModel>
     {
         private int currentItemsPageNumber;
         private int currentImageCollectionViewCellColumnCount = 3;
