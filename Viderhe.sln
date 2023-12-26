@@ -110,6 +110,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cloud.Persistence.EF", "Cloud.Persistence.EF\Cloud.Persistence.EF.csproj", "{35495147-E7A8-4F85-917F-76A4B33E112F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.OccasionSlides", "Extend.OccasionSlides\Extend.OccasionSlides.csproj", "{BF1AC9A4-23A4-4BB0-9AAE-B4BEE6014BCD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Player.UWP.DesktopExtension.PlatformInterop", "Terminal.Player\Terminal.Player.UWP.DesktopExtension.PlatformInterop\Terminal.Player.UWP.DesktopExtension.PlatformInterop.csproj", "{6C2DA28A-AAB9-498B-A1F6-ED74D9FB2F20}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.OccasionSlides.Templating", "Extend.OccasionSlides.Templating\Extend.OccasionSlides.Templating.csproj", "{45B6296D-38EB-4705-944D-13F99B077340}"
 EndProject

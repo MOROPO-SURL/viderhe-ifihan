@@ -4,13 +4,19 @@
     {
         private SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation animation;
 
+        private string relatedText;
+
         protected void Target_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             var label = sender as Xamarin.Forms.Label;
 
-            if (e.PropertyName != Xamarin.Forms.VisualElement.WidthProperty.PropertyName) return;
+            if (e.PropertyName != Xamarin.Forms.VisualElement.WidthProperty.PropertyName && e.PropertyName != Xamarin.Forms.Label.TextProperty.PropertyName) return;
 
             if (label.Width == -1) return;
+
+            if (relatedText == label.Text) return;
+
+            relatedText = label.Text;
 
             label.TranslationX = (label.Parent as Xamarin.Forms.Layout).Width;
 

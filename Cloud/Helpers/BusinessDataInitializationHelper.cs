@@ -41,6 +41,12 @@ namespace MOROPO.VIDERHE.Cloud.Helpers
 
             var extensionDbSet = dbContext.Set<Extension>();
 
+            var templateDbSet = dbContext.Set<Template>();
+
+            var transitionDbSet = dbContext.Set<Transition>();
+
+            var overlayDbSet = dbContext.Set<Overlay>();
+
             var extensionDescriptors = Support.Extend.Providers.ExtensionDescriptorProvider.Instance.GetDescriptors();
 
             var templateDescriptors = Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptors();
@@ -85,8 +91,6 @@ namespace MOROPO.VIDERHE.Cloud.Helpers
 
                     divergentExtensionTemplateDescriptors.AddRange(spectedExtensionTemplates.Except(extension.Templates, TemplateEntityCollectionEqualityComparisonHelper.Instance));
 
-                    var templateDbSet = dbContext.Set<Template>();
-
                     foreach (var templateDescriptor in divergentExtensionTemplateDescriptors)
                     {
                         var persistedTemplate = extension.Templates.FirstOrDefault(e => e.Id == templateDescriptor.Id);
@@ -99,7 +103,11 @@ namespace MOROPO.VIDERHE.Cloud.Helpers
                         }
                         else
                         {
-                            extension.Templates.Add(new Template { Id = templateDescriptor.Id, Enabled = true });
+                            var templateEntity = new Template { Id = templateDescriptor.Id, Enabled = true };
+
+                            templateDbSet.Add(templateEntity);
+
+                            extension.Templates.Add(templateEntity);
                         }
                     }
 
@@ -108,8 +116,6 @@ namespace MOROPO.VIDERHE.Cloud.Helpers
                     var divergentExtensionTransitionDescriptors = extension.Transitions.Except(spectedExtensionTransitions, TransitionEntityCollectionEqualityComparisonHelper.Instance).ToList();
 
                     divergentExtensionTransitionDescriptors.AddRange(spectedExtensionTransitions.Except(extension.Transitions, TransitionEntityCollectionEqualityComparisonHelper.Instance));
-
-                    var transitionDbSet = dbContext.Set<Transition>();
 
                     foreach (var transitionDescriptor in divergentExtensionTransitionDescriptors)
                     {
@@ -123,7 +129,11 @@ namespace MOROPO.VIDERHE.Cloud.Helpers
                         }
                         else
                         {
-                            extension.Transitions.Add(new Transition { Id = transitionDescriptor.Id, Enabled = true });
+                            var transitionEntity = new Transition { Id = transitionDescriptor.Id, Enabled = true };
+
+                            transitionDbSet.Add(transitionEntity);
+
+                            extension.Transitions.Add(transitionEntity);
                         }
                     }
 
@@ -132,8 +142,6 @@ namespace MOROPO.VIDERHE.Cloud.Helpers
                     var divergentExtensionOverlayDescriptors = extension.Overlays.Except(spectedExtensionOverlays, OverlayEntityCollectionEqualityComparisonHelper.Instance).ToList();
 
                     divergentExtensionOverlayDescriptors.AddRange(spectedExtensionOverlays.Except(extension.Overlays, OverlayEntityCollectionEqualityComparisonHelper.Instance));
-
-                    var overlayDbSet = dbContext.Set<Overlay>();
 
                     foreach (var overlayDescriptor in divergentExtensionOverlayDescriptors)
                     {
@@ -147,7 +155,11 @@ namespace MOROPO.VIDERHE.Cloud.Helpers
                         }
                         else
                         {
-                            extension.Overlays.Add(new Overlay { Id = overlayDescriptor.Id, Enabled = true });
+                            var overlayEntity = new Overlay { Id = overlayDescriptor.Id, Enabled = true };
+
+                            overlayDbSet.Add(overlayEntity);
+
+                            extension.Overlays.Add(overlayEntity);
                         }
                     }
 

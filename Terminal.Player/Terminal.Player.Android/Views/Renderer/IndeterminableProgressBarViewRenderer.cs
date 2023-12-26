@@ -1,8 +1,8 @@
 ﻿using Xamarin.Forms.Platform.Android;
 
-[assembly: Xamarin.Forms.ExportRenderer(typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.Views.Rendered.IndeterminableProgressBarView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer.IndeterminableProgressBarViewRenderer))]
+[assembly: Xamarin.Forms.ExportRenderer(typeof(MOROPO.VIDERHE.Terminal.Player.Views.Rendered.IndeterminableProgressBarView), typeof(MOROPO.VIDERHE.Terminal.Player.Droid.Views.Renderer.IndeterminableProgressBarViewRenderer))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
+namespace MOROPO.VIDERHE.Terminal.Player.Droid.Views.Renderer
 {
     public class IndeterminableProgressBarViewRenderer : ProgressBarRenderer
     {
