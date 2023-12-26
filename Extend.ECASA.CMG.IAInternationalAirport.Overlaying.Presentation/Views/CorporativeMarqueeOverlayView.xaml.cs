@@ -1,4 +1,5 @@
-﻿using Xamarin.CommunityToolkit.Extensions;
+﻿using System.Linq;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation.Views
 {
@@ -39,26 +40,38 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             if (model.InformationSourceKind == Enumerations.CorporativeInformationSourceKind.Managed)
             {
-                UpdateInLineAdvises(model.InformationSource);
+                UpdateMarqueeContent(model.InformationSource);
             }
             else
             {
-                UpdateInLineAdvises(model.FailbackMessage);
-
-                System.Threading.Tasks.Task.Run(() =>
+                CodeHollow.FeedReader.FeedReader.ReadAsync(model.InformationSource).ContinueWith(task =>
                 {
-                    //var httpClient
+                    if (task.IsCanceled || task.Exception != null || task.Result.Items.Count <= 0)
+                    {
+                        Xamarin.Forms.Device.BeginInvokeOnMainThread(() => UpdateMarqueeContent(model.FailbackMessage));
 
-                    //return SAPRESSC.Business.Billboard.CPCC.Web.Api.Client.AdvisesApiClient.Get(new System.Uri(string.Format("{0}://{1}", model.IsSecureServer ? "https" : "http", model.ServerName)));
+                        return;
+                    }
 
-                    return new string[] { "" };
-                }).ContinueWith(task =>
-                {
-                    if (task.Exception != null || task.IsCanceled || task.Result == null) return;
+                    var formattedSeparator = string.Format(" {0} ", model.Separator);
+
+                    var textBuilder = new System.Text.StringBuilder();
+
+                    var list = task.Result.Items.Take(10).ToArray();
+
+                    foreach (var item in list)
+                    {
+                        if (textBuilder.Length > 0)
+                        {
+                            textBuilder.Append(formattedSeparator);
+                        }
+
+                        textBuilder.Append(item.Title);
+                    }
 
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
-                        UpdateInLineAdvises(string.Join(string.Format(" {0} ", model.Separator), task.Result));
+                        UpdateMarqueeContent(textBuilder.ToString());
                     });
                 });
             }
@@ -115,7 +128,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             return model != null;
         }
 
-        private void UpdateInLineAdvises(string body)
+        private void UpdateMarqueeContent(string body)
         {
             var formattedSeparator = string.Format(" {0} ", model.Separator);
 
