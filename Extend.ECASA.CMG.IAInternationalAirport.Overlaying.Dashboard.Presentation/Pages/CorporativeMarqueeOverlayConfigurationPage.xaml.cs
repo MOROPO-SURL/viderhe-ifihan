@@ -15,24 +15,13 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dash
         {
             validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
+            var informationSourceKind = BindingContextPageModel.InformationSourceKind;
+
             InitializeComponent();
 
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
 
-            IsEnabled = false;
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            if (IsEnabled) return;
-
-            IsEnabled = true;
-
-            if (BindingContextPageModel.InformationSourceKind != null) return;
-
-            BindingContextPageModel.InformationSourceKind = Overlaying.Presentation.Enumerations.CorporativeInformationSourceKind.Managed;
+            BindingContextPageModel.InformationSourceKind = informationSourceKind;
         }
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
