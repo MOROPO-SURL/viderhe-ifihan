@@ -1,10 +1,19 @@
-﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Models.Context;
-using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Models.Context.Placard.Contract;
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Models.Context.Placard.Contract;
 
 namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Models.Context.Placard
 {
     public class ClassicOperationsPlacardContextModel : AbstractPaginableOperationsPlacardContextModel
     {
+        public string HeaderBackgroundColor { get; set; }
+
+        public double HeaderBackgroundOpacity { get; set; }
+
+        public bool IsHideHeaderBuildInInfoRequired { get; set; }
+
+        public BackgroundContextModel HeaderBackground { get; set; }
+
+        public Enumerations.AccountLogoSizeMode LogoSizeMode { get; set; }
+
         public string TableBackgroundColor { get; set; }
 
         public string TableHeaderTextColor { get; set; }

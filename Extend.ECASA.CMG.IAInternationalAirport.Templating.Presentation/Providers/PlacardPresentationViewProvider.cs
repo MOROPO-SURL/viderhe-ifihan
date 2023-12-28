@@ -33,7 +33,12 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     RowFontSize = context.RowFontSize,
                     Columns = context.Columns,
                     Background = context.Background,
-                    ForegroundTransparency = context.ForegroundTransparency
+                    ForegroundTransparency = context.ForegroundTransparency,
+                    IsHideHeaderBuildInInfoRequired = context.IsHideHeaderBuildInInfoRequired,
+                    HeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.HeaderBackgroundColor),
+                    HeaderBackgroundOpacity = context.HeaderBackground == null ? 1 : context.HeaderBackgroundOpacity,
+                    HeaderBackground = context.HeaderBackground,
+                    LogoSizeMode = context.LogoSizeMode
                 }, relativeSizeScaleFactor);
             }
 
@@ -63,7 +68,12 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     RowFontSize = context.RowFontSize,
                     Columns = context.Columns,
                     Background = context.Background,
-                    ForegroundTransparency = context.ForegroundTransparency
+                    ForegroundTransparency = context.ForegroundTransparency,
+                    IsHideHeaderBuildInInfoRequired = context.IsHideHeaderBuildInInfoRequired,
+                    HeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.HeaderBackgroundColor),
+                    HeaderBackgroundOpacity = context.HeaderBackground == null ? 1 : context.HeaderBackgroundOpacity,
+                    HeaderBackground = context.HeaderBackground,
+                    LogoSizeMode = context.LogoSizeMode
                 }, relativeSizeScaleFactor);
             }
 

@@ -177,13 +177,25 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
         #region IHttpClientHelperProviderFacade implementation
 
-        public MOROPO.Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper HttpClientHelper
+        public Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper HttpClientHelper
         {
             get
             {
                 if (BindingContext == null) throw new System.InvalidOperationException();
 
-                return new MOROPO.Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
+                if (model.UseSSL && model.AllowAnyCertificate)
+                {
+                    return new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
+                        new System.Net.Http.HttpClientHandler
+                        {
+                            ServerCertificateCustomValidationCallback = (request, certificate, chain, errors) => true
+                        },
+                        string.Format("https://{0}/api/", model.APIServer),
+                        null,
+                        () => { return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(Service.ECASA.CMG.InterFIDS.API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, model.APIKey) }; }); ;
+                }
+
+                return new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
                     string.Format("{0}://{1}/api/", model.UseSSL ? "https" : "http", model.APIServer),
                     null,
                     () => { return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, model.APIKey) }; });

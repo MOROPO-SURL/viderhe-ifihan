@@ -14,6 +14,16 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             Items = new ObservableCollection<OperationDisplayModel>();
         }
 
+        public Xamarin.Forms.Color HeaderBackgroundColor { get; set; }
+
+        public double HeaderBackgroundOpacity { get; set; }
+
+        public bool IsHideHeaderBuildInInfoRequired { get; set; }
+
+        public BackgroundContextModel HeaderBackground { get; set; }
+
+        public AccountLogoSizeMode LogoSizeMode { get; set; }
+
         public Xamarin.Forms.Color TableBackgroundColor { get; set; }
 
         public Xamarin.Forms.Color TableHeaderTextColor { get; set; }

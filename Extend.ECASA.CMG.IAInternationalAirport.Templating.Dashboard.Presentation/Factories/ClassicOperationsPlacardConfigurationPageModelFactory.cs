@@ -41,7 +41,14 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
                 VisibleColumns = new System.Collections.ObjectModel.ObservableCollection<Models.View.ClassicOperationColumnCollectionItemViewModel>(),
                 RowFontSize = context.RowFontSize,
                 Background = context.Background,
-                ForegroundTransparency = context.ForegroundTransparency
+                ForegroundTransparency = context.ForegroundTransparency,
+                HeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.HeaderBackgroundColor),
+                HeaderBackgroundOpacity = context.HeaderBackgroundOpacity,
+                HeaderBackground = context.HeaderBackground,
+                IsHideHeaderBuildInInfoRequired = context.IsHideHeaderBuildInInfoRequired,
+                IsRectangle1x1LogoSizeModeSelected = context.LogoSizeMode == Enumerations.AccountLogoSizeMode.Square1x1,
+                IsRectangle4x3LogoSizeModeSelected = context.LogoSizeMode == Enumerations.AccountLogoSizeMode.Rectangle4x3,
+                IsRectangle19x6LogoSizeModeSelected = context.LogoSizeMode == Enumerations.AccountLogoSizeMode.Rectangle19x6
             };
 
             var index = 0;

@@ -4,6 +4,6 @@
     {
         Square1x1,
         Rectangle4x3,
-        Rectangle19x6,
+        Rectangle19x6
     }
 }

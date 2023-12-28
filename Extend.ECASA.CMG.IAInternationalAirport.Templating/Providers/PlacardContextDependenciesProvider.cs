@@ -12,11 +12,21 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Prov
             if (templateId == ClassicArraivalsTemplateDescriptor.ID ||
                 templateId == ClassicDeparturesTemplateDescriptor.ID)
             {
+                var list = new System.Collections.Generic.List<GradientContextModel>();
+
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<ClassicOperationsPlacardContextModel>(serializedContext);
 
-                if (context.Background == null || context.Background.Kind != BackgroundKind.Gradient) return null;
+                if (context.Background != null && context.Background.Kind == BackgroundKind.Gradient)
+                {
+                    list.Add(Newtonsoft.Json.JsonConvert.DeserializeObject<GradientContextModel>(context.Background.SerializedContext));
+                };
 
-                return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<GradientContextModel>(context.Background.SerializedContext) };
+                if (context.HeaderBackground != null && context.HeaderBackground.Kind == BackgroundKind.Gradient)
+                {
+                    list.Add(Newtonsoft.Json.JsonConvert.DeserializeObject<GradientContextModel>(context.HeaderBackground.SerializedContext));
+                };
+
+                if (list.Count > 0) return list.ToArray();
             }
 
             return null;
@@ -27,11 +37,21 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Prov
             if (templateId == ClassicArraivalsTemplateDescriptor.ID ||
                 templateId == ClassicDeparturesTemplateDescriptor.ID)
             {
+                var list = new System.Collections.Generic.List<ImageContextModel>();
+
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<ClassicOperationsPlacardContextModel>(serializedContext);
 
-                if (context.Background == null || context.Background.Kind != BackgroundKind.Image) return null;
+                if (context.Background != null && context.Background.Kind == BackgroundKind.Image)
+                {
+                    list.Add(Newtonsoft.Json.JsonConvert.DeserializeObject<ImageContextModel>(context.Background.SerializedContext));
+                };
 
-                return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<ImageContextModel>(context.Background.SerializedContext) };
+                if (context.HeaderBackground != null && context.HeaderBackground.Kind == BackgroundKind.Image)
+                {
+                    list.Add(Newtonsoft.Json.JsonConvert.DeserializeObject<ImageContextModel>(context.HeaderBackground.SerializedContext));
+                };
+
+                if (list.Count > 0) return list.ToArray();
             }
 
             return null;
@@ -47,11 +67,21 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Prov
             if (templateId == ClassicArraivalsTemplateDescriptor.ID ||
                 templateId == ClassicDeparturesTemplateDescriptor.ID)
             {
+                var list = new System.Collections.Generic.List<VideoContextModel>();
+
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<ClassicOperationsPlacardContextModel>(serializedContext);
 
-                if (context.Background == null || context.Background.Kind != BackgroundKind.Video) return null;
+                if (context.Background != null && context.Background.Kind == BackgroundKind.Video)
+                {
+                    list.Add(Newtonsoft.Json.JsonConvert.DeserializeObject<VideoContextModel>(context.Background.SerializedContext));
+                };
 
-                return new[] { Newtonsoft.Json.JsonConvert.DeserializeObject<VideoContextModel>(context.Background.SerializedContext) };
+                if (context.HeaderBackground != null && context.HeaderBackground.Kind == BackgroundKind.Video)
+                {
+                    list.Add(Newtonsoft.Json.JsonConvert.DeserializeObject<VideoContextModel>(context.HeaderBackground.SerializedContext));
+                };
+
+                if (list.Count > 0) return list.ToArray();
             }
 
             return null;

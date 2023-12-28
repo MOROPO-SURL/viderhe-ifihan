@@ -692,6 +692,18 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             {
                 if (BindingContext == null) throw new System.InvalidOperationException();
 
+                if (overlayContextModel.UseSSL && overlayContextModel.AllowAnyCertificate)
+                {
+                    return new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
+                        new System.Net.Http.HttpClientHandler
+                        {
+                            ServerCertificateCustomValidationCallback = (request, certificate, chain, errors) => true
+                        },
+                        string.Format("https://{0}/api/", overlayContextModel.APIServer),
+                        null,
+                        () => { return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(Service.ECASA.CMG.InterFIDS.API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, overlayContextModel.APIKey) }; });;
+                }
+
                 return new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
                     string.Format("{0}://{1}/api/", overlayContextModel.UseSSL ? "https" : "http", overlayContextModel.APIServer),
                     null,

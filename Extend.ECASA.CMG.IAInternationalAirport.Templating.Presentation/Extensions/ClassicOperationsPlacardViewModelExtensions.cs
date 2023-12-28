@@ -15,7 +15,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontSize = itemFontSize,
-                FontAttributes = FontAttributes.Bold
+                FontFamily = "Montserrat (Bold)"
             };
 
             gateSizeReferenceLabel = new Label
@@ -26,7 +26,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontSize = itemFontSize,
-                FontAttributes = FontAttributes.Bold
+                FontFamily = "Montserrat (Bold)"
             };
 
             foreach (var item in target.Columns)
@@ -61,7 +61,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     TextColor = target.TableHeaderTextColor,
                     VerticalTextAlignment = TextAlignment.Center,
                     FontSize = itemFontSize,
-                    FontAttributes = FontAttributes.Bold,
+                    FontFamily = "Montserrat (Bold)",
                     LineBreakMode = LineBreakMode.TailTruncation
                 };
 

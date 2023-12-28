@@ -4,6 +4,7 @@ using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presenta
 using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Models.View.Placard;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Xamarin.CommunityToolkit.Extensions;
 
 namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Placard
 {
@@ -13,7 +14,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
         private static Common.Templating.Presentation.Converters.SizeToRelativeValueConverter SIZE_TO_RELATIVE_VALUE_CONVERTER = new Common.Templating.Presentation.Converters.SizeToRelativeValueConverter();
 
-        private readonly ClassicOperationsPlacardViewModel model;
+        private ClassicOperationsPlacardViewModel model;
 
         private Label timeSizeReferenceLabel;
         private Label gateSizeReferenceLabel;
@@ -23,6 +24,43 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             InitializeComponent();
 
             BindingContext = model;
+
+            if (model.HeaderBackground != null)
+            {
+                HeaderBaseBackgroundBoxView.Opacity = model.HeaderBackgroundOpacity / 100;
+
+                View backgroundView = null;
+
+                switch (model.HeaderBackground.Kind)
+                {
+                    case BackgroundKind.Gradient:
+                        var gradientModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.GradientContextModel>(model.HeaderBackground.SerializedContext);
+
+                        backgroundView = new MagicGradients.GradientView
+                        {
+                            GradientSource = MagicGradients.CssGradientSource.Parse(gradientModel.Data)
+                        };
+
+                        break;
+
+                    case BackgroundKind.Image:
+                        var imageModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(model.HeaderBackground.SerializedContext).ToViewModel();
+
+                        backgroundView = new FFImageLoading.Forms.CachedImage
+                        {
+                            HeightRequest = 120 + 12 + 32,
+                            Source = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(imageModel.Id)),
+                            FadeAnimationEnabled = false,
+                            Aspect = Aspect.AspectFill,
+                            CacheType = FFImageLoading.Cache.CacheType.Disk,
+                            CacheDuration = System.TimeSpan.MaxValue
+                        };
+
+                        break;
+                }
+
+                HeaderGrid.Children.Insert(0, backgroundView);
+            }
 
             TableLayout.BackgroundColor = model.TableBackgroundColor;
 
@@ -91,6 +129,50 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             model.InitializeTableHeader(TableHeaderGrid, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival, TABLE_ITEM_MARGIN, tableHeaderItemFontSize, out timeSizeReferenceLabel, out gateSizeReferenceLabel);
             
             this.model = model;
+
+            HeaderBaseBackgroundBoxView.Color = model.HeaderBackgroundColor;
+
+            if (model.IsHideHeaderBuildInInfoRequired)
+            {
+                OperationSymbolLabel.IsVisible = false;
+                HeaderTitleLabel.IsVisible = false;
+                HeaderSubTitleLabel.IsVisible = false;
+                DateLabel.IsVisible = false;
+                TimeLabel.IsVisible = false;
+                DateTimeSeparatorBoxView.IsVisible = false;
+
+                LogoBacklightBoxView.Opacity = 0;
+                LogoImageView.Opacity = 0;
+            }
+            else
+            {
+                OperationSymbolLabel.TextColor = model.HeaderBackgroundColor.ToBlackOrWhiteForText();
+                HeaderTitleLabel.TextColor = OperationSymbolLabel.TextColor;
+                HeaderSubTitleLabel.TextColor = model.HeaderBackgroundColor.ToBlackOrWhiteForText().WithAlpha(0.85);
+                TimeLabel.TextColor = OperationSymbolLabel.TextColor;
+                DateLabel.TextColor = OperationSymbolLabel.TextColor;
+                DateTimeSeparatorBoxView.Color = OperationSymbolLabel.TextColor;
+
+                LogoBacklightBoxView.Color = model.HeaderBackgroundColor.ToBlackOrWhiteForText();
+
+                LogoImageView.Source = DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>().LogoImageSource;
+
+                LogoImageView.HeightRequest = 120;
+                LogoImageView.WidthRequest = LogoImageView.HeightRequest;
+
+                if (model.LogoSizeMode == AccountLogoSizeMode.Rectangle19x6)
+                {
+                    LogoImageView.WidthRequest = LogoImageView.HeightRequest * 1.7777777777777777777777777777778d;
+                }
+                else if (model.LogoSizeMode == AccountLogoSizeMode.Rectangle4x3)
+                {
+                    LogoImageView.WidthRequest = LogoImageView.HeightRequest * 1.3333333333333333333333333333333d;
+                }
+
+                Device.StartTimer(System.TimeSpan.FromSeconds(15), Timer_Callback);
+
+                Timer_Callback();
+            }
         }
 
         public override Layout<View> WrapLayout => Wrapper;
@@ -120,6 +202,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             base.DisposeUnmanagementResources();
 
             timeSizeReferenceLabel = null;
+
+            model = null;
         }
 
         private void FetchOperations_Callback(System.Threading.Tasks.Task<Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel[]> task)
@@ -175,6 +259,17 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             }
         }
 
+        private bool Timer_Callback()
+        {
+            var now = System.DateTime.Now;
+
+            DateLabel.Text = now.ToString("MMM dd").ToUpperInvariant();
+
+            TimeLabel.Text = now.ToString("HH:mm");
+
+            return model != null;
+        }
+
         #region IHttpClientHelperProviderFacade implementation
 
         public Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper HttpClientHelper
@@ -182,6 +277,18 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             get
             {
                 if (BindingContext == null) throw new System.InvalidOperationException();
+
+                if (model.UseSSL && model.AllowAnyCertificate)
+                {
+                    return new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
+                        new System.Net.Http.HttpClientHandler
+                        {
+                            ServerCertificateCustomValidationCallback = (request, certificate, chain, errors) => true
+                        },
+                        string.Format("https://{0}/api/", model.APIServer),
+                        null,
+                        () => { return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(Service.ECASA.CMG.InterFIDS.API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, model.APIKey) }; }); ;
+                }
 
                 return new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
                     string.Format("{0}://{1}/api/", model.UseSSL ? "https" : "http", model.APIServer),

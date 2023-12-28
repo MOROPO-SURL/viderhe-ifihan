@@ -12,6 +12,7 @@
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Pages.ClassicArraivalsPlacardConfigurationPage"
     x:TypeArguments="pagemodels:ClassicOperationsPlacardConfigurationPageModel"
     x:Name="FormPage">
@@ -95,6 +96,7 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -417,7 +419,190 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="6" Grid.RowSpan="2"
+                        Grid.ColumnSpan="3" Grid.Row="6"
+                        Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Encabezado" Style="{StaticResource FormLabel}" />
+                            <Grid ColumnSpacing="10" RowSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Frame 
+                                    Grid.Column="0" Grid.Row="0"
+                                    IsEnabled="{Binding Path=HeaderBackground, Converter={StaticResource NotNullToBooleanConverter}}"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Mostrar contenido?" Style="{StaticResource FormLabel}" />
+                                        <Switch IsToggled="{Binding Path=IsHideHeaderBuildInInfoRequired, Converter={StaticResource BoolToBoolNegationConverter}}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="1" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Color de Fondo" Style="{StaticResource FormLabel}" />
+                                        <simplecolorpicker:ColorPickerEntry 
+                                            EditAlfa="False"
+                                            ColorPreviewButtonBorder="DimGray"
+                                            Color="{Binding Path=HeaderBackgroundColor}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="2" Grid.Row="0"
+                                    IsVisible="{Binding Path=HeaderBackground, Converter={StaticResource NotNullToBooleanConverter}}"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Transparencia del color sobre el fondo" Style="{StaticResource FormLabel}" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Path=HeaderBackgroundOpacity}" VerticalTextAlignment="Center" />
+                                            <Label Text="%" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
+                                            <Stepper Value="{Binding Path=HeaderBackgroundOpacity}" Minimum="0" Maximum="95" Increment="5" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    IsVisible="{Binding Path=IsHideHeaderBuildInInfoRequired, Converter={StaticResource BoolToBoolNegationConverter}}"
+                                    Grid.ColumnSpan="2" Grid.Row="1"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Logotipo" Style="{StaticResource FormLabel}" />
+                                        <Grid ColumnSpacing="10" RowSpacing="10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <ffimageloadingforms:CachedImage
+                                                Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"
+                                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                                VerticalOptions="End"
+                                                BackgroundColor="Black"
+                                                Source="{Binding Path=AccountLogoImageSource}" 
+                                                Aspect="AspectFill"
+                                                CacheType="Disk"
+                                                CacheDuration="8760:00:00" />
+                                            <Switch
+                                                Grid.Column="0" Grid.Row="1"
+                                                IsToggled="{Binding Path=IsRectangle19x6LogoSizeModeSelected}" />
+                                            <Label
+                                                Grid.Column="1" Grid.Row="1"
+                                                VerticalTextAlignment="Center"
+                                                Text="Rectangular 19x6" />
+
+                                            <ffimageloadingforms:CachedImage
+                                                Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0"
+                                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.333333333333333}"
+                                                VerticalOptions="End"
+                                                BackgroundColor="Black"
+                                                Source="{Binding Path=AccountLogoImageSource}" 
+                                                Aspect="AspectFill"
+                                                CacheType="Disk"
+                                                CacheDuration="8760:00:00" />
+                                            <Switch
+                                                Grid.Column="2" Grid.Row="1"
+                                                IsToggled="{Binding Path=IsRectangle4x3LogoSizeModeSelected}" />
+                                            <Label
+                                                Grid.Column="3" Grid.Row="1"
+                                                VerticalTextAlignment="Center"
+                                                Text="Rectangular 4x3" />
+
+                                            <ffimageloadingforms:CachedImage
+                                                Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="0"
+                                                HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width}"
+                                                BackgroundColor="Black"
+                                                Source="{Binding Path=AccountLogoImageSource}" 
+                                                Aspect="AspectFill"
+                                                CacheType="Disk"
+                                                CacheDuration="8760:00:00" />
+                                            <Switch
+                                                Grid.Column="4" Grid.Row="1"
+                                                IsToggled="{Binding Path=IsRectangle1x1LogoSizeModeSelected}" />
+                                            <Label
+                                                Grid.Column="5" Grid.Row="1"
+                                                VerticalTextAlignment="Center"
+                                                Text="Cuadrado 1x1" />
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="2" Grid.Row="1"
+                                    Style="{StaticResource FormFieldFrame}"
+                                    Padding="0"
+                                    VerticalOptions="Start">
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <BoxView 
+                                            Grid.ColumnSpan="2" Grid.Row="0"
+                                            Color="White" />
+                                        <Label
+                                            Grid.Column="0" Grid.Row="0"
+                                            Style="{StaticResource FormLabel}"
+                                            Padding="10,10,10,6"
+                                            Text="Fondo (opcional)" />
+                                        <Button
+                                            Grid.Column="1" Grid.Row="0"
+                                            IsEnabled="{Binding Path=HeaderBackground, Converter={StaticResource NotNullToBooleanConverter}}"
+                                            VerticalOptions="Start"
+                                            Style="{StaticResource TextIconButton}"
+                                            Text="&#xF022E;"
+                                            FontSize="Medium"
+                                            Clicked="HeaderBackgroundClearButton_Clicked"/>
+                                        <Grid 
+                                            Grid.ColumnSpan="2" Grid.Row="1"
+                                            HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}">
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="HeaderBackgroundGestureRecognizer_Tapped" />
+                                            </Grid.GestureRecognizers>
+                                            <ContentView
+                                                BackgroundColor="Black"
+                                                Content="{Binding Path=HeaderBackground, Converter={StaticResource BackgroundToViewConverter}}" />
+                                            <StackLayout 
+                                                HorizontalOptions="Center" VerticalOptions="End"
+                                                Padding="4"
+                                                BackgroundColor="#99000000"
+                                                Orientation="Horizontal">
+                                                <Label
+                                                    Text="&#xf740;"
+                                                    TextColor="White"
+                                                    FontFamily="{StaticResource IconFontFamily}"
+                                                    FontSize="Medium" />
+                                                <Label
+                                                    VerticalOptions="Center"
+                                                    Margin="0,0,4,0"
+                                                    Text="para seleccionar"
+                                                    TextColor="White"
+                                                    LineBreakMode="TailTruncation" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="7" Grid.RowSpan="2"
                         Style="{StaticResource FormFieldFrame}"
                         BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">
@@ -744,7 +929,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="2" Grid.Row="6"
+                        Grid.Column="2" Grid.Row="7"
                         Style="{StaticResource FormFieldFrame}"
                         Padding="0">
                         <Grid RowSpacing="0">
@@ -763,7 +948,7 @@
                                 Grid.Column="0" Grid.Row="0"
                                 Style="{StaticResource FormLabel}"
                                 Padding="10,10,10,6"
-                                Text="Fondo (opcional)" />
+                                Text="Fondo general (opcional)" />
                             <Button
                                 Grid.Column="1" Grid.Row="0"
                                 IsEnabled="{Binding Path=Background, Converter={StaticResource NotNullToBooleanConverter}}"
@@ -802,12 +987,12 @@
                         </Grid>
                     </Frame>
                     <Frame 
-                        Grid.Column="2" Grid.Row="7"
+                        Grid.Column="2" Grid.Row="8"
                         IsVisible="{Binding Path=Background, Converter={StaticResource NotNullToBooleanConverter}}"
                         Style="{StaticResource FormFieldFrame}"
                         VerticalOptions="Start">
                         <StackLayout>
-                            <Label Text="Nivel de transparencia sobre el fondo" Style="{StaticResource FormLabel}" />
+                            <Label Text="Nivel de transparencia sobre el fondo general" Style="{StaticResource FormLabel}" />
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding Path=ForegroundTransparency}" VerticalTextAlignment="Center" />
                                 <Label Text="%" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
