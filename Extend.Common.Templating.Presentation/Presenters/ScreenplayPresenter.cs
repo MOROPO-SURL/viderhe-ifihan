@@ -327,12 +327,16 @@ namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Presenters
 
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
-                container.Children.Remove(currentPlacardFrameView);
-
-                if (currentPlacardFrameView is System.IDisposable)
+                try
                 {
-                    (currentPlacardFrameView as System.IDisposable).Dispose();
+                    container.Children.Remove(currentPlacardFrameView);
+
+                    if (currentPlacardFrameView is System.IDisposable)
+                    {
+                        (currentPlacardFrameView as System.IDisposable).Dispose();
+                    }
                 }
+                catch { }
             });
         }
 
