@@ -36,7 +36,7 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Views
 
             var concreteBindingContext = BindingContext as Models.View.LandscapeGrid2x1PlacardViewModel;
 
-            var relativeSizeScaleFactor = RelativeSizeScaleFactor * 1.0d / 2.0d;
+            var relativeSizeScaleFactor = RelativeSizeScaleFactor * 3.0d / 4.0d;
 
             for (int i = 0; i < 2; i++)
             {
@@ -77,6 +77,9 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Views
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
+
+            topCellScreenplayPresenter.SuspendPresentation();
+            bottomCellScreenplayPresenter.SuspendPresentation();
 
             topCellScreenplayPresenter.Dispose();
             bottomCellScreenplayPresenter.Dispose();

@@ -39,7 +39,7 @@ namespace MOROPO.VIDERHE.Extend.Matrix.Templating.Presentation.Views
 
             var concreteBindingContext = BindingContext as LandscapeGrid2x2PlacardViewModel;
 
-            var relativeSizeScaleFactor = RelativeSizeScaleFactor * 1.0d / 4.0d;
+            var relativeSizeScaleFactor = RelativeSizeScaleFactor * 1.0d / 2.0d;
 
             for (int i = 0; i < 4; i++)
             {
