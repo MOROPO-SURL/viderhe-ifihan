@@ -110,6 +110,19 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
             });
         }
 
+        private void HeaderBackgroundClearButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayAlert("Confirmar", "Está seguro que desea retirar el fondo actual?", "Aceptar", "Cancelar").ContinueWith(task =>
+            {
+                if (!task.Result) return;
+
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                {
+                    BindingContextPageModel.HeaderBackground = null;
+                });
+            });
+        }
+
         private void ImportToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
         {
             var options = new Xamarin.Essentials.PickOptions
@@ -149,12 +162,18 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
                             BindingContextPageModel.TableHeaderBackgroundColor = Xamarin.Forms.Color.FromHex(model.TableHeaderBackgroundColor);
                             BindingContextPageModel.TableHeaderTextColor = Xamarin.Forms.Color.FromHex(model.TableHeaderTextColor);
                             BindingContextPageModel.TableHeaderFontSize = model.TableHeaderFontSize;
-                            BindingContextPageModel.RowFontSize = BindingContextPageModel.RowFontSize;
+                            BindingContextPageModel.RowFontSize = model.RowFontSize;
                             BindingContextPageModel.PrimaryRowTextColor = Xamarin.Forms.Color.FromHex(model.PrimaryRowTextColor);
                             BindingContextPageModel.PrimaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(model.PrimaryRowBackgroundColor);
                             BindingContextPageModel.UseStrippedRows = model.UseStrippedRows;
                             BindingContextPageModel.SecoundaryRowTextColor = Xamarin.Forms.Color.FromHex(model.SecoundaryRowTextColor);
                             BindingContextPageModel.SecoundaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(model.SecoundaryRowBackgroundColor);
+                            BindingContextPageModel.IsHideHeaderBuildInInfoRequired = false;
+                            BindingContextPageModel.HeaderBackgroundColor = Xamarin.Forms.Color.FromHex(model.HeaderBackgroundColor);
+                            BindingContextPageModel.HeaderBackgroundOpacity = model.HeaderBackgroundOpacity;
+                            BindingContextPageModel.IsRectangle1x1LogoSizeModeSelected = model.LogoSizeMode == AccountLogoSizeMode.Square1x1;
+                            BindingContextPageModel.IsRectangle4x3LogoSizeModeSelected = model.LogoSizeMode == AccountLogoSizeMode.Rectangle4x3;
+                            BindingContextPageModel.IsRectangle19x6LogoSizeModeSelected = model.LogoSizeMode == AccountLogoSizeMode.Rectangle19x6;
 
                             Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Configuración importada con éxito.");
                         });
@@ -200,8 +219,24 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
                     UseStrippedRows = BindingContextPageModel.UseStrippedRows,
                     SecoundaryRowTextColor = BindingContextPageModel.SecoundaryRowTextColor.ToHex(),
                     SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex(),
-                    MaxItemsCount = BindingContextPageModel.MaxItemsCount
+                    MaxItemsCount = BindingContextPageModel.MaxItemsCount,
+                    HeaderBackgroundColor = BindingContextPageModel.HeaderBackgroundColor.ToHex(),
+                    HeaderBackgroundOpacity = BindingContextPageModel.HeaderBackgroundOpacity,
+                    IsHideHeaderBuildInInfoRequired = false
                 };
+
+                if (BindingContextPageModel.IsRectangle19x6LogoSizeModeSelected)
+                {
+                    result.LogoSizeMode = AccountLogoSizeMode.Rectangle19x6;
+                }
+                else if (BindingContextPageModel.IsRectangle4x3LogoSizeModeSelected)
+                {
+                    result.LogoSizeMode = AccountLogoSizeMode.Rectangle4x3;
+                }
+                else
+                {
+                    result.LogoSizeMode = AccountLogoSizeMode.Square1x1;
+                }
 
                 var serialization = Newtonsoft.Json.JsonConvert.SerializeObject(result);
 
@@ -249,35 +284,54 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
 
                 if (placardViewModel == null)
                 {
+                    var context = new Templating.Models.Context.Placard.ClassicOperationsPlacardContextModel
+                    {
+                        RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
+                        ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
+                        APIServer = BindingContextPageModel.APIServer,
+                        UseSSL = BindingContextPageModel.UseSSL,
+                        APIKey = BindingContextPageModel.APIKey,
+                        AllowAnyCertificate = BindingContextPageModel.AllowAnyCertificate,
+                        UpdateInterval = BindingContextPageModel.UpdateInterval,
+                        MaxItemsCount = BindingContextPageModel.MaxItemsCount,
+                        TableBackgroundColor = BindingContextPageModel.TableBackgroundColor.ToHex(),
+                        TableHeaderTextColor = BindingContextPageModel.TableHeaderTextColor.ToHex(),
+                        TableHeaderBackgroundColor = BindingContextPageModel.TableHeaderBackgroundColor.ToHex(),
+                        TableHeaderFontSize = BindingContextPageModel.TableHeaderFontSize,
+                        PrimaryRowTextColor = BindingContextPageModel.PrimaryRowTextColor.ToHex(),
+                        PrimaryRowBackgroundColor = BindingContextPageModel.PrimaryRowBackgroundColor.ToHex(),
+                        UseStrippedRows = BindingContextPageModel.UseStrippedRows,
+                        SecoundaryRowTextColor = BindingContextPageModel.SecoundaryRowTextColor.ToHex(),
+                        SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex(),
+                        RowFontSize = BindingContextPageModel.RowFontSize,
+                        Columns = BindingContextPageModel.VisibleColumns.Select(item => item.Target).ToArray(),
+                        Background = BindingContextPageModel.Background,
+                        ForegroundTransparency = BindingContextPageModel.ForegroundTransparency,
+                        IsHideHeaderBuildInInfoRequired = BindingContextPageModel.IsHideHeaderBuildInInfoRequired,
+                        HeaderBackgroundColor = BindingContextPageModel.HeaderBackgroundColor.ToHex(),
+                        HeaderBackgroundOpacity = BindingContextPageModel.HeaderBackgroundOpacity,
+                        HeaderBackground = BindingContextPageModel.HeaderBackground
+                    };
+
+                    if (BindingContextPageModel.IsRectangle19x6LogoSizeModeSelected)
+                    {
+                        context.LogoSizeMode = AccountLogoSizeMode.Rectangle19x6;
+                    }
+                    else if (BindingContextPageModel.IsRectangle4x3LogoSizeModeSelected)
+                    {
+                        context.LogoSizeMode = AccountLogoSizeMode.Rectangle4x3;
+                    }
+                    else
+                    {
+                        context.LogoSizeMode = AccountLogoSizeMode.Square1x1;
+                    }
+
                     var model = new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Label = BindingContextPageModel.Label,
                         TemplateId = ClassicDeparturesTemplateDescriptor.ID,
                         PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.Placard.ClassicOperationsPlacardContextModel
-                        {
-                            RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
-                            ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            APIServer = BindingContextPageModel.APIServer,
-                            UseSSL = BindingContextPageModel.UseSSL,
-                            APIKey = BindingContextPageModel.APIKey,
-                            AllowAnyCertificate = BindingContextPageModel.AllowAnyCertificate,
-                            UpdateInterval = BindingContextPageModel.UpdateInterval,
-                            MaxItemsCount = BindingContextPageModel.MaxItemsCount,
-                            TableBackgroundColor = BindingContextPageModel.TableBackgroundColor.ToHex(),
-                            TableHeaderTextColor = BindingContextPageModel.TableHeaderTextColor.ToHex(),
-                            TableHeaderBackgroundColor = BindingContextPageModel.TableHeaderBackgroundColor.ToHex(),
-                            TableHeaderFontSize = BindingContextPageModel.TableHeaderFontSize,
-                            PrimaryRowTextColor = BindingContextPageModel.PrimaryRowTextColor.ToHex(),
-                            PrimaryRowBackgroundColor = BindingContextPageModel.PrimaryRowBackgroundColor.ToHex(),
-                            UseStrippedRows = BindingContextPageModel.UseStrippedRows,
-                            SecoundaryRowTextColor = BindingContextPageModel.SecoundaryRowTextColor.ToHex(),
-                            SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex(),
-                            RowFontSize = BindingContextPageModel.RowFontSize,
-                            Columns = BindingContextPageModel.VisibleColumns.Select(item => item.Target).ToArray(),
-                            Background = BindingContextPageModel.Background,
-                            ForegroundTransparency = BindingContextPageModel.ForegroundTransparency
-                        }),
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(context),
                         Tags = BindingContextPageModel.Tags.ToArray()
                     };
 
@@ -295,36 +349,55 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
                 }
                 else
                 {
+                    var context = new Templating.Models.Context.Placard.ClassicOperationsPlacardContextModel
+                    {
+                        RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
+                        ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
+                        APIServer = BindingContextPageModel.APIServer,
+                        UseSSL = BindingContextPageModel.UseSSL,
+                        APIKey = BindingContextPageModel.APIKey,
+                        AllowAnyCertificate = BindingContextPageModel.AllowAnyCertificate,
+                        UpdateInterval = BindingContextPageModel.UpdateInterval,
+                        MaxItemsCount = BindingContextPageModel.MaxItemsCount,
+                        TableBackgroundColor = BindingContextPageModel.TableBackgroundColor.ToHex(),
+                        TableHeaderTextColor = BindingContextPageModel.TableHeaderTextColor.ToHex(),
+                        TableHeaderBackgroundColor = BindingContextPageModel.TableHeaderBackgroundColor.ToHex(),
+                        TableHeaderFontSize = BindingContextPageModel.TableHeaderFontSize,
+                        PrimaryRowTextColor = BindingContextPageModel.PrimaryRowTextColor.ToHex(),
+                        PrimaryRowBackgroundColor = BindingContextPageModel.PrimaryRowBackgroundColor.ToHex(),
+                        UseStrippedRows = BindingContextPageModel.UseStrippedRows,
+                        SecoundaryRowTextColor = BindingContextPageModel.SecoundaryRowTextColor.ToHex(),
+                        SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex(),
+                        RowFontSize = BindingContextPageModel.RowFontSize,
+                        Columns = BindingContextPageModel.VisibleColumns.Select(item => item.Target).ToArray(),
+                        Background = BindingContextPageModel.Background,
+                        ForegroundTransparency = BindingContextPageModel.ForegroundTransparency,
+                        IsHideHeaderBuildInInfoRequired = BindingContextPageModel.IsHideHeaderBuildInInfoRequired,
+                        HeaderBackgroundColor = BindingContextPageModel.HeaderBackgroundColor.ToHex(),
+                        HeaderBackgroundOpacity = BindingContextPageModel.HeaderBackgroundOpacity,
+                        HeaderBackground = BindingContextPageModel.HeaderBackground
+                    };
+
+                    if (BindingContextPageModel.IsRectangle19x6LogoSizeModeSelected)
+                    {
+                        context.LogoSizeMode = AccountLogoSizeMode.Rectangle19x6;
+                    }
+                    else if (BindingContextPageModel.IsRectangle4x3LogoSizeModeSelected)
+                    {
+                        context.LogoSizeMode = AccountLogoSizeMode.Rectangle4x3;
+                    }
+                    else
+                    {
+                        context.LogoSizeMode = AccountLogoSizeMode.Square1x1;
+                    }
+
                     var model = new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Id = placardViewModel.Id,
                         Label = BindingContextPageModel.Label,
                         PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
                         TemplateId = placardViewModel.Template.Id,
-                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.Placard.ClassicOperationsPlacardContextModel
-                        {
-                            RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
-                            ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
-                            APIServer = BindingContextPageModel.APIServer,
-                            UseSSL = BindingContextPageModel.UseSSL,
-                            APIKey = BindingContextPageModel.APIKey,
-                            AllowAnyCertificate = BindingContextPageModel.AllowAnyCertificate,
-                            UpdateInterval = BindingContextPageModel.UpdateInterval,
-                            MaxItemsCount = BindingContextPageModel.MaxItemsCount,
-                            TableBackgroundColor = BindingContextPageModel.TableBackgroundColor.ToHex(),
-                            TableHeaderTextColor = BindingContextPageModel.TableHeaderTextColor.ToHex(),
-                            TableHeaderBackgroundColor = BindingContextPageModel.TableHeaderBackgroundColor.ToHex(),
-                            TableHeaderFontSize = BindingContextPageModel.TableHeaderFontSize,
-                            PrimaryRowTextColor = BindingContextPageModel.PrimaryRowTextColor.ToHex(),
-                            PrimaryRowBackgroundColor = BindingContextPageModel.PrimaryRowBackgroundColor.ToHex(),
-                            UseStrippedRows = BindingContextPageModel.UseStrippedRows,
-                            SecoundaryRowTextColor = BindingContextPageModel.SecoundaryRowTextColor.ToHex(),
-                            SecoundaryRowBackgroundColor = BindingContextPageModel.SecoundaryRowBackgroundColor.ToHex(),
-                            RowFontSize = BindingContextPageModel.RowFontSize,
-                            Columns = BindingContextPageModel.VisibleColumns.Select(item => item.Target).ToArray(),
-                            Background = BindingContextPageModel.Background,
-                            ForegroundTransparency = BindingContextPageModel.ForegroundTransparency
-                        }),
+                        SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(context),
                         Tags = BindingContextPageModel.Tags.ToArray()
                     };
 
@@ -406,6 +479,37 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
 
                         case BACKGROUND_OPTION_GRADIENT:
                             await this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.GradientPickPage(BackgroundGradientPick_Callback));
+
+                            break;
+                    }
+                });
+            });
+        }
+
+        private void HeaderBackgroundGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
+        {
+            DisplayActionSheet("Seleccione el tipo de fondo de la cabecera a definir:", "Cancelar", null, new string[] { BACKGROUND_OPTION_GRADIENT, BACKGROUND_OPTION_IMAGE }).ContinueWith(displayActionSheetTask =>
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    switch (displayActionSheetTask.Result)
+                    {
+                        case BACKGROUND_OPTION_IMAGE:
+                            Support.Presentation.Models.View.ImageViewModel except = null;
+
+                            if (BindingContextPageModel.HeaderBackground != null && BindingContextPageModel.HeaderBackground.Kind == BackgroundKind.Image)
+                            {
+                                except = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(BindingContextPageModel.Background.SerializedContext).ToViewModel();
+                            }
+
+                            var imagePickPage = new Support.Presentation.Dashboard.Pages.ImagePickPage(HeaderBackgroundImagePick_Callback, except);
+
+                            await this.NavigationPushPageAsync(imagePickPage);
+
+                            break;
+
+                        case BACKGROUND_OPTION_GRADIENT:
+                            await this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.GradientPickPage(HeaderBackgroundGradientPick_Callback));
 
                             break;
                     }
@@ -525,9 +629,33 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
             };
         }
 
+        private void HeaderBackgroundImagePick_Callback(Support.Presentation.Models.View.ImageViewModel target)
+        {
+            BindingContextPageModel.HeaderBackground = new Templating.Models.Context.BackgroundContextModel
+            {
+                Kind = BackgroundKind.Image,
+                SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(target.ToContextModel())
+            };
+        }
+
         private void BackgroundGradientPick_Callback(Support.Presentation.Dashboard.Models.View.GradientViewModel target)
         {
             BindingContextPageModel.Background = new Templating.Models.Context.BackgroundContextModel
+            {
+                Kind = BackgroundKind.Gradient,
+                SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Common.Templating.Models.Context.GradientContextModel
+                {
+                    Id = target.Id,
+                    About = target.About,
+                    CreateAt = target.CreateAt,
+                    Data = target.Source.Stylesheet
+                })
+            };
+        }
+
+        private void HeaderBackgroundGradientPick_Callback(Support.Presentation.Dashboard.Models.View.GradientViewModel target)
+        {
+            BindingContextPageModel.HeaderBackground = new Templating.Models.Context.BackgroundContextModel
             {
                 Kind = BackgroundKind.Gradient,
                 SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Common.Templating.Models.Context.GradientContextModel

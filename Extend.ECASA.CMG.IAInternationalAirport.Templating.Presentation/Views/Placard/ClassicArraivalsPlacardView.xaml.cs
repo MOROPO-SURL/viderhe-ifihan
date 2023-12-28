@@ -10,6 +10,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 {
     public partial class ClassicArraivalsPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
+        private const double LOGO_IMAGE_VIEW_HEIGHT = 120d;
+
         private static Thickness TABLE_ITEM_MARGIN = new Thickness(12);
 
         private static Common.Templating.Presentation.Converters.SizeToRelativeValueConverter SIZE_TO_RELATIVE_VALUE_CONVERTER = new Common.Templating.Presentation.Converters.SizeToRelativeValueConverter();
@@ -48,7 +50,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
                         backgroundView = new FFImageLoading.Forms.CachedImage
                         {
-                            HeightRequest = 120 + 12 + 32,
+                            HeightRequest = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(LOGO_IMAGE_VIEW_HEIGHT + 12 + 32, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor,
                             Source = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(imageModel.Id)),
                             FadeAnimationEnabled = false,
                             Aspect = Aspect.AspectFill,
@@ -105,20 +107,6 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                         };
 
                         break;
-
-                    //case Enumerations.BackgroundKind.Video:
-                    //    var videoModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.VideoContextModel>(model.Background.SerializedContext).ToViewModel();
-
-                    //    Content = new FFImageLoading.Forms.CachedImage
-                    //    {
-                    //        Source = ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(videoModel.ThumbnailId)),
-                    //        FadeAnimationEnabled = false,
-                    //        Aspect = Aspect.AspectFill,
-                    //        CacheType = FFImageLoading.Cache.CacheType.Disk,
-                    //        CacheDuration = System.TimeSpan.MaxValue
-                    //    };
-
-                    //    break;
                 }
 
                 ArraivalsLayout.Children.Insert(0, backgroundView);
@@ -157,7 +145,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
                 LogoImageView.Source = DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>().LogoImageSource;
 
-                LogoImageView.HeightRequest = 120;
+                LogoImageView.HeightRequest = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(LOGO_IMAGE_VIEW_HEIGHT, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor;
                 LogoImageView.WidthRequest = LogoImageView.HeightRequest;
 
                 if (model.LogoSizeMode == AccountLogoSizeMode.Rectangle19x6)

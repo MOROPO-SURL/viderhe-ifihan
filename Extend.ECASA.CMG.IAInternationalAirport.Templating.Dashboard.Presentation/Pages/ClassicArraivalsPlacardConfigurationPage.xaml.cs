@@ -162,7 +162,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
                             BindingContextPageModel.TableHeaderBackgroundColor = Xamarin.Forms.Color.FromHex(model.TableHeaderBackgroundColor);
                             BindingContextPageModel.TableHeaderTextColor = Xamarin.Forms.Color.FromHex(model.TableHeaderTextColor);
                             BindingContextPageModel.TableHeaderFontSize = model.TableHeaderFontSize;
-                            BindingContextPageModel.RowFontSize = BindingContextPageModel.RowFontSize;
+                            BindingContextPageModel.RowFontSize = model.RowFontSize;
                             BindingContextPageModel.PrimaryRowTextColor = Xamarin.Forms.Color.FromHex(model.PrimaryRowTextColor);
                             BindingContextPageModel.PrimaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(model.PrimaryRowBackgroundColor);
                             BindingContextPageModel.UseStrippedRows = model.UseStrippedRows;
@@ -486,6 +486,37 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
             });
         }
 
+        private void HeaderBackgroundGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
+        {
+            DisplayActionSheet("Seleccione el tipo de fondo de la cabecera a definir:", "Cancelar", null, new string[] { BACKGROUND_OPTION_GRADIENT, BACKGROUND_OPTION_IMAGE }).ContinueWith(displayActionSheetTask =>
+            {
+                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+                {
+                    switch (displayActionSheetTask.Result)
+                    {
+                        case BACKGROUND_OPTION_IMAGE:
+                            Support.Presentation.Models.View.ImageViewModel except = null;
+
+                            if (BindingContextPageModel.HeaderBackground != null && BindingContextPageModel.HeaderBackground.Kind == BackgroundKind.Image)
+                            {
+                                except = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(BindingContextPageModel.Background.SerializedContext).ToViewModel();
+                            }
+
+                            var imagePickPage = new Support.Presentation.Dashboard.Pages.ImagePickPage(HeaderBackgroundImagePick_Callback, except);
+
+                            await this.NavigationPushPageAsync(imagePickPage);
+
+                            break;
+
+                        case BACKGROUND_OPTION_GRADIENT:
+                            await this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.GradientPickPage(HeaderBackgroundGradientPick_Callback));
+
+                            break;
+                    }
+                });
+            });
+        }
+
         private void HideColumnButton_Clicked(object sender, System.EventArgs eventArgs)
         {
             var item = (ClassicOperationColumnCollectionItemViewModel)(sender as Xamarin.Forms.BindableObject).BindingContext;
@@ -587,37 +618,6 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
         private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
         {
             BindingContextPageModel.Tags.Add(model);
-        }
-
-        private void HeaderBackgroundGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
-        {
-            DisplayActionSheet("Seleccione el tipo de fondo de la cabecera a definir:", "Cancelar", null, new string[] { BACKGROUND_OPTION_GRADIENT, BACKGROUND_OPTION_IMAGE }).ContinueWith(displayActionSheetTask =>
-            {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
-                {
-                    switch (displayActionSheetTask.Result)
-                    {
-                        case BACKGROUND_OPTION_IMAGE:
-                            Support.Presentation.Models.View.ImageViewModel except = null;
-
-                            if (BindingContextPageModel.HeaderBackground != null && BindingContextPageModel.HeaderBackground.Kind == BackgroundKind.Image)
-                            {
-                                except = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(BindingContextPageModel.Background.SerializedContext).ToViewModel();
-                            }
-
-                            var imagePickPage = new Support.Presentation.Dashboard.Pages.ImagePickPage(HeaderBackgroundImagePick_Callback, except);
-
-                            await this.NavigationPushPageAsync(imagePickPage);
-
-                            break;
-
-                        case BACKGROUND_OPTION_GRADIENT:
-                            await this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.GradientPickPage(HeaderBackgroundGradientPick_Callback));
-
-                            break;
-                    }
-                });
-            });
         }
 
         private void BackgroundImagePick_Callback(Support.Presentation.Models.View.ImageViewModel target)

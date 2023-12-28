@@ -21,86 +21,90 @@
     </ContentView.Resources>
     <ContentView.Content>
         <Grid x:Name="Wrapper">
-            <ScrollView>
-                <Grid x:Name="ArraivalsLayout">
-                    <Grid x:Name="TableLayout" RowSpacing="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Grid
-                            x:Name="HeaderGrid"
-                            Grid.Row="0">
-                            <BoxView x:Name="HeaderBaseBackgroundBoxView" />
+            <Grid x:Name="ArraivalsLayout">
+                <Grid x:Name="TableLayout" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid
+                        x:Name="HeaderGrid"
+                        Grid.Row="0">
+                        <BoxView x:Name="HeaderBaseBackgroundBoxView" />
+                        <Grid 
+                            Padding="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" 
+                            ColumnSpacing="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
                             <Grid 
-                                Padding="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" 
-                                ColumnSpacing="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Grid 
-                                    Grid.Column="0"
-                                    VerticalOptions="Center">
-                                    <BoxView 
-                                        x:Name="LogoBacklightBoxView"
-                                        CornerRadius="3" />
-                                    <ffimageloadingforms:CachedImage
-                                        x:Name="LogoImageView"
-                                        Margin="{Binding Source={StaticResource LogoImageViewMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}"
-                                        BackgroundColor="Black"
-                                        Aspect="AspectFill"
-                                        CacheType="Disk"
-                                        CacheDuration="8760:00:00" />
-                                </Grid>
-                                <Label
-                                    x:Name="OperationSymbolLabel"
-                                    Grid.Column="1"
-                                    VerticalOptions="Center"
-                                    Text="&#xF5D4;"
-                                    FontFamily="{StaticResource IconFontFamily}"
-                                    FontSize="{Binding Source=136, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
-                                <StackLayout 
-                                    Grid.Column="2" 
-                                    VerticalOptions="Center">
-                                    <Label
-                                        x:Name="HeaderTitleLabel"
-                                        Text="ARRIBOS / ARRAIVALS"
-                                        FontSize="{Binding Source=56, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
-                                        FontFamily="Montserrat (Bold)" />
-                                    <Label
-                                        x:Name="HeaderSubTitleLabel"
-                                        Text="Aeropuerto Internacional de Camagüey"
-                                        TextColor="LightCyan"
-                                        FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
-                                </StackLayout>
-                                <StackLayout
-                                    Grid.Column="3"
-                                    VerticalOptions="Center">
-                                    <Label
-                                        x:Name="TimeLabel"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="White"
-                                        FontSize="{Binding Source=52, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
-                                    <BoxView x:Name="DateTimeSeparatorBoxView" HeightRequest="2" Color="White" />
-                                    <Label
-                                        x:Name="DateLabel"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="White"
-                                        FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
-                                </StackLayout>
+                                Grid.Column="0"
+                                VerticalOptions="Center">
+                                <BoxView 
+                                    x:Name="LogoBacklightBoxView"
+                                    CornerRadius="3" />
+                                <ffimageloadingforms:CachedImage
+                                    x:Name="LogoImageView"
+                                    Margin="{Binding Source={StaticResource LogoImageViewMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}"
+                                    BackgroundColor="Black"
+                                    Aspect="AspectFill"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00" />
                             </Grid>
+                            <Label
+                                x:Name="OperationSymbolLabel"
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                Text="&#xF5D4;"
+                                FontFamily="{StaticResource IconFontFamily}"
+                                FontSize="{Binding Source=136, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            <StackLayout 
+                                Grid.Column="2" 
+                                VerticalOptions="Center">
+                                <Label
+                                    x:Name="HeaderTitleLabel"
+                                    Text="ARRIBOS / ARRAIVALS"
+                                    FontSize="{Binding Source=56, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                                    FontFamily="Montserrat (Bold)" />
+                                <Label
+                                    x:Name="HeaderSubTitleLabel"
+                                    Text="Aeropuerto Internacional de Camagüey"
+                                    TextColor="LightCyan"
+                                    FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            </StackLayout>
+                            <StackLayout
+                                Grid.Column="3"
+                                VerticalOptions="Center">
+                                <Label
+                                    x:Name="TimeLabel"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="White"
+                                    FontSize="{Binding Source=52, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                <BoxView x:Name="DateTimeSeparatorBoxView" HeightRequest="2" Color="White" />
+                                <Label
+                                    x:Name="DateLabel"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="White"
+                                    FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            </StackLayout>
                         </Grid>
-                        <BoxView Grid.Row="1" Color="LightCyan" HeightRequest="4" Margin="{Binding Source={StaticResource TableHeaderSeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}" />
-                        <Grid x:Name="TableHeaderGrid" Grid.Row="2" ColumnSpacing="0" />
-                        <StackLayout x:Name="TableBodyStackLayout" Grid.Row="3" Margin="{Binding Source={StaticResource TableBodySeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}" />
                     </Grid>
+                    <BoxView 
+                        Grid.Row="1" 
+                        Color="LightCyan" 
+                        HeightRequest="{Binding Source=4, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" 
+                        Margin="{Binding Source={StaticResource TableHeaderSeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}" />
+                    <Grid x:Name="TableHeaderGrid" Grid.Row="2" ColumnSpacing="0" />
+                    <ScrollView Grid.Row="3"  Margin="{Binding Source={StaticResource TableBodySeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}">
+                        <StackLayout x:Name="TableBodyStackLayout" />
+                    </ScrollView>
                 </Grid>
-            </ScrollView>
+            </Grid>
         </Grid>
     </ContentView.Content>
 </extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>
