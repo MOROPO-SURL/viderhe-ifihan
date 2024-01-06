@@ -1,89 +1,94 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation</RootNamespace>
-    <Version>0.3.0.0</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Extend.Essential.Templating.Presentation</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.Essential.Templating.Presentation</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2023, Todos los derechos reservados.</Copyright>
+		<Version>2.0.2</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Assets\Font\Montserrat-Bold.ttf" />
-    <None Remove="Assets\Font\Montserrat-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Montserrat-ExtraLight.ttf" />
-    <None Remove="Assets\Font\Montserrat-ExtraLightItalic.ttf" />
-    <None Remove="Assets\Font\Montserrat-Italic.ttf" />
-    <None Remove="Assets\Font\Montserrat-Regular.ttf" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Assets\Font\Montserrat-Bold.ttf" />
+		<None Remove="Assets\Font\Montserrat-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Montserrat-ExtraLight.ttf" />
+		<None Remove="Assets\Font\Montserrat-ExtraLightItalic.ttf" />
+		<None Remove="Assets\Font\Montserrat-Italic.ttf" />
+		<None Remove="Assets\Font\Montserrat-Regular.ttf" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Assets\Font\Montserrat-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Montserrat-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Montserrat-ExtraLight.ttf" />
-    <EmbeddedResource Include="Assets\Font\Montserrat-ExtraLightItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Montserrat-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Montserrat-Regular.ttf" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Assets\Font\Montserrat-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Montserrat-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Montserrat-ExtraLight.ttf" />
+		<EmbeddedResource Include="Assets\Font\Montserrat-ExtraLightItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Montserrat-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Montserrat-Regular.ttf" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MagicGradients" Version="1.3.1" />
-    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="MagicGradients" Version="1.3.1" />
+		<PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+		<PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
-    <ProjectReference Include="..\Extend.Essential.Templating\Extend.Essential.Templating.csproj" />
-    <ProjectReference Include="..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
+		<ProjectReference Include="..\Extend.Essential.Templating\Extend.Essential.Templating.csproj" />
+		<ProjectReference Include="..\Extend.Essential.Transitioning.Presentation\Extend.Essential.Transitioning.Presentation.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Views\LandscapePicturePresentingPicturePlacardView.xaml.cs">
-      <DependentUpon>LandscapePicturePresentingPicturePlacardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\LandscapePicturePresentingVideoPlacardView.xaml.cs">
-      <DependentUpon>LandscapePicturePresentingVideoPlacardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\PictureSlideSecuencePlacardView.xaml.cs">
-      <DependentUpon>PictureSlideSecuencePlacardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\SelfOpaqueFillSimplePicturePlacardView.xaml.cs">
-      <DependentUpon>SelfOpaqueFillSimplePicturePlacardView.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Views\LandscapePicturePresentingPicturePlacardView.xaml.cs">
+			<DependentUpon>LandscapePicturePresentingPicturePlacardView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\LandscapePicturePresentingVideoPlacardView.xaml.cs">
+			<DependentUpon>LandscapePicturePresentingVideoPlacardView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\PictureSlideSecuencePlacardView.xaml.cs">
+			<DependentUpon>PictureSlideSecuencePlacardView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\SelfOpaqueFillSimplePicturePlacardView.xaml.cs">
+			<DependentUpon>SelfOpaqueFillSimplePicturePlacardView.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Views\LandscapePicturePresentingPicturePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapePicturePresentingPictureSlideSecuencePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapePicturePresentingVideoPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PictureSlideSecuencePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PortraitPicturePresentingPicturePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PortraitPicturePresentingPictureSlideSecuencePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PortraitPicturePresentingVideoPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SelfOpaqueFillSimplePicturePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SimplePicturePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SimpleVideoPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Views\LandscapePicturePresentingPicturePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapePicturePresentingPictureSlideSecuencePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapePicturePresentingVideoPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\PictureSlideSecuencePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\PortraitPicturePresentingPicturePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\PortraitPicturePresentingPictureSlideSecuencePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\PortraitPicturePresentingVideoPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SelfOpaqueFillSimplePicturePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SimplePicturePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SimpleVideoPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
 
 </Project>

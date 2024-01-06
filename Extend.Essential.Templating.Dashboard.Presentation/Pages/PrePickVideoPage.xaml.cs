@@ -1,22 +1,25 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Descriptors;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Pages
 {
-    public partial class PrePickVideoPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Support.Presentation.Dashboard.Models.Page.VideoPickPageModel>
+    public partial class PrePickVideoPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<VideoPickPageModel>
     {
-        private Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor;
+        private ITemplateDescriptor templateDescriptor;
         private System.Action successfulCompleteCallbackAction;
-        private System.Action<VideoViewModel, Common.Templating.Descriptors.ITemplateDescriptor, System.Action> videoPickedCallbackAction;
+        private System.Action<VideoViewModel, ITemplateDescriptor, System.Action> videoPickedCallbackAction;
 
         private int currentVideosPageNumber;
         private int currentVideoCollectionViewCellColumnCount = 3;
         private int pagingLimit = 15;
 
-        public PrePickVideoPage(Common.Templating.Descriptors.ITemplateDescriptor templateDescriptor, System.Action successfulCompleteCallbackAction, System.Action<Support.Presentation.Models.View.VideoViewModel, Common.Templating.Descriptors.ITemplateDescriptor, System.Action> videoPickedCallbackAction)
+        public PrePickVideoPage(ITemplateDescriptor templateDescriptor, System.Action successfulCompleteCallbackAction, System.Action<VideoViewModel, ITemplateDescriptor, System.Action> videoPickedCallbackAction)
             : base(new Support.Presentation.Dashboard.Models.Page.VideoPickPageModel())
         {
             InitializeComponent();
@@ -129,7 +132,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                 }
             }
 
-            var videosApiConnectClient = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
+            var videosApiConnectClient = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
 
             videosApiConnectClient.GetPageAsync(++currentVideosPageNumber, pagingLimit).ContinueWith(task =>
             {
@@ -137,7 +140,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                 {
                     if (task.Exception != null)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {

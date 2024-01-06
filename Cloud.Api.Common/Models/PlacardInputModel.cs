@@ -1,8 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
+using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class PlacardInputModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Placard, System.Guid>
+    public class PlacardInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Placard, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -12,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
         [Required]
         public System.Guid TemplateId { get; set; }
 
-        public Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind? PlayerOrientationSupportKind { get; set; }
+        public PlayerOrientationSupportKind? PlayerOrientationSupportKind { get; set; }
 
         public System.DateTime? BeginAt { get; set; }
 
@@ -23,16 +25,16 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public TagDisplayModel[] Tags { get; set; }
 
-        public Persistence.Entities.Placard Export()
+        public Placard Export()
         {
-            var entity = new Persistence.Entities.Placard();
+            var entity = new Placard();
 
             Mergue(entity);
 
             return entity;
         }
 
-        public void Import(Persistence.Entities.Placard entity)
+        public void Import(Placard entity)
         {
             Id = entity.Id;
             Label = entity.Label;
@@ -43,7 +45,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
             SerializedContext = entity.SerializedContext;
         }
 
-        public void Mergue(Persistence.Entities.Placard entity)
+        public void Mergue(Placard entity)
         {
             entity.Label = Label;
             entity.PlayerOrientationSupportKind = PlayerOrientationSupportKind;
@@ -55,10 +57,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
             foreach (var item in Tags)
             {
-                entity.TagBridges.Add(new Persistence.Entities.PlacardTagBridge
+                entity.TagBridges.Add(new PlacardTagBridge
                 {
-                    PlacardId = entity.Id,
-                    TagId = item.Id
+                    ProwId = entity.Id,
+                    SternId = item.Id
                 });
             }
         }

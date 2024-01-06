@@ -3,15 +3,19 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Terminal.Player</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Terminal.Player</RootNamespace>
-    <Version>1.6.5</Version>
+    <AssemblyName>MOROPO.VIDERHE.Terminal.Player</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Terminal.Player</RootNamespace>
+    <Version>2.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Providers\HttpClientHelpeProvider.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Remove="Assets\Image\moropo-logo-light.svg" />
@@ -25,12 +29,12 @@
 
   <ItemGroup>
     <PackageReference Include="MagicGradients" Version="1.3.1" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="7.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.0" />
     <PackageReference Include="NodaTime" Version="3.1.9" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.3" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.6" />
     <PackageReference Include="SSCXFToolKit.IoC" Version="0.2.0-alpha" />
     <PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
-    <PackageReference Include="SSCXFToolKit.Presentation" Version="0.6.3" />
+    <PackageReference Include="SSCXFToolKit.Presentation" Version="0.6.4" />
     <PackageReference Include="SSCXFToolKit.Presentation.Transform" Version="0.3.0-alpha" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />

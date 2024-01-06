@@ -122,8 +122,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.CPCC.Templating.Dashboard.Presentation", "Extend.CPCC.Templating.Dashboard.Presentation\Extend.CPCC.Templating.Dashboard.Presentation.csproj", "{034D389F-EB9C-458C-A948-4724741DED98}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cloud.Persistence.EF", "Cloud.Persistence.EF\Cloud.Persistence.EF.csproj", "{35495147-E7A8-4F85-917F-76A4B33E112F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Player.UWP.DesktopExtension.Helper", "Terminal.Player\Terminal.Player.UWP.DesktopExtension.Helper\Terminal.Player.UWP.DesktopExtension.Helper.csproj", "{6C2DA28A-AAB9-498B-A1F6-ED74D9FB2F20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Player.UWP.DesktopExtension.PlatformInterop", "Terminal.Player\Terminal.Player.UWP.DesktopExtension.PlatformInterop\Terminal.Player.UWP.DesktopExtension.PlatformInterop.csproj", "{6C2DA28A-AAB9-498B-A1F6-ED74D9FB2F20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Dashboard.Android", "Terminal.Dashboard\Terminal.Dashboard.Android\Terminal.Dashboard.Android.csproj", "{1A703A61-876F-40C5-A99C-711071B4F562}"
 EndProject
@@ -145,7 +144,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.Common.Management.Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support.Extend.Management.Presentation", "Support.Extend.Management.Presentation\Support.Extend.Management.Presentation.csproj", "{8EB24205-E599-4267-A450-684616A1D9C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Support.Extend.Management", "Support.Extend.Management\Support.Extend.Management.csproj", "{0A76E425-A715-411F-ADB7-8609E6C32132}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Support.Extend.Management", "Support.Extend.Management\Support.Extend.Management.csproj", "{0A76E425-A715-411F-ADB7-8609E6C32132}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

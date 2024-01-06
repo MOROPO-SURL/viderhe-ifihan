@@ -1,35 +1,40 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
+namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION)]
     [Route("api/[area]/[controller]")]
     [Area("account")]
     [ApiController]
-    [MOROPO.SAPRESSC.Core.Web.Security.Attributes.ChangeUserPasswordRequiredAction]
-    [MOROPO.SAPRESSC.Core.Web.Security.Attributes.CatchChangeUserPasswordRequiredException]
+    [Framework.Guama.Core.Presentation.Web.Security.Attributes.ChangeUserPasswordRequiredAction]
+    [Framework.Guama.Core.Presentation.Web.Security.Attributes.CatchChangeUserPasswordRequiredException]
     public class ComplementationsController : Controller
     {
-        private readonly MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Placard, System.Guid> repository;
+        private readonly IEntityRepository<Placard, System.Guid> repository;
 
-        public ComplementationsController(MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Placard, System.Guid> repository)
+        public ComplementationsController(IEntityRepository<Placard, System.Guid> repository)
         {
             this.repository = repository;
         }
 
         [HttpPut]
-        public virtual ActionResult Edit([FromBody] Cloud.Api.Common.Models.ComplementationInputModel model)
+        public virtual ActionResult Edit([FromBody] ComplementationInputModel model)
         {
             try
             {
                 var entity = repository.Get(model.PlacardId);
 
-                if (entity.ComplementationKind == Persistence.Enumerations.PlacardComplementationKind.Video)
+                if (entity.ComplementationKind == PlacardComplementationKind.Video)
                 {
                     UpdateVideoDependencies(entity, model);
                 }
-                else if (entity.ComplementationKind == Persistence.Enumerations.PlacardComplementationKind.Sound)
+                else if (entity.ComplementationKind == PlacardComplementationKind.Sound)
                 {
                     UpdateSoundDependencies(entity, model);
                 }
@@ -51,48 +56,48 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             }
         }
 
-        private void UpdateVideoDependencies(Persistence.Entities.Placard entity, Cloud.Api.Common.Models.ComplementationInputModel model)
+        private void UpdateVideoDependencies(Placard entity, ComplementationInputModel model)
         {
-            var currentVideoComplementContextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Extend.Common.Templating.Models.Context.VideoComplementContextModel>(entity.SerializedComplementation);
+            var currentVideoComplementContextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<VideoComplementContextModel>(entity.SerializedComplementation);
 
-            if (model.ComplementationKind == Persistence.Enumerations.PlacardComplementationKind.Video)
+            if (model.ComplementationKind == PlacardComplementationKind.Video)
             {
-                var nextVideoComplementContextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Extend.Common.Templating.Models.Context.VideoComplementContextModel>(model.SerializedComplementation);
+                var nextVideoComplementContextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<VideoComplementContextModel>(model.SerializedComplementation);
 
                 if (currentVideoComplementContextModel.Video.Id == nextVideoComplementContextModel.Video.Id) return;
 
-                entity.VideoBridges.Add(new Persistence.Entities.PlacardVideoBridge
+                entity.VideoBridges.Add(new PlacardVideoBridge
                 {
-                    Placard = entity,
-                    VideoId = nextVideoComplementContextModel.Video.Id
+                    Prow = entity,
+                    SternId = nextVideoComplementContextModel.Video.Id
                 });
             }
 
-            var currentBridge = entity.VideoBridges.FirstOrDefault(bridge => bridge.VideoId == currentVideoComplementContextModel.Video.Id);
+            var currentBridge = entity.VideoBridges.FirstOrDefault(bridge => bridge.SternId == currentVideoComplementContextModel.Video.Id);
 
             if (currentBridge == null) return;
 
             entity.VideoBridges.Remove(currentBridge);
         }
 
-        private void UpdateSoundDependencies(Persistence.Entities.Placard entity, Cloud.Api.Common.Models.ComplementationInputModel model)
+        private void UpdateSoundDependencies(Placard entity, ComplementationInputModel model)
         {
-            var currentSoundComplementContextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Extend.Common.Templating.Models.Context.SoundComplementContextModel>(entity.SerializedComplementation);
+            var currentSoundComplementContextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<SoundComplementContextModel>(entity.SerializedComplementation);
 
-            if (model.ComplementationKind == Persistence.Enumerations.PlacardComplementationKind.Sound)
+            if (model.ComplementationKind == PlacardComplementationKind.Sound)
             {
-                var nextSoundComplementContextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Extend.Common.Templating.Models.Context.SoundComplementContextModel>(model.SerializedComplementation);
+                var nextSoundComplementContextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<SoundComplementContextModel>(model.SerializedComplementation);
 
                 if (currentSoundComplementContextModel.Sound.Id == nextSoundComplementContextModel.Sound.Id) return;
 
-                entity.SoundBridges.Add(new Persistence.Entities.PlacardSoundBridge
+                entity.SoundBridges.Add(new PlacardSoundBridge
                 {
-                    Placard = entity,
-                    SoundId = nextSoundComplementContextModel.Sound.Id
+                    Prow = entity,
+                    SternId = nextSoundComplementContextModel.Sound.Id
                 });
             }
 
-            var currentBridge = entity.SoundBridges.FirstOrDefault(bridge => bridge.SoundId == currentSoundComplementContextModel.Sound.Id);
+            var currentBridge = entity.SoundBridges.FirstOrDefault(bridge => bridge.SternId == currentSoundComplementContextModel.Sound.Id);
 
             if (currentBridge == null) return;
 

@@ -2,12 +2,12 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.Page"
-    xmlns:views="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views"
-    xmlns:supportpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
+    xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page"
+    xmlns:views="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views"
+    xmlns:supportpresentationconverters="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Converters;assembly=MOROPO.VIDERHE.Support.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.SoundPickPage"
+    x:Class="MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.SoundPickPage"
     x:TypeArguments="pagemodels:SoundPickPageModel"
     Title="Seleccionar Audio">
     <ContentPage.Resources>

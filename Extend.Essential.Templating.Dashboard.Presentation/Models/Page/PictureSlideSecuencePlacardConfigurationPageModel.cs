@@ -1,6 +1,9 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Models.Page
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Models.Page
 {
-    public class PictureSlideSecuencePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledPlacardConfigurationPageModel
+    public class PictureSlideSecuencePlacardConfigurationPageModel : AbstractLabeledPlacardConfigurationPageModel
     {
         private int picturePresentationSecounds;
 
@@ -8,15 +11,15 @@
         {
             PicturePresentationSecounds = 10;
 
-            AvailableLayoutModes = new Enumerations.PictureLayoutMode[] 
-            { 
-                Enumerations.PictureLayoutMode.AspectFit, 
-                Enumerations.PictureLayoutMode.AspectFill, 
-                Enumerations.PictureLayoutMode.Fill, 
-                Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf 
+            AvailableLayoutModes = new Enumerations.PictureLayoutMode[]
+            {
+                Enumerations.PictureLayoutMode.AspectFit,
+                Enumerations.PictureLayoutMode.AspectFill,
+                Enumerations.PictureLayoutMode.Fill,
+                Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf
             };
 
-            Slides = new System.Collections.ObjectModel.ObservableCollection<View.PictureSlideViewModel>();
+            Slides = new System.Collections.ObjectModel.ObservableCollection<PictureSlideViewModel>();
         }
 
         public int PicturePresentationSecounds
@@ -27,7 +30,7 @@
 
         public Enumerations.PictureLayoutMode[] AvailableLayoutModes { get; private set; }
 
-        public System.Collections.ObjectModel.ObservableCollection<View.PictureSlideViewModel> Slides { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<PictureSlideViewModel> Slides { get; set; }
 
         protected override void DisposeUnmanagementResources()
         {

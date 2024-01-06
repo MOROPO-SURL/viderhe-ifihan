@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.Common.Descriptors
 {
     public interface IExtensionDescriptor
     {

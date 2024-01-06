@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Converters
 {
     public class VideoViewModelToVideoSourceConverter : Xamarin.Forms.BindableObject, Xamarin.Forms.IValueConverter
     {
@@ -8,7 +8,7 @@
 
             try
             {
-                return XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Factories.VideoUriFactory.BuildVideoUri((value as Models.View.VideoViewModel).Id, string.Format(".{0}",(value as Models.View.VideoViewModel).Extension.ToLowerInvariant())).AbsoluteUri);
+                return SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Factories.VideoUriFactory.BuildVideoUri((value as Models.View.VideoViewModel).Id, string.Format(".{0}", (value as Models.View.VideoViewModel).Extension.ToLowerInvariant())).AbsoluteUri);
             }
             catch
             {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Player.Hubs
+﻿namespace MOROPO.VIDERHE.Cloud.SignalR.Connect.Player.Hubs
 {
     public interface IPlayerHub
     {

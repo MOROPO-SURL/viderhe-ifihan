@@ -1,6 +1,6 @@
 ﻿using Android.App;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid
 {
     [Activity(
         Theme = "@style/SplashTheme",

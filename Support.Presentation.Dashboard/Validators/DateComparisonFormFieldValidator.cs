@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators.Contract;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators
 {
-    public class DateComparisonFormFieldValidator : Contract.IFormFieldValidator
+    public class DateComparisonFormFieldValidator : IFormFieldValidator
     {
         public Xamarin.Forms.DatePicker ReferenceField { get; set; }
 

@@ -2,10 +2,10 @@
 <sscxftoolkitmvvmpages:ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views"
+    xmlns:views="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm" 
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.ImageDetailPage"
+    x:Class="MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.ImageDetailPage"
     Title="Detalles de la Imagen">
     <ContentPage.ToolbarItems>
         <ToolbarItem 

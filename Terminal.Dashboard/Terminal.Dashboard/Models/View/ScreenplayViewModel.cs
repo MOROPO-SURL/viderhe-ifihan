@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
+﻿namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.View
 {
-    public class ScreenplayViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
+    public class ScreenplayViewModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel
     {
         public System.Guid Id { get; set; }
 

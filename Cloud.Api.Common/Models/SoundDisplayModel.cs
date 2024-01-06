@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class SoundDisplayModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Sound, System.Guid>
+    public class SoundDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Sound, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -20,7 +22,7 @@
 
         public System.Guid? ThumbnailId { get; set; }
 
-        public void Import(Persistence.Entities.Sound entity)
+        public void Import(Sound entity)
         {
             Id = entity.Id;
             CreateAt = entity.CreateAt;

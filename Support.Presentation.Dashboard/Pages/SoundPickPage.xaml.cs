@@ -1,17 +1,20 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
 {
-    public partial class SoundPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.SoundPickPageModel>
+    public partial class SoundPickPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<SoundPickPageModel>
     {
-        private System.Action<Presentation.Models.View.SoundViewModel> itemPickedCallbackAction;
+        private System.Action<SoundViewModel> itemPickedCallbackAction;
 
-        private Presentation.Models.View.SoundViewModel except;
+        private SoundViewModel except;
 
         private int currentItemsPageNumber;
 
-        public SoundPickPage(System.Action<Presentation.Models.View.SoundViewModel> itemPickedCallbackAction, Presentation.Models.View.SoundViewModel except = null)
-            : base(new Models.Page.SoundPickPageModel
+        public SoundPickPage(System.Action<SoundViewModel> itemPickedCallbackAction, SoundViewModel except = null)
+            : base(new SoundPickPageModel
             {
                 IsBusy = true
             })
@@ -39,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
         {
             BindingContextPageModel.IsBusy = true;
 
-            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Presentation.Models.View.SoundViewModel;
+            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as SoundViewModel;
 
             itemPickedCallbackAction.Invoke(targetModel);
 
@@ -62,7 +65,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
             if (restart) currentItemsPageNumber = 0;
 
-            var apiConnectClient = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
+            var apiConnectClient = new Cloud.Api.Connect.Clients.SoundsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
 
             apiConnectClient.GetPageAsync(++currentItemsPageNumber).ContinueWith(task =>
             {
@@ -72,7 +75,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
                     if (task.Exception != null)
                     {
-                        Xamarin.Forms.DependencyService.Get<Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
@@ -85,7 +88,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                         {
                             if (except != null && except.Id == item.Id) continue;
 
-                            BindingContextPageModel.Items.Add(new Presentation.Models.View.SoundViewModel
+                            BindingContextPageModel.Items.Add(new SoundViewModel
                             {
                                 Id = item.Id,
                                 About = item.About,

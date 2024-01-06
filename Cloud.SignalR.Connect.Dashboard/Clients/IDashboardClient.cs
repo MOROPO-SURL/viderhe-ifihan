@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Dashboard.Clients
+﻿namespace MOROPO.VIDERHE.Cloud.SignalR.Connect.Dashboard.Clients
 {
     public interface IDashboardClient
     {

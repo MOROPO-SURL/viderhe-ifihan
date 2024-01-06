@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Views
 {
-    public partial class ImageDetailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class ImageDetailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
         public ImageDetailView()
         {

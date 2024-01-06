@@ -1,13 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+﻿namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class PlacardTagBridge
+    public class PlacardTagBridge : Framework.Guama.Core.Persistence.Entities.Contract.IBridge<Placard, System.Guid, Tag, System.Guid>
     {
-        public System.Guid PlacardId { get; set; }
+        public System.Guid ProwId { get; set; }
+        public Placard Prow { get; set; }
 
-        public Placard Placard { get; set; }
-
-        public System.Guid TagId { get; set; }
-
-        public Tag Tag { get; set; }
+        public System.Guid SternId { get; set; }
+        public Tag Stern { get; set; }
     }
 }

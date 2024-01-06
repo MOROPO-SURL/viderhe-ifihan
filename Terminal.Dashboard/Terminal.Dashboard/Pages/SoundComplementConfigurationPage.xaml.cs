@@ -1,21 +1,30 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Terminal.Dashboard.Factories;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
     public partial class SoundComplementConfigurationPage :
-        XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.SoundComplementConfigurationPageModel>,
-        Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+        SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<SoundComplementConfigurationPageModel>,
+        IValidableFormPage
     {
-        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+        private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
         private bool pageModelHasChanges;
-        private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
+        private PlacardViewModel placardViewModel;
         private System.Action successfulCompleteCallbackAction;
 
-        public SoundComplementConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(Factories.SoundComplementConfigurationPageModelFactory.Build(placardViewModel))
+        public SoundComplementConfigurationPage(PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
+            : base(SoundComplementConfigurationPageModelFactory.Build(placardViewModel))
         {
-            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+            validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
             InitializeComponent();
 
@@ -65,12 +74,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.ComplementationsApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+                var client = new Cloud.Api.Connect.Clients.ComplementationsApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
                 await client.EditAsync(new Cloud.Api.Common.Models.ComplementationInputModel
                 {
                     PlacardId = placardViewModel.Id,
-                    ComplementationKind = Cloud.Persistence.Enumerations.PlacardComplementationKind.Sound,
+                    ComplementationKind = PlacardComplementationKind.Sound,
                     SerializedComplementation = Newtonsoft.Json.JsonConvert.SerializeObject(new Extend.Common.Templating.Models.Context.SoundComplementContextModel
                     {
                         Sound = new Extend.Common.Templating.Models.Context.SoundContextModel
@@ -97,11 +106,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
 
                         this.NavigationPopPageAsync();
 
@@ -142,7 +151,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             //this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.VideoDetailPage(BindingContextPageModel.Sound));
         }
 
-        private void SoundPicked_Callback(Support.Presentation.Models.View.SoundViewModel selection)
+        private void SoundPicked_Callback(SoundViewModel selection)
         {
             BindingContextPageModel.Sound = selection;
         }
@@ -159,12 +168,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         #region IValidableFormPage implementation
 
-        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void AddValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Add(validationBehavior);
         }
 
-        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void RemoveValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Remove(validationBehavior);
         }

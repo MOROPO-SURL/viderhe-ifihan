@@ -1,26 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Extend.Common.Templating.Presentation</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.Common.Templating.Presentation</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2023, Todos los derechos reservados.</Copyright>
+		<Version>2.0.2</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Cloud.SignalR.Connect.Common\Cloud.SignalR.Connect.Common.csproj" />
-    <ProjectReference Include="..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj" />
-    <ProjectReference Include="..\Extend.Common.Presentation\Extend.Common.Presentation.csproj" />
-    <ProjectReference Include="..\Support.Presentation\Support.Presentation.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Cloud.SignalR.Connect.Common\Cloud.SignalR.Connect.Common.csproj" />
+		<ProjectReference Include="..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj" />
+		<ProjectReference Include="..\Extend.Common.Presentation\Extend.Common.Presentation.csproj" />
+		<ProjectReference Include="..\Support.Presentation\Support.Presentation.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Views\PlacardComplementVideoView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Views\PlacardComplementVideoView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
 
 </Project>

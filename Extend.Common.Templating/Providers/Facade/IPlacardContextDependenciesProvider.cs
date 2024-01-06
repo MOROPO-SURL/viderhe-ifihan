@@ -1,13 +1,15 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Providers.Facade
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.Common.Templating.Providers.Facade
 {
     public interface IPlacardContextDependenciesProvider
     {
-        Models.Context.ImageContextModel[] GetImages(System.Guid templateId, string serializedContext);
+        ImageContextModel[] GetImages(System.Guid templateId, string serializedContext);
 
-        Models.Context.VideoContextModel[] GetVideos(System.Guid templateId, string serializedContext);
+        VideoContextModel[] GetVideos(System.Guid templateId, string serializedContext);
 
-        Models.Context.GradientContextModel[] GetGradients(System.Guid templateId, string serializedContext);
+        GradientContextModel[] GetGradients(System.Guid templateId, string serializedContext);
 
-        Models.Context.SoundContextModel[] GetSounds(System.Guid templatedId, string serializedContxt);
+        SoundContextModel[] GetSounds(System.Guid templatedId, string serializedContxt);
     }
 }

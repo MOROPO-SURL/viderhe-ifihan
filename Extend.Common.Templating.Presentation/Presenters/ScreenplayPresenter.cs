@@ -1,10 +1,12 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.Providers.Facade;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
-using System.Linq;
+﻿using System.Linq;
+using MOROPO.VIDERHE.Cloud.SignalR.Connect.Common.Enumerations;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Providers.Facade;
+using MOROPO.VIDERHE.Extend.Common.Presentation.Views;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Presenters
+namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Presenters
 {
     public class ScreenplayPresenter : Facade.IOvarlablePresenter, System.IDisposable
     {
@@ -90,18 +92,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             interventionPresenter.BeginPresentation();
         }
 
-        public void RequestRestart(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
+        public void RequestRestart(ScreenplayHandlingImmediacyMode immediacyMode)
         {
             switch (immediacyMode)
             {
-                case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately:
+                case ScreenplayHandlingImmediacyMode.Immediately:
                     framesStack.Clear();
 
                     PresentNextPlacardPresentationView();
 
                     break;
 
-                case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete:
+                case ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete:
                     framesStack.Clear();
 
                     break;
@@ -111,18 +113,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
             }
         }
 
-        public void RequestReload(Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode immediacyMode)
+        public void RequestReload(ScreenplayHandlingImmediacyMode immediacyMode)
         {
             if (placards.Length <= 0)
             {
-                immediacyMode = Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately;
+                immediacyMode = ScreenplayHandlingImmediacyMode.Immediately;
             }
 
             switch (immediacyMode)
             {
-                case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately:
+                case ScreenplayHandlingImmediacyMode.Immediately:
                     framesStack.Clear();
-                    
+
                     loop = false;
 
                     presentationEndedCallbackAction?.Invoke();
@@ -130,14 +132,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
                     break;
 
-                case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete:
+                case ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete:
                     framesStack.Clear();
-                    
+
                     loop = false;
 
                     break;
 
-                case Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.FramesPresentationComplete:
+                case ScreenplayHandlingImmediacyMode.FramesPresentationComplete:
                 default:
                     loop = false;
 
@@ -217,8 +219,8 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
                         if (model.ComplementationKind != null)
                         {
-                            (incomingFrameView.BindingContext as Models.View.AbstractPlacardViewModel).ComplementationKind = model.ComplementationKind;
-                            (incomingFrameView.BindingContext as Models.View.AbstractPlacardViewModel).SerializedComplementation = model.SerializedComplementation;
+                            (incomingFrameView.BindingContext as AbstractPlacardViewModel).ComplementationKind = model.ComplementationKind;
+                            (incomingFrameView.BindingContext as AbstractPlacardViewModel).SerializedComplementation = model.SerializedComplementation;
                         }
 
                         incomingFrameView.PresentationComplete += PlacardPresentationView_PresentationComplete;
@@ -325,12 +327,16 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Pres
 
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
-                container.Children.Remove(currentPlacardFrameView);
-
-                if (currentPlacardFrameView is System.IDisposable)
+                try
                 {
-                    (currentPlacardFrameView as System.IDisposable).Dispose();
+                    container.Children.Remove(currentPlacardFrameView);
+
+                    if (currentPlacardFrameView is System.IDisposable)
+                    {
+                        (currentPlacardFrameView as System.IDisposable).Dispose();
+                    }
                 }
+                catch { }
             });
         }
 

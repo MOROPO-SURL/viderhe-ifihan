@@ -1,17 +1,21 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
 {
-    public partial class ImagesPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ImagesPickPageModel>
+    public partial class ImagesPickPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ImagesPickPageModel>
     {
-        private Presentation.Models.View.ImageViewModel[] exclusionImages;
-        private System.Action<Presentation.Models.View.ImageViewModel[]> imagesSelectedCallbackAction;
+        private ImageViewModel[] exclusionImages;
+        private System.Action<ImageViewModel[]> imagesSelectedCallbackAction;
 
         private int currentImagesPageNumber;
 
-        public ImagesPickPage(Presentation.Models.View.ImageViewModel[] exclusionImages, System.Action<Presentation.Models.View.ImageViewModel[]> imagesSelectedCallbackAction)
+        public ImagesPickPage(ImageViewModel[] exclusionImages, System.Action<ImageViewModel[]> imagesSelectedCallbackAction)
             : base(new Models.Page.ImagesPickPageModel { IsBusy = true })
         {
             InitializeComponent();
@@ -47,12 +51,12 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
         private void SelectionToggleLabelTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
-            ((sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.SelectableModelViewModel<Presentation.Models.View.ImageViewModel>).Selected = !((sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.SelectableModelViewModel<Presentation.Models.View.ImageViewModel>).Selected;
+            ((sender as Xamarin.Forms.BindableObject).BindingContext as SelectableModelViewModel<ImageViewModel>).Selected = !((sender as Xamarin.Forms.BindableObject).BindingContext as SelectableModelViewModel<ImageViewModel>).Selected;
         }
 
         private void ImageOverviewDetailButton_Clicked(object sender, System.EventArgs e)
         {
-            this.NavigationPushPageAsync(new ImageDetailPage(((sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.SelectableModelViewModel<Presentation.Models.View.ImageViewModel>).Model));
+            this.NavigationPushPageAsync(new ImageDetailPage(((sender as Xamarin.Forms.BindableObject).BindingContext as SelectableModelViewModel<ImageViewModel>).Model));
         }
 
         private void LoadNextPageButtton_Clicked(object sender, System.EventArgs eventArgs)
@@ -66,7 +70,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
             if (restart) currentImagesPageNumber = 0;
 
-            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
+            var imagesApiConnectClient = new Cloud.Api.Connect.Clients.ImagesApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
 
             imagesApiConnectClient.GetPageAsync(++currentImagesPageNumber).ContinueWith(task =>
             {
@@ -76,11 +80,11 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        Xamarin.Forms.DependencyService.Get<Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
-                        var relevantImages = task.Result.List.Select(m => m.ToViewModel()).ToArray().Except(exclusionImages).Select(item => new Models.View.SelectableModelViewModel<Presentation.Models.View.ImageViewModel>
+                        var relevantImages = task.Result.List.Select(m => m.ToViewModel()).ToArray().Except(exclusionImages).Select(item => new Models.View.SelectableModelViewModel<ImageViewModel>
                         {
                             Model = item
                         });

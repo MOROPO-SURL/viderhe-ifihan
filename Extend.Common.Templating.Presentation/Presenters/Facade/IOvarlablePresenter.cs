@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Presenters.Facade
+﻿namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Presenters.Facade
 {
     public interface IOvarlablePresenter
     {
