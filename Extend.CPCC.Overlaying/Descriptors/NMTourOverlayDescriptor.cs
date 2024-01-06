@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Descriptors
 {
     public class NMTourOverlayDescriptor : Common.Overlaying.Descriptors.IOverlayDescriptor
     {

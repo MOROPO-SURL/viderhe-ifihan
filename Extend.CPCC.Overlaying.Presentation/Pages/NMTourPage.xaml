@@ -2,10 +2,10 @@
 <sscxftoolkitmvvmpages:ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:supportpresentationhelpers="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
+    xmlns:supportpresentationhelpers="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Helpers;assembly=MOROPO.VIDERHE.Support.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages.NMTourPage"
+    x:Class="MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Pages.NMTourPage"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>

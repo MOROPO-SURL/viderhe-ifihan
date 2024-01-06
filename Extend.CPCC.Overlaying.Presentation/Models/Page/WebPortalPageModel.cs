@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Models.Page
+﻿namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Models.Page
 {
-    public class WebPortalPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class WebPortalPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         public string Title { get; set; }
 

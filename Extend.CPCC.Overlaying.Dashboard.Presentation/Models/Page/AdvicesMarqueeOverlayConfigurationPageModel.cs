@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Dashboard.Presentation.Models.Page
+﻿namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Dashboard.Presentation.Models.Page
 {
-    public class AdvicesMarqueeOverlayConfigurationPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class AdvicesMarqueeOverlayConfigurationPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private string serverName;
         private bool isSecureServer;

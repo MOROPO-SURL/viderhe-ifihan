@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Models.Context
+﻿namespace MOROPO.VIDERHE.Extend.CPCC.Templating.Models.Context
 {
     public class PortraitPosterVideoEventPromotionPlacardContextModel : Common.Templating.Models.Context.AbstractPlacardContextModel
     {

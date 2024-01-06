@@ -1,16 +1,18 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.CPCC.Templating.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.CPCC.Templating.Dashboard.Presentation.Views
 {
-    public partial class PortraitPosterVideoEventPromotionEventPlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class PortraitPosterVideoEventPromotionEventPlacardThumbnailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
         public PortraitPosterVideoEventPromotionEventPlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model)
         {
             InitializeComponent();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.PortraitPosterVideoEventPromotionPlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitPosterVideoEventPromotionPlacardContextModel>(model.SerializedContext);
 
-            EventVideoThumnailImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Video.ThumbnailId));
+            EventVideoThumnailImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildVideoThumbnailUri(context.Video.ThumbnailId));
 
-            EventPosterImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Poster.ThumbnailId));
+            EventPosterImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(context.Poster.ThumbnailId));
 
             BindingContext = model;
         }

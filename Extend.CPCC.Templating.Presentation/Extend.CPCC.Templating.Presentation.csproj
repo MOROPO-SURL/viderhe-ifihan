@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Presentation</RootNamespace>
+    <AssemblyName>MOROPO.VIDERHE.Extend.CPCC.Templating.Presentation</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Extend.CPCC.Templating.Presentation</RootNamespace>
     <Version>0.10.0</Version>
   </PropertyGroup>
 

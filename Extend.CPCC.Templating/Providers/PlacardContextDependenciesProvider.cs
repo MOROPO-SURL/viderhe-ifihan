@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Providers
+﻿namespace MOROPO.VIDERHE.Extend.CPCC.Templating.Providers
 {
     public class PlacardContextDependenciesProvider : Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider
     {

@@ -1,6 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.CPCC.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.CPCC.Templating.Dashboard.Presentation.Factories
 {
     public static class PortraitPosterVideoEventPromotionEventPlacardConfigurationPageFactory
     {
@@ -8,7 +9,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
         {
             if (placardViewModel == null) return new Models.Page.PortraitPosterVideoEventPromotionEventPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.PortraitPosterVideoEventPromotionPlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitPosterVideoEventPromotionPlacardContextModel>(placardViewModel.SerializedContext);
 
             return new Models.Page.PortraitPosterVideoEventPromotionEventPlacardConfigurationPageModel
             {

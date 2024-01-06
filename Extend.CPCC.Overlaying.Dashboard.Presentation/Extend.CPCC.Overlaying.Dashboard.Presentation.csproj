@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Dashboard.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Dashboard.Presentation</RootNamespace>
+    <AssemblyName>MOROPO.VIDERHE.Extend.CPCC.Overlaying.Dashboard.Presentation</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Extend.CPCC.Overlaying.Dashboard.Presentation</RootNamespace>
     <Version>0.10.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2622" />
   </ItemGroup>
 
   <ItemGroup>

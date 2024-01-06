@@ -1,12 +1,15 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Models.Context;
+using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Views
 {
     public partial class AdvicesMarqueeOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
         internal static readonly double MOTION_TRANSLATION = 80;
 
-        private readonly Models.Context.AdvicesMarqueeOverlayContextModel model;
+        private readonly AdvicesMarqueeOverlayContextModel model;
 
-        public AdvicesMarqueeOverlayView(Models.Context.AdvicesMarqueeOverlayContextModel model)
+        public AdvicesMarqueeOverlayView(AdvicesMarqueeOverlayContextModel model)
         {
             this.model = model;
 
@@ -18,7 +21,7 @@
 
             System.Threading.Tasks.Task.Run(() =>
             {
-                return SAPRESSC.Business.Billboard.CPCC.Web.Api.Client.AdvisesApiClient.Get(new System.Uri(string.Format("{0}://{1}", model.IsSecureServer ? "https" : "http", model.ServerName)));
+                return SmartSolucionesCuba.SAPRESSC.Business.Billboard.CPCC.Web.Api.Client.AdvisesApiClient.Get(new System.Uri(string.Format("{0}://{1}", model.IsSecureServer ? "https" : "http", model.ServerName)));
             }).ContinueWith(task =>
             {
                 if (task.Exception != null || task.IsCanceled || task.Result == null) return;
@@ -32,10 +35,10 @@
 
         public override void ShowIn()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
             {
                 Target = this,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 TranslateY = 0
             };
 
@@ -44,10 +47,10 @@
 
         public override void ShowOut()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
             {
                 Target = this,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
                 TranslateY = MOTION_TRANSLATION
             };
 
@@ -76,7 +79,7 @@
                 textBuilder.Append(model.Tail);
             }
 
-            (BindingContext as Models.View.AdvicesMarqueeOverlayViewModel).InLineAdvices = textBuilder.ToString();
+            (BindingContext as AdvicesMarqueeOverlayViewModel).InLineAdvices = textBuilder.ToString();
         }
     }
 }

@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.CPCC.Templating.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.CPCC.Templating.Presentation.Views
 {
     public partial class PortraitPosterVideoEventPromotionPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public PortraitPosterVideoEventPromotionPlacardView(Models.View.PortraitPosterVideoEventPromotionPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public PortraitPosterVideoEventPromotionPlacardView(PortraitPosterVideoEventPromotionPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -21,9 +23,9 @@
 
         private void VideoPlayer_StatusUpdated(object sender, System.EventArgs eventArgs)
         {
-            var videoPlayer = sender as XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
+            var videoPlayer = sender as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
 
-            if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
+            if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
             {
                 videoPlayer.StatusUpdated -= VideoPlayer_StatusUpdated;
 
@@ -42,7 +44,7 @@
         {
             base.DisposeUnmanagementResources();
 
-            if (EventVideo.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            if (EventVideo.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
                 EventVideo.StatusUpdated -= VideoPlayer_StatusUpdated;
 

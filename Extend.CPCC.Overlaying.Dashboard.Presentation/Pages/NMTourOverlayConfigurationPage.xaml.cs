@@ -1,17 +1,20 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Descriptors;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Dashboard.Presentation.Pages
 {
-    public partial class NMTourOverlayConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.NMTourOverlayConfigurationPageModel>
+    public partial class NMTourOverlayConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<NMTourOverlayConfigurationPageModel>
     {
         private System.Action<string> successfulCompleteCallbackAction;
 
         public NMTourOverlayConfigurationPage(string serializedContext, System.Action<string> successfulCompleteCallbackAction)
-            : base(Factories.NMTourOverlayConfigurationPageModelFactory.Build(serializedContext))
+            : base(NMTourOverlayConfigurationPageModelFactory.Build(serializedContext))
         {
             InitializeComponent();
 
-            Title = string.Format("Configurar Mascara ({0})", Descriptors.NMTourOverlayDescriptor.NAME);
+            Title = string.Format("Configurar Mascara ({0})", NMTourOverlayDescriptor.NAME);
 
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
         }

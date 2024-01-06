@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.CPCC.Descriptors
 {
     public class CPCCExtensionDescriptor : Common.Descriptors.IExtensionDescriptor
     {

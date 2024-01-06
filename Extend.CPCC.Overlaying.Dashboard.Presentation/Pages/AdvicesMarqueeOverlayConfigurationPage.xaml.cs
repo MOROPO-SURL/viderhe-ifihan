@@ -1,17 +1,20 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Descriptors;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Dashboard.Presentation.Pages
 {
-    public partial class AdvicesMarqueeOverlayConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AdvicesMarqueeOverlayConfigurationPageModel>
+    public partial class AdvicesMarqueeOverlayConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<AdvicesMarqueeOverlayConfigurationPageModel>
     {
         private System.Action<string> successfulCompleteCallbackAction;
 
         public AdvicesMarqueeOverlayConfigurationPage(string serializedContext, System.Action<string> successfulCompleteCallbackAction)
-            : base(Factories.AdvicesMarqueeOverlayConfigurationPageModelFactory.Build(serializedContext))
+            : base(AdvicesMarqueeOverlayConfigurationPageModelFactory.Build(serializedContext))
         {
             InitializeComponent();
 
-            Title = string.Format("Configurar Mascara ({0})", Descriptors.AdvicesMarqueeOverlayDescriptor.NAME);
+            Title = string.Format("Configurar Mascara ({0})", AdvicesMarqueeOverlayDescriptor.NAME);
 
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
         }

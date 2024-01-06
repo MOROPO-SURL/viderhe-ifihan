@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Models.View
 {
-    public class AdvicesMarqueeOverlayViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
+    public class AdvicesMarqueeOverlayViewModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel
     {
         private string inLineAdvices;
 

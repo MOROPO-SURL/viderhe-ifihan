@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.CPCC.Templating.Descriptors
 {
     public class PortraitPosterVideoEventPromotionTemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
     {

@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Dashboard.Presentation.Factories
+﻿using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Dashboard.Presentation.Factories
 {
     public static class NMTourOverlayConfigurationPageModelFactory
     {
         public static Models.Page.NMTourOverlayConfigurationPageModel Build(string serializedContext)
         {
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Overlaying.Presentation.Models.Context.NMTourOverlayContextModel>(serializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<NMTourOverlayContextModel>(serializedContext);
 
             return new Models.Page.NMTourOverlayConfigurationPageModel
             {

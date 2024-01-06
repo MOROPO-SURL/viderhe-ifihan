@@ -1,8 +1,8 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Pages
 {
-    public partial class NMTourPage : XFToolKit.Mvvm.Pages.ContentPage
+    public partial class NMTourPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.ContentPage
     {
         private System.Action presentationCompleteCallbackAction;
 
@@ -12,7 +12,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages
 
             InitializeComponent();
 
-            MainImage.Source = Xamarin.Forms.ImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Resources.Image.NM-landscape.jpg", GetType().Assembly);
+            MainImage.Source = Xamarin.Forms.ImageSource.FromResource("MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Resources.Image.NM-landscape.jpg", GetType().Assembly);
         }
 
         protected override void OnDisappearing()

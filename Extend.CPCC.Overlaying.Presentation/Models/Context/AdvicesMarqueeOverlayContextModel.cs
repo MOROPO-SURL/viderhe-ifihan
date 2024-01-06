@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Models.Context
+﻿namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Models.Context
 {
     public class AdvicesMarqueeOverlayContextModel
     {

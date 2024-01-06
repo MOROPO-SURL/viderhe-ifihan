@@ -1,10 +1,13 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.CPCC.Templating.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.CPCC.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.CPCC.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.CPCC.Templating.Dashboard.Presentation.Pages
 {
-    public partial class PortraitPosterVideoEventPromotionEventPlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PortraitPosterVideoEventPromotionEventPlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class PortraitPosterVideoEventPromotionEventPlacardConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<PortraitPosterVideoEventPromotionEventPlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
@@ -17,7 +20,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
         }
 
         public PortraitPosterVideoEventPromotionEventPlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(Factories.PortraitPosterVideoEventPromotionEventPlacardConfigurationPageFactory.Build(placardViewModel))
+            : base(PortraitPosterVideoEventPromotionEventPlacardConfigurationPageFactory.Build(placardViewModel))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -59,14 +62,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating.Dashboard.Presentat
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 if (placardViewModel == null)
                 {
                     await client.CreateAsync(new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Label = BindingContextPageModel.Label,
-                        TemplateId = Descriptors.PortraitPosterVideoEventPromotionTemplateDescriptor.ID,
+                        TemplateId = PortraitPosterVideoEventPromotionTemplateDescriptor.ID,
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.PortraitPosterVideoEventPromotionPlacardContextModel
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,

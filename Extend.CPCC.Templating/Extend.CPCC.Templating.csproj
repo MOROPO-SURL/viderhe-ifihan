@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.CPCC.Templating</RootNamespace>
+    <AssemblyName>MOROPO.VIDERHE.Extend.CPCC.Templating</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Extend.CPCC.Templating</RootNamespace>
     <Version>0.10.0</Version>
   </PropertyGroup>
 
@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
   <ItemGroup>

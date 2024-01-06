@@ -1,10 +1,11 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Pages
 {
-    public partial class WebPortalPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.WebPortalPageModel>
+    public partial class WebPortalPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<WebPortalPageModel>
     {
-        public WebPortalPage(Models.Page.WebPortalPageModel model) : base(model)
+        public WebPortalPage(WebPortalPageModel model) : base(model)
         {
             InitializeComponent();
         }

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Enumerations
+﻿namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Enumerations
 {
     public enum InteractiveSection
     {

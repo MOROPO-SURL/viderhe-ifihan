@@ -1,16 +1,18 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Models.Context;
+using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Models.View;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Views
 {
     public partial class NMTourOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
         internal static readonly double INLINEADVICES_LAYOUT_MOTION_TRANSLATION = 80;
 
-        private readonly Models.Context.NMTourOverlayContextModel model;
+        private readonly NMTourOverlayContextModel model;
 
         //private XFToolKit.Presentation.Transform.Animations.HeartAnimation screenInteractionSuggestLabelAnimation;
 
-        public NMTourOverlayView(Models.Context.NMTourOverlayContextModel model)
+        public NMTourOverlayView(NMTourOverlayContextModel model)
         {
             this.model = model;
 
@@ -24,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
 
             System.Threading.Tasks.Task.Run(() =>
             {
-                return SAPRESSC.Business.Billboard.CPCC.Web.Api.Client.AdvisesApiClient.Get(new System.Uri(string.Format("{0}://{1}", model.IsSecureServer ? "https" : "http", model.ServerName)));
+                return SmartSolucionesCuba.SAPRESSC.Business.Billboard.CPCC.Web.Api.Client.AdvisesApiClient.Get(new System.Uri(string.Format("{0}://{1}", model.IsSecureServer ? "https" : "http", model.ServerName)));
             }).ContinueWith(task =>
             {
                 if (task.Exception != null || task.IsCanceled || task.Result == null) return;
@@ -53,7 +55,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
 
         private void ShowInAnimation_Completed(object sender, System.EventArgs e)
         {
-            (sender as XFToolKit.Presentation.Transform.Animations.Contract.AbstractAnimation).Completed -= ShowInAnimation_Completed;
+            (sender as SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract.AbstractAnimation).Completed -= ShowInAnimation_Completed;
 
             //Xamarin.Forms.Device.BeginInvokeOnMainThread(EnableInteractionEmplasisAnimation);
 
@@ -64,7 +66,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
         {
             //DisableInteractionEmplasisAnimation();
 
-            var animation = new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
             {
                 Target = InterationIndicationLayout,
                 Opacity = 0,
@@ -82,7 +84,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
 
         private void InteractivePresentationComplete_Callback()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
             {
                 Target = InterationIndicationLayout,
                 Opacity = 1,
@@ -100,10 +102,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
 
         public override void ShowIn()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
             {
                 Target = InLineAdvicesLayout,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 TranslateY = 0
             };
 
@@ -114,10 +116,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
 
         public override void ShowOut()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
             {
                 Target = InLineAdvicesLayout,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
                 TranslateY = INLINEADVICES_LAYOUT_MOTION_TRANSLATION
             };
 
@@ -146,7 +148,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.CPCC.Overlaying.Presentation.Views
                 textBuilder.Append(model.Tail);
             }
 
-            (BindingContext as Models.View.AdvicesMarqueeOverlayViewModel).InLineAdvices = textBuilder.ToString();
+            (BindingContext as AdvicesMarqueeOverlayViewModel).InLineAdvices = textBuilder.ToString();
         }
 
         //private void EnableInteractionEmplasisAnimation()
