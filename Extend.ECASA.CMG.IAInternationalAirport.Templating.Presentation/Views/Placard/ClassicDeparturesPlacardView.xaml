@@ -101,7 +101,9 @@
                         Margin="{Binding Source={StaticResource TableHeaderSeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}" />
                     <Grid x:Name="TableHeaderGrid" Grid.Row="2" ColumnSpacing="0" />
                     <ScrollView Grid.Row="3"  Margin="{Binding Source={StaticResource TableBodySeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}">
-                        <StackLayout x:Name="TableBodyStackLayout" />
+                        <StackLayout 
+                            x:Name="TableBodyStackLayout"
+                            ChildRemoved="TableBodyStackLayout_ChildRemoved" />
                     </ScrollView>
                 </Grid>
             </Grid>

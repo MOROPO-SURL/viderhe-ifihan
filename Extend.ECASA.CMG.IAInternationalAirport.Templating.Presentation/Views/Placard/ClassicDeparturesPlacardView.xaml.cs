@@ -2,6 +2,9 @@
 using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Enumerations;
 using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions;
 using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Models.View.Placard;
+using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Background;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 using System.Collections.Generic;
 using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
@@ -16,10 +19,15 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
         private static Common.Templating.Presentation.Converters.SizeToRelativeValueConverter SIZE_TO_RELATIVE_VALUE_CONVERTER = new Common.Templating.Presentation.Converters.SizeToRelativeValueConverter();
 
-        private readonly ClassicOperationsPlacardViewModel model;
+        private ClassicOperationsPlacardViewModel model;
+
+        private System.DateTime startedAt;
 
         private Label timeSizeReferenceLabel;
         private Label gateSizeReferenceLabel;
+
+        private View globalBackgroundView;
+        private View bannerBackgroundView;
 
         public ClassicDeparturesPlacardView(ClassicOperationsPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
@@ -31,14 +39,12 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             {
                 HeaderBaseBackgroundBoxView.Opacity = model.HeaderBackgroundOpacity / 100;
 
-                View backgroundView = null;
-
                 switch (model.HeaderBackground.Kind)
                 {
                     case BackgroundKind.Gradient:
                         var gradientModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.GradientContextModel>(model.HeaderBackground.SerializedContext);
 
-                        backgroundView = new MagicGradients.GradientView
+                        bannerBackgroundView = new MagicGradients.GradientView
                         {
                             GradientSource = MagicGradients.CssGradientSource.Parse(gradientModel.Data)
                         };
@@ -48,7 +54,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     case BackgroundKind.Image:
                         var imageModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(model.HeaderBackground.SerializedContext).ToViewModel();
 
-                        backgroundView = new FFImageLoading.Forms.CachedImage
+                        bannerBackgroundView = new FFImageLoading.Forms.CachedImage
                         {
                             HeightRequest = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(LOGO_IMAGE_VIEW_HEIGHT + 12 + 32, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor,
                             Source = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(imageModel.Id)),
@@ -61,7 +67,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                         break;
                 }
 
-                HeaderGrid.Children.Insert(0, backgroundView);
+                HeaderGrid.Children.Insert(0, bannerBackgroundView);
             }
 
             TableLayout.BackgroundColor = model.TableBackgroundColor;
@@ -79,15 +85,14 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                 var responsiveMarginFactor = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(unresponsiveMarginFactor, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor;
 
                 TableLayout.Margin = new Thickness(responsiveMarginFactor);
-
-                View backgroundView = null;
+                TableLayout.IsClippedToBounds = true;
 
                 switch (model.Background.Kind)
                 {
                     case BackgroundKind.Gradient:
                         var gradientModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.GradientContextModel>(model.Background.SerializedContext);
 
-                        backgroundView = new MagicGradients.GradientView
+                        globalBackgroundView = new MagicGradients.GradientView
                         {
                             GradientSource = MagicGradients.CssGradientSource.Parse(gradientModel.Data)
                         };
@@ -97,7 +102,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     case BackgroundKind.Image:
                         var imageModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Common.Templating.Models.Context.ImageContextModel>(model.Background.SerializedContext).ToViewModel();
 
-                        backgroundView = new FFImageLoading.Forms.CachedImage
+                        globalBackgroundView = new FFImageLoading.Forms.CachedImage
                         {
                             Source = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(imageModel.Id)),
                             FadeAnimationEnabled = false,
@@ -109,7 +114,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                         break;
                 }
 
-                DeparturesLayout.Children.Insert(0, backgroundView);
+                DeparturesLayout.Children.Insert(0, globalBackgroundView);
             }
 
             var tableHeaderItemFontSize = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(model.TableHeaderFontSize, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor;
@@ -177,6 +182,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
         {
             base.PerformPlacardStarup();
 
+            startedAt = System.DateTime.Now;
+
             var client = new Service.ECASA.CMG.InterFIDS.API.Connect.Frontend.Clients.OperationsAPIConnectClient(this);
 
             client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.OperationFilterModel
@@ -189,7 +196,86 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
         {
             base.DisposeUnmanagementResources();
 
+            if (TableBodyStackLayout.Children.Count > 0)
+            {
+                foreach (var child in TableBodyStackLayout.Children)
+                {
+                    if (!(child is Grid)) continue;
+
+                    var operationGrid = child as Grid;
+
+                    foreach (var operationGridChild in operationGrid.Children)
+                    {
+                        if (!(operationGridChild is StackLayout)) continue;
+
+                        var boxedCachedImage = (operationGridChild as StackLayout).Children[0] as BoxedCachedImage;
+
+                        boxedCachedImage.Source = null;
+                    }
+                }
+            }
+
+            if (globalBackgroundView != null)
+            {
+                if (globalBackgroundView is ImageBackgroundView)
+                {
+                    (globalBackgroundView as ImageBackgroundView).Source = null;
+                }
+                else if (globalBackgroundView is GradientBackgroundView)
+                {
+                    (globalBackgroundView as GradientBackgroundView).GradientSource = null;
+                }
+
+                globalBackgroundView = null;
+            }
+
+            if (bannerBackgroundView != null)
+            {
+                if (bannerBackgroundView is ImageBackgroundView)
+                {
+                    (bannerBackgroundView as ImageBackgroundView).Source = null;
+                }
+                else if (bannerBackgroundView is GradientBackgroundView)
+                {
+                    (bannerBackgroundView as GradientBackgroundView).GradientSource = null;
+                }
+
+                bannerBackgroundView = null;
+            }
+
+            LogoImageView.Source = null;
+
             timeSizeReferenceLabel = null;
+
+            model.Items.Clear();
+
+            model = null;
+        }
+
+        private void TableBodyStackLayout_ChildRemoved(object sender, ElementEventArgs eventArgs)
+        {
+            var operationGrid = eventArgs.Element as Grid;
+
+            foreach (var child in operationGrid.Children)
+            {
+                if (!(child is StackLayout)) continue;
+
+                var boxedCachedImage = (child as StackLayout).Children[0] as BoxedCachedImage;
+
+                boxedCachedImage.Source = null;
+            }
+        }
+
+        private void OutgoingRowAnimation_Completed(object sender, System.EventArgs eventArgs)
+        {
+            var animation = sender as AbstractAnimation;
+
+            animation.Completed -= OutgoingRowAnimation_Completed;
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                TableBodyStackLayout.Children.Remove(animation.Target as View);
+            });
         }
 
         private void FetchOperations_Callback(System.Threading.Tasks.Task<Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel[]> task)
@@ -198,12 +284,40 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
             var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
+            var tableBodyStackLayoutChildrenCount = TableBodyStackLayout.Children.Count;
+
             if (!task.IsCanceled && task.Exception == null)
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    TableBodyStackLayout.Children.Clear();
+                    if (tableBodyStackLayoutChildrenCount <= 0) return;
+
+                    var startIndex = tableBodyStackLayoutChildrenCount - 1;
+                    var iterationIndex = 0;
+
+                    var outgoingRowsStoryboard = new Storyboard { IsParallel = true };
+
+                    for (int i = startIndex; i >= 0; i--)
+                    {
+                        var outgoingRowAnimation = new TranslateToXAnimation
+                        {
+                            Target = TableBodyStackLayout.Children[i],
+                            Duration = "360",
+                            Delay = (120 * iterationIndex++).ToString(),
+                            EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut
+                        };
+
+                        outgoingRowAnimation.TranslateX = outgoingRowAnimation.Target.Width;
+
+                        outgoingRowAnimation.Completed += OutgoingRowAnimation_Completed;
+
+                        outgoingRowsStoryboard.Animations.Add(outgoingRowAnimation);
+                    }
+
+                    outgoingRowsStoryboard.Begin();
                 });
+
+                if (tableBodyStackLayoutChildrenCount > 0) System.Threading.Thread.Sleep(System.TimeSpan.FromMilliseconds(120 * tableBodyStackLayoutChildrenCount + 120));
 
                 var tableBodyItemFontSize = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(model.RowFontSize, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor;
 
@@ -225,6 +339,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             var client = new Service.ECASA.CMG.InterFIDS.API.Connect.Frontend.Clients.OperationsAPIConnectClient(this);
 
             var delay = System.TimeSpan.FromSeconds(model.UpdateInterval) - stopwatch.Elapsed;
+
+            if (model.ScreenPresentationTime <= (System.DateTime.Now - startedAt + delay + System.TimeSpan.FromSeconds(5))) return;
 
             if (delay <= System.TimeSpan.Zero)
             {
@@ -279,7 +395,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                 return new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
                     string.Format("{0}://{1}/api/", model.UseSSL ? "https" : "http", model.APIServer),
                     null,
-                    () => { return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, model.APIKey) }; });
+                    () => { return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(Service.ECASA.CMG.InterFIDS.API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, model.APIKey) }; });
             }
         }
 
