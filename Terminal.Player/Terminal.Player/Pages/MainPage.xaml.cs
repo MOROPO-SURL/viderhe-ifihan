@@ -333,7 +333,7 @@ namespace MOROPO.VIDERHE.Terminal.Player.Pages
                 // MotoTouch does not support dynamic assembly loading
                 if (Xamarin.Forms.Device.RuntimePlatform != Xamarin.Forms.Device.iOS)
                 {
-                    var dynamicLoadExtensions = SessionManager.Instance.Account.Extensions.Where(item => item.Id != EssentialExtensionDescriptor.ID).ToArray();
+                    var dynamicLoadExtensions = SessionManager.Instance.Account.Extensions.Where(item => item.Id != EssentialExtensionDescriptor.ID && item.Id != Extend.SpringMotion.Descriptors.SpringMotionExtensionDescriptor.ID).ToArray();
 
                     var missingAccountExtensions = new System.Collections.Generic.List<ExtensionDisplayModel>();
 
