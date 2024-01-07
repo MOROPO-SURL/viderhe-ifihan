@@ -1,26 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>MOROPO.VIDERHE.Extend.CPCC.Templating</AssemblyName>
-    <RootNamespace>MOROPO.VIDERHE.Extend.CPCC.Templating</RootNamespace>
-    <Version>0.10.0</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Extend.CPCC.Templating</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.CPCC.Templating</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>0.11.0</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="3AE98930-ABD4-459D-8EAE-AD5CB28CC480-portrait.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="3AE98930-ABD4-459D-8EAE-AD5CB28CC480-portrait.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Assets\3AE98930-ABD4-459D-8EAE-AD5CB28CC480-portrait.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Assets\3AE98930-ABD4-459D-8EAE-AD5CB28CC480-portrait.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+	</ItemGroup>
 
 </Project>
