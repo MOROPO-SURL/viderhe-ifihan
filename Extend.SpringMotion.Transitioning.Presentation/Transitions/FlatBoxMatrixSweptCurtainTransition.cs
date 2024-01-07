@@ -5,7 +5,7 @@ namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Transiti
 {
     public class FlatBoxMatrixSweptCurtainTransition : Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition
     {
-        private const int BOX_VIEW_MATRIX_ITEMS_COUNT = 6;
+        private const int BOX_VIEW_MATRIX_ITEMS_COUNT = 5;
         private const int BOX_VIEW_QUICK_SHOW_ANIMATE_DURATION_MILLISECOUNDS = 240;
         private const int BOX_VIEW_QUICK_SHOW_ANIMATE_DURATION_DELAY_RAZON = 2;
         private const int BOX_VIEW_SOFT_SHOW_ANIMATE_DURATION_MILLISECOUNDS = 675;

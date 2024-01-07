@@ -14,7 +14,7 @@ namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Provider
         {
             var randomizer = new System.Random();
 
-            var randomTransitionIndex = randomizer.Next(0, 7);
+            var randomTransitionIndex = randomizer.Next(0, 10);
 
             var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
@@ -22,9 +22,10 @@ namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Provider
             {
                 case 0:
                 case 1:
+                case 2:
                     return Factories.RandomTransitionFactory.CreateFlatSpectrumHandFanTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
 
-                case 2:
+                case 3:
                     var colors = new Xamarin.Forms.Color[]
                     {
                         Xamarin.Forms.Color.Black,
@@ -35,12 +36,11 @@ namespace MOROPO.VIDERHE.Extend.SpringMotion.Transitioning.Presentation.Provider
 
                     return Factories.RandomTransitionFactory.CreateFlatBoxMatrixSweptCurtainTransition(colors[randomizer.Next(0, colors.Length)], incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
 
-                case 3:
                 case 4:
-                    return Factories.RandomTransitionFactory.CreateFlatSpectrumInverseGothTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
-
                 case 5:
                 case 6:
+                    return Factories.RandomTransitionFactory.CreateFlatSpectrumInverseGothTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+
                 default:
                     return Factories.RandomTransitionFactory.CreateFlatDualSpectrumHandFanCurtainTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
             }
