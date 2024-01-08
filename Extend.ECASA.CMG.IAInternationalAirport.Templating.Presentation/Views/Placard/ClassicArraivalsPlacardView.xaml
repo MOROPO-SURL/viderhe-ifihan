@@ -103,6 +103,7 @@
                     <ScrollView Grid.Row="3"  Margin="{Binding Source={StaticResource TableBodySeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}">
                         <StackLayout 
                             x:Name="TableBodyStackLayout"
+                            Spacing="{Binding Source=6, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                             ChildRemoved="TableBodyStackLayout_ChildRemoved" />
                     </ScrollView>
                 </Grid>

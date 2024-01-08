@@ -15,8 +15,20 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                 ColumnSpacing = 2,
                 ColumnDefinitions = columnDefinitions,
                 BackgroundColor = useSecundaryColorProfile ? model.SecoundaryRowBackgroundColor : model.PrimaryRowBackgroundColor,
-                VerticalOptions = LayoutOptions.Start
+                VerticalOptions = LayoutOptions.Start,
+                Opacity = 0
             };
+
+            itemLayout.Behaviors.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Behaviors.BeginAnimationBehavior
+            {
+                Animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+                {
+                    Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Right,
+                    RelativeOffset = layout.Width,
+                    Duration = "650",
+                    EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn
+                }
+            });
 
             if (model.Background != null)
             {
