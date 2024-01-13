@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using MOROPO.Framework.Guama.Core.Persistence.Repositories;
 using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Repositories;
 using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Linq;
 
@@ -15,10 +16,12 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
     public class TextsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<Text, System.Guid, TextInputModel, TextDisplayModel>
     {
         private readonly IEntityRepository<Account, System.Guid> accountRepository;
+        private readonly IBridgeRepository<AccountTextBridge, Account, System.Guid, Text, System.Guid> accountTextBridgeRepository;
 
-        public TextsController(IEntityRepository<Account, System.Guid> accountRepository, IEntityRepository<Text, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<TextsController> localizer, ILogger<TextsController> logger) : base(repository, localizer, logger)
+        public TextsController(IBridgeRepository<AccountTextBridge, Account, System.Guid, Text, System.Guid> accountTextBridgeRepository, IEntityRepository<Account, System.Guid> accountRepository, IEntityRepository<Text, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<TextsController> localizer, ILogger<TextsController> logger) : base(repository, localizer, logger)
         {
             this.accountRepository = accountRepository;
+            this.accountTextBridgeRepository = accountTextBridgeRepository;
         }
 
         protected override System.Linq.Expressions.Expression<System.Func<Text, bool>> GetGlobalSelector()
@@ -51,7 +54,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 
             var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
-            if (!account.TextBridges.Any(bridge => bridge.SternId == entity.Id)) throw new System.InvalidOperationException();
+            if (!accountTextBridgeRepository.GetAll().Any(bridge => bridge.ProwId == account.Id && bridge.SternId == entity.Id)) throw new System.InvalidOperationException();
         }
 
         protected override void PreDelete(Text entity)
@@ -60,7 +63,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 
             var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
-            if (!account.TextBridges.Any(bridge => bridge.SternId == entity.Id)) throw new System.InvalidOperationException();
+            if (!accountTextBridgeRepository.GetAll().Any(bridge => bridge.ProwId == account.Id && bridge.SternId == entity.Id)) throw new System.InvalidOperationException();
         }
     }
 }

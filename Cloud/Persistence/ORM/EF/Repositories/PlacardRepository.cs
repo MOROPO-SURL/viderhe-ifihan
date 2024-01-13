@@ -3,7 +3,7 @@ using MOROPO.VIDERHE.Cloud.Persistence.Entities;
 
 namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Repositories
 {
-    public class PlacardRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.AbstractEntityRepository<Placard, System.Guid>
+    public class PlacardRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<Placard, System.Guid>
     {
         public PlacardRepository(DbContext dbContext) : base(dbContext)
         {
