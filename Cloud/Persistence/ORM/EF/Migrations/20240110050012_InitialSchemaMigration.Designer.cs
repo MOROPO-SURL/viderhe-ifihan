@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231129054901_InitialShemaMigration")]
-    partial class InitialShemaMigration
+    [Migration("20240110050012_InitialSchemaMigration")]
+    partial class InitialSchemaMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,7 +57,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("nextid");
 
                     b.Property<DateTime>("Registered")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("registered");
 
                     b.Property<string>("Signature")
@@ -201,7 +201,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("about");
 
                     b.Property<DateTime?>("BornDate")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("borndate");
 
                     b.Property<Guid?>("ImageId")
@@ -363,7 +363,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("alias");
 
                     b.Property<DateTime?>("BornDate")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("borndate");
 
                     b.Property<int>("CivilStatus")
@@ -800,7 +800,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("contenttype");
 
                     b.Property<DateTime>("CreateAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("createat");
 
                     b.Property<int>("Height")
@@ -883,7 +883,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("colormodel");
 
                     b.Property<DateTime>("CreateAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("createat");
 
                     b.Property<TimeSpan>("Duration")
@@ -933,7 +933,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("id");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("created");
 
                     b.Property<bool>("Enabled")
@@ -949,7 +949,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("hasfullaccess");
 
                     b.Property<DateTime>("LastSessionDate")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("lastsessiondate");
 
                     b.Property<string>("Password")
@@ -1004,7 +1004,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("id");
 
                     b.Property<DateTime>("CreateAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("createat");
 
                     b.Property<Guid?>("DefaultOverlayId")
@@ -1279,7 +1279,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("about");
 
                     b.Property<DateTime>("CreateAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("createat");
 
                     b.Property<string>("Data")
@@ -1360,7 +1360,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("accountid");
 
                     b.Property<DateTime?>("BeginAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("beginat");
 
                     b.Property<int?>("ComplementationKind")
@@ -1368,11 +1368,11 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("complementationkind");
 
                     b.Property<DateTime>("CreateAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("createat");
 
                     b.Property<DateTime?>("EndAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("endat");
 
                     b.Property<string>("Label")
@@ -1649,7 +1649,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("audioformat");
 
                     b.Property<DateTime>("CreateAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("createat");
 
                     b.Property<TimeSpan>("Duration")
@@ -1757,7 +1757,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .HasColumnName("content");
 
                     b.Property<DateTime>("CreateAt")
-                        .HasColumnType("timestamp with time zone")
+                        .HasColumnType("timestamp without time zone")
                         .HasColumnName("createat");
 
                     b.HasKey("Id")

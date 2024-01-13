@@ -36,7 +36,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
         private void OverviewEditButton_Clicked(object sender, System.EventArgs e)
         {
-            this.NavigationPushPageAsync(new EditSoundPage((sender as Xamarin.Forms.BindableObject).BindingContext as SoundViewModel));
+            this.NavigationPushPageAsync(new EditSoundPage((sender as Xamarin.Forms.BindableObject).BindingContext as SoundViewModel, RequiredReload_Callback));
         }
 
         private void DismissTargetButton_Clicked(object sender, System.EventArgs eventArgs)

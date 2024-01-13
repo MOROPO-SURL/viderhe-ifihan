@@ -3,7 +3,7 @@ using MOROPO.VIDERHE.Cloud.Persistence.Entities;
 
 namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Repositories
 {
-    public class SoundRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.AbstractEntityRepository<Sound, System.Guid>
+    public class SoundRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<Sound, System.Guid>
     {
         public SoundRepository(DbContext dbContext) : base(dbContext)
         {

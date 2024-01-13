@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialShemaMigration : Migration
+    public partial class InitialSchemaMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -73,7 +73,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    createat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    createat = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     data = table.Column<string>(type: "text", nullable: false),
                     about = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true)
                 },
@@ -146,7 +146,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    createat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    createat = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     content = table.Column<string>(type: "text", nullable: false),
                     about = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true)
                 },
@@ -178,7 +178,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     type = table.Column<int>(type: "integer", nullable: false),
                     author = table.Column<string>(type: "text", nullable: true),
-                    registered = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    registered = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     entityname = table.Column<string>(type: "text", nullable: false),
                     beforedata = table.Column<string>(type: "text", nullable: false),
                     afterdata = table.Column<string>(type: "text", nullable: true),
@@ -200,8 +200,8 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                     password = table.Column<string>(type: "text", nullable: false),
                     passwordchangerequired = table.Column<bool>(type: "boolean", nullable: false),
                     hasfullaccess = table.Column<bool>(type: "boolean", nullable: false),
-                    created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    lastsessiondate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    created = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    lastsessiondate = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     failauthenticationcount = table.Column<int>(type: "integer", nullable: false),
                     signature = table.Column<string>(type: "text", nullable: false)
                 },
@@ -355,7 +355,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    createat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    createat = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     contenttype = table.Column<string>(type: "text", nullable: false),
                     length = table.Column<long>(type: "bigint", nullable: false),
                     about = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
@@ -379,7 +379,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    createat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    createat = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     extension = table.Column<string>(type: "text", nullable: false),
                     length = table.Column<long>(type: "bigint", nullable: false),
                     about = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
@@ -405,7 +405,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    createat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    createat = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     extension = table.Column<string>(type: "text", nullable: false),
                     length = table.Column<long>(type: "bigint", nullable: false),
                     about = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: true),
@@ -492,7 +492,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                     verticalsplashid = table.Column<Guid>(type: "uuid", nullable: false),
                     defaultoverlayid = table.Column<Guid>(type: "uuid", nullable: true),
                     serializedoverlaycontext = table.Column<string>(type: "text", nullable: true),
-                    createat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    createat = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     enabled = table.Column<bool>(type: "boolean", nullable: false),
                     signature = table.Column<string>(type: "text", nullable: false)
                 },
@@ -536,7 +536,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                     ownerid = table.Column<Guid>(type: "uuid", nullable: true),
                     imageid = table.Column<Guid>(type: "uuid", nullable: true),
                     name = table.Column<string>(type: "text", nullable: false),
-                    borndate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    borndate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     about = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -568,7 +568,7 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                     civilstatus = table.Column<int>(type: "integer", nullable: false),
                     imageid = table.Column<Guid>(type: "uuid", nullable: true),
                     name = table.Column<string>(type: "text", nullable: false),
-                    borndate = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    borndate = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     about = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -755,13 +755,13 @@ namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Migrations
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    createat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    createat = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     accountid = table.Column<Guid>(type: "uuid", nullable: false),
                     label = table.Column<string>(type: "text", nullable: false),
                     templateid = table.Column<Guid>(type: "uuid", nullable: false),
                     playerorientationsupportkind = table.Column<int>(type: "integer", nullable: true),
-                    beginat = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    endat = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    beginat = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
+                    endat = table.Column<DateTime>(type: "timestamp without time zone", nullable: true),
                     serializedcontext = table.Column<string>(type: "text", nullable: false),
                     complementationkind = table.Column<int>(type: "integer", nullable: true),
                     serializedcomplementation = table.Column<string>(type: "text", nullable: true)

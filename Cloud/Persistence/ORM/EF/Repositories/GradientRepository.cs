@@ -2,7 +2,7 @@
 
 namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Repositories
 {
-    public class GradientRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.AbstractEntityRepository<Gradient, System.Guid>
+    public class GradientRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<Gradient, System.Guid>
     {
         public GradientRepository(Microsoft.EntityFrameworkCore.DbContext dbContext) : base(dbContext)
         {

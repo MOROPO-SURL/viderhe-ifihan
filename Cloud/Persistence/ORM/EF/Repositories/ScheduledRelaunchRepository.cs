@@ -2,7 +2,7 @@
 
 namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Repositories
 {
-    public class ScheduledRelaunchRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.AbstractEntityRepository<ScheduledRelaunch, System.Guid>
+    public class ScheduledRelaunchRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<ScheduledRelaunch, System.Guid>
     {
         public ScheduledRelaunchRepository(Microsoft.EntityFrameworkCore.DbContext dbContext) : base(dbContext)
         {

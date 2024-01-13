@@ -13,7 +13,9 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
     {
         private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
-        public EditSoundPage(SoundViewModel viewModel)
+        private System.Action successCallbackAction;
+
+        public EditSoundPage(SoundViewModel viewModel, System.Action successCallbackAction)
             : base(new Models.Page.EditSoundPageModel
             {
                 Sound = viewModel
@@ -21,7 +23,18 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
         {
             validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
+            this.successCallbackAction = successCallbackAction;
+
             InitializeComponent();
+        }
+
+        protected override void DisposeUnmanagementResources()
+        {
+            base.DisposeUnmanagementResources();
+
+            successCallbackAction?.Invoke();
+
+            successCallbackAction = null;
         }
 
         private void CancelToolbarItem_Activated(object sender, System.EventArgs eventArgs)
