@@ -4,7 +4,12 @@
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<AssemblyName>MOROPO.VIDERHE.Cloud.SignalR.Connect.Player</AssemblyName>
 		<RootNamespace>MOROPO.VIDERHE.Cloud.SignalR.Connect.Player</RootNamespace>
-		<Version>2.0.3</Version>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>2.0.4</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -128,6 +128,8 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 
             if (inputModel.Identity.Image != null)
             {
+                if (inputModel.Identity.Image.Id == default) return;
+
                 var oldLogoImage = imageRepository.Get(inputModel.Identity.Image.Id);
 
                 imageRepository.Delete(oldLogoImage, User.Identity.Name);

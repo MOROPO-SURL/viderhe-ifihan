@@ -8,7 +8,7 @@
 
             try
             {
-                return Xamarin.Forms.ImageSource.FromUri(Factories.ThumbnailUriFactory.BuildVideoThumbnailUri((value as Models.View.VideoViewModel).ThumbnailId));
+                return Xamarin.Forms.ImageSource.FromUri(Factories.ThumbnailUriFactory.BuildVideoThumbnailUri((value as Models.View.VideoViewModel).Id));
             }
             catch
             {

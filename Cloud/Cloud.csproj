@@ -7,8 +7,8 @@
 		<Product>VIDERHE</Product>
 		<Authors>MOROPO DotNet DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
-		<Copyright>© MOROPO 2023, Todos los derechos reservados.</Copyright>
-		<Version>2.0.3</Version>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>2.0.4</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
@@ -28,11 +28,11 @@
 		<PackageReference Include="MediaToolkit.NetCore" Version="0.2.1-preview" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.25" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
-		<PackageReference Include="GuamaFramework.Core.Presentation.Web.API" Version="6.0.0.19" />
-		<PackageReference Include="GuamaFramework.Core.Security.Common.Presentation.Web.Frontend" Version="6.0.0.15" />
-		<PackageReference Include="GuamaFramework.Identity.Presentation.Web.Common" Version="6.0.0.15" />
-		<PackageReference Include="GuamaFramework.Security.Essential.Persistence.ORM.EF" Version="6.0.0.16" />
-		<PackageReference Include="GuamaFramework.Security.Essential.Presentation.Web.Backend" Version="6.0.0.16" />
+		<PackageReference Include="GuamaFramework.Core.Presentation.Web.API" Version="6.0.0.20" />
+		<PackageReference Include="GuamaFramework.Core.Security.Common.Presentation.Web.Frontend" Version="6.0.0.20" />
+		<PackageReference Include="GuamaFramework.Identity.Presentation.Web.Common" Version="6.0.0.20" />
+		<PackageReference Include="GuamaFramework.Security.Essential.Persistence.ORM.EF" Version="6.0.0.20" />
+		<PackageReference Include="GuamaFramework.Security.Essential.Presentation.Web.Backend" Version="6.0.0.20" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.13">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
