@@ -3,7 +3,7 @@ using MOROPO.VIDERHE.Cloud.Persistence.Entities;
 
 namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Repositories
 {
-    public class ScreenplayRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.AbstractEntityRepository<Screenplay, System.Guid>
+    public class ScreenplayRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<Screenplay, System.Guid>
     {
         public ScreenplayRepository(DbContext dbContext) : base(dbContext)
         {

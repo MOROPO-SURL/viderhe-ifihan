@@ -15,14 +15,18 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
     {
         private readonly IEntityRepository<Account, System.Guid> accountRepository;
         private readonly IEntityRepository<Moderator, System.Guid> moderatorRepository;
+        private readonly IBridgeRepository<AccountImageBridge, Account, System.Guid, Framework.Guama.Media.Persistence.Entities.Image, System.Guid> accountImageBridgeRepository;
+        private readonly IBridgeRepository<AccountVideoBridge, Account, System.Guid, Framework.Guama.Media.Persistence.Entities.Video, System.Guid> accountVideoBridgeRepository;
         private readonly IImageFileManagerFacade imageFileManager;
         private readonly IThumbnailFileManagerFacade thumbnailFileManager;
 
-        public MediaController(IEntityRepository<Moderator, System.Guid> moderatorRepository, IEntityRepository<Account, System.Guid> accountRepository, IImageFileManagerFacade imageFileManager, IThumbnailFileManagerFacade thumbnailFileManager, Microsoft.Extensions.Localization.IStringLocalizer<MediaController> localizer, ILogger<MediaController> logger)
+        public MediaController(IBridgeRepository<AccountVideoBridge, Account, System.Guid, Framework.Guama.Media.Persistence.Entities.Video, System.Guid> accountVideoBridgeRepository, IBridgeRepository<AccountImageBridge, Account, System.Guid, Framework.Guama.Media.Persistence.Entities.Image, System.Guid> accountImageBridgeRepository, IEntityRepository<Moderator, System.Guid> moderatorRepository, IEntityRepository<Account, System.Guid> accountRepository, IImageFileManagerFacade imageFileManager, IThumbnailFileManagerFacade thumbnailFileManager, Microsoft.Extensions.Localization.IStringLocalizer<MediaController> localizer, ILogger<MediaController> logger)
             : base(localizer, logger)
         {
             this.accountRepository = accountRepository;
             this.moderatorRepository = moderatorRepository;
+            this.accountImageBridgeRepository = accountImageBridgeRepository;
+            this.accountVideoBridgeRepository = accountVideoBridgeRepository;
             this.imageFileManager = imageFileManager;
             this.thumbnailFileManager = thumbnailFileManager;
         }
@@ -34,7 +38,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
-                var image = account.ImageBridges.First(b => b.SternId == key).Stern;
+                var image = accountImageBridgeRepository.FindOneBy(bridge => bridge.ProwId == account.Id && bridge.SternId == key)?.Stern;
 
                 return new FileContentResult(imageFileManager.GetImageFileContent(image), image.ContentType);
             }
@@ -54,7 +58,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
-                var image = account.ImageBridges.FirstOrDefault(b => b.SternId == key)?.Stern;
+                var image = accountImageBridgeRepository.FindOneBy(bridge => bridge.ProwId == account.Id && bridge.SternId == key)?.Stern;
 
                 if (image.Width > 0 && image.Height > 0 && image.Width <= width && image.Height <= height)
                 {
@@ -118,7 +122,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
-                var thumbnail = account.ImageBridges.First(b => b.Stern.Thumbnail.Id == key).Stern.Thumbnail;
+                var thumbnail = accountImageBridgeRepository.Get(account.Id, key).Stern.Thumbnail;
 
                 return new FileContentResult(thumbnailFileManager.GetThumbnailFileContent(thumbnail), thumbnail.ContentType);
             }
@@ -138,7 +142,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
-                var thumbnail = account.VideoBridges.First(b => b.Stern.Thumbnail.Id == key).Stern.Thumbnail;
+                var thumbnail = accountVideoBridgeRepository.Get(account.Id, key).Stern.Thumbnail;
 
                 return new FileContentResult(thumbnailFileManager.GetThumbnailFileContent(thumbnail), thumbnail.ContentType);
             }

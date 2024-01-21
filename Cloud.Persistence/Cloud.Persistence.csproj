@@ -1,19 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>MOROPO.VIDERHE.Cloud.Persistence</AssemblyName>
-    <RootNamespace>MOROPO.VIDERHE.Cloud.Persistence</RootNamespace>
-	<Version>2.0.3</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Cloud.Persistence</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Cloud.Persistence</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>2.0.4</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="GuamaFramework.Security.Essential.Persistence" Version="6.0.0.15" />
-    <PackageReference Include="GuamaFramework.Identity.Persistence" Version="6.0.0.15" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="GuamaFramework.Security.Essential.Persistence" Version="6.0.0.20" />
+		<PackageReference Include="GuamaFramework.Identity.Persistence" Version="6.0.0.20" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+	</ItemGroup>
 
 </Project>
