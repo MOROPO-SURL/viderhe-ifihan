@@ -242,6 +242,14 @@
       <Project>{4d4db49c-07e6-40db-a116-1146651260dc}</Project>
       <Name>Cloud.Persistence</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Overlaying\Extend.Common.Overlaying.csproj">
+      <Project>{a3bb2159-c755-415a-b238-81e5a24fa0aa}</Project>
+      <Name>Extend.Common.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Templating\Extend.Common.Templating.csproj">
+      <Project>{571b8648-903d-4322-addc-60ddbe97974f}</Project>
+      <Name>Extend.Common.Templating</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj">
       <Project>{7b10ab64-aec2-4109-bbb6-cbe522c1273c}</Project>
       <Name>Extend.Common.Transitioning.Presentation</Name>
@@ -290,9 +298,41 @@
       <Project>{f52e5e05-b3d9-44f2-bfdc-2c8483f1f770}</Project>
       <Name>Extend.Essential.Templating.Presentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj">
+      <Project>{5e18fba2-62e1-4bae-8917-1e809fc5fcfd}</Project>
+      <Name>Extend.Essential.Transitioning</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj">
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj">
+      <Project>{c6ec5e2a-cf68-4a31-b53d-0bf9ec767fa4}</Project>
+      <Name>Support.Extend.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Templating.Presentation\Support.Extend.Templating.Presentation.csproj">
+      <Project>{3483f51d-3eef-425e-b55a-cc251a8337b3}</Project>
+      <Name>Support.Extend.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Templating\Support.Extend.Templating.csproj">
+      <Project>{7a875aef-130d-440d-989e-1459d1c0b3ba}</Project>
+      <Name>Support.Extend.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Transitioning.Presentation\Support.Extend.Transitioning.Presentation.csproj">
+      <Project>{d30821d6-84ca-4a80-9c96-1d2dd24bc02b}</Project>
+      <Name>Support.Extend.Transitioning.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Transitioning\Support.Extend.Transitioning.csproj">
+      <Project>{b2638380-165d-4142-8714-38ba6deb6dc4}</Project>
+      <Name>Support.Extend.Transitioning</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend\Support.Extend.csproj">
+      <Project>{c7964055-5ee7-40e7-9830-b9385722f77e}</Project>
+      <Name>Support.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Presentation.Player\Support.Presentation.Player.csproj">
+      <Project>{83be5d7f-2fb7-40c5-a1ef-1b6ebdd8fed6}</Project>
+      <Name>Support.Presentation.Player</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj">
       <Project>{44A1EA24-59C5-4E9D-AF01-C65297998114}</Project>
