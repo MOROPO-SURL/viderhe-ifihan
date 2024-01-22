@@ -334,9 +334,49 @@
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Management.Presentation\Support.Extend.Management.Presentation.csproj">
+      <Project>{8eb24205-e599-4267-a450-684616a1d9c0}</Project>
+      <Name>Support.Extend.Management.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Management\Support.Extend.Management.csproj">
+      <Project>{0a76e425-a715-411f-adb7-8609e6c32132}</Project>
+      <Name>Support.Extend.Management</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj">
+      <Project>{c6ec5e2a-cf68-4a31-b53d-0bf9ec767fa4}</Project>
+      <Name>Support.Extend.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Templating.Presentation\Support.Extend.Templating.Presentation.csproj">
+      <Project>{3483f51d-3eef-425e-b55a-cc251a8337b3}</Project>
+      <Name>Support.Extend.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Templating\Support.Extend.Templating.csproj">
+      <Project>{7a875aef-130d-440d-989e-1459d1c0b3ba}</Project>
+      <Name>Support.Extend.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Transitioning.Presentation\Support.Extend.Transitioning.Presentation.csproj">
+      <Project>{d30821d6-84ca-4a80-9c96-1d2dd24bc02b}</Project>
+      <Name>Support.Extend.Transitioning.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Transitioning\Support.Extend.Transitioning.csproj">
+      <Project>{b2638380-165d-4142-8714-38ba6deb6dc4}</Project>
+      <Name>Support.Extend.Transitioning</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend\Support.Extend.csproj">
+      <Project>{c7964055-5ee7-40e7-9830-b9385722f77e}</Project>
+      <Name>Support.Extend</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj">
       <Project>{f36158f5-5a62-40f5-8f5e-ce85d8277f20}</Project>
       <Name>Support.Presentation.Dashboard</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Presentation.Player\Support.Presentation.Player.csproj">
+      <Project>{83be5d7f-2fb7-40c5-a1ef-1b6ebdd8fed6}</Project>
+      <Name>Support.Presentation.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj">
+      <Project>{44a1ea24-59c5-4e9d-af01-c65297998114}</Project>
+      <Name>Support.Presentation</Name>
     </ProjectReference>
     <ProjectReference Include="..\Terminal.Dashboard\Terminal.Dashboard.csproj">
       <Project>{A509FE0D-F850-4E5B-9936-116E4378C85F}</Project>
