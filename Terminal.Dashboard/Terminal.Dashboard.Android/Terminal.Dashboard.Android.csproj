@@ -58,7 +58,7 @@
     <AndroidEnableProfiledAot>true</AndroidEnableProfiledAot>
     <AndroidSupportedAbis>
     </AndroidSupportedAbis>
-    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidKeyStore>false</AndroidKeyStore>
     <AndroidSigningKeyStore>W:\Dossiers\+SSC\Signature\Android\SSC.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>matorr3S/*-e21</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>ssc</AndroidSigningKeyAlias>
@@ -139,7 +139,7 @@
       <Version>2.1.41</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>5.0.0.2622</Version>
+      <Version>5.0.0.2578</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
