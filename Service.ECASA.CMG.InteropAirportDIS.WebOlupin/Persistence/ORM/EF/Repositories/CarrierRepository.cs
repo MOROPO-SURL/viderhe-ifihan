@@ -2,7 +2,7 @@
 
 namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.EF.Repositories
 {
-    public class CarrierRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.AbstractEntityRepository<InterFIDS.Persistence.Entities.Carrier, string>
+    public class CarrierRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<InterFIDS.Persistence.Entities.Carrier, string>
     {
         public CarrierRepository(DbContext dbContext) : base(dbContext)
         {

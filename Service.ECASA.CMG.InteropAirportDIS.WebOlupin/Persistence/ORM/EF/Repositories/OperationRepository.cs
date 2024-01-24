@@ -2,7 +2,7 @@
 
 namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.EF.Repositories
 {
-    public class OperationRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.AbstractEntityRepository<InterFIDS.Persistence.Entities.Operation, long>
+    public class OperationRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<InterFIDS.Persistence.Entities.Operation, long>
     {
         public OperationRepository(DbContext dbContext) : base(dbContext)
         {

@@ -2,7 +2,7 @@
 
 namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.EF.Repositories
 {
-    public class CheckInRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.AbstractEntityRepository<InterFIDS.Persistence.Entities.CheckIn, System.Guid>
+    public class CheckInRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<InterFIDS.Persistence.Entities.CheckIn, System.Guid>
     {
         public CheckInRepository(DbContext dbContext) : base(dbContext)
         {

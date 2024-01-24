@@ -7,11 +7,11 @@
 		<Authors>MOROPO VIDERHE DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
 		<Copyright>© MOROPO S.U.R.L. ECASA 2023, Todos los derechos reservados.</Copyright>
-		<Version>0.2.0</Version>
+		<Version>0.2.2</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 	<ItemGroup>
-	  <PackageReference Include="GuamaFramework.Core.Security.Common.Persistence" Version="6.0.0.15" />
+	  <PackageReference Include="GuamaFramework.Core.Security.Common.Persistence" Version="6.0.0.20" />
 	  <PackageReference Include="GuamaFramework.Identity.Persistence" Version="6.0.0.20" />
 	</ItemGroup>
 </Project>
