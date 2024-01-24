@@ -8,8 +8,8 @@
 		<Product>VIDERHE</Product>
 		<Authors>MOROPO DotNet DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
-		<Copyright>© MOROPO 2023, Todos los derechos reservados.</Copyright>
-		<Version>2.0.1</Version>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>2.0.4</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
@@ -31,10 +31,10 @@
 	<ItemGroup>
 		<PackageReference Include="MagicGradients" Version="1.3.1" />
 		<PackageReference Include="MediaTypeMap.Core" Version="2.3.3" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.1" />
 		<PackageReference Include="NodaTime" Version="3.1.10" />
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
-		<PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.6" />
+		<PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.7" />
 		<PackageReference Include="SSCXFToolKit.IoC" Version="0.2.0-alpha" />
 		<PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
 		<PackageReference Include="SSCXFToolKit.Presentation" Version="0.6.4" />
@@ -47,7 +47,7 @@
 		<PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
 		<PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
 		<PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.41" />
-		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2622" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
 	</ItemGroup>
 
   <ItemGroup>

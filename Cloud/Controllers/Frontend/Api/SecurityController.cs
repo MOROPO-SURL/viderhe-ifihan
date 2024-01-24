@@ -17,12 +17,14 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
         private readonly Microsoft.Extensions.Options.IOptions<JwtOptions> jwtOptions;
         private readonly IIdentityProviderFacade identityProvider;
         private readonly IEntityRepository<Account, System.Guid> accountRepository;
+        private readonly IBridgeRepository<AccountModeratorBridge, Account, System.Guid, Moderator, System.Guid> accountModeratorBridgeRepository;
 
-        public SecurityController(IEntityRepository<Account, System.Guid> accountRepository, IIdentityProviderFacade identityProvider, Microsoft.Extensions.Options.IOptions<JwtOptions> jwtOptions, Microsoft.Extensions.Localization.IStringLocalizer<SecurityController> localizer, ILogger<SecurityController> logger) : base(localizer, logger)
+        public SecurityController(IBridgeRepository<AccountModeratorBridge, Account, System.Guid, Moderator, System.Guid> accountModeratorBridgeRepository, IEntityRepository<Account, System.Guid> accountRepository, IIdentityProviderFacade identityProvider, Microsoft.Extensions.Options.IOptions<JwtOptions> jwtOptions, Microsoft.Extensions.Localization.IStringLocalizer<SecurityController> localizer, ILogger<SecurityController> logger) : base(localizer, logger)
         {
             this.jwtOptions = jwtOptions;
             this.identityProvider = identityProvider;
             this.accountRepository = accountRepository;
+            this.accountModeratorBridgeRepository = accountModeratorBridgeRepository;
         }
 
         [HttpPost("[action]")]
@@ -43,7 +45,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 
                     userIdentity.AddClaim(new System.Security.Claims.Claim(Policies.ACCOUNT_VALIDATED_MODERATION, account.Id.ToString()));
 
-                    var moderator = account.ModeratorBridges.First(b => b.Stern.UserId == userIdentity.Name).Stern;
+                    var moderator = accountModeratorBridgeRepository.GetAll().First(bridge => bridge.ProwId == account.Id && bridge.Stern.UserId == userIdentity.Name).Stern;
 
                     return GenerateToken(userIdentity, moderator);
                 }

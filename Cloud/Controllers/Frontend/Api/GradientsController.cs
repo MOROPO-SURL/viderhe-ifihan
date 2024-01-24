@@ -15,10 +15,12 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
     public class GradientsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<Gradient, System.Guid, GradientInputModel, GradientDisplayModel>
     {
         private readonly IEntityRepository<Account, System.Guid> accountRepository;
+        private readonly IBridgeRepository<AccountGradientBridge, Account, System.Guid, Gradient, System.Guid> accountGradientBridgeRepository;
 
-        public GradientsController(IEntityRepository<Account, System.Guid> accountRepository, IEntityRepository<Gradient, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<GradientsController> localizer, ILogger<GradientsController> logger) : base(repository, localizer, logger)
+        public GradientsController(IBridgeRepository<AccountGradientBridge, Account, System.Guid, Gradient, System.Guid> accountGradientBridgeRepository, IEntityRepository<Account, System.Guid> accountRepository, IEntityRepository<Gradient, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<GradientsController> localizer, ILogger<GradientsController> logger) : base(repository, localizer, logger)
         {
             this.accountRepository = accountRepository;
+            this.accountGradientBridgeRepository = accountGradientBridgeRepository;
         }
 
         protected override System.Linq.Expressions.Expression<System.Func<Gradient, bool>> GetGlobalSelector()
@@ -51,7 +53,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 
             var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
-            if (!account.GradientBridges.Any(bridge => bridge.SternId == entity.Id)) throw new System.InvalidOperationException();
+            if (!accountGradientBridgeRepository.GetAll().Any(bridge => bridge.ProwId == account.Id && bridge.SternId == entity.Id)) throw new System.InvalidOperationException();
         }
 
         protected override void PreDelete(Gradient entity)
@@ -60,7 +62,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 
             var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
-            if (!account.GradientBridges.Any(bridge => bridge.SternId == entity.Id)) throw new System.InvalidOperationException();
+            if (!accountGradientBridgeRepository.GetAll().Any(bridge => bridge.ProwId == account.Id && bridge.SternId == entity.Id)) throw new System.InvalidOperationException();
         }
     }
 }
