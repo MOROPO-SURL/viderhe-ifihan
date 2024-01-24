@@ -28,6 +28,9 @@
 		<EmbeddedResource Update="Pages\NMTourOverlayConfigurationPage.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\NMTourOverlaySectionConfigurationPage.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 	</ItemGroup>
 
 </Project>

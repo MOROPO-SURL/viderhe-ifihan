@@ -4,9 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Extend.CPCC.Overlaying.Dashboard.Presentation.Models.Page"
     xmlns:supportpresentationdashboardviews="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="MOROPO.VIDERHE.Extend.CPCC.Overlaying.Dashboard.Presentation.Pages.NMTourOverlayConfigurationPage"
     x:TypeArguments="pagemodels:NMTourOverlayConfigurationPageModel">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem 
             Text="Aplicar"
@@ -39,81 +46,252 @@
         <Grid>
             <supportpresentationdashboardviews:BackgroundView />
             <ScrollView Orientation="Vertical">
-                <Grid 
-                    Margin="10"
-                    ColumnSpacing="10" RowSpacing="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
+                <StackLayout Spacing="10" Padding="10">
                     <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"
-                        Style="{StaticResource FormFieldFrame}">
-                        <StackLayout>
-                            <Label Text="Nombre del Servidor" Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=ServerName}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="2" Grid.Row="0"
-                        Style="{StaticResource FormFieldFrame}">
-                        <StackLayout>
-                            <Label Text="Servidor Seguro" Style="{StaticResource FormLabel}" />
-                            <Switch IsToggled="{Binding Path=IsSecureServer}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="3" Grid.Row="0"
-                        Style="{StaticResource FormFieldFrame}">
-                        <StackLayout>
-                            <Label Text="Servidor con Seguridad Estricta" Style="{StaticResource FormLabel}" />
-                            <Switch 
-                                IsEnabled="{Binding Path=IsSecureServer}"
-                                IsToggled="{Binding Path=IsRequiredSecurityStrict}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1"
-                        Style="{StaticResource FormFieldFrame}">
-                        <StackLayout>
-                            <Label Text="Cabeza de Avisos" Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=Head}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2"
-                        Style="{StaticResource FormFieldFrame}">
-                        <StackLayout>
-                            <Label Text="Cola de Avisos" Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=Tail}" />
-                        </StackLayout>
-                    </Frame>
-                    <Frame 
-                        Grid.Column="0" Grid.Row="3"
                         Style="{StaticResource FormFieldFrame}"
+                        BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">
                         <StackLayout>
-                            <Label Text="Separador de Avisos" Style="{StaticResource FormLabel}" />
-                            <Entry Text="{Binding Path=Separator}" />
+                            <Label Text="Cinta informativa" Style="{StaticResource FormLabel}" />                            
+                            <Grid 
+                                ColumnSpacing="10" RowSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Frame 
+                                    Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Nombre del Servidor" Style="{StaticResource FormLabel}" />
+                                        <Entry Text="{Binding Path=ServerName}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="2" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Servidor Seguro" Style="{StaticResource FormLabel}" />
+                                        <Switch IsToggled="{Binding Path=IsSecureServer}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="3" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Servidor con Seguridad Estricta" Style="{StaticResource FormLabel}" />
+                                        <Switch 
+                                            IsEnabled="{Binding Path=IsSecureServer}"
+                                            IsToggled="{Binding Path=IsRequiredSecurityStrict}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="1"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Cabeza de Avisos" Style="{StaticResource FormLabel}" />
+                                        <Entry Text="{Binding Path=Head}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="2"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Cola de Avisos" Style="{StaticResource FormLabel}" />
+                                        <Entry Text="{Binding Path=Tail}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="0" Grid.Row="3"
+                                    Style="{StaticResource FormFieldFrame}"
+                                    VerticalOptions="Start">
+                                    <StackLayout>
+                                        <Label Text="Separador de Avisos" Style="{StaticResource FormLabel}" />
+                                        <Entry Text="{Binding Path=Separator}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Mensaje de Respaldo" Style="{StaticResource FormLabel}" />
+                                        <Editor HeightRequest="180" Text="{Binding Path=FailbackMessage}" />
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
                         </StackLayout>
                     </Frame>
-                    <Frame 
-                        Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3"
-                        Style="{StaticResource FormFieldFrame}">
-                        <StackLayout>
-                            <Label Text="Mensaje de Respaldo" Style="{StaticResource FormLabel}" />
-                            <Editor HeightRequest="180" Text="{Binding Path=FailbackMessage}" />
-                        </StackLayout>
-                    </Frame>
-                </Grid>
+                    <Grid 
+                        ColumnSpacing="10" RowSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Frame 
+                            Style="{StaticResource FormFieldFrame}"
+                            Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                            VerticalOptions="Start"
+                            Padding="0">
+                            <Grid 
+                                VerticalOptions="FillAndExpand"
+                                ColumnSpacing="0" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label 
+                                    Grid.Column="0" Grid.Row="0"
+                                    Margin="10,10,10,6"
+                                    Text="Imagen de Cabecera" 
+                                    Style="{StaticResource FormLabel}" />
+                                <Button
+                                    Grid.Column="1" Grid.Row="0"
+                                    VerticalOptions="Start"
+                                    Style="{StaticResource TextIconButton}"
+                                    Text="&#xF90E;"
+                                    FontSize="Medium"
+                                    Clicked="PickBannerImageButton_Clicked" />
+                                <BoxView
+                                    Grid.ColumnSpan="2" Grid.Row="1"
+                                    BackgroundColor="#666666" 
+                                    HeightRequest="1" />
+                                <ffimageloadingforms:CachedImage
+                                    Grid.ColumnSpan="2" Grid.Row="2"
+                                    BackgroundColor="Black"
+                                    HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                    CacheType="Disk"
+                                    CacheDuration="8760:00:00"
+                                    Source="{Binding Path=BannerImage, Converter={StaticResource ImageViewModelToImageSourceConverter}}"
+                                    Aspect="AspectFill" />
+                            </Grid>
+                        </Frame>
+                        <Frame 
+                            Grid.Column="1" Grid.Row="0"
+                            Style="{StaticResource FormFieldFrame}">
+                            <StackLayout>
+                                <Label Text="Título" Style="{StaticResource FormLabel}" />
+                                <Entry Text="{Binding Path=Title}" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame 
+                            Grid.Column="1" Grid.Row="1"
+                            Style="{StaticResource FormFieldFrame}"
+                            VerticalOptions="Start">
+                            <StackLayout>
+                                <Label Text="Acerca de" Style="{StaticResource FormLabel}" />
+                                <Editor HeightRequest="90" Text="{Binding Path=About}" />
+                            </StackLayout>
+                        </Frame>
+                        <Frame 
+                            Style="{StaticResource FormFieldFrame}"
+                            Grid.Column="1" Grid.Row="2"
+                            BackgroundColor="#66FFFFFF"
+                            VerticalOptions="Start"
+                            Padding="0">
+                            <Grid 
+                                VerticalOptions="FillAndExpand"
+                                ColumnSpacing="0" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <BoxView
+                                    Grid.ColumnSpan="2" Grid.Row="0"
+                                    Color="White" />
+                                <Label 
+                                    Grid.Column="0" Grid.Row="0"
+                                    Margin="10,10,10,6"
+                                    Text="Secciones interactivas" 
+                                    Style="{StaticResource FormLabel}" />
+                                <Button
+                                    Grid.Column="1" Grid.Row="0"
+                                    VerticalOptions="Start"
+                                    Style="{StaticResource TextIconButton}"
+                                    Text="&#xF415;"
+                                    FontSize="Medium"
+                                    Clicked="AddInteractiveSectionButton_Clicked" />
+                                <BoxView
+                                    Grid.ColumnSpan="2" Grid.Row="1"
+                                    BackgroundColor="#666666" 
+                                    HeightRequest="1" />
+                                <CollectionView
+                                    Grid.ColumnSpan="2" Grid.Row="2"
+                                    HeightRequest="400"
+                                    Margin="10,5"
+                                    ItemsSource="{Binding Path=Sections}">
+                                    <CollectionView.ItemsLayout>
+                                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="5" />
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid 
+                                                ColumnSpacing="8" RowSpacing="0"
+                                                Margin="10,5" Padding="8"
+                                                BackgroundColor="White">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                </Grid.RowDefinitions>
+                                                <Label
+                                                    Grid.Column="0" Grid.RowSpan="2"
+                                                    VerticalTextAlignment="Center"
+                                                    Text="{Binding Path=Glyph}"
+                                                    FontFamily="{StaticResource IconFontFamily}"
+                                                    FontSize="36" />
+                                                <Label
+                                                    Grid.Column="1" Grid.Row="0"
+                                                    VerticalTextAlignment="Center"
+                                                    Text="{Binding Path=Title}"
+                                                    FontAttributes="Bold"
+                                                    FontSize="18" />
+                                                <Label
+                                                    Grid.Column="1" Grid.Row="1"
+                                                    VerticalTextAlignment="Center"
+                                                    Text="{Binding Path=Action}"
+                                                    FontAttributes="Italic" />
+                                                <Button 
+                                                    Grid.Column="2" Grid.RowSpan="2"
+                                                    Style="{StaticResource OptionsTextIconButton}"
+                                                    WidthRequest="32" HeightRequest="48"
+                                                    VerticalOptions="Center"
+                                                    Padding="0"
+                                                    Text="&#xF1D9;"
+                                                    FontSize="Medium"
+                                                    Clicked="OptionsButton_Clicked" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
             </ScrollView>
         </Grid>
     </ContentPage.Content>

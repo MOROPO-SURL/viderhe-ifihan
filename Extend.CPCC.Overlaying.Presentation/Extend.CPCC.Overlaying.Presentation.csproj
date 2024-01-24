@@ -25,6 +25,7 @@
 		<PackageReference Include="SAPRESSC.Business.Billboard.CPCC.Web.Api.Client" Version="0.6.0-alpha" />
 		<PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.7" />
 		<PackageReference Include="SSCXFToolKit.Presentation" Version="0.6.4" />
+		<PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
 		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2622" />
 	</ItemGroup>
 

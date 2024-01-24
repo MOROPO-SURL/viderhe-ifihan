@@ -3,8 +3,10 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:supportpresentationhelpers="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Helpers;assembly=MOROPO.VIDERHE.Support.Presentation"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:Class="MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Pages.NMTourPage"
     NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
@@ -14,10 +16,14 @@
             <Style x:Key="SectionLaunchButtonStyle" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="#99FFFFFF" />
                 <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="Margin" Value="8" />
                 <Setter Property="Padding" Value="20" />
+                <Setter Property="WidthRequest" Value="184" />
                 <Setter Property="ContentLayout" Value="Top,20" />
                 <Setter Property="TextColor" Value="Black" />
             </Style>
+
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -36,7 +42,7 @@
             <Frame
                 VerticalOptions="Center" HorizontalOptions="Center"            
                 Margin="20"  Padding="0"
-                WidthRequest="600"
+                WidthRequest="616"
                 BackgroundColor="LightGray"
                 CornerRadius="4">
                 <Grid 
@@ -44,9 +50,16 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>                              
-                    <Image 
-                        x:Name="MainImage"
+                    </Grid.RowDefinitions>
+                    <ffimageloadingforms:CachedImage 
+                        HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                        BackgroundColor="DarkGray"
+                        FadeAnimationEnabled="True"
+                        Source="{Binding Path=BannerImageSource, Mode=OneTime}"
+                        LoadingDelay="25"
+                        Aspect="AspectFill"
+                        CacheType="Disk"
+                        CacheDuration="8760:00:00"
                         Grid.Row="0" />
                     <StackLayout
                         Grid.Row="0"
@@ -55,104 +68,41 @@
                         VerticalOptions="End"
                         Spacing="0">
                         <Label
-                            Text="Complejo Audiovisual"
-                            TextColor="White"
-                            FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.LargeBodyTextFontSize}" />
-                        <Label
-                            Text="Nuevo Mundo"
+                            Text="{Binding Path=Title, Mode=OneTime}"
                             TextColor="White"
                             FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.LargeHeaderTextFontSize}" />
-                    </StackLayout>                
-                    <Grid 
+                        <Label
+                            Text="{Binding Path=About, Mode=OneTime}"
+                            TextColor="White"
+                            FontSize="{Static supportpresentationhelpers:StaticResourceProvisioningHelper.LargeBodyTextFontSize}" />
+                    </StackLayout>
+                    <ScrollView
                         Grid.Row="1"
-                        Padding="8"
-                        ColumnSpacing="8" RowSpacing="10"
-                        HeightRequest="400">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                            <ColumnDefinition />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Button
-                            Grid.Column="0" Grid.Row="0"
-                            Style="{StaticResource SectionLaunchButtonStyle}"
-                            Text="Galería QR"
-                            Clicked="QRGalleryPresentButton_Clicked">
-                            <Button.ImageSource>
-                                <FontImageSource
-                                    FontFamily="{StaticResource IconFontFamily}"
-                                    Color="Black"
-                                    Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
-                                    Glyph="&#xf433;"/>
-                            </Button.ImageSource>
-                        </Button>
-                        <Button
-                            Grid.Column="1" Grid.Row="0"
-                            Style="{StaticResource SectionLaunchButtonStyle}"
-                            Text="Cartelera de Cine">
-                            <Button.ImageSource>
-                                <FontImageSource
-                                    FontFamily="{StaticResource IconFontFamily}"
-                                    Color="Black"
-                                    Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
-                                    Glyph="&#xf381;"/>
-                            </Button.ImageSource>
-                        </Button>
-                        <Button
-                            Grid.Column="2" Grid.Row="0"
-                            Style="{StaticResource SectionLaunchButtonStyle}"
-                            Text="Próximos Eventos">
-                            <Button.ImageSource>
-                                <FontImageSource
-                                    FontFamily="{StaticResource IconFontFamily}"
-                                    Color="Black"
-                                    Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
-                                    Glyph="&#xFA31;"/>
-                            </Button.ImageSource>
-                        </Button>
-                        <Button
-                            Grid.Column="0" Grid.Row="1"
-                            Style="{StaticResource SectionLaunchButtonStyle}"
-                            Text="Mediateca Digital">
-                            <Button.ImageSource>
-                                <FontImageSource
-                                    FontFamily="{StaticResource IconFontFamily}"
-                                    Color="Black"
-                                    Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
-                                    Glyph="&#xf448;"/>
-                            </Button.ImageSource>
-                        </Button>
-                        <Button
-                            Grid.Column="1" Grid.Row="1"
-                            Style="{StaticResource SectionLaunchButtonStyle}"
-                            Text="Café Nuevo Mundo"
-                            Clicked="CoffePresentButton_Clicked">
-                            <Button.ImageSource>
-                                <FontImageSource
-                                    FontFamily="{StaticResource IconFontFamily}"
-                                    Color="Black"
-                                    Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
-                                    Glyph="&#xf176;"/>
-                            </Button.ImageSource>
-                        </Button>
-                        <Button
-                            Grid.Column="2" Grid.Row="1"
-                            Style="{StaticResource SectionLaunchButtonStyle}"
-                            Text="Portal El Callejón"
-                            Clicked="ProjectWebPortalPresentButton_Clicked">
-                            <Button.ImageSource>
-                                <FontImageSource
-                                    FontFamily="{StaticResource IconFontFamily}"
-                                    Color="Black"
-                                    Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
-                                    Glyph="&#xf5b4;"/>
-                            </Button.ImageSource>
-                        </Button>
-                    </Grid>
+                        HeightRequest="400"
+                        Orientation="Vertical">                        
+                        <FlexLayout                         
+                            Margin="8"
+                            Wrap="Wrap"
+                            AlignItems="Start" AlignContent="Start"
+                            BindableLayout.ItemsSource="{Binding Path=Sections, Mode=OneTime}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Button
+                                        Style="{StaticResource SectionLaunchButtonStyle}"
+                                        Text="{Binding Path=Title, Mode=OneTime}"
+                                        Clicked="SectionLaunchButton_Clicked">
+                                        <Button.ImageSource>
+                                            <FontImageSource
+                                                FontFamily="{StaticResource IconFontFamily}"
+                                                Color="Black"
+                                                Size="{StaticResource SectionLaunchButtonFontImageSourceSize}"
+                                                Glyph="{Binding Path=Glyph, Mode=OneTime}"/>
+                                        </Button.ImageSource>
+                                    </Button>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </FlexLayout>
+                    </ScrollView>
                 </Grid>
             </Frame>
             <ImageButton

@@ -1,4 +1,5 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+using System.Linq;
 
 namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Pages
 {
@@ -6,13 +7,50 @@ namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Pages
     {
         private System.Action presentationCompleteCallbackAction;
 
-        public NMTourPage(System.Action presentationCompleteCallbackAction)
+        private System.Collections.Generic.List<Models.Context.NMTourOverlaySectionContextModel> sections;
+
+        public NMTourPage(Models.Context.NMTourOverlayContextModel model, System.Action presentationCompleteCallbackAction)
         {
             this.presentationCompleteCallbackAction = presentationCompleteCallbackAction;
 
             InitializeComponent();
 
-            MainImage.Source = Xamarin.Forms.ImageSource.FromResource("MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Resources.Image.NM-landscape.jpg", GetType().Assembly);
+            sections = new System.Collections.Generic.List<Models.Context.NMTourOverlaySectionContextModel>(model.Sections);
+
+            BindingContext = new Models.Page.NMTourPageModel
+            {
+                Title = model.Title,
+                About = model.About,
+                BannerImageSource = Support.Presentation.Factories.ImageUriFactory.BuildImageUri(model.BannerImage.Id)
+            };
+
+            IsEnabled = false;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (IsEnabled) return;
+
+            IsEnabled = true;
+
+            System.Threading.Tasks.Task.Delay(100).ContinueWith(_ =>
+            {
+                while (sections.Count > 0)
+                {
+                    var option = sections.First();
+
+                    sections.RemoveAt(0);
+
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() => 
+                    {
+                        (BindingContext as Models.Page.NMTourPageModel).Sections.Add(option);
+                    });
+
+                    if (sections.Count > 0) System.Threading.Thread.Sleep(200);
+                }
+            });
         }
 
         protected override void OnDisappearing()
@@ -22,34 +60,18 @@ namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Pages
             presentationCompleteCallbackAction?.Invoke();
 
             presentationCompleteCallbackAction = null;
+
+            sections = null;
         }
 
-        private void ProjectWebPortalPresentButton_Clicked(object sender, System.EventArgs eventArgs)
+        private void SectionLaunchButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushModalPageAsync(new WebPortalPage(new Models.Page.WebPortalPageModel
-            {
-                Title = "Portal del proyecto Callejón de los Milagros",
-                Url = new System.Uri("http://www.elcallejon.net/"),
-                IsNavigationEnabled = true
-            }));
-        }
+            var model = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.Context.NMTourOverlaySectionContextModel;
 
-        private void QRGalleryPresentButton_Clicked(object sender, System.EventArgs eventArgs)
-        {
             this.NavigationPushModalPageAsync(new WebPortalPage(new Models.Page.WebPortalPageModel
             {
-                Title = "Galería QR",
-                Url = new System.Uri("http://qr.elcallejon.net:8080/"),
-                IsNavigationEnabled = true
-            }));
-        }
-
-        private void CoffePresentButton_Clicked(object sender, System.EventArgs eventArgs)
-        {
-            this.NavigationPushModalPageAsync(new WebPortalPage(new Models.Page.WebPortalPageModel
-            {
-                Title = "Café Nuevo Mundo",
-                Url = new System.Uri("http://cafe.elcallejon.net:8080/"),
+                Title = model.Title,
+                Url = new System.Uri(model.Action),
                 IsNavigationEnabled = true
             }));
         }

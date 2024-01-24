@@ -1,6 +1,4 @@
-﻿using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Models.Context;
-using MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Models.View;
-using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Views
 {
@@ -8,11 +6,9 @@ namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Views
     {
         internal static readonly double INLINEADVICES_LAYOUT_MOTION_TRANSLATION = 80;
 
-        private readonly NMTourOverlayContextModel model;
+        private readonly Models.Context.NMTourOverlayContextModel model;
 
-        //private XFToolKit.Presentation.Transform.Animations.HeartAnimation screenInteractionSuggestLabelAnimation;
-
-        public NMTourOverlayView(NMTourOverlayContextModel model)
+        public NMTourOverlayView(Models.Context.NMTourOverlayContextModel model)
         {
             this.model = model;
 
@@ -38,33 +34,18 @@ namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Views
             });
         }
 
-        //private void ScreenInteractionSuggestLabelAnimation_Completed(object sender, System.EventArgs eventArgs)
-        //{
-        //    if (!IsEnabled) return;
-
-        //    System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(10)).ContinueWith(_ =>
-        //    {
-        //        Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-        //        {
-        //            InterationIndicationLayout.Scale = 1;
-
-        //            screenInteractionSuggestLabelAnimation?.Begin();
-        //        });
-        //    });
-        //}
-
         private void ShowInAnimation_Completed(object sender, System.EventArgs e)
         {
             (sender as SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract.AbstractAnimation).Completed -= ShowInAnimation_Completed;
-
-            //Xamarin.Forms.Device.BeginInvokeOnMainThread(EnableInteractionEmplasisAnimation);
 
             IsEnabled = true;
         }
 
         private void OverlayViewTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
         {
-            //DisableInteractionEmplasisAnimation();
+            if (!IsEnabled) return;
+
+            IsEnabled = false;
 
             var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
             {
@@ -79,7 +60,7 @@ namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Views
 
             presenter.SuspendPresentation();
 
-            Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Pages.NMTourPage(InteractivePresentationComplete_Callback));
+            Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Pages.NMTourPage(model, InteractivePresentationComplete_Callback));
         }
 
         private void InteractivePresentationComplete_Callback()
@@ -98,6 +79,8 @@ namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Views
             var presenter = Xamarin.Forms.DependencyService.Get<Common.Templating.Presentation.Presenters.Facade.IOvarlablePresenter>();
 
             presenter.ResumePresentation();
+
+            IsEnabled = true;
         }
 
         public override void ShowIn()
@@ -148,33 +131,7 @@ namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Views
                 textBuilder.Append(model.Tail);
             }
 
-            (BindingContext as AdvicesMarqueeOverlayViewModel).InLineAdvices = textBuilder.ToString();
+            (BindingContext as Models.View.AdvicesMarqueeOverlayViewModel).InLineAdvices = textBuilder.ToString();
         }
-
-        //private void EnableInteractionEmplasisAnimation()
-        //{
-        //    IsEnabled = true;
-
-        //    InterationIndicationLayout.Scale = 1;
-
-        //    screenInteractionSuggestLabelAnimation = new XFToolKit.Presentation.Transform.Animations.HeartAnimation
-        //    {
-        //        Target = InterationIndicationLayout
-        //    };
-
-        //    screenInteractionSuggestLabelAnimation.Completed += ScreenInteractionSuggestLabelAnimation_Completed;
-
-        //    screenInteractionSuggestLabelAnimation.Begin();
-        //}
-
-        //private void DisableInteractionEmplasisAnimation()
-        //{
-        //    IsEnabled = false;
-
-        //    if (screenInteractionSuggestLabelAnimation == null) return;
-
-        //    screenInteractionSuggestLabelAnimation.Completed -= ScreenInteractionSuggestLabelAnimation_Completed;
-        //    screenInteractionSuggestLabelAnimation = null;
-        //}
     }
 }
