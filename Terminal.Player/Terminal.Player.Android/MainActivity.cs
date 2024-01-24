@@ -11,6 +11,7 @@ namespace MOROPO.VIDERHE.Terminal.Player.Droid
         Icon = "@mipmap/ic_launcher",
         Theme = "@style/AppTheme.NoActionBar", 
         MainLauncher = false,
+        Exported = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     [IntentFilter(
         actions: new string[] { "android.intent.action.MAIN" },
