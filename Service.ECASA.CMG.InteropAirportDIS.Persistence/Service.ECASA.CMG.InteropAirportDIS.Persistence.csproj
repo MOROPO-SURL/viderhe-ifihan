@@ -12,6 +12,6 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <PackageReference Include="GuamaFramework.Core.Security.Common.Persistence" Version="6.0.0.15" />
-	  <PackageReference Include="GuamaFramework.Identity.Persistence" Version="6.0.0.15" />
+	  <PackageReference Include="GuamaFramework.Identity.Persistence" Version="6.0.0.20" />
 	</ItemGroup>
 </Project>
