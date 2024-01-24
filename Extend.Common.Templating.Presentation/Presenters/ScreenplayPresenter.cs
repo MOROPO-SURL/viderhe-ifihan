@@ -295,11 +295,21 @@ namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Presenters
                 }
                 else
                 {
-                    screenplayPresentIterationCompleteCallbackAction?.Invoke();
+                    try
+                    {
+                        screenplayPresentIterationCompleteCallbackAction?.Invoke();
 
-                    framesStack = new System.Collections.Generic.Stack<PlacardViewModel>(placards.Reverse());
+                        framesStack = new System.Collections.Generic.Stack<PlacardViewModel>(placards.Reverse());
 
-                    PresentNextPlacardPresentationView();
+                        PresentNextPlacardPresentationView();
+                    }
+                    catch
+                    {
+                        loop = false;
+
+                        presentationEndedCallbackAction?.Invoke();
+                        presentationEndedCallbackAction = null;
+                    }
                 }
             });
         }
