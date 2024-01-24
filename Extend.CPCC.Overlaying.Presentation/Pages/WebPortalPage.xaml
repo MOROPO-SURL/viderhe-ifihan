@@ -46,7 +46,16 @@
                 Grid.ColumnSpan="2" Grid.Row="2"
                 Source="{Binding Path=Url}"
                 Navigating="WebView_Navigating"
-                Navigated="WebView_Navigated" />
+                Navigated="WebView_Navigated">
+                <WebView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="WebViewGestureRecognizer_Tapped" />
+                    <ClickGestureRecognizer Clicked="WebViewGestureRecognizer_Tapped" />
+                    <DragGestureRecognizer DragStarting="WebViewDragGestureRecognizer_DragStarting" />
+                    <PanGestureRecognizer PanUpdated="WebViewPanGestureRecognizer_PanUpdated" />
+                    <PinchGestureRecognizer PinchUpdated="WebViewPinchGestureRecognizer_PinchUpdated" />
+                    <SwipeGestureRecognizer Swiped="WebViewSwipeGestureRecognizer_Swiped" />
+                </WebView.GestureRecognizers>
+            </WebView>
             <ContentView
                 x:Name="BusyView"
                 Grid.ColumnSpan="2" Grid.Row="2"
