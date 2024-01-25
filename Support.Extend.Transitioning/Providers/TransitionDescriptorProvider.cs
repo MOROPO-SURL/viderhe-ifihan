@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Descriptors;
+﻿using MOROPO.VIDERHE.Extend.Common.Transitioning.Descriptors;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning.Providers
+namespace MOROPO.VIDERHE.Support.Extend.Transitioning.Providers
 {
     public sealed class TransitionDescriptorProvider
     {
@@ -22,16 +22,16 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Transitioning.Providers
 
         private TransitionDescriptorProvider()
         {
-            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Transitioning,\\sVersion=")).ToArray();
+            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Transitioning,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(ITransitionDescriptor).IsAssignableFrom(t));
+            SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, SmartSolucionesCuba.XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(ITransitionDescriptor).IsAssignableFrom(t));
         }
 
         public ITransitionDescriptor[] GetDescriptors()
         {
             var result = new System.Collections.Generic.List<ITransitionDescriptor>();
 
-            result.AddRange(XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<ITransitionDescriptor>());
+            result.AddRange(SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<ITransitionDescriptor>());
 
             return result.ToArray();
         }

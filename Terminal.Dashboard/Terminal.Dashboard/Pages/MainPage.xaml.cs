@@ -1,17 +1,23 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Extend.Management.Presentation.Helpers.Provisioning;
+using MOROPO.VIDERHE.Support.Extend.Management.Providers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Enumerations;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
     [System.ComponentModel.DesignTimeVisible(false)]
-    public partial class MainPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.MainPageModel>
+    public partial class MainPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<MainPageModel>
     {
         private readonly Models.View.SessionActionViewModel sessionAction;
 
-        public MainPage() : base(new Models.Page.MainPageModel { IsBusy = true })
+        public MainPage() : base(new MainPageModel { IsBusy = true })
         {
             sessionAction = new Models.View.SessionActionViewModel
             {
-                Kind = Enumerations.ActionKind.SessionDetail,
+                Kind = ActionKind.SessionDetail,
                 Enabled = true
             };
 
@@ -43,7 +49,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
-                        Xamarin.Forms.DependencyService.Get<Managers.Facade.IApplicationManagerFacade>().Quit();
+                        Xamarin.Forms.DependencyService.Get<IApplicationManagerFacade>().Quit();
                     });
                 }
             });
@@ -59,7 +65,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    Managers.SessionManager.Instance.SignOut();
+                    SessionManager.Instance.SignOut();
 
                     (Xamarin.Forms.Application.Current as App).PresentForUserAuthentication();
                 });
@@ -74,7 +80,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (action is Models.View.ManagementActionViewModel)
             {
-                var managementSectionPage = Support.Extend.Management.Presentation.Helpers.Provisioning.ManagementSectionProvisioningHelper.Instance.GetFor((action as Models.View.ManagementActionViewModel).Section);
+                var managementSectionPage = ManagementSectionProvisioningHelper.Instance.GetFor((action as Models.View.ManagementActionViewModel).Section);
 
                 this.NavigationPushPageAsync(managementSectionPage);
 
@@ -83,72 +89,72 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             switch (action.Kind)
             {
-                case Enumerations.ActionKind.ManageImages:
+                case ActionKind.ManageImages:
                     this.NavigationPushPageAsync(new ManageImagesPage());
 
                     break;
 
-                case Enumerations.ActionKind.ManageVideos:
+                case ActionKind.ManageVideos:
                     this.NavigationPushPageAsync(new ManageVideosPage());
 
                     break;
 
-                case Enumerations.ActionKind.ManagePlayers:
+                case ActionKind.ManagePlayers:
                     this.NavigationPushPageAsync(new ManagePlayersPage());
 
                     break;
 
-                case Enumerations.ActionKind.ManageScreenplays:
+                case ActionKind.ManageScreenplays:
                     this.NavigationPushPageAsync(new ManageProgrammingPage());
 
                     break;
 
-                case Enumerations.ActionKind.ConfigAccount:
+                case ActionKind.ConfigAccount:
                     this.NavigationPushPageAsync(new AccountIdentityConfigurationPage());
 
                     break;
 
-                case Enumerations.ActionKind.ManageExtensions:
+                case ActionKind.ManageExtensions:
                     this.NavigationPushPageAsync(new ManageExtensionsPage());
 
                     break;
 
-                case Enumerations.ActionKind.ManageModerators:
+                case ActionKind.ManageModerators:
                     this.NavigationPushPageAsync(new ManageModeratorsPage());
 
                     break;
 
-                case Enumerations.ActionKind.DashboardHelp:
+                case ActionKind.DashboardHelp:
                     this.NavigationPushPageAsync(new HelpPage());
 
                     break;
 
-                case Enumerations.ActionKind.SessionDetail:
+                case ActionKind.SessionDetail:
                     Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.ModeratorDetailPopupPage(sessionAction.Moderator, UserSessionEditRequired_Callback));
 
                     break;
 
-                case Enumerations.ActionKind.DashboardSettings:
+                case ActionKind.DashboardSettings:
                     this.NavigationPushModalPageAsync(new SettingsPage());
 
                     break;
 
-                case Enumerations.ActionKind.ManageGradients:
+                case ActionKind.ManageGradients:
                     this.NavigationPushPageAsync(new ManageGradientsPage());
 
                     break;
 
-                case Enumerations.ActionKind.ManageSounds:
+                case ActionKind.ManageSounds:
                     this.NavigationPushPageAsync(new ManageSoundsPage());
 
                     break;
 
-                case Enumerations.ActionKind.ManageTexts:
+                case ActionKind.ManageTexts:
                     this.NavigationPushPageAsync(new ManageTextsPage());
 
                     break;
 
-                case Enumerations.ActionKind.ManageTags:
+                case ActionKind.ManageTags:
                     this.NavigationPushPageAsync(new ManageTagsPage());
 
                     break;
@@ -167,7 +173,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         public void ConfigureSession()
         {
-            sessionAction.Moderator = new Models.View.ModeratorViewModel { Model = Managers.SessionManager.Instance.Moderator };
+            sessionAction.Moderator = new Models.View.ModeratorViewModel { Model = SessionManager.Instance.Moderator };
         }
 
         private void ReloadActions()
@@ -179,84 +185,84 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 sessionAction,
                 new Models.View.ActionViewModel
                 {
-                    Kind = Enumerations.ActionKind.ConfigAccount,
+                    Kind = ActionKind.ConfigAccount,
                     Caption = "Cuenta",
                     IconGlyph = "\uf0d6",
-                    Enabled = Managers.SessionManager.Instance.Moderator.IsPrivileged
+                    Enabled = SessionManager.Instance.Moderator.IsPrivileged
                 },
                 new Models.View.ActionViewModel
                 {
-                    Kind = Enumerations.ActionKind.ManageModerators,
+                    Kind = ActionKind.ManageModerators,
                     Caption = "Control de Acceso",
                     IconGlyph = "\uf848",
-                    Enabled = Managers.SessionManager.Instance.Moderator.IsPrivileged
+                    Enabled = SessionManager.Instance.Moderator.IsPrivileged
                 },
                 new Models.View.ActionViewModel
                 {
-                    Kind = Enumerations.ActionKind.ManageExtensions,
+                    Kind = ActionKind.ManageExtensions,
                     Caption = "Extensiones",
                     IconGlyph = "\uF431",
                     Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
-                    Kind = Enumerations.ActionKind.ManageImages,
+                    Kind = ActionKind.ManageImages,
                     Caption = "Imágenes",
                     IconGlyph = "\uFC69",
                     Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
-                    Kind = Enumerations.ActionKind.ManageGradients,
+                    Kind = ActionKind.ManageGradients,
                     Caption = "Gradientes",
                     IconGlyph = "\uF69F",
                     Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
-                    Kind = Enumerations.ActionKind.ManageVideos,
+                    Kind = ActionKind.ManageVideos,
                     Caption = "Videos",
                     IconGlyph = "\uF567",
                     Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
-                    Kind = Enumerations.ActionKind.ManageSounds,
+                    Kind = ActionKind.ManageSounds,
                     Caption = "Audios",
                     IconGlyph = "\uF759",
                     Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
-                    Kind = Enumerations.ActionKind.ManageTexts,
+                    Kind = ActionKind.ManageTexts,
                     Caption = "Textos",
                     IconGlyph = "\uFB53",
                     Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
-                    Kind = Enumerations.ActionKind.ManageTags,
+                    Kind = ActionKind.ManageTags,
                     Caption = "Etiquetas",
                     IconGlyph = "\uF4F9",
                     Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
-                    Kind = Enumerations.ActionKind.ManageScreenplays,
+                    Kind = ActionKind.ManageScreenplays,
                     Caption = "Programación",
                     IconGlyph = "\uf939",
                     Enabled = true
                 },
                 new Models.View.ActionViewModel
                 {
-                    Kind = Enumerations.ActionKind.ManagePlayers,
+                    Kind = ActionKind.ManagePlayers,
                     Caption = "Reproductores",
                     IconGlyph = "\uf448",
                     Enabled = true
                 }
             };
 
-            var managementSections = Support.Extend.Management.Providers.ManagementSectionProvider.Instance.GetAll();
+            var managementSections = ManagementSectionProvider.Instance.GetAll();
 
             foreach (var item in managementSections)
             {
@@ -265,7 +271,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             actions.Add(new Models.View.ActionViewModel
             {
-                Kind = Enumerations.ActionKind.DashboardSettings,
+                Kind = ActionKind.DashboardSettings,
                 Caption = "Ajustes",
                 IconGlyph = "\uf66a",
                 // TODO Restore to spected behavior!!
@@ -273,7 +279,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             });
             actions.Add(new Models.View.ActionViewModel
             {
-                Kind = Enumerations.ActionKind.DashboardHelp,
+                Kind = ActionKind.DashboardHelp,
                 Caption = "Ayuda",
                 IconGlyph = "\uf87d",
                 // TODO Restore to spected behavior!!

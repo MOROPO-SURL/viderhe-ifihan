@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Transitions
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Transitioning.Transitions
 {
     public class FadeInTransitionDescriptor : Common.Transitioning.Descriptors.ITransitionDescriptor
     {

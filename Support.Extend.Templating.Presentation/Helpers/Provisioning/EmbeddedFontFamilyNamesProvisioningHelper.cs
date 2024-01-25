@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Providers.Facade;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Providers.Facade;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Helpers.Provisioning
+namespace MOROPO.VIDERHE.Support.Extend.Templating.Presentation.Helpers.Provisioning
 {
     public sealed class EmbeddedFontFamilyNamesProvisioningHelper
     {
@@ -22,14 +22,14 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Hel
 
         private EmbeddedFontFamilyNamesProvisioningHelper()
         {
-            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating.Presentation,\\sVersion=")).ToArray();
+            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating.Presentation,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IEmbeddedFontFamilyNamesProviderFacade).IsAssignableFrom(t));
+            SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, SmartSolucionesCuba.XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IEmbeddedFontFamilyNamesProviderFacade).IsAssignableFrom(t));
         }
 
         public string[] GetAll()
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IEmbeddedFontFamilyNamesProviderFacade>();
+            var providers = SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IEmbeddedFontFamilyNamesProviderFacade>();
 
             var list = new System.Collections.Generic.List<string>();
 

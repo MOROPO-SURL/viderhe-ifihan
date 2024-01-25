@@ -1,7 +1,8 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Providers
+namespace MOROPO.VIDERHE.Support.Presentation.Providers
 {
     public sealed class TemplateViewModelProvider
     {
@@ -20,7 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Providers
             }
         }
 
-        public Models.View.TemplateViewModel[] GetViewModels()
+        public TemplateViewModel[] GetViewModels()
         {
             return Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptors().Select(d => d.ToViewModel()).ToArray();
         }

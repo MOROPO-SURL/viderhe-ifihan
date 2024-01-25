@@ -1,17 +1,24 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Essential.Overlaying.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.Essential.Overlaying.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.Essential.Overlaying.Dashboard.Presentation.Pages
 {
-    public partial class SimpleHighlightsOverlayConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.SimpleHighlightsOverlayConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class SimpleHighlightsOverlayConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<SimpleHighlightsOverlayConfigurationPageModel>, IValidableFormPage
     {
-        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+        private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
         private System.Action<string> successfulCompleteCallbackAction;
 
         public SimpleHighlightsOverlayConfigurationPage(string serializedContext, System.Action<string> successfulCompleteCallbackAction)
-            : base(Factories.SimpleHighlightsOverlayConfigurationPageModelFactory.Build(serializedContext))
+            : base(SimpleHighlightsOverlayConfigurationPageModelFactory.Build(serializedContext))
         {
-            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+            validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
             InitializeComponent();
 
@@ -60,7 +67,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Pres
 
                 BindingContextPageModel.IsBusy = true;
 
-                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 apiConnectClient.CreateAsync(new Cloud.Api.Common.Models.TextInputModel
                 {
@@ -72,11 +79,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Pres
                     {
                         if (_task.IsCanceled || _task.IsFaulted)
                         {
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                            Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(task.Exception);
                         }
                         else
                         {
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
                         }
 
                         BindingContextPageModel.IsBusy = false;
@@ -98,7 +105,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Pres
 
                 BindingContextPageModel.IsBusy = true;
 
-                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 apiConnectClient.CreateAsync(new Cloud.Api.Common.Models.TextInputModel
                 {
@@ -110,11 +117,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Pres
                     {
                         if (_task.IsCanceled || _task.IsFaulted)
                         {
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                            Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(task.Exception);
                         }
                         else
                         {
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
                         }
 
                         BindingContextPageModel.IsBusy = false;
@@ -123,12 +130,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Pres
             });
         }
 
-        private void PickHeaderText_Callback(Support.Presentation.Dashboard.Models.View.TextViewModel target)
+        private void PickHeaderText_Callback(TextViewModel target)
         {
             BindingContextPageModel.Header = target.Content;
         }
 
-        private void PickHighlightsText_Callback(Support.Presentation.Dashboard.Models.View.TextViewModel target)
+        private void PickHighlightsText_Callback(TextViewModel target)
         {
             BindingContextPageModel.Highlights = target.Content;
         }
@@ -142,12 +149,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Pres
 
         #region IValidableFormPage implementation
 
-        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void AddValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Add(validationBehavior);
         }
 
-        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void RemoveValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Remove(validationBehavior);
         }

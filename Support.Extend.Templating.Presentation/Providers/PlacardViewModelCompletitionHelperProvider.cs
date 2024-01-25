@@ -1,8 +1,9 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Helpers.Facade;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Providers.Facade;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Providers.Facade;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Providers
+namespace MOROPO.VIDERHE.Support.Extend.Templating.Presentation.Providers
 {
     public sealed class PlacardViewModelCompletitionHelperProvider
     {
@@ -23,14 +24,14 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Presentation.Pro
 
         private PlacardViewModelCompletitionHelperProvider()
         {
-            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating.Presentation,\\sVersion=")).ToArray();
+            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating.Presentation,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IPlacardViewModelCompletitionHelperProviderFacade).IsAssignableFrom(t));
+            SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, SmartSolucionesCuba.XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IPlacardViewModelCompletitionHelperProviderFacade).IsAssignableFrom(t));
         }
 
-        public IPlacardViewModelCompletitionHelperFacade GetFor(Cloud.Api.Common.Models.PlacardDisplayModel model)
+        public IPlacardViewModelCompletitionHelperFacade GetFor(PlacardDisplayModel model)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardViewModelCompletitionHelperProviderFacade>();
+            var providers = SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IPlacardViewModelCompletitionHelperProviderFacade>();
 
             foreach (var provider in providers)
             {

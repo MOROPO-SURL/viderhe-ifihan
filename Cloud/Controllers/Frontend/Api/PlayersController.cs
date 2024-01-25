@@ -1,23 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using MOROPO.SAPRESSC.Core.Common.Models;
-using MOROPO.SAPRESSC.Core.Persistence.Repositories;
-using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models;
-using SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models.Filter;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.Framework.Guama.Core.Presentation.Models;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
+using MOROPO.VIDERHE.Cloud.Api.Common.Providers.Constant;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Providers;
+using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
+namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 {
-    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION)]
+    [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Policies.ACCOUNT_VALIDATED_MODERATION)]
     [Route("api/[area]/[controller]")]
     [Area("account")]
-    public class PlayersController : MOROPO.SAPRESSC.Core.Web.Api.Controllers.AbstractEntityApiManagementFilteredController<Persistence.Entities.Player, string, PlayerInputModel, PlayerDisplayModel, Cloud.Api.Common.Models.Filter.PlayerFilterModel>
+    public class PlayersController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementFilteredController<Player, string, PlayerInputModel, PlayerDisplayModel, PlayerFilterModel>
     {
-        private readonly IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
-        private readonly IEntityRepository<Persistence.Entities.Extension, System.Guid> extensionRepository;
+        private readonly IEntityRepository<Account, System.Guid> accountRepository;
+        private readonly IEntityRepository<Extension, System.Guid> extensionRepository;
         private readonly Microsoft.Extensions.Options.IOptions<Options.JwtOptions> jwtOptions;
 
-        public PlayersController(Microsoft.Extensions.Options.IOptions<Options.JwtOptions> jwtOptions, IEntityRepository<Persistence.Entities.Extension, System.Guid> extensionRepository, IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, IEntityRepository<Persistence.Entities.Player, string> repository, Microsoft.Extensions.Localization.IStringLocalizer<PlayersController> localizer, ILogger<PlayersController> logger) : base(repository, localizer, logger)
+        public PlayersController(Microsoft.Extensions.Options.IOptions<Options.JwtOptions> jwtOptions, IEntityRepository<Extension, System.Guid> extensionRepository, IEntityRepository<Account, System.Guid> accountRepository, IEntityRepository<Player, string> repository, Microsoft.Extensions.Localization.IStringLocalizer<PlayersController> localizer, ILogger<PlayersController> logger) : base(repository, localizer, logger)
         {
             this.accountRepository = accountRepository;
             this.extensionRepository = extensionRepository;
@@ -28,7 +32,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         [HttpGet("[action]")]
         public ActionResult<AccountDisplayModel> Owner()
         {
-            var protectedPlayerId = Request.Headers[Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY];
+            var protectedPlayerId = Request.Headers[SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY];
 
             var playerId = Helpers.Security.PlayerSecurityHelper.UnprotectPlayerId(protectedPlayerId);
 
@@ -42,7 +46,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
                 foreach (var bridge in player.Account.ExtensionBridges)
                 {
-                    var extension = extensionRepository.Get(bridge.ExtensionId);
+                    var extension = extensionRepository.Get(bridge.SternId);
 
                     var extensionDisplayModel = new ExtensionDisplayModel();
 
@@ -57,7 +61,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                     model.SerializedOverlayContext = player.SerializedOverlayContext;
                 }
 
-                Response.Headers.Add(Request.Headers.First(header => header.Key == Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY));
+                Response.Headers.Add(Request.Headers.First(header => header.Key == SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY));
 
                 return Ok(model);
             }
@@ -73,9 +77,9 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         {
             try
             {
-                var accountId = Request.Headers[Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.ACCOUNT_ID_HEADER_KEY];
+                var accountId = Request.Headers[SecurityConstantProvider.ACCOUNT_ID_HEADER_KEY];
 
-                var protectedPlayerId = Request.Headers[Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY];
+                var protectedPlayerId = Request.Headers[SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY];
 
                 var playerId = Helpers.Security.PlayerSecurityHelper.UnprotectPlayerId(protectedPlayerId);
 
@@ -86,21 +90,21 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                     return Forbid(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
                 }
 
-                Response.Headers.Add(Request.Headers.First(header => header.Key == Cloud.Api.Common.Providers.Constant.SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY));
+                Response.Headers.Add(Request.Headers.First(header => header.Key == SecurityConstantProvider.PROTECTED_PLAYER_ID_HEADER_KEY));
 
                 var claims = new System.Collections.Generic.List<System.Security.Claims.Claim>
                 {
                     new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.NameIdentifier, playerId),
                     new System.Security.Claims.Claim(System.Security.Claims.ClaimsIdentity.DefaultNameClaimType, playerId),
-                    new System.Security.Claims.Claim(Security.Authorization.Claims.ACCOUNT_CLAIM, accountId),
-                    new System.Security.Claims.Claim(Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION, accountId)
+                    new System.Security.Claims.Claim(Claims.ACCOUNT_CLAIM, accountId),
+                    new System.Security.Claims.Claim(Policies.ACCOUNT_VALIDATED_MODERATION, accountId)
                 };
 
                 var authenticationType = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme;
 
                 return Ok(new PlayerPlaybackConfigurationModel
                 {
-                    Placards = player.Screenplay?.Frames.OrderBy(e => e.Priority).Where(e => e.Placard.Template.Enabled).Select((Persistence.Entities.Frame entity) =>
+                    Placards = player.Screenplay?.Frames.OrderBy(e => e.Priority).Where(e => e.Placard.Template.Enabled).Select((Frame entity) =>
                     {
                         var model = new PlacardDisplayModel();
 
@@ -125,7 +129,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         public override ActionResult<PlayerDisplayModel[]> Get()
         {
-            return Ok(Repository.FindBy(GetGlobalSelector()).Select(entity => EntityToDisplayModel(entity)).ToArray());
+            return Ok(Repository.FindBy(GetGlobalSelector()).ToArray().Select(entity => EntityToDisplayModel(entity)).ToArray());
         }
 
         public override ActionResult<PlayerDisplayModel[]> GetFiltered([FromBody] PlayerFilterModel filterModel)
@@ -138,16 +142,16 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             {
                 if (filterModel.Tags.Length > 0)
                 {
-                    result = Repository.FindBy(GetGlobalSelector()).Where(entity => entity.Name.ToLower().Contains(filterModel.Name.ToLower())).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.TagId))).Select(entity => EntityToDisplayModel(entity)).ToArray();
+                    result = Repository.FindBy(GetGlobalSelector()).Where(entity => entity.Name.ToLower().Contains(filterModel.Name.ToLower())).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.SternId))).Select(entity => EntityToDisplayModel(entity)).ToArray();
                 }
                 else
                 {
-                    result = Repository.FindBy(GetGlobalSelector()).Where(entity => entity.Name.ToLower().Contains(filterModel.Name.ToLower())).Select(entity => EntityToDisplayModel(entity)).ToArray();
+                    result = Repository.FindBy(GetGlobalSelector()).Where(entity => entity.Name.ToLower().Contains(filterModel.Name.ToLower())).ToArray().Select(entity => EntityToDisplayModel(entity)).ToArray();
                 }
             }
             else
             {
-                result = Repository.FindBy(GetGlobalSelector()).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.TagId))).Select(entity => EntityToDisplayModel(entity)).ToArray();
+                result = Repository.FindBy(GetGlobalSelector()).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.SternId))).Select(entity => EntityToDisplayModel(entity)).ToArray();
             }
 
             return Ok(result);
@@ -165,7 +169,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         public override ActionResult Create([FromBody] PlayerInputModel inputModel)
         {
-            var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
+            var account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
             if (account.MaxPlayerCount <= Repository.Count())
             {
@@ -175,18 +179,18 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             return base.Create(inputModel);
         }
 
-        protected override System.Linq.Expressions.Expression<System.Func<Persistence.Entities.Player, bool>> GetGlobalSelector()
+        protected override System.Linq.Expressions.Expression<System.Func<Player, bool>> GetGlobalSelector()
         {
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
             return e => e.Account.Id == accountId;
         }
 
-        protected override void PreCreate(Persistence.Entities.Player entity, PlayerInputModel inputModel)
+        protected override void PreCreate(Player entity, PlayerInputModel inputModel)
         {
             base.PreCreate(entity, inputModel);
 
-            entity.Account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value));
+            entity.Account = accountRepository.Get(System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value));
 
             if (inputModel.ScreenplayId != System.Guid.Empty)
             {
@@ -196,11 +200,11 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             entity.Signature = Helpers.Integrity.PlayerIntegrityHelper.GetSignature(entity);
         }
 
-        protected override void PreEdit(Persistence.Entities.Player entity, PlayerInputModel inputModel)
+        protected override void PreEdit(Player entity, PlayerInputModel inputModel)
         {
             base.PreEdit(entity, inputModel);
 
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
             if (entity.Account.Id != accountId) throw new System.InvalidOperationException();
 
@@ -221,20 +225,20 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             entity.Signature = Helpers.Integrity.PlayerIntegrityHelper.GetSignature(entity);
         }
 
-        protected override void PreDelete(Persistence.Entities.Player entity)
+        protected override void PreDelete(Player entity)
         {
             base.PreDelete(entity);
 
-            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Security.Authorization.Claims.ACCOUNT_CLAIM).Value);
+            var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
             if (entity.Account.Id != accountId) throw new System.InvalidOperationException();
         }
 
-        protected override PlayerDisplayModel EntityToDisplayModel(Persistence.Entities.Player entity)
+        protected override PlayerDisplayModel EntityToDisplayModel(Player entity)
         {
             var model = base.EntityToDisplayModel(entity);
 
-            var playerSignalRContext = Providers.PlayerContextsSignalRModelProvider.Instance.Contexts.FirstOrDefault(m => m.PlayerId == entity.Id);
+            var playerSignalRContext = PlayerContextsSignalRModelProvider.Instance.Contexts.FirstOrDefault(m => m.PlayerId == entity.Id);
 
             if (playerSignalRContext != null)
             {

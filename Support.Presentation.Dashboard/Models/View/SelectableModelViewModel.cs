@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View
 {
-    public class SelectableModelViewModel<TModel> : XFToolKit.Mvvm.Models.BaseBindableModel where TModel : class
+    public class SelectableModelViewModel<TModel> : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel where TModel : class
     {
         private bool selected;
 

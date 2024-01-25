@@ -1,11 +1,13 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup
+﻿using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup
 {
     public partial class ModeratorDetailPopupPage : Rg.Plugins.Popup.Pages.PopupPage
     {
-        private System.Action<Models.View.ModeratorViewModel> editRequiredActionCallback;
-        private System.Action<Models.View.ModeratorViewModel> deleteRequiredActionCallback;
+        private System.Action<ModeratorViewModel> editRequiredActionCallback;
+        private System.Action<ModeratorViewModel> deleteRequiredActionCallback;
 
-        public ModeratorDetailPopupPage(Models.View.ModeratorViewModel target, System.Action<Models.View.ModeratorViewModel> editRequiredActionCallback, System.Action<Models.View.ModeratorViewModel> deleteRequiredActionCallback = null)
+        public ModeratorDetailPopupPage(ModeratorViewModel target, System.Action<ModeratorViewModel> editRequiredActionCallback, System.Action<ModeratorViewModel> deleteRequiredActionCallback = null)
         {
             this.editRequiredActionCallback = editRequiredActionCallback;
             this.deleteRequiredActionCallback = deleteRequiredActionCallback;
@@ -21,7 +23,7 @@
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    editRequiredActionCallback?.Invoke(BindingContext as Models.View.ModeratorViewModel);
+                    editRequiredActionCallback?.Invoke(BindingContext as ModeratorViewModel);
 
                     ReleaseCallbacks();
                 });
@@ -34,7 +36,7 @@
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    deleteRequiredActionCallback?.Invoke(BindingContext as Models.View.ModeratorViewModel);
+                    deleteRequiredActionCallback?.Invoke(BindingContext as ModeratorViewModel);
 
                     ReleaseCallbacks();
                 });

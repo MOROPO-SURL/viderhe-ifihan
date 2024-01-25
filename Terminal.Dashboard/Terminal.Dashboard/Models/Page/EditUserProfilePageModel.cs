@@ -1,13 +1,15 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class EditUserProfilePageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
+    public class EditUserProfilePageModel : FormPageModel
     {
         private string targetUserNewPassword;
         private string targetUserNewPasswordConfirmation;
         private string targetIdentityName;
         private string targetIdentityLastName;
         private Xamarin.Forms.ImageSource targetIdentityImageSource;
-        private MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex targetIdentitySex;
+        private Framework.Guama.Identity.Persistence.Enumerations.Sex targetIdentitySex;
         private string targetIdentityAbout;
 
         public string TargetUserId { get; set; }
@@ -24,7 +26,7 @@
 
         public string TargetIdentityImageContentType { get; set; }
 
-        public MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex TargetIdentitySex { get => targetIdentitySex; set => SetProperty(ref targetIdentitySex, value); }
+        public Framework.Guama.Identity.Persistence.Enumerations.Sex TargetIdentitySex { get => targetIdentitySex; set => SetProperty(ref targetIdentitySex, value); }
 
         public string TargetIdentityAbout { get => targetIdentityAbout; set => SetProperty(ref targetIdentityAbout, value); }
 

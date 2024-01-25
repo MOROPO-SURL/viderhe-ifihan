@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class AccountDisplayModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Account, System.Guid>
+    public class AccountDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Account, System.Guid>
     {
         public AccountDisplayModel()
         {
@@ -11,15 +13,15 @@
 
         public string Name { get; set; }
 
+        public string PrimaryColor { get; set; }
+
+        public string SecoundaryColor { get; set; }
+
         public System.Guid LogoImageId { get; set; }
 
         public System.Guid HorizontalSplashImageId { get; set; }
 
         public System.Guid VerticalSplashImageId { get; set; }
-
-        public string PrimaryColor { get; set; }
-
-        public string SecoundaryColor { get; set; }
 
         public System.Guid? DefaultOverlayId { get; set; }
 
@@ -27,15 +29,15 @@
 
         public System.Collections.Generic.List<ExtensionDisplayModel> Extensions { get; set; }
 
-        public void Import(Persistence.Entities.Account entity)
+        public void Import(Account entity)
         {
             Id = entity.Id;
             Name = entity.Name;
+            PrimaryColor = entity.PrimaryColor;
+            SecoundaryColor = entity.SecoundaryColor;
             LogoImageId = entity.LogoId;
             HorizontalSplashImageId = entity.HorizontalSplashId;
             VerticalSplashImageId = entity.VerticalSplashId;
-            PrimaryColor = entity.PrimaryColor;
-            SecoundaryColor = entity.SecoundaryColor;
             DefaultOverlayId = entity.DefaultOverlayId;
             SerializedOverlayContext = entity.SerializedOverlayContext;
         }

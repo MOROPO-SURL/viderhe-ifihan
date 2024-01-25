@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views
 {
-    public partial class SimplePicturePlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
+    public partial class SimplePicturePlacardView : BaseTemplatedPlacardPresentationView
     {
-        public SimplePicturePlacardView(Models.View.SimplePicturePlacardViewModel model)
+        public SimplePicturePlacardView(Models.View.SimplePicturePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -25,7 +27,7 @@
 
             if ((BindingContext as Models.View.SimplePicturePlacardViewModel).ZoomingEnabled)
             {
-                var animation = new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
                 {
                     Target = this,
                     Scale = Scale == 0 ? 1.2 : 1,

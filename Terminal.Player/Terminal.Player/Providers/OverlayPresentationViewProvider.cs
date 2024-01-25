@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Providers
+namespace MOROPO.VIDERHE.Terminal.Player.Providers
 {
     public sealed class OverlayPresentationViewProvider
     {
@@ -22,14 +22,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Providers
         private OverlayPresentationViewProvider()
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Overlaying.Presentation,\\sVersion=")).ToArray();
+                .Where(a => !a.FullName.Contains(".VIDERHE.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Overlaying.Presentation,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(Extend.Common.Overlaying.Presentation.Providers.Facade.IOverlayPresentationViewProviderFacade).IsAssignableFrom(t));
+            SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, SmartSolucionesCuba.XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(Extend.Common.Overlaying.Presentation.Providers.Facade.IOverlayPresentationViewProviderFacade).IsAssignableFrom(t));
         }
 
         public Extend.Common.Overlaying.Presentation.Views.BaseOverlayView GetOverlayPresentationView()
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Extend.Common.Overlaying.Presentation.Providers.Facade.IOverlayPresentationViewProviderFacade>();
+            var providers = SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<Extend.Common.Overlaying.Presentation.Providers.Facade.IOverlayPresentationViewProviderFacade>();
 
             foreach (var provider in providers)
             {

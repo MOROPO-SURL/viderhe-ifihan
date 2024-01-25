@@ -1,19 +1,23 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Descriptors;
-using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Models.Context;
-using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Providers.Facade;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Providers
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Providers
 {
-    public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
+    public class PlacardPresentationViewProvider : IPlacardPresentationViewProviderFacade
     {
-        public Common.Presentation.Views.BasePlacardPresentationView GetFor(Support.Presentation.Models.View.PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction)
+        public Common.Presentation.Views.BasePlacardPresentationView GetFor(PlacardViewModel model, System.Func<Xamarin.Essentials.DisplayOrientation> getOrientationFunction, double relativeSizeScaleFactor)
         {
             if (model.Template.Id == PictureSlideSecuenceTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PictureSlideSecuencePlacardContextModel>(model.SerializedContext);
 
-                return new PictureSlideSecuencePlacardView(context);
+                return new PictureSlideSecuencePlacardView(context, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == SimpleVideoTemplateDescriptor.ID)
@@ -23,25 +27,25 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                 return new SimpleVideoPlacardView(new Models.View.SimpleVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri)
-                });
+                    VideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri)
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == SimplePictureTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<SimplePicturePlacardContextModel>(model.SerializedContext);
 
-                if (context.LayoutMode == Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf)
+                if (context.LayoutMode == PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf)
                 {
                     return new SelfOpaqueFillSimplePicturePlacardView(new Models.View.SelfOpaqueFillSimplePicturePlacardViewModel
                     {
                         RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                         ScreenPresentationTime = context.ScreenPresentationTime,
-                        Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
-                        ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Image.ThumbnailId)),
+                        Source = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.Image.Id)),
+                        ThumnailSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildImageThumbnailUri(context.Image.ThumbnailId)),
                         Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                         ZoomingEnabled = context.IsZoomingEnabled
-                    });
+                    }, relativeSizeScaleFactor);
                 }
                 else
                 {
@@ -49,10 +53,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                     {
                         RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                         ScreenPresentationTime = context.ScreenPresentationTime,
-                        Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
+                        Source = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.Image.Id)),
                         Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                         ZoomingEnabled = context.IsZoomingEnabled
-                    });
+                    }, relativeSizeScaleFactor);
                 }
             }
 
@@ -64,14 +68,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
-                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.PresenterImage.Id)),
+                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.PresenterImage.Id)),
                     PresenterSide = context.PresenterSide,
                     PresenterImageWidth = context.PresenterImage.Width,
                     PresenterImageHeigth = context.PresenterImage.Height,
-                    PresentedSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.PresentedImage.Id)),
+                    PresentedSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.PresentedImage.Id)),
                     PresentedImageCenteredAtPresentation = context.PresentedImageCenteredAtPresentation,
                     PresentedImageZoomingEnabled = context.PresentedImageZoomingEnabled
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == LandscapePicturePresentingVideoTemplateDescriptor.ID)
@@ -81,13 +85,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                 return new LandscapePicturePresentingVideoPlacardView(new Models.View.LandscapePicturePresentingVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.PresenterImage.Id)),
+                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.PresenterImage.Id)),
                     PresenterSide = context.PresenterSide,
                     PresenterImageWidth = context.PresenterImage.Width,
                     PresenterImageHeigth = context.PresenterImage.Height,
-                    PresentedSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
+                    PresentedSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
                     PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == PortraitPicturePresentingPictureTemplateDescriptor.ID)
@@ -98,14 +102,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
-                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.PresenterImage.Id)),
+                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.PresenterImage.Id)),
                     PresenterSide = context.PresenterSide,
                     PresenterImageWidth = context.PresenterImage.Width,
                     PresenterImageHeigth = context.PresenterImage.Height,
-                    PresentedSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.PresentedImage.Id)),
+                    PresentedSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.PresentedImage.Id)),
                     PresentedImageCenteredAtPresentation = context.PresentedImageCenteredAtPresentation,
                     PresentedImageZoomingEnabled = context.PresentedImageZoomingEnabled
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == PortraitPicturePresentingVideoTemplateDescriptor.ID)
@@ -115,13 +119,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                 return new PortraitPicturePresentingVideoPlacardView(new Models.View.PortraitPicturePresentingVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.PresenterImage.Id)),
+                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.PresenterImage.Id)),
                     PresenterSide = context.PresenterSide,
                     PresenterImageWidth = context.PresenterImage.Width,
                     PresenterImageHeigth = context.PresenterImage.Height,
-                    PresentedSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
+                    PresentedSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
                     PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == LandscapePicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
@@ -131,13 +135,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                 return new LandscapePicturePresentingPictureSlideSecuencePlacardView(new Models.View.LandscapePicturePresentingPictureSlideSecuencePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.PresenterImage.Id)),
+                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.PresenterImage.Id)),
                     PresenterSide = context.PresenterSide,
                     PresenterImageWidth = context.PresenterImage.Width,
                     PresenterImageHeigth = context.PresenterImage.Height,
                     PresentedPictureSlideSecuence = context.PresentedPictureSlideSecuence,
                     PresentedPictureSlideSecuenceCenteredAtPresentation = context.PresentedPictureSlideSecuenceCenteredAtPresentation
-                });
+                }, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == PortraitPicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
@@ -147,13 +151,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.P
                 return new PortraitPicturePresentingPictureSlideSecuencePlacardView(new Models.View.PortraitPicturePresentingPictureSlideSecuencePlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.PresenterImage.Id)),
+                    PresenterSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.PresenterImage.Id)),
                     PresenterSide = context.PresenterSide,
                     PresenterImageWidth = context.PresenterImage.Width,
                     PresenterImageHeigth = context.PresenterImage.Height,
                     PresentedPictureSlideSecuence = context.PresentedPictureSlideSecuence,
                     PresentedPictureSlideSecuenceCenteredAtPresentation = context.PresentedPictureSlideSecuenceCenteredAtPresentation
-                });
+                }, relativeSizeScaleFactor);
             }
 
             return null;

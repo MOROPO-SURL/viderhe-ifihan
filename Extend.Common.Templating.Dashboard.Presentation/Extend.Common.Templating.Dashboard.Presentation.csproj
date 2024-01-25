@@ -1,35 +1,41 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>2.0.4</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="SAPRESSC.Core.Api.Connect" Version="2.2.9" />
-    <PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="GuamaFramework.Core.Presentation.API.Connect" Version="6.0.0.20" />
+		<PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
-    <ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
-    <ProjectReference Include="..\Support.Presentation\Support.Presentation.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Extend.Common.Templating\Extend.Common.Templating.csproj" />
+		<ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
+		<ProjectReference Include="..\Support.Presentation\Support.Presentation.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="LocalizedResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>LocalizedResources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="LocalizedResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>LocalizedResources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="LocalizedResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="LocalizedResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
 
 </Project>

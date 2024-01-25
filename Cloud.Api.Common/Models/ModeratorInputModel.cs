@@ -1,6 +1,9 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class ModeratorInputModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Moderator, System.Guid>
+    public class ModeratorInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Moderator, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -10,17 +13,17 @@
 
         public bool IsPrivileged { get; set; }
 
-        public Persistence.Entities.Moderator Export()
+        public Moderator Export()
         {
-            var entity = new Persistence.Entities.Moderator
+            var entity = new Moderator
             {
-                User = new MOROPO.SAPRESSC.Middleware.Security.Essential.Persistence.Entities.User
+                User = new Framework.Guama.Security.Essential.Persistence.Entities.User
                 {
                     Id = User.Id,
                     FailAuthenticationCount = 0,
                     HasFullAccess = false
                 },
-                Identity = new MOROPO.SAPRESSC.Middleware.Identity.Persistence.Entities.PersonIdentity()
+                Identity = new Framework.Guama.Identity.Persistence.Entities.PersonIdentity()
             };
 
             entity.UserId = entity.User.Id;
@@ -31,14 +34,14 @@
             return entity;
         }
 
-        public void Import(Persistence.Entities.Moderator entity)
+        public void Import(Moderator entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Mergue(Persistence.Entities.Moderator entity)
+        public void Mergue(Moderator entity)
         {
-            entity.ModerationKind = IsPrivileged ? Persistence.Enumerations.ModerationKind.Privileged : Persistence.Enumerations.ModerationKind.Standard;
+            entity.ModerationKind = IsPrivileged ? ModerationKind.Privileged : ModerationKind.Standard;
             entity.User.Enabled = User.Enabled;
             entity.User.PasswordChangeRequired = User.PasswordChangeRequired;
             entity.Identity.Name = Identity.Name;

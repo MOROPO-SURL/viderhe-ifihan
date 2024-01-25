@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="106000" android:versionName="1.6.0" package="smartsolucionescuba.viderhe.terminal.dashboard" android:installLocation="auto">
-	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="29" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="200004" android:versionName="2.0.4" package="moropo.viderhe.control" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="33" />
 	<application android:label="VIDERHE Control" android:hardwareAccelerated="true" android:theme="@style/MainTheme" android:icon="@mipmap/icon" android:usesCleartextTraffic="true"></application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 </manifest>

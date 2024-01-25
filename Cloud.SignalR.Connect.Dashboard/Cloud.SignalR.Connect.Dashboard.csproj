@@ -1,14 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Dashboard</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Dashboard</RootNamespace>
-    <Version>1.7.3</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Cloud.SignalR.Connect.Dashboard</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Cloud.SignalR.Connect.Dashboard</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>2.0.4</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Cloud.SignalR.Connect.Common\Cloud.SignalR.Connect.Common.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Cloud.SignalR.Connect.Common\Cloud.SignalR.Connect.Common.csproj" />
+	</ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Views
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Views
 {
     public partial class IdentityBackgroundView : Xamarin.Forms.ContentView
     {

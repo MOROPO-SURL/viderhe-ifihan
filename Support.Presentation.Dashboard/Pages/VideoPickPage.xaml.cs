@@ -1,21 +1,25 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
 {
-    public partial class VideoPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.VideoPickPageModel>
+    public partial class VideoPickPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<VideoPickPageModel>
     {
-        private System.Action<Presentation.Models.View.VideoViewModel> videoPickedCallbackAction;
+        private System.Action<VideoViewModel> videoPickedCallbackAction;
 
-        private Presentation.Models.View.VideoViewModel except;
+        private VideoViewModel except;
 
         private int currentVideosPageNumber;
         private int currentVideoCollectionViewCellColumnCount = 3;
         private int pagingLimit = 15;
 
-        public VideoPickPage(System.Action<Presentation.Models.View.VideoViewModel> videoPickedCallbackAction, Presentation.Models.View.VideoViewModel except = null)
-            : base(new Models.Page.VideoPickPageModel())
+        public VideoPickPage(System.Action<VideoViewModel> videoPickedCallbackAction, VideoViewModel except = null)
+            : base(new VideoPickPageModel())
         {
             InitializeComponent();
 
@@ -25,7 +29,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
         private void VideoOverviewPickButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.OverviewViewModel<Presentation.Models.View.VideoViewModel>;
+            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as OverviewViewModel<VideoViewModel>;
 
             videoPickedCallbackAction.Invoke(targetModel.Presented);
 
@@ -34,7 +38,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
         private void VideoOverviewDetailButton_Clicked(object sender, System.EventArgs e)
         {
-            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.OverviewViewModel<Presentation.Models.View.VideoViewModel>;
+            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as OverviewViewModel<VideoViewModel>;
 
             this.NavigationPushPageAsync(new VideoDetailPage(targetModel.Presented));
         }
@@ -121,7 +125,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                 }
             }
 
-            var videosApiConnectClient = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
+            var videosApiConnectClient = new Cloud.Api.Connect.Clients.VideosApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>().HttpClientHelper);
 
             videosApiConnectClient.GetPageAsync(++currentVideosPageNumber, pagingLimit).ContinueWith(task =>
             {
@@ -129,7 +133,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                 {
                     if (task.Exception != null)
                     {
-                        Xamarin.Forms.DependencyService.Get<Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
@@ -137,7 +141,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                         {
                             if (BindingContextPageModel.Items == null)
                             {
-                                BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<Models.View.OverviewViewModel<Presentation.Models.View.VideoViewModel>>();
+                                BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<OverviewViewModel<VideoViewModel>>();
                             }
                             else
                             {
@@ -150,7 +154,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
                             // TODO Find how exept correctly!!
                             //if (except != null && except.Id == item.Id) continue;
 
-                            BindingContextPageModel.Items.Add(new Models.View.OverviewViewModel<Presentation.Models.View.VideoViewModel>(item.ToViewModel(), true));
+                            BindingContextPageModel.Items.Add(new OverviewViewModel<VideoViewModel>(item.ToViewModel(), true));
                         }
 
                         BindingContextPageModel.HasMoreItems = task.Result.HasNext && task.Result.List.Count > 0;

@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.Essential.Overlaying.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Overlaying.Presentation.Views
 {
     public partial class SimpleHighlightsOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
-        public SimpleHighlightsOverlayView(Models.View.SimpleHighlightsViewModel model)
+        public SimpleHighlightsOverlayView(SimpleHighlightsViewModel model)
         {
             InitializeComponent();
 
@@ -11,10 +13,10 @@
 
         public override void ShowIn()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
             {
                 Target = this,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 TranslateY = 0
             };
 
@@ -23,10 +25,10 @@
 
         public override void ShowOut()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
             {
                 Target = this,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
                 TranslateY = 100
             };
 

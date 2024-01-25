@@ -1,12 +1,15 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Descriptors
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Descriptors
 {
-    public class LandscapePicturePresentingPictureTemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
+    public class LandscapePicturePresentingPictureTemplateDescriptor : ITemplateDescriptor
     {
         public static System.Guid ID = System.Guid.Parse("FA334577-0D4C-4366-9B68-A23D9D4AE004");
 
         public System.Guid Id => ID;
 
-        public Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport => Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape;
+        public PlayerOrientationSupportKind PlayerOrientationSupport => PlayerOrientationSupportKind.Landscape;
 
         public string Name => "Imagen horizontal presentada por Imagen vertical";
 

@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Security.Licensing
+﻿namespace MOROPO.VIDERHE.Cloud.Security.Licensing
 {
-    public class WilcardLicenseValidator : MOROPO.SAPRESSC.Core.Web.Security.Helpers.Facade.ILicenseValidationHelperFacade
+    public class WilcardLicenseValidator : Framework.Guama.Core.Presentation.Web.Security.Helpers.Facade.ILicenseValidationHelperFacade
     {
         public void Validate()
         {

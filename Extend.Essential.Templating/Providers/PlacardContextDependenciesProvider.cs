@@ -1,12 +1,13 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Models.Context;
-using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Descriptors;
-using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Models.Context;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Common.Templating.Providers.Facade;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context;
 using System;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Providers
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Providers
 {
-    public class PlacardContextDependenciesProvider : Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider
+    public class PlacardContextDependenciesProvider : IPlacardContextDependenciesProvider
     {
         public GradientContextModel[] GetGradients(Guid templateId, string serializedContext)
         {
@@ -26,35 +27,35 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Providers
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<SimplePicturePlacardContextModel>(serializedContext);
 
-                return new [] { context.Image };
+                return new[] { context.Image };
             }
 
             if (templateId == LandscapePicturePresentingPictureTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePicturePresentingPicturePlacardContextModel>(serializedContext);
 
-                return new [] { context.PresenterImage, context.PresentedImage };
+                return new[] { context.PresenterImage, context.PresentedImage };
             }
 
             if (templateId == LandscapePicturePresentingVideoTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePicturePresentingVideoPlacardContextModel>(serializedContext);
 
-                return new [] { context.PresenterImage };
+                return new[] { context.PresenterImage };
             }
 
             if (templateId == PortraitPicturePresentingPictureTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitPicturePresentingPicturePlacardContextModel>(serializedContext);
 
-                return new [] { context.PresenterImage, context.PresentedImage };
+                return new[] { context.PresenterImage, context.PresentedImage };
             }
 
             if (templateId == PortraitPicturePresentingVideoTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitPicturePresentingVideoPlacardContextModel>(serializedContext);
 
-                return new [] { context.PresenterImage };
+                return new[] { context.PresenterImage };
             }
 
             if (templateId == LandscapePicturePresentingPictureSlideSecuenceTemplateDescriptor.ID)
@@ -93,21 +94,21 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Providers
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<SimpleVideoPlacardContextModel>(serializedContext);
 
-                return new [] { context.Video };
+                return new[] { context.Video };
             }
 
             if (templateId == LandscapePicturePresentingVideoTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePicturePresentingVideoPlacardContextModel>(serializedContext);
 
-                return new [] { context.PresentedVideo };
+                return new[] { context.PresentedVideo };
             }
 
             if (templateId == PortraitPicturePresentingVideoTemplateDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitPicturePresentingVideoPlacardContextModel>(serializedContext);
 
-                return new [] { context.PresentedVideo };
+                return new[] { context.PresentedVideo };
             }
 
             return null;

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation.Enumerations
+﻿namespace MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Enumerations
 {
     public enum StandardTransitionDirection
     {

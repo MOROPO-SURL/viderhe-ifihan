@@ -1,16 +1,19 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Factories
 {
     public class PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPageModelFactory
     {
-        public static Models.Page.PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPageModel Build(PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPageModel();
+            if (placardViewModel == null) return new PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPageModel();
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.PortraitPicturePresentingPictureSlideSecuencePlacardContextModel>(placardViewModel.SerializedContext);
 
-            var result = new Models.Page.PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPageModel
+            var result = new PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 DefineBeginAt = placardViewModel.BeginAt != null,
@@ -18,7 +21,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
                 DefineEndAt = placardViewModel.EndAt != null,
                 EndAt = placardViewModel.EndAt ?? System.DateTime.Now.Date,
                 Label = placardViewModel.Label,
-                Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>(placardViewModel.Tags),
+                Tags = new System.Collections.ObjectModel.ObservableCollection<TagDisplayModel>(placardViewModel.Tags),
                 PresenterImage = context.PresenterImage.ToViewModel(),
                 PresenterSide = context.PresenterSide,
                 PictureSlidePresentationSecounds = System.Convert.ToInt32(context.PresentedPictureSlideSecuence.PicturePresentationSecounds),
@@ -29,7 +32,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             {
                 result.PresentedSlides.Add(new Models.View.PictureSlideViewModel
                 {
-                    Image = new Support.Presentation.Models.View.ImageViewModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
+                    Image = new ImageViewModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
                     LayoutMode = item.LayoutMode
                 });
             }
