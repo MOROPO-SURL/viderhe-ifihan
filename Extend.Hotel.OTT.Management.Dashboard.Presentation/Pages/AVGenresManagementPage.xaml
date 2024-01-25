@@ -2,12 +2,12 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Models.Page"
-    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
-    xmlns:supportpresentationdashboardconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Converters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardconverters="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Converters;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages.AVGenresManagementPage"
+    x:Class="MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Pages.AVGenresManagementPage"
     x:TypeArguments="pagemodels:AVGenresManagementPageModel"
     Title="Gestionar Géneros Audiovisuales">
     <ContentPage.Resources>

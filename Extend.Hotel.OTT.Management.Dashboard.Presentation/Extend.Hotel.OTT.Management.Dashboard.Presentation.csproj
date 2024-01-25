@@ -2,9 +2,14 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Hotel.OTT.Management.Dashboard.Presentation</AssemblyName>
-		<RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Hotel.OTT.Management.Dashboard.Presentation</RootNamespace>
+		<AssemblyName>MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation</RootNamespace>
+		<Product>VIDERHE Hotels OTT Services</Product>
+		<Authors>MOROPO VIDERHE DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO S.U.R.L. 2024, Todos los derechos reservados.</Copyright>
 		<Version>0.1.0</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>

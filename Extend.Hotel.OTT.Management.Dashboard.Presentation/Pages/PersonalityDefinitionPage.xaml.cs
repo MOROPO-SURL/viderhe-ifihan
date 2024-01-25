@@ -1,8 +1,10 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Managers;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Pages
 {
-    public partial class PersonalityDefinitionPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PersonalityDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class PersonalityDefinitionPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.PersonalityDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private readonly System.Action definitionCallbackAction;
 
@@ -12,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
         private bool hasChangesFlag;
         private byte[] imagePickedData;
 
-        public PersonalityDefinitionPage(System.Action definitionCallbackAction, MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.PersonalityDisplayModel target = null) : base(Factories.PersonalityDefinitionPageModelFactory.Build(target))
+        public PersonalityDefinitionPage(System.Action definitionCallbackAction, Service.Hotel.OTT.API.Common.Models.PersonalityDisplayModel target = null) : base(PersonalityDefinitionPageModelFactory.Build(target))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -91,7 +93,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                 model.ImageExtension = BindingContextPageModel.ImageExtension;
             }
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.PersonalitiesAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.Hotel.OTT.API.Connect.Clients.PersonalitiesAPIConnectClient(SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 

@@ -1,8 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Factories
+﻿namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories
 {
     public static class CountryDefinitionPageModelFactory
     {
-        public static Models.Page.CountryDefinitionPageModel Build(MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.CountryDisplayModel target)
+        public static Models.Page.CountryDefinitionPageModel Build(Service.Hotel.OTT.API.Common.Models.CountryDisplayModel target)
         {
             if (target == null) return new Models.Page.CountryDefinitionPageModel();
 

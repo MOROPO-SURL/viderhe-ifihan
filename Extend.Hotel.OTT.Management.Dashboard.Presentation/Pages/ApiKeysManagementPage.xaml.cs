@@ -1,8 +1,9 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Managers;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Pages
 {
-    public partial class ApiKeysManagementPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ApiKeysManagementPageModel>
+    public partial class ApiKeysManagementPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ApiKeysManagementPageModel>
     {
         public ApiKeysManagementPage() : base(new Models.Page.ApiKeysManagementPageModel())
         {
@@ -38,7 +39,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
         private void ItemTapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
-            BindingContextPageModel.Target = (sender as Xamarin.Forms.BindableObject).BindingContext as MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ApiKeyDisplayModel;
+            BindingContextPageModel.Target = (sender as Xamarin.Forms.BindableObject).BindingContext as Service.Hotel.OTT.API.Common.Models.ApiKeyDisplayModel;
 
             ItemsCollectionView.SelectedItems.Clear();
         }
@@ -61,7 +62,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.IsBusy = true);
 
-                var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.ApiKeysAPIConnectClient(Managers.SessionManager.Instance);
+                var apiConnectClient = new Service.Hotel.OTT.API.Connect.Clients.ApiKeysAPIConnectClient(SessionManager.Instance);
 
                 apiConnectClient.Delete(BindingContextPageModel.Target.Id).ContinueWith(targetDeleteTask =>
                 {
@@ -95,7 +96,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
             BindingContextPageModel.Items?.Clear();
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.ApiKeysAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.Hotel.OTT.API.Connect.Clients.ApiKeysAPIConnectClient(SessionManager.Instance);
 
             apiConnectClient.GetAsync().ContinueWith(task =>
             {
@@ -113,7 +114,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                         {
                             if (BindingContextPageModel.Items == null)
                             {
-                                BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ApiKeyDisplayModel>(task.Result);
+                                BindingContextPageModel.Items = new System.Collections.ObjectModel.ObservableCollection<Service.Hotel.OTT.API.Common.Models.ApiKeyDisplayModel>(task.Result);
                             }
                             else
                             {

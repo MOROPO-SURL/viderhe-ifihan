@@ -1,10 +1,10 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories
 {
     public static class AVProducerHouseDefinitionPageModelFactory
     {
-        public static Models.Page.AVProducerHouseDefinitionPageModel Build(MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.AVProducerHouseDisplayModel target)
+        public static Models.Page.AVProducerHouseDefinitionPageModel Build(Service.Hotel.OTT.API.Common.Models.AVProducerHouseDisplayModel target)
         {
             if (target == null) return new Models.Page.AVProducerHouseDefinitionPageModel();
 

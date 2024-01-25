@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Models.Page
+﻿namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Models.Page
 {
-    public class PersonalitiesManagementPageModel : Contract.AbstractManagementPageModel<MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.PersonalityDisplayModel>
+    public class PersonalitiesManagementPageModel : Contract.AbstractManagementPageModel<Service.Hotel.OTT.API.Common.Models.PersonalityDisplayModel>
     {
     }
 }

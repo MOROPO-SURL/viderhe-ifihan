@@ -1,12 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Models.Page.Contract
+﻿namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Models.Page.Contract
 {
-    public abstract class AbstractManagementPageModel<T> : XFToolKit.Mvvm.Models.Page.BasePageModel where T : class
+    public abstract class AbstractManagementPageModel<T> : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel where T : class
     {
         private T target;
         private System.Collections.ObjectModel.ObservableCollection<T> items;
 
-        public System.Collections.ObjectModel.ObservableCollection<T> Items { get => items; set =>SetProperty(ref items, value); }
-        
+        public System.Collections.ObjectModel.ObservableCollection<T> Items { get => items; set => SetProperty(ref items, value); }
+
         public T Target { get => target; set => SetProperty(ref target, value); }
 
         protected override void DisposeUnmanagementResources()

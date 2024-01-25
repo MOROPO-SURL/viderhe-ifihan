@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Descriptors
 {
     public class HotelOTTExtensionDescriptor : Common.Descriptors.IExtensionDescriptor
     {

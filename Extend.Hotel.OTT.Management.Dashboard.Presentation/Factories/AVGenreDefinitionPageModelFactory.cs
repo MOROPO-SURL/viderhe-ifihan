@@ -1,12 +1,14 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Factories
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Models.Page;
+
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories
 {
     public static class AVGenreDefinitionPageModelFactory
     {
-        public static Models.Page.AVGenreDefinitionPageModel Build(MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.AVGenreDisplayModel target)
+        public static AVGenreDefinitionPageModel Build(Service.Hotel.OTT.API.Common.Models.AVGenreDisplayModel target)
         {
-            if (target == null) return new Models.Page.AVGenreDefinitionPageModel();
+            if (target == null) return new AVGenreDefinitionPageModel();
 
-            return new Models.Page.AVGenreDefinitionPageModel
+            return new AVGenreDefinitionPageModel
             {
                 Id = target.Id,
                 Name = target.Name

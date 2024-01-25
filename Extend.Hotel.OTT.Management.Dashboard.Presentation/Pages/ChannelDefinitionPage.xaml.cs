@@ -1,8 +1,10 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Managers;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Pages
 {
-    public partial class ChannelDefinitionPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ChannelDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class ChannelDefinitionPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ChannelDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private readonly System.Action definitionCallbackAction;
 
@@ -12,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
         private bool hasChangesFlag;
         private byte[] imagePickedData;
 
-        public ChannelDefinitionPage(System.Action definitionCallbackAction, MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ChannelDisplayModel target = null) : base(Factories.ChannelDefinitionPageModelFactory.Build(target))
+        public ChannelDefinitionPage(System.Action definitionCallbackAction, Service.Hotel.OTT.API.Common.Models.ChannelDisplayModel target = null) : base(ChannelDefinitionPageModelFactory.Build(target))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -69,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
             BindingContextPageModel.IsBusy = true;
 
-            var model = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ChannelInputModel
+            var model = new Service.Hotel.OTT.API.Common.Models.ChannelInputModel
             {
                 Id = BindingContextPageModel.Id,
                 Name = BindingContextPageModel.Name,
@@ -85,7 +87,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                 model.FeatureImageExtension = BindingContextPageModel.FeatureImageExtension;
             }
 
-            if (model.Kind == MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.ChannelKind.RF)
+            if (model.Kind == Service.Hotel.OTT.Persistence.Enumerations.ChannelKind.RF)
             {
                 model.SourceSerialization = BindingContextPageModel.RadioFrecuencyBand.ToString();
             }
@@ -94,7 +96,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                 model.SourceSerialization = BindingContextPageModel.IPTVUrl.ToString();
             }
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.ChannelsAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.Hotel.OTT.API.Connect.Clients.ChannelsAPIConnectClient(SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 
@@ -144,7 +146,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
         {
             if (BindingContextPageModel == null) return;
 
-            RadioFrecuencyBandEntry.IsEnabled = BindingContextPageModel.Kind == MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.ChannelKind.RF;
+            RadioFrecuencyBandEntry.IsEnabled = BindingContextPageModel.Kind == Service.Hotel.OTT.Persistence.Enumerations.ChannelKind.RF;
             
             IPTVUrlEntry.IsEnabled = !RadioFrecuencyBandEntry.IsEnabled;
         }

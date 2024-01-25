@@ -1,14 +1,14 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Pages
 {
-    public partial class AVProductionImagesDefinitionPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AVProductionImagesDefinitionPageModel>
+    public partial class AVProductionImagesDefinitionPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AVProductionImagesDefinitionPageModel>
     {
         private readonly System.Action definitionCallbackAction;
 
         private bool hasChangesFlag;
 
-        public AVProductionImagesDefinitionPage(System.Action definitionCallbackAction, MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.AVProductionDisplayModel target) : base(new Models.Page.AVProductionImagesDefinitionPageModel())
+        public AVProductionImagesDefinitionPage(System.Action definitionCallbackAction, Service.Hotel.OTT.API.Common.Models.AVProductionDisplayModel target) : base(new Models.Page.AVProductionImagesDefinitionPageModel())
         {
             InitializeComponent();
 

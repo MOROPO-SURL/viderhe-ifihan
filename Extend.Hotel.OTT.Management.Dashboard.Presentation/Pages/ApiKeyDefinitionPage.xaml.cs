@@ -1,9 +1,12 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Managers;
+using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Pages
 {
-    public partial class ApiKeyDefinitionPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ApiKeyDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class ApiKeyDefinitionPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ApiKeyDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private readonly System.Action definitionCallbackAction;
 
@@ -12,7 +15,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
         private bool isEditionMode;
         private bool hasChangesFlag;
 
-        public ApiKeyDefinitionPage(System.Action definitionCallbackAction, MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ApiKeyDisplayModel target = null) : base(Factories.ApiKeyDefinitionPageModelFactory.Build(target))
+        public ApiKeyDefinitionPage(System.Action definitionCallbackAction, Service.Hotel.OTT.API.Common.Models.ApiKeyDisplayModel target = null) : base(ApiKeyDefinitionPageModelFactory.Build(target))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -80,7 +83,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                 model.ExpirateAt = BindingContextPageModel.ExpirateAtDate.Date.AddMilliseconds(BindingContextPageModel.ExpirateAtTime.TotalMilliseconds);
             }
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.ApiKeysAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.ApiKeysAPIConnectClient(SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 

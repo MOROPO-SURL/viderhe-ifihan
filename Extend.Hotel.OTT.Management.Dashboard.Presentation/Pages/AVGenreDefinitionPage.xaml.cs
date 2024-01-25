@@ -1,8 +1,10 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Managers;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Pages
 {
-    public partial class AVGenreDefinitionPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AVGenreDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class AVGenreDefinitionPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AVGenreDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private readonly System.Action definitionCallbackAction;
 
@@ -12,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
         private bool hasChangesFlag;
 
-        public AVGenreDefinitionPage(System.Action definitionCallbackAction, MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.AVGenreDisplayModel target = null) : base(Factories.AVGenreDefinitionPageModelFactory.Build(target))
+        public AVGenreDefinitionPage(System.Action definitionCallbackAction, Service.Hotel.OTT.API.Common.Models.AVGenreDisplayModel target = null) : base(AVGenreDefinitionPageModelFactory.Build(target))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -62,13 +64,13 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
             BindingContextPageModel.IsBusy = true;
 
-            var model = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.AVGenreInputModel
+            var model = new Service.Hotel.OTT.API.Common.Models.AVGenreInputModel
             {
                 Id = BindingContextPageModel.Id,
                 Name = BindingContextPageModel.Name
             };
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.AVGenresAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.Hotel.OTT.API.Connect.Clients.AVGenresAPIConnectClient(SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 

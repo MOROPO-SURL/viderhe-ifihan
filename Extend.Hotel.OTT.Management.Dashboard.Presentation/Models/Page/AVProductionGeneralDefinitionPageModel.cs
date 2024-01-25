@@ -1,7 +1,7 @@
 ﻿using MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models;
 using System.Collections.ObjectModel;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Models.Page
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Models.Page
 {
     public class AVProductionGeneralDefinitionPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
@@ -11,7 +11,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
         private int year;
         private string about;
         private string argument;
-        private MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.Language language;
+        private Service.Hotel.OTT.Persistence.Enumerations.Language language;
         private AVCategoryDisplayModel category;
         private int rate;
         private int? ageEdge;
@@ -22,7 +22,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
             Id = System.Guid.NewGuid();
             Rate = 5;
             Duration = System.TimeSpan.FromMinutes(45);
-            Language = MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.Language.Spanish;
+            Language = Service.Hotel.OTT.Persistence.Enumerations.Language.Spanish;
 
             Genres = new ObservableCollection<AVGenreDisplayModel>();
             Countries = new ObservableCollection<CountryDisplayModel>();
@@ -46,7 +46,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
         public string Argument { get => argument; set => SetProperty(ref argument, value); }
 
-        public MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.Language Language { get => language; set => SetProperty(ref language, value); }
+        public Service.Hotel.OTT.Persistence.Enumerations.Language Language { get => language; set => SetProperty(ref language, value); }
 
         public AVCategoryDisplayModel Category { get => category; set => SetProperty(ref category, value); }
 

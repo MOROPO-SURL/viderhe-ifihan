@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Hotel.OTT.Overlaying.Presentation.Views
+﻿namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Views
 {
     public partial class PionnerOTTHotelTVOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
@@ -11,10 +11,10 @@
 
         public override void ShowIn()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
             {
                 Target = this,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 Opacity = 1
             };
 
@@ -23,10 +23,10 @@
 
         public override void ShowOut()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
             {
                 Target = this,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
                 Opacity = 0
             };
 

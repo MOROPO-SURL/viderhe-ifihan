@@ -1,12 +1,14 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Factories
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Models.Page;
+
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories
 {
     public static class ApiKeyDefinitionPageModelFactory
     {
-        public static Models.Page.ApiKeyDefinitionPageModel Build(MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ApiKeyDisplayModel target)
+        public static ApiKeyDefinitionPageModel Build(Service.Hotel.OTT.API.Common.Models.ApiKeyDisplayModel target)
         {
-            if (target == null) return new Models.Page.ApiKeyDefinitionPageModel();
+            if (target == null) return new ApiKeyDefinitionPageModel();
 
-            var model = new Models.Page.ApiKeyDefinitionPageModel
+            var model = new ApiKeyDefinitionPageModel
             {
                 Id = target.Id,
                 Name = target.Name,
@@ -15,7 +17,7 @@
                 Token = target.Token,
                 IsExpirable = target.ExpirateAt != null,
                 Host = target.Host,
-                Roles = new System.Collections.ObjectModel.ObservableCollection<MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.RoleDisplayModel>(target.Roles)
+                Roles = new System.Collections.ObjectModel.ObservableCollection<Service.Hotel.OTT.API.Common.Models.RoleDisplayModel>(target.Roles)
             };
 
             if (model.IsExpirable)

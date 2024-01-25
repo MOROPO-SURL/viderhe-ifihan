@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Sections
+﻿namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Sections
 {
     public class HotelOTTManagementSection : Common.Management.Sections.Contract.IManagementSection
     {

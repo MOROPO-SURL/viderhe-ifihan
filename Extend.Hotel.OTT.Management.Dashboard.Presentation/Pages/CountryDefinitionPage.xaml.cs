@@ -1,8 +1,10 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Managers;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Pages
 {
-    public partial class CountryDefinitionPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.CountryDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class CountryDefinitionPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.CountryDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private readonly System.Action definitionCallbackAction;
 
@@ -12,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
         private bool hasChangesFlag;
 
-        public CountryDefinitionPage(System.Action definitionCallbackAction, MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.CountryDisplayModel target = null) : base(Factories.CountryDefinitionPageModelFactory.Build(target))
+        public CountryDefinitionPage(System.Action definitionCallbackAction, Service.Hotel.OTT.API.Common.Models.CountryDisplayModel target = null) : base(CountryDefinitionPageModelFactory.Build(target))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -62,14 +64,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
             BindingContextPageModel.IsBusy = true;
 
-            var model = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.CountryInputModel
+            var model = new Service.Hotel.OTT.API.Common.Models.CountryInputModel
             {
                 Id = BindingContextPageModel.Id,
                 Name = BindingContextPageModel.Name,
                 IsoCode = BindingContextPageModel.IsoCode
             };
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.CountriesAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.Hotel.OTT.API.Connect.Clients.CountriesAPIConnectClient(SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 

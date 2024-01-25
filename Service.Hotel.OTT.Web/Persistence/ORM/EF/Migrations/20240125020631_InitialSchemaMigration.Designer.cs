@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Persistence.ORM.EF.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240125012823_InitialSchemaMigration")]
+    [Migration("20240125020631_InitialSchemaMigration")]
     partial class InitialSchemaMigration
     {
         /// <inheritdoc />

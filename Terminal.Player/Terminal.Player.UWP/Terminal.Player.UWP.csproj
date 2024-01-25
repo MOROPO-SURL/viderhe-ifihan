@@ -302,6 +302,30 @@
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Hotel.OTT.Overlaying.Presentation\Extend.Hotel.OTT.Overlaying.Presentation.csproj">
+      <Project>{a10fcaeb-0f8c-4086-a940-d0a41407f9e4}</Project>
+      <Name>Extend.Hotel.OTT.Overlaying.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Hotel.OTT.Overlaying\Extend.Hotel.OTT.Overlaying.csproj">
+      <Project>{17f961fd-2b54-41cf-9733-59085fb3350f}</Project>
+      <Name>Extend.Hotel.OTT.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Hotel.OTT\Extend.Hotel.OTT.csproj">
+      <Project>{7544b9b7-7429-4885-8fc6-6400a9285998}</Project>
+      <Name>Extend.Hotel.OTT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service.Hotel.OTT.API.Common\Service.Hotel.OTT.API.Common.csproj">
+      <Project>{58f609a6-6f54-4599-b588-363e992b7ec1}</Project>
+      <Name>Service.Hotel.OTT.API.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service.Hotel.OTT.API.Connect\Service.Hotel.OTT.API.Connect.csproj">
+      <Project>{0e66afce-247e-4ed8-a477-c79505628d93}</Project>
+      <Name>Service.Hotel.OTT.API.Connect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service.Hotel.OTT.Persistence\Service.Hotel.OTT.Persistence.csproj">
+      <Project>{9f129444-6297-44dc-98d1-4d2a50fb62a0}</Project>
+      <Name>Service.Hotel.OTT.Persistence</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj">
       <Project>{c6ec5e2a-cf68-4a31-b53d-0bf9ec767fa4}</Project>
       <Name>Support.Extend.Overlaying</Name>

@@ -1,10 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Models.Page
+﻿namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Models.Page
 {
     public class ChannelDefinitionPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
         private string name;
         private bool enabled;
-        private MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.ChannelKind kind;
+        private Service.Hotel.OTT.Persistence.Enumerations.ChannelKind kind;
         private int? radioFrecuencyBand;
         private string iPTVUrl;
         private Xamarin.Forms.ImageSource featureImageSource;
@@ -21,7 +21,7 @@
 
         public bool Enabled { get => enabled; set => SetProperty(ref enabled, value); }
 
-        public MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.ChannelKind Kind { get => kind; set => SetProperty(ref kind, value); }
+        public Service.Hotel.OTT.Persistence.Enumerations.ChannelKind Kind { get => kind; set => SetProperty(ref kind, value); }
 
         public int? RadioFrecuencyBand { get => radioFrecuencyBand; set => SetProperty(ref radioFrecuencyBand, value); }
 

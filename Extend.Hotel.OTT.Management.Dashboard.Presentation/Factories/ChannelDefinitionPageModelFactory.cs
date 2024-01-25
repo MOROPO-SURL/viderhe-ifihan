@@ -1,10 +1,10 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories
 {
     public static class ChannelDefinitionPageModelFactory
     {
-        public static Models.Page.ChannelDefinitionPageModel Build(MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.ChannelDisplayModel target)
+        public static Models.Page.ChannelDefinitionPageModel Build(Service.Hotel.OTT.API.Common.Models.ChannelDisplayModel target)
         {
             if (target == null) return new Models.Page.ChannelDefinitionPageModel();
 
@@ -20,7 +20,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                 Description = target.Description
             };
 
-            if (target.Kind == MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Enumerations.ChannelKind.IPTV)
+            if (target.Kind == Service.Hotel.OTT.Persistence.Enumerations.ChannelKind.IPTV)
             {
                 model.IPTVUrl = target.SourceSerialization;
             }

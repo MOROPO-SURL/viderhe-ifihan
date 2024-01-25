@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Hotel.OTT.Overlaying.Presentation.Providers
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Descriptors;
+
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Providers
 {
     public class OverlayPresentationViewProvider : Common.Overlaying.Presentation.Providers.Facade.IOverlayPresentationViewProviderFacade
     {
@@ -6,7 +8,7 @@
         {
             var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
-            if (accountInformationProvider.AccountDefaultOverlayId.Value == Descriptors.PionnerOTTHotelTVOverlayDescriptor.ID)
+            if (accountInformationProvider.AccountDefaultOverlayId.Value == PionnerOTTHotelTVOverlayDescriptor.ID)
             {
                 //var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.SimpleHighlightsContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
 

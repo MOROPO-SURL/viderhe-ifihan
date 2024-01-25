@@ -1,8 +1,10 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Managers;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Pages
 {
-    public partial class AVCategoryDefinitionPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AVCategoryDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class AVCategoryDefinitionPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AVCategoryDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private readonly System.Action definitionCallbackAction;
 
@@ -12,7 +14,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
         private bool hasChangesFlag;
 
-        public AVCategoryDefinitionPage(System.Action definitionCallbackAction, MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.AVCategoryDisplayModel target = null) : base(Factories.AVCategoryDefinitionPageModelFactory.Build(target))
+        public AVCategoryDefinitionPage(System.Action definitionCallbackAction, Service.Hotel.OTT.API.Common.Models.AVCategoryDisplayModel target = null) : base(AVCategoryDefinitionPageModelFactory.Build(target))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -35,7 +37,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
             BindingContextPageModel.IsBusy = true;
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.AVCategoriesAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.Hotel.OTT.API.Connect.Clients.AVCategoriesAPIConnectClient(SessionManager.Instance);
 
             apiConnectClient.GetAsync().ContinueWith(task =>
             {
@@ -96,14 +98,14 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
             BindingContextPageModel.IsBusy = true;
 
-            var model = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.AVCategoryInputModel
+            var model = new Service.Hotel.OTT.API.Common.Models.AVCategoryInputModel
             {
                 Id = BindingContextPageModel.Id,
                 Name = BindingContextPageModel.Name,
                 ParentId = BindingContextPageModel.Parent?.Id
             };
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.AVCategoriesAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.Hotel.OTT.API.Connect.Clients.AVCategoriesAPIConnectClient(SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 

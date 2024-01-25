@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Hotel.OTT.Overlaying.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Descriptors
 {
     public class PionnerOTTHotelTVOverlayDescriptor : Common.Overlaying.Descriptors.IOverlayDescriptor
     {

@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Models.Page
+﻿namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Models.Page
 {
-    public class AVProductionImagesDefinitionPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class AVProductionImagesDefinitionPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private Xamarin.Forms.ImageSource posterImageSource;
         private Xamarin.Forms.ImageSource placardImageSource;

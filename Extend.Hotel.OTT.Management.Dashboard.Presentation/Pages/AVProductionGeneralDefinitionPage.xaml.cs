@@ -1,12 +1,14 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Managers;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Pages
 {
-    public partial class AVProductionGeneralDefinitionPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AVProductionGeneralDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class AVProductionGeneralDefinitionPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AVProductionGeneralDefinitionPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private readonly System.Action definitionCallbackAction;
-        private readonly MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.AVProductionDisplayModel target;
+        private readonly Service.Hotel.OTT.API.Common.Models.AVProductionDisplayModel target;
 
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
@@ -14,7 +16,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
         private bool hasChangesFlag;
 
-        public AVProductionGeneralDefinitionPage(System.Action definitionCallbackAction, MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.AVProductionDisplayModel target = null) : base(Factories.AVProductionDefinitionPageModelFactory.Build(target))
+        public AVProductionGeneralDefinitionPage(System.Action definitionCallbackAction, Service.Hotel.OTT.API.Common.Models.AVProductionDisplayModel target = null) : base(AVProductionDefinitionPageModelFactory.Build(target))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -42,11 +44,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var categoryAPIConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.AVCategoriesAPIConnectClient(Managers.SessionManager.Instance);
+                var categoryAPIConnectClient = new Service.Hotel.OTT.API.Connect.Clients.AVCategoriesAPIConnectClient(SessionManager.Instance);
 
                 var availableCategories = await categoryAPIConnectClient.GetAsync();
 
-                var countriesAPIConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.CountriesAPIConnectClient(Managers.SessionManager.Instance);
+                var countriesAPIConnectClient = new Service.Hotel.OTT.API.Connect.Clients.CountriesAPIConnectClient(SessionManager.Instance);
 
                 var availableCountries = await countriesAPIConnectClient.GetAsync();
 
@@ -140,7 +142,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
 
             BindingContextPageModel.IsBusy = true;
 
-            var model = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.AVProductionInputModel
+            var model = new Service.Hotel.OTT.API.Common.Models.AVProductionInputModel
             {
                 Id = BindingContextPageModel.Id,
                 Title = BindingContextPageModel.Title,
@@ -159,7 +161,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Prese
                 Genres = BindingContextPageModel.Genres.ToArray()
             };
 
-            var apiConnectClient = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Connect.Clients.AVProductionsAPIConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Service.Hotel.OTT.API.Connect.Clients.AVProductionsAPIConnectClient(SessionManager.Instance);
 
             var apiConnectClientTask = isEditionMode ? apiConnectClient.EditAsync(model) : apiConnectClient.CreateAsync(model);
 

@@ -1,10 +1,10 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.HotelOTT.Management.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Factories
 {
     public static class PersonalityDefinitionPageModelFactory
     {
-        public static Models.Page.PersonalityDefinitionPageModel Build(MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.PersonalityDisplayModel target)
+        public static Models.Page.PersonalityDefinitionPageModel Build(Service.Hotel.OTT.API.Common.Models.PersonalityDisplayModel target)
         {
             if (target == null) return new Models.Page.PersonalityDefinitionPageModel();
 
