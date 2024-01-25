@@ -2,7 +2,7 @@
 
 namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Persistence.ORM.EF.Repositories
 {
-    public class AVProductionRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.AbstractEntityRepository<OTT.Persistence.Entities.AVProduction, System.Guid>
+    public class AVProductionRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<OTT.Persistence.Entities.AVProduction, System.Guid>
     {
         public AVProductionRepository(DbContext dbContext) : base(dbContext)
         {

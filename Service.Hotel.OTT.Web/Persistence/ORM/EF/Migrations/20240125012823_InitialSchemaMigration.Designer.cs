@@ -9,10 +9,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
+namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Persistence.ORM.EF.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230828210556_InitialSchemaMigration")]
+    [Migration("20240125012823_InitialSchemaMigration")]
     partial class InitialSchemaMigration
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.10")
+                .HasAnnotation("ProductVersion", "7.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -1069,7 +1069,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("enabled");
 
-                    b.Property<long>("FileSize")
+                    b.Property<long?>("FileSize")
                         .HasColumnType("bigint")
                         .HasColumnName("filesize");
 
@@ -1107,11 +1107,10 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                         .HasColumnName("videoformat");
 
                     b.Property<Guid?>("VideoId")
-                        .IsRequired()
                         .HasColumnType("uuid")
                         .HasColumnName("videoid");
 
-                    b.Property<int>("VideoQuality")
+                    b.Property<int?>("VideoQuality")
                         .HasColumnType("integer")
                         .HasColumnName("videoquality");
 
@@ -1215,7 +1214,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("enabled");
 
-                    b.Property<DateTime>("ExpirateAt")
+                    b.Property<DateTime?>("ExpirateAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("expirateat");
 
@@ -2092,8 +2091,6 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                     b.HasOne("MOROPO.Framework.Guama.Media.Persistence.Entities.Video", "Video")
                         .WithMany()
                         .HasForeignKey("VideoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("fk_avproductions_videos_videoid");
 
                     b.Navigation("Category");

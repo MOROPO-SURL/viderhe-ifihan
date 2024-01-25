@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
+namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Persistence.ORM.EF.Migrations
 {
     /// <inheritdoc />
     public partial class InitialSchemaMigration : Migration
@@ -33,7 +33,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                     token = table.Column<string>(type: "text", nullable: false),
                     enabled = table.Column<bool>(type: "boolean", nullable: false),
                     hasfullaccess = table.Column<bool>(type: "boolean", nullable: false),
-                    expirateat = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    expirateat = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     host = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -554,11 +554,11 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                     posterimageid = table.Column<Guid>(type: "uuid", nullable: true),
                     placardimageid = table.Column<Guid>(type: "uuid", nullable: true),
                     trailervideoid = table.Column<Guid>(type: "uuid", nullable: true),
-                    videoid = table.Column<Guid>(type: "uuid", nullable: false),
-                    filesize = table.Column<long>(type: "bigint", nullable: false),
+                    videoid = table.Column<Guid>(type: "uuid", nullable: true),
+                    filesize = table.Column<long>(type: "bigint", nullable: true),
                     hassubtitle = table.Column<bool>(type: "boolean", nullable: false),
                     videoformat = table.Column<string>(type: "text", nullable: true),
-                    videoquality = table.Column<int>(type: "integer", nullable: false),
+                    videoquality = table.Column<int>(type: "integer", nullable: true),
                     videoresolution = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
@@ -600,8 +600,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Migrations
                         column: x => x.videoid,
                         principalSchema: "guamaframework_media",
                         principalTable: "videos",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(

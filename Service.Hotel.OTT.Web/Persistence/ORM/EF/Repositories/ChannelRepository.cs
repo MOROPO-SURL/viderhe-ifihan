@@ -2,7 +2,7 @@
 
 namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Persistence.ORM.EF.Repositories
 {
-    public class ChannelRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.AbstractEntityRepository<OTT.Persistence.Entities.Channel, System.Guid>
+    public class ChannelRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<OTT.Persistence.Entities.Channel, System.Guid>
     {
         public ChannelRepository(DbContext dbContext) : base(dbContext)
         {
