@@ -1,377 +1,382 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation</AssemblyName>
-    <RootNamespace>MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation</RootNamespace>
-    <Version>0.2.0</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>0.2.1</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Assets\Font\AbrilFatface-Regular.ttf" />
-    <None Remove="Assets\Font\AdventPro-Bold.ttf" />
-    <None Remove="Assets\Font\AdventPro-ExtraLight.ttf" />
-    <None Remove="Assets\Font\AdventPro-Regular.ttf" />
-    <None Remove="Assets\Font\AlegreyaSans-Bold.ttf" />
-    <None Remove="Assets\Font\AlegreyaSans-BoldItalic.ttf" />
-    <None Remove="Assets\Font\AlegreyaSans-Italic.ttf" />
-    <None Remove="Assets\Font\AlegreyaSans-Light.ttf" />
-    <None Remove="Assets\Font\AlegreyaSans-LightItalic.ttf" />
-    <None Remove="Assets\Font\AlegreyaSans-Regular.ttf" />
-    <None Remove="Assets\Font\Arvo-Bold.ttf" />
-    <None Remove="Assets\Font\Arvo-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Arvo-Italic.ttf" />
-    <None Remove="Assets\Font\Arvo-Regular.ttf" />
-    <None Remove="Assets\Font\Assistant-Bold.ttf" />
-    <None Remove="Assets\Font\Assistant-ExtraLight.ttf" />
-    <None Remove="Assets\Font\Assistant-Regular.ttf" />
-    <None Remove="Assets\Font\BarlowCondensed-Bold.ttf" />
-    <None Remove="Assets\Font\BarlowCondensed-BoldItalic.ttf" />
-    <None Remove="Assets\Font\BarlowCondensed-ExtraLight.ttf" />
-    <None Remove="Assets\Font\BarlowCondensed-ExtraLightItalic.ttf" />
-    <None Remove="Assets\Font\BarlowCondensed-Italic.ttf" />
-    <None Remove="Assets\Font\BarlowCondensed-Regular.ttf" />
-    <None Remove="Assets\Font\Bitter-Bold.ttf" />
-    <None Remove="Assets\Font\Bitter-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Bitter-ExtraLight.ttf" />
-    <None Remove="Assets\Font\Bitter-ExtraLightItalic.ttf" />
-    <None Remove="Assets\Font\Bitter-Italic.ttf" />
-    <None Remove="Assets\Font\Bitter-Regular.ttf" />
-    <None Remove="Assets\Font\BreeSerif-Regular.ttf" />
-    <None Remove="Assets\Font\Cinzel-Bold.ttf" />
-    <None Remove="Assets\Font\Cinzel-Regular.ttf" />
-    <None Remove="Assets\Font\CreteRound-Italic.ttf" />
-    <None Remove="Assets\Font\CreteRound-Regular.ttf" />
-    <None Remove="Assets\Font\Cuprum-Bold.ttf" />
-    <None Remove="Assets\Font\Cuprum-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Cuprum-Italic.ttf" />
-    <None Remove="Assets\Font\Cuprum-Regular.ttf" />
-    <None Remove="Assets\Font\Dosis-Bold.ttf" />
-    <None Remove="Assets\Font\Dosis-ExtraLight.ttf" />
-    <None Remove="Assets\Font\Dosis-Regular.ttf" />
-    <None Remove="Assets\Font\EuphoriaScript-Regular.ttf" />
-    <None Remove="Assets\Font\ExpletusSans-Bold.ttf" />
-    <None Remove="Assets\Font\ExpletusSans-Medium.ttf" />
-    <None Remove="Assets\Font\ExpletusSans-SemiBold.ttf" />
-    <None Remove="Assets\Font\Faustina-Bold.ttf" />
-    <None Remove="Assets\Font\Faustina-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Faustina-Italic.ttf" />
-    <None Remove="Assets\Font\Faustina-Light.ttf" />
-    <None Remove="Assets\Font\Faustina-LightItalic.ttf" />
-    <None Remove="Assets\Font\Faustina-Regular.ttf" />
-    <None Remove="Assets\Font\FrankRuhlLibre-Bold.ttf" />
-    <None Remove="Assets\Font\FrankRuhlLibre-Light.ttf" />
-    <None Remove="Assets\Font\FrankRuhlLibre-Regular.ttf" />
-    <None Remove="Assets\Font\Handlee-Regular.ttf" />
-    <None Remove="Assets\Font\Jost-Bold.ttf" />
-    <None Remove="Assets\Font\Jost-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Jost-ExtraLight.ttf" />
-    <None Remove="Assets\Font\Jost-ExtraLightItalic.ttf" />
-    <None Remove="Assets\Font\Jost-Italic.ttf" />
-    <None Remove="Assets\Font\Jost-Regular.ttf" />
-    <None Remove="Assets\Font\Lobster-Regular.ttf" />
-    <None Remove="Assets\Font\Merriweather-Bold.ttf" />
-    <None Remove="Assets\Font\Merriweather-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Merriweather-Italic.ttf" />
-    <None Remove="Assets\Font\Merriweather-Light.ttf" />
-    <None Remove="Assets\Font\Merriweather-LightItalic.ttf" />
-    <None Remove="Assets\Font\Merriweather-Regular.ttf" />
-    <None Remove="Assets\Font\Montserrat-Bold.ttf" />
-    <None Remove="Assets\Font\Montserrat-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Montserrat-ExtraLight.ttf" />
-    <None Remove="Assets\Font\Montserrat-ExtraLightItalic.ttf" />
-    <None Remove="Assets\Font\Montserrat-Italic.ttf" />
-    <None Remove="Assets\Font\Montserrat-Regular.ttf" />
-    <None Remove="Assets\Font\Oxygen-Bold.ttf" />
-    <None Remove="Assets\Font\Oxygen-Light.ttf" />
-    <None Remove="Assets\Font\Oxygen-Regular.ttf" />
-    <None Remove="Assets\Font\PathwayGothicOne-Regular.ttf" />
-    <None Remove="Assets\Font\PatrickHand-Regular.ttf" />
-    <None Remove="Assets\Font\PermanentMarker-Regular.ttf" />
-    <None Remove="Assets\Font\Philosopher-Bold.ttf" />
-    <None Remove="Assets\Font\Philosopher-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Philosopher-Italic.ttf" />
-    <None Remove="Assets\Font\Philosopher-Regular.ttf" />
-    <None Remove="Assets\Font\Play-Bold.ttf" />
-    <None Remove="Assets\Font\Play-Regular.ttf" />
-    <None Remove="Assets\Font\Rajdhani-Bold.ttf" />
-    <None Remove="Assets\Font\Rajdhani-Light.ttf" />
-    <None Remove="Assets\Font\Rajdhani-Regular.ttf" />
-    <None Remove="Assets\Font\Raleway-Bold.ttf" />
-    <None Remove="Assets\Font\Raleway-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Raleway-ExtraLight.ttf" />
-    <None Remove="Assets\Font\Raleway-ExtraLightItalic.ttf" />
-    <None Remove="Assets\Font\Raleway-Italic.ttf" />
-    <None Remove="Assets\Font\Raleway-Regular.ttf" />
-    <None Remove="Assets\Font\Roboto-Bold.ttf" />
-    <None Remove="Assets\Font\Roboto-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Roboto-Italic.ttf" />
-    <None Remove="Assets\Font\Roboto-Light.ttf" />
-    <None Remove="Assets\Font\Roboto-LightItalic.ttf" />
-    <None Remove="Assets\Font\Roboto-Regular.ttf" />
-    <None Remove="Assets\Font\Rokkitt-Bold.ttf" />
-    <None Remove="Assets\Font\Rokkitt-ExtraLight.ttf" />
-    <None Remove="Assets\Font\Rokkitt-Regular.ttf" />
-    <None Remove="Assets\Font\RussoOne-Regular.ttf" />
-    <None Remove="Assets\Font\SairaCondensed-Bold.ttf" />
-    <None Remove="Assets\Font\SairaCondensed-ExtraLight.ttf" />
-    <None Remove="Assets\Font\SairaCondensed-Regular.ttf" />
-    <None Remove="Assets\Font\Signika-Bold.ttf" />
-    <None Remove="Assets\Font\Signika-Light.ttf" />
-    <None Remove="Assets\Font\Signika-Regular.ttf" />
-    <None Remove="Assets\Font\Ubuntu-Bold.ttf" />
-    <None Remove="Assets\Font\Ubuntu-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Ubuntu-Italic.ttf" />
-    <None Remove="Assets\Font\Ubuntu-Light.ttf" />
-    <None Remove="Assets\Font\Ubuntu-LightItalic.ttf" />
-    <None Remove="Assets\Font\Ubuntu-Regular.ttf" />
-    <None Remove="Assets\Font\Vidaloka-Regular.ttf" />
-    <None Remove="Assets\Font\Vollkorn-Bold.ttf" />
-    <None Remove="Assets\Font\Vollkorn-BoldItalic.ttf" />
-    <None Remove="Assets\Font\Vollkorn-Italic.ttf" />
-    <None Remove="Assets\Font\Vollkorn-Regular.ttf" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Assets\Font\AbrilFatface-Regular.ttf" />
+		<None Remove="Assets\Font\AdventPro-Bold.ttf" />
+		<None Remove="Assets\Font\AdventPro-ExtraLight.ttf" />
+		<None Remove="Assets\Font\AdventPro-Regular.ttf" />
+		<None Remove="Assets\Font\AlegreyaSans-Bold.ttf" />
+		<None Remove="Assets\Font\AlegreyaSans-BoldItalic.ttf" />
+		<None Remove="Assets\Font\AlegreyaSans-Italic.ttf" />
+		<None Remove="Assets\Font\AlegreyaSans-Light.ttf" />
+		<None Remove="Assets\Font\AlegreyaSans-LightItalic.ttf" />
+		<None Remove="Assets\Font\AlegreyaSans-Regular.ttf" />
+		<None Remove="Assets\Font\Arvo-Bold.ttf" />
+		<None Remove="Assets\Font\Arvo-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Arvo-Italic.ttf" />
+		<None Remove="Assets\Font\Arvo-Regular.ttf" />
+		<None Remove="Assets\Font\Assistant-Bold.ttf" />
+		<None Remove="Assets\Font\Assistant-ExtraLight.ttf" />
+		<None Remove="Assets\Font\Assistant-Regular.ttf" />
+		<None Remove="Assets\Font\BarlowCondensed-Bold.ttf" />
+		<None Remove="Assets\Font\BarlowCondensed-BoldItalic.ttf" />
+		<None Remove="Assets\Font\BarlowCondensed-ExtraLight.ttf" />
+		<None Remove="Assets\Font\BarlowCondensed-ExtraLightItalic.ttf" />
+		<None Remove="Assets\Font\BarlowCondensed-Italic.ttf" />
+		<None Remove="Assets\Font\BarlowCondensed-Regular.ttf" />
+		<None Remove="Assets\Font\Bitter-Bold.ttf" />
+		<None Remove="Assets\Font\Bitter-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Bitter-ExtraLight.ttf" />
+		<None Remove="Assets\Font\Bitter-ExtraLightItalic.ttf" />
+		<None Remove="Assets\Font\Bitter-Italic.ttf" />
+		<None Remove="Assets\Font\Bitter-Regular.ttf" />
+		<None Remove="Assets\Font\BreeSerif-Regular.ttf" />
+		<None Remove="Assets\Font\Cinzel-Bold.ttf" />
+		<None Remove="Assets\Font\Cinzel-Regular.ttf" />
+		<None Remove="Assets\Font\CreteRound-Italic.ttf" />
+		<None Remove="Assets\Font\CreteRound-Regular.ttf" />
+		<None Remove="Assets\Font\Cuprum-Bold.ttf" />
+		<None Remove="Assets\Font\Cuprum-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Cuprum-Italic.ttf" />
+		<None Remove="Assets\Font\Cuprum-Regular.ttf" />
+		<None Remove="Assets\Font\Dosis-Bold.ttf" />
+		<None Remove="Assets\Font\Dosis-ExtraLight.ttf" />
+		<None Remove="Assets\Font\Dosis-Regular.ttf" />
+		<None Remove="Assets\Font\EuphoriaScript-Regular.ttf" />
+		<None Remove="Assets\Font\ExpletusSans-Bold.ttf" />
+		<None Remove="Assets\Font\ExpletusSans-Medium.ttf" />
+		<None Remove="Assets\Font\ExpletusSans-SemiBold.ttf" />
+		<None Remove="Assets\Font\Faustina-Bold.ttf" />
+		<None Remove="Assets\Font\Faustina-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Faustina-Italic.ttf" />
+		<None Remove="Assets\Font\Faustina-Light.ttf" />
+		<None Remove="Assets\Font\Faustina-LightItalic.ttf" />
+		<None Remove="Assets\Font\Faustina-Regular.ttf" />
+		<None Remove="Assets\Font\FrankRuhlLibre-Bold.ttf" />
+		<None Remove="Assets\Font\FrankRuhlLibre-Light.ttf" />
+		<None Remove="Assets\Font\FrankRuhlLibre-Regular.ttf" />
+		<None Remove="Assets\Font\Handlee-Regular.ttf" />
+		<None Remove="Assets\Font\Jost-Bold.ttf" />
+		<None Remove="Assets\Font\Jost-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Jost-ExtraLight.ttf" />
+		<None Remove="Assets\Font\Jost-ExtraLightItalic.ttf" />
+		<None Remove="Assets\Font\Jost-Italic.ttf" />
+		<None Remove="Assets\Font\Jost-Regular.ttf" />
+		<None Remove="Assets\Font\Lobster-Regular.ttf" />
+		<None Remove="Assets\Font\Merriweather-Bold.ttf" />
+		<None Remove="Assets\Font\Merriweather-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Merriweather-Italic.ttf" />
+		<None Remove="Assets\Font\Merriweather-Light.ttf" />
+		<None Remove="Assets\Font\Merriweather-LightItalic.ttf" />
+		<None Remove="Assets\Font\Merriweather-Regular.ttf" />
+		<None Remove="Assets\Font\Montserrat-Bold.ttf" />
+		<None Remove="Assets\Font\Montserrat-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Montserrat-ExtraLight.ttf" />
+		<None Remove="Assets\Font\Montserrat-ExtraLightItalic.ttf" />
+		<None Remove="Assets\Font\Montserrat-Italic.ttf" />
+		<None Remove="Assets\Font\Montserrat-Regular.ttf" />
+		<None Remove="Assets\Font\Oxygen-Bold.ttf" />
+		<None Remove="Assets\Font\Oxygen-Light.ttf" />
+		<None Remove="Assets\Font\Oxygen-Regular.ttf" />
+		<None Remove="Assets\Font\PathwayGothicOne-Regular.ttf" />
+		<None Remove="Assets\Font\PatrickHand-Regular.ttf" />
+		<None Remove="Assets\Font\PermanentMarker-Regular.ttf" />
+		<None Remove="Assets\Font\Philosopher-Bold.ttf" />
+		<None Remove="Assets\Font\Philosopher-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Philosopher-Italic.ttf" />
+		<None Remove="Assets\Font\Philosopher-Regular.ttf" />
+		<None Remove="Assets\Font\Play-Bold.ttf" />
+		<None Remove="Assets\Font\Play-Regular.ttf" />
+		<None Remove="Assets\Font\Rajdhani-Bold.ttf" />
+		<None Remove="Assets\Font\Rajdhani-Light.ttf" />
+		<None Remove="Assets\Font\Rajdhani-Regular.ttf" />
+		<None Remove="Assets\Font\Raleway-Bold.ttf" />
+		<None Remove="Assets\Font\Raleway-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Raleway-ExtraLight.ttf" />
+		<None Remove="Assets\Font\Raleway-ExtraLightItalic.ttf" />
+		<None Remove="Assets\Font\Raleway-Italic.ttf" />
+		<None Remove="Assets\Font\Raleway-Regular.ttf" />
+		<None Remove="Assets\Font\Roboto-Bold.ttf" />
+		<None Remove="Assets\Font\Roboto-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Roboto-Italic.ttf" />
+		<None Remove="Assets\Font\Roboto-Light.ttf" />
+		<None Remove="Assets\Font\Roboto-LightItalic.ttf" />
+		<None Remove="Assets\Font\Roboto-Regular.ttf" />
+		<None Remove="Assets\Font\Rokkitt-Bold.ttf" />
+		<None Remove="Assets\Font\Rokkitt-ExtraLight.ttf" />
+		<None Remove="Assets\Font\Rokkitt-Regular.ttf" />
+		<None Remove="Assets\Font\RussoOne-Regular.ttf" />
+		<None Remove="Assets\Font\SairaCondensed-Bold.ttf" />
+		<None Remove="Assets\Font\SairaCondensed-ExtraLight.ttf" />
+		<None Remove="Assets\Font\SairaCondensed-Regular.ttf" />
+		<None Remove="Assets\Font\Signika-Bold.ttf" />
+		<None Remove="Assets\Font\Signika-Light.ttf" />
+		<None Remove="Assets\Font\Signika-Regular.ttf" />
+		<None Remove="Assets\Font\Ubuntu-Bold.ttf" />
+		<None Remove="Assets\Font\Ubuntu-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Ubuntu-Italic.ttf" />
+		<None Remove="Assets\Font\Ubuntu-Light.ttf" />
+		<None Remove="Assets\Font\Ubuntu-LightItalic.ttf" />
+		<None Remove="Assets\Font\Ubuntu-Regular.ttf" />
+		<None Remove="Assets\Font\Vidaloka-Regular.ttf" />
+		<None Remove="Assets\Font\Vollkorn-Bold.ttf" />
+		<None Remove="Assets\Font\Vollkorn-BoldItalic.ttf" />
+		<None Remove="Assets\Font\Vollkorn-Italic.ttf" />
+		<None Remove="Assets\Font\Vollkorn-Regular.ttf" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Assets\Font\AbrilFatface-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\AdventPro-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\AdventPro-ExtraLight.ttf" />
-    <EmbeddedResource Include="Assets\Font\AdventPro-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\AlegreyaSans-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\AlegreyaSans-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\AlegreyaSans-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\AlegreyaSans-Light.ttf" />
-    <EmbeddedResource Include="Assets\Font\AlegreyaSans-LightItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\AlegreyaSans-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Arvo-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Arvo-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Arvo-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Arvo-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Assistant-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Assistant-ExtraLight.ttf" />
-    <EmbeddedResource Include="Assets\Font\Assistant-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\BarlowCondensed-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\BarlowCondensed-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\BarlowCondensed-ExtraLight.ttf" />
-    <EmbeddedResource Include="Assets\Font\BarlowCondensed-ExtraLightItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\BarlowCondensed-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\BarlowCondensed-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Bitter-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Bitter-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Bitter-ExtraLight.ttf" />
-    <EmbeddedResource Include="Assets\Font\Bitter-ExtraLightItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Bitter-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Bitter-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\BreeSerif-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Cinzel-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Cinzel-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\CreteRound-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\CreteRound-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Cuprum-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Cuprum-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Cuprum-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Cuprum-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Dosis-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Dosis-ExtraLight.ttf" />
-    <EmbeddedResource Include="Assets\Font\Dosis-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\EuphoriaScript-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\ExpletusSans-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\ExpletusSans-Medium.ttf" />
-    <EmbeddedResource Include="Assets\Font\ExpletusSans-SemiBold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Faustina-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Faustina-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Faustina-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Faustina-Light.ttf" />
-    <EmbeddedResource Include="Assets\Font\Faustina-LightItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Faustina-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\FrankRuhlLibre-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\FrankRuhlLibre-Light.ttf" />
-    <EmbeddedResource Include="Assets\Font\FrankRuhlLibre-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Handlee-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Jost-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Jost-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Jost-ExtraLight.ttf" />
-    <EmbeddedResource Include="Assets\Font\Jost-ExtraLightItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Jost-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Jost-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Lobster-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Merriweather-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Merriweather-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Merriweather-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Merriweather-Light.ttf" />
-    <EmbeddedResource Include="Assets\Font\Merriweather-LightItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Merriweather-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Montserrat-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Montserrat-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Montserrat-ExtraLight.ttf" />
-    <EmbeddedResource Include="Assets\Font\Montserrat-ExtraLightItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Montserrat-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Montserrat-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Oxygen-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Oxygen-Light.ttf" />
-    <EmbeddedResource Include="Assets\Font\Oxygen-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\PathwayGothicOne-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\PatrickHand-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\PermanentMarker-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Philosopher-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Philosopher-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Philosopher-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Philosopher-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Play-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Play-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Rajdhani-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Rajdhani-Light.ttf" />
-    <EmbeddedResource Include="Assets\Font\Rajdhani-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Raleway-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Raleway-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Raleway-ExtraLight.ttf" />
-    <EmbeddedResource Include="Assets\Font\Raleway-ExtraLightItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Raleway-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Raleway-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Roboto-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Roboto-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Roboto-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Roboto-Light.ttf" />
-    <EmbeddedResource Include="Assets\Font\Roboto-LightItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Roboto-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Rokkitt-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Rokkitt-ExtraLight.ttf" />
-    <EmbeddedResource Include="Assets\Font\Rokkitt-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\RussoOne-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\SairaCondensed-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\SairaCondensed-ExtraLight.ttf" />
-    <EmbeddedResource Include="Assets\Font\SairaCondensed-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Signika-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Signika-Light.ttf" />
-    <EmbeddedResource Include="Assets\Font\Signika-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Ubuntu-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Ubuntu-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Ubuntu-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Ubuntu-Light.ttf" />
-    <EmbeddedResource Include="Assets\Font\Ubuntu-LightItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Ubuntu-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Vidaloka-Regular.ttf" />
-    <EmbeddedResource Include="Assets\Font\Vollkorn-Bold.ttf" />
-    <EmbeddedResource Include="Assets\Font\Vollkorn-BoldItalic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Vollkorn-Italic.ttf" />
-    <EmbeddedResource Include="Assets\Font\Vollkorn-Regular.ttf" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Assets\Font\AbrilFatface-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\AdventPro-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\AdventPro-ExtraLight.ttf" />
+		<EmbeddedResource Include="Assets\Font\AdventPro-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\AlegreyaSans-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\AlegreyaSans-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\AlegreyaSans-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\AlegreyaSans-Light.ttf" />
+		<EmbeddedResource Include="Assets\Font\AlegreyaSans-LightItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\AlegreyaSans-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Arvo-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Arvo-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Arvo-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Arvo-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Assistant-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Assistant-ExtraLight.ttf" />
+		<EmbeddedResource Include="Assets\Font\Assistant-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\BarlowCondensed-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\BarlowCondensed-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\BarlowCondensed-ExtraLight.ttf" />
+		<EmbeddedResource Include="Assets\Font\BarlowCondensed-ExtraLightItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\BarlowCondensed-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\BarlowCondensed-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Bitter-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Bitter-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Bitter-ExtraLight.ttf" />
+		<EmbeddedResource Include="Assets\Font\Bitter-ExtraLightItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Bitter-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Bitter-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\BreeSerif-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Cinzel-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Cinzel-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\CreteRound-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\CreteRound-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Cuprum-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Cuprum-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Cuprum-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Cuprum-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Dosis-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Dosis-ExtraLight.ttf" />
+		<EmbeddedResource Include="Assets\Font\Dosis-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\EuphoriaScript-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\ExpletusSans-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\ExpletusSans-Medium.ttf" />
+		<EmbeddedResource Include="Assets\Font\ExpletusSans-SemiBold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Faustina-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Faustina-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Faustina-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Faustina-Light.ttf" />
+		<EmbeddedResource Include="Assets\Font\Faustina-LightItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Faustina-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\FrankRuhlLibre-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\FrankRuhlLibre-Light.ttf" />
+		<EmbeddedResource Include="Assets\Font\FrankRuhlLibre-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Handlee-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Jost-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Jost-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Jost-ExtraLight.ttf" />
+		<EmbeddedResource Include="Assets\Font\Jost-ExtraLightItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Jost-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Jost-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Lobster-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Merriweather-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Merriweather-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Merriweather-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Merriweather-Light.ttf" />
+		<EmbeddedResource Include="Assets\Font\Merriweather-LightItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Merriweather-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Montserrat-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Montserrat-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Montserrat-ExtraLight.ttf" />
+		<EmbeddedResource Include="Assets\Font\Montserrat-ExtraLightItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Montserrat-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Montserrat-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Oxygen-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Oxygen-Light.ttf" />
+		<EmbeddedResource Include="Assets\Font\Oxygen-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\PathwayGothicOne-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\PatrickHand-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\PermanentMarker-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Philosopher-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Philosopher-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Philosopher-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Philosopher-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Play-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Play-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Rajdhani-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Rajdhani-Light.ttf" />
+		<EmbeddedResource Include="Assets\Font\Rajdhani-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Raleway-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Raleway-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Raleway-ExtraLight.ttf" />
+		<EmbeddedResource Include="Assets\Font\Raleway-ExtraLightItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Raleway-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Raleway-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Roboto-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Roboto-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Roboto-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Roboto-Light.ttf" />
+		<EmbeddedResource Include="Assets\Font\Roboto-LightItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Roboto-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Rokkitt-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Rokkitt-ExtraLight.ttf" />
+		<EmbeddedResource Include="Assets\Font\Rokkitt-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\RussoOne-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\SairaCondensed-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\SairaCondensed-ExtraLight.ttf" />
+		<EmbeddedResource Include="Assets\Font\SairaCondensed-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Signika-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Signika-Light.ttf" />
+		<EmbeddedResource Include="Assets\Font\Signika-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Ubuntu-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Ubuntu-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Ubuntu-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Ubuntu-Light.ttf" />
+		<EmbeddedResource Include="Assets\Font\Ubuntu-LightItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Ubuntu-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Vidaloka-Regular.ttf" />
+		<EmbeddedResource Include="Assets\Font\Vollkorn-Bold.ttf" />
+		<EmbeddedResource Include="Assets\Font\Vollkorn-BoldItalic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Vollkorn-Italic.ttf" />
+		<EmbeddedResource Include="Assets\Font\Vollkorn-Regular.ttf" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.6" />
-    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.6" />
+		<PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
-    <ProjectReference Include="..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj" />
-    <ProjectReference Include="..\Extend.OccasionSlides.Templating\Extend.OccasionSlides.Templating.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
+		<ProjectReference Include="..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj" />
+		<ProjectReference Include="..\Extend.OccasionSlides.Templating\Extend.OccasionSlides.Templating.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Views\Placard\LeftLandscapeContextualFlatOverlapForImageSecuencePlacardView.xaml.cs">
-      <DependentUpon>LeftLandscapeContextualFlatOverlapForImageSecuencePlacardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Placard\LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml.cs">
-      <DependentUpon>LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Placard\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
-      <DependentUpon>LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Placard\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
-      <DependentUpon>RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Placard\PortraitTranslucentContextualOverlapForImagePlacardView.xaml.cs">
-      <DependentUpon>PortraitTranslucentContextualOverlapForImagePlacardView.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Views\Placard\LeftLandscapeContextualFlatOverlapForImageSecuencePlacardView.xaml.cs">
+			<DependentUpon>LeftLandscapeContextualFlatOverlapForImageSecuencePlacardView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Placard\LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml.cs">
+			<DependentUpon>LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Placard\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
+			<DependentUpon>LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Placard\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
+			<DependentUpon>RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Placard\PortraitTranslucentContextualOverlapForImagePlacardView.xaml.cs">
+			<DependentUpon>PortraitTranslucentContextualOverlapForImagePlacardView.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Views\Block\GlyphContentBlockView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Block\HeaderTextContentBlockView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Block\ImageContentBlockView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Block\TextContentBlockView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Block\TransparentSeparatorContentBlockView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualFlatOverlapForVideoPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTrailOverlapForImageSecuencePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTrailOverlapForVideoPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTranslucentOverlapForVideoPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualFlatOverlapForImageSecuencePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\RightLandscapeContextualFlatOverlapForImageSecuencePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\RightLandscapeContextualFlatOverlapForVideoPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\RightLandscapeContextualTrailOverlapForImageSecuencePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\RightLandscapeContextualTrailOverlapForVideoPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\RightLandscapeContextualTranslucentOverlapForVideoPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\CenteredTraslucentIntroOverImagePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualFlatOverlapForImagePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTrailOverlapForImagePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\PortraitFlatContextualOverlapForImagePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\PortraitTrailContextualOverlapForImagePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\PortraitTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\RightLandscapeContextualFlatOverlapForImagePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\RightLandscapeContextualTrailOverlapForImagePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\PortraitTranslucentContextualOverlapForImagePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Placard\RightLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Views\Block\GlyphContentBlockView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Block\HeaderTextContentBlockView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Block\ImageContentBlockView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Block\TextContentBlockView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Block\TransparentSeparatorContentBlockView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\LeftLandscapeContextualFlatOverlapForVideoPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTrailOverlapForImageSecuencePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTrailOverlapForVideoPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTranslucentOverlapForVideoPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\LeftLandscapeContextualFlatOverlapForImageSecuencePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\RightLandscapeContextualFlatOverlapForImageSecuencePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\RightLandscapeContextualFlatOverlapForVideoPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\RightLandscapeContextualTrailOverlapForImageSecuencePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\RightLandscapeContextualTrailOverlapForVideoPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\RightLandscapeContextualTranslucentOverlapForVideoPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\CenteredTraslucentIntroOverImagePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\LeftLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\LeftLandscapeContextualFlatOverlapForImagePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTrailOverlapForImagePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\PortraitFlatContextualOverlapForImagePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\PortraitTrailContextualOverlapForImagePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\PortraitTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\RightLandscapeContextualFlatOverlapForImagePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\RightLandscapeContextualTrailOverlapForImagePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\PortraitTranslucentContextualOverlapForImagePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\RightLandscapeTranslucentContextualOverlapForImageSecuencePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
 
 </Project>
