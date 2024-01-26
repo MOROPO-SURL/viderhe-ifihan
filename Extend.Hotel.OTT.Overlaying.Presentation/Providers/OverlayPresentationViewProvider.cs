@@ -12,7 +12,7 @@ namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Providers
             {
                 //var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.SimpleHighlightsContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
 
-                return new Views.PionnerOTTHotelTVOverlayView();
+                return new Views.AuroraOTTHotelTVOverlayView();
             }
 
             return null;

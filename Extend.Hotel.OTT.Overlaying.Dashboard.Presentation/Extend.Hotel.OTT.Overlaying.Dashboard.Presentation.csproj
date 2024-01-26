@@ -14,12 +14,19 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Extend.Hotel.OTT.Overlaying.Presentation\Extend.Hotel.OTT.Overlaying.Presentation.csproj" />
+	  <ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Factories\" />
-	  <Folder Include="Models\" />
-	  <Folder Include="Pages\" />
+	  <Compile Update="Pages\AuroraOTTHotelTVOverlayConfigurationPage.xaml.cs">
+	    <DependentUpon>AuroraOTTHotelTVOverlayConfigurationPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Pages\AuroraOTTHotelTVOverlayConfigurationPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>

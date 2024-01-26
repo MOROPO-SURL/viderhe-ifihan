@@ -1,8 +1,8 @@
 ﻿namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Views
 {
-    public partial class PionnerOTTHotelTVOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
+    public partial class AuroraOTTHotelTVOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
-        public PionnerOTTHotelTVOverlayView()
+        public AuroraOTTHotelTVOverlayView()
         {
             InitializeComponent();
 

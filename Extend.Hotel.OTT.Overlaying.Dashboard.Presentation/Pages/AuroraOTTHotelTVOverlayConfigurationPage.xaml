@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Dashboard.Presentation.Models.Page"
+    xmlns:supportpresentationdashboardvalidators="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardbehaviors="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardpresenters="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardviews="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    x:Class="MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Dashboard.Presentation.Pages.AuroraOTTHotelTVOverlayConfigurationPage"
+    x:TypeArguments="pagemodels:SimpleHighlightsOverlayConfigurationPageModel"
+    x:Name="FormPage"
+    Title="Configurar Máscara (Televisión Hotelera Interactiva Aurora)">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

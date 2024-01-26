@@ -18,7 +18,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Views\PionnerOTTHotelTVOverlayView.xaml">
+	  <Compile Update="Views\AuroraOTTHotelTVOverlayView.xaml.cs">
+	    <DependentUpon>AuroraOTTHotelTVOverlayView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Views\AuroraOTTHotelTVOverlayView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	</ItemGroup>
