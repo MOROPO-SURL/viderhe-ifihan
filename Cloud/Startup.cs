@@ -107,6 +107,11 @@ namespace MOROPO.VIDERHE.Cloud
             services.AddScoped<IEntityRepository<Gradient, System.Guid>, Persistence.ORM.EF.Repositories.GradientRepository>();
             services.AddScoped<IEntityRepository<Text, System.Guid>, Persistence.ORM.EF.Repositories.TextRepository>();
             services.AddScoped<IEntityRepository<Tag, System.Guid>, Persistence.ORM.EF.Repositories.TagRepository>();
+            services.AddScoped<IBridgeRepository<AccountModeratorBridge, Account, System.Guid, Moderator, System.Guid>, Persistence.ORM.EF.Repositories.AccountModeratorBridgeRepository>();
+            services.AddScoped<IBridgeRepository<AccountImageBridge, Account, System.Guid, Framework.Guama.Media.Persistence.Entities.Image, System.Guid>, Persistence.ORM.EF.Repositories.AccountImageBridgeRepository>();
+            services.AddScoped<IBridgeRepository<AccountVideoBridge, Account, System.Guid, Framework.Guama.Media.Persistence.Entities.Video, System.Guid>, Persistence.ORM.EF.Repositories.AccountVideoBridgeRepository>();
+            services.AddScoped<IBridgeRepository<AccountGradientBridge, Account, System.Guid, Gradient, System.Guid>, Persistence.ORM.EF.Repositories.AccountGradientBridgeRepository>();
+            services.AddScoped<IBridgeRepository<AccountTextBridge, Account, System.Guid, Text, System.Guid>, Persistence.ORM.EF.Repositories.AccountTextBridgeRepository>();
 
             services.AddSingleton<IImageFileManagerFacade, ImageFileManager>();
             services.AddSingleton<IThumbnailFileManagerFacade, ThumbnailFileManager>();
@@ -238,11 +243,6 @@ namespace MOROPO.VIDERHE.Cloud
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Microsoft.Extensions.Options.IOptions<RequestLocalizationOptions> requestLocalizationOptions, Microsoft.Extensions.Logging.ILoggerFactory loggerFactory, DbContext dbContext)
         {
-            //FFMediaToolkit.FFmpegLoader.FFmpegPath = ffmpegOptions.Value.BinariesPath;
-
-            System.AppContext.SetSwitch("System.Drawing.EnableUnixSupport", true);
-            System.AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-
             loggerFactory.AddSerilog(Log.Logger);
 
             app.UseRequestLocalization(requestLocalizationOptions.Value);
