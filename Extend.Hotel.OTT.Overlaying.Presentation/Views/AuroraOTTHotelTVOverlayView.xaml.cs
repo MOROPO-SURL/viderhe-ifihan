@@ -6,7 +6,7 @@
         {
             InitializeComponent();
 
-            Opacity = 0;
+            //Opacity = 0;
         }
 
         public override void ShowIn()

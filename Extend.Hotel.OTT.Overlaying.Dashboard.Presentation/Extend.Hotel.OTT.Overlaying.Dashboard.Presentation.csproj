@@ -13,6 +13,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Extend.Common.Overlaying.Dashboard.Presentation\Extend.Common.Overlaying.Dashboard.Presentation.csproj" />
 	  <ProjectReference Include="..\Extend.Hotel.OTT.Overlaying.Presentation\Extend.Hotel.OTT.Overlaying.Presentation.csproj" />
 	  <ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
 	</ItemGroup>

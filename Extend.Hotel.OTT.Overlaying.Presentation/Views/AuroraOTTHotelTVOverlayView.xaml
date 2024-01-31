@@ -16,7 +16,8 @@
             </Grid.RowDefinitions>
             <BoxView
                 Grid.Row="1"
-                Color="IndianRed" />
+                Color="IndianRed"
+                Opacity="0.5" />
         </Grid>
     </ContentView.Content>
 </extendcommonoverlayingpresentationviews:BaseOverlayView>

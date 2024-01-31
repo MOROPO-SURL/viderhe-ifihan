@@ -11,8 +11,7 @@
                 return new Models.Page.OTTHotelTVOverlayConfigurationPageModel
                 {
                     RoomId = context.RoomId,
-                    BackgroundScreenplayId = context.BackgroundScreenplayId,
-                    BrandChannelScreenplayId = context.BrandChannelScreenplayId
+                    BrandChannelScreenplay = new Cloud.Api.Common.Models.ScreenplayDisplayModel { Id = context.BrandChannelScreenplayId }
                 };
             }
             catch

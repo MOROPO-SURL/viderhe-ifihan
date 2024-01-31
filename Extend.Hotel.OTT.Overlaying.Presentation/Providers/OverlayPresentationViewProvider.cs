@@ -8,7 +8,7 @@ namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Providers
         {
             var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
-            if (accountInformationProvider.AccountDefaultOverlayId.Value == PionnerOTTHotelTVOverlayDescriptor.ID)
+            if (accountInformationProvider.AccountDefaultOverlayId.Value == AuroraOTTHotelTVOverlayDescriptor.ID)
             {
                 //var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.SimpleHighlightsContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
 
