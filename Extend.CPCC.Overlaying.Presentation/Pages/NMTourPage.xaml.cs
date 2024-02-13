@@ -109,7 +109,7 @@ namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Pages
             {
                 Xamarin.Forms.Application.Current.MainPage.NavigationPopModalPageAsync().ContinueWith(_ =>
                 {
-                    if (Xamarin.Forms.Application.Current.MainPage.Navigation.ModalStack.Last() is NMTourPage)
+                    if (Xamarin.Forms.Application.Current.MainPage.Navigation.ModalStack.Count > 0 && Xamarin.Forms.Application.Current.MainPage.Navigation.ModalStack.Last() is NMTourPage)
                     {
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() => 
                         {
