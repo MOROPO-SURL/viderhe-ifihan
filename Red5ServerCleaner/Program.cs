@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SmartSolucionesCuba.Viderhe.Red5ServerCleaner
+namespace MOROPO.VIDERHE.Tools.Red5ServerCleaner
 {
     class Program
     {
