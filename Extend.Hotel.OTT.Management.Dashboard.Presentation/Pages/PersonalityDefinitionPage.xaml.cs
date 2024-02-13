@@ -71,7 +71,7 @@ namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Page
 
             BindingContextPageModel.IsBusy = true;
 
-            var model = new MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models.PersonalityInputModel
+            var model = new Service.Hotel.OTT.API.Common.Models.PersonalityInputModel
             {
                 Id = BindingContextPageModel.Id,
                 Name = BindingContextPageModel.Name,

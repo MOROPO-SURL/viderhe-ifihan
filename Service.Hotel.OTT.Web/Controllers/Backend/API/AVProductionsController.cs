@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using MOROPO.Framework.Guama.Core.Persistence.Repositories;
 using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Attributes;
+using MOROPO.Framework.Guama.Media.Persistence.ORM.EF.Repositories;
 using MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Constants;
 using MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models;
 using MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities;
@@ -16,10 +17,14 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
     public class AVProductionsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<AVProduction, System.Guid, AVProductionInputModel, AVProductionDisplayModel>
     {
         private readonly IEntityRepository<AVCategory, int> categoryRepository;
+        private readonly IEntityRepository<Framework.Guama.Media.Persistence.Entities.Image, System.Guid> imageRepository;
+        private readonly Framework.Guama.Media.Presentation.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager;
 
-        public AVProductionsController(IEntityRepository<AVCategory, int> categoryRepository, IEntityRepository<AVProduction, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AVProductionsController> localizer, ILogger<AVProductionsController> logger) : base(repository, localizer, logger)
+        public AVProductionsController(Framework.Guama.Media.Presentation.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager, IEntityRepository<Framework.Guama.Media.Persistence.Entities.Image, System.Guid> imageRepository, IEntityRepository<AVCategory, int> categoryRepository, IEntityRepository<AVProduction, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AVProductionsController> localizer, ILogger<AVProductionsController> logger) : base(repository, localizer, logger)
         {
             this.categoryRepository = categoryRepository;
+            this.imageRepository = imageRepository;
+            this.imageFileManager = imageFileManager;
         }
 
         [RequirePermissions(Authorization.AVProductionViewerPermission)]
@@ -163,6 +168,98 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
                     ProwId = entity.Id,
                     SternId = _model.Id
                 });
+            }
+        }
+
+        [RequirePermissions(Authorization.AVProductionEditorPermission)]
+        [HttpPut("{key}/images")]
+        public ActionResult EditImages(System.Guid key, [FromBody] AVProductionImagesInputModel model)
+        {
+            try
+            {
+                var entity = Repository.Get(key);
+
+                if (model.PosterImageContent != null)
+                {
+                    using (var imageMemoryStream = new System.IO.MemoryStream(model.PosterImageContent))
+                    {
+                        using (var imageSkData = SkiaSharp.SKData.Create(imageMemoryStream))
+                        {
+                            using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                            {
+                                entity.PosterImage = imageRepository.Add(new Framework.Guama.Media.Persistence.Entities.Image
+                                {
+                                    ContentType = MimeTypes.MimeTypeMap.GetMimeType(model.PosterImageExtension),
+                                    Length = model.PosterImageContent.LongLength,
+                                    Width = imageSkBitmap.Width,
+                                    Height = imageSkBitmap.Height,
+                                    About = string.Format("Image for production poster: {0}", key)
+                                }, User.Identity.Name, false);
+                                entity.PosterImageId = entity.PosterImage.Id;
+
+                                imageFileManager.SaveImageFileContent(entity.PosterImage.Id, model.PosterImageContent, entity.PosterImage.ContentType);
+                            }
+                        }
+                    }
+                }
+
+                if (model.PlacardImageContent != null)
+                {
+                    using (var imageMemoryStream = new System.IO.MemoryStream(model.PlacardImageContent))
+                    {
+                        using (var imageSkData = SkiaSharp.SKData.Create(imageMemoryStream))
+                        {
+                            using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                            {
+                                entity.PlacardImage = imageRepository.Add(new Framework.Guama.Media.Persistence.Entities.Image
+                                {
+                                    ContentType = MimeTypes.MimeTypeMap.GetMimeType(model.PlacardImageExtension),
+                                    Length = model.PlacardImageContent.LongLength,
+                                    Width = imageSkBitmap.Width,
+                                    Height = imageSkBitmap.Height,
+                                    About = string.Format("Image for production placard: {0}", key)
+                                }, User.Identity.Name, false);
+                                entity.PlacardImageId = entity.PlacardImage.Id;
+
+                                imageFileManager.SaveImageFileContent(entity.PlacardImage.Id, model.PlacardImageContent, entity.PlacardImage.ContentType);
+                            }
+                        }
+                    }
+                }
+
+                Repository.Update(entity, User.Identity.Name);
+
+                if (model.PosterImageContent != null && model.PosterImageId != null)
+                {
+                    var deprecatedImage = imageRepository.Get(model.PosterImageId.Value);
+
+                    imageRepository.Delete(deprecatedImage, User.Identity.Name);
+
+                    imageFileManager.DeleteImageFile(deprecatedImage);
+                }
+
+                if (model.PlacardImageContent != null && model.PlacardImageId != null)
+                {
+                    var deprecatedImage = imageRepository.Get(model.PlacardImageId.Value);
+
+                    imageRepository.Delete(deprecatedImage, User.Identity.Name);
+
+                    imageFileManager.DeleteImageFile(deprecatedImage);
+                }
+
+                return Ok();
+            }
+            catch (System.InvalidOperationException e)
+            {
+                logger.LogError(e.InnerException, e.Message);
+
+                return NoContent();
+            }
+            catch (System.Exception e)
+            {
+                logger.LogError(e.InnerException, e.Message);
+
+                return Conflict();
             }
         }
     }

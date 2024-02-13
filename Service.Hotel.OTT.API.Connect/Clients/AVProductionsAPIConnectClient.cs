@@ -7,5 +7,10 @@
         }
 
         protected override string TargetController => "backend/avproductions";
+
+        public virtual async System.Threading.Tasks.Task EditImagesAsync(System.Guid key, Common.Models.AVProductionImagesInputModel model)
+        {
+            await httpClientHelperProvider.HttpClientHelper.PutAsync(string.Format("{0}/{1}/images", TargetController, key), model);
+        }
     }
 }
