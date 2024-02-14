@@ -6,11 +6,6 @@ namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Page
     {
         private System.Action definitionCallbackAction;
 
-        private bool hasChangesFlag;
-
-        private byte[] posterImagePickedData;
-        private byte[] placardImagePickedData;
-
         public AVProductionImagesDefinitionPage(System.Action definitionCallbackAction, Service.Hotel.OTT.API.Common.Models.AVProductionDisplayModel target) 
             : base(Factories.AVProductionImagesDefinitionPageModelFactory.Build(target))
         {
@@ -21,100 +16,18 @@ namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Page
 
         protected override bool OnBackButtonPressed()
         {
-            if (hasChangesFlag)
-            {
-                this.NavigationPopPageAsync();
+            var rootPage = Parent as AVProductionModificationTabbedPage;
 
-                definitionCallbackAction.Invoke();
+            rootPage.CurrentPage = rootPage.Children[0];
 
-                return true;
-            }
-
-            return false;
+            return true;
         }
 
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
 
-            posterImagePickedData = null;
-            placardImagePickedData = null;
             definitionCallbackAction = null;
-        }
-
-        private void PageModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            hasChangesFlag = true;
-        }
-
-        private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
-        {
-            if (BindingContextPageModel.IsBusy) return;
-
-            BindingContextPageModel.IsBusy = true;
-
-            var model = new Service.Hotel.OTT.API.Common.Models.AVProductionImagesInputModel
-            {
-                PosterImageId = BindingContextPageModel.PosterImageId,
-                PlacardImageId = BindingContextPageModel.PlacardImageId
-            };
-
-            if (posterImagePickedData != null)
-            {
-                model.PosterImageContent = posterImagePickedData;
-                model.PosterImageExtension = "jpg";
-            }
-
-            if (placardImagePickedData != null)
-            {
-                model.PlacardImageContent = placardImagePickedData;
-                model.PlacardImageExtension = "jpg";
-            }
-
-            var apiConnectClient = new Service.Hotel.OTT.API.Connect.Clients.AVProductionsAPIConnectClient(Managers.SessionManager.Instance);
-
-            var apiConnectClientTask = apiConnectClient.EditImagesAsync(BindingContextPageModel.Id, model);
-
-            apiConnectClientTask.ContinueWith(task =>
-            {
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                {
-                    if (task.Exception == null && !task.IsCanceled)
-                    {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
-
-                        this.NavigationPopPageAsync();
-
-                        definitionCallbackAction.Invoke();
-                    }
-                    else
-                    {
-                        BindingContextPageModel.IsBusy = false;
-
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
-                    }
-                });
-            });
-        }
-
-        private void CancelToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
-        {
-            if (!hasChangesFlag)
-            {
-                this.NavigationPopPageAsync();
-
-                return;
-            }
-
-            DisplayAlert("Confirmar", "Está seguro que desea regresar sin guardar los cambios?", "Regresar", "Cancelar").ContinueWith(task =>
-            {
-                if (!task.Result) return;
-
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                {
-                    this.NavigationPopPageAsync();
-                });
-            });
         }
 
         private async void PickPosterImageButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -263,16 +176,72 @@ namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Page
             {
                 using (var skData = skImage.Encode(SkiaSharp.SKEncodedImageFormat.Jpeg, 75))
                 {
-                    posterImagePickedData = skData.ToArray();
+                    var currentImageSource = BindingContextPageModel.PosterImageSource;
+
+                    var imagePickedData = skData.ToArray();
+
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        BindingContextPageModel.PosterImageSource = Xamarin.Forms.ImageSource.FromStream(() => new System.IO.MemoryStream(imagePickedData));
+
+                        BindingContextPageModel.IsBusy = false;
+                        BindingContextPageModel.BusyProgressMessage = string.Empty;
+
+                        DisplayAlert("Confirmar", "Está seguro que desea aplicar estos cambios para el poster de la producción?", "Aplicar", "Cancelar").ContinueWith(_task =>
+                        {
+                            if (!_task.Result)
+                            {
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    BindingContextPageModel.PosterImageSource = currentImageSource;
+
+                                    currentImageSource = null;
+                                });
+
+                                return;
+                            }
+
+                            Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.IsBusy = true);
+
+                            var model = new Service.Hotel.OTT.API.Common.Models.ImageInputModel
+                            {
+                                Id = BindingContextPageModel.PosterImageId,
+                                Content = imagePickedData,
+                                Extension = "jpg"
+                            };
+
+                            imagePickedData = null;
+
+                            var apiConnectClient = new Service.Hotel.OTT.API.Connect.Clients.AVProductionsAPIConnectClient(Managers.SessionManager.Instance);
+
+                            var apiConnectClientTask = apiConnectClient.EditImagePosterAsync(BindingContextPageModel.Id, model);
+
+                            apiConnectClientTask.ContinueWith(__task =>
+                            {
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    if (task.Exception == null && !__task.IsCanceled)
+                                    {
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+
+                                        this.NavigationPopPageAsync();
+
+                                        definitionCallbackAction.Invoke();
+                                    }
+                                    else
+                                    {
+                                        BindingContextPageModel.IsBusy = false;
+
+                                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                                    }
+                                });
+                            });
+                        });
+                    });
                 }
             }
 
             croppingImageTarget.Dispose();
-
-            BindingContextPageModel.PosterImageSource = Xamarin.Forms.ImageSource.FromStream(() => new System.IO.MemoryStream(posterImagePickedData));
-
-            BindingContextPageModel.IsBusy = false;
-            BindingContextPageModel.BusyProgressMessage = string.Empty;
         }
 
         private async System.Threading.Tasks.Task PickedPlacardImageContinuationTask(System.Threading.Tasks.Task<Xamarin.Essentials.FileResult> task)
@@ -309,16 +278,72 @@ namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Page
             {
                 using (var skData = skImage.Encode(SkiaSharp.SKEncodedImageFormat.Jpeg, 75))
                 {
-                    placardImagePickedData = skData.ToArray();
+                    var currentImageSource = BindingContextPageModel.PlacardImageSource;
+
+                    var imagePickedData = skData.ToArray();
+
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                    {
+                        BindingContextPageModel.PlacardImageSource = Xamarin.Forms.ImageSource.FromStream(() => new System.IO.MemoryStream(imagePickedData));
+
+                        BindingContextPageModel.IsBusy = false;
+                        BindingContextPageModel.BusyProgressMessage = string.Empty;
+
+                        DisplayAlert("Confirmar", "Está seguro que desea aplicar estos cambios para el cartel de la producción?", "Aplicar", "Cancelar").ContinueWith(_task =>
+                        {
+                            if (!_task.Result)
+                            {
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    BindingContextPageModel.PlacardImageSource = currentImageSource;
+
+                                    currentImageSource = null;
+                                });
+
+                                return;
+                            }
+
+                            Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.IsBusy = true);
+
+                            var model = new Service.Hotel.OTT.API.Common.Models.ImageInputModel
+                            {
+                                Id = BindingContextPageModel.PlacardImageId,
+                                Content = imagePickedData,
+                                Extension = "jpg"
+                            };
+
+                            imagePickedData = null;
+
+                            var apiConnectClient = new Service.Hotel.OTT.API.Connect.Clients.AVProductionsAPIConnectClient(Managers.SessionManager.Instance);
+
+                            var apiConnectClientTask = apiConnectClient.EditImagePlacardAsync(BindingContextPageModel.Id, model);
+
+                            apiConnectClientTask.ContinueWith(__task =>
+                            {
+                                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    if (task.Exception == null && !__task.IsCanceled)
+                                    {
+                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+
+                                        this.NavigationPopPageAsync();
+
+                                        definitionCallbackAction.Invoke();
+                                    }
+                                    else
+                                    {
+                                        BindingContextPageModel.IsBusy = false;
+
+                                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                                    }
+                                });
+                            });
+                        });
+                    });
                 }
             }
 
             croppingImageTarget.Dispose();
-
-            BindingContextPageModel.PlacardImageSource = Xamarin.Forms.ImageSource.FromStream(() => new System.IO.MemoryStream(placardImagePickedData));
-
-            BindingContextPageModel.IsBusy = false;
-            BindingContextPageModel.BusyProgressMessage = string.Empty;
         }
     }
 }

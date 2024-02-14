@@ -8,6 +8,7 @@
 
             Children.Add(new AVProductionGeneralDefinitionPage(definitionCallbackAction, target));
             Children.Add(new AVProductionImagesDefinitionPage(definitionCallbackAction, target));
+            Children.Add(new AVProductionVideosDefinitionPage(definitionCallbackAction, target));
         }
     }
 }

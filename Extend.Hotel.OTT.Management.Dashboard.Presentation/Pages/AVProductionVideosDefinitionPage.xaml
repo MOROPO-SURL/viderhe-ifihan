@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:BindingContextedContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Models.Page"
+    xmlns:supportpresentationdashboardviews="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="MOROPO.VIDERHE.Extend.Hotel.OTT.Management.Dashboard.Presentation.Pages.AVProductionVideosDefinitionPage"
+    x:TypeArguments="pagemodels:AVProductionVideosDefinitionPageModel"
+    Title="Videos">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <supportpresentationdashboardviews:BackgroundView />
+            <ScrollView Orientation="Vertical">
+                <Grid
+                    Padding="10"
+                    ColumnSpacing="10" RowSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <Frame 
+                        Grid.Column="0"
+                        Style="{StaticResource FormFieldFrame}"
+                        Padding="0"
+                        VerticalOptions="Start">
+                        <Grid 
+                            VerticalOptions="FillAndExpand"
+                            ColumnSpacing="0" RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label 
+                                Grid.Column="0" Grid.Row="0"
+                                Margin="10,10,10,6"
+                                Text="Trailer" 
+                                Style="{StaticResource FormLabel}" />
+                            <Button
+                                Grid.Column="1" Grid.Row="0"
+                                VerticalOptions="Start"
+                                Style="{StaticResource TextIconButton}"
+                                Text="&#xF86F;"
+                                FontSize="Medium" />
+                            <Button
+                                Grid.Column="2" Grid.Row="0"
+                                VerticalOptions="Start"
+                                Style="{StaticResource TextIconButton}"
+                                Text="&#xF552;"
+                                FontSize="Medium" />
+                            <BoxView
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                BackgroundColor="#666666" 
+                                HeightRequest="1" />
+                            <ffimageloadingforms:CachedImage 
+                                Grid.ColumnSpan="3" Grid.Row="2"
+                                BackgroundColor="Black"
+                                HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.7777777777777777777777777777778}"
+                                Source="{Binding Path=PosterImageSource}"
+                                Aspect="AspectFill"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
+                        </Grid>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="1"
+                        Style="{StaticResource FormFieldFrame}"
+                        Padding="0"
+                        VerticalOptions="Start">
+                        <Grid 
+                            VerticalOptions="FillAndExpand"
+                            ColumnSpacing="0" RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label 
+                                Grid.Column="0" Grid.Row="0"
+                                Margin="10,10,10,6"
+                                Text="Audiovisual" 
+                                Style="{StaticResource FormLabel}" />
+                            <Button
+                                Grid.Column="1" Grid.Row="0"
+                                VerticalOptions="Start"
+                                Style="{StaticResource TextIconButton}"
+                                Text="&#xF86F;"
+                                FontSize="Medium" />
+                            <Button
+                                Grid.Column="2" Grid.Row="0"
+                                VerticalOptions="Start"
+                                Style="{StaticResource TextIconButton}"
+                                Text="&#xF552;"
+                                FontSize="Medium" />
+                            <BoxView
+                                Grid.ColumnSpan="2" Grid.Row="1"
+                                BackgroundColor="#666666" 
+                                HeightRequest="1" />
+                            <ffimageloadingforms:CachedImage 
+                                Grid.ColumnSpan="3" Grid.Row="2"
+                                BackgroundColor="Black"
+                                HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.7777777777777777777777777777778}"
+                                Source="{Binding Path=PlacardImageSource}"
+                                Aspect="AspectFill"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
+                        </Grid>
+                    </Frame>
+                </Grid>
+            </ScrollView>
+            <supportpresentationdashboardviews:BusyView />
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:BindingContextedContentPage>

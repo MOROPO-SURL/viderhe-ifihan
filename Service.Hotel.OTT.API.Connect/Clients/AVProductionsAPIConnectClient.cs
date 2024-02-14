@@ -8,9 +8,14 @@
 
         protected override string TargetController => "backend/avproductions";
 
-        public virtual async System.Threading.Tasks.Task EditImagesAsync(System.Guid key, Common.Models.AVProductionImagesInputModel model)
+        public virtual async System.Threading.Tasks.Task EditImagePosterAsync(System.Guid key, Common.Models.ImageInputModel model)
         {
-            await httpClientHelperProvider.HttpClientHelper.PutAsync(string.Format("{0}/{1}/images", TargetController, key), model);
+            await httpClientHelperProvider.HttpClientHelper.PutAsync(string.Format("{0}/{1}/image/poster", TargetController, key), model);
+        }
+
+        public virtual async System.Threading.Tasks.Task EditImagePlacardAsync(System.Guid key, Common.Models.ImageInputModel model)
+        {
+            await httpClientHelperProvider.HttpClientHelper.PutAsync(string.Format("{0}/{1}/image/placard", TargetController, key), model);
         }
     }
 }

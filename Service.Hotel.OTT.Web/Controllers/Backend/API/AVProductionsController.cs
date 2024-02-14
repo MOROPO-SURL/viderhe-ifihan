@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Logging;
 using MOROPO.Framework.Guama.Core.Persistence.Repositories;
 using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Attributes;
-using MOROPO.Framework.Guama.Media.Persistence.ORM.EF.Repositories;
 using MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Constants;
 using MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models;
 using MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities;
@@ -172,16 +171,16 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
         }
 
         [RequirePermissions(Authorization.AVProductionEditorPermission)]
-        [HttpPut("{key}/images")]
-        public ActionResult EditImages(System.Guid key, [FromBody] AVProductionImagesInputModel model)
+        [HttpPut("{key}/image/poster")]
+        public ActionResult EditImagePoster(System.Guid key, [FromBody] ImageInputModel model)
         {
             try
             {
                 var entity = Repository.Get(key);
 
-                if (model.PosterImageContent != null)
+                if (model.Content != null)
                 {
-                    using (var imageMemoryStream = new System.IO.MemoryStream(model.PosterImageContent))
+                    using (var imageMemoryStream = new System.IO.MemoryStream(model.Content))
                     {
                         using (var imageSkData = SkiaSharp.SKData.Create(imageMemoryStream))
                         {
@@ -189,39 +188,15 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
                             {
                                 entity.PosterImage = imageRepository.Add(new Framework.Guama.Media.Persistence.Entities.Image
                                 {
-                                    ContentType = MimeTypes.MimeTypeMap.GetMimeType(model.PosterImageExtension),
-                                    Length = model.PosterImageContent.LongLength,
+                                    ContentType = MimeTypes.MimeTypeMap.GetMimeType(model.Extension),
+                                    Length = model.Content.LongLength,
                                     Width = imageSkBitmap.Width,
                                     Height = imageSkBitmap.Height,
                                     About = string.Format("Image for production poster: {0}", key)
                                 }, User.Identity.Name, false);
                                 entity.PosterImageId = entity.PosterImage.Id;
 
-                                imageFileManager.SaveImageFileContent(entity.PosterImage.Id, model.PosterImageContent, entity.PosterImage.ContentType);
-                            }
-                        }
-                    }
-                }
-
-                if (model.PlacardImageContent != null)
-                {
-                    using (var imageMemoryStream = new System.IO.MemoryStream(model.PlacardImageContent))
-                    {
-                        using (var imageSkData = SkiaSharp.SKData.Create(imageMemoryStream))
-                        {
-                            using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
-                            {
-                                entity.PlacardImage = imageRepository.Add(new Framework.Guama.Media.Persistence.Entities.Image
-                                {
-                                    ContentType = MimeTypes.MimeTypeMap.GetMimeType(model.PlacardImageExtension),
-                                    Length = model.PlacardImageContent.LongLength,
-                                    Width = imageSkBitmap.Width,
-                                    Height = imageSkBitmap.Height,
-                                    About = string.Format("Image for production placard: {0}", key)
-                                }, User.Identity.Name, false);
-                                entity.PlacardImageId = entity.PlacardImage.Id;
-
-                                imageFileManager.SaveImageFileContent(entity.PlacardImage.Id, model.PlacardImageContent, entity.PlacardImage.ContentType);
+                                imageFileManager.SaveImageFileContent(entity.PosterImage.Id, model.Content, entity.PosterImage.ContentType);
                             }
                         }
                     }
@@ -229,18 +204,68 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
 
                 Repository.Update(entity, User.Identity.Name);
 
-                if (model.PosterImageContent != null && model.PosterImageId != null)
+                if (model.Content != null && model.Id != null)
                 {
-                    var deprecatedImage = imageRepository.Get(model.PosterImageId.Value);
+                    var deprecatedImage = imageRepository.Get(model.Id.Value);
 
                     imageRepository.Delete(deprecatedImage, User.Identity.Name);
 
                     imageFileManager.DeleteImageFile(deprecatedImage);
                 }
 
-                if (model.PlacardImageContent != null && model.PlacardImageId != null)
+                return Ok();
+            }
+            catch (System.InvalidOperationException e)
+            {
+                logger.LogError(e.InnerException, e.Message);
+
+                return NoContent();
+            }
+            catch (System.Exception e)
+            {
+                logger.LogError(e.InnerException, e.Message);
+
+                return Conflict();
+            }
+        }
+
+        [RequirePermissions(Authorization.AVProductionEditorPermission)]
+        [HttpPut("{key}/image/placard")]
+        public ActionResult EditImagePlacard(System.Guid key, [FromBody] ImageInputModel model)
+        {
+            try
+            {
+                var entity = Repository.Get(key);
+
+                if (model.Content != null)
                 {
-                    var deprecatedImage = imageRepository.Get(model.PlacardImageId.Value);
+                    using (var imageMemoryStream = new System.IO.MemoryStream(model.Content))
+                    {
+                        using (var imageSkData = SkiaSharp.SKData.Create(imageMemoryStream))
+                        {
+                            using (var imageSkBitmap = SkiaSharp.SKBitmap.Decode(imageSkData))
+                            {
+                                entity.PlacardImage = imageRepository.Add(new Framework.Guama.Media.Persistence.Entities.Image
+                                {
+                                    ContentType = MimeTypes.MimeTypeMap.GetMimeType(model.Extension),
+                                    Length = model.Content.LongLength,
+                                    Width = imageSkBitmap.Width,
+                                    Height = imageSkBitmap.Height,
+                                    About = string.Format("Image for production placard: {0}", key)
+                                }, User.Identity.Name, false);
+                                entity.PlacardImageId = entity.PlacardImage.Id;
+
+                                imageFileManager.SaveImageFileContent(entity.PlacardImage.Id, model.Content, entity.PlacardImage.ContentType);
+                            }
+                        }
+                    }
+                }
+
+                Repository.Update(entity, User.Identity.Name);
+
+                if (model.Content != null && model.Id != null)
+                {
+                    var deprecatedImage = imageRepository.Get(model.Id.Value);
 
                     imageRepository.Delete(deprecatedImage, User.Identity.Name);
 
