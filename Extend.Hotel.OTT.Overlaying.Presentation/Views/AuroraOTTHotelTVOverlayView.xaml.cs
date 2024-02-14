@@ -2,11 +2,11 @@
 {
     public partial class AuroraOTTHotelTVOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
-        public AuroraOTTHotelTVOverlayView()
+        public AuroraOTTHotelTVOverlayView(Models.View.AuroraOTTHotelTVOverlayViewModel model)
         {
             InitializeComponent();
 
-            //Opacity = 0;
+            BindingContext = model;
         }
 
         public override void ShowIn()
@@ -31,6 +31,11 @@
             };
 
             animation.Begin();
+        }
+
+        private void ActionsCollectionView_SelectionChanged(object sender, Xamarin.Forms.SelectionChangedEventArgs eventArgs)
+        {
+
         }
     }
 }

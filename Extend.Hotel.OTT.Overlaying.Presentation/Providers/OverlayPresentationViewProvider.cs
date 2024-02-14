@@ -10,9 +10,9 @@ namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Providers
 
             if (accountInformationProvider.AccountDefaultOverlayId.Value == AuroraOTTHotelTVOverlayDescriptor.ID)
             {
-                //var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.SimpleHighlightsContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.OTTHotelTVOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
 
-                return new Views.AuroraOTTHotelTVOverlayView();
+                return new Views.AuroraOTTHotelTVOverlayView(new Models.View.AuroraOTTHotelTVOverlayViewModel { Context = context });
             }
 
             return null;
