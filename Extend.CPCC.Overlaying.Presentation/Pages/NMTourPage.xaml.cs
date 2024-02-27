@@ -46,7 +46,7 @@ namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Pages
 
                 indleStopwatch.Start();
 
-                Xamarin.Forms.Device.StartTimer(INDLE_CHECK_TIME, CheckFornIndleStatus);
+                //Xamarin.Forms.Device.StartTimer(INDLE_CHECK_TIME, CheckFornIndleStatus);
             }
 
             if (IsEnabled) return;
@@ -103,6 +103,8 @@ namespace MOROPO.VIDERHE.Extend.CPCC.Overlaying.Presentation.Pages
 
         private bool CheckFornIndleStatus()
         {
+            if (BindingContext == null) return false;
+
             var endIndleCheck = INDLE_LIMIT_TIME < indleStopwatch.Elapsed;
 
             if (endIndleCheck)
