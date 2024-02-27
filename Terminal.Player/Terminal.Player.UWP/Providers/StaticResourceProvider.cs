@@ -1,8 +1,10 @@
-﻿[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Providers.StaticResourceProvider))]
+﻿using MOROPO.VIDERHE.Support.Presentation.Providers.Facade;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Providers
+[assembly: Xamarin.Forms.Dependency(typeof(MOROPO.VIDERHE.Terminal.Player.UWP.Providers.StaticResourceProvider))]
+
+namespace MOROPO.VIDERHE.Terminal.Player.UWP.Providers
 {
-    public sealed class StaticResourceProvider : Support.Presentation.Providers.Facade.IStaticResourceProviderFacade
+    public sealed class StaticResourceProvider : IStaticResourceProviderFacade
     {
         public double TinyBodyTextFontSize => 10;
 

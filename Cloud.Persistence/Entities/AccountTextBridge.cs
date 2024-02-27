@@ -1,13 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+﻿namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class AccountTextBridge
+    public class AccountTextBridge : Framework.Guama.Core.Persistence.Entities.Contract.IBridge<Account, System.Guid, Text, System.Guid>
     {
-        public System.Guid AccountId { get; set; }
+        public System.Guid ProwId { get; set; }
+        public Account Prow { get; set; }
 
-        public Account Account { get; set; }
-
-        public System.Guid TextId { get; set; }
-
-        public Text Text { get; set; }
+        public System.Guid SternId { get; set; }
+        public Text Stern { get; set; }
     }
 }

@@ -1,6 +1,6 @@
-﻿[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Managers.ApplicationManager))]
+﻿[assembly: Xamarin.Forms.Dependency(typeof(MOROPO.VIDERHE.Terminal.Dashboard.Droid.Managers.ApplicationManager))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid.Managers
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Managers
 {
     public class ApplicationManager : Dashboard.Managers.Facade.IApplicationManagerFacade
     {

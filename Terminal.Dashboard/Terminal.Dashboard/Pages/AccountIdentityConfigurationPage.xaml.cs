@@ -1,13 +1,23 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Extend.Overlaying.Providers;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Terminal.Dashboard.Pages.Contract;
+using MOROPO.VIDERHE.Terminal.Dashboard.Providers;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class AccountIdentityConfigurationPage : 
-        XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.AccountIdentityConfigurationPageModel>, 
-        Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage,
-        Contract.IOverlayContextConfigurationPage
+    public partial class AccountIdentityConfigurationPage :
+        SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<AccountIdentityConfigurationPageModel>,
+        IValidableFormPage,
+        IOverlayContextConfigurationPage
     {
-        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+        private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
         private bool pageModelHasChanges;
         private Extend.Common.Overlaying.Descriptors.IOverlayDescriptor recoverableOverlay;
@@ -17,12 +27,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private Plugin.FilePicker.Abstractions.FileData newHorizontalSplashFileData;
         private Plugin.FilePicker.Abstractions.FileData newVerticalSplashFileData;
 
-        public AccountIdentityConfigurationPage() : base(new Models.Page.AccountIdentityConfigurationPageModel
+        public AccountIdentityConfigurationPage() : base(new AccountIdentityConfigurationPageModel
         {
             IsBusy = true
         })
         {
-            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+            validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
             InitializeComponent();
 
@@ -40,7 +50,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (!IsEnabled)
             {
-                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiConnectClient(Managers.SessionManager.Instance);
+                var accountApiClient = new Cloud.Api.Connect.Clients.AccountApiConnectClient(SessionManager.Instance);
 
                 accountApiClient.GetCurrentAsync().ContinueWith(task =>
                 {
@@ -50,17 +60,17 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             this.NavigationPopPageAsync();
 
-                            (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                            (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                         }
                         else
                         {
                             BindingContextPageModel.Name = task.Result.Name;
                             BindingContextPageModel.PrimaryColor = Xamarin.Forms.Color.FromHex(task.Result.PrimaryColor);
                             BindingContextPageModel.SecoundaryColor = Xamarin.Forms.Color.FromHex(task.Result.SecoundaryColor);
-                            BindingContextPageModel.LogoImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(task.Result.LogoImageId));
-                            BindingContextPageModel.HorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(task.Result.HorizontalSplashImageId));
-                            BindingContextPageModel.VerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(task.Result.VerticalSplashImageId));
-                            BindingContextPageModel.DefaultOverlay = task.Result.DefaultOverlayId == null ? null : Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(task.Result.DefaultOverlayId.Value);
+                            BindingContextPageModel.LogoImageSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildLogoThumbnailUri(task.Result.LogoImageId));
+                            BindingContextPageModel.HorizontalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildSplashHorizontalThumbnailUri(task.Result.HorizontalSplashImageId));
+                            BindingContextPageModel.VerticalSplashImageSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildSplashVerticalThumbnailUri(task.Result.VerticalSplashImageId));
+                            BindingContextPageModel.DefaultOverlay = task.Result.DefaultOverlayId == null ? null : OverlayDescriptorProvider.Instance.GetDescriptorById(task.Result.DefaultOverlayId.Value);
                             BindingContextPageModel.SerializedOverlayContext = task.Result.SerializedOverlayContext;
 
                             var found = false;
@@ -80,7 +90,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                             BindingContextPageModel.IsBusy = false;
 
-                            Managers.SessionManager.Instance.SyncronizeRequiredAccountInformation(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, task.Result.LogoImageId, task.Result.HorizontalSplashImageId, task.Result.VerticalSplashImageId, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext);
+                            SessionManager.Instance.SyncronizeRequiredAccountInformation(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, task.Result.LogoImageId, task.Result.HorizontalSplashImageId, task.Result.VerticalSplashImageId, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext);
 
                             pageModelHasChanges = false;
 
@@ -110,7 +120,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (BindingContextPageModel.SerializedOverlayContext == null && BindingContextPageModel.DefaultOverlay != null)
             {
-                BindingContextPageModel.SerializedOverlayContext = Providers.OverlayDefaultSerializedContextProvider.Instance.GetOverlayDefaultContextModel(BindingContextPageModel.DefaultOverlay);
+                BindingContextPageModel.SerializedOverlayContext = OverlayDefaultSerializedContextProvider.Instance.GetOverlayDefaultContextModel(BindingContextPageModel.DefaultOverlay);
             }
         }
 
@@ -121,7 +131,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void OverlayConfigureButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var page = Providers.OverlayConfigurationPageProvider.Instance.GetConfigurationPageByDescriptor(BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext, OverlayConfigurationSuccesfulComplete_Callback);
+            var page = OverlayConfigurationPageProvider.Instance.GetConfigurationPageByDescriptor(BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext, OverlayConfigurationSuccesfulComplete_Callback);
             
             if (page != null)
             {
@@ -129,7 +139,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             }
             else
             {
-                Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Aviso", "La Caratula seleccionada no require configuración.");
+                Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Aviso", "La Caratula seleccionada no require configuración.");
             }
         }
 
@@ -157,13 +167,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             BindingContextPageModel.IsBusy = true;
 
-            Managers.SessionManager.Instance.UpdateAccountInformationAsync(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, newLogoFileData, newHorizontalSplashFileData, newVerticalSplashFileData, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext).ContinueWith(task =>
+            SessionManager.Instance.UpdateAccountInformationAsync(BindingContextPageModel.Name, BindingContextPageModel.PrimaryColor, BindingContextPageModel.SecoundaryColor, newLogoFileData, newHorizontalSplashFileData, newVerticalSplashFileData, BindingContextPageModel.DefaultOverlay, BindingContextPageModel.SerializedOverlayContext).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
                     if (task.Exception == null)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
 
                         this.NavigationPopPageAsync();
                     }
@@ -171,7 +181,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         BindingContextPageModel.IsBusy = false;
 
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                 });
             });
@@ -352,12 +362,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         #region IValidableFormPage implementation
 
-        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void AddValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Add(validationBehavior);
         }
 
-        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void RemoveValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Remove(validationBehavior);
         }

@@ -2,13 +2,13 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.Page"
-    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Converters"
-    xmlns:views="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views"
+    xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page"
+    xmlns:converters="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Converters"
+    xmlns:views="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.VideoPickPage"
+    x:Class="MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.VideoPickPage"
     x:TypeArguments="pagemodels:VideoPickPageModel"
     Title="Seleccionar Video">
     <ContentPage.Resources>

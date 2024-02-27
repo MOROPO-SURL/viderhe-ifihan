@@ -1,14 +1,16 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Facade;
+
+namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Converters
 {
     public class ThicknessToRelativeValueConverter : Xamarin.Forms.BindableObject, Xamarin.Forms.IValueConverter
     {
-        public Views.Facade.IRelativeSizeScalableViewFacade SizeScalableView { get; set; }
+        public IRelativeSizeScalableViewFacade SizeScalableView { get; set; }
 
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value == null || !(value is Xamarin.Forms.Thickness)) return value;
 
-            var concreteValue = (Xamarin.Forms.Thickness) value;
+            var concreteValue = (Xamarin.Forms.Thickness)value;
 
             var sizeToRelativeValueConverter = new SizeToRelativeValueConverter
             {

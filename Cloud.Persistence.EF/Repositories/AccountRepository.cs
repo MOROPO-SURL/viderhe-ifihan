@@ -1,14 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
 
 namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.EF.Repositories
 {
-    public class AccountRepository : MOROPO.SAPRESSC.Core.Persistence.EF.Repositories.AbstractEntityRepository<Entities.Account, System.Guid>
+    public class AccountRepository : MOROPO.SAPRESSC.Core.Persistence.EF.Repositories.AbstractEntityRepository<Account, System.Guid>
     {
         public AccountRepository(DbContext dbContext) : base(dbContext)
         {
         }
 
-        protected override System.Linq.IQueryable<Entities.Account> GetQueryableDbSet()
+        protected override System.Linq.IQueryable<Account> GetQueryableDbSet()
         {
             return base.GetQueryableDbSet()
                 .Include(entity => entity.Logo)

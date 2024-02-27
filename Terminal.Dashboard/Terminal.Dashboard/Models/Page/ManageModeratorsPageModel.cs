@@ -1,13 +1,15 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class ManageModeratorsPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ManageModeratorsPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         public ManageModeratorsPageModel()
         {
-            Items = new System.Collections.ObjectModel.ObservableCollection<View.ModeratorViewModel> ();
+            Items = new System.Collections.ObjectModel.ObservableCollection<ModeratorViewModel>();
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<View.ModeratorViewModel> Items { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<ModeratorViewModel> Items { get; set; }
 
         protected override void DisposeUnmanagementResources()
         {

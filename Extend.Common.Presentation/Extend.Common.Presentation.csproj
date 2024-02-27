@@ -1,13 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Common.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Common.Presentation</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Extend.Common.Presentation</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.Common.Presentation</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>2.0.4</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="SSCXFToolKit.Mvvm" Version="0.4.10-alpha" />
+	</ItemGroup>
 
 </Project>

@@ -1,21 +1,25 @@
-﻿using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
+using MOROPO.VIDERHE.Cloud.Persistence.ORM.EF;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Security.Authorization.Requirement.Handler
+namespace MOROPO.VIDERHE.Cloud.Security.Authorization.Requirement.Handler
 {
     public class AccountModerationRequirementHandler : Microsoft.AspNetCore.Authorization.AuthorizationHandler<AccountModerationRequirement>
     {
-        private readonly Persistence.EF.ApplicationDbContext dbContext;
+        private readonly ApplicationDbContext dbContext;
 
-        public AccountModerationRequirementHandler(Persistence.EF.ApplicationDbContext dbContext)
+        public AccountModerationRequirementHandler(ApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
         protected override System.Threading.Tasks.Task HandleRequirementAsync(Microsoft.AspNetCore.Authorization.AuthorizationHandlerContext context, AccountModerationRequirement requirement)
         {
-            var challange = dbContext.Accounts.Any(e => e.Enabled && Helpers.Integrity.AccountIntegrityHelper.IsCorrectlySigned(e) && e.ModeratorBridges.Any(n => n.Moderator.UserId == context.User.Identity.Name));
+            var account = dbContext.Accounts
+                .Include(entity => entity.ModeratorBridges).ThenInclude(bridge => bridge.Stern)
+                .Where(e => e.Enabled && e.ModeratorBridges.Any(n => n.Stern.UserId == context.User.Identity.Name)).FirstOrDefault();
 
-            if (challange)
+            if (account != null && Helpers.Integrity.AccountIntegrityHelper.IsCorrectlySigned(account))
             {
                 context.Succeed(requirement);
             }

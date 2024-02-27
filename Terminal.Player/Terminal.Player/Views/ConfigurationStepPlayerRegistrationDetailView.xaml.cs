@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Views
+﻿namespace MOROPO.VIDERHE.Terminal.Player.Views
 {
-    public partial class ConfigurationStepPlayerRegistrationDetailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class ConfigurationStepPlayerRegistrationDetailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
         public ConfigurationStepPlayerRegistrationDetailView()
         {

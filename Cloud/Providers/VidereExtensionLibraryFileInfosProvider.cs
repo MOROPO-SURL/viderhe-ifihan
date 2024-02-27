@@ -1,17 +1,18 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Providers
+namespace MOROPO.VIDERHE.Cloud.Providers
 {
     internal static class ViderheExtensionLibraryFileInfosProvider
     {
-        internal static System.Collections.Generic.IEnumerable<System.IO.FileInfo> GetRelevantToCloud(System.IO.DirectoryInfo extensionDirectoryInfo)
+        internal static IEnumerable<System.IO.FileInfo> GetRelevantToCloud(System.IO.DirectoryInfo extensionDirectoryInfo)
         {
             var libraryFileInfos = extensionDirectoryInfo.GetFiles("*.dll", System.IO.SearchOption.TopDirectoryOnly);
 
             if (libraryFileInfos.Length <= 0) return Enumerable.Empty<System.IO.FileInfo>();
 
             var extensionDescriptionLibraryFileInfo = libraryFileInfos
-                .Where(item => System.Text.RegularExpressions.Regex.IsMatch(item.Name, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.dll"))
+                .Where(item => System.Text.RegularExpressions.Regex.IsMatch(item.Name, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.dll"))
                 .OrderBy(item => item.Name.Length)
                 .First();
 
@@ -46,22 +47,30 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Providers
             return targetLibraryFileInfos;
         }
 
-        internal static System.Collections.Generic.IEnumerable<System.IO.FileInfo> GetRelevantToDashboard(System.IO.DirectoryInfo extensionDirectoryInfo)
+        internal static IEnumerable<System.IO.FileInfo> GetRelevantToControl(System.IO.DirectoryInfo extensionDirectoryInfo)
         {
-            var targetLibraryFileInfos = extensionDirectoryInfo.GetFiles("*.dll", System.IO.SearchOption.TopDirectoryOnly);
+            var targetLibraryFileInfos = extensionDirectoryInfo.GetFiles("*.dll", System.IO.SearchOption.TopDirectoryOnly).ToList();
 
-            if (targetLibraryFileInfos.Length <= 0) return Enumerable.Empty<System.IO.FileInfo>();
+            var extensionControlDirectoryInfo = extensionDirectoryInfo.GetDirectories().FirstOrDefault(d => d.Name == "Control");
+
+            if (extensionControlDirectoryInfo != null)
+            {
+                targetLibraryFileInfos.AddRange(extensionControlDirectoryInfo.GetFiles("*.dll", System.IO.SearchOption.TopDirectoryOnly));
+            }
 
             return targetLibraryFileInfos;
         }
 
-        internal static System.Collections.Generic.IEnumerable<System.IO.FileInfo> GetRelevantToPlayer(System.IO.DirectoryInfo extensionDirectoryInfo)
+        internal static IEnumerable<System.IO.FileInfo> GetRelevantToPlayer(System.IO.DirectoryInfo extensionDirectoryInfo)
         {
             var targetLibraryFileInfos = extensionDirectoryInfo.GetFiles("*.dll", System.IO.SearchOption.TopDirectoryOnly).ToList();
 
-            if (targetLibraryFileInfos.Count <= 0) return Enumerable.Empty<System.IO.FileInfo>();
+            var extensionPlayerDirectoryInfo = extensionDirectoryInfo.GetDirectories().FirstOrDefault(d => d.Name == "Player");
 
-            targetLibraryFileInfos.RemoveAll(item => item.Name.Contains("Dashboard"));
+            if (extensionPlayerDirectoryInfo != null)
+            {
+                targetLibraryFileInfos.AddRange(extensionPlayerDirectoryInfo.GetFiles("*.dll", System.IO.SearchOption.TopDirectoryOnly));
+            }
 
             return targetLibraryFileInfos;
         }

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Views.Rendered
+﻿namespace MOROPO.VIDERHE.Terminal.Player.Views.Rendered
 {
     public class IndeterminableProgressBarView : Xamarin.Forms.ProgressBar
     {

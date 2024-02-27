@@ -2,7 +2,7 @@
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Views.Composite
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Views.Composite
 {
     public class ImageCropperCanvasView : SKCanvasView
     {

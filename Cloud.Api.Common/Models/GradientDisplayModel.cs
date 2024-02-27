@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class GradientDisplayModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityDisplayModel<Persistence.Entities.Gradient, System.Guid>
+    public class GradientDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Gradient, System.Guid>
     {
         public System.Guid Id { get; set; }
 
@@ -10,7 +12,7 @@
 
         public string About { get; set; }
 
-        public void Import(Persistence.Entities.Gradient entity)
+        public void Import(Gradient entity)
         {
             Id = entity.Id;
             CreateAt = entity.CreateAt;

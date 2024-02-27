@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Descriptors;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.View
 {
     public class ExtensionViewModel
     {
@@ -6,7 +8,7 @@
 
         public bool Enabled { get; set; }
 
-        public Extend.Common.Templating.Descriptors.ITemplateDescriptor[] TemplateDescriptors { get; set; }
+        public ITemplateDescriptor[] TemplateDescriptors { get; set; }
 
         public Extend.Common.Transitioning.Descriptors.ITransitionDescriptor[] TransitionDescriptors { get; set; }
 

@@ -351,4 +351,8 @@ MigrationBackup/
 /Cloud/dpkeys
 .DS_Store
 /Service.ECASA.CMG.InteropAirportDIS.Web/dpkeys
-/Service.ECASA.CMG.InteropAirportDIS.Web/wwwroot/media/images
+/Service.ECASA.CMG.InteropAirportDIS.Web/wwwroot/media
+/Service.ECASA.CMG.InteropAirportDIS.WebOlupin/.config
+/Cloud/.config
+/Service.ECASA.CMG.InteropAirportDIS.WebOlupin/wwwroot/media
+/Service.Hotel.OTT.Web/wwwroot/media

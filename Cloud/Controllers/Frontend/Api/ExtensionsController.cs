@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
+namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 {
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme, Policy = Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION)]
     [Route("api/[area]/[controller]")]
     [Area("account")]
     [ApiController]
-    public class ExtensionsController : MOROPO.SAPRESSC.Core.Web.Common.Controllers.BaseWebController
+    public class ExtensionsController : Framework.Guama.Core.Presentation.Web.Common.Controllers.BaseWebController
     {
         private readonly Microsoft.Extensions.Configuration.IConfiguration configuration;
 
@@ -17,8 +18,8 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
             this.configuration = configuration;
         }
 
-        [HttpGet("{key}/dashboard/bundle/modules")]
-        public ActionResult<Cloud.Api.Common.Models.ExtensionBundleModuleModel[]> DashboardBundleModules(System.Guid key)
+        [HttpGet("{key}/control/bundle/modules")]
+        public ActionResult<ExtensionBundleModuleModel[]> ControlBundleModules(System.Guid key)
         {
             var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 
@@ -29,14 +30,14 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 return NoContent();
             }
 
-            var extensionLibraryFileInfos = Providers.ViderheExtensionLibraryFileInfosProvider.GetRelevantToDashboard(extensionRootDirectoryInfo.GetDirectories().First(d => d.Name == key.ToString()));
+            var extensionLibraryFileInfos = Providers.ViderheExtensionLibraryFileInfosProvider.GetRelevantToControl(extensionRootDirectoryInfo.GetDirectories().First(d => d.Name == key.ToString()));
 
             return Ok(BuildResultModel(extensionLibraryFileInfos));
         }
 
         [HttpGet("{key}/player/bundle/modules")]
         [Microsoft.AspNetCore.Authorization.AllowAnonymous]
-        public ActionResult<Cloud.Api.Common.Models.ExtensionBundleModuleModel[]> PlayerBundleModules(System.Guid key)
+        public ActionResult<ExtensionBundleModuleModel[]> PlayerBundleModules(System.Guid key)
         {
             var extensionRootDirectoryPath = configuration["Viderhe:ExtensionRootDirectoryPath"];
 
@@ -47,14 +48,14 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
                 return NoContent();
             }
 
-            var extensionLibraryFileInfos = Providers.ViderheExtensionLibraryFileInfosProvider.GetRelevantToPlayer(extensionRootDirectoryInfo.GetDirectories().First(d => d.Name == key.ToString()));            
+            var extensionLibraryFileInfos = Providers.ViderheExtensionLibraryFileInfosProvider.GetRelevantToPlayer(extensionRootDirectoryInfo.GetDirectories().First(d => d.Name == key.ToString()));
 
             return Ok(BuildResultModel(extensionLibraryFileInfos));
         }
 
-        private Cloud.Api.Common.Models.ExtensionBundleModuleModel[] BuildResultModel(System.Collections.Generic.IEnumerable<System.IO.FileInfo> extensionLibraryFileInfos)
+        private ExtensionBundleModuleModel[] BuildResultModel(System.Collections.Generic.IEnumerable<System.IO.FileInfo> extensionLibraryFileInfos)
         {
-            var model = new Cloud.Api.Common.Models.ExtensionBundleModuleModel[extensionLibraryFileInfos.Count()];
+            var model = new ExtensionBundleModuleModel[extensionLibraryFileInfos.Count()];
 
             var iterationCount = 0;
 
@@ -68,7 +69,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
                         extensionLibraryFileStrean.CopyTo(extensionLibraryMemoryStream);
 
-                        model[iterationCount++] = new Cloud.Api.Common.Models.ExtensionBundleModuleModel
+                        model[iterationCount++] = new ExtensionBundleModuleModel
                         {
                             FileName = extensionLibraryFileInfo.Name,
                             FileContent = extensionLibraryMemoryStream.ToArray()

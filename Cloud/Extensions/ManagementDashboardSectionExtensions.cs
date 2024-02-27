@@ -1,8 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Extensions
+﻿namespace MOROPO.VIDERHE.Cloud.Extensions
 {
     public static class ManagementDashboardSectionExtensions
     {
-        public static Microsoft.AspNetCore.Html.HtmlString ToIconographyHtmlString(this MOROPO.SAPRESSC.Core.Web.Backend.Models.View.ManagementDashboardSectionViewModel self)
+        public static Microsoft.AspNetCore.Html.HtmlString ToIconographyHtmlString(this Framework.Guama.Core.Presentation.Web.Backend.Models.View.ManagementDashboardSectionViewModel self)
         {
             if (self.Controller == "users") return new Microsoft.AspNetCore.Html.HtmlString("<span class=\"mdi mdi-account\"></span>");
 

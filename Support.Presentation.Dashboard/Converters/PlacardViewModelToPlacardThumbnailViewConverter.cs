@@ -1,4 +1,7 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Converters
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Converters
 {
     public class PlacardViewModelToPlacardThumbnailViewConverter : Xamarin.Forms.IValueConverter
     {
@@ -6,7 +9,7 @@
         {
             if (value == null) return value;
 
-            return Xamarin.Forms.DependencyService.Get<Helpers.Facade.IPlacardThumbnailViewProvisioningHelperFacade>().GetPlacardThumnailView(value as Presentation.Models.View.PlacardViewModel);
+            return Xamarin.Forms.DependencyService.Get<IPlacardThumbnailViewProvisioningHelperFacade>().GetPlacardThumnailView(value as PlacardViewModel);
         }
 
         public object ConvertBack(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)

@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views
+﻿namespace MOROPO.VIDERHE.Extend.Common.Presentation.Views
 {
-    public class BasePlacardPresentationView : XFToolKit.Mvvm.Views.ContentView
+    public class BasePlacardPresentationView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
         public virtual Xamarin.Forms.Layout<Xamarin.Forms.View> WrapLayout { get; }
 

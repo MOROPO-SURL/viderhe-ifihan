@@ -1,8 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Providers
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Providers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Providers
 {
-    public class PlacardThumbnailViewProvider : Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardThumbnailViewProviderFacade
+    public class PlacardThumbnailViewProvider : IPlacardThumbnailViewProviderFacade
     {
-        public Xamarin.Forms.ContentView GetPlacardThumnailView(Support.Presentation.Models.View.PlacardViewModel model)
+        public Xamarin.Forms.ContentView GetPlacardThumnailView(PlacardViewModel model)
         {
             if (model.Template.Id == Descriptors.PictureSlideSecuenceTemplateDescriptor.ID)
             {

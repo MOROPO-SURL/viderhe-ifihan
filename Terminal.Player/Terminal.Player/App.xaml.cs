@@ -1,4 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player
+﻿using MOROPO.VIDERHE.Support.Presentation.Helpers;
+using MOROPO.VIDERHE.Support.Presentation.Managers;
+using MOROPO.VIDERHE.Support.Presentation.Providers.Facade;
+using MOROPO.VIDERHE.Terminal.Player.Managers;
+using MOROPO.VIDERHE.Terminal.Player.Providers;
+
+namespace MOROPO.VIDERHE.Terminal.Player
 {
     public partial class App : Xamarin.Forms.Application
     {
@@ -6,11 +12,11 @@
         {
             InitializeComponent();
 
-            Xamarin.Forms.DependencyService.Register<Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade, Providers.AccountInformationProvider>();
-            Xamarin.Forms.DependencyService.RegisterSingleton<Support.Presentation.Providers.Facade.ICloudServerProviderFacade>(Support.Presentation.Managers.SessionMemoryManager.Instance);
-            Xamarin.Forms.DependencyService.RegisterSingleton<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>(Managers.SessionManager.Instance);
+            Xamarin.Forms.DependencyService.Register<Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade, AccountInformationProvider>();
+            Xamarin.Forms.DependencyService.RegisterSingleton<ICloudServerProviderFacade>(SessionMemoryManager.Instance);
+            Xamarin.Forms.DependencyService.RegisterSingleton<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>(SessionManager.Instance);
 
-            Support.Presentation.Helpers.ImageUriFactoryHelper.Instance.Initialize();
+            ImageUriFactoryHelper.Instance.Initialize();
 
             MainPage = new Pages.StartingPage();
         }

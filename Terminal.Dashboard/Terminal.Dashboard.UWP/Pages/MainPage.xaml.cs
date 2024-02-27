@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.UWP.Pages
+﻿namespace MOROPO.VIDERHE.Terminal.Dashboard.UWP.Pages
 {
     public sealed partial class MainPage
     {
