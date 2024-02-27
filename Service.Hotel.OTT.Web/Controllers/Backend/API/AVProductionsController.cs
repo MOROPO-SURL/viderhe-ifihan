@@ -16,14 +16,18 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
     public class AVProductionsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<AVProduction, System.Guid, AVProductionInputModel, AVProductionDisplayModel>
     {
         private readonly IEntityRepository<AVCategory, int> categoryRepository;
+        private readonly IEntityRepository<Framework.Guama.Media.Persistence.Entities.Video, System.Guid> videoRepository;
         private readonly IEntityRepository<Framework.Guama.Media.Persistence.Entities.Image, System.Guid> imageRepository;
         private readonly Framework.Guama.Media.Presentation.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager;
+        private readonly Microsoft.Extensions.Configuration.IConfiguration configuration;
 
-        public AVProductionsController(Framework.Guama.Media.Presentation.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager, IEntityRepository<Framework.Guama.Media.Persistence.Entities.Image, System.Guid> imageRepository, IEntityRepository<AVCategory, int> categoryRepository, IEntityRepository<AVProduction, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AVProductionsController> localizer, ILogger<AVProductionsController> logger) : base(repository, localizer, logger)
+        public AVProductionsController(Microsoft.Extensions.Configuration.IConfiguration configuration, Framework.Guama.Media.Presentation.Web.Common.Managers.Facade.IImageFileManagerFacade imageFileManager, IEntityRepository<Framework.Guama.Media.Persistence.Entities.Image, System.Guid> imageRepository, IEntityRepository<Framework.Guama.Media.Persistence.Entities.Video, System.Guid> videoRepository, IEntityRepository<AVCategory, int> categoryRepository, IEntityRepository<AVProduction, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AVProductionsController> localizer, ILogger<AVProductionsController> logger) : base(repository, localizer, logger)
         {
             this.categoryRepository = categoryRepository;
+            this.videoRepository = videoRepository;
             this.imageRepository = imageRepository;
             this.imageFileManager = imageFileManager;
+            this.configuration = configuration;
         }
 
         [RequirePermissions(Authorization.AVProductionViewerPermission)]
@@ -270,6 +274,144 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Web.Controllers.Backend.API
                     imageRepository.Delete(deprecatedImage, User.Identity.Name);
 
                     imageFileManager.DeleteImageFile(deprecatedImage);
+                }
+
+                return Ok();
+            }
+            catch (System.InvalidOperationException e)
+            {
+                logger.LogError(e.InnerException, e.Message);
+
+                return NoContent();
+            }
+            catch (System.Exception e)
+            {
+                logger.LogError(e.InnerException, e.Message);
+
+                return Conflict();
+            }
+        }
+
+        [RequirePermissions(Authorization.AVProductionEditorPermission)]
+        [HttpPut("{key}/video/trailer/path")]
+        public ActionResult EditVideoTrailerByPath(System.Guid key, string path)
+        {
+            try
+            {
+                var entity = Repository.Get(key);
+
+                var newFileInfo = new System.IO.FileInfo(path);
+
+                if (!newFileInfo.Exists) return NoContent();
+
+                //var inputMediaFile = new MediaToolkit.Model.MediaFile(path);
+
+                //mediaToolkitEngine.GetMetadata(inputMediaFile);
+
+                var trailerVideo = new Framework.Guama.Media.Persistence.Entities.Video
+                {
+                    Length = newFileInfo.Length,
+                    Extension = newFileInfo.Extension,
+                    //Duration = inputMediaFile.Metadata.Duration,
+                    //Fps = inputMediaFile.Metadata.VideoData.Fps,
+                    //Format = inputMediaFile.Metadata.VideoData.Format,
+                    //FrameSize = inputMediaFile.Metadata.VideoData.FrameSize,
+                    //ColorModel = inputMediaFile.Metadata.VideoData.ColorModel,
+                    //AudioFormat = inputMediaFile.Metadata.AudioData.Format,
+                    //AudioChannelOutput = inputMediaFile.Metadata.AudioData.ChannelOutput
+                };
+
+                newFileInfo.MoveTo(System.IO.Path.Join(configuration["VIDERHE:VODRootPath"], string.Format("{0}.{1}", trailerVideo.Id, trailerVideo.Extension)));
+
+                var deprecatedVideoId = entity.TrailerVideoId;
+                var deprecatedVideoExtension = entity.TrailerVideo?.Extension;
+
+                entity.TrailerVideo = videoRepository.Add(trailerVideo, User.Identity.Name, false);
+                entity.TrailerVideoId = entity.TrailerVideo.Id;
+
+                Repository.Update(entity, User.Identity.Name);
+
+                if (deprecatedVideoId != null)
+                {
+                    var deprecatedFileInfo = new System.IO.FileInfo(System.IO.Path.Join(configuration["VIDERHE:VODRootPath"], string.Format("{0}.{1}", deprecatedVideoId, deprecatedVideoExtension)));
+
+                    if (deprecatedFileInfo.Exists)
+                    {
+                        try
+                        {
+                            deprecatedFileInfo.Delete();
+                        }
+                        catch { }
+                    }
+                }
+
+                return Ok();
+            }
+            catch (System.InvalidOperationException e)
+            {
+                logger.LogError(e.InnerException, e.Message);
+
+                return NoContent();
+            }
+            catch (System.Exception e)
+            {
+                logger.LogError(e.InnerException, e.Message);
+
+                return Conflict();
+            }
+        }
+
+        [RequirePermissions(Authorization.AVProductionEditorPermission)]
+        [HttpPut("{key}/video/audiovisual/path")]
+        public ActionResult EditVideoAudiovisualByPath(System.Guid key, string path)
+        {
+            try
+            {
+                var entity = Repository.Get(key);
+
+                var newFileInfo = new System.IO.FileInfo(path);
+
+                if (!newFileInfo.Exists) return NoContent();
+
+                //var inputMediaFile = new MediaToolkit.Model.MediaFile(path);
+
+                //mediaToolkitEngine.GetMetadata(inputMediaFile);
+
+                var audiovisualVideo = new Framework.Guama.Media.Persistence.Entities.Video
+                {
+                    Length = newFileInfo.Length,
+                    Extension = newFileInfo.Extension,
+                    //Duration = inputMediaFile.Metadata.Duration,
+                    //Fps = inputMediaFile.Metadata.VideoData.Fps,
+                    //Format = inputMediaFile.Metadata.VideoData.Format,
+                    //FrameSize = inputMediaFile.Metadata.VideoData.FrameSize,
+                    //ColorModel = inputMediaFile.Metadata.VideoData.ColorModel,
+                    //AudioFormat = inputMediaFile.Metadata.AudioData.Format,
+                    //AudioChannelOutput = inputMediaFile.Metadata.AudioData.ChannelOutput
+                };
+
+                newFileInfo.MoveTo(System.IO.Path.Join(configuration["VIDERHE:VODRootPath"], string.Format("{0}.{1}", audiovisualVideo.Id, audiovisualVideo.Extension)));
+
+                var deprecatedVideoId = entity.VideoId;
+                var deprecatedVideoExtension = entity.Video?.Extension;
+
+                entity.Video = videoRepository.Add(audiovisualVideo, User.Identity.Name, false);
+                entity.VideoId = entity.Video.Id;
+
+                Repository.Update(entity, User.Identity.Name);
+
+                if (deprecatedVideoId != null)
+                {
+                    var deprecatedFileInfo = new System.IO.FileInfo(System.IO.Path.Join(configuration["VIDERHE:VODRootPath"], string.Format("{0}.{1}", deprecatedVideoId, deprecatedVideoExtension)));
+
+                    if (deprecatedFileInfo.Exists)
+                    {
+                        try
+                        {
+                            deprecatedFileInfo.Delete();
+                        }
+                        catch { }
+                    }
                 }
 
                 return Ok();

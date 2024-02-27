@@ -57,7 +57,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models
         {
             entity.Title = Title;
             entity.Enabled = Enabled;
-            entity.Duration = Duration;
+            //entity.Duration = Duration;
             entity.Year = Year;
             entity.About = About;
             entity.Argument = Argument;

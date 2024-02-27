@@ -57,7 +57,7 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models
             Id = entity.Id;
             Title = entity.Title;
             Enabled = entity.Enabled;
-            Duration = entity.Duration;
+            //Duration = entity.Duration;
             Year = entity.Year;
             About = entity.About;
             Argument = entity.Argument;
@@ -65,11 +65,11 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.API.Common.Models
             Rate = entity.Rate;
             AgeEdge = entity.AgeEdge;
             Country = new CountryDisplayModel();
-            FileSize = entity.FileSize;
-            HasSubtitle = entity.HasSubtitle;
-            VideoFormat = entity.VideoFormat;
-            VideoQuality = entity.VideoQuality;
-            VideoResolution = entity.VideoResolution;
+            //FileSize = entity.FileSize;
+            //HasSubtitle = entity.HasSubtitle;
+            //VideoFormat = entity.VideoFormat;
+            //VideoQuality = entity.VideoQuality;
+            //VideoResolution = entity.VideoResolution;
             Genres = entity.GenreBridges.Select(bridge =>
             {
                 var model = new AVGenreDisplayModel();

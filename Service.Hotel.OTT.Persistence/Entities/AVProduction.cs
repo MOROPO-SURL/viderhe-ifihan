@@ -13,8 +13,6 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities
 
         public bool Enabled { get; set; }
 
-        public int Duration { get; set; }
-
         public int Year { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
@@ -54,16 +52,6 @@ namespace MOROPO.VIDERHE.Service.Hotel.OTT.Persistence.Entities
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey("VideoId")]
         public Framework.Guama.Media.Persistence.Entities.Video Video { get; set; }
         public System.Guid? VideoId { get; set; }
-
-        public long? FileSize { get; set; }
-
-        public bool HasSubtitle { get; set; }
-
-        public string VideoFormat { get; set; }
-
-        public VideoQuality? VideoQuality { get; set; }
-
-        public string VideoResolution { get; set; }
 
         public List<AVProductionAVGenreBridge> GenreBridges { get; set; }
 
