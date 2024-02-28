@@ -1,201 +1,206 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation</RootNamespace>
-    <Version>0.13.0</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>0.99.0</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Assets\Fonts\Montserrat-ExtraBold.otf" />
-    <None Remove="Assets\Fonts\Montserrat-SemiBold.otf" />
-    <None Remove="Assets\Images\MF-Identity-Landscape-Color-Primary.svg" />
-    <None Remove="Assets\Images\MF-Identity-Landscape-Color-Secoundary.svg" />
-    <None Remove="Assets\Images\MF-Identity-Landscape-Color-White.svg" />
-    <None Remove="Assets\Images\MF-Identity-Landscape.svg" />
-    <None Remove="Assets\Images\MF-Identity-Portrait.svg" />
-    <None Remove="Assets\Images\MF-Identity-Portriat-Color-Primary.svg" />
-    <None Remove="Assets\Images\MF-Identity-Portriat-Color-Secoundary.svg" />
-    <None Remove="Assets\Images\MF-Identity-Portriat-Color-White.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Left-Dark.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Left-Light.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Left-Primary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Left-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Right-Dark.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Right-Light.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Right-Primary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Right-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Left-Dark.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Left-Light.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Left-Primary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Left-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Right-Dark.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Right-Light.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Right-Primary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Fill-Train-Right-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Dark.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Light.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Primary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Right-Dark.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Right-Light.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Right-Primary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Right-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Left-Dark.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Left-Light.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Left-Primary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Left-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Right-Dark.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Right-Light.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Right-Primary.svg" />
-    <None Remove="Assets\Images\Placard-Flyout-Floating-Train-Right-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Frame-Landscape-Bullet-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Frame-Landscape-Bullet-White.svg" />
-    <None Remove="Assets\Images\Placard-Frame-Landscape-Outline-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Frame-Landscape-Outline-White.svg" />
-    <None Remove="Assets\Images\Placard-Hero-GrayGranite.png" />
-    <None Remove="Assets\Images\Placard-Hero-OldPaper.png" />
-    <None Remove="Assets\Images\Placard-Hero-OrangeGranite.png" />
-    <None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Dark.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Light.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Primary.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Tally-Top-Dark.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Tally-Top-Light.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Tally-Top-Primary.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Tally-Top-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Train-Bottom-Dark.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Train-Bottom-Light.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Train-Bottom-Primary.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Train-Bottom-Secoundary.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Train-Top-Dark.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Train-Top-Light.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Train-Top-Primary.svg" />
-    <None Remove="Assets\Images\Placard-Pennant-Train-Top-Secoundary.svg" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Assets\Fonts\Montserrat-ExtraBold.otf" />
+		<None Remove="Assets\Fonts\Montserrat-SemiBold.otf" />
+		<None Remove="Assets\Images\MF-Identity-Landscape-Color-Primary.svg" />
+		<None Remove="Assets\Images\MF-Identity-Landscape-Color-Secoundary.svg" />
+		<None Remove="Assets\Images\MF-Identity-Landscape-Color-White.svg" />
+		<None Remove="Assets\Images\MF-Identity-Landscape.svg" />
+		<None Remove="Assets\Images\MF-Identity-Portrait.svg" />
+		<None Remove="Assets\Images\MF-Identity-Portriat-Color-Primary.svg" />
+		<None Remove="Assets\Images\MF-Identity-Portriat-Color-Secoundary.svg" />
+		<None Remove="Assets\Images\MF-Identity-Portriat-Color-White.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Left-Dark.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Left-Light.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Left-Primary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Left-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Right-Dark.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Right-Light.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Right-Primary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Tally-Right-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Train-Left-Dark.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Train-Left-Light.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Train-Left-Primary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Train-Left-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Train-Right-Dark.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Train-Right-Light.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Train-Right-Primary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Fill-Train-Right-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Dark.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Light.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Primary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Left-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Right-Dark.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Right-Light.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Right-Primary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Tally-Right-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Train-Left-Dark.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Train-Left-Light.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Train-Left-Primary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Train-Left-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Train-Right-Dark.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Train-Right-Light.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Train-Right-Primary.svg" />
+		<None Remove="Assets\Images\Placard-Flyout-Floating-Train-Right-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Frame-Landscape-Bullet-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Frame-Landscape-Bullet-White.svg" />
+		<None Remove="Assets\Images\Placard-Frame-Landscape-Outline-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Frame-Landscape-Outline-White.svg" />
+		<None Remove="Assets\Images\Placard-Hero-GrayGranite.png" />
+		<None Remove="Assets\Images\Placard-Hero-OldPaper.png" />
+		<None Remove="Assets\Images\Placard-Hero-OrangeGranite.png" />
+		<None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Dark.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Light.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Primary.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Tally-Bottom-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Tally-Top-Dark.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Tally-Top-Light.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Tally-Top-Primary.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Tally-Top-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Train-Bottom-Dark.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Train-Bottom-Light.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Train-Bottom-Primary.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Train-Bottom-Secoundary.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Train-Top-Dark.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Train-Top-Light.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Train-Top-Primary.svg" />
+		<None Remove="Assets\Images\Placard-Pennant-Train-Top-Secoundary.svg" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Include="Assets\Fonts\Montserrat-ExtraBold.otf" />
-    <EmbeddedResource Include="Assets\Fonts\Montserrat-SemiBold.otf" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Left-Dark.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Left-Light.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Left-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Left-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Right-Dark.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Right-Light.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Right-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Right-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Left-Dark.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Left-Light.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Left-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Left-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Right-Dark.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Right-Light.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Right-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Right-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Hero-GrayGranite.png" />
-    <EmbeddedResource Include="Assets\Images\Placard-Hero-OrangeGranite.png" />
-    <EmbeddedResource Include="Assets\Images\Placard-Hero-OldPaper.png" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Dark.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Light.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Right-Dark.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Right-Light.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Right-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Right-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Left-Dark.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Right-Light.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Left-Light.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Left-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Left-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Right-Dark.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Right-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Right-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Outline-White.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Outline-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Bullet-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Bullet-White.svg" />
-    <EmbeddedResource Include="Assets\Images\MF-Identity-Landscape-Color-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\MF-Identity-Landscape-Color-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\MF-Identity-Landscape-Color-White.svg" />
-    <EmbeddedResource Include="Assets\Images\MF-Identity-Landscape.svg" />
-    <EmbeddedResource Include="Assets\Images\MF-Identity-Portrait.svg" />
-    <EmbeddedResource Include="Assets\Images\MF-Identity-Portriat-Color-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\MF-Identity-Portriat-Color-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\MF-Identity-Portriat-Color-White.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Bottom-Dark.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Bottom-Light.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Bottom-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Bottom-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Top-Light.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Top-Dark.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Top-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Top-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Bottom-Dark.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Bottom-Light.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Bottom-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Bottom-Secoundary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Top-Dark.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Top-Light.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Top-Primary.svg" />
-    <EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Top-Secoundary.svg" />
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Assets\Fonts\Montserrat-ExtraBold.otf" />
+		<EmbeddedResource Include="Assets\Fonts\Montserrat-SemiBold.otf" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Left-Dark.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Left-Light.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Left-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Left-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Right-Dark.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Right-Light.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Right-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Tally-Right-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Left-Dark.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Left-Light.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Left-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Left-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Right-Dark.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Right-Light.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Right-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Fill-Train-Right-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Hero-GrayGranite.png" />
+		<EmbeddedResource Include="Assets\Images\Placard-Hero-OrangeGranite.png" />
+		<EmbeddedResource Include="Assets\Images\Placard-Hero-OldPaper.png" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Dark.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Light.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Left-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Right-Dark.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Right-Light.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Right-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Tally-Right-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Left-Dark.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Right-Light.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Left-Light.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Left-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Left-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Right-Dark.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Right-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Flyout-Floating-Train-Right-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Outline-White.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Outline-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Bullet-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Frame-Landscape-Bullet-White.svg" />
+		<EmbeddedResource Include="Assets\Images\MF-Identity-Landscape-Color-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\MF-Identity-Landscape-Color-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\MF-Identity-Landscape-Color-White.svg" />
+		<EmbeddedResource Include="Assets\Images\MF-Identity-Landscape.svg" />
+		<EmbeddedResource Include="Assets\Images\MF-Identity-Portrait.svg" />
+		<EmbeddedResource Include="Assets\Images\MF-Identity-Portriat-Color-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\MF-Identity-Portriat-Color-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\MF-Identity-Portriat-Color-White.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Bottom-Dark.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Bottom-Light.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Bottom-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Bottom-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Top-Light.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Top-Dark.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Top-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Tally-Top-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Bottom-Dark.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Bottom-Light.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Bottom-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Bottom-Secoundary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Top-Dark.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Top-Light.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Top-Primary.svg" />
+		<EmbeddedResource Include="Assets\Images\Placard-Pennant-Train-Top-Secoundary.svg" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+		<PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
-    <ProjectReference Include="..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj" />
-    <ProjectReference Include="..\Extend.Essential.Templating\Extend.Essential.Templating.csproj" />
-    <ProjectReference Include="..\Extend.OHCC.RailwayMuseum.Templating\Extend.OHCC.RailwayMuseum.Templating.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
+		<ProjectReference Include="..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj" />
+		<ProjectReference Include="..\Extend.Essential.Templating\Extend.Essential.Templating.csproj" />
+		<ProjectReference Include="..\Extend.OHCC.RailwayMuseum.Templating\Extend.OHCC.RailwayMuseum.Templating.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Views\LandscapeCrossStripePlacardView.xaml.cs">
-      <DependentUpon>LandscapeCrossStripePlacardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\LandscapePennantPlacardView.xaml.cs">
-      <DependentUpon>LandscapePennantPlacardView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\StrechAspectFillVideoPlacardView.xaml.cs">
-      <DependentUpon>StrechAspectFillVideoPlacardView.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Views\LandscapeCrossStripePlacardView.xaml.cs">
+			<DependentUpon>LandscapeCrossStripePlacardView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\LandscapePennantPlacardView.xaml.cs">
+			<DependentUpon>LandscapePennantPlacardView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\StrechAspectFillVideoPlacardView.xaml.cs">
+			<DependentUpon>StrechAspectFillVideoPlacardView.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Views\CornerTileVideoPresentingVideoPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\InfinityVideoPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapeAnonimusHeroPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapeCrossStripePlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapeFillFlyoutPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapeFloatingFlyoutPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapeFramedPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapePennantPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\StrechAspectFillVideoPlacardView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Views\CornerTileVideoPresentingVideoPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\InfinityVideoPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapeAnonimusHeroPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapeCrossStripePlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapeFillFlyoutPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapeFloatingFlyoutPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapeFramedPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapePennantPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\StrechAspectFillVideoPlacardView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
 
 </Project>

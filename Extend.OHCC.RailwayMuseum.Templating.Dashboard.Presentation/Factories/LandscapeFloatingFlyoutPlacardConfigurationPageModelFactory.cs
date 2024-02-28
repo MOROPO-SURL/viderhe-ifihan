@@ -1,16 +1,18 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Factories
 {
     public static class LandscapeFloatingFlyoutPlacardConfigurationPageModelFactory
     {
-        public static Models.Page.LandscapeFloatingFlyoutPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static LandscapeFloatingFlyoutPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.LandscapeFloatingFlyoutPlacardConfigurationPageModel();
+            if (placardViewModel == null) return new LandscapeFloatingFlyoutPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapeFloatingFlyoutPlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeFloatingFlyoutPlacardContextModel>(placardViewModel.SerializedContext);
 
-            return new Models.Page.LandscapeFloatingFlyoutPlacardConfigurationPageModel
+            return new LandscapeFloatingFlyoutPlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 DefineBeginAt = placardViewModel.BeginAt != null,

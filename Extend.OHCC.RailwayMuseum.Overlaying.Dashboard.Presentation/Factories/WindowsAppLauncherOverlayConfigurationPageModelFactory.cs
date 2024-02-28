@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Dashboard.Presentation.Factories
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Dashboard.Presentation.Factories
 {
     public static class WindowsAppLauncherOverlayConfigurationPageModelFactory
     {

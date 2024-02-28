@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Enumerations
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Enumerations
 {
     public enum FlyoutBackgroundColorMode
     {

@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View.Contract;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View
 {
-    public class CornerTileVideoPresentingVideoPlacardViewModel : Contract.AbstractCornerTileVideoPresentingPlacardViewModel
+    public class CornerTileVideoPresentingVideoPlacardViewModel : AbstractCornerTileVideoPresentingPlacardViewModel
     {
-        public XFToolKit.Presentation.Sources.Video.VideoSource PresentedVideoSource { get; set; }
+        public SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource PresentedVideoSource { get; set; }
 
         protected override void DisposeUnmanagementResources()
         {

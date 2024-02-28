@@ -1,13 +1,14 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Factories
 {
     public static class InfinityVideoPlacardEditPageModelFactory
     {
         public static Models.Page.InfinityVideoPlacardEditPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            var contextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.InfinityVideoPlacardContextModel>(placardViewModel.SerializedContext);
+            var contextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<InfinityVideoPlacardContextModel>(placardViewModel.SerializedContext);
 
             return new Models.Page.InfinityVideoPlacardEditPageModel
             {

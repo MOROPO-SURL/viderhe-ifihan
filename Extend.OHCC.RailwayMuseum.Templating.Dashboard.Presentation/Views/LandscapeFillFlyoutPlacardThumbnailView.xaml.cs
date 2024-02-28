@@ -1,14 +1,16 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Views
 {
-    public partial class LandscapeFillFlyoutPlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class LandscapeFillFlyoutPlacardThumbnailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
         public LandscapeFillFlyoutPlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model)
         {
             InitializeComponent();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapeFillFlyoutPlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeFillFlyoutPlacardContextModel>(model.SerializedContext);
 
-            Image.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.ContextedImage.ThumbnailId));
+            Image.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(context.ContextedImage.Id));
 
             BindingContext = model;
         }

@@ -1,14 +1,16 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Views
 {
-    public partial class CornerTileVideoPresentingVideoPlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class CornerTileVideoPresentingVideoPlacardThumbnailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
         public CornerTileVideoPresentingVideoPlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model)
         {
             InitializeComponent();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.CornerTileVideoPresentingVideoPlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<CornerTileVideoPresentingVideoPlacardContextModel>(model.SerializedContext);
 
-            Image.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.PresentedVideo.ThumbnailId));
+            Image.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildVideoThumbnailUri(context.PresentedVideo.Id));
 
             BindingContext = model;
         }

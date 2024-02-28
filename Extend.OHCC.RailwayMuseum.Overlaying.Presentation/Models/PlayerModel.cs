@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models
 {
     public class PlayerModel
     {

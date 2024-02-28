@@ -1,11 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Views
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Views
 {
     public partial class DefaultCallToActionOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
         private static readonly System.TimeSpan CALL_TO_ACTION_DELAY = System.TimeSpan.FromSeconds(5);
 
         private readonly System.Action<object> overlayTapCallbackAction;
-        private XFToolKit.Presentation.Transform.Animations.HeartAnimation callToActionAnimation;
+        private SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.HeartAnimation callToActionAnimation;
 
 
         public DefaultCallToActionOverlayView(System.Action<object> overlayTapCallbackAction, object model = null)
@@ -60,7 +60,7 @@
         {
             if (callToActionAnimation != null) return;
 
-            callToActionAnimation = new XFToolKit.Presentation.Transform.Animations.HeartAnimation
+            callToActionAnimation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.HeartAnimation
             {
                 Target = CallToActionMessageWrapGrid
             };

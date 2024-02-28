@@ -1,16 +1,18 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Factories
 {
     public static class LandscapePennantPlacardConfigurationPageModelFactory
     {
-        public static Models.Page.LandscapePennantPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static LandscapePennantPlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.LandscapePennantPlacardConfigurationPageModel();
+            if (placardViewModel == null) return new LandscapePennantPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapePennantPlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePennantPlacardContextModel>(placardViewModel.SerializedContext);
 
-            return new Models.Page.LandscapePennantPlacardConfigurationPageModel
+            return new LandscapePennantPlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 DefineBeginAt = placardViewModel.BeginAt != null,

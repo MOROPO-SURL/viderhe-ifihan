@@ -1,27 +1,29 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Enumerations;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.View;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Pages
 {
-    public partial class InformationMenuPage : XFToolKit.Mvvm.Pages.ContentPage
+    public partial class InformationMenuPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.ContentPage
     {
         private static System.TimeSpan INDLE_CHECK_TIME = System.TimeSpan.FromSeconds(30);
         private static System.TimeSpan INDLE_LIMIT_TIME = System.TimeSpan.FromMinutes(2);
 
-        private Models.View.InformationMenuOverlayViewModel model;
+        private InformationMenuOverlayViewModel model;
 
         private Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider;
 
-        private Enumerations.InformationMenuSection activeSection;
+        private InformationMenuSection activeSection;
 
         private System.Diagnostics.Stopwatch indleStopwatch;
 
-        public InformationMenuPage(Models.View.InformationMenuOverlayViewModel model)
+        public InformationMenuPage(InformationMenuOverlayViewModel model)
         {
             InitializeComponent();
 
             this.model = model;
 
-            activeSection = Enumerations.InformationMenuSection.RailwayMuseum;
+            activeSection = InformationMenuSection.RailwayMuseum;
 
             accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
@@ -31,11 +33,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
             Section2IconLabel.TextColor = accountInformationProvider.PrimaryColor;
             Section3IconLabel.TextColor = accountInformationProvider.PrimaryColor;
 
-            LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.MF-Logo.svg", GetType().Assembly);
+            LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.MF-Logo.svg", GetType().Assembly);
 
-            FirstSectionIndicatorImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Item-Indicator-Left.svg", GetType().Assembly);
-            SecoundSectionIndicatorImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Item-Indicator-Right.svg", GetType().Assembly);
-            ThirthSectionIndicatorImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Item-Indicator-Left.svg", GetType().Assembly);
+            FirstSectionIndicatorImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Item-Indicator-Left.svg", GetType().Assembly);
+            SecoundSectionIndicatorImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Item-Indicator-Right.svg", GetType().Assembly);
+            ThirthSectionIndicatorImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Item-Indicator-Left.svg", GetType().Assembly);
 
             PresentActiveSection();
         }
@@ -77,9 +79,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
         {
             ResetIndleElapsedTime();
 
-            if (activeSection == Enumerations.InformationMenuSection.OHCC) return;
+            if (activeSection == InformationMenuSection.OHCC) return;
 
-            activeSection = Enumerations.InformationMenuSection.OHCC;
+            activeSection = InformationMenuSection.OHCC;
 
             PresentActiveSection();
         }
@@ -88,9 +90,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
         {
             ResetIndleElapsedTime();
 
-            if (activeSection == Enumerations.InformationMenuSection.RailwayMuseum) return;
+            if (activeSection == InformationMenuSection.RailwayMuseum) return;
 
-            activeSection = Enumerations.InformationMenuSection.RailwayMuseum;
+            activeSection = InformationMenuSection.RailwayMuseum;
 
             PresentActiveSection();
         }
@@ -99,9 +101,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
         {
             ResetIndleElapsedTime();
 
-            var title = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? "Museo Ferroviario" : "Oficnia del Historiador";
+            var title = activeSection == InformationMenuSection.RailwayMuseum ? "Museo Ferroviario" : "Oficina del Historiador";
 
-            var url = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? model.RailwayMuseumAboutUri : model.OHCCAboutUri;
+            var url = activeSection == InformationMenuSection.RailwayMuseum ? model.RailwayMuseumAboutUri : model.OHCCAboutUri;
 
             this.NavigationPushPageAsync(new InformationContentPage(title, url, ResetIndleElapsedTime));
         }
@@ -110,9 +112,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
         {
             ResetIndleElapsedTime();
 
-            var title = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? "Museo Ferroviario" : "Oficnia del Historiador";
+            var title = activeSection == InformationMenuSection.RailwayMuseum ? "Museo Ferroviario" : "Oficina del Historiador";
 
-            var url = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? model.RailwayMuseumOfferUri : model.OHCCOfferUri;
+            var url = activeSection == InformationMenuSection.RailwayMuseum ? model.RailwayMuseumOfferUri : model.OHCCOfferUri;
 
             this.NavigationPushPageAsync(new InformationContentPage(title, url, ResetIndleElapsedTime));
         }
@@ -121,9 +123,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
         {
             ResetIndleElapsedTime();
 
-            var title = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? "Museo Ferroviario" : "Oficnia del Historiador";
+            var title = activeSection == InformationMenuSection.RailwayMuseum ? "Museo Ferroviario" : "Oficina del Historiador";
 
-            var url = activeSection == Enumerations.InformationMenuSection.RailwayMuseum ? model.RailwayMuseumBillboardUri : model.OHCCBillboardUri;
+            var url = activeSection == InformationMenuSection.RailwayMuseum ? model.RailwayMuseumBillboardUri : model.OHCCBillboardUri;
 
             this.NavigationPushPageAsync(new InformationContentPage(title, url, ResetIndleElapsedTime));
         }
@@ -153,10 +155,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
 
         private void PresentActiveSection()
         {
-            if (activeSection == Enumerations.InformationMenuSection.RailwayMuseum)
+            if (activeSection == InformationMenuSection.RailwayMuseum)
             {
                 SectionBackgroundImage.Source = null;
-                SectionBackgroundImage.Source = Xamarin.Forms.ImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.RailwayMuseum-Background.jpg", GetType().Assembly);
+                SectionBackgroundImage.Source = Xamarin.Forms.ImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.RailwayMuseum-Background.jpg", GetType().Assembly);
 
                 RailwayMuseumSectionGrid.BackgroundColor = accountInformationProvider.SecoundaryColor;
                 OHCCSectionGrid.BackgroundColor = Xamarin.Forms.Color.Transparent;
@@ -165,9 +167,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
                 RailwayMuseumSectionNameLabel.TextColor = Xamarin.Forms.Color.White;
 
                 RailwayMuseumSectionVintageImage.Source = null;
-                RailwayMuseumSectionVintageImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Vintage-Active.svg", GetType().Assembly);
+                RailwayMuseumSectionVintageImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Vintage-Active.svg", GetType().Assembly);
                 OHCCSectionVintageImage.Source = null;
-                OHCCSectionVintageImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Vintage-Inactive.svg", GetType().Assembly);
+                OHCCSectionVintageImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Vintage-Inactive.svg", GetType().Assembly);
 
                 SecoundSectionIndicatorLabel.Text = "Horarios y Servicios";
                 ThirthSectionIndicatorLabel.Text = "Guía del Recorrido";
@@ -175,7 +177,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
             else
             {
                 SectionBackgroundImage.Source = null;
-                SectionBackgroundImage.Source = Xamarin.Forms.ImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.OHCC-Background.jpg", GetType().Assembly);
+                SectionBackgroundImage.Source = Xamarin.Forms.ImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.OHCC-Background.jpg", GetType().Assembly);
 
                 OHCCSectionGrid.BackgroundColor = accountInformationProvider.SecoundaryColor;
                 RailwayMuseumSectionGrid.BackgroundColor = Xamarin.Forms.Color.Transparent;
@@ -184,22 +186,22 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
                 OHCCSectionNameLabel.TextColor = Xamarin.Forms.Color.White;
 
                 OHCCSectionVintageImage.Source = null;
-                OHCCSectionVintageImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Vintage-Active.svg", GetType().Assembly);
+                OHCCSectionVintageImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Vintage-Active.svg", GetType().Assembly);
                 RailwayMuseumSectionVintageImage.Source = null;
-                RailwayMuseumSectionVintageImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Vintage-Inactive.svg", GetType().Assembly);
+                RailwayMuseumSectionVintageImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.Information-Menu-Section-Vintage-Inactive.svg", GetType().Assembly);
 
                 SecoundSectionIndicatorLabel.Text = "Instalaciones y Servicios";
                 ThirthSectionIndicatorLabel.Text = "Programación Cultural";
             }
 
             Section1Image.Source = null;
-            Section1Image.Source = Xamarin.Forms.ImageSource.FromResource(string.Format("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.{0}-Section-Item-1.jpg", activeSection), GetType().Assembly);
+            Section1Image.Source = Xamarin.Forms.ImageSource.FromResource(string.Format("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.{0}-Section-Item-1.jpg", activeSection), GetType().Assembly);
 
             Section2Image.Source = null;
-            Section2Image.Source = Xamarin.Forms.ImageSource.FromResource(string.Format("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.{0}-Section-Item-2.jpg", activeSection), GetType().Assembly);
+            Section2Image.Source = Xamarin.Forms.ImageSource.FromResource(string.Format("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.{0}-Section-Item-2.jpg", activeSection), GetType().Assembly);
 
             Section3Image.Source = null;
-            Section3Image.Source = Xamarin.Forms.ImageSource.FromResource(string.Format("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.{0}-Section-Item-3.jpg", activeSection), GetType().Assembly);
+            Section3Image.Source = Xamarin.Forms.ImageSource.FromResource(string.Format("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.{0}-Section-Item-3.jpg", activeSection), GetType().Assembly);
 
         }
     }

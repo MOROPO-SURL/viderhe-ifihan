@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Dashboard.Presentation.Models.Page
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Dashboard.Presentation.Models.Page
 {
     public class WindowsAppLauncherOverlayConfigurationPageModel : Contract.AbstractDefaultCallToActionOverlayConfigurationPageModel
     {

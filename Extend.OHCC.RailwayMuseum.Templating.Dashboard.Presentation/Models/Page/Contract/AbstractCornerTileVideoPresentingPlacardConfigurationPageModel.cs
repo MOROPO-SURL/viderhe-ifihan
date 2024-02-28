@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page.Contract
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page.Contract
 {
     public abstract class AbstractCornerTileVideoPresentingPlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledPlacardConfigurationPageModel
     {
@@ -12,12 +12,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         {
             PresenterTileVideoScreenCorner = ScreenCorner.BottonRight;
 
-            AvailablePresenterTileVideoScreenCorners = new ScreenCorner[] 
+            AvailablePresenterTileVideoScreenCorners = new ScreenCorner[]
             {
                 ScreenCorner.TopLeft,
                 ScreenCorner.TopRight,
                 ScreenCorner.BottomLeft,
-                ScreenCorner.BottonRight 
+                ScreenCorner.BottonRight
             };
         }
 

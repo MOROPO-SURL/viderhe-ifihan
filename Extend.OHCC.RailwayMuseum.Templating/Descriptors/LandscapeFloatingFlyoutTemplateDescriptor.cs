@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Descriptors
 {
     public class LandscapeFloatingFlyoutTemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
     {

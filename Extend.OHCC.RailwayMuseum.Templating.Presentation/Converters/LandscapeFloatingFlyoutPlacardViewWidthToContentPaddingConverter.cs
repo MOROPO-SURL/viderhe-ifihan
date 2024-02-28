@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Converters
 {
     public class LandscapeFloatingFlyoutPlacardViewWidthToContentPaddingConverter : Xamarin.Forms.IValueConverter
     {

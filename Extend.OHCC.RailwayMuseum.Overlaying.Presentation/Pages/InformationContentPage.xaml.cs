@@ -1,8 +1,8 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Pages
 {
-    public partial class InformationContentPage : XFToolKit.Mvvm.Pages.ContentPage
+    public partial class InformationContentPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.ContentPage
     {
         private System.Action resetIndleElapsedTimeAction;
 

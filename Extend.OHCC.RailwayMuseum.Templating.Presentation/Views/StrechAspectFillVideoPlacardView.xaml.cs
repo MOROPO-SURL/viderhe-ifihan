@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
 {
     public partial class StrechAspectFillVideoPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
@@ -23,15 +23,15 @@
 
         private void VideoPlayer_StatusUpdated(object sender, System.EventArgs eventArgs)
         {
-            var videoPlayer = sender as XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
+            var videoPlayer = sender as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
 
-            if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
+            if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
             {
                 videoPlayer.StatusUpdated -= VideoPlayer_StatusUpdated;
 
                 EndPresentation();
             }
-            else if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            else if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
                 transition?.PerformMotion();
 
@@ -41,7 +41,7 @@
 
         public override void StartShowInWhenReady(Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition)
         {
-            if (VideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            if (VideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
                 base.StartShowInWhenReady(transition);
 
@@ -55,7 +55,7 @@
         {
             base.DisposeUnmanagementResources();
 
-            if (VideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            if (VideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
                 VideoPlayerView.StatusUpdated -= VideoPlayer_StatusUpdated;
 

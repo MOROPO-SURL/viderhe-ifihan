@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
 {
     public partial class InfinityVideoPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
         private Common.Templating.Presentation.Presenters.ScreenplayPresenter screenplayPresenter;
 
-        public InfinityVideoPlacardView(Models.View.InfinityVideoPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public InfinityVideoPlacardView(InfinityVideoPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -42,7 +44,7 @@
                     SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Essential.Templating.Models.Context.SimpleVideoPlacardContextModel
                     {
                         RequireUnobstructedPresetation = false,
-                        Video = (BindingContext as Models.View.InfinityVideoPlacardViewModel).Video
+                        Video = (BindingContext as InfinityVideoPlacardViewModel).Video
                     })
                 }
             };
@@ -61,7 +63,7 @@
             return new StrechAspectFillVideoPlacardView(new Essential.Templating.Presentation.Models.View.SimpleVideoPlacardViewModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri)
+                VideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri)
             }, relativeSizeScaleFactor);
         }
 

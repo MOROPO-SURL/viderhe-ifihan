@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.View
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.View
 {
-    public class InformationMenuOverlayViewModel : Context.InformationMenuOverlayContextModel
+    public class InformationMenuOverlayViewModel : InformationMenuOverlayContextModel
     {
     }
 }

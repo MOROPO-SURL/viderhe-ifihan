@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Descriptors
 {
     public class RailwayMuseumOHCCExtensionDescriptor : Common.Descriptors.IExtensionDescriptor
     {

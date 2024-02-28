@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page.Contract;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page
 {
-    public class CornerTileVideoPresentingVideoPlacardConfigurationPageModel : Contract.AbstractCornerTileVideoPresentingPlacardConfigurationPageModel
+    public class CornerTileVideoPresentingVideoPlacardConfigurationPageModel : AbstractCornerTileVideoPresentingPlacardConfigurationPageModel
     {
         private Support.Presentation.Models.View.VideoViewModel presentedVideo;
 

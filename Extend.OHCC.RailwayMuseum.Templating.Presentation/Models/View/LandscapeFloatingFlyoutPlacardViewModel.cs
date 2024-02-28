@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View
 {
     public class LandscapeFloatingFlyoutPlacardViewModel : Contract.AbstractImageMuseographyPlacardViewModel
     {

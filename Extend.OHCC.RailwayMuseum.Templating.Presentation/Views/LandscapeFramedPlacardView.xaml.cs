@@ -1,8 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
 {
     public partial class LandscapeFramedPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapeFramedPlacardView(Models.View.LandscapeFramedPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public LandscapeFramedPlacardView(LandscapeFramedPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -14,51 +17,51 @@
 
             switch (model.BackgroundMode)
             {
-                case Enumerations.BackgroundMode.SolidPrimary:
+                case BackgroundMode.SolidPrimary:
                     PlacardLayout.BackgroundColor = accountInformationProvider.PrimaryColor;
 
                     useLightFrame = true;
 
                     break;
-                case Enumerations.BackgroundMode.SolidSecoundary:
+                case BackgroundMode.SolidSecoundary:
                     PlacardLayout.BackgroundColor = accountInformationProvider.SecoundaryColor;
 
                     useLightFrame = true;
 
                     break;
-                case Enumerations.BackgroundMode.GradientLinearV1:
+                case BackgroundMode.GradientLinearV1:
                     break;
-                case Enumerations.BackgroundMode.GradientLinearV2:
+                case BackgroundMode.GradientLinearV2:
                     break;
-                case Enumerations.BackgroundMode.TextureWallPrimaryLigth:
+                case BackgroundMode.TextureWallPrimaryLigth:
                     break;
-                case Enumerations.BackgroundMode.TextureWallPrimaryDark:
+                case BackgroundMode.TextureWallPrimaryDark:
                     break;
-                case Enumerations.BackgroundMode.TextureWallSecoundaryLigth:
+                case BackgroundMode.TextureWallSecoundaryLigth:
                     break;
-                case Enumerations.BackgroundMode.TextureWallSecoundaryDark:
+                case BackgroundMode.TextureWallSecoundaryDark:
                     break;
-                case Enumerations.BackgroundMode.TextureOldPaper:
+                case BackgroundMode.TextureOldPaper:
                     break;
-                case Enumerations.BackgroundMode.TextureGraniteOrange:
+                case BackgroundMode.TextureGraniteOrange:
                     break;
-                case Enumerations.BackgroundMode.TextureGraniteGray:
+                case BackgroundMode.TextureGraniteGray:
                     break;
-                case Enumerations.BackgroundMode.SolidLight:
-                case Enumerations.BackgroundMode.SolidDark:
+                case BackgroundMode.SolidLight:
+                case BackgroundMode.SolidDark:
                 default:
                     throw new System.InvalidOperationException();
             }
 
             switch (model.FrameStyle)
             {
-                case Enumerations.FrameStyle.Fancy:
-                    FrameImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource(string.Format("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Frame-Landscape-Bullet-{0}.svg", useLightFrame ? "White" : "Secoundary"), GetType().Assembly);
+                case FrameStyle.Fancy:
+                    FrameImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource(string.Format("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Frame-Landscape-Bullet-{0}.svg", useLightFrame ? "White" : "Secoundary"), GetType().Assembly);
 
                     break;
-                case Enumerations.FrameStyle.Tally:
+                case FrameStyle.Tally:
                 default:
-                    FrameImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource(string.Format("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Frame-Landscape-Outline-{0}.svg", useLightFrame ? "White" : "Secoundary"), GetType().Assembly);
+                    FrameImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource(string.Format("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Frame-Landscape-Outline-{0}.svg", useLightFrame ? "White" : "Secoundary"), GetType().Assembly);
 
                     break;
             }

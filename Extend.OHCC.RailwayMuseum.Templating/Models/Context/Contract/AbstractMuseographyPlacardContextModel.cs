@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Models.Context.Contract
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context.Contract
 {
     public abstract class AbstractMuseographyPlacardContextModel : Common.Templating.Models.Context.AbstractScreenTimedPlacardContextModel
     {

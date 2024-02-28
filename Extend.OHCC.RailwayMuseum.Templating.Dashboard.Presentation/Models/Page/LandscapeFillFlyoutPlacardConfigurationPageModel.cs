@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Enumerations;
-using SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Enumerations;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page
 {
     public class LandscapeFillFlyoutPlacardConfigurationPageModel : Contract.AbstractImagedMuseographyPlacardConfigurationPageModel
     {
@@ -35,12 +35,12 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                 FlyoutHorizontalOrientation.Right
             };
 
-            AvailableLayoutModes = new PictureLayoutMode[] 
-            { 
+            AvailableLayoutModes = new PictureLayoutMode[]
+            {
                 PictureLayoutMode.AspectFit,
                 PictureLayoutMode.AspectFill,
                 PictureLayoutMode.Fill,
-                PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf 
+                PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf
             };
         }
 

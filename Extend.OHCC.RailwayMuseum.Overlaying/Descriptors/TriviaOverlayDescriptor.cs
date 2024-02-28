@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Descriptors
 {
     public class TriviaOverlayDescriptor// : Common.Overlaying.Descriptors.IOverlayDescriptor
     {

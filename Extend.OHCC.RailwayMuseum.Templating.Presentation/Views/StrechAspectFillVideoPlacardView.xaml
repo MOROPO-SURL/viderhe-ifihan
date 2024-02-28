@@ -2,9 +2,9 @@
 <extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
-    xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views.StrechAspectFillVideoPlacardView">
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Rendered;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    x:Class="MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views.StrechAspectFillVideoPlacardView">
     <ContentView.Content>
         <Grid 
             x:Name="Wrapper"

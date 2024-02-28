@@ -1,6 +1,7 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.Context;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Providers
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Providers
 {
     public class OverlayPresentationViewProvider : Common.Overlaying.Presentation.Providers.Facade.IOverlayPresentationViewProviderFacade
     {
@@ -10,7 +11,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
 
             if (accountInformationProvider.AccountDefaultOverlayId.Value == Descriptors.WindowsAppLauncherOverlayDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.WindowsAppLauncherOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<WindowsAppLauncherOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
 
                 return new Views.WindowsAppLauncherOverlayView(new Models.View.WindowsAppLauncherOverlayViewModel
                 {
@@ -22,7 +23,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
 
             if (accountInformationProvider.AccountDefaultOverlayId.Value == Descriptors.WindowsAppsLauncherOverlayDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.WindowsAppsLauncherOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<WindowsAppsLauncherOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
 
                 return new Views.WindowsAppsLauncherOverlayView(new Models.View.WindowsAppsLauncherOverlayViewModel
                 {
@@ -58,9 +59,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
 
             if (accountInformationProvider.AccountDefaultOverlayId.Value == Descriptors.InformationMenuOverlayDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.InformationMenuOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<InformationMenuOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
 
-                return new Views.DefaultCallToActionOverlayView((object param) => 
+                return new Views.DefaultCallToActionOverlayView((object param) =>
                 {
                     Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Xamarin.Forms.NavigationPage(new Pages.InformationMenuPage(param as Models.View.InformationMenuOverlayViewModel)));
                 }, new Models.View.InformationMenuOverlayViewModel

@@ -1,20 +1,23 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Pages
 {
-    public partial class InfinityVideoPlacardEditPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.InfinityVideoPlacardEditPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class InfinityVideoPlacardEditPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<InfinityVideoPlacardEditPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
-        private Templating.Models.Context.InfinityVideoPlacardContextModel contextModel;
+        private InfinityVideoPlacardContextModel contextModel;
 
         private Support.Presentation.Models.View.PlacardViewModel placardViewModel;
         private System.Action successfulCompleteCallbackAction;
 
         public InfinityVideoPlacardEditPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(Factories.InfinityVideoPlacardEditPageModelFactory.Build(placardViewModel))
+            : base(InfinityVideoPlacardEditPageModelFactory.Build(placardViewModel))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
@@ -23,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
             this.placardViewModel = placardViewModel;
             this.successfulCompleteCallbackAction = successfulCompleteCallbackAction;
 
-            contextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.InfinityVideoPlacardContextModel>(placardViewModel.SerializedContext);
+            contextModel = Newtonsoft.Json.JsonConvert.DeserializeObject<InfinityVideoPlacardContextModel>(placardViewModel.SerializedContext);
         }
 
         private void ApplyToolbarItem_Clicked(object sender, System.EventArgs eventArgs)
@@ -47,7 +50,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 var model = new Cloud.Api.Common.Models.PlacardInputModel
                 {
@@ -55,7 +58,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
                     PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
                     Label = BindingContextPageModel.Label,
                     TemplateId = placardViewModel.Template.Id,
-                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.InfinityVideoPlacardContextModel
+                    SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new InfinityVideoPlacardContextModel
                     {
                         RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                         Video = contextModel.Video,

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Models.Context
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context
 {
     public class InfinityVideoPlacardContextModel : Common.Templating.Models.Context.AbstractPlacardContextModel
     {

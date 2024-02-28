@@ -1,23 +1,25 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
 {
     public partial class LandscapeFillFlyoutPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
         private Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView contexteImageView;
 
-        public LandscapeFillFlyoutPlacardView(Models.View.LandscapeFillFlyoutPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public LandscapeFillFlyoutPlacardView(LandscapeFillFlyoutPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
             BindingContext = model;
 
-            FillFlyoutImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource(string.Format("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Flyout-Fill-{0}-{1}-{2}.svg", model.FlyoutShapeKind, model.FlyoutHorizontalOrientation, model.FlyoutBackgroundColorMode), GetType().Assembly);
-            LogoImage.Source = model.FlyoutBackgroundColorMode == Enumerations.FlyoutBackgroundColorMode.Light ?
-                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly) :
-                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
+            FillFlyoutImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource(string.Format("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Flyout-Fill-{0}-{1}-{2}.svg", model.FlyoutShapeKind, model.FlyoutHorizontalOrientation, model.FlyoutBackgroundColorMode), GetType().Assembly);
+            LogoImage.Source = model.FlyoutBackgroundColorMode == FlyoutBackgroundColorMode.Light ?
+                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly) :
+                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
 
-            if (model.FlyoutBackgroundColorMode == Enumerations.FlyoutBackgroundColorMode.Light)
+            if (model.FlyoutBackgroundColorMode == FlyoutBackgroundColorMode.Light)
             {
                 var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
@@ -27,11 +29,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
 
             switch (model.FlyoutHorizontalOrientation)
             {
-                case Enumerations.FlyoutHorizontalOrientation.Left:
+                case FlyoutHorizontalOrientation.Left:
                     Xamarin.Forms.Grid.SetColumn(FlyoutDataGrid, 0);
 
                     break;
-                case Enumerations.FlyoutHorizontalOrientation.Right:
+                case FlyoutHorizontalOrientation.Right:
                 default:
                     Xamarin.Forms.Grid.SetColumn(FlyoutDataGrid, 1);
 
@@ -45,7 +47,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                     Aspect = Xamarin.Forms.Aspect.AspectFit,
                     ScreenPresentationTime = System.TimeSpan.Zero,
                     Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(model.ContextedImage.Id)),
-                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(model.ContextedImage.ThumbnailId)),
+                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(model.ContextedImage.Id)),
                     ZoomingEnabled = false
                 }, relativeSizeScaleFactor);
             }
@@ -77,9 +79,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
         {
             base.PerformPlacardStarup();
 
-            var model = BindingContext as Models.View.LandscapeFillFlyoutPlacardViewModel;
+            var model = BindingContext as LandscapeFillFlyoutPlacardViewModel;
 
-            if (model.FlyoutHorizontalOrientation == Enumerations.FlyoutHorizontalOrientation.Left)
+            if (model.FlyoutHorizontalOrientation == FlyoutHorizontalOrientation.Left)
             {
                 FlyoutGrid.TranslationX = PlacardLayout.Width * -1;
             }
@@ -90,50 +92,50 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
 
             FlyoutGrid.IsVisible = true;
 
-            var internalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            var internalShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
             {
                 Delay = "2000",
                 IsParallel = true
             };
 
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
             {
                 Target = FlyoutGrid,
                 TranslateX = 0,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut
             });
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
             {
                 Target = LogoImage,
-                Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
                 Delay = "500",
                 Duration = "800"
             });
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
             {
                 Target = HeaderLabel,
                 Opacity=1,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
                 Delay = "1300",
                 Duration = "500"
             });
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeToAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeToAnimation
             {
                 Target = ContentLabel,
                 Opacity=1,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
                 Delay = "1550",
                 Duration = "500"
             });
 
             if (model.ContextedImageCenteredAtPresentation)
             {
-                internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
+                internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToXAnimation
                 {
                     Target = contexteImageView,
-                    TranslateX = model.FlyoutHorizontalOrientation == Enumerations.FlyoutHorizontalOrientation.Left ? PlacardLayout.Width / 4d : PlacardLayout.Width / 4d * -1,
-                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                    TranslateX = model.FlyoutHorizontalOrientation == FlyoutHorizontalOrientation.Left ? PlacardLayout.Width / 4d : PlacardLayout.Width / 4d * -1,
+                    EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                     Delay = "100"
                 });
             }
@@ -142,7 +144,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
 
             if (model.ContextedImageZoomingEnabled)
             {
-                var presentedImageZoominAnimation = new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+                var presentedImageZoominAnimation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
                 {
                     Target = contexteImageView,
                     Scale = 1.2,

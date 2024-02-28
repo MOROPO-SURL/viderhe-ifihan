@@ -1,14 +1,15 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.View;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Views
 {
     public partial class WindowsAppsLauncherOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
         private static readonly System.TimeSpan CALL_TO_ACTION_DELAY = System.TimeSpan.FromSeconds(5);
 
-        private XFToolKit.Presentation.Transform.Animations.HeartAnimation callToActionAnimation;
+        private SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.HeartAnimation callToActionAnimation;
 
-        public WindowsAppsLauncherOverlayView(Models.View.WindowsAppsLauncherOverlayViewModel model)
+        public WindowsAppsLauncherOverlayView(WindowsAppsLauncherOverlayViewModel model)
         {
             InitializeComponent();
 
@@ -41,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
 
         private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
-            Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Pages.WindowsAppsLauncherPage(BindingContext as Models.View.WindowsAppsLauncherOverlayViewModel));
+            Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Pages.WindowsAppsLauncherPage(BindingContext as WindowsAppsLauncherOverlayViewModel));
         }
 
         private void CallToActionAnimation_Completed(object sender, System.EventArgs eventArgs)
@@ -58,7 +59,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
         {
             if (callToActionAnimation != null) return;
 
-            callToActionAnimation = new XFToolKit.Presentation.Transform.Animations.HeartAnimation
+            callToActionAnimation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.HeartAnimation
             {
                 Target = CallToActionMessageWrapGrid
             };

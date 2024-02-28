@@ -1,10 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Converters
 {
     public class ScreenCornerToHorizontalLayoutOptionConverter : Xamarin.Forms.IValueConverter
     {
         public object Convert(object value, System.Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var corner = (Enumerations.ScreenCorner) value;
+            var corner = (Enumerations.ScreenCorner)value;
 
             switch (corner)
             {

@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Factories
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Factories
 {
     public static class LandscapeFramedPlacardConfigurationPageModelFactory
     {
@@ -6,7 +8,7 @@
         {
             if (placardViewModel == null) return new Models.Page.LandscapeFramedPlacardConfigurationPageModel();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.LandscapeFramedPlacardContextModel>(placardViewModel.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeFramedPlacardContextModel>(placardViewModel.SerializedContext);
 
             return new Models.Page.LandscapeFramedPlacardConfigurationPageModel
             {

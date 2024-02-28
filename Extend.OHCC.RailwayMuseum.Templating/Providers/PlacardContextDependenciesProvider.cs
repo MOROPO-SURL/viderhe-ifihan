@@ -1,4 +1,7 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Providers
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Providers
 {
     public class PlacardContextDependenciesProvider : Common.Templating.Providers.Facade.IPlacardContextDependenciesProvider
     {
@@ -9,37 +12,37 @@
 
         public Common.Templating.Models.Context.ImageContextModel[] GetImages(System.Guid templateId, string serializedContext)
         {
-            if (templateId == Descriptors.LandscapeAnonimusHeroTemplateDescriptor.ID)
+            if (templateId == LandscapeAnonimusHeroTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeAnonimusHeroPlacardContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeAnonimusHeroPlacardContextModel>(serializedContext);
 
                 return new[] { context.HeroImage };
             }
 
-            if (templateId == Descriptors.LandscapeCrossStripeTemplateDescriptor.ID)
+            if (templateId == LandscapeCrossStripeTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeCrossStripePlacardContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeCrossStripePlacardContextModel>(serializedContext);
 
                 return new[] { context.ContextedImage };
             }
 
-            if (templateId == Descriptors.LandscapeFillFlyoutTemplateDescriptor.ID)
+            if (templateId == LandscapeFillFlyoutTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeFillFlyoutPlacardContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeFillFlyoutPlacardContextModel>(serializedContext);
 
                 return new[] { context.ContextedImage };
             }
 
-            if (templateId == Descriptors.LandscapeFloatingFlyoutTemplateDescriptor.ID)
+            if (templateId == LandscapeFloatingFlyoutTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapeFloatingFlyoutPlacardContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapeFloatingFlyoutPlacardContextModel>(serializedContext);
 
                 return new[] { context.ContextedImage };
             }
 
-            if (templateId == Descriptors.LandscapePennantTemplateDescriptor.ID)
+            if (templateId == LandscapePennantTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.LandscapePennantPlacardContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePennantPlacardContextModel>(serializedContext);
 
                 return new[] { context.ContextedImage };
             }
@@ -54,16 +57,16 @@
 
         public Common.Templating.Models.Context.VideoContextModel[] GetVideos(System.Guid templateId, string serializedContext)
         {
-            if (templateId == Descriptors.CornerTileVideoPresentingVideoTemplateDescriptor.ID)
+            if (templateId == CornerTileVideoPresentingVideoTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.CornerTileVideoPresentingVideoPlacardContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<CornerTileVideoPresentingVideoPlacardContextModel>(serializedContext);
 
                 return new[] { context.PresenterTileVideo, context.PresentedVideo };
             }
 
-            if (templateId == Descriptors.InfinityVideoTemplateDescriptor.ID)
+            if (templateId == InfinityVideoTemplateDescriptor.ID)
             {
-                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.InfinityVideoPlacardContextModel>(serializedContext);
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<InfinityVideoPlacardContextModel>(serializedContext);
 
                 return new[] { context.Video };
             }

@@ -1,8 +1,8 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Descriptors;
-using SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Models.Context;
-using SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Providers
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Providers
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
@@ -28,10 +28,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Prese
                 return new CornerTileVideoPresentingVideoPlacardView(new Models.View.CornerTileVideoPresentingVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    PresenterTileVideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.PresenterTileVideo.Id, context.PresenterTileVideo.Extension).AbsoluteUri),
+                    PresenterTileVideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.PresenterTileVideo.Id, context.PresenterTileVideo.Extension).AbsoluteUri),
                     PresenterTileVideoPlayDelay = context.PresenterTileVideoPlayDelay,
                     PresenterTileVideoScreenCorner = context.PresenterTileVideoScreenCorner,
-                    PresentedVideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri)
+                    PresentedVideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri)
                 }, relativeSizeScaleFactor);
             }
 

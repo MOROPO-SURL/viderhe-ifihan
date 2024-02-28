@@ -1,18 +1,19 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.View;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Pages
 {
-    public partial class WindowsAppsLauncherPage : XFToolKit.Mvvm.Pages.ContentPage
+    public partial class WindowsAppsLauncherPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.ContentPage
     {
-        public WindowsAppsLauncherPage(Models.View.WindowsAppsLauncherOverlayViewModel model)
+        public WindowsAppsLauncherPage(WindowsAppsLauncherOverlayViewModel model)
         {
             InitializeComponent();
 
             var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
-            BackgroundImageSource = Xamarin.Forms.ImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.AppsLauncherPageBackground.jpg", GetType().Assembly);
+            BackgroundImageSource = Xamarin.Forms.ImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.AppsLauncherPageBackground.jpg", GetType().Assembly);
 
-            LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly);
+            LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly);
 
             TitleLabel.Text = model.Title;
             TitleLabel.TextColor = accountInformationProvider.SecoundaryColor;
@@ -32,7 +33,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Prese
 
         private void LaunchLabelTapGestureRecognizer_Tapped(object sender, System.EventArgs eventArgs)
         {
-            Xamarin.Forms.DependencyService.Get<Common.Overlaying.Presentation.Helpers.Facade.IPlatformIntegrationHelperFacade>()?.LaunchApplication(((sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.WindowsAppLaunchViewModel).LocalPath);
+            Xamarin.Forms.DependencyService.Get<Common.Overlaying.Presentation.Helpers.Facade.IPlatformIntegrationHelperFacade>()?.LaunchApplication(((sender as Xamarin.Forms.BindableObject).BindingContext as WindowsAppLaunchViewModel).LocalPath);
 
             this.NavigationPopModalPageAsync();
         }

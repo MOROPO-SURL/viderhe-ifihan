@@ -1,12 +1,14 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Views
 {
     public partial class WindowsAppLauncherOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
         private static readonly System.TimeSpan CALL_TO_ACTION_DELAY = System.TimeSpan.FromSeconds(5);
 
-        private XFToolKit.Presentation.Transform.Animations.HeartAnimation callToActionAnimation;
+        private SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.HeartAnimation callToActionAnimation;
 
-        public WindowsAppLauncherOverlayView(Models.View.WindowsAppLauncherOverlayViewModel model)
+        public WindowsAppLauncherOverlayView(WindowsAppLauncherOverlayViewModel model)
         {
             InitializeComponent();
 
@@ -39,7 +41,7 @@
 
         private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
-            Xamarin.Forms.DependencyService.Get<Common.Overlaying.Presentation.Helpers.Facade.IPlatformIntegrationHelperFacade>()?.LaunchApplication((BindingContext as Models.View.WindowsAppLauncherOverlayViewModel).LocalPath);
+            Xamarin.Forms.DependencyService.Get<Common.Overlaying.Presentation.Helpers.Facade.IPlatformIntegrationHelperFacade>()?.LaunchApplication((BindingContext as WindowsAppLauncherOverlayViewModel).LocalPath);
         }
 
         private void CallToActionAnimation_Completed(object sender, System.EventArgs eventArgs)
@@ -56,7 +58,7 @@
         {
             if (callToActionAnimation != null) return;
 
-            callToActionAnimation = new XFToolKit.Presentation.Transform.Animations.HeartAnimation
+            callToActionAnimation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.HeartAnimation
             {
                 Target = CallToActionMessageWrapGrid
             };

@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
 {
     public partial class CornerTileVideoPresentingVideoPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
         private Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition;
 
-        public CornerTileVideoPresentingVideoPlacardView(Models.View.CornerTileVideoPresentingVideoPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public CornerTileVideoPresentingVideoPlacardView(CornerTileVideoPresentingVideoPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -23,9 +25,9 @@
 
         private void PresentedVideoPlayerView_StatusUpdated(object sender, System.EventArgs eventArgs)
         {
-            if (PresentedVideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
+            if (PresentedVideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
             {
-                if (PresenterTileVideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+                if (PresenterTileVideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
                 {
                     PresenterTileVideoPlayerView.StatusUpdated -= PresenterTileVideoPlayerView_StatusUpdated;
 
@@ -36,7 +38,7 @@
 
                 EndPresentation();
             }
-            else if (PresentedVideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            else if (PresentedVideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
                 transition?.PerformMotion();
 
@@ -46,7 +48,7 @@
 
         private void PresenterTileVideoPlayerView_StatusUpdated(object sender, System.EventArgs eventArgs)
         {
-            if (PresenterTileVideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
+            if (PresenterTileVideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
             {
                 PresenterTileVideoPlayerView.StatusUpdated -= PresenterTileVideoPlayerView_StatusUpdated;
 
@@ -58,7 +60,7 @@
 
         public override void StartShowInWhenReady(Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition)
         {
-            if (PresentedVideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            if (PresentedVideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
                 base.StartShowInWhenReady(transition);
 
@@ -79,14 +81,14 @@
         {
             base.DisposeUnmanagementResources();
 
-            if (PresenterTileVideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            if (PresenterTileVideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
                 PresenterTileVideoPlayerView.StatusUpdated -= PresenterTileVideoPlayerView_StatusUpdated;
 
                 PresenterTileVideoPlayerView.Stop();
             }
 
-            if (PresentedVideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            if (PresentedVideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
                 PresentedVideoPlayerView.StatusUpdated -= PresentedVideoPlayerView_StatusUpdated;
 

@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Views
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Views
 {
-    public partial class LandscapeFramedPlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class LandscapeFramedPlacardThumbnailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
         public LandscapeFramedPlacardThumbnailView()
         {

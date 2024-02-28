@@ -2,9 +2,9 @@
 <extendcommonoverlayingpresentationviews:BaseOverlayView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:extendcommonoverlayingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Presentation"
+    xmlns:extendcommonoverlayingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Views.WindowsAppLauncherOverlayView">
+    x:Class="MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Views.WindowsAppLauncherOverlayView">
     <ContentView.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />

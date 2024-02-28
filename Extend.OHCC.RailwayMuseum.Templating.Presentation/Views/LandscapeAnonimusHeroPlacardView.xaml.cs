@@ -1,38 +1,41 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
 {
     public partial class LandscapeAnonimusHeroPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapeAnonimusHeroPlacardView(Models.View.LandscapeAnonimusHeroPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public LandscapeAnonimusHeroPlacardView(LandscapeAnonimusHeroPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
             BindingContext = model;
 
-            MaskBackgroundImagen.Source = Xamarin.Forms.ImageSource.FromResource(string.Format("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Hero-{0}.png", model.BackgroundMode), GetType().Assembly);
+            MaskBackgroundImagen.Source = Xamarin.Forms.ImageSource.FromResource(string.Format("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Hero-{0}.png", model.BackgroundMode), GetType().Assembly);
 
             var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
             switch (model.BackgroundMode)
             {
-                case Enumerations.AnonimusHeroBackgroundMode.OldPaper:
-                    LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly);
+                case AnonimusHeroBackgroundMode.OldPaper:
+                    LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly);
 
                     HeaderLabel.TextColor = accountInformationProvider.PrimaryColor;
                     ContentLabel.TextColor = accountInformationProvider.SecoundaryColor;
 
                     break;
 
-                case Enumerations.AnonimusHeroBackgroundMode.GrayGranite:
-                    LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-Secoundary.svg", GetType().Assembly);
+                case AnonimusHeroBackgroundMode.GrayGranite:
+                    LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-Secoundary.svg", GetType().Assembly);
 
                     HeaderLabel.TextColor = accountInformationProvider.SecoundaryColor;
                     ContentLabel.TextColor = accountInformationProvider.SecoundaryColor;
 
                     break;
 
-                case Enumerations.AnonimusHeroBackgroundMode.OrangeGranite:
+                case AnonimusHeroBackgroundMode.OrangeGranite:
                 default:
-                    LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
+                    LogoImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
 
                     HeaderLabel.TextColor = Xamarin.Forms.Color.White;
                     ContentLabel.TextColor = Xamarin.Forms.Color.White;
@@ -55,39 +58,39 @@
         {
             base.PerformPlacardStarup();
 
-            var internalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            var internalShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
             {
                 IsParallel = true
             };
 
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
             {
                 Target = MaskBackgroundImagen,
                 Scale = 1,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.Linear,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.Linear,
                 Duration="500"
             });
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.ScaleToAnimation
             {
                 Target = LogoImage,
                 Scale = 1,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.SpringOut,
                 Delay = "1500",
                 Duration = "500"
             });
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
             {
                 Target = HeaderLabel,
-                Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
                 Delay = "2000",
                 Duration = "500"
             });
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.FadeInAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
             {
                 Target = ContentLabel,
-                Direction = XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
                 Delay = "2250",
                 Duration = "500"
             });

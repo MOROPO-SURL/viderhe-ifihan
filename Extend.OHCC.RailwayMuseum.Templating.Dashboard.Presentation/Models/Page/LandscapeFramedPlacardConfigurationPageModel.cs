@@ -1,8 +1,9 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page.Contract;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page
 {
-    public class LandscapeFramedPlacardConfigurationPageModel : Contract.AbstractMuseographyPlacardConfigurationPageModel
+    public class LandscapeFramedPlacardConfigurationPageModel : AbstractMuseographyPlacardConfigurationPageModel
     {
         private FrameStyle frameStyle;
         private BackgroundMode backgroundMode;

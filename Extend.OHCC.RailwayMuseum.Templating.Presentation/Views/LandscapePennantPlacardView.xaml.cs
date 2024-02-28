@@ -1,19 +1,22 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
 {
     public partial class LandscapePennantPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapePennantPlacardView(Models.View.LandscapePennantPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public LandscapePennantPlacardView(LandscapePennantPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
             BindingContext = model;
 
-            PennantImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource(string.Format("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Pennant-{0}-{1}-{2}.svg", model.FlyoutShapeKind, model.PennantVerticalOrientation, model.FlyoutBackgroundColorMode), GetType().Assembly);
-            LogoImage.Source = model.FlyoutBackgroundColorMode == Enumerations.FlyoutBackgroundColorMode.Light ?
-                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly) :
-                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
+            PennantImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource(string.Format("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Pennant-{0}-{1}-{2}.svg", model.FlyoutShapeKind, model.PennantVerticalOrientation, model.FlyoutBackgroundColorMode), GetType().Assembly);
+            LogoImage.Source = model.FlyoutBackgroundColorMode == FlyoutBackgroundColorMode.Light ?
+                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly) :
+                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
 
-            if (model.FlyoutBackgroundColorMode == Enumerations.FlyoutBackgroundColorMode.Light)
+            if (model.FlyoutBackgroundColorMode == FlyoutBackgroundColorMode.Light)
             {
                 var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
@@ -24,11 +27,11 @@
 
             switch (model.PennantVerticalOrientation)
             {
-                case Enumerations.PennantVerticalOrientation.Top:
+                case PennantVerticalOrientation.Top:
                     Xamarin.Forms.Grid.SetRow(DataLayoutWrapGrid, 0);
 
                     break;
-                case Enumerations.PennantVerticalOrientation.Bottom:
+                case PennantVerticalOrientation.Bottom:
                 default:
                     Xamarin.Forms.Grid.SetRow(DataLayoutWrapGrid, 1);
 

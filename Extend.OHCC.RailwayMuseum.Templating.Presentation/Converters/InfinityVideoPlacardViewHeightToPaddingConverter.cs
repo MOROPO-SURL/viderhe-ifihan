@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Converters
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Converters
 {
     public class InfinityVideoPlacardViewHeightToPaddingConverter : Xamarin.Forms.IValueConverter
     {
@@ -10,7 +12,7 @@
 
             if (height < 0) return new Xamarin.Forms.Thickness();
 
-            var concreteBindingContext = PlacardView.BindingContext as Models.View.InfinityVideoPlacardViewModel;
+            var concreteBindingContext = PlacardView.BindingContext as InfinityVideoPlacardViewModel;
 
             if (concreteBindingContext.StartMargin > 0 || concreteBindingContext.EndMargin > 0)
             {

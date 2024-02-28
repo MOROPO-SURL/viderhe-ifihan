@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.View
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.Context.Contract;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Overlaying.Presentation.Models.View
 {
-    public class WindowsAppsLauncherOverlayViewModel : Context.Contract.AbstractDefaultCallToActionOverlayContextModel
+    public class WindowsAppsLauncherOverlayViewModel : AbstractDefaultCallToActionOverlayContextModel
     {
         public string Title { get; set; }
 

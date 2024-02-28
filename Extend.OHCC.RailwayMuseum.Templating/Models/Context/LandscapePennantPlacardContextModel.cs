@@ -1,11 +1,14 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Models.Context
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context.Contract;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Models.Context
 {
-    public class LandscapePennantPlacardContextModel : Contract.AbstractImagedMuseographyPlacardContextModel
+    public class LandscapePennantPlacardContextModel : AbstractImagedMuseographyPlacardContextModel
     {
-        public Enumerations.FlyoutShapeKind FlyoutShapeKind { get; set; }
+        public FlyoutShapeKind FlyoutShapeKind { get; set; }
 
-        public Enumerations.FlyoutBackgroundColorMode FlyoutBackgroundColorMode { get; set; }
+        public FlyoutBackgroundColorMode FlyoutBackgroundColorMode { get; set; }
 
-        public Enumerations.PennantVerticalOrientation PennantVerticalOrientation { get; set; }
+        public PennantVerticalOrientation PennantVerticalOrientation { get; set; }
     }
 }

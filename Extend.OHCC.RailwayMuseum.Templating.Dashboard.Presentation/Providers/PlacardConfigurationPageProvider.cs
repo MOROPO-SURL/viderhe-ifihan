@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Descriptors;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Descriptors;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Providers
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Providers
 {
     public class PlacardConfigurationPageProvider : Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardConfigurationPageProviderFacade
     {
@@ -9,7 +9,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
         {
             if (templateDescriptor is InfinityVideoTemplateDescriptor)
             {
-                return new Essential.Templating.Dashboard.Presentation.Pages.PrePickVideoPage(templateDescriptor, completedActionCallback, (Support.Presentation.Models.View.VideoViewModel model, Common.Templating.Descriptors.ITemplateDescriptor _templateDescriptor, System.Action completeCallbackAction) =>
+                return new Essential.Templating.Dashboard.Presentation.Pages.PrePickVideoPage(templateDescriptor, completedActionCallback, (model, _templateDescriptor, completeCallbackAction) =>
                 {
                     Xamarin.Forms.Application.Current.MainPage.NavigationPushPageAsync(new Pages.InfinityVideoPlacardCreatePage(model, _templateDescriptor as InfinityVideoTemplateDescriptor, completeCallbackAction));
                 });

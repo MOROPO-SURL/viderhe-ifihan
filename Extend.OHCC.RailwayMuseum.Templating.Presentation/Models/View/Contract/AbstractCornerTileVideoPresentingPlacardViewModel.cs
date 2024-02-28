@@ -1,8 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View.Contract
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View.Contract
 {
     public abstract class AbstractCornerTileVideoPresentingPlacardViewModel : Common.Templating.Presentation.Models.View.AbstractPlacardViewModel
     {
-        public XFToolKit.Presentation.Sources.Video.VideoSource PresenterTileVideoSource { get; set; }
+        public SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource PresenterTileVideoSource { get; set; }
 
         public Enumerations.ScreenCorner PresenterTileVideoScreenCorner { get; set; }
 

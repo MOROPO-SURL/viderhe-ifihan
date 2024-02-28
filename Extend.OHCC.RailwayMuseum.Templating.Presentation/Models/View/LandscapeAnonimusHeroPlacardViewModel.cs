@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View.Contract;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View
 {
-    public class LandscapeAnonimusHeroPlacardViewModel : Contract.AbstractMuseographyPlacardViewModel
+    public class LandscapeAnonimusHeroPlacardViewModel : AbstractMuseographyPlacardViewModel
     {
         public Xamarin.Forms.ImageSource HeroImageSource { get; set; }
 

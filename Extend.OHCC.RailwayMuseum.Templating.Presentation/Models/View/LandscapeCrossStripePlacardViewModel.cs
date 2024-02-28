@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View.Contract;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View
 {
-    public class LandscapeCrossStripePlacardViewModel : Contract.AbstractImageMuseographyPlacardViewModel
+    public class LandscapeCrossStripePlacardViewModel : AbstractImageMuseographyPlacardViewModel
     {
         public Xamarin.Forms.Color StripeBackgroundColor { get; set; }
     }

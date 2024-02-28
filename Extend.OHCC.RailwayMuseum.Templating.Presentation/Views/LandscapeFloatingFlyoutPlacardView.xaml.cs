@@ -1,19 +1,22 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Views
 {
     public partial class LandscapeFloatingFlyoutPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public LandscapeFloatingFlyoutPlacardView(Models.View.LandscapeFloatingFlyoutPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public LandscapeFloatingFlyoutPlacardView(LandscapeFloatingFlyoutPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
             BindingContext = model;
 
-            FloatingFlyoutImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource(string.Format("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Flyout-Floating-{0}-{1}-{2}.svg", model.FlyoutShapeKind, model.FlyoutHorizontalOrientation, model.FlyoutBackgroundColorMode), GetType().Assembly);
-            LogoImage.Source = model.FlyoutBackgroundColorMode == Enumerations.FlyoutBackgroundColorMode.Light ?
-                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly) :
-                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
+            FloatingFlyoutImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource(string.Format("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.Placard-Flyout-Floating-{0}-{1}-{2}.svg", model.FlyoutShapeKind, model.FlyoutHorizontalOrientation, model.FlyoutBackgroundColorMode), GetType().Assembly);
+            LogoImage.Source = model.FlyoutBackgroundColorMode == FlyoutBackgroundColorMode.Light ?
+                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape.svg", GetType().Assembly) :
+                FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Assets.Images.MF-Identity-Landscape-Color-White.svg", GetType().Assembly);
 
-            if (model.FlyoutBackgroundColorMode == Enumerations.FlyoutBackgroundColorMode.Light)
+            if (model.FlyoutBackgroundColorMode == FlyoutBackgroundColorMode.Light)
             {
                 var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
@@ -23,11 +26,11 @@
 
             switch (model.FlyoutHorizontalOrientation)
             {
-                case Enumerations.FlyoutHorizontalOrientation.Left:
+                case FlyoutHorizontalOrientation.Left:
                     Xamarin.Forms.Grid.SetColumn(DataLayoutWrapGrid, 0);
 
                     break;
-                case Enumerations.FlyoutHorizontalOrientation.Right:
+                case FlyoutHorizontalOrientation.Right:
                 default:
                     Xamarin.Forms.Grid.SetColumn(DataLayoutWrapGrid, 1);
 

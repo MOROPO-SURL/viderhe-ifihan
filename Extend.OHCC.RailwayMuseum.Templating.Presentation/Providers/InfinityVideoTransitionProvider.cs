@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Presentation.Providers
+﻿namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Presentation.Providers
 {
     public class InfinityVideoTransitionProvider : Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade
     {

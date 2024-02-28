@@ -1,18 +1,20 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Descriptors;
+using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.OHCC.RailwayMuseum.Templating.Dashboard.Presentation.Pages
 {
-    public partial class InfinityVideoPlacardCreatePage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.InfinityVideoPlacardCreatePageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class InfinityVideoPlacardCreatePage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<InfinityVideoPlacardCreatePageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
-        private Descriptors.InfinityVideoTemplateDescriptor templateDescriptor;
+        private InfinityVideoTemplateDescriptor templateDescriptor;
         private System.Action successfulCompleteCallbackAction;
 
-        public InfinityVideoPlacardCreatePage(Support.Presentation.Models.View.VideoViewModel videoViewModel, Descriptors.InfinityVideoTemplateDescriptor templateDescriptor, System.Action successfulCompleteCallbackAction)
+        public InfinityVideoPlacardCreatePage(Support.Presentation.Models.View.VideoViewModel videoViewModel, InfinityVideoTemplateDescriptor templateDescriptor, System.Action successfulCompleteCallbackAction)
             : base(new Models.Page.InfinityVideoPlacardCreatePageModel
             {
                 Video = videoViewModel,
@@ -50,7 +52,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.OHCC.RailwayMuseum.Templating.Dashb
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 var model = new Cloud.Api.Common.Models.PlacardInputModel
                 {
