@@ -13,6 +13,18 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Assets\Image\bluediamond-header-logo.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\Image\bluediamond-header-logo.svg" />
+	</ItemGroup>
+
+	<ItemGroup>		
+		<PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj" />
 		<ProjectReference Include="..\Extend.Hotel.OTT.Overlaying\Extend.Hotel.OTT.Overlaying.csproj" />
 	</ItemGroup>

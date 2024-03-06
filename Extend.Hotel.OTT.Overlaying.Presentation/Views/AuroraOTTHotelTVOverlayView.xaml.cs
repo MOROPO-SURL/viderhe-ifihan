@@ -6,6 +6,8 @@
         {
             InitializeComponent();
 
+            BrandLogoImageView.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromResource("MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Assets.Image.bluediamond-header-logo.svg", GetType().Assembly);
+
             BindingContext = model;
         }
 
@@ -33,9 +35,18 @@
             animation.Begin();
         }
 
-        private void ActionsCollectionView_SelectionChanged(object sender, Xamarin.Forms.SelectionChangedEventArgs eventArgs)
+        private void Button_Focused(object sender, Xamarin.Forms.FocusEventArgs e)
         {
+            var parent = ((Xamarin.Forms.Button)sender).Parent;
 
+            ((Xamarin.Forms.Grid)parent).BackgroundColor = Xamarin.Forms.Color.Red;
+        }
+
+        private void Button_Unfocused(object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            var parent = ((Xamarin.Forms.Button)sender).Parent;
+
+            ((Xamarin.Forms.Grid)parent).BackgroundColor = Xamarin.Forms.Color.Transparent;
         }
     }
 }
