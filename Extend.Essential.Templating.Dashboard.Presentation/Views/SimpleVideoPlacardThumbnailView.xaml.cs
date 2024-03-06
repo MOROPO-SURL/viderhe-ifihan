@@ -12,7 +12,7 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.View
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<SimpleVideoPlacardContextModel>(model.SerializedContext);
 
-            Image.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildImageThumbnailUri(context.Video.Id));
+            Image.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildVideoThumbnailUri(context.Video.Id));
 
             BindingContext = model;
         }
