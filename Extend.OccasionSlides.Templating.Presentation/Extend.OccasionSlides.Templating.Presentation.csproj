@@ -8,7 +8,7 @@
 		<Authors>MOROPO DotNet DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
 		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
-		<Version>0.2.1</Version>
+		<Version>0.2.3</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
@@ -263,7 +263,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.6" />
+		<PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.7" />
 		<PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
 		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
 	</ItemGroup>

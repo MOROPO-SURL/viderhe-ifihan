@@ -13,7 +13,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                 TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
             });
 
-            BackgroundImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(context.BackgroundImage.ThumbnailId));
+            BackgroundImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(context.BackgroundImage.Id));
 
             BindingContext = model;
         }

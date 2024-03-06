@@ -27,7 +27,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
 
                 var iterationImage = new FFImageLoading.Forms.CachedImage
                 {
-                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(slide.Image.ThumbnailId)),
+                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(slide.Image.Id)),
                     Aspect = slide.LayoutMode.ToXamarinFormsAspect(),
                     CacheType = FFImageLoading.Cache.CacheType.Disk,
                     CacheDuration = System.TimeSpan.MaxValue
