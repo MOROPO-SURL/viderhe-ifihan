@@ -1,4 +1,6 @@
-﻿namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Views
+﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+
+namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Views
 {
     public partial class AuroraOTTHotelTVOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
@@ -37,16 +39,23 @@
 
         private void Button_Focused(object sender, Xamarin.Forms.FocusEventArgs e)
         {
-            var parent = ((Xamarin.Forms.Button)sender).Parent;
+            var parent = ((Xamarin.Forms.Button)sender).Parent as Xamarin.Forms.Grid;
 
-            ((Xamarin.Forms.Grid)parent).BackgroundColor = Xamarin.Forms.Color.Red;
+            parent.Scale = 1.025;
+            parent.BackgroundColor = Xamarin.Forms.Color.DarkBlue;
         }
 
         private void Button_Unfocused(object sender, Xamarin.Forms.FocusEventArgs e)
         {
-            var parent = ((Xamarin.Forms.Button)sender).Parent;
+            var parent = ((Xamarin.Forms.Button)sender).Parent as Xamarin.Forms.Grid;
 
-            ((Xamarin.Forms.Grid)parent).BackgroundColor = Xamarin.Forms.Color.Transparent;
+            parent.Scale = 1.0;
+            parent.BackgroundColor = Xamarin.Forms.Color.FromHex("#DF000000");
+        }
+
+        private void BrandChannelButton_Clicked(object sender, System.EventArgs e)
+        {
+            Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Pages.BrandChannelPage(((Models.View.AuroraOTTHotelTVOverlayViewModel)BindingContext).Context, null));
         }
     }
 }

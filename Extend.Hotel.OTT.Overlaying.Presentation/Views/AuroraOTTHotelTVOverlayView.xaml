@@ -14,35 +14,37 @@
 
             <sscxftoolkitpresentationconverters:FactorConverter x:Key="FactorConverter" />
 
-            <x:Double x:Key="ActionMarginSize">16</x:Double>
+            <Thickness x:Key="DayOfWeekBlockAlignMargin">0,8,0,0</Thickness>
 
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="White" />
             </Style>
+            <Style x:Key="ActionWrapperLayoutStyle" TargetType="Grid">
+                <Setter Property="BackgroundColor" Value="#DF000000" />                
+            </Style>
             <Style x:Key="ActionContentLayoutStyle" TargetType="StackLayout">
-                <Setter Property="BackgroundColor" Value="#DF000000" />
-                <Setter Property="Padding" Value="28" />
+                <Setter Property="Padding" Value="{Binding Source=28, Converter={StaticResource SizeToRelativeValueConverter}}" />
                 <Setter Property="Spacing" Value="0" />
             </Style>
             <Style x:Key="ActionIconLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="FontFamily" Value="{StaticResource IconFontFamily}" />
-                <Setter Property="FontSize" Value="128" />
+                <Setter Property="FontSize" Value="{Binding Source=128, Converter={StaticResource SizeToRelativeValueConverter}}" />
                 <Setter Property="TextColor" Value="White" />
             </Style>
             <Style x:Key="ActionSmallIconLabelStyle" TargetType="Label" BasedOn="{StaticResource ActionIconLabelStyle}">
-                <Setter Property="FontSize" Value="96" />
+                <Setter Property="FontSize" Value="{Binding Source=96, Converter={StaticResource SizeToRelativeValueConverter}}" />
             </Style>
             <Style x:Key="ActionCaptionLabelStyle" TargetType="Label">
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="LineBreakMode" Value="TailTruncation" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontSize" Value="{Binding Source=18, Converter={StaticResource SizeToRelativeValueConverter}}" />
                 <Setter Property="TextColor" Value="White" />
             </Style>
             <Style x:Key="OverviewButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="#1F00DA00" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="Text" Value=" " />
             </Style>
         </ResourceDictionary>
@@ -70,7 +72,7 @@
             <Grid
                 Grid.Column="1" Grid.Row="1"
                 VerticalOptions="Center"
-                ColumnSpacing="{StaticResource ActionMarginSize}" RowSpacing="{StaticResource ActionMarginSize}">
+                ColumnSpacing="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}" RowSpacing="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -83,7 +85,8 @@
                 </Grid.RowDefinitions>
                 <Grid
                     Grid.Column="0" Grid.Row="0"
-                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}">
+                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
+                    Style="{StaticResource ActionWrapperLayoutStyle}">
                     <StackLayout Style="{StaticResource ActionContentLayoutStyle}">
                         <Label 
                             Style="{StaticResource ActionIconLabelStyle}"
@@ -95,38 +98,50 @@
                     <Button 
                         Style="{StaticResource OverviewButton}"
                         Focused="Button_Focused"
-                        Unfocused="Button_Unfocused" />
+                        Unfocused="Button_Unfocused"
+                        Clicked="BrandChannelButton_Clicked" />
                 </Grid>
                 <Grid
                     Grid.Column="1" Grid.Row="0"
                     HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
-                    RowSpacing="{StaticResource ActionMarginSize}">
+                    RowSpacing="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <StackLayout Grid.Row="0" Style="{StaticResource ActionContentLayoutStyle}">
-                        <BoxView Color="Transparent" VerticalOptions="FillAndExpand" />
-                        <Label
-                            Style="{StaticResource ActionCaptionLabelStyle}"
-                            Text="Resort Info" />
-                    </StackLayout>
-                    <Button 
+                    <Grid 
                         Grid.Row="0"
-                        Style="{StaticResource OverviewButton}" />
-                    <StackLayout Grid.Row="1" Style="{StaticResource ActionContentLayoutStyle}">
-                        <BoxView Color="Transparent" VerticalOptions="FillAndExpand" />
-                        <Label
-                            Style="{StaticResource ActionCaptionLabelStyle}"
-                            Text="Hotel Services" />
-                    </StackLayout>
-                    <Button 
+                        Style="{StaticResource ActionWrapperLayoutStyle}">
+                        <StackLayout Style="{StaticResource ActionContentLayoutStyle}">
+                            <BoxView Color="Transparent" VerticalOptions="FillAndExpand" />
+                            <Label
+                                Style="{StaticResource ActionCaptionLabelStyle}"
+                                Text="Resort Info" />
+                        </StackLayout>
+                        <Button 
+                            Style="{StaticResource OverviewButton}"
+                            Focused="Button_Focused"
+                            Unfocused="Button_Unfocused" />                        
+                    </Grid>
+                    <Grid
                         Grid.Row="1"
-                        Style="{StaticResource OverviewButton}" />
+                        Style="{StaticResource ActionWrapperLayoutStyle}">
+                        <StackLayout Style="{StaticResource ActionContentLayoutStyle}">
+                            <BoxView Color="Transparent" VerticalOptions="FillAndExpand" />
+                            <Label
+                                Style="{StaticResource ActionCaptionLabelStyle}"
+                                Text="Hotel Services" />
+                        </StackLayout>
+                        <Button 
+                            Style="{StaticResource OverviewButton}"
+                            Focused="Button_Focused"
+                            Unfocused="Button_Unfocused" />                        
+                    </Grid>
                 </Grid>
                 <Grid
                     Grid.Column="2" Grid.Row="0"
-                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}">
+                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
+                    Style="{StaticResource ActionWrapperLayoutStyle}">
                     <StackLayout  Style="{StaticResource ActionContentLayoutStyle}">
                         <Label 
                             Style="{StaticResource ActionIconLabelStyle}"
@@ -142,7 +157,8 @@
                 </Grid>
                 <Grid
                     Grid.Column="3" Grid.Row="0"
-                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}">
+                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
+                    Style="{StaticResource ActionWrapperLayoutStyle}">
                     <StackLayout Style="{StaticResource ActionContentLayoutStyle}">
                         <Label 
                             Style="{StaticResource ActionIconLabelStyle}"
@@ -159,33 +175,44 @@
                 <Grid
                     Grid.Column="0" Grid.Row="1"
                     HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
-                    RowSpacing="{StaticResource ActionMarginSize}">
+                    RowSpacing="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <StackLayout Grid.Row="0" Style="{StaticResource ActionContentLayoutStyle}">
-                        <BoxView Color="Transparent" VerticalOptions="FillAndExpand" />
-                        <Label
-                            Style="{StaticResource ActionCaptionLabelStyle}"
-                            Text="Things to Do" />
-                    </StackLayout>
-                    <Button 
+                    <Grid
                         Grid.Row="0"
-                        Style="{StaticResource OverviewButton}" />
-                    <StackLayout Grid.Row="1" Style="{StaticResource ActionContentLayoutStyle}">
-                        <BoxView Color="Transparent" VerticalOptions="FillAndExpand" />
-                        <Label
-                            Style="{StaticResource ActionCaptionLabelStyle}"
-                            Text="Local Info" />
-                    </StackLayout>
-                    <Button 
+                        Style="{StaticResource ActionWrapperLayoutStyle}">
+                        <StackLayout Style="{StaticResource ActionContentLayoutStyle}">
+                            <BoxView Color="Transparent" VerticalOptions="FillAndExpand" />
+                            <Label
+                                Style="{StaticResource ActionCaptionLabelStyle}"
+                                Text="Things to Do" />
+                        </StackLayout>
+                        <Button 
+                            Style="{StaticResource OverviewButton}"
+                            Focused="Button_Focused"
+                            Unfocused="Button_Unfocused" />
+                    </Grid>
+                    <Grid
                         Grid.Row="1"
-                        BackgroundColor="Transparent" />
+                        Style="{StaticResource ActionWrapperLayoutStyle}">
+                        <StackLayout Style="{StaticResource ActionContentLayoutStyle}">
+                            <BoxView Color="Transparent" VerticalOptions="FillAndExpand" />
+                            <Label
+                                Style="{StaticResource ActionCaptionLabelStyle}"
+                                Text="Local Info" />
+                        </StackLayout>
+                        <Button 
+                            Style="{StaticResource OverviewButton}"
+                            Focused="Button_Focused"
+                            Unfocused="Button_Unfocused" />
+                    </Grid>
                 </Grid>
                 <Grid
                     Grid.Column="1" Grid.Row="1"
-                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}">
+                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
+                    Style="{StaticResource ActionWrapperLayoutStyle}">
                     <StackLayout Style="{StaticResource ActionContentLayoutStyle}">
                         <Label 
                             Style="{StaticResource ActionIconLabelStyle}"
@@ -195,12 +222,14 @@
                             Text="Room Services" />
                     </StackLayout>
                     <Button 
-                        Style="{StaticResource OverviewButton}" />
+                        Style="{StaticResource OverviewButton}"
+                        Focused="Button_Focused"
+                        Unfocused="Button_Unfocused" />
                 </Grid>
                 <Grid
                     Grid.Column="2" Grid.Row="1"
                     HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
-                    ColumnSpacing="{StaticResource ActionMarginSize}" RowSpacing="{StaticResource ActionMarginSize}">
+                    ColumnSpacing="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}" RowSpacing="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
@@ -209,54 +238,75 @@
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
-                    <StackLayout Grid.Column="0" Grid.Row="0" Style="{StaticResource ActionContentLayoutStyle}">
-                        <Label 
-                            Style="{StaticResource ActionSmallIconLabelStyle}"
-                            Text="&#xF7AD;" />
-                        <Label
-                            Style="{StaticResource ActionCaptionLabelStyle}"
-                            Text="Sight Seeing" />
-                    </StackLayout>
-                    <Button 
+                    <Grid
                         Grid.Column="0" Grid.Row="0"
-                        Style="{StaticResource OverviewButton}" />
-                    <StackLayout Grid.Column="0" Grid.Row="1" Style="{StaticResource ActionContentLayoutStyle}">
-                        <Label 
-                            Style="{StaticResource ActionSmallIconLabelStyle}"
-                            Text="&#xF49A;" />
-                        <Label
-                            Style="{StaticResource ActionCaptionLabelStyle}"
-                            Text="Shopping" />
-                    </StackLayout>
-                    <Button 
+                        Style="{StaticResource ActionWrapperLayoutStyle}">
+                        <StackLayout Style="{StaticResource ActionContentLayoutStyle}">
+                            <Label 
+                                Style="{StaticResource ActionSmallIconLabelStyle}"
+                                Text="&#xF7AD;" />
+                            <Label
+                                Style="{StaticResource ActionCaptionLabelStyle}"
+                                Text="Sight Seeing" />
+                        </StackLayout>
+                        <Button 
+                            Style="{StaticResource OverviewButton}"
+                            Focused="Button_Focused"
+                            Unfocused="Button_Unfocused" />
+                    </Grid>
+                    <Grid
                         Grid.Column="0" Grid.Row="1"
-                        Style="{StaticResource OverviewButton}" />
-                    <StackLayout Grid.Column="1" Grid.Row="0" Style="{StaticResource ActionContentLayoutStyle}">
-                        <Label 
-                            Style="{StaticResource ActionSmallIconLabelStyle}"
-                            Text="&#xF596;" />
-                        <Label
-                            Style="{StaticResource ActionCaptionLabelStyle}"
-                            Text="Weather" />
-                    </StackLayout>
-                    <Button 
-                        Grid.Column="1" Grid.Row="0"
-                        Style="{StaticResource OverviewButton}" />
-                    <StackLayout Grid.Column="1" Grid.Row="1" Style="{StaticResource ActionContentLayoutStyle}">
-                        <Label 
-                            Style="{StaticResource ActionSmallIconLabelStyle}"
-                            Text="&#xF09E;" />
-                        <Label
-                            Style="{StaticResource ActionCaptionLabelStyle}"
-                            Text="WakeUp Call" />
-                    </StackLayout>
-                    <Button 
-                        Grid.Column="1" Grid.Row="1"
-                        Style="{StaticResource OverviewButton}" />
+                        Style="{StaticResource ActionWrapperLayoutStyle}">
+                        <StackLayout Style="{StaticResource ActionContentLayoutStyle}">
+                            <Label 
+                                Style="{StaticResource ActionSmallIconLabelStyle}"
+                                Text="&#xF49A;" />
+                            <Label
+                                Style="{StaticResource ActionCaptionLabelStyle}"
+                                Text="Shopping" />
+                        </StackLayout>
+                        <Button
+                            Style="{StaticResource OverviewButton}"
+                            Focused="Button_Focused"
+                            Unfocused="Button_Unfocused" />
+                    </Grid>
+                    <Grid
+                        Grid.Column="1" Grid.Row="0" 
+                        Style="{StaticResource ActionWrapperLayoutStyle}">                        
+                        <StackLayout Style="{StaticResource ActionContentLayoutStyle}">
+                            <Label 
+                                Style="{StaticResource ActionSmallIconLabelStyle}"
+                                Text="&#xF596;" />
+                            <Label
+                                Style="{StaticResource ActionCaptionLabelStyle}"
+                                Text="Weather" />
+                        </StackLayout>
+                        <Button 
+                            Style="{StaticResource OverviewButton}"
+                            Focused="Button_Focused"
+                            Unfocused="Button_Unfocused" />
+                    </Grid>
+                    <Grid
+                        Grid.Column="1" Grid.Row="1" 
+                        Style="{StaticResource ActionWrapperLayoutStyle}">
+                        <StackLayout Style="{StaticResource ActionContentLayoutStyle}">
+                            <Label 
+                                Style="{StaticResource ActionSmallIconLabelStyle}"
+                                Text="&#xF09E;" />
+                            <Label
+                                Style="{StaticResource ActionCaptionLabelStyle}"
+                                Text="WakeUp Call" />
+                        </StackLayout>
+                        <Button 
+                            Style="{StaticResource OverviewButton}"
+                            Focused="Button_Focused"
+                            Unfocused="Button_Unfocused" />
+                    </Grid>
                 </Grid>
                 <Grid
                     Grid.Column="3" Grid.Row="1"
-                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}">
+                    HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
+                    Style="{StaticResource ActionWrapperLayoutStyle}">
                     <StackLayout Style="{StaticResource ActionContentLayoutStyle}">
                         <Label 
                             Style="{StaticResource ActionIconLabelStyle}"
@@ -266,12 +316,14 @@
                             Text="Recommendations" />
                     </StackLayout>
                     <Button 
-                        Style="{StaticResource OverviewButton}" />
+                        Style="{StaticResource OverviewButton}"
+                        Focused="Button_Focused"
+                        Unfocused="Button_Unfocused" />
                 </Grid>
             </Grid>
             <Grid
                 Grid.ColumnSpan="3" Grid.Row="0"
-                Padding="32,16"
+                Padding="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}"
                 ColumnSpacing="48">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -289,10 +341,10 @@
                     <Label 
                         HorizontalTextAlignment="End"
                         Text="Welcome, Mr. Javier Moncada" 
-                        FontSize="28" 
+                        FontSize="{Binding Source=28, Converter={StaticResource SizeToRelativeValueConverter}}" 
                         FontAttributes="Bold" />
                     <Label 
-                        FontSize="16" 
+                        FontSize="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}" 
                         HorizontalTextAlignment="End"
                         Text="We hope you have a great day at our hotel" />
                 </StackLayout>
@@ -303,17 +355,17 @@
                     Spacing="0">
                     <Label 
                         Text="Room" 
-                        FontSize="18" 
+                        FontSize="{Binding Source=18, Converter={StaticResource SizeToRelativeValueConverter}}" 
                         FontAttributes="Bold" />
                     <Label 
-                        FontSize="36" 
+                        FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}" 
                         Text="{Binding Path=Context.RoomId}" />
                 </StackLayout>
                 <BoxView Grid.Column="4" Color="White" WidthRequest="2" />
                 <Grid 
                     Grid.Column="5" 
                     VerticalOptions="Center" 
-                    RowSpacing="0" ColumnSpacing="{StaticResource ActionMarginSize}">
+                    RowSpacing="0" ColumnSpacing="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
@@ -325,21 +377,21 @@
                     <Label 
                         x:Name="DayOfWeekLabel"
                         Grid.Column="0" Grid.Row="0"
-                        Margin="0,8,0,0"
+                        Margin="{Binding Source={StaticResource DayOfWeekBlockAlignMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}"
                         HorizontalOptions="End"
                         Text="Monday" 
-                        FontSize="24" />
+                        FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}}" />
                     <Label 
                         x:Name="SimpleDateLabel"
                         Grid.Column="0" Grid.Row="1"
                         HorizontalOptions="End"
-                        FontSize="24" 
+                        FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}}" 
                         Text="20 February 2024" />                        
                     <Label
                         x:Name="TimeLabel"
                         Grid.Column="1" Grid.RowSpan="2" VerticalOptions="Center"
                         Text="07:28"
-                        FontSize="60" />
+                        FontSize="{Binding Source=60, Converter={StaticResource SizeToRelativeValueConverter}}" />
                 </Grid>
             </Grid>
             <StackLayout
@@ -348,20 +400,20 @@
                 VerticalOptions="Center"
                 Spacing="0">
                 <Label
-                    Padding="{StaticResource ActionMarginSize}"
+                    Padding="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}"
                     BackgroundColor="Black"
                     Text="Quick Advises"
                     TextColor="White"
                     FontAttributes="Bold"
-                    FontSize="18" />
+                    FontSize="{Binding Source=18, Converter={StaticResource SizeToRelativeValueConverter}}" />
                 <Label
                     HorizontalOptions="FillAndExpand" VerticalOptions="Center"
-                    Padding="{StaticResource ActionMarginSize}"
+                    Padding="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}"
                     BackgroundColor="#E0696969"
                     Text="Marquesina de avisos ..."
                     TextColor="LightGray"
                     FontAttributes="Italic"
-                    FontSize="18" />
+                    FontSize="{Binding Source=18, Converter={StaticResource SizeToRelativeValueConverter}}" />
             </StackLayout>
         </Grid>
     </ContentView.Content>
