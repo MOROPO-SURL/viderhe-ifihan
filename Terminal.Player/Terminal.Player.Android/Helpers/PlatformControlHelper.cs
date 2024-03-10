@@ -69,7 +69,11 @@ namespace MOROPO.VIDERHE.Terminal.Player.Droid.Helpers
 
         public void OpenSystemSettings()
         {
-             Android.App.Application.Context.StartActivity(new Android.Content.Intent(Android.Provider.Settings.ActionSettings));
+            var intent = new Android.Content.Intent(Android.Provider.Settings.ActionSettings);
+
+            intent.AddFlags(Android.Content.ActivityFlags.NewTask);
+
+            Android.App.Application.Context.StartActivity(intent);
         }
     }
 }
