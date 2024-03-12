@@ -46,7 +46,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
-    <ProjectReference Include="..\Cloud.Persistence.EF\Cloud.Persistence.EF.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Dashboard\Cloud.SignalR.Connect.Dashboard.csproj" />
     <ProjectReference Include="..\Cloud.SignalR.Connect.Player\Cloud.SignalR.Connect.Player.csproj" />
     <ProjectReference Include="..\Extend.Essential\Extend.Essential.csproj" />
