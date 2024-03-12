@@ -2,9 +2,9 @@
 using MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Pages
 {
-    public partial class RSSOverlayConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<RSSOverlayConfigurationPageModel>
+    public partial class RSSOverlayConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<RSSOverlayConfigurationPageModel>
     {
         private System.Action<string> successfulCompleteCallbackAction;
 

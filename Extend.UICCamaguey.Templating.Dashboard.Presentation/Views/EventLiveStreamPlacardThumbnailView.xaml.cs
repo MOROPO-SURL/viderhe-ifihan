@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Presentation.Views
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Dashboard.Presentation.Views
 {
-    public partial class EventLiveStreamPlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class EventLiveStreamPlacardThumbnailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
         public EventLiveStreamPlacardThumbnailView()
         {

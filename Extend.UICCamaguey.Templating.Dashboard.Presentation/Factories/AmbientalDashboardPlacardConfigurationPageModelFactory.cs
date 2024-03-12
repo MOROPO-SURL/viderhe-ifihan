@@ -1,5 +1,5 @@
-﻿using MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Dashboard.Presentation.Models.Page;
-using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Dashboard.Presentation.Models.Page;
 
 namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Dashboard.Presentation.Factories
 {

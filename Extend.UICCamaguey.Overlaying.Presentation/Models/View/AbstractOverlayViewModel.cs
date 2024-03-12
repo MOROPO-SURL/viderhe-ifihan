@@ -1,6 +1,6 @@
 ﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Presentation.Models.View
 {
-    public abstract class AbstractOverlayViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
+    public abstract class AbstractOverlayViewModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel
     {
         private Xamarin.Forms.Color primaryColor;
 

@@ -1,6 +1,6 @@
 ﻿using MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views
 {
     public partial class EventLiveStreamPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
@@ -23,9 +23,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation
 
         private void VideoPlayer_StatusUpdated(object sender, System.EventArgs eventArgs)
         {
-            var videoPlayer = sender as XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
+            var videoPlayer = sender as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
 
-            if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
+            if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
             {
                 videoPlayer.StatusUpdated -= VideoPlayer_StatusUpdated;
 

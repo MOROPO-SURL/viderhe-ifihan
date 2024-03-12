@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xftoolkitmvvmviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Views;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Presentation.Views.EventLiveStreamPlacardThumbnailView">
+    x:Class="MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Dashboard.Presentation.Views.EventLiveStreamPlacardThumbnailView">
     <ContentView.Content>
         <Grid>
             <mg:GradientView>

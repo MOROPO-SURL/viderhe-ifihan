@@ -1,20 +1,18 @@
-﻿using MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Hubs.Client;
-using MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View;
-using System.Linq;
+﻿using System.Linq;
 
 namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views
 {
     public partial class AmbientalDashboardPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        private AmbientalHubConnectClient ambientalHubConnectClient;
-        private MOROPO.UIC.IoTPlatform.Interop.Sync.Receptor.API.Connect.Clients.AmbientalReadingsApiConnectClient ambientalReadingsApiConnectClient;
+        private Hubs.Client.AmbientalHubConnectClient ambientalHubConnectClient;
+        private UIC.IoTPlatform.Interop.Sync.Receptor.API.Connect.Clients.AmbientalReadingsApiConnectClient ambientalReadingsApiConnectClient;
 
-        public AmbientalDashboardPlacardView(AmbientalDashboardPlacardViewModel model, System.Uri ioTPlatformEndpointBaseUri, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public AmbientalDashboardPlacardView(Models.View.AmbientalDashboardPlacardViewModel model, System.Uri ioTPlatformEndpointBaseUri, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
             ambientalHubConnectClient = new Hubs.Client.AmbientalHubConnectClient(ioTPlatformEndpointBaseUri, model);
-            ambientalReadingsApiConnectClient = new MOROPO.UIC.IoTPlatform.Interop.Sync.Receptor.API.Connect.Clients.AmbientalReadingsApiConnectClient(new Providers.IoTSyncReceptorApiHttpClientHelperProvider(new System.Uri(string.Format("{0}api/", ioTPlatformEndpointBaseUri))));
+            ambientalReadingsApiConnectClient = new UIC.IoTPlatform.Interop.Sync.Receptor.API.Connect.Clients.AmbientalReadingsApiConnectClient(new Providers.IoTSyncReceptorApiHttpClientHelperProvider(new System.Uri(string.Format("{0}api/", ioTPlatformEndpointBaseUri))));
 
             BindingContext = model;
         }
@@ -44,7 +42,7 @@ namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    var contreteBindingContext = BindingContext as AmbientalDashboardPlacardViewModel;
+                    var contreteBindingContext = BindingContext as Models.View.AmbientalDashboardPlacardViewModel;
 
                     if (task.Result.MaxPageCount > 0)
                     {

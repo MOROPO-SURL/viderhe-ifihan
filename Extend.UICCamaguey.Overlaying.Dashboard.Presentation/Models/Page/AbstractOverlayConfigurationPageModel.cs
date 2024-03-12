@@ -1,6 +1,6 @@
 ﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Models.Page
 {
-    public abstract class AbstractOverlayConfigurationPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public abstract class AbstractOverlayConfigurationPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private string head;
         private string tail;

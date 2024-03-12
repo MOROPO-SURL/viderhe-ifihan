@@ -7,6 +7,7 @@
     xmlns:extendcommonoverlayingpresentationconverters="clr-namespace:MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation.Converters;assembly=MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation"
     xmlns:sscxftoolkitpresentationtransformbehaviors="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Behaviors;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
     xmlns:sscxftoolkitpresentationtransformanimations="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;assembly=SmartSolucionesCuba.XFToolKit.Presentation.Transform"
+    xmlns:local="clr-namespace:MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Presentation.Views"
     x:Class="MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Presentation.Views.TextOverlayView"
     x:Name="View"
     TranslationY="{x:Static local:TextOverlayView.MotionTranslation}"
