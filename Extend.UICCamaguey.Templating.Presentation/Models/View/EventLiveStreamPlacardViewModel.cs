@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View
 {
     public class EventLiveStreamPlacardViewModel : Common.Templating.Presentation.Models.View.AbstractScreenTimedPlacardViewModel
     {
@@ -6,6 +6,6 @@
 
         public string EventPlace { get; set; }
 
-        public XFToolKit.Presentation.Sources.Video.VideoSource VideoSource { get; set; }
+        public SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource VideoSource { get; set; }
     }
 }

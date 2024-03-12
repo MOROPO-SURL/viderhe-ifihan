@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Dashboard.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Dashboard.Presentation</RootNamespace>
+    <AssemblyName>MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Dashboard.Presentation</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Dashboard.Presentation</RootNamespace>
     <Version>0.10.0</Version>
   </PropertyGroup>
 

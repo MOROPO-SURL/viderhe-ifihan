@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View;
+
+namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Views
 {
     public partial class EventLiveStreamPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        public EventLiveStreamPlacardView(Models.View.EventLiveStreamPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public EventLiveStreamPlacardView(EventLiveStreamPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 

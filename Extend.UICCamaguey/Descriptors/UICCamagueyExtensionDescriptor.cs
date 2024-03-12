@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Descriptors
 {
     public class UICCamagueyExtensionDescriptor : Common.Descriptors.IExtensionDescriptor
     {

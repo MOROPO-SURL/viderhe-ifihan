@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Converters
 {
     public class AmbientalReadingDisplayModelToLastValuePresentationConverter : Xamarin.Forms.IValueConverter
     {
@@ -8,7 +8,7 @@
         {
             if (value == null) return "...";
 
-            var concreteValue = value as MOROPO.UIC.IoTPlatform.Interop.Sync.Receptor.API.Common.Models.AmbientalReadingDisplayModel;
+            var concreteValue = value as UIC.IoTPlatform.Interop.Sync.Receptor.API.Common.Models.AmbientalReadingDisplayModel;
 
             switch ((PlacardView.BindingContext as Models.View.AmbientalDashboardPlacardViewModel).AmbientalVariable)
             {

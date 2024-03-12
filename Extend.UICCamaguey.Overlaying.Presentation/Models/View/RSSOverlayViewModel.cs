@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Presentation.Models.View
 {
     public class RSSOverlayViewModel : TextOverlayViewModel
     {

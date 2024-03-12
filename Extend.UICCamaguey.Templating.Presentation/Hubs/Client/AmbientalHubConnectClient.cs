@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
 using MOROPO.UIC.IoTPlatform.Interop.Sync.Receptor.API.Common.Models;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Hubs.Client
+namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Hubs.Client
 {
-    public class AmbientalHubConnectClient : MOROPO.UIC.IoTPlatform.Interop.Sync.Receptor.SignalR.Connect.Clients.Facade.IAmbientalClientFacade, System.IDisposable
+    public class AmbientalHubConnectClient : UIC.IoTPlatform.Interop.Sync.Receptor.SignalR.Connect.Clients.Facade.IAmbientalClientFacade, System.IDisposable
     {
         private HubConnection connection;
 

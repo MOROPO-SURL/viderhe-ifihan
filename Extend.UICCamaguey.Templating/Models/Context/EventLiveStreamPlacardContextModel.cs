@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Models.Context
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Models.Context
 {
     public class EventLiveStreamPlacardContextModel : Common.Templating.Models.Context.AbstractScreenTimedPlacardContextModel
     {

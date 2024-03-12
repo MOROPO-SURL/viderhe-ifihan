@@ -2,11 +2,11 @@
 <extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Converters"
-    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
-    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
+    xmlns:converters="clr-namespace:MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Converters;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
     xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Views.AmbientalDashboardPlacardView"
+    x:Class="MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views.AmbientalDashboardPlacardView"
     x:Name="RootView">
     <ContentView.Resources>
         <ResourceDictionary>

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Providers
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Providers
 {
     public class PlacardPresentationViewProvider : Common.Templating.Presentation.Providers.Facade.IPlacardPresentationViewProviderFacade
     {
@@ -14,7 +14,7 @@
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     EventTitle = context.EventTitle,
                     EventPlace = context.EventPlace,
-                    VideoSource = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(context.StreamUrl)
+                    VideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(context.StreamUrl)
                 }, relativeSizeScaleFactor);
             }
 

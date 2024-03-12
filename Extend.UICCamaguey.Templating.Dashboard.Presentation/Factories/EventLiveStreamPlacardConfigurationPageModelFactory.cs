@@ -1,6 +1,6 @@
 ﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Dashboard.Presentation.Factories
 {
     public static class EventLiveStreamPlacardConfigurationPageModelFactory
     {

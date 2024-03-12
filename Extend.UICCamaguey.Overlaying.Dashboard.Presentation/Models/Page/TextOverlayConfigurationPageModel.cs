@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Models.Page
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Models.Page
 {
     public class TextOverlayConfigurationPageModel : AbstractOverlayConfigurationPageModel
     {

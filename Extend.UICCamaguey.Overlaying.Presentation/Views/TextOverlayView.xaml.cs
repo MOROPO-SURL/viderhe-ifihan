@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Presentation.Views
 {
     public partial class TextOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
         internal static readonly double MotionTranslation = 108;
 
-        public TextOverlayView(Models.View.TextOverlayViewModel model)
+        public TextOverlayView(TextOverlayViewModel model)
         {
             InitializeComponent();
 
@@ -13,10 +15,10 @@
 
         public override void ShowIn()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
             {
                 Target = this,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 TranslateY = 0
             };
 
@@ -25,10 +27,10 @@
 
         public override void ShowOut()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
             {
                 Target = this,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
                 TranslateY = MotionTranslation
             };
 

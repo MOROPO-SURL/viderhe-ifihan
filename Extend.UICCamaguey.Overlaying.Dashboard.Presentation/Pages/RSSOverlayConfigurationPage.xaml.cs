@@ -1,13 +1,15 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Pages
 {
-    public partial class RSSOverlayConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.RSSOverlayConfigurationPageModel>
+    public partial class RSSOverlayConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<RSSOverlayConfigurationPageModel>
     {
         private System.Action<string> successfulCompleteCallbackAction;
 
         public RSSOverlayConfigurationPage(string serializedContext, System.Action<string> successfulCompleteCallbackAction)
-            : base(Factories.RSSOverlayConfigurationPageModelFactory.Build(serializedContext))
+            : base(RSSOverlayConfigurationPageModelFactory.Build(serializedContext))
         {
             InitializeComponent();
 

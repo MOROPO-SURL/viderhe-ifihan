@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.UICCamaguey</RootNamespace>
+    <AssemblyName>MOROPO.VIDERHE.Extend.UICCamaguey</AssemblyName>
+    <RootNamespace>MOROPO.VIDERHE.Extend.UICCamaguey</RootNamespace>
     <Version>0.10.0</Version>
   </PropertyGroup>
 

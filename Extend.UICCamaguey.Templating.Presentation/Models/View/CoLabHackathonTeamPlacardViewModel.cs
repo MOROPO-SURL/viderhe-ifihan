@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View
 {
     public class CoLabHackathonTeamPlacardViewModel : Common.Templating.Presentation.Models.View.AbstractScreenTimedPlacardViewModel
     {

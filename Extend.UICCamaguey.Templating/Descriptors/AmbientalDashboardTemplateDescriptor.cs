@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Descriptors
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Descriptors
 {
     public class AmbientalDashboardTemplateDescriptor : Common.Templating.Descriptors.ITemplateDescriptor
     {

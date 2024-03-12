@@ -1,13 +1,15 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Pages
+namespace MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Dashboard.Presentation.Pages
 {
-    public partial class TextOverlayConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.TextOverlayConfigurationPageModel>
+    public partial class TextOverlayConfigurationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<TextOverlayConfigurationPageModel>
     {
         private System.Action<string> successfulCompleteCallbackAction;
 
         public TextOverlayConfigurationPage(string serializedContext, System.Action<string> successfulCompleteCallbackAction)
-            : base(Factories.TextOverlayConfigurationPageModelFactory.Build(serializedContext))
+            : base(TextOverlayConfigurationPageModelFactory.Build(serializedContext))
         {
             InitializeComponent();
 

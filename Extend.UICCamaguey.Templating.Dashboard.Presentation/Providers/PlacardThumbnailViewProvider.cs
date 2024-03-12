@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Presentation.Providers
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Dashboard.Presentation.Providers
 {
     public class PlacardThumbnailViewProvider : Common.Templating.Dashboard.Presentation.Providers.Facade.IPlacardThumbnailViewProviderFacade
     {

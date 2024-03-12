@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Enumerations
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Enumerations
 {
     public enum AmbientalVariable
     {

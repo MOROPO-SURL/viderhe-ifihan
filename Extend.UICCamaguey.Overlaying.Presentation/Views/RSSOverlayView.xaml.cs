@@ -1,12 +1,14 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Presentation.Models.Context;
+using MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Presentation.Models.View;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.UICCamaguey.Overlaying.Presentation.Views
 {
     public partial class RSSOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
         internal static readonly double MotionTranslation = 108;
 
-        public RSSOverlayView(Models.Context.RSSOverlayContextModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider)
+        public RSSOverlayView(RSSOverlayContextModel model, Common.Presentation.Providers.Facade.IAccountInformationProviderFacade accountInformationProvider)
         {
             InitializeComponent();
 
@@ -17,7 +19,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Presentation
 
             if (model.FeedUrl == null)
             {
-                (BindingContext as Models.View.RSSOverlayViewModel).Text = "Dirección de fuente de noticias no válida o servicio no disponible ...";
+                (BindingContext as RSSOverlayViewModel).Text = "Dirección de fuente de noticias no válida o servicio no disponible ...";
 
                 return;
             }
@@ -28,7 +30,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Presentation
                 {
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (BindingContext as Models.View.RSSOverlayViewModel).Text = "Dirección de fuente de noticias no válida o servicio no disponible ...";
+                        (BindingContext as RSSOverlayViewModel).Text = "Dirección de fuente de noticias no válida o servicio no disponible ...";
 
                         return;
                     }
@@ -55,17 +57,17 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Presentation
                         textBuilder.Append(model.Tail);
                     }
 
-                    (BindingContext as Models.View.RSSOverlayViewModel).Text = textBuilder.ToString();
+                    (BindingContext as RSSOverlayViewModel).Text = textBuilder.ToString();
                 });
             }
         }
 
         public override void ShowIn()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
             {
                 Target = this,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                 TranslateY = 0
             };
 
@@ -74,10 +76,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Overlaying.Presentation
 
         public override void ShowOut()
         {
-            var animation = new XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
+            var animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToAnimation
             {
                 Target = this,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn,
                 TranslateY = MotionTranslation
             };
 

@@ -1,13 +1,15 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Hubs.Client;
+using MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views
 {
     public partial class AmbientalDashboardPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        private Hubs.Client.AmbientalHubConnectClient ambientalHubConnectClient;
+        private AmbientalHubConnectClient ambientalHubConnectClient;
         private MOROPO.UIC.IoTPlatform.Interop.Sync.Receptor.API.Connect.Clients.AmbientalReadingsApiConnectClient ambientalReadingsApiConnectClient;
 
-        public AmbientalDashboardPlacardView(Models.View.AmbientalDashboardPlacardViewModel model, System.Uri ioTPlatformEndpointBaseUri, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public AmbientalDashboardPlacardView(AmbientalDashboardPlacardViewModel model, System.Uri ioTPlatformEndpointBaseUri, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -42,7 +44,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Presentation
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    var contreteBindingContext = BindingContext as Models.View.AmbientalDashboardPlacardViewModel;
+                    var contreteBindingContext = BindingContext as AmbientalDashboardPlacardViewModel;
 
                     if (task.Result.MaxPageCount > 0)
                     {

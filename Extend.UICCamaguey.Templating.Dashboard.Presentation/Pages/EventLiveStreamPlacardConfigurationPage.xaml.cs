@@ -1,9 +1,11 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Dashboard.Presentation.Factories;
+using MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Dashboard.Presentation.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
 namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Presentation.Pages
 {
-    public partial class EventLiveStreamPlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EventLiveStreamPlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class EventLiveStreamPlacardConfigurationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<EventLiveStreamPlacardConfigurationPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
     {
         private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
 
@@ -16,7 +18,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.UICCamaguey.Templating.Dashboard.Pr
         }
 
         public EventLiveStreamPlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(Factories.EventLiveStreamPlacardConfigurationPageModelFactory.Build(placardViewModel))
+            : base(EventLiveStreamPlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
             validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
 
