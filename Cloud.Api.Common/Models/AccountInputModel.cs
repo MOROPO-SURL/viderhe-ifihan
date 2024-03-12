@@ -1,18 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class AccountInputModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Account, System.Guid>
+    public class AccountInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Account, System.Guid>
     {
         public System.Guid Id { get; set; }
 
-        [Required]
+        [System.ComponentModel.DataAnnotations.Required]
         public string Name { get; set; }
 
-        [Required]
+        [System.ComponentModel.DataAnnotations.Required]
         public string PrimaryColor { get; set; }
 
-        [Required]
+        [System.ComponentModel.DataAnnotations.Required]
         public string SecoundaryColor { get; set; }
 
         public byte[] LogoImageData { get; set; }
@@ -37,17 +37,17 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
 
         public string SerializedOverlayContext { get; set; }
 
-        public Persistence.Entities.Account Export()
+        public Account Export()
         {
             throw new System.NotImplementedException();
         }
 
-        public void Import(Persistence.Entities.Account entity)
+        public void Import(Account entity)
         {
             throw new System.NotImplementedException();
         }
 
-        public void Mergue(Persistence.Entities.Account entity)
+        public void Mergue(Account entity)
         {
             entity.Name = Name;
             entity.PrimaryColor = PrimaryColor;

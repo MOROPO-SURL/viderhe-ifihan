@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Overlaying.Dashboard.Presentation.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Overlaying.Dashboard.Presentation.Models.Page
 {
-    public class SimpleHighlightsOverlayConfigurationPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
+    public class SimpleHighlightsOverlayConfigurationPageModel : FormPageModel
     {
         private string header;
         private string highlights;

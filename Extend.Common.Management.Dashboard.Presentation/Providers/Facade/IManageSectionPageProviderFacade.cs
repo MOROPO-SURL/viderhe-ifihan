@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Management.Sections.Contract;
+﻿using MOROPO.VIDERHE.Extend.Common.Management.Sections.Contract;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Common.Management.Dashboard.Presentation.Providers.Facade
+namespace MOROPO.VIDERHE.Extend.Common.Management.Dashboard.Presentation.Providers.Facade
 {
     public interface IManageSectionPageProviderFacade
     {

@@ -2,12 +2,9 @@
 <extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:extendcommontemplatingpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
-    xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
-    mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views.SimpleVideoPlacardView">
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Rendered;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    x:Class="MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views.SimpleVideoPlacardView">
     <ContentView.Content>
         <Grid 
             x:Name="Wrapper"

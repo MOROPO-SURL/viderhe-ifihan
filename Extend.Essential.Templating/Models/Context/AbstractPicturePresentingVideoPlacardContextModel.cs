@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Models.Context
-{
-    public abstract class AbstractPicturePresentingVideoPlacardContextModel : Common.Templating.Models.Context.AbstractPlacardContextModel
-    {
-        public Common.Templating.Models.Context.ImageContextModel PresenterImage { get; set; }
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
 
-        public Common.Templating.Models.Context.VideoContextModel PresentedVideo { get; set; }
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context
+{
+    public abstract class AbstractPicturePresentingVideoPlacardContextModel : AbstractPlacardContextModel
+    {
+        public ImageContextModel PresenterImage { get; set; }
+
+        public VideoContextModel PresentedVideo { get; set; }
 
         public bool PresentedVideoCenteredAtPresentation { get; set; }
     }

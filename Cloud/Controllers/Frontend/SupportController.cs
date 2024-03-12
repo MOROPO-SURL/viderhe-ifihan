@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend
+﻿namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
 {
     public class SupportController : Microsoft.AspNetCore.Mvc.Controller
     {

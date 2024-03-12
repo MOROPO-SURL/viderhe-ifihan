@@ -1,15 +1,18 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Models.Context
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context
 {
-    public class SimplePicturePlacardContextModel : Common.Templating.Models.Context.AbstractScreenTimedPlacardContextModel
+    public class SimplePicturePlacardContextModel : AbstractScreenTimedPlacardContextModel
     {
         public SimplePicturePlacardContextModel()
         {
             IsZoomingEnabled = false;
         }
 
-        public Common.Templating.Models.Context.ImageContextModel Image { get; set; }
+        public ImageContextModel Image { get; set; }
 
-        public Enumerations.PictureLayoutMode LayoutMode { get; set; }
+        public PictureLayoutMode LayoutMode { get; set; }
 
         public bool IsZoomingEnabled { get; set; }
     }

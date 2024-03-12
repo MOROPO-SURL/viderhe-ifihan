@@ -1,18 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Cloud.Api.Connect</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Cloud.Api.Connect</RootNamespace>
-    <Version>1.7.3</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Cloud.Api.Connect</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Cloud.Api.Connect</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>2.0.7</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="SAPRESSC.Core.Api.Connect" Version="2.2.9" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="GuamaFramework.Core.Presentation.API.Connect" Version="6.0.0.20" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
+	</ItemGroup>
 
 </Project>

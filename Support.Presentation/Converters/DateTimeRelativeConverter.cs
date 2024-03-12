@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Converters
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Converters
 {
     public class DateTimeRelativeConverter : Xamarin.Forms.IValueConverter
     {

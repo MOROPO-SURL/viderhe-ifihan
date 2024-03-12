@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Common.Enumerations;
+using MOROPO.VIDERHE.Cloud.SignalR.Connect.Common.Enumerations;
+using MOROPO.VIDERHE.Cloud.SignalR.Connect.Dashboard.Clients;
+using MOROPO.VIDERHE.Cloud.SignalR.Connect.Dashboard.Hubs;
+using MOROPO.VIDERHE.Support.Presentation.Managers;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Hubs.Client
 {
-    public class DashboardHubClient : Cloud.SignalR.Connect.Dashboard.Clients.IDashboardClient, System.IDisposable
+    public class DashboardHubClient : IDashboardClient, System.IDisposable
     {
         private static DashboardHubClient instance;
 
@@ -30,7 +33,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
         public DashboardHubClient()
         {
             connection = new HubConnectionBuilder()
-                .WithUrl(string.Format("{0}://{1}/hubs/dashboard", Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? "https" : "http", Support.Presentation.Managers.SessionMemoryManager.Instance.Host), options =>
+                .WithUrl(string.Format("{0}://{1}/hubs/dashboard", SessionMemoryManager.Instance.UseSSL ? "https" : "http", SessionMemoryManager.Instance.Host), options =>
                 {
                     options.AccessTokenProvider = () => System.Threading.Tasks.Task.FromResult(Managers.SessionManager.Instance.AuthorizationToken);
                 })
@@ -59,70 +62,70 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Hubs.Client
         {
             DisablePlayers(players);
 
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentNextFrame), players.Select(item => item.Id).ToArray());
+            await connection.InvokeAsync(nameof(IDashboardHub.PlayerPresentNextFrame), players.Select(item => item.Id).ToArray());
         }
 
         public async System.Threading.Tasks.Task RequestPlayerPresentPreviousFrameAsync(Models.View.PlayerViewModel[] players)
         {
             DisablePlayers(players);
 
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentPreviousFrame), players.Select(item => item.Id).ToArray());
+            await connection.InvokeAsync(nameof(IDashboardHub.PlayerPresentPreviousFrame), players.Select(item => item.Id).ToArray());
         }
 
         public async System.Threading.Tasks.Task PlayerPresentInterventionScreenplayAsync(Models.View.PlayerViewModel[] players, System.Guid screenplayId)
         {
             DisablePlayers(players);
 
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentInterventionScreenplay), players.Select(item => item.Id).ToArray(), screenplayId);
+            await connection.InvokeAsync(nameof(IDashboardHub.PlayerPresentInterventionScreenplay), players.Select(item => item.Id).ToArray(), screenplayId);
         }
 
         public async System.Threading.Tasks.Task PlayerPresentInterventionPlacardAsync(Models.View.PlayerViewModel[] players, System.Guid placardId)
         {
             DisablePlayers(players);
 
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerPresentInterventionPlacard), players.Select(item => item.Id).ToArray(), placardId);
+            await connection.InvokeAsync(nameof(IDashboardHub.PlayerPresentInterventionPlacard), players.Select(item => item.Id).ToArray(), placardId);
         }
 
         public async System.Threading.Tasks.Task RequestPlayerRestartScreenplayAsync(Models.View.PlayerViewModel[] players, ScreenplayHandlingImmediacyMode immediacyMode)
         {
             DisablePlayers(players);
 
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerRestartScreenplay), players.Select(item => item.Id).ToArray(), immediacyMode);
+            await connection.InvokeAsync(nameof(IDashboardHub.PlayerRestartScreenplay), players.Select(item => item.Id).ToArray(), immediacyMode);
         }
 
         public async System.Threading.Tasks.Task RequestPlayerReloadScreenplayAsync(Models.View.PlayerViewModel[] players, ScreenplayHandlingImmediacyMode immediacyMode)
         {
             DisablePlayers(players);
 
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerReloadScreenplay), players.Select(item => item.Id).ToArray(), immediacyMode);
+            await connection.InvokeAsync(nameof(IDashboardHub.PlayerReloadScreenplay), players.Select(item => item.Id).ToArray(), immediacyMode);
         }
 
         public async System.Threading.Tasks.Task RequestPlayerSetAudioEnabledAsync(Models.View.PlayerViewModel[] players, bool enabled)
         {
             DisablePlayers(players);
 
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerSetAudioEnabled), players.Select(item => item.Id).ToArray(), enabled);
+            await connection.InvokeAsync(nameof(IDashboardHub.PlayerSetAudioEnabled), players.Select(item => item.Id).ToArray(), enabled);
         }
 
         public async System.Threading.Tasks.Task RequestPlayerAudioVolumeChangeAsync(Models.View.PlayerViewModel[] players, int percent)
         {
             DisablePlayers(players);
 
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerSetAudioLevel), players.Select(item => item.Id).ToArray(), percent);
+            await connection.InvokeAsync(nameof(IDashboardHub.PlayerSetAudioLevel), players.Select(item => item.Id).ToArray(), percent);
         }
 
         public async System.Threading.Tasks.Task RequestPlayerCloseAsync(Models.View.PlayerViewModel[] players, bool restart)
         {
             DisablePlayers(players);
 
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerClose), players.Select(item => item.Id).ToArray(), restart);
+            await connection.InvokeAsync(nameof(IDashboardHub.PlayerClose), players.Select(item => item.Id).ToArray(), restart);
         }
 
         public async System.Threading.Tasks.Task RequestPlayerTerminateAsync(Models.View.PlayerViewModel[] players, bool restart)
         {
             DisablePlayers(players);
 
-            await connection.InvokeAsync(nameof(Cloud.SignalR.Connect.Dashboard.Hubs.IDashboardHub.PlayerShutdown), players.Select(item => item.Id).ToArray(), restart);
+            await connection.InvokeAsync(nameof(IDashboardHub.PlayerShutdown), players.Select(item => item.Id).ToArray(), restart);
         }
 
         public System.Threading.Tasks.Task OnPlayerConnectedAsync(string playerId)

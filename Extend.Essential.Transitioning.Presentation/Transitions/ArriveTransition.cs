@@ -1,9 +1,11 @@
-﻿using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+﻿using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Transitions.Contract;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentation.Transitions
+namespace MOROPO.VIDERHE.Extend.Essential.Transitioning.Presentation.Transitions
 {
-    public class ArriveTransition : Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition
+    public class ArriveTransition : AbstractTransition
     {
         private Models.Context.ArriveTransitionContextModel context;
 
@@ -20,19 +22,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
         {
             switch (context.Direction)
             {
-                case Common.Transitioning.Presentation.Enumerations.StandardTransitionDirection.LeftToRight:
+                case StandardTransitionDirection.LeftToRight:
                     incomingPlacardPresentationView.TranslationX = wrapper.Width * -1;
 
                     break;
-                case Common.Transitioning.Presentation.Enumerations.StandardTransitionDirection.RightToLeft:
+                case StandardTransitionDirection.RightToLeft:
                     incomingPlacardPresentationView.TranslationX = wrapper.Width;
 
                     break;
-                case Common.Transitioning.Presentation.Enumerations.StandardTransitionDirection.TopToBottom:
+                case StandardTransitionDirection.TopToBottom:
                     incomingPlacardPresentationView.TranslationY = wrapper.Height * -1;
 
                     break;
-                case Common.Transitioning.Presentation.Enumerations.StandardTransitionDirection.BottomToTop:
+                case StandardTransitionDirection.BottomToTop:
                 default:
                     incomingPlacardPresentationView.TranslationY = wrapper.Height;
 

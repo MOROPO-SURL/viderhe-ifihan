@@ -1,4 +1,7 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Converters
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Converters
 {
     public class PlacardViewModelToPlacardThumbnailWrapViewConverter : Xamarin.Forms.IValueConverter
     {
@@ -6,7 +9,7 @@
         {
             if (value == null) return value;
 
-            var model = value as Presentation.Models.View.PlacardViewModel;
+            var model = value as PlacardViewModel;
 
             if (model.Template == null)
             {
@@ -15,7 +18,7 @@
 
             if (model.PlayerOrientationSupportKind != null)
             {
-                if (model.PlayerOrientationSupportKind != Viderhe.Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait)
+                if (model.PlayerOrientationSupportKind != PlayerOrientationSupportKind.Portrait)
                 {
                     return new Views.LandscapePlacardThumbnailWrapView(model);
                 }
@@ -24,7 +27,7 @@
                     return new Views.PortraitPlacardThumbnailWrapView(model);
                 }
             }
-            else if (model.Template.PlayerOrientationSupport != Viderhe.Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Portrait)
+            else if (model.Template.PlayerOrientationSupport != PlayerOrientationSupportKind.Portrait)
             {
                 return new Views.LandscapePlacardThumbnailWrapView(model);
             }

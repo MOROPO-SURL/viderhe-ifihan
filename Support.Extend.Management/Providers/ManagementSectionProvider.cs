@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Management.Sections.Contract;
+﻿using MOROPO.VIDERHE.Extend.Common.Management.Sections.Contract;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Extend.Management.Providers
+namespace MOROPO.VIDERHE.Support.Extend.Management.Providers
 {
     public sealed class ManagementSectionProvider
     {
@@ -22,16 +22,16 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Management.Providers
 
         private ManagementSectionProvider()
         {
-            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Management,\\sVersion=")).ToArray();
+            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Management,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IManagementSection).IsAssignableFrom(t));
+            SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, SmartSolucionesCuba.XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IManagementSection).IsAssignableFrom(t));
         }
 
         public IManagementSection[] GetAll()
         {
             var result = new System.Collections.Generic.List<IManagementSection>();
 
-            result.AddRange(XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IManagementSection>());
+            result.AddRange(SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IManagementSection>());
 
             return result.ToArray();
         }

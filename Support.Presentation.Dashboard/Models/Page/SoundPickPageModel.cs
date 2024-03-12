@@ -1,15 +1,17 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page
 {
-    public class SoundPickPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class SoundPickPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private bool hasMoreItems;
 
         public SoundPickPageModel()
         {
-            Items = new System.Collections.ObjectModel.ObservableCollection<Presentation.Models.View.SoundViewModel>();
+            Items = new System.Collections.ObjectModel.ObservableCollection<SoundViewModel>();
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<Presentation.Models.View.SoundViewModel> Items { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<SoundViewModel> Items { get; set; }
 
         public bool HasMoreItems { get => hasMoreItems; set => SetProperty(ref hasMoreItems, value); }
 

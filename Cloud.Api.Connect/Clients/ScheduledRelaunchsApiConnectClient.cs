@@ -1,8 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Connect.Clients
 {
-    public class ScheduledRelaunchsApiConnectClient : MOROPO.SAPRESSC.Core.Api.Connect.Clients.AbstractEntityManagementFilteredApiConnectClient<Persistence.Entities.ScheduledRelaunch, System.Guid, Common.Models.ScheduledRelaunchInputModel, Common.Models.ScheduledRelaunchDisplayModel, Common.Models.Filter.ScheduledRelaunchFilterModel>
+    public class ScheduledRelaunchsApiConnectClient : Framework.Guama.Core.Presentation.API.Connect.Clients.AbstractEntityManagementFilteredApiConnectClient<ScheduledRelaunch, System.Guid, ScheduledRelaunchInputModel, ScheduledRelaunchDisplayModel, ScheduledRelaunchFilterModel>
     {
-        public ScheduledRelaunchsApiConnectClient(MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider) : base(httpClientHelperProvider)
+        public ScheduledRelaunchsApiConnectClient(Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider) : base(httpClientHelperProvider)
         {
         }
 

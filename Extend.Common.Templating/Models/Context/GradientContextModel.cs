@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Models.Context
+﻿namespace MOROPO.VIDERHE.Extend.Common.Templating.Models.Context
 {
     public class GradientContextModel
     {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud
+﻿namespace MOROPO.VIDERHE.Cloud
 {
     public class SharedResources
     {

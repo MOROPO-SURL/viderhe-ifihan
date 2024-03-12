@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Contract
+﻿namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Contract
 {
     public interface IOverlayContextConfigurationPage
     {

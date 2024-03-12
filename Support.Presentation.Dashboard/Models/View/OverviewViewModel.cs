@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View
 {
-    public class OverviewViewModel<TModel> : XFToolKit.Mvvm.Models.BaseBindableModel where TModel : class, System.IDisposable
+    public class OverviewViewModel<TModel> : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel where TModel : class, System.IDisposable
     {
         private TModel reference;
 

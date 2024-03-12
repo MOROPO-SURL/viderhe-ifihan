@@ -1,6 +1,8 @@
-﻿[assembly: Xamarin.Forms.ExportRenderer(typeof(SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered.FontOverflowLabel), typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer.FontOverflowLabelRenderer))]
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Rendered;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Views.Renderer
+[assembly: Xamarin.Forms.ExportRenderer(typeof(FontOverflowLabel), typeof(MOROPO.VIDERHE.Terminal.Player.Droid.Views.Renderer.FontOverflowLabelRenderer))]
+
+namespace MOROPO.VIDERHE.Terminal.Player.Droid.Views.Renderer
 {
     public class FontOverflowLabelRenderer : Xamarin.Forms.Platform.Android.LabelRenderer
     {

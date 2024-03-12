@@ -1,25 +1,29 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Extensions;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Factories
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Factories
 {
     public static class PictureSlideSecuencePlacardConfigurationPageModelFactory
     {
-        public static Models.Page.PictureSlideSecuencePlacardConfigurationPageModel Build(Support.Presentation.Models.View.PlacardViewModel placardViewModel)
+        public static PictureSlideSecuencePlacardConfigurationPageModel Build(PlacardViewModel placardViewModel)
         {
-            if (placardViewModel == null) return new Models.Page.PictureSlideSecuencePlacardConfigurationPageModel();
+            if (placardViewModel == null) return new PictureSlideSecuencePlacardConfigurationPageModel();
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.PictureSlideSecuencePlacardContextModel>(placardViewModel.SerializedContext);
 
-            var result = new Models.Page.PictureSlideSecuencePlacardConfigurationPageModel
+            var result = new PictureSlideSecuencePlacardConfigurationPageModel
             {
                 RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                 DefineBeginAt = placardViewModel.BeginAt != null,
                 BeginAt = placardViewModel.BeginAt ?? System.DateTime.Now.Date,
                 DefineEndAt = placardViewModel.EndAt != null,
                 EndAt = placardViewModel.EndAt ?? System.DateTime.Now.Date,
-                PlayerOrientationSupportKind = placardViewModel.PlayerOrientationSupportKind == null ? Common.Templating.Dashboard.Presentation.Enumerations.ConfigurationPlayerOrientationSupportKind.Inherited : placardViewModel.PlayerOrientationSupportKind.Value.ToConfiguration(),
+                PlayerOrientationSupportKind = placardViewModel.PlayerOrientationSupportKind == null ? ConfigurationPlayerOrientationSupportKind.Inherited : placardViewModel.PlayerOrientationSupportKind.Value.ToConfiguration(),
                 Label = placardViewModel.Label,
-                Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>(placardViewModel.Tags),
+                Tags = new System.Collections.ObjectModel.ObservableCollection<TagDisplayModel>(placardViewModel.Tags),
                 PicturePresentationSecounds = context.PicturePresentationSecounds
             };
 
@@ -27,7 +31,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
             {
                 result.Slides.Add(new Models.View.PictureSlideViewModel
                 {
-                    Image = new Support.Presentation.Models.View.ImageViewModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
+                    Image = new ImageViewModel { Id = item.Image.Id, ThumbnailId = item.Image.ThumbnailId },
                     LayoutMode = item.LayoutMode
                 });
             }

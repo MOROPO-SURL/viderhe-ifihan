@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 {
-    public class AddImagePageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
+    public class AddImagePageModel : FormPageModel
     {
         private string about;
 

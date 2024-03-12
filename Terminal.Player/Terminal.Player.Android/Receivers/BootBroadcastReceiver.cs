@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Content;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Receivers
+namespace MOROPO.VIDERHE.Terminal.Player.Droid.Receivers
 {
     [BroadcastReceiver(Enabled = true, DirectBootAware = true, Exported = true)]
     [IntentFilter(new[] 

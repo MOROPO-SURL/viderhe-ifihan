@@ -2,16 +2,22 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
-		<AssemblyName>SmartSolucionesCuba.Viderhe.Support.Extend.Management</AssemblyName>
-		<RootNamespace>SmartSolucionesCuba.Viderhe.Support.Extend.Management</RootNamespace>
+		<AssemblyName>MOROPO.VIDERHE.Support.Extend.Management</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Support.Extend.Management</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>2.0.4</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="SSCXFToolKit.IoC" Version="0.2.0-alpha" />
+		<PackageReference Include="SSCXFToolKit.IoC" Version="0.2.0-alpha" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Extend.Common.Management\Extend.Common.Management.csproj" />
+		<ProjectReference Include="..\Extend.Common.Management\Extend.Common.Management.csproj" />
 	</ItemGroup>
 
 </Project>

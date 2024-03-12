@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Views
 {
     public partial class PortraitPlacardThumbnailWrapView : Xamarin.Forms.ContentView
     {
-        public PortraitPlacardThumbnailWrapView(Presentation.Models.View.PlacardViewModel model)
+        public PortraitPlacardThumbnailWrapView(PlacardViewModel model)
         {
             InitializeComponent();
 

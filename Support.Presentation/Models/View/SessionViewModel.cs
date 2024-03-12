@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Models.View
 {
     public class SessionViewModel
     {
@@ -8,7 +10,7 @@
 
         public string AccountName { get; set; }
 
-        public Cloud.Api.Common.Models.PersonIdentityDisplayModel Identity { get; set; }
+        public PersonIdentityDisplayModel Identity { get; set; }
 
         public override string ToString()
         {
