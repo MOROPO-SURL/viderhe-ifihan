@@ -159,6 +159,34 @@
     <AndroidResource Include="Resources\drawable-xhdpi\splash_viderhe_player.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Cloud.Api.Common\Cloud.Api.Common.csproj">
+      <Project>{4d9e2d5f-55c3-497a-9ea0-89ced1acd180}</Project>
+      <Name>Cloud.Api.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cloud.Api.Connect\Cloud.Api.Connect.csproj">
+      <Project>{0bee0e5c-b306-4e5f-ac02-2b340a7bff6e}</Project>
+      <Name>Cloud.Api.Connect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cloud.Persistence\Cloud.Persistence.csproj">
+      <Project>{4d4db49c-07e6-40db-a116-1146651260dc}</Project>
+      <Name>Cloud.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cloud.SignalR.Connect.Common\Cloud.SignalR.Connect.Common.csproj">
+      <Project>{335baeff-dba7-4b8e-8946-a3ea1ea687ce}</Project>
+      <Name>Cloud.SignalR.Connect.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cloud.SignalR.Connect.Player\Cloud.SignalR.Connect.Player.csproj">
+      <Project>{258b002c-4000-4fa0-8313-7dc1eb74b5cc}</Project>
+      <Name>Cloud.SignalR.Connect.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Overlaying\Extend.Common.Overlaying.csproj">
+      <Project>{a3bb2159-c755-415a-b238-81e5a24fa0aa}</Project>
+      <Name>Extend.Common.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Templating\Extend.Common.Templating.csproj">
+      <Project>{571b8648-903d-4322-addc-60ddbe97974f}</Project>
+      <Name>Extend.Common.Templating</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Common.Transitioning.Presentation\Extend.Common.Transitioning.Presentation.csproj">
       <Project>{7b10ab64-aec2-4109-bbb6-cbe522c1273c}</Project>
       <Name>Extend.Common.Transitioning.Presentation</Name>
@@ -174,6 +202,22 @@
     <ProjectReference Include="..\..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj">
       <Project>{E620A859-7769-472D-981A-B93DBF496926}</Project>
       <Name>Extend.Common.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common.Transitioning\Extend.Common.Transitioning.csproj">
+      <Project>{9b378c2e-1ed2-432b-9a18-b923cefa70c7}</Project>
+      <Name>Extend.Common.Transitioning</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Common\Extend.Common.csproj">
+      <Project>{fa8fcd4c-da74-4102-b767-6a0d0150c673}</Project>
+      <Name>Extend.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Overlaying\Extend.Essential.Overlaying.csproj">
+      <Project>{87c8e862-21a4-4679-9fc0-26a99f7a24ae}</Project>
+      <Name>Extend.Essential.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Templating\Extend.Essential.Templating.csproj">
+      <Project>{bb3b9dc7-e652-499a-b609-325a01414109}</Project>
+      <Name>Extend.Essential.Templating</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation.csproj">
       <Project>{807484b7-8d08-467b-8a1f-7ead7b1dfa52}</Project>
@@ -203,9 +247,41 @@
       <Project>{f52e5e05-b3d9-44f2-bfdc-2c8483f1f770}</Project>
       <Name>Extend.Essential.Templating.Presentation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj">
+      <Project>{5e18fba2-62e1-4bae-8917-1e809fc5fcfd}</Project>
+      <Name>Extend.Essential.Transitioning</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj">
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Overlaying\Support.Extend.Overlaying.csproj">
+      <Project>{c6ec5e2a-cf68-4a31-b53d-0bf9ec767fa4}</Project>
+      <Name>Support.Extend.Overlaying</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Templating.Presentation\Support.Extend.Templating.Presentation.csproj">
+      <Project>{3483f51d-3eef-425e-b55a-cc251a8337b3}</Project>
+      <Name>Support.Extend.Templating.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Templating\Support.Extend.Templating.csproj">
+      <Project>{7a875aef-130d-440d-989e-1459d1c0b3ba}</Project>
+      <Name>Support.Extend.Templating</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Transitioning.Presentation\Support.Extend.Transitioning.Presentation.csproj">
+      <Project>{d30821d6-84ca-4a80-9c96-1d2dd24bc02b}</Project>
+      <Name>Support.Extend.Transitioning.Presentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend.Transitioning\Support.Extend.Transitioning.csproj">
+      <Project>{b2638380-165d-4142-8714-38ba6deb6dc4}</Project>
+      <Name>Support.Extend.Transitioning</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Extend\Support.Extend.csproj">
+      <Project>{c7964055-5ee7-40e7-9830-b9385722f77e}</Project>
+      <Name>Support.Extend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Support.Presentation.Player\Support.Presentation.Player.csproj">
+      <Project>{83be5d7f-2fb7-40c5-a1ef-1b6ebdd8fed6}</Project>
+      <Name>Support.Presentation.Player</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj">
       <Project>{44A1EA24-59C5-4E9D-AF01-C65297998114}</Project>
