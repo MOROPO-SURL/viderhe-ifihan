@@ -40,6 +40,11 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
             {
                 var player = Repository.Get(playerId);
 
+                if (!Helpers.Integrity.PlayerIntegrityHelper.IsCorrectlySigned(player))
+                {
+                    throw new System.InvalidOperationException();
+                }
+
                 var model = new AccountDisplayModel();
 
                 model.Import(player.Account);
