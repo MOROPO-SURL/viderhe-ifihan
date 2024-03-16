@@ -13,9 +13,9 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.View
 
             var context = Newtonsoft.Json.JsonConvert.DeserializeObject<LandscapePicturePresentingVideoPlacardContextModel>(model.SerializedContext);
 
-            PresentedVideoThumnailImage.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildImageThumbnailUri(context.PresentedVideo.ThumbnailId));
+            PresentedVideoThumnailImage.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildVideoThumbnailUri(context.PresentedVideo.Id));
 
-            PresenterImage.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildImageThumbnailUri(context.PresenterImage.ThumbnailId));
+            PresenterImage.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildImageThumbnailUri(context.PresenterImage.Id));
             PresenterImage.HorizontalOptions = context.PresenterSide == LandscapePresentationSide.Left ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.End;
 
             BindingContext = model;

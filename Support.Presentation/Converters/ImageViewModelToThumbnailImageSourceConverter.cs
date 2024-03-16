@@ -10,7 +10,7 @@ namespace MOROPO.VIDERHE.Support.Presentation.Converters
 
             try
             {
-                return Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildImageThumbnailUri((value as Models.View.ImageViewModel).ThumbnailId));
+                return Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildImageThumbnailUri((value as Models.View.ImageViewModel).Id));
             }
             catch
             {

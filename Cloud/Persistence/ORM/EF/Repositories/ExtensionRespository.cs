@@ -3,7 +3,7 @@ using MOROPO.VIDERHE.Cloud.Persistence.Entities;
 
 namespace MOROPO.VIDERHE.Cloud.Persistence.ORM.EF.Repositories
 {
-    public class ExtensionRespository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.AbstractEntityRepository<Extension, System.Guid>
+    public class ExtensionRespository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<Extension, System.Guid>
     {
         public ExtensionRespository(DbContext dbContext) : base(dbContext)
         {
