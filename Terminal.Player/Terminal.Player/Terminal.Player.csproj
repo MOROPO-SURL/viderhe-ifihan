@@ -9,7 +9,7 @@
 		<Authors>MOROPO DotNet DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
 		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
-		<Version>2.0.4</Version>
+		<Version>2.0.8</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
@@ -43,7 +43,7 @@
 		<PackageReference Include="SSCXFToolKit.Presentation.Transform" Version="0.3.0-alpha" />
 		<PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
 		<PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
-		<PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
+		<PackageReference Include="Xamarin.Essentials" Version="1.7.7" />
 		<PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
 		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
 	</ItemGroup>
