@@ -20,6 +20,8 @@ namespace MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter
 
         public bool PlayerOrientationSupportKindExclusive { get; set; }
 
+        public TagDisplayModel[] Tags { get; set; }
+
         public System.Linq.Expressions.Expression<System.Func<Placard, bool>> GetSelector()
         {
             System.Linq.Expressions.Expression<System.Func<Placard, bool>> expression = null;
