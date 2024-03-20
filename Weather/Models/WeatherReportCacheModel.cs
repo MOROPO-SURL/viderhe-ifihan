@@ -1,8 +1,10 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Weather.Models
+﻿using MOROPO.VIDERHE.Service.Weather.Enumerations;
+
+namespace MOROPO.VIDERHE.Service.Weather.Models
 {
     public class WeatherReportCacheModel
     {
-        public Enumerations.PorvisionService PorvisionService { get; set; }
+        public PorvisionService PorvisionService { get; set; }
 
         public Api.Common.Models.WeatherReportModel Report { get; set; }
     }

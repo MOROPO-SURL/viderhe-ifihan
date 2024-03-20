@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace SmartSolucionesCuba.Viderhe.Weather
+namespace MOROPO.VIDERHE.Service.Weather
 {
     public class Program
     {

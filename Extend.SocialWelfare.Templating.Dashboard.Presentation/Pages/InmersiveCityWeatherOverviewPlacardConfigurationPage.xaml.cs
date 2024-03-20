@@ -342,7 +342,10 @@ namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.
 
             if (!System.Uri.IsWellFormedUriString(baseUrl, System.UriKind.Absolute)) return;
 
-            var weatherApiConnectClient = new Service.Weather.Api.Connect.Clients.OpenWeatherMapApiConnectClient(new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(baseUrl));
+            var weatherApiConnectClient = new Service.Weather.Api.Connect.Clients.OpenWeatherMapApiConnectClient(new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(new System.Net.Http.HttpClientHandler
+            {
+                
+            },baseUrl));
 
             weatherApiConnectClient.GetCitiesAsync().ContinueWith(task =>
             {

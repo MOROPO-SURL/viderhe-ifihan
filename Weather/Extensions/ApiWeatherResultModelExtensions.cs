@@ -1,16 +1,19 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Weather.Extensions
+﻿using MOROPO.VIDERHE.Service.Weather.Enumerations;
+using MOROPO.VIDERHE.Service.Weather.Models.OWM;
+
+namespace MOROPO.VIDERHE.Service.Weather.Extensions
 {
     internal static class ApiWeatherResultModelExtensions
     {
-        internal static Models.WeatherReportCacheModel ToReportCacheModel(this Models.OWM.ApiWeatherResultModel target)
+        internal static Models.WeatherReportCacheModel ToReportCacheModel(this ApiWeatherResultModel target)
         {
             var result = new Models.WeatherReportCacheModel
             {
-                PorvisionService = Enumerations.PorvisionService.OpenWeatherMap,
+                PorvisionService = PorvisionService.OpenWeatherMap,
                 Report = new Api.Common.Models.WeatherReportModel()
             };
 
-            Models.OWM.DailyWeatherModel closerDailyWeather = null;
+            DailyWeatherModel closerDailyWeather = null;
 
             foreach (var item in target.Dailys)
             {

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Weather.Models.OWM
+﻿namespace MOROPO.VIDERHE.Service.Weather.Models.OWM
 {
     public class ApiWeatherResultModel
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SmartSolucionesCuba.Viderhe.Weather.Controllers
+namespace MOROPO.VIDERHE.Service.Weather.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

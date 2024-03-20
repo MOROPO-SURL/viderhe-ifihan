@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Weather.Enumerations
+﻿namespace MOROPO.VIDERHE.Service.Weather.Enumerations
 {
     public enum PorvisionService
     {

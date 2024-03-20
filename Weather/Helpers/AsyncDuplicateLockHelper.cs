@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace SmartSolucionesCuba.Viderhe.Weather.Helpers
+namespace MOROPO.VIDERHE.Service.Weather.Helpers
 {
     internal sealed class AsyncDuplicateLockHelper
     {

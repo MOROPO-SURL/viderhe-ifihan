@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
-using SmartSolucionesCuba.Viderhe.Weather.Extensions;
+using MOROPO.VIDERHE.Service.Weather.Extensions;
 using System.Linq;
 using System.Net;
 
-namespace SmartSolucionesCuba.Viderhe.Weather.Providers
+namespace MOROPO.VIDERHE.Service.Weather.Providers
 {
     public sealed class OpenWeatherMapCacheProvider
     {
@@ -62,8 +62,8 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Providers
                 {
                     var responseContent = await reader.ReadToEndAsync();
 
-                    return Newtonsoft.Json.JsonConvert.DeserializeObject<Models.OWM.ApiWeatherResultModel>(responseContent);                        
-                }                        
+                    return Newtonsoft.Json.JsonConvert.DeserializeObject<Models.OWM.ApiWeatherResultModel>(responseContent);
+                }
             }
         }
 
@@ -96,7 +96,7 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Providers
             if (found)
             {
                 var timeElapsed = dateTime.Subtract(cachedModel.FetchedAt).TotalMilliseconds;
-                
+
                 if (timeElapsed <= openWeatherMapOptions.Value.ApiCachePeriod)
                 {
                     lockObj.Dispose();
@@ -113,7 +113,7 @@ namespace SmartSolucionesCuba.Viderhe.Weather.Providers
 
                 newModel.FetchedAt = System.DateTime.Now;
 
-                if (!found || openWeatherMapOptions.Value.FetchMode == Enumerations.FetchMode.AlwaysUseLastFetchedValue || (newModel.Current.MeasuredAt >= cachedModel.Current.MeasuredAt))
+                if (!found || openWeatherMapOptions.Value.FetchMode == Enumerations.FetchMode.AlwaysUseLastFetchedValue || newModel.Current.MeasuredAt >= cachedModel.Current.MeasuredAt)
                 {
                     memoryCache.Set(location, newModel, new MemoryCacheEntryOptions
                     {

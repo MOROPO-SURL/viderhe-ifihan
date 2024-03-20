@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Weather.Options
+﻿namespace MOROPO.VIDERHE.Service.Weather.Options
 {
     public class NetworkProxyOptions
     {

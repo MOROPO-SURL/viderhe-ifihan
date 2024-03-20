@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MOROPO.VIDERHE.Service.Weather.Providers;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Weather.Controllers
+namespace MOROPO.VIDERHE.Service.Weather.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class OpenWeatherMapController : ControllerBase
     {
-        private readonly Providers.OpenWeatherMapCacheProvider provider;
+        private readonly OpenWeatherMapCacheProvider provider;
 
-        public OpenWeatherMapController(Providers.OpenWeatherMapCacheProvider provider)
+        public OpenWeatherMapController(OpenWeatherMapCacheProvider provider)
         {
             this.provider = provider;
         }
