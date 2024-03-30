@@ -47,28 +47,19 @@
 		<PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
 		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
 	</ItemGroup>
-
+	
 	<ItemGroup>
 		<ProjectReference Include="..\..\Cloud.Api.Connect\Cloud.Api.Connect.csproj" />
 		<ProjectReference Include="..\..\Cloud.SignalR.Connect.Player\Cloud.SignalR.Connect.Player.csproj" />
 		<ProjectReference Include="..\..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj" />
 		<ProjectReference Include="..\..\Extend.Essential.Overlaying.Presentation\Extend.Essential.Overlaying.Presentation.csproj" />
 		<ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
+		<ProjectReference Include="..\..\Extend.Matrix.Templating.Presentation\Extend.Matrix.Templating.Presentation.csproj" />
+		<ProjectReference Include="..\..\Extend.Matrix.Templating\Extend.Matrix.Templating.csproj" />
+		<ProjectReference Include="..\..\Extend.Matrix\Extend.Matrix.csproj" />
 		<ProjectReference Include="..\..\Support.Presentation.Player\Support.Presentation.Player.csproj" />
 		<ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj" />
 	</ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Cloud.Api.Connect\Cloud.Api.Connect.csproj" />
-    <ProjectReference Include="..\..\Cloud.SignalR.Connect.Player\Cloud.SignalR.Connect.Player.csproj" />
-    <ProjectReference Include="..\..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj" />
-    <ProjectReference Include="..\..\Extend.Essential.Overlaying.Presentation\Extend.Essential.Overlaying.Presentation.csproj" />
-    <ProjectReference Include="..\..\Extend.Essential\Extend.Essential.csproj" />
-    <ProjectReference Include="..\..\Extend.Matrix.Templating.Presentation\Extend.Matrix.Templating.Presentation.csproj" />
-    <ProjectReference Include="..\..\Extend.Matrix.Templating\Extend.Matrix.Templating.csproj" />
-    <ProjectReference Include="..\..\Extend.Matrix\Extend.Matrix.csproj" />
-    <ProjectReference Include="..\..\Support.Presentation.Player\Support.Presentation.Player.csproj" />
-    <ProjectReference Include="..\..\Support.Presentation\Support.Presentation.csproj" />
-  </ItemGroup>
 
 	<ItemGroup>
 		<EmbeddedResource Update="Pages\StartingPage.xaml">
