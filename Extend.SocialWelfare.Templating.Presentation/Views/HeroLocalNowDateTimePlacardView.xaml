@@ -12,8 +12,11 @@
     <ContentView.Resources>
         <ResourceDictionary>
             <converters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
-            
+
             <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
+            <extendcommontemplatingpresentationconverters:ThicknessToRelativeValueConverter x:Key="ThicknessToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
+
+            <Thickness x:Key="BlockPadding">32,0</Thickness>
 
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{Binding Path=TextColor}" />
@@ -32,13 +35,13 @@
                     ColumnSpacing="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="3" />
+                        <ColumnDefinition Width="{Binding Source=4, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <StackLayout
                         Grid.Column="0" Grid.Row="0"
                         VerticalOptions="Center"
-                        Padding="32,0"
+                        Padding="{Binding Source={StaticResource BlockPadding}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
                         IsClippedToBounds="True"
                         Spacing="0">
                         <Label
@@ -58,7 +61,7 @@
                     <StackLayout
                         Grid.Column="2"
                         VerticalOptions="Center"
-                        Padding="32,0"
+                        Padding="{Binding Source={StaticResource BlockPadding}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
                         IsClippedToBounds="True">
                         <Label
                             x:Name="TimeLabel"

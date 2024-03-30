@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Service.Weather.WebOlupin</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Service.Weather.WebOlupin</RootNamespace>
+		<Product>VIDERHE Weather Service</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2023, Todos los derechos reservados.</Copyright>
+		<Version>0.3.0</Version>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Service.Weather.Api.Common\Service.Weather.Api.Common.csproj" />
+	</ItemGroup>
+
+</Project>

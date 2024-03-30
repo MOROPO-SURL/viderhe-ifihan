@@ -13,14 +13,21 @@
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
 
             <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
+            <extendcommontemplatingpresentationconverters:ThicknessToRelativeValueConverter x:Key="ThicknessToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
 
             <converters:WeatherOverviewModelToConditionFontGlyphConverter x:Key="WeatherOverviewModelToConditionFontGlyphConverter" />
             <converters:FloatToRoundedFloatConverter x:Key="FloatToRoundedFloatConverter" />
             <converters:BackgroundToViewConverter x:Key="BackgroundToViewConverter" />
 
+            <Thickness x:Key="TemperatureLabelMargin">0,20,0,5</Thickness>
+            <Thickness x:Key="ConditionBlockLayoutMargin">0,0,0,25</Thickness>
+            <Thickness x:Key="VariablesBlockLayoutMargin">0,16,0,0</Thickness>
+            <Thickness x:Key="VariableBlockLayoutMargin">0,0,20,0</Thickness>
+            <Thickness x:Key="WindAngleIconLabelMargin">0,6,0,0</Thickness>
+
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{Binding Path=TextColor, Mode=OneTime}" />
-                <Setter Property="FontSize" Value="{Binding Source=21, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                <Setter Property="FontSize" Value="{Binding Source=28, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
@@ -39,10 +46,10 @@
                             Text="{Binding Path=Now, StringFormat='{0:dddd, MMMM dd, yyyy}'}" />
                         <Label 
                             Text="{Binding Path=Now, StringFormat='{0:h:mm tt}'}"
-                            FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            FontSize="{Binding Source=32, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         <Label
                             Text="{Binding Path=City.Name, Mode=OneTime}"
-                            FontSize="{Binding Source=28, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     </StackLayout>
                     <Grid 
                         VerticalOptions="FillAndExpand"
@@ -59,25 +66,25 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label
                             x:Name="TemperatureLabel"
                             Grid.Column="0" Grid.Row="0"
-                            Margin="0,20,0,5"
+                            Margin="{Binding Source={StaticResource TemperatureLabelMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
                             Opacity="0"
                             Text="{Binding Path=WeatherOverview.Temperature, Converter={StaticResource FloatToRoundedFloatConverter}, StringFormat='{0}°C'}"
-                            FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            FontSize="{Binding Source=72, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                            FontAttributes="Bold" />
                         <StackLayout 
                             Grid.Column="0" Grid.Row="1"
-                            Margin="0,0,0,25"
+                            Margin="{Binding Source={StaticResource ConditionBlockLayoutMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
                             Spacing="0">
                             <Label
                                 x:Name="ConditionLabel"
                                 Opacity="0"
                                 Text="{Binding Path=WeatherOverview, Converter={StaticResource WeatherOverviewModelToConditionFontGlyphConverter}}"
                                 FontFamily="Weather Icons"
-                                FontSize="{Binding Source=108, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                FontSize="{Binding Source=144, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <Label
                                 x:Name="ConditionDetailLabel"
                                 Opacity="0"
@@ -95,13 +102,13 @@
                                 FontAttributes="Bold" />
                             <Label
                                 Text="{Binding Path=WeatherOverview.TemperatureFeelLike, Converter={StaticResource FloatToRoundedFloatConverter}, StringFormat='{0}°C'}"
-                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         </StackLayout>
                         <Grid
                             x:Name="TemperatureLimitsLayout"
                             Grid.Column="0" Grid.Row="3"
                             Opacity="0"
-                            RowSpacing="0" ColumnSpacing="10">
+                            RowSpacing="0" ColumnSpacing="{Binding Source=10, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
@@ -118,10 +125,10 @@
                             <Label
                                 Grid.Column="0" Grid.Row="1"
                                 Text="{Binding Path=WeatherOverview.MinTemperature, Converter={StaticResource FloatToRoundedFloatConverter}, StringFormat='{0}°C'}"
-                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <BoxView
                                 Grid.Column="1" Grid.RowSpan="2"
-                                WidthRequest="1"
+                                WidthRequest="2"
                                 Color="{Binding Path=TextColor, Mode=OneTime}" />
                             <Label
                                 Grid.Column="2" Grid.Row="0"
@@ -130,166 +137,167 @@
                             <Label
                                 Grid.Column="2" Grid.Row="1"
                                 Text="{Binding Path=WeatherOverview.MaxTemperature, Converter={StaticResource FloatToRoundedFloatConverter}, StringFormat='{0}°C'}"
-                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         </Grid>
                         <Label
                             x:Name="SourceInfoLayout"
-                            Grid.ColumnSpan="2" Grid.Row="6"
+                            Grid.ColumnSpan="2" Grid.Row="5"
                             VerticalOptions="End"
                             Opacity="0"
-                            FontSize="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
+                            FontSize="{Binding Source=21, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span Text="{Binding Path=Service}" />
                                     <Span Text=" (" />
-                                    <Span Text="{Binding Path=WeatherOverview.MeasuredAt, StringFormat='{0:dd/MM/yyyy h:mm tt}'}" />
+                                    <Span Text="{Binding Path=WeatherOverview.MeasuredAt, StringFormat='{0:dd/MM/yyyy HH:mm}'}" />
                                     <Span Text=")" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Grid
-                            x:Name="SunBehaviorInfoLayout"
-                            Grid.Column="2" Grid.Row="5"
-                            HorizontalOptions="End"
-                            Opacity="0"
-                            RowSpacing="0" ColumnSpacing="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <StackLayout
-                                Grid.Column="0"
-                                Spacing="0">
-                                <Label
-                                    Text="&#xf051;"
-                                    HorizontalTextAlignment="Center"
-                                    FontFamily="Weather Icons"
-                                    FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
-                                <Label
-                                    Text="{Binding Path=WeatherOverview.SunRiseAt, StringFormat='{0:h:mm tt}'}"
-                                    HorizontalTextAlignment="Center" />
-                            </StackLayout>
-                            <BoxView
-                                Grid.Column="1"
-                                WidthRequest="1"
-                                Color="{Binding Path=TextColor, Mode=OneTime}" />
-                            <StackLayout
-                                Grid.Column="2"
-                                Spacing="0">
-                                <Label
-                                    Text="&#xf052;"
-                                    HorizontalTextAlignment="Center"
-                                    FontFamily="Weather Icons"
-                                    FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
-                                <Label
-                                    Text="{Binding Path=WeatherOverview.SunSetAt, StringFormat='{0:h:mm tt}'}"
-                                    HorizontalTextAlignment="Center" />
-                            </StackLayout>
-                        </Grid>
-                        <Grid 
-                            Grid.Column="2" Grid.Row="6"
-                            Margin="0,16,0,0"
-                            ColumnSpacing="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <BoxView
-                                x:Name="HumidityInfoLayoutEmphasisBoxView"
-                                Grid.Column="0"
-                                WidthRequest="1"
-                                Opacity="0"
-                                Color="{Binding Path=TextColor, Mode=OneTime}" />
-                            <StackLayout
-                                x:Name="HumidityInfoLayout"
-                                Grid.Column="1"
-                                Margin="0,0,20,0"
-                                Opacity="0"
-                                Spacing="0">
-                                <Label
-                                    Text="Humedad"
-                                    FontAttributes="Italic" />
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding Path=WeatherOverview.Humidity}" FontSize="Title" />
-                                            <Span Text=" %" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </StackLayout>
-                            <BoxView
-                                x:Name="PressureInfoLayoutEmphasisBoxView"
-                                Grid.Column="2"
-                                WidthRequest="1"
-                                Opacity="0"
-                                Color="{Binding Path=TextColor, Mode=OneTime}" />
-                            <StackLayout
-                                x:Name="PressureInfoLayout"
-                                Grid.Column="3"
-                                Margin="0,0,20,0"
-                                Opacity="0"
-                                Spacing="0">
-                                <Label
-                                    Text="Presión"
-                                    FontAttributes="Italic" />
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding Path=WeatherOverview.Pressure}" FontSize="Title" />
-                                            <Span Text=" hPa" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </StackLayout>
-                            <BoxView
-                                x:Name="WindInfoLayoutEmphasisBoxView"
-                                Grid.Column="4"
-                                Opacity="0"
-                                WidthRequest="1"
-                                Color="{Binding Path=TextColor, Mode=OneTime}" />
+                        <StackLayout
+                            Grid.Column="2" Grid.RowSpan="6" VerticalOptions="End">
                             <Grid
-                                x:Name="WindInfoLayout"
-                                Grid.Column="5"
+                                x:Name="SunBehaviorInfoLayout"
+                                HorizontalOptions="End"
                                 Opacity="0"
-                                ColumnSpacing="4" RowSpacing="0">
+                                RowSpacing="0" ColumnSpacing="{Binding Source=10, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                    Grid.ColumnSpan="2" Grid.Row="0"
-                                    Text="Viento"
-                                    FontAttributes="Italic" />
-                                <Label
-                                    Grid.Column="0" Grid.Row="1"
-                                    Padding="0,4,0,0"
-                                    VerticalOptions="Center"
-                                    Text="&#xf0b1;"
-                                    Rotation="{Binding Path=WeatherOverview.WindDegrees}"
-                                    FontFamily="Weather Icons"
-                                    FontSize="{Binding Source=18, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
-                                <Label 
-                                    Grid.Column="1" Grid.Row="1"
-                                    VerticalOptions="Center">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding Path=WeatherOverview.WindSpeed}" FontSize="Title" />
-                                            <Span Text=" m/s" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Spacing="0">
+                                    <Label
+                                        Text="&#xf051;"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="Weather Icons"
+                                        FontSize="{Binding Source=56, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                    <Label
+                                        Text="{Binding Path=WeatherOverview.SunRiseAt, StringFormat='{0:h:mm tt}'}"
+                                        HorizontalTextAlignment="Center" />
+                                </StackLayout>
+                                <BoxView
+                                    Grid.Column="1"
+                                    WidthRequest="2"
+                                    Color="{Binding Path=TextColor, Mode=OneTime}" />
+                                <StackLayout
+                                    Grid.Column="2"
+                                    Spacing="0">
+                                    <Label
+                                        Text="&#xf052;"
+                                        HorizontalTextAlignment="Center"
+                                        FontFamily="Weather Icons"
+                                        FontSize="{Binding Source=56, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                    <Label
+                                        Text="{Binding Path=WeatherOverview.SunSetAt, StringFormat='{0:h:mm tt}'}"
+                                        HorizontalTextAlignment="Center" />
+                                </StackLayout>
                             </Grid>
-                        </Grid>
+                            <Grid 
+                                Margin="{Binding Source={StaticResource VariablesBlockLayoutMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
+                                ColumnSpacing="{Binding Source=10, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <BoxView
+                                    x:Name="HumidityInfoLayoutEmphasisBoxView"
+                                    Grid.Column="0"
+                                    WidthRequest="2"
+                                    Opacity="0"
+                                    Color="{Binding Path=TextColor, Mode=OneTime}" />
+                                <StackLayout
+                                    x:Name="HumidityInfoLayout"
+                                    Grid.Column="1"
+                                    Margin="{Binding Source={StaticResource VariableBlockLayoutMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
+                                    Opacity="0"
+                                    Spacing="0">
+                                    <Label
+                                        Text="Humedad"
+                                        FontAttributes="Italic,Bold" />
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Path=WeatherOverview.Humidity}" FontSize="Title" />
+                                                <Span Text=" %" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <BoxView
+                                    x:Name="PressureInfoLayoutEmphasisBoxView"
+                                    Grid.Column="2"
+                                    WidthRequest="2"
+                                    Opacity="0"
+                                    Color="{Binding Path=TextColor, Mode=OneTime}" />
+                                <StackLayout
+                                    x:Name="PressureInfoLayout"
+                                    Grid.Column="3"
+                                    Margin="{Binding Source={StaticResource VariableBlockLayoutMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
+                                    Opacity="0"
+                                    Spacing="0">
+                                    <Label
+                                        Text="Presión"
+                                        FontAttributes="Italic,Bold" />
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Path=WeatherOverview.Pressure}" FontSize="Title" />
+                                                <Span Text=" hPa" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                                <BoxView
+                                    x:Name="WindInfoLayoutEmphasisBoxView"
+                                    Grid.Column="4"
+                                    Opacity="0"
+                                    WidthRequest="2"
+                                    Color="{Binding Path=TextColor, Mode=OneTime}" />
+                                <Grid
+                                    x:Name="WindInfoLayout"
+                                    Grid.Column="5"
+                                    Opacity="0"
+                                    ColumnSpacing="{Binding Source=4, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        Grid.ColumnSpan="2" Grid.Row="0"
+                                        Text="Viento"
+                                        FontAttributes="Italic,Bold" />
+                                    <Label
+                                        Grid.Column="0" Grid.Row="1"
+                                        Padding="{Binding Source={StaticResource WindAngleIconLabelMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
+                                        VerticalOptions="Center"
+                                        Text="&#xf0b1;"
+                                        Rotation="{Binding Path=WeatherOverview.WindDegrees}"
+                                        FontFamily="Weather Icons"
+                                        FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                    <Label 
+                                        Grid.Column="1" Grid.Row="1"
+                                        VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Path=WeatherOverview.WindSpeed}" FontSize="Title" />
+                                                <Span Text=" m/s" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Grid>
+                            </Grid>
+                        </StackLayout>
                     </Grid>
                 </StackLayout>
             </Grid>

@@ -117,15 +117,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.SocialWelfare.Templa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{C7CDA89F-DFD7-4559-8C68-5A1350426490}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather", "Weather\Weather.csproj", "{CFC98D01-B49E-4B4F-9CDD-02DBA78D0365}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Weather.WebOlupin", "Service.Weather.WebOlupin\Service.Weather.WebOlupin.csproj", "{CFC98D01-B49E-4B4F-9CDD-02DBA78D0365}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.Api.Common", "Weather.Api.Common\Weather.Api.Common.csproj", "{4B814041-316C-4DCD-9B93-5FAFFA963947}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Weather.Api.Common", "Service.Weather.Api.Common\Service.Weather.Api.Common.csproj", "{4B814041-316C-4DCD-9B93-5FAFFA963947}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weather.Api.Connect", "Weather.Api.Connect\Weather.Api.Connect.csproj", "{F3BAE034-8FC1-4B40-83A7-5B5EAA5005E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Weather.Api.Connect", "Service.Weather.Api.Connect\Service.Weather.Api.Connect.csproj", "{F3BAE034-8FC1-4B40-83A7-5B5EAA5005E2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extend.SocialWelfare.Templating.Dashboard.Presentation", "Extend.SocialWelfare.Templating.Dashboard.Presentation\Extend.SocialWelfare.Templating.Dashboard.Presentation.csproj", "{961885D1-E76A-49BB-A7E3-B7DD994A03FF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Player.UWP.DesktopExtension.Helper", "Terminal.Player\Terminal.Player.UWP.DesktopExtension.Helper\Terminal.Player.UWP.DesktopExtension.Helper.csproj", "{49D6848C-0043-48D5-B275-7D4BD9FD1067}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terminal.Dashboard.Android", "Terminal.Dashboard\Terminal.Dashboard.Android\Terminal.Dashboard.Android.csproj", "{1A703A61-876F-40C5-A99C-711071B4F562}"
 EndProject

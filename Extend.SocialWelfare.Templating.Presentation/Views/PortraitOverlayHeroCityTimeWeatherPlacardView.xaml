@@ -29,7 +29,7 @@
                 <BoxView x:Name="OverlayBoxView" Color="Transparent" />
                 <StackLayout 
                     HorizontalOptions="Center" VerticalOptions="Center"
-                    Spacing="12">
+                    Spacing="{Binding Source=12, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
                     <Label
                         x:Name="CityLabel"
                         Text="{Binding Path=City.Name, Mode=OneTime}"
@@ -43,7 +43,7 @@
                         FontSize="{Binding Source=180, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                     <Grid 
                         x:Name="WeatherLayout"
-                        ColumnSpacing="0" RowSpacing="12">
+                        ColumnSpacing="0" RowSpacing="{Binding Source=12, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition />
                             <ColumnDefinition Width="Auto" />
@@ -60,7 +60,8 @@
                         <Label
                             Grid.Column="1" Grid.Row="0"
                             Text="{Binding Path=WeatherOverview.Temperature, Converter={StaticResource FloatToRoundedFloatConverter}, StringFormat='{0}°C'}"
-                            FontSize="{Binding Source=96, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            FontSize="{Binding Source=96, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                            FontAttributes="Bold" />
                         <Label
                             Grid.ColumnSpan="2" Grid.Row="1"
                             Text="{Binding Path=WeatherOverview.ConditionDetail}"

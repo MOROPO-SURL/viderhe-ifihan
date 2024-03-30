@@ -354,6 +354,14 @@
       <Project>{1887c021-dbec-42f7-8563-0e56598b6f9a}</Project>
       <Name>Extend.Essential</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Service.Weather.Api.Common\Service.Weather.Api.Common.csproj">
+      <Project>{4b814041-316c-4dcd-9b93-5faffa963947}</Project>
+      <Name>Service.Weather.Api.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Service.Weather.Api.Connect\Service.Weather.Api.Connect.csproj">
+      <Project>{f3bae034-8fc1-4b40-83a7-5b5eaa5005e2}</Project>
+      <Name>Service.Weather.Api.Connect</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Support.Extend.Management.Presentation\Support.Extend.Management.Presentation.csproj">
       <Project>{8eb24205-e599-4267-a450-684616a1d9c0}</Project>
       <Name>Support.Extend.Management.Presentation</Name>

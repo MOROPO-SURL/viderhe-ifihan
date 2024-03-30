@@ -8,7 +8,7 @@
 		<Authors>MOROPO DotNet DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
 		<Copyright>© MOROPO 2023, Todos los derechos reservados.</Copyright>
-		<Version>0.1.1</Version>
+		<Version>0.2.0</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
@@ -31,7 +31,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
 		<ProjectReference Include="..\Extend.SocialWelfare.Templating\Extend.SocialWelfare.Templating.csproj" />
-		<ProjectReference Include="..\Weather.Api.Connect\Weather.Api.Connect.csproj" />
+		<ProjectReference Include="..\Service.Weather.Api.Connect\Service.Weather.Api.Connect.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
