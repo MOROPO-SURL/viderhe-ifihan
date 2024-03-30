@@ -295,11 +295,21 @@ namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Presenters
                 }
                 else
                 {
-                    screenplayPresentIterationCompleteCallbackAction?.Invoke();
+                    try
+                    {
+                        screenplayPresentIterationCompleteCallbackAction?.Invoke();
 
-                    framesStack = new System.Collections.Generic.Stack<PlacardViewModel>(placards.Reverse());
+                        framesStack = new System.Collections.Generic.Stack<PlacardViewModel>(placards.Reverse());
 
-                    PresentNextPlacardPresentationView();
+                        PresentNextPlacardPresentationView();
+                    }
+                    catch
+                    {
+                        loop = false;
+
+                        presentationEndedCallbackAction?.Invoke();
+                        presentationEndedCallbackAction = null;
+                    }
                 }
             });
         }
@@ -327,12 +337,16 @@ namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Presenters
 
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
-                container.Children.Remove(currentPlacardFrameView);
-
-                if (currentPlacardFrameView is System.IDisposable)
+                try
                 {
-                    (currentPlacardFrameView as System.IDisposable).Dispose();
+                    container.Children.Remove(currentPlacardFrameView);
+
+                    if (currentPlacardFrameView is System.IDisposable)
+                    {
+                        (currentPlacardFrameView as System.IDisposable).Dispose();
+                    }
                 }
+                catch { }
             });
         }
 
