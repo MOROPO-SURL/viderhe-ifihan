@@ -185,7 +185,7 @@
                         <DataTemplate>
                             <ContentView>
                                 <Grid
-                                    Margin="8,4,0,4"
+                                    Margin="8,4"
                                     BackgroundColor="#F5F5F5"
                                     ColumnSpacing="8"
                                     HeightRequest="96">
@@ -236,7 +236,6 @@
                 IsVisible="{Binding Path=SelectedScreenplay, Converter={StaticResource NullToBooleanConverter}}">
                 <Label
                     HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"
                     Margin="30"
                     TextColor="{StaticResource PrimaryColor}"
