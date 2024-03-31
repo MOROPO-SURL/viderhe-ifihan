@@ -256,16 +256,16 @@
                 <Label 
                     VerticalOptions="Center" 
                     HorizontalOptions="FillAndExpand"
-                    Text="{Binding Path=LabelFilterParam, Converter={StaticResource PlacardPanelTitleNullToStringConverter}}"
+                    Text="{Binding Path=PlacardFilter, Converter={StaticResource PlacardPanelTitleNullToStringConverter}}"
                     FontSize="Medium" />
                 <Button 
-                    Text="{Binding Path=LabelFilterParam, Converter={StaticResource FilterIconNullToStringConverter}}"
+                    Text="{Binding Path=PlacardFilter, Converter={StaticResource FilterIconNullToStringConverter}}"
                     Style="{StaticResource TextIconButton}"
                     FontSize="Medium"
                     Clicked="RequestFilterButton_Clicked" />
                 <Button 
                     Text="&#xF235;"
-                    IsEnabled="{Binding Path=LabelFilterParam, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                    IsEnabled="{Binding Path=PlacardFilter, Converter={StaticResource NotNullToBooleanConverter}}"
                     Style="{StaticResource TextIconButton}"
                     FontSize="Medium"
                     Clicked="ClearFilterButton_Clicked" />
