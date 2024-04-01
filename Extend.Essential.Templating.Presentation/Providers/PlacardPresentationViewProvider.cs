@@ -27,7 +27,8 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Providers
                 return new SimpleVideoPlacardView(new Models.View.SimpleVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    VideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri)
+                    VideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri),
+                    StrechAspect = (Xamarin.Forms.Aspect)context.StrechAspectKind
                 }, relativeSizeScaleFactor);
             }
 
