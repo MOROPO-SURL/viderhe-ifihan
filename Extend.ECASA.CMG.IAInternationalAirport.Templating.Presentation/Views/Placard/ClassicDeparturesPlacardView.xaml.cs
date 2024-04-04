@@ -340,7 +340,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
             var delay = System.TimeSpan.FromSeconds(model.UpdateInterval) - stopwatch.Elapsed;
 
-            if (model.ScreenPresentationTime <= (System.DateTime.Now - startedAt + delay + System.TimeSpan.FromSeconds(5))) return;
+            if (model.ScreenPresentationTime > System.TimeSpan.Zero && model.ScreenPresentationTime <= (System.DateTime.Now - startedAt + delay + System.TimeSpan.FromSeconds(5))) return;
 
             if (delay <= System.TimeSpan.Zero)
             {
