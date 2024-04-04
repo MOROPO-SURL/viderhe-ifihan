@@ -26,9 +26,12 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup
                     Label = filter.Label
                 };
 
-                foreach (var item in filter.Tags)
+                if (filter.Tags != null)
                 {
-                    BindingContextPageModel.Tags.Add(item);
+                    foreach (var item in filter.Tags)
+                    {
+                        BindingContextPageModel.Tags.Add(item);
+                    }
                 }
             }
         }

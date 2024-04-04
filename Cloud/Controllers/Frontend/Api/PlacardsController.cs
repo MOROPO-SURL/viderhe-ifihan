@@ -63,7 +63,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
         {
             IQueryable<Placard> selection = null;
 
-            if (filterModel.Tags.Length > 0)
+            if (filterModel.Tags?.Length > 0)
             {
                 selection = Repository.FindBy(GetGlobalSelector()).Where(filterModel.GetSelector()).OrderBy(entity => entity.Label).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.SternId))).AsQueryable();
             }
