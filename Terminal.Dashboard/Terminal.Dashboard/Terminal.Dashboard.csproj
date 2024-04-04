@@ -9,7 +9,7 @@
 		<Authors>MOROPO DotNet DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
 		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
-		<Version>2.0.8</Version>
+		<Version>2.0.9</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
@@ -83,6 +83,9 @@
 		<Compile Update="Pages\ManageVideosPage.xaml.cs">
 			<DependentUpon>ManageVideosPage.xaml</DependentUpon>
 		</Compile>
+		<Compile Update="Pages\Popup\PlayerFilterPopupPage.xaml.cs">
+		  <DependentUpon>PlayerFilterPopupPage.xaml</DependentUpon>
+		</Compile>
 		<Compile Update="Views\LandscapeTemplateThumbnailWrapView.xaml.cs">
 			<DependentUpon>LandscapeTemplateThumbnailWrapView.xaml</DependentUpon>
 		</Compile>
@@ -99,8 +102,11 @@
 		<EmbeddedResource Update="Pages\ManageTagsPage.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Pages\Popup\FilterPlayerPopupPage.xaml">
+		<EmbeddedResource Update="Pages\Popup\PlayerFilterPopupPage.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\Popup\PlacardFilterPopupPage.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Pages\SoundComplementConfigurationPage.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
