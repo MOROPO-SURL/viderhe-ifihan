@@ -1,19 +1,10 @@
 ﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Enumerations;
 using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Models.Context;
-using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models;
-using System.Collections.ObjectModel;
 
-namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Models.View.Placard
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Models.View.Placard.Contract
 {
-    public class ClassicOperationsPlacardViewModel : Contract.AbstractPaginableOperationsPlacardViewModel
+    public class AbstractClassicOperationsPlacardViewModel : AbstractPaginableOperationsPlacardViewModel
     {
-        private ObservableCollection<OperationDisplayModel> items;
-
-        public ClassicOperationsPlacardViewModel()
-        {
-            Items = new ObservableCollection<OperationDisplayModel>();
-        }
-
         public Xamarin.Forms.Color HeaderBackgroundColor { get; set; }
 
         public double HeaderBackgroundOpacity { get; set; }
@@ -45,8 +36,6 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
         public int RowFontSize { get; set; }
 
         public ClassicOperationsColumn[] Columns { get; set; }
-
-        public ObservableCollection<OperationDisplayModel> Items { get => items; set => SetProperty(ref items, value); }
 
         public BackgroundContextModel Background { get; set; }
 

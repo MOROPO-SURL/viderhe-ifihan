@@ -10,7 +10,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Prov
         public GradientContextModel[] GetGradients(System.Guid templateId, string serializedContext)
         {
             if (templateId == ClassicArraivalsTemplateDescriptor.ID ||
-                templateId == ClassicDeparturesTemplateDescriptor.ID)
+                templateId == ClassicDeparturesTemplateDescriptor.ID ||
+                templateId == ClassicDualOperationsTemplateDescriptor.ID)
             {
                 var list = new System.Collections.Generic.List<GradientContextModel>();
 
@@ -35,7 +36,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Prov
         public ImageContextModel[] GetImages(System.Guid templateId, string serializedContext)
         {
             if (templateId == ClassicArraivalsTemplateDescriptor.ID ||
-                templateId == ClassicDeparturesTemplateDescriptor.ID)
+                templateId == ClassicDeparturesTemplateDescriptor.ID ||
+                templateId == ClassicDualOperationsTemplateDescriptor.ID)
             {
                 var list = new System.Collections.Generic.List<ImageContextModel>();
 
@@ -65,7 +67,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Prov
         public VideoContextModel[] GetVideos(System.Guid templateId, string serializedContext)
         {
             if (templateId == ClassicArraivalsTemplateDescriptor.ID ||
-                templateId == ClassicDeparturesTemplateDescriptor.ID)
+                templateId == ClassicDeparturesTemplateDescriptor.ID ||
+                templateId == ClassicDualOperationsTemplateDescriptor.ID)
             {
                 var list = new System.Collections.Generic.List<VideoContextModel>();
 

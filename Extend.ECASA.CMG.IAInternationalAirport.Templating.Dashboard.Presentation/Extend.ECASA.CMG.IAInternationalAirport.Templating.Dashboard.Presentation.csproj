@@ -34,6 +34,9 @@
 	  <EmbeddedResource Update="Pages\ClassicDeparturesPlacardConfigurationPage.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
+	  <EmbeddedResource Update="Pages\ClassicDualOperationsPlacardConfigurationPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
 	  <EmbeddedResource Update="Views\ClassicOperationsPlacardThumbnailView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>

@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Converters;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Placard.ClassicDualOperationsPlacardView"
+    x:Name="RootView">
+    <ContentView.Resources>
+        <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
+        <extendcommontemplatingpresentationconverters:ThicknessToRelativeValueConverter x:Key="ThicknessToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
+
+        <Thickness x:Key="LogoGridMargin">12,0,0,8</Thickness>
+        <Thickness x:Key="LogoImageViewMargin">6,0,6,6</Thickness>
+        <Thickness x:Key="TableHeaderSeparatorMargin">0,0,0,16</Thickness>
+        <Thickness x:Key="TableBodySeparatorMargin">0,6,0,0</Thickness>
+
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Montserrat (Regular)" />
+        </Style>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="DeparturesLayout">
+                <Grid x:Name="TableLayout" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid
+                        x:Name="HeaderGrid"
+                        Grid.Row="0">
+                        <BoxView x:Name="HeaderBaseBackgroundBoxView" />
+                        <Grid 
+                            Padding="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" 
+                            ColumnSpacing="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <BoxView
+                                Color="Transparent"
+                                WidthRequest="{Binding Source={Reference LogoImageView}, Path=Width}" />
+                            <Label
+                                x:Name="HeaderSubTitleLabel"
+                                Grid.Column="2" 
+                                VerticalOptions="Center"
+                                Text="Aeropuerto Internacional de Camagüey"
+                                TextColor="LightCyan"
+                                FontFamily="Montserrat (Bold)"
+                                FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            <Label
+                                x:Name="DateTimeLabel"
+                                Grid.Column="3"
+                                VerticalOptions="Center"
+                                TextColor="White"
+                                FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        </Grid>
+                    </Grid>
+                    <BoxView 
+                        Grid.Row="1" 
+                        Color="White" 
+                        VerticalOptions="Start"
+                        HeightRequest="{Binding Source=4, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" 
+                        Margin="{Binding Source={StaticResource TableHeaderSeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}" />
+                    <Grid 
+                        Grid.Row="0" Grid.RowSpan="2"
+                        HorizontalOptions="Start"
+                        Padding="{Binding Source={StaticResource LogoGridMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}">
+                        <BoxView 
+                            x:Name="LogoBacklightBoxView"
+                            CornerRadius="0,0,3,3" />
+                        <ffimageloadingforms:CachedImage
+                            x:Name="LogoImageView"
+                            Margin="{Binding Source={StaticResource LogoImageViewMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}"
+                            BackgroundColor="Black"
+                            Aspect="AspectFill"
+                            CacheType="Disk"
+                            CacheDuration="8760:00:00" />
+                    </Grid>
+                    <StackLayout
+                        x:Name="ArraivalsSectionHeaderStackLayout"
+                        Grid.Row="2">
+                        <StackLayout
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                            <Label
+                                x:Name="ArraivalsSectionOperationSymbolLabel"
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                Text="&#xF5D4;"
+                                FontFamily="{StaticResource IconFontFamily}"
+                                FontSize="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            <Label
+                                x:Name="ArraivalsSectionHeaderTitleLabel"
+                                VerticalOptions="Center"
+                                Text="ARRIBOS / ARRAIVALS"
+                                FontFamily="Montserrat (Bold)"
+                                FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        </StackLayout>
+                        <BoxView
+                            x:Name="ArraivalsSectionHeaderSeparatorBoxView"
+                            HeightRequest="2" />
+                    </StackLayout>
+                    <Grid x:Name="ArraivalsTableHeaderGrid" Grid.Row="3" ColumnSpacing="0" />
+                    <ScrollView Grid.Row="4"  Margin="{Binding Source={StaticResource TableBodySeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}">
+                        <StackLayout 
+                            x:Name="ArraivalsTableBodyStackLayout"
+                            Spacing="{Binding Source=6, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                            ChildRemoved="TableBodyStackLayout_ChildRemoved" />
+                    </ScrollView>
+                    <StackLayout
+                        x:Name="DeparturesSectionHeaderStackLayout"
+                        Grid.Row="5">
+                        <StackLayout
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                            <Label
+                                x:Name="DeparturesSectionOperationSymbolLabel"
+                                Grid.Column="1"
+                                VerticalOptions="Center"
+                                Text="&#xF5D5;"
+                                FontFamily="{StaticResource IconFontFamily}"
+                                FontSize="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                            <Label
+                                x:Name="DeparturesSectionHeaderTitleLabel"
+                                VerticalOptions="Center"
+                                Text="SALIDAS / DEPARTURES"
+                                FontFamily="Montserrat (Bold)"
+                                FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                        </StackLayout>
+                        <BoxView
+                            x:Name="DeparturesSectionHeaderSeparatorBoxView"
+                            HeightRequest="2" />
+                    </StackLayout>
+                    <Grid x:Name="DeparturesTableHeaderGrid" Grid.Row="6" ColumnSpacing="0" />
+                    <ScrollView Grid.Row="7"  Margin="{Binding Source={StaticResource TableBodySeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}">
+                        <StackLayout 
+                            x:Name="DeparturesTableBodyStackLayout"
+                            Spacing="{Binding Source=6, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                            ChildRemoved="TableBodyStackLayout_ChildRemoved" />
+                    </ScrollView>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

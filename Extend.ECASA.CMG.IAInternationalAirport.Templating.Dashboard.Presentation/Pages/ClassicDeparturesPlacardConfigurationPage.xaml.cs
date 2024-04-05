@@ -1,7 +1,5 @@
-﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Factories;
-using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Models.Page;
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Models.Page;
 using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dashboard.Presentation.Models.View;
-using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Descriptors;
 using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Enumerations;
 using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Extensions;
 using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions;
@@ -27,7 +25,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
         }
 
         public ClassicDeparturesPlacardConfigurationPage(Support.Presentation.Models.View.PlacardViewModel placardViewModel, System.Action successfulCompleteCallbackAction)
-            : base(ClassicOperationsPlacardConfigurationPageModelFactory.Build(placardViewModel))
+            : base(Factories.ClassicOperationsPlacardConfigurationPageModelFactory.Build(placardViewModel))
         {
             if (placardViewModel == null)
             {
@@ -79,7 +77,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
 
             if (placardViewModel == null)
             {
-                var templateDescriptor = new ClassicDeparturesTemplateDescriptor();
+                var templateDescriptor = new Descriptors.ClassicDeparturesTemplateDescriptor();
 
                 Title = string.Format("Nuevo Cartel ({0})", templateDescriptor.Name);
 
@@ -329,7 +327,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
                     var model = new Cloud.Api.Common.Models.PlacardInputModel
                     {
                         Label = BindingContextPageModel.Label,
-                        TemplateId = ClassicDeparturesTemplateDescriptor.ID,
+                        TemplateId = Descriptors.ClassicDeparturesTemplateDescriptor.ID,
                         PlayerOrientationSupportKind = BindingContextPageModel.PlayerOrientationSupportKind.FromConfiguration(),
                         SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(context),
                         Tags = BindingContextPageModel.Tags.ToArray()

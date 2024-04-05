@@ -3,9 +3,9 @@ using Xamarin.Forms;
 
 namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions
 {
-    public static class ClassicOperationsPlacardViewModelExtensions
+    public static class AbstractClassicOperationsPlacardViewModelExtensions
     {
-        public static void InitializeTableHeader(this Models.View.Placard.ClassicOperationsPlacardViewModel target, Grid layout, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind operationKind, Thickness itemMargin, double itemFontSize, out Label timeSizeReferenceLabel, out Label gateSizeReferenceLabel)
+        public static void InitializeTableHeader(this Models.View.Placard.Contract.AbstractClassicOperationsPlacardViewModel target, Grid layout, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind operationKind, Thickness itemMargin, double itemFontSize, out Label timeSizeReferenceLabel, out Label gateSizeReferenceLabel)
         {
             timeSizeReferenceLabel = new Label
             {

@@ -1,12 +1,11 @@
 ﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Enumerations;
-using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Models.View.Placard;
 using Xamarin.Forms;
 
 namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Extensions
 {
     public static class OperationDisplayModelExtensions
     {
-        public static void AttachTo(this Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel target, int index, StackLayout layout, ColumnDefinitionCollection columnDefinitions, ClassicOperationsPlacardViewModel model, Thickness margin, double fontSize, double timeColumnWidth, double gateColumnWidth)
+        public static void AttachTo(this Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel target, int index, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind operationKind, StackLayout layout, ColumnDefinitionCollection columnDefinitions, Models.View.Placard.Contract.AbstractClassicOperationsPlacardViewModel model, Thickness margin, double fontSize, double timeColumnWidth, double gateColumnWidth)
         {
             var useSecundaryColorProfile = model.UseStrippedRows && index % 2 != 0;
 
@@ -23,7 +22,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             {
                 Animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                 {
-                    Direction = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Right,
+                    Direction = operationKind == Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival ? SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Right : SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Left,
                     RelativeOffset = layout.Width,
                     Duration = "650",
                     EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn

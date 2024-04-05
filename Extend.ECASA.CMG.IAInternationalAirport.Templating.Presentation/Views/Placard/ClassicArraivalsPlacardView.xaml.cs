@@ -19,7 +19,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
         private static Common.Templating.Presentation.Converters.SizeToRelativeValueConverter SIZE_TO_RELATIVE_VALUE_CONVERTER = new Common.Templating.Presentation.Converters.SizeToRelativeValueConverter();
 
-        private ClassicOperationsPlacardViewModel model;
+        private ClassicOperationsSinglePlacardViewModel model;
 
         private System.DateTime startedAt;
 
@@ -29,7 +29,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
         private View globalBackgroundView;
         private View bannerBackgroundView;
 
-        public ClassicArraivalsPlacardView(ClassicOperationsPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public ClassicArraivalsPlacardView(ClassicOperationsSinglePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -329,7 +329,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        item.AttachTo(index++, TableBodyStackLayout, TableHeaderGrid.ColumnDefinitions, model, TABLE_ITEM_MARGIN, tableBodyItemFontSize, timeSizeReferenceLabel?.Width ?? 0, gateSizeReferenceLabel?.Width ?? 0);
+                        item.AttachTo(index++, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival, TableBodyStackLayout, TableHeaderGrid.ColumnDefinitions, model, TABLE_ITEM_MARGIN, tableBodyItemFontSize, timeSizeReferenceLabel?.Width ?? 0, gateSizeReferenceLabel?.Width ?? 0);
                     });
                 }
             }
