@@ -96,7 +96,7 @@
                     </Grid>
                     <BoxView 
                         Grid.Row="1" 
-                        Color="LightCyan" 
+                        Color="White" 
                         HeightRequest="{Binding Source=4, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" 
                         Margin="{Binding Source={StaticResource TableHeaderSeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}" />
                     <Grid x:Name="TableHeaderGrid" Grid.Row="2" ColumnSpacing="0" />
