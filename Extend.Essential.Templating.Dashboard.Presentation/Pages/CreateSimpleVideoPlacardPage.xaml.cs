@@ -22,7 +22,7 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Page
         private System.Action successfulCompleteCallbackAction;
 
         public CreateSimpleVideoPlacardPage(VideoViewModel videoViewModel, SimpleVideoTemplateDescriptor templateDescriptor, System.Action successfulCompleteCallbackAction)
-            : base(new Models.Page.CreateSimpleVideoPlacardPageModel
+            : base(new CreateSimpleVideoPlacardPageModel
             {
                 Video = videoViewModel,
                 Label = videoViewModel.About
@@ -59,7 +59,7 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Page
             {
                 var client = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
-                var model = new Cloud.Api.Common.Models.PlacardInputModel
+                var model = new PlacardInputModel
                 {
                     Label = BindingContextPageModel.Label,
                     TemplateId = templateDescriptor.Id,
@@ -67,7 +67,8 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Page
                     SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new Templating.Models.Context.SimpleVideoPlacardContextModel
                     {
                         RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
-                        Video = BindingContextPageModel.Video.ToContextModel()
+                        Video = BindingContextPageModel.Video.ToContextModel(),
+                        StrechAspectKind = BindingContextPageModel.StrechAspectKind
                     }),
                     Tags = BindingContextPageModel.Tags.ToArray()
                 };
