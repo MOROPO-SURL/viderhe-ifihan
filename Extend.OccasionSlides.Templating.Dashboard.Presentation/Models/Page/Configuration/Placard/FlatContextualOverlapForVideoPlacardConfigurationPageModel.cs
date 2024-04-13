@@ -11,6 +11,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         private bool useOverlapShadown;
         private bool contextedVideoCenteredAtPresentation;
         private OverlapAlignment overlapAlignment;
+        private bool isOverlapAnchoredAtVertical;
 
         public FlatContextualOverlapForVideoPlacardConfigurationPageModel()
         {
@@ -58,6 +59,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         public OverlapAlignment OverlapAlignment { get => overlapAlignment; set => SetProperty(ref overlapAlignment, value); }
 
         public OverlapAlignment[] AvailableOverlapAlignments { get; private set; }
+
+        public bool IsOverlapAnchoredAtVertical { get => isOverlapAnchoredAtVertical; set => SetProperty(ref isOverlapAnchoredAtVertical, value); }
 
         protected override void DisposeUnmanagementResources()
         {

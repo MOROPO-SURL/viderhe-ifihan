@@ -89,6 +89,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                             OverlapShapeKind = BindingContextPageModel.OverlapShapeKind,
                             OverlapAlignment = BindingContextPageModel.OverlapAlignment,
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
+                            IsOverlapAnchoredAtVertical = BindingContextPageModel.IsOverlapAnchoredAtVertical,
                             ContentBlocks = BindingContextPageModel.ContentBlocks.Select(item => item.Target.ToContextModel()).ToArray()
                         }, new Newtonsoft.Json.JsonSerializerSettings
                         {
@@ -129,6 +130,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                             OverlapShapeKind = BindingContextPageModel.OverlapShapeKind,
                             OverlapAlignment = BindingContextPageModel.OverlapAlignment,
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
+                            IsOverlapAnchoredAtVertical = BindingContextPageModel.IsOverlapAnchoredAtVertical,
                             ContentBlocks = BindingContextPageModel.ContentBlocks.Select(item => item.Target.ToContextModel()).ToArray()
                         }, new Newtonsoft.Json.JsonSerializerSettings
                         {

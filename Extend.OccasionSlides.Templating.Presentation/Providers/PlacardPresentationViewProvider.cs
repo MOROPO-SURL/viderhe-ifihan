@@ -30,7 +30,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
                     ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
                 };
 
-                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait || context.IsOverlapAnchoredAtVertical)
                 {
                     return new Views.Placard.PortraitTranslucentContextualOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
@@ -58,7 +58,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
                     ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
                 };
 
-                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait || context.IsOverlapAnchoredAtVertical)
                 {
                     return new Views.Placard.PortraitTranslucentContextualOverlapForImageSecuencePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
@@ -91,7 +91,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
                     ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
                 };
 
-                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait || context.IsOverlapAnchoredAtVertical)
                 {
                     return new Views.Placard.PortraitFlatContextualOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }
@@ -152,7 +152,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
                     ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
                 };
 
-                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait)
+                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait || context.IsOverlapAnchoredAtVertical)
                 {
                     return new Views.Placard.PortraitTrailContextualOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
                 }

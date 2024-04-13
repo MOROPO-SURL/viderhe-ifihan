@@ -29,7 +29,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                 OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
                 OverlapAlignment = context.OverlapAlignment,
                 PictureSlidePresentationSecounds = System.Convert.ToInt32(context.PresentedPictureSlideSecuence.PicturePresentationSecounds),
-                ContextedImageSecuenceCenteredAtPresentation = context.ContextedImageSecuenceCenteredAtPresentation
+                ContextedImageSecuenceCenteredAtPresentation = context.ContextedImageSecuenceCenteredAtPresentation,
+                IsOverlapAnchoredAtVertical = context.IsOverlapAnchoredAtVertical
             };
 
             foreach (var item in context.PresentedPictureSlideSecuence.Slides)

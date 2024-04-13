@@ -82,6 +82,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                             OverlapShapeKind = BindingContextPageModel.OverlapShapeKind,
                             OverlapAlignment = BindingContextPageModel.OverlapAlignment,
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
+                            IsOverlapAnchoredAtVertical = BindingContextPageModel.IsOverlapAnchoredAtVertical,
                             ContentBlocks = BindingContextPageModel.ContentBlocks.Select(item => item.Target.ToContextModel()).ToArray(),
                             PresentedPictureSlideSecuence = new Essential.Templating.Models.Context.PictureSlideSecuencePlacardContextModel
                             {
@@ -125,6 +126,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                             OverlapShapeKind = BindingContextPageModel.OverlapShapeKind,
                             OverlapAlignment = BindingContextPageModel.OverlapAlignment,
                             OverlapBackgroundColor = BindingContextPageModel.OverlapBackgroundColor.ToHex(),
+                            IsOverlapAnchoredAtVertical = BindingContextPageModel.IsOverlapAnchoredAtVertical,
                             ContentBlocks = BindingContextPageModel.ContentBlocks.Select(item => item.Target.ToContextModel()).ToArray(),
                             PresentedPictureSlideSecuence = new Essential.Templating.Models.Context.PictureSlideSecuencePlacardContextModel
                             {

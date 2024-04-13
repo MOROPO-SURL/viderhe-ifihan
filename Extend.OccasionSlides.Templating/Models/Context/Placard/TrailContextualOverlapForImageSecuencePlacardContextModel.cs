@@ -16,6 +16,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Placard
 
         public OverlapTrailMode OverlapTrailMode { get; set; }
 
+        public bool IsOverlapAnchoredAtVertical { get; set; }
+
         public Essential.Templating.Models.Context.PictureSlideSecuencePlacardContextModel PresentedPictureSlideSecuence { get; set; }
 
         public bool ContextedImageSecuenceCenteredAtPresentation { get; set; }

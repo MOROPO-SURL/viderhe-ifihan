@@ -12,6 +12,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         private OverlapTrailMode overlapTrailMode;
         private int pictureSlidePresentationSecounds;
         private bool contextedImageSecuenceCenteredAtPresentation;
+        private bool isOverlapAnchoredAtVertical;
 
         public TrailContextualOverlapForImageSecuencePlacardConfigurationPageModel()
         {
@@ -82,5 +83,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         public int PictureSlidePresentationSecounds { get => pictureSlidePresentationSecounds; set => SetProperty(ref pictureSlidePresentationSecounds, value); }
 
         public PictureLayoutMode[] AvailableLayoutModes { get; private set; }
+
+        public bool IsOverlapAnchoredAtVertical { get => isOverlapAnchoredAtVertical; set => SetProperty(ref isOverlapAnchoredAtVertical, value); }
     }
 }

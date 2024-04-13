@@ -509,6 +509,14 @@
                                 Style="{StaticResource FormFieldFrame}"
                                 Margin="0,0,0,6">
                                 <StackLayout>
+                                    <Label Text="Mantener en la Vertical" Style="{StaticResource FormLabel}" />
+                                    <Switch IsToggled="{Binding Path=IsOverlapAnchoredAtVertical}" />
+                                </StackLayout>
+                            </Frame>
+                            <Frame 
+                                Style="{StaticResource FormFieldFrame}"
+                                Margin="0,0,0,6">
+                                <StackLayout>
                                     <Label Text="Color de Fondo" Style="{StaticResource FormLabel}" />
                                     <simplecolorpicker:ColorPickerEntry 
                                         EditAlfa="False"

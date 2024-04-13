@@ -14,6 +14,8 @@
 
         public bool UseOverlapShadown { get; set; }
 
+        public bool IsOverlapAnchoredAtVertical { get; set; }
+
         public Common.Templating.Models.Context.VideoContextModel ContextedVideo { get; set; }
 
         public bool ContextedVideoCenteredAtPresentation { get; set; }

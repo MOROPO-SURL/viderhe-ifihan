@@ -10,6 +10,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         private OverlapAlignment overlapAlignment;
         private Xamarin.Forms.Color overlapBackgroundColor;
         private int pictureSlidePresentationSecounds;
+        private bool isOverlapAnchoredAtVertical;
 
         public TranslucentContextualOverlapForImageSecuencePlacardConfigurationPageModel()
         {
@@ -67,5 +68,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         public PictureLayoutMode[] AvailableLayoutModes { get; private set; }
 
         public int PictureSlidePresentationSecounds { get => pictureSlidePresentationSecounds; set => SetProperty(ref pictureSlidePresentationSecounds, value); }
+
+        public bool IsOverlapAnchoredAtVertical { get => isOverlapAnchoredAtVertical; set => SetProperty(ref isOverlapAnchoredAtVertical, value); }
     }
 }

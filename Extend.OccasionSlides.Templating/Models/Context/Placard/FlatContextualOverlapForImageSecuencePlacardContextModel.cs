@@ -16,6 +16,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Placard
 
         public bool UseOverlapShadown { get; set; }
 
+        public bool IsOverlapAnchoredAtVertical { get; set; }
+
         public Essential.Templating.Models.Context.PictureSlideSecuencePlacardContextModel PresentedPictureSlideSecuence { get; set; }
 
         public bool ContextedImageSecuenceCenteredAtPresentation { get; set; }

@@ -13,6 +13,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         private bool contextedImageCenteredAtPresentation;
         private OverlapAlignment overlapAlignment;
         private Essential.Templating.Enumerations.PictureLayoutMode contextedImageLayoutMode;
+        private bool isOverlapAnchoredAtVertical;
 
         public FlatContextualOverlapForImagePlacardConfigurationPageModel()
         {
@@ -73,6 +74,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         public OverlapAlignment[] AvailableOverlapAlignments { get; private set; }
 
         public Essential.Templating.Enumerations.PictureLayoutMode[] AvailablePictureLayoutModes { get; private set; }
+
+        public bool IsOverlapAnchoredAtVertical { get => isOverlapAnchoredAtVertical; set => SetProperty(ref isOverlapAnchoredAtVertical, value); }
 
         protected override void DisposeUnmanagementResources()
         {

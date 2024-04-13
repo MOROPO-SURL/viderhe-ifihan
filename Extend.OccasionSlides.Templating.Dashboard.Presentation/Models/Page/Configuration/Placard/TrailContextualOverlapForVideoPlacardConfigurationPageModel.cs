@@ -12,6 +12,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         private bool contextedVideoCenteredAtPresentation;
         private Support.Presentation.Models.View.VideoViewModel contextedVideo;
         private bool isVideoFramed;
+        private bool isOverlapAnchoredAtVertical;
 
         public TrailContextualOverlapForVideoPlacardConfigurationPageModel()
         {
@@ -72,6 +73,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         public Support.Presentation.Models.View.VideoViewModel ContextedVideo { get => contextedVideo; set => SetProperty(ref contextedVideo, value); }
 
         public bool IsContextedVideoFramed { get => isVideoFramed; set => SetProperty(ref isVideoFramed, value); }
+
+        public bool IsOverlapAnchoredAtVertical { get => isOverlapAnchoredAtVertical; set => SetProperty(ref isOverlapAnchoredAtVertical, value); }
 
         protected override void DisposeUnmanagementResources()
         {

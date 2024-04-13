@@ -11,6 +11,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         private Support.Presentation.Models.View.ImageViewModel contextedImage;
         private bool contextedImageZoomingEnabled;
         private Essential.Templating.Enumerations.PictureLayoutMode contextedImageLayoutMode;
+        private bool isOverlapAnchoredAtVertical;
 
         public TranslucentContextualOverlapForImagePlacardConfigurationPageModel()
         {
@@ -67,6 +68,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         public bool ContextedImageZoomingEnabled { get => contextedImageZoomingEnabled; set => SetProperty(ref contextedImageZoomingEnabled, value); }
 
         public Essential.Templating.Enumerations.PictureLayoutMode[] AvailablePictureLayoutModes { get; private set; }
+
+        public bool IsOverlapAnchoredAtVertical { get => isOverlapAnchoredAtVertical; set => SetProperty(ref isOverlapAnchoredAtVertical, value); }
 
         protected override void DisposeUnmanagementResources()
         {

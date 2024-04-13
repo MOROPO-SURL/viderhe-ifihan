@@ -10,6 +10,8 @@
 
         public Enumerations.OverlapAlignment OverlapAlignment { get; set; }
 
+        public bool IsOverlapAnchoredAtVertical { get; set; }
+
         public Essential.Templating.Models.Context.PictureSlideSecuencePlacardContextModel PresentedPictureSlideSecuence { get; set; }
 
         public string OverlapBackgroundColor { get; set; }

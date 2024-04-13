@@ -31,7 +31,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                 OverlapSize = context.OverlapSize,
                 OverlapShapeKind = context.OverlapShapeKind,
                 OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
-                OverlapAlignment = context.OverlapAlignment
+                OverlapAlignment = context.OverlapAlignment,
+                IsOverlapAnchoredAtVertical = context.IsOverlapAnchoredAtVertical
             };
 
             if (context.ContentBlocks != null)
