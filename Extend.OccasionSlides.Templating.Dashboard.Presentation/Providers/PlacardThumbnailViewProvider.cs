@@ -8,7 +8,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         {
             if (model.Template.Id == TranslucentContextualOverlapForImageTemplateDescriptor.ID ||
                 model.Template.Id == FlatContextualOverlapForImageTemplateDescriptor.ID ||
-                model.Template.Id == TrailContextualOverlapForImageTemplateDescriptor.ID)
+                model.Template.Id == TrailContextualOverlapForImageTemplateDescriptor.ID ||
+                model.Template.Id == GradientContextualOverlapForImageTemplateDescriptor.ID)
             {
                 return new Views.Thumbnail.CommonContextualOverlapForImagePlacardThumbnailView(model);
             }

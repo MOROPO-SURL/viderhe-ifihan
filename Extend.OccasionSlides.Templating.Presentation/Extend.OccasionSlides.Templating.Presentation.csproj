@@ -284,6 +284,12 @@
 		<Compile Update="Views\Placard\LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
 			<DependentUpon>LeftLandscapeContextualTranslucentOverlapForImagePlacardView.xaml</DependentUpon>
 		</Compile>
+		<Compile Update="Views\Placard\PortraitFlatContextualOverlapForImagePlacardView.xaml.cs">
+		  <DependentUpon>PortraitFlatContextualOverlapForImagePlacardView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\Placard\PortraitGradientContextualOverlapForImagePlacardView.xaml.cs">
+		  <DependentUpon>PortraitGradientContextualOverlapForImagePlacardView.xaml</DependentUpon>
+		</Compile>
 		<Compile Update="Views\Placard\RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml.cs">
 			<DependentUpon>RightLandscapeContextualTranslucentOverlapForImagePlacardView.xaml</DependentUpon>
 		</Compile>
@@ -311,6 +317,9 @@
 		<EmbeddedResource Update="Views\Placard\LeftLandscapeContextualFlatOverlapForVideoPlacardView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\LeftLandscapeContextualGradientOverlapForImagePlacardView.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Views\Placard\LeftLandscapeContextualTrailOverlapForImageSecuencePlacardView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
@@ -323,11 +332,17 @@
 		<EmbeddedResource Update="Views\Placard\LeftLandscapeContextualFlatOverlapForImageSecuencePlacardView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\PortraitGradientContextualOverlapForImagePlacardView.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Views\Placard\RightLandscapeContextualFlatOverlapForImageSecuencePlacardView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\Placard\RightLandscapeContextualFlatOverlapForVideoPlacardView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\Placard\RightLandscapeContextualGradientOverlapForImagePlacardView.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\Placard\RightLandscapeContextualTrailOverlapForImageSecuencePlacardView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>

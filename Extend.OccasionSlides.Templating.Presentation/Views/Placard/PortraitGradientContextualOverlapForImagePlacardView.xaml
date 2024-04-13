@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Converters"
+    xmlns:viewtemplates="clr-namespace:MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Template"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:mg="clr-namespace:MagicGradients;assembly=MagicGradients"
+    x:Class="MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Placard.PortraitGradientContextualOverlapForImagePlacardView"
+    x:Name="RootView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <viewtemplates:ContentBlockTemplateSelector x:Key="ContentBlockTemplateSelector" RelativeSizeScalableView="{Reference RootView}" />
+
+            <converters:OverlapWidthToInfoBlockPaddingConverter x:Key="OverlapWidthToInfoBlockPaddingConverter" />
+            <converters:OverlapWidthToInfoBlockLabelPaddingConverter x:Key="OverlapWidthToInfoBlockLabelPaddingConverter" />
+            <converters:OverlapContentLayoutHeightToGradientStopOffsetConverter x:Key="OverlapContentLayoutHeightToGradientStopOffsetConverter" PlacardRootView="{Reference RootView}" />
+            <converters:HeaderFontFamilyNameToFontAttributesConverter x:Key="HeaderFontFamilyNameToFontAttributesConverter" />
+            <converters:OverlapVerticalAlignmentToLayoutOptionsConverter x:Key="OverlapVerticalAlignmentToLayoutOptionsConverter" />
+            <converters:OverlapVerticalAlignmentToGradientAngleConverter x:Key="OverlapVerticalAlignmentToGradientAngleConverter" />
+            <converters:IsNullToImageAspectConverter x:Key="IsNullToImageAspectConverter" />
+
+            <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
+            <sscxftoolkitpresentationconverters:NotNullToBooleanConverter x:Key="NotNullToBooleanConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <Grid x:Name="PlacardLayout">
+                <Grid 
+                    x:Name="ContextedImageWrapper"
+                    BackgroundColor="Black">
+                    <ffimageloadingforms:CachedImage
+                        x:Name="ContextedImageThumbnailImage"
+                        IsVisible="{Binding Path=ContextedImageThumbnailSource, Converter={StaticResource NotNullToBooleanConverter}, Mode=OneTime}"
+                        Source="{Binding Path=ContextedImageThumbnailSource, Mode=OneTime}"
+                        Aspect="AspectFill"
+                        CacheType="Disk"
+                        CacheDuration="8760:00:00"
+                        FadeAnimationEnabled="False"
+                        IsOpaque="False">
+                        <ffimageloadingforms:CachedImage.Transformations>
+                            <fftransformations:BlurredTransformation />
+                        </ffimageloadingforms:CachedImage.Transformations>
+                    </ffimageloadingforms:CachedImage>
+                    <ffimageloadingforms:CachedImage
+                        x:Name="ContextedImagen"
+                        FadeAnimationEnabled="False"
+                        Source="{Binding Path=ContextedImageSource, Mode=OneTime}" 
+                        Aspect="{Binding Path=ContextedImageThumbnailSource, Converter={StaticResource IsNullToImageAspectConverter}}"
+                        CacheType="Disk"
+                        CacheDuration="8760:00:00" />
+                </Grid>
+                <Grid x:Name="OverlapLayout">
+                    <mg:GradientView>
+                        <mg:LinearGradient Angle="{Binding Path=OverlapAlignment, Converter={StaticResource OverlapVerticalAlignmentToGradientAngleConverter}, Mode=OneTime}">
+                            <mg:GradientStop Color="{Binding Path=GradientColor}" Offset="{Binding Source={Reference OverlapContentLayout}, Path=Height, Converter={StaticResource OverlapContentLayoutHeightToGradientStopOffsetConverter}}" />
+                            <mg:GradientStop Color="Transparent" />
+                        </mg:LinearGradient>
+                    </mg:GradientView>
+                    <StackLayout
+                        x:Name="OverlapContentLayout"
+                        VerticalOptions="{Binding Path=OverlapAlignment, Converter={StaticResource OverlapVerticalAlignmentToLayoutOptionsConverter}, Mode=OneTime}"
+                        Padding="{Binding Source={Reference Wrapper}, Path=Height, Converter={StaticResource FractionConverter}, ConverterParameter=20}"
+                        Spacing="0">
+                        <StackLayout
+                            x:Name="InfoBlocksLayout"
+                            Spacing="0"
+                            BindableLayout.ItemsSource="{Binding Path=ContentBlocks}"
+                            BindableLayout.ItemTemplateSelector="{StaticResource ContentBlockTemplateSelector}" />
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

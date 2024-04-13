@@ -161,6 +161,28 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Providers
                 return result.ToArray();
             }
 
+            if (templateId == GradientContextualOverlapForImageTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<GradientContextualOverlapForImagePlacardContextModel>(serializedContext, new Newtonsoft.Json.JsonSerializerSettings
+                {
+                    TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto
+                });
+
+                var result = new System.Collections.Generic.List<Common.Templating.Models.Context.ImageContextModel>
+                {
+                    context.ContextedImage
+                };
+
+                foreach (var item in context.ContentBlocks)
+                {
+                    if (!(item is ImageContentBlockContextModel)) continue;
+
+                    result.Add((item as ImageContentBlockContextModel).Image);
+                }
+
+                return result.ToArray();
+            }
+
             return null;
         }
 

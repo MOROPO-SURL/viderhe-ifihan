@@ -82,6 +82,9 @@
 		<EmbeddedResource Update="Pages\Configuration\Placard\FlatContextualOverlapForVideoPlacardConfigurationPage.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\Configuration\Placard\GradientContextualOverlapForImagePlacardConfigurationPage.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Pages\Configuration\Placard\TrailContextualOverlapForImagePlacardConfigurationPage.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>

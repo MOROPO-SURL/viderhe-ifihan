@@ -56,6 +56,11 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                 return new Pages.Configuration.Placard.TrailContextualOverlapForImageSecuencePlacardConfigurationPage(completedActionCallback);
             }
 
+            if (templateDescriptor is GradientContextualOverlapForImageTemplateDescriptor)
+            {
+                return new Pages.Configuration.Placard.GradientContextualOverlapForImagePlacardConfigurationPage(completedActionCallback);
+            }
+
             return null;
         }
 
@@ -109,6 +114,11 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
             if (placardViewModel.Template.Id == TrailContextualOverlapForImageSecuenceTemplateDescriptor.ID)
             {
                 return new Pages.Configuration.Placard.TrailContextualOverlapForImageSecuencePlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == GradientContextualOverlapForImageTemplateDescriptor.ID)
+            {
+                return new Pages.Configuration.Placard.GradientContextualOverlapForImagePlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;

@@ -296,6 +296,37 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
                 return new Views.Placard.RightLandscapeContextualFlatOverlapForVideoPlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
             }
 
+            if (model.Template.Id == GradientContextualOverlapForImageTemplateDescriptor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<GradientContextualOverlapForImagePlacardContextModel>(model.SerializedContext, new Newtonsoft.Json.JsonSerializerSettings { TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto });
+
+                var targetPlacardViewModel = new Models.View.Placard.GradientContextualOverlapForImagePlacardViewModel
+                {
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.ContextedImage.Id)),
+                    ContextedImageThumbnailSource = !context.ContextedImageAspectToFitAndComplementFilled ? null : Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(context.ContextedImage.ThumbnailId)),
+                    ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
+                    ContextedImageCenteredAtPresentation = context.ContextedImageCenteredAtPresentation,
+                    OverlapSize = context.OverlapSize,
+                    GradientColor = Xamarin.Forms.Color.FromHex(context.GradientColor),
+                    OverlapAlignment = context.OverlapAlignment,
+                    ContentBlocks = context.ContentBlocks.Select(item => item.ToViewModel()).ToArray()
+                };
+
+                if (orientation == Xamarin.Essentials.DisplayOrientation.Portrait || context.IsOverlapAnchoredAtVertical)
+                {
+                    return new Views.Placard.PortraitGradientContextualOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
+                }
+
+                if (context.OverlapAlignment == OverlapAlignment.Start)
+                {
+                    return new Views.Placard.LeftLandscapeContextualGradientOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
+                }
+
+                return new Views.Placard.RightLandscapeContextualGradientOverlapForImagePlacardView(targetPlacardViewModel, relativeSizeScaleFactor);
+            }
+
             return null;
         }
     }
