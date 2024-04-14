@@ -207,6 +207,16 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
             });
         }
 
+        private void PickPrimaryColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(PrimaryColorPicked_Callback, BindingContextPageModel.PrimaryColor));
+        }
+
+        private void PickSecoundaryColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(SecoundaryColorPicked_Callback, BindingContextPageModel.SecoundaryColor));
+        }
+
         private void PickLogoImageButton_Clicked(object sender, System.EventArgs eventArgs)
         {
             string[] fileSelector = null;
@@ -351,6 +361,16 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
         private void OverlayConfigurationSuccesfulComplete_Callback(string serializedContext)
         {
             BindingContextPageModel.SerializedOverlayContext = serializedContext;
+        }
+
+        private void PrimaryColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.PrimaryColor = color;
+        }
+
+        private void SecoundaryColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.SecoundaryColor = color;
         }
 
         protected override void DisposeUnmanagementResources()
