@@ -139,10 +139,13 @@
                                 Text="Color Primario" 
                                 Style="{StaticResource FormLabel}" />
                             <StackLayout Orientation="Horizontal">
-                                <BoxView
+                                <Grid
                                     HorizontalOptions="FillAndExpand"
-                                    Color="{Binding Path=PrimaryColor}"
-                                    HeightRequest="32" />
+                                    BackgroundColor="DimGray"
+                                    Padding="1"
+                                    HeightRequest="32">
+                                    <BoxView Color="{Binding Path=PrimaryColor}" />
+                                </Grid>
                                 <Button 
                                     HorizontalOptions="End"
                                     Style="{StaticResource TextIconButton}"
@@ -158,10 +161,13 @@
                                 Text="Color Secundario" 
                                 Style="{StaticResource FormLabel}" />
                             <StackLayout Orientation="Horizontal">
-                                <BoxView
+                                <Grid
                                     HorizontalOptions="FillAndExpand"
-                                    Color="{Binding Path=SecoundaryColor}"
-                                    HeightRequest="32" />
+                                    BackgroundColor="DimGray"
+                                    Padding="1"
+                                    HeightRequest="32">
+                                    <BoxView Color="{Binding Path=SecoundaryColor}" />
+                                </Grid>
                                 <Button 
                                     HorizontalOptions="End"
                                     Style="{StaticResource TextIconButton}"
