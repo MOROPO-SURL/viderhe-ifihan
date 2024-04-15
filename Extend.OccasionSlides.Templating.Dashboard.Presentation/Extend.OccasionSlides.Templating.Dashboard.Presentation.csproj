@@ -8,12 +8,11 @@
 		<Authors>MOROPO DotNet DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
 		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
-		<Version>0.3.0</Version>
+		<Version>0.3.1</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.7" />
 		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
 	</ItemGroup>
 
