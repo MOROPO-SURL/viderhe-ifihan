@@ -42,14 +42,18 @@
                         <RowDefinition Height="296" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <BoxView
+                    <Grid
                         Grid.Column="0" Grid.Row="0"
-                        Color="{Binding Path=InColor}"
-                        CornerRadius="3,0,3,0" />
-                    <BoxView
+                        BackgroundColor="DimGray"
+                        Padding="1">
+                        <BoxView Color="{Binding Path=InColor}" />
+                    </Grid>
+                    <Grid
                         Grid.Column="1" Grid.Row="0"
-                        Color="{Binding Path=OutColor}"
-                        CornerRadius="0,3,0,3" />
+                        BackgroundColor="DimGray"
+                        Padding="1">
+                        <BoxView Color="{Binding Path=OutColor}" />
+                    </Grid>
                     <Label
                         Grid.Column="0" Grid.Row="1"
                         Text="Actual"
