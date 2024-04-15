@@ -45,6 +45,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                 OverlapAlignment.Start,
                 OverlapAlignment.End
             };
+            OverlapBackgroundColor = Xamarin.Forms.Color.Black;
         }
 
         public OverlapShapeKind OverlapShapeKind { get => overlapShapeKind; set => SetProperty(ref overlapShapeKind, value); }

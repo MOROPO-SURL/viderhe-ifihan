@@ -14,6 +14,7 @@
 
             textFontSize = 21;
             textMaxLineCount = 1;
+            textColor = Xamarin.Forms.Color.Black;
         }
 
         public System.Guid Id { get; set; }
@@ -26,6 +27,6 @@
 
         public int TextFontSize { get => textFontSize; set => SetProperty(ref textFontSize, value); }
 
-        public Xamarin.Forms.Color TextColor { get => textColor; set => textColor = value; }
+        public Xamarin.Forms.Color TextColor { get => textColor; set => SetProperty(ref textColor, value); }
     }
 }

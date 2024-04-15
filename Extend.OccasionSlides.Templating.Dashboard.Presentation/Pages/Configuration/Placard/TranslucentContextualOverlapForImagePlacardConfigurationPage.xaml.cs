@@ -192,6 +192,16 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
             });
         }
 
+        private void OverlapBackgroundColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(OverlapBackgroundColorPicked_Callback, BindingContextPageModel.OverlapBackgroundColor));
+        }
+
+        private void OverlapBackgroundColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.OverlapBackgroundColor = color;
+        }
+
         private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
         {
             BindingContextPageModel.Tags.Add(model);

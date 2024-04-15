@@ -11,6 +11,7 @@
             Id = System.Guid.NewGuid();
 
             fontSize = 60;
+            color = Xamarin.Forms.Color.Black;
         }
 
         public System.Guid Id { get; set; }
@@ -19,6 +20,6 @@
 
         public int FontSize { get => fontSize; set => SetProperty(ref fontSize, value); }
 
-        public Xamarin.Forms.Color Color { get => color; set => color = value; }
+        public Xamarin.Forms.Color Color { get => color; set => SetProperty(ref color, value); }
     }
 }

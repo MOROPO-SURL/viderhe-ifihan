@@ -20,6 +20,8 @@
             textFontSize = 21;
             textMaxLineCount = 1;
             headerFontSize = 16;
+            textColor = Xamarin.Forms.Color.Black;
+            headerColor = Xamarin.Forms.Color.Black;
         }
 
         public System.Guid Id { get; set; }
@@ -32,7 +34,7 @@
 
         public int HeaderFontSize { get => headerFontSize; set => SetProperty(ref headerFontSize, value); }
 
-        public Xamarin.Forms.Color HeaderColor { get => headerColor; set => headerColor = value; }
+        public Xamarin.Forms.Color HeaderColor { get => headerColor; set => SetProperty(ref headerColor, value); }
 
         public string Text { get => text; set => SetProperty(ref text, value); }
 
@@ -42,6 +44,6 @@
 
         public int TextFontSize { get => textFontSize; set => SetProperty(ref textFontSize, value); }
 
-        public Xamarin.Forms.Color TextColor { get => textColor; set => textColor = value; }
+        public Xamarin.Forms.Color TextColor { get => textColor; set => SetProperty(ref textColor, value); }
     }
 }

@@ -187,6 +187,15 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.Tags.Remove((sender as Xamarin.Forms.BindableObject).BindingContext as Cloud.Api.Common.Models.TagDisplayModel));
             });
         }
+        private void GradientColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(GradientColorPicked_Callback, BindingContextPageModel.GradientColor));
+        }
+
+        private void GradientColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.GradientColor = color;
+        }
 
         private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
         {

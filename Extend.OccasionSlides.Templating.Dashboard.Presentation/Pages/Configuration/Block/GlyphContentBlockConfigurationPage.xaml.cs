@@ -61,6 +61,16 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
             this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.GlyphPickPage(GlyphPicked_Callback));
         }
 
+        private void ColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(ColorPicked_Callback, BindingContextPageModel.Color));
+        }
+
+        private void ColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.Color = color;
+        }
+
         private void GlyphPicked_Callback(string selection)
         {
             BindingContextPageModel.Glyph = selection;

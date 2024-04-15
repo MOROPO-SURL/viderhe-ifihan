@@ -112,6 +112,16 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
             });
         }
 
+        private void TextColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(TextColorPicked_Callback, BindingContextPageModel.TextColor));
+        }
+
+        private void TextColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.TextColor = color;
+        }
+
         private void PickText_Callback(Support.Presentation.Dashboard.Models.View.TextViewModel target)
         {
             BindingContextPageModel.Text = target.Content;

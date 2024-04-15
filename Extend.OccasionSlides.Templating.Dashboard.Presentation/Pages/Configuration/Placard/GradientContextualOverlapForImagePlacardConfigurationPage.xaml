@@ -14,7 +14,6 @@
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
     x:Class="MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Placard.GradientContextualOverlapForImagePlacardConfigurationPage"
     x:TypeArguments="pagemodels:GradientContextualOverlapForImagePlacardConfigurationPageModel"
     x:Name="FormPage">
@@ -216,7 +215,7 @@
                             <Label
                                 x:Name="BeginAtDatePickerLabel"
                                 Grid.ColumnSpan="2" Grid.Row="0"
-                                Text="Fecha de incio" 
+                                Text="Fecha de inicio" 
                                 Style="{StaticResource FormLabel}" />
                             <Switch 
                                 Grid.Column="0" Grid.Row="1"
@@ -387,7 +386,7 @@
                                     Grid.Column="1" Grid.Row="1"
                                     Style="{StaticResource FormFieldFrame}">
                                     <StackLayout>
-                                        <Label Text="Matener centrada?" Style="{StaticResource FormLabel}" />
+                                        <Label Text="Mantener centrada?" Style="{StaticResource FormLabel}" />
                                         <Switch IsToggled="{Binding Path=ContextedImageCenteredAtPresentation}" />
                                     </StackLayout>
                                 </Frame>
@@ -395,7 +394,7 @@
                                     Grid.Column="0" Grid.Row="2"
                                     Style="{StaticResource FormFieldFrame}">
                                     <StackLayout>
-                                        <Label Text="Usar ecfecto Zooming?" Style="{StaticResource FormLabel}" />
+                                        <Label Text="Usar efecto Zooming?" Style="{StaticResource FormLabel}" />
                                         <Switch IsToggled="{Binding Path=ContextedImageZoomingEnabled}" />
                                     </StackLayout>
                                 </Frame>
@@ -442,10 +441,20 @@
                             <Frame Style="{StaticResource FormFieldFrame}">
                                 <StackLayout>
                                     <Label Text="Color de Gradiente" Style="{StaticResource FormLabel}" />
-                                    <simplecolorpicker:ColorPickerEntry 
-                                        EditAlfa="False"
-                                        ColorPreviewButtonBorder="DimGray"
-                                        Color="{Binding Path=GradientColor}" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Grid
+                                            HorizontalOptions="FillAndExpand"
+                                            BackgroundColor="DimGray"
+                                            Padding="1"
+                                            HeightRequest="32">
+                                            <BoxView Color="{Binding Path=GradientColor}" />
+                                        </Grid>
+                                        <Button 
+                                            HorizontalOptions="End"
+                                            Style="{StaticResource TextIconButton}"
+                                            Text="&#xF266;"
+                                            Clicked="GradientColorButton_Clicked" />
+                                    </StackLayout>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>

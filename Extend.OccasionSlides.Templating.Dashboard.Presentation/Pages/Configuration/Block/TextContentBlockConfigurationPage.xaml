@@ -6,7 +6,6 @@
     xmlns:supportpresentationdashboardviews="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
     x:Class="MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation.Pages.Configuration.Block.TextContentBlockConfigurationPage"
     x:TypeArguments="blockpagemodels:TextContentBlockConfigurationPageModel">
     <ContentPage.Resources>
@@ -137,10 +136,20 @@
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Color" Style="{StaticResource FormLabel}" />
-                            <simplecolorpicker:ColorPickerEntry 
-                                EditAlfa="False"
-                                ColorPreviewButtonBorder="DimGray"
-                                Color="{Binding Path=TextColor}" />
+                            <StackLayout Orientation="Horizontal">
+                                <Grid
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="DimGray"
+                                    Padding="1"
+                                    HeightRequest="32">
+                                    <BoxView Color="{Binding Path=TextColor}" />
+                                </Grid>
+                                <Button 
+                                    HorizontalOptions="End"
+                                    Style="{StaticResource TextIconButton}"
+                                    Text="&#xF266;"
+                                    Clicked="TextColorButton_Clicked" />
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                     <Frame 
