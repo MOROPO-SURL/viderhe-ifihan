@@ -612,6 +612,86 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
             beingDraggedItem.IsBeingDragged = false;
         }
 
+        private void HeaderBackgroundColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(HeaderBackgroundColorPicked_Callback, BindingContextPageModel.HeaderBackgroundColor));
+        }
+
+        private void TableBackgroundColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(TableBackgroundColorPicked_Callback, BindingContextPageModel.TableBackgroundColor));
+        }
+
+        private void TableHeaderBackgroundColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(TableHeaderBackgroundColorPicked_Callback, BindingContextPageModel.TableHeaderBackgroundColor));
+        }
+
+        private void TableHeaderTextColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(TableHeaderTextColorPicked_Callback, BindingContextPageModel.TableHeaderTextColor));
+        }
+
+        private void PrimaryRowBackgroundColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(PrimaryRowBackgroundColorPicked_Callback, BindingContextPageModel.PrimaryRowBackgroundColor));
+        }
+
+        private void PrimaryRowTextColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(PrimaryRowTextColorPicked_Callback, BindingContextPageModel.PrimaryRowTextColor));
+        }
+
+        private void SecoundaryRowBackgroundColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(SecoundaryRowBackgroundColorPicked_Callback, BindingContextPageModel.SecoundaryRowBackgroundColor));
+        }
+
+        private void SecoundaryRowTextColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(SecoundaryRowTextColorPicked_Callback, BindingContextPageModel.SecoundaryRowTextColor));
+        }
+
+        private void HeaderBackgroundColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.HeaderBackgroundColor = color;
+        }
+
+        private void TableBackgroundColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.TableBackgroundColor = color;
+        }
+
+        private void TableHeaderBackgroundColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.TableHeaderBackgroundColor = color;
+        }
+
+        private void TableHeaderTextColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.TableHeaderTextColor = color;
+        }
+
+        private void PrimaryRowBackgroundColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.PrimaryRowBackgroundColor = color;
+        }
+
+        private void PrimaryRowTextColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.PrimaryRowTextColor = color;
+        }
+
+        private void SecoundaryRowBackgroundColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.SecoundaryRowBackgroundColor = color;
+        }
+
+        private void SecoundaryRowTextColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.SecoundaryRowTextColor = color;
+        }
+
         private void PickTagSuccess_Callback(Cloud.Api.Common.Models.TagDisplayModel model)
         {
             BindingContextPageModel.Tags.Add(model);

@@ -13,10 +13,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Xam.Plugin.SimpleColorPicker" Version="1.0.7" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj" />
 	  <ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation\Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.csproj" />
 	</ItemGroup>
