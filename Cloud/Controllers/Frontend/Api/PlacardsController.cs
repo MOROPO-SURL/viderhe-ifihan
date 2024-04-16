@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.Framework.Guama.Core.Presentation.Models;
 using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
 using MOROPO.VIDERHE.Cloud.Persistence.Entities;
@@ -38,6 +39,89 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
             var accountId = System.Guid.Parse(User.Claims.First(claim => claim.Type == Claims.ACCOUNT_CLAIM).Value);
 
             return e => e.Account.Id == accountId && e.Template.Enabled;
+        }
+
+        //public override ActionResult<PlacardDisplayModel[]> GetFiltered([FromBody] PlacardFilterModel filterModel)
+        //{
+        //    var tagIds = filterModel.Tags.Select(item => item.Id).ToArray();
+
+        //    PlacardDisplayModel[] result = null;
+
+        //    if (filterModel.Tags.Length > 0)
+        //    {
+        //        result = Repository.FindBy(GetGlobalSelector()).Where(filterModel.GetSelector()).OrderBy(entity => entity.Label).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.SternId))).Select(entity => EntityToDisplayModel(entity)).ToArray();
+        //    }
+        //    else
+        //    {
+        //        result = Repository.FindBy(GetGlobalSelector()).Where(filterModel.GetSelector()).OrderBy(entity => entity.Label).ToArray().Select(entity => EntityToDisplayModel(entity)).ToArray();
+        //    }
+
+        //    return Ok(result);
+        //}
+
+        public override ActionResult<PaginationModel<PlacardDisplayModel>> GetPaginateFiltered([FromBody] PlacardFilterModel filterModel, int sheet = 1, int limit = 25)
+        {
+            IQueryable<Placard> selection = null;
+
+            if (filterModel.Tags?.Length > 0)
+            {
+                selection = Repository.FindBy(GetGlobalSelector()).Where(filterModel.GetSelector()).OrderBy(entity => entity.Label).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.SternId))).AsQueryable();
+            }
+            else
+            {
+                selection = Repository.FindBy(GetGlobalSelector()).Where(filterModel.GetSelector()).OrderBy(entity => entity.Label);
+            }
+
+            var maxCount = selection.Count();
+
+            var paginationModel = new PaginationModel<PlacardDisplayModel>
+            {
+                Limit = limit,
+                Page = 0,
+                HasNext = false,
+                HasPrevious = false,
+                List = new System.Collections.Generic.List<PlacardDisplayModel>()
+            };
+
+            if (maxCount > 0)
+            {
+                var rest = maxCount % limit;
+
+                var maxPageCount = maxCount / limit;
+
+                if (rest > 0)
+                    maxPageCount += 1;
+
+                if (sheet < 0 || sheet > maxPageCount)
+                {
+                    sheet = 1;
+                }
+
+                var entities = new System.Collections.Generic.List<Placard>();
+
+                if (!Repository.IsPagingOrderDescending())
+                {
+                    entities = selection.OrderBy(Repository.GetPagingOrderSelector()).Skip((sheet - 1) * limit).Take(limit).ToList();
+                }
+                else
+                {
+                    entities = selection.OrderByDescending(Repository.GetPagingOrderSelector()).Skip((sheet - 1) * limit).Take(limit).ToList();
+                }
+
+                var models = entities.Select(entity => EntityToDisplayModel(entity)).ToList();
+
+                paginationModel = new PaginationModel<PlacardDisplayModel>
+                {
+                    Limit = limit,
+                    Page = sheet,
+                    HasPrevious = sheet > 1,
+                    HasNext = sheet < maxPageCount,
+                    MaxPageCount = maxPageCount,
+                    List = models
+                };
+            }
+
+            return Ok(paginationModel);
         }
 
         [Microsoft.AspNetCore.Authorization.AllowAnonymous]

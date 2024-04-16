@@ -45,6 +45,13 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
             return NotFound();
         }
 
+        // TODO Make accesible for VIDERHE Player
+        [Microsoft.AspNetCore.Authorization.AllowAnonymous]
+        public override ActionResult<FrameDisplayModel[]> GetFiltered([FromBody] FrameFilterModel filterModel)
+        {
+            return base.GetFiltered(filterModel);
+        }
+
         [HttpPut("{key}/order/{priority}")]
         public ActionResult Order(long key, int priority)
         {

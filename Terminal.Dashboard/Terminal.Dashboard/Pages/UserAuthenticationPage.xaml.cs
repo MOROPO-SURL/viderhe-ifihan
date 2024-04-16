@@ -15,7 +15,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
         {
             InitializeComponent();
 
-            CopyRightLabel.Text = string.Format("© 2022 - {0} Todos los derechos reservados", System.DateTime.Now.Year);
+            CopyRightLabel.Text = string.Format("© 2022 - {0} Todos los derechos reservados", System.DateTime.Now.Year < 2024 ? 2024 : System.DateTime.Now.Year);
         }
 
         protected override bool OnBackButtonPressed()

@@ -15,7 +15,7 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <TargetFrameworkVersion>v13.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
@@ -116,7 +116,7 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.11.982</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.7" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms">
       <Version>2.4.11.982</Version>
     </PackageReference>
@@ -159,6 +159,26 @@
     <AndroidResource Include="Resources\drawable-xhdpi\splash_viderhe_player.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Cloud.Api.Common\Cloud.Api.Common.csproj">
+      <Project>{4d9e2d5f-55c3-497a-9ea0-89ced1acd180}</Project>
+      <Name>Cloud.Api.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cloud.Api.Connect\Cloud.Api.Connect.csproj">
+      <Project>{0bee0e5c-b306-4e5f-ac02-2b340a7bff6e}</Project>
+      <Name>Cloud.Api.Connect</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cloud.Persistence\Cloud.Persistence.csproj">
+      <Project>{4d4db49c-07e6-40db-a116-1146651260dc}</Project>
+      <Name>Cloud.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cloud.SignalR.Connect.Common\Cloud.SignalR.Connect.Common.csproj">
+      <Project>{335baeff-dba7-4b8e-8946-a3ea1ea687ce}</Project>
+      <Name>Cloud.SignalR.Connect.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Cloud.SignalR.Connect.Player\Cloud.SignalR.Connect.Player.csproj">
+      <Project>{258b002c-4000-4fa0-8313-7dc1eb74b5cc}</Project>
+      <Name>Cloud.SignalR.Connect.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Extend.Common.Overlaying\Extend.Common.Overlaying.csproj">
       <Project>{a3bb2159-c755-415a-b238-81e5a24fa0aa}</Project>
       <Name>Extend.Common.Overlaying</Name>
