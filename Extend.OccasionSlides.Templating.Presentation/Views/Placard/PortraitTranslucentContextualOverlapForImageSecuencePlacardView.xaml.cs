@@ -152,7 +152,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Pla
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.Image.Id)),
-                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(context.Image.ThumbnailId)),
+                    ThumnailSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(context.Image.Id)),
                     Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                     ZoomingEnabled = context.IsZoomingEnabled
                 }, relativeSizeScaleFactor);
