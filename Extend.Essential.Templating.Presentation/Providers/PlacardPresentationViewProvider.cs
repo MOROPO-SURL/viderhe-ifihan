@@ -43,7 +43,7 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Providers
                         RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                         ScreenPresentationTime = context.ScreenPresentationTime,
                         Source = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.Image.Id)),
-                        ThumnailSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildImageThumbnailUri(context.Image.ThumbnailId)),
+                        ThumnailSource = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildImageThumbnailUri(context.Image.Id)),
                         Aspect = context.LayoutMode.ToXamarinFormsAspect(),
                         ZoomingEnabled = context.IsZoomingEnabled
                     }, relativeSizeScaleFactor);
