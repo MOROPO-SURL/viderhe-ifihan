@@ -279,8 +279,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
             timeSizeReferenceLabel = null;
 
-            model.ArraivalItems.Clear();
-            model.DepartureItems.Clear();
+            model.ArraivalItems?.Clear();
+            model.DepartureItems?.Clear();
 
             model = null;
         }
