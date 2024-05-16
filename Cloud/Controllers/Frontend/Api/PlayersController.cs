@@ -40,6 +40,11 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
             {
                 var player = Repository.Get(playerId);
 
+                if (!Helpers.Integrity.PlayerIntegrityHelper.IsCorrectlySigned(player))
+                {
+                    throw new System.InvalidOperationException();
+                }
+
                 var model = new AccountDisplayModel();
 
                 model.Import(player.Account);
@@ -129,7 +134,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 
         public override ActionResult<PlayerDisplayModel[]> Get()
         {
-            return Ok(Repository.FindBy(GetGlobalSelector()).ToArray().Select(entity => EntityToDisplayModel(entity)).ToArray());
+            return Ok(Repository.FindBy(GetGlobalSelector()).OrderBy(entity => entity.Name).ToArray().Select(entity => EntityToDisplayModel(entity)).ToArray());
         }
 
         public override ActionResult<PlayerDisplayModel[]> GetFiltered([FromBody] PlayerFilterModel filterModel)
@@ -142,16 +147,16 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
             {
                 if (filterModel.Tags.Length > 0)
                 {
-                    result = Repository.FindBy(GetGlobalSelector()).Where(entity => entity.Name.ToLower().Contains(filterModel.Name.ToLower())).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.SternId))).Select(entity => EntityToDisplayModel(entity)).ToArray();
+                    result = Repository.FindBy(GetGlobalSelector()).Where(entity => entity.Name.ToLower().Contains(filterModel.Name.ToLower())).OrderBy(entity => entity.Name).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.SternId))).Select(entity => EntityToDisplayModel(entity)).ToArray();
                 }
                 else
                 {
-                    result = Repository.FindBy(GetGlobalSelector()).Where(entity => entity.Name.ToLower().Contains(filterModel.Name.ToLower())).ToArray().Select(entity => EntityToDisplayModel(entity)).ToArray();
+                    result = Repository.FindBy(GetGlobalSelector()).Where(entity => entity.Name.ToLower().Contains(filterModel.Name.ToLower())).OrderBy(entity => entity.Name).ToArray().Select(entity => EntityToDisplayModel(entity)).ToArray();
                 }
             }
             else
             {
-                result = Repository.FindBy(GetGlobalSelector()).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.SternId))).Select(entity => EntityToDisplayModel(entity)).ToArray();
+                result = Repository.FindBy(GetGlobalSelector()).OrderBy(entity => entity.Name).ToArray().Where(entity => entity.TagBridges.Any(bridge => filterModel.Tags.Any(item => item.Id == bridge.SternId))).Select(entity => EntityToDisplayModel(entity)).ToArray();
             }
 
             return Ok(result);

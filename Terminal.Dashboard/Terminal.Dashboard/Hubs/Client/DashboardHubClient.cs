@@ -136,7 +136,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Hubs.Client
 
                 player.IsConnected = true;
 
-                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(3)).ContinueWith(_ =>
+                System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(1)).ContinueWith(_ =>
                 {
                     player.IsEnabled = true;
 

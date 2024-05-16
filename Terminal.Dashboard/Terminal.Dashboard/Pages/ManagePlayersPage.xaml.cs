@@ -46,7 +46,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
         private void RequestFilterButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.FilterPlayerPopupPage(BindingContextPageModel.Filter, RequestFilterSuccess_Callback));
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.PlayerFilterPopupPage(BindingContextPageModel.Filter, RequestFilterSuccess_Callback));
         }
 
         private void ClearFilterButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -966,7 +966,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
                     {
                         foreach (var model in task.Result)
                         {
-                            BindingContextPageModel.Items.Add(new Models.View.PlayerViewModel
+                            BindingContextPageModel.Items.Add(new PlayerViewModel
                             {
                                 Id = model.Id,
                                 Name = model.Name,
