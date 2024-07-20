@@ -5,7 +5,6 @@
     xmlns:converters="clr-namespace:MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Converters"
     xmlns:extendcommontemplatingpresentationconverters="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Converters;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
-    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     x:Class="MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views.AmbientalDashboardPlacardView"
     x:Name="RootView">
     <ContentView.Resources>
@@ -34,9 +33,6 @@
                     Text="{Binding Path=LastReading, Converter={StaticResource AmbientalReadingDisplayModelToLastValuePresentationConverter}}"
                     FontAttributes="Bold"
                     FontSize="{Binding Source=144, Converter={StaticResource SizeToRelativeValueConverter}}" />
-                <microcharts:ChartView
-                    Grid.ColumnSpan="2" Grid.Row="1"
-                    Chart="{Binding Path=Chart}"/>
             </Grid>
         </Grid>
     </ContentView.Content>
