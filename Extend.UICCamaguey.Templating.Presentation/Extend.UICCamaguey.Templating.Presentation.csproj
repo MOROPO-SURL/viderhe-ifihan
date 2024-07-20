@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation</AssemblyName>
     <RootNamespace>MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation</RootNamespace>
-    <Version>0.11.0</Version>
+    <Version>0.11.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
