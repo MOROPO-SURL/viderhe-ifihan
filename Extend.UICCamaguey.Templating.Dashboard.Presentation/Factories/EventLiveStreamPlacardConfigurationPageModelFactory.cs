@@ -19,7 +19,8 @@ namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Dashboard.Presentation.Fa
                 ScreenPresentationTimeSecounds = System.Convert.ToInt32(context.ScreenPresentationTime.TotalSeconds),
                 EventTitle = context.EventTitle,
                 EventPlace = context.EventPlace,
-                StreamUrl = context.StreamUrl
+                StreamUrl = context.StreamUrl,
+                IsFullScreen = context.IsFullScreen
             };
         }
     }

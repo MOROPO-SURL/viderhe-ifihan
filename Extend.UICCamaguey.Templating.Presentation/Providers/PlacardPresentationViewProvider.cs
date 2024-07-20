@@ -8,6 +8,18 @@
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.EventLiveStreamPlacardContextModel>(model.SerializedContext);
 
+                if (context.IsFullScreen)
+                {
+                    return new Views.FullLiveStreamPlacardView(new Models.View.EventLiveStreamPlacardViewModel
+                    {
+                        ScreenPresentationTime = context.ScreenPresentationTime,
+                        RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
+                        EventTitle = context.EventTitle,
+                        EventPlace = context.EventPlace,
+                        VideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(context.StreamUrl)
+                    }, relativeSizeScaleFactor);
+                }
+
                 return new Views.EventLiveStreamPlacardView(new Models.View.EventLiveStreamPlacardViewModel
                 {
                     ScreenPresentationTime = context.ScreenPresentationTime,

@@ -7,5 +7,7 @@
         public string EventPlace { get; set; }
 
         public string StreamUrl { get; set; }
+
+        public bool IsFullScreen { get; set; }
     }
 }

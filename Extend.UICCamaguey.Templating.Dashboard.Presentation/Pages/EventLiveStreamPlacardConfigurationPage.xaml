@@ -64,6 +64,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <StackLayout 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -341,6 +343,15 @@
                                     </supportpresentationdashboardbehaviors:ViewValidationBehavior>
                                 </Entry.Behaviors>
                             </Entry>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.Row="7"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Maximizar" Style="{StaticResource FormLabel}" />
+                            <Switch IsToggled="{Binding Path=IsFullScreen}" />
                         </StackLayout>
                     </Frame>
                 </Grid>

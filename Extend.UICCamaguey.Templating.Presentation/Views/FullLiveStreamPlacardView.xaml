@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:sscxftoolkitpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    x:Class="MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views.FullLiveStreamPlacardView">
+    <ContentView.Content>
+        <Grid x:Name="Wrapper">
+            <StackLayout>
+                <StackLayout
+                    BackgroundColor="WhiteSmoke"
+                    Padding="12"
+                    Spacing="8">
+                    <Label Text="{Binding Path=EventTitle}" FontSize="Medium" FontAttributes="Bold" />
+                    <Label Text="{Binding Path=EventPlace}" FontAttributes="Italic" />
+                </StackLayout>
+                <sscxftoolkitpresentationrenderedviews:VideoPlayerView
+                    x:Name="VideoPlayerView"
+                    VerticalOptions="FillAndExpand"
+                    BackgroundColor="Black"
+                    Source="{Binding Path=VideoSource}"
+                    ShowControls="False"
+                    AutoPlay="True"
+                    StrechAspect="AspectFill"
+                    StatusUpdated="VideoPlayer_StatusUpdated" />
+            </StackLayout>            
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

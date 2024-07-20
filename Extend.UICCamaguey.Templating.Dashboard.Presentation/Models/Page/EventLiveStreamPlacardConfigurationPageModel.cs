@@ -5,6 +5,7 @@
         private string eventTitle;
         private string eventPlace;
         private string streamUrl;
+        private bool isFullScreen;
 
         public EventLiveStreamPlacardConfigurationPageModel()
         {
@@ -16,5 +17,7 @@
         public string EventPlace { get => eventPlace; set => SetProperty(ref eventPlace, value); }
 
         public string StreamUrl { get => streamUrl; set => SetProperty(ref streamUrl, value); }
+
+        public bool IsFullScreen { get => isFullScreen; set => SetProperty(ref isFullScreen, value); }
     }
 }

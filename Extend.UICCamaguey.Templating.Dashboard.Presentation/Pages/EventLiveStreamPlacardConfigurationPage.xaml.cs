@@ -74,7 +74,8 @@ namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Dashboard.Presentation.Pa
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
                             EventTitle = BindingContextPageModel.EventTitle,
                             EventPlace = BindingContextPageModel.EventPlace,
-                            StreamUrl = BindingContextPageModel.StreamUrl
+                            StreamUrl = BindingContextPageModel.StreamUrl,
+                            IsFullScreen = BindingContextPageModel.IsFullScreen
                         }),
                         Tags = BindingContextPageModel.Tags.ToArray()
                     });
@@ -92,7 +93,8 @@ namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Dashboard.Presentation.Pa
                             ScreenPresentationTime = System.TimeSpan.FromSeconds(BindingContextPageModel.ScreenPresentationTimeSecounds),
                             EventTitle = BindingContextPageModel.EventTitle,
                             EventPlace = BindingContextPageModel.EventPlace,
-                            StreamUrl = BindingContextPageModel.StreamUrl
+                            StreamUrl = BindingContextPageModel.StreamUrl,
+                            IsFullScreen = BindingContextPageModel.IsFullScreen
                         }),
                         Tags = BindingContextPageModel.Tags.ToArray()
                     });
