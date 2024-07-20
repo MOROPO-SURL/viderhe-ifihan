@@ -1,10 +1,8 @@
-﻿using MOROPO.UIC.IoTPlatform.Interop.Sync.Receptor.API.Common.Models;
-
-namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View
 {
     public class AmbientalDashboardPlacardViewModel : Common.Templating.Presentation.Models.View.AbstractScreenTimedPlacardViewModel
     {
-        private AmbientalReadingDisplayModel lastReading;
+        //private AmbientalReadingDisplayModel lastReading;
         private Microcharts.LineChart chart;
 
         public AmbientalDashboardPlacardViewModel()
@@ -17,7 +15,7 @@ namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View
             };
         }
 
-        public AmbientalReadingDisplayModel LastReading { get => lastReading; set => SetProperty(ref lastReading, value); }
+        //public AmbientalReadingDisplayModel LastReading { get => lastReading; set => SetProperty(ref lastReading, value); }
 
         public Microcharts.LineChart Chart { get => chart; set => SetProperty(ref chart, value); }
 

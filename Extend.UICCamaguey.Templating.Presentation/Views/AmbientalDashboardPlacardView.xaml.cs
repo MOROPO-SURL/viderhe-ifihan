@@ -1,18 +1,16 @@
-﻿using System.Linq;
-
-namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views
+﻿namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views
 {
     public partial class AmbientalDashboardPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
     {
-        private Hubs.Client.AmbientalHubConnectClient ambientalHubConnectClient;
-        private UIC.IoTPlatform.Interop.Sync.Receptor.API.Connect.Clients.AmbientalReadingsApiConnectClient ambientalReadingsApiConnectClient;
+        //private Hubs.Client.AmbientalHubConnectClient ambientalHubConnectClient;
+        //private UIC.IoTPlatform.Interop.Sync.Receptor.API.Connect.Clients.AmbientalReadingsApiConnectClient ambientalReadingsApiConnectClient;
 
         public AmbientalDashboardPlacardView(Models.View.AmbientalDashboardPlacardViewModel model, System.Uri ioTPlatformEndpointBaseUri, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
-            ambientalHubConnectClient = new Hubs.Client.AmbientalHubConnectClient(ioTPlatformEndpointBaseUri, model);
-            ambientalReadingsApiConnectClient = new UIC.IoTPlatform.Interop.Sync.Receptor.API.Connect.Clients.AmbientalReadingsApiConnectClient(new Providers.IoTSyncReceptorApiHttpClientHelperProvider(new System.Uri(string.Format("{0}api/", ioTPlatformEndpointBaseUri))));
+            //ambientalHubConnectClient = new Hubs.Client.AmbientalHubConnectClient(ioTPlatformEndpointBaseUri, model);
+            //ambientalReadingsApiConnectClient = new UIC.IoTPlatform.Interop.Sync.Receptor.API.Connect.Clients.AmbientalReadingsApiConnectClient(new Providers.IoTSyncReceptorApiHttpClientHelperProvider(new System.Uri(string.Format("{0}api/", ioTPlatformEndpointBaseUri))));
 
             BindingContext = model;
         }
@@ -31,88 +29,88 @@ namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views
         {
             base.PerformPlacardStarup();
 
-            ambientalReadingsApiConnectClient.GetPaginateAsync().ContinueWith(task =>
-            {
-                if (task.IsFaulted || task.IsCanceled)
-                {
-                    Xamarin.Forms.Device.BeginInvokeOnMainThread(EndPresentation);
+            //ambientalReadingsApiConnectClient.GetPaginateAsync().ContinueWith(task =>
+            //{
+            //    if (task.IsFaulted || task.IsCanceled)
+            //    {
+            //        Xamarin.Forms.Device.BeginInvokeOnMainThread(EndPresentation);
 
-                    return;
-                }
+            //        return;
+            //    }
 
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
-                {
-                    var contreteBindingContext = BindingContext as Models.View.AmbientalDashboardPlacardViewModel;
+            //    Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            //    {
+            //        var contreteBindingContext = BindingContext as Models.View.AmbientalDashboardPlacardViewModel;
 
-                    if (task.Result.MaxPageCount > 0)
-                    {
-                        contreteBindingContext.LastReading = task.Result.List.Last();
-                    }
+            //        if (task.Result.MaxPageCount > 0)
+            //        {
+            //            contreteBindingContext.LastReading = task.Result.List.Last();
+            //        }
 
-                    string template;
+            //        string template;
                     
-                    switch (contreteBindingContext.AmbientalVariable)
-                    {
-                        case Enumerations.AmbientalVariable.Humidity:
-                            template = "{0}%";
+            //        switch (contreteBindingContext.AmbientalVariable)
+            //        {
+            //            case Enumerations.AmbientalVariable.Humidity:
+            //                template = "{0}%";
 
-                            break;
+            //                break;
 
-                        case Enumerations.AmbientalVariable.SmogPPM:
-                            template = "{0} ppm";
+            //            case Enumerations.AmbientalVariable.SmogPPM:
+            //                template = "{0} ppm";
 
-                            break;
+            //                break;
 
-                        case Enumerations.AmbientalVariable.Temperature:
-                        default:
-                            template = "{0}°C";
+            //            case Enumerations.AmbientalVariable.Temperature:
+            //            default:
+            //                template = "{0}°C";
 
-                            break;
-                    }
+            //                break;
+            //        }
 
-                    contreteBindingContext.Chart.Entries = new System.Collections.Generic.List<Microcharts.ChartEntry>(task.Result.List.Select(item =>
-                    {
-                        double value;
+            //        contreteBindingContext.Chart.Entries = new System.Collections.Generic.List<Microcharts.ChartEntry>(task.Result.List.Select(item =>
+            //        {
+            //            double value;
 
-                        switch (contreteBindingContext.AmbientalVariable)
-                        {
-                            case Enumerations.AmbientalVariable.Humidity:
-                                value = item.Humidity;
+            //            switch (contreteBindingContext.AmbientalVariable)
+            //            {
+            //                case Enumerations.AmbientalVariable.Humidity:
+            //                    value = item.Humidity;
 
-                                break;
+            //                    break;
 
-                            case Enumerations.AmbientalVariable.SmogPPM:
-                                value = item.SmogPPM;
+            //                case Enumerations.AmbientalVariable.SmogPPM:
+            //                    value = item.SmogPPM;
 
-                                break;
+            //                    break;
 
-                            case Enumerations.AmbientalVariable.Temperature:
-                            default:
-                                value = item.Temperature;
+            //                case Enumerations.AmbientalVariable.Temperature:
+            //                default:
+            //                    value = item.Temperature;
 
-                                break;
-                        }
+            //                    break;
+            //            }
 
-                        return new Microcharts.ChartEntry((float)value)
-                        {
-                            Label = item.CreatedAt.ToShortTimeString(),
-                            ValueLabel = string.Format(template, value)
-                        };
-                    }));
+            //            return new Microcharts.ChartEntry((float)value)
+            //            {
+            //                Label = item.CreatedAt.ToShortTimeString(),
+            //                ValueLabel = string.Format(template, value)
+            //            };
+            //        }));
 
-                    ambientalHubConnectClient.Connect();
-                });
-            });
+            //        ambientalHubConnectClient.Connect();
+            //    });
+            //});
         }
 
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
 
-            ambientalHubConnectClient.Dispose();
+            //ambientalHubConnectClient.Dispose();
 
-            ambientalHubConnectClient = null;
-            ambientalReadingsApiConnectClient = null;
+            //ambientalHubConnectClient = null;
+            //ambientalReadingsApiConnectClient = null;
         }
     }
 }
