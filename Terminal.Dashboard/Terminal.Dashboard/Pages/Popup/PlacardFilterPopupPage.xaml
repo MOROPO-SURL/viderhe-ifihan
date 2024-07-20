@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    x:Class="MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup.FilterPlayerPopupPage">
+    x:Class="MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup.PlacardFilterPopupPage">
     <ContentPage.Content>
         <Frame
             HorizontalOptions="Center" VerticalOptions="Center"
@@ -18,7 +18,7 @@
                     </Grid.ColumnDefinitions>
                     <Label
                         Grid.Column="0"
-                        Text="Filtrar Reproductores"
+                        Text="Filtrar Carteles"
                         FontSize="21" />
                     <Button 
                         Grid.Column="1"
@@ -34,7 +34,7 @@
                     <Label
                         Style="{StaticResource FormLabel}"
                         Text="Nombre" />
-                    <Entry Text="{Binding Path=Name}" />
+                    <Entry Text="{Binding Path=Label}" />
                 </StackLayout>
                 <Grid Margin="6,0">
                     <Grid.ColumnDefinitions>

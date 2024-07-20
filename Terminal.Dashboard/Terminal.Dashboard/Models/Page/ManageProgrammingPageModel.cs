@@ -1,4 +1,5 @@
-﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
 using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
 
@@ -7,20 +8,17 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
     public class ManageProgrammingPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private readonly System.Action<ScreenplayViewModel> selectedScreenplayCallbackAction;
-        private readonly System.Action labelFilterParamaChangeCallbackAction;
-
         private ScreenplayViewModel[] screenplays;
         private FrameViewModel[] frames;
         private bool hasMorePlacards;
         private ScreenplayViewModel selectedScreenPlay;
         private bool useExpandedLayout;
         private System.Collections.ObjectModel.ObservableCollection<PlacardOverviewViewModel> placardOverviews;
-        private string labelFilterParam;
+        private PlacardFilterModel placardFilter;
 
-        public ManageProgrammingPageModel(System.Action<ScreenplayViewModel> selectedScreenplayCallbackAction, System.Action labelFilterParamaChangeCallbackAction)
+        public ManageProgrammingPageModel(System.Action<ScreenplayViewModel> selectedScreenplayCallbackAction)
         {
             this.selectedScreenplayCallbackAction = selectedScreenplayCallbackAction;
-            this.labelFilterParamaChangeCallbackAction = labelFilterParamaChangeCallbackAction;
 
             Screenplays = new ScreenplayViewModel[] { };
             Frames = new FrameViewModel[] { };
@@ -54,7 +52,9 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
 
         public bool UseExpandedLayout { get => useExpandedLayout; set => SetProperty(ref useExpandedLayout, value); }
 
-        public string LabelFilterParam { get => labelFilterParam; set => SetProperty(ref labelFilterParam, value, labelFilterParamaChangeCallbackAction); }
+        public PlacardFilterModel PlacardFilter { get => placardFilter; set => SetProperty(ref placardFilter, value, PlacardFilterParamChangeCallbackAction); }
+
+        public System.Action PlacardFilterParamChangeCallbackAction { get; set; }
 
         protected override void DisposeUnmanagementResources()
         {
@@ -74,6 +74,8 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
             PlacardOverviews.Clear();
 
             PlacardOverviews = null;
+
+            PlacardFilterParamChangeCallbackAction = null;
         }
     }
 }
