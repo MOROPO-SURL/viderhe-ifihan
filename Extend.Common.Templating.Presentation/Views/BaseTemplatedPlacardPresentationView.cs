@@ -87,6 +87,8 @@ namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views
 
             if ((BindingContext as AbstractPlacardViewModel).ComplementationKind == PlacardComplementationKind.Sound)
             {
+                if (SoundComplementMediaElement == null) return;
+
                 SoundComplementMediaElement.Stop();
 
                 SoundComplementMediaElement.Source = null;
