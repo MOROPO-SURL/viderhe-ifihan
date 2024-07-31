@@ -33,9 +33,10 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
         private readonly IEntityRepository<PersonIdentity, System.Guid> identityRepository;
         private readonly IEntityRepository<Moderator, System.Guid> moderatorRepository;
         private readonly IEntityRepository<Thumbnail, System.Guid> thumbnailRepository;
+        private readonly IBridgeRepository<AccountModeratorBridge, Account, System.Guid, Moderator, System.Guid> accountModeratorBridgeRepository;
         private readonly Microsoft.Extensions.Options.IOptions<MediaThumbnailResizeOptions> mediaThumbnailResizeOptions;
 
-        public AccountsController(Microsoft.Extensions.Options.IOptions<MediaThumbnailResizeOptions> mediaThumbnailResizeOptions, IEntityRepository<Thumbnail, System.Guid> thumbnailRepository, IEntityRepository<Moderator, System.Guid> moderatorRepository, IEntityRepository<PersonIdentity, System.Guid> identityRepository, IThumbnailFileManagerFacade thumbnailFileManager, IImageFileManagerFacade imageFileManager, IEntityRepository<User, string> userRepository, IEntityRepository<Extension, System.Guid> extensionRepository, IEntityRepository<Image, System.Guid> imageRepository, IEntityRepository<Account, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AccountsController> localizer, ILogger<AccountsController> logger) : base(repository, localizer, logger)
+        public AccountsController(Microsoft.Extensions.Options.IOptions<MediaThumbnailResizeOptions> mediaThumbnailResizeOptions, IBridgeRepository<AccountModeratorBridge, Account, System.Guid, Moderator, System.Guid> accountModeratorBridgeRepository, IEntityRepository<Thumbnail, System.Guid> thumbnailRepository, IEntityRepository<Moderator, System.Guid> moderatorRepository, IEntityRepository<PersonIdentity, System.Guid> identityRepository, IThumbnailFileManagerFacade thumbnailFileManager, IImageFileManagerFacade imageFileManager, IEntityRepository<User, string> userRepository, IEntityRepository<Extension, System.Guid> extensionRepository, IEntityRepository<Image, System.Guid> imageRepository, IEntityRepository<Account, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<AccountsController> localizer, ILogger<AccountsController> logger) : base(repository, localizer, logger)
         {
             this.imageFileManager = imageFileManager;
             this.userRepository = userRepository;
@@ -44,6 +45,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
             this.identityRepository = identityRepository;
             this.moderatorRepository = moderatorRepository;
             this.thumbnailRepository = thumbnailRepository;
+            this.accountModeratorBridgeRepository = accountModeratorBridgeRepository;
             this.thumbnailFileManager = thumbnailFileManager;
             this.mediaThumbnailResizeOptions = mediaThumbnailResizeOptions;
         }
@@ -592,11 +594,11 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
                 var model = new AccountModeratorsViewModel
                 {
                     Account = new AccountDisplayViewModel(),
-                    Moderators = entity.ModeratorBridges.Select(e =>
+                    Moderators = accountModeratorBridgeRepository.FindBy(_bridge => _bridge.ProwId == key).ToArray().Select(_bridge =>
                     {
                         var displayModel = new ModeratorDisplayViewModel();
 
-                        displayModel.Import(e.Stern);
+                        displayModel.Import(_bridge.Stern);
 
                         return displayModel;
                     }).ToList()
@@ -625,9 +627,11 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
             {
                 var account = Repository.Get(key);
 
+                var moderatorBridges = accountModeratorBridgeRepository.FindBy(_bridge => _bridge.ProwId == key).ToArray();
+
                 var model = new ModeratorInputViewModel
                 {
-                    SelectableUsers = userRepository.GetAll().ToArray().Except(account.ModeratorBridges.Select(b => b.Stern.User).ToArray()).ToArray().Select(e => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+                    SelectableUsers = userRepository.GetAll().ToArray().Except(moderatorBridges.Select(b => b.Stern.User).ToArray()).ToArray().Select(e => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
                     {
                         Value = e.Id,
                         Text = e.Id
@@ -683,10 +687,8 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
                         var bridge = new AccountModeratorBridge
                         {
                             ProwId = entity.Id,
-                            Stern = moderator
+                            SternId = moderator.Id
                         };
-
-                        bridge.Stern.ModerationKind = ModerationKind.Privileged;
 
                         if (modelInput.ImageFile != null)
                         {
@@ -700,7 +702,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
                             }
                         }
 
-                        entity.ModeratorBridges.Add(bridge);
+                        accountModeratorBridgeRepository.Add(bridge, User.Identity.Name, false);
 
                         Repository.Update(entity, User.Identity.Name);
 
@@ -716,7 +718,9 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
 
                 SetDefaultNotification(NotificationType.Danger, GetInvalidMessage());
 
-                modelInput.SelectableUsers = userRepository.GetAll().ToArray().Except(entity.ModeratorBridges.Select(b => b.Stern.User).ToArray()).ToArray().Select(e => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
+                var moderatorBridges = accountModeratorBridgeRepository.FindBy(_bridge => _bridge.ProwId == key).ToArray();
+
+                modelInput.SelectableUsers = userRepository.GetAll().ToArray().Except(moderatorBridges.Select(b => b.Stern.User).ToArray()).ToArray().Select(e => new Microsoft.AspNetCore.Mvc.Rendering.SelectListItem
                 {
                     Value = e.Id,
                     Text = e.Id
@@ -743,14 +747,14 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
         {
             try
             {
-                var account = Repository.Get(key);
+                var entity = Repository.Get(key);
 
-                var entity = account.ModeratorBridges.First(b => b.SternId == id).Stern;
+                var bridge = accountModeratorBridgeRepository.Get(key, id);
 
                 var model = new ModeratorInputViewModel();
 
-                model.Import(entity);
-                model.Account.Import(account);
+                model.Import(bridge.Stern);
+                model.Account.Import(entity);
 
                 return View(model);
             }
@@ -795,7 +799,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
 
                     try
                     {
-                        var bridge = entity.ModeratorBridges.First(b => b.SternId == modelInput.Id);
+                        var bridge = accountModeratorBridgeRepository.Get(key, modelInput.Id);
 
                         modelInput.Mergue(bridge.Stern);
 
@@ -827,7 +831,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
                             }
                         }
 
-                        Repository.Update(entity, User.Identity.Name);
+                        moderatorRepository.Update(bridge.Stern, User.Identity.Name);
 
                         SetDefaultNotification(NotificationType.Success, GetEditionSuccessMessage());
 
@@ -865,11 +869,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Backend
             {
                 var entity = Repository.Get(key);
 
-                var bridge = entity.ModeratorBridges.First(b => b.SternId == modelInput.Id);
-
-                entity.ModeratorBridges.Remove(bridge);
-
-                Repository.Update(entity, User.Identity.Name, false);
+                var bridge = accountModeratorBridgeRepository.Get(key, modelInput.Id);
 
                 identityRepository.Delete(bridge.Stern.Identity, User.Identity.Name, false);
 
