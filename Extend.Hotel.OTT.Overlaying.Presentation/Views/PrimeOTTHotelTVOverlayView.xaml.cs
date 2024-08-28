@@ -1,10 +1,12 @@
 ﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Views
 {
-    public partial class AuroraOTTHotelTVOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
+    public partial class PrimeOTTHotelTVOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView
     {
-        public AuroraOTTHotelTVOverlayView(Models.View.AuroraOTTHotelTVOverlayViewModel model)
+        public PrimeOTTHotelTVOverlayView(Models.View.PrimeOTTHotelTVOverlayViewModel model)
         {
             InitializeComponent();
 
@@ -55,7 +57,33 @@ namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Views
 
         private void BrandChannelButton_Clicked(object sender, System.EventArgs e)
         {
-            Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Pages.BrandChannelPage(((Models.View.AuroraOTTHotelTVOverlayViewModel)BindingContext).Context, null));
+            Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Pages.BrandChannelPage(((Models.View.PrimeOTTHotelTVOverlayViewModel)BindingContext).Context, SectionPresentationCompleted_Callback));
+        }
+
+        private void TelevisionButton_Clicked(object sender, System.EventArgs e)
+        {
+            IsEnabled = false;
+
+            Providers.TelevisionChannelProvider.Instance.UpdateAsync().ContinueWith(task => Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                LinkedListNode<HIPS.Web.API.Common.Models.TelevisionChannelDisplayModel> lastChannelNode = null;
+
+                if (Xamarin.Forms.Application.Current.Properties.ContainsKey(Constants.LAST_CHANNEL_ID_KEY))
+                {
+                    var lastChannelId = System.Guid.Parse(Xamarin.Forms.Application.Current.Properties[Constants.LAST_CHANNEL_ID_KEY].ToString());
+
+                    var lastChannel = Providers.TelevisionChannelProvider.Instance.Channels.FirstOrDefault(_item => _item.Id == lastChannelId);
+
+                    lastChannelNode = Providers.TelevisionChannelProvider.Instance.Channels.Find(lastChannel);
+                }
+
+                Xamarin.Forms.Application.Current.MainPage.NavigationPushModalPageAsync(new Pages.TelevisionWatchPage(lastChannelNode, SectionPresentationCompleted_Callback));
+            }));
+        }
+
+        private void SectionPresentationCompleted_Callback()
+        {
+            IsEnabled = true;
         }
     }
 }

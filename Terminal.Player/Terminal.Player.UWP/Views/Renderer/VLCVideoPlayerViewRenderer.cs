@@ -91,7 +91,7 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
 
         private void OnMediaElementSourceFailed(object sender, VLC.MediaFailedRoutedEventArgs eventArgs)
         {
-            Control?.Stop();
+            //Control?.Stop();
         }
 
         private void OnMediaElementCurrentStateChanged(object sender, Windows.UI.Xaml.RoutedEventArgs eventArgs)

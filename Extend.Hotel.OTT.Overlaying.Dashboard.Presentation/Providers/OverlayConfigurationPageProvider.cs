@@ -4,7 +4,7 @@
     {
         public Xamarin.Forms.Page GetConfigurationPageByDescriptor(Common.Overlaying.Descriptors.IOverlayDescriptor overlayDescriptor, string serializedContext, System.Action<string> successfulCompleteCallbackAction)
         {
-            if (overlayDescriptor.Id == Descriptors.AuroraOTTHotelTVOverlayDescriptor.ID)
+            if (overlayDescriptor.Id == Descriptors.PrimeOTTHotelTVOverlayDescriptor.ID)
             {
                 return new Pages.AuroraOTTHotelTVOverlayConfigurationPage(serializedContext, successfulCompleteCallbackAction);
             }

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Converters;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    x:Class="MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Pages.Master.TelevisionChannelGridMasterPage"
+    BackgroundColor="#373737"
+    Title="Channels Grid">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+            <extendcommontemplatingpresentationconverters:ThicknessToRelativeValueConverter x:Key="ThicknessToRelativeValueConverter" />
+
+            <Thickness x:Key="HeaderLayoutPadding">0,36</Thickness>
+            
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                <Setter Property="Padding" Value="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout
+            Padding="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}"
+            Spacing="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}}">
+            <StackLayout
+                Padding="{Binding Source={StaticResource HeaderLayoutPadding}, Converter={StaticResource ThicknessToRelativeValueConverter}}"
+                Spacing="0">
+                <Label
+                    Text="&#xF502;"
+                    HorizontalOptions="Center"
+                    FontFamily="{StaticResource IconFontFamily}"
+                    FontSize="{Binding Source=196, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                <Label
+                    Text="TV Channels"
+                    HorizontalTextAlignment="Center"
+                    FontAttributes="Bold"
+                    FontSize="{Binding Source=32, Converter={StaticResource SizeToRelativeValueConverter}}" />
+            </StackLayout>
+            <Button
+                Text="All Channels" />
+            <Label
+                Text="Categories"
+                FontAttributes="Bold" />
+            <CollectionView
+                VerticalOptions="FillAndExpand">
+                
+            </CollectionView>
+            <Button
+                Text="Back to Channel"
+                Clicked="BackButton_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:ContentPage>

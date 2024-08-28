@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sscxftoolkitmvvmviews:ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sscxftoolkitmvvmviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Views;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    x:Class="MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Views.TV.VIDERHEScreenplayChannelView">
+    <ContentView.Content>
+        <Grid x:Name="ScreenplayWrapperGrid" />
+    </ContentView.Content>
+</sscxftoolkitmvvmviews:ContentView>

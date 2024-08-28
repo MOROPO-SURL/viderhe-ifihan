@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    x:Class="MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Pages.TelevisionWatchPage"
+    BackgroundColor="DimGray">
+    <ContentPage.Content>
+        <Grid x:Name="ChannelPresentationWrapGrid">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Grid.GestureRecognizers>
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:ContentPage>

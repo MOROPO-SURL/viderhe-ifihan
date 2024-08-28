@@ -68,18 +68,11 @@ namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Pages
             });
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-
-            presentationCompleteCallbackAction?.Invoke();
-
-            presentationCompleteCallbackAction = null;
-        }
-
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();
+
+            presentationCompleteCallbackAction = null;
 
             screenplayPresenter?.Dispose();
 
@@ -95,6 +88,8 @@ namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Pages
         private void TapGestureRecognizer_Tapped(object sender, System.EventArgs e)
         {
             this.NavigationPopModalPageAsync();
+
+            presentationCompleteCallbackAction?.Invoke();
         }
     }
 }

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sscxftoolkitmvvmpages:ContentPage           
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local_converters="clr-namespace:MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Converters"
+    xmlns:extendcommontemplatingpresentationconverters="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Converters;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:ffimageloading_views="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Pages.Detail.TelevisionChannelGridAllDetailPage"
+    BackgroundColor="DimGray">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local_converters:ImageDisplayModelToImageSource x:Key="HIPSImageDisplayModelToImageSource" />
+
+            <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <CollectionView 
+                x:Name="ChannelGridView" 
+                Margin="6"
+                ItemSizingStrategy="MeasureAllItems"
+                SelectionMode="Single"
+                SelectionChanged="ChannelGridView_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" HorizontalItemSpacing="6" VerticalItemSpacing="6" Span="6" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <BoxView 
+                                Color="White"
+                                HeightRequest="{Binding Source=240, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                            <ffimageloading_views:CachedImage
+                                Aspect="AspectFit"
+                                Source="{Binding Path=FeatureImage, Converter={StaticResource HIPSImageDisplayModelToImageSource}}"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ContentPage.Content>
+</sscxftoolkitmvvmpages:ContentPage>

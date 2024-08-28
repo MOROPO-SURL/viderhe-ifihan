@@ -55,7 +55,7 @@
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <PackageCertificateThumbprint>7FE7AC2F6608635F21D621D1F5E868DB05508127</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>86ECF182F9D5B332BBD5AA235343B0F3B863E46D</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>

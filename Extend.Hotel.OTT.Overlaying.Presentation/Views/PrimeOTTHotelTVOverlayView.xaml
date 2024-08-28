@@ -6,7 +6,8 @@
     xmlns:extendcommontemplatingpresentationconverters="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Converters;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    x:Class="MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Views.AuroraOTTHotelTVOverlayView">
+    x:Class="MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Views.PrimeOTTHotelTVOverlayView"
+    x:Name="RootView">
     <ContentView.Resources>
         <ResourceDictionary>
             <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" />
@@ -46,6 +47,7 @@
             <Style x:Key="OverviewButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="Text" Value=" " />
+                <Setter Property="IsEnabled" Value="{Binding Source={Reference RootView}, Path=IsEnabled}" />
             </Style>
         </ResourceDictionary>
     </ContentView.Resources>
@@ -153,7 +155,8 @@
                     <Button 
                         Style="{StaticResource OverviewButton}"
                         Focused="Button_Focused"
-                        Unfocused="Button_Unfocused" />
+                        Unfocused="Button_Unfocused"
+                        Clicked="TelevisionButton_Clicked" />
                 </Grid>
                 <Grid
                     Grid.Column="3" Grid.Row="0"

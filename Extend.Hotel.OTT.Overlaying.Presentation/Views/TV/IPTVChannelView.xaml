@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<sscxftoolkitmvvmviews:ContentView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sscxftoolkitmvvmviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Views;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
+    xmlns:sscxftoolkitpresentationrenderedviews="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
+    x:Class="MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Views.TV.IPTVChannelView">
+    <ContentView.Content>
+        <sscxftoolkitpresentationrenderedviews:VideoPlayerView 
+            x:Name="VideoPlayerView"
+            AutoPlay="True" 
+            ShowControls="False"
+            StrechAspect="AspectFill" />
+    </ContentView.Content>
+</sscxftoolkitmvvmviews:ContentView>

@@ -25,6 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\HIPS\Web.API.Connect\Web.API.Connect.csproj" />
 		<ProjectReference Include="..\Cloud.Api.Connect\Cloud.Api.Connect.csproj" />
 		<ProjectReference Include="..\Extend.Common.Overlaying.Presentation\Extend.Common.Overlaying.Presentation.csproj" />
 		<ProjectReference Include="..\Extend.Hotel.OTT.Overlaying\Extend.Hotel.OTT.Overlaying.csproj" />
@@ -33,13 +34,37 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\AuroraOTTHotelTVOverlayView.xaml.cs">
-	    <DependentUpon>AuroraOTTHotelTVOverlayView.xaml</DependentUpon>
+	  <Compile Update="Pages\TelevisionChannelGridPage.xaml.cs">
+	    <DependentUpon>TelevisionChannelGridPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\TelevisionWatchPage.xaml.cs">
+	    <DependentUpon>TelevisionWatchPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PrimeOTTHotelTVOverlayView.xaml.cs">
+	    <DependentUpon>PrimeOTTHotelTVOverlayView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Views\AuroraOTTHotelTVOverlayView.xaml">
+	  <EmbeddedResource Update="Pages\Detail\TelevisionChannelGridAllDetailPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Pages\Master\TelevisionChannelGridMasterPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Pages\TelevisionChannelGridPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Pages\TelevisionWatchPage.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Views\PrimeOTTHotelTVOverlayView.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Views\TV\IPTVChannelView.xaml">
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="Views\TV\VIDERHEScreenplayChannelView.xaml">
 	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 	  </EmbeddedResource>
 	</ItemGroup>

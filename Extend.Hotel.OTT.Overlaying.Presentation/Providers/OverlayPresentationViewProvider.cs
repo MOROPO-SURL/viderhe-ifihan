@@ -8,11 +8,11 @@ namespace MOROPO.VIDERHE.Extend.Hotel.OTT.Overlaying.Presentation.Providers
         {
             var accountInformationProvider = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>();
 
-            if (accountInformationProvider.AccountDefaultOverlayId.Value == AuroraOTTHotelTVOverlayDescriptor.ID)
+            if (accountInformationProvider.AccountDefaultOverlayId.Value == PrimeOTTHotelTVOverlayDescriptor.ID)
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.OTTHotelTVOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
 
-                return new Views.AuroraOTTHotelTVOverlayView(new Models.View.AuroraOTTHotelTVOverlayViewModel { Context = context });
+                return new Views.PrimeOTTHotelTVOverlayView(new Models.View.PrimeOTTHotelTVOverlayViewModel { Context = context });
             }
 
             return null;
