@@ -35,6 +35,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
 
             headerBackgroundColorOpacity = 50;
             headerBackgroundColor = Xamarin.Forms.DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>().PrimaryColor;
+            tableBackgroundColor = Xamarin.Forms.Color.Black;
             tableHeaderBackgroundColor = Xamarin.Forms.Color.White;
             tableHeaderTextColor = Xamarin.Forms.Color.Black;
             tableHeaderFontSize = 36;
