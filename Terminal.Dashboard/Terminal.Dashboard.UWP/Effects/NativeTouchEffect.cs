@@ -9,8 +9,8 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.UWP.Effects
     public class NativeTouchEffect : Xamarin.Forms.Platform.UWP.PlatformEffect
     {
         private Windows.UI.Xaml.FrameworkElement frameworkElement;
-        private Dashboard.Effects.TouchEffect effect;
-        private System.Action<Xamarin.Forms.Element, Delegates.TouchActionEventArgs> onTouchAction;
+        private Support.Presentation.Dashboard.Effects.TouchEffect effect;
+        private System.Action<Xamarin.Forms.Element, Support.Presentation.Dashboard.Delegates.TouchActionEventArgs> onTouchAction;
 
         protected override void OnAttached()
         {
@@ -18,7 +18,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.UWP.Effects
             frameworkElement = Control == null ? Container : Control;
 
             // Get access to the TouchEffect class in the .NET Standard library
-            effect = (Dashboard.Effects.TouchEffect)Element.Effects.FirstOrDefault(e => e is Dashboard.Effects.TouchEffect);
+            effect = (Support.Presentation.Dashboard.Effects.TouchEffect)Element.Effects.FirstOrDefault(e => e is Support.Presentation.Dashboard.Effects.TouchEffect);
 
             if (effect != null && frameworkElement != null)
             {
@@ -51,12 +51,12 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.UWP.Effects
 
         void OnPointerEntered(object sender, PointerRoutedEventArgs args)
         {
-            CommonHandler(sender, Enumerations.TouchActionKind.Entered, args);
+            CommonHandler(sender, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Entered, args);
         }
 
         void OnPointerPressed(object sender, PointerRoutedEventArgs args)
         {
-            CommonHandler(sender, Enumerations.TouchActionKind.Pressed, args);
+            CommonHandler(sender, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Pressed, args);
 
             // Check setting of Capture property
             if (effect.Capture)
@@ -67,31 +67,31 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.UWP.Effects
 
         void OnPointerMoved(object sender, PointerRoutedEventArgs args)
         {
-            CommonHandler(sender, Enumerations.TouchActionKind.Moved, args);
+            CommonHandler(sender, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Moved, args);
         }
 
         void OnPointerReleased(object sender, PointerRoutedEventArgs args)
         {
-            CommonHandler(sender, Enumerations.TouchActionKind.Released, args);
+            CommonHandler(sender, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Released, args);
         }
 
         void OnPointerExited(object sender, PointerRoutedEventArgs args)
         {
-            CommonHandler(sender, Enumerations.TouchActionKind.Exited, args);
+            CommonHandler(sender, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Exited, args);
         }
 
         void OnPointerCancelled(object sender, PointerRoutedEventArgs args)
         {
-            CommonHandler(sender, Enumerations.TouchActionKind.Cancelled, args);
+            CommonHandler(sender, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Cancelled, args);
         }
 
-        void CommonHandler(object sender, Enumerations.TouchActionKind touchActionType, PointerRoutedEventArgs args)
+        void CommonHandler(object sender, Support.Presentation.Dashboard.Enumerations.TouchActionKind touchActionType, PointerRoutedEventArgs args)
         {
             var pointerPoint = args.GetCurrentPoint(sender as Windows.UI.Xaml.UIElement);
 
             var windowsPoint = pointerPoint.Position;
 
-            onTouchAction(Element, new Delegates.TouchActionEventArgs(args.Pointer.PointerId, touchActionType, new Xamarin.Forms.Point(windowsPoint.X, windowsPoint.Y), args.Pointer.IsInContact));
+            onTouchAction(Element, new Support.Presentation.Dashboard.Delegates.TouchActionEventArgs(args.Pointer.PointerId, touchActionType, new Xamarin.Forms.Point(windowsPoint.X, windowsPoint.Y), args.Pointer.IsInContact));
         }
     }
 }
