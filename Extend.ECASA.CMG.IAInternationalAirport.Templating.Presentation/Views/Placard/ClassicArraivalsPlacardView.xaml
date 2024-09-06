@@ -51,7 +51,6 @@
                                 <ffimageloadingforms:CachedImage
                                     x:Name="LogoImageView"
                                     Margin="{Binding Source={StaticResource LogoImageViewMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}"
-                                    BackgroundColor="Black"
                                     Aspect="AspectFill"
                                     CacheType="Disk"
                                     CacheDuration="8760:00:00" />
@@ -68,7 +67,7 @@
                                 VerticalOptions="Center">
                                 <Label
                                     x:Name="HeaderTitleLabel"
-                                    Text="ARRIBOS / ARRAIVALS"
+                                    Text="ARRIBOS / ARRIVALS"
                                     FontSize="{Binding Source=56, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                                     FontFamily="Montserrat (Bold)" />
                                 <Label

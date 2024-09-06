@@ -51,7 +51,6 @@
                                 <ffimageloadingforms:CachedImage
                                     x:Name="LogoImageView"
                                     Margin="{Binding Source={StaticResource LogoImageViewMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}"
-                                    BackgroundColor="Black"
                                     Aspect="AspectFill"
                                     CacheType="Disk"
                                     CacheDuration="8760:00:00" />
