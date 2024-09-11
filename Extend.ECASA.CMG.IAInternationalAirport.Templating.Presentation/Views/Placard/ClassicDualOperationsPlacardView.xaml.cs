@@ -146,7 +146,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                 HeaderSubTitleLabel.IsVisible = false;
                 DateTimeLabel.IsVisible = false;
 
-                LogoBacklightBoxView.Opacity = 0;
+                //LogoBacklightBoxView.Opacity = 0;
                 LogoImageView.Opacity = 0;
             }
             else
@@ -156,7 +156,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                 HeaderSubTitleLabel.TextColor = model.HeaderBackgroundColor.ToBlackOrWhiteForText();
                 DateTimeLabel.TextColor = HeaderSubTitleLabel.TextColor;
 
-                LogoBacklightBoxView.Color = model.HeaderBackgroundColor.ToBlackOrWhiteForText();
+                //LogoBacklightBoxView.Color = model.HeaderBackgroundColor.ToBlackOrWhiteForText();
 
                 LogoImageView.Source = DependencyService.Get<Common.Presentation.Providers.Facade.IAccountInformationProviderFacade>().LogoImageSource;
 

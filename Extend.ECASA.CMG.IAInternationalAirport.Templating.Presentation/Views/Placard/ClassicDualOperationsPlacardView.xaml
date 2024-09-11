@@ -11,7 +11,7 @@
         <extendcommontemplatingpresentationconverters:SizeToRelativeValueConverter x:Key="SizeToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
         <extendcommontemplatingpresentationconverters:ThicknessToRelativeValueConverter x:Key="ThicknessToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
 
-        <Thickness x:Key="LogoGridMargin">12,0,0,8</Thickness>
+        <Thickness x:Key="LogoGridMargin">8</Thickness>
         <Thickness x:Key="LogoImageViewMargin">6,0,6,6</Thickness>
         <Thickness x:Key="TableHeaderSeparatorMargin">0,0,0,16</Thickness>
         <Thickness x:Key="TableBodySeparatorMargin">0,6,0,0</Thickness>
@@ -40,7 +40,7 @@
                         <BoxView x:Name="HeaderBaseBackgroundBoxView" />
                         <Grid 
                             Padding="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" 
-                            ColumnSpacing="{Binding Source=16, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
+                            ColumnSpacing="{Binding Source=4, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
@@ -73,15 +73,15 @@
                         HeightRequest="{Binding Source=4, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" 
                         Margin="{Binding Source={StaticResource TableHeaderSeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}" />
                     <Grid 
-                        Grid.Row="0" Grid.RowSpan="2"
+                        Grid.Row="0"
                         HorizontalOptions="Start"
                         Padding="{Binding Source={StaticResource LogoGridMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}">
-                        <BoxView 
+                        <!--<BoxView 
                             x:Name="LogoBacklightBoxView"
-                            CornerRadius="0,0,3,3" />
+                            CornerRadius="0,0,3,3" />-->
                         <ffimageloadingforms:CachedImage
                             x:Name="LogoImageView"
-                            Margin="{Binding Source={StaticResource LogoImageViewMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}"
+                            HeightRequest="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                             Aspect="AspectFill"
                             CacheType="Disk"
                             CacheDuration="8760:00:00" />

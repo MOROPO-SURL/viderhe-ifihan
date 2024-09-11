@@ -74,22 +74,22 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin
                 options.SuppressWWWAuthenticateHeader = true;
             });
 
-            #region Globalization configuration
-            var defaultCulture = new System.Globalization.CultureInfo("es");
+            //#region Globalization configuration
+            //var defaultCulture = new System.Globalization.CultureInfo("es");
 
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddLocalization();
 
-            services.Configure<RequestLocalizationOptions>(options =>
-            {
-                options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture(defaultCulture);
-                options.SupportedCultures = new[] { defaultCulture };
-                options.SupportedUICultures = new[] { defaultCulture };
+            //services.Configure<RequestLocalizationOptions>(options =>
+            //{
+            //    options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture(defaultCulture);
+            //    options.SupportedCultures = new[] { defaultCulture };
+            //    options.SupportedUICultures = new[] { defaultCulture };
 
-                options.RequestCultureProviders = new[] { new Framework.Guama.Core.Presentation.Web.Common.Localization.UrlRequestCultureProvider() };
-            });
+            //    options.RequestCultureProviders = new[] { new Framework.Guama.Core.Presentation.Web.Common.Localization.UrlRequestCultureProvider() };
+            //});
 
-            services.AddSingleton<GlobalViewLocalizationHelper>();
-            #endregion
+            //services.AddSingleton<GlobalViewLocalizationHelper>();
+            //#endregion
 
             services.Configure<Microsoft.AspNetCore.Routing.RouteOptions>(options => options.LowercaseUrls = true);
 
@@ -100,6 +100,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin
             services.AddMvc(mvc =>
             {
                 mvc.EnableEndpointRouting = false;
+            }).AddJsonOptions(json =>
+            {
+                json.JsonSerializerOptions.Converters.Add(new Converters.LocalDateTimeConverter());
             });
 
             services.AddDataProtection().PersistKeysToFileSystem(new System.IO.DirectoryInfo(System.IO.Path.Combine(env.ContentRootPath, "dpkeys")));
@@ -114,7 +117,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin
 
             loggerFactory.AddSerilog(Log.Logger);
 
-            app.UseRequestLocalization(requestLocalizationOptions.Value);
+            //app.UseRequestLocalization(requestLocalizationOptions.Value);
 
             if (env.IsDevelopment())
             {

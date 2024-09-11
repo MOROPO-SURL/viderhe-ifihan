@@ -5,8 +5,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Persistence.ORM.
 
 public partial class FIDSDbContext : DbContext
 {
-    public FIDSDbContext(DbContextOptions<FIDSDbContext> options)
-        : base(options)
+    public FIDSDbContext(DbContextOptions<FIDSDbContext> options) : base(options)
     {
     }
 
