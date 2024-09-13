@@ -54,7 +54,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                         {
                             Margin = margin,
                             WidthRequest = timeColumnWidth,
-                            Text = time.ToString("HH:mm"),
+                            Text = time.ToString("HH:mm", System.Globalization.CultureInfo.InvariantCulture),
                             TextColor = rowTextColor,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
@@ -71,7 +71,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                         var plannedAtLabel = new Label
                         {
                             Margin = margin,
-                            Text = target.PlannedAt.ToString("HH:mm"),
+                            Text = target.PlannedAt.ToString("HH:mm", System.Globalization.CultureInfo.InvariantCulture),
                             TextColor = rowTextColor,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
@@ -88,7 +88,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                         var estimateAtLabel = new Label
                         {
                             Margin = margin,
-                            Text = target.EstimatedAt?.ToString("HH:mm") ?? "---",
+                            Text = target.EstimatedAt?.ToString("HH:mm", System.Globalization.CultureInfo.InvariantCulture) ?? "---",
                             TextColor = rowTextColor,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
