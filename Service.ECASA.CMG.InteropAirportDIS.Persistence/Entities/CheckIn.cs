@@ -1,16 +1,9 @@
 ﻿namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities
 {
-    public class CheckIn : Framework.Guama.Core.Persistence.Entities.Contract.IEntity<System.Guid>
+    public class CheckIn : Framework.Guama.Core.Persistence.Entities.Contract.IEntity<int>
     {
-        public CheckIn()
-        {
-            Id = System.Guid.NewGuid();
-        }
-
         [System.ComponentModel.DataAnnotations.Key]
-        public System.Guid Id { get; set; }
-
-        public int KioskNumber { get; set; }
+        public int Id { get; set; }
 
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey("OperationId")]
         public Operation Operation { get; set; }

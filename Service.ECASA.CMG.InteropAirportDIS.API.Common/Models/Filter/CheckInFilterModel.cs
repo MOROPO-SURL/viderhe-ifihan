@@ -1,12 +1,12 @@
 ﻿namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter
 {
-    public class CheckInFilterModel : Framework.Guama.Core.Persistence.Presentation.Models.Filter.Contract.IEntityFilterModel<Persistence.Entities.CheckIn, System.Guid>
+    public class CheckInFilterModel : Framework.Guama.Core.Persistence.Presentation.Models.Filter.Contract.IEntityFilterModel<Persistence.Entities.CheckIn, int>
     {
-        public int KioskNumber { get; set; }
+        public int Id { get; set; }
 
         public System.Linq.Expressions.Expression<System.Func<Persistence.Entities.CheckIn, bool>> GetSelector()
         {
-            return entity => entity.KioskNumber == KioskNumber;
+            return entity => entity.Id == Id;
         }
     }
 }

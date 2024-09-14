@@ -1,10 +1,8 @@
 ﻿namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models
 {
-    public class CheckInDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Persistence.Entities.CheckIn, System.Guid>
+    public class CheckInDisplayModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityDisplayModel<Persistence.Entities.CheckIn, int>
     {
-        public System.Guid Id { get; set; }
-
-        public int KioskNumber { get; set; }
+        public int Id { get; set; }
 
         public OperationDisplayModel Operation { get; set; }
 
@@ -19,7 +17,6 @@
         public void Import(Persistence.Entities.CheckIn entity)
         {
             Id = entity.Id;
-            KioskNumber = entity.KioskNumber;
             IsOpen = entity.IsOpen;
             IsVIP = entity.IsVIP;
             StartAt = entity.StartAt;

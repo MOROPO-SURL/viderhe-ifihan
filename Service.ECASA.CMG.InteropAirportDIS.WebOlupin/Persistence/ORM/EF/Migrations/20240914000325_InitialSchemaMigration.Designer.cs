@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.EF.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231208052507_InitialShemaMigration")]
-    partial class InitialShemaMigration
+    [Migration("20240914000325_InitialSchemaMigration")]
+    partial class InitialSchemaMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1049,10 +1049,12 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.CheckIn", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("EndAt")
                         .HasColumnType("timestamp with time zone")
@@ -1065,10 +1067,6 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                     b.Property<bool>("IsVIP")
                         .HasColumnType("boolean")
                         .HasColumnName("isvip");
-
-                    b.Property<int>("KioskNumber")
-                        .HasColumnType("integer")
-                        .HasColumnName("kiosknumber");
 
                     b.Property<long>("OperationId")
                         .HasColumnType("bigint")

@@ -13,6 +13,8 @@ public partial class FIDSDbContext : DbContext
 
     public virtual DbSet<Departure> Departures { get; set; }
 
+    public virtual DbSet<CheckIn> CheckIns { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Arraival>(entity =>
@@ -89,6 +91,28 @@ public partial class FIDSDbContext : DbContext
                 .HasMaxLength(9)
                 .IsUnicode(false)
                 .IsFixedLength();
+        });
+
+        modelBuilder.Entity<CheckIn>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("Check_in");
+
+            entity.Property(e => e.Abierto).HasColumnName("abierto");
+            entity.Property(e => e.FechaFin)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_fin");
+            entity.Property(e => e.FechaIni)
+                .HasColumnType("datetime")
+                .HasColumnName("fecha_ini");
+            entity.Property(e => e.Habilitado).HasColumnName("habilitado");
+            entity.Property(e => e.IdMostrador).HasColumnName("id_mostrador");
+            entity.Property(e => e.IdOper)
+                .HasMaxLength(10)
+                .IsFixedLength()
+                .HasColumnName("id_Oper");
+            entity.Property(e => e.Vip).HasColumnName("vip");
         });
 
         OnModelCreatingPartial(modelBuilder);

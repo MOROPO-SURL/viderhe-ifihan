@@ -37,7 +37,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             {
                 client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.CheckInFilterModel
                 {
-                    KioskNumber = overlayContextModel.Number,
+                    Id = overlayContextModel.Number,
                 }).ContinueWith(FetchCheckIns_Callback);
             });
 
@@ -668,7 +668,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             {
                 client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.CheckInFilterModel
                 {
-                    KioskNumber = overlayContextModel.Number,
+                    Id = overlayContextModel.Number,
                 }).ContinueWith(FetchCheckIns_Callback);
             }
             else
@@ -677,7 +677,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                 {
                     client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.CheckInFilterModel
                     {
-                        KioskNumber = overlayContextModel.Number,
+                        Id = overlayContextModel.Number,
                     }).ContinueWith(FetchCheckIns_Callback);
                 });
             }

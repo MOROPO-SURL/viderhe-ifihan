@@ -10,9 +10,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Backe
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = AspNetCore.Authentication.ApiKey.ApiKeyDefaults.AuthenticationScheme)]
     [Route("api/backend/[controller]")]
     [ApiController]
-    public class CheckInsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<CheckIn, System.Guid, CheckInInputModel, CheckInDisplayModel>
+    public class CheckInsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<CheckIn, int, CheckInInputModel, CheckInDisplayModel>
     {
-        public CheckInsController(Framework.Guama.Core.Persistence.Repositories.IEntityRepository<CheckIn, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<CheckInsController> localizer, ILogger<CheckInsController> logger) : base(repository, localizer, logger)
+        public CheckInsController(Framework.Guama.Core.Persistence.Repositories.IEntityRepository<CheckIn, int> repository, Microsoft.Extensions.Localization.IStringLocalizer<CheckInsController> localizer, ILogger<CheckInsController> logger) : base(repository, localizer, logger)
         {
         }
 
@@ -23,7 +23,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Backe
         }
 
         [RequirePermissions(Authorization.CheckInViewerPermission)]
-        public override ActionResult<CheckInDisplayModel> Get(System.Guid key)
+        public override ActionResult<CheckInDisplayModel> Get(int key)
         {
             return base.Get(key);
         }
@@ -47,7 +47,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Backe
         }
 
         [RequirePermissions(Authorization.CheckInRemoverPermission)]
-        public override ActionResult Delete(System.Guid key)
+        public override ActionResult Delete(int key)
         {
             return base.Delete(key);
         }

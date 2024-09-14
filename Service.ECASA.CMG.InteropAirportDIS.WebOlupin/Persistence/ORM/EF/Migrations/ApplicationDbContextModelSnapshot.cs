@@ -1046,10 +1046,12 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.CheckIn", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("EndAt")
                         .HasColumnType("timestamp with time zone")
@@ -1062,10 +1064,6 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                     b.Property<bool>("IsVIP")
                         .HasColumnType("boolean")
                         .HasColumnName("isvip");
-
-                    b.Property<int>("KioskNumber")
-                        .HasColumnType("integer")
-                        .HasColumnName("kiosknumber");
 
                     b.Property<long>("OperationId")
                         .HasColumnType("bigint")
