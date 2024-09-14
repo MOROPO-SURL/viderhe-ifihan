@@ -68,7 +68,8 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Page
                     {
                         RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                         Video = BindingContextPageModel.Video.ToContextModel(),
-                        StrechAspectKind = BindingContextPageModel.StrechAspectKind
+                        StrechAspectKind = BindingContextPageModel.StrechAspectKind,
+                        Muted = BindingContextPageModel.Muted
                     }),
                     Tags = BindingContextPageModel.Tags.ToArray()
                 };

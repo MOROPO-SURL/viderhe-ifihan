@@ -25,6 +25,7 @@
                     Source="{Binding Path=PresentedSource}"
                     ShowControls="False"
                     AutoPlay="True"
+                    IsMuted="{Binding Path=PresentedVideoMuted}"
                     StatusUpdated="VideoPlayer_StatusUpdated" />
                 <ffimageloadingforms:CachedImage
                     x:Name="PresenterImage"

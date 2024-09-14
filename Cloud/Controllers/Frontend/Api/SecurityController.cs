@@ -32,25 +32,38 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
         {
             if (ModelState.IsValid)
             {
-                var userIdentity = identityProvider.ProvideIdentity(inputModel.User, inputModel.Password, Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
-
-                if (userIdentity != null)
+                try
                 {
-                    var account = accountRepository.FindOneBy(entity => entity.Enabled && entity.ModeratorBridges.Any(bridge => bridge.Stern.UserId == userIdentity.Name));
+                    var userIdentity = identityProvider.ProvideIdentity(inputModel.User, inputModel.Password, Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
 
-                    if (userIdentity.HasClaim(match => match.Type.Equals(Framework.Guama.Core.Presentation.Web.Security.Constants.ClaimTypes.AccountDisabled) && match.Value.Equals(true.ToString())) || account == null)
+                    if (userIdentity != null)
                     {
-                        return Forbid(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
+                        var account = accountRepository.FindOneBy(entity => entity.Enabled && entity.ModeratorBridges.Any(bridge => bridge.Stern.UserId == userIdentity.Name));
+
+                        if (userIdentity.HasClaim(match => match.Type.Equals(Framework.Guama.Core.Presentation.Web.Security.Constants.ClaimTypes.AccountDisabled) && match.Value.Equals(true.ToString())) || account == null)
+                        {
+                            return Forbid(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
+                        }
+
+                        userIdentity.AddClaim(new System.Security.Claims.Claim(Policies.ACCOUNT_VALIDATED_MODERATION, account.Id.ToString()));
+
+                        var moderator = accountModeratorBridgeRepository.GetAll().First(bridge => bridge.ProwId == account.Id && bridge.Stern.UserId == userIdentity.Name).Stern;
+
+                        return GenerateToken(userIdentity, moderator);
                     }
 
-                    userIdentity.AddClaim(new System.Security.Claims.Claim(Policies.ACCOUNT_VALIDATED_MODERATION, account.Id.ToString()));
-
-                    var moderator = accountModeratorBridgeRepository.GetAll().First(bridge => bridge.ProwId == account.Id && bridge.Stern.UserId == userIdentity.Name).Stern;
-
-                    return GenerateToken(userIdentity, moderator);
+                    return Unauthorized();
                 }
+                catch (Framework.Guama.Core.Presentation.Web.Security.Exceptions.ForceAuthenticationDetectException)
+                {
+                    return new StatusCodeResult((int)System.Net.HttpStatusCode.PreconditionFailed);
+                }
+                catch (System.Exception exception)
+                {
+                    logger.LogError(exception, "Authentication know exception");
 
-                return Unauthorized();
+                    return new StatusCodeResult((int)System.Net.HttpStatusCode.InternalServerError);
+                }
             }
 
             return BadRequest();

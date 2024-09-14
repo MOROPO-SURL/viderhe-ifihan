@@ -5,5 +5,7 @@
         public SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource VideoSource { get; set; }
 
         public Xamarin.Forms.Aspect StrechAspect { get; set; }
+
+        public bool Muted { get; set; }
     }
 }

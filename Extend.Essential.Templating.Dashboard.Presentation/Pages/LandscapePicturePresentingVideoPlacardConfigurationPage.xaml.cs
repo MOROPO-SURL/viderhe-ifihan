@@ -81,7 +81,8 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Page
                             PresenterImage = BindingContextPageModel.PresenterImage.ToContextModel(),
                             PresenterSide = BindingContextPageModel.PresenterSide,
                             PresentedVideo = BindingContextPageModel.PresentedVideo.ToContextModel(),
-                            PresentedVideoCenteredAtPresentation = BindingContextPageModel.PresentedVideoCenteredAtPresentation
+                            PresentedVideoCenteredAtPresentation = BindingContextPageModel.PresentedVideoCenteredAtPresentation,
+                            PresentedVideoMuted = BindingContextPageModel.PresentedVideoMuted
                         }),
                         Tags = BindingContextPageModel.Tags.ToArray()
                     };
@@ -111,7 +112,8 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Page
                             PresenterImage = BindingContextPageModel.PresenterImage.ToContextModel(),
                             PresenterSide = BindingContextPageModel.PresenterSide,
                             PresentedVideo = BindingContextPageModel.PresentedVideo.ToContextModel(),
-                            PresentedVideoCenteredAtPresentation = BindingContextPageModel.PresentedVideoCenteredAtPresentation
+                            PresentedVideoCenteredAtPresentation = BindingContextPageModel.PresentedVideoCenteredAtPresentation,
+                            PresentedVideoMuted = BindingContextPageModel.PresentedVideoMuted
                         }),
                         Tags = BindingContextPageModel.Tags.ToArray()
                     };

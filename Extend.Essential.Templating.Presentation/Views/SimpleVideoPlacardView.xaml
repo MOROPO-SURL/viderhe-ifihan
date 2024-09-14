@@ -16,6 +16,7 @@
                 ShowControls="False"
                 AutoPlay="True"
                 StrechAspect="{Binding Path=StrechAspect}"
+                IsMuted="{Binding Path=Muted}"
                 StatusUpdated="VideoPlayer_StatusUpdated" />
         </Grid>
     </ContentView.Content>
