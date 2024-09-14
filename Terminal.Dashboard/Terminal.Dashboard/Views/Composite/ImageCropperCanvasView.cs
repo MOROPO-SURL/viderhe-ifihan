@@ -17,7 +17,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Views.Composite
         private SKMatrix inverseBitmapMatrix;
 
         // Touch tracking 
-        private Effects.TouchEffect touchEffect;
+        private Support.Presentation.Dashboard.Effects.TouchEffect touchEffect;
 
         private Dictionary<long, TouchPoint> touchPoints;
 
@@ -28,7 +28,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Views.Composite
 
         public ImageCropperCanvasView(SKBitmap originBitmap, float? aspectRatio = null)
         {
-            touchEffect = new Effects.TouchEffect();
+            touchEffect = new Support.Presentation.Dashboard.Effects.TouchEffect();
 
             touchPoints = new Dictionary<long, TouchPoint>();
 
@@ -232,14 +232,14 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Views.Composite
             InvalidateSurface();
         }
 
-        private void OnTouchEffectTouchAction(object sender, Delegates.TouchActionEventArgs args)
+        private void OnTouchEffectTouchAction(object sender, Support.Presentation.Dashboard.Delegates.TouchActionEventArgs args)
         {
             SKPoint pixelLocationPoint = ConvertToPixel(args.Location);
             SKPoint bitmapLocationPoint = inverseBitmapMatrix.MapPoint(pixelLocationPoint);
 
             switch (args.Kind)
             {
-                case Enumerations.TouchActionKind.Pressed:
+                case Support.Presentation.Dashboard.Enumerations.TouchActionKind.Pressed:
                     // Convert radius to bitmap/cropping scale
                     float radius = inverseBitmapMatrix.ScaleX * RADIUS;
 
@@ -259,7 +259,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Views.Composite
 
                     break;
 
-                case Enumerations.TouchActionKind.Moved:
+                case Support.Presentation.Dashboard.Enumerations.TouchActionKind.Moved:
                     if (touchPoints.ContainsKey(args.Id))
                     {
                         var touchPoint = touchPoints[args.Id];
@@ -278,8 +278,8 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Views.Composite
 
                     break;
 
-                case Enumerations.TouchActionKind.Released:
-                case Enumerations.TouchActionKind.Cancelled:
+                case Support.Presentation.Dashboard.Enumerations.TouchActionKind.Released:
+                case Support.Presentation.Dashboard.Enumerations.TouchActionKind.Cancelled:
                     if (touchPoints.ContainsKey(args.Id))
                     {
                         touchPoints.Remove(args.Id);

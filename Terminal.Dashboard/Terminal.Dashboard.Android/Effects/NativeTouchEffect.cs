@@ -11,7 +11,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Effects
     {
         private Android.Views.View view;
         private Xamarin.Forms.Element formsElement;
-        private Dashboard.Effects.TouchEffect libTouchEffect;
+        private Support.Presentation.Dashboard.Effects.TouchEffect libTouchEffect;
         private bool capture;
         private System.Func<double, double> fromPixels;
         private int[] twoIntArray = new int[2];
@@ -26,7 +26,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Effects
             view = Control == null ? Container : Control;
 
             // Get access to the TouchEffect class in the .NET Standard library
-            var touchEffect = (Dashboard.Effects.TouchEffect)Element.Effects.FirstOrDefault(e => e is Dashboard.Effects.TouchEffect);
+            var touchEffect = (Support.Presentation.Dashboard.Effects.TouchEffect)Element.Effects.FirstOrDefault(e => e is Support.Presentation.Dashboard.Effects.TouchEffect);
 
             if (touchEffect != null && view != null)
             {
@@ -76,7 +76,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Effects
             {
                 case Android.Views.MotionEventActions.Down:
                 case Android.Views.MotionEventActions.PointerDown:
-                    FireEvent(this, id, Enumerations.TouchActionKind.Pressed, screenPointerCoords, true);
+                    FireEvent(this, id, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Pressed, screenPointerCoords, true);
 
                     idToEffectDictionary.Add(id, this);
 
@@ -96,7 +96,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Effects
 
                             screenPointerCoords = new Xamarin.Forms.Point(twoIntArray[0] + motionEvent.GetX(pointerIndex), twoIntArray[1] + motionEvent.GetY(pointerIndex));
 
-                            FireEvent(this, id, Enumerations.TouchActionKind.Moved, screenPointerCoords, true);
+                            FireEvent(this, id, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Moved, screenPointerCoords, true);
                         }
                         else
                         {
@@ -104,7 +104,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Effects
 
                             if (idToEffectDictionary[id] != null)
                             {
-                                FireEvent(idToEffectDictionary[id], id, Enumerations.TouchActionKind.Moved, screenPointerCoords, true);
+                                FireEvent(idToEffectDictionary[id], id, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Moved, screenPointerCoords, true);
                             }
                         }
                     }
@@ -114,7 +114,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Effects
                 case Android.Views.MotionEventActions.Pointer1Up:
                     if (capture)
                     {
-                        FireEvent(this, id, Enumerations.TouchActionKind.Released, screenPointerCoords, false);
+                        FireEvent(this, id, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Released, screenPointerCoords, false);
                     }
                     else
                     {
@@ -122,7 +122,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Effects
 
                         if (idToEffectDictionary[id] != null)
                         {
-                            FireEvent(idToEffectDictionary[id], id, Enumerations.TouchActionKind.Released, screenPointerCoords, false);
+                            FireEvent(idToEffectDictionary[id], id, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Released, screenPointerCoords, false);
                         }
                     }
                     idToEffectDictionary.Remove(id);
@@ -131,13 +131,13 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Effects
                 case Android.Views.MotionEventActions.Cancel:
                     if (capture)
                     {
-                        FireEvent(this, id, Enumerations.TouchActionKind.Cancelled, screenPointerCoords, false);
+                        FireEvent(this, id, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Cancelled, screenPointerCoords, false);
                     }
                     else
                     {
                         if (idToEffectDictionary[id] != null)
                         {
-                            FireEvent(idToEffectDictionary[id], id, Enumerations.TouchActionKind.Cancelled, screenPointerCoords, false);
+                            FireEvent(idToEffectDictionary[id], id, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Cancelled, screenPointerCoords, false);
                         }
                     }
                     idToEffectDictionary.Remove(id);
@@ -173,20 +173,20 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Effects
             {
                 if (idToEffectDictionary[id] != null)
                 {
-                    FireEvent(idToEffectDictionary[id], id, Enumerations.TouchActionKind.Exited, pointerLocation, true);
+                    FireEvent(idToEffectDictionary[id], id, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Exited, pointerLocation, true);
                 }
                 if (touchEffectHit != null)
                 {
-                    FireEvent(touchEffectHit, id, Enumerations.TouchActionKind.Entered, pointerLocation, true);
+                    FireEvent(touchEffectHit, id, Support.Presentation.Dashboard.Enumerations.TouchActionKind.Entered, pointerLocation, true);
                 }
                 idToEffectDictionary[id] = touchEffectHit;
             }
         }
 
-        private void FireEvent(NativeTouchEffect touchEffect, int id, Enumerations.TouchActionKind actionType, Xamarin.Forms.Point pointerLocation, bool isInContact)
+        private void FireEvent(NativeTouchEffect touchEffect, int id, Support.Presentation.Dashboard.Enumerations.TouchActionKind actionType, Xamarin.Forms.Point pointerLocation, bool isInContact)
         {
             // Get the method to call for firing events
-            System.Action<Xamarin.Forms.Element, Delegates.TouchActionEventArgs> onTouchAction = touchEffect.libTouchEffect.OnTouchAction;
+            System.Action<Xamarin.Forms.Element, Support.Presentation.Dashboard.Delegates.TouchActionEventArgs> onTouchAction = touchEffect.libTouchEffect.OnTouchAction;
 
             // Get the location of the pointer within the view
             touchEffect.view.GetLocationOnScreen(twoIntArray);
@@ -197,7 +197,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid.Effects
             var point = new Xamarin.Forms.Point(fromPixels(x), fromPixels(y));
 
             // Call the method
-            onTouchAction(touchEffect.formsElement, new Delegates.TouchActionEventArgs(id, actionType, point, isInContact));
+            onTouchAction(touchEffect.formsElement, new Support.Presentation.Dashboard.Delegates.TouchActionEventArgs(id, actionType, point, isInContact));
         }
     }
 }
