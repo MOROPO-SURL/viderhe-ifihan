@@ -9,5 +9,7 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context
         public VideoContextModel PresentedVideo { get; set; }
 
         public bool PresentedVideoCenteredAtPresentation { get; set; }
+
+        public bool PresentedVideoMuted { get; set; }
     }
 }

@@ -24,7 +24,8 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Fact
                 PlayerOrientationSupportKind = placardViewModel.PlayerOrientationSupportKind == null ? ConfigurationPlayerOrientationSupportKind.Inherited : placardViewModel.PlayerOrientationSupportKind.Value.ToConfiguration(),
                 RequireUnobstructedPresetation = contextModel.RequireUnobstructedPresetation,
                 Video = contextModel.Video.ToViewModel(),
-                StrechAspectKind = contextModel.StrechAspectKind
+                StrechAspectKind = contextModel.StrechAspectKind,
+                Muted = contextModel.Muted
             };
         }
     }

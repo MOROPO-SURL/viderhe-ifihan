@@ -28,7 +28,8 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Providers
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     VideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri),
-                    StrechAspect = (Xamarin.Forms.Aspect)context.StrechAspectKind
+                    StrechAspect = (Xamarin.Forms.Aspect)context.StrechAspectKind,
+                    Muted = context.Muted
                 }, relativeSizeScaleFactor);
             }
 
@@ -91,7 +92,8 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Providers
                     PresenterImageWidth = context.PresenterImage.Width,
                     PresenterImageHeigth = context.PresenterImage.Height,
                     PresentedSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
-                    PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation
+                    PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation,
+                    PresentedVideoMuted = context.PresentedVideoMuted
                 }, relativeSizeScaleFactor);
             }
 
@@ -125,7 +127,8 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Providers
                     PresenterImageWidth = context.PresenterImage.Width,
                     PresenterImageHeigth = context.PresenterImage.Height,
                     PresentedSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
-                    PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation
+                    PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation,
+                    PresentedVideoMuted = context.PresentedVideoMuted
                 }, relativeSizeScaleFactor);
             }
 
