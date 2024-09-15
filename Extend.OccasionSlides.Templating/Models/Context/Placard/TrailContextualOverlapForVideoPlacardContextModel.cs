@@ -24,5 +24,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Placard
         public bool IsContextedVideoFramed { get; set; }
 
         public bool ContextedVideoCenteredAtPresentation { get; set; }
+
+        public bool ContextedVideoMuted { get; set; }
     }
 }

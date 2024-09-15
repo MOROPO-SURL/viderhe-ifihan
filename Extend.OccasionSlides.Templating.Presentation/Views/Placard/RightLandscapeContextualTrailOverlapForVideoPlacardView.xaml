@@ -37,6 +37,7 @@
                     StrechAspect="AspectFill"
                     ShowControls="False"
                     AutoPlay="True"
+                    IsMuted="{Binding Path=ContextedVideoMuted}"
                     StatusUpdated="VideoPlayer_StatusUpdated" />
                 <Grid
                     x:Name="OverlapLayout"

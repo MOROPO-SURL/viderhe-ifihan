@@ -10,6 +10,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         private Xamarin.Forms.Color overlapBackgroundColor;
         private OverlapTrailMode overlapTrailMode;
         private bool contextedVideoCenteredAtPresentation;
+        private bool contextedVideoMuted;
         private Support.Presentation.Models.View.VideoViewModel contextedVideo;
         private bool isVideoFramed;
         private bool isOverlapAnchoredAtVertical;
@@ -69,6 +70,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         public OverlapTrailMode[] AvailableOverlapTrailModes { get; private set; }
 
         public bool ContextedVideoCenteredAtPresentation { get => contextedVideoCenteredAtPresentation; set => SetProperty(ref contextedVideoCenteredAtPresentation, value); }
+
+        public bool ContextedVideoMuted { get => contextedVideoMuted; set => SetProperty(ref contextedVideoMuted, value); }
 
         public Support.Presentation.Models.View.VideoViewModel ContextedVideo { get => contextedVideo; set => SetProperty(ref contextedVideo, value); }
 

@@ -17,5 +17,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Placard
         public string OverlapBackgroundColor { get; set; }
 
         public Common.Templating.Models.Context.VideoContextModel ContextedVideo { get; set; }
+
+        public bool ContextedVideoMuted { get; set; }
     }
 }

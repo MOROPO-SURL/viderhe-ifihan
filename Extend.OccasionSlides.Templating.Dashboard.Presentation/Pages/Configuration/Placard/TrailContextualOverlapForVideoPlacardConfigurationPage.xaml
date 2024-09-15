@@ -362,8 +362,16 @@
                                     Grid.Column="0" Grid.Row="1"
                                     Style="{StaticResource FormFieldFrame}">
                                     <StackLayout>
-                                        <Label Text="Mantener centrado Video?" Style="{StaticResource FormLabel}" />
+                                        <Label Text="Mantener centrado Video" Style="{StaticResource FormLabel}" />
                                         <Switch IsToggled="{Binding Path=ContextedVideoCenteredAtPresentation}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    Grid.Column="1" Grid.Row="1"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Video Silenciado" Style="{StaticResource FormLabel}" />
+                                        <Switch IsToggled="{Binding Path=ContextedVideoMuted}" />
                                     </StackLayout>
                                 </Frame>
                             </Grid>

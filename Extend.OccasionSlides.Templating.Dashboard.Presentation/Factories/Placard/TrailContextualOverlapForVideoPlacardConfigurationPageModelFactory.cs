@@ -27,6 +27,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                 ContextedVideo = context.ContextedVideo.ToViewModel(),
                 IsContextedVideoFramed = context.IsContextedVideoFramed,
                 ContextedVideoCenteredAtPresentation = context.ContextedVideoCenteredAtPresentation,
+                ContextedVideoMuted = context.ContextedVideoMuted,
                 OverlapTrailMode = context.OverlapTrailMode,
                 OverlapSize = context.OverlapSize,
                 OverlapShapeKind = context.OverlapShapeKind,

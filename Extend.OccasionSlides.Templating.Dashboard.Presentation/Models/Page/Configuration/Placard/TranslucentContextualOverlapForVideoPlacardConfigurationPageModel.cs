@@ -9,6 +9,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         private OverlapSize overlapSize;
         private OverlapAlignment overlapAlignment;
         private Xamarin.Forms.Color overlapBackgroundColor;
+        private bool contextedVideoMuted;
         private Support.Presentation.Models.View.VideoViewModel contextedVideo;
         private bool isOverlapAnchoredAtVertical;
 
@@ -52,6 +53,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
         public OverlapAlignment[] AvailableOverlapAlignments { get; private set; }
 
         public Xamarin.Forms.Color OverlapBackgroundColor { get => overlapBackgroundColor; set => SetProperty(ref overlapBackgroundColor, value); }
+
+        public bool ContextedVideoMuted { get => contextedVideoMuted; set => SetProperty(ref contextedVideoMuted, value); }
 
         public Support.Presentation.Models.View.VideoViewModel ContextedVideo { get => contextedVideo; set => SetProperty(ref contextedVideo, value); }
 

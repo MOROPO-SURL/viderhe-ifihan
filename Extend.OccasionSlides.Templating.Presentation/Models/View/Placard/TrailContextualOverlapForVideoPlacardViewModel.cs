@@ -22,6 +22,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.Vi
 
         public bool ContextedVideoCenteredAtPresentation { get; set; }
 
+        public bool ContextedVideoMuted { get; set; }
+
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();

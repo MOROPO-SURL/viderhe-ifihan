@@ -226,6 +226,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
                     ContextedVideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
                     IsContextedVideoFramed = context.IsContextedVideoFramed,
                     ContextedVideoCenteredAtPresentation = context.ContextedVideoCenteredAtPresentation,
+                    ContextedVideoMuted = context.ContextedVideoMuted,
                     OverlapTrailMode = context.OverlapTrailMode,
                     OverlapSize = context.OverlapSize,
                     OverlapShapeKind = context.OverlapShapeKind,
@@ -253,6 +254,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ContextedVideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
+                    ContextedVideoMuted = context.ContextedVideoMuted,
                     OverlapSize = context.OverlapSize,
                     OverlapShapeKind = context.OverlapShapeKind,
                     OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),
@@ -280,6 +282,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ContextedVideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
                     ContextedVideoCenteredAtPresentation = context.ContextedVideoCenteredAtPresentation,
+                    ContextedVideoMuted = context.ContextedVideoMuted,
                     OverlapSize = context.OverlapSize,
                     OverlapShapeKind = context.OverlapShapeKind,
                     OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),

@@ -27,6 +27,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                 Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>(placardViewModel.Tags),
                 ContextedVideo = context.ContextedVideo.ToViewModel(),
                 ContextedVideoCenteredAtPresentation = context.ContextedVideoCenteredAtPresentation,
+                ContextedVideoMuted = context.ContextedVideoMuted,
                 UseOverlapShadown = context.UseOverlapShadown,
                 OverlapSize = context.OverlapSize,
                 OverlapShapeKind = context.OverlapShapeKind,

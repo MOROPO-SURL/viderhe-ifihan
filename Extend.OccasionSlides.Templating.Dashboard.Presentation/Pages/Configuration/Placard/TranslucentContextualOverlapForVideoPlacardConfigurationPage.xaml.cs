@@ -80,6 +80,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ContextedVideo = BindingContextPageModel.ContextedVideo.ToContextModel(),
+                            ContextedVideoMuted = BindingContextPageModel.ContextedVideoMuted,
                             OverlapSize = BindingContextPageModel.OverlapSize,
                             OverlapShapeKind = BindingContextPageModel.OverlapShapeKind,
                             OverlapAlignment = BindingContextPageModel.OverlapAlignment,
@@ -116,6 +117,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                         {
                             RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
                             ContextedVideo = BindingContextPageModel.ContextedVideo.ToContextModel(),
+                            ContextedVideoMuted = BindingContextPageModel.ContextedVideoMuted,
                             OverlapSize = BindingContextPageModel.OverlapSize,
                             OverlapShapeKind = BindingContextPageModel.OverlapShapeKind,
                             OverlapAlignment = BindingContextPageModel.OverlapAlignment,

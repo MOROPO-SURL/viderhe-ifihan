@@ -25,6 +25,7 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Dashboard.Presentation
                 Label = placardViewModel.Label,
                 Tags = new System.Collections.ObjectModel.ObservableCollection<Cloud.Api.Common.Models.TagDisplayModel>(placardViewModel.Tags),
                 ContextedVideo = context.ContextedVideo.ToViewModel(),
+                ContextedVideoMuted = context.ContextedVideoMuted,
                 OverlapSize = context.OverlapSize,
                 OverlapShapeKind = context.OverlapShapeKind,
                 OverlapBackgroundColor = Xamarin.Forms.Color.FromHex(context.OverlapBackgroundColor),

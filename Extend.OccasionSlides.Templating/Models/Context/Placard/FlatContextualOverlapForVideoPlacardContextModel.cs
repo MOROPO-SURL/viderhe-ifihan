@@ -19,5 +19,7 @@
         public Common.Templating.Models.Context.VideoContextModel ContextedVideo { get; set; }
 
         public bool ContextedVideoCenteredAtPresentation { get; set; }
+
+        public bool ContextedVideoMuted { get; set; }
     }
 }
