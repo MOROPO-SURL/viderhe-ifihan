@@ -17,6 +17,8 @@
 
         public bool PresentedVideoCenteredAtPresentation { get; set; }
 
+        public bool PresentedVideoMuted { get; set; }
+
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();

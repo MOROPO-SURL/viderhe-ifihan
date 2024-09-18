@@ -12,5 +12,7 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context
         public VideoContextModel Video { get; set; }
 
         public Enumerations.VideoStrechAspectKind StrechAspectKind { get; set; }
+
+        public bool Muted { get; set; }
     }
 }
