@@ -7,6 +7,7 @@ using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Extensiones;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
 {
@@ -272,38 +273,67 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
 
                     var viderheCheckins = (await checkInsAPIConnectClient.GetAsync()).ToList();
 
-                    var avianetCheckIns = dbContext.Set<Persistence.Entities.CheckIn>().Where(entity => entity.Habilitado == true).ToArray().DistinctBy(entity => entity.IdMostrador).ToArray();
+                    var now = System.DateTime.Now;
 
-                    foreach (var item in avianetCheckIns)
+#if DEBUG
+                    //now = System.DateTime.Parse("13/9/2024 06:30:00");
+#endif
+
+                    var targetStartAt = now - System.TimeSpan.Parse("00:30:00");
+
+                    var targetEndAt = now + System.TimeSpan.Parse("00:15:00");
+
+                    var avianetCheckInGroups = dbContext.Set<Persistence.Entities.CheckIn>().Where(entity => entity.Habilitado == true && entity.FechaFin > targetStartAt && entity.FechaIni <= targetEndAt).OrderBy(entity => entity.FechaIni).ToArray().GroupBy(entity => entity.IdMostrador);
+
+                    foreach (var group in avianetCheckInGroups)
                     {
-                        var target = viderheCheckins.FirstOrDefault(model => model.Id == item.IdMostrador);
+                        var avianetTarget = group.First();
+
+                        var groupCount = group.Count();
+
+                        if (avianetTarget.FechaIni < now && groupCount > 1)
+                        {
+                            for (int i = 1; i < groupCount; i++)
+                            {
+                                var item = group.ElementAt(i);
+
+                                if (item.FechaIni <= now && item.FechaFin >= now)
+                                {
+                                    avianetTarget = item;
+
+                                    break;
+                                }
+                            }
+                        }
+
+                        var viderheTarget = viderheCheckins.FirstOrDefault(model => model.Id == avianetTarget.IdMostrador);
                         
-                        if (target == null)
+                        if (viderheTarget == null)
                         {
                             await checkInsAPIConnectClient.CreateAsync(new CheckInInputModel
                             {
-                                Id = item.IdMostrador.Value,
-                                OperationId = long.Parse(item.IdOper),
-                                StartAt = item.FechaIni.Value,
-                                EndAt = item.FechaFin.Value,
-                                IsVIP = item.Vip != null && item.Vip.Value,
-                                IsOpen = item.Abierto != null && item.Abierto.Value
+                                Id = avianetTarget.IdMostrador.Value,
+                                OperationId = long.Parse(avianetTarget.IdOper),
+                                StartAt = avianetTarget.FechaIni.Value,
+                                EndAt = avianetTarget.FechaFin.Value,
+                                IsVIP = avianetTarget.Vip != null && avianetTarget.Vip.Value,
+                                IsOpen = avianetTarget.Abierto != null && avianetTarget.Abierto.Value
                             });
                         }
-                        else if (target.IsUpdateRequired(item))
+                        else if (viderheTarget.IsUpdateRequired(avianetTarget))
                         {
                             await checkInsAPIConnectClient.EditAsync(new CheckInInputModel
                             {
-                                Id = target.Id,
-                                OperationId = long.Parse(item.IdOper),
-                                StartAt = item.FechaIni.Value,
-                                EndAt = item.FechaFin.Value,
-                                IsVIP = item.Vip != null && item.Vip.Value,
-                                IsOpen = item.Abierto != null && item.Abierto.Value
+                                Id = viderheTarget.Id,
+                                OperationId = long.Parse(avianetTarget.IdOper),
+                                StartAt = avianetTarget.FechaIni.Value,
+                                EndAt = avianetTarget.FechaFin.Value,
+                                IsVIP = avianetTarget.Vip != null && avianetTarget.Vip.Value,
+                                IsOpen = avianetTarget.Abierto != null && avianetTarget.Abierto.Value
                             });
                         }
 
-                        viderheCheckins.Remove(target);
+                        viderheCheckins.Remove(viderheTarget);
                     }
 
                     foreach (var item in viderheCheckins)
