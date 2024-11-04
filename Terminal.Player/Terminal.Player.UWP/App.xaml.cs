@@ -91,6 +91,25 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP
             Window.Current.CoreWindow.PointerCursor = null;
 
             applicationView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+
+            applicationView.VisibleBoundsChanged += ApplicationView_VisibleBoundsChanged;
+        }
+
+        private void ApplicationView_VisibleBoundsChanged(Windows.UI.ViewManagement.ApplicationView sender, object args)
+        {
+            if (Windows.UI.ViewManagement.ApplicationView.PreferredLaunchWindowingMode != Windows.UI.ViewManagement.ApplicationViewWindowingMode.FullScreen) return;
+
+            if (!IsRequestFullScreenModeRequired && !sender.IsFullScreenMode)
+            {
+                IsRequestFullScreenModeRequired = true;
+
+                return;
+            }
+
+            Window.Current.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, new Windows.UI.Core.DispatchedHandler(async () =>
+            {
+                var result = await Windows.ApplicationModel.Core.CoreApplication.RequestRestartAsync(string.Empty);
+            })).AsTask();
         }
 
         internal bool IsRequestFullScreenModeRequired { get; set; }
