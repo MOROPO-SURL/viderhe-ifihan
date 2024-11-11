@@ -39,5 +39,7 @@
         public string OpenCheckInLabel { get; set; }
 
         public string ClosedCheckInLabel { get; set; }
+
+        public bool ShowClock { get; set; }
     }
 }

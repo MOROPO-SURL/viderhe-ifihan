@@ -141,7 +141,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dash
                 PostPresentationTime = BindingContextPageModel.PostPresentationTime,
                 PreCheckInHeadLabel = BindingContextPageModel.PreCheckInHeadLabel,
                 OpenCheckInLabel = BindingContextPageModel.OpenCheckInLabel,
-                ClosedCheckInLabel = BindingContextPageModel.ClosedCheckInLabel
+                ClosedCheckInLabel = BindingContextPageModel.ClosedCheckInLabel,
+                ShowClock = BindingContextPageModel.ShowClock
             }));
         }
 

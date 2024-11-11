@@ -65,6 +65,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <StackLayout 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -418,6 +419,14 @@
                                     </StackLayout>
                                 </Frame>
                             </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="0" Grid.Row="5"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Mostrar reloj simpre?" Style="{StaticResource FormLabel}" />
+                            <Switch IsToggled="{Binding ShowClock}" />
                         </StackLayout>
                     </Frame>
                 </Grid>

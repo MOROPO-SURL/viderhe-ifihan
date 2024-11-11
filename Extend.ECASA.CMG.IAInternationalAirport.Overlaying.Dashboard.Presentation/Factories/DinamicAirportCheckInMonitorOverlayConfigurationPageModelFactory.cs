@@ -26,7 +26,8 @@
                     PostPresentationTime = context.PostPresentationTime,
                     PreCheckInHeadLabel = context.PreCheckInHeadLabel,
                     OpenCheckInLabel = context.OpenCheckInLabel,
-                    ClosedCheckInLabel = context.ClosedCheckInLabel
+                    ClosedCheckInLabel = context.ClosedCheckInLabel,
+                    ShowClock = context.ShowClock
                 };
             }
             catch

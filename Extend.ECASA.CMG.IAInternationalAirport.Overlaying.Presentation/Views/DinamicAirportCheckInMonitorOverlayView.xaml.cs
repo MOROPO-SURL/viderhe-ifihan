@@ -58,6 +58,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             BindingContext = bindingContextModel;
 
+            GlobalClockWrapGrid.IsVisible = overlayContextModel.ShowClock;
+
             Xamarin.Forms.Device.StartTimer(System.TimeSpan.FromSeconds(15), Timer_Callback);
 
             Timer_Callback();

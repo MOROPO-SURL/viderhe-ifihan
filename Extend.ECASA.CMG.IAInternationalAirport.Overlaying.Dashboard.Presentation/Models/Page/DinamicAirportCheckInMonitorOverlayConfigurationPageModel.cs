@@ -20,6 +20,7 @@
         private string preCheckInHeadLabel;
         private string openCheckInLabel;
         private string closedCheckInLabel;
+        private bool showClock;
 
         public DinamicAirportCheckInMonitorOverlayConfigurationPageModel()
         {
@@ -72,5 +73,7 @@
         public string OpenCheckInLabel { get => openCheckInLabel; set => SetProperty(ref openCheckInLabel, value); }
 
         public string ClosedCheckInLabel { get => closedCheckInLabel; set => SetProperty(ref closedCheckInLabel, value); }
+
+        public bool ShowClock { get => showClock; set => SetProperty(ref showClock, value); }
     }
 }
