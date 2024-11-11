@@ -281,7 +281,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
 
                     var targetStartAt = now - System.TimeSpan.Parse("00:30:00");
 
-                    var targetEndAt = now + System.TimeSpan.Parse("00:15:00");
+                    var targetEndAt = now + System.TimeSpan.Parse("00:30:00");
 
                     var avianetCheckInGroups = dbContext.Set<Persistence.Entities.CheckIn>().Where(entity => entity.Habilitado == true && entity.FechaFin > targetStartAt && entity.FechaIni <= targetEndAt).OrderBy(entity => entity.FechaIni).ToArray().GroupBy(entity => entity.IdMostrador);
 

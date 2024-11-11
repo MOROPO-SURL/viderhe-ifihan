@@ -8,28 +8,29 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 {
     public partial class DinamicAirportCheckInMonitorOverlayView : Common.Overlaying.Presentation.Views.BaseOverlayView, Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
-        private Models.Context.DinamicAirportCheckInMonitorOverlayContextModel overlayContextModel;
-
         private Service.ECASA.CMG.InterFIDS.API.Common.Models.CheckInDisplayModel checkInModel;
 
         public DinamicAirportCheckInMonitorOverlayView(Models.Context.DinamicAirportCheckInMonitorOverlayContextModel overlayContextModel)
         {
             InitializeComponent();
 
-            this.overlayContextModel = overlayContextModel;
-
             PreCheckInHeadLabel.Text = overlayContextModel.PreCheckInHeadLabel;
 
-            PrimaryChechInNumberBackgroundBoxView.Color = PrimaryGlobalClockBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
-            SecoundaryChechInNumberBackgroundBoxView.Color =SecoundaryGlobalClockBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.BackgroundColor);
-            
+            ChechInNumberBackgroundBoxView.Color = GlobalClockBackgroundBoxView.Color = Xamarin.Forms.Color.FromHex(overlayContextModel.PrimaryBackgroundColor);
+
+            PreCheckInWrapperLayout.BackgroundColor = Xamarin.Forms.Color.FromHex(overlayContextModel.SecoundaryBackgroundColor);
+
             ChechInNumberLabel.Text = overlayContextModel.Number.ToString();
-            ChechInNumberLabel.TextColor = Xamarin.Forms.Color.White;
+            ChechInNumberLabel.TextColor = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
             
             PrePresentationGrid.IsVisible = false;
             
             FullPresentationGrid.IsVisible = false;
-            FullPresentationGrid.BackgroundColor = Xamarin.Forms.Color.FromHex(overlayContextModel.AccentColor);
+            FullPresentationGrid.BackgroundColor = ChechInNumberBackgroundBoxView.Color;
+
+            var vectorSourceData = "<svg id=\"Capa_1\" data-name=\"Capa 1\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 152.08 152.08\"><style type=\"text/css\">.cls-1{fill:" + overlayContextModel.AccentColor + ";fill-rule:evenodd;}</style><path class=\"cls-1\" d=\"M631.26,585.3a16,16,0,1,0-16-16,16,16,0,0,0,16,16M543,645.18H656.82v11.4H543Zm113.85-5.71.06-41.94c0-4.76-3.17-6.53-7-6.53H622a21.62,21.62,0,0,0-14.23,5.63l-19.68,19-22.33-23.57,0,19.64,17.37,21.15c2.7,3.21,8,3.09,11.07.11l12.91-13,2.13,19.46Zm-96.77-59.79v39.74H545.82V579.68Zm-36.19-56.17H645.52a30.5,30.5,0,0,1,30.41,30.42V675.59H523.86Z\" transform=\"translate(-523.86 -523.51)\"/></svg>";
+
+            FullPresentationCheckInSymbolImage.Source = FFImageLoading.Svg.Forms.SvgImageSource.FromSvgString(vectorSourceData);
 
             var client = new Service.ECASA.CMG.InterFIDS.API.Connect.Frontend.Clients.CheckInsAPIConnectClient(this);
 
@@ -41,14 +42,21 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                 }).ContinueWith(FetchCheckIns_Callback);
             });
 
+            var bindingContextModel = new Models.View.AirportCheckInMonitorOverlayViewModel
+            {
+                OverlayContext = overlayContextModel
+            };
+
             if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
             {
-                BindingContext = overlayContextModel.Number >= 10 ? 168 : 192;
+                bindingContextModel.NumberReferenceSize = overlayContextModel.Number >= 10 ? 168 : 192;
             }
             else
             {
-                BindingContext = overlayContextModel.Number >= 10 ? 168 : 216;
+                bindingContextModel.NumberReferenceSize = overlayContextModel.Number >= 10 ? 168 : 216;
             }
+
+            BindingContext = bindingContextModel;
 
             Xamarin.Forms.Device.StartTimer(System.TimeSpan.FromSeconds(15), Timer_Callback);
 
@@ -68,7 +76,6 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
         {
             base.DisposeUnmanagementResources();
 
-            overlayContextModel = null;
             checkInModel = null;
             PreOperationCarrierImageView.Source = null;
             FullOperationCarrierImageView.Source = null;
@@ -82,22 +89,24 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             FullNowTimeLabel.Text = GlobalNowTimeLabel.Text = now.ToString("HH:mm");
 
-            return overlayContextModel != null;
+            return BindingContext != null;
         }
 
         private System.Threading.Tasks.Task ShowPrePresentationAsync()
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
+                var concretBidingContext = BindingContext as Models.View.AirportCheckInMonitorOverlayViewModel;
+
                 PrePresentationGrid.BindingContext = checkInModel;
 
                 if (checkInModel.Operation.Carrier.Image != null)
                 {
-                    PreOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(overlayContextModel);
+                    PreOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(concretBidingContext.OverlayContext);
                 }
                 else
                 {
-                    PreOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", overlayContextModel.APIServer)));
+                    PreOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", concretBidingContext.OverlayContext.APIServer)));
                 }
 
                 PreCheckInHeadBackgroundBoxView.TranslationY = Height / 5 / 3 * -1;
@@ -205,35 +214,33 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
+                var concretBidingContext = BindingContext as Models.View.AirportCheckInMonitorOverlayViewModel;
+
                 FullPresentationGrid.BindingContext = checkInModel;
 
                 if (checkInModel.Operation.Carrier.Image != null)
                 {
-                    FullOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(overlayContextModel);
+                    FullOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(concretBidingContext.OverlayContext);
                 }
                 else
                 {
-                    FullOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", overlayContextModel.APIServer)));
+                    FullOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", concretBidingContext.OverlayContext.APIServer)));
                 }
 
                 UpdateCheckInStatus();
 
                 FullPresentationGrid.TranslationY = Height * -1;
-                FullPresentationCheckInSymbolLabel.Opacity = 0;
+                FullPresentationCheckInSymbolImage.Opacity = 0;
                 FullPresentationCheckInLabel.Opacity = 0;
                 FullPresentationCheckInDeskNumberLabel.Scale = 0;
                 CheckInStatusBackgroundBoxView.Scale = 0;
                 CheckInStatusLabel.Opacity = 0;
                 FullOperationCarrierImageView.Scale = 0;
                 FullOperationCarrierNameLabel.Opacity = 0;
-                FullOperationFlyCaptionLabel.Opacity = 0;
-                FullOperationFlyLabel.Opacity = 0;
-                FullOperationDestinationCaptionLabel.Opacity = 0;
-                FullOperationDestinationLabel.Opacity = 0;
-                FullOperationStartAtCaptionLabel.Opacity = 0;
-                FullOperationStartAtLabel.Opacity = 0;
-                FullOperationEndAtCaptionLabel.Opacity = 0;
-                FullOperationEndAtLabel.Opacity = 0;
+                FullOperationFlyWrapLayout.Opacity = 0;
+                FullOperationDestinationWrapLayout.Opacity = 0;
+                FullOperationStartAtWrapLayout.Opacity = 0;
+                FullOperationEndAtWrapLayout.Opacity = 0;
                 FullPresentationFooterSeparationBoxView.Opacity = 0;
                 FullPresentationFooterStackLayout.Opacity = 0;
 
@@ -243,7 +250,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
                 {
-                    Target = FullPresentationCheckInSymbolLabel,
+                    Target = FullPresentationCheckInSymbolImage,
                     Direction = FadeDirection.Down,
                     Duration = "400",
                     EasingType = EasingType.SpringOut
@@ -308,52 +315,31 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                     Duration = "400",
                     Delay = "800"
                 });
-                showInContinueAnimationStoryboard.Animations.Add(new FadeToAnimation
+                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
                 {
-                    Target = FullOperationFlyLabel,
-                    Opacity = 1,
+                    Target = FullOperationFlyWrapLayout,
+                    Direction = FadeDirection.Left,
                     Duration = "400",
                     Delay = "1800"
                 });
                 showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
                 {
-                    Target = FullOperationDestinationCaptionLabel,
-                    Direction = FadeDirection.Up,
+                    Target = FullOperationDestinationWrapLayout,
+                    Direction = FadeDirection.Left,
                     Duration = "400",
                     Delay = "1900"
                 });
                 showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
                 {
-                    Target = FullOperationDestinationLabel,
-                    Direction = FadeDirection.Up,
-                    Duration = "400",
-                    Delay = "1900"
-                });
-                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
-                {
-                    Target = FullOperationStartAtCaptionLabel,
-                    Direction = FadeDirection.Right,
+                    Target = FullOperationStartAtWrapLayout,
+                    Direction = FadeDirection.Left,
                     Duration = "400",
                     Delay = "2000"
                 });
                 showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
                 {
-                    Target = FullOperationStartAtLabel,
-                    Direction = FadeDirection.Right,
-                    Duration = "400",
-                    Delay = "2000"
-                });
-                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
-                {
-                    Target = FullOperationEndAtCaptionLabel,
-                    Direction = FadeDirection.Right,
-                    Duration = "400",
-                    Delay = "2100"
-                });
-                showInContinueAnimationStoryboard.Animations.Add(new FadeInAnimation
-                {
-                    Target = FullOperationEndAtLabel,
-                    Direction = FadeDirection.Right,
+                    Target = FullOperationEndAtWrapLayout,
+                    Direction = FadeDirection.Left,
                     Duration = "400",
                     Delay = "2100"
                 });
@@ -401,7 +387,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
                 {
-                    Target = FullPresentationCheckInSymbolLabel,
+                    Target = FullPresentationCheckInSymbolImage,
                     Direction = FadeDirection.Up,
                     Duration = "200",
                     EasingType = EasingType.SpringOut,
@@ -455,7 +441,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                 });
                 showOutAnimationStoryboard.Animations.Add(new FadeToAnimation
                 {
-                    Target = FullOperationFlyLabel,
+                    Target = FullOperationFlyWrapLayout,
                     Opacity = 0,
                     Duration = "200",
                     Delay = "175"
@@ -474,44 +460,24 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                     Duration = "200",
                     Delay = "150"
                 });
-                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                showOutAnimationStoryboard.Animations.Add(new FadeToAnimation
                 {
-                    Target = FullOperationDestinationCaptionLabel,
-                    Direction = FadeDirection.Down,
+                    Target = FullOperationDestinationWrapLayout,
+                    Opacity = 0,
                     Duration = "200",
                     Delay = "50"
                 });
-                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                showOutAnimationStoryboard.Animations.Add(new FadeToAnimation
                 {
-                    Target = FullOperationDestinationLabel,
-                    Direction = FadeDirection.Down,
-                    Duration = "200",
-                    Delay = "50"
-                });
-                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
-                {
-                    Target = FullOperationStartAtCaptionLabel,
-                    Direction = FadeDirection.Right,
+                    Target = FullOperationStartAtWrapLayout,
+                    Opacity = 0,
                     Duration = "200",
                     Delay = "25"
                 });
-                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
+                showOutAnimationStoryboard.Animations.Add(new FadeToAnimation
                 {
-                    Target = FullOperationStartAtLabel,
-                    Direction = FadeDirection.Right,
-                    Duration = "200",
-                    Delay = "25"
-                });
-                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
-                {
-                    Target = FullOperationEndAtCaptionLabel,
-                    Direction = FadeDirection.Right,
-                    Duration = "200"
-                });
-                showOutAnimationStoryboard.Animations.Add(new FadeOutAnimation
-                {
-                    Target = FullOperationEndAtLabel,
-                    Direction = FadeDirection.Right,
+                    Target = FullOperationEndAtWrapLayout,
+                    Opacity = 0,
                     Duration = "200"
                 });
 
@@ -525,15 +491,17 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
         private void UpdateCheckInStatus()
         {
-            CheckInStatusLabel.Text = overlayContextModel.ClosedCheckInLabel;
+            var concretBidingContext = BindingContext as Models.View.AirportCheckInMonitorOverlayViewModel;
+
+            CheckInStatusLabel.Text = concretBidingContext.OverlayContext.ClosedCheckInLabel;
 
             if (checkInModel == null || !checkInModel.IsOpen) return;
 
-            CheckInStatusLabel.Text = overlayContextModel.OpenCheckInLabel;
+            CheckInStatusLabel.Text = concretBidingContext.OverlayContext.OpenCheckInLabel;
 
             if (System.DateTime.Now >= checkInModel.EndAt)
             {
-                CheckInStatusLabel.Text = overlayContextModel.ClosedCheckInLabel;
+                CheckInStatusLabel.Text = concretBidingContext.OverlayContext.ClosedCheckInLabel;
             }
         }
 
@@ -541,15 +509,17 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
+                var concretBidingContext = BindingContext as Models.View.AirportCheckInMonitorOverlayViewModel;
+
                 FullPresentationGrid.BindingContext = checkInModel;
 
                 if (checkInModel.Operation.Carrier.Image != null)
                 {
-                    FullOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(overlayContextModel);
+                    FullOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(concretBidingContext.OverlayContext);
                 }
                 else
                 {
-                    FullOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", overlayContextModel.APIServer)));
+                    FullOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", concretBidingContext.OverlayContext.APIServer)));
                 }
 
                 UpdateCheckInStatus();
@@ -562,15 +532,17 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
+                var concretBidingContext = BindingContext as Models.View.AirportCheckInMonitorOverlayViewModel;
+
                 PrePresentationGrid.BindingContext = checkInModel;
 
                 if (checkInModel.Operation.Carrier.Image != null)
                 {
-                    PreOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(overlayContextModel);
+                    PreOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(concretBidingContext.OverlayContext);
                 }
                 else
                 {
-                    PreOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", overlayContextModel.APIServer)));
+                    PreOperationCarrierImageView.Source = Xamarin.Forms.ImageSource.FromUri(new System.Uri(string.Format("{0}://{1}/images/default-carrier.jpg", "http", concretBidingContext.OverlayContext.APIServer)));
                 }
             });
 
@@ -579,7 +551,9 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
         private async void FetchCheckIns_Callback(System.Threading.Tasks.Task<Service.ECASA.CMG.InterFIDS.API.Common.Models.CheckInDisplayModel[]> task)
         {
-            if (overlayContextModel == null) return;
+            var concretBidingContext = BindingContext as Models.View.AirportCheckInMonitorOverlayViewModel;
+
+            if (concretBidingContext.OverlayContext == null) return;
 
             var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
@@ -598,7 +572,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                         break;
                     }
 
-                    if (System.DateTime.Now > item.EndAt + System.TimeSpan.FromMinutes(overlayContextModel.PostPresentationTime)) continue;
+                    if (System.DateTime.Now > item.EndAt + System.TimeSpan.FromMinutes(concretBidingContext.OverlayContext.PostPresentationTime)) continue;
 
                     prospect = item;
 
@@ -611,7 +585,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                 {
                     var now = System.DateTime.Now;
 
-                    if (now > checkInModel.EndAt + System.TimeSpan.FromMinutes(overlayContextModel.PostPresentationTime))
+                    if (now > checkInModel.EndAt + System.TimeSpan.FromMinutes(concretBidingContext.OverlayContext.PostPresentationTime))
                     {
                         if (FullPresentationGrid.IsVisible)
                         {
@@ -629,7 +603,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                             await UpdateFullPresentationAsync();
                         }
                     }
-                    else if (now >= checkInModel.StartAt - System.TimeSpan.FromMinutes(overlayContextModel.PrePresentationTime))
+                    else if (now >= checkInModel.StartAt - System.TimeSpan.FromMinutes(concretBidingContext.OverlayContext.PrePresentationTime))
                     {
                         if (FullPresentationGrid.IsVisible) await HideFullPresentationAsync();
 
@@ -661,14 +635,14 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             var client = new Service.ECASA.CMG.InterFIDS.API.Connect.Frontend.Clients.CheckInsAPIConnectClient(this);
 
-            var delay = System.TimeSpan.FromSeconds(overlayContextModel.UpdateInterval) - stopwatch.Elapsed;
+            var delay = System.TimeSpan.FromSeconds(concretBidingContext.OverlayContext.UpdateInterval) - stopwatch.Elapsed;
 
 #pragma warning disable CS4014 // Dado que no se esperaba esta llamada, la ejecución del método actual continuará antes de que se complete la llamada
             if (delay <= System.TimeSpan.Zero)
             {
                 client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.CheckInFilterModel
                 {
-                    Id = overlayContextModel.Number,
+                    Id = concretBidingContext.OverlayContext.Number,
                 }).ContinueWith(FetchCheckIns_Callback);
             }
             else
@@ -677,7 +651,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                 {
                     client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.CheckInFilterModel
                     {
-                        Id = overlayContextModel.Number,
+                        Id = concretBidingContext.OverlayContext.Number,
                     }).ContinueWith(FetchCheckIns_Callback);
                 });
             }
@@ -692,22 +666,24 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             {
                 if (BindingContext == null) throw new System.InvalidOperationException();
 
-                if (overlayContextModel.UseSSL && overlayContextModel.AllowAnyCertificate)
+                var concretBidingContext = BindingContext as Models.View.AirportCheckInMonitorOverlayViewModel;
+
+                if (concretBidingContext.OverlayContext.UseSSL && concretBidingContext.OverlayContext.AllowAnyCertificate)
                 {
                     return new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
                         new System.Net.Http.HttpClientHandler
                         {
                             ServerCertificateCustomValidationCallback = (request, certificate, chain, errors) => true
                         },
-                        string.Format("https://{0}/api/", overlayContextModel.APIServer),
+                        string.Format("https://{0}/api/", concretBidingContext.OverlayContext.APIServer),
                         null,
-                        () => { return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(Service.ECASA.CMG.InterFIDS.API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, overlayContextModel.APIKey) }; });;
+                        () => { return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(Service.ECASA.CMG.InterFIDS.API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, concretBidingContext.OverlayContext.APIKey) }; });;
                 }
 
                 return new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
-                    string.Format("{0}://{1}/api/", overlayContextModel.UseSSL ? "https" : "http", overlayContextModel.APIServer),
+                    string.Format("{0}://{1}/api/", concretBidingContext.OverlayContext.UseSSL ? "https" : "http", concretBidingContext.OverlayContext.APIServer),
                     null,
-                    () => { return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(Service.ECASA.CMG.InterFIDS.API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, overlayContextModel.APIKey) }; });
+                    () => { return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(Service.ECASA.CMG.InterFIDS.API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, concretBidingContext.OverlayContext.APIKey) }; });
             }
         }
 

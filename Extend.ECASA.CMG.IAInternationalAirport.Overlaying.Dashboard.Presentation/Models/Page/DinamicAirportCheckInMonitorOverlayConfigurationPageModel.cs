@@ -10,7 +10,10 @@
         private int number;
         private int[] availableNumbers;
         private bool useCarrierColors;
-        private Xamarin.Forms.Color backgroundColor;
+        private Xamarin.Forms.Color primaryBackgroundColor;
+        private Xamarin.Forms.Color primaryTextColor;
+        private Xamarin.Forms.Color secondaryBackgroundColor;
+        private Xamarin.Forms.Color secoundaryTextColor;
         private Xamarin.Forms.Color accentColor;
         private int prePresentationTime;
         private int postPresentationTime;
@@ -24,8 +27,11 @@
             number = -1;
             prePresentationTime = 0;
             postPresentationTime = 0;
-            backgroundColor = Xamarin.Forms.Color.White;
-            accentColor = Xamarin.Forms.Color.CadetBlue;
+            primaryBackgroundColor = Xamarin.Forms.Color.Black;
+            primaryTextColor = Xamarin.Forms.Color.White;
+            secondaryBackgroundColor = Xamarin.Forms.Color.LightGray;
+            secoundaryTextColor = Xamarin.Forms.Color.DimGray;
+            accentColor = Xamarin.Forms.Color.Accent;
             preCheckInHeadLabel = "PROXIMA SALIDA EN CHECK-IN ...";
             openCheckInLabel = "ABIERTO";
             closedCheckInLabel = "CERRADO";
@@ -47,7 +53,13 @@
 
         public bool UseCarrierColors { get => useCarrierColors; set => SetProperty(ref useCarrierColors, value); }
 
-        public Xamarin.Forms.Color BackgroundColor { get => backgroundColor; set => SetProperty(ref backgroundColor, value); }
+        public Xamarin.Forms.Color PrimaryBackgroundColor { get => primaryBackgroundColor; set => SetProperty(ref primaryBackgroundColor, value); }
+
+        public Xamarin.Forms.Color PrimaryTextColor { get => primaryTextColor; set => SetProperty(ref primaryTextColor, value); }
+
+        public Xamarin.Forms.Color SecoundaryBackgroundColor { get => secondaryBackgroundColor; set => SetProperty(ref secondaryBackgroundColor, value); }
+
+        public Xamarin.Forms.Color SecoundaryTextColor { get => secoundaryTextColor; set => SetProperty(ref secoundaryTextColor, value); }
 
         public Xamarin.Forms.Color AccentColor { get => accentColor; set => SetProperty(ref accentColor, value); }
 

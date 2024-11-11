@@ -313,7 +313,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4"
+                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4"
                         Style="{StaticResource FormFieldFrame}"
                         BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">
@@ -348,8 +348,10 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition />
                                                 <ColumnDefinition />
+                                                <ColumnDefinition />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
                                                 <RowDefinition Height="Auto" />
                                             </Grid.RowDefinitions>
                                             <Frame 
@@ -357,11 +359,11 @@
                                                 Style="{StaticResource FormFieldFrame}"
                                                 Margin="0,0,0,6">
                                                 <StackLayout>
-                                                    <Label Text="Fondo" Style="{StaticResource FormLabel}" />
+                                                    <Label Text="Fondo Primario" Style="{StaticResource FormLabel}" />
                                                     <simplecolorpicker:ColorPickerEntry 
                                                         EditAlfa="False"
                                                         ColorPreviewButtonBorder="DimGray"
-                                                        Color="{Binding Path=BackgroundColor}" />
+                                                        Color="{Binding Path=PrimaryBackgroundColor}" />
                                                 </StackLayout>
                                             </Frame>
                                             <Frame 
@@ -369,11 +371,47 @@
                                                 Style="{StaticResource FormFieldFrame}"
                                                 Margin="0,0,0,6">
                                                 <StackLayout>
-                                                    <Label Text="Texto" Style="{StaticResource FormLabel}" />
+                                                    <Label Text="Texto Primario" Style="{StaticResource FormLabel}" />
+                                                    <simplecolorpicker:ColorPickerEntry 
+                                                        EditAlfa="False"
+                                                        ColorPreviewButtonBorder="DimGray"
+                                                        Color="{Binding Path=PrimaryTextColor}" />
+                                                </StackLayout>
+                                            </Frame>
+                                            <Frame 
+                                                Grid.Column="2" Grid.Row="0"
+                                                Style="{StaticResource FormFieldFrame}"
+                                                Margin="0,0,0,6">
+                                                <StackLayout>
+                                                    <Label Text="Diferencial" Style="{StaticResource FormLabel}" />
                                                     <simplecolorpicker:ColorPickerEntry 
                                                         EditAlfa="False"
                                                         ColorPreviewButtonBorder="DimGray"
                                                         Color="{Binding Path=AccentColor}" />
+                                                </StackLayout>
+                                            </Frame>
+                                            <Frame 
+                                                Grid.Column="0" Grid.Row="1"
+                                                Style="{StaticResource FormFieldFrame}"
+                                                Margin="0,0,0,6">
+                                                <StackLayout>
+                                                    <Label Text="Fondo Secundario" Style="{StaticResource FormLabel}" />
+                                                    <simplecolorpicker:ColorPickerEntry 
+                                                        EditAlfa="False"
+                                                        ColorPreviewButtonBorder="DimGray"
+                                                        Color="{Binding Path=SecoundaryBackgroundColor}" />
+                                                </StackLayout>
+                                            </Frame>
+                                            <Frame 
+                                                Grid.Column="1" Grid.Row="1"
+                                                Style="{StaticResource FormFieldFrame}"
+                                                Margin="0,0,0,6">
+                                                <StackLayout>
+                                                    <Label Text="Texto Secoundario" Style="{StaticResource FormLabel}" />
+                                                    <simplecolorpicker:ColorPickerEntry 
+                                                        EditAlfa="False"
+                                                        ColorPreviewButtonBorder="DimGray"
+                                                        Color="{Binding Path=SecoundaryTextColor}" />
                                                 </StackLayout>
                                             </Frame>
                                         </Grid>

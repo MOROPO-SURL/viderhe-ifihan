@@ -13,9 +13,49 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Assets\**" />
-	  <EmbeddedResource Remove="Assets\**" />
-	  <None Remove="Assets\**" />
+	  <None Remove="Assets\Font\DINPro-Black.ttf" />
+	  <None Remove="Assets\Font\DINPro-BlackItalic.ttf" />
+	  <None Remove="Assets\Font\DINPro-Bold.ttf" />
+	  <None Remove="Assets\Font\DINPro-BoldItalic.ttf" />
+	  <None Remove="Assets\Font\DINPro-CondensedBlack.ttf" />
+	  <None Remove="Assets\Font\DINPro-CondensedBlackItalic.ttf" />
+	  <None Remove="Assets\Font\DINPro-CondensedBold.ttf" />
+	  <None Remove="Assets\Font\DINPro-CondensedBoldItalic.ttf" />
+	  <None Remove="Assets\Font\DINPro-CondensedItalic.ttf" />
+	  <None Remove="Assets\Font\DINPro-CondensedLight.ttf" />
+	  <None Remove="Assets\Font\DINPro-CondensedLightItalic.ttf" />
+	  <None Remove="Assets\Font\DINPro-CondensedMedium.ttf" />
+	  <None Remove="Assets\Font\DINPro-CondensedMediumItalic.ttf" />
+	  <None Remove="Assets\Font\DINPro-CondensedRegular.ttf" />
+	  <None Remove="Assets\Font\DINPro-Italic.ttf" />
+	  <None Remove="Assets\Font\DINPro-Light.ttf" />
+	  <None Remove="Assets\Font\DINPro-LightItalic.ttf" />
+	  <None Remove="Assets\Font\DINPro-Medium.ttf" />
+	  <None Remove="Assets\Font\DINPro-MediumItalic.ttf" />
+	  <None Remove="Assets\Font\DINPro-Regular.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Assets\Font\DINPro-Black.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-BlackItalic.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-Bold.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-BoldItalic.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-CondensedBlack.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-CondensedBlackItalic.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-CondensedBold.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-CondensedBoldItalic.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-CondensedItalic.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-CondensedLight.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-CondensedLightItalic.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-CondensedMedium.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-CondensedMediumItalic.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-CondensedRegular.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-Italic.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-Light.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-LightItalic.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-Medium.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-MediumItalic.ttf" />
+	  <EmbeddedResource Include="Assets\Font\DINPro-Regular.ttf" />
 	</ItemGroup>
 
 	<ItemGroup>

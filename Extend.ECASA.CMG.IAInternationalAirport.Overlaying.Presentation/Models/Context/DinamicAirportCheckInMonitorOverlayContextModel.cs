@@ -20,7 +20,13 @@
 
         public bool UseCarrierColors { get; set; }
 
-        public string BackgroundColor { get; set; }
+        public string PrimaryBackgroundColor { get; set; }
+
+        public string PrimaryTextColor { get; set; }
+
+        public string SecoundaryBackgroundColor { get; set; }
+
+        public string SecoundaryTextColor { get; set; }
 
         public string AccentColor { get; set; }
 
