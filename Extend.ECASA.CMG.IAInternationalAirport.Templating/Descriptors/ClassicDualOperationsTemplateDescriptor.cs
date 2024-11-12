@@ -9,8 +9,8 @@
 
         public Common.Templating.Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport => Common.Templating.Enumerations.PlayerOrientationSupportKind.Landscape;
 
-        public string Name => "Próximos Arribos y Salidas Estilo Clásico";
+        public string Name => "FIDS Combinado (Clásico)";
 
-        public string Description => "Muestra el listado de los próximos arribos y salidas con una visualidad clásica en forma de tabla, configurable y con datos obtenidos desde el FIDS.";
+        public string Description => "Muestra el listado de las próximas llegadas y salidas con una visualidad clásica en forma de tabla, configurable y con datos obtenidos desde el FIDS.";
     }
 }

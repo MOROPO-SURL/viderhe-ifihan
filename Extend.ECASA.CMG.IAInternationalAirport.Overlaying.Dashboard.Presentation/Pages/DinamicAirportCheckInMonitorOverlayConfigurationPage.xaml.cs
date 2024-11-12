@@ -151,6 +151,56 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dash
             this.NavigationPopPageAsync();
         }
 
+        private void AccentColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(AccentColorPicked_Callback, BindingContextPageModel.AccentColor));
+        }
+
+        private void PrimaryBackgroundColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(PrimaryBackgroundColorPicked_Callback, BindingContextPageModel.PrimaryBackgroundColor));
+        }
+
+        private void PrimaryTextColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(PrimaryTextColorPicked_Callback, BindingContextPageModel.PrimaryTextColor));
+        }
+
+        private void SecoundaryBackgroundColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(SecoundaryBackgroundColorPicked_Callback, BindingContextPageModel.SecoundaryBackgroundColor));
+        }
+
+        private void SecoundaryTextColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(SecoundaryTextColorPicked_Callback, BindingContextPageModel.SecoundaryTextColor));
+        }
+
+        private void AccentColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.AccentColor = color;
+        }
+
+        private void PrimaryBackgroundColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.PrimaryBackgroundColor = color;
+        }
+
+        private void PrimaryTextColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.PrimaryTextColor = color;
+        }
+
+        private void SecoundaryBackgroundColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.SecoundaryBackgroundColor = color;
+        }
+
+        private void SecoundaryTextColorPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.SecoundaryTextColor = color;
+        }
+
         protected override void DisposeUnmanagementResources()
         {
             base.DisposeUnmanagementResources();

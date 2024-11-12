@@ -9,11 +9,10 @@
     xmlns:supportpresentationdashboardviews="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
-    xmlns:simplecolorpicker="clr-namespace:Xam.Plugin.SimpleColorPicker;assembly=Xam.Plugin.SimpleColorPicker"
     x:Class="MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dashboard.Presentation.Pages.DinamicAirportCheckInMonitorOverlayConfigurationPage"
     x:TypeArguments="pagemodels:DinamicAirportCheckInMonitorOverlayConfigurationPageModel"
     x:Name="FormPage"
-    Title="Configurar Máscara (Monitor Dinámico de Check-in en Aeropuerto)">
+    Title="Configurar Carátula (Monitor Dinámico de Check-in en Aeropuerto)">
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
@@ -361,10 +360,20 @@
                                                 Margin="0,0,0,6">
                                                 <StackLayout>
                                                     <Label Text="Fondo Primario" Style="{StaticResource FormLabel}" />
-                                                    <simplecolorpicker:ColorPickerEntry 
-                                                        EditAlfa="False"
-                                                        ColorPreviewButtonBorder="DimGray"
-                                                        Color="{Binding Path=PrimaryBackgroundColor}" />
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Grid
+                                                            HorizontalOptions="FillAndExpand"
+                                                            BackgroundColor="DimGray"
+                                                            Padding="1"
+                                                            HeightRequest="32">
+                                                            <BoxView Color="{Binding Path=PrimaryBackgroundColor}" />
+                                                        </Grid>
+                                                        <Button 
+                                                            HorizontalOptions="End"
+                                                            Style="{StaticResource TextIconButton}"
+                                                            Text="&#xF266;"
+                                                            Clicked="PrimaryBackgroundColorButton_Clicked" />
+                                                    </StackLayout>
                                                 </StackLayout>
                                             </Frame>
                                             <Frame 
@@ -373,10 +382,20 @@
                                                 Margin="0,0,0,6">
                                                 <StackLayout>
                                                     <Label Text="Texto Primario" Style="{StaticResource FormLabel}" />
-                                                    <simplecolorpicker:ColorPickerEntry 
-                                                        EditAlfa="False"
-                                                        ColorPreviewButtonBorder="DimGray"
-                                                        Color="{Binding Path=PrimaryTextColor}" />
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Grid
+                                                            HorizontalOptions="FillAndExpand"
+                                                            BackgroundColor="DimGray"
+                                                            Padding="1"
+                                                            HeightRequest="32">
+                                                            <BoxView Color="{Binding Path=PrimaryTextColor}" />
+                                                        </Grid>
+                                                        <Button 
+                                                            HorizontalOptions="End"
+                                                            Style="{StaticResource TextIconButton}"
+                                                            Text="&#xF266;"
+                                                            Clicked="PrimaryTextColorButton_Clicked" />
+                                                    </StackLayout>
                                                 </StackLayout>
                                             </Frame>
                                             <Frame 
@@ -385,10 +404,20 @@
                                                 Margin="0,0,0,6">
                                                 <StackLayout>
                                                     <Label Text="Diferencial" Style="{StaticResource FormLabel}" />
-                                                    <simplecolorpicker:ColorPickerEntry 
-                                                        EditAlfa="False"
-                                                        ColorPreviewButtonBorder="DimGray"
-                                                        Color="{Binding Path=AccentColor}" />
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Grid
+                                                            HorizontalOptions="FillAndExpand"
+                                                            BackgroundColor="DimGray"
+                                                            Padding="1"
+                                                            HeightRequest="32">
+                                                            <BoxView Color="{Binding Path=AccentColor}" />
+                                                        </Grid>
+                                                        <Button 
+                                                            HorizontalOptions="End"
+                                                            Style="{StaticResource TextIconButton}"
+                                                            Text="&#xF266;"
+                                                            Clicked="AccentColorButton_Clicked" />
+                                                    </StackLayout>
                                                 </StackLayout>
                                             </Frame>
                                             <Frame 
@@ -397,10 +426,20 @@
                                                 Margin="0,0,0,6">
                                                 <StackLayout>
                                                     <Label Text="Fondo Secundario" Style="{StaticResource FormLabel}" />
-                                                    <simplecolorpicker:ColorPickerEntry 
-                                                        EditAlfa="False"
-                                                        ColorPreviewButtonBorder="DimGray"
-                                                        Color="{Binding Path=SecoundaryBackgroundColor}" />
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Grid
+                                                            HorizontalOptions="FillAndExpand"
+                                                            BackgroundColor="DimGray"
+                                                            Padding="1"
+                                                            HeightRequest="32">
+                                                            <BoxView Color="{Binding Path=SecoundaryBackgroundColor}" />
+                                                        </Grid>
+                                                        <Button 
+                                                            HorizontalOptions="End"
+                                                            Style="{StaticResource TextIconButton}"
+                                                            Text="&#xF266;"
+                                                            Clicked="SecoundaryBackgroundColorButton_Clicked" />
+                                                    </StackLayout>
                                                 </StackLayout>
                                             </Frame>
                                             <Frame 
@@ -409,10 +448,20 @@
                                                 Margin="0,0,0,6">
                                                 <StackLayout>
                                                     <Label Text="Texto Secoundario" Style="{StaticResource FormLabel}" />
-                                                    <simplecolorpicker:ColorPickerEntry 
-                                                        EditAlfa="False"
-                                                        ColorPreviewButtonBorder="DimGray"
-                                                        Color="{Binding Path=SecoundaryTextColor}" />
+                                                    <StackLayout Orientation="Horizontal">
+                                                        <Grid
+                                                            HorizontalOptions="FillAndExpand"
+                                                            BackgroundColor="DimGray"
+                                                            Padding="1"
+                                                            HeightRequest="32">
+                                                            <BoxView Color="{Binding Path=SecoundaryTextColor}" />
+                                                        </Grid>
+                                                        <Button 
+                                                            HorizontalOptions="End"
+                                                            Style="{StaticResource TextIconButton}"
+                                                            Text="&#xF266;"
+                                                            Clicked="SecoundaryTextColorButton_Clicked" />
+                                                    </StackLayout>
                                                 </StackLayout>
                                             </Frame>
                                         </Grid>

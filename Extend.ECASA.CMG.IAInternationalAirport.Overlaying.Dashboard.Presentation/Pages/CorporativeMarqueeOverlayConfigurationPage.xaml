@@ -14,7 +14,7 @@
     x:Class="MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dashboard.Presentation.Pages.CorporativeMarqueeOverlayConfigurationPage"
     x:TypeArguments="pagemodels:CorporativeMarqueeOverlayConfigurationPageModel"
     x:Name="FormPage"
-    Title="Configurar Máscara (Cinta Corporativa de ECASA Camagüey)">
+    Title="Configurar Carátula (Cinta Corporativa de ECASA Camagüey)">
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
