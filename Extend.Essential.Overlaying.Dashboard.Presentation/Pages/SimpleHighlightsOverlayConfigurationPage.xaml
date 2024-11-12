@@ -12,7 +12,7 @@
     x:Class="MOROPO.VIDERHE.Extend.Essential.Overlaying.Dashboard.Presentation.Pages.SimpleHighlightsOverlayConfigurationPage"
     x:TypeArguments="pagemodels:SimpleHighlightsOverlayConfigurationPageModel"
     x:Name="FormPage"
-    Title="Configurar Máscara (Cinta Informativa Simple)">
+    Title="Configurar Carátula (Cinta Informativa Simple)">
     <ContentPage.Resources>
         <ResourceDictionary>
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
