@@ -8,7 +8,7 @@
 		<Authors>MOROPO VIDERHE DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
 		<Copyright>© MOROPO S.U.R.L. 2024, Todos los derechos reservados.</Copyright>
-		<Version>0.2.9</Version>
+		<Version>0.3.0</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
@@ -67,27 +67,6 @@
 	  <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
 	  <ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Templating\Extend.ECASA.CMG.IAInternationalAirport.Templating.csproj" />
 	  <ProjectReference Include="..\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Views\BoxedCachedImage.xaml.cs">
-	    <DependentUpon>BoxedCachedImage.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Update="Views\BoxedCachedImage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Views\Placard\ClassicArraivalsPlacardView.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Views\Placard\ClassicDeparturesPlacardView.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Views\Placard\ClassicDualOperationsPlacardView.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>

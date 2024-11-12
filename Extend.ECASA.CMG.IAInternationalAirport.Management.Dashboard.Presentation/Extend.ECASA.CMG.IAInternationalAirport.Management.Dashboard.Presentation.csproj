@@ -8,7 +8,7 @@
 		<Authors>MOROPO VIDERHE DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
 		<Copyright>© MOROPO S.U.R.L. 2024, Todos los derechos reservados.</Copyright>
-		<Version>0.2.9</Version>
+		<Version>0.3.0</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
@@ -24,66 +24,6 @@
 		<ProjectReference Include="..\Extend.ECASA.CMG.IAInternationalAirport.Management\Extend.ECASA.CMG.IAInternationalAirport.Management.csproj" />
 		<ProjectReference Include="..\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Backend\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Backend.csproj" />
 		<ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Pages\ApiKeyDefinitionPage.xaml.cs">
-	    <DependentUpon>%(Filename)</DependentUpon>
-	  </Compile>
-	  <Compile Update="Pages\ApiKeysManagementPage.xaml.cs">
-	    <DependentUpon>%(Filename)</DependentUpon>
-	  </Compile>
-	  <Compile Update="Pages\MainPage.xaml.cs">
-	    <DependentUpon>%(Filename)</DependentUpon>
-	  </Compile>
-	  <Compile Update="Pages\RoleDefinitionPage.xaml.cs">
-	    <DependentUpon>%(Filename)</DependentUpon>
-	  </Compile>
-	  <Compile Update="Pages\RolesManagementPage.xaml.cs">
-	    <DependentUpon>%(Filename)</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Update="Pages\CarrierDefinitionPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\CarriersManagementPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\CategoriesManagementPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\CategoryDefinitionPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\CountriesManagementPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\CountryDefinitionPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\KindDefinitionPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\KindsManagementPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\ServerConectionConfigurationPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\StatusDefinitionPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\StatusesManagementPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\TerminalDefinitionPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Pages\TerminalsManagementPage.xaml">
-	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-	  </EmbeddedResource>
 	</ItemGroup>
 
 </Project>

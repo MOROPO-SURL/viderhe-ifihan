@@ -8,7 +8,7 @@
 		<Authors>MOROPO VIDERHE DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
 		<Copyright>© MOROPO S.U.R.L. - ECASA 2023, Todos los derechos reservados.</Copyright>
-		<Version>0.2.6</Version>
+		<Version>0.3.0</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
@@ -25,14 +25,6 @@
 		<None Remove="dpkeys\**" />
 		<None Remove="logs\**" />
 		<None Remove="wwwroot\media\**" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Remove="wwwroot\images\default-carrier.jpg" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="wwwroot\images\default-carrier.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>
