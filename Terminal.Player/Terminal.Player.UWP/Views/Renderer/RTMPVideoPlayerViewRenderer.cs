@@ -8,7 +8,13 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
 {
     public class RTMPVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<CloudVideoPlayerView, Windows.UI.Xaml.Controls.MediaElement>
     {
-        Mntone.Rtmp.Client.SimpleVideoClient rtmpVideoClient;
+        private const double ACCEPTABLE_PROGRESS_DELAY = 10000;
+
+        private Mntone.Rtmp.Client.SimpleVideoClient rtmpVideoClient;
+
+        private System.Timers.Timer timer;
+
+        private TimeSpan lastCheckPosition;
 
         protected override void OnElementChanged(Xamarin.Forms.Platform.UWP.ElementChangedEventArgs<CloudVideoPlayerView> eventArgs)
         {
@@ -43,8 +49,29 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
                     {
                         SetSourceAsync();
                     }
+
+                    timer = new System.Timers.Timer(ACCEPTABLE_PROGRESS_DELAY);
+
+                    timer.Elapsed += Timer_Elapsed;
                 }
             }
+        }
+
+        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, new Windows.UI.Core.DispatchedHandler(() =>
+            {
+                if (lastCheckPosition != Control.Position)
+                {
+                    lastCheckPosition = Control.Position;
+
+                    return;
+                }
+
+                timer.Stop();
+
+                (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
+            })).AsTask();
         }
 
         protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs eventArgs)
@@ -67,6 +94,12 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
 
         protected override void Dispose(bool disposing)
         {
+            timer.Stop();
+            timer.Elapsed -= Timer_Elapsed;
+            timer.Dispose();
+
+            timer = null;
+
             if (Control != null)
             {
                 Control.MediaEnded -= MediaElement_MediaEnded;
@@ -88,10 +121,16 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
 
         private void MediaElement_CurrentStateChanged(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+#if DEBUG
+            System.Diagnostics.Debug.WriteLine("Playback status: {0}", Control.CurrentState);
+#endif
+
             switch (Control.CurrentState)
             {
                 case Windows.UI.Xaml.Media.MediaElementState.Playing:
                     (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing;
+
+                    timer.Start();
 
                     break;
             }
@@ -99,6 +138,8 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
 
         private void MediaElement_PartialMediaFailureDetected(Windows.UI.Xaml.Controls.MediaElement sender, Windows.UI.Xaml.Media.PartialMediaFailureDetectedEventArgs args)
         {
+            timer.Stop();
+
             (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
 
             if (Element.Repeat)
@@ -109,6 +150,8 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
 
         private void MediaElement_MediaFailed(object sender, Windows.UI.Xaml.ExceptionRoutedEventArgs e)
         {
+            timer.Stop();
+
             (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
 
             if (Element.Repeat)
@@ -119,6 +162,8 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
 
         private void MediaElement_MediaEnded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+            timer.Stop();
+
             (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
 
             if (Element.Repeat)
@@ -140,6 +185,8 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
         private void RtmpVideoClient_Stopped(object sender, Mntone.Rtmp.Client.SimpleVideoClientStoppedEventArgs eventArgs)
         {
             if ((Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status != SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.NotReady) return;
+
+            timer.Stop();
 
             (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended;
 
