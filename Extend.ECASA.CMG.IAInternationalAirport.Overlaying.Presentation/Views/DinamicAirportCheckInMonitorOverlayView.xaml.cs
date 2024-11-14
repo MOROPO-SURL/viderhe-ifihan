@@ -561,7 +561,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
             if (!task.IsCanceled && task.Exception == null)
             {
-                var availableCheckIns = task.Result.OrderBy(item => item.StartAt);
+                var availableCheckIns = task.Result.OrderByDescending(item => item.StartAt);
 
                 Service.ECASA.CMG.InterFIDS.API.Common.Models.CheckInDisplayModel prospect = null;
 
@@ -574,7 +574,16 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                         break;
                     }
 
-                    if (System.DateTime.Now > item.EndAt + System.TimeSpan.FromMinutes(concretBidingContext.OverlayContext.PostPresentationTime)) continue;
+                    var now = System.DateTime.Now;
+
+                    if (item.StartAt <= now && item.EndAt >= now)
+                    {
+                        prospect = item;
+
+                        break;
+                    }
+
+                    if (now > item.EndAt + System.TimeSpan.FromMinutes(concretBidingContext.OverlayContext.PostPresentationTime)) continue;
 
                     prospect = item;
 

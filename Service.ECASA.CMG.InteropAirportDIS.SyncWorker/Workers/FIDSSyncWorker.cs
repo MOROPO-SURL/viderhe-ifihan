@@ -3,11 +3,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models;
-using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Extensiones;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
 {
@@ -27,11 +25,13 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
         private readonly System.Diagnostics.Stopwatch stopwatch;
 
         private readonly ILogger<FIDSSyncWorker> logger;
+        private readonly Microsoft.Extensions.Options.IOptions<Options.TimeOptions> timingOptions;
         private readonly IConfiguration configuration;
 
-        public FIDSSyncWorker(IConfiguration configuration, ILogger<FIDSSyncWorker> logger)
+        public FIDSSyncWorker(Microsoft.Extensions.Options.IOptions<Options.TimeOptions> timingOptions, IConfiguration configuration, ILogger<FIDSSyncWorker> logger)
         {
             this.logger = logger;
+            this.timingOptions = timingOptions;
             this.configuration = configuration;
 
             stopwatch = new System.Diagnostics.Stopwatch();
@@ -279,11 +279,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                     //now = System.DateTime.Parse("13/9/2024 06:30:00");
 #endif
 
-                    var targetStartAt = now - System.TimeSpan.Parse("00:30:00");
+                    var targetStartAt = now - timingOptions.Value.PreCheckInTime;
 
-                    var targetEndAt = now + System.TimeSpan.Parse("00:30:00");
+                    var targetEndAt = now + timingOptions.Value.PostCheckInTime;
 
-                    var avianetCheckInGroups = dbContext.Set<Persistence.Entities.CheckIn>().Where(entity => entity.Habilitado == true && entity.FechaFin > targetStartAt && entity.FechaIni <= targetEndAt).OrderBy(entity => entity.FechaIni).ToArray().GroupBy(entity => entity.IdMostrador);
+                    var avianetCheckInGroups = dbContext.Set<Persistence.Entities.CheckIn>().Where(entity => entity.Habilitado == true && entity.FechaFin >= targetStartAt && entity.FechaIni <= targetEndAt).OrderBy(entity => entity.FechaIni).ToArray().GroupBy(entity => entity.IdMostrador);
 
                     foreach (var group in avianetCheckInGroups)
                     {
@@ -347,7 +347,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                 }
                 #endregion
 
-                var configurationDelayTime = System.TimeSpan.Parse(configuration.GetSection("UpdateInterval").Value);
+                var configurationDelayTime = timingOptions.Value.IterationElapseTime;
 
                 stopwatch.Stop();
 

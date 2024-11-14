@@ -10,6 +10,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker
             var host = Host.CreateDefaultBuilder(args)
                 .ConfigureServices((context, services) =>
                 {
+                    services.Configure<Options.TimeOptions>(context.Configuration.GetSection("Timing"));
+
                     services.AddHostedService<Workers.FIDSSyncWorker>();
                 })
                 .ConfigureHostOptions(options => options.BackgroundServiceExceptionBehavior = BackgroundServiceExceptionBehavior.Ignore)
