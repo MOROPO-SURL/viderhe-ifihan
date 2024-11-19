@@ -84,6 +84,7 @@
                             Grid.Column="0" Grid.RowSpan="2"
                             WidthRequest="{Binding Source={RelativeSource Mode=Self}, Path=Height}"
                             Aspect="AspectFill"
+                            FadeAnimationEnabled="False"
                             CacheType="Disk"
                             CacheDuration="8760:00:00" />
                         <Label
@@ -257,6 +258,7 @@
                             BackgroundColor="White"
                             WidthRequest="{Binding Source={RelativeSource Mode=Self}, Path=Height}"
                             Aspect="AspectFill"
+                            FadeAnimationEnabled="False"
                             CacheType="Disk"
                             CacheDuration="8760:00:00" />
                         <Label
@@ -264,7 +266,7 @@
                             Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0"
                             LineBreakMode="TailTruncation"
                             Text="{Binding Path=Operation.Carrier.Name}"
-                            FontFamily="DIN Pro (Condensed Black)"
+                            FontFamily="DIN Pro (Black)"
                             FontSize="{Binding Source=112, Converter={StaticResource SizeToRelativeValueConverter}}" />
                         <StackLayout
                             x:Name="FullOperationDestinationWrapLayout"
@@ -275,12 +277,12 @@
                                 Text="Destino / Destiniy:"
                                 TextColor="White"
                                 FontSize="{Binding Source=32, Converter={StaticResource SizeToRelativeValueConverter}}"
-                                FontFamily="DIN Pro (Condensed Medium)" />
+                                FontFamily="DIN Pro (Medium)" />
                             <Label
                                 LineBreakMode="TailTruncation"
                                 Text="{Binding Path=Operation.Context}"
-                                FontFamily="DIN Pro (Condensed Bold)"
-                                FontSize="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                                FontFamily="DIN Pro (Bold)"
+                                FontSize="{Binding Source=72, Converter={StaticResource SizeToRelativeValueConverter}}" />
                         </StackLayout>
                         <StackLayout
                             x:Name="FullOperationFlyWrapLayout"
@@ -291,10 +293,10 @@
                                 Text="Vuelo / Flight:"
                                 TextColor="White"
                                 FontSize="{Binding Source=32, Converter={StaticResource SizeToRelativeValueConverter}}"
-                                FontFamily="DIN Pro (Condensed Medium)" />
+                                FontFamily="DIN Pro (Medium)" />
                             <Label
-                                FontFamily="DIN Pro (Condensed Bold)"
-                                FontSize="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}}">
+                                FontFamily="DIN Pro (Bold)"
+                                FontSize="{Binding Source=72, Converter={StaticResource SizeToRelativeValueConverter}}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding Path=Operation.Carrier.Id}" />
@@ -314,12 +316,12 @@
                                 Text="Iniciado / Started at:"
                                 TextColor="White"
                                 FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}"
-                                FontFamily="DIN Pro (Condensed Medium)" />
+                                FontFamily="DIN Pro (Medium)" />
                             <Label
                                 HorizontalTextAlignment="Center"
                                 Text="{Binding Path=StartAt, StringFormat='{0:HH\\:mm}'}"
-                                FontFamily="DIN Pro (Condensed Bold)"
-                                FontSize="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                                FontFamily="DIN Pro (Bold)"
+                                FontSize="{Binding Source=72, Converter={StaticResource SizeToRelativeValueConverter}}" />
                         </StackLayout>
                         <StackLayout 
                             x:Name="FullOperationEndAtWrapLayout"
@@ -331,12 +333,12 @@
                                 Text="Finaliza / Ends at:"
                                 TextColor="White"
                                 FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}"
-                                FontFamily="DIN Pro (Condensed Medium)" />
+                                FontFamily="DIN Pro (Medium)" />
                             <Label
                                 HorizontalTextAlignment="Center"
                                 Text="{Binding Path=EndAt, StringFormat='{0:HH\\:mm}'}"
-                                FontFamily="DIN Pro (Condensed Bold)"
-                                FontSize="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                                FontFamily="DIN Pro (Bold)"
+                                FontSize="{Binding Source=72, Converter={StaticResource SizeToRelativeValueConverter}}" />
                         </StackLayout>
                     </Grid>
                     <BoxView

@@ -13,6 +13,11 @@
         {
             var entity = new Persistence.Entities.Category();
 
+            if (Id != default)
+            {
+                entity.Id = Id;
+            }
+
             Mergue(entity);
 
             return entity;

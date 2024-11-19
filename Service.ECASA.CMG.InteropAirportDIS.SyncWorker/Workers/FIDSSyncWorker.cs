@@ -283,63 +283,17 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
 
                     var targetEndAt = now + timingOptions.Value.PostCheckInTime;
 
-                    var avianetCheckInGroups = dbContext.Set<Persistence.Entities.CheckIn>().Where(entity => entity.Habilitado == true && entity.FechaFin >= targetStartAt && entity.FechaIni <= targetEndAt).OrderBy(entity => entity.FechaIni).ToArray().GroupBy(entity => entity.IdMostrador);
+                    var checkIns = dbContext.Set<Persistence.Entities.CheckIn>().Where(entity => entity.Habilitado == true && ((entity.FechaIni >= targetStartAt && entity.FechaIni <= targetEndAt) || (entity.FechaFin >= targetEndAt && entity.FechaFin <= targetEndAt))).ToArray();
 
-                    foreach (var group in avianetCheckInGroups)
+                    await checkInsAPIConnectClient.ReplaceAsync(checkIns.Select(entity => new CheckInInputModel
                     {
-                        var avianetTarget = group.First();
-
-                        var groupCount = group.Count();
-
-                        if (avianetTarget.FechaIni < now && groupCount > 1)
-                        {
-                            for (int i = 1; i < groupCount; i++)
-                            {
-                                var item = group.ElementAt(i);
-
-                                if (item.FechaIni <= now && item.FechaFin >= now)
-                                {
-                                    avianetTarget = item;
-
-                                    break;
-                                }
-                            }
-                        }
-
-                        var viderheTarget = viderheCheckins.FirstOrDefault(model => model.Id == avianetTarget.IdMostrador);
-                        
-                        if (viderheTarget == null)
-                        {
-                            await checkInsAPIConnectClient.CreateAsync(new CheckInInputModel
-                            {
-                                Id = avianetTarget.IdMostrador.Value,
-                                OperationId = long.Parse(avianetTarget.IdOper),
-                                StartAt = avianetTarget.FechaIni.Value,
-                                EndAt = avianetTarget.FechaFin.Value,
-                                IsVIP = avianetTarget.Vip != null && avianetTarget.Vip.Value,
-                                IsOpen = avianetTarget.Abierto != null && avianetTarget.Abierto.Value
-                            });
-                        }
-                        else if (viderheTarget.IsUpdateRequired(avianetTarget))
-                        {
-                            await checkInsAPIConnectClient.EditAsync(new CheckInInputModel
-                            {
-                                Id = viderheTarget.Id,
-                                OperationId = long.Parse(avianetTarget.IdOper),
-                                StartAt = avianetTarget.FechaIni.Value,
-                                EndAt = avianetTarget.FechaFin.Value,
-                                IsVIP = avianetTarget.Vip != null && avianetTarget.Vip.Value,
-                                IsOpen = avianetTarget.Abierto != null && avianetTarget.Abierto.Value
-                            });
-                        }
-
-                        viderheCheckins.Remove(viderheTarget);
-                    }
-
-                    foreach (var item in viderheCheckins)
-                    {
-                        await checkInsAPIConnectClient.Delete(item.Id);
-                    }
+                        Number = entity.IdMostrador.Value,
+                        OperationId = long.Parse(entity.IdOper),
+                        StartAt = entity.FechaIni.Value,
+                        EndAt = entity.FechaFin.Value,
+                        IsVIP = entity.Vip != null && entity.Vip.Value,
+                        IsOpen = entity.Abierto != null && entity.Abierto.Value
+                    }).ToArray());
                 }
                 catch (System.Exception exception)
                 {
@@ -483,7 +437,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                 return new Framework.Guama.Core.Presentation.API.Connect.Helpers.HttpClientHelper(
                     string.Format("http://{0}/api/", configuration.GetSection("WebOlupin:Host").Value),
                     null,
-                    () => { return new System.Collections.Generic.KeyValuePair<string, string>[] { new System.Collections.Generic.KeyValuePair<string, string>(API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, configuration.GetSection("WebOlupin:APIKey").Value) }; });
+                    () => { return new KeyValuePair<string, string>[] { new KeyValuePair<string, string>(API.Common.Constants.Authentication.API_KEY_HEADER_PROPERTY, configuration.GetSection("WebOlupin:APIKey").Value) }; });
             }
         }
 

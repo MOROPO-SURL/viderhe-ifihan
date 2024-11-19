@@ -9,9 +9,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Front
     [Microsoft.AspNetCore.Authorization.Authorize(AuthenticationSchemes = AspNetCore.Authentication.ApiKey.ApiKeyDefaults.AuthenticationScheme)]
     [Route("api/frontend/[controller]")]
     [ApiController]
-    public class CheckInsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiConsultFilteredController<CheckIn, int, CheckInDisplayModel, CheckInFilterModel>
+    public class CheckInsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiConsultFilteredController<CheckIn, System.Guid, CheckInDisplayModel, CheckInFilterModel>
     {
-        public CheckInsController(Framework.Guama.Core.Persistence.Repositories.IEntityRepository<CheckIn, int> repository, Microsoft.Extensions.Localization.IStringLocalizer<CheckInsController> localizer, ILogger<CheckInsController> logger) : base(repository, localizer, logger)
+        public CheckInsController(Framework.Guama.Core.Persistence.Repositories.IEntityRepository<CheckIn, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<CheckInsController> localizer, ILogger<CheckInsController> logger) : base(repository, localizer, logger)
         {
         }
 

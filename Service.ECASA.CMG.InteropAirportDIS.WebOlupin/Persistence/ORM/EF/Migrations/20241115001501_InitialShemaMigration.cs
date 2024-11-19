@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.EF.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialSchemaMigration : Migration
+    public partial class InitialShemaMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -866,8 +866,8 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                 name: "checkins",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
+                    number = table.Column<int>(type: "integer", nullable: false),
                     operationid = table.Column<long>(type: "bigint", nullable: false),
                     isopen = table.Column<bool>(type: "boolean", nullable: false),
                     isvip = table.Column<bool>(type: "boolean", nullable: false),

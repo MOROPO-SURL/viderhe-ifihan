@@ -14,6 +14,11 @@
         {
             var entity = new Persistence.Entities.Terminal();
 
+            if (Id != default)
+            {
+                entity.Id = Id;
+            }
+
             Mergue(entity);
 
             return entity;

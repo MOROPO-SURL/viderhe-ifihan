@@ -38,7 +38,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             {
                 client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.CheckInFilterModel
                 {
-                    Id = overlayContextModel.Number,
+                    Number = overlayContextModel.Number,
                 }).ContinueWith(FetchCheckIns_Callback);
             });
 
@@ -565,17 +565,10 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 Service.ECASA.CMG.InterFIDS.API.Common.Models.CheckInDisplayModel prospect = null;
 
+                var now = System.DateTime.Now;
+
                 foreach (var item in availableCheckIns)
                 {
-                    if (checkInModel != null && checkInModel.Id == item.Id)
-                    {
-                        prospect = item;
-
-                        break;
-                    }
-
-                    var now = System.DateTime.Now;
-
                     if (item.StartAt <= now && item.EndAt >= now)
                     {
                         prospect = item;
@@ -583,28 +576,39 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                         break;
                     }
 
-                    if (now > item.EndAt + System.TimeSpan.FromMinutes(concretBidingContext.OverlayContext.PostPresentationTime)) continue;
+                    if (now >= item.StartAt - System.TimeSpan.FromMinutes(concretBidingContext.OverlayContext.PrePresentationTime) && now < item.StartAt)
+                    {
+                        prospect = item;
 
-                    prospect = item;
+                        break;
+                    }
 
-                    break;
+                    if (now > item.EndAt && now <= item.EndAt + System.TimeSpan.FromMinutes(concretBidingContext.OverlayContext.PostPresentationTime))
+                    {
+                        prospect = item;
+                    }
                 }
 
                 checkInModel = prospect;
 
                 if (checkInModel != null)
                 {
-                    var now = System.DateTime.Now;
+                    var hideAll = true;
 
                     if (now > checkInModel.EndAt + System.TimeSpan.FromMinutes(concretBidingContext.OverlayContext.PostPresentationTime))
                     {
+                        hideAll = false;
+
                         if (FullPresentationGrid.IsVisible)
                         {
                             await HideFullPresentationAsync();
                         }
                     }
-                    else if (now >= checkInModel.StartAt)
+                    
+                    if (now >= checkInModel.StartAt)
                     {
+                        hideAll = false;
+
                         if (!FullPresentationGrid.IsVisible)
                         {
                             await ShowFullPresentationAsync();
@@ -616,6 +620,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                     }
                     else if (now >= checkInModel.StartAt - System.TimeSpan.FromMinutes(concretBidingContext.OverlayContext.PrePresentationTime))
                     {
+                        hideAll = false;
+
                         if (FullPresentationGrid.IsVisible) await HideFullPresentationAsync();
 
                         if (!PrePresentationGrid.IsVisible)
@@ -627,7 +633,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                             await UpdatePrePresentationAsync();
                         }
                     }
-                    else
+                    
+                    if (hideAll)
                     {
                         if (FullPresentationGrid.IsVisible) await HideFullPresentationAsync();
 
@@ -653,7 +660,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             {
                 client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.CheckInFilterModel
                 {
-                    Id = concretBidingContext.OverlayContext.Number,
+                    Number = concretBidingContext.OverlayContext.Number,
                 }).ContinueWith(FetchCheckIns_Callback);
             }
             else
@@ -662,7 +669,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                 {
                     client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.CheckInFilterModel
                     {
-                        Id = concretBidingContext.OverlayContext.Number,
+                        Number = concretBidingContext.OverlayContext.Number,
                     }).ContinueWith(FetchCheckIns_Callback);
                 });
             }

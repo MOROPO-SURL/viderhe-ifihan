@@ -1,8 +1,10 @@
 ﻿namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models
 {
-    public class CheckInInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Persistence.Entities.CheckIn, int>
+    public class CheckInInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Persistence.Entities.CheckIn, System.Guid>
     {
-        public int Id { get; set; }
+        public System.Guid Id { get; set; }
+
+        public int Number { get; set; }
 
         public long OperationId { get; set; }
 
@@ -16,7 +18,7 @@
 
         public Persistence.Entities.CheckIn Export()
         {
-            var entity = new Persistence.Entities.CheckIn { Id = Id };
+            var entity = new Persistence.Entities.CheckIn();
 
             Mergue(entity);
 
@@ -30,6 +32,7 @@
 
         public void Mergue(Persistence.Entities.CheckIn entity)
         {
+            entity.Number = Number;
             entity.OperationId = OperationId;
             entity.IsOpen = IsOpen;
             entity.IsVIP = IsVIP;
