@@ -357,12 +357,14 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                 });
                 showInAnimationStoryboard.Animations.Add(showInContinueAnimationStoryboard);
 
-                showInAnimationStoryboard.Begin();
+                showInAnimationStoryboard.Begin().ContinueWith(_ => Xamarin.Forms.DependencyService.Get<Common.Templating.Presentation.Presenters.Facade.IOvarlablePresenter>().SuspendPresentation());
             });
         }
 
         private System.Threading.Tasks.Task HideFullPresentationAsync()
         {
+            Xamarin.Forms.DependencyService.Get<Common.Templating.Presentation.Presenters.Facade.IOvarlablePresenter>().ResumePresentation();
+
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
                 var lastAnimation = new TranslateToYAnimation
