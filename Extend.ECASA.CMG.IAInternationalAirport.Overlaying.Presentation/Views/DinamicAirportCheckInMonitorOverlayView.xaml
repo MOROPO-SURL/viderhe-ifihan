@@ -104,9 +104,9 @@
                             FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{Binding Path=Operation.Carrier.Id}" />
+                                    <Span Text="{Binding Path=DepartureOperation.Carrier.Id}" />
                                     <Span Text=" " />
-                                    <Span Text="{Binding Path=Operation.Flight}" />
+                                    <Span Text="{Binding Path=DepartureOperation.Flight}" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -123,7 +123,7 @@
                             <Label
                                 Grid.Column="1" Grid.Row="0"
                                 VerticalTextAlignment="Center"
-                                Text="{Binding Path=Operation.Context}"
+                                Text="{Binding Path=DepartureOperation.Context}"
                                 TextColor="{Binding Source={Reference RootView}, Path=BindingContext.OverlayContext.SecoundaryTextColor}"
                                 FontFamily="DIN Pro (Black)"
                                 FontSize="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}}" />
@@ -265,7 +265,7 @@
                             x:Name="FullOperationCarrierNameLabel"
                             Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="0"
                             LineBreakMode="TailTruncation"
-                            Text="{Binding Path=Operation.Carrier.Name}"
+                            Text="{Binding Path=DepartureOperation.Carrier.Name}"
                             FontFamily="DIN Pro (Black)"
                             FontSize="{Binding Source=112, Converter={StaticResource SizeToRelativeValueConverter}}" />
                         <StackLayout
@@ -280,7 +280,7 @@
                                 FontFamily="DIN Pro (Medium)" />
                             <Label
                                 LineBreakMode="TailTruncation"
-                                Text="{Binding Path=Operation.Context}"
+                                Text="{Binding Path=DepartureOperation.Context}"
                                 FontFamily="DIN Pro (Bold)"
                                 FontSize="{Binding Source=72, Converter={StaticResource SizeToRelativeValueConverter}}" />
                         </StackLayout>
@@ -299,9 +299,9 @@
                                 FontSize="{Binding Source=72, Converter={StaticResource SizeToRelativeValueConverter}}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{Binding Path=Operation.Carrier.Id}" />
+                                        <Span Text="{Binding Path=DepartureOperation.Carrier.Id}" />
                                         <Span Text=" " />
-                                        <Span Text="{Binding Path=Operation.Flight}" />
+                                        <Span Text="{Binding Path=DepartureOperation.Flight}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>

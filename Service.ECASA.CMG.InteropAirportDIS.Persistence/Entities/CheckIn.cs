@@ -7,9 +7,13 @@
 
         public int Number { get; set; }
 
-        [System.ComponentModel.DataAnnotations.Schema.ForeignKey("OperationId")]
-        public Operation Operation { get; set; }
-        public long OperationId { get; set; }
+        [System.ComponentModel.DataAnnotations.Schema.ForeignKey(nameof(DepartureOperationId))]
+        public Operation DepartureOperation { get; set; }
+        public long DepartureOperationId { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Schema.ForeignKey(nameof(ArrivalOperationId))]
+        public Operation ArrivalOperation { get; set; }
+        public long ArrivalOperationId { get; set; }
 
         public bool IsOpen { get; set; }
 

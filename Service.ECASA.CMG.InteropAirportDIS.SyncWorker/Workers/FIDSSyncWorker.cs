@@ -275,10 +275,6 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
 
                     var now = System.DateTime.Now;
 
-#if DEBUG
-                    //now = System.DateTime.Parse("13/9/2024 06:30:00");
-#endif
-
                     var targetStartAt = now - timingOptions.Value.PreCheckInTime;
 
                     var targetEndAt = now + timingOptions.Value.PostCheckInTime;
@@ -288,7 +284,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                     await checkInsAPIConnectClient.ReplaceAsync(checkIns.Select(entity => new CheckInInputModel
                     {
                         Number = entity.IdMostrador.Value,
-                        OperationId = long.Parse(entity.IdOper),
+                        DepartureOperationId = long.Parse(entity.IdOper),
                         StartAt = entity.FechaIni.Value,
                         EndAt = entity.FechaFin.Value,
                         IsVIP = entity.Vip != null && entity.Vip.Value,

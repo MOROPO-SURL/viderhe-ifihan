@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
 using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Attributes;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Constants;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models;
@@ -13,8 +14,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Backe
     [ApiController]
     public class CheckInsController : Framework.Guama.Core.Presentation.Web.API.Controllers.AbstractEntityApiManagementController<CheckIn, System.Guid, CheckInInputModel, CheckInDisplayModel>
     {
-        public CheckInsController(Framework.Guama.Core.Persistence.Repositories.IEntityRepository<CheckIn, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<CheckInsController> localizer, ILogger<CheckInsController> logger) : base(repository, localizer, logger)
+        private readonly IEntityRepository<Operation, long> operationRepository;
+
+        public CheckInsController(IEntityRepository<Operation, long> operationRepository, IEntityRepository<CheckIn, System.Guid> repository, Microsoft.Extensions.Localization.IStringLocalizer<CheckInsController> localizer, ILogger<CheckInsController> logger) : base(repository, localizer, logger)
         {
+            this.operationRepository = operationRepository;
         }
 
         [RequirePermissions(Authorization.CheckInViewerPermission)]
@@ -57,9 +61,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Backe
         {
             var model = base.EntityToDisplayModel(entity);
 
-            if (model.Operation.Carrier.Image != null)
+            if (model.DepartureOperation.Carrier.Image != null)
             {
-                model.Operation.Carrier.Image.Extension = MimeTypes.MimeTypeMap.GetExtension(entity.Operation.Carrier.Identity.Image.ContentType);
+                model.DepartureOperation.Carrier.Image.Extension = MimeTypes.MimeTypeMap.GetExtension(entity.DepartureOperation.Carrier.Identity.Image.ContentType);
             }
 
             return model;
@@ -83,7 +87,11 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Backe
 
                     for (int i = 0; i < models.Length; i++)
                     {
-                        var entity = models[i].Export();
+                        var model = models[i];
+
+                        var entity = model.Export();
+
+                        PreCreate(entity, model);
 
                         Repository.Add(entity, User.Identity.Name, i + 1 == models.Length);
                     }
@@ -99,6 +107,17 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Backe
             }
 
             return BadRequest(ModelState);
+        }
+
+        protected override void PreCreate(CheckIn entity, CheckInInputModel model)
+        {
+            base.PreCreate(entity, model);
+
+            var departureOperation = operationRepository.Get(entity.DepartureOperationId);
+
+            var arrivalOperation = operationRepository.FindBy(_entity => _entity.KindId == InterFIDS.Persistence.Enumerations.OperationKind.Arraival && _entity.CarrierId == departureOperation.CarrierId && _entity.TerminalId == departureOperation.TerminalId).OrderByDescending(_entity => _entity.Id).First();
+
+            entity.ArrivalOperationId = arrivalOperation.Id;
         }
     }
 }

@@ -19,9 +19,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Front
         {
             var model = base.EntityToDisplayModel(entity);
 
-            if (model.Operation.Carrier.Image != null)
+            if (model.DepartureOperation.Carrier.Image != null)
             {
-                model.Operation.Carrier.Image.Extension = MimeTypes.MimeTypeMap.GetExtension(entity.Operation.Carrier.Identity.Image.ContentType);
+                model.DepartureOperation.Carrier.Image.Extension = MimeTypes.MimeTypeMap.GetExtension(entity.DepartureOperation.Carrier.Identity.Image.ContentType);
             }
 
             return model;

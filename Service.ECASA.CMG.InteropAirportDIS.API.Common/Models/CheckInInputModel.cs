@@ -6,7 +6,7 @@
 
         public int Number { get; set; }
 
-        public long OperationId { get; set; }
+        public long DepartureOperationId { get; set; }
 
         public bool IsOpen { get; set; }
 
@@ -33,7 +33,7 @@
         public void Mergue(Persistence.Entities.CheckIn entity)
         {
             entity.Number = Number;
-            entity.OperationId = OperationId;
+            entity.DepartureOperationId = DepartureOperationId;
             entity.IsOpen = IsOpen;
             entity.IsVIP = IsVIP;
             entity.StartAt = StartAt;

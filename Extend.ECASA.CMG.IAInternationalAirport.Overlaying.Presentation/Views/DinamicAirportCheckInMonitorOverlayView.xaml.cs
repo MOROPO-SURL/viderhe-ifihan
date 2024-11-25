@@ -102,9 +102,9 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 PrePresentationGrid.BindingContext = checkInModel;
 
-                if (checkInModel.Operation.Carrier.Image != null)
+                if (checkInModel.DepartureOperation.Carrier.Image != null)
                 {
-                    PreOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(concretBidingContext.OverlayContext);
+                    PreOperationCarrierImageView.Source = checkInModel.DepartureOperation.Carrier.Image.ToImageSource(concretBidingContext.OverlayContext);
                 }
                 else
                 {
@@ -220,9 +220,9 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 FullPresentationGrid.BindingContext = checkInModel;
 
-                if (checkInModel.Operation.Carrier.Image != null)
+                if (checkInModel.DepartureOperation.Carrier.Image != null)
                 {
-                    FullOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(concretBidingContext.OverlayContext);
+                    FullOperationCarrierImageView.Source = checkInModel.DepartureOperation.Carrier.Image.ToImageSource(concretBidingContext.OverlayContext);
                 }
                 else
                 {
@@ -517,9 +517,9 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 FullPresentationGrid.BindingContext = checkInModel;
 
-                if (checkInModel.Operation.Carrier.Image != null)
+                if (checkInModel.DepartureOperation.Carrier.Image != null)
                 {
-                    FullOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(concretBidingContext.OverlayContext);
+                    FullOperationCarrierImageView.Source = checkInModel.DepartureOperation.Carrier.Image.ToImageSource(concretBidingContext.OverlayContext);
                 }
                 else
                 {
@@ -540,9 +540,9 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 PrePresentationGrid.BindingContext = checkInModel;
 
-                if (checkInModel.Operation.Carrier.Image != null)
+                if (checkInModel.DepartureOperation.Carrier.Image != null)
                 {
-                    PreOperationCarrierImageView.Source = checkInModel.Operation.Carrier.Image.ToImageSource(concretBidingContext.OverlayContext);
+                    PreOperationCarrierImageView.Source = checkInModel.DepartureOperation.Carrier.Image.ToImageSource(concretBidingContext.OverlayContext);
                 }
                 else
                 {
@@ -588,6 +588,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
                     if (now > item.EndAt && now <= item.EndAt + System.TimeSpan.FromMinutes(concretBidingContext.OverlayContext.PostPresentationTime))
                     {
                         prospect = item;
+
+                        break;
                     }
                 }
 

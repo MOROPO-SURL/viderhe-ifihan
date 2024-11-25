@@ -6,7 +6,9 @@
 
         public int Number { get; set; }
 
-        public OperationDisplayModel Operation { get; set; }
+        public OperationDisplayModel DepartureOperation { get; set; }
+
+        public OperationDisplayModel ArrivalOperation { get; set; }
 
         public bool IsOpen { get; set; }
 
@@ -24,9 +26,11 @@
             IsVIP = entity.IsVIP;
             StartAt = entity.StartAt;
             EndAt = entity.EndAt;
+            DepartureOperation = new OperationDisplayModel();
+            ArrivalOperation = new OperationDisplayModel();
 
-            Operation = new OperationDisplayModel();
-            Operation.Import(entity.Operation);
+            DepartureOperation.Import(entity.DepartureOperation);
+            ArrivalOperation.Import(entity.ArrivalOperation);
         }
     }
 }

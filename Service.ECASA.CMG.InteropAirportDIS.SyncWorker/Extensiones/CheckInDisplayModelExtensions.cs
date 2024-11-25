@@ -22,7 +22,7 @@
                 if (entity.Vip != null && entity.Vip.Value) return true;
             }
 
-            if (model.Operation.Id.ToString() != entity.IdOper) return true;
+            if (model.DepartureOperation.Id.ToString() != entity.IdOper) return true;
 
             if (model.EndAt != entity.FechaFin) return true;
 

@@ -68,7 +68,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                     b.HasKey("Id")
                         .HasName("pk_traces");
 
-                    b.ToTable("traces", (string)null);
+                    b.ToTable("traces");
                 });
 
             modelBuilder.Entity("MOROPO.Framework.Guama.Core.Security.Common.Persistence.Entities.Permission", b =>
@@ -959,7 +959,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                     b.HasKey("Id")
                         .HasName("pk_apikeys");
 
-                    b.ToTable("apikeys", (string)null);
+                    b.ToTable("apikeys");
                 });
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.ApiKeyRoleBridge", b =>
@@ -978,7 +978,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                     b.HasIndex("SternId")
                         .HasDatabaseName("ix_apikeyrolebridges_sternid");
 
-                    b.ToTable("apikeyrolebridges", (string)null);
+                    b.ToTable("apikeyrolebridges");
                 });
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Carrier", b =>
@@ -1015,7 +1015,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                         .IsUnique()
                         .HasDatabaseName("ix_carriers_identityid");
 
-                    b.ToTable("carriers", (string)null);
+                    b.ToTable("carriers");
                 });
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Category", b =>
@@ -1041,7 +1041,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                         .IsUnique()
                         .HasDatabaseName("ix_categories_discriminator");
 
-                    b.ToTable("categories", (string)null);
+                    b.ToTable("categories");
                 });
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.CheckIn", b =>
@@ -1050,6 +1050,14 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("id");
+
+                    b.Property<long>("ArrivalOperationId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("arrivaloperationid");
+
+                    b.Property<long>("DepartureOperationId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("departureoperationid");
 
                     b.Property<DateTime>("EndAt")
                         .HasColumnType("timestamp with time zone")
@@ -1067,10 +1075,6 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                         .HasColumnType("integer")
                         .HasColumnName("number");
 
-                    b.Property<long>("OperationId")
-                        .HasColumnType("bigint")
-                        .HasColumnName("operationid");
-
                     b.Property<DateTime>("StartAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("startat");
@@ -1078,10 +1082,13 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                     b.HasKey("Id")
                         .HasName("pk_checkins");
 
-                    b.HasIndex("OperationId")
-                        .HasDatabaseName("ix_checkins_operationid");
+                    b.HasIndex("ArrivalOperationId")
+                        .HasDatabaseName("ix_checkins_arrivaloperationid");
 
-                    b.ToTable("checkins", (string)null);
+                    b.HasIndex("DepartureOperationId")
+                        .HasDatabaseName("ix_checkins_departureoperationid");
+
+                    b.ToTable("checkins");
                 });
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Kind", b =>
@@ -1102,7 +1109,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                         .IsUnique()
                         .HasDatabaseName("ix_kinds_discriminator");
 
-                    b.ToTable("kinds", (string)null);
+                    b.ToTable("kinds");
                 });
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Operation", b =>
@@ -1178,7 +1185,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                     b.HasIndex("TerminalId")
                         .HasDatabaseName("ix_operations_terminalid");
 
-                    b.ToTable("operations", (string)null);
+                    b.ToTable("operations");
                 });
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Status", b =>
@@ -1220,7 +1227,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                         .IsUnique()
                         .HasDatabaseName("ix_statuses_discriminator");
 
-                    b.ToTable("statuses", (string)null);
+                    b.ToTable("statuses");
                 });
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Terminal", b =>
@@ -1247,7 +1254,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                         .IsUnique()
                         .HasDatabaseName("ix_terminals_discriminator");
 
-                    b.ToTable("terminals", (string)null);
+                    b.ToTable("terminals");
                 });
 
             modelBuilder.Entity("MOROPO.Framework.Guama.Location.Persistence.Entities.LocalityLocation", b =>
@@ -1709,14 +1716,23 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.CheckIn", b =>
                 {
-                    b.HasOne("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Operation", "Operation")
+                    b.HasOne("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Operation", "ArrivalOperation")
                         .WithMany()
-                        .HasForeignKey("OperationId")
+                        .HasForeignKey("ArrivalOperationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_checkins_operations_operationid");
+                        .HasConstraintName("fk_checkins_operations_arrivaloperationid");
 
-                    b.Navigation("Operation");
+                    b.HasOne("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Operation", "DepartureOperation")
+                        .WithMany()
+                        .HasForeignKey("DepartureOperationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_checkins_operations_departureoperationid");
+
+                    b.Navigation("ArrivalOperation");
+
+                    b.Navigation("DepartureOperation");
                 });
 
             modelBuilder.Entity("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Operation", b =>
