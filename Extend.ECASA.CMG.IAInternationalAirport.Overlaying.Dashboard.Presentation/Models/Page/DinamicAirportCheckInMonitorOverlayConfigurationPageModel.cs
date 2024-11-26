@@ -87,8 +87,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dash
         public DinamicAirportCheckInMonitorInactivePresentationMode[] AvailableInactivePresentationModes { get; } = new DinamicAirportCheckInMonitorInactivePresentationMode[]
         {
             DinamicAirportCheckInMonitorInactivePresentationMode.EdgeNumeric,
-            DinamicAirportCheckInMonitorInactivePresentationMode.FloatNumeric,
-            DinamicAirportCheckInMonitorInactivePresentationMode.NoNumeric
+            DinamicAirportCheckInMonitorInactivePresentationMode.FloatNumeric
         };
 
         public DinamicAirportCheckInMonitorActivePresentationMode[] AvailableActivePresentationModes { get; } = new DinamicAirportCheckInMonitorActivePresentationMode[]

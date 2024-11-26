@@ -3,7 +3,6 @@
     public enum DinamicAirportCheckInMonitorInactivePresentationMode
     {
         EdgeNumeric,
-        FloatNumeric,
-        NoNumeric
+        FloatNumeric
     }
 }

@@ -91,7 +91,7 @@
                             x:Name="PreOperationCarrierName"
                             Grid.Column="1" Grid.Row="0"
                             VerticalTextAlignment="Center"
-                            Text="{Binding Path=Operation.Carrier.Name}"
+                            Text="{Binding Path=DepartureOperation.Carrier.Name}"
                             TextColor="{Binding Source={Reference RootView}, Path=BindingContext.OverlayContext.SecoundaryTextColor}"
                             FontFamily="DIN Pro (Black)"
                             FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}}" />
@@ -311,15 +311,15 @@
                             Grid.Column="2" Grid.Row="2"
                             Spacing="0">
                             <Label
+                                x:Name="StartContextCaptionLabel"
                                 Opacity="0.8"
                                 HorizontalTextAlignment="Center"
-                                Text="Iniciado / Started at:"
                                 TextColor="White"
                                 FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}"
                                 FontFamily="DIN Pro (Medium)" />
                             <Label
+                                x:Name="StartContextValueLabel"
                                 HorizontalTextAlignment="Center"
-                                Text="{Binding Path=StartAt, StringFormat='{0:HH\\:mm}'}"
                                 FontFamily="DIN Pro (Bold)"
                                 FontSize="{Binding Source=72, Converter={StaticResource SizeToRelativeValueConverter}}" />
                         </StackLayout>
@@ -328,15 +328,15 @@
                             Grid.Column="3" Grid.Row="2"
                             Spacing="0">
                             <Label
+                                x:Name="EndContextCaptionLabel"
                                 Opacity="0.8"
                                 HorizontalTextAlignment="Center"
-                                Text="Finaliza / Ends at:"
                                 TextColor="White"
                                 FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}"
                                 FontFamily="DIN Pro (Medium)" />
                             <Label
+                                x:Name="EndContextValueLabel"
                                 HorizontalTextAlignment="Center"
-                                Text="{Binding Path=EndAt, StringFormat='{0:HH\\:mm}'}"
                                 FontFamily="DIN Pro (Bold)"
                                 FontSize="{Binding Source=72, Converter={StaticResource SizeToRelativeValueConverter}}" />
                         </StackLayout>
