@@ -27,7 +27,9 @@
                     PreCheckInHeadLabel = context.PreCheckInHeadLabel,
                     OpenCheckInLabel = context.OpenCheckInLabel,
                     ClosedCheckInLabel = context.ClosedCheckInLabel,
-                    ShowClock = context.ShowClock
+                    ShowClock = context.ShowClock,
+                    InactivePresentationMode = context.InactivePresentationMode,
+                    ActivePresentationMode = context.ActivePresentationMode
                 };
             }
             catch

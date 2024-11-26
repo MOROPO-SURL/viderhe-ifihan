@@ -41,5 +41,9 @@
         public string ClosedCheckInLabel { get; set; }
 
         public bool ShowClock { get; set; }
+
+        public Enumerations.DinamicAirportCheckInMonitorInactivePresentationMode InactivePresentationMode { get; set; }
+
+        public Enumerations.DinamicAirportCheckInMonitorActivePresentationMode ActivePresentationMode { get; set; }
     }
 }

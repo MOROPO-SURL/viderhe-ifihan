@@ -1,4 +1,6 @@
-﻿namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dashboard.Presentation.Models.Page
+﻿using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Dashboard.Presentation.Models.Page
 {
     public class DinamicAirportCheckInMonitorOverlayConfigurationPageModel : Support.Presentation.Dashboard.Models.Page.FormPageModel
     {
@@ -21,6 +23,8 @@
         private string openCheckInLabel;
         private string closedCheckInLabel;
         private bool showClock;
+        private DinamicAirportCheckInMonitorInactivePresentationMode inactivePresentationMode;
+        private DinamicAirportCheckInMonitorActivePresentationMode activePresentationMode;
 
         public DinamicAirportCheckInMonitorOverlayConfigurationPageModel()
         {
@@ -34,8 +38,8 @@
             secoundaryTextColor = Xamarin.Forms.Color.DimGray;
             accentColor = Xamarin.Forms.Color.Accent;
             preCheckInHeadLabel = "PROXIMA SALIDA EN CHECK-IN ...";
-            openCheckInLabel = "ABIERTO";
-            closedCheckInLabel = "CERRADO";
+            openCheckInLabel = "ABIERTO / OPEN";
+            closedCheckInLabel = "CERRADO / CERRADO";
         }
 
         public string APIServer { get => apiServer; set => SetProperty(ref apiServer, value); }
@@ -75,5 +79,22 @@
         public string ClosedCheckInLabel { get => closedCheckInLabel; set => SetProperty(ref closedCheckInLabel, value); }
 
         public bool ShowClock { get => showClock; set => SetProperty(ref showClock, value); }
+
+        public DinamicAirportCheckInMonitorInactivePresentationMode InactivePresentationMode { get => inactivePresentationMode; set => SetProperty(ref inactivePresentationMode, value); }
+
+        public DinamicAirportCheckInMonitorActivePresentationMode ActivePresentationMode { get => activePresentationMode; set => SetProperty(ref activePresentationMode, value); }
+
+        public DinamicAirportCheckInMonitorInactivePresentationMode[] AvailableInactivePresentationModes { get; } = new DinamicAirportCheckInMonitorInactivePresentationMode[]
+        {
+            DinamicAirportCheckInMonitorInactivePresentationMode.EdgeNumeric,
+            DinamicAirportCheckInMonitorInactivePresentationMode.FloatNumeric,
+            DinamicAirportCheckInMonitorInactivePresentationMode.NoNumeric
+        };
+
+        public DinamicAirportCheckInMonitorActivePresentationMode[] AvailableActivePresentationModes { get; } = new DinamicAirportCheckInMonitorActivePresentationMode[]
+        {
+            DinamicAirportCheckInMonitorActivePresentationMode.CheckInTimes,
+            DinamicAirportCheckInMonitorActivePresentationMode.FlyTimes
+        };
     }
 }

@@ -65,6 +65,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <StackLayout 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -312,8 +313,54 @@
                             </Entry>
                         </StackLayout>
                     </Frame>
+                    <Frame Grid.Column="0" Grid.Row="4" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                x:Name="InactivePresentationModeLabel"
+                                Text="Modo de Presentación Pasivo" 
+                                Style="{StaticResource FormLabel}" />
+                            <Picker 
+                                ItemsSource="{Binding Path=AvailableInactivePresentationModes}"
+                                SelectedItem="{Binding Path=InactivePresentationMode}">
+                                <Picker.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultPickerValidationPresenter.Instance}"
+                                        TargetProperty="{Static Picker.SelectedItemProperty}"
+                                        Label="{Reference InactivePresentationModeLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:NotNullFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Picker.Behaviors>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Grid.Row="4" Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label 
+                                x:Name="ActivePresentationModeLabel"
+                                Text="Modo de Presentación Activo" 
+                                Style="{StaticResource FormLabel}" />
+                            <Picker 
+                                ItemsSource="{Binding Path=AvailableActivePresentationModes, Mode=OneTime}"
+                                SelectedItem="{Binding Path=ActivePresentationMode}">
+                                <Picker.Behaviors>
+                                    <supportpresentationdashboardbehaviors:ViewValidationBehavior
+                                        ValidableFormPage="{Reference FormPage}"
+                                        FormFieldValidationPresenter="{Static supportpresentationdashboardpresenters:DefaultPickerValidationPresenter.Instance}"
+                                        TargetProperty="{Static Picker.SelectedItemProperty}"
+                                        Label="{Reference ActivePresentationModeLabel}">
+                                        <supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                            <supportpresentationdashboardvalidators:NotNullFormFieldValidator />
+                                        </supportpresentationdashboardbehaviors:ViewValidationBehavior.Validators>
+                                    </supportpresentationdashboardbehaviors:ViewValidationBehavior>
+                                </Picker.Behaviors>
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4"
+                        Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5"
                         Style="{StaticResource FormFieldFrame}"
                         BackgroundColor="#66FFFFFF"
                         VerticalOptions="Start">
@@ -471,7 +518,7 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.Column="0" Grid.Row="5"
+                        Grid.Column="0" Grid.Row="6"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
                             <Label Text="Mostrar reloj simpre?" Style="{StaticResource FormLabel}" />
