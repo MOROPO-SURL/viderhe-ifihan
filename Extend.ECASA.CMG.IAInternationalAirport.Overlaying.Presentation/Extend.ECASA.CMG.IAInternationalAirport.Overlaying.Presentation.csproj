@@ -23,4 +23,13 @@
 	  <ProjectReference Include="..\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Views\FloatingDinamicAirportCheckInMonitorOverlayView.xaml.cs">
+	    <DependentUpon>FloatingDinamicAirportCheckInMonitorOverlayView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\EdgeDinamicAirportCheckInMonitorOverlayView.xaml.cs">
+	    <DependentUpon>EdgeDinamicAirportCheckInMonitorOverlayView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 </Project>

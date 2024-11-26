@@ -6,7 +6,7 @@
     xmlns:extendcommonoverlayingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Overlaying.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:ffimageloadingsvgforms="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    x:Class="MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation.Views.DinamicAirportCheckInMonitorOverlayView"
+    x:Class="MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Presentation.Views.FloatingDinamicAirportCheckInMonitorOverlayView"
     x:Name="RootView">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -24,146 +24,146 @@
     </ContentView.Resources>
     <ContentView.Content>
         <Grid ColumnSpacing="0" RowSpacing="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Grid 
-                x:Name="PrePresentationGrid"
-                Grid.Column="1" Grid.Row="1"
-                ColumnSpacing="0" RowSpacing="0">
+            <Grid Margin="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}}">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
-                    <ColumnDefinition Width="48*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="8*" />
+                    <RowDefinition Height="2*" />
                     <RowDefinition />
                 </Grid.RowDefinitions>
-                <Grid
-                    x:Name="PreCheckInWrapperLayout"
+                <Grid 
+                    x:Name="PrePresentationGrid"
                     Grid.Column="1" Grid.Row="1"
-                    IsClippedToBounds="True">
+                    ColumnSpacing="0" RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="48*" />
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition />
-                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <BoxView
-                        x:Name="PreCheckInHeadBackgroundBoxView"
-                        Grid.Row="0"
-                        BackgroundColor="{Binding Source={Reference ChechInNumberBackgroundBoxView}, Path=Color}" />
-                    <Label
-                        x:Name="PreCheckInHeadLabel"
-                        Grid.Row="0"
-                        Margin="20,0"
-                        VerticalTextAlignment="Center"
-                        TextColor="White"
-                        FontFamily="DIN Pro (Bold)"
-                        FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}}" />
-                    <Grid 
-                        Grid.Row="1"
-                        Margin="20"
-                        ColumnSpacing="8" RowSpacing="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
+                    <Grid
+                        x:Name="PreCheckInWrapperLayout"
+                        Grid.Column="1" Grid.Row="1"
+                        IsClippedToBounds="True">
                         <Grid.RowDefinitions>
                             <RowDefinition />
-                            <RowDefinition />
+                            <RowDefinition Height="2*" />
                         </Grid.RowDefinitions>
-                        <ffimageloadingforms:CachedImage 
-                            x:Name="PreOperationCarrierImageView"
-                            Grid.Column="0" Grid.RowSpan="2"
-                            WidthRequest="{Binding Source={RelativeSource Mode=Self}, Path=Height}"
-                            Aspect="AspectFill"
-                            FadeAnimationEnabled="False"
-                            CacheType="Disk"
-                            CacheDuration="8760:00:00" />
+                        <BoxView
+                            x:Name="PreCheckInHeadBackgroundBoxView"
+                            Grid.Row="0"
+                            BackgroundColor="{Binding Source={Reference ChechInNumberBackgroundBoxView}, Path=Color}" />
                         <Label
-                            x:Name="PreOperationCarrierName"
-                            Grid.Column="1" Grid.Row="0"
+                            x:Name="PreCheckInHeadLabel"
+                            Grid.Row="0"
+                            Margin="20,0"
                             VerticalTextAlignment="Center"
-                            Text="{Binding Path=DepartureOperation.Carrier.Name}"
-                            TextColor="{Binding Source={Reference RootView}, Path=BindingContext.OverlayContext.SecoundaryTextColor}"
-                            FontFamily="DIN Pro (Black)"
-                            FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}}" />
-                        <Label
-                            x:Name="PreOperationFly"
-                            Grid.Column="1" Grid.Row="1"
-                            VerticalTextAlignment="Center"
-                            TextColor="{Binding Source={Reference RootView}, Path=BindingContext.OverlayContext.SecoundaryTextColor}"
+                            TextColor="White"
                             FontFamily="DIN Pro (Bold)"
-                            FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}">
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{Binding Path=DepartureOperation.Carrier.Id}" />
-                                    <Span Text=" " />
-                                    <Span Text="{Binding Path=DepartureOperation.Flight}" />
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <StackLayout 
-                            x:Name="PreOperationDestinationStackLayout"
-                            Grid.Column="2" Grid.RowSpan="2"
-                            HorizontalOptions="Center" VerticalOptions="End"
-                            Spacing="0">
+                            FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                        <Grid 
+                            Grid.Row="1"
+                            Margin="20"
+                            ColumnSpacing="8" RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <ffimageloadingforms:CachedImage 
+                                x:Name="PreOperationCarrierImageView"
+                                Grid.Column="0" Grid.RowSpan="2"
+                                WidthRequest="{Binding Source={RelativeSource Mode=Self}, Path=Height}"
+                                Aspect="AspectFill"
+                                FadeAnimationEnabled="False"
+                                CacheType="Disk"
+                                CacheDuration="8760:00:00" />
                             <Label
-                                Text="Destino / Destiny:"
-                                TextColor="{Binding Source={Reference RootView}, Path=BindingContext.OverlayContext.SecoundaryTextColor}"
-                                FontFamily="DIN Pro (Medium)"
-                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}}" />
-                            <Label
+                                x:Name="PreOperationCarrierName"
                                 Grid.Column="1" Grid.Row="0"
                                 VerticalTextAlignment="Center"
-                                Text="{Binding Path=DepartureOperation.Context}"
+                                Text="{Binding Path=DepartureOperation.Carrier.Name}"
                                 TextColor="{Binding Source={Reference RootView}, Path=BindingContext.OverlayContext.SecoundaryTextColor}"
                                 FontFamily="DIN Pro (Black)"
-                                FontSize="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}}" />
-                        </StackLayout>
-                        <StackLayout 
-                            x:Name="PreOperationStartAtStackLayout"
-                            Grid.Column="3" Grid.RowSpan="2" 
-                            Spacing="0">
+                                FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}}" />
                             <Label
-                                Text="Inicia / Starts at:"
-                                TextColor="{Binding Source={Reference RootView}, Path=BindingContext.OverlayContext.SecoundaryTextColor}"
-                                FontFamily="DIN Pro (Medium)"
-                                FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}}" />
-                            <Label
-                                VerticalOptions="FillAndExpand"
+                                x:Name="PreOperationFly"
+                                Grid.Column="1" Grid.Row="1"
                                 VerticalTextAlignment="Center"
-                                Text="{Binding Path=StartAt, StringFormat='{0:HH\\:mm}'}"
                                 TextColor="{Binding Source={Reference RootView}, Path=BindingContext.OverlayContext.SecoundaryTextColor}"
-                                FontFamily="DIN Pro (Black)"
-                                FontSize="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}}" />
-                        </StackLayout>
+                                FontFamily="DIN Pro (Bold)"
+                                FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Path=DepartureOperation.Carrier.Id}" />
+                                        <Span Text=" " />
+                                        <Span Text="{Binding Path=DepartureOperation.Flight}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <StackLayout 
+                                x:Name="PreOperationDestinationStackLayout"
+                                Grid.Column="2" Grid.RowSpan="2"
+                                HorizontalOptions="Center" VerticalOptions="End"
+                                Spacing="0">
+                                <Label
+                                    Text="Destino / Destiny:"
+                                    TextColor="{Binding Source={Reference RootView}, Path=BindingContext.OverlayContext.SecoundaryTextColor}"
+                                    FontFamily="DIN Pro (Medium)"
+                                    FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                                <Label
+                                    Grid.Column="1" Grid.Row="0"
+                                    VerticalTextAlignment="Center"
+                                    Text="{Binding Path=DepartureOperation.Context}"
+                                    TextColor="{Binding Source={Reference RootView}, Path=BindingContext.OverlayContext.SecoundaryTextColor}"
+                                    FontFamily="DIN Pro (Black)"
+                                    FontSize="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                            </StackLayout>
+                            <StackLayout 
+                                x:Name="PreOperationStartAtStackLayout"
+                                Grid.Column="3" Grid.RowSpan="2" 
+                                Spacing="0">
+                                <Label
+                                    Text="Inicia / Starts at:"
+                                    TextColor="{Binding Source={Reference RootView}, Path=BindingContext.OverlayContext.SecoundaryTextColor}"
+                                    FontFamily="DIN Pro (Medium)"
+                                    FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                                <Label
+                                    VerticalOptions="FillAndExpand"
+                                    VerticalTextAlignment="Center"
+                                    Text="{Binding Path=StartAt, StringFormat='{0:HH\\:mm}'}"
+                                    TextColor="{Binding Source={Reference RootView}, Path=BindingContext.OverlayContext.SecoundaryTextColor}"
+                                    FontFamily="DIN Pro (Black)"
+                                    FontSize="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}}" />
+                            </StackLayout>
+                        </Grid>
                     </Grid>
+                </Grid>
+                <Grid 
+                    x:Name="ChechInNumberWrapGrid"
+                    Grid.Column="0" Grid.Row="1"
+                    WidthRequest="{Binding Source={RelativeSource Mode=Self}, Path=Height}">
+                    <BoxView 
+                        x:Name="ChechInNumberBackgroundBoxView"
+                        CornerRadius="0,48,0,0" />
+                    <Label 
+                        x:Name="ChechInNumberLabel"
+                        HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                        FontFamily="DIN Pro (Black)"
+                        FontSize="{Binding NumberReferenceSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                 </Grid>
             </Grid>
             <Grid 
-                x:Name="ChechInNumberWrapGrid"
-                Grid.Column="0" Grid.Row="1"
-                WidthRequest="{Binding Source={RelativeSource Mode=Self}, Path=Height}">
-                <BoxView 
-                    x:Name="ChechInNumberBackgroundBoxView"
-                    CornerRadius="0,48,0,0" />
-                <Label 
-                    x:Name="ChechInNumberLabel"
-                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-                    FontFamily="DIN Pro (Black)"
-                    FontSize="{Binding NumberReferenceSize, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
-            </Grid>
-            <Grid 
                 x:Name="GlobalClockWrapGrid"
-                Grid.Column="1" Grid.Row="0"
                 HorizontalOptions="End" VerticalOptions="Start">
                 <BoxView 
                     x:Name="GlobalClockBackgroundBoxView"
@@ -186,9 +186,7 @@
                     </StackLayout>                    
                 </Grid>
             </Grid>
-            <Grid
-                x:Name="FullPresentationGrid"
-                Grid.ColumnSpan="2" Grid.RowSpan="2">
+            <Grid x:Name="FullPresentationGrid">
                 <StackLayout
                     Padding="{Binding Source={StaticResource FullPresentationGridMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}"
                     Spacing="{Binding Source={StaticResource DefaultSpacing}, Converter={StaticResource ThicknessToRelativeValueConverter}, Mode=OneTime}">

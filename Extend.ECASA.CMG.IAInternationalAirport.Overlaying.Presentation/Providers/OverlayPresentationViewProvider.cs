@@ -10,7 +10,12 @@
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.Context.DinamicAirportCheckInMonitorOverlayContextModel>(accountInformationProvider.AccountSerializedOverlayContext);
 
-                return new Views.DinamicAirportCheckInMonitorOverlayView(context);
+                if (context.InactivePresentationMode == Enumerations.DinamicAirportCheckInMonitorInactivePresentationMode.FloatNumeric)
+                {
+                    return new Views.FloatingDinamicAirportCheckInMonitorOverlayView(context);
+                }
+
+                return new Views.EdgeDinamicAirportCheckInMonitorOverlayView(context);
             }
 
             if (accountInformationProvider.AccountDefaultOverlayId.Value == Descriptors.CorporativeMarqueeOverlayDescriptor.ID)
