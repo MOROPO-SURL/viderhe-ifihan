@@ -6,9 +6,15 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Mode
     {
         public string HeaderBackgroundColor { get; set; }
 
-        public double HeaderBackgroundOpacity { get; set; }
+        public string HeaderForegroundColor { get; set; } = "#FFFFFF";
+
+        public bool UseCondensedHeaderPresentation { get; set; }
 
         public bool IsHideHeaderBuildInInfoRequired { get; set; }
+
+        public double HiddenHeaderBuildInInfoHeaderHeight { get; set; }
+
+        public double HeaderBackgroundOpacity { get; set; }
 
         public BackgroundContextModel HeaderBackground { get; set; }
 
@@ -21,6 +27,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Mode
         public string TableHeaderBackgroundColor { get; set; }
 
         public int TableHeaderFontSize { get; set; }
+
+        public bool UseCondensedTextFontFamily { get; set; }
 
         public string PrimaryRowTextColor { get; set; }
 

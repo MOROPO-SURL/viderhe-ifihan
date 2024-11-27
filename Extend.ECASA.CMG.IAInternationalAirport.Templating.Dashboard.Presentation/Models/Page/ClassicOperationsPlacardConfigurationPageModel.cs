@@ -9,7 +9,10 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
     {
         private Xamarin.Forms.Color headerBackgroundColor;
         private double headerBackgroundColorOpacity;
+        private Xamarin.Forms.Color headerForegroundColor;
         private bool isHideHeaderBuildInInfoRequired;
+        private double hiddenHeaderBuildInInfoHeaderHeight;
+        private bool useCondensedHeaderPresentation;
         private BackgroundContextModel headerBackground;
         private bool isRectangle19x6LogoSizeModeSelected;
         private bool isRectangle4x3LogoSizeModeSelected;
@@ -59,9 +62,15 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
 
         public Xamarin.Forms.Color HeaderBackgroundColor { get => headerBackgroundColor; set => SetProperty(ref headerBackgroundColor, value); }
 
-        public double HeaderBackgroundOpacity { get => headerBackgroundColorOpacity; set => SetProperty(ref headerBackgroundColorOpacity, value); }
+        public Xamarin.Forms.Color HeaderForegroundColor { get => headerForegroundColor; set => SetProperty(ref headerForegroundColor, value); }
 
         public bool IsHideHeaderBuildInInfoRequired { get => isHideHeaderBuildInInfoRequired; set => SetProperty(ref isHideHeaderBuildInInfoRequired, value); }
+
+        public double HiddenHeaderBuildInInfoHeaderHeight { get => hiddenHeaderBuildInInfoHeaderHeight; set => SetProperty(ref hiddenHeaderBuildInInfoHeaderHeight, value); }
+
+        public bool UseCondensedHeaderPresentation { get => useCondensedHeaderPresentation; set => SetProperty(ref useCondensedHeaderPresentation, value); }
+
+        public double HeaderBackgroundOpacity { get => headerBackgroundColorOpacity; set => SetProperty(ref headerBackgroundColorOpacity, value); }
 
         public BackgroundContextModel HeaderBackground { get => headerBackground; set => SetProperty(ref headerBackground, value); }
 

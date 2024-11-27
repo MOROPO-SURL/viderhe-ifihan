@@ -6,16 +6,15 @@ using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presenta
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 using System.Collections.Generic;
-using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
 
 namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Placard
 {
-    public partial class ClassicDeparturesPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
+    public partial class ClassicDeparturesCondensedPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView, Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade
     {
-        private const double LOGO_IMAGE_VIEW_HEIGHT = 120d;
+        private const double LOGO_IMAGE_VIEW_HEIGHT = 60d;
 
-        private static Thickness TABLE_ITEM_MARGIN = new Thickness(12);
+        private static Thickness TABLE_ITEM_MARGIN = new Thickness(12,8);
 
         private static Common.Templating.Presentation.Converters.SizeToRelativeValueConverter SIZE_TO_RELATIVE_VALUE_CONVERTER = new Common.Templating.Presentation.Converters.SizeToRelativeValueConverter();
 
@@ -29,7 +28,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
         private View globalBackgroundView;
         private View bannerBackgroundView;
 
-        public ClassicDeparturesPlacardView(ClassicOperationsSinglePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
+        public ClassicDeparturesCondensedPlacardView(ClassicOperationsSinglePlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -56,7 +55,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
                         bannerBackgroundView = new FFImageLoading.Forms.CachedImage
                         {
-                            HeightRequest = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(LOGO_IMAGE_VIEW_HEIGHT + 12 + 32, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor,
+                            //HeightRequest = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(LOGO_IMAGE_VIEW_HEIGHT + 12 + 32, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor,
                             Source = ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(imageModel.Id)),
                             FadeAnimationEnabled = false,
                             Aspect = Aspect.AspectFill,
@@ -129,22 +128,18 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             {
                 OperationSymbolLabel.IsVisible = false;
                 HeaderTitleLabel.IsVisible = false;
-                HeaderSubTitleLabel.IsVisible = false;
-                DateLabel.IsVisible = false;
-                TimeLabel.IsVisible = false;
-                DateTimeSeparatorBoxView.IsVisible = false;
+                DateTimeLabel.IsVisible = false;
 
                 //LogoBacklightBoxView.Opacity = 0;
                 LogoImageView.Opacity = 0;
+
+                HeaderGrid.HeightRequest = model.HiddenHeaderBuildInInfoHeaderHeight;
             }
             else
             {
-                OperationSymbolLabel.TextColor = model.HeaderBackgroundColor.ToBlackOrWhiteForText();
-                HeaderTitleLabel.TextColor = OperationSymbolLabel.TextColor;
-                HeaderSubTitleLabel.TextColor = model.HeaderBackgroundColor.ToBlackOrWhiteForText().WithAlpha(0.85);
-                TimeLabel.TextColor = OperationSymbolLabel.TextColor;
-                DateLabel.TextColor = OperationSymbolLabel.TextColor;
-                DateTimeSeparatorBoxView.Color = OperationSymbolLabel.TextColor;
+                OperationSymbolLabel.TextColor = model.HeaderForegroundColor;
+                HeaderTitleLabel.TextColor = model.HeaderForegroundColor;
+                DateTimeLabel.TextColor = model.HeaderForegroundColor;
 
                 //LogoBacklightBoxView.Color = model.HeaderBackgroundColor.ToBlackOrWhiteForText();
 
@@ -365,9 +360,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
         {
             var now = System.DateTime.Now;
 
-            DateLabel.Text = now.ToString("MMM dd").ToUpperInvariant();
-
-            TimeLabel.Text = now.ToString("HH:mm");
+            DateTimeLabel.Text = now.ToString("MMM dd, HH:mm").ToUpperInvariant();
 
             return model != null;
         }

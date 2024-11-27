@@ -433,6 +433,7 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Frame 
                                     Grid.Column="0" Grid.Row="0"
@@ -478,8 +479,52 @@
                                     </StackLayout>
                                 </Frame>
                                 <Frame 
+                                    Grid.Column="0" Grid.Row="1"
+                                    IsVisible="{Binding Path=IsHideHeaderBuildInInfoRequired}"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Alto del Encabezado" Style="{StaticResource FormLabel}" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Path=HiddenHeaderBuildInInfoHeaderHeight}" VerticalTextAlignment="Center" />
+                                            <Label Text="Unidades" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+                                            <Stepper Value="{Binding Path=HiddenHeaderBuildInInfoHeaderHeight}" Minimum="0" Maximum="480" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
                                     IsVisible="{Binding Path=IsHideHeaderBuildInInfoRequired, Converter={StaticResource BoolToBoolNegationConverter}}"
-                                    Grid.ColumnSpan="2" Grid.Row="1"
+                                    Grid.Column="0" Grid.Row="1"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Color de Textos" Style="{StaticResource FormLabel}" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Grid
+                                                HorizontalOptions="FillAndExpand"
+                                                BackgroundColor="DimGray"
+                                                Padding="1"
+                                                HeightRequest="32">
+                                                <BoxView Color="{Binding Path=HeaderForegroundColor}" />
+                                            </Grid>
+                                            <Button 
+                                                HorizontalOptions="End"
+                                                Style="{StaticResource TextIconButton}"
+                                                Text="&#xF266;"
+                                                Clicked="HeaderForegroundColorButton_Clicked" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    IsVisible="{Binding Path=IsHideHeaderBuildInInfoRequired, Converter={StaticResource BoolToBoolNegationConverter}}"
+                                    Grid.Column="1" Grid.Row="1"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Presentación Condensada?" Style="{StaticResource FormLabel}" />
+                                        <Switch IsToggled="{Binding Path=UseCondensedHeaderPresentation}" />
+                                    </StackLayout>
+                                </Frame>
+                                <Frame 
+                                    IsVisible="{Binding Path=IsHideHeaderBuildInInfoRequired, Converter={StaticResource BoolToBoolNegationConverter}}"
+                                    Grid.ColumnSpan="2" Grid.Row="2"
                                     Style="{StaticResource FormFieldFrame}">
                                     <StackLayout>
                                         <Label Text="Logotipo" Style="{StaticResource FormLabel}" />
@@ -549,7 +594,7 @@
                                     </StackLayout>
                                 </Frame>
                                 <Frame 
-                                    Grid.Column="2" Grid.Row="1"
+                                    Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"
                                     Style="{StaticResource FormFieldFrame}"
                                     Padding="0"
                                     VerticalOptions="Start">
@@ -851,7 +896,11 @@
                                                     <Label Text="Tamaño de Letra" Style="{StaticResource FormLabel}" />
                                                     <StackLayout Orientation="Horizontal">
                                                         <Label Text="{Binding Path=TableHeaderFontSize}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
-                                                        <Stepper Value="{Binding Path=TableHeaderFontSize}" Minimum="8" />
+                                                        <Stepper Value="{Binding Path=TableHeaderFontSize}" Minimum="8" Maximum="200" />
+                                                        <Button 
+                                                            FontFamily="{StaticResource IconFontFamily}"
+                                                            Text="&#xf90b;"
+                                                            Clicked="TableHeaderFontSizeEditButton_Clicked" />
                                                     </StackLayout>
                                                 </StackLayout>
                                             </Frame>
@@ -926,7 +975,11 @@
                                                     <Label Text="Tamaño de Letra" Style="{StaticResource FormLabel}" />
                                                     <StackLayout Orientation="Horizontal">
                                                         <Label Text="{Binding Path=RowFontSize}" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" />
-                                                        <Stepper Value="{Binding Path=RowFontSize}" Minimum="8" />
+                                                        <Stepper Value="{Binding Path=RowFontSize}" Minimum="8" Maximum="200" />
+                                                        <Button 
+                                                            FontFamily="{StaticResource IconFontFamily}"
+                                                            Text="&#xf90b;"
+                                                            Clicked="RowFontSizeEditButton_Clicked" />
                                                     </StackLayout>
                                                 </StackLayout>
                                             </Frame>

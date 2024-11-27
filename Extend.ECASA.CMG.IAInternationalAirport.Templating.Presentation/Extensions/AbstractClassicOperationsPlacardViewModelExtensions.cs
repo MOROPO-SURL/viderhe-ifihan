@@ -7,6 +7,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
     {
         public static void InitializeTableHeader(this Models.View.Placard.Contract.AbstractClassicOperationsPlacardViewModel target, Grid layout, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind operationKind, Thickness itemMargin, double itemFontSize, out Label timeSizeReferenceLabel, out Label gateSizeReferenceLabel)
         {
+            var fontFamily = target.UseCondensedTextFontFamily ? "DIN Pro (Condensed Bold)" : "DIN Pro (Bold)";
+
             timeSizeReferenceLabel = new Label
             {
                 Margin = itemMargin,
@@ -15,7 +17,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontSize = itemFontSize,
-                FontFamily = "Montserrat (Bold)"
+                FontFamily = fontFamily,
+                LineBreakMode = LineBreakMode.TailTruncation
             };
 
             gateSizeReferenceLabel = new Label
@@ -26,7 +29,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontSize = itemFontSize,
-                FontFamily = "Montserrat (Bold)"
+                FontFamily = fontFamily,
+                LineBreakMode = LineBreakMode.TailTruncation
             };
 
             foreach (var item in target.Columns)
@@ -61,7 +65,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     TextColor = target.TableHeaderTextColor,
                     VerticalTextAlignment = TextAlignment.Center,
                     FontSize = itemFontSize,
-                    FontFamily = "Montserrat (Bold)",
+                    FontFamily = fontFamily,
                     LineBreakMode = LineBreakMode.TailTruncation
                 };
 
@@ -97,7 +101,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                         break;
 
                     case ClassicOperationsColumn.STATUS:
-                        itemLabel.Text = "ESTADO";
+                        itemLabel.Text = "CONDICION";
 
                         break;
 

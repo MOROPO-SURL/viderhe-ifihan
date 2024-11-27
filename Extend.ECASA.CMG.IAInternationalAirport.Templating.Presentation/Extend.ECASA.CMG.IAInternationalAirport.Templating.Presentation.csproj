@@ -69,4 +69,13 @@
 	  <ProjectReference Include="..\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend\Service.ECASA.CMG.InteropAirportDIS.API.Connect.Frontend.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Views\Placard\ClassicDeparturesCondensedPlacardView.xaml.cs">
+	    <DependentUpon>ClassicDeparturesCondensedPlacardView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Placard\ClassicDeparturesRegularPlacardView.xaml.cs">
+	    <DependentUpon>ClassicDeparturesRegularPlacardView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 </Project>

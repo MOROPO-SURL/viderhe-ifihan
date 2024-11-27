@@ -95,6 +95,38 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
             successfulCompleteCallbackAction = null;
         }
 
+        private void RowFontSizeEditButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayPromptAsync("Tamaño de Letra de la Fila", "Formato de número entero, Ej. 14. Cualquier otro caso será ignorado.", "Aplicar", "Cancelar", keyboard: Xamarin.Forms.Keyboard.Numeric, initialValue: BindingContextPageModel.RowFontSize.ToString()).ContinueWith(task =>
+            {
+                if (task.Result == null) return;
+
+                try
+                {
+                    var value = int.Parse(task.Result);
+
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.RowFontSize = value);
+                }
+                catch { }
+            });
+        }
+
+        private void TableHeaderFontSizeEditButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            DisplayPromptAsync("Tamaño de Letra de la Cabecera de Tabla", "Formato de número entero, Ej. 14. Cualquier otro caso será ignorado.", "Aplicar", "Cancelar", keyboard: Xamarin.Forms.Keyboard.Numeric, initialValue: BindingContextPageModel.TableHeaderFontSize.ToString()).ContinueWith(task =>
+            {
+                if (task.Result == null) return;
+
+                try
+                {
+                    var value = int.Parse(task.Result);
+
+                    Xamarin.Forms.Device.BeginInvokeOnMainThread(() => BindingContextPageModel.TableHeaderFontSize = value);
+                }
+                catch { }
+            });
+        }
+
         private void BackgroundClearButton_Clicked(object sender, System.EventArgs eventArgs)
         {
             DisplayAlert("Confirmar", "Está seguro que desea retirar el fondo actual?", "Aceptar", "Cancelar").ContinueWith(task =>
@@ -306,9 +338,12 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
                         Background = BindingContextPageModel.Background,
                         ForegroundTransparency = BindingContextPageModel.ForegroundTransparency,
                         IsHideHeaderBuildInInfoRequired = BindingContextPageModel.IsHideHeaderBuildInInfoRequired,
+                        HiddenHeaderBuildInInfoHeaderHeight = BindingContextPageModel.HiddenHeaderBuildInInfoHeaderHeight,
                         HeaderBackgroundColor = BindingContextPageModel.HeaderBackgroundColor.ToHex(),
                         HeaderBackgroundOpacity = BindingContextPageModel.HeaderBackgroundOpacity,
-                        HeaderBackground = BindingContextPageModel.HeaderBackground
+                        HeaderForegroundColor = BindingContextPageModel.HeaderForegroundColor.ToHex(),
+                        HeaderBackground = BindingContextPageModel.HeaderBackground,
+                        UseCondensedHeaderPresentation = BindingContextPageModel.UseCondensedHeaderPresentation
                     };
 
                     if (BindingContextPageModel.IsRectangle19x6LogoSizeModeSelected)
@@ -371,9 +406,12 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
                         Background = BindingContextPageModel.Background,
                         ForegroundTransparency = BindingContextPageModel.ForegroundTransparency,
                         IsHideHeaderBuildInInfoRequired = BindingContextPageModel.IsHideHeaderBuildInInfoRequired,
+                        HiddenHeaderBuildInInfoHeaderHeight = BindingContextPageModel.HiddenHeaderBuildInInfoHeaderHeight,
                         HeaderBackgroundColor = BindingContextPageModel.HeaderBackgroundColor.ToHex(),
                         HeaderBackgroundOpacity = BindingContextPageModel.HeaderBackgroundOpacity,
-                        HeaderBackground = BindingContextPageModel.HeaderBackground
+                        HeaderForegroundColor = BindingContextPageModel.HeaderForegroundColor.ToHex(),
+                        HeaderBackground = BindingContextPageModel.HeaderBackground,
+                        UseCondensedHeaderPresentation = BindingContextPageModel.UseCondensedHeaderPresentation
                     };
 
                     if (BindingContextPageModel.IsRectangle19x6LogoSizeModeSelected)
@@ -651,6 +689,16 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
         private void SecoundaryRowTextColorButton_Clicked(object sender, System.EventArgs eventArgs)
         {
             Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(SecoundaryRowTextColorPicked_Callback, BindingContextPageModel.SecoundaryRowTextColor));
+        }
+
+        private void HeaderForegroundColorButton_Clicked(object sender, System.EventArgs eventArgs)
+        {
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage(HeaderForegroundColorButton_ClickedPicked_Callback, BindingContextPageModel.HeaderForegroundColor));
+        }
+
+        private void HeaderForegroundColorButton_ClickedPicked_Callback(Xamarin.Forms.Color color)
+        {
+            BindingContextPageModel.HeaderForegroundColor = color;
         }
 
         private void HeaderBackgroundColorPicked_Callback(Xamarin.Forms.Color color)

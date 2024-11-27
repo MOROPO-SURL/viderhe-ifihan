@@ -7,9 +7,15 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
     {
         public Xamarin.Forms.Color HeaderBackgroundColor { get; set; }
 
-        public double HeaderBackgroundOpacity { get; set; }
+        public Xamarin.Forms.Color HeaderForegroundColor { get; set; }
+
+        public bool UseCondensedHeaderPresentation { get; set; }
 
         public bool IsHideHeaderBuildInInfoRequired { get; set; }
+
+        public double HiddenHeaderBuildInInfoHeaderHeight { get; set; }
+
+        public double HeaderBackgroundOpacity { get; set; }
 
         public BackgroundContextModel HeaderBackground { get; set; }
 
@@ -22,6 +28,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
         public Xamarin.Forms.Color TableHeaderBackgroundColor { get; set; }
 
         public int TableHeaderFontSize { get; set; }
+
+        public bool UseCondensedTextFontFamily { get; set; }
 
         public Xamarin.Forms.Color PrimaryRowTextColor { get; set; }
 

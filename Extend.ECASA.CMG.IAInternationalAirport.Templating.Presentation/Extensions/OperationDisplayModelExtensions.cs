@@ -7,6 +7,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
     {
         public static void AttachTo(this Service.ECASA.CMG.InterFIDS.API.Common.Models.OperationDisplayModel target, int index, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind operationKind, StackLayout layout, ColumnDefinitionCollection columnDefinitions, Models.View.Placard.Contract.AbstractClassicOperationsPlacardViewModel model, Thickness margin, double fontSize, double timeColumnWidth, double gateColumnWidth)
         {
+            var fontFamily = model.UseCondensedTextFontFamily ? "DIN Pro (Condensed Regular)" : "DIN Pro (Regular)";
+
             var useSecundaryColorProfile = model.UseStrippedRows && index % 2 != 0;
 
             var itemLayout = new Grid
@@ -58,7 +60,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             TextColor = rowTextColor,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
-                            FontSize = fontSize
+                            FontSize = fontSize,
+                            FontFamily = fontFamily
                         };
 
                         Grid.SetColumn(timeLabel, i);
@@ -75,7 +78,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             TextColor = rowTextColor,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
-                            FontSize = fontSize
+                            FontSize = fontSize,
+                            FontFamily = fontFamily
                         };
 
                         Grid.SetColumn(plannedAtLabel, i);
@@ -92,7 +96,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             TextColor = rowTextColor,
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
-                            FontSize = fontSize
+                            FontSize = fontSize,
+                            FontFamily = fontFamily
                         };
 
                         Grid.SetColumn(estimateAtLabel, i);
@@ -109,6 +114,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize,
+                            FontFamily = fontFamily,
                             LineBreakMode = LineBreakMode.TailTruncation
                         };
 
@@ -134,6 +140,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize,
+                            FontFamily = fontFamily,
                             LineBreakMode = LineBreakMode.TailTruncation
                         });
 
@@ -159,6 +166,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize,
+                            FontFamily = fontFamily,
                             LineBreakMode = LineBreakMode.TailTruncation
                         });
 
@@ -176,6 +184,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize,
+                            FontFamily = fontFamily,
                             LineBreakMode = LineBreakMode.TailTruncation
                         };
 
@@ -193,6 +202,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize,
+                            FontFamily = fontFamily,
                             LineBreakMode = LineBreakMode.TailTruncation
                         };
 
@@ -212,6 +222,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize,
+                            FontFamily = fontFamily,
                             LineBreakMode = LineBreakMode.TailTruncation
                         };
 
@@ -229,6 +240,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize,
+                            FontFamily = fontFamily,
                             LineBreakMode = LineBreakMode.TailTruncation
                         };
 
@@ -246,6 +258,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             TextColor = rowTextColor,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize,
+                            FontFamily = fontFamily,
                             LineBreakMode = LineBreakMode.TailTruncation
                         };
 

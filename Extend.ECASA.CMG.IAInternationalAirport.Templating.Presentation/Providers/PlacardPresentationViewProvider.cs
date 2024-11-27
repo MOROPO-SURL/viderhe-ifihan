@@ -11,7 +11,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<ClassicOperationsPlacardContextModel>(model.SerializedContext);
 
-                return new Views.Placard.ClassicDeparturesPlacardView(new Models.View.Placard.ClassicOperationsSinglePlacardViewModel
+                var _model = new Models.View.Placard.ClassicOperationsSinglePlacardViewModel
                 {
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
@@ -26,6 +26,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     TableHeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.TableHeaderBackgroundColor),
                     TableHeaderTextColor = Xamarin.Forms.Color.FromHex(context.TableHeaderTextColor),
                     TableHeaderFontSize = context.TableHeaderFontSize,
+                    UseCondensedTextFontFamily = context.UseCondensedTextFontFamily,
                     PrimaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.PrimaryRowBackgroundColor),
                     PrimaryRowTextColor = Xamarin.Forms.Color.FromHex(context.PrimaryRowTextColor),
                     SecoundaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowBackgroundColor),
@@ -33,13 +34,20 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     RowFontSize = context.RowFontSize,
                     Columns = context.Columns,
                     Background = context.Background,
+                    UseCondensedHeaderPresentation = context.UseCondensedHeaderPresentation,
                     ForegroundTransparency = context.ForegroundTransparency,
                     IsHideHeaderBuildInInfoRequired = context.IsHideHeaderBuildInInfoRequired,
+                    HiddenHeaderBuildInInfoHeaderHeight = context.HiddenHeaderBuildInInfoHeaderHeight,
                     HeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.HeaderBackgroundColor),
+                    HeaderForegroundColor = Xamarin.Forms.Color.FromHex(context.HeaderForegroundColor),
                     HeaderBackgroundOpacity = context.HeaderBackground == null ? 1 : context.HeaderBackgroundOpacity,
                     HeaderBackground = context.HeaderBackground,
                     LogoSizeMode = context.LogoSizeMode
-                }, relativeSizeScaleFactor);
+                };
+
+                if (context.UseCondensedHeaderPresentation) return new Views.Placard.ClassicDeparturesCondensedPlacardView(_model, relativeSizeScaleFactor);
+
+                return new Views.Placard.ClassicDeparturesRegularPlacardView(_model, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == ClassicArraivalsTemplateDescriptor.ID)
@@ -61,6 +69,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     TableHeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.TableHeaderBackgroundColor),
                     TableHeaderTextColor = Xamarin.Forms.Color.FromHex(context.TableHeaderTextColor),
                     TableHeaderFontSize = context.TableHeaderFontSize,
+                    UseCondensedTextFontFamily = context.UseCondensedTextFontFamily,
                     PrimaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.PrimaryRowBackgroundColor),
                     PrimaryRowTextColor = Xamarin.Forms.Color.FromHex(context.PrimaryRowTextColor),
                     SecoundaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowBackgroundColor),
@@ -68,9 +77,12 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     RowFontSize = context.RowFontSize,
                     Columns = context.Columns,
                     Background = context.Background,
+                    UseCondensedHeaderPresentation = context.UseCondensedHeaderPresentation,
                     ForegroundTransparency = context.ForegroundTransparency,
                     IsHideHeaderBuildInInfoRequired = context.IsHideHeaderBuildInInfoRequired,
+                    HiddenHeaderBuildInInfoHeaderHeight = context.HiddenHeaderBuildInInfoHeaderHeight,
                     HeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.HeaderBackgroundColor),
+                    HeaderForegroundColor = Xamarin.Forms.Color.FromHex(context.HeaderForegroundColor),
                     HeaderBackgroundOpacity = context.HeaderBackground == null ? 1 : context.HeaderBackgroundOpacity,
                     HeaderBackground = context.HeaderBackground,
                     LogoSizeMode = context.LogoSizeMode
@@ -96,6 +108,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     TableHeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.TableHeaderBackgroundColor),
                     TableHeaderTextColor = Xamarin.Forms.Color.FromHex(context.TableHeaderTextColor),
                     TableHeaderFontSize = context.TableHeaderFontSize,
+                    UseCondensedTextFontFamily = context.UseCondensedTextFontFamily,
                     PrimaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.PrimaryRowBackgroundColor),
                     PrimaryRowTextColor = Xamarin.Forms.Color.FromHex(context.PrimaryRowTextColor),
                     SecoundaryRowBackgroundColor = Xamarin.Forms.Color.FromHex(context.SecoundaryRowBackgroundColor),
@@ -103,9 +116,12 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     RowFontSize = context.RowFontSize,
                     Columns = context.Columns,
                     Background = context.Background,
+                    UseCondensedHeaderPresentation = context.UseCondensedHeaderPresentation,
                     ForegroundTransparency = context.ForegroundTransparency,
                     IsHideHeaderBuildInInfoRequired = context.IsHideHeaderBuildInInfoRequired,
+                    HiddenHeaderBuildInInfoHeaderHeight = context.HiddenHeaderBuildInInfoHeaderHeight,
                     HeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.HeaderBackgroundColor),
+                    HeaderForegroundColor = Xamarin.Forms.Color.FromHex(context.HeaderForegroundColor),
                     HeaderBackgroundOpacity = context.HeaderBackground == null ? 1 : context.HeaderBackgroundOpacity,
                     HeaderBackground = context.HeaderBackground,
                     LogoSizeMode = context.LogoSizeMode
