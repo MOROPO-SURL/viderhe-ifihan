@@ -54,7 +54,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             {
                 var context = Newtonsoft.Json.JsonConvert.DeserializeObject<ClassicOperationsPlacardContextModel>(model.SerializedContext);
 
-                return new Views.Placard.ClassicArraivalsPlacardView(new Models.View.Placard.ClassicOperationsSinglePlacardViewModel
+                var _model = new Models.View.Placard.ClassicOperationsSinglePlacardViewModel
                 {
                     ScreenPresentationTime = context.ScreenPresentationTime,
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
@@ -86,7 +86,11 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                     HeaderBackgroundOpacity = context.HeaderBackground == null ? 1 : context.HeaderBackgroundOpacity,
                     HeaderBackground = context.HeaderBackground,
                     LogoSizeMode = context.LogoSizeMode
-                }, relativeSizeScaleFactor);
+                };
+
+                if (context.UseCondensedHeaderPresentation) return new Views.Placard.ClassicArraivalsCondensedPlacardView(_model, relativeSizeScaleFactor);
+
+                return new Views.Placard.ClassicArraivalsRegularPlacardView(_model, relativeSizeScaleFactor);
             }
 
             if (model.Template.Id == ClassicDualOperationsTemplateDescriptor.ID)

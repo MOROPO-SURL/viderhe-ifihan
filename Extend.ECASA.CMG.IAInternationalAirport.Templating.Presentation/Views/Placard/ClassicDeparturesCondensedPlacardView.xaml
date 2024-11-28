@@ -73,15 +73,14 @@
                                 x:Name="DateTimeLabel"
                                 Grid.Column="3"
                                 VerticalOptions="Center"
-                                TextColor="White"
                                 FontSize="{Binding Source=40, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                                 FontFamily="DIN Pro (Medium)"
                                 HorizontalTextAlignment="Center" />
                         </Grid>
                     </Grid>
                     <BoxView 
-                        Grid.Row="1" 
-                        Color="White" 
+                        x:Name="HeaderTableSeparatorBoxView"
+                        Grid.Row="1"  
                         HeightRequest="{Binding Source=3, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" 
                         Margin="{Binding Source={StaticResource TableHeaderSeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}" />
                     <Grid x:Name="TableHeaderGrid" Grid.Row="2" ColumnSpacing="0" />

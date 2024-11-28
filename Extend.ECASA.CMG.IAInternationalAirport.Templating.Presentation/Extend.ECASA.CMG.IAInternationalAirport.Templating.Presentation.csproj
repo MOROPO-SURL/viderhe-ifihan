@@ -70,6 +70,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\Placard\ClassicArraivalsCondensedPlacardView.xaml.cs">
+	    <DependentUpon>ClassicArraivalsCondensedPlacardView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Placard\ClassicArraivalsRegularPlacardView.xaml.cs">
+	    <DependentUpon>ClassicArraivalsRegularPlacardView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Placard\ClassicDeparturesCondensedPlacardView.xaml.cs">
 	    <DependentUpon>ClassicDeparturesCondensedPlacardView.xaml</DependentUpon>
 	  </Compile>

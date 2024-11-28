@@ -652,6 +652,14 @@
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>
+                                <Frame 
+                                    Grid.Column="1" Grid.Row="0"
+                                    Style="{StaticResource FormFieldFrame}">
+                                    <StackLayout>
+                                        <Label Text="Textos Condensados?" Style="{StaticResource FormLabel}" />
+                                        <Switch IsToggled="{Binding Path=UseCondensedTextFontFamily}" />
+                                    </StackLayout>
+                                </Frame>
                                 <!--
                                 <Frame 
                                     Grid.Column="1" Grid.Row="0"

@@ -29,6 +29,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
         private int rowFontSize;
         private BackgroundContextModel background;
         private int foregroundTransparency;
+        private bool useCondensedTextFontFamily;
 
         public ClassicOperationsPlacardConfigurationPageModel()
         {
@@ -83,6 +84,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
         public Xamarin.Forms.ImageSource AccountLogoImageSource { get; set; }
 
         public Xamarin.Forms.Color TableBackgroundColor { get => tableBackgroundColor; set => SetProperty(ref tableBackgroundColor, value); }
+
+        public bool UseCondensedTextFontFamily { get => useCondensedTextFontFamily; set => SetProperty(ref useCondensedTextFontFamily, value); }
 
         public Xamarin.Forms.Color TableHeaderTextColor { get => tableHeaderTextColor; set => SetProperty(ref tableHeaderTextColor, value); }
 

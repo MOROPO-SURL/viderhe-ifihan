@@ -41,6 +41,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Dash
                 VisibleColumns = new System.Collections.ObjectModel.ObservableCollection<Models.View.ClassicOperationColumnCollectionItemViewModel>(),
                 RowFontSize = context.RowFontSize,
                 Background = context.Background,
+                UseCondensedTextFontFamily = context.UseCondensedTextFontFamily,
                 ForegroundTransparency = context.ForegroundTransparency,
                 HeaderBackgroundColor = Xamarin.Forms.Color.FromHex(context.HeaderBackgroundColor),
                 HeaderBackgroundOpacity = context.HeaderBackgroundOpacity,

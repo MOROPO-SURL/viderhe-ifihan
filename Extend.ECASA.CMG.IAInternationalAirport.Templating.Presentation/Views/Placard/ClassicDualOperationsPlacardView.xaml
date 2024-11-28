@@ -98,7 +98,7 @@
                                 VerticalOptions="Center"
                                 Text="&#xF5D4;"
                                 FontFamily="{StaticResource IconFontFamily}"
-                                FontSize="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                FontSize="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <Label
                                 x:Name="ArraivalsSectionHeaderTitleLabel"
                                 VerticalOptions="Center"
@@ -129,7 +129,7 @@
                                 VerticalOptions="Center"
                                 Text="&#xF5D5;"
                                 FontFamily="{StaticResource IconFontFamily}"
-                                FontSize="{Binding Source=80, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                FontSize="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <Label
                                 x:Name="DeparturesSectionHeaderTitleLabel"
                                 VerticalOptions="Center"

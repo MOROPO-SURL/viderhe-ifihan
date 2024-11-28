@@ -69,6 +69,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                 HeaderGrid.Children.Insert(0, bannerBackgroundView);
             }
 
+            HeaderTableSeparatorBoxView.Color = model.TableHeaderBackgroundColor;
+
             TableLayout.BackgroundColor = model.TableBackgroundColor;
 
             TableHeaderGrid.BackgroundColor = model.TableHeaderBackgroundColor;
@@ -360,7 +362,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
         {
             var now = System.DateTime.Now;
 
-            DateTimeLabel.Text = now.ToString("MMM dd, HH:mm").ToUpperInvariant();
+            DateTimeLabel.Text = now.ToString("MMMM dd, HH:mm").ToUpperInvariant();
 
             return model != null;
         }
