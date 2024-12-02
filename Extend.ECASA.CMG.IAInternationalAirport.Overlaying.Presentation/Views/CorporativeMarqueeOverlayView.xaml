@@ -87,7 +87,7 @@
                         Text="{Binding Path=MarqueeContent}"
                         TextColor="{Binding Path=Context.TextColor}"
                         LineBreakMode="NoWrap"
-                        FontFamily="Montserrat (Regular)"
+                        FontFamily="DIN Pro (Regular)"
                         FontSize="{Binding Source=24, Converter={StaticResource SizeToRelativeValueConverter}}">
                         <Label.Behaviors>
                             <extendcommonoverlayingpresentationbehaviors:MarqueeLabelBehavior />
@@ -105,7 +105,7 @@
                 <ffimageloadingforms:CachedImage
                     x:Name="LogoImageView"
                     Margin="{Binding Source={StaticResource LogoImageViewMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}"
-                    BackgroundColor="Black"
+                    BackgroundColor="Transparent"
                     Aspect="AspectFill"
                     CacheType="Disk"
                     CacheDuration="8760:00:00" />

@@ -12,12 +12,11 @@
         <extendcommontemplatingpresentationconverters:ThicknessToRelativeValueConverter x:Key="ThicknessToRelativeValueConverter" SizeScalableView="{Reference RootView}" />
 
         <Thickness x:Key="LogoGridMargin">8</Thickness>
-        <Thickness x:Key="LogoImageViewMargin">6,0,6,6</Thickness>
-        <Thickness x:Key="TableHeaderSeparatorMargin">0,0,0,16</Thickness>
-        <Thickness x:Key="TableBodySeparatorMargin">0,6,0,0</Thickness>
+        <Thickness x:Key="TableHeaderSeparatorMargin">0,0,0,6</Thickness>
+        <Thickness x:Key="TableBodySeparatorMargin">0,4,0,0</Thickness>
 
         <Style TargetType="Label">
-            <Setter Property="FontFamily" Value="Montserrat (Regular)" />
+            <Setter Property="FontFamily" Value="DIN Pro (Regular)" />
         </Style>
     </ContentView.Resources>
     <ContentView.Content>
@@ -56,7 +55,7 @@
                                 VerticalOptions="Center"
                                 Text="Aeropuerto Internacional de Camagüey"
                                 TextColor="LightCyan"
-                                FontFamily="Montserrat (Bold)"
+                                FontFamily="DIN Pro (Bold)"
                                 FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <Label
                                 x:Name="DateTimeLabel"
@@ -70,7 +69,7 @@
                         Grid.Row="1" 
                         Color="White" 
                         VerticalOptions="Start"
-                        HeightRequest="{Binding Source=4, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" 
+                        HeightRequest="{Binding Source=3, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" 
                         Margin="{Binding Source={StaticResource TableHeaderSeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}" />
                     <Grid 
                         Grid.Row="0"
@@ -88,7 +87,7 @@
                     </Grid>
                     <StackLayout
                         x:Name="ArraivalsSectionHeaderStackLayout"
-                        Grid.Row="2">
+                        Grid.Row="2" Spacing="0">
                         <StackLayout
                             HorizontalOptions="Center"
                             Orientation="Horizontal">
@@ -98,12 +97,12 @@
                                 VerticalOptions="Center"
                                 Text="&#xF5D4;"
                                 FontFamily="{StaticResource IconFontFamily}"
-                                FontSize="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                FontSize="{Binding Source=56, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <Label
                                 x:Name="ArraivalsSectionHeaderTitleLabel"
                                 VerticalOptions="Center"
                                 Text="ARRIBOS / ARRIVALS"
-                                FontFamily="Montserrat (Bold)"
+                                FontFamily="DIN Pro (Medium)"
                                 FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         </StackLayout>
                         <BoxView
@@ -114,12 +113,12 @@
                     <ScrollView Grid.Row="4"  Margin="{Binding Source={StaticResource TableBodySeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}">
                         <StackLayout 
                             x:Name="ArraivalsTableBodyStackLayout"
-                            Spacing="{Binding Source=6, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                            Spacing="{Binding Source=4, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                             ChildRemoved="TableBodyStackLayout_ChildRemoved" />
                     </ScrollView>
                     <StackLayout
                         x:Name="DeparturesSectionHeaderStackLayout"
-                        Grid.Row="5">
+                        Grid.Row="5" Spacing="0">
                         <StackLayout
                             HorizontalOptions="Center"
                             Orientation="Horizontal">
@@ -129,12 +128,12 @@
                                 VerticalOptions="Center"
                                 Text="&#xF5D5;"
                                 FontFamily="{StaticResource IconFontFamily}"
-                                FontSize="{Binding Source=64, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
+                                FontSize="{Binding Source=56, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                             <Label
                                 x:Name="DeparturesSectionHeaderTitleLabel"
                                 VerticalOptions="Center"
                                 Text="SALIDAS / DEPARTURES"
-                                FontFamily="Montserrat (Bold)"
+                                FontFamily="DIN Pro (Medium)"
                                 FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         </StackLayout>
                         <BoxView
@@ -145,7 +144,7 @@
                     <ScrollView Grid.Row="7"  Margin="{Binding Source={StaticResource TableBodySeparatorMargin}, Converter={StaticResource ThicknessToRelativeValueConverter}}">
                         <StackLayout 
                             x:Name="DeparturesTableBodyStackLayout"
-                            Spacing="{Binding Source=6, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
+                            Spacing="{Binding Source=4, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                             ChildRemoved="TableBodyStackLayout_ChildRemoved" />
                     </ScrollView>
                 </Grid>
