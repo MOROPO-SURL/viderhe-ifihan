@@ -115,7 +115,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Backe
 
             var departureOperation = operationRepository.Get(entity.DepartureOperationId);
 
-            var arrivalOperation = operationRepository.FindBy(_entity => _entity.KindId == InterFIDS.Persistence.Enumerations.OperationKind.Arraival && _entity.CarrierId == departureOperation.CarrierId && _entity.TerminalId == departureOperation.TerminalId).OrderByDescending(_entity => _entity.Id).First();
+            var arrivalOperation = operationRepository.FindBy(_entity => _entity.KindId == InterFIDS.Persistence.Enumerations.OperationKind.Arrival && _entity.CarrierId == departureOperation.CarrierId && _entity.TerminalId == departureOperation.TerminalId).OrderByDescending(_entity => _entity.Id).First();
 
             entity.ArrivalOperationId = arrivalOperation.Id;
         }

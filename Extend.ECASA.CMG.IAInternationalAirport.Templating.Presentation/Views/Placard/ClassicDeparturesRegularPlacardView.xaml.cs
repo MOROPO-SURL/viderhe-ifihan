@@ -14,7 +14,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
     {
         private const double LOGO_IMAGE_VIEW_HEIGHT = 120d;
 
-        private static Thickness TABLE_ITEM_MARGIN = new Thickness(12, 8);
+        private static Thickness TABLE_ITEM_MARGIN = new Thickness(12, 0);
 
         private static Common.Templating.Presentation.Converters.SizeToRelativeValueConverter SIZE_TO_RELATIVE_VALUE_CONVERTER = new Common.Templating.Presentation.Converters.SizeToRelativeValueConverter();
 

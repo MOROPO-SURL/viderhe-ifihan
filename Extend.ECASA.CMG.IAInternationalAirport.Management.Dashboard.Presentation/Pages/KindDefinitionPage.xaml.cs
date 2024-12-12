@@ -68,7 +68,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Management.Dash
 
                     var allOperationKinds = new Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind[]
                     {
-                        Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival,
+                        Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arrival,
                         Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Departure
                     };
 

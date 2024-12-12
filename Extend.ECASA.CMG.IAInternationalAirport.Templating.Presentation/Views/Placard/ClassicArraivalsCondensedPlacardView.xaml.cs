@@ -14,7 +14,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
     {
         private const double LOGO_IMAGE_VIEW_HEIGHT = 60d;
 
-        private static Thickness TABLE_ITEM_MARGIN = new Thickness(12, 8);
+        private static Thickness TABLE_ITEM_MARGIN = new Thickness(12, 0);
 
         private static Common.Templating.Presentation.Converters.SizeToRelativeValueConverter SIZE_TO_RELATIVE_VALUE_CONVERTER = new Common.Templating.Presentation.Converters.SizeToRelativeValueConverter();
 
@@ -120,7 +120,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
             var tableHeaderItemFontSize = (double)SIZE_TO_RELATIVE_VALUE_CONVERTER.Convert(model.TableHeaderFontSize, typeof(double), null, System.Globalization.CultureInfo.InvariantCulture) * RelativeSizeScaleFactor;
 
-            model.InitializeTableHeader(TableHeaderGrid, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival, TABLE_ITEM_MARGIN, tableHeaderItemFontSize, out timeSizeReferenceLabel, out gateSizeReferenceLabel);
+            model.InitializeTableHeader(TableHeaderGrid, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arrival, TABLE_ITEM_MARGIN, tableHeaderItemFontSize, out timeSizeReferenceLabel, out gateSizeReferenceLabel);
             
             this.model = model;
 
@@ -183,7 +183,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
             client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.OperationFilterModel
             {
-                Kind = Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival
+                Kind = Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arrival
             }).ContinueWith(FetchOperations_Callback);
         }
 
@@ -324,7 +324,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        item.AttachTo(index++, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival, TableBodyStackLayout, TableHeaderGrid.ColumnDefinitions, model, TABLE_ITEM_MARGIN, tableBodyItemFontSize, timeSizeReferenceLabel?.Width ?? 0, gateSizeReferenceLabel?.Width ?? 0);
+                        item.AttachTo(index++, Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arrival, TableBodyStackLayout, TableHeaderGrid.ColumnDefinitions, model, TABLE_ITEM_MARGIN, tableBodyItemFontSize, timeSizeReferenceLabel?.Width ?? 0, gateSizeReferenceLabel?.Width ?? 0);
                     });
                 }
             }
@@ -341,7 +341,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             {
                 client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.OperationFilterModel
                 {
-                    Kind = Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival
+                    Kind = Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arrival
                 }).ContinueWith(FetchOperations_Callback);
             }
             else
@@ -350,7 +350,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                 {
                     client.FilterAsync(new Service.ECASA.CMG.InterFIDS.API.Common.Models.Filter.OperationFilterModel
                     {
-                        Kind = Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival
+                        Kind = Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arrival
                     }).ContinueWith(FetchOperations_Callback);
                 });
             }

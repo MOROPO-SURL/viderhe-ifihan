@@ -24,7 +24,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
             {
                 Animation = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.FadeInAnimation
                 {
-                    Direction = operationKind == Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival ? SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Right : SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Left,
+                    Direction = operationKind == Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arrival ? SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Right : SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Left,
                     RelativeOffset = layout.Width,
                     Duration = "650",
                     EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicIn
@@ -61,7 +61,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize,
-                            FontFamily = fontFamily
+                            FontFamily = fontFamily,
+                            LineBreakMode = LineBreakMode.TailTruncation
                         };
 
                         Grid.SetColumn(timeLabel, i);
@@ -79,7 +80,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize,
-                            FontFamily = fontFamily
+                            FontFamily = fontFamily,
+                            LineBreakMode = LineBreakMode.TailTruncation
                         };
 
                         Grid.SetColumn(plannedAtLabel, i);
@@ -97,7 +99,8 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                             HorizontalTextAlignment = TextAlignment.Center,
                             VerticalTextAlignment = TextAlignment.Center,
                             FontSize = fontSize,
-                            FontFamily = fontFamily
+                            FontFamily = fontFamily,
+                            LineBreakMode = LineBreakMode.TailTruncation
                         };
 
                         Grid.SetColumn(estimateAtLabel, i);

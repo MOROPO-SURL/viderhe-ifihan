@@ -110,9 +110,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                         await PersistKindAsync("D", InterFIDS.Persistence.Enumerations.OperationKind.Departure, kinds);
                     }
 
-                    if (!kinds.Any(model => model.Id == InterFIDS.Persistence.Enumerations.OperationKind.Arraival))
+                    if (!kinds.Any(model => model.Id == InterFIDS.Persistence.Enumerations.OperationKind.Arrival))
                     {
-                        await PersistKindAsync("A", InterFIDS.Persistence.Enumerations.OperationKind.Arraival, kinds);
+                        await PersistKindAsync("A", InterFIDS.Persistence.Enumerations.OperationKind.Arrival, kinds);
                     }
 
                     var departureOperations = operations.Where(model => model.Kind.Id == InterFIDS.Persistence.Enumerations.OperationKind.Departure).ToList();
@@ -192,7 +192,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                         await operationsAPIConnectClient.Delete(operation.Id);
                     }
 
-                    var arraivalOperations = operations.Where(model => model.Kind.Id == InterFIDS.Persistence.Enumerations.OperationKind.Arraival).ToList();
+                    var arraivalOperations = operations.Where(model => model.Kind.Id == InterFIDS.Persistence.Enumerations.OperationKind.Arrival).ToList();
 
                     var fidsArrivals = dbContext.Set<Persistence.Entities.Arraival>().Where(entity => entity.Mostrar == true).ToArray();
 
@@ -242,7 +242,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                                 TerminalId = terminal.Id,
                                 CategoryId = category.Id,
                                 StatusId = status.Id,
-                                KindId = InterFIDS.Persistence.Enumerations.OperationKind.Arraival
+                                KindId = InterFIDS.Persistence.Enumerations.OperationKind.Arrival
                             });
                         }
                         else if (operation.IsUpdateRequired(item))
@@ -259,7 +259,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                                 TerminalId = terminal.Id,
                                 CategoryId = category.Id,
                                 StatusId = status.Id,
-                                KindId = InterFIDS.Persistence.Enumerations.OperationKind.Arraival
+                                KindId = InterFIDS.Persistence.Enumerations.OperationKind.Arrival
                             });
                         }
 

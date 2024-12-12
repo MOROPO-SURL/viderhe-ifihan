@@ -86,7 +86,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                         continue;
 
                     case ClassicOperationsColumn.CONTEXT:
-                        itemLabel.Text = operationKind == Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arraival ? "ORIGEN" : "DESTINO";
+                        itemLabel.Text = operationKind == Service.ECASA.CMG.InterFIDS.Persistence.Enumerations.OperationKind.Arrival ? "ORIGEN" : "DESTINO";
 
                         break;
 
@@ -101,7 +101,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                         break;
 
                     case ClassicOperationsColumn.STATUS:
-                        itemLabel.Text = "CONDICION";
+                        itemLabel.Text = "OBSERVACION";
 
                         break;
 

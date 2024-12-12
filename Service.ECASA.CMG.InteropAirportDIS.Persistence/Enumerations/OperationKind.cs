@@ -2,7 +2,7 @@
 {
     public enum OperationKind
     {
-        Arraival,
+        Arrival,
         Departure
     }
 }   
