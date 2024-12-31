@@ -276,7 +276,7 @@
                                 Opacity="0.8"
                                 Text="Destino / Destiniy:"
                                 TextColor="White"
-                                FontSize="{Binding Source=32, Converter={StaticResource SizeToRelativeValueConverter}}"
+                                FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}"
                                 FontFamily="DIN Pro (Medium)" />
                             <Label
                                 LineBreakMode="TailTruncation"
@@ -292,7 +292,7 @@
                                 Opacity="0.8"
                                 Text="Vuelo / Flight:"
                                 TextColor="White"
-                                FontSize="{Binding Source=32, Converter={StaticResource SizeToRelativeValueConverter}}"
+                                FontSize="{Binding Source=36, Converter={StaticResource SizeToRelativeValueConverter}}"
                                 FontFamily="DIN Pro (Medium)" />
                             <Label
                                 FontFamily="DIN Pro (Bold)"

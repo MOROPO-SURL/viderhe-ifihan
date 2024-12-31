@@ -101,7 +101,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
                         break;
 
                     case ClassicOperationsColumn.STATUS:
-                        itemLabel.Text = "OBSERVACION";
+                        itemLabel.Text = "OBSERVACIONES";
 
                         break;
 

@@ -66,7 +66,7 @@
                                 x:Name="HeaderTitleLabel"
                                 Grid.Column="2" 
                                 VerticalOptions="Center"
-                                Text="ARRIBOS / ARRIVALS"
+                                Text="LLEGADAS / ARRIVALS"
                                 FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                                 FontFamily="DIN Pro (Black)" />
                             <Label

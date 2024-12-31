@@ -67,7 +67,7 @@
                                 VerticalOptions="Center">
                                 <Label
                                     x:Name="HeaderTitleLabel"
-                                    Text="ARRIBOS / ARRIVALS"
+                                    Text="LLEGADAS / ARRIVALS"
                                     FontSize="{Binding Source=56, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                                     FontFamily="DIN Pro (Black)" />
                                 <Label

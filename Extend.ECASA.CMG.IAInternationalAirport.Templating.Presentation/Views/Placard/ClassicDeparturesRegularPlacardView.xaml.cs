@@ -6,6 +6,7 @@ using MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presenta
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 
 namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Presentation.Views.Placard
@@ -326,7 +327,9 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
                 var index = 0;
 
-                foreach (var item in task.Result)
+                var items = task.Result.OrderBy(item => item.PlannedAt).ToArray();
+
+                foreach (var item in items)
                 {
                     System.Threading.Thread.Sleep(System.TimeSpan.FromMilliseconds(250));
 

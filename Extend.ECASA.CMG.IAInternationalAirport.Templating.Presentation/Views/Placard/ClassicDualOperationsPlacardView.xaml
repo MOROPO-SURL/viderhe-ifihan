@@ -101,7 +101,7 @@
                             <Label
                                 x:Name="ArraivalsSectionHeaderTitleLabel"
                                 VerticalOptions="Center"
-                                Text="ARRIBOS / ARRIVALS"
+                                Text="LLEGADAS / ARRIVALS"
                                 FontFamily="DIN Pro (Medium)"
                                 FontSize="{Binding Source=48, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}" />
                         </StackLayout>
