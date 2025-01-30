@@ -8,7 +8,7 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
 {
     public class RTMPVideoPlayerViewRenderer : Xamarin.Forms.Platform.UWP.ViewRenderer<CloudVideoPlayerView, Windows.UI.Xaml.Controls.MediaElement>
     {
-        private const double ACCEPTABLE_PROGRESS_DELAY = 10000;
+        private const double ACCEPTABLE_PROGRESS_DELAY = 12000;
 
         private Mntone.Rtmp.Client.SimpleVideoClient rtmpVideoClient;
 
@@ -130,8 +130,6 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
                 case Windows.UI.Xaml.Media.MediaElementState.Playing:
                     (Element as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.IVideoPlayerController).Status = SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing;
 
-                    timer.Start();
-
                     break;
             }
         }
@@ -238,6 +236,8 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
                         await rtmpVideoClient.ConnectAsync(new Mntone.Rtmp.RtmpUri(uri));
 
                         hasSetSource = true;
+
+                        timer.Start();
                     }
                 }
             }
