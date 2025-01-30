@@ -1051,7 +1051,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<long>("ArrivalOperationId")
+                    b.Property<long?>("ArrivalOperationId")
                         .HasColumnType("bigint")
                         .HasColumnName("arrivaloperationid");
 
@@ -1719,8 +1719,6 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Persistence.ORM.E
                     b.HasOne("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Operation", "ArrivalOperation")
                         .WithMany()
                         .HasForeignKey("ArrivalOperationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("fk_checkins_operations_arrivaloperationid");
 
                     b.HasOne("MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.Persistence.Entities.Operation", "DepartureOperation")

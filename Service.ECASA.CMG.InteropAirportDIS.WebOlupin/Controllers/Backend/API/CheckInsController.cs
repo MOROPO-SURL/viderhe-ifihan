@@ -108,16 +108,5 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.WebOlupin.Controllers.Backe
 
             return BadRequest(ModelState);
         }
-
-        protected override void PreCreate(CheckIn entity, CheckInInputModel model)
-        {
-            base.PreCreate(entity, model);
-
-            var departureOperation = operationRepository.Get(entity.DepartureOperationId);
-
-            var arrivalOperation = operationRepository.FindBy(_entity => _entity.KindId == InterFIDS.Persistence.Enumerations.OperationKind.Arrival && _entity.CarrierId == departureOperation.CarrierId && _entity.TerminalId == departureOperation.TerminalId).OrderByDescending(_entity => _entity.Id).First();
-
-            entity.ArrivalOperationId = arrivalOperation.Id;
-        }
     }
 }

@@ -26,11 +26,16 @@
             IsVIP = entity.IsVIP;
             StartAt = entity.StartAt;
             EndAt = entity.EndAt;
-            DepartureOperation = new OperationDisplayModel();
-            ArrivalOperation = new OperationDisplayModel();
+            DepartureOperation = new OperationDisplayModel();            
 
-            DepartureOperation.Import(entity.DepartureOperation);
-            ArrivalOperation.Import(entity.ArrivalOperation);
+            DepartureOperation.Import(entity.DepartureOperation);            
+
+            if (entity.ArrivalOperation != null)
+            {
+                ArrivalOperation = new OperationDisplayModel();
+
+                ArrivalOperation.Import(entity.ArrivalOperation);
+            }
         }
     }
 }

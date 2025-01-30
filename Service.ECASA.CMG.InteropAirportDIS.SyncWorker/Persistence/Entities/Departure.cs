@@ -30,4 +30,10 @@ public partial class Departure
     public string NumeroVuelo { get; set; }
 
     public string Terminal { get; set; }
+
+    public string AD { get; set; }
+
+    public string Observ { get; set; }
+
+    public int? Idvuelo { get; set; }
 }

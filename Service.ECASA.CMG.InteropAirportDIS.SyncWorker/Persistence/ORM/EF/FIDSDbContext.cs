@@ -9,7 +9,7 @@ public partial class FIDSDbContext : DbContext
     {
     }
 
-    public virtual DbSet<Arraival> Arraivals { get; set; }
+    public virtual DbSet<Arrival> Arraivals { get; set; }
 
     public virtual DbSet<Departure> Departures { get; set; }
 
@@ -17,7 +17,7 @@ public partial class FIDSDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Arraival>(entity =>
+        modelBuilder.Entity<Arrival>(entity =>
         {
             entity
                 .HasNoKey()
@@ -34,9 +34,13 @@ public partial class FIDSDbContext : DbContext
             entity.Property(e => e.DateTimeR).HasColumnType("datetime");
             entity.Property(e => e.Estado).HasDefaultValueSql("((6))");
             entity.Property(e => e.Idoper).HasColumnName("IDOper");
+            entity.Property(e => e.Idvuelo).HasColumnName("idvuelo");
             entity.Property(e => e.KeyCol).ValueGeneratedOnAdd();
             entity.Property(e => e.NumeroVuelo)
                 .HasMaxLength(5)
+                .IsFixedLength();
+            entity.Property(e => e.Observ)
+                .HasMaxLength(25)
                 .IsFixedLength();
             entity.Property(e => e.OrigDest)
                 .HasMaxLength(21)
@@ -63,6 +67,10 @@ public partial class FIDSDbContext : DbContext
                 .HasNoKey()
                 .ToTable("SalidasInf");
 
+            entity.Property(e => e.AD)
+                .HasMaxLength(1)
+                .IsFixedLength()
+                .HasColumnName("A_D");
             entity.Property(e => e.Compania)
                 .HasMaxLength(3)
                 .IsFixedLength();
@@ -70,9 +78,13 @@ public partial class FIDSDbContext : DbContext
             entity.Property(e => e.DateTimeR).HasColumnType("datetime");
             entity.Property(e => e.Estado).HasDefaultValueSql("((6))");
             entity.Property(e => e.Idoper).HasColumnName("IDOper");
+            entity.Property(e => e.Idvuelo).HasColumnName("idvuelo");
             entity.Property(e => e.KeyCol).ValueGeneratedOnAdd();
             entity.Property(e => e.NumeroVuelo)
                 .HasMaxLength(5)
+                .IsFixedLength();
+            entity.Property(e => e.Observ)
+                .HasMaxLength(25)
                 .IsFixedLength();
             entity.Property(e => e.OrigDest)
                 .HasMaxLength(21)

@@ -8,6 +8,8 @@
 
         public long DepartureOperationId { get; set; }
 
+        public long? ArrivalOperationId { get; set; }
+
         public bool IsOpen { get; set; }
 
         public bool IsVIP { get; set; }
@@ -34,10 +36,23 @@
         {
             entity.Number = Number;
             entity.DepartureOperationId = DepartureOperationId;
+            entity.ArrivalOperationId = ArrivalOperationId;
             entity.IsOpen = IsOpen;
             entity.IsVIP = IsVIP;
             entity.StartAt = StartAt;
             entity.EndAt = EndAt;
+
+            if (entity.DepartureOperationId != DepartureOperationId)
+            {
+                entity.DepartureOperation = null;
+                entity.DepartureOperationId = DepartureOperationId;
+            }
+
+            if (entity.ArrivalOperationId != ArrivalOperationId)
+            {
+                entity.ArrivalOperation = null;
+                entity.ArrivalOperationId = ArrivalOperationId;
+            }
         }
     }
 }

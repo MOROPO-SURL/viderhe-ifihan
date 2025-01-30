@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.API.Common.Models;
 using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Extensiones;
+using MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Persistence.Entities;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -194,7 +195,7 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
 
                     var arraivalOperations = operations.Where(model => model.Kind.Id == InterFIDS.Persistence.Enumerations.OperationKind.Arrival).ToList();
 
-                    var fidsArrivals = dbContext.Set<Persistence.Entities.Arraival>().Where(entity => entity.Mostrar == true).ToArray();
+                    var fidsArrivals = dbContext.Set<Persistence.Entities.Arrival>().Where(entity => entity.Mostrar == true).ToArray();
 
                     foreach (var item in fidsArrivals)
                     {
@@ -279,9 +280,9 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
 
                     var targetEndAt = now + timingOptions.Value.PostCheckInTime;
 
-                    var checkIns = dbContext.Set<Persistence.Entities.CheckIn>().Where(entity => entity.Habilitado == true && ((entity.FechaIni >= targetStartAt && entity.FechaIni <= targetEndAt) || (entity.FechaFin >= targetEndAt && entity.FechaFin <= targetEndAt))).ToArray();
+                    var relevantCheckInEntities = dbContext.Set<Persistence.Entities.CheckIn>().Where(entity => entity.Habilitado == true && ((entity.FechaIni >= targetStartAt && entity.FechaIni <= targetEndAt) || (entity.FechaFin >= targetEndAt && entity.FechaFin <= targetEndAt))).ToArray();
 
-                    await checkInsAPIConnectClient.ReplaceAsync(checkIns.Select(entity => new CheckInInputModel
+                    var relevantCheckInModels = relevantCheckInEntities.Select(entity => new CheckInInputModel
                     {
                         Number = entity.IdMostrador.Value,
                         DepartureOperationId = long.Parse(entity.IdOper),
@@ -289,7 +290,18 @@ namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Workers
                         EndAt = entity.FechaFin.Value,
                         IsVIP = entity.Vip != null && entity.Vip.Value,
                         IsOpen = entity.Abierto != null && entity.Abierto.Value
-                    }).ToArray());
+                    }).ToArray();
+
+                    foreach (var item in relevantCheckInModels)
+                    {
+                        var departure = dbContext.Set<Departure>().First(entity => entity.Idoper == item.DepartureOperationId);
+
+                        var arrivalOperation = dbContext.Set<Arrival>().Where(entity => entity.Idvuelo == departure.Idvuelo).OrderByDescending(entity => entity.DateTimeP).FirstOrDefault();
+
+                        item.ArrivalOperationId = arrivalOperation?.Idoper;
+                    }
+
+                    await checkInsAPIConnectClient.ReplaceAsync(relevantCheckInModels);
                 }
                 catch (System.Exception exception)
                 {

@@ -27,17 +27,17 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
             
             FullPresentationGrid.IsVisible = false;
             FullPresentationGrid.BackgroundColor = ChechInNumberBackgroundBoxView.Color;
-            
+
             switch (overlayContextModel.ActivePresentationMode)
             {
                 case Enumerations.DinamicAirportCheckInMonitorActivePresentationMode.CheckInTimes:
+                default:
                     StartContextCaptionLabel.Text = "Iniciado / Started at:";
                     EndContextCaptionLabel.Text = "Finaliza / Ends at:";
 
                     break;
 
                 case Enumerations.DinamicAirportCheckInMonitorActivePresentationMode.FlyTimes:
-                default:
                     StartContextCaptionLabel.Text = "Llegada / Arrival:";
                     EndContextCaptionLabel.Text = "Salida / Departure:";
 
@@ -236,23 +236,24 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 FullPresentationGrid.BindingContext = checkInModel;
 
-                switch (concretBidingContext.OverlayContext.ActivePresentationMode)
+                if (concretBidingContext.OverlayContext.ActivePresentationMode == Enumerations.DinamicAirportCheckInMonitorActivePresentationMode.FlyTimes && checkInModel.ArrivalOperation != null)
                 {
-                    case Enumerations.DinamicAirportCheckInMonitorActivePresentationMode.CheckInTimes:
-                        StartContextValueLabel.Text = checkInModel.StartAt.ToString("HH:mm");
-                        EndContextValueLabel.Text = checkInModel.EndAt.ToString("HH:mm");
+                    var arrivalAt = checkInModel.ArrivalOperation.EstimatedAt != null ? checkInModel.ArrivalOperation.EstimatedAt.Value : checkInModel.ArrivalOperation.PlannedAt;
+                    var departureAt = checkInModel.DepartureOperation.EstimatedAt != null ? checkInModel.DepartureOperation.EstimatedAt.Value : checkInModel.DepartureOperation.PlannedAt;
 
-                        break;
+                    StartContextCaptionLabel.Text = "Llegada / Arrival:";
+                    EndContextCaptionLabel.Text = "Salida / Departure:";
 
-                    case Enumerations.DinamicAirportCheckInMonitorActivePresentationMode.FlyTimes:
-                    default:
-                        var arrivalAt = checkInModel.ArrivalOperation.EstimatedAt != null ? checkInModel.ArrivalOperation.EstimatedAt.Value : checkInModel.ArrivalOperation.PlannedAt;
-                        var departureAt = checkInModel.DepartureOperation.EstimatedAt != null ? checkInModel.DepartureOperation.EstimatedAt.Value : checkInModel.DepartureOperation.PlannedAt;
+                    StartContextValueLabel.Text = arrivalAt.ToString("HH:mm");
+                    EndContextValueLabel.Text = departureAt.ToString("HH:mm");
+                }
+                else
+                {
+                    StartContextCaptionLabel.Text = "Iniciado / Started at:";
+                    EndContextCaptionLabel.Text = "Finaliza / Ends at:";
 
-                        StartContextValueLabel.Text = arrivalAt.ToString("HH:mm");
-                        EndContextValueLabel.Text = departureAt.ToString("HH:mm");
-
-                        break;
+                    StartContextValueLabel.Text = checkInModel.StartAt.ToString("HH:mm");
+                    EndContextValueLabel.Text = checkInModel.EndAt.ToString("HH:mm");
                 }
 
                 if (checkInModel.DepartureOperation.Carrier.Image != null)
@@ -552,23 +553,24 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Overlaying.Pres
 
                 FullPresentationGrid.BindingContext = checkInModel;
 
-                switch (concretBidingContext.OverlayContext.ActivePresentationMode)
+                if (concretBidingContext.OverlayContext.ActivePresentationMode == Enumerations.DinamicAirportCheckInMonitorActivePresentationMode.FlyTimes && checkInModel.ArrivalOperation != null)
                 {
-                    case Enumerations.DinamicAirportCheckInMonitorActivePresentationMode.CheckInTimes:
-                        StartContextValueLabel.Text = checkInModel.StartAt.ToString("HH:mm");
-                        EndContextValueLabel.Text = checkInModel.EndAt.ToString("HH:mm");
+                    var arrivalAt = checkInModel.ArrivalOperation.EstimatedAt != null ? checkInModel.ArrivalOperation.EstimatedAt.Value : checkInModel.ArrivalOperation.PlannedAt;
+                    var departureAt = checkInModel.DepartureOperation.EstimatedAt != null ? checkInModel.DepartureOperation.EstimatedAt.Value : checkInModel.DepartureOperation.PlannedAt;
 
-                        break;
+                    StartContextCaptionLabel.Text = "Llegada / Arrival:";
+                    EndContextCaptionLabel.Text = "Salida / Departure:";
 
-                    case Enumerations.DinamicAirportCheckInMonitorActivePresentationMode.FlyTimes:
-                    default:
-                        var arrivalAt = checkInModel.ArrivalOperation.EstimatedAt != null ? checkInModel.ArrivalOperation.EstimatedAt.Value : checkInModel.ArrivalOperation.PlannedAt;
-                        var departureAt = checkInModel.DepartureOperation.EstimatedAt != null ? checkInModel.DepartureOperation.EstimatedAt.Value : checkInModel.DepartureOperation.PlannedAt;
+                    StartContextValueLabel.Text = arrivalAt.ToString("HH:mm");
+                    EndContextValueLabel.Text = departureAt.ToString("HH:mm");
+                }
+                else
+                {
+                    StartContextCaptionLabel.Text = "Iniciado / Started at:";
+                    EndContextCaptionLabel.Text = "Finaliza / Ends at:";
 
-                        StartContextValueLabel.Text = arrivalAt.ToString("HH:mm");
-                        EndContextValueLabel.Text = departureAt.ToString("HH:mm");
-
-                        break;
+                    StartContextValueLabel.Text = checkInModel.StartAt.ToString("HH:mm");
+                    EndContextValueLabel.Text = checkInModel.EndAt.ToString("HH:mm");
                 }
 
                 if (checkInModel.DepartureOperation.Carrier.Image != null)

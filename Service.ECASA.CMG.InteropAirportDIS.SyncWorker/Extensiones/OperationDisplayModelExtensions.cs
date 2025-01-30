@@ -23,7 +23,7 @@
             return false;
         }
 
-        internal static bool IsUpdateRequired(this API.Common.Models.OperationDisplayModel model, Persistence.Entities.Arraival entity)
+        internal static bool IsUpdateRequired(this API.Common.Models.OperationDisplayModel model, Persistence.Entities.Arrival entity)
         {
             if (model.PlannedAt != entity.DateTimeP) return true;
 

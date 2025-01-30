@@ -13,7 +13,7 @@
 
         [System.ComponentModel.DataAnnotations.Schema.ForeignKey(nameof(ArrivalOperationId))]
         public Operation ArrivalOperation { get; set; }
-        public long ArrivalOperationId { get; set; }
+        public long? ArrivalOperationId { get; set; }
 
         public bool IsOpen { get; set; }
 

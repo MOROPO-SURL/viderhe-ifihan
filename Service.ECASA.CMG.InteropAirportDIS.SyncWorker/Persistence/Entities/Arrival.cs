@@ -1,6 +1,6 @@
 ﻿namespace MOROPO.VIDERHE.Service.ECASA.CMG.InterFIDS.SyncWorker.Persistence.Entities;
 
-public partial class Arraival
+public partial class Arrival
 {
     public int KeyCol { get; set; }
 
@@ -29,4 +29,8 @@ public partial class Arraival
     public string Terminal { get; set; }
 
     public string AD { get; set; }
+
+    public string Observ { get; set; }
+
+    public int? Idvuelo { get; set; }
 }
