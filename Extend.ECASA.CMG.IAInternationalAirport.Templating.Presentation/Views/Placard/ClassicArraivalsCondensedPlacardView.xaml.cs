@@ -270,7 +270,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                TableBodyStackLayout.Children.Remove(animation.Target as View);
+                TableBodyStackLayout.Children.Clear();
             });
         }
 
@@ -305,7 +305,10 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
                         outgoingRowAnimation.TranslateX = outgoingRowAnimation.Target.Width;
 
-                        outgoingRowAnimation.Completed += OutgoingRowAnimation_Completed;
+                        if (i == 0)
+                        {
+                            outgoingRowAnimation.Completed += OutgoingRowAnimation_Completed;
+                        }
 
                         outgoingRowsStoryboard.Animations.Add(outgoingRowAnimation);
                     }

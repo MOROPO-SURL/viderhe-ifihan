@@ -18,7 +18,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
         private static Thickness TABLE_ITEM_MARGIN = new Thickness(12, 0);
 
-        private static Common.Templating.Presentation.Converters.SizeToRelativeValueConverter SIZE_TO_RELATIVE_VALUE_CONVERTER = new Common.Templating.Presentation.Converters.SizeToRelativeValueConverter();
+        private static readonly Common.Templating.Presentation.Converters.SizeToRelativeValueConverter SIZE_TO_RELATIVE_VALUE_CONVERTER = new Common.Templating.Presentation.Converters.SizeToRelativeValueConverter();
 
         private ClassicOperationsDualPlacardViewModel model;
 
@@ -308,7 +308,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                ArraivalsTableBodyStackLayout.Children.Remove(animation.Target as View);
+                ArraivalsTableBodyStackLayout.Children.Clear();
             });
         }
 
@@ -320,7 +320,7 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                DeparturesTableBodyStackLayout.Children.Remove(animation.Target as View);
+                DeparturesTableBodyStackLayout.Children.Clear();
             });
         }
 
@@ -355,7 +355,10 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
                         outgoingRowAnimation.TranslateX = outgoingRowAnimation.Target.Width;
 
-                        outgoingRowAnimation.Completed += ArraivalsOutgoingRowAnimation_Completed;
+                        if (i == 0)
+                        {
+                            outgoingRowAnimation.Completed += ArraivalsOutgoingRowAnimation_Completed;
+                        }
 
                         outgoingRowsStoryboard.Animations.Add(outgoingRowAnimation);
                     }
@@ -440,7 +443,10 @@ namespace MOROPO.VIDERHE.Extend.ECASA.CMG.IAInternationalAirport.Templating.Pres
 
                         outgoingRowAnimation.TranslateX = outgoingRowAnimation.Target.Width * -1;
 
-                        outgoingRowAnimation.Completed += DeparturesOutgoingRowAnimation_Completed;
+                        if (i == 0)
+                        {
+                            outgoingRowAnimation.Completed += DeparturesOutgoingRowAnimation_Completed;
+                        }
 
                         outgoingRowsStoryboard.Animations.Add(outgoingRowAnimation);
                     }
