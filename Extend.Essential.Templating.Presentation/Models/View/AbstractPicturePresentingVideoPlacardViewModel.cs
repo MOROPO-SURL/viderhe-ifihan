@@ -13,7 +13,8 @@
 
         public int PresenterImageHeigth { get; set; }
 
-        public SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource PresentedSource { get; set; }
+        //public SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource PresentedSource { get; set; }
+        public Xamarin.CommunityToolkit.Core.MediaSource PresentedSource { get; set; }
 
         public bool PresentedVideoCenteredAtPresentation { get; set; }
 

@@ -34,7 +34,7 @@ namespace MOROPO.VIDERHE.Support.Presentation.Managers
             }
             else
             {
-                Server = "cloud.viderhe.net";
+                Server = "viderhe.moropo.cu";
             }
 
             if (Xamarin.Forms.Application.Current.Properties.ContainsKey(LAST_CLOUD_SECURITY_KEY))
@@ -47,7 +47,7 @@ namespace MOROPO.VIDERHE.Support.Presentation.Managers
             }
             else
             {
-                UseSSL = false;
+                UseSSL = true;
             }
         }
 
