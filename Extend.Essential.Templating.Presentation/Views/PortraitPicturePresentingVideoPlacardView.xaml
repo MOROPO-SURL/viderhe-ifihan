@@ -2,6 +2,7 @@
 <extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:communitytoolkit_ui="http://xamarin.com/schemas/2020/toolkit"
     xmlns:converters="clr-namespace:MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Converters"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Rendered;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
@@ -16,14 +17,23 @@
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="PlacardLayout">
-                <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
+                <!--<extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
                     x:Name="PresentedVideo"
                     BackgroundColor="Black"
                     Source="{Binding Path=PresentedSource}"
                     ShowControls="False"
                     AutoPlay="True"
                     IsMuted="{Binding Path=PresentedVideoMuted}"
-                    StatusUpdated="VideoPlayer_StatusUpdated" />
+                    StatusUpdated="VideoPlayer_StatusUpdated" />-->
+                <communitytoolkit_ui:MediaElement
+                    x:Name="VideoPlayerView"
+                    BackgroundColor="Black"
+                    Source="{Binding Path=PresentedSource}"
+                    ShowsPlaybackControls="False"
+                    AutoPlay="True"
+                    MediaOpened="VideoPlayerView_MediaOpened"
+                    MediaEnded="VideoPlayerView_MediaEnded"
+                    MediaFailed="VideoPlayerView_MediaEnded" />
                 <ffimageloadingforms:CachedImage
                     x:Name="PresenterImage"
                     IsVisible="False"

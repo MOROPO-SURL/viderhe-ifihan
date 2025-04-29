@@ -8,7 +8,7 @@
 		<Authors>MOROPO DotNet DevTeam</Authors>
 		<Company>MOROPO S.U.R.L.</Company>
 		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
-		<Version>2.0.13</Version>
+		<Version>2.0.14</Version>
 		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
 	</PropertyGroup>
 
@@ -24,8 +24,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="FFMediaToolkit" Version="4.5.1" />
-		<PackageReference Include="MediaToolkit.NetCore" Version="0.2.1-preview" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.25" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
 		<PackageReference Include="GuamaFramework.Core.Presentation.Web.API" Version="6.0.0.20" />
@@ -42,6 +40,7 @@
 		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
 		<PackageReference Include="SkiaSharp" Version="2.88.7" />
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
+		<PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.7" />
 	</ItemGroup>
 
   <ItemGroup>

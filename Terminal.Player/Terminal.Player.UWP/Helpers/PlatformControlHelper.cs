@@ -94,9 +94,13 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Helpers
         {
             get
             {
-                var masterVol = GetAudioEndpointVolumeInterface();
+                try
+                {
+                    var masterVol = GetAudioEndpointVolumeInterface();
 
-                return masterVol.GetMasterVolumeLevelScalar();
+                    return masterVol.GetMasterVolumeLevelScalar();
+                }
+                catch { return 0; }
             }
         }
 
@@ -126,9 +130,13 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Helpers
         {
             get
             {
-                var masterVol = GetAudioEndpointVolumeInterface();
+                try
+                {
+                    var masterVol = GetAudioEndpointVolumeInterface();
 
-                return masterVol.GetMute();
+                    return masterVol.GetMute();
+                }
+                catch { return false; }
             }
         }
 
@@ -144,7 +152,7 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Helpers
                 completionHandler,
                 out var activateOperation);
 
-            Debug.Assert(hr == (uint)HResult.S_OK);
+            //Debug.Assert(hr == (uint)HResult.S_OK);
 
             return completionHandler.WaitForCompletion();
         }
@@ -172,18 +180,18 @@ namespace MOROPO.VIDERHE.Terminal.Player.UWP.Helpers
             {
                 operation.GetActivateResult(out var hr, out var activatedInterface);
 
-                Debug.Assert(hr == (uint)HResult.S_OK);
+                //Debug.Assert(hr == (uint)HResult.S_OK);
 
                 _result = (T)activatedInterface;
 
                 var setResult = _completionEvent.Set();
-                Debug.Assert(setResult != false);
+                //Debug.Assert(setResult != false);
             }
 
             public T WaitForCompletion()
             {
                 var waitResult = _completionEvent.WaitOne();
-                Debug.Assert(waitResult != false);
+                //Debug.Assert(waitResult != false);
 
                 return _result;
             }

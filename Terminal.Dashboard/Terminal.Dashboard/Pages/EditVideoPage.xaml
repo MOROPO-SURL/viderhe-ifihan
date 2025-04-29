@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Terminal.Dashboard.Models.Page"
+    xmlns:communitytoolkit_ui="http://xamarin.com/schemas/2020/toolkit"
     xmlns:supportpresentationdashboardvalidators="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
     xmlns:supportpresentationdashboardbehaviors="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"    
     xmlns:supportpresentationdashboardpresenters="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
@@ -101,7 +102,7 @@
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </StackLayout>
-                    <sscxftoolkitpresentationviewrendereds:VideoPlayerView
+                    <communitytoolkit_ui:MediaElement
                         Grid.Column="0" Grid.Row="1" Grid.RowSpan="2"
                         VerticalOptions="Start"
                         BackgroundColor="Black"
