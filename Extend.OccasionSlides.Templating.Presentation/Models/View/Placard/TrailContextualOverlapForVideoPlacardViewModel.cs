@@ -16,7 +16,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Models.Vi
 
         public OverlapTrailMode OverlapTrailMode { get; set; }
 
-        public SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource ContextedVideoSource { get; set; }
+        //public SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource ContextedVideoSource { get; set; }
+        public Xamarin.CommunityToolkit.Core.MediaSource ContextedVideoSource { get; set; }
 
         public bool IsContextedVideoFramed { get; set; }
 

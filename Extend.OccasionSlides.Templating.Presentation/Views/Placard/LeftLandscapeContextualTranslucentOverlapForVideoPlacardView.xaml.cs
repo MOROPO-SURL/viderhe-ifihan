@@ -29,27 +29,28 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Pla
             Xamarin.Forms.Grid.SetRow(view, 0);
         }
 
-        private void VideoPlayer_StatusUpdated(object sender, System.EventArgs eventArgs)
-        {
-            var videoPlayer = sender as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
+        //private void VideoPlayer_StatusUpdated(object sender, System.EventArgs eventArgs)
+        //{
+        //    var videoPlayer = sender as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
 
-            if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
-            {
-                videoPlayer.StatusUpdated -= VideoPlayer_StatusUpdated;
+        //    if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
+        //    {
+        //        videoPlayer.StatusUpdated -= VideoPlayer_StatusUpdated;
 
-                EndPresentation();
-            }
-            else if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
-            {
-                transition?.PerformMotion();
+        //        EndPresentation();
+        //    }
+        //    else if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+        //    {
+        //        transition?.PerformMotion();
 
-                transition = null;
-            }
-        }
+        //        transition = null;
+        //    }
+        //}
 
         public override void StartShowInWhenReady(Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition)
         {
-            if (ContextedVideo.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            //if (ContextedVideo.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            if (ContextedVideo.CurrentState == Xamarin.CommunityToolkit.UI.Views.MediaElementState.Playing)
             {
                 base.StartShowInWhenReady(transition);
 
@@ -118,6 +119,20 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Pla
             base.DisposeUnmanagementResources();
 
             ContextedVideo.Source = null;
+
+            transition = null;
+        }
+
+        private void VideoPlayerView_MediaOpened(object sender, System.EventArgs e)
+        {
+            transition?.PerformMotion();
+
+            transition = null;
+        }
+
+        private void VideoPlayerView_MediaEnded(object sender, System.EventArgs e)
+        {
+            EndPresentation();
         }
 
         private void OverlapContentWrapLayout_PaintSurface(object sender, SKPaintSurfaceEventArgs eventArgs)

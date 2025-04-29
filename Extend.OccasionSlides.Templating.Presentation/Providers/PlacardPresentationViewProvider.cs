@@ -2,6 +2,7 @@
 using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Enumerations;
 using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Models.Context.Placard;
 using MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
 using System.Linq;
 
 namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
@@ -223,7 +224,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
                 var targetPlacardViewModel = new Models.View.Placard.TrailContextualOverlapForVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    ContextedVideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
+                    //ContextedVideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
+                    ContextedVideoSource = Xamarin.CommunityToolkit.Core.MediaSource.FromUri(VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
                     IsContextedVideoFramed = context.IsContextedVideoFramed,
                     ContextedVideoCenteredAtPresentation = context.ContextedVideoCenteredAtPresentation,
                     ContextedVideoMuted = context.ContextedVideoMuted,
@@ -253,7 +255,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
                 var targetPlacardViewModel = new Models.View.Placard.TranslucentContextualOverlapForVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    ContextedVideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
+                    //ContextedVideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
+                    ContextedVideoSource = Xamarin.CommunityToolkit.Core.MediaSource.FromUri(VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
                     ContextedVideoMuted = context.ContextedVideoMuted,
                     OverlapSize = context.OverlapSize,
                     OverlapShapeKind = context.OverlapShapeKind,
@@ -280,7 +283,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
                 var targetPlacardViewModel = new Models.View.Placard.FlatContextualOverlapForVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    ContextedVideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
+                    //ContextedVideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
+                    ContextedVideoSource = Xamarin.CommunityToolkit.Core.MediaSource.FromUri(VideoUriFactory.BuildVideoUri(context.ContextedVideo.Id, context.ContextedVideo.Extension).AbsoluteUri),
                     ContextedVideoCenteredAtPresentation = context.ContextedVideoCenteredAtPresentation,
                     ContextedVideoMuted = context.ContextedVideoMuted,
                     OverlapSize = context.OverlapSize,
@@ -307,8 +311,8 @@ namespace MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Providers
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
                     ScreenPresentationTime = context.ScreenPresentationTime,
-                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ImageUriFactory.BuildImageUri(context.ContextedImage.Id)),
-                    ContextedImageThumbnailSource = !context.ContextedImageAspectToFitAndComplementFilled ? null : Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(context.ContextedImage.ThumbnailId)),
+                    ContextedImageSource = Xamarin.Forms.ImageSource.FromUri(ImageUriFactory.BuildImageUri(context.ContextedImage.Id)),
+                    ContextedImageThumbnailSource = !context.ContextedImageAspectToFitAndComplementFilled ? null : Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildImageThumbnailUri(context.ContextedImage.ThumbnailId)),
                     ContextedImageZoomingEnabled = context.ContextedImageZoomingEnabled,
                     ContextedImageCenteredAtPresentation = context.ContextedImageCenteredAtPresentation,
                     OverlapSize = context.OverlapSize,

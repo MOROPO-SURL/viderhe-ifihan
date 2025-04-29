@@ -2,6 +2,7 @@
 <extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:communitytoolkit_ui="http://xamarin.com/schemas/2020/toolkit"
     xmlns:converters="clr-namespace:MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Converters"
     xmlns:viewtemplates="clr-namespace:MOROPO.VIDERHE.Extend.OccasionSlides.Templating.Presentation.Views.Template"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
@@ -29,7 +30,7 @@
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="PlacardLayout">
-                <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
+                <!--<extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
                     x:Name="ContextedVideo"
                     VerticalOptions="Center" HorizontalOptions="Center"
                     BackgroundColor="Black"
@@ -38,7 +39,18 @@
                     ShowControls="False"
                     AutoPlay="True"
                     IsMuted="{Binding Path=ContextedVideoMuted}"
-                    StatusUpdated="VideoPlayer_StatusUpdated" />
+                    StatusUpdated="VideoPlayer_StatusUpdated" />-->
+                <communitytoolkit_ui:MediaElement
+                    x:Name="ContextedVideo"
+                    VerticalOptions="Center" HorizontalOptions="Center"
+                    BackgroundColor="Black"
+                    Source="{Binding Path=ContextedVideoSource}"
+                    ShowsPlaybackControls="False"
+                    AutoPlay="True"
+                    Aspect="AspectFill"
+                    MediaOpened="VideoPlayerView_MediaOpened"
+                    MediaEnded="VideoPlayerView_MediaEnded"
+                    MediaFailed="VideoPlayerView_MediaEnded" />
                 <Grid
                     x:Name="OverlapLayout"
                     ColumnSpacing="0">

@@ -11,6 +11,7 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <Label
+        HorizontalOptions="Center"
         Text="{Binding Path=Glyph, Mode=OneTime}"
         TextColor="{Binding Path=Color, Mode=OneTime}"
         FontFamily="Material Design Icons"
