@@ -83,6 +83,11 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
                                 {
                                     message = "Servicio no disponible en este momento.";
                                 }
+                                else if (unspectedHttpStatus == System.Net.HttpStatusCode.PreconditionFailed)
+                                {
+                                    //message = "Intento de autenticación forzada detectada. Ha alcanzado el número máximo de intentos de autenticación fallidos.";
+                                    message = "Usuario y/o contraseña incorrectos.";
+                                }
                             }
                             else
                             {

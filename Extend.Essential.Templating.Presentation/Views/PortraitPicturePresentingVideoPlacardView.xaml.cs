@@ -1,6 +1,7 @@
 ﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;
 using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Transitions.Contract;
 using MOROPO.VIDERHE.Extend.Essential.Templating.Enumerations;
+using SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered;
 
 namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views
 {
@@ -25,27 +26,28 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views
             Xamarin.Forms.Grid.SetRow(view, 0);
         }
 
-        private void VideoPlayer_StatusUpdated(object sender, System.EventArgs eventArgs)
-        {
-            var videoPlayer = sender as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
+        //private void VideoPlayer_StatusUpdated(object sender, System.EventArgs eventArgs)
+        //{
+        //    var videoPlayer = sender as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
 
-            if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
-            {
-                videoPlayer.StatusUpdated -= VideoPlayer_StatusUpdated;
+        //    if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
+        //    {
+        //        videoPlayer.StatusUpdated -= VideoPlayer_StatusUpdated;
 
-                EndPresentation();
-            }
-            else if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
-            {
-                transition?.PerformMotion();
+        //        EndPresentation();
+        //    }
+        //    else if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+        //    {
+        //        transition?.PerformMotion();
 
-                transition = null;
-            }
-        }
+        //        transition = null;
+        //    }
+        //}
 
         public override void StartShowInWhenReady(AbstractTransition transition)
         {
-            if (PresentedVideo.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            //if (PresentedVideo.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            if (VideoPlayerView.CurrentState == Xamarin.CommunityToolkit.UI.Views.MediaElementState.Playing)
             {
                 base.StartShowInWhenReady(transition);
 
@@ -91,7 +93,7 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views
             {
                 internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
                 {
-                    Target = PresentedVideo,
+                    Target = VideoPlayerView,
                     TranslateY = model.PresenterSide == PortraitPresentationSide.Top ? height / 2 : height / 2 * -1,
                     EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                     Delay = "100"
@@ -105,14 +107,26 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views
         {
             base.DisposeUnmanagementResources();
 
-            if (PresentedVideo.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
-            {
-                PresentedVideo.StatusUpdated -= VideoPlayer_StatusUpdated;
+            //if (PresentedVideo.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            //{
+            //    PresentedVideo.StatusUpdated -= VideoPlayer_StatusUpdated;
 
-                PresentedVideo.Stop();
-            }
+            //    PresentedVideo.Stop();
+            //}
 
             transition = null;
+        }
+
+        private void VideoPlayerView_MediaOpened(object sender, System.EventArgs e)
+        {
+            transition?.PerformMotion();
+
+            transition = null;
+        }
+
+        private void VideoPlayerView_MediaEnded(object sender, System.EventArgs e)
+        {
+            EndPresentation();
         }
     }
 }

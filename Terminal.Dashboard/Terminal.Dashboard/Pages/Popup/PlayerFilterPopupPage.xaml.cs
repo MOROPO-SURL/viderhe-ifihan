@@ -1,16 +1,16 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
 using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
-using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page.Popup;
 using System.Linq;
 
 namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup
 {
-    public partial class FilterPlayerPopupPage : Rg.Plugins.Popup.Pages.PopupPage
+    public partial class PlayerFilterPopupPage : Rg.Plugins.Popup.Pages.PopupPage
     {
         private readonly System.Action<PlayerFilterModel> filterCallbackAction;
 
-        public FilterPlayerPopupPage(PlayerFilterModel filter, System.Action<PlayerFilterModel> filterCallbackAction)
+        public PlayerFilterPopupPage(PlayerFilterModel filter, System.Action<PlayerFilterModel> filterCallbackAction)
         {
             InitializeComponent();
 
@@ -18,11 +18,11 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup
 
             if (filter == null)
             {
-                BindingContext = new FilterPlayerPopupPageModel();
+                BindingContext = new PlayerFilterPopupPageModel();
             }
             else
             {
-                BindingContext = new FilterPlayerPopupPageModel
+                BindingContext = new PlayerFilterPopupPageModel
                 {
                     Name = filter.Name
                 };
@@ -41,7 +41,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup
 
         private void RemoveTagButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            DisplayAlert("Quitar Etiqueta", "Está seguro quitar esta etiqueta de este reproductor?", "Quitar", "Cancelar").ContinueWith(task =>
+            DisplayAlert("Quitar Etiqueta", "Está seguro quitar esta etiqueta de filtrado de reproductores?", "Quitar", "Cancelar").ContinueWith(task =>
             {
                 if (!task.Result) return;
 
@@ -58,7 +58,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup
         {
             Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopAsync();
 
-            filterCallbackAction.Invoke(new Cloud.Api.Common.Models.Filter.PlayerFilterModel
+            filterCallbackAction.Invoke(new PlayerFilterModel
             {
                 Name = BindingContextPageModel.Name,
                 Tags = BindingContextPageModel.Tags.ToArray()
@@ -70,9 +70,9 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup
             BindingContextPageModel.Tags.Add(model);
         }
 
-        private FilterPlayerPopupPageModel BindingContextPageModel
+        private PlayerFilterPopupPageModel BindingContextPageModel
         {
-            get => BindingContext as FilterPlayerPopupPageModel;
+            get => BindingContext as PlayerFilterPopupPageModel;
         }
     }
 }

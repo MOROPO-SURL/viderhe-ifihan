@@ -118,7 +118,7 @@ namespace MOROPO.VIDERHE.Cloud
             services.AddSingleton<IVideoFileManagerFacade, VideoFileManager>();
             services.AddSingleton<SoundFileManager>();
 
-            services.AddMediaToolkit(configuration["FFmpeg:MainBinaryPath"]);
+            services.AddMediaToolkit(configuration["MediaToolkit:FFmpegBinaryPath"], configuration["MediaToolkit:FFProbeBinaryPath"]);
 
             services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Providers.Facade.IDbSchemaConfigurationProviderFacade, BusinessDbSchemaConfigurationProvider>();
 

@@ -71,6 +71,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <StackLayout 
                         Grid.ColumnSpan="3" Grid.Row="0"
@@ -419,8 +420,16 @@
                         Grid.Column="2" Grid.Row="5"
                         Style="{StaticResource FormFieldFrame}">
                         <StackLayout>
-                            <Label Text="Matener centrado Video Presentado?" Style="{StaticResource FormLabel}" />
+                            <Label Text="Matener centrado Video Presentado" Style="{StaticResource FormLabel}" />
                             <Switch IsToggled="{Binding Path=PresentedVideoCenteredAtPresentation}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.Column="2" Grid.Row="6"
+                        Style="{StaticResource FormFieldFrame}">
+                        <StackLayout>
+                            <Label Text="Video Presentado Silenciado" Style="{StaticResource FormLabel}" />
+                            <Switch IsToggled="{Binding Path=PresentedVideoMuted}" />
                         </StackLayout>
                     </Frame>
                 </Grid>

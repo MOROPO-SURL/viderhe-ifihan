@@ -1,4 +1,5 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
 using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
 using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
 using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Helpers.Facade;
@@ -46,7 +47,9 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
             IsEnabled = false;
 
-            BindingContext = new Models.Page.ManageProgrammingPageModel(ScreenplaySelection_Callback, LabelFilterParamaChange_Callback);
+            BindingContext = new ManageProgrammingPageModel(ScreenplaySelection_Callback);
+
+            BindingContextPageModel.PlacardFilterParamChangeCallbackAction = PlacardlFilterChange_Callback;
         }
 
         protected override void OnAppearing()
@@ -153,7 +156,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
                                 var client = new Cloud.Api.Connect.Clients.ComplementationsApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
-                                await client.EditAsync(new Cloud.Api.Common.Models.ComplementationInputModel
+                                await client.EditAsync(new ComplementationInputModel
                                 {
                                     PlacardId = target.Placard.Id,
                                     ComplementationKind = null,
@@ -172,7 +175,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
                         break;
 
                     case OPTION_PLACARD_CLONE:
-                        await placardsClient.CreateAsync(new Cloud.Api.Common.Models.PlacardInputModel
+                        await placardsClient.CreateAsync(new PlacardInputModel
                         {
                             Label = string.Format("(Copia) {0}", target.Placard.Label),
                             TemplateId = target.Placard.Template.Id,
@@ -214,7 +217,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cartel eliminado con exito.");
+                                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cartel eliminado con éxito.");
 
                                         LoadNextPlacardsPage(true, BindingContextPageModel.SelectedScreenplay != null);
                                     });
@@ -234,16 +237,16 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
                         break;
 
                     case OPTION_COMMON_PREVIEW:
-                        completitionHelper = PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
+                        completitionHelper = PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new PlacardDisplayModel
                         {
                             Id = target.Placard.Id,
-                            Template = new Cloud.Api.Common.Models.TemplateDisplayModel
+                            Template = new TemplateDisplayModel
                             {
                                 Id = target.Placard.Template.Id
                             }
                         });
 
-                        placardClone = new Support.Presentation.Models.View.PlacardViewModel
+                        placardClone = new PlacardViewModel
                         {
                             Id = target.Placard.Id,
                             Label = target.Placard.Label,
@@ -269,16 +272,16 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
                         break;
 
                     case OPTION_COMMON_EDIT:
-                        completitionHelper = PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
+                        completitionHelper = PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new PlacardDisplayModel
                         {
                             Id = target.Placard.Id,
-                            Template = new Cloud.Api.Common.Models.TemplateDisplayModel
+                            Template = new TemplateDisplayModel
                             {
                                 Id = target.Placard.Template.Id
                             }
                         });
 
-                        placardClone = new Support.Presentation.Models.View.PlacardViewModel
+                        placardClone = new PlacardViewModel
                         {
                             Id = target.Placard.Id,
                             Label = target.Placard.Label,
@@ -324,7 +327,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
                                 try
                                 {
-                                    await framesClient.CreateAsync(new Cloud.Api.Common.Models.FrameInputModel
+                                    await framesClient.CreateAsync(new FrameInputModel
                                     {
                                         ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id,
                                         PlacardId = target.Placard.Id,
@@ -333,7 +336,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cartel agregado a la secuencia con exito.");
+                                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cartel agregado a la secuencia con éxito.");
 
                                         LoadCurrentScreenplayFrames();
                                     });
@@ -383,7 +386,10 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
                 switch (actionSheetTask.Result)
                 {
                     case OPTION_FRAME_PLACARD_SEARCH:
-                        BindingContextPageModel.LabelFilterParam = targetFrameViewModel.Placard.Label;
+                        BindingContextPageModel.PlacardFilter = new PlacardFilterModel
+                        {
+                            Label = targetFrameViewModel.Placard.Label
+                        };
 
                         break;
 
@@ -404,7 +410,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cartel eliminado de la secuencia con exito.");
+                                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cartel eliminado de la secuencia con éxito.");
 
                                         LoadCurrentScreenplayFrames();
                                     });
@@ -426,16 +432,16 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                         {
-                            completitionHelper = PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
+                            completitionHelper = PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new PlacardDisplayModel
                             {
                                 Id = targetFrameViewModel.Placard.Id,
-                                Template = new Cloud.Api.Common.Models.TemplateDisplayModel
+                                Template = new TemplateDisplayModel
                                 {
                                     Id = targetFrameViewModel.Placard.Template.Id
                                 }
                             });
 
-                            var placardClone = new Support.Presentation.Models.View.PlacardViewModel
+                            var placardClone = new PlacardViewModel
                             {
                                 Id = targetFrameViewModel.Placard.Id,
                                 Label = targetFrameViewModel.Placard.Label,
@@ -533,7 +539,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Guion eliminado con exito.");
+                                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Guion eliminado con éxito.");
 
                                         LoadScreenplays();
                                     });
@@ -613,19 +619,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
         private void RequestFilterButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            DisplayPromptAsync("Filtrar Carteles", "Especifique la etiqueta o parte de esta relativa al el cartel que está buscando:", "Filtrar", "Cancelar",  initialValue: BindingContextPageModel.LabelFilterParam).ContinueWith(task =>
-            {
-                if (task.Result == null) return;
-
-                if (string.IsNullOrEmpty(task.Result))
-                {
-                    BindingContextPageModel.LabelFilterParam = null;
-                }
-                else
-                {
-                    BindingContextPageModel.LabelFilterParam = task.Result;
-                }
-            });
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.PlacardFilterPopupPage(BindingContextPageModel.PlacardFilter, RequestPlacardFilterSuccess_Callback));
         }
 
         private void ClearFilterButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -634,7 +628,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
             {
                 if (!task.Result) return;
 
-                BindingContextPageModel.LabelFilterParam = null;
+                BindingContextPageModel.PlacardFilter = null;
             });
         }
         
@@ -660,9 +654,14 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
             }
         }
 
-        private void LabelFilterParamaChange_Callback()
+        private void PlacardlFilterChange_Callback()
         {
             LoadNextPlacardsPage(true);
+        }
+
+        private void RequestPlacardFilterSuccess_Callback(PlacardFilterModel model)
+        {
+            BindingContextPageModel.PlacardFilter = model;
         }
 
         private void ReloadScreenplays()
@@ -682,7 +681,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    BindingContextPageModel.Screenplays = task.Result.Select(m => new Models.View.ScreenplayViewModel
+                    BindingContextPageModel.Screenplays = task.Result.Select(m => new ScreenplayViewModel
                     {
                         Id = m.Id,
                         Title = m.Title,
@@ -744,13 +743,9 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task<Framework.Guama.Core.Presentation.Models.PaginationModel<PlacardDisplayModel>> apiConnectClientTask;
 
-            if (!string.IsNullOrEmpty(BindingContextPageModel.LabelFilterParam))
+            if (BindingContextPageModel.PlacardFilter != null)
             {
-                apiConnectClientTask = placardsApiConnectClient.FilterPaginateAsync(new Cloud.Api.Common.Models.Filter.PlacardFilterModel
-                {
-                    Label = BindingContextPageModel.LabelFilterParam,
-                    PlayerOrientationSupportKind = PlayerOrientationSupportKind.Any
-                }, ++currentPlacardsPageNumber, placardPageLimit);
+                apiConnectClientTask = placardsApiConnectClient.FilterPaginateAsync(BindingContextPageModel.PlacardFilter, ++currentPlacardsPageNumber, placardPageLimit);
             }
             else
             {
@@ -844,7 +839,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 
             var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(SessionManager.Instance);
 
-            client.FilterAsync(new Cloud.Api.Common.Models.Filter.FrameFilterModel { ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id }).ContinueWith(task =>
+            client.FilterAsync(new FrameFilterModel { ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id }).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -858,7 +853,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
                     }
                     else
                     {
-                        BindingContextPageModel.Frames = task.Result.OrderBy(e => e.Priority).Select(m => new Support.Presentation.Models.View.FrameViewModel
+                        BindingContextPageModel.Frames = task.Result.OrderBy(e => e.Priority).Select(m => new FrameViewModel
                         {
                             Id = m.Id,
                             Priority = m.Priority,

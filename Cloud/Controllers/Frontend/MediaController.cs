@@ -46,7 +46,10 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e)
+            {
+                logger.LogError(e.Message, e.InnerException);
+            }
 
             return new NoContentResult();
         }
@@ -110,7 +113,10 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e)
+            {
+                logger.LogError(e.Message, e.InnerException);
+            }
 
             return new NoContentResult();
         }
@@ -130,7 +136,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e) { logger.LogError(e.Message, e.InnerException); }
 
             return new NoContentResult();
         }
@@ -150,7 +156,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e) { logger.LogError(e.Message, e.InnerException); }
 
             return new NoContentResult();
         }
@@ -169,7 +175,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e) { logger.LogError(e.Message, e.InnerException); }
 
             return new NoContentResult();
         }
@@ -187,7 +193,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e) { logger.LogError(e.Message, e.InnerException); }
 
             return new NoContentResult();
         }
@@ -205,7 +211,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e) { logger.LogError(e.Message, e.InnerException); }
 
             return new NoContentResult();
         }
@@ -223,7 +229,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e) { logger.LogError(e.Message, e.InnerException); }
 
             return new NoContentResult();
         }
@@ -285,7 +291,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e) { logger.LogError(e.Message, e.InnerException); }
 
             return new NoContentResult();
         }
@@ -303,7 +309,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e) { logger.LogError(e.Message, e.InnerException); }
 
             return new NoContentResult();
         }
@@ -321,7 +327,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e) { logger.LogError(e.Message, e.InnerException); }
 
             return new NoContentResult();
         }
@@ -383,7 +389,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e) { logger.LogError(e.Message, e.InnerException); }
 
             return new NoContentResult();
         }
@@ -401,7 +407,7 @@ namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend
             {
                 logger.LogError(e.Message, e.InnerException);
             }
-            catch { }
+            catch (System.Exception e) { logger.LogError(e.Message, e.InnerException); }
 
             return new NoContentResult();
         }

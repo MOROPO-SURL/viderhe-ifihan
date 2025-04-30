@@ -23,7 +23,9 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Fact
                 Tags = new System.Collections.ObjectModel.ObservableCollection<TagDisplayModel>(placardViewModel.Tags),
                 PlayerOrientationSupportKind = placardViewModel.PlayerOrientationSupportKind == null ? ConfigurationPlayerOrientationSupportKind.Inherited : placardViewModel.PlayerOrientationSupportKind.Value.ToConfiguration(),
                 RequireUnobstructedPresetation = contextModel.RequireUnobstructedPresetation,
-                Video = contextModel.Video.ToViewModel()
+                Video = contextModel.Video.ToViewModel(),
+                StrechAspectKind = contextModel.StrechAspectKind,
+                Muted = contextModel.Muted
             };
         }
     }

@@ -2,6 +2,7 @@
 <extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:communitytoolkit_ui="http://xamarin.com/schemas/2020/toolkit"
     xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
     xmlns:extendcommontemplatingpresentationrenderedviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Rendered;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
     x:Class="MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views.SimpleVideoPlacardView">
@@ -9,13 +10,25 @@
         <Grid 
             x:Name="Wrapper"
             BackgroundColor="Transparent">
-            <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
+            <!--<extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
                 x:Name="VideoPlayerView"
                 BackgroundColor="Black"
                 Source="{Binding Path=VideoSource}"
                 ShowControls="False"
                 AutoPlay="True"
-                StatusUpdated="VideoPlayer_StatusUpdated" />
+                StrechAspect="{Binding Path=StrechAspect}"
+                IsMuted="{Binding Path=Muted}"
+                StatusUpdated="VideoPlayer_StatusUpdated" />-->
+            <communitytoolkit_ui:MediaElement
+                x:Name="VideoPlayerView"
+                BackgroundColor="Black"
+                Source="{Binding Path=VideoSource}"
+                ShowsPlaybackControls="False"
+                AutoPlay="True"
+                Aspect="{Binding Path=StrechAspect}"
+                MediaOpened="VideoPlayerView_MediaOpened"
+                MediaEnded="VideoPlayerView_MediaEnded"
+                MediaFailed="VideoPlayerView_MediaEnded" />
         </Grid>
     </ContentView.Content>
 </extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

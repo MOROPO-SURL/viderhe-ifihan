@@ -1,12 +1,12 @@
 ﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
 
-namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.Page.Popup
 {
-    public class FilterPlayerPopupPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class PlayerFilterPopupPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private string name;
 
-        public FilterPlayerPopupPageModel()
+        public PlayerFilterPopupPageModel()
         {
             Tags = new System.Collections.ObjectModel.ObservableCollection<TagDisplayModel>();
         }

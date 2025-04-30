@@ -65,7 +65,9 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Page
                     SerializedContext = Newtonsoft.Json.JsonConvert.SerializeObject(new SimpleVideoPlacardContextModel
                     {
                         RequireUnobstructedPresetation = BindingContextPageModel.RequireUnobstructedPresetation,
-                        Video = contextModel.Video
+                        Video = contextModel.Video,
+                        StrechAspectKind = BindingContextPageModel.StrechAspectKind,
+                        Muted = BindingContextPageModel.Muted
                     }),
                     Tags = BindingContextPageModel.Tags.ToArray()
                 };

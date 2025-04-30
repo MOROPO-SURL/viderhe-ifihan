@@ -4,12 +4,11 @@ using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
 using MOROPO.VIDERHE.Support.Presentation.Models.View;
 using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
-using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
 namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class EditVideoPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<EditVideoPageModel>, IValidableFormPage
+    public partial class EditVideoPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.EditVideoPageModel>, IValidableFormPage
     {
         private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 

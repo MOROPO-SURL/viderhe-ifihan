@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:colorpicker="clr-namespace:ColorPicker;assembly=ColorPicker"
+    x:Class="MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Popup.ColorPickPopUpPage">
+    <ContentPage.Content>
+        <Frame
+            HorizontalOptions="Center" VerticalOptions="Center"
+            Padding="10" Margin="20"
+            BackgroundColor="White"
+            WidthRequest="540">
+            <StackLayout Spacing="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Text="Seleccionar Color"
+                        FontSize="21" />
+                    <Button 
+                        Grid.Column="1"
+                        HorizontalOptions="End" VerticalOptions="Start"
+                        Padding="6"
+                        BackgroundColor="White"
+                        Text="&#xf5ad;"
+                        Style="{StaticResource OptionsTextIconButton}"
+                        FontSize="Medium"
+                        Clicked="CloseButton_Clicked" />
+                </Grid>
+                <Grid Padding="10,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="48" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="296" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid
+                        Grid.Column="0" Grid.Row="0"
+                        BackgroundColor="DimGray"
+                        Padding="1">
+                        <BoxView Color="{Binding Path=InColor}" />
+                    </Grid>
+                    <Grid
+                        Grid.Column="1" Grid.Row="0"
+                        BackgroundColor="DimGray"
+                        Padding="1">
+                        <BoxView Color="{Binding Path=OutColor}" />
+                    </Grid>
+                    <Label
+                        Grid.Column="0" Grid.Row="1"
+                        Text="Actual"
+                        HorizontalTextAlignment="Center" />
+                    <Label
+                        Grid.Column="1" Grid.Row="1"
+                        Text="Reemplazo"
+                        HorizontalTextAlignment="Center" />
+                    <colorpicker:ColorWheel
+                        Grid.Column="0" Grid.Row="2"
+                        SelectedColor="{Binding Path=OutColor, Mode=TwoWay}"
+                        ShowAlphaSlider="False"
+                        ShowLuminosityWheel="False"
+                        ShowLuminositySlider="True"
+                        SelectedColorChanged="ColorWheel_SelectedColorChanged" />
+                    <StackLayout 
+                        Grid.Column="1" Grid.Row="2"
+                        Spacing="10">
+                        <Label
+                            Text="Formato Hexadecimal"
+                            Margin="0,20,0,0"
+                            FontAttributes="Bold" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label 
+                                Grid.Column="0"
+                                Text="#"
+                                FontSize="21"
+                                FontAttributes="Bold"
+                                VerticalOptions="Center" />
+                            <Entry 
+                                x:Name="OutColorHexEntry"
+                                Grid.Column="1" />
+                            <Button
+                                Grid.Column="2"
+                                Text="&#xf12c;"
+                                FontFamily="{StaticResource IconFontFamily}"
+                                Clicked="OutColorHexApplyButton_Clicked" />
+                        </Grid>
+                        <Label
+                            Margin="0,10,0,0"
+                            Text="Formato RGB"
+                            FontAttributes="Bold" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Entry
+                                x:Name="OutColorRedEntry"
+                                Grid.Column="0" Grid.Row="0" />
+                            <Entry
+                                x:Name="OutColorGreenEntry"
+                                Grid.Column="1" Grid.Row="0" />
+                            <Entry
+                                x:Name="OutColorBlueEntry"
+                                Grid.Column="2" Grid.Row="0" />
+                            <Button
+                                Grid.Column="3" Grid.Row="0"
+                                Text="&#xf12c;"
+                                FontFamily="{StaticResource IconFontFamily}"
+                                Clicked="OutColorRGBApplyButton_Clicked" />
+                            <Label
+                                Grid.Column="0" Grid.Row="1"
+                                Text="Rojo" />
+                            <Label
+                                Grid.Column="1" Grid.Row="1"
+                                Text="Verde" />
+                            <Label
+                                Grid.Column="2" Grid.Row="1"
+                                Text="Azul" />
+                        </Grid>
+                    </StackLayout>                    
+                    <Label
+                        Grid.ColumnSpan="2" Grid.Row="3"
+                        Text="Recientes"
+                        FontAttributes="Bold" />
+                    <FlexLayout
+                        Grid.ColumnSpan="2" Grid.Row="4"
+                        BindableLayout.ItemsSource="{Binding Path=Recents}">
+                        <BindableLayout.EmptyView>
+                            <Label
+                                Text="No se han definido colores hasta el momento"
+                                TextColor="DimGray"
+                                FontAttributes="Italic" />
+                        </BindableLayout.EmptyView>
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid
+                                    BackgroundColor="DimGray"
+                                    WidthRequest="36" HeightRequest="36"
+                                    Margin="0,0,6,0" Padding="1">
+                                    <BoxView Color="{Binding Path=.}">
+                                        <BoxView.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="ColorBoxViewTapGestureRecognizer_Tapped" />
+                                        </BoxView.GestureRecognizers>
+                                    </BoxView>                                        
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Column="0"
+                        Text="Aplicar"
+                        Clicked="ApplyButton_Clicked" />
+                    <Button
+                        Grid.Column="1"
+                        Text="Cancelar"
+                        Clicked="CloseButton_Clicked" />
+                </Grid>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</popup:PopupPage>
