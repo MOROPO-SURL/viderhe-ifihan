@@ -35,7 +35,7 @@ namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.
 
                     Content = new FFImageLoading.Forms.CachedImage
                     {
-                        Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(imageModel.ThumbnailId)),
+                        Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(imageModel.Id)),
                         FadeAnimationEnabled = false,
                         Aspect = Xamarin.Forms.Aspect.AspectFill,
                         CacheType = FFImageLoading.Cache.CacheType.Disk,
@@ -49,7 +49,7 @@ namespace MOROPO.VIDERHE.Extend.SocialWelfare.Templating.Dashboard.Presentation.
 
                     Content = new FFImageLoading.Forms.CachedImage
                     {
-                        Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(videoModel.ThumbnailId)),
+                        Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildImageThumbnailUri(videoModel.Id)),
                         FadeAnimationEnabled = false,
                         Aspect = Xamarin.Forms.Aspect.AspectFill,
                         CacheType = FFImageLoading.Cache.CacheType.Disk,

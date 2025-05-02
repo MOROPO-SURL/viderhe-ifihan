@@ -112,7 +112,7 @@ namespace MOROPO.VIDERHE.Service.Weather.WebOlupin.Providers
 
             try
             {
-                var apiUri = new System.Uri(string.Format("https://api.openweathermap.org/data/2.5/onecall?lat={0}&lon={1}&units=metric&lang=es&appid={2}&cache={3}", location.Latitude, location.Longitude, openWeatherMapOptions.Value.ApiKey, System.Guid.NewGuid()));
+                var apiUri = new System.Uri(string.Format("https://api.openweathermap.org/data/2.5/weather?lat={0}&lon={1}&units=metric&lang=es&appid={2}&cache={3}", location.Latitude, location.Longitude, openWeatherMapOptions.Value.ApiKey, System.Guid.NewGuid()));
 
                 var newModel = await GetApiWeatherResultFromUri(apiUri);
 
