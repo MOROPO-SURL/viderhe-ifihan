@@ -8,12 +8,15 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Mode
         private ImageViewModel presenterImage;
         private VideoViewModel presentedVideo;
         private bool presentedVideoCenteredAtPresentation;
+        private bool presentedVideoMuted;
 
         public ImageViewModel PresenterImage { get => presenterImage; set => SetProperty(ref presenterImage, value); }
 
         public VideoViewModel PresentedVideo { get => presentedVideo; set => SetProperty(ref presentedVideo, value); }
 
         public bool PresentedVideoCenteredAtPresentation { get => presentedVideoCenteredAtPresentation; set => SetProperty(ref presentedVideoCenteredAtPresentation, value); }
+
+        public bool PresentedVideoMuted { get; set; }
 
         protected override void DisposeUnmanagementResources()
         {

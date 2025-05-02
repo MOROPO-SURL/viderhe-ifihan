@@ -27,8 +27,10 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Providers
                 return new SimpleVideoPlacardView(new Models.View.SimpleVideoPlacardViewModel
                 {
                     RequireUnobstructedPresetation = context.RequireUnobstructedPresetation,
-                    VideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri),
-                    StrechAspect = (Xamarin.Forms.Aspect)context.StrechAspectKind
+                    //VideoSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri),
+                    VideoSource = Xamarin.CommunityToolkit.Core.MediaSource.FromUri(VideoUriFactory.BuildVideoUri(context.Video.Id, context.Video.Extension).AbsoluteUri),
+                    StrechAspect = (Xamarin.Forms.Aspect)context.StrechAspectKind,
+                    Muted = context.Muted
                 }, relativeSizeScaleFactor);
             }
 
@@ -90,8 +92,10 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Providers
                     PresenterSide = context.PresenterSide,
                     PresenterImageWidth = context.PresenterImage.Width,
                     PresenterImageHeigth = context.PresenterImage.Height,
-                    PresentedSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
-                    PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation
+                    //PresentedSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
+                    PresentedSource = Xamarin.CommunityToolkit.Core.MediaSource.FromUri(VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
+                    PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation,
+                    PresentedVideoMuted = context.PresentedVideoMuted
                 }, relativeSizeScaleFactor);
             }
 
@@ -124,8 +128,10 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Providers
                     PresenterSide = context.PresenterSide,
                     PresenterImageWidth = context.PresenterImage.Width,
                     PresenterImageHeigth = context.PresenterImage.Height,
-                    PresentedSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
-                    PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation
+                    //PresentedSource = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
+                    PresentedSource = Xamarin.CommunityToolkit.Core.MediaSource.FromUri(VideoUriFactory.BuildVideoUri(context.PresentedVideo.Id, context.PresentedVideo.Extension).AbsoluteUri),
+                    PresentedVideoCenteredAtPresentation = context.PresentedVideoCenteredAtPresentation,
+                    PresentedVideoMuted = context.PresentedVideoMuted
                 }, relativeSizeScaleFactor);
             }
 

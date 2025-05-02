@@ -6,6 +6,7 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Mode
     public class EditSimpleVideoPlacardPageModel : AbstractLabeledPlacardConfigurationPageModel
     {
         private Enumerations.VideoStrechAspectKind strechAspectKind;
+        private bool muted;
 
         public EditSimpleVideoPlacardPageModel()
         {
@@ -22,6 +23,8 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Mode
         public VideoViewModel Video { get; set; }
 
         public Enumerations.VideoStrechAspectKind StrechAspectKind { get => strechAspectKind; set => SetProperty(ref strechAspectKind, value); }
+
+        public bool Muted { get => muted; set => SetProperty(ref muted, value); }
 
         public Enumerations.VideoStrechAspectKind[] AvailableVideoStrechAspectKinds { get; private set; }
 
