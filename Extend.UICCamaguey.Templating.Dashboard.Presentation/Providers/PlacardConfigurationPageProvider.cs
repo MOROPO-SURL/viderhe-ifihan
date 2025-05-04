@@ -14,6 +14,11 @@
                 return new Pages.AmbientalDashboardPlacardConfigurationPage(completedActionCallback);
             }
 
+            if (templateDescriptor is Descriptors.GovDecisorPrototype1TemplateDescritor)
+            {
+                return new Pages.GovDecisorPrototype1PlacardConfigurationPage(completedActionCallback);
+            }
+
             return null;
         }
 
@@ -27,6 +32,11 @@
             if (placardViewModel.Template.Id == Descriptors.AmbientalDashboardTemplateDescriptor.ID)
             {
                 return new Pages.AmbientalDashboardPlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.GovDecisorPrototype1TemplateDescritor.ID)
+            {
+                return new Pages.GovDecisorPrototype1PlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;

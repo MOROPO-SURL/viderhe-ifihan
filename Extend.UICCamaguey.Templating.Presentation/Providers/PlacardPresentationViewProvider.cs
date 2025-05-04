@@ -42,6 +42,17 @@
                 }, new System.Uri(context.IoTPlatformEndpointBaseUri), relativeSizeScaleFactor);
             }
 
+            if (model.Template.Id == Descriptors.GovDecisorPrototype1TemplateDescritor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.GovDecisorPrototype1PlacardContextModel>(model.SerializedContext);
+
+                return new Views.GovDecisorPrototype1PlacardView(new Models.View.GovDecisorPrototype1PlacardViewModel
+                {
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation
+                }, relativeSizeScaleFactor);
+            }
+
             return null;
         }
     }

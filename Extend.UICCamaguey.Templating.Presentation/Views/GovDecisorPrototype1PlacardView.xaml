@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local_view_models="clr-namespace:MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:live_charts_xf="clr-namespace:LiveChartsCore.SkiaSharpView.Xamarin.Forms;assembly=LiveChartsCore.SkiaSharpView.XamarinForms"
+    x:Class="MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views.GovDecisorPrototype1PlacardView"
+    x:DataType="local_view_models:GovDecisorPrototype1PlacardViewModel"
+    BackgroundColor="WhiteSmoke">
+    <ContentView.Content>
+        <Grid 
+            ColumnSpacing="16" RowSpacing="16"
+            Padding="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+            <Frame 
+                Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                BackgroundColor="White">
+                <StackLayout>
+                    <Label
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Nivel de Cumplimiento de Objetivos" />
+                    <BoxView HeightRequest="2" Color="DimGray" />
+                    <live_charts_xf:PieChart
+                        VerticalOptions="FillAndExpand"
+                        Series="{Binding GlobalObjectivesStatusChart.Series}"
+                        InitialRotation="-90"
+                        MaxAngle="315"
+                        MinValue="0"
+                        MaxValue="100"
+                        LegendTextSize="12"
+                        LegendPosition="Left" />
+                </StackLayout>
+            </Frame>
+            <Frame 
+                Grid.Column="1" Grid.Row="0"
+                BackgroundColor="White">
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="2" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0" Grid.RowSpan="3"
+                        VerticalOptions="Center"
+                        FontFamily="{StaticResource IconFontFamily}"
+                        FontSize="96"
+                        Text="&#xF14C;" />
+                    <Label
+                        Grid.Column="1" Grid.Row="0"
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Objetivos Específicos" />
+                    <BoxView 
+                        Grid.Column="1" Grid.Row="1"
+                        Color="DimGray" />
+                    <Label
+                        Grid.Column="1" Grid.Row="2"
+                        VerticalOptions="Center"
+                        FontSize="48"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding ProyectionCount}" />
+                </Grid>
+            </Frame>
+            <Frame 
+                Grid.Column="1" Grid.Row="1"
+                BackgroundColor="White">
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="2" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0" Grid.RowSpan="3"
+                        VerticalOptions="Center"
+                        FontFamily="{StaticResource IconFontFamily}"
+                        FontSize="96"
+                        Text="&#xF493;" />
+                    <Label
+                        Grid.Column="1" Grid.Row="0"
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Acciones" />
+                    <BoxView 
+                        Grid.Column="1" Grid.Row="1"
+                        Color="DimGray" />
+                    <Label
+                        Grid.Column="1" Grid.Row="2"
+                        VerticalOptions="Center"
+                        FontSize="48"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding ActionCount}" />
+                </Grid>
+            </Frame>
+            <Frame 
+                Grid.Column="1" Grid.Row="2"
+                BackgroundColor="White">
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="2" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0" Grid.RowSpan="3"
+                        VerticalOptions="Center"
+                        FontFamily="{StaticResource IconFontFamily}"
+                        FontSize="96"
+                        Text="&#xF4C5;" />
+                    <Label
+                        Grid.Column="1" Grid.Row="0"
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Indicadores" />
+                    <BoxView 
+                        Grid.Column="1" Grid.Row="1"
+                        Color="DimGray" />
+                    <Label
+                        Grid.Column="1" Grid.Row="2"
+                        VerticalOptions="Center"
+                        FontSize="48"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding IndicatorCount}" />
+                </Grid>
+            </Frame>
+            <Frame 
+                Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3"
+                BackgroundColor="White">
+                <StackLayout>
+                    <Label
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Comportamiento Mensual de Objetivos" />
+                    <BoxView HeightRequest="2" Color="DimGray" />
+                    <live_charts_xf:CartesianChart 
+                            VerticalOptions="FillAndExpand"
+                            Series="{Binding MonthlyObjectivesProgressChart.Series}"
+                            XAxes="{Binding MonthlyObjectivesProgressChart.XAxes}"
+                            YAxes="{Binding MonthlyObjectivesProgressChart.YAxes}" />
+                </StackLayout>
+            </Frame>
+            <Frame 
+                Grid.Column="2" Grid.RowSpan="4"
+                BackgroundColor="White">
+                <StackLayout>
+                    <Label
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Resumen por Objetivo" />
+                    <BoxView HeightRequest="2" Color="DimGray" Margin="0,0,0,2" />
+                    <CollectionView
+                        VerticalOptions="FillAndExpand"
+                        ItemsSource="{Binding ObjectiveOverviews}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="8" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="local_view_models:ObjectiveOverviewViewModel">
+                                <Grid 
+                                    BackgroundColor="WhiteSmoke"
+                                    ColumnSpacing="8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4" />
+                                        <ColumnDefinition Width="48" />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <BoxView
+                                        Grid.Column="0"
+                                        Color="Accent" />
+                                    <Label
+                                        Grid.Column="1"
+                                        HorizontalOptions="Center" VerticalOptions="Center"
+                                        FontSize="36"
+                                        FontAttributes="Bold"
+                                        Text="{Binding Index}" />
+                                    <StackLayout
+                                        Grid.Column="2"
+                                        HorizontalOptions="FillAndExpand"
+                                        Padding="0,12" 
+                                        Spacing="0">
+                                        <Label
+                                            FontSize="21"
+                                            FontAttributes="Bold"
+                                            LineBreakMode="TailTruncation"
+                                            MaxLines="1"
+                                            Text="{Binding Title}" />
+                                        <Label
+                                            FontSize="20"
+                                            LineBreakMode="TailTruncation"
+                                            MaxLines="1">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span FontAttributes="Bold" Text="Objetivos Específicos:" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding ProyectionCount}" />
+                                                    <Span Text=", " />
+                                                    <Span FontAttributes="Bold" Text="Acciones:" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding ActionCount}" />
+                                                    <Span Text=", " />
+                                                    <Span FontAttributes="Bold" Text="Indicadores:" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding IndicatorCount}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <Label
+                                        Grid.Column="3"
+                                        Margin="12,0"
+                                        HorizontalTextAlignment="Center" VerticalOptions="Center"
+                                        FontFamily="{StaticResource IconFontFamily}"
+                                        FontSize="40"
+                                        Text="{Binding ProgressGlyph}" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

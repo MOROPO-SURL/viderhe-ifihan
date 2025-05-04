@@ -14,6 +14,12 @@
                 return new Views.AmbientalDashboardPlacardThumbnailView();
             }
 
+            if (model.Template.Id == Descriptors.GovDecisorPrototype1TemplateDescritor.ID)
+            {
+                // TODO Replace width de correct one!!
+                return new Views.AmbientalDashboardPlacardThumbnailView();
+            }
+
             return null;
         }
     }
