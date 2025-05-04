@@ -234,7 +234,14 @@ namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Presenters
 
                         var transition = transitionProvider.GetRandom(incomingFrameView, outgoingFrameView, MotionTransitionCompleted_Callback);
 
-                        transition?.GetReady(container);
+                        try
+                        {
+                            transition?.GetReady(container);
+                        }
+                        catch
+                        {
+                            transition = null;
+                        }
 
                         container.Children.Add(incomingFrameView);
 
