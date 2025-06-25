@@ -53,6 +53,17 @@
                 }, relativeSizeScaleFactor);
             }
 
+            if (model.Template.Id == Descriptors.GovDecisorPrototype2TemplateDescritor.ID)
+            {
+                var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.GovDecisorPrototype2PlacardContextModel>(model.SerializedContext);
+
+                return new Views.GovDecisorPrototype2PlacardView(new Models.View.GovDecisorPrototype2PlacardViewModel
+                {
+                    ScreenPresentationTime = context.ScreenPresentationTime,
+                    RequireUnobstructedPresetation = context.RequireUnobstructedPresetation
+                }, relativeSizeScaleFactor);
+            }
+
             return null;
         }
     }

@@ -14,7 +14,7 @@
                 return new Views.AmbientalDashboardPlacardThumbnailView();
             }
 
-            if (model.Template.Id == Descriptors.GovDecisorPrototype1TemplateDescritor.ID)
+            if (model.Template.Id == Descriptors.GovDecisorPrototype1TemplateDescritor.ID || model.Template.Id == Descriptors.GovDecisorPrototype2TemplateDescritor.ID)
             {
                 // TODO Replace width de correct one!!
                 return new Views.AmbientalDashboardPlacardThumbnailView();

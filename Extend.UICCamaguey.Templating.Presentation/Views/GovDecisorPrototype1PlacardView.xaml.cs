@@ -1,4 +1,5 @@
 ﻿using LiveChartsCore.SkiaSharpView.Extensions;
+using LiveChartsCore.SkiaSharpView.Painting;
 using MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View;
 using System.Linq;
 
@@ -29,17 +30,18 @@ namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views
 
             for (int i = 0; i < 10; i++)
             {
-                var title = $"Objetivo {i + 1}";
+                var title = $"Obj. {i + 1}";
                 var value = randomizer.NextDouble() * 100;
 
-                gaugeItems.Add(new GaugeItem(value, series =>
+                gaugeItems.Add(new GaugeItem(value, series => 
                 {
                     series.Name = title;
-                    series.DataLabelsSize = 12;
-                    series.DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.End;
-                    series.DataLabelsFormatter = point => $"{point.Coordinate.PrimaryValue:F0}%";
-                    series.InnerRadius = 16;
-                    series.MaxRadialColumnWidth = 8;
+                    //series.DataLabelsSize = 12;
+                    series.DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Start;
+                    series.DataLabelsFormatter = point => $"{point.Context.Series.Name} {point.Coordinate.PrimaryValue:F0}%";
+                    series.InnerRadius = 24;
+                    series.RelativeOuterRadius = 4;
+                    series.RelativeInnerRadius = 4;
                 }));
 
                 ConcreteBindingContext.ObjectiveOverviews.Add(new ObjectiveOverviewViewModel
@@ -68,7 +70,7 @@ namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views
 
             gaugeItems.Add(new GaugeItem(GaugeItem.Background, series =>
             {
-                series.Fill = null;
+                series.InnerRadius = 20;
             }));
 
             ConcreteBindingContext.GlobalObjectivesStatusChart.Series = GaugeGenerator.BuildSolidGauge(gaugeItems.ToArray()).ToArray();
@@ -81,6 +83,37 @@ namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views
             ConcreteBindingContext.ProyectionCount = 21;
             ConcreteBindingContext.ActionCount = ConcreteBindingContext.ProyectionCount * 4;
             ConcreteBindingContext.IndicatorCount = ConcreteBindingContext.ActionCount * 2;
+
+            var indexer = 0;
+
+            var objectiveLabels = new string[] { "Objetivo 1", "Objetivo 2", "Objetivo 3", "Objetivo 4", "Objetivo 5", "Objetivo 6", "Objetivo 7", "Objetivo 8", "Objetivo 9", "Objetivo 10" };
+
+            ConcreteBindingContext.ProyectionDistributionChart.Series = new[] { 8, 6, 5, 3, 3, 4, 7, 2, 10, 12 }.AsPieSeries((value, series) =>
+            {
+                series.Name = objectiveLabels[indexer++ % objectiveLabels.Length];
+                series.DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Outer;
+                series.DataLabelsSize = 12;
+                series.DataLabelsPaint = new SolidColorPaint(new SkiaSharp.SKColor(30, 30, 30));
+                series.DataLabelsFormatter = point => $"{point.Coordinate.PrimaryValue} ({point.Coordinate.PrimaryValue / point.StackedValue.Total * 100:F0}%)";
+            }).ToArray();
+
+            ConcreteBindingContext.ActionDistributionChart.Series = new[] { 18, 26, 5, 13, 18, 21, 11, 12, 10, 24 }.AsPieSeries((value, series) =>
+            {
+                series.Name = objectiveLabels[indexer++ % objectiveLabels.Length];
+                series.DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Outer;
+                series.DataLabelsSize = 12;
+                series.DataLabelsPaint = new SolidColorPaint(new SkiaSharp.SKColor(30, 30, 30));
+                series.DataLabelsFormatter = point => $"{point.Coordinate.PrimaryValue} ({point.Coordinate.PrimaryValue / point.StackedValue.Total * 100:F0}%)";
+            }).ToArray();
+
+            ConcreteBindingContext.IndicatorDistributionChart.Series = new[] { 24, 26, 8, 13, 19, 27, 12, 12, 20, 24 }.AsPieSeries((value, series) =>
+            {
+                series.Name = objectiveLabels[indexer++ % objectiveLabels.Length];
+                series.DataLabelsPosition = LiveChartsCore.Measure.PolarLabelsPosition.Outer;
+                series.DataLabelsSize = 12;
+                series.DataLabelsPaint = new SolidColorPaint(new SkiaSharp.SKColor(30, 30, 30));
+                series.DataLabelsFormatter = point => $"{point.Coordinate.PrimaryValue} ({point.Coordinate.PrimaryValue / point.StackedValue.Total * 100:F0}%)";
+            }).ToArray();
         }
     }
 }

@@ -8,8 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Vector\Pin.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Vector\pin.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="LiveChartsCore.SkiaSharpView.XamarinForms" Version="2.0.0-rc1.2" />
     <PackageReference Include="MagicGradients" Version="1.3.1" />
+	<PackageReference Include="BruTile.MbTiles" Version="5.0.6" />
+    <PackageReference Include="Mapsui.Forms" Version="4.1.9" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
   </ItemGroup>
@@ -17,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Extend.Common.Templating.Presentation\Extend.Common.Templating.Presentation.csproj" />
     <ProjectReference Include="..\Extend.UICCamaguey.Templating\Extend.UICCamaguey.Templating.csproj" />
+    <ProjectReference Include="..\Extend.UICCamaguey\Extend.UICCamaguey.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +43,15 @@
     <EmbeddedResource Update="Views\GovDecisorPrototype1PlacardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\GovDecisorPrototype2PlacardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="map.mbtiles">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

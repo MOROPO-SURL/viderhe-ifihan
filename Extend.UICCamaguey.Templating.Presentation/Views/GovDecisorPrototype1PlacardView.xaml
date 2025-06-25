@@ -13,143 +13,84 @@
             ColumnSpacing="16" RowSpacing="16"
             Padding="16">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
                 <ColumnDefinition />
-                <ColumnDefinition Width="3*" />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
                 <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition Height="3*" />
             </Grid.RowDefinitions>
             <Frame 
-                Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"
+                Grid.Column="0" Grid.Row="0"
+                HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
                 BackgroundColor="White">
                 <StackLayout>
                     <Label
                         FontSize="Medium"
                         FontAttributes="Bold"
-                        Text="Nivel de Cumplimiento de Objetivos" />
+                        Text="Cumplimiento de Objetivos" />
                     <BoxView HeightRequest="2" Color="DimGray" />
                     <live_charts_xf:PieChart
                         VerticalOptions="FillAndExpand"
                         Series="{Binding GlobalObjectivesStatusChart.Series}"
-                        InitialRotation="-90"
-                        MaxAngle="315"
+                        InitialRotation="45"
+                        MaxAngle="270"
                         MinValue="0"
-                        MaxValue="100"
-                        LegendTextSize="12"
-                        LegendPosition="Left" />
+                        MaxValue="100" />
                 </StackLayout>
             </Frame>
             <Frame 
                 Grid.Column="1" Grid.Row="0"
+                HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
                 BackgroundColor="White">
-                <Grid ColumnSpacing="16">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="2" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
+                <StackLayout>
                     <Label
-                        Grid.Column="0" Grid.RowSpan="3"
-                        VerticalOptions="Center"
-                        FontFamily="{StaticResource IconFontFamily}"
-                        FontSize="96"
-                        Text="&#xF14C;" />
-                    <Label
-                        Grid.Column="1" Grid.Row="0"
                         FontSize="Medium"
                         FontAttributes="Bold"
-                        Text="Objetivos Específicos" />
-                    <BoxView 
-                        Grid.Column="1" Grid.Row="1"
-                        Color="DimGray" />
-                    <Label
-                        Grid.Column="1" Grid.Row="2"
-                        VerticalOptions="Center"
-                        FontSize="48"
-                        HorizontalTextAlignment="End"
-                        Text="{Binding ProyectionCount}" />
-                </Grid>
+                        Text="Dist. Objetivos Específicos" />
+                    <BoxView HeightRequest="2" Color="DimGray" />
+                    <live_charts_xf:PieChart 
+                        VerticalOptions="FillAndExpand"
+                        Series="{Binding ProyectionDistributionChart.Series}"
+                        InitialRotation="-90" />
+                </StackLayout>
             </Frame>
             <Frame 
-                Grid.Column="1" Grid.Row="1"
+                Grid.Column="2" Grid.Row="0"
+                HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
                 BackgroundColor="White">
-                <Grid ColumnSpacing="16">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="2" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
+                <StackLayout>
                     <Label
-                        Grid.Column="0" Grid.RowSpan="3"
-                        VerticalOptions="Center"
-                        FontFamily="{StaticResource IconFontFamily}"
-                        FontSize="96"
-                        Text="&#xF493;" />
-                    <Label
-                        Grid.Column="1" Grid.Row="0"
                         FontSize="Medium"
                         FontAttributes="Bold"
-                        Text="Acciones" />
-                    <BoxView 
-                        Grid.Column="1" Grid.Row="1"
-                        Color="DimGray" />
-                    <Label
-                        Grid.Column="1" Grid.Row="2"
-                        VerticalOptions="Center"
-                        FontSize="48"
-                        HorizontalTextAlignment="End"
-                        Text="{Binding ActionCount}" />
-                </Grid>
+                        Text="Dist. Acciones" />
+                    <BoxView HeightRequest="2" Color="DimGray" />
+                    <live_charts_xf:PieChart 
+                        VerticalOptions="FillAndExpand"
+                        Series="{Binding ActionDistributionChart.Series}"
+                        InitialRotation="-90" />
+                </StackLayout>
             </Frame>
             <Frame 
-                Grid.Column="1" Grid.Row="2"
+                Grid.Column="3" Grid.Row="0"
+                HeightRequest="{Binding Source={RelativeSource Mode=Self}, Path=Width}"
                 BackgroundColor="White">
-                <Grid ColumnSpacing="16">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="2" />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
+                <StackLayout>
                     <Label
-                        Grid.Column="0" Grid.RowSpan="3"
-                        VerticalOptions="Center"
-                        FontFamily="{StaticResource IconFontFamily}"
-                        FontSize="96"
-                        Text="&#xF4C5;" />
-                    <Label
-                        Grid.Column="1" Grid.Row="0"
                         FontSize="Medium"
                         FontAttributes="Bold"
-                        Text="Indicadores" />
-                    <BoxView 
-                        Grid.Column="1" Grid.Row="1"
-                        Color="DimGray" />
-                    <Label
-                        Grid.Column="1" Grid.Row="2"
-                        VerticalOptions="Center"
-                        FontSize="48"
-                        HorizontalTextAlignment="End"
-                        Text="{Binding IndicatorCount}" />
-                </Grid>
+                        Text="Dist. Indicadores" />
+                    <BoxView HeightRequest="2" Color="DimGray" />
+                    <live_charts_xf:PieChart 
+                        VerticalOptions="FillAndExpand"
+                        Series="{Binding IndicatorDistributionChart.Series}"
+                        InitialRotation="-90" />
+                </StackLayout>
             </Frame>
             <Frame 
-                Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3"
+                Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
                 BackgroundColor="White">
                 <StackLayout>
                     <Label
@@ -165,7 +106,7 @@
                 </StackLayout>
             </Frame>
             <Frame 
-                Grid.Column="2" Grid.RowSpan="4"
+                Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1"
                 BackgroundColor="White">
                 <StackLayout>
                     <Label
@@ -177,7 +118,7 @@
                         VerticalOptions="FillAndExpand"
                         ItemsSource="{Binding ObjectiveOverviews}">
                         <CollectionView.ItemsLayout>
-                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="8" />
+                            <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="6" VerticalItemSpacing="6" />
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="local_view_models:ObjectiveOverviewViewModel">
@@ -214,20 +155,20 @@
                                             MaxLines="1"
                                             Text="{Binding Title}" />
                                         <Label
-                                            FontSize="20"
+                                            FontSize="18"
                                             LineBreakMode="TailTruncation"
                                             MaxLines="1">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span FontAttributes="Bold" Text="Objetivos Específicos:" />
+                                                    <Span FontAttributes="Bold" Text="Obj. Espec.:" />
                                                     <Span Text=" " />
                                                     <Span Text="{Binding ProyectionCount}" />
                                                     <Span Text=", " />
-                                                    <Span FontAttributes="Bold" Text="Acciones:" />
+                                                    <Span FontAttributes="Bold" Text="Accio.:" />
                                                     <Span Text=" " />
                                                     <Span Text="{Binding ActionCount}" />
                                                     <Span Text=", " />
-                                                    <Span FontAttributes="Bold" Text="Indicadores:" />
+                                                    <Span FontAttributes="Bold" Text="Indic.:" />
                                                     <Span Text=" " />
                                                     <Span Text="{Binding IndicatorCount}" />
                                                 </FormattedString>

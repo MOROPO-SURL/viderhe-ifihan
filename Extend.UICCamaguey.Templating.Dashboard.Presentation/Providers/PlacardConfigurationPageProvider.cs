@@ -19,6 +19,11 @@
                 return new Pages.GovDecisorPrototype1PlacardConfigurationPage(completedActionCallback);
             }
 
+            if (templateDescriptor is Descriptors.GovDecisorPrototype2TemplateDescritor)
+            {
+                return new Pages.GovDecisorPrototype2PlacardConfigurationPage(completedActionCallback);
+            }
+
             return null;
         }
 
@@ -37,6 +42,11 @@
             if (placardViewModel.Template.Id == Descriptors.GovDecisorPrototype1TemplateDescritor.ID)
             {
                 return new Pages.GovDecisorPrototype1PlacardConfigurationPage(placardViewModel, completedActionCallback);
+            }
+
+            if (placardViewModel.Template.Id == Descriptors.GovDecisorPrototype2TemplateDescritor.ID)
+            {
+                return new Pages.GovDecisorPrototype2PlacardConfigurationPage(placardViewModel, completedActionCallback);
             }
 
             return null;

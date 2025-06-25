@@ -7,8 +7,11 @@ namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View
         private ChartViewModel globalObjectivesStatusChart;
         private ChartViewModel monthlyObjectivesProgressChart;
         private int proyectionCount;
+        private ChartViewModel proyectionDistributionChart;
         private int actionCount;
+        private ChartViewModel actionDistributionChart;
         private int indicatorCount;
+        private ChartViewModel indicatorDistributionChart;
 
         public ChartViewModel GlobalObjectivesStatusChart { get => globalObjectivesStatusChart; set => SetProperty(ref globalObjectivesStatusChart, value); }
 
@@ -16,9 +19,15 @@ namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View
 
         public int ProyectionCount { get => proyectionCount; set => SetProperty(ref proyectionCount, value); }
 
+        public ChartViewModel ProyectionDistributionChart { get => proyectionDistributionChart; set => SetProperty(ref proyectionDistributionChart, value); }
+
         public int ActionCount { get => actionCount; set => SetProperty(ref actionCount, value); }
 
+        public ChartViewModel ActionDistributionChart { get => actionDistributionChart; set => SetProperty(ref actionDistributionChart, value); }
+
         public int IndicatorCount { get => indicatorCount; set => SetProperty(ref indicatorCount, value); }
+
+        public ChartViewModel IndicatorDistributionChart { get => indicatorDistributionChart; set => SetProperty(ref indicatorDistributionChart, value); }
 
         public ObservableCollection<ObjectiveOverviewViewModel> ObjectiveOverviews { get; private set; } = new ObservableCollection<ObjectiveOverviewViewModel>();
 
@@ -45,6 +54,9 @@ namespace MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View
                     }
                 }
             };
+            ProyectionDistributionChart = new ChartViewModel();
+            ActionDistributionChart = new ChartViewModel();
+            IndicatorDistributionChart = new ChartViewModel();
         }
     }
 }

@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local_view_models="clr-namespace:MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Models.View"
+    xmlns:extendcommontemplatingpresentationviews="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:mapsui="clr-namespace:Mapsui.UI.Forms;assembly=Mapsui.UI.Forms"
+    xmlns:live_charts_xf="clr-namespace:LiveChartsCore.SkiaSharpView.Xamarin.Forms;assembly=LiveChartsCore.SkiaSharpView.XamarinForms"
+    x:Class="MOROPO.VIDERHE.Extend.UICCamaguey.Templating.Presentation.Views.GovDecisorPrototype2PlacardView"
+    x:DataType="local_view_models:GovDecisorPrototype2PlacardViewModel"
+    BackgroundColor="WhiteSmoke">
+    <ContentView.Content>
+        <Grid 
+            ColumnSpacing="16" RowSpacing="16"
+            Padding="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="6*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="320" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label 
+                Grid.ColumnSpan="5" Grid.Row="0"
+                FontSize="Header"
+                FontAttributes="Bold"
+                Text="Objetivo 3: Incrementar la producción nacional, con énfasis en los alimentos." />
+            <Frame 
+                Grid.Column="0" Grid.Row="1"
+                BackgroundColor="White">
+                <StackLayout>
+                    <Label
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Nivel de Cumplimiento" />
+                    <BoxView HeightRequest="2" Color="DimGray" />
+                    <live_charts_xf:PieChart 
+                        VerticalOptions="FillAndExpand"
+                        Series="{Binding StatusChart.Series}"
+                        InitialRotation="-90"
+                        MinValue="0"
+                        MaxValue="100" />
+                </StackLayout>
+            </Frame>
+            <Frame 
+                Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1"
+                BackgroundColor="White">
+                <StackLayout>
+                    <Label
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Historial de Crecimiento" />
+                    <BoxView HeightRequest="2" Color="DimGray" />
+                    <live_charts_xf:CartesianChart
+                        VerticalOptions="FillAndExpand"
+                        Series="{Binding ProgressionChart.Series}" />
+                </StackLayout>
+            </Frame>
+            <Frame 
+                Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Grid.RowSpan="3"
+                BackgroundColor="White">
+                <StackLayout>
+                    <Label
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Nivel de Cumplimiento de Objetivos" />
+                    <BoxView HeightRequest="2" Color="DimGray" />
+                    <live_charts_xf:PieChart
+                        VerticalOptions="FillAndExpand"
+                        Series="{Binding ProyectionsStatusChart.Series}"
+                        InitialRotation="-90"
+                        MaxAngle="315"
+                        MinValue="0"
+                        MaxValue="100"
+                        LegendTextSize="12"
+                        LegendPosition="Left" />
+                </StackLayout>
+            </Frame>
+            <Frame 
+                Grid.Column="3" Grid.Row="2"
+                BackgroundColor="White">
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="2" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0" Grid.RowSpan="3"
+                        VerticalOptions="Start"
+                        FontFamily="{StaticResource IconFontFamily}"
+                        FontSize="64"
+                        Text="&#xF14C;" />
+                    <Label
+                        Grid.Column="1" Grid.Row="0"
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Objetivos Específicos" />
+                    <BoxView 
+                        Grid.Column="1" Grid.Row="1"
+                        Color="DimGray" />
+                    <Label
+                        Grid.Column="1" Grid.Row="2"
+                        VerticalOptions="Center"
+                        FontSize="40"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding ProyectionCount}" />
+                </Grid>
+            </Frame>
+            <Frame 
+                Grid.Column="3" Grid.Row="3"
+                BackgroundColor="White">
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="2" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0" Grid.RowSpan="3"
+                        VerticalOptions="Start"
+                        FontFamily="{StaticResource IconFontFamily}"
+                        FontSize="64"
+                        Text="&#xF493;" />
+                    <Label
+                        Grid.Column="1" Grid.Row="0"
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Acciones" />
+                    <BoxView 
+                        Grid.Column="1" Grid.Row="1"
+                        Color="DimGray" />
+                    <Label
+                        Grid.Column="1" Grid.Row="2"
+                        VerticalOptions="Center"
+                        FontSize="40"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding ActionCount}" />
+                </Grid>
+            </Frame>
+            <Frame 
+                Grid.Column="3" Grid.Row="4"
+                BackgroundColor="White">
+                <Grid ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="2" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label
+                        Grid.Column="0" Grid.RowSpan="3"
+                        VerticalOptions="Start"
+                        FontFamily="{StaticResource IconFontFamily}"
+                        FontSize="64"
+                        Text="&#xF4C5;" />
+                    <Label
+                        Grid.Column="1" Grid.Row="0"
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Indicadores" />
+                    <BoxView 
+                        Grid.Column="1" Grid.Row="1"
+                        Color="DimGray" />
+                    <Label
+                        Grid.Column="1" Grid.Row="2"
+                        VerticalOptions="Center"
+                        FontSize="40"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding IndicatorCount}" />
+                </Grid>
+            </Frame>
+            <Frame 
+                Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5"
+                BackgroundColor="White">
+                <StackLayout>
+                    <Label
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Responsables" />
+                    <BoxView HeightRequest="2" Color="DimGray" />
+                    <ScrollView 
+                        Margin="0,12,0,0"
+                        VerticalOptions="FillAndExpand"
+                        Orientation="Vertical">
+                        <FlexLayout
+                            AlignItems="Start"
+                            AlignContent="Start">
+                            <Frame 
+                                Margin="0,0,16,0"
+                                BackgroundColor="WhiteSmoke"
+                                WidthRequest="60" HeightRequest="60">
+
+                            </Frame>
+                            <Frame 
+                                Margin="0,0,16,0"
+                                BackgroundColor="WhiteSmoke"
+                                WidthRequest="60" HeightRequest="60">
+
+                            </Frame>
+                            <Frame 
+                                Margin="0,0,16,0"
+                                BackgroundColor="WhiteSmoke"
+                                WidthRequest="60" HeightRequest="60">
+
+                            </Frame>
+                            <Frame 
+                                Margin="0,0,16,0"
+                                BackgroundColor="WhiteSmoke"
+                                WidthRequest="60" HeightRequest="60">
+
+                            </Frame>
+                            <Frame 
+                                Margin="0,0,16,0"
+                                BackgroundColor="WhiteSmoke"
+                                WidthRequest="60" HeightRequest="60">
+
+                            </Frame>
+                        </FlexLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+            <Frame 
+                Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="5"
+                BackgroundColor="White">
+                <StackLayout>
+                    <Label
+                        FontSize="Medium"
+                        FontAttributes="Bold"
+                        Text="Participantes" />
+                    <BoxView HeightRequest="2" Color="DimGray" />
+                    <ScrollView 
+                        Margin="0,12,0,0"
+                        VerticalOptions="FillAndExpand"
+                        Orientation="Vertical">
+                        <FlexLayout
+                            AlignItems="Start"
+                            AlignContent="Start">
+                            <Frame 
+                                Margin="0,0,16,0"
+                                BackgroundColor="WhiteSmoke"
+                                WidthRequest="60" HeightRequest="60">
+
+                            </Frame>
+                            <Frame 
+                                Margin="0,0,16,0"
+                                BackgroundColor="WhiteSmoke"
+                                WidthRequest="60" HeightRequest="60">
+
+                            </Frame>
+                            <Frame 
+                                Margin="0,0,16,0"
+                                BackgroundColor="WhiteSmoke"
+                                WidthRequest="60" HeightRequest="60">
+
+                            </Frame>
+                            <Frame 
+                                Margin="0,0,16,0"
+                                BackgroundColor="WhiteSmoke"
+                                WidthRequest="60" HeightRequest="60">
+
+                            </Frame>
+                            <Frame 
+                                Margin="0,0,16,0"
+                                BackgroundColor="WhiteSmoke"
+                                WidthRequest="60" HeightRequest="60">
+
+                            </Frame>
+                        </FlexLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+            <Frame 
+                Grid.Column="4" Grid.Row="1" Grid.RowSpan="5"
+                BackgroundColor="White"
+                Padding="0">
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackLayout 
+                        Grid.Row="0"
+                        Padding="20"
+                        Orientation="Vertical">
+                        <Label
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            Text="Comportamiento de Objetivos Específicos" />
+                        <BoxView HeightRequest="2" Color="DimGray" />
+                    </StackLayout>
+                    <StackLayout  
+                        Grid.Row="1"
+                        Spacing="10">
+                        <IndicatorView
+                            x:Name="PrimaryIndicatorView"
+                            HorizontalOptions="Center"
+                            IndicatorColor="LightGray"
+                            IndicatorSize="10"
+                            SelectedIndicatorColor="Black" />
+                        <CarouselView 
+                            VerticalOptions="FillAndExpand"
+                            Margin="0,5,0,20"
+                            Loop="True"
+                            PeekAreaInsets="40"
+                            IndicatorView="PrimaryIndicatorView"
+                            ItemsSource="{Binding SpecificObjectives}">
+                            <CarouselView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="12" />
+                            </CarouselView.ItemsLayout>
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate x:DataType="local_view_models:SpecificObjectiveModel">
+                                    <Frame BackgroundColor="GhostWhite">
+                                        <StackLayout Spacing="16">
+                                            <Label FontSize="Title" FontAttributes="Bold">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding ObjectiveIndex, StringFormat='{0}.'}" />
+                                                        <Span Text="{Binding Index, StringFormat='{0}.'}" />
+                                                        <Span Text=" " />
+                                                        <Span Text="{Binding Name}" />
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Grid VerticalOptions="FillAndExpand">
+                                                <ScrollView Orientation="Horizontal">
+                                                    <FlexLayout BindableLayout.ItemsSource="{Binding Actions}">
+                                                        <BindableLayout.ItemTemplate>
+                                                            <DataTemplate x:DataType="local_view_models:ActionModel">
+                                                                <Frame 
+                                                                    Margin="0,0,16,0"
+                                                                    BackgroundColor="White"
+                                                                    WidthRequest="680">
+                                                                    <StackLayout Orientation="Vertical">
+                                                                        <Label 
+                                                                            FontAttributes="Bold"
+                                                                            LineBreakMode="TailTruncation">
+                                                                            <Label.FormattedText>
+                                                                                <FormattedString>
+                                                                                    <Span Text="{Binding ObjectiveIndex, StringFormat='{0}.'}" />
+                                                                                    <Span Text="{Binding SpecificObjectiveIndex, StringFormat='{0}.'}" />
+                                                                                    <Span Text="{Binding Index, StringFormat='{0}.'}" />
+                                                                                    <Span Text=" " />
+                                                                                    <Span Text="{Binding Name}" />
+                                                                                </FormattedString>
+                                                                            </Label.FormattedText>
+                                                                        </Label>
+                                                                        <live_charts_xf:CartesianChart
+                                                                            VerticalOptions="FillAndExpand"
+                                                                            Series="{Binding ProgressionChart.Series}" />
+                                                                    </StackLayout>
+                                                                </Frame>
+                                                            </DataTemplate>
+                                                        </BindableLayout.ItemTemplate>
+                                                    </FlexLayout>
+                                                </ScrollView>
+                                            </Grid>                                            
+                                        </StackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                    </StackLayout>
+                    <mapsui:MapView 
+                        x:Name="MainMapView" 
+                        Grid.Row="2"
+                        IsMyLocationButtonVisible="False"
+                        IsNorthingButtonVisible="False"
+                        IsZoomButtonVisible="False" />
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentView.Content>
+</extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>
