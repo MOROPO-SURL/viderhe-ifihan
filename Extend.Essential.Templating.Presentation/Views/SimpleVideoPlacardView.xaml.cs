@@ -24,28 +24,28 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views
             Xamarin.Forms.Grid.SetRow(view, 0);
         }
 
-        //private void VideoPlayer_StatusUpdated(object sender, System.EventArgs eventArgs)
-        //{
-        //    var videoPlayer = sender as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
+        private void VideoPlayer_StatusUpdated(object sender, System.EventArgs eventArgs)
+        {
+            var videoPlayer = sender as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
 
-        //    if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
-        //    {
-        //        videoPlayer.StatusUpdated -= VideoPlayer_StatusUpdated;
+            if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
+            {
+                videoPlayer.StatusUpdated -= VideoPlayer_StatusUpdated;
 
-        //        EndPresentation();
-        //    }
-        //    else if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
-        //    {
-        //        transition?.PerformMotion();
+                EndPresentation();
+            }
+            else if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            {
+                transition?.PerformMotion();
 
-        //        transition = null;
-        //    }
-        //}
+                transition = null;
+            }
+        }
 
         public override void StartShowInWhenReady(AbstractTransition transition)
         {
-            //if (VideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
-            if (VideoPlayerView.CurrentState == Xamarin.CommunityToolkit.UI.Views.MediaElementState.Playing)
+            if (VideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            //if (VideoPlayerView.CurrentState == Xamarin.CommunityToolkit.UI.Views.MediaElementState.Playing)
             {
                 base.StartShowInWhenReady(transition);
 
@@ -59,15 +59,14 @@ namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views
         {
             base.DisposeUnmanagementResources();
 
-            //if (VideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
-            //{
-            //    //VideoPlayerView.StatusUpdated -= VideoPlayer_StatusUpdated;
+            if (VideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            {
+                VideoPlayerView.StatusUpdated -= VideoPlayer_StatusUpdated;
 
-            //    VideoPlayerView.MediaOpened -= VideoPlayerView_MediaOpened;
+                //VideoPlayerView.MediaOpened -= VideoPlayerView_MediaOpened;
 
-
-            //    VideoPlayerView.Stop();
-            //}
+                VideoPlayerView.Stop();
+            }
 
             transition = null;
         }

@@ -20,15 +20,15 @@
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="PlacardLayout">                
-                <!--<extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
+                <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
                     x:Name="PresentedVideo"
                     BackgroundColor="Black"
                     Source="{Binding Path=PresentedSource}"
                     ShowControls="False"
                     AutoPlay="True"
                     IsMuted="{Binding Path=PresentedVideoMuted}"
-                    StatusUpdated="VideoPlayer_StatusUpdated" />-->
-                <communitytoolkit_ui:MediaElement
+                    StatusUpdated="VideoPlayer_StatusUpdated" />
+                <!--<communitytoolkit_ui:MediaElement
                     x:Name="VideoPlayerView"
                     BackgroundColor="Black"
                     Source="{Binding Path=PresentedSource}"
@@ -36,7 +36,7 @@
                     AutoPlay="True"
                     MediaOpened="VideoPlayerView_MediaOpened"
                     MediaEnded="VideoPlayerView_MediaEnded"
-                    MediaFailed="VideoPlayerView_MediaEnded" />
+                    MediaFailed="VideoPlayerView_MediaEnded" />-->
                 <ffimageloadingforms:CachedImage
                     x:Name="PresenterImage"
                     IsVisible="False"

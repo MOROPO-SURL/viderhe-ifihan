@@ -10,7 +10,7 @@
         <Grid 
             x:Name="Wrapper"
             BackgroundColor="Transparent">
-            <!--<extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
+            <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
                 x:Name="VideoPlayerView"
                 BackgroundColor="Black"
                 Source="{Binding Path=VideoSource}"
@@ -18,8 +18,8 @@
                 AutoPlay="True"
                 StrechAspect="{Binding Path=StrechAspect}"
                 IsMuted="{Binding Path=Muted}"
-                StatusUpdated="VideoPlayer_StatusUpdated" />-->
-            <communitytoolkit_ui:MediaElement
+                StatusUpdated="VideoPlayer_StatusUpdated" />
+            <!--<communitytoolkit_ui:MediaElement
                 x:Name="VideoPlayerView"
                 BackgroundColor="Black"
                 Source="{Binding Path=VideoSource}"
@@ -28,7 +28,7 @@
                 Aspect="{Binding Path=StrechAspect}"
                 MediaOpened="VideoPlayerView_MediaOpened"
                 MediaEnded="VideoPlayerView_MediaEnded"
-                MediaFailed="VideoPlayerView_MediaEnded" />
+                MediaFailed="VideoPlayerView_MediaEnded" />-->
         </Grid>
     </ContentView.Content>
 </extendcommontemplatingpresentationviews:BaseTemplatedPlacardPresentationView>

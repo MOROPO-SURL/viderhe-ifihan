@@ -28,7 +28,7 @@
     <ContentView.Content>
         <Grid x:Name="Wrapper">
             <Grid x:Name="PlacardLayout" BackgroundColor="DimGray">
-                <!--<extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
+                <extendcommontemplatingpresentationrenderedviews:CloudVideoPlayerView
                     x:Name="ContextedVideo"
                     VerticalOptions="Center" HorizontalOptions="Center"
                     BackgroundColor="Black"
@@ -37,8 +37,8 @@
                     ShowControls="False"
                     AutoPlay="True"
                     IsMuted="{Binding Path=ContextedVideoMuted}"
-                    StatusUpdated="VideoPlayer_StatusUpdated" />-->
-                <communitytoolkit_ui:MediaElement
+                    StatusUpdated="VideoPlayer_StatusUpdated" />
+                <!--<communitytoolkit_ui:MediaElement
                     x:Name="ContextedVideo"
                     VerticalOptions="Center" HorizontalOptions="Center"
                     BackgroundColor="Black"
@@ -48,7 +48,7 @@
                     Aspect="AspectFill"
                     MediaOpened="VideoPlayerView_MediaOpened"
                     MediaEnded="VideoPlayerView_MediaEnded"
-                    MediaFailed="VideoPlayerView_MediaEnded" />
+                    MediaFailed="VideoPlayerView_MediaEnded" />-->
                 <Grid
                     x:Name="OverlapLayout"
                     ColumnSpacing="0">
