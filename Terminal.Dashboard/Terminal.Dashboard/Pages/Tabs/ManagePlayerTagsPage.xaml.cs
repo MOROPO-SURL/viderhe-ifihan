@@ -95,7 +95,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Tabs
                         }
                         else
                         {
-                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Gradiente eliminado con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Etiqueta eliminado con éxito.");
 
                             ReloadItems();
                         }

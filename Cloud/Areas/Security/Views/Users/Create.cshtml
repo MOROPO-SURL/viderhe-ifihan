@@ -1,35 +1,41 @@
 ﻿@model MOROPO.Framework.Guama.Security.Essential.Presentation.Web.Backend.Models.View.UserWithPasswordInputViewModel
 
 @{
-    ViewData["Title"] = "Agregar Usuario";
+    const string TITLE = "Agregar Usuario";
+    const string HEADER = "Administración de Usuarios";
+
+    ViewData["TITLE"] = TITLE;
+    ViewData["HEADER"] = HEADER;
 
     ViewData[BreadcrumbViewModel.BREADCRUMBS_MAP_KEY] = new List<BreadcrumbViewModel>
     {
         new BreadcrumbViewModel
         {
-            Caption = "<span class=\"mdi mdi-cogs\" style=\"margin-right: 4px;\"></span>" + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
-            Url = Url.Action("index", "dashboard", new { Area = string.Empty })
+            Caption = "<i class=\"fas fa-fw fa-tachometer-alt\"></i> " + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
+            Url = Url.Action("Index", "Dashboard", new { Area = "management" })
         },
         new BreadcrumbViewModel
         {
-            Caption = "Administración de Usuarios",
+            Caption = HEADER,
             Url = Url.Action("index")
         },
         new BreadcrumbViewModel
         {
-            Caption = ViewData["Title"].ToString()
+            Caption = TITLE
         }
     };
 
     Layout = "_BackendLayout";
 }
 
-@using (Html.BeginForm("create", "users", new { Area = "security" }, FormMethod.Post, true, new { enctype = "multipart/form-data" }))
+<hr class="mt-0 mb-4" />
+
+@using (Html.BeginForm("create", "users", new { Area = "security" }, FormMethod.Post, true, null))
 {
     @Html.ValidationSummary(true)
 
-    <div class="card mb-3">
-        <div class="card-header"><h4 class="mb-0">@ViewData["Title"]</h4></div>
+    <div class="card mb-4">
+        <div class="card-header"><h5 class="mb-0 font-weight-bold text-primary">@TITLE</h5></div>
 
         <div class="card-body">
             <div class="row">
@@ -39,21 +45,18 @@
                     @Html.ValidationMessageFor(model => model.Id, null, new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-md-6 mb-3">
                     @Html.LabelFor(model => model.Password, new { @class = "control-label" })
                     @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
                 </div>
-
                 <div class="col-md-6 mb-3">
                     @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label" })
                     @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "text-danger" })
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-4 mb-3">
                     <div class="checkbox">
@@ -63,7 +66,6 @@
                         </label>
                     </div>
                 </div>
-
                 <div class="col-sm-4 mb-3">
                     <div class="checkbox">
                         <label>
@@ -72,7 +74,6 @@
                         </label>
                     </div>
                 </div>
-
                 <div class="col-sm-4 mb-3">
                     <div class="checkbox">
                         <label>
@@ -84,7 +85,7 @@
             </div>
 
             <fieldset>
-                <legend class="border-bottom h4">Roles</legend>
+                <legend class="border-bottom h5 font-weight-bold pb-2 mb-3">Roles</legend>
                 @if (Model.SelectableRoles != null && Model.SelectableRoles.Count > 0)
                 {
                     <div class="row">
@@ -98,13 +99,13 @@
                 }
                 else
                 {
-                    <div>Sin elementos que mostrar.</div>
+                    <div class="text-muted">Sin elementos que mostrar.</div>
                 }
             </fieldset>
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Agregar</button>
-            <a class="btn btn-light" href="@Url.Action("index")">Cancelar</a>
+            <a class="btn btn-secondary" href="@Url.Action("index")">Cancelar</a>
         </div>
     </div>
 }

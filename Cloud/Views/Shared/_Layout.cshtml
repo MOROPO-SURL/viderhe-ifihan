@@ -9,31 +9,29 @@
     <link href="~/images/favicon.png" rel="icon">
     <link href="~/images/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css" />
+    <link href="~/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/css/sb-admin-2.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="~/css/herbie.theme.min.css" />
 
-    <link rel="stylesheet" href="~/lib/MaterialDesign-Webfont/css/materialdesignicons.min.css" />
-
     @RenderSection("styles", false)
 </head>
-<body>
+<body id="page-top">
     @RenderBody()
 
-    <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/popper.js/umd/popper.min.js"></script>
-    <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/js/sb-admin-2.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $(document).on("click", "button.filter-form-reseter", function (e) {
-                $(e.target.form).find("select option").prop("selected", false);
-
-                $(e.target.form).find("input[type=text]").prop("value", '');
-
-                e.target.form.submit();
-            });
-
             $(document).on("click", "input[type='submit']", function (e) {
                 if (!e.target.form) return;
 
