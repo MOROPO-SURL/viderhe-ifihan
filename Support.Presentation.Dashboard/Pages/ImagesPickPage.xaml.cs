@@ -16,7 +16,7 @@ namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
         private int currentImagesPageNumber;
 
         public ImagesPickPage(ImageViewModel[] exclusionImages, System.Action<ImageViewModel[]> imagesSelectedCallbackAction)
-            : base(new Models.Page.ImagesPickPageModel { IsBusy = true })
+            : base(new ImagesPickPageModel { IsBusy = true })
         {
             InitializeComponent();
 
@@ -84,7 +84,7 @@ namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
                     }
                     else
                     {
-                        var relevantImages = task.Result.List.Select(m => m.ToViewModel()).ToArray().Except(exclusionImages).Select(item => new Models.View.SelectableModelViewModel<ImageViewModel>
+                        var relevantImages = task.Result.List.Select(m => m.ToViewModel()).ToArray().Except(exclusionImages).Select(item => new SelectableModelViewModel<ImageViewModel>
                         {
                             Model = item
                         });
