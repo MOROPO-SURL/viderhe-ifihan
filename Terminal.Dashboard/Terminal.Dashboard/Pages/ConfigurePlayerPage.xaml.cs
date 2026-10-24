@@ -188,7 +188,7 @@ namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
             {
                 var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(SessionManager.Instance);
 
-                var model = new Cloud.Api.Common.Models.PlayerInputModel
+                var model = new PlayerInputModel
                 {
                     Id = BindingContextPageModel.Id,
                     Name = BindingContextPageModel.Name,
