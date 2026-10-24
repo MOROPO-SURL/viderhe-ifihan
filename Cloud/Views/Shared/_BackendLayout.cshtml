@@ -4,20 +4,9 @@
 
 @section styles {
     <style type="text/css">
-        html, body {
-            height: 100%;
-            position: relative;
-        }
-
-        #main-container {
-            min-height: 100vh; /* will cover the 100% of viewport */
-            overflow: hidden;
-            display: block;
-            position: relative;
-        }
-
-        .nav-sidebar > .active {
-            border-radius: 0;
+        th.fit, td.ft {
+            width: 1px;
+            word-wrap: unset;
         }
     </style>
 
@@ -40,37 +29,117 @@
     @RenderSection("scripts", false)
 }
 
-<div id="main-container">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark shadow">
-        <a class="navbar-brand" href="#">Administraci&oacute;n</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigationNavbar" aria-controls="navigationNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navigationNavbar">
-            <input class="form-control form-control-plaintext" type="text" placeholder="Search" aria-label="Search">
-            <form asp-action="logout" asp-controller="account" asp-area="security" asp-antiforgery="true" class="nav form-inline">
-                <ul class="navbar-nav justify-content-end">
-                    <li>
-                        <a asp-action="index" asp-controller="account" asp-area="security" class="btn btn-link text-light"><span class="mdi mdi-account-circle" style="margin-right: 4px;"></span>@User.Identity.Name</a>
-                    </li>
-                    <li>
-                        <button type="submit" class="btn btn-link text-light"><span class="mdi mdi-logout-variant" style="margin-right: 4px;"></span>Salir</button>
-                    </li>
-                </ul>
-            </form>
-        </div>
-    </nav>
+<!-- Page Wrapper -->
+<div id="wrapper">
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-2 col-md-3 bg-light" style="padding: 0;">
-                @await Component.InvokeAsync("DashboardSidebar")
-            </div>
-            <div role="main" class="col-lg-10 col-md-9 ml-sm-auto px-4" style="padding-top: 80px;">
+    <!-- Sidebar -->
+    @await Component.InvokeAsync("DashboardSidebar")
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- Topbar Search -->
+                <form class="d-none d-sm-inline-block form-inline mr-auto my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 small" placeholder="Búsqueda global ..."
+                               aria-label="Search" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search fa-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mx-1">
+                        <a href="/" target="_blank" class="nav-link text-dark"><i class="fas fa-home fa-fw mr-1"></i>Web Site</a>
+                    </li>
+                    <div class="topbar-divider d-none d-sm-block"></div>
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">@User.Identity.Name</span>
+                            <img class="img-profile rounded-circle"
+                                 src="/img/default-person-picture.jpg">
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <a class="dropdown-item" asp-action="index" asp-controller="account" asp-area="security">
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Profile
+                            </a>
+                            <a class="dropdown-item" asp-action="password" asp-controller="account" asp-area="security">
+                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Contraseña
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+                @{
+                    var notificationEntries = TempData.Where(x => x.Key.EndsWith("-notification")).ToArray();
+
+                    foreach (var extraNotificationEntry in notificationEntries)
+                    {
+                        var notification = JsonConvert.DeserializeObject<NotificationViewModel>(extraNotificationEntry.Value.ToString());
+
+                        <div class="alert alert-dismissible fade show alert-@Html.Raw(notification.Type.ToString().ToLower())">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            @if (notification.Title != null)
+                            {
+                                <h4>@GlobalViewLocalizationHelper.Localize(notification.Title, ViewLocalizer)</h4>
+                            }
+
+                            @if (notification.Message != null)
+                            {
+                                @Html.Raw(GlobalViewLocalizationHelper.Localize(notification.Message, ViewLocalizer))
+                                ;
+                            }
+
+                            @if (notification.Messages != null)
+                            {
+                                <ul>
+                                    @foreach (var item in notification.Messages)
+                                    {
+                                        <li>@GlobalViewLocalizationHelper.Localize(item, ViewLocalizer)</li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+                    }
+                }
+
                 @if (ViewData[BreadcrumbViewModel.BREADCRUMBS_MAP_KEY] != null)
                 {
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
+                        <ol class="breadcrumb mb-5">
                             @{
                                 ICollection<BreadcrumbViewModel> breadcrumbs = ViewData[BreadcrumbViewModel.BREADCRUMBS_MAP_KEY] as ICollection<BreadcrumbViewModel>;
 
@@ -98,42 +167,54 @@
                     </nav>
                 }
 
-                @{
-                    var notificationEntries = TempData.Where(x => x.Key.EndsWith("-notification")).ToArray();
-
-                    foreach (var extraNotificationEntry in notificationEntries)
-                    {
-                        var notification = JsonConvert.DeserializeObject<NotificationViewModel>(extraNotificationEntry.Value.ToString());
-
-                        <div class="alert alert-dismissible fade show alert-@Html.Raw(notification.Type.ToString().ToLower())">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            @if (notification.Title != null)
-                            {
-                                <h4>@GlobalViewLocalizationHelper.Localize(notification.Title, ViewLocalizer)</h4>
-                            }
-
-                            @if (notification.Message != null)
-                            {
-                                @Html.Raw(GlobalViewLocalizationHelper.Localize(notification.Message, ViewLocalizer));
-                            }
-
-                            @if (notification.Messages != null)
-                            {
-                                <ul>
-                                    @foreach (var item in notification.Messages)
-                                    {
-                                        <li>@GlobalViewLocalizationHelper.Localize(item, ViewLocalizer)</li>
-                                    }
-                                </ul>
-                            }
-                        </div>
-                    }
-                }
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">@ViewData["HEADER"]</h1>
+                </div>
 
                 @RenderBody()
             </div>
+            <!-- /.container-fluid -->
+
         </div>
+        <!-- End of Main Content -->
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; MOROPO S.U.R.L. @System.DateTime.Now.Year</span>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        @using (Html.BeginForm("logout", "account", new { Area = "security" }, FormMethod.Post, true, new { @class = "modal-content" }))
+        {
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <input class="btn btn-primary" type="submit" value="Logout" />
+            </div>
+        }
     </div>
 </div>

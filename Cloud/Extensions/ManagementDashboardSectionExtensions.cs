@@ -2,27 +2,15 @@
 {
     public static class ManagementDashboardSectionExtensions
     {
-        public static Microsoft.AspNetCore.Html.HtmlString ToIconographyHtmlString(this Framework.Guama.Core.Presentation.Web.Backend.Models.View.ManagementDashboardSectionViewModel self)
+        public static Microsoft.AspNetCore.Html.HtmlString ToIconographyHtmlString(this Framework.Guama.Core.Presentation.Web.Backend.Models.View.ManagementDashboardSectionViewModel target)
         {
-            if (self.Controller == "users") return new Microsoft.AspNetCore.Html.HtmlString("<span class=\"mdi mdi-account\"></span>");
+            if (target.Controller == "users") return new Microsoft.AspNetCore.Html.HtmlString("fas fa-fw fa-user");
 
-            if (self.Controller == "groups") return new Microsoft.AspNetCore.Html.HtmlString("<span class=\"mdi mdi-account-group\"></span>");
+            if (target.Controller == "roles") return new Microsoft.AspNetCore.Html.HtmlString("fas fa-fw fa-users");
 
-            if (self.Controller == "traces") return new Microsoft.AspNetCore.Html.HtmlString("<span class=\"mdi mdi-foot-print\"></span>");
+            if (target.Controller == "traces") return new Microsoft.AspNetCore.Html.HtmlString("fas fa-fw fa-book");
 
-            if (self.Controller == "accounts") return new Microsoft.AspNetCore.Html.HtmlString("<span class=\"mdi mdi-briefcase\"></span>");
-
-            if (self.Controller == "templates") return new Microsoft.AspNetCore.Html.HtmlString("<span class=\"mdi mdi-picture-in-picture-bottom-right\"></span>");
-
-            if (self.Controller == "transitions") return new Microsoft.AspNetCore.Html.HtmlString("<span class=\"mdi mdi-transition\"></span>");
-
-            if (self.Controller == "images") return new Microsoft.AspNetCore.Html.HtmlString("<span class=\"mdi mdi-image-size-select-actual\"></span>");
-
-            if (self.Controller == "videos") return new Microsoft.AspNetCore.Html.HtmlString("<span class=\"mdi mdi-filmstrip\"></span>");
-
-            if (self.Controller == "players") return new Microsoft.AspNetCore.Html.HtmlString("<span class=\"mdi mdi-youtube-tv\"></span>");
-
-            return new Microsoft.AspNetCore.Html.HtmlString("<span class=\"mdi mdi-toy-brick-outline\"></span>");
+            return new Microsoft.AspNetCore.Html.HtmlString("fas fa-fw fa-cog");
         }
     }
 }
