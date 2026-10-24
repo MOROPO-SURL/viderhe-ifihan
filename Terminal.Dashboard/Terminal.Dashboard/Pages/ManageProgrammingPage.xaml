@@ -185,7 +185,7 @@
                         <DataTemplate>
                             <ContentView>
                                 <Grid
-                                    Margin="8,4,0,4"
+                                    Margin="8,4"
                                     BackgroundColor="#F5F5F5"
                                     ColumnSpacing="8"
                                     HeightRequest="96">
@@ -236,7 +236,6 @@
                 IsVisible="{Binding Path=SelectedScreenplay, Converter={StaticResource NullToBooleanConverter}}">
                 <Label
                     HorizontalOptions="CenterAndExpand"
-                    VerticalOptions="CenterAndExpand"
                     HorizontalTextAlignment="Center"
                     Margin="30"
                     TextColor="{StaticResource PrimaryColor}"
@@ -256,16 +255,16 @@
                 <Label 
                     VerticalOptions="Center" 
                     HorizontalOptions="FillAndExpand"
-                    Text="{Binding Path=LabelFilterParam, Converter={StaticResource PlacardPanelTitleNullToStringConverter}}"
+                    Text="{Binding Path=PlacardFilter, Converter={StaticResource PlacardPanelTitleNullToStringConverter}}"
                     FontSize="Medium" />
                 <Button 
-                    Text="{Binding Path=LabelFilterParam, Converter={StaticResource FilterIconNullToStringConverter}}"
+                    Text="{Binding Path=PlacardFilter, Converter={StaticResource FilterIconNullToStringConverter}}"
                     Style="{StaticResource TextIconButton}"
                     FontSize="Medium"
                     Clicked="RequestFilterButton_Clicked" />
                 <Button 
                     Text="&#xF235;"
-                    IsEnabled="{Binding Path=LabelFilterParam, Converter={StaticResource NotNullOrEmptyStringToBooleanConverter}}"
+                    IsEnabled="{Binding Path=PlacardFilter, Converter={StaticResource NotNullToBooleanConverter}}"
                     Style="{StaticResource TextIconButton}"
                     FontSize="Medium"
                     Clicked="ClearFilterButton_Clicked" />
