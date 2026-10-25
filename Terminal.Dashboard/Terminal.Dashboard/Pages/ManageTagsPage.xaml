@@ -6,6 +6,9 @@
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     x:Class="MOROPO.VIDERHE.Terminal.Dashboard.Pages.ManageTagsPage"
     Title="Etiquetas">
+    <tabpages:ManageImageTagsPage Title="Imágenes" />
+    <tabpages:ManageVideoTagsPage Title="Videos" />
+    <tabpages:ManageGradientTagsPage Title="Gradientes" />
     <tabpages:ManagePlayerTagsPage Title="Reproductores" />
     <tabpages:ManagePlacardTagsPage Title="Carteles" />
 </sscxftoolkitmvvmpages:TabbedPage>
