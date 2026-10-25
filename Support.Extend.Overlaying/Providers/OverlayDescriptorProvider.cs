@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Overlaying.Descriptors;
+﻿using MOROPO.VIDERHE.Extend.Common.Overlaying.Descriptors;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Extend.Overlaying.Providers
+namespace MOROPO.VIDERHE.Support.Extend.Overlaying.Providers
 {
     public sealed class OverlayDescriptorProvider
     {
@@ -22,16 +22,16 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Overlaying.Providers
 
         private OverlayDescriptorProvider()
         {
-            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Overlaying,\\sVersion=")).ToArray();
+            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Overlaying,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IOverlayDescriptor).IsAssignableFrom(t));
+            SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, SmartSolucionesCuba.XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IOverlayDescriptor).IsAssignableFrom(t));
         }
 
         public IOverlayDescriptor[] GetDescriptors()
         {
             var result = new System.Collections.Generic.List<IOverlayDescriptor>();
 
-            result.AddRange(XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IOverlayDescriptor>());
+            result.AddRange(SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IOverlayDescriptor>());
 
             return result.ToArray();
         }

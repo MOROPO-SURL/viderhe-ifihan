@@ -4,13 +4,14 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
+namespace MOROPO.VIDERHE.Terminal.Player.Droid
 {
     [Activity(
         Label = "VIDERHE Player", 
         Icon = "@mipmap/ic_launcher",
         Theme = "@style/AppTheme.NoActionBar", 
         MainLauncher = false,
+        Exported = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     [IntentFilter(
         actions: new string[] { "android.intent.action.MAIN" },

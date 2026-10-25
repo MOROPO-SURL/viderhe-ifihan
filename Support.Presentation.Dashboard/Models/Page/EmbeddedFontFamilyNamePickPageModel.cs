@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.Page
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page
 {
-    public class EmbeddedFontFamilyNamePickPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class EmbeddedFontFamilyNamePickPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private bool hasMoreItems;
 

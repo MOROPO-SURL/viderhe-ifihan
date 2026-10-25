@@ -1,16 +1,18 @@
-﻿@model SmartSolucionesCuba.Viderhe.Cloud.Models.View.UserProfileViewModel
+﻿@model MOROPO.VIDERHE.Cloud.Models.View.UserProfileViewModel
 
 @{
-    ViewData["Heading"] = "Modificar Perfil de Usuario";
+    const string HEADING = "Modificar Perfil de Usuario";
 
-    ViewData["Title"] = ViewData["Heading"];
+    ViewData["Heading"] = HEADING;
+
+    ViewData["Title"] = HEADING;
 
     ViewData[BreadcrumbViewModel.BREADCRUMBS_MAP_KEY] = new List<BreadcrumbViewModel>
     {
         new BreadcrumbViewModel
         {
-            Caption = "<span class=\"mdi mdi-cogs\"></span> Inicio",
-            Url = "/"
+            Caption = "<i class=\"fas fa-fw fa-tachometer-alt\"></i> " + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
+            Url = Url.Action("Index", "Dashboard", new { Area = "management" })
         },
         new BreadcrumbViewModel
         {
@@ -19,24 +21,36 @@
         },
         new BreadcrumbViewModel
         {
-            Caption = ViewData["Heading"].ToString()
+            Caption = HEADING
         }
     };
 
-    Layout = "_UserAuthenticatedLayout";
+    Layout = "_BackendLayout";
 }
 
-<h3>Modificar Perfil de Usuario</h3>
+@section styles {
+    <style type="text/css">
+        #ImageFile {
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+    </style>
+}
+
+<h3>@HEADING</h3>
 <hr class="mb-4" />
 
-<form asp-action="edit">
-    <div class="row">            
-        <div class="col-md-6 mb-3">
-            <label class="control-label">@GlobalViewLocalizationHelper.Localize("Login")</label>
-            <input type="text" readonly="readonly" value="@User.Identity.Name" class="form-control" />
+<form asp-action="edit" enctype="multipart/form-data">
+    <div class="col-xl-10 col-lg-9 col-md-8 col-sm-8" style="margin-bottom: 20px;">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="control-label">@GlobalViewLocalizationHelper.Localize("Login")</label>
+                <input type="text" readonly="readonly" value="@User.Identity.Name" class="form-control" />
+            </div>
         </div>
     </div>
     <hr />
     <button type="submit" class="btn btn-primary">Modificar</button>
-    <a class="btn btn-light" asp-action="index">Cancelar</a>
+    <a class="btn btn-light" href="@Url.Action("index")">Cancelar</a>
 </form>

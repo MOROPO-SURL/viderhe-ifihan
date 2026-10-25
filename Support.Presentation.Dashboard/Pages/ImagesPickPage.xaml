@@ -2,14 +2,12 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.Page"
-    xmlns:views="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views"
+    xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page"
+    xmlns:views="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
-    mc:Ignorable="d"
-    x:Class="SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages.ImagesPickPage"
+    xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.ImagesPickPage"
     x:TypeArguments="pagemodels:ImagesPickPageModel"
     Title="Seleccionar Imágenes">
     <ContentPage.Resources>
@@ -79,12 +77,13 @@
                                             <RowDefinition />
                                             <RowDefinition Height="Auto" />
                                         </Grid.RowDefinitions>
-                                        <ContentView 
+                                        <ffimageloadingforms:CachedImage 
                                             Grid.Row="0"
                                             BackgroundColor="Black"
-                                            HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}">
-                                            <Image Source="{Binding Path=Model, Converter={StaticResource ImageViewModelToThumbnailImageSourceConverter}}" />
-                                        </ContentView>
+                                            HeightRequest="{Binding Source={x:RelativeSource Mode=Self}, Path=Width, Converter={StaticResource FractionConverter}, ConverterParameter=1.777777777777778}"
+                                            Source="{Binding Path=Model, Converter={StaticResource ImageViewModelToThumbnailImageSourceConverter}}"
+                                            CacheType="Disk"
+                                            CacheDuration="8760:00:00" />
                                         <BoxView 
                                             Grid.Row="0"
                                             Color="#99000000" 

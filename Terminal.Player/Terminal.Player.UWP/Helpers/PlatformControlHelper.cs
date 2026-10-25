@@ -6,9 +6,9 @@ using System.Threading;
 using Windows.Media.Devices;
 using Windows.UI.Core;
 
-[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Helpers.PlatformControlHelper))]
+[assembly: Xamarin.Forms.Dependency(typeof(MOROPO.VIDERHE.Terminal.Player.UWP.Helpers.PlatformControlHelper))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Helpers
+namespace MOROPO.VIDERHE.Terminal.Player.UWP.Helpers
 {
     public class PlatformControlHelper : Player.Helpers.Facade.IPlatformControlHelperFacade
     {

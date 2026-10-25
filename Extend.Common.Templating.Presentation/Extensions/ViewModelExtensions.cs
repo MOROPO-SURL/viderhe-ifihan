@@ -1,12 +1,15 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Extensions
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Extensions
 {
     public static class ViewModelExtensions
     {
-        public static Templating.Models.Context.ImageContextModel ToContextModel(this Support.Presentation.Models.View.ImageViewModel target)
+        public static ImageContextModel ToContextModel(this ImageViewModel target)
         {
             var sizes = target.Resolution.Split('x');
 
-            var result = new Templating.Models.Context.ImageContextModel
+            var result = new ImageContextModel
             {
                 Id = target.Id,
                 ThumbnailId = target.ThumbnailId,
@@ -20,11 +23,11 @@
 
             return result;
         }
-        public static Templating.Models.Context.VideoContextModel ToContextModel(this Support.Presentation.Models.View.VideoViewModel target)
+        public static VideoContextModel ToContextModel(this VideoViewModel target)
         {
             var sizes = target.FrameSize.Split('x');
 
-            var result = new Templating.Models.Context.VideoContextModel
+            var result = new VideoContextModel
             {
                 Id = target.Id,
                 CreateAt = target.CreateAt,

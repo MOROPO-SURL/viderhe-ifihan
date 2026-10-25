@@ -1,10 +1,17 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Support.Extend.Overlaying.Providers;
+using MOROPO.VIDERHE.Support.Extend.Providers;
+using MOROPO.VIDERHE.Support.Extend.Templating.Providers;
+using MOROPO.VIDERHE.Support.Extend.Transitioning.Providers;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageExtensionsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageExtensionsPageModel>
+    public partial class ManageExtensionsPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManageExtensionsPageModel>
     {
-        public ManageExtensionsPage() : base(new Models.Page.ManageExtensionsPageModel { IsBusy = true })
+        public ManageExtensionsPage() : base(new ManageExtensionsPageModel { IsBusy = true })
         {
             InitializeComponent();
 
@@ -30,13 +37,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 await System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(1));
 
-                return Managers.SessionManager.Instance.AccountExtensions.Select(item => new Models.View.ExtensionViewModel
+                return SessionManager.Instance.AccountExtensions.Select(item => new Models.View.ExtensionViewModel
                 {
-                    Descriptor = Support.Extend.Providers.ExtensionDescriptorProvider.Instance.GetDescriptorById(item.Id),
+                    Descriptor = ExtensionDescriptorProvider.Instance.GetDescriptorById(item.Id),
                     Enabled = item.Enabled,
-                    TemplateDescriptors = item.Templates.Select(t => Support.Extend.Templating.Providers.TemplateDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray(),
-                    TransitionDescriptors = item.Transitions.Select(t => Support.Extend.Transitioning.Providers.TransitionDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray(),
-                    OverlayDescriptors = item.Overlays.Select(t => Support.Extend.Overlaying.Providers.OverlayDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray()
+                    TemplateDescriptors = item.Templates.Select(t => TemplateDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray(),
+                    TransitionDescriptors = item.Transitions.Select(t => TransitionDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray(),
+                    OverlayDescriptors = item.Overlays.Select(t => OverlayDescriptorProvider.Instance.GetDescriptorById(t.Id)).ToArray()
                 }).ToArray();
             }).ContinueWith(task =>
             {
@@ -46,7 +53,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {

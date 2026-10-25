@@ -1,111 +1,116 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation</RootNamespace>
-    <Version>0.3.0.0</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>2.1.0</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj" />
-    <ProjectReference Include="..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj" />
-    <ProjectReference Include="..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj" />
-    <ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Extend.Common.Templating.Dashboard.Presentation\Extend.Common.Templating.Dashboard.Presentation.csproj" />
+		<ProjectReference Include="..\Extend.Essential.Transitioning\Extend.Essential.Transitioning.csproj" />
+		<ProjectReference Include="..\Extend.Essential.Templating.Presentation\Extend.Essential.Templating.Presentation.csproj" />
+		<ProjectReference Include="..\Support.Presentation.Dashboard\Support.Presentation.Dashboard.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="LocalizedResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>LocalizedResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\LandscapePicturePresentingPicturePlacardConfigurationPage.xaml.cs">
-      <DependentUpon>LandscapePicturePresentingPicturePlacardConfigurationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\LandscapePicturePresentingVideoPlacardConfigurationPage.xaml.cs">
-      <DependentUpon>LandscapePicturePresentingVideoPlacardConfigurationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\PictureSlideSecuencePlacardConfigurationPage.xaml.cs">
-      <DependentUpon>PictureSlideSecuencePlacardConfigurationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\PrePickVideoPage.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <Compile Update="Views\LandscapePicturePresentingPicturePlacardThumbnailView.xaml.cs">
-      <DependentUpon>LandscapePicturePresentingPicturePlacardThumbnailView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\LandscapePicturePresentingVideoPlacardThumbnailView.xaml.cs">
-      <DependentUpon>LandscapePicturePresentingVideoPlacardThumbnailView.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="LocalizedResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>LocalizedResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\LandscapePicturePresentingPicturePlacardConfigurationPage.xaml.cs">
+			<DependentUpon>LandscapePicturePresentingPicturePlacardConfigurationPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\LandscapePicturePresentingVideoPlacardConfigurationPage.xaml.cs">
+			<DependentUpon>LandscapePicturePresentingVideoPlacardConfigurationPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\PictureSlideSecuencePlacardConfigurationPage.xaml.cs">
+			<DependentUpon>PictureSlideSecuencePlacardConfigurationPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Pages\PrePickVideoPage.xaml.cs">
+			<DependentUpon>%(Filename)</DependentUpon>
+		</Compile>
+		<Compile Update="Views\LandscapePicturePresentingPicturePlacardThumbnailView.xaml.cs">
+			<DependentUpon>LandscapePicturePresentingPicturePlacardThumbnailView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\LandscapePicturePresentingVideoPlacardThumbnailView.xaml.cs">
+			<DependentUpon>LandscapePicturePresentingVideoPlacardThumbnailView.xaml</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="LocalizedResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\CreateSimpleVideoPlacardPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\EditSimpleVideoPlacardPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\LandscapePicturePresentingPicturePlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\LandscapePicturePresentingPictureSlideSecuencePlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\LandscapePicturePresentingVideoPlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PictureSlideSecuencePlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PortraitPicturePresentingPicturePlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\PortraitPicturePresentingVideoPlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Pages\SimplePicturePlacardConfigurationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapePicturePresentingPicturePlacardThumbnailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapePicturePresentingPictureSlideSecuencePlacardThumbnailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\LandscapePicturePresentingVideoPlacardThumbnailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PictureSecuencePlacardThumbnailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PortraitPicturePresentingPicturePlacardThumbnailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PortraitPicturePresentingPictureSlideSecuencePlacardThumbnailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\PortraitPicturePresentingVideoPlacardThumbnailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SimplePicturePlacardThumbnailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SimpleVideoPlacardThumbnailView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="LocalizedResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>LocalizedResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\CreateSimpleVideoPlacardPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\EditSimpleVideoPlacardPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\LandscapePicturePresentingPicturePlacardConfigurationPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\LandscapePicturePresentingPictureSlideSecuencePlacardConfigurationPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\LandscapePicturePresentingVideoPlacardConfigurationPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\PictureSlideSecuencePlacardConfigurationPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\PortraitPicturePresentingPicturePlacardConfigurationPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\PortraitPicturePresentingPictureSlideSecuencePlacardConfigurationPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\PortraitPicturePresentingVideoPlacardConfigurationPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Pages\SimplePicturePlacardConfigurationPage.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapePicturePresentingPicturePlacardThumbnailView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapePicturePresentingPictureSlideSecuencePlacardThumbnailView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\LandscapePicturePresentingVideoPlacardThumbnailView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\PictureSecuencePlacardThumbnailView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\PortraitPicturePresentingPicturePlacardThumbnailView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\PortraitPicturePresentingPictureSlideSecuencePlacardThumbnailView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\PortraitPicturePresentingVideoPlacardThumbnailView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SimplePicturePlacardThumbnailView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\SimpleVideoPlacardThumbnailView.xaml">
+			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.11" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />
+	</ItemGroup>
 </Project>

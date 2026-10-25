@@ -2,21 +2,23 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Models.Page"
-    xmlns:commonconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Dashboard.Presentation"
-    xmlns:supportpresentationdashboardvalidators="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
-    xmlns:supportpresentationdashboardbehaviors="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Behaviors;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
-    xmlns:supportpresentationdashboardpresenters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Presenters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
-    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Models.Page"
+    xmlns:converters="clr-namespace:MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Converters"
+    xmlns:commonconverters="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Converters;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation"
+    xmlns:supportpresentationdashboardvalidators="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardbehaviors="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardpresenters="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardviews="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Pages.EditSimpleVideoPlacardPage"
+    x:Class="MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Pages.EditSimpleVideoPlacardPage"
     x:TypeArguments="pagemodels:EditSimpleVideoPlacardPageModel"
     x:Name="FormPage"
     Title="Modificando Cartel (Video Simple)">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <converters:StringToLocalizeStringConverter x:Key="LocalStringToLocalizeStringConverter" />
             <commonconverters:StringToLocalizeStringConverter x:Key="CommonStringToLocalizeStringConverter" />
             <sscxftoolkitpresentationconverters:FractionConverter x:Key="FractionConverter" />
             <sscxftoolkitpresentationconverters:BoolToBoolNegationConverter x:Key="BoolToBoolNegationConverter" />
@@ -280,7 +282,19 @@
                         </StackLayout>
                     </Frame>
                     <Frame 
-                        Grid.ColumnSpan="3" Grid.Row="5"
+                        Grid.Column="2" Grid.Row="5"
+                        Style="{StaticResource FormFieldFrame}"
+                        VerticalOptions="Start">
+                        <StackLayout>
+                            <Label Text="Relación de Aspecto" Style="{StaticResource FormLabel}" />
+                            <Picker 
+                                ItemsSource="{Binding Path=AvailableVideoStrechAspectKinds}" 
+                                SelectedItem="{Binding Path=StrechAspectKind}"
+                                ItemDisplayBinding="{Binding Converter={StaticResource LocalStringToLocalizeStringConverter}}"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame 
+                        Grid.ColumnSpan="2" Grid.Row="5"
                         VerticalOptions="Start"
                         Style="{StaticResource FormFieldFrame}"
                         Padding="0">

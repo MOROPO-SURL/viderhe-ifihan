@@ -1,15 +1,21 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+﻿using MOROPO.VIDERHE.Support.Presentation.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class UserAuthenticationPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.UserAuthenticationPageModel>
+    public partial class UserAuthenticationPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<UserAuthenticationPageModel>
     {
-        public UserAuthenticationPage() : base(new Models.Page.UserAuthenticationPageModel { 
-            TargetCloudHostName = Support.Presentation.Managers.SessionMemoryManager.Instance.Server,
-            TargetCloudProtocolIndex = Support.Presentation.Managers.SessionMemoryManager.Instance.UseSSL ? 0 : 1
+        public UserAuthenticationPage() : base(new UserAuthenticationPageModel
+        { 
+            TargetCloudHostName = SessionMemoryManager.Instance.Server,
+            TargetCloudProtocolIndex = SessionMemoryManager.Instance.UseSSL ? 0 : 1
         })
         {
             InitializeComponent();
 
-            CopyRightLabel.Text = string.Format("© 2022 - {0} Todos los derechos reservados", System.DateTime.Now.Year);
+            CopyRightLabel.Text = string.Format("© 2022 - {0} Todos los derechos reservados", System.DateTime.Now.Year < 2024 ? 2024 : System.DateTime.Now.Year);
         }
 
         protected override bool OnBackButtonPressed()
@@ -20,7 +26,7 @@
                 {
                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                     {
-                        Xamarin.Forms.DependencyService.Get<Managers.Facade.IApplicationManagerFacade>().Quit();
+                        Xamarin.Forms.DependencyService.Get<IApplicationManagerFacade>().Quit();
                     });
                 }
             });
@@ -32,7 +38,7 @@
         {
             BindingContextPageModel.IsBusy = true;
 
-            Managers.SessionManager.Instance.SignInAsync(BindingContextPageModel.TargetCloudHostName, BindingContextPageModel.TargetCloudProtocolIndex == 0, BindingContextPageModel.UserName, BindingContextPageModel.Password, SignIn_Callback).ContinueWith(task =>
+            SessionManager.Instance.SignInAsync(BindingContextPageModel.TargetCloudHostName, BindingContextPageModel.TargetCloudProtocolIndex == 0, BindingContextPageModel.UserName, BindingContextPageModel.Password, SignIn_Callback).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -57,9 +63,9 @@
                             {
                                 message = "No se puede acceder al servidor. Revise su conexión de red y/o la disponibilidad del servicio.";
                             }
-                            else if (targetException is MOROPO.SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException)
+                            else if (targetException is Framework.Guama.Core.Presentation.API.Connect.UnspectedHttpStatusException)
                             {
-                                var unspectedHttpStatus = (targetException as MOROPO.SAPRESSC.Core.Api.Connect.UnspectedHttpStatusException).HttpStatusCode;
+                                var unspectedHttpStatus = (targetException as Framework.Guama.Core.Presentation.API.Connect.UnspectedHttpStatusException).HttpStatusCode;
 
                                 if (unspectedHttpStatus == System.Net.HttpStatusCode.BadRequest)
                                 {
@@ -80,7 +86,7 @@
                             }
                             else
                             {
-                                var nativeMessage = Xamarin.Forms.DependencyService.Get<Managers.Facade.IApplicationManagerFacade>().GetUnhandleExceptionMessage(targetException);
+                                var nativeMessage = Xamarin.Forms.DependencyService.Get<IApplicationManagerFacade>().GetUnhandleExceptionMessage(targetException);
 
                                 if (nativeMessage != null) message = nativeMessage;
                             }

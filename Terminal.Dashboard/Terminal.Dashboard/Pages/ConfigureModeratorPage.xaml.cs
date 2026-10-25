@@ -1,20 +1,29 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Behaviors.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages.Contract;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Factories;
+using MOROPO.VIDERHE.Terminal.Dashboard.Helpers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ConfigureModeratorPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ConfigureModeratorPageModel>, Support.Presentation.Dashboard.Pages.Contract.IValidableFormPage
+    public partial class ConfigureModeratorPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ConfigureModeratorPageModel>, IValidableFormPage
     {
-        private readonly System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior> validationBehaviors;
+        private readonly System.Collections.Generic.List<IFormFieldValidationBehavior> validationBehaviors;
 
         private System.Action successCallbackAction;
 
         private bool hasChangesFlag;
         private byte[] imagePickedData;
 
-        public ConfigureModeratorPage(System.Action successCallbackAction, Models.View.ModeratorViewModel target = null)
-            : base(Factories.ConfigureModeratorPageModelFactory.Build(target))
+        public ConfigureModeratorPage(System.Action successCallbackAction, ModeratorViewModel target = null)
+            : base(ConfigureModeratorPageModelFactory.Build(target))
         {
-            validationBehaviors = new System.Collections.Generic.List<Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior>();
+            validationBehaviors = new System.Collections.Generic.List<IFormFieldValidationBehavior>();
 
             this.successCallbackAction = successCallbackAction;
 
@@ -78,7 +87,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             System.Threading.Tasks.Task.Run(async () =>
             {
-                var client = new Cloud.Api.Connect.Clients.ModeratorsApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.ModeratorsApiConnectClient(SessionManager.Instance);
 
                 if (BindingContextPageModel.TargetId != default)
                 {
@@ -162,7 +171,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     if (task.Exception == null && !task.IsCanceled)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
 
                         this.NavigationPopPageAsync();
 
@@ -172,7 +181,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         BindingContextPageModel.IsBusy = false;
 
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                 });
             });
@@ -202,9 +211,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (!Xamarin.Essentials.MediaPicker.IsCaptureSupported) PresentForImagePick();
 
-            var action = await DisplayActionSheet("Seleccionar Imágen de Perfil desde", "Cancelar", null, Helpers.ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_CAMARA, Helpers.ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_GALLERY);
+            var action = await DisplayActionSheet("Seleccionar Imágen de Perfil desde", "Cancelar", null, ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_CAMARA, ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_GALLERY);
 
-            if (action == Helpers.ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_CAMARA)
+            if (action == ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_CAMARA)
             {
                 var permission = await Xamarin.Essentials.Permissions.CheckStatusAsync<Xamarin.Essentials.Permissions.Camera>();
 
@@ -245,7 +254,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 await Xamarin.Essentials.MediaPicker.CapturePhotoAsync().ContinueWith(PickedImageContinuationTask);
             }
-            else if (action == Helpers.ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_GALLERY)
+            else if (action == ConstantProvisioningHelper.ACTIONSHEET_PICKIMAGE_OPTION_GALLERY)
             {
                 PresentForImagePick();
             }
@@ -371,12 +380,12 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         #region IValidableFormPage implementation
 
-        public void AddValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void AddValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Add(validationBehavior);
         }
 
-        public void RemoveValidationBehavior(Support.Presentation.Dashboard.Behaviors.Contract.IFormFieldValidationBehavior validationBehavior)
+        public void RemoveValidationBehavior(IFormFieldValidationBehavior validationBehavior)
         {
             validationBehaviors.Remove(validationBehavior);
         }

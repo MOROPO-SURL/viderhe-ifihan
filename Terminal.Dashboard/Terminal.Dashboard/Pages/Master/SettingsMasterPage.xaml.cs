@@ -1,8 +1,9 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Master
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages.Master
 {
-    public partial class SettingsMasterPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.SettingsMasterPageModel>
+    public partial class SettingsMasterPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<SettingsMasterPageModel>
     {
         public SettingsMasterPage() : base(new Models.Page.SettingsMasterPageModel())
         {

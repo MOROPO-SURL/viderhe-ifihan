@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class Placard : MOROPO.SAPRESSC.Core.Persistence.Entities.IEntity<System.Guid>
+    public class Placard : Framework.Guama.Core.Persistence.Entities.Contract.IEntity<System.Guid>
     {
         public Placard()
         {
@@ -45,7 +46,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
         [Required]
         public string SerializedContext { get; set; }
 
-        public Enumerations.PlacardComplementationKind? ComplementationKind { get; set; }
+        public PlacardComplementationKind? ComplementationKind { get; set; }
 
         public string SerializedComplementation { get; set; }
 

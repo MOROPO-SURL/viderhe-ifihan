@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Pages
+﻿namespace MOROPO.VIDERHE.Terminal.Player.Pages
 {
     public partial class StartingPage : Xamarin.Forms.ContentPage
     {

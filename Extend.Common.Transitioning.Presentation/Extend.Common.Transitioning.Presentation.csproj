@@ -1,18 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Extend.Common.Transitioning.Presentation</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>2.0.11</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Extend.Common.Presentation\Extend.Common.Presentation.csproj" />
-    <ProjectReference Include="..\Extend.Common.Transitioning\Extend.Common.Transitioning.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Extend.Common.Presentation\Extend.Common.Presentation.csproj" />
+		<ProjectReference Include="..\Extend.Common.Transitioning\Extend.Common.Transitioning.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="SSCXFToolKit.Presentation.Transform" Version="0.3.0-alpha" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="SSCXFToolKit.Presentation.Transform" Version="0.3.0-alpha" />
+	</ItemGroup>
 
 </Project>

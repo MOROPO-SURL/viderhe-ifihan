@@ -3,11 +3,11 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:renderedviews="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Player.Views.Rendered"
-    xmlns:commontemplatingpresentationconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Converters;assembly=SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation"
-    xmlns:supportpresentationviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation"
+    xmlns:renderedviews="clr-namespace:MOROPO.VIDERHE.Terminal.Player.Views.Rendered"
+    xmlns:commontemplatingpresentationconverters="clr-namespace:MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Converters;assembly=MOROPO.VIDERHE.Extend.Common.Templating.Presentation"
+    xmlns:supportpresentationviews="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Views;assembly=MOROPO.VIDERHE.Support.Presentation"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Player.Pages.MainPage"
+    x:Class="MOROPO.VIDERHE.Terminal.Player.Pages.MainPage"
     BackgroundColor="#00162c"
     ios:Page.PrefersStatusBarHidden="True">
     <ContentPage.Resources>
@@ -47,7 +47,7 @@
                     WidthRequest="{Binding Source=240, Converter={StaticResource SizeToRelativeValueConverter}, Mode=OneTime}"
                     Aspect="AspectFit"
                     LoadingDelay="600"
-                    Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Player.Assets.Image.viderhe-identity-high-contrast-light.svg" />
+                    Source="resource://MOROPO.VIDERHE.Terminal.Player.Assets.Image.viderhe-identity-high-contrast-light.svg" />
                 <Label
                     x:Name="StepTitleLabel"
                     Grid.Column="1" Grid.Row="0"
@@ -82,7 +82,7 @@
                     <ffimageloadingsvg:SvgCachedImage
                         Aspect="AspectFit"
                         LoadingDelay="1200"
-                        Source="resource://SmartSolucionesCuba.Viderhe.Terminal.Player.Assets.Image.moropo-logo-light.svg"
+                        Source="resource://MOROPO.VIDERHE.Terminal.Player.Assets.Image.moropo-logo-light.svg"
                         Finish="BrandingSvgCachedImage_Finish" />
                     <Label 
                         x:Name="CopyRightLabel"

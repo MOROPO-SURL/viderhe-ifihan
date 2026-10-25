@@ -1,15 +1,17 @@
-﻿using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+﻿using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Transitions.Contract;
+using MOROPO.VIDERHE.Extend.Essential.Transitioning.Presentation.Models.Context;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentation.Transitions
+namespace MOROPO.VIDERHE.Extend.Essential.Transitioning.Presentation.Transitions
 {
-    public class ZoomInTransition : Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition
+    public class ZoomInTransition : AbstractTransition
     {
-        private Models.Context.ZoomInTransitionContextModel context;
+        private ZoomInTransitionContextModel context;
 
         private AbstractAnimation factShowInAnimation;
 
-        public ZoomInTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.ZoomInTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
+        public ZoomInTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, ZoomInTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
         {
             this.context = context;
         }

@@ -1,15 +1,18 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Pages
 {
-    public partial class TextPickPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.TextPickPageModel>
+    public partial class TextPickPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<TextPickPageModel>
     {
-        private System.Action<Models.View.TextViewModel> itemPickedCallbackAction;
+        private System.Action<TextViewModel> itemPickedCallbackAction;
 
         private int currentItemsPageNumber;
 
-        public TextPickPage(System.Action<Models.View.TextViewModel> itemPickedCallbackAction)
-            : base(new Models.Page.TextPickPageModel
+        public TextPickPage(System.Action<TextViewModel> itemPickedCallbackAction)
+            : base(new TextPickPageModel
             {
                 IsBusy = true
             })
@@ -36,7 +39,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
         {
             BindingContextPageModel.IsBusy = true;
 
-            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.TextViewModel;
+            var targetModel = (sender as Xamarin.Forms.BindableObject).BindingContext as TextViewModel;
 
             itemPickedCallbackAction.Invoke(targetModel);
 
@@ -54,7 +57,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
             if (restart) currentItemsPageNumber = 0;
 
-            var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+            var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
             apiConnectClient.GetPaginateAsync(++currentItemsPageNumber).ContinueWith(task =>
             {
@@ -64,7 +67,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
                     if (task.Exception != null)
                     {
-                        Xamarin.Forms.DependencyService.Get<Presentation.Helpers.Facade.IExceptionHandleHelperFacade>().HandleException(task.Exception);
+                        Xamarin.Forms.DependencyService.Get<IExceptionHandleHelperFacade>().HandleException(task.Exception);
                     }
                     else
                     {
@@ -75,7 +78,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Pages
 
                         foreach (var item in task.Result.List)
                         {
-                            BindingContextPageModel.Items.Add(new Models.View.TextViewModel
+                            BindingContextPageModel.Items.Add(new TextViewModel
                             {
                                 Id = item.Id,
                                 About = item.About,

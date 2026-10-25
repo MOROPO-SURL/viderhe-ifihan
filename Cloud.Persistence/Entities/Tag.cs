@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+﻿namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class Tag : MOROPO.SAPRESSC.Core.Persistence.Entities.INamedEntity<System.Guid>
+    public class Tag : Framework.Guama.Core.Persistence.Entities.Contract.INamedEntity<System.Guid>
     {
         public Tag()
         {

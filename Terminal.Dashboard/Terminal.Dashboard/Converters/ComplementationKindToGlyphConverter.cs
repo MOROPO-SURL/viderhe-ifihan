@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Converters
 {
     public class ComplementationKindToGlyphConverter : Xamarin.Forms.IValueConverter
     {
@@ -6,14 +8,14 @@
         {
             if (value == null) return null;
 
-            var target = (Cloud.Persistence.Enumerations.PlacardComplementationKind)value;
+            var target = (PlacardComplementationKind)value;
 
             switch (target)
             {
-                case Cloud.Persistence.Enumerations.PlacardComplementationKind.Video:
+                case PlacardComplementationKind.Video:
                     return "\uFCF5";
 
-                case Cloud.Persistence.Enumerations.PlacardComplementationKind.Sound:
+                case PlacardComplementationKind.Sound:
                     return "\uF333";
 
                 default:

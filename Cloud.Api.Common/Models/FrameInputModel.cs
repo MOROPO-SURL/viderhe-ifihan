@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Models
 {
-    public class FrameInputModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Frame, long>
+    public class FrameInputModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Frame, long>
     {
         public long Id { get; set; }
 
@@ -15,16 +16,16 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
         [Required, Range(1, 10)]
         public int Priority { get; set; }
 
-        public Persistence.Entities.Frame Export()
+        public Frame Export()
         {
-            var entity = new Persistence.Entities.Frame();
+            var entity = new Frame();
 
             Mergue(entity);
 
             return entity;
         }
 
-        public void Import(Persistence.Entities.Frame entity)
+        public void Import(Frame entity)
         {
             Id = entity.Id;
             ScreenplayId = entity.ScreenplayId;
@@ -32,7 +33,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Models
             Priority = entity.Priority;
         }
 
-        public void Mergue(Persistence.Entities.Frame entity)
+        public void Mergue(Frame entity)
         {
             entity.Priority = Priority;
         }

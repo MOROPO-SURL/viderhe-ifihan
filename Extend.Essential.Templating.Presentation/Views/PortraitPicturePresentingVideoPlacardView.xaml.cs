@@ -1,10 +1,14 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Views
-{
-    public partial class PortraitPicturePresentingVideoPlacardView : Common.Templating.Presentation.Views.BaseTemplatedPlacardPresentationView
-    {
-        private Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views;
+using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Transitions.Contract;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Enumerations;
 
-        public PortraitPicturePresentingVideoPlacardView(Models.View.PortraitPicturePresentingVideoPlacardViewModel model)
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Views
+{
+    public partial class PortraitPicturePresentingVideoPlacardView : BaseTemplatedPlacardPresentationView
+    {
+        private AbstractTransition transition;
+
+        public PortraitPicturePresentingVideoPlacardView(Models.View.PortraitPicturePresentingVideoPlacardViewModel model, double relativeSizeScaleFactor) : base(relativeSizeScaleFactor)
         {
             InitializeComponent();
 
@@ -23,15 +27,15 @@
 
         private void VideoPlayer_StatusUpdated(object sender, System.EventArgs eventArgs)
         {
-            var videoPlayer = sender as XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
+            var videoPlayer = sender as SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoPlayerView;
 
-            if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
+            if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
             {
                 videoPlayer.StatusUpdated -= VideoPlayer_StatusUpdated;
 
                 EndPresentation();
             }
-            else if (videoPlayer.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            else if (videoPlayer.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
                 transition?.PerformMotion();
 
@@ -39,9 +43,9 @@
             }
         }
 
-        public override void StartShowInWhenReady(Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition transition)
+        public override void StartShowInWhenReady(AbstractTransition transition)
         {
-            if (PresentedVideo.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            if (PresentedVideo.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
                 base.StartShowInWhenReady(transition);
 
@@ -59,7 +63,7 @@
 
             var height = PlacardLayout.Width * model.PresenterImageHeigth / model.PresenterImageWidth;
 
-            if (model.PresenterSide == Enumerations.PortraitPresentationSide.Top)
+            if (model.PresenterSide == PortraitPresentationSide.Top)
             {
                 PresenterImage.TranslationY = height * -1;
             }
@@ -70,26 +74,26 @@
 
             PresenterImage.IsVisible = true;
 
-            var internalShowInStoryboard = new XFToolKit.Presentation.Transform.Animations.Storyboard
+            var internalShowInStoryboard = new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Storyboard
             {
                 Delay = "2000",
                 IsParallel = true
             };
 
-            internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
+            internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
             {
                 Target = PresenterImage,
                 TranslateY = 0,
-                EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut
+                EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut
             });
 
             if (model.PresentedVideoCenteredAtPresentation)
             {
-                internalShowInStoryboard.Animations.Add(new XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
+                internalShowInStoryboard.Animations.Add(new SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.TranslateToYAnimation
                 {
                     Target = PresentedVideo,
-                    TranslateY = model.PresenterSide == Enumerations.PortraitPresentationSide.Top ? height / 2 : height / 2 * -1,
-                    EasingType = XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
+                    TranslateY = model.PresenterSide == PortraitPresentationSide.Top ? height / 2 : height / 2 * -1,
+                    EasingType = SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.EasingType.CubicOut,
                     Delay = "100"
                 });
             }
@@ -101,7 +105,7 @@
         {
             base.DisposeUnmanagementResources();
 
-            if (PresentedVideo.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            if (PresentedVideo.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
                 PresentedVideo.StatusUpdated -= VideoPlayer_StatusUpdated;
 

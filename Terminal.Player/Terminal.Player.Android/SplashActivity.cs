@@ -1,6 +1,6 @@
 ﻿using Android.App;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
+namespace MOROPO.VIDERHE.Terminal.Player.Droid
 {
     [Activity(
         Theme = "@style/AppTheme.Splash", 
@@ -13,7 +13,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid
         {
             base.OnResume();
 
-            System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(3)).ContinueWith(_ =>
+            System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(2)).ContinueWith(_ =>
             {
                 StartActivity(new Android.Content.Intent(Application.Context, typeof(MainActivity)));
             });

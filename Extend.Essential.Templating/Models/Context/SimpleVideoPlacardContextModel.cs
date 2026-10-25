@@ -1,7 +1,16 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Models.Context
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context
 {
-    public class SimpleVideoPlacardContextModel : Common.Templating.Models.Context.AbstractPlacardContextModel
+    public class SimpleVideoPlacardContextModel : AbstractPlacardContextModel
     {
-        public Common.Templating.Models.Context.VideoContextModel Video { get; set; }
+        public SimpleVideoPlacardContextModel()
+        {
+            StrechAspectKind = Enumerations.VideoStrechAspectKind.AspectFill;
+        }
+
+        public VideoContextModel Video { get; set; }
+
+        public Enumerations.VideoStrechAspectKind StrechAspectKind { get; set; }
     }
 }

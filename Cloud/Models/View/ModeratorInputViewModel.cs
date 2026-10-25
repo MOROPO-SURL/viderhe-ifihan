@@ -1,10 +1,11 @@
-﻿using MOROPO.SAPRESSC.Core.Web.Common.ComponentModel.DataAnnotations;
-using MOROPO.SAPRESSC.Middleware.Media.Web.Common.Extensions;
+﻿using MOROPO.Framework.Guama.Core.Presentation.Web.Common.ComponentModel.DataAnnotations;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
 using System.ComponentModel.DataAnnotations;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
+namespace MOROPO.VIDERHE.Cloud.Models.View
 {
-    public class ModeratorInputViewModel : MOROPO.SAPRESSC.Core.Persistence.Models.IEntityInputModel<Persistence.Entities.Moderator, System.Guid>
+    public class ModeratorInputViewModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Moderator, System.Guid>
     {
         public ModeratorInputViewModel()
         {
@@ -38,10 +39,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
         public System.DateTime? BornDate { get; set; }
 
         [Display(Name = "CivilStatus")]
-        public MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.CivilStatus CivilStatus { get; set; }
+        public Framework.Guama.Identity.Persistence.Enumerations.CivilStatus CivilStatus { get; set; }
 
         [Display(Name = "Sex")]
-        public MOROPO.SAPRESSC.Middleware.Identity.Persistence.Enumerations.Sex Sex { get; set; }
+        public Framework.Guama.Identity.Persistence.Enumerations.Sex Sex { get; set; }
 
         [Display(Name = "About")]
         public string About { get; set; }
@@ -57,12 +58,12 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
 
         public string ImageExtension { get; set; }
 
-        public Persistence.Entities.Moderator Export()
+        public Moderator Export()
         {
-            var entity = new Persistence.Entities.Moderator
+            var entity = new Moderator
             {
                 UserId = UserId,
-                ModerationKind = Persistence.Enumerations.ModerationKind.Privileged
+                ModerationKind = ModerationKind.Privileged
             };
 
             Mergue(entity);
@@ -70,7 +71,7 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
             return entity;
         }
 
-        public void Import(Persistence.Entities.Moderator entity)
+        public void Import(Moderator entity)
         {
             Id = entity.Id;
             UserId = entity.UserId;
@@ -82,10 +83,10 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Models.View
             Sex = entity.Identity.Sex;
             About = entity.Identity.About;
             ImageId = entity.Identity.ImageId ?? System.Guid.Empty;
-            ImageExtension = entity.Identity.Image?.ContentType.ContentTypeToExtension() ?? null;
+            ImageExtension = entity.Identity.Image == null ? null : MimeTypes.MimeTypeMap.GetExtension(entity.Identity.Image.ContentType);
         }
 
-        public void Mergue(Persistence.Entities.Moderator entity)
+        public void Mergue(Moderator entity)
         {
             entity.Identity.Name = Name;
             entity.Identity.LastName = LastName;

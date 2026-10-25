@@ -1,9 +1,19 @@
-﻿using System.Linq;
+﻿using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views
 {
-    public class BaseTemplatedPlacardPresentationView : Common.Presentation.Views.BasePlacardPresentationView, Contract.IRelativeDimensionScalable
+    public class BaseTemplatedPlacardPresentationView : Common.Presentation.Views.BasePlacardPresentationView, IRelativeSizeScalableViewFacade
     {
+        public BaseTemplatedPlacardPresentationView(double relativeSizeScaleFactor)
+        {
+            RelativeSizeScaleFactor = relativeSizeScaleFactor;
+        }
+
         public Xamarin.CommunityToolkit.UI.Views.MediaElement SoundComplementMediaElement;
 
         public virtual void StartShowInWhenReady(Transitioning.Presentation.Transitions.Contract.AbstractTransition transition)
@@ -15,9 +25,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.View
         {
             PerformPlacardStarup();
 
-            if ((BindingContext as Models.View.AbstractPlacardViewModel).ComplementationKind == Cloud.Persistence.Enumerations.PlacardComplementationKind.Sound)
+            if ((BindingContext as AbstractPlacardViewModel).ComplementationKind == PlacardComplementationKind.Sound)
             {
-                var model = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.SoundComplementContextModel>((BindingContext as Models.View.AbstractPlacardViewModel).SerializedComplementation);
+                var model = Newtonsoft.Json.JsonConvert.DeserializeObject<SoundComplementContextModel>((BindingContext as AbstractPlacardViewModel).SerializedComplementation);
 
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(model.Delay)).ContinueWith(_ =>
                 {
@@ -30,18 +40,18 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.View
                             Opacity = Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android ? 0 : 1,
                             AutoPlay = true,
                             ShowsPlaybackControls = false,
-                            Source = Xamarin.CommunityToolkit.Core.MediaSource.FromUri(Support.Presentation.Factories.SoundUriFactory.BuildUri(model.Sound.Id, model.Sound.Extension))
+                            Source = Xamarin.CommunityToolkit.Core.MediaSource.FromUri(SoundUriFactory.BuildUri(model.Sound.Id, model.Sound.Extension))
                         };
 
                         ConfigureLayout(SoundComplementMediaElement);
 
                         WrapLayout.Children.Add(SoundComplementMediaElement);
-                    });                  
-                });            
+                    });
+                });
             }
-            else if ((BindingContext as Models.View.AbstractPlacardViewModel).ComplementationKind == Cloud.Persistence.Enumerations.PlacardComplementationKind.Video)
+            else if ((BindingContext as AbstractPlacardViewModel).ComplementationKind == PlacardComplementationKind.Video)
             {
-                var model = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.VideoComplementContextModel>((BindingContext as Models.View.AbstractPlacardViewModel).SerializedComplementation);
+                var model = Newtonsoft.Json.JsonConvert.DeserializeObject<VideoComplementContextModel>((BindingContext as AbstractPlacardViewModel).SerializedComplementation);
 
                 System.Threading.Tasks.Task.Delay(System.TimeSpan.FromSeconds(model.Delay)).ContinueWith(_ =>
                 {
@@ -56,9 +66,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.View
                 });
             }
 
-            if (!(BindingContext is Models.View.AbstractScreenTimedPlacardViewModel) || (BindingContext as Models.View.AbstractScreenTimedPlacardViewModel).ScreenPresentationTime <= System.TimeSpan.Zero) return;
+            if (!(BindingContext is AbstractScreenTimedPlacardViewModel) || (BindingContext as AbstractScreenTimedPlacardViewModel).ScreenPresentationTime <= System.TimeSpan.Zero) return;
 
-            Xamarin.Forms.Device.StartTimer((BindingContext as Models.View.AbstractScreenTimedPlacardViewModel).ScreenPresentationTime, () =>
+            Xamarin.Forms.Device.StartTimer((BindingContext as AbstractScreenTimedPlacardViewModel).ScreenPresentationTime, () =>
             {
                 if (BindingContext != null)
                 {
@@ -75,8 +85,10 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.View
         {
             base.DisposeUnmanagementResources();
 
-            if ((BindingContext as Models.View.AbstractPlacardViewModel).ComplementationKind == Cloud.Persistence.Enumerations.PlacardComplementationKind.Sound)
+            if ((BindingContext as AbstractPlacardViewModel).ComplementationKind == PlacardComplementationKind.Sound)
             {
+                if (SoundComplementMediaElement == null) return;
+
                 SoundComplementMediaElement.Stop();
 
                 SoundComplementMediaElement.Source = null;
@@ -85,7 +97,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.View
 
                 SoundComplementMediaElement = null;
             }
-            else if ((BindingContext as Models.View.AbstractPlacardViewModel).ComplementationKind == Cloud.Persistence.Enumerations.PlacardComplementationKind.Video)
+            else if ((BindingContext as AbstractPlacardViewModel).ComplementationKind == PlacardComplementationKind.Video)
             {
                 var complementVideoView = WrapLayout.Children.Last() as PlacardComplementVideoView;
 
@@ -95,9 +107,9 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.View
             }
         }
 
-        #region IRelativeDimensionScalable implementation
+        #region IRelativeSizeScalableViewFacade implementation
 
-        public double RelativeDeimensionScaleFactor { get; set; } = 1.0d;
+        public double RelativeSizeScaleFactor { get; }
 
         #endregion
     }

@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Security.Authorization
+﻿namespace MOROPO.VIDERHE.Cloud.Security.Authorization
 {
     public static class Policies
     {

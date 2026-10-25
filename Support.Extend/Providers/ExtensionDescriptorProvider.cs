@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Descriptors;
+﻿using MOROPO.VIDERHE.Extend.Common.Descriptors;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Extend.Providers
+namespace MOROPO.VIDERHE.Support.Extend.Providers
 {
     public sealed class ExtensionDescriptorProvider
     {
@@ -23,16 +23,16 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Providers
         private ExtensionDescriptorProvider()
         {
             var assemblies = System.AppDomain.CurrentDomain.GetAssemblies()
-                .Where(a => !a.FullName.Contains(".Viderhe.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+,\\sVersion=")).ToArray();
+                .Where(a => !a.FullName.Contains(".VIDERHE.Support.Extend") && System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IExtensionDescriptor).IsAssignableFrom(t));
+            SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, SmartSolucionesCuba.XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IExtensionDescriptor).IsAssignableFrom(t));
         }
 
         public IExtensionDescriptor[] GetDescriptors()
         {
             var result = new System.Collections.Generic.List<IExtensionDescriptor>();
 
-            result.AddRange(XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IExtensionDescriptor>());
+            result.AddRange(SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IExtensionDescriptor>());
 
             return result.ToArray();
         }

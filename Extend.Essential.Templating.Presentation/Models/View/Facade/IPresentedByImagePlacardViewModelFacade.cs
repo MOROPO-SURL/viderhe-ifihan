@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Models.View.Facade
+﻿namespace MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Models.View.Facade
 {
     public interface IPresentedByImagePlacardViewModelFacade
     {

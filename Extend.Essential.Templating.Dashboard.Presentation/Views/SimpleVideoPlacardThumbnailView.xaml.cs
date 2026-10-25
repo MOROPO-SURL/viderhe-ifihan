@@ -1,14 +1,18 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Views
 {
-    public partial class SimpleVideoPlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class SimpleVideoPlacardThumbnailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
-        public SimpleVideoPlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model)
+        public SimpleVideoPlacardThumbnailView(PlacardViewModel model)
         {
             InitializeComponent();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.SimpleVideoPlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<SimpleVideoPlacardContextModel>(model.SerializedContext);
 
-            Image.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.Video.ThumbnailId));
+            Image.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildVideoThumbnailUri(context.Video.Id));
 
             BindingContext = model;
         }

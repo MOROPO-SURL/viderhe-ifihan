@@ -1,21 +1,19 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+﻿namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class AccountExtensionBridge : MOROPO.SAPRESSC.Core.Persistence.Entities.IPersistenceSignable
+    public class AccountExtensionBridge : Framework.Guama.Core.Persistence.Entities.Contract.IBridge<Account, System.Guid, Extension, System.Guid>, Framework.Guama.Core.Persistence.Entities.Contract.IPersistenceSignable
     {
-        public System.Guid AccountId { get; set; }
+        public System.Guid ProwId { get; set; }
+        public Account Prow { get; set; }
 
-        public Account Account { get; set; }
-
-        public System.Guid ExtensionId { get; set; }
-
-        public Extension Extension { get; set; }
+        public System.Guid SternId { get; set; }
+        public Extension Stern { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
         public string Signature { get; set; }
 
         public object GetSignableEntityModel()
         {
-            return new { AccountId, ExtensionId };
+            return new { ProwId, SternId };
         }
     }
 }

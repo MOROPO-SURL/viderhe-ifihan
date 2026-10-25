@@ -1,17 +1,22 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.Essential.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Views
 {
-    public partial class PortraitPicturePresentingVideoPlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class PortraitPicturePresentingVideoPlacardThumbnailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
-        public PortraitPicturePresentingVideoPlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model)
+        public PortraitPicturePresentingVideoPlacardThumbnailView(PlacardViewModel model)
         {
             InitializeComponent();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.PortraitPicturePresentingVideoPlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PortraitPicturePresentingVideoPlacardContextModel>(model.SerializedContext);
 
-            PresentedVideoThumnailImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.PresentedVideo.ThumbnailId));
+            PresentedVideoThumnailImage.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildVideoThumbnailUri(context.PresentedVideo.Id));
 
-            PresenterImage.Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(context.PresenterImage.ThumbnailId));
-            PresenterImage.VerticalOptions = context.PresenterSide == Enumerations.PortraitPresentationSide.Top ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.End;
+            PresenterImage.Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildImageThumbnailUri(context.PresenterImage.Id));
+            PresenterImage.VerticalOptions = context.PresenterSide == PortraitPresentationSide.Top ? Xamarin.Forms.LayoutOptions.Start : Xamarin.Forms.LayoutOptions.End;
 
             BindingContext = model;
         }

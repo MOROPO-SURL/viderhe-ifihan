@@ -1,8 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Connect.Clients
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Api.Connect.Clients
 {
-    public class PlacardsApiConnectClient : MOROPO.SAPRESSC.Core.Api.Connect.Clients.AbstractEntityManagementFilteredApiConnectClient<Persistence.Entities.Placard, System.Guid, Common.Models.PlacardInputModel, Common.Models.PlacardDisplayModel, Common.Models.Filter.PlacardFilterModel>
+    public class PlacardsApiConnectClient : Framework.Guama.Core.Presentation.API.Connect.Clients.AbstractEntityManagementFilteredApiConnectClient<Placard, System.Guid, PlacardInputModel, PlacardDisplayModel, PlacardFilterModel>
     {
-        public PlacardsApiConnectClient(MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider) : base(httpClientHelperProvider)
+        public PlacardsApiConnectClient(Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade httpClientHelperProvider) : base(httpClientHelperProvider)
         {
         }
 

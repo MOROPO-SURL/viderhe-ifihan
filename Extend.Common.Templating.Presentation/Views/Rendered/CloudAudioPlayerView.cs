@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Rendered
+﻿namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Rendered
 {
     public class CloudAudioPlayerView
     {

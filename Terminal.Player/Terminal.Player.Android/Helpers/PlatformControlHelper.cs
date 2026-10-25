@@ -1,6 +1,6 @@
-﻿[assembly: Xamarin.Forms.Dependency(typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Helpers.PlatformControlHelper))]
+﻿[assembly: Xamarin.Forms.Dependency(typeof(MOROPO.VIDERHE.Terminal.Player.Droid.Helpers.PlatformControlHelper))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Helpers
+namespace MOROPO.VIDERHE.Terminal.Player.Droid.Helpers
 {
     public class PlatformControlHelper : Player.Helpers.Facade.IPlatformControlHelperFacade
     {
@@ -69,7 +69,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Droid.Helpers
 
         public void OpenSystemSettings()
         {
-             Android.App.Application.Context.StartActivity(new Android.Content.Intent(Android.Provider.Settings.ActionSettings));
+            var intent = new Android.Content.Intent(Android.Provider.Settings.ActionSettings);
+
+            intent.AddFlags(Android.Content.ActivityFlags.NewTask);
+
+            Android.App.Application.Context.StartActivity(intent);
         }
     }
 }
