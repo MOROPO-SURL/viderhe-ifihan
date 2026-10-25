@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Views
+﻿namespace MOROPO.VIDERHE.Terminal.Player.Views
 {
-	public partial class ConfigurationStepScreenplayFetchingDetailView : XFToolKit.Mvvm.Views.ContentView
+	public partial class ConfigurationStepScreenplayFetchingDetailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
 	{
 		public ConfigurationStepScreenplayFetchingDetailView()
 		{

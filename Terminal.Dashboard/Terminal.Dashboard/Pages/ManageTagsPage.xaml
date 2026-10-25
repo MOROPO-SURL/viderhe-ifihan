@@ -2,10 +2,13 @@
 <sscxftoolkitmvvmpages:TabbedPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:tabpages="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Tabs"
+    xmlns:tabpages="clr-namespace:MOROPO.VIDERHE.Terminal.Dashboard.Pages.Tabs"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageTagsPage"
+    x:Class="MOROPO.VIDERHE.Terminal.Dashboard.Pages.ManageTagsPage"
     Title="Etiquetas">
+    <tabpages:ManageImageTagsPage Title="Imágenes" />
+    <tabpages:ManageVideoTagsPage Title="Videos" />
+    <tabpages:ManageGradientTagsPage Title="Gradientes" />
     <tabpages:ManagePlayerTagsPage Title="Reproductores" />
     <tabpages:ManagePlacardTagsPage Title="Carteles" />
 </sscxftoolkitmvvmpages:TabbedPage>

@@ -1,16 +1,19 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Presentation.Views;
+﻿using MOROPO.VIDERHE.Extend.Common.Presentation.Views;
+using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Providers.Facade;
+using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Transitions.Contract;
+using MOROPO.VIDERHE.Extend.Essential.Transitioning.Presentation.Factories;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentation.Providers
+namespace MOROPO.VIDERHE.Extend.Essential.Transitioning.Presentation.Providers
 {
-    public class TransitionProvider : Common.Transitioning.Presentation.Providers.Facade.ITransitionProviderFacade
+    public class TransitionProvider : ITransitionProviderFacade
     {
-        public Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition GetFor(System.Guid transitionDescriptorId, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
+        public AbstractTransition GetFor(System.Guid transitionDescriptorId, BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
             // TODO Complete method implementation!!
             return null;
         }
 
-        public Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition GetRandom(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
+        public AbstractTransition GetRandom(BasePlacardPresentationView incomingPlacardPresentationView, BasePlacardPresentationView outgoingPlacardPresentationView, System.Action<BasePlacardPresentationView> motionCompletedActionCallback)
         {
             var randomizer = new System.Random();
 
@@ -19,19 +22,19 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
             switch (randomTransitionIndex)
             {
                 case 0:
-                    return Factories.RandomTransitionFactory.CreateFadeInTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+                    return RandomTransitionFactory.CreateFadeInTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
 
                 case 1:
                 case 2:
-                    return Factories.RandomTransitionFactory.CreateArriveTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+                    return RandomTransitionFactory.CreateArriveTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
 
                 case 3:
                 case 4:
-                    return Factories.RandomTransitionFactory.CreateCarouselTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+                    return RandomTransitionFactory.CreateCarouselTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
 
                 case 5:
                 default:
-                    return Factories.RandomTransitionFactory.CreateZoomInTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
+                    return RandomTransitionFactory.CreateZoomInTransition(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback);
             }
 
             throw new System.InvalidOperationException();

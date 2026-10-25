@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Descriptors
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
+
+namespace MOROPO.VIDERHE.Extend.Common.Templating.Descriptors
 {
     public interface ITemplateDescriptor
     {
@@ -6,7 +8,7 @@
 
         string Name { get; }
 
-        Enumerations.PlayerOrientationSupportKind PlayerOrientationSupport { get; }
+        PlayerOrientationSupportKind PlayerOrientationSupport { get; }
 
         string Description { get; }
     }

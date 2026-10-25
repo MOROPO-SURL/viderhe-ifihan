@@ -1,4 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Dashboard.Hubs
+﻿using MOROPO.VIDERHE.Cloud.SignalR.Connect.Common.Enumerations;
+
+namespace MOROPO.VIDERHE.Cloud.SignalR.Connect.Dashboard.Hubs
 {
     public interface IDashboardHub
     {
@@ -10,9 +12,9 @@
 
         void PlayerPresentInterventionPlacard(string[] playerIds, System.Guid placardId);
 
-        void PlayerRestartScreenplay(string[] playerIds, Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
+        void PlayerRestartScreenplay(string[] playerIds, ScreenplayHandlingImmediacyMode immediancyMode);
 
-        void PlayerReloadScreenplay(string[] playerIds, Common.Enumerations.ScreenplayHandlingImmediacyMode immediancyMode);
+        void PlayerReloadScreenplay(string[] playerIds, ScreenplayHandlingImmediacyMode immediancyMode);
 
         void PlayerSetAudioEnabled(string[] playerIds, bool enabled);
 

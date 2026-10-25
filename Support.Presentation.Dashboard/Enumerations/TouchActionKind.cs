@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Enumerations
+﻿namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Enumerations
 {
     public enum TouchActionKind
     {

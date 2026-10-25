@@ -2,11 +2,11 @@
 <popup:PopupPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:converters="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Converters"
+    xmlns:converters="clr-namespace:MOROPO.VIDERHE.Terminal.Dashboard.Converters"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:icplugin="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Popup.ModeratorDetailPopupPage">
+    x:Class="MOROPO.VIDERHE.Terminal.Dashboard.Pages.Popup.ModeratorDetailPopupPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:StringToLocalizeStringConverter x:Key="StringToLocalizeStringConverter" />

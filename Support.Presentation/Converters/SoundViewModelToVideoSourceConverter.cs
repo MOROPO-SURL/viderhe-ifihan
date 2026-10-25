@@ -1,6 +1,6 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Models.View;
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Converters
+namespace MOROPO.VIDERHE.Support.Presentation.Converters
 {
     public class SoundViewModelToVideoSourceConverter : Xamarin.Forms.BindableObject, Xamarin.Forms.IValueConverter
     {

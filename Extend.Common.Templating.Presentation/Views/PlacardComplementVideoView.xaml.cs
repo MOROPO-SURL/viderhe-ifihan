@@ -1,23 +1,27 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Models.Context;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+
+namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views
 {
-    public partial class PlacardComplementVideoView : XFToolKit.Mvvm.Views.ContentView
+    public partial class PlacardComplementVideoView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
         private Common.Presentation.Views.BasePlacardPresentationView placardPresentationView;
 
-        public PlacardComplementVideoView(Common.Presentation.Views.BasePlacardPresentationView placardPresentationView, Templating.Models.Context.VideoComplementContextModel model)
+        public PlacardComplementVideoView(Common.Presentation.Views.BasePlacardPresentationView placardPresentationView, VideoComplementContextModel model)
         {
             InitializeComponent();
 
             switch (model.Position)
             {
-                case Enumerations.VideoComplementPosition.TopLeft:
-                case Enumerations.VideoComplementPosition.BottomLeft:
+                case VideoComplementPosition.TopLeft:
+                case VideoComplementPosition.BottomLeft:
                     VideoPlayerViewLayout.HorizontalOptions = Xamarin.Forms.LayoutOptions.Start;
 
                     break;
 
-                case Enumerations.VideoComplementPosition.TopRight:
-                case Enumerations.VideoComplementPosition.BottomRight:
+                case VideoComplementPosition.TopRight:
+                case VideoComplementPosition.BottomRight:
                 default:
                     VideoPlayerViewLayout.HorizontalOptions = Xamarin.Forms.LayoutOptions.End;
 
@@ -26,14 +30,14 @@
 
             switch (model.Position)
             {
-                case Enumerations.VideoComplementPosition.TopLeft:
-                case Enumerations.VideoComplementPosition.TopRight:
+                case VideoComplementPosition.TopLeft:
+                case VideoComplementPosition.TopRight:
                     VideoPlayerViewLayout.VerticalOptions = Xamarin.Forms.LayoutOptions.Start;
 
                     break;
 
-                case Enumerations.VideoComplementPosition.BottomLeft:
-                case Enumerations.VideoComplementPosition.BottomRight:
+                case VideoComplementPosition.BottomLeft:
+                case VideoComplementPosition.BottomRight:
                 default:
                     VideoPlayerViewLayout.VerticalOptions = Xamarin.Forms.LayoutOptions.End;
 
@@ -48,16 +52,16 @@
 
             VideoPlayerView.StatusUpdated += VideoPlayerView_StatusUpdated;
 
-            VideoPlayerView.Source = XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(Support.Presentation.Factories.VideoUriFactory.BuildVideoUri(model.Video.Id, model.Video.Extension).ToString());
+            VideoPlayerView.Source = SmartSolucionesCuba.XFToolKit.Presentation.Sources.Video.VideoSource.FromUri(VideoUriFactory.BuildVideoUri(model.Video.Id, model.Video.Extension).ToString());
         }
 
         private void VideoPlayerView_StatusUpdated(object sender, System.EventArgs eventArgs)
         {
-            if (VideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
+            if (VideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Ended)
             {
                 IsVisible = false;
             }
-            else if (VideoPlayerView.Status == XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
+            else if (VideoPlayerView.Status == SmartSolucionesCuba.XFToolKit.Presentation.Views.Rendered.VideoStatus.Playing)
             {
                 IsVisible = true;
             }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Api.Common.Extensions
+namespace MOROPO.VIDERHE.Cloud.Api.Common.Extensions
 {
     internal static class ExpressionExtensions
     {

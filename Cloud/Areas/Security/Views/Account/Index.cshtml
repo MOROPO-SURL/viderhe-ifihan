@@ -1,27 +1,29 @@
-﻿@model SmartSolucionesCuba.Viderhe.Cloud.Models.View.UserProfileViewModel
+﻿@model MOROPO.VIDERHE.Cloud.Models.View.UserProfileViewModel
 
 @{
-    ViewData["Heading"] = "Perfil de Usuario";
+    const string HEADING = "Perfil de Usuario";
 
-    ViewData["Title"] = ViewData["Heading"];
+    ViewData["Heading"] = HEADING;
+
+    ViewData["Title"] = HEADING;
 
     ViewData[BreadcrumbViewModel.BREADCRUMBS_MAP_KEY] = new List<BreadcrumbViewModel>
     {
         new BreadcrumbViewModel
         {
-            Caption = "<span class=\"mdi mdi-cogs\"></span> Inicio",
-            Url = "/"
+            Caption = "<i class=\"fas fa-fw fa-tachometer-alt\"></i> " + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
+            Url = Url.Action("Index", "Dashboard", new { Area = "management" })
         },
         new BreadcrumbViewModel
         {
-            Caption = ViewData["Heading"].ToString()
+            Caption = HEADING
         }
     };
 
-    Layout = "_UserAuthenticatedLayout";
+    Layout = "_BackendLayout";
 }
 
-<h3>Perfil de Usuario</h3>
+<h3>@HEADING</h3>
 <hr class="mb-4" />
 
 <dl>

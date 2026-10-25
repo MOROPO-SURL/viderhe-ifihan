@@ -1,15 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Player</AssemblyName>
-    <RootNamespace>SmartSolucionesCuba.Viderhe.Cloud.SignalR.Connect.Player</RootNamespace>
-	<Version>1.7.3</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>MOROPO.VIDERHE.Cloud.SignalR.Connect.Player</AssemblyName>
+		<RootNamespace>MOROPO.VIDERHE.Cloud.SignalR.Connect.Player</RootNamespace>
+		<Product>VIDERHE</Product>
+		<Authors>MOROPO DotNet DevTeam</Authors>
+		<Company>MOROPO S.U.R.L.</Company>
+		<Copyright>© MOROPO 2024, Todos los derechos reservados.</Copyright>
+		<Version>2.0.11</Version>
+		<PackageProjectUrl>https://www.moropo.cu/</PackageProjectUrl>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
-    <ProjectReference Include="..\Cloud.SignalR.Connect.Common\Cloud.SignalR.Connect.Common.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Cloud.Api.Common\Cloud.Api.Common.csproj" />
+		<ProjectReference Include="..\Cloud.SignalR.Connect.Common\Cloud.SignalR.Connect.Common.csproj" />
+	</ItemGroup>
 
 </Project>

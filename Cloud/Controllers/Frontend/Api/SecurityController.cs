@@ -1,26 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MOROPO.Framework.Guama.Core.Persistence.Repositories;
+using MOROPO.Framework.Guama.Core.Presentation.Web.Security.Providers.Facade;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Options;
+using MOROPO.VIDERHE.Cloud.Persistence.Entities;
+using MOROPO.VIDERHE.Cloud.Security.Authorization;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
+namespace MOROPO.VIDERHE.Cloud.Controllers.Frontend.Api
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SecurityController : MOROPO.SAPRESSC.Core.Web.Common.Controllers.BaseWebController
+    public class SecurityController : Framework.Guama.Core.Presentation.Web.Common.Controllers.BaseWebController
     {
-        private readonly Microsoft.Extensions.Options.IOptions<Options.JwtOptions> jwtOptions;
-        private readonly MOROPO.SAPRESSC.Core.Web.Security.Providers.Facade.IIdentityProviderFacade identityProvider;
-        private readonly MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository;
+        private readonly Microsoft.Extensions.Options.IOptions<JwtOptions> jwtOptions;
+        private readonly IIdentityProviderFacade identityProvider;
+        private readonly IEntityRepository<Account, System.Guid> accountRepository;
+        private readonly IBridgeRepository<AccountModeratorBridge, Account, System.Guid, Moderator, System.Guid> accountModeratorBridgeRepository;
 
-        public SecurityController(MOROPO.SAPRESSC.Core.Persistence.Repositories.IEntityRepository<Persistence.Entities.Account, System.Guid> accountRepository, MOROPO.SAPRESSC.Core.Web.Security.Providers.Facade.IIdentityProviderFacade identityProvider, Microsoft.Extensions.Options.IOptions<Options.JwtOptions> jwtOptions, Microsoft.Extensions.Localization.IStringLocalizer<SecurityController> localizer, ILogger<SecurityController> logger) : base(localizer, logger)
+        public SecurityController(IBridgeRepository<AccountModeratorBridge, Account, System.Guid, Moderator, System.Guid> accountModeratorBridgeRepository, IEntityRepository<Account, System.Guid> accountRepository, IIdentityProviderFacade identityProvider, Microsoft.Extensions.Options.IOptions<JwtOptions> jwtOptions, Microsoft.Extensions.Localization.IStringLocalizer<SecurityController> localizer, ILogger<SecurityController> logger) : base(localizer, logger)
         {
             this.jwtOptions = jwtOptions;
             this.identityProvider = identityProvider;
             this.accountRepository = accountRepository;
+            this.accountModeratorBridgeRepository = accountModeratorBridgeRepository;
         }
 
         [HttpPost("[action]")]
-        public ActionResult<Cloud.Api.Common.Models.AuthenticatedSessionModel> Authenticate([FromBody]Cloud.Api.Common.Models.AuthenticationIntentModel inputModel)
+        public ActionResult<AuthenticatedSessionModel> Authenticate([FromBody] AuthenticationIntentModel inputModel)
         {
             if (ModelState.IsValid)
             {
@@ -28,16 +36,16 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
                 if (userIdentity != null)
                 {
-                    var account = accountRepository.FindOneBy(entity => entity.Enabled && entity.ModeratorBridges.Any(bridge => bridge.Moderator.UserId == userIdentity.Name));
+                    var account = accountRepository.FindOneBy(entity => entity.Enabled && entity.ModeratorBridges.Any(bridge => bridge.Stern.UserId == userIdentity.Name));
 
-                    if (userIdentity.HasClaim(match => match.Type.Equals(MOROPO.SAPRESSC.Core.Web.Security.Constants.ClaimTypes.AccountDisabled) && match.Value.Equals(true.ToString())) || account == null)
+                    if (userIdentity.HasClaim(match => match.Type.Equals(Framework.Guama.Core.Presentation.Web.Security.Constants.ClaimTypes.AccountDisabled) && match.Value.Equals(true.ToString())) || account == null)
                     {
                         return Forbid(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
                     }
 
-                    userIdentity.AddClaim(new System.Security.Claims.Claim(Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION, account.Id.ToString()));
+                    userIdentity.AddClaim(new System.Security.Claims.Claim(Policies.ACCOUNT_VALIDATED_MODERATION, account.Id.ToString()));
 
-                    var moderator = account.ModeratorBridges.First(b => b.Moderator.UserId == userIdentity.Name).Moderator;
+                    var moderator = accountModeratorBridgeRepository.GetAll().First(bridge => bridge.ProwId == account.Id && bridge.Stern.UserId == userIdentity.Name).Stern;
 
                     return GenerateToken(userIdentity, moderator);
                 }
@@ -49,12 +57,12 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
         }
 
         [HttpPost("[action]")]
-        [Microsoft.AspNetCore.Authorization.Authorize(Policy = Security.Authorization.Policies.ACCOUNT_VALIDATED_MODERATION)]
-        public ActionResult ChangePassword([FromBody]Cloud.Api.Common.Models.UserPasswordChangeRequestModel model)
+        [Microsoft.AspNetCore.Authorization.Authorize(Policy = Policies.ACCOUNT_VALIDATED_MODERATION)]
+        public ActionResult ChangePassword([FromBody] UserPasswordChangeRequestModel model)
         {
             if (ModelState.IsValid)
             {
-                var identityManager = identityProvider as MOROPO.SAPRESSC.Core.Web.Security.Managers.Facade.IIdentityManagerFacade;
+                var identityManager = identityProvider as Framework.Guama.Core.Presentation.Web.Security.Managers.Facade.IIdentityManagerFacade;
 
                 if (identityManager.TryModifyPassword(User.Identity.Name, model.OldPassword, model.NewPassword))
                 {
@@ -67,15 +75,15 @@ namespace SmartSolucionesCuba.Viderhe.Cloud.Controllers.Frontend.Api
 
         #region Token Utility Methods
 
-        private ActionResult GenerateToken(System.Security.Claims.ClaimsIdentity userClaims, Persistence.Entities.Moderator moderator)
+        private ActionResult GenerateToken(System.Security.Claims.ClaimsIdentity userClaims, Moderator moderator)
         {
             var token = GenerateJwtToken(userClaims);
 
-            var model = new Cloud.Api.Common.Models.ModeratorDisplayModel();
+            var model = new ModeratorDisplayModel();
 
             model.Import(moderator);
 
-            return Json(new Cloud.Api.Common.Models.AuthenticatedSessionModel
+            return Json(new AuthenticatedSessionModel
             {
                 Token = token,
                 Type = Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme,

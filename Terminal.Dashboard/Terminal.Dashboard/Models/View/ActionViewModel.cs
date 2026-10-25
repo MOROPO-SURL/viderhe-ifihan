@@ -1,6 +1,6 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.View
+﻿namespace MOROPO.VIDERHE.Terminal.Dashboard.Models.View
 {
-    public class ActionViewModel : XFToolKit.Mvvm.Models.BaseBindableModel
+    public class ActionViewModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.BaseBindableModel
     {
         public string IconGlyph { get; set; }
 

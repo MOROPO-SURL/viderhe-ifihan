@@ -2,9 +2,9 @@
 <FlyoutPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:masterpages="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Master"
-    xmlns:settingsdetailpages="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.Detail.Settings"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.SettingsPage"
+    xmlns:masterpages="clr-namespace:MOROPO.VIDERHE.Terminal.Dashboard.Pages.Master"
+    xmlns:settingsdetailpages="clr-namespace:MOROPO.VIDERHE.Terminal.Dashboard.Pages.Detail.Settings"
+    x:Class="MOROPO.VIDERHE.Terminal.Dashboard.Pages.SettingsPage"
     FlyoutLayoutBehavior="Split">
     <FlyoutPage.Flyout>
         <masterpages:SettingsMasterPage />

@@ -1,6 +1,8 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Validators
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators.Contract;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Validators
 {
-    public class NotNullFormFieldValidator : Contract.IFormFieldValidator
+    public class NotNullFormFieldValidator : IFormFieldValidator
     {
         private const string MESSAGE = "Este campo es requerido.";
 

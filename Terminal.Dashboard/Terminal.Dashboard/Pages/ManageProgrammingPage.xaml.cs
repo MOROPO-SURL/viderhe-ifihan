@@ -1,12 +1,24 @@
-﻿using SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.View;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Extensions;
-using SmartSolucionesCuba.Viderhe.Support.Presentation.Helpers.Facade;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
+using MOROPO.VIDERHE.Cloud.Persistence.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Extend.Templating.Presentation.Providers;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Extensions;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
+using MOROPO.VIDERHE.Terminal.Dashboard.Providers;
 using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageProgrammingPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageProgrammingPageModel>
+    public partial class ManageProgrammingPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManageProgrammingPageModel>
     {
         private const string OPTION_COMMON_PREVIEW = "Pre-Visualizar";
         private const string OPTION_COMMON_CANCEL = "Cancelar";
@@ -35,7 +47,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             IsEnabled = false;
 
-            BindingContext = new Models.Page.ManageProgrammingPageModel(ScreenplaySelection_Callback, LabelFilterParamaChange_Callback);
+            BindingContext = new ManageProgrammingPageModel(ScreenplaySelection_Callback);
+
+            BindingContextPageModel.PlacardFilterParamChangeCallbackAction = PlacardlFilterChange_Callback;
         }
 
         protected override void OnAppearing()
@@ -83,11 +97,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             DisplayActionSheet("Opciones de Cartel", OPTION_COMMON_CANCEL, OPTION_COMMON_DELETE, extraOptions.ToArray()).ContinueWith(async actionSheetTask =>
             {
-                Extend.Common.Templating.Presentation.Helpers.Facade.IPlacardViewModelCompletitionHelperFacade completitionHelper;
+                IPlacardViewModelCompletitionHelperFacade completitionHelper;
 
-                Support.Presentation.Models.View.PlacardViewModel placardClone;
+                PlacardViewModel placardClone;
 
-                var placardsClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<MOROPO.SAPRESSC.Core.Api.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
+                var placardsClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Xamarin.Forms.DependencyService.Get<Framework.Guama.Core.Presentation.API.Connect.Providers.Facade.IHttpClientHelperProviderFacade>());
 
                 switch (actionSheetTask.Result)
                 {
@@ -121,7 +135,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_PLACARD_COMPLEMENT_EDIT:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            if (target.Placard.ComplementationKind == Cloud.Persistence.Enumerations.PlacardComplementationKind.Video)
+                            if (target.Placard.ComplementationKind == PlacardComplementationKind.Video)
                             {
                                 this.NavigationPushPageAsync(new VideoComplementConfigurationPage(target.Placard, PlacardEditionCompleted_Callback));
                             }
@@ -140,9 +154,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             {
                                 if (!task.Result) return;
 
-                                var client = new Cloud.Api.Connect.Clients.ComplementationsApiConnectClient(Managers.SessionManager.Instance.HttpClientHelper);
+                                var client = new Cloud.Api.Connect.Clients.ComplementationsApiConnectClient(SessionManager.Instance.HttpClientHelper);
 
-                                await client.EditAsync(new Cloud.Api.Common.Models.ComplementationInputModel
+                                await client.EditAsync(new ComplementationInputModel
                                 {
                                     PlacardId = target.Placard.Id,
                                     ComplementationKind = null,
@@ -153,7 +167,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 {
                                     PlacardEditionCompleted_Callback();
 
-                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cambios aplicados con éxito.");
                                 });
                             });
                         });
@@ -161,7 +175,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         break;
 
                     case OPTION_PLACARD_CLONE:
-                        await placardsClient.CreateAsync(new Cloud.Api.Common.Models.PlacardInputModel
+                        await placardsClient.CreateAsync(new PlacardInputModel
                         {
                             Label = string.Format("(Copia) {0}", target.Placard.Label),
                             TemplateId = target.Placard.Template.Id,
@@ -179,7 +193,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 }
                                 else
                                 {
-                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cartel duplicado con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cartel duplicado con éxito.");
 
                                     PlacardEditionCompleted_Callback();
                                 }
@@ -203,7 +217,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cartel eliminado con exito.");
+                                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cartel eliminado con éxito.");
 
                                         LoadNextPlacardsPage(true, BindingContextPageModel.SelectedScreenplay != null);
                                     });
@@ -223,16 +237,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         break;
 
                     case OPTION_COMMON_PREVIEW:
-                        completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
+                        completitionHelper = PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new PlacardDisplayModel
                         {
                             Id = target.Placard.Id,
-                            Template = new Cloud.Api.Common.Models.TemplateDisplayModel
+                            Template = new TemplateDisplayModel
                             {
                                 Id = target.Placard.Template.Id
                             }
                         });
 
-                        placardClone = new Support.Presentation.Models.View.PlacardViewModel
+                        placardClone = new PlacardViewModel
                         {
                             Id = target.Placard.Id,
                             Label = target.Placard.Label,
@@ -250,7 +264,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { placardClone }, ScreenplayPresentationComplete_Callback, false);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new PlacardViewModel[] { placardClone }, ScreenplayPresentationComplete_Callback, false);
 
                             this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
@@ -258,16 +272,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         break;
 
                     case OPTION_COMMON_EDIT:
-                        completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
+                        completitionHelper = PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new PlacardDisplayModel
                         {
                             Id = target.Placard.Id,
-                            Template = new Cloud.Api.Common.Models.TemplateDisplayModel
+                            Template = new TemplateDisplayModel
                             {
                                 Id = target.Placard.Template.Id
                             }
                         });
 
-                        placardClone = new Support.Presentation.Models.View.PlacardViewModel
+                        placardClone = new PlacardViewModel
                         {
                             Id = target.Placard.Id,
                             Label = target.Placard.Label,
@@ -286,7 +300,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            var placardEditPage = Providers.PlacardConfigurationPageProvider.Instance.GetEditionPageByDescriptor(placardClone, PlacardEditionCompleted_Callback);
+                            var placardEditPage = PlacardConfigurationPageProvider.Instance.GetEditionPageByDescriptor(placardClone, PlacardEditionCompleted_Callback);
 
                             if (placardEditPage != null)
                             {
@@ -294,7 +308,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                             }
                             else
                             {
-                                Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Aviso", "Plantilla no compatible con la versión actual del sistema.");
+                                Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Aviso", "Plantilla no compatible con la versión actual del sistema.");
                             }
                         });
 
@@ -309,11 +323,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var framesClient = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
+                                var framesClient = new Cloud.Api.Connect.Clients.FramesApiConnectClient(SessionManager.Instance);
 
                                 try
                                 {
-                                    await framesClient.CreateAsync(new Cloud.Api.Common.Models.FrameInputModel
+                                    await framesClient.CreateAsync(new FrameInputModel
                                     {
                                         ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id,
                                         PlacardId = target.Placard.Id,
@@ -322,7 +336,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cartel agregado a la secuencia con exito.");
+                                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cartel agregado a la secuencia con éxito.");
 
                                         LoadCurrentScreenplayFrames();
                                     });
@@ -350,7 +364,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void FrameOverviewOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var targetFrameViewModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Models.View.FrameViewModel;
+            var targetFrameViewModel = (sender as Xamarin.Forms.BindableObject).BindingContext as FrameViewModel;
 
             var extraOptions = new System.Collections.Generic.List<string>
             {
@@ -367,12 +381,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             DisplayActionSheet("Opciones de Cartel en Secuencia", OPTION_COMMON_CANCEL, null, extraOptions.ToArray()).ContinueWith(actionSheetTask =>
             {
-                Extend.Common.Templating.Presentation.Helpers.Facade.IPlacardViewModelCompletitionHelperFacade completitionHelper;
+                IPlacardViewModelCompletitionHelperFacade completitionHelper;
 
                 switch (actionSheetTask.Result)
                 {
                     case OPTION_FRAME_PLACARD_SEARCH:
-                        BindingContextPageModel.LabelFilterParam = targetFrameViewModel.Placard.Label;
+                        BindingContextPageModel.PlacardFilter = new PlacardFilterModel
+                        {
+                            Label = targetFrameViewModel.Placard.Label
+                        };
 
                         break;
 
@@ -385,7 +402,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
+                                var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(SessionManager.Instance);
 
                                 try
                                 {
@@ -393,7 +410,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Cartel eliminado de la secuencia con exito.");
+                                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Cartel eliminado de la secuencia con éxito.");
 
                                         LoadCurrentScreenplayFrames();
                                     });
@@ -415,16 +432,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     case OPTION_COMMON_PREVIEW:
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
                         {
-                            completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
+                            completitionHelper = PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new PlacardDisplayModel
                             {
                                 Id = targetFrameViewModel.Placard.Id,
-                                Template = new Cloud.Api.Common.Models.TemplateDisplayModel
+                                Template = new TemplateDisplayModel
                                 {
                                     Id = targetFrameViewModel.Placard.Template.Id
                                 }
                             });
 
-                            var placardClone = new Support.Presentation.Models.View.PlacardViewModel
+                            var placardClone = new PlacardViewModel
                             {
                                 Id = targetFrameViewModel.Placard.Id,
                                 Label = targetFrameViewModel.Placard.Label,
@@ -440,7 +457,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                                 await completitionHelper.CompleteAsync(placardClone);
                             }
 
-                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new Support.Presentation.Models.View.PlacardViewModel[] { placardClone }, ScreenplayPresentationComplete_Callback, false);
+                            var screenplayPlayerPage = new Support.Presentation.Player.Pages.ScreenplayPlayerPage(new PlacardViewModel[] { placardClone }, ScreenplayPresentationComplete_Callback, false);
 
                             await this.NavigationPushModalPageAsync(screenplayPlayerPage);
                         });
@@ -466,11 +483,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             var screenplayPlacards = BindingContextPageModel.Frames.Select(m => m.Placard).ToArray();
 
-            var previewPlacards = new System.Collections.Generic.List<Support.Presentation.Models.View.PlacardViewModel>();
+            var previewPlacards = new System.Collections.Generic.List<PlacardViewModel>();
 
             foreach (var item in screenplayPlacards)
             {
-                var completitionHelper = Support.Extend.Templating.Presentation.Providers.PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
+                var completitionHelper = PlacardViewModelCompletitionHelperProvider.Instance.GetFor(new Cloud.Api.Common.Models.PlacardDisplayModel
                 {
                     Id = item.Id,
                     Template = new Cloud.Api.Common.Models.TemplateDisplayModel
@@ -499,7 +516,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ScreenplayOptionsButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            var targetScreenplayViewModel = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.ScreenplayViewModel;
+            var targetScreenplayViewModel = (sender as Xamarin.Forms.BindableObject).BindingContext as ScreenplayViewModel;
 
             DisplayActionSheet("Opciones de Guion", OPTION_COMMON_CANCEL, null, OPTION_COMMON_EDIT, OPTION_COMMON_DELETE).ContinueWith(task =>
             {
@@ -514,7 +531,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                 BindingContextPageModel.IsBusy = true;
 
-                                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
+                                var client = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(SessionManager.Instance);
 
                                 try
                                 {
@@ -522,7 +539,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                                     Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                     {
-                                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Guion eliminado con exito.");
+                                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Guion eliminado con éxito.");
 
                                         LoadScreenplays();
                                     });
@@ -581,7 +598,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             var selecction = (sender as Xamarin.Forms.CollectionView).SelectedItem;
 
-            BindingContextPageModel.SelectedScreenplay = selecction != null ? selecction as Models.View.ScreenplayViewModel : null;
+            BindingContextPageModel.SelectedScreenplay = selecction != null ? selecction as ScreenplayViewModel : null;
         }
 
         private void PlacardOverviewCollectionView_Scrolled(object sender, Xamarin.Forms.ItemsViewScrolledEventArgs eventArgs)
@@ -602,19 +619,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void RequestFilterButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            DisplayPromptAsync("Filtrar Carteles", "Especifique la etiqueta o parte de esta relativa al el cartel que está buscando:", "Filtrar", "Cancelar",  initialValue: BindingContextPageModel.LabelFilterParam).ContinueWith(task =>
-            {
-                if (task.Result == null) return;
-
-                if (string.IsNullOrEmpty(task.Result))
-                {
-                    BindingContextPageModel.LabelFilterParam = null;
-                }
-                else
-                {
-                    BindingContextPageModel.LabelFilterParam = task.Result;
-                }
-            });
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.PlacardFilterPopupPage(BindingContextPageModel.PlacardFilter, RequestPlacardFilterSuccess_Callback));
         }
 
         private void ClearFilterButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -623,11 +628,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 if (!task.Result) return;
 
-                BindingContextPageModel.LabelFilterParam = null;
+                BindingContextPageModel.PlacardFilter = null;
             });
         }
         
-        private void ScreenplaySelection_Callback(Models.View.ScreenplayViewModel target)
+        private void ScreenplaySelection_Callback(ScreenplayViewModel target)
         {
             LoadCurrentScreenplayFrames();
         }
@@ -649,9 +654,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             }
         }
 
-        private void LabelFilterParamaChange_Callback()
+        private void PlacardlFilterChange_Callback()
         {
             LoadNextPlacardsPage(true);
+        }
+
+        private void RequestPlacardFilterSuccess_Callback(PlacardFilterModel model)
+        {
+            BindingContextPageModel.PlacardFilter = model;
         }
 
         private void ReloadScreenplays()
@@ -665,13 +675,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             BindingContextPageModel.IsBusy = true;
 
-            var screenplaysApiConnectClient = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(Managers.SessionManager.Instance);
+            var screenplaysApiConnectClient = new Cloud.Api.Connect.Clients.ScreenplaysApiConnectClient(SessionManager.Instance);
 
             screenplaysApiConnectClient.GetAsync().ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    BindingContextPageModel.Screenplays = task.Result.Select(m => new Models.View.ScreenplayViewModel
+                    BindingContextPageModel.Screenplays = task.Result.Select(m => new ScreenplayViewModel
                     {
                         Id = m.Id,
                         Title = m.Title,
@@ -729,17 +739,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 }
             }
 
-            var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(Managers.SessionManager.Instance);
+            var placardsApiConnectClient = new Cloud.Api.Connect.Clients.PlacardsApiConnectClient(SessionManager.Instance);
 
-            System.Threading.Tasks.Task<MOROPO.SAPRESSC.Core.Common.Models.PaginationModel<Cloud.Api.Common.Models.PlacardDisplayModel>> apiConnectClientTask;
+            System.Threading.Tasks.Task<Framework.Guama.Core.Presentation.Models.PaginationModel<PlacardDisplayModel>> apiConnectClientTask;
 
-            if (!string.IsNullOrEmpty(BindingContextPageModel.LabelFilterParam))
+            if (BindingContextPageModel.PlacardFilter != null)
             {
-                apiConnectClientTask = placardsApiConnectClient.FilterPaginateAsync(new Cloud.Api.Common.Models.Filter.PlacardFilterModel
-                {
-                    Label = BindingContextPageModel.LabelFilterParam,
-                    PlayerOrientationSupportKind = Extend.Common.Templating.Enumerations.PlayerOrientationSupportKind.Any
-                }, ++currentPlacardsPageNumber, placardPageLimit);
+                apiConnectClientTask = placardsApiConnectClient.FilterPaginateAsync(BindingContextPageModel.PlacardFilter, ++currentPlacardsPageNumber, placardPageLimit);
             }
             else
             {
@@ -822,7 +828,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (BindingContextPageModel.SelectedScreenplay == null)
             {
-                BindingContextPageModel.Frames = new Support.Presentation.Models.View.FrameViewModel[] { };
+                BindingContextPageModel.Frames = new FrameViewModel[] { };
 
                 callback?.Invoke();
 
@@ -831,9 +837,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             BindingContextPageModel.IsBusy = true;
 
-            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(Managers.SessionManager.Instance);
+            var client = new Cloud.Api.Connect.Clients.FramesApiConnectClient(SessionManager.Instance);
 
-            client.FilterAsync(new Cloud.Api.Common.Models.Filter.FrameFilterModel { ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id }).ContinueWith(task =>
+            client.FilterAsync(new FrameFilterModel { ScreenplayId = BindingContextPageModel.SelectedScreenplay.Id }).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -841,13 +847,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         BindingContextPageModel.IsBusy = false;
 
-                        BindingContextPageModel.Frames = new Support.Presentation.Models.View.FrameViewModel[] { };
+                        BindingContextPageModel.Frames = new FrameViewModel[] { };
 
                         BindingContextPageModel.SelectedScreenplay = null;
                     }
                     else
                     {
-                        BindingContextPageModel.Frames = task.Result.OrderBy(e => e.Priority).Select(m => new Support.Presentation.Models.View.FrameViewModel
+                        BindingContextPageModel.Frames = task.Result.OrderBy(e => e.Priority).Select(m => new FrameViewModel
                         {
                             Id = m.Id,
                             Priority = m.Priority,

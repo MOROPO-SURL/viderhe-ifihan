@@ -1,30 +1,34 @@
-﻿@using MOROPO.SAPRESSC.Core.Common.Models.View;
-
-@model MOROPO.SAPRESSC.Middleware.Security.Essential.Web.Backend.Models.View.UserInputViewModel
+﻿@model MOROPO.Framework.Guama.Security.Essential.Presentation.Web.Backend.Models.View.UserInputViewModel
 
 @{
-    ViewData["Title"] = "Modificar Usuario";
+    const string TITLE = "Modificar Usuario";
+    const string HEADER = "Administración de Usuarios";
+
+    ViewData["TITLE"] = TITLE;
+    ViewData["HEADER"] = HEADER;
 
     ViewData[BreadcrumbViewModel.BREADCRUMBS_MAP_KEY] = new List<BreadcrumbViewModel>
     {
         new BreadcrumbViewModel
         {
-            Caption = "<span class=\"mdi mdi-cogs\" style=\"margin-right: 4px;\"></span>" + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
-            Url = Url.Action("index", "dashboard", new { Area = string.Empty })
+            Caption = "<i class=\"fas fa-fw fa-tachometer-alt\"></i> " + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
+            Url = Url.Action("Index", "Dashboard", new { Area = "management" })
         },
         new BreadcrumbViewModel
         {
-            Caption = "Administración de Usuarios",
+            Caption = HEADER,
             Url = Url.Action("index")
         },
         new BreadcrumbViewModel
         {
-            Caption = ViewData["Title"].ToString()
+            Caption = TITLE
         }
     };
 
     Layout = "_BackendLayout";
 }
+
+<hr class="mt-0 mb-4" />
 
 @using (Html.BeginForm("edit", "users", new { Area = "security", key = string.Empty }, FormMethod.Post, true, new { enctype = "multipart/form-data" }))
 {
@@ -32,15 +36,17 @@
 
     @Html.HiddenFor(model => model.Id)
 
-    <div class="card" style="margin-bottom: 20px;">
-        <div class="card-header"><h4 class="mb-0">@ViewData["Title"]</h4></div>
+    <div class="card mb-4">
+        <div class="card-header"><h5 class="mb-0 font-weight-bold text-primary">@TITLE</h5></div>
 
         <div class="card-body">
-            <div class="mb-3">
-                @Html.LabelFor(model => model.Id, new { @class = "control-label" })
-                <div>@Model.Id</div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    @Html.LabelFor(model => model.Id, new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Id, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Id, null, new { @class = "text-danger" })
+                </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-4 mb-3">
                     <div class="checkbox">
@@ -50,8 +56,7 @@
                         @Html.ValidationMessageFor(model => model.Enabled, null, new { @class = "text-danger", style = "display: inline-block;" })
                     </div>
                 </div>
-
-                <div class="col-sm-4 mb-3">
+                <div class="col mb-3">
                     <div class="checkbox">
                         <label>
                             @Html.EditorFor(model => model.PasswordChangeRequired) Debe cambiar la contraseña?
@@ -59,7 +64,6 @@
                         @Html.ValidationMessageFor(model => model.PasswordChangeRequired, null, new { @class = "text-danger", style = "display: inline-block;" })
                     </div>
                 </div>
-
                 <div class="col-sm-4 mb-3">
                     <div class="checkbox">
                         <label>
@@ -71,7 +75,7 @@
             </div>
 
             <fieldset>
-                <legend class="border-bottom h4">Roles</legend>
+                <legend class="border-bottom h5 font-weight-bold pb-2 mb-3">Roles</legend>
                 @if (Model.SelectableRoles != null && Model.SelectableRoles.Count > 0)
                 {
                     <div class="row">
@@ -85,13 +89,13 @@
                 }
                 else
                 {
-                    <div>Sin elementos que mostrar.</div>
+                    <div class="text-muted">Sin elementos que mostrar.</div>
                 }
             </fieldset>
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Modificar</button>
-            <a class="btn btn-light" href="@Url.Action("index")">Regresar al listado</a>
+            <a class="btn btn-secondary" href="@Url.Action("index")">Regresar al listado</a>
         </div>
     </div>
 }

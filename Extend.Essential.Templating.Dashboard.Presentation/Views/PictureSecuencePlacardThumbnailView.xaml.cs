@@ -1,14 +1,17 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Presentation.Extensions;
+﻿using MOROPO.VIDERHE.Extend.Essential.Templating.Models.Context;
+using MOROPO.VIDERHE.Support.Presentation.Factories;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+using MOROPO.VIDERHE.Extend.Essential.Templating.Presentation.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Views
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Views
 {
-    public partial class PictureSecuencePlacardThumbnailView : XFToolKit.Mvvm.Views.ContentView
+    public partial class PictureSecuencePlacardThumbnailView : SmartSolucionesCuba.XFToolKit.Mvvm.Views.ContentView
     {
-        public PictureSecuencePlacardThumbnailView(Support.Presentation.Models.View.PlacardViewModel model)
+        public PictureSecuencePlacardThumbnailView(PlacardViewModel model)
         {
             InitializeComponent();
 
-            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<Templating.Models.Context.PictureSlideSecuencePlacardContextModel>(model.SerializedContext);
+            var context = Newtonsoft.Json.JsonConvert.DeserializeObject<PictureSlideSecuencePlacardContextModel>(model.SerializedContext);
 
             var iterationCount = context.Slides.Length;
 
@@ -23,7 +26,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Pres
 
                 var iterationImage = new FFImageLoading.Forms.CachedImage
                 {
-                    Source = Xamarin.Forms.ImageSource.FromUri(Support.Presentation.Factories.ThumbnailUriFactory.BuildThumbnailUri(slide.Image.ThumbnailId)),
+                    Source = Xamarin.Forms.ImageSource.FromUri(ThumbnailUriFactory.BuildImageThumbnailUri(slide.Image.Id)),
                     Aspect = slide.LayoutMode.ToXamarinFormsAspect(),
                     CacheType = FFImageLoading.Cache.CacheType.Disk,
                     CacheDuration = System.TimeSpan.MaxValue

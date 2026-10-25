@@ -55,8 +55,7 @@
     <TargetPlatformMinVersion>10.0.18362.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <EntryPointProjectUniqueName>..\Terminal.Player.UWP\Terminal.Player.UWP.csproj</EntryPointProjectUniqueName>
-    <PackageCertificateThumbprint>0D95332E4D64DCD46AB7FF3938F8569F5F7D2E8E</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>7FE7AC2F6608635F21D621D1F5E868DB05508127</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
@@ -64,45 +63,46 @@
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <EntryPointProjectUniqueName>..\Terminal.Player.UWP\Terminal.Player.UWP.csproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
-    <DefaultLanguage>es</DefaultLanguage>
+    <DefaultLanguage>es-us</DefaultLanguage>
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefaultLanguage>es</DefaultLanguage>
+    <DefaultLanguage>es-us</DefaultLanguage>
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <DefaultLanguage>es</DefaultLanguage>
+    <DefaultLanguage>es-us</DefaultLanguage>
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <DefaultLanguage>es</DefaultLanguage>
+    <DefaultLanguage>es-us</DefaultLanguage>
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DefaultLanguage>es</DefaultLanguage>
+    <DefaultLanguage>es-us</DefaultLanguage>
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DefaultLanguage>es</DefaultLanguage>
+    <DefaultLanguage>es-us</DefaultLanguage>
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
-    <DefaultLanguage>es</DefaultLanguage>
+    <DefaultLanguage>es-us</DefaultLanguage>
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-    <DefaultLanguage>es</DefaultLanguage>
+    <DefaultLanguage>es-us</DefaultLanguage>
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DefaultLanguage>es</DefaultLanguage>
+    <DefaultLanguage>es-us</DefaultLanguage>
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-    <DefaultLanguage>es</DefaultLanguage>
+    <DefaultLanguage>es-us</DefaultLanguage>
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <ItemGroup>
@@ -162,10 +162,9 @@
     <Content Include="Images\Wide310x150Logo.scale-150.png" />
     <Content Include="Images\Wide310x150Logo.scale-200.png" />
     <Content Include="Images\Wide310x150Logo.scale-400.png" />
-    <None Include="MOROPOSelfSignedDeveloperCertificate2023.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Terminal.Player.UWP.DesktopExtension.Helper\Terminal.Player.UWP.DesktopExtension.Helper.csproj" />
+    <ProjectReference Include="..\Terminal.Player.UWP.DesktopExtension.PlatformInterop\Terminal.Player.UWP.DesktopExtension.PlatformInterop.csproj" />
     <ProjectReference Include="..\Terminal.Player.UWP\Terminal.Player.UWP.csproj" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />

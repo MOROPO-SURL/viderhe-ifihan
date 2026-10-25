@@ -2,13 +2,13 @@
 <sscxftoolkitmvvmpages:BindingContextedContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pagemodels="clr-namespace:SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Models.Page"
-    xmlns:supportpresentationdashboardconverters="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Converters;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
-    xmlns:supportpresentationdashboardviews="clr-namespace:SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Views;assembly=SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard"
+    xmlns:pagemodels="clr-namespace:MOROPO.VIDERHE.Terminal.Dashboard.Models.Page"
+    xmlns:supportpresentationdashboardconverters="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Converters;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
+    xmlns:supportpresentationdashboardviews="clr-namespace:MOROPO.VIDERHE.Support.Presentation.Dashboard.Views;assembly=MOROPO.VIDERHE.Support.Presentation.Dashboard"
     xmlns:sscxftoolkitmvvmpages="clr-namespace:SmartSolucionesCuba.XFToolKit.Mvvm.Pages;assembly=SmartSolucionesCuba.XFToolKit.Mvvm"
     xmlns:sscxftoolkitpresentationconverters="clr-namespace:SmartSolucionesCuba.XFToolKit.Presentation.Converters;assembly=SmartSolucionesCuba.XFToolKit.Presentation"
     xmlns:ffimageloadingforms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    x:Class="SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages.ManageImagesPage"    
+    x:Class="MOROPO.VIDERHE.Terminal.Dashboard.Pages.ManageImagesPage"    
     x:TypeArguments="pagemodels:ManageImagesPageModel"
     Title="Imágenes">
     <ContentPage.Resources>

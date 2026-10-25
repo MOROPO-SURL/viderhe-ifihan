@@ -4,7 +4,7 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Droid
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Droid
 {
     [Activity(
         Label = "VIDERHE Control", 

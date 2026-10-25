@@ -1,6 +1,6 @@
-﻿[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.Views.Rendered.IndeterminableProgressBarView), typeof(SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer.IndeterminableProgressBarViewRenderer))]
+﻿[assembly: Xamarin.Forms.Platform.UWP.ExportRenderer(typeof(MOROPO.VIDERHE.Terminal.Player.Views.Rendered.IndeterminableProgressBarView), typeof(MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer.IndeterminableProgressBarViewRenderer))]
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Player.UWP.Views.Renderer
+namespace MOROPO.VIDERHE.Terminal.Player.UWP.Views.Renderer
 {
     public class IndeterminableProgressBarViewRenderer : Xamarin.Forms.Platform.UWP.ProgressBarRenderer
     {

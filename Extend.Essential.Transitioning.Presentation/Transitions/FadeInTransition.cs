@@ -1,17 +1,20 @@
-﻿using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
+﻿using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Enumerations;
+using MOROPO.VIDERHE.Extend.Common.Transitioning.Presentation.Transitions.Contract;
+using MOROPO.VIDERHE.Extend.Essential.Transitioning.Presentation.Models.Context;
+using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations;
 using SmartSolucionesCuba.XFToolKit.Presentation.Transform.Animations.Contract;
 
-namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentation.Transitions
+namespace MOROPO.VIDERHE.Extend.Essential.Transitioning.Presentation.Transitions
 {
-    public class FadeInTransition : Common.Transitioning.Presentation.Transitions.Contract.AbstractTransition
+    public class FadeInTransition : AbstractTransition
     {
         private const double MotionSize = 80;
 
-        private Models.Context.FadeInTransitionContextModel context;
+        private FadeInTransitionContextModel context;
 
         private AbstractAnimation factShowInAnimation;
 
-        public FadeInTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, Models.Context.FadeInTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
+        public FadeInTransition(Common.Presentation.Views.BasePlacardPresentationView incomingPlacardPresentationView, Common.Presentation.Views.BasePlacardPresentationView outgoingPlacardPresentationView, FadeInTransitionContextModel context, System.Action<Common.Presentation.Views.BasePlacardPresentationView> motionCompletedActionCallback) : base(incomingPlacardPresentationView, outgoingPlacardPresentationView, motionCompletedActionCallback)
         {
             this.context = context;
         }
@@ -24,11 +27,11 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
 
             switch (context.MotionDirection)
             {
-                case Common.Transitioning.Presentation.Enumerations.VerticalTransitionOrientation.FromTop:
+                case VerticalTransitionOrientation.FromTop:
                     incomingPlacardPresentationView.TranslationY = MotionSize * -1;
 
                     break;
-                case Common.Transitioning.Presentation.Enumerations.VerticalTransitionOrientation.FromBottom:
+                case VerticalTransitionOrientation.FromBottom:
                     incomingPlacardPresentationView.TranslationY = MotionSize;
 
                     break;
@@ -39,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
         {
             var storyboard = new Storyboard();
 
-            if (context.MotionDirection == Common.Transitioning.Presentation.Enumerations.VerticalTransitionOrientation.None)
+            if (context.MotionDirection == VerticalTransitionOrientation.None)
             {
                 factShowInAnimation = new FadeToAnimation
                 {
@@ -52,7 +55,7 @@ namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Transitioning.Presentatio
                 factShowInAnimation = new FadeInAnimation
                 {
                     Target = incomingPlacardPresentationView,
-                    Direction = context.MotionDirection == Common.Transitioning.Presentation.Enumerations.VerticalTransitionOrientation.FromBottom ? XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up : XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down
+                    Direction = context.MotionDirection == VerticalTransitionOrientation.FromBottom ? SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Up : SmartSolucionesCuba.XFToolKit.Presentation.Transform.Enumerations.FadeDirection.Down
                 };
             }
 

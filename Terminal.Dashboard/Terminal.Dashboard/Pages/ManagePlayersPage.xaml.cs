@@ -1,9 +1,18 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Cloud.Api.Common.Models;
+using MOROPO.VIDERHE.Cloud.Api.Common.Models.Filter;
+using MOROPO.VIDERHE.Cloud.SignalR.Connect.Common.Enumerations;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Hubs.Client;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.View;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManagePlayersPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManagePlayersPageModel>
+    public partial class ManagePlayersPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManagePlayersPageModel>
     {
         private const string SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE = "Completado el Cartel Actual";
         private const string SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE = "Completado el Ciclo Actual";
@@ -14,7 +23,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         private const string PLAYER_HANDLING_SHUTDOWN = "Apagar";
         private const string PLAYER_HANDLING_RESTART = "Reiniciar";
 
-        public ManagePlayersPage() : base(new Models.Page.ManagePlayersPageModel { IsBusy = true })
+        public ManagePlayersPage() : base(new ManagePlayersPageModel { IsBusy = true })
         {
             InitializeComponent();
 
@@ -37,7 +46,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void RequestFilterButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.FilterPlayerPopupPage(BindingContextPageModel.Filter, RequestFilterSuccess_Callback));
+            Rg.Plugins.Popup.Services.PopupNavigation.Instance.PushAsync(new Popup.PlayerFilterPopupPage(BindingContextPageModel.Filter, RequestFilterSuccess_Callback));
         }
 
         private void ClearFilterButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -68,9 +77,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+            var model = (sender as Xamarin.Forms.Button).BindingContext as PlayerViewModel;
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerPresentNextFrameAsync(new Models.View.PlayerViewModel[] { model }).ContinueWith(hubTask =>
+            DashboardHubClient.Instance.RequestPlayerPresentNextFrameAsync(new PlayerViewModel[] { model }).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -78,7 +87,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Siguiente Cartel", "Solicitud de reproducción de siguiente cartel enviada con éxito.");
+                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Reproducir Siguiente Cartel", "Solicitud de reproducción de siguiente cartel enviada con éxito.");
                 });
             });
         }
@@ -87,9 +96,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+            var model = (sender as Xamarin.Forms.Button).BindingContext as PlayerViewModel;
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerPresentPreviousFrameAsync(new Models.View.PlayerViewModel[] { model }).ContinueWith(hubTask =>
+            DashboardHubClient.Instance.RequestPlayerPresentPreviousFrameAsync(new PlayerViewModel[] { model }).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -97,7 +106,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Cartel Anterior", "Solicitud de reproducción de cartel anterior enviada con éxito.");
+                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Reproducir Cartel Anterior", "Solicitud de reproducción de cartel anterior enviada con éxito.");
                 });
             });
         }
@@ -106,16 +115,16 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.PlacardPickPage(PlayerIterventionPlacardPicked_Callback, (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel));
+            this.NavigationPushPageAsync(new Support.Presentation.Dashboard.Pages.PlacardPickPage(PlayerIterventionPlacardPicked_Callback, (sender as Xamarin.Forms.Button).BindingContext as PlayerViewModel));
         }
 
         private void PlayerAudioEnabledSwitchButton_Clicked(object sender, System.EventArgs eventArgs)
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+            var model = (sender as Xamarin.Forms.Button).BindingContext as PlayerViewModel;
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerSetAudioEnabledAsync(new Models.View.PlayerViewModel[] { model }, !model.AudioEnabled).ContinueWith(hubTask =>
+            DashboardHubClient.Instance.RequestPlayerSetAudioEnabledAsync(new PlayerViewModel[] { model }, !model.AudioEnabled).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -130,9 +139,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+            var model = (sender as Xamarin.Forms.Button).BindingContext as PlayerViewModel;
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerAudioVolumeChangeAsync(new Models.View.PlayerViewModel[] { model }, model.AudioLevel + 10).ContinueWith(hubTask =>
+            DashboardHubClient.Instance.RequestPlayerAudioVolumeChangeAsync(new PlayerViewModel[] { model }, model.AudioLevel + 10).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -147,9 +156,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+            var model = (sender as Xamarin.Forms.Button).BindingContext as PlayerViewModel;
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerAudioVolumeChangeAsync(new Models.View.PlayerViewModel[] { model }, model.AudioLevel - 10).ContinueWith(hubTask =>
+            DashboardHubClient.Instance.RequestPlayerAudioVolumeChangeAsync(new PlayerViewModel[] { model }, model.AudioLevel - 10).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -164,7 +173,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+            var model = (sender as Xamarin.Forms.Button).BindingContext as PlayerViewModel;
 
             DisplayActionSheet("Dispositivo de Reproducción", "Cancelar", null, PLAYER_HANDLING_RESTART, PLAYER_HANDLING_SHUTDOWN).ContinueWith(shutdownModelPickDialogTask =>
             {
@@ -176,15 +185,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (!confirmationDialogTask.Result) return;
 
-                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerTerminateAsync(new Models.View.PlayerViewModel[] { model }, true).ContinueWith(hubTask =>
+                            DashboardHubClient.Instance.RequestPlayerTerminateAsync(new PlayerViewModel[] { model }, true).ContinueWith(hubTask =>
                             {
                                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+                                    (BindingContext as ManagePlayersPageModel).IsBusy = false;
 
-                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Dispositivo", "Solicitud de reinicio de dispositivo enviada con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Reiniciar Dispositivo", "Solicitud de reinicio de dispositivo enviada con éxito.");
                                 });
                             });
                         });
@@ -201,15 +210,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (!confirmationDialogTask.Result) return;
 
-                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerTerminateAsync(new Models.View.PlayerViewModel[] { model }, false).ContinueWith(hubTask =>
+                            DashboardHubClient.Instance.RequestPlayerTerminateAsync(new PlayerViewModel[] { model }, false).ContinueWith(hubTask =>
                             {
                                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+                                    (BindingContext as ManagePlayersPageModel).IsBusy = false;
 
-                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Apagar Dispositivo", "Solicitud de apagar dispositivo enviada con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Apagar Dispositivo", "Solicitud de apagar dispositivo enviada con éxito.");
                                 });
                             });
                         });
@@ -229,7 +238,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+            var model = (sender as Xamarin.Forms.Button).BindingContext as PlayerViewModel;
 
             DisplayActionSheet("Aplicación de Reproducción", "Cancelar", null, PLAYER_HANDLING_RELAUNCH, PLAYER_HANDLING_CLOSE).ContinueWith(shutdownModelPickDialogTask =>
             {
@@ -241,15 +250,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (!confirmationDialogTask.Result) return;
 
-                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerCloseAsync(new Models.View.PlayerViewModel[] { model }, true).ContinueWith(hubTask =>
+                            DashboardHubClient.Instance.RequestPlayerCloseAsync(new PlayerViewModel[] { model }, true).ContinueWith(hubTask =>
                             {
                                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+                                    (BindingContext as ManagePlayersPageModel).IsBusy = false;
 
-                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Aplicación", "Solicitud de reinicio de aplicación enviada con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Reiniciar Aplicación", "Solicitud de reinicio de aplicación enviada con éxito.");
                                 });
                             });
                         });
@@ -266,15 +275,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (!confirmationDialogTask.Result) return;
 
-                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerCloseAsync(new Models.View.PlayerViewModel[] { model }, false).ContinueWith(hubTask =>
+                            DashboardHubClient.Instance.RequestPlayerCloseAsync(new PlayerViewModel[] { model }, false).ContinueWith(hubTask =>
                             {
                                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+                                    (BindingContext as ManagePlayersPageModel).IsBusy = false;
 
-                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Cerrar Aplicación", "Solicitud de cerrar aplicación enviada con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Cerrar Aplicación", "Solicitud de cerrar aplicación enviada con éxito.");
                                 });
                             });
                         });
@@ -294,21 +303,21 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+            var model = (sender as Xamarin.Forms.Button).BindingContext as PlayerViewModel;
 
             DisplayActionSheet("Reiniciar Guion", "Cancelar", null, SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_IMMEDIATELY).ContinueWith(task =>
             {
                 if (task.Result == SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerRestartScreenplayAsync(new Models.View.PlayerViewModel[] { model }, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.RequestPlayerRestartScreenplayAsync(new PlayerViewModel[] { model }, ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+                            (BindingContext as ManagePlayersPageModel).IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion cuando termine el cartel actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion cuando termine el cartel actual enviada con éxito.");
                         });
                     });
 
@@ -317,15 +326,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 if (task.Result == SCREENPLAY_HANDLING_MODE_IMMEDIATELY)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerRestartScreenplayAsync(new Models.View.PlayerViewModel[] { model }, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.RequestPlayerRestartScreenplayAsync(new PlayerViewModel[] { model }, ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+                            (BindingContext as ManagePlayersPageModel).IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion inmediatamente enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion inmediatamente enviada con éxito.");
                         });
                     });
 
@@ -343,13 +352,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            var model = (sender as Xamarin.Forms.Button).BindingContext as Models.View.PlayerViewModel;
+            var model = (sender as Xamarin.Forms.Button).BindingContext as PlayerViewModel;
 
             DisplayActionSheet("Recargar Guion", "Cancelar", null, SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE, SCREENPLAY_HANDLING_MODE_IMMEDIATELY).ContinueWith(task =>
             {
                 if (task.Result == SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(new Models.View.PlayerViewModel[] { model }, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(new PlayerViewModel[] { model }, ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -357,7 +366,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
                         });
                     });
 
@@ -366,7 +375,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 if (task.Result == SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(new Models.View.PlayerViewModel[] { model }, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(new PlayerViewModel[] { model }, ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -374,7 +383,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el cartel actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el cartel actual enviada con éxito.");
                         });
                     });
 
@@ -383,7 +392,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 if (task.Result == SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(new Models.View.PlayerViewModel[] { model }, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(new PlayerViewModel[] { model }, ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -391,7 +400,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
                         });
                     });
 
@@ -400,7 +409,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 if (task.Result == SCREENPLAY_HANDLING_MODE_IMMEDIATELY)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(new Models.View.PlayerViewModel[] { model }, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(new PlayerViewModel[] { model }, ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -408,7 +417,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion inmediatamente enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion inmediatamente enviada con éxito.");
                         });
                     });
 
@@ -435,7 +444,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 return;
             }
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerPresentNextFrameAsync(models).ContinueWith(hubTask =>
+            DashboardHubClient.Instance.RequestPlayerPresentNextFrameAsync(models).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -443,7 +452,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Siguiente Cartel", "Solicitud de reproducción de siguiente cartel enviada con éxito.");
+                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Reproducir Siguiente Cartel", "Solicitud de reproducción de siguiente cartel enviada con éxito.");
                 });
             });
         }
@@ -461,7 +470,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 return;
             }
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerPresentPreviousFrameAsync(models).ContinueWith(hubTask =>
+            DashboardHubClient.Instance.RequestPlayerPresentPreviousFrameAsync(models).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -469,7 +478,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     BindingContextPageModel.IsBusy = false;
 
-                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reproducir Cartel Anterior", "Solicitud de reproducción de cartel anterior enviada con éxito.");
+                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Reproducir Cartel Anterior", "Solicitud de reproducción de cartel anterior enviada con éxito.");
                 });
             });
         }
@@ -505,7 +514,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             BindingContextPageModel.IsGlobalAudioEnabled = !BindingContextPageModel.IsGlobalAudioEnabled;
 
-            Hubs.Client.DashboardHubClient.Instance.RequestPlayerSetAudioEnabledAsync(models, BindingContextPageModel.IsGlobalAudioEnabled).ContinueWith(hubTask =>
+            DashboardHubClient.Instance.RequestPlayerSetAudioEnabledAsync(models, BindingContextPageModel.IsGlobalAudioEnabled).ContinueWith(hubTask =>
             {
                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -539,15 +548,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (!confirmationDialogTask.Result) return;
 
-                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerTerminateAsync(models, true).ContinueWith(hubTask =>
+                            DashboardHubClient.Instance.RequestPlayerTerminateAsync(models, true).ContinueWith(hubTask =>
                             {
                                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+                                    (BindingContext as ManagePlayersPageModel).IsBusy = false;
 
-                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Dispositivo", "Solicitud de reinicio de dispositivo enviada con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Reiniciar Dispositivo", "Solicitud de reinicio de dispositivo enviada con éxito.");
                                 });
                             });
                         });
@@ -564,15 +573,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (!confirmationDialogTask.Result) return;
 
-                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerTerminateAsync(models, false).ContinueWith(hubTask =>
+                            DashboardHubClient.Instance.RequestPlayerTerminateAsync(models, false).ContinueWith(hubTask =>
                             {
                                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+                                    (BindingContext as ManagePlayersPageModel).IsBusy = false;
 
-                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Apagar Dispositivo", "Solicitud de apagar dispositivo enviada con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Apagar Dispositivo", "Solicitud de apagar dispositivo enviada con éxito.");
                                 });
                             });
                         });
@@ -611,15 +620,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (!confirmationDialogTask.Result) return;
 
-                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerCloseAsync(models, true).ContinueWith(hubTask =>
+                            DashboardHubClient.Instance.RequestPlayerCloseAsync(models, true).ContinueWith(hubTask =>
                             {
                                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+                                    (BindingContext as ManagePlayersPageModel).IsBusy = false;
 
-                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Aplicación", "Solicitud de reinicio de aplicación enviada con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Reiniciar Aplicación", "Solicitud de reinicio de aplicación enviada con éxito.");
                                 });
                             });
                         });
@@ -636,15 +645,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             if (!confirmationDialogTask.Result) return;
 
-                            Hubs.Client.DashboardHubClient.Instance.RequestPlayerCloseAsync(models, false).ContinueWith(hubTask =>
+                            DashboardHubClient.Instance.RequestPlayerCloseAsync(models, false).ContinueWith(hubTask =>
                             {
                                 System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
                                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+                                    (BindingContext as ManagePlayersPageModel).IsBusy = false;
 
-                                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Cerrar Aplicación", "Solicitud de cerrar aplicación enviada con éxito.");
+                                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Cerrar Aplicación", "Solicitud de cerrar aplicación enviada con éxito.");
                                 });
                             });
                         });
@@ -677,15 +686,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 if (task.Result == SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerRestartScreenplayAsync(models, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.RequestPlayerRestartScreenplayAsync(models, ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+                            (BindingContext as ManagePlayersPageModel).IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion cuando termine el cartel actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion cuando termine el cartel actual enviada con éxito.");
                         });
                     });
 
@@ -694,15 +703,15 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 if (task.Result == SCREENPLAY_HANDLING_MODE_IMMEDIATELY)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerRestartScreenplayAsync(models, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.RequestPlayerRestartScreenplayAsync(models, ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
                         Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                         {
-                            (BindingContext as Models.Page.ManagePlayersPageModel).IsBusy = false;
+                            (BindingContext as ManagePlayersPageModel).IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion inmediatamente enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Reiniciar Guion", "Solicitud de reinicio de Guion inmediatamente enviada con éxito.");
                         });
                     });
 
@@ -733,7 +742,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             {
                 if (task.Result == SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(models, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(models, ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -741,7 +750,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
                         });
                     });
 
@@ -750,7 +759,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 if (task.Result == SCREENPLAY_HANDLING_MODE_CURRENT_FRAME_PRESENTATION_COMPLETE)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(models, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(models, ScreenplayHandlingImmediacyMode.CurrentFramePresentationComplete).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -758,7 +767,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el cartel actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el cartel actual enviada con éxito.");
                         });
                     });
 
@@ -767,7 +776,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 if (task.Result == SCREENPLAY_HANDLING_MODE_FRAMES_PRESENTATION_COMPLETE)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(models, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(models, ScreenplayHandlingImmediacyMode.FramesPresentationComplete).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -775,7 +784,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion cuando termine el ciclo actual enviada con éxito.");
                         });
                     });
 
@@ -784,7 +793,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 if (task.Result == SCREENPLAY_HANDLING_MODE_IMMEDIATELY)
                 {
-                    Hubs.Client.DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(models, Cloud.SignalR.Connect.Common.Enumerations.ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.RequestPlayerReloadScreenplayAsync(models, ScreenplayHandlingImmediacyMode.Immediately).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -792,7 +801,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion inmediatamente enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Recargar Guion", "Solicitud de recarga de Guion inmediatamente enviada con éxito.");
                         });
                     });
 
@@ -810,7 +819,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             if (BindingContextPageModel.IsBusy) return;
 
-            var model = (sender as Xamarin.Forms.ImageButton).BindingContext as Models.View.PlayerViewModel;
+            var model = (sender as Xamarin.Forms.ImageButton).BindingContext as PlayerViewModel;
 
             this.NavigationPushPageAsync(new ConfigurePlayerPage(ReloadPlayers, model));
         }
@@ -823,9 +832,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 BindingContextPageModel.IsBusy = true;
 
-                var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(SessionManager.Instance);
 
-                var target = (sender as Xamarin.Forms.BindableObject).BindingContext as Models.View.PlayerViewModel;
+                var target = (sender as Xamarin.Forms.BindableObject).BindingContext as PlayerViewModel;
 
                 System.Exception failException = null;
 
@@ -844,11 +853,11 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     {
                         BindingContextPageModel.Items.Remove(target);
 
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Reproductor eliminado con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Reproductor eliminado con éxito.");
                     }
                     else
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(failException);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(failException);
                     }
 
                     BindingContextPageModel.IsBusy = false;
@@ -856,7 +865,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             });
         }
 
-        private void PlayerIterventionPlacardPicked_Callback(Cloud.Api.Common.Models.PlacardDisplayModel target, object param)
+        private void PlayerIterventionPlacardPicked_Callback(PlacardDisplayModel target, object param)
         {
             DisplayAlert("Confirmar", string.Format("Esta seguro que desea intervenir este reproductor con el cartel titulado \"{0}\"?", target.Label), "Intervenir", "Cancelar").ContinueWith(task =>
             {
@@ -864,7 +873,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    Hubs.Client.DashboardHubClient.Instance.PlayerPresentInterventionPlacardAsync(new Models.View.PlayerViewModel[] { param as Models.View.PlayerViewModel }, target.Id).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.PlayerPresentInterventionPlacardAsync(new PlayerViewModel[] { param as PlayerViewModel }, target.Id).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -872,14 +881,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Intervenir", "Solicitud de intervención con cartel enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Intervenir", "Solicitud de intervención con cartel enviada con éxito.");
                         });
                     });
                 });
             });
         }
 
-        private void PlayersIterventionPlacardPicked_Callback(Cloud.Api.Common.Models.PlacardDisplayModel target, object param)
+        private void PlayersIterventionPlacardPicked_Callback(PlacardDisplayModel target, object param)
         {
             DisplayAlert("Confirmar", string.Format("Esta seguro que desea intervenir este reproductor con el cartel titulado \"{0}\"?", target.Label), "Intervenir", "Cancelar").ContinueWith(task =>
             {
@@ -887,7 +896,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
-                    Hubs.Client.DashboardHubClient.Instance.PlayerPresentInterventionPlacardAsync(BindingContextPageModel.Items.Where(item => item.IsConnected && item.IsEnabled).ToArray(), target.Id).ContinueWith(hubTask =>
+                    DashboardHubClient.Instance.PlayerPresentInterventionPlacardAsync(BindingContextPageModel.Items.Where(item => item.IsConnected && item.IsEnabled).ToArray(), target.Id).ContinueWith(hubTask =>
                     {
                         System.Threading.Thread.Sleep(System.TimeSpan.FromSeconds(1));
 
@@ -895,7 +904,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         {
                             BindingContextPageModel.IsBusy = false;
 
-                            Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Intervenir", "Solicitud de intervención con cartel enviada con éxito.");
+                            Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Intervenir", "Solicitud de intervención con cartel enviada con éxito.");
                         });
                     });
                 });
@@ -916,7 +925,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
             ReloadPlayers();
         }
 
-        private void RequestFilterSuccess_Callback(Cloud.Api.Common.Models.Filter.PlayerFilterModel model)
+        private void RequestFilterSuccess_Callback(PlayerFilterModel model)
         {
             BindingContextPageModel.Filter = model;
         }
@@ -932,9 +941,9 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
         {
             BindingContextPageModel.IsBusy = true;
 
-            var apiConnectClient = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Cloud.Api.Connect.Clients.PlayersApiConnectClient(SessionManager.Instance);
 
-            System.Threading.Tasks.Task<Cloud.Api.Common.Models.PlayerDisplayModel[]> apiConnectClientTask;
+            System.Threading.Tasks.Task<PlayerDisplayModel[]> apiConnectClientTask;
 
             if (BindingContextPageModel.Filter != null)
             {
@@ -951,13 +960,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                 {
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {
                         foreach (var model in task.Result)
                         {
-                            BindingContextPageModel.Items.Add(new Models.View.PlayerViewModel
+                            BindingContextPageModel.Items.Add(new PlayerViewModel
                             {
                                 Id = model.Id,
                                 Name = model.Name,
@@ -975,7 +984,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                         PlayerConnectionStatusChange_Callback();
 
-                        Hubs.Client.DashboardHubClient.Instance.GetReady(BindingContextPageModel.Items, PlayerConnectionStatusChange_Callback);
+                        DashboardHubClient.Instance.GetReady(BindingContextPageModel.Items, PlayerConnectionStatusChange_Callback);
                     }
 
                     BindingContextPageModel.IsBusy = false;

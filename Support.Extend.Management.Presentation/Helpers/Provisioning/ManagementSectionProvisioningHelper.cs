@@ -1,7 +1,8 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Management.Dashboard.Presentation.Providers.Facade;
+﻿using MOROPO.VIDERHE.Extend.Common.Management.Dashboard.Presentation.Providers.Facade;
+using MOROPO.VIDERHE.Extend.Common.Management.Sections.Contract;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Extend.Management.Presentation.Helpers.Provisioning
+namespace MOROPO.VIDERHE.Support.Extend.Management.Presentation.Helpers.Provisioning
 {
     public sealed class ManagementSectionProvisioningHelper
     {
@@ -22,14 +23,14 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Management.Presentation.Hel
 
         private ManagementSectionProvisioningHelper()
         {
-            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Management.Dashboard.Presentation,\\sVersion=")).ToArray();
+            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Management.Dashboard.Presentation,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IManageSectionPageProviderFacade).IsAssignableFrom(t));
+            SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, SmartSolucionesCuba.XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(IManageSectionPageProviderFacade).IsAssignableFrom(t));
         }
 
-        public Xamarin.Forms.Page GetFor(Viderhe.Extend.Common.Management.Sections.Contract.IManagementSection section)
+        public Xamarin.Forms.Page GetFor(IManagementSection section)
         {
-            var providers = XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IManageSectionPageProviderFacade>();
+            var providers = SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<IManageSectionPageProviderFacade>();
 
             foreach (var provider in providers)
             {

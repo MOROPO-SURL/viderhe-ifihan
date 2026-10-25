@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Enumerations
+﻿namespace MOROPO.VIDERHE.Extend.Common.Templating.Enumerations
 {
     public enum PlayerOrientationSupportKind
     {

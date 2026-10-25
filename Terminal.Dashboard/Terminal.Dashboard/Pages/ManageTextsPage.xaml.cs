@@ -1,12 +1,17 @@
-﻿using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
+﻿using MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.View;
+using MOROPO.VIDERHE.Support.Presentation.Dashboard.Presenters.Facade;
+using MOROPO.VIDERHE.Support.Presentation.Helpers.Facade;
+using MOROPO.VIDERHE.Terminal.Dashboard.Managers;
+using MOROPO.VIDERHE.Terminal.Dashboard.Models.Page;
+using SmartSolucionesCuba.XFToolKit.Mvvm.Extensions;
 
-namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class ManageTextsPage : XFToolKit.Mvvm.Pages.BindingContextedContentPage<Models.Page.ManageTextsPageModel>
+    public partial class ManageTextsPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.BindingContextedContentPage<ManageTextsPageModel>
     {
         private int currentItemsPageNumber;
 
-        public ManageTextsPage() : base(new Models.Page.ManageTextsPageModel { IsBusy = true })
+        public ManageTextsPage() : base(new ManageTextsPageModel { IsBusy = true })
         {
             InitializeComponent();
 
@@ -26,7 +31,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
         private void ItemCopyButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            Xamarin.Essentials.Clipboard.SetTextAsync(((sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.TextViewModel).Content).ContinueWith(task =>
+            Xamarin.Essentials.Clipboard.SetTextAsync(((sender as Xamarin.Forms.BindableObject).BindingContext as TextViewModel).Content).ContinueWith(task =>
             {
                 Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
                 {
@@ -37,14 +42,14 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                         return;
                     }
 
-                    Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Contenido del elemento especificado copiado al portapapeles del sistema con éxito.");
+                    Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Contenido del elemento especificado copiado al portapapeles del sistema con éxito.");
                 });
             });
         }
 
         private void ItemDetailButton_Clicked(object sender, System.EventArgs eventArgs)
         {
-            this.NavigationPushPageAsync(new ConfigureTextPage(RequiredReload_Callback, (sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.TextViewModel));
+            this.NavigationPushPageAsync(new ConfigureTextPage(RequiredReload_Callback, (sender as Xamarin.Forms.BindableObject).BindingContext as TextViewModel));
         }
 
         private void ItemDeleteButton_Clicked(object sender, System.EventArgs eventArgs)
@@ -58,13 +63,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
                     BindingContextPageModel.IsBusy = true;
                 });
 
-                var client = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Managers.SessionManager.Instance);
+                var client = new Cloud.Api.Connect.Clients.TextsApiConnectClient(SessionManager.Instance);
 
                 System.Exception failException = null;
 
                 try
                 {
-                    await client.Delete(((sender as Xamarin.Forms.BindableObject).BindingContext as Support.Presentation.Dashboard.Models.View.TextViewModel).Id);
+                    await client.Delete(((sender as Xamarin.Forms.BindableObject).BindingContext as TextViewModel).Id);
                 }
                 catch (System.Exception ex)
                 {
@@ -77,13 +82,13 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (failException == null)
                     {
-                        Xamarin.Forms.DependencyService.Get<Support.Presentation.Dashboard.Presenters.Facade.INotificationPresenterFacade>().PresentNotification("Información", "Gradiente eliminado con éxito.");
+                        Xamarin.Forms.DependencyService.Get<INotificationPresenterFacade>().PresentNotification("Información", "Gradiente eliminado con éxito.");
 
                         RequiredReload_Callback();
                     }
                     else
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(failException);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(failException);
                     }
                 });
             });
@@ -119,7 +124,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
             if (restart) currentItemsPageNumber = 0;
 
-            var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(Managers.SessionManager.Instance);
+            var apiConnectClient = new Cloud.Api.Connect.Clients.TextsApiConnectClient(SessionManager.Instance);
 
             apiConnectClient.GetPaginateAsync(++currentItemsPageNumber).ContinueWith(task =>
             {
@@ -129,7 +134,7 @@ namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
 
                     if (task.Exception != null || task.IsCanceled)
                     {
-                        (Xamarin.Forms.Application.Current as Support.Presentation.Helpers.Facade.IExceptionHandleHelperFacade).HandleException(task.Exception);
+                        (Xamarin.Forms.Application.Current as IExceptionHandleHelperFacade).HandleException(task.Exception);
                     }
                     else
                     {

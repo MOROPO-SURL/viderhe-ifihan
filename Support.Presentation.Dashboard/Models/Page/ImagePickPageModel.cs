@@ -1,16 +1,18 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Models.Page
+﻿using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Models.Page
 {
-    public class ImagePickPageModel : XFToolKit.Mvvm.Models.Page.BasePageModel
+    public class ImagePickPageModel : SmartSolucionesCuba.XFToolKit.Mvvm.Models.Page.BasePageModel
     {
         private bool hasMoreItems;
-        private System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<Presentation.Models.View.ImageViewModel>> items;
+        private System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<ImageViewModel>> items;
 
         public ImagePickPageModel()
         {
-            Items = new System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<Presentation.Models.View.ImageViewModel>>();
+            Items = new System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<ImageViewModel>>();
         }
 
-        public System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<Presentation.Models.View.ImageViewModel>> Items { get => items; set => SetProperty(ref items, value); }
+        public System.Collections.ObjectModel.ObservableCollection<View.OverviewViewModel<ImageViewModel>> Items { get => items; set => SetProperty(ref items, value); }
 
         public bool HasMoreItems { get => hasMoreItems; set => SetProperty(ref hasMoreItems, value); }
 

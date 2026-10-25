@@ -1,8 +1,11 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Essential.Templating.Dashboard.Presentation.Models.Page
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Dashboard.Presentation.Models.Page;
+using MOROPO.VIDERHE.Support.Presentation.Models.View;
+
+namespace MOROPO.VIDERHE.Extend.Essential.Templating.Dashboard.Presentation.Models.Page
 {
-    public class SimplePicturePlacardConfigurationPageModel : Common.Templating.Dashboard.Presentation.Models.Page.AbstractLabeledScreenTimedPlacardConfigurationPageModel
+    public class SimplePicturePlacardConfigurationPageModel : AbstractLabeledScreenTimedPlacardConfigurationPageModel
     {
-        private Support.Presentation.Models.View.ImageViewModel image;
+        private ImageViewModel image;
         private Enumerations.PictureLayoutMode layoutMode;
         private bool isZoomingEnabled;
 
@@ -10,18 +13,18 @@
         {
             ScreenPresentationTimeSecounds = 15;
 
-            AvailableLayoutModes = new Enumerations.PictureLayoutMode[] 
-            { 
-                Enumerations.PictureLayoutMode.AspectFit, 
-                Enumerations.PictureLayoutMode.AspectFill, 
-                Enumerations.PictureLayoutMode.Fill, 
+            AvailableLayoutModes = new Enumerations.PictureLayoutMode[]
+            {
+                Enumerations.PictureLayoutMode.AspectFit,
+                Enumerations.PictureLayoutMode.AspectFill,
+                Enumerations.PictureLayoutMode.Fill,
                 Enumerations.PictureLayoutMode.AspectFitWithOpaqueAspectFilledBySelf
             };
         }
 
         public Enumerations.PictureLayoutMode LayoutMode { get => layoutMode; set => SetProperty(ref layoutMode, value); }
 
-        public Support.Presentation.Models.View.ImageViewModel Image { get => image; set => SetProperty(ref image, value); }
+        public ImageViewModel Image { get => image; set => SetProperty(ref image, value); }
 
         public bool IsZoomingEnabled { get => isZoomingEnabled; set => SetProperty(ref isZoomingEnabled, value); }
 

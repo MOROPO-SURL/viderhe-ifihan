@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Presentation.Views.Facade
+﻿namespace MOROPO.VIDERHE.Extend.Common.Templating.Presentation.Views.Facade
 {
     public interface IRelativeSizeScalableViewFacade
     {

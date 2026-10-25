@@ -1,4 +1,4 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Player.Providers
+﻿namespace MOROPO.VIDERHE.Terminal.Player.Providers
 {
     public class AccountInformationProvider : Extend.Common.Presentation.Providers.Facade.IAccountInformationProviderFacade
     {

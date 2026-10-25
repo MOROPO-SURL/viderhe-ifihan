@@ -1,13 +1,13 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Cloud.Persistence.Entities
+﻿using MOROPO.Framework.Guama.Media.Persistence.Entities;
+
+namespace MOROPO.VIDERHE.Cloud.Persistence.Entities
 {
-    public class PlacardVideoBridge
+    public class PlacardVideoBridge : Framework.Guama.Core.Persistence.Entities.Contract.IBridge<Placard, System.Guid, Video, System.Guid>
     {
-        public System.Guid PlacardId { get; set; }
+        public System.Guid ProwId { get; set; }
+        public Placard Prow { get; set; }
 
-        public Placard Placard { get; set; }
-
-        public System.Guid VideoId { get; set; }
-
-        public MOROPO.SAPRESSC.Middleware.Media.Persistence.Entities.Video Video { get; set; }
+        public System.Guid SternId { get; set; }
+        public Video Stern { get; set; }
     }
 }

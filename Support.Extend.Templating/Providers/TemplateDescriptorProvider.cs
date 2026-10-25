@@ -1,7 +1,7 @@
-﻿using SmartSolucionesCuba.Viderhe.Extend.Common.Templating.Descriptors;
+﻿using MOROPO.VIDERHE.Extend.Common.Templating.Descriptors;
 using System.Linq;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Providers
+namespace MOROPO.VIDERHE.Support.Extend.Templating.Providers
 {
     public sealed class TemplateDescriptorProvider
     {
@@ -22,16 +22,16 @@ namespace SmartSolucionesCuba.Viderhe.Support.Extend.Templating.Providers
 
         private TemplateDescriptorProvider()
         {
-            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.Viderhe\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating,\\sVersion=")).ToArray();
+            var assemblies = System.AppDomain.CurrentDomain.GetAssemblies().Where(a => System.Text.RegularExpressions.Regex.IsMatch(a.FullName, ".+\\.VIDERHE\\.Extend\\.[a-zA-Z0-9|\\.]+\\.Templating,\\sVersion=")).ToArray();
 
-            XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(ITemplateDescriptor).IsAssignableFrom(t));
+            SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.AutoRegister(assemblies, SmartSolucionesCuba.XFToolKit.IoC.DuplicateImplementationActions.RegisterMultiple, t => typeof(ITemplateDescriptor).IsAssignableFrom(t));
         }
 
         public ITemplateDescriptor[] GetDescriptors()
         {
             var result = new System.Collections.Generic.List<ITemplateDescriptor>();
 
-            result.AddRange(XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<ITemplateDescriptor>());
+            result.AddRange(SmartSolucionesCuba.XFToolKit.IoC.TinyIoCContainer.Current.ResolveAll<ITemplateDescriptor>());
 
             return result.ToArray();
         }

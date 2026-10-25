@@ -1,10 +1,12 @@
-﻿namespace SmartSolucionesCuba.Viderhe.Terminal.Dashboard.Pages
+﻿using MOROPO.VIDERHE.Terminal.Dashboard.Views.Composite;
+
+namespace MOROPO.VIDERHE.Terminal.Dashboard.Pages
 {
-    public partial class UserProfileImageCroppingPage : XFToolKit.Mvvm.Pages.ContentPage
+    public partial class UserProfileImageCroppingPage : SmartSolucionesCuba.XFToolKit.Mvvm.Pages.ContentPage
     {
         private System.Action<SkiaSharp.SKBitmap> callbackAction;
 
-        private Views.Composite.ImageCropperCanvasView imageCropperCanvasView;
+        private ImageCropperCanvasView imageCropperCanvasView;
 
         public UserProfileImageCroppingPage(SkiaSharp.SKBitmap target, System.Action<SkiaSharp.SKBitmap> callbackAction)
         {

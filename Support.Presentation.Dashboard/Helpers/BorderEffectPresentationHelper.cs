@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Helpers
+namespace MOROPO.VIDERHE.Support.Presentation.Dashboard.Helpers
 {
     public static class BorderEffectPresentationHelper
     {
@@ -42,7 +42,7 @@ namespace SmartSolucionesCuba.Viderhe.Support.Presentation.Dashboard.Helpers
         public static void OnHasBorderEffectChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var view = bindable as View;
-            
+
             if ((bool)newValue)
             {
                 view.Effects.Add(new ViewBorderColorEffect());
